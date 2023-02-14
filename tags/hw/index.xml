@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>hw on Morgoth</title>
+    <link>https://canuxcheng.com/tags/hw/</link>
+    <description>Recent content in hw on Morgoth</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 15 May 2021 09:41:39 +0800</lastBuildDate><atom:link href="https://canuxcheng.com/tags/hw/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hardware</title>
+      <link>https://canuxcheng.com/post/hardware/</link>
+      <pubDate>Sat, 15 May 2021 09:41:39 +0800</pubDate>
+      
+      <guid>https://canuxcheng.com/post/hardware/</guid>
+      <description>Hardware https://github.com/micropython/micropython https://github.com/tinygo-org/tinygo SoC SOC：（System-On-Chip)片上系统。可以简单的理解为把系统做在一块芯片上。 AP: application processor, CPU, GPU, NPU, ISP, DSP, ROM/RAM. BP: base-band processor, BBU. EUV: Extreme Ultraviolet Lithog</description>
+    </item>
+    
+  </channel>
+</rss>

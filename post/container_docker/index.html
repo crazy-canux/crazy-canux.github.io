@@ -1,0 +1,949 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="utf-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+ <title>Docker - Morgoth</title>
+ <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Canux" /><meta name="description" content="Docker https://store.docker.com/ https://hub.docker.com/ https://github.com/docker https://github.com/moby/moby Docker是一个容器引擎, 分为社区版CE, 和企业版EE, Docker不是虚拟机, 也不依赖虚拟化技术． docker-cli -&amp;gt; dockerd -&amp;gt; containerd -&amp;gt; shim -&amp;gt; runc conta" /><meta name="keywords" content="Hugo, theme, canux" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.110.0 with theme even" />
+
+
+<link rel="canonical" href="https://canuxcheng.com/post/container_docker/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<link href="/sass/main.min.69e0bbe2419d9b0efbdcc1d3b4338bba03a6f6789ae2832bc1af58e5b2757470.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Docker" />
+<meta property="og:description" content="Docker https://store.docker.com/ https://hub.docker.com/ https://github.com/docker https://github.com/moby/moby Docker是一个容器引擎, 分为社区版CE, 和企业版EE, Docker不是虚拟机, 也不依赖虚拟化技术． docker-cli -&gt; dockerd -&gt; containerd -&gt; shim -&gt; runc conta" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://canuxcheng.com/post/container_docker/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2018-04-05T22:02:31+00:00" />
+<meta property="article:modified_time" content="2018-04-05T22:02:31+00:00" />
+<meta itemprop="name" content="Docker">
+<meta itemprop="description" content="Docker https://store.docker.com/ https://hub.docker.com/ https://github.com/docker https://github.com/moby/moby Docker是一个容器引擎, 分为社区版CE, 和企业版EE, Docker不是虚拟机, 也不依赖虚拟化技术． docker-cli -&gt; dockerd -&gt; containerd -&gt; shim -&gt; runc conta"><meta itemprop="datePublished" content="2018-04-05T22:02:31+00:00" />
+<meta itemprop="dateModified" content="2018-04-05T22:02:31+00:00" />
+<meta itemprop="wordCount" content="3072">
+<meta itemprop="keywords" content="docker," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Docker"/>
+<meta name="twitter:description" content="Docker https://store.docker.com/ https://hub.docker.com/ https://github.com/docker https://github.com/moby/moby Docker是一个容器引擎, 分为社区版CE, 和企业版EE, Docker不是虚拟机, 也不依赖虚拟化技术． docker-cli -&gt; dockerd -&gt; containerd -&gt; shim -&gt; runc conta"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+ <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Morgoth</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/rtfm/">
+        <li class="mobile-menu-item">RTFM</li>
+      </a><a href="/samuel/">
+        <li class="mobile-menu-item">昕焱</li>
+      </a><a href="/search/">
+        <li class="mobile-menu-item">Search</li>
+      </a>
+  </ul>
+</nav>
+ <div class="container" id="mobile-panel">
+   <header id="header" class="header">
+       <div class="logo-wrapper">
+  <a href="/" class="logo">Morgoth</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/rtfm/">RTFM</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/samuel/">昕焱</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/search/">Search</a>
+      </li>
+  </ul>
+</nav>
+
+<div class="js-toggle-wrapper">
+    <div class="js-toggle">
+        <div class="js-toggle-track">
+            <div class="js-toggle-track-check">
+                <img src="data:image/png;base64,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" role="presentation" style="pointer-events: none;" width="16" height="16">
+            </div>
+            <div class="js-toggle-track-x">
+                <img src="data:image/png;base64,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" role="presentation" style="pointer-events: none;" width="16" height="16">
+            </div>
+        </div>
+        <div class="js-toggle-thumb"></div>
+        <input class="js-toggle-screenreader-only" type="checkbox" aria-label="Switch between Dark and Light mode">
+    </div>
+</div>
+
+<style>
+ 
+
+.js-toggle-wrapper {
+    display: table;
+    margin: 0 auto;
+}
+
+.js-toggle {
+    touch-action: pan-x;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background-color: transparent;
+    border: 0;
+    padding: 0;
+    -webkit-touch-callout: none;
+    user-select: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  .js-toggle-screenreader-only {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  
+  .js-toggle-track {
+    width: 50px;
+    height: 24px;
+    padding: 0;
+    border-radius: 30px;
+    background-color: hsl(222, 14%, 7%);
+    transition: all 0.2s ease;
+  }
+  
+  .js-toggle-track-check {
+    position: absolute;
+    width: 17px;
+    height: 17px;
+    left: 5px;
+    top: 0px;
+    bottom: 0px;
+    margin-top: auto;
+    margin-bottom: auto;
+    line-height: 0;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+  
+  .js-toggle--checked .js-toggle-track-check {
+    opacity: 1;
+    transition: opacity 0.25s ease;
+  }
+  
+  .js-toggle-track-x {
+    position: absolute;
+    width: 17px;
+    height: 17px;
+    right: 5px;
+    top: 0px;
+    bottom: 0px;
+    margin-top: auto;
+    margin-bottom: auto;
+    line-height: 0;
+    opacity: 1;
+    transition: opacity 0.25s ease;
+  }
+  
+  .js-toggle--checked .js-toggle-track-x {
+    opacity: 0;
+  }
+  
+  .js-toggle-thumb {
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background-color: #fafafa;
+    box-sizing: border-box;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+    transform: translateX(0);
+  }
+  
+  .js-toggle--checked .js-toggle-thumb {
+    transform: translateX(26px);
+    border-color: #19ab27;
+  }
+  
+  .js-toggle--focus .js-toggle-thumb {
+    box-shadow: 0px 0px 2px 3px rgb(255, 167, 196);
+  }
+  
+  .js-toggle:active .js-toggle-thumb {
+    box-shadow: 0px 0px 5px 5px rgb(255, 167, 196);
+  }
+
+  body.dark-mode,
+  body.dark-mode main * {
+    background: rgb(45, 45, 45);
+    color: #f5f5f5;
+}
+</style>
+
+
+
+<script>
+    var body = document.body;
+	var switcher = document.getElementsByClassName('js-toggle')[0];
+
+	
+	switcher.addEventListener("click", function() {
+        this.classList.toggle('js-toggle--checked');
+        this.classList.add('js-toggle--focus');
+		
+		if (this.classList.contains('js-toggle--checked')) {
+			body.classList.add('dark-mode');
+			
+			localStorage.setItem('darkMode', 'true');
+		} else {
+			body.classList.remove('dark-mode');
+			setTimeout(function() {
+				localStorage.removeItem('darkMode');
+			}, 100);
+		}
+	})
+
+	
+	if (localStorage.getItem('darkMode')) {
+		
+        switcher.classList.add('js-toggle--checked');
+        body.classList.add('dark-mode');
+	}
+
+</script>
+   </header>
+
+   
+   <main id="main" class="main">
+     <div class="content-wrapper">
+       <div id="content" class="content">
+         <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Docker</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 5047-10-10T42:22:319 </span>
+        <div class="post-category">
+            <a href="/categories/container/"> Container </a>
+            </div>
+          <span class="more-meta"> 3072 words </span>
+          <span class="more-meta"> 7 mins read </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> times read </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#docker">Docker</a></li>
+    <li><a href="#配置">配置</a></li>
+    <li><a href="#docker命令">docker命令</a></li>
+    <li><a href="#dockerfile">Dockerfile</a></li>
+    <li><a href="#docker-machine">docker-machine</a>
+      <ul>
+        <li><a href="#docker-machine命令">docker-machine命令</a></li>
+      </ul>
+    </li>
+    <li><a href="#oom">OOM</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+  <div class="post-outdated">
+    <div class="warn">
+      <p>[NOTE] Updated <span class="timeago" datetime="2018-04-05T22:02:31" title="April 5, 2018">April 5, 2018</span>. This article may have outdated content or subject matter.</p>
+    </div>
+  </div>
+    <div class="post-content">
+      <h1 id="docker">Docker</h1>
+<p><a href="https://store.docker.com/">https://store.docker.com/</a></p>
+<p><a href="https://hub.docker.com/">https://hub.docker.com/</a></p>
+<p><a href="https://github.com/docker">https://github.com/docker</a></p>
+<p><a href="https://github.com/moby/moby">https://github.com/moby/moby</a></p>
+<p>Docker是一个容器引擎, 分为社区版CE, 和企业版EE, Docker不是虚拟机, 也不依赖虚拟化技术．</p>
+<p>docker-cli -&gt; dockerd -&gt; containerd -&gt; shim -&gt; runc</p>
+<p>containerd是容器运行时管理引擎.</p>
+<p>shim用于管理容器生命周期.</p>
+<p>Docker包括三个基本概念:</p>
+<ul>
+<li>仓库repository,集中存放镜像文件的场所,docker hub/store是最大的公开仓库．</li>
+<li>镜像image, 镜像是一个文件系统.</li>
+<li>容器container, 容器是镜像的运行的实例．</li>
+</ul>
+<p>修改docker存储路径:</p>
+<pre><code>$ service docker stop
+$ mv /var/lib/docker /opt/ssd/docker
+$ ln -s /opt/ssd/docker /var/lib/docker
+$ service docker start
+</code></pre>
+<p>Install:</p>
+<pre><code>windows:
+&lt;https://docs.docker.com/docker-for-windows/install/&gt;
+
+linux:
+&lt;https://docs.docker.com/engine/install/ubuntu/&gt;
+</code></pre>
+<h1 id="配置">配置</h1>
+<p><a href="https://docs.docker.com/engine/reference/commandline/dockerd/#daemon-configuration-file">https://docs.docker.com/engine/reference/commandline/dockerd/#daemon-configuration-file</a></p>
+<p>docker配置文件:</p>
+<pre><code>/etc/docker/daemon.json
+/lib/systemd/system/docker.service
+
+{
+    // debug
+    &quot;debug&quot;: true,
+    
+    &quot;data-root&quot;： &quot;/var/lib/docker&quot;,
+    
+    &quot;features&quot;: {
+        &quot;buildkit&quot;: true
+    },
+
+    //容器访问外网:
+    ip-forward=true 会设置 net.ipv4.ip_forward=1, 才能访问外网
+    // 容器之间访问:
+    icc=true, 
+    iptables=true  会修改iptables的forward策略为accept,
+
+    // 修改默认docker0
+    &quot;bridge&quot;:
+    &quot;bip&quot;: &quot;10.0.0.1/16&quot;  // subnet + gateway
+    &quot;fixed-cidr&quot;: &quot;10.41.0.0/24&quot; // iprange
+    &quot;fixed-cidr-v6&quot;: &quot;&quot;,
+    &quot;mtu&quot;: 1500
+    &quot;default-gateway&quot;:
+	&quot;default-gateway-v6&quot;: &quot;&quot;,
+
+    // 修改默认dns
+    &quot;dns&quot; : [
+        &quot;114.114.114.114&quot;,
+        &quot;8.8.8.8&quot;
+    ]
+    &quot;dns-opts&quot;: [],
+    &quot;dns-search&quot;: [],
+
+    // ipv6
+    &quot;ipv6&quot;: true
+
+    // private registry
+  	&quot;insecure-registries&quot;: [],
+
+    // 修改registry
+    &quot;registry-mirrors&quot;: [
+        &quot;https://registry.docker-cn.com&quot;,
+        &quot;https://z4yd270h.mirror.aliyuncs.com&quot;,
+        &quot;http://f1361db2.m.daocloud.io&quot;,
+        &quot;https://docker.mirrors.ustc.edu.cn&quot;
+    ]
+
+    &quot;hosts&quot;: [],
+    &quot;log-level&quot;: &quot;&quot;,
+    &quot;tls&quot;: true,
+    &quot;tlsverify&quot;: true,
+    &quot;tlscacert&quot;: &quot;&quot;,
+    &quot;tlscert&quot;: &quot;&quot;,
+    &quot;tlskey&quot;: &quot;&quot;,
+}
+</code></pre>
+<p>proxy for pull image from google(gcr):</p>
+<p><a href="https://docs.docker.com/config/daemon/systemd/#httphttps-proxy">https://docs.docker.com/config/daemon/systemd/#httphttps-proxy</a></p>
+<hr>
+<h1 id="docker命令">docker命令</h1>
+<p>system:</p>
+<pre><code>$ docker system df	// Show docker disk usage
+$ docker system events	// Get real time events from the server
+$ docker system info	// Display system-wide information
+$ docker system prune	// Remove unused data
+</code></pre>
+<p>image管理:</p>
+<pre><code>$ docker image COMMAND
+
+&gt; 查看本地镜像:
+$ docker image ls
+$ docker image -a
+
+&gt; 根据创建dockerfile，创建新的images
+$ docker image build
+
+&gt; 创建tag
+$ docker image tag
+
+&gt; 删除image
+$ docker image rm &lt;IMAGE ID&gt;
+$ docker rmi &lt;IMAGE ID&gt;
+&gt; 删除所有image
+$ docker rmi $(docker images -a -q)
+
+&gt; 清理所有临时images
+$ docker image prune
+</code></pre>
+<p>container管理</p>
+<pre><code>$docker container COMMAND
+
+# 列出container:
+$ docker container ls
+$ docker ps -a  # 默认只显示running状态的
+
+# 运行image,产生一个container:
+$ docker container run &lt;IMAGE ID&gt;/&lt;REPOSITORY&gt; [COMMAND] [ARGS]
+
+# 在container中执行命令
+$ docker container exec [OPTIONS] &lt;CONTAINER&gt; COMMAND [ARG...]
+
+# 创建container但不启动
+$ docker container create --name &lt;name&gt; &lt;CONTAINER&gt;
+
+# 启动container:
+$ docker container start/restart &lt;CONTAINER&gt;
+
+# 停止container:
+$ docker container stop &lt;CONTAINER&gt;
+
+# 删除container：
+$ docker container rm &lt;CONTAINER&gt;
+$ docker rm &lt;CONTAINER&gt;
+# 删除所有容器
+$ docker rm $(docker ps -a -q) 
+
+# 清理停止的container
+$ docker container prune
+</code></pre>
+<p>制作镜像</p>
+<pre><code># 根据Dockerfile 构建image
+docker build [OPTIONS] PATH | URL | -
+docker build .  // 默认就是当前目录的Dockerfile
+docker build -t &lt;repo&gt;/&lt;name&gt;:&lt;tag&gt; .  // 创建tag
+docker build -f /path/to/mydockerfile . // 也可以指定其它路径的其它文件
+docker build --target &lt;stage&gt; . // 指定阶段构建.
+docker build ... --network=host // 使用host网络构建.
+docker build --no-cache // 不使用缓存数据
+
+# 把image导出到tar包
+# 既可以从image也可以从container导出。
+# 从container导出不包含运行后的修改，只导出原始镜像。
+$ docker save -o name.tgz &lt;repo1&gt;:&lt;tag1&gt; &lt;repo2&gt;:&lt;tag2&gt; ...
+
+# 从stdin或文件加载image
+docker load [OPTIONS]
+docker load &lt; name.tar.gz
+docker load --input/-i name.tar
+
+# 把container导出到tar包，从container导出镜像。
+# 包括container启动后的修改。
+docker export -o name.tar [container]
+
+# 从container导出的包加载成镜像
+docker import name.tar [repo]:[tag]
+
+# 根据container的修改创建新的image
+docker commit [OPTIONS] CONTAINER [REPOSITORY[:TAG]]
+docker commit -a &quot;author&quot; -c &quot;Dockerfile instruction&quot; -m &quot;commit message&quot; CONTAINER [REPOSITORY[:TAG]]
+
+# 创建新的tag
+docker tag &lt;old&gt; &lt;new&gt;
+</code></pre>
+<p>运行容器</p>
+<pre><code># 创建一个新的container并运行命令
+docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
+docker run --name [NAME] IMAGE // 运行容器并命名
+docker run -d IMAGE // 后台运行
+docker run -it IMAGE /bin/bash // 交互模式启动容器
+docker run -P IMAGE // 默认将容器的8０端口映射到主机的随机端口
+docker run -p [host:port]:[containerPort] // 指定映射端口
+--add-host # 相当于修改容器的/etc/hosts,但是容器重启后不会消失
+-h/--hostname # 修改容器的/etc/hostname
+
+// cpu
+--cpus decimal                   Number of CPUs
+-c, --cpu-shares int             CPU shares (relative weight)
+--cpuset-cpus string             CPUs in which to allow execution (0-3, 0,1)
+--cpuset-mems string             MEMs in which to allow execution (0-3, 0,1)
+--cpu-period
+--cpu-quota
+
+// memory
+-m, --memory bytes               Memory limit
+--memory-reservation bytes       Memory soft limit
+--memory-swap bytes              Swap limit equal to memory plus swap: '-1' to enable unlimited swap
+--memory-swappiness int          Tune container memory swappiness (0 to 100) (default -1)
+--oom-kill-disable
+--oom-score-adj
+--kernel-memory
+
+// io
+--blkio-weight
+--blkio-weight-device
+--device-read-bps
+--device-write-bps
+--device-read-iops
+--device-write-iops
+
+// security
+// https://docs.docker.com/engine/security/apparmor/
+// https://docs.docker.com/engine/security/seccomp/
+// https://docs.docker.com/engine/security/userns-remap/
+// https://docs.docker.com/engine/security/rootless/
+privileged
+sysctl
+ulimit
+user
+userns
+security_ops
+cgroup_parent
+cap_add
+cap_drop
+
+# 在运行的container中执行命令
+docker exec [OPTIONS] CONTAINER COMMAND [ARG...]
+docker exec -d CONTAINER ... // 在后台运行
+docker exec -it CONTAINER /bin/bash ... // 进入命令行
+
+# metrics
+docker stats
+
+# resource
+docker top
+</code></pre>
+<p>log:</p>
+<pre><code>// 查看log driver
+// 默认driver是 json-file, 不同的driver，option不同
+// driver是json-file, journald, 通过docker logs docker-compose logs 才能看到log
+$ docker inspect -f '{{.HostConfig.LogConfig.Type}}' &lt;ID&gt;
+
+docker run -it --log-driver &lt;driver&gt; --log-opt mode=blocking --log-opt max-buffer-size=4m alpine ash  
+// --log-driver json-file
+// --log-opt mode blocking/non-blocking
+// --log-opt max-buffer-size 
+</code></pre>
+<p>其它命令</p>
+<pre><code># 在container和host之前拷贝文件和目录
+docker cp [OPTIONS] CONTAINER:SRC_PATH DEST_PATH|-
+docker cp [OPTIONS] SRC_PATH|- CONTAINER:DEST_PATH
+
+# 查看容器的日志
+docker logs [OPTIONS] CONTAINER
+docker diff CONTAINER
+docker history [OPTIONS] IMAGE
+
+# 查看healthcheck的log
+docker inspect --format &quot;{{json .State.Health }}&quot; &lt;container name&gt; | jq
+
+docker system prune
+</code></pre>
+<p>register使用</p>
+<pre><code># 登陆到docker hub 或其他register
+docker login
+docker login -u/--username &lt;user&gt; -p/--password &lt;password&gt;
+
+# 从docker hub/store查找images
+$ docker search [OPTIONS] TERM
+$ docker search
+
+# 从registry获取repository/images到/var/lib/docker：
+$ docker pull [OPTIONS] NAME[:TAG|@DIGEST]
+$ docker pull
+$ docker pull ubuntu # 默认下载所有tag
+$ docker pull ubuntu:14.04
+
+# 从中国站点下载
+$ docker pull registry.docker-cn.com/library/ubuntu:16.04
+
+# 推送到docker hub
+$ docker push
+</code></pre>
+<p>secret</p>
+<p>secret以文件形式存在于/run/secrets/<s-name></p>
+<pre><code>// 保存敏感数据
+$ docker secret
+
+docker secret ls
+docker secret inspect &lt;ID/name&gt;
+docker secret rm &lt;id/name&gt;
+
+// 根据文件创建
+docker secret create &lt;s-name&gt; &lt;s-file&gt;
+</code></pre>
+<p>config</p>
+<p>config以文件形式存在于/<c-name></p>
+<pre><code>// 保存非敏感数据
+$ docker config
+
+docker config ls
+docker config inspect &lt;id/name&gt;
+docker config rm &lt;id/name&gt;
+
+docker config create &lt;c-name&gt; &lt;c-file&gt;
+</code></pre>
+<p>plugin</p>
+<pre><code>// 安装plugin
+docker plugin install --grant-all-permissions name:tag key=value key=value
+// 修改plugin的参数
+docker plugin set name:tag key=value
+// 查看plugin的参数，settable里面的是改参数能修改的变量
+docker plugin inspect name:tag
+// 激活plugin
+docker plugin enable name:tag
+// 删除
+docker plugin rm name:tag
+</code></pre>
+<p>开发插件:</p>
+<pre><code>docker plugin create name:tag ./plugin
+docker plugin push name:tag
+</code></pre>
+<hr>
+<h1 id="dockerfile">Dockerfile</h1>
+<p>每个命令都会创建一个layer,尽可能合并相同的命令。</p>
+<p>ADD</p>
+<pre><code># add可以是远程文件，不推荐使用
+ADD [--chown=&lt;user&gt;:&lt;group&gt;] &lt;src&gt;... &lt;dest&gt;
+ADD [--chown=&lt;user&gt;:&lt;group&gt;] [&quot;&lt;src&gt;&quot;,... &quot;&lt;dest&gt;&quot;]
+</code></pre>
+<p>COPY</p>
+<pre><code># 只能操作本地文件, 目标路径不需要创建，不存在会自动创建.
+COPY [--chown=&lt;user&gt;:&lt;group&gt;] &lt;src&gt;... &lt;dest&gt;
+COPY [--chown=&lt;user&gt;:&lt;group&gt;] [&quot;&lt;src&gt;&quot;,... &quot;&lt;dest&gt;&quot;]
+COPY file /path/to/file  相当于 COPY file /path
+# 不会创建目录
+COPY folder /path 相当于 COPY folder/* /path/
+# 需要手动指定
+COPY folder  /path/to/folder 
+</code></pre>
+<p>ENV</p>
+<pre><code>env会被派生image继承。
+
+# 指定容器中的环境变量
+ENV &lt;key&gt; &lt;value&gt;
+ENV &lt;key&gt;=&lt;value&gt; ...
+</code></pre>
+<p>EXPOSE</p>
+<pre><code>expose会被派生image继承.
+# 指定容器需要映射到主机的端口
+EXPOSE &lt;port&gt; [&lt;port&gt;/&lt;protocol&gt;...]
+</code></pre>
+<p>FROM</p>
+<pre><code>FROM &lt;image&gt; [AS &lt;name&gt;]
+FROM &lt;image&gt;[:&lt;tag&gt;] [AS &lt;name&gt;]
+FROM &lt;image&gt;[@&lt;digest&gt;] [AS &lt;name&gt;]
+</code></pre>
+<p>LABEL</p>
+<pre><code>label会被派生image继承.
+LABEL &lt;key&gt;=&lt;value&gt; &lt;key&gt;=&lt;value&gt; &lt;key&gt;=&lt;value&gt; ...
+</code></pre>
+<p>STOPSIGNAL</p>
+<pre><code>STOPSIGNAL signal
+</code></pre>
+<p>USER</p>
+<pre><code>USER &lt;user&gt;[:&lt;group&gt;]
+USER &lt;UID&gt;[:&lt;GID&gt;]
+</code></pre>
+<p>VOLUME</p>
+<pre><code># 指定挂载点做数据持久化
+VOLUME [&quot;/data&quot;]
+</code></pre>
+<p>WORKDIR</p>
+<pre><code>workdir会被派生image继承.
+# 指定后的操作都以该目录为当前目录，目录不存在会自动创建
+WORKDIR /path/to/workdir
+</code></pre>
+<p>RUN</p>
+<pre><code># 在容器构建过程中运行
+RUN &lt;command&gt;  # shell 格式
+RUN [&quot;executable&quot;, &quot;param1&quot;, &quot;param2&quot;]   # exec 格式
+
+RUN set -ex \
+&amp;&amp; cmd1 \
+&amp;&amp; cmd2......
+</code></pre>
+<p>ENTRYPOINT</p>
+<pre><code>entrypoint会被派生image继承，除非你在派生image重新指定.
+# 和cmd类似,指定容器运行过程中的执行命令
+ENTRYPOINT [&quot;executable&quot;, &quot;param1&quot;, &quot;param2&quot;] (exec form, preferred)
+ENTRYPOINT command param1 param2
+</code></pre>
+<p>CMD</p>
+<pre><code>cmd会被派生image继承，除非你在派生image重新指定了entrypoint.
+# 在容器运行过程中运行, 可以被覆盖
+CMD [&quot;executable&quot;, &quot;param1&quot;, &quot;param2&quot;]  # exec格式
+CMD command param1 param2   # shell 格式,通过/bin/bash 或 /bin/sh 执行.
+// 同时有cmd和entrypoint,cmd只是entrypoint的参数.
+CMD [&quot;param2&quot;, &quot;param2&quot;]   # entrypoint的参数
+</code></pre>
+<p>ARG</p>
+<pre><code># 指定构建环境的变量
+ARG &lt;name&gt;[=&lt;default value&gt;]
+</code></pre>
+<p>ONBUILD</p>
+<pre><code>onbuild会被派生image继承.
+ONBUILD ...
+</code></pre>
+<p>stage:</p>
+<p>多级构建，一般0级用来编译源代码，并且组织目录结构。
+下一级直接将编译好的或者组织好的目录结构copy到指定位置。
+这样最终的image不会含有源代码的overlay.
+也不会有临时目录结构的overlay.</p>
+<pre><code># 不指定stage name, 默认就是数字
+COPY --from=0 /path/folder /path/folder
+COPY --from=stage1 /path/folder /path/folder 
+docker build --target stage1 -t docker:latest . 
+</code></pre>
+<p>.dockerignore </p>
+<pre><code># comment
+/path/folder
+path/folder
+*/tmp*
+*/*/tmp*
+tmp?
+*.md
+!README.md  
+</code></pre>
+<hr>
+<h1 id="docker-machine">docker-machine</h1>
+<p><a href="https://github.com/docker/machine">https://github.com/docker/machine</a></p>
+<p>在本地安装docker和docker-machine，然后就可以从本机安装或管理远程机器上的docker.</p>
+<p>需要添加ssh的无密码登陆:</p>
+<pre><code>ssh-copy-id -i ~/.ssh/id_rsa.pub user@remote-ip
+</code></pre>
+<p>安装:</p>
+<pre><code>https://docs.docker.com/machine/install-machine/$ base=https://github.com/docker/machine/releases/download/v0.16.0
+&amp;&amp; curl -L $base/docker-machine-$(uname -s)-$(uname -m) &gt;/tmp/docker-machine
+&amp;&amp; sudo install /tmp/docker-machine /usr/local/bin/docker-machine
+</code></pre>
+<h2 id="docker-machine命令">docker-machine命令</h2>
+<pre><code>docker-machine create -d generic \
+--generic-ip-address=remote-ip \
+--generic-ssh-user=user \
+--generic-ssh-key ~/.ssh/id_rsa \
+node1
+docker-machine ls
+</code></pre>
+<hr>
+<h1 id="oom">OOM</h1>
+<p>kernel OOM 会导致kernel随机kill一些container释放内存。</p>
+<p>防止kernel OOM的方法就是设置resource limit.</p>
+<p><a href="https://docs.docker.com/config/containers/resource_constraints/">https://docs.docker.com/config/containers/resource_constraints/</a></p>
+<p><a href="https://github.com/docker/compose/issues/4513">https://github.com/docker/compose/issues/4513</a></p>
+<p>swarm mode:</p>
+<p>swarm模式使用compose format 3来限制资源.</p>
+<p><a href="https://docs.docker.com/compose/compose-file/#resources">https://docs.docker.com/compose/compose-file/#resources</a></p>
+<p>non swarm mode:</p>
+<p>非swarm模式可以用compose format 2 来做资源限制.</p>
+<p><a href="https://docs.docker.com/compose/compose-file/compose-file-v2/#cpu-and-other-resources">https://docs.docker.com/compose/compose-file/compose-file-v2/#cpu-and-other-resources</a></p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Canux</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        5047-10-10T42:22:319
+        
+    </span>
+  </p>
+  
+  
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">Reward</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/reward/wechat.png">
+        <span>wechat</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/reward/alipay.png">
+        <span>alipay</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/docker/">docker</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/container/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Container</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/harbor/">
+            <span class="next-text nav-default">Harbor</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+       </div>
+       <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2018-04-05 22:02:31 \u002b0000 UTC',
+        title: 'Docker',
+        clientID: '3d41a2a237fabe050cc0',
+        clientSecret: '868aa81b294f1463ddb6edc007576ecfed7d2075',
+        repo: 'crazy-canux.github.io',
+        owner: 'crazy-canux',
+        admin: ['crazy-canux'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+  
+
+  
+
+     </div>
+   </main>
+   
+
+   
+   <footer id="footer" class="footer">
+     <div class="social-links">
+      <a href="mailto:canuxcheng@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/crazy-canux" class="iconfont icon-github" title="github"></a>
+      <a href="https://www.linkedin.com/in/canux-cheng-4b5b23ab/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://stackoverflow.com/users/4344009/canux" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+  <a href="https://canuxcheng.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/crazy-canux/hugo-theme-canux">Canux</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> site pv: <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> site uv: <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2013 - 
+    2023<span class="heart"><i class="iconfont icon-heart"></i></span><span>Canux CHENG</span>
+  </span>
+</div>
+
+   </footer>
+   
+
+   <div class="back-to-top" id="back-to-top">
+     <i class="iconfont icon-up"></i>
+   </div>
+ </div>
+ <script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.locales.min.js" integrity="sha256-ZwofwC1Lf/faQCzN7nZtfijVV6hSwxjQMwXL4gn9qU8=" crossorigin="anonymous"></script>
+  <script><!-- NOTE: timeago.js uses the language code format like "zh_CN" (underscore and case sensitive) -->
+    var languageCode = "en".replace(/-/g, '_').replace(/_(.*)/, function ($0, $1) {return $0.replace($1, $1.toUpperCase());});
+    timeago().render(document.querySelectorAll('.timeago'), languageCode);
+    timeago.cancel();  
+  </script><script></script><script src="https://cdn.jsdelivr.net/npm/raphael@2.2.7/raphael.min.js" integrity="sha256-67By+NpOtm9ka1R6xpUefeGOY8kWWHHRAKlvaTJ7ONI=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/flowchart.js@1.8.0/release/flowchart.min.js" integrity="sha256-zNGWjubXoY6rb5MnmpBNefO0RgoVYfle9p0tvOQM+6k=" crossorigin="anonymous"></script><script></script><script src="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.js" integrity="sha256-4O4pS1SH31ZqrSO2A/2QJTVjTPqVe+jnYgOWUVr7EEc=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/snapsvg@0.5.1/dist/snap.svg-min.js" integrity="sha256-oI+elz+sIm+jpn8F/qEspKoKveTc5uKeFHNNVexe6d8=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/underscore@1.8.3/underscore-min.js" integrity="sha256-obZACiHd7gkOk9iIL/pimWMTJ4W/pBsKu+oZnSeBIek=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/gh/bramp/js-sequence-diagrams@2.0.1/dist/sequence-diagram-min.js" integrity="sha384-8748Vn52gHJYJI0XEuPB2QlPVNUkJlJn9tHqKec6J3q2r9l8fvRxrgn/E5ZHV0sP" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bramp/js-sequence-diagrams@2.0.1/dist/sequence-diagram-min.css" integrity="sha384-6QbLKJMz5dS3adWSeINZe74uSydBGFbnzaAYmp+tKyq60S7H2p6V7g1TysM5lAaF" crossorigin="anonymous">
+
+
+
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex: {
+        }
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.0.5/es5/tex-mml-chtml.js" integrity="sha256-HGLuEfFcsUJGhvB8cQ8nr0gai9EucOOaIxFw7qxmd+w=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

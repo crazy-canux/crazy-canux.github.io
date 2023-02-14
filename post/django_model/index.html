@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="utf-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+ <title>Model - Morgoth</title>
+ <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Canux" /><meta name="description" content="models.py from django.db import models django模型是和数据库关联的，代码放在models.py，数据库信息在settings.py中统一配置即可。 每个模型对应数据库" /><meta name="keywords" content="Hugo, theme, canux" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.110.0 with theme even" />
+
+
+<link rel="canonical" href="https://canuxcheng.com/post/django_model/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<link href="/sass/main.min.69e0bbe2419d9b0efbdcc1d3b4338bba03a6f6789ae2832bc1af58e5b2757470.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Model" />
+<meta property="og:description" content="models.py from django.db import models django模型是和数据库关联的，代码放在models.py，数据库信息在settings.py中统一配置即可。 每个模型对应数据库" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://canuxcheng.com/post/django_model/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2016-10-04T04:20:31+00:00" />
+<meta property="article:modified_time" content="2016-10-04T04:20:31+00:00" />
+<meta itemprop="name" content="Model">
+<meta itemprop="description" content="models.py from django.db import models django模型是和数据库关联的，代码放在models.py，数据库信息在settings.py中统一配置即可。 每个模型对应数据库"><meta itemprop="datePublished" content="2016-10-04T04:20:31+00:00" />
+<meta itemprop="dateModified" content="2016-10-04T04:20:31+00:00" />
+<meta itemprop="wordCount" content="1812">
+<meta itemprop="keywords" content="model," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Model"/>
+<meta name="twitter:description" content="models.py from django.db import models django模型是和数据库关联的，代码放在models.py，数据库信息在settings.py中统一配置即可。 每个模型对应数据库"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+ <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Morgoth</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/rtfm/">
+        <li class="mobile-menu-item">RTFM</li>
+      </a><a href="/samuel/">
+        <li class="mobile-menu-item">昕焱</li>
+      </a><a href="/search/">
+        <li class="mobile-menu-item">Search</li>
+      </a>
+  </ul>
+</nav>
+ <div class="container" id="mobile-panel">
+   <header id="header" class="header">
+       <div class="logo-wrapper">
+  <a href="/" class="logo">Morgoth</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/rtfm/">RTFM</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/samuel/">昕焱</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/search/">Search</a>
+      </li>
+  </ul>
+</nav>
+
+<div class="js-toggle-wrapper">
+    <div class="js-toggle">
+        <div class="js-toggle-track">
+            <div class="js-toggle-track-check">
+                <img src="data:image/png;base64,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" role="presentation" style="pointer-events: none;" width="16" height="16">
+            </div>
+            <div class="js-toggle-track-x">
+                <img src="data:image/png;base64,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" role="presentation" style="pointer-events: none;" width="16" height="16">
+            </div>
+        </div>
+        <div class="js-toggle-thumb"></div>
+        <input class="js-toggle-screenreader-only" type="checkbox" aria-label="Switch between Dark and Light mode">
+    </div>
+</div>
+
+<style>
+ 
+
+.js-toggle-wrapper {
+    display: table;
+    margin: 0 auto;
+}
+
+.js-toggle {
+    touch-action: pan-x;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background-color: transparent;
+    border: 0;
+    padding: 0;
+    -webkit-touch-callout: none;
+    user-select: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  .js-toggle-screenreader-only {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  
+  .js-toggle-track {
+    width: 50px;
+    height: 24px;
+    padding: 0;
+    border-radius: 30px;
+    background-color: hsl(222, 14%, 7%);
+    transition: all 0.2s ease;
+  }
+  
+  .js-toggle-track-check {
+    position: absolute;
+    width: 17px;
+    height: 17px;
+    left: 5px;
+    top: 0px;
+    bottom: 0px;
+    margin-top: auto;
+    margin-bottom: auto;
+    line-height: 0;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+  
+  .js-toggle--checked .js-toggle-track-check {
+    opacity: 1;
+    transition: opacity 0.25s ease;
+  }
+  
+  .js-toggle-track-x {
+    position: absolute;
+    width: 17px;
+    height: 17px;
+    right: 5px;
+    top: 0px;
+    bottom: 0px;
+    margin-top: auto;
+    margin-bottom: auto;
+    line-height: 0;
+    opacity: 1;
+    transition: opacity 0.25s ease;
+  }
+  
+  .js-toggle--checked .js-toggle-track-x {
+    opacity: 0;
+  }
+  
+  .js-toggle-thumb {
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background-color: #fafafa;
+    box-sizing: border-box;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+    transform: translateX(0);
+  }
+  
+  .js-toggle--checked .js-toggle-thumb {
+    transform: translateX(26px);
+    border-color: #19ab27;
+  }
+  
+  .js-toggle--focus .js-toggle-thumb {
+    box-shadow: 0px 0px 2px 3px rgb(255, 167, 196);
+  }
+  
+  .js-toggle:active .js-toggle-thumb {
+    box-shadow: 0px 0px 5px 5px rgb(255, 167, 196);
+  }
+
+  body.dark-mode,
+  body.dark-mode main * {
+    background: rgb(45, 45, 45);
+    color: #f5f5f5;
+}
+</style>
+
+
+
+<script>
+    var body = document.body;
+	var switcher = document.getElementsByClassName('js-toggle')[0];
+
+	
+	switcher.addEventListener("click", function() {
+        this.classList.toggle('js-toggle--checked');
+        this.classList.add('js-toggle--focus');
+		
+		if (this.classList.contains('js-toggle--checked')) {
+			body.classList.add('dark-mode');
+			
+			localStorage.setItem('darkMode', 'true');
+		} else {
+			body.classList.remove('dark-mode');
+			setTimeout(function() {
+				localStorage.removeItem('darkMode');
+			}, 100);
+		}
+	})
+
+	
+	if (localStorage.getItem('darkMode')) {
+		
+        switcher.classList.add('js-toggle--checked');
+        body.classList.add('dark-mode');
+	}
+
+</script>
+   </header>
+
+   
+   <main id="main" class="main">
+     <div class="content-wrapper">
+       <div id="content" class="content">
+         <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Model</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 4107-04-04T1020:04:319 </span>
+        <div class="post-category">
+            <a href="/categories/django/"> Django </a>
+            </div>
+          <span class="more-meta"> 1812 words </span>
+          <span class="more-meta"> 4 mins read </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> times read </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#modelspy">models.py</a></li>
+    <li><a href="#模型的字段类型和字段选项">模型的字段类型和字段选项</a>
+      <ul>
+        <li><a href="#模型字段类型">模型字段类型</a></li>
+        <li><a href="#模型字段选项">模型字段选项</a></li>
+      </ul>
+    </li>
+    <li><a href="#模型元选项">模型元选项</a></li>
+    <li><a href="#模型的属性">模型的属性</a></li>
+    <li><a href="#执行查询">执行查询</a>
+      <ul>
+        <li><a href="#创建对象">创建对象</a></li>
+        <li><a href="#获取对象">获取对象</a></li>
+      </ul>
+    </li>
+    <li><a href="#模型的方法">模型的方法</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+  <div class="post-outdated">
+    <div class="warn">
+      <p>[NOTE] Updated <span class="timeago" datetime="2016-10-04T04:20:31" title="October 4, 2016">October 4, 2016</span>. This article may have outdated content or subject matter.</p>
+    </div>
+  </div>
+    <div class="post-content">
+      <h1 id="modelspy">models.py</h1>
+<pre><code>from django.db import models
+</code></pre>
+<p>django模型是和数据库关联的，代码放在models.py，数据库信息在settings.py中统一配置即可。</p>
+<p>每个模型对应数据库唯一的一张表，是django.db.models.Model的子类。</p>
+<p>每个模型实例代表数据库中的一条特定记录.</p>
+<p>模型的每个属性都表示为数据库中的一个字段。</p>
+<ul>
+<li>
+<p>在项目的settings.py中激活应用，并设置数据库相关参数。</p>
+</li>
+<li>
+<p>让django包含你的应用：</p>
+<p>告诉django你对模型做了更改，并且将这些更改存储为迁移文件polls/migrations/0001_initial.py:</p>
+<pre><code>  $python manage.py makemigrations polls
+</code></pre>
+<p>可以查看迁移文件执行了哪些sql语句,并不真的在数据库执行：</p>
+<pre><code>  $python manage.py sqlmigrate polls 0001
+</code></pre>
+<p>可以检查项目中的模型是否存在问题：</p>
+<pre><code>  $python manage.py check
+</code></pre>
+<p>在数据库中创建模型,查找还没有被应用的迁移文件然后和数据库同步：</p>
+<pre><code>  $python manage.py migrate
+</code></pre>
+</li>
+</ul>
+<hr>
+<h1 id="模型的字段类型和字段选项">模型的字段类型和字段选项</h1>
+<p>模型的每个属性都表示为数据库的一个字段,是Field子类的某个实例。</p>
+<p>模型的字段还有一些选项。</p>
+<p>字段命名规则：</p>
+<ol>
+<li>不能是python的保留关键字。</li>
+<li>字段名中连续的下划线不能超过一个。</li>
+</ol>
+<p>访问其它应用的模型,导入即可：</p>
+<pre><code>from &lt;other-aplication&gt;.models import &lt;module-name&gt;
+</code></pre>
+<p>模型字段类型和选项参考：</p>
+<p><a href="http://python.usyiyi.cn/documents/django_182/ref/models/fields.html#common-model-field-options">http://python.usyiyi.cn/documents/django_182/ref/models/fields.html#common-model-field-options</a></p>
+<h2 id="模型字段类型">模型字段类型</h2>
+<p>字段的类型都是Field类的子类：</p>
+<p>每个字段都接受一个可选的位置参数(一般是第一个），叫字段的自述名,如果不指定就默认是字段名字（下划线换成空格）。</p>
+<p>自增字段:</p>
+<pre><code>AutoField
+# 默认django会每个模型添加一个自增主键字段,如果你显示设置一个自增主键字段就不会默认再添加,每个模型只能有一个主键字段。
+# id = models.AutoField(primary_key=True)
+</code></pre>
+<p>普通字段:</p>
+<pre><code>BigIntegerField
+BinaryField
+BooleanField
+CharField
+CommaSeparatedIntegerField
+DateField
+DateTimeField
+DecimalField
+DurationField
+EmailField
+FileField
+FilePathField
+FloatField
+GenericIPAddressField
+IPAddressField
+ImageField
+IntegerField
+NullBooleanField
+PositiveIntegerField
+PositiveSmallIntegerField
+SlugField
+SmallIntegerField
+TextField
+TimeField
+URLField
+UUIDField
+</code></pre>
+<p>关系字段:</p>
+<p>django定义了一系列字段类型描述数据库之间的关联:</p>
+<p>这三个字段要求第一个参数是模型类，用verbose_name选项才能指定自述名。</p>
+<pre><code>ForeignKey 定义多对一关系
+OneToOneField 定义一对一关系
+ManyToManyField 定义多对多关系
+</code></pre>
+<h2 id="模型字段选项">模型字段选项</h2>
+<p>django定义的字段的通用的选项：</p>
+<p>每个字段都有特定的选项，也有通用的选项,特定参数参考文档。</p>
+<pre><code>Field.null    django将空值以NULL存储到数据库中,默认是false
+Field.blank    该字段允许为空白,默认false
+Field.primary_key    true表示该字段为模型的主键字段,默认是false
+Field.unique    true表示该字段在表中必须有唯一值,默认是false
+Field.unique_for_date
+Field.unique_for_month
+Field.unique_for_year
+Field.choices    可迭代结构,给字段提供选项
+Field.default    该字段默认值
+Field.help_text    额外的help文本
+Field.editable    false表示该字段不会出现在admin,默认是true
+Field.error_messages    重写默认抛出的错误信息
+Field.verbose_name    该字段可读性更高的名称
+Field.validators    该字段要运行的一个Validator的列表
+Field.db_column
+Field.db_index
+Field.db_tablespace
+</code></pre>
+<hr>
+<h1 id="模型元选项">模型元选项</h1>
+<p>使用内部类Meta定义模型的元数据。</p>
+<p>模型元数据是任何不是字段的数据，比如排序选项等。</p>
+<pre><code>from django.db import models
+class Ox(models.Model):
+    horn_length = models.IntegerField()
+    ...
+    class Meta:
+        ordering = [&quot;horn_length&quot;]
+        verbose_name_plural = &quot;oxen&quot;
+</code></pre>
+<p>模型的元选项：</p>
+<p><a href="http://python.usyiyi.cn/translate/django_182/ref/models/options.html">http://python.usyiyi.cn/translate/django_182/ref/models/options.html</a></p>
+<p>在元类Meta中使用的选项.</p>
+<pre><code>Options.abstract = True 表示模型是抽象基类, 数据库不会创建这个表
+Options.db_table 该模型所用的数据表的名称
+Options.db_tablespace
+Options.default_related_name
+Options.get_latest_by
+Options.managed
+Options.order_with_respect_to
+Options.ordering = ['字段名', '-字段名'] 对象的默认顺序, -表示倒序
+Options.permissions
+Options.default_permissions
+Options.proxy
+Options.select_on_save
+Options.unique_together
+Options.index_together
+Options.verbose_name 对象的一个易于理解的名字
+Options.verbose_name_plural 该对象复数形式的名字
+</code></pre>
+<hr>
+<h1 id="模型的属性">模型的属性</h1>
+<p>模型的属性是表级别的,是对表的操作.</p>
+<p><a href="http://python.usyiyi.cn/translate/django_182/ref/models/class.html">http://python.usyiyi.cn/translate/django_182/ref/models/class.html</a></p>
+<p>每个模型类都要添加一个Manager实例,如果不显示添加，django就会默认添加objects属性，包含Manager实例。</p>
+<p>Manager或object属性是模型进行数据库查询操作的接口,也叫管理器,用于从数据库获取实例。</p>
+<pre><code>from django.db import models
+class Foo(models.Model):
+    # 显示添加
+    bar = models.Manager()
+</code></pre>
+<hr>
+<h1 id="执行查询">执行查询</h1>
+<p>一旦建立数据模型,django会自动生成一套抽象的API,用于创建,检索,更新和删除对象.</p>
+<h2 id="创建对象">创建对象</h2>
+<pre><code>q = Question(question_text='content', pub_date='date')
+q.save()
+
+q = Question(question_text='content')
+q.pub_date='date'
+q.save()
+
+Question.objects.create(question_text=&quot;content&quot;, pub_date='date')
+
+# 防止重复,不存在就创建，返回(object, True),存在返回(object, False)
+Question.objects.get_or_create(question_text='content', pub_date='date')
+</code></pre>
+<h2 id="获取对象">获取对象</h2>
+<p>通过模型中的管理器构造一个查询集来从数据库获取对象.</p>
+<p>查询集求值：</p>
+<ol>
+<li>迭代</li>
+<li>切片</li>
+<li>序列化</li>
+<li>repr()</li>
+<li>len()</li>
+<li>list()</li>
+<li>bool()</li>
+</ol>
+<p>查询集参考QuerySet类的方法：</p>
+<p><a href="http://python.usyiyi.cn/translate/django_182/ref/models/querysets.html#queryset-api">http://python.usyiyi.cn/translate/django_182/ref/models/querysets.html#queryset-api</a></p>
+<pre><code># 获取表中所有对象
+Question.objects.all()
+# 切片获取部分
+Question.objects.all()[:10]
+# 获取单个
+Question.objects.get(question_text='content')
+# 过滤
+Question.objects.filter(**kwargs)
+Question.objects.exclude(**kwargs)
+</code></pre>
+<p>查询集的链式过滤：</p>
+<pre><code>Question.objects.all().exists()
+Question.objects.all().order_by('name')
+Question.objects.filter(**kwargs).filter(**kwargs)
+</code></pre>
+<hr>
+<h1 id="模型的方法">模型的方法</h1>
+<p>模型的方法是对模型的实例的操作.</p>
+<p>模型中可以自定义方法，可以使用预定义的自动生成的方法，也可以覆盖预定义的方法。</p>
+<p>预定义方法参考：</p>
+<p><a href="http://python.usyiyi.cn/translate/django_182/ref/models/instances.html">http://python.usyiyi.cn/translate/django_182/ref/models/instances.html</a></p>
+<pre><code>Model.__unicode__()
+</code></pre>
+<p>python2需要使用__unicode__方法.</p>
+<pre><code>def __unicode__(self):
+    return u'%s' % self.title
+
+Model.__str__()
+</code></pre>
+<p>python3只需要__str__方法.</p>
+<pre><code>def __str__(self):
+    return '%s' % self.title
+</code></pre>
+<p>这段代码兼容python2和python3.</p>
+<p>python_2_unicode_compatible是一个用于类的装饰器，在类中定义__str__并返回文本.</p>
+<pre><code>from __future__ import unicode_literals
+from django.utils.encoding import python_2_unicode_compatible
+
+@python_2_unicode_compatible
+class Question(models.Model):
+    title = models.CharField('title', max_length=256)
+    ...
+
+    def __str__(self):
+        return self.title
+
+Model.__eq__()
+
+Model.__hash__()
+
+Model.get_absolute_url()
+
+Model.get_FOO_display()
+
+Model.get_next_by_FOO(**kwargs)
+
+Model.get_previous_by_FOO(**kwargs)
+
+Model.DoesNotExist
+</code></pre>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Canux</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        4107-04-04T1020:04:319
+        
+    </span>
+  </p>
+  
+  
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">Reward</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/reward/wechat.png">
+        <span>wechat</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/reward/alipay.png">
+        <span>alipay</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/model/">model</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/django_view/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">View</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/django_template/">
+            <span class="next-text nav-default">Template</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+       </div>
+       <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2016-10-04 04:20:31 \u002b0000 UTC',
+        title: 'Model',
+        clientID: '3d41a2a237fabe050cc0',
+        clientSecret: '868aa81b294f1463ddb6edc007576ecfed7d2075',
+        repo: 'crazy-canux.github.io',
+        owner: 'crazy-canux',
+        admin: ['crazy-canux'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+  
+
+  
+
+     </div>
+   </main>
+   
+
+   
+   <footer id="footer" class="footer">
+     <div class="social-links">
+      <a href="mailto:canuxcheng@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/crazy-canux" class="iconfont icon-github" title="github"></a>
+      <a href="https://www.linkedin.com/in/canux-cheng-4b5b23ab/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://stackoverflow.com/users/4344009/canux" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+  <a href="https://canuxcheng.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/crazy-canux/hugo-theme-canux">Canux</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> site pv: <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> site uv: <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2013 - 
+    2023<span class="heart"><i class="iconfont icon-heart"></i></span><span>Canux CHENG</span>
+  </span>
+</div>
+
+   </footer>
+   
+
+   <div class="back-to-top" id="back-to-top">
+     <i class="iconfont icon-up"></i>
+   </div>
+ </div>
+ <script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.locales.min.js" integrity="sha256-ZwofwC1Lf/faQCzN7nZtfijVV6hSwxjQMwXL4gn9qU8=" crossorigin="anonymous"></script>
+  <script><!-- NOTE: timeago.js uses the language code format like "zh_CN" (underscore and case sensitive) -->
+    var languageCode = "en".replace(/-/g, '_').replace(/_(.*)/, function ($0, $1) {return $0.replace($1, $1.toUpperCase());});
+    timeago().render(document.querySelectorAll('.timeago'), languageCode);
+    timeago.cancel();  
+  </script><script></script><script src="https://cdn.jsdelivr.net/npm/raphael@2.2.7/raphael.min.js" integrity="sha256-67By+NpOtm9ka1R6xpUefeGOY8kWWHHRAKlvaTJ7ONI=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/flowchart.js@1.8.0/release/flowchart.min.js" integrity="sha256-zNGWjubXoY6rb5MnmpBNefO0RgoVYfle9p0tvOQM+6k=" crossorigin="anonymous"></script><script></script><script src="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.js" integrity="sha256-4O4pS1SH31ZqrSO2A/2QJTVjTPqVe+jnYgOWUVr7EEc=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/snapsvg@0.5.1/dist/snap.svg-min.js" integrity="sha256-oI+elz+sIm+jpn8F/qEspKoKveTc5uKeFHNNVexe6d8=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/underscore@1.8.3/underscore-min.js" integrity="sha256-obZACiHd7gkOk9iIL/pimWMTJ4W/pBsKu+oZnSeBIek=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/gh/bramp/js-sequence-diagrams@2.0.1/dist/sequence-diagram-min.js" integrity="sha384-8748Vn52gHJYJI0XEuPB2QlPVNUkJlJn9tHqKec6J3q2r9l8fvRxrgn/E5ZHV0sP" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bramp/js-sequence-diagrams@2.0.1/dist/sequence-diagram-min.css" integrity="sha384-6QbLKJMz5dS3adWSeINZe74uSydBGFbnzaAYmp+tKyq60S7H2p6V7g1TysM5lAaF" crossorigin="anonymous">
+
+
+
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex: {
+        }
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.0.5/es5/tex-mml-chtml.js" integrity="sha256-HGLuEfFcsUJGhvB8cQ8nr0gai9EucOOaIxFw7qxmd+w=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

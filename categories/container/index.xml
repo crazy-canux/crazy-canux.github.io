@@ -1,0 +1,312 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Container on Morgoth</title>
+    <link>https://canuxcheng.com/categories/container/</link>
+    <description>Recent content in Container on Morgoth</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 04 Dec 2021 20:03:39 +0800</lastBuildDate><atom:link href="https://canuxcheng.com/categories/container/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Serverless</title>
+      <link>https://canuxcheng.com/post/k8s_serverless/</link>
+      <pubDate>Sat, 04 Dec 2021 20:03:39 +0800</pubDate>
+      
+      <guid>https://canuxcheng.com/post/k8s_serverless/</guid>
+      <description>Serverless serverless是微服务架构的一种部署服务的方式. knative https://github.com/knative openfaas https://github.com/openfaas/faas serverless https://github.com/serverless/serverless fission openwhisk</description>
+    </item>
+    
+    <item>
+      <title>Container Security</title>
+      <link>https://canuxcheng.com/post/container_security/</link>
+      <pubDate>Tue, 05 Oct 2021 22:02:31 +0000</pubDate>
+      
+      <guid>https://canuxcheng.com/post/container_security/</guid>
+      <description>Trivy </description>
+    </item>
+    
+    <item>
+      <title>KubeVirt</title>
+      <link>https://canuxcheng.com/post/k8s_kubevirt/</link>
+      <pubDate>Mon, 10 May 2021 20:55:52 +0800</pubDate>
+      
+      <guid>https://canuxcheng.com/post/k8s_kubevirt/</guid>
+      <description>Infrastructure add-ons kubevirt KubeVirt </description>
+    </item>
+    
+    <item>
+      <title>AWS Containers</title>
+      <link>https://canuxcheng.com/post/aws_containers/</link>
+      <pubDate>Fri, 23 Apr 2021 22:02:31 +0000</pubDate>
+      
+      <guid>https://canuxcheng.com/post/aws_containers/</guid>
+      <description>AWS Containers ECR Elastic Container Registry. ECS Elastic Container Service. EKS Elastic Kubernetes Service. 通过AWS CLI创建EKS 通过MC创建的资源都可以通过CLI(aws)创建. 创建具有公有和私有子网且符合 Amazon EKS 要求</description>
+    </item>
+    
+    <item>
+      <title>K8S CNI</title>
+      <link>https://canuxcheng.com/post/k8s_cni/</link>
+      <pubDate>Thu, 26 Mar 2020 20:55:52 +0800</pubDate>
+      
+      <guid>https://canuxcheng.com/post/k8s_cni/</guid>
+      <description>Network add-ons https://github.com/containernetworking flannel cilium calico vpc-cni (aws) kube-router weavenet antrea romana cilium https://github.com/cilium/cilium Flannel flannel是k8s最常用的网络插件. https://github.com/coreos/flannel 在所有node上部署cni-plugin: https://github.com/containernetworking/plugins/releases $ sudo mkdir -p /opt/cni/bin // 下载并解压所</description>
+    </item>
+    
+    <item>
+      <title>K8S CSI</title>
+      <link>https://canuxcheng.com/post/k8s_csi/</link>
+      <pubDate>Wed, 25 Mar 2020 20:55:52 +0800</pubDate>
+      
+      <guid>https://canuxcheng.com/post/k8s_csi/</guid>
+      <description>CSI https://github.com/container-storage-interface/spec 卷Volume 和docker中的一样。 volume支持的卷类型有: awsEBS, azureDisk, azureFile, gcePD, secret, configMap, emptyDir, hostPath, local, nfs等. apiVersion: v1 kind: Pod metadata: name: test-ebs spec: containers: - image: k8s.gcr.io/test-webserver name: test-container volumeMounts: - mountPath: /test-ebs name: test-volume volumes:</description>
+    </item>
+    
+    <item>
+      <title>Kubectl</title>
+      <link>https://canuxcheng.com/post/k8s_kubectl/</link>
+      <pubDate>Fri, 10 Jan 2020 20:58:01 +0800</pubDate>
+      
+      <guid>https://canuxcheng.com/post/k8s_kubectl/</guid>
+      <description>kubectl kubectl是kubernetes的管理工具. https://kubernetes.io/docs/tasks/tools/#kubectl https://github.com/cloudnativelabs/kube-shell https://github.com/jonmosco/kube-ps1 https://github.com/ahmetb/kubectx 在master上通过kubectl命令管理集群. kubectl 版本和集群版本之间的差异必须在一</description>
+    </item>
+    
+    <item>
+      <title>CI/CD</title>
+      <link>https://canuxcheng.com/post/k8s_cicd/</link>
+      <pubDate>Fri, 10 Jan 2020 20:55:52 +0800</pubDate>
+      
+      <guid>https://canuxcheng.com/post/k8s_cicd/</guid>
+      <description>argo-cd https://github.com/argoproj/argo-cd
+flux-cd https://github.com/fluxcd/flux
+jenkins-X </description>
+    </item>
+    
+    <item>
+      <title>Contribution</title>
+      <link>https://canuxcheng.com/post/k8s_oss/</link>
+      <pubDate>Fri, 10 Jan 2020 20:55:52 +0800</pubDate>
+      
+      <guid>https://canuxcheng.com/post/k8s_oss/</guid>
+      <description>Kubernetes Contribution https://github.com/kubernetes/community/blob/master/contributors/guide/contributor-cheatsheet/README-zh.md 创建google账号 推荐申请一个google邮箱。 在开发机配置git $ git config --global user.email name@gmail.com $ git config user.email name@gmail.com 签CLA并阅读CoC 个人开发者需要签署CLA</description>
+    </item>
+    
+    <item>
+      <title>DNS</title>
+      <link>https://canuxcheng.com/post/k8s_dns/</link>
+      <pubDate>Fri, 10 Jan 2020 20:55:52 +0800</pubDate>
+      
+      <guid>https://canuxcheng.com/post/k8s_dns/</guid>
+      <description>Service Discovery add-ons coreDNS CoreDNS 服务发现</description>
+    </item>
+    
+    <item>
+      <title>K8S API</title>
+      <link>https://canuxcheng.com/post/k8s_api/</link>
+      <pubDate>Fri, 10 Jan 2020 20:55:52 +0800</pubDate>
+      
+      <guid>https://canuxcheng.com/post/k8s_api/</guid>
+      <description>API api-server统一的操作入口. kubectl, UI, 等都是通过api-server操作资源. payload可以是json，也可以是yaml. yaml文</description>
+    </item>
+    
+    <item>
+      <title>Operator</title>
+      <link>https://canuxcheng.com/post/k8s_operator/</link>
+      <pubDate>Fri, 10 Jan 2020 20:55:52 +0800</pubDate>
+      
+      <guid>https://canuxcheng.com/post/k8s_operator/</guid>
+      <description>Operator TPR(Third Party Resource) 在k8s 1.7 被集成，并命名为CRD(Custom Resource Definition). 通过CRD，K8S可以动态的添加和管理资源，controller跟踪这些资源。 CRD+custom Controller</description>
+    </item>
+    
+    <item>
+      <title>Service Registry&amp;Discovery</title>
+      <link>https://canuxcheng.com/post/k8s_serviceregistry/</link>
+      <pubDate>Fri, 10 Jan 2020 20:55:52 +0800</pubDate>
+      
+      <guid>https://canuxcheng.com/post/k8s_serviceregistry/</guid>
+      <description>Service Registry and Discovery 微服务的服务注册和服务发现. Etcd https://github.com/etcd-io/etcd 类似的有consul和zoomkeeper. etcdctl 使用证书访问: $ etcdctl \ --cacert=/etc/kubernetes/pki/etcd/ca.crt \ --cert=/etc/kubernetes/pki/etcd/server.crt \ --key=/etc/kubernetes/pki/etcd/server.key \ --insecure-skip-tls-verify=true \ &amp;lt;command&amp;gt; 查看所有key $</description>
+    </item>
+    
+    <item>
+      <title>Compose</title>
+      <link>https://canuxcheng.com/post/container_compose/</link>
+      <pubDate>Sat, 04 Jan 2020 21:53:40 +0800</pubDate>
+      
+      <guid>https://canuxcheng.com/post/container_compose/</guid>
+      <description>docker-compose https://github.com/docker/compose 通过一个yaml文件来管理容器中的服务，包括网络和存储。 安装: https://docs.docker.com/compose/install/ $ sudo curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose $ sudo chmod +x /usr/local/bin/docker-compose docker-compose命令 docker-compose [-f &amp;lt;arg&amp;gt;...] [options] [COMMAND] [ARGS...]</description>
+    </item>
+    
+    <item>
+      <title>Dashboard</title>
+      <link>https://canuxcheng.com/post/k8s_dashboard/</link>
+      <pubDate>Sat, 04 Jan 2020 20:03:39 +0800</pubDate>
+      
+      <guid>https://canuxcheng.com/post/k8s_dashboard/</guid>
+      <description>dashboard add-ons kubernetes-dashboard lens octant weave scope kubernetes-dashboard https://github.com/kubernetes/dashboard // 部署dashboard $ kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.2.0/aio/deploy/recommended.yaml // check $ kubectl -n kubernetes-dashboard get pods --watch 1 // 删除已安装的dashboard $ kubectl delete ns kubernetes-dashboard dashboard arguments 使用basic auth: --enable-skip-login --enable-insecure-login --system-banner=&amp;quot;Welcome</description>
+    </item>
+    
+    <item>
+      <title>Microservices</title>
+      <link>https://canuxcheng.com/post/k8s_microservices/</link>
+      <pubDate>Sat, 04 Jan 2020 20:03:39 +0800</pubDate>
+      
+      <guid>https://canuxcheng.com/post/k8s_microservices/</guid>
+      <description>Microservivces 微服务是一种架构。 常见的架构: Monolithic application 单体应用. SOA(service-oriented architecture) 面向服务的体系结构. MicroServices 微服务. 微服务架构的服务治理包括: service registry 服务注册 service discovery 服务发现 observability 可观测性</description>
+    </item>
+    
+    <item>
+      <title>Proxy</title>
+      <link>https://canuxcheng.com/post/k8s_proxy/</link>
+      <pubDate>Sat, 04 Jan 2020 20:03:39 +0800</pubDate>
+      
+      <guid>https://canuxcheng.com/post/k8s_proxy/</guid>
+      <description>Proxy proxy addons: Ingress-nginx(nginx) aws-load-balancer-controller(alb) ingress-gce Traefik The kubernetes.io/ingress.class annotation is deprecated from kubernetes v1.22+.通过IngressClasses来选择ingress controller。 ingressClassName: nginx ingress-nginx https://github.com/kubernetes/ingress-nginx // 部署 $ kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.34.1/deploy/static/provider/baremetal/deploy.yaml</description>
+    </item>
+    
+    <item>
+      <title>Service Mesh</title>
+      <link>https://canuxcheng.com/post/k8s_servicemesh/</link>
+      <pubDate>Sat, 04 Jan 2020 20:03:39 +0800</pubDate>
+      
+      <guid>https://canuxcheng.com/post/k8s_servicemesh/</guid>
+      <description>Service Mesh servivce mesh是cncf基于sidecar推出的下一代面向云原生的微服务架构，是微服务基础设施, 用于处理微服务通信、治理、控制、可观测、安全</description>
+    </item>
+    
+    <item>
+      <title>Kubeadm</title>
+      <link>https://canuxcheng.com/post/k8s_kubeadm/</link>
+      <pubDate>Mon, 30 Dec 2019 21:47:17 +0800</pubDate>
+      
+      <guid>https://canuxcheng.com/post/k8s_kubeadm/</guid>
+      <description>kubeadm https://github.com/kubernetes/kubeadm kubeadm是k8s自带的部署集群的工具. Install 准备工作 https://kubernetes.io/zh/docs/setup/production-environment/tools/kubeadm/install-kubeadm/ 安装runtime https://kubernetes.io/zh/docs/setup/production-environment/container-runtimes/ 默认的cgroup驱动时cgroupfs,如果系统是syst</description>
+    </item>
+    
+    <item>
+      <title>Minikube</title>
+      <link>https://canuxcheng.com/post/k8s_minikube/</link>
+      <pubDate>Mon, 30 Dec 2019 21:47:17 +0800</pubDate>
+      
+      <guid>https://canuxcheng.com/post/k8s_minikube/</guid>
+      <description>minikube https://kubernetes.io/zh/docs/setup/learning-environment/minikube/ minikube 能快速创建k8s的开发集群，支持在虚拟机上创建，也支持裸机创建. // 在裸机上创建： sudo minikube start --vm-driver=none</description>
+    </item>
+    
+    <item>
+      <title>Rancher</title>
+      <link>https://canuxcheng.com/post/rancher/</link>
+      <pubDate>Tue, 03 Dec 2019 21:54:05 +0800</pubDate>
+      
+      <guid>https://canuxcheng.com/post/rancher/</guid>
+      <description>Rancher Deploy </description>
+    </item>
+    
+    <item>
+      <title>Image</title>
+      <link>https://canuxcheng.com/post/container_image/</link>
+      <pubDate>Tue, 03 Dec 2019 21:50:47 +0800</pubDate>
+      
+      <guid>https://canuxcheng.com/post/container_image/</guid>
+      <description>image 容器镜像 docker image driver: aufs, btrfs, devicemapper, overlay. buildx 使用qume: // 安装bitfmt docker run --privileged --rm tonistiigi/binfmt --install all // 查看支持的平台 ls -l /proc/sys/fs/binfmt_misc/qemu-* 查看版本 docker buildx version 管理builder instance docker buildx create --append 添加</description>
+    </item>
+    
+    <item>
+      <title>OpenShift</title>
+      <link>https://canuxcheng.com/post/k8s_openshift/</link>
+      <pubDate>Mon, 02 Dec 2019 21:43:24 +0800</pubDate>
+      
+      <guid>https://canuxcheng.com/post/k8s_openshift/</guid>
+      <description>OpenShift readhat kubernetes.
+Deploy pre-install:
+&amp;gt; check &amp;quot;sysctl net.ipv4.ip_forward&amp;quot; is set to 1 /etc/containers/registries.conf [registries.insecure] registries = [&#39;172.30.0.0/16&#39;] /etc/docker/daemon.json { &amp;quot;insecure-registries&amp;quot;: [ &amp;quot;172.30.0.0/16&amp;quot; ] } $ sudo systemctl daemon-reload $ sudo systemctl restart docker docker network inspect -f &amp;quot;{{range .IPAM.Config }}{{ .Subnet }}{{end}}&amp;quot; bridge # firewall-cmd --permanent --new-zone dockerc # firewall-cmd --permanent --zone dockerc --add-source 172.17.0.0/16 # firewall-cmd --permanent --zone dockerc --add-port 8443/tcp # firewall-cmd --permanent --zone dockerc --add-port 53/udp # firewall-cmd --permanent --zone dockerc --add-port 8053/udp # firewall-cmd --reload install:</description>
+    </item>
+    
+    <item>
+      <title>Helm</title>
+      <link>https://canuxcheng.com/post/k8s_helm/</link>
+      <pubDate>Thu, 05 Sep 2019 22:02:31 +0000</pubDate>
+      
+      <guid>https://canuxcheng.com/post/k8s_helm/</guid>
+      <description>Helm https://github.com/helm/helm helm2有两个组件: helm: 客户端 tiller: 服务端(helm3被移除) 概念: chart: helm包，包含运行一个应用所需的镜像，依赖和资源. repository: 用于发布和存储c</description>
+    </item>
+    
+    <item>
+      <title>K8S CRI</title>
+      <link>https://canuxcheng.com/post/k8s_cri/</link>
+      <pubDate>Wed, 05 Jun 2019 22:02:31 +0000</pubDate>
+      
+      <guid>https://canuxcheng.com/post/k8s_cri/</guid>
+      <description>CRI CRI: Container Runtime Intarface 定义了k8s和container runtime进行交互的接口. 是k8s与container交互的标准. https://kubernetes.io/zh/docs/setup/production-environment/container-runtimes/ docker k8s_1.20 开始警告不再支持doc</description>
+    </item>
+    
+    <item>
+      <title>Container</title>
+      <link>https://canuxcheng.com/post/container/</link>
+      <pubDate>Thu, 05 Apr 2018 22:02:31 +0000</pubDate>
+      
+      <guid>https://canuxcheng.com/post/container/</guid>
+      <description>Container OCI: Open Container Initiative. CRI: Container Runtime Interface. CNI: Container Network Interface. CSI: Container Storage Interface. OCI Open Container Initiative，也就是常说的OCI，是由多家公司共同成立的项目，并由linux基金会进行管理，</description>
+    </item>
+    
+    <item>
+      <title>Docker</title>
+      <link>https://canuxcheng.com/post/container_docker/</link>
+      <pubDate>Thu, 05 Apr 2018 22:02:31 +0000</pubDate>
+      
+      <guid>https://canuxcheng.com/post/container_docker/</guid>
+      <description>Docker https://store.docker.com/ https://hub.docker.com/ https://github.com/docker https://github.com/moby/moby Docker是一个容器引擎, 分为社区版CE, 和企业版EE, Docker不是虚拟机, 也不依赖虚拟化技术． docker-cli -&amp;gt; dockerd -&amp;gt; containerd -&amp;gt; shim -&amp;gt; runc conta</description>
+    </item>
+    
+    <item>
+      <title>Harbor</title>
+      <link>https://canuxcheng.com/post/harbor/</link>
+      <pubDate>Thu, 05 Apr 2018 22:02:31 +0000</pubDate>
+      
+      <guid>https://canuxcheng.com/post/harbor/</guid>
+      <description>Harbor https://github.com/goharbor/harbor Habor是由VMWare中国团队开源的容器镜像仓库, 用于存储和分发docker镜像的registry服务器. 安装步骤: 下载并解压安装包</description>
+    </item>
+    
+    <item>
+      <title>Kubernetes</title>
+      <link>https://canuxcheng.com/post/kubernetes/</link>
+      <pubDate>Thu, 05 Apr 2018 22:02:31 +0000</pubDate>
+      
+      <guid>https://canuxcheng.com/post/kubernetes/</guid>
+      <description>Kubernetes https://github.com/kubernetes/kubernetes https://github.com/kubernetes/kubeadm https://github.com/kubernetes/kops https://github.com/kubernetes-sigs/kubespray kubernetes简称k8s, 是开源的容器编排工具。 安装单机版k8s: minikube 安装k8s集群: kubeadm (k8s内置的，类似于docker swarm mode,</description>
+    </item>
+    
+    <item>
+      <title>Namespace</title>
+      <link>https://canuxcheng.com/post/container_ns/</link>
+      <pubDate>Thu, 05 Apr 2018 22:02:31 +0000</pubDate>
+      
+      <guid>https://canuxcheng.com/post/container_ns/</guid>
+      <description>NS namespace 是 Linux 内核用来隔离内核资源的方式 Linux namespace资源： Mount: 挂载点 Network: 网络设备/协议栈/端口 IPC: 进程间通信 USR: 用户和用户组 PID: 进程 UTS: 主机名和域名 Cgroup:</description>
+    </item>
+    
+    <item>
+      <title>Swarm</title>
+      <link>https://canuxcheng.com/post/swarm/</link>
+      <pubDate>Thu, 05 Apr 2018 22:02:31 +0000</pubDate>
+      
+      <guid>https://canuxcheng.com/post/swarm/</guid>
+      <description>Swarm docker swarm 是 docker内置的容器编排工具。 从docker1.12开始swarm内置于docker engine. swarm mode具有内置kv存储，服务发现，负载均</description>
+    </item>
+    
+    <item>
+      <title>Swarm CNI</title>
+      <link>https://canuxcheng.com/post/swarm_cni/</link>
+      <pubDate>Thu, 05 Apr 2018 22:02:31 +0000</pubDate>
+      
+      <guid>https://canuxcheng.com/post/swarm_cni/</guid>
+      <description>CNI CNI: Container Network Intarface 单台host上的container通信 none host bridge 多台host之间的container通信 overlay macvlan 提供overlay/macvlan的网络服</description>
+    </item>
+    
+    <item>
+      <title>Swarm CSI</title>
+      <link>https://canuxcheng.com/post/swarm_csi/</link>
+      <pubDate>Thu, 05 Apr 2018 22:02:31 +0000</pubDate>
+      
+      <guid>https://canuxcheng.com/post/swarm_csi/</guid>
+      <description>CSI CSI: Container Storage Interface CSI提供容器的数据持久化服务. 容器管理数据的两种方式： 数据卷(Volumes) 挂载主机目录(bind mounts) 临时文件系统(tmpfs)</description>
+    </item>
+    
+  </channel>
+</rss>

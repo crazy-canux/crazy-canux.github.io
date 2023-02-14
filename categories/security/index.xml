@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Security on Morgoth</title>
+    <link>https://canuxcheng.com/categories/security/</link>
+    <description>Recent content in Security on Morgoth</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 05 Oct 2021 22:02:31 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/categories/security/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Container Security</title>
+      <link>https://canuxcheng.com/post/container_security/</link>
+      <pubDate>Tue, 05 Oct 2021 22:02:31 +0000</pubDate>
+      
+      <guid>https://canuxcheng.com/post/container_security/</guid>
+      <description>Trivy </description>
+    </item>
+    
+    <item>
+      <title>CORS</title>
+      <link>https://canuxcheng.com/post/sec_cors/</link>
+      <pubDate>Wed, 28 Jul 2021 16:08:54 +0000</pubDate>
+      
+      <guid>https://canuxcheng.com/post/sec_cors/</guid>
+      <description>CORS CORS: Cross-Origin resource sharing, 跨域资源共享. 允许浏览器向跨源服务器发出XMLHttpRequest请求，从而克服AJAX只能同源使用的限制。 大部分浏览器都支持C</description>
+    </item>
+    
+    <item>
+      <title>Let&#39;s Encrypt</title>
+      <link>https://canuxcheng.com/post/sec_letsencrypt/</link>
+      <pubDate>Wed, 28 Jul 2021 16:08:54 +0000</pubDate>
+      
+      <guid>https://canuxcheng.com/post/sec_letsencrypt/</guid>
+      <description>Let&amp;rsquo;s Encrypt https://letsencrypt.org/ https://github.com/letsencrypt 是非盈利组织ISRG提供的免费的证书颁发机构。 let&amp;rsquo;s encrypt生成证书的工具很多certbot, acme.sh等. certbot https://github.com/certbot/certbot acme.sh https://github.com/acmesh-official/acme.sh</description>
+    </item>
+    
+    <item>
+      <title>AWS Security</title>
+      <link>https://canuxcheng.com/post/aws_security/</link>
+      <pubDate>Fri, 23 Apr 2021 22:02:31 +0000</pubDate>
+      
+      <guid>https://canuxcheng.com/post/aws_security/</guid>
+      <description>Security Acceptable Use Policy. IAM IAM: Identity and Access Management. STS: Security Token Service. ACL: Access control list. SG: Security Group. https://aws.amazon.com/cn/iam/ $aws iam list-users IAM的三种身份类型: Users Groups Roles IAM通过Policy(json)分配权限。 SSO sso登陆: aws sso</description>
+    </item>
+    
+    <item>
+      <title>Linux Security</title>
+      <link>https://canuxcheng.com/post/linux_security/</link>
+      <pubDate>Sun, 24 May 2020 15:30:42 +0800</pubDate>
+      
+      <guid>https://canuxcheng.com/post/linux_security/</guid>
+      <description>SeLinux Security-Enhanced Linux
+SecComp Secure computing mode (seccomp) is a Linux kernel feature.
+AppArmor AppArmor (Application Armor) is a Linux security module that protects an operating system and its applications from security threats.</description>
+    </item>
+    
+    <item>
+      <title>AST</title>
+      <link>https://canuxcheng.com/post/sec_ast/</link>
+      <pubDate>Sat, 28 Jul 2018 16:08:54 +0000</pubDate>
+      
+      <guid>https://canuxcheng.com/post/sec_ast/</guid>
+      <description>AST AST: Application Security Testing, 静态应用程序安全测试, 对应用程序源代码执行直接的白盒分析. SAST SAST: Static Application Security Testing Tools: SonarQube, Trivy. DAST DAST: Dynamic Application Security Testing，动态应用程序安全测试, 对应用</description>
+    </item>
+    
+    <item>
+      <title>CA</title>
+      <link>https://canuxcheng.com/post/sec_ca/</link>
+      <pubDate>Sat, 28 Jul 2018 16:08:54 +0000</pubDate>
+      
+      <guid>https://canuxcheng.com/post/sec_ca/</guid>
+      <description>CA SSL: secure sockets layer TLS: transport layer security CA: Certificate Authority. SNI: server name indication 证书类型 x509: 只有公钥没有私钥匙 编码方式 pem: base64编码 der: 二进制 证书文件: crt: 证书文件（可以是pem或der编码</description>
+    </item>
+    
+    <item>
+      <title>Capture</title>
+      <link>https://canuxcheng.com/post/sec_capture/</link>
+      <pubDate>Sat, 28 Jul 2018 16:08:54 +0000</pubDate>
+      
+      <guid>https://canuxcheng.com/post/sec_capture/</guid>
+      <description>Packet Capture 网络抓包 Fiddler http://www.telerik.com/fiddler Wireshark https://www.wireshark.org/</description>
+    </item>
+    
+    <item>
+      <title>Csrf</title>
+      <link>https://canuxcheng.com/post/sec_csrf/</link>
+      <pubDate>Sat, 28 Jul 2018 16:08:54 +0000</pubDate>
+      
+      <guid>https://canuxcheng.com/post/sec_csrf/</guid>
+      <description>CSRF Cross-site request forgery, 跨站请求伪造． 发生条件： 登陆受信任网站A, 并在本地生成cookie 在不退出A的情况下，访问危险网站B 预防方法: 正确使用get,pos</description>
+    </item>
+    
+    <item>
+      <title>Sql Injection</title>
+      <link>https://canuxcheng.com/post/sec_sqlinjection/</link>
+      <pubDate>Sat, 28 Jul 2018 16:08:54 +0000</pubDate>
+      
+      <guid>https://canuxcheng.com/post/sec_sqlinjection/</guid>
+      <description>SQL Injection 什么是sql injection:从数据库获取敏感信息,或者利用数据库的特性执行添加用户,导出文件等一系列恶意操作,甚至有可能获取数据库乃</description>
+    </item>
+    
+    <item>
+      <title>Xss</title>
+      <link>https://canuxcheng.com/post/sec_xss/</link>
+      <pubDate>Sat, 28 Jul 2018 16:08:54 +0000</pubDate>
+      
+      <guid>https://canuxcheng.com/post/sec_xss/</guid>
+      <description>XSS XSS: Cross Site Scripting, 跨站脚本攻击 XSS攻击涉及到攻击者，客户端，和web应用三者. XSS原理: Web应用未对用户提交请求的数据做充分的检查过滤,允许用</description>
+    </item>
+    
+    <item>
+      <title>Cfssl</title>
+      <link>https://canuxcheng.com/post/sec_cfssl/</link>
+      <pubDate>Sat, 28 Jul 2018 16:08:54 +0800</pubDate>
+      
+      <guid>https://canuxcheng.com/post/sec_cfssl/</guid>
+      <description>cfssl https://github.com/cloudflare/cfssl</description>
+    </item>
+    
+    <item>
+      <title>Cryptographic</title>
+      <link>https://canuxcheng.com/post/sec_cryptographic/</link>
+      <pubDate>Mon, 27 Mar 2017 17:11:58 +0000</pubDate>
+      
+      <guid>https://canuxcheng.com/post/sec_cryptographic/</guid>
+      <description>PGP PGP: Pretty Good Privacy。 用于签名和加密解密。 PGP https://en.wikipedia.org/wiki/Pretty_Good_Privacy OpenPGP OpenPGP是PGP的标准,也有很多实现。 http://openpgp.org/ GnuPG GunPG: Gun Privacy Guard, 是基于openPGP的实现。 https://gnupg.org/ $ gpg</description>
+    </item>
+    
+  </channel>
+</rss>

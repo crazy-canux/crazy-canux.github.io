@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="utf-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+ <title>OOP - Morgoth</title>
+ <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Canux" /><meta name="description" content="Go面向对象 golang通过方法和接口实现面向对象. 方法/method go中没有类，但是可以为结构体定义方法． 方法就是一类带有特殊的 接收者参" /><meta name="keywords" content="Hugo, theme, canux" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.110.0 with theme even" />
+
+
+<link rel="canonical" href="https://canuxcheng.com/post/go_oop/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<link href="/sass/main.min.69e0bbe2419d9b0efbdcc1d3b4338bba03a6f6789ae2832bc1af58e5b2757470.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="OOP" />
+<meta property="og:description" content="Go面向对象 golang通过方法和接口实现面向对象. 方法/method go中没有类，但是可以为结构体定义方法． 方法就是一类带有特殊的 接收者参" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://canuxcheng.com/post/go_oop/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2018-01-01T10:49:21+00:00" />
+<meta property="article:modified_time" content="2018-01-01T10:49:21+00:00" />
+<meta itemprop="name" content="OOP">
+<meta itemprop="description" content="Go面向对象 golang通过方法和接口实现面向对象. 方法/method go中没有类，但是可以为结构体定义方法． 方法就是一类带有特殊的 接收者参"><meta itemprop="datePublished" content="2018-01-01T10:49:21+00:00" />
+<meta itemprop="dateModified" content="2018-01-01T10:49:21+00:00" />
+<meta itemprop="wordCount" content="1861">
+<meta itemprop="keywords" content="oop," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="OOP"/>
+<meta name="twitter:description" content="Go面向对象 golang通过方法和接口实现面向对象. 方法/method go中没有类，但是可以为结构体定义方法． 方法就是一类带有特殊的 接收者参"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+ <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Morgoth</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/rtfm/">
+        <li class="mobile-menu-item">RTFM</li>
+      </a><a href="/samuel/">
+        <li class="mobile-menu-item">昕焱</li>
+      </a><a href="/search/">
+        <li class="mobile-menu-item">Search</li>
+      </a>
+  </ul>
+</nav>
+ <div class="container" id="mobile-panel">
+   <header id="header" class="header">
+       <div class="logo-wrapper">
+  <a href="/" class="logo">Morgoth</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/rtfm/">RTFM</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/samuel/">昕焱</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/search/">Search</a>
+      </li>
+  </ul>
+</nav>
+
+<div class="js-toggle-wrapper">
+    <div class="js-toggle">
+        <div class="js-toggle-track">
+            <div class="js-toggle-track-check">
+                <img src="data:image/png;base64,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" role="presentation" style="pointer-events: none;" width="16" height="16">
+            </div>
+            <div class="js-toggle-track-x">
+                <img src="data:image/png;base64,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" role="presentation" style="pointer-events: none;" width="16" height="16">
+            </div>
+        </div>
+        <div class="js-toggle-thumb"></div>
+        <input class="js-toggle-screenreader-only" type="checkbox" aria-label="Switch between Dark and Light mode">
+    </div>
+</div>
+
+<style>
+ 
+
+.js-toggle-wrapper {
+    display: table;
+    margin: 0 auto;
+}
+
+.js-toggle {
+    touch-action: pan-x;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background-color: transparent;
+    border: 0;
+    padding: 0;
+    -webkit-touch-callout: none;
+    user-select: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  .js-toggle-screenreader-only {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  
+  .js-toggle-track {
+    width: 50px;
+    height: 24px;
+    padding: 0;
+    border-radius: 30px;
+    background-color: hsl(222, 14%, 7%);
+    transition: all 0.2s ease;
+  }
+  
+  .js-toggle-track-check {
+    position: absolute;
+    width: 17px;
+    height: 17px;
+    left: 5px;
+    top: 0px;
+    bottom: 0px;
+    margin-top: auto;
+    margin-bottom: auto;
+    line-height: 0;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+  
+  .js-toggle--checked .js-toggle-track-check {
+    opacity: 1;
+    transition: opacity 0.25s ease;
+  }
+  
+  .js-toggle-track-x {
+    position: absolute;
+    width: 17px;
+    height: 17px;
+    right: 5px;
+    top: 0px;
+    bottom: 0px;
+    margin-top: auto;
+    margin-bottom: auto;
+    line-height: 0;
+    opacity: 1;
+    transition: opacity 0.25s ease;
+  }
+  
+  .js-toggle--checked .js-toggle-track-x {
+    opacity: 0;
+  }
+  
+  .js-toggle-thumb {
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background-color: #fafafa;
+    box-sizing: border-box;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+    transform: translateX(0);
+  }
+  
+  .js-toggle--checked .js-toggle-thumb {
+    transform: translateX(26px);
+    border-color: #19ab27;
+  }
+  
+  .js-toggle--focus .js-toggle-thumb {
+    box-shadow: 0px 0px 2px 3px rgb(255, 167, 196);
+  }
+  
+  .js-toggle:active .js-toggle-thumb {
+    box-shadow: 0px 0px 5px 5px rgb(255, 167, 196);
+  }
+
+  body.dark-mode,
+  body.dark-mode main * {
+    background: rgb(45, 45, 45);
+    color: #f5f5f5;
+}
+</style>
+
+
+
+<script>
+    var body = document.body;
+	var switcher = document.getElementsByClassName('js-toggle')[0];
+
+	
+	switcher.addEventListener("click", function() {
+        this.classList.toggle('js-toggle--checked');
+        this.classList.add('js-toggle--focus');
+		
+		if (this.classList.contains('js-toggle--checked')) {
+			body.classList.add('dark-mode');
+			
+			localStorage.setItem('darkMode', 'true');
+		} else {
+			body.classList.remove('dark-mode');
+			setTimeout(function() {
+				localStorage.removeItem('darkMode');
+			}, 100);
+		}
+	})
+
+	
+	if (localStorage.getItem('darkMode')) {
+		
+        switcher.classList.add('js-toggle--checked');
+        body.classList.add('dark-mode');
+	}
+
+</script>
+   </header>
+
+   
+   <main id="main" class="main">
+     <div class="content-wrapper">
+       <div id="content" class="content">
+         <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">OOP</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 1017-10-10T149:10:219 </span>
+        <div class="post-category">
+            <a href="/categories/golang/"> Golang </a>
+            </div>
+          <span class="more-meta"> 1861 words </span>
+          <span class="more-meta"> 4 mins read </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> times read </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#go面向对象">Go面向对象</a></li>
+    <li><a href="#方法method">方法/method</a></li>
+    <li><a href="#接口interface">接口/Interface</a>
+      <ul>
+        <li><a href="#封装">封装</a></li>
+        <li><a href="#多态">多态</a></li>
+        <li><a href="#继承">继承</a></li>
+      </ul>
+    </li>
+    <li><a href="#反射reflact">反射/reflact</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+  <div class="post-outdated">
+    <div class="warn">
+      <p>[NOTE] Updated <span class="timeago" datetime="2018-01-01T10:49:21" title="January 1, 2018">January 1, 2018</span>. This article may have outdated content or subject matter.</p>
+    </div>
+  </div>
+    <div class="post-content">
+      <h1 id="go面向对象">Go面向对象</h1>
+<p>golang通过方法和接口实现面向对象.</p>
+<hr>
+<h1 id="方法method">方法/method</h1>
+<p>go中没有类，但是可以为结构体定义方法．</p>
+<p>方法就是一类带有特殊的　接收者参数　的函数．</p>
+<p>只能为同一包内定义的类型的接收者申明方法，不能为其它包内定义的类型的接收者申明方法．</p>
+<p>除了结构体还可以为非结构体申明方法，但是不能为内建类型申明方法．</p>
+<p>方法有两种接收者,值接收者和指针接收者.</p>
+<pre><code>type Vertex struct {
+    ...
+}
+</code></pre>
+<p>值接收者:</p>
+<p>值接收者操作的是值的副本.</p>
+<pre><code>func (v Vertex) MethodName() rType {
+    ...
+}
+
+var v Vertex
+v.MethodName() // 操作值的副本
+
+# 使用指针接收者来调用值接收者的方法，编译器会自动做类型转换
+vp := new(Vertex)
+vp.MethodName() // 指针被解引用为值,(*vp).MethodName(),操作的是指针指向的值的副本.
+</code></pre>
+<p>指针接收者：</p>
+<p>指针接收者，调用方法的时候操作的是该指针指向的值.</p>
+<pre><code># 指针接收者的方法可以修改接收者指向的值
+func (v *Vertex) MethodName() rType {
+    ...
+}
+
+vp := new(Vertex)
+vp.MethodName() // 操作实际的值
+
+# 使用值接收者来调用指针接收者的方法，编译器会自动做类型转换.
+var v Vertex
+v.MethodName() // (&amp;v).MethodName() , 操作的是实际的值
+</code></pre>
+<hr>
+<h1 id="接口interface">接口/Interface</h1>
+<p>接口是引用类型.</p>
+<p>接口类型是由一组方法签名定义的集合．</p>
+<p>接口类型的值可以保存任何实现了这些方法的值．</p>
+<p>某个类型实现了该接口的所有方法签名，就算实现了该接口,无需显示申明实现了哪个接口.</p>
+<p>接口可以匿名嵌入其它接口，或嵌入到结构中．</p>
+<p>一般只有一个方法的接口命名为MethodName + &rsquo;er'.</p>
+<p>接口存储两个数据接口：</p>
+<ul>
+<li>iTable, 包含存储值的类型信息以及和该值关联的方法.</li>
+<li>指向存储的值的指针.</li>
+</ul>
+<p>定义接口：</p>
+<pre><code>type IName interface {
+    MethodName()
+    ...
+}
+
+type SName struct {
+    ...
+}
+</code></pre>
+<p>值接收者方法:</p>
+<p>接口类型的值为值或指针都可以调用该方法.</p>
+<pre><code>func (s SName) MethodName() {}
+</code></pre>
+<p>指针接收者方法:</p>
+<p>接口类型的值必须为指针才能调用该方法.</p>
+<pre><code>func (s *SName) MethodName() {
+    ...
+}
+
+s := &amp;SName{...}
+// i = &amp;SName{...} //接口变量能保存实现了该接口的任意类型的对象
+i = s
+i.MethodName()
+
+# 接口类型为值时，调用失败
+var s SName
+i = s
+i.MethodName() // 调用失败
+</code></pre>
+<p>底层值为nil的接口值:</p>
+<pre><code>var i IName
+var s SName
+i = s    # 接口值为nil
+</code></pre>
+<p>空接口：</p>
+<p>所有类型都实现了空接口.</p>
+<p>指定了零个方法的接口值被称为空接口,一般用来处理未知类型的值.</p>
+<p>当接口储存的类型和对象都为nil，接口才为nil</p>
+<p>以空接口为参数的函数可以接收任意类型的值作为参数.</p>
+<p>如果一个函数返回空接口就可以返回任意类型的值.</p>
+<pre><code># 空接口可以保存任何类型的值
+var i interface{}
+# 空接口作为形参
+func FuncName(i interface{}) {}
+</code></pre>
+<p>指针的类型断言/comma-ok断言：</p>
+<p>断言接口值i保存了具体类型Type, 并将底层类型为Type的值赋予变量t.</p>
+<pre><code>只返回一个值，断言失败会触发panic.
+t := i.(Type)
+
+返回两个值，断言成功返回true, 失败返回false.
+t, ok := i.(Type)
+</code></pre>
+<p>指针的类型选择/switch测试：</p>
+<pre><code>// i.(type) 是固定写法
+switch TypeValue := i.(type) {
+case Type1:
+    ...
+case Type2:
+    ...
+...
+default:
+    ...
+}
+</code></pre>
+<p>嵌入接口:</p>
+<p>接口中可以嵌入其它接口，这样实现了该接口的对象就隐式包含嵌入接口的所有方法.</p>
+<pre><code>type Interface interface {}
+</code></pre>
+<hr>
+<h2 id="封装">封装</h2>
+<p>小写字母开头的标识符（类型/属性/方法&hellip;)是未公开的，只能在当前包引用，不能在其它包引用。</p>
+<p>可以通过创建工厂函数对外暴露未公开的标识符:</p>
+<ul>
+<li>标识符才有公开或未公开属性，值没有</li>
+<li>短变量声明操作符，有能力捕获引用的类型，并创建一个未公开的类型的变量；显示声明的变量不能引用未公开类型。</li>
+</ul>
+<p>通过工厂函数返回未公开类型的值:</p>
+<pre><code># packageA
+type privateType  Type
+func New(args) privateType {
+    return privateType(args)
+}
+# packageB
+import packageA
+func main() {
+    b := packageA.New(args) // 返回一个值，而不是标识符
+}
+</code></pre>
+<p>公开类型的未公开属性:</p>
+<pre><code># packageA
+type Public struct {
+    private Type
+}
+
+# packageB
+import packageA
+func main() {
+    b := packageA.Public{
+        private: value, // panic, 公开类型的未公开属性不能通过字面量直接赋值
+    }
+}
+</code></pre>
+<p>类型嵌套中的未公开类型的公开属性会提升到外部类型:</p>
+<pre><code># packageA
+type inner struct { // inner private
+    In Type  // In public
+}
+type Outer struct {
+    inner
+    Out Type
+}
+
+# packageB
+import packageA
+func main() {
+    b := packageA.Outer{
+        Out: value, // 外部类型中的未公开内部类型不能通过字面量直接赋值
+    }
+    b.In = value // 内部类型的公开属性提升到外部类型。
+}
+</code></pre>
+<h2 id="多态">多态</h2>
+<p>形式参数是接口的函数，叫做多态函数.</p>
+<pre><code>func FuncName(iVar IName) {}
+</code></pre>
+<p>所有实现了接口的方法的实体类型，就可以作为参数传给多态函数.</p>
+<h2 id="继承">继承</h2>
+<p>通过类型嵌套实现继承，外部类型可以访问内部类型的属性和方法</p>
+<p>如果外部类型实现同名的属性或方法，就会覆盖内部类型的属性或方法（不过内部类型的属性和方法还在，可以通过内部类型访问）</p>
+<p>内部类型实现的接口，也会自动提升到外部类型。只要内部类型实现了某接口，外部类型相当于也实现了该接口。</p>
+<p>如果匿名字段实现了一个方法，那么包含这个匿名字段的结构也可以调用该方法.</p>
+<pre><code>type Inner struct {
+    in Type
+}
+
+func (i *Inner) InnerMethod() {}
+
+type Outer struct {
+    Inner    // 只需要类型名称，不需要声明变量
+    out Type
+    ...
+}
+
+outer := Outer{}
+
+outer.Inner.InnerMethod() //始终可以访问内部类型的方法，即使外部类型实现同名方法
+outer.Inner.in // 同上
+
+outer.InnerMethod() //如果外部类型没有实现同名方法，就是内部类型方法，否则是外部类型方法
+outer.in // 同上
+</code></pre>
+<hr>
+<h1 id="反射reflact">反射/reflact</h1>
+<p>反射就是检查程序在运行时的状态.</p>
+<p>使用反射一般使用标准库reflect.</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Canux</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        1017-10-10T149:10:219
+        
+    </span>
+  </p>
+  
+  
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">Reward</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/reward/wechat.png">
+        <span>wechat</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/reward/alipay.png">
+        <span>alipay</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/oop/">oop</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/gsl_test/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">GSL_test</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/rabbitmq/">
+            <span class="next-text nav-default">Rabbitmq</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+       </div>
+       <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2018-01-01 10:49:21 \u002b0000 UTC',
+        title: 'OOP',
+        clientID: '3d41a2a237fabe050cc0',
+        clientSecret: '868aa81b294f1463ddb6edc007576ecfed7d2075',
+        repo: 'crazy-canux.github.io',
+        owner: 'crazy-canux',
+        admin: ['crazy-canux'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+  
+
+  
+
+     </div>
+   </main>
+   
+
+   
+   <footer id="footer" class="footer">
+     <div class="social-links">
+      <a href="mailto:canuxcheng@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/crazy-canux" class="iconfont icon-github" title="github"></a>
+      <a href="https://www.linkedin.com/in/canux-cheng-4b5b23ab/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://stackoverflow.com/users/4344009/canux" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+  <a href="https://canuxcheng.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/crazy-canux/hugo-theme-canux">Canux</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> site pv: <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> site uv: <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2013 - 
+    2023<span class="heart"><i class="iconfont icon-heart"></i></span><span>Canux CHENG</span>
+  </span>
+</div>
+
+   </footer>
+   
+
+   <div class="back-to-top" id="back-to-top">
+     <i class="iconfont icon-up"></i>
+   </div>
+ </div>
+ <script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.locales.min.js" integrity="sha256-ZwofwC1Lf/faQCzN7nZtfijVV6hSwxjQMwXL4gn9qU8=" crossorigin="anonymous"></script>
+  <script><!-- NOTE: timeago.js uses the language code format like "zh_CN" (underscore and case sensitive) -->
+    var languageCode = "en".replace(/-/g, '_').replace(/_(.*)/, function ($0, $1) {return $0.replace($1, $1.toUpperCase());});
+    timeago().render(document.querySelectorAll('.timeago'), languageCode);
+    timeago.cancel();  
+  </script><script></script><script src="https://cdn.jsdelivr.net/npm/raphael@2.2.7/raphael.min.js" integrity="sha256-67By+NpOtm9ka1R6xpUefeGOY8kWWHHRAKlvaTJ7ONI=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/flowchart.js@1.8.0/release/flowchart.min.js" integrity="sha256-zNGWjubXoY6rb5MnmpBNefO0RgoVYfle9p0tvOQM+6k=" crossorigin="anonymous"></script><script></script><script src="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.js" integrity="sha256-4O4pS1SH31ZqrSO2A/2QJTVjTPqVe+jnYgOWUVr7EEc=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/snapsvg@0.5.1/dist/snap.svg-min.js" integrity="sha256-oI+elz+sIm+jpn8F/qEspKoKveTc5uKeFHNNVexe6d8=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/underscore@1.8.3/underscore-min.js" integrity="sha256-obZACiHd7gkOk9iIL/pimWMTJ4W/pBsKu+oZnSeBIek=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/gh/bramp/js-sequence-diagrams@2.0.1/dist/sequence-diagram-min.js" integrity="sha384-8748Vn52gHJYJI0XEuPB2QlPVNUkJlJn9tHqKec6J3q2r9l8fvRxrgn/E5ZHV0sP" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bramp/js-sequence-diagrams@2.0.1/dist/sequence-diagram-min.css" integrity="sha384-6QbLKJMz5dS3adWSeINZe74uSydBGFbnzaAYmp+tKyq60S7H2p6V7g1TysM5lAaF" crossorigin="anonymous">
+
+
+
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex: {
+        }
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.0.5/es5/tex-mml-chtml.js" integrity="sha256-HGLuEfFcsUJGhvB8cQ8nr0gai9EucOOaIxFw7qxmd+w=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

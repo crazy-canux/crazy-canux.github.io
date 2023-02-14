@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>cdk on Morgoth</title>
+    <link>https://canuxcheng.com/tags/cdk/</link>
+    <description>Recent content in cdk on Morgoth</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 23 Apr 2021 22:02:31 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/cdk/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CDK</title>
+      <link>https://canuxcheng.com/post/cloud_cdk/</link>
+      <pubDate>Fri, 23 Apr 2021 22:02:31 +0000</pubDate>
+      
+      <guid>https://canuxcheng.com/post/cloud_cdk/</guid>
+      <description>CDK Cloud Development Kit SDK一般是和service交互的。 CDK用来和基础设施交互的。 AWS CDK The AWS Cloud Development Kit (AWS CDK) is an open-source software development framework to define cloud infrastructure in code and provision it through AWS CloudFormation. https://github.com/aws/aws-cdk CDK8S cdk8s is an open-source software</description>
+    </item>
+    
+  </channel>
+</rss>

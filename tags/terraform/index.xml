@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>terraform on Morgoth</title>
+    <link>https://canuxcheng.com/tags/terraform/</link>
+    <description>Recent content in terraform on Morgoth</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 15 Apr 2016 09:41:39 +0800</lastBuildDate><atom:link href="https://canuxcheng.com/tags/terraform/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Terraform</title>
+      <link>https://canuxcheng.com/post/cloud_terraform/</link>
+      <pubDate>Fri, 15 Apr 2016 09:41:39 +0800</pubDate>
+      
+      <guid>https://canuxcheng.com/post/cloud_terraform/</guid>
+      <description>Terraform install: https://learn.hashicorp.com/tutorials/terraform/install-cli CLI 操作工作目录 // 初始化目录，会根据配置下载和安装provider. terraform init terraform get 操作tf文件 // 格式化文件 terraform fmt -recursive // 验证文件 terraform validate // 可以通过终端验</description>
+    </item>
+    
+  </channel>
+</rss>

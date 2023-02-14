@@ -1,0 +1,2 @@
+User-agent: *
+Sitemap: https://canuxcheng.com/sitemap.xml

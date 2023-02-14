@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>gin on Morgoth</title>
+    <link>https://canuxcheng.com/tags/gin/</link>
+    <description>Recent content in gin on Morgoth</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 20 Jul 2018 23:14:07 +0800</lastBuildDate><atom:link href="https://canuxcheng.com/tags/gin/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Gin</title>
+      <link>https://canuxcheng.com/post/gin/</link>
+      <pubDate>Fri, 20 Jul 2018 23:14:07 +0800</pubDate>
+      
+      <guid>https://canuxcheng.com/post/gin/</guid>
+      <description>Gin https://github.com/gin-gonic/gin
+install
+$ go get -u github.com/gin-gonic/gin import
+import &amp;quot;github.com/gin-gonic/gin&amp;quot; </description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>haproxy on Morgoth</title>
+    <link>https://canuxcheng.com/tags/haproxy/</link>
+    <description>Recent content in haproxy on Morgoth</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 28 Jul 2018 16:08:54 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/haproxy/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>HA</title>
+      <link>https://canuxcheng.com/post/ha/</link>
+      <pubDate>Sat, 28 Jul 2018 16:08:54 +0000</pubDate>
+      
+      <guid>https://canuxcheng.com/post/ha/</guid>
+      <description>HAProxy https://www.haproxy.com/ 安装: $ sudo apt-get install haproxy 配置: $ sudo vim /etc/haproxy/haproxy.cfg global: log /dev/log local0 log /dev/log local1 notice chroot /var/lib/haproxy stats socket /run/haproxy/admin.sock mode 660 level admin expose-fd listeners stats timeout 30s user haproxy group haproxy daemon # Default SSL material locations ca-base /etc/ssl/certs crt-base /etc/ssl/private # Default ciphers to use on SSL-enabled listening sockets. # For more information, see ciphers(1SSL). This list</description>
+    </item>
+    
+  </channel>
+</rss>

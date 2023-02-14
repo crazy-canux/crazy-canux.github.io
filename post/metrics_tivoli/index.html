@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="utf-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+ <title>Tivoli - Morgoth</title>
+ <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Canux" /><meta name="description" content="ITM ITM: IBM Tivoli Monitoring 是IBM的Cloud &amp;amp; Smart Infrastructure监控解决方案。 Architecture Overview: ITM主要由管理组件和可选组件组成。 Tivoli Management Services: TEMS TEPS TEP client Historical data collection(warehouse agent) warehouse" /><meta name="keywords" content="Hugo, theme, canux" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.110.0 with theme even" />
+
+
+<link rel="canonical" href="https://canuxcheng.com/post/metrics_tivoli/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<link href="/sass/main.min.69e0bbe2419d9b0efbdcc1d3b4338bba03a6f6789ae2832bc1af58e5b2757470.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="Tivoli" />
+<meta property="og:description" content="ITM ITM: IBM Tivoli Monitoring 是IBM的Cloud &amp; Smart Infrastructure监控解决方案。 Architecture Overview: ITM主要由管理组件和可选组件组成。 Tivoli Management Services: TEMS TEPS TEP client Historical data collection(warehouse agent) warehouse" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://canuxcheng.com/post/metrics_tivoli/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2016-04-20T13:57:31+00:00" />
+<meta property="article:modified_time" content="2016-04-20T13:57:31+00:00" />
+<meta itemprop="name" content="Tivoli">
+<meta itemprop="description" content="ITM ITM: IBM Tivoli Monitoring 是IBM的Cloud &amp; Smart Infrastructure监控解决方案。 Architecture Overview: ITM主要由管理组件和可选组件组成。 Tivoli Management Services: TEMS TEPS TEP client Historical data collection(warehouse agent) warehouse"><meta itemprop="datePublished" content="2016-04-20T13:57:31+00:00" />
+<meta itemprop="dateModified" content="2016-04-20T13:57:31+00:00" />
+<meta itemprop="wordCount" content="2458">
+<meta itemprop="keywords" content="monitoring," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Tivoli"/>
+<meta name="twitter:description" content="ITM ITM: IBM Tivoli Monitoring 是IBM的Cloud &amp; Smart Infrastructure监控解决方案。 Architecture Overview: ITM主要由管理组件和可选组件组成。 Tivoli Management Services: TEMS TEPS TEP client Historical data collection(warehouse agent) warehouse"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+ <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Morgoth</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/rtfm/">
+        <li class="mobile-menu-item">RTFM</li>
+      </a><a href="/samuel/">
+        <li class="mobile-menu-item">昕焱</li>
+      </a><a href="/search/">
+        <li class="mobile-menu-item">Search</li>
+      </a>
+  </ul>
+</nav>
+ <div class="container" id="mobile-panel">
+   <header id="header" class="header">
+       <div class="logo-wrapper">
+  <a href="/" class="logo">Morgoth</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/rtfm/">RTFM</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/samuel/">昕焱</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/search/">Search</a>
+      </li>
+  </ul>
+</nav>
+
+<div class="js-toggle-wrapper">
+    <div class="js-toggle">
+        <div class="js-toggle-track">
+            <div class="js-toggle-track-check">
+                <img src="data:image/png;base64,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" role="presentation" style="pointer-events: none;" width="16" height="16">
+            </div>
+            <div class="js-toggle-track-x">
+                <img src="data:image/png;base64,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" role="presentation" style="pointer-events: none;" width="16" height="16">
+            </div>
+        </div>
+        <div class="js-toggle-thumb"></div>
+        <input class="js-toggle-screenreader-only" type="checkbox" aria-label="Switch between Dark and Light mode">
+    </div>
+</div>
+
+<style>
+ 
+
+.js-toggle-wrapper {
+    display: table;
+    margin: 0 auto;
+}
+
+.js-toggle {
+    touch-action: pan-x;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background-color: transparent;
+    border: 0;
+    padding: 0;
+    -webkit-touch-callout: none;
+    user-select: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  .js-toggle-screenreader-only {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  
+  .js-toggle-track {
+    width: 50px;
+    height: 24px;
+    padding: 0;
+    border-radius: 30px;
+    background-color: hsl(222, 14%, 7%);
+    transition: all 0.2s ease;
+  }
+  
+  .js-toggle-track-check {
+    position: absolute;
+    width: 17px;
+    height: 17px;
+    left: 5px;
+    top: 0px;
+    bottom: 0px;
+    margin-top: auto;
+    margin-bottom: auto;
+    line-height: 0;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+  
+  .js-toggle--checked .js-toggle-track-check {
+    opacity: 1;
+    transition: opacity 0.25s ease;
+  }
+  
+  .js-toggle-track-x {
+    position: absolute;
+    width: 17px;
+    height: 17px;
+    right: 5px;
+    top: 0px;
+    bottom: 0px;
+    margin-top: auto;
+    margin-bottom: auto;
+    line-height: 0;
+    opacity: 1;
+    transition: opacity 0.25s ease;
+  }
+  
+  .js-toggle--checked .js-toggle-track-x {
+    opacity: 0;
+  }
+  
+  .js-toggle-thumb {
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background-color: #fafafa;
+    box-sizing: border-box;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+    transform: translateX(0);
+  }
+  
+  .js-toggle--checked .js-toggle-thumb {
+    transform: translateX(26px);
+    border-color: #19ab27;
+  }
+  
+  .js-toggle--focus .js-toggle-thumb {
+    box-shadow: 0px 0px 2px 3px rgb(255, 167, 196);
+  }
+  
+  .js-toggle:active .js-toggle-thumb {
+    box-shadow: 0px 0px 5px 5px rgb(255, 167, 196);
+  }
+
+  body.dark-mode,
+  body.dark-mode main * {
+    background: rgb(45, 45, 45);
+    color: #f5f5f5;
+}
+</style>
+
+
+
+<script>
+    var body = document.body;
+	var switcher = document.getElementsByClassName('js-toggle')[0];
+
+	
+	switcher.addEventListener("click", function() {
+        this.classList.toggle('js-toggle--checked');
+        this.classList.add('js-toggle--focus');
+		
+		if (this.classList.contains('js-toggle--checked')) {
+			body.classList.add('dark-mode');
+			
+			localStorage.setItem('darkMode', 'true');
+		} else {
+			body.classList.remove('dark-mode');
+			setTimeout(function() {
+				localStorage.removeItem('darkMode');
+			}, 100);
+		}
+	})
+
+	
+	if (localStorage.getItem('darkMode')) {
+		
+        switcher.classList.add('js-toggle--checked');
+        body.classList.add('dark-mode');
+	}
+
+</script>
+   </header>
+
+   
+   <main id="main" class="main">
+     <div class="content-wrapper">
+       <div id="content" class="content">
+         <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">Tivoli</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 20047-01-01T457:13:319 </span>
+        <div class="post-category">
+            <a href="/categories/devops/"> DevOps </a>
+            </div>
+          <span class="more-meta"> 2458 words </span>
+          <span class="more-meta"> 5 mins read </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> times read </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#itm">ITM</a>
+      <ul>
+        <li><a href="#安装itm">安装ITM</a></li>
+      </ul>
+    </li>
+    <li><a href="#tems">TEMS</a></li>
+    <li><a href="#tema">TEMA</a>
+      <ul>
+        <li><a href="#agentless">Agentless</a></li>
+        <li><a href="#agent">Agent</a></li>
+      </ul>
+    </li>
+    <li><a href="#tepsdb">TEPS+DB</a></li>
+    <li><a href="#tepdtep-client">TEPD(TEP client)</a></li>
+    <li><a href="#history-data-collectiontdw">History data collection(TDW)</a>
+      <ul>
+        <li><a href="#warehouse-proxy">Warehouse Proxy</a></li>
+        <li><a href="#summarization-and-pruning-agent">Summarization and Pruning agent</a></li>
+      </ul>
+    </li>
+    <li><a href="#jazz-for-service-managementvisualization">Jazz for Service Management(Visualization)</a>
+      <ul>
+        <li><a href="#dashboard-application-services-hubdashvisualization-services">Dashboard Application Services Hub(DASH)(visualization services)</a></li>
+        <li><a href="#ibm-tivoli-common-reportingreporting-services">IBM Tivoli Common Reporting(reporting services)</a></li>
+        <li><a href="#registry-services">Registry Services</a></li>
+        <li><a href="#security-services">Security Services</a></li>
+        <li><a href="#administration-services">Administration Services</a></li>
+        <li><a href="#tivoli-directory-integrator">Tivoli Directory Integrator</a></li>
+        <li><a href="#ibm-http-server">IBM HTTP Server</a></li>
+        <li><a href="#ibm-websphere-application-server">IBM WebSphere® Application Server</a></li>
+        <li><a href="#web-server-plug-ins-for-ibm-websphere-application-server">Web Server Plug-ins for IBM WebSphere Application Server</a></li>
+      </ul>
+    </li>
+    <li><a href="#management">Management</a></li>
+    <li><a href="#cli">CLI</a>
+      <ul>
+        <li><a href="#tacmd">tacmd</a></li>
+        <li><a href="#itmcmd">itmcmd</a></li>
+        <li><a href="#tivcmd">tivcmd</a></li>
+      </ul>
+    </li>
+    <li><a href="#advanced-administration">Advanced Administration</a>
+      <ul>
+        <li><a href="#queriesquery-editor">Queries(query editor)</a></li>
+        <li><a href="#advanced-link-topics">Advanced link topics</a></li>
+        <li><a href="#advanced-situation-techniquessituation-editor">Advanced situation techniques(situation editor)</a></li>
+        <li><a href="#agent-autonomy">Agent autonomy</a></li>
+        <li><a href="#policyworkflow-editor">Policy(workflow editor)</a></li>
+        <li><a href="#agentless-monitoring">Agentless monitoring</a></li>
+        <li><a href="#agent-managent-servicesams">Agent Managent Services(AMS)</a></li>
+      </ul>
+    </li>
+    <li><a href="#agent-builder">Agent Builder</a></li>
+    <li><a href="#create-agent">create agent</a></li>
+    <li><a href="#install-agent">install agent</a></li>
+    <li><a href="#config-agent">config agent</a></li>
+    <li><a href="#uninstall-agent">uninstall agent</a></li>
+    <li><a href="#monitoring-windows-resources">Monitoring windows resources</a></li>
+    <li><a href="#monitoring-process-and-command-return-codes">Monitoring process and command return codes</a></li>
+    <li><a href="#monitoring-custom-data-sources">Monitoring custom data sources</a></li>
+    <li><a href="#monitoring-remote-resources">Monitoring remote resources</a></li>
+    <li><a href="#netcoolomnibus">Netcool/OMNIbus</a></li>
+    <li><a href="#eif">EIF</a></li>
+  </ul>
+</nav>
+  </div>
+</div>
+  <div class="post-outdated">
+    <div class="warn">
+      <p>[NOTE] Updated <span class="timeago" datetime="2016-04-20T13:57:31" title="April 20, 2016">April 20, 2016</span>. This article may have outdated content or subject matter.</p>
+    </div>
+  </div>
+    <div class="post-content">
+      <h1 id="itm">ITM</h1>
+<p>ITM: IBM Tivoli Monitoring</p>
+<p>是IBM的Cloud &amp; Smart Infrastructure监控解决方案。</p>
+<p>Architecture Overview:</p>
+<p><img src="/images/tivoli.png" alt="pic"></p>
+<p>ITM主要由管理组件和可选组件组成。</p>
+<p>Tivoli Management Services:</p>
+<ol>
+<li>TEMS</li>
+<li>TEPS</li>
+<li>TEP client</li>
+<li>Historical data collection(warehouse agent)
+<ul>
+<li>warehouse proxy</li>
+<li>summarization and pruning agent</li>
+</ul>
+</li>
+<li>OS agent</li>
+</ol>
+<p>Optional components:</p>
+<ol>
+<li>Dashboard Application Services Hub
+<ul>
+<li>Tivoli Monitoring dashboards(Infrastructure Management Dashboards for Servers)</li>
+<li>Tivoli Common Reporting</li>
+<li>Tivoli Enterprise Monitoring Automation Server</li>
+</ul>
+</li>
+<li>Tivoli Event Synchronization component</li>
+<li>Authorization Policy Components(tivcmd)</li>
+</ol>
+<p><a href="http://www.ibm.com/support/knowledgecenter/SSTFXA_6.3.0/com.ibm.itm.doc_6.3/welcome_63.htm">http://www.ibm.com/support/knowledgecenter/SSTFXA_6.3.0/com.ibm.itm.doc_6.3/welcome_63.htm</a></p>
+<h2 id="安装itm">安装ITM</h2>
+<p>Windows: C:\IBM\ITM</p>
+<p>Linux/Unix: /opt/IBM/ITM</p>
+<p>分为本地安装和分布式安装。</p>
+<ol>
+<li>
+<p>需要先为TEPS和TDW安装DB(ODBC/JDBC)。</p>
+<p>DB2</p>
+<p>MSSQL</p>
+<p>Oracle</p>
+</li>
+<li>
+<p>在windows/linux/unix安装ITM framework</p>
+<p>TEMA</p>
+<p>Warehouse Proxy agent</p>
+<p>Summarization and Pruning agent</p>
+<p>Tivoli performance Analyzer</p>
+<p>TEMS</p>
+<p>TEPS</p>
+<p>TEPD</p>
+<p>TEMAS</p>
+</li>
+<li>
+<p>安装agent</p>
+<p>安装操作系统的agent：</p>
+<p>monitoring agent for your OS。</p>
+<p>安装数据库的agent：</p>
+<p>TEMA/TEMS/TEPS同时勾选DB的agent。</p>
+<p>安装agent builder的agent。</p>
+</li>
+</ol>
+<p><a href="http://www-933.ibm.com/support/fixcentral/swg/downloadFixes?parent=ibm%2FTivoli&amp;product=ibm/Tivoli/IBM+Tivoli+Monitoring&amp;release=All&amp;platform=All&amp;function=fixId&amp;fixids=6.3.0-TIV-ITM-FP0005&amp;includeRequisites=1&amp;includeSupersedes=0&amp;downloadMethod=http">http://www-933.ibm.com/support/fixcentral/swg/downloadFixes?parent=ibm%2FTivoli&amp;product=ibm/Tivoli/IBM+Tivoli+Monitoring&amp;release=All&amp;platform=All&amp;function=fixId&amp;fixids=6.3.0-TIV-ITM-FP0005&amp;includeRequisites=1&amp;includeSupersedes=0&amp;downloadMethod=http</a></p>
+<p>&hellip;</p>
+<h1 id="tems">TEMS</h1>
+<p>TEMS:  Tivoli Enterprise Monitoing Server</p>
+<p>TEMS分为remote和hub，remote最后都汇总到hub。</p>
+<p>HTEMS: Hub Tivoli Enterprise Monitoring Server</p>
+<p>RTEMS: Remote Tivoli Enterprise Monitoring Server</p>
+<p>一个TEMS建议管理700个agent</p>
+<h1 id="tema">TEMA</h1>
+<p>TEMA: Tivoli Enterprise Monitoring Agent</p>
+<p>安装agent之后通过GUI工具Tivoli Enterprise Monitoring Service来配置和启动agent。</p>
+<p>也可以通过命令行来配置和启动agent。</p>
+<p>agent配置需要指定HTEMS服务器。</p>
+<h2 id="agentless">Agentless</h2>
+<p>TEMS -&gt; Agentless server -&gt; servers</p>
+<p>就是用一个中间服务器通过snmp等协议来监控不需要安装agent的被监控服务器。</p>
+<p>一个agentless可以设置10个实例(操作系统)，一个实例可以监控100个节点(被监控服务器)。</p>
+<p>Agentless OS agents:</p>
+<ol>
+<li>Agentless Monitoring for AIX OS - SNMP</li>
+<li>Agentless Monitoring for HP-UX OS - SNMP</li>
+<li>Agentless Monitoring for Linux OS - SNMP</li>
+<li>Agentless Monitoring for Solaris OS - SNMP,CIM-XML</li>
+<li>Agentless Monitoring for Windows OS - SNMP,WMI</li>
+</ol>
+<h2 id="agent">Agent</h2>
+<p>TEMS -&gt; servers(agent)</p>
+<p>一个agent连2个TEMS,一个primary，一个backup。</p>
+<p>agent分为：</p>
+<ol>
+<li>Operating System agent</li>
+<li>specialized agent</li>
+<li>Application agent</li>
+</ol>
+<p>OS agent：</p>
+<ol>
+<li>Windows</li>
+<li>Unix</li>
+<li>Linux</li>
+<li>IBM i5/OS</li>
+</ol>
+<p>specialized agent：</p>
+<ol>
+<li>warehouse proxy agent</li>
+<li>warehouse summarization and pruning agent</li>
+<li>Log file agent</li>
+<li>System p® agents (AIX Premium, CEC Base, HMC Base, VIOS Premium)</li>
+<li>Systems Director base agent</li>
+<li>Tivoli zEnterprise® Agent</li>
+<li>Performance Analyzer</li>
+</ol>
+<h1 id="tepsdb">TEPS+DB</h1>
+<p>TEPS: Tivoli Enterprise Portal Server</p>
+<p>使用MTEMS来配置TEPS,添加DB。</p>
+<h1 id="tepdtep-client">TEPD(TEP client)</h1>
+<p>TEP -&gt; TEPS</p>
+<p>TEP: Tivoli Enterprise Portal client</p>
+<p>TEP是GUI界面，分为：</p>
+<ol>
+<li>Desktop</li>
+<li>Browser</li>
+<li>JavaWS: java web start</li>
+</ol>
+<p>需要安装IBM的java，在C:\Program Files\IBM\Java70。</p>
+<p>使用TEP来查看监控结果。</p>
+<p>默认用户是sysadmin, 需要为TEPD指定TEPS服务器。</p>
+<ol>
+<li>
+<p>Browser版本</p>
+<pre><code> http://&lt;TEPS Server&gt;:15200/cnp.html
+</code></pre>
+</li>
+<li>
+<p>Desktop版本</p>
+<pre><code> http://&lt;TEPS Server&gt;:15200/tep.jnlp
+</code></pre>
+<p>安装ITM可以选择安装桌面版,也可以从Java Web Start获取桌面版。</p>
+</li>
+<li>
+<p>Java Web Start版本</p>
+<p>结合了desktop和browser的优点,从web下载，在桌面运行。</p>
+</li>
+</ol>
+<p>TEP的结构：</p>
+<ul>
+<li>
+<p>Navigator view</p>
+<p>Enterprise</p>
+<p>Operating Platform(操作系统类型)</p>
+<p>Node(一台服务器一个节点)</p>
+<p>Agent(一个节点上的agent)</p>
+<p>Situation(一个agent上的situation)</p>
+<p>Event(一个situation有多个event)</p>
+<p>Attribute group(相同的Situation是一个group)</p>
+</li>
+<li>
+<p>Navigator workspace</p>
+<p>每个view项目都有一个默认的workspace。</p>
+</li>
+</ul>
+<p>&hellip;</p>
+<h1 id="history-data-collectiontdw">History data collection(TDW)</h1>
+<p>TDW: Tivoli Data Warehouse</p>
+<p>存储历史数据。支持DB2，Oracle， MSSQL。</p>
+<p>也就是将agent收集的数据存到数据库。</p>
+<h2 id="warehouse-proxy">Warehouse Proxy</h2>
+<p>TDW使用该agent从agents收集和加载数据。</p>
+<p>使用MTEMS配置warehouse proxy。</p>
+<h2 id="summarization-and-pruning-agent">Summarization and Pruning agent</h2>
+<p>TDW使用该agent控制数据库大小。</p>
+<p>使用MTEMS配置summarization and pruning agent。</p>
+<h1 id="jazz-for-service-managementvisualization">Jazz for Service Management(Visualization)</h1>
+<h2 id="dashboard-application-services-hubdashvisualization-services">Dashboard Application Services Hub(DASH)(visualization services)</h2>
+<h2 id="ibm-tivoli-common-reportingreporting-services">IBM Tivoli Common Reporting(reporting services)</h2>
+<h2 id="registry-services">Registry Services</h2>
+<h2 id="security-services">Security Services</h2>
+<h2 id="administration-services">Administration Services</h2>
+<h2 id="tivoli-directory-integrator">Tivoli Directory Integrator</h2>
+<h2 id="ibm-http-server">IBM HTTP Server</h2>
+<h2 id="ibm-websphere-application-server">IBM WebSphere® Application Server</h2>
+<h2 id="web-server-plug-ins-for-ibm-websphere-application-server">Web Server Plug-ins for IBM WebSphere Application Server</h2>
+<p>&hellip;</p>
+<h1 id="management">Management</h1>
+<p>管理所有组件一般使用GUI叫manage tivoli monitoring services</p>
+<p>windows/linux/unix都可以用GUI。</p>
+<p>也可以使用CLI（命令行）,见后文.</p>
+<p>一般使用GUI来启动、停止和配置组件。</p>
+<h1 id="cli">CLI</h1>
+<p>Command Line Interface</p>
+<h2 id="tacmd">tacmd</h2>
+<p>支持windows/linux/unix。</p>
+<p>/opt/IBM/ITM/bin/tacmd</p>
+<p>C:\IBM\ITM\BIN\tacmd</p>
+<p>查看tacmd手册：</p>
+<pre><code>./tacmd help
+./tacmd ?
+</code></pre>
+<p>登陆和登出HTEMS:</p>
+<pre><code>./tacmd login -s [PROTOCOL://]HOST[:PORT] -u [USERNAME] -p [PASSWORD] -t [TIMEOUT]
+./tacmd logout
+</code></pre>
+<p>登陆和登出TEPS：</p>
+<pre><code>./tacmd tepsLogin -s [TEPS_HOSTNAME] -u [USERNAME] -p [TEPS_PASSWORD] -t [TIMEOUT] -i [IGNORE]
+./tacmd tepsLogout
+</code></pre>
+<p>管理agent：</p>
+<pre><code>./tacmd startAgent/stopAgent/restartAgent/viewAgent/updateAgent ...
+</code></pre>
+<p>刷新Netcool/OMNIbus：</p>
+<pre><code>./tacmd refreshTECinfo {-t|--type} {eif|maps|attr|all}
+</code></pre>
+<h2 id="itmcmd">itmcmd</h2>
+<p>用于Linux/Unix系统的命令</p>
+<p>/opt/IBM/ITM/bin/itmcmd</p>
+<p>查看itmcmd手册：</p>
+<pre><code>./itmcmd help
+./itmcmd ?
+</code></pre>
+<p>启动或停止TEMS:</p>
+<pre><code>./itmcmd server [-options] {start|stop} tems_name
+</code></pre>
+<p>启动或停止agent：</p>
+<pre><code>./itmcmd agent [-options] {start|stop} {pc ...|all}
+</code></pre>
+<p>启动MTEMS:</p>
+<pre><code>./itmcmd manage &amp;
+</code></pre>
+<h2 id="tivcmd">tivcmd</h2>
+<p>&hellip;</p>
+<h1 id="advanced-administration">Advanced Administration</h1>
+<h2 id="queriesquery-editor">Queries(query editor)</h2>
+<p>DB agent -&gt; normal way to get data source from database servers.</p>
+<p>ODBC -&gt; get data source from windows database</p>
+<p>JDBC -&gt; get data source from linux/unix database</p>
+<h2 id="advanced-link-topics">Advanced link topics</h2>
+<p>Simple link:</p>
+<p>Just used to navigate portal workspaces without using the navigator.</p>
+<p>Advanced link:</p>
+<p>Can be used to manipulate data that is displayed in the target workspace.</p>
+<h2 id="advanced-situation-techniquessituation-editor">Advanced situation techniques(situation editor)</h2>
+<h2 id="agent-autonomy">Agent autonomy</h2>
+<h2 id="policyworkflow-editor">Policy(workflow editor)</h2>
+<h2 id="agentless-monitoring">Agentless monitoring</h2>
+<p>TEPS -&gt; Agentless Monitoring Serve -&gt; Servers</p>
+<h2 id="agent-managent-servicesams">Agent Managent Services(AMS)</h2>
+<hr>
+<hr>
+<h1 id="agent-builder">Agent Builder</h1>
+<p>IBM Agent Builder agents</p>
+<p>windows:</p>
+<pre><code>C:\Program Files(x86)\IBM\AgentBuilder
+</code></pre>
+<p>aix/linux:</p>
+<pre><code>/opt/ibm/AgentBuilder
+</code></pre>
+<p>Data source:</p>
+<ol>
+<li>JDBC</li>
+<li>HTTP</li>
+<li>SOAP</li>
+<li>Ping</li>
+<li>Socket</li>
+<li>Java API</li>
+<li>WMI</li>
+<li>Perfmon</li>
+<li>CIM</li>
+<li>SNMP</li>
+<li>JMX</li>
+<li>command return code</li>
+<li>output from a script</li>
+<li>A log file</li>
+<li>AIX Binary Log</li>
+<li>windows event log</li>
+<li>A process</li>
+<li>A Windows service</li>
+</ol>
+<h1 id="create-agent">create agent</h1>
+<p>Every agent have a unique produce code.</p>
+<p>Like: k00-k99, k{0-9}{A-Z}.</p>
+<ol>
+<li>
+<p>Create the agent in the Agent Builder
+agent information
+data source
+runtime configuration</p>
+</li>
+<li>
+<p>Install and test the agent
+output and install the agent
+config and start agent in MTEMS.
+confirm agent data
+revise and retest as needed</p>
+</li>
+<li>
+<p>Add application support
+create in TEP, including queries, workspaces, situations, and take actions.
+Import application support into agent in Agent Builder.
+Retest the agent and application support</p>
+</li>
+<li>
+<p>Create an installation solution.
+Create solution install package from the agent.
+Create solution install package from the package.
+Run the image on the target location.</p>
+</li>
+</ol>
+<h1 id="install-agent">install agent</h1>
+<p>Three ways to instal the agent.</p>
+<p>You must install the TEMS and TEPS support on TEMS(HTEMS) and TEPS server.</p>
+<ol>
+<li>
+<p>generate the agent files in an ITM installation on this machine</p>
+<p>通过GUI快速安装，Agent Builder和ITM（TEMS和TEPS）安装在同一台机器上。</p>
+</li>
+<li>
+<p>generate a solution install package</p>
+<p>创建安装镜像来安装，windows的.exe和linux/unix的.bin。</p>
+</li>
+<li>
+<p>create a compressed file so that the agent can be installed on another system</p>
+<p>命令行安装。
+生成一个.zip和一个.tgz文件。
+包括windows的.bat和linux/unix的.sh安装文件</p>
+<p>安装下面三个包(等效方法一）：</p>
+<pre><code> InstallIra.bat/.sh itm_install_location [[-h Hub_TEMS_hostname] -u HUB_TEMS_username -p Hub_TEMS_password]
+ InstallIra.bat C:\IBM\ITM -h &lt;HTEMS&gt; -u &lt;username&gt; -p &lt;password&gt; # for windows
+ ./InstallIra.sh /opt/IBM/ITM -h &lt;HTEMS&gt; -u &lt;username&gt; -p &lt;password&gt; # for linux
+</code></pre>
+<p>在被监控机器安装agent:</p>
+<pre><code> installIraAgent.bat/.sh itm_install_location
+ installIraAgent.bat C:\IBM\ITM # for windows
+ ./installIraAgent.sh /opt/IBM/ITM # for linux
+</code></pre>
+<p>在TEMS(HTEMS)服务器安装对agent的支持：</p>
+<pre><code> installIraAgentTEMS.bat/.sh itm_install_location [[-h Hub_TEMS_hostname] -u HUB_TEMS_username -p Hub_TEMS_password]
+ installIraAgentTEMS.bat C:\IBM\ITM # for local HTEMS windows server.
+ ./installIraAgentTEMS.sh /opt/IBM/ITM # for local HTEMS linux server.
+</code></pre>
+<p>在TEPS服务器安装对agent的支持：</p>
+<pre><code> installIraAgentTEPS.bat/.sh itm_install_location [[-h TEPS_hostname] -u TEPS_username -p TEPS_password]
+ installIraAgentTEPS.bat C:\IBM\ITM # for local TEPS windows server.
+ ./installIraAgentTEPS.sh /opt/IBM/ITM # for local TEPS linux server.
+</code></pre>
+</li>
+</ol>
+<h1 id="config-agent">config agent</h1>
+<p>需要为agent指定HTEMS服务器，并重启agent，然后重启TEPD。</p>
+<p>可以通过Tivoli Enterprise Monitoring Service来配置和启动，也可以通过命令行。</p>
+<p>查看所有agent信息：</p>
+<pre><code>/opt/IBM/ITM/bin/cinfo -i # check the productcode and platformCode.
+</code></pre>
+<p>config agent:</p>
+<pre><code>./itmcmd config -A productcode
+</code></pre>
+<p>start agent:</p>
+<pre><code>./tacmd agent start productcode
+</code></pre>
+<h1 id="uninstall-agent">uninstall agent</h1>
+<ol>
+<li>
+<p>uninstall from commandline.</p>
+<p>windows:</p>
+<pre><code> cd ITM_INSTALL/TMAITM6
+ cd C:\IBM\ITM\TMAITM6_x64
+ kxx_uninstall.vbs ITM_INSTALL
+ K&lt;product code&gt;_uninstall.vbs C:\IBM\ITM
+</code></pre>
+<p>linux/unix:</p>
+<pre><code> /opt/IBM/ITM/bin/uninstall.sh [-f] [-i] [-h install_dir] productcode platformCode
+</code></pre>
+</li>
+<li>
+<p>Remove from TEP client(clear offline entry)</p>
+</li>
+</ol>
+<h1 id="monitoring-windows-resources">Monitoring windows resources</h1>
+<ol>
+<li>
+<p>Windows Management Instrumentation(WMI)</p>
+</li>
+<li>
+<p>Windows Performance Monitor(Perfmon)</p>
+</li>
+<li>
+<p>Windows Event Log</p>
+</li>
+</ol>
+<h1 id="monitoring-process-and-command-return-codes">Monitoring process and command return codes</h1>
+<ol>
+<li>
+<p>Monitoring process</p>
+</li>
+<li>
+<p>Monitoring command return code</p>
+</li>
+</ol>
+<h1 id="monitoring-custom-data-sources">Monitoring custom data sources</h1>
+<ol>
+<li>
+<p>Monitoring script output</p>
+</li>
+<li>
+<p>Monitoring log file</p>
+</li>
+</ol>
+<h1 id="monitoring-remote-resources">Monitoring remote resources</h1>
+<ol>
+<li>
+<p>Monitoring SNMP</p>
+</li>
+<li>
+<p>Monitoring CIM</p>
+</li>
+<li>
+<p>Moitoring JMX</p>
+</li>
+</ol>
+<hr>
+<hr>
+<h1 id="netcoolomnibus">Netcool/OMNIbus</h1>
+<p>IBM Tivoli Netcool/OMNIbus</p>
+<p>TEC: Tivoli Enterprise Console, 已经被Netcool/OMNIbus替代。</p>
+<p>windows:</p>
+<pre><code>C:\Program Files(x86)\IBM\NCOhome
+</code></pre>
+<p>linux/aix:</p>
+<pre><code>/opt/IBM/NCOhome
+</code></pre>
+<p>Browser版本需要安装IBM的JRE，在C:\Program Files\IBM\Java70。</p>
+<h1 id="eif">EIF</h1>
+<p>EIF: Event Integration Facility</p>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Canux</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        20047-01-01T457:13:319
+        
+    </span>
+  </p>
+  
+  
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">Reward</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/reward/wechat.png">
+        <span>wechat</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/reward/alipay.png">
+        <span>alipay</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/monitoring/">monitoring</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/ps_utils/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Utils</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/shell_find/">
+            <span class="next-text nav-default">Find</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+       </div>
+       <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2016-04-20 13:57:31 \u002b0000 UTC',
+        title: 'Tivoli',
+        clientID: '3d41a2a237fabe050cc0',
+        clientSecret: '868aa81b294f1463ddb6edc007576ecfed7d2075',
+        repo: 'crazy-canux.github.io',
+        owner: 'crazy-canux',
+        admin: ['crazy-canux'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+  
+
+  
+
+     </div>
+   </main>
+   
+
+   
+   <footer id="footer" class="footer">
+     <div class="social-links">
+      <a href="mailto:canuxcheng@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/crazy-canux" class="iconfont icon-github" title="github"></a>
+      <a href="https://www.linkedin.com/in/canux-cheng-4b5b23ab/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://stackoverflow.com/users/4344009/canux" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+  <a href="https://canuxcheng.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/crazy-canux/hugo-theme-canux">Canux</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> site pv: <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> site uv: <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2013 - 
+    2023<span class="heart"><i class="iconfont icon-heart"></i></span><span>Canux CHENG</span>
+  </span>
+</div>
+
+   </footer>
+   
+
+   <div class="back-to-top" id="back-to-top">
+     <i class="iconfont icon-up"></i>
+   </div>
+ </div>
+ <script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.locales.min.js" integrity="sha256-ZwofwC1Lf/faQCzN7nZtfijVV6hSwxjQMwXL4gn9qU8=" crossorigin="anonymous"></script>
+  <script><!-- NOTE: timeago.js uses the language code format like "zh_CN" (underscore and case sensitive) -->
+    var languageCode = "en".replace(/-/g, '_').replace(/_(.*)/, function ($0, $1) {return $0.replace($1, $1.toUpperCase());});
+    timeago().render(document.querySelectorAll('.timeago'), languageCode);
+    timeago.cancel();  
+  </script><script></script><script src="https://cdn.jsdelivr.net/npm/raphael@2.2.7/raphael.min.js" integrity="sha256-67By+NpOtm9ka1R6xpUefeGOY8kWWHHRAKlvaTJ7ONI=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/flowchart.js@1.8.0/release/flowchart.min.js" integrity="sha256-zNGWjubXoY6rb5MnmpBNefO0RgoVYfle9p0tvOQM+6k=" crossorigin="anonymous"></script><script></script><script src="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.js" integrity="sha256-4O4pS1SH31ZqrSO2A/2QJTVjTPqVe+jnYgOWUVr7EEc=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/snapsvg@0.5.1/dist/snap.svg-min.js" integrity="sha256-oI+elz+sIm+jpn8F/qEspKoKveTc5uKeFHNNVexe6d8=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/underscore@1.8.3/underscore-min.js" integrity="sha256-obZACiHd7gkOk9iIL/pimWMTJ4W/pBsKu+oZnSeBIek=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/gh/bramp/js-sequence-diagrams@2.0.1/dist/sequence-diagram-min.js" integrity="sha384-8748Vn52gHJYJI0XEuPB2QlPVNUkJlJn9tHqKec6J3q2r9l8fvRxrgn/E5ZHV0sP" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bramp/js-sequence-diagrams@2.0.1/dist/sequence-diagram-min.css" integrity="sha384-6QbLKJMz5dS3adWSeINZe74uSydBGFbnzaAYmp+tKyq60S7H2p6V7g1TysM5lAaF" crossorigin="anonymous">
+
+
+
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex: {
+        }
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.0.5/es5/tex-mml-chtml.js" integrity="sha256-HGLuEfFcsUJGhvB8cQ8nr0gai9EucOOaIxFw7qxmd+w=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

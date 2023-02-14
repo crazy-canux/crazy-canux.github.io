@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>vault on Morgoth</title>
+    <link>https://canuxcheng.com/tags/vault/</link>
+    <description>Recent content in vault on Morgoth</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 15 Apr 2016 09:41:39 +0800</lastBuildDate><atom:link href="https://canuxcheng.com/tags/vault/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Vault</title>
+      <link>https://canuxcheng.com/post/devops_vault/</link>
+      <pubDate>Fri, 15 Apr 2016 09:41:39 +0800</pubDate>
+      
+      <guid>https://canuxcheng.com/post/devops_vault/</guid>
+      <description>Vault https://github.com/hashicorp/vault Install: https://learn.hashicorp.com/tutorials/vault/getting-started-install CLI 可以通过环境变量或者命令行参数指定server: -address VAULT_ADDR -namespace VAULT_NAMESPACE vault [subcommand] -address=&amp;quot;https://server:8200&amp;quot; server: // 启动vault $ vault server -config=/etc/vault/config.hcl agent: $ vault agent login: // 跟据token登陆. $ vault login operator: //</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="utf-8">
+ <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+ <title>CSS - Morgoth</title>
+ <meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+<meta name="theme-color" content="#f8f5ec" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+
+<meta name="author" content="Canux" /><meta name="description" content="CSS CSS是叠层样式表 CSS3 CSS3是最新的CSS标准 CSS创建 优先级从上往下。 内联样式， 在html中通过style属性定义，仅用于一个html元" /><meta name="keywords" content="Hugo, theme, canux" />
+
+
+
+
+
+
+<meta name="generator" content="Hugo 0.110.0 with theme even" />
+
+
+<link rel="canonical" href="https://canuxcheng.com/post/css/" />
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5">
+
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<link href="/sass/main.min.69e0bbe2419d9b0efbdcc1d3b4338bba03a6f6789ae2832bc1af58e5b2757470.css" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.css" integrity="sha256-7TyXnr2YU040zfSP+rEcz29ggW4j56/ujTPwjMzyqFY=" crossorigin="anonymous">
+
+
+<meta property="og:title" content="CSS" />
+<meta property="og:description" content="CSS CSS是叠层样式表 CSS3 CSS3是最新的CSS标准 CSS创建 优先级从上往下。 内联样式， 在html中通过style属性定义，仅用于一个html元" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://canuxcheng.com/post/css/" /><meta property="article:section" content="post" />
+<meta property="article:published_time" content="2016-06-23T09:40:45+00:00" />
+<meta property="article:modified_time" content="2016-06-23T09:40:45+00:00" />
+<meta itemprop="name" content="CSS">
+<meta itemprop="description" content="CSS CSS是叠层样式表 CSS3 CSS3是最新的CSS标准 CSS创建 优先级从上往下。 内联样式， 在html中通过style属性定义，仅用于一个html元"><meta itemprop="datePublished" content="2016-06-23T09:40:45+00:00" />
+<meta itemprop="dateModified" content="2016-06-23T09:40:45+00:00" />
+<meta itemprop="wordCount" content="1316">
+<meta itemprop="keywords" content="css," /><meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="CSS"/>
+<meta name="twitter:description" content="CSS CSS是叠层样式表 CSS3 CSS3是最新的CSS标准 CSS创建 优先级从上往下。 内联样式， 在html中通过style属性定义，仅用于一个html元"/>
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+</head>
+<body>
+ <div id="mobile-navbar" class="mobile-navbar">
+  <div class="mobile-header-logo">
+    <a href="/" class="logo">Morgoth</a>
+  </div>
+  <div class="mobile-navbar-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</div>
+<nav id="mobile-menu" class="mobile-menu slideout-menu">
+  <ul class="mobile-menu-list">
+    <a href="/">
+        <li class="mobile-menu-item">Home</li>
+      </a><a href="/about/">
+        <li class="mobile-menu-item">About</li>
+      </a><a href="/tags/">
+        <li class="mobile-menu-item">Tags</li>
+      </a><a href="/categories/">
+        <li class="mobile-menu-item">Categories</li>
+      </a><a href="/rtfm/">
+        <li class="mobile-menu-item">RTFM</li>
+      </a><a href="/samuel/">
+        <li class="mobile-menu-item">昕焱</li>
+      </a><a href="/search/">
+        <li class="mobile-menu-item">Search</li>
+      </a>
+  </ul>
+</nav>
+ <div class="container" id="mobile-panel">
+   <header id="header" class="header">
+       <div class="logo-wrapper">
+  <a href="/" class="logo">Morgoth</a>
+</div>
+
+<nav class="site-navbar">
+  <ul id="menu" class="menu">
+    <li class="menu-item">
+        <a class="menu-item-link" href="/">Home</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/about/">About</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/tags/">Tags</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/categories/">Categories</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/rtfm/">RTFM</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/samuel/">昕焱</a>
+      </li><li class="menu-item">
+        <a class="menu-item-link" href="/search/">Search</a>
+      </li>
+  </ul>
+</nav>
+
+<div class="js-toggle-wrapper">
+    <div class="js-toggle">
+        <div class="js-toggle-track">
+            <div class="js-toggle-track-check">
+                <img src="data:image/png;base64,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" role="presentation" style="pointer-events: none;" width="16" height="16">
+            </div>
+            <div class="js-toggle-track-x">
+                <img src="data:image/png;base64,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" role="presentation" style="pointer-events: none;" width="16" height="16">
+            </div>
+        </div>
+        <div class="js-toggle-thumb"></div>
+        <input class="js-toggle-screenreader-only" type="checkbox" aria-label="Switch between Dark and Light mode">
+    </div>
+</div>
+
+<style>
+ 
+
+.js-toggle-wrapper {
+    display: table;
+    margin: 0 auto;
+}
+
+.js-toggle {
+    touch-action: pan-x;
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+    background-color: transparent;
+    border: 0;
+    padding: 0;
+    -webkit-touch-callout: none;
+    user-select: none;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  .js-toggle-screenreader-only {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  
+  .js-toggle-track {
+    width: 50px;
+    height: 24px;
+    padding: 0;
+    border-radius: 30px;
+    background-color: hsl(222, 14%, 7%);
+    transition: all 0.2s ease;
+  }
+  
+  .js-toggle-track-check {
+    position: absolute;
+    width: 17px;
+    height: 17px;
+    left: 5px;
+    top: 0px;
+    bottom: 0px;
+    margin-top: auto;
+    margin-bottom: auto;
+    line-height: 0;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+  
+  .js-toggle--checked .js-toggle-track-check {
+    opacity: 1;
+    transition: opacity 0.25s ease;
+  }
+  
+  .js-toggle-track-x {
+    position: absolute;
+    width: 17px;
+    height: 17px;
+    right: 5px;
+    top: 0px;
+    bottom: 0px;
+    margin-top: auto;
+    margin-bottom: auto;
+    line-height: 0;
+    opacity: 1;
+    transition: opacity 0.25s ease;
+  }
+  
+  .js-toggle--checked .js-toggle-track-x {
+    opacity: 0;
+  }
+  
+  .js-toggle-thumb {
+    position: absolute;
+    top: 1px;
+    left: 1px;
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background-color: #fafafa;
+    box-sizing: border-box;
+    transition: all 0.5s cubic-bezier(0.23, 1, 0.32, 1) 0ms;
+    transform: translateX(0);
+  }
+  
+  .js-toggle--checked .js-toggle-thumb {
+    transform: translateX(26px);
+    border-color: #19ab27;
+  }
+  
+  .js-toggle--focus .js-toggle-thumb {
+    box-shadow: 0px 0px 2px 3px rgb(255, 167, 196);
+  }
+  
+  .js-toggle:active .js-toggle-thumb {
+    box-shadow: 0px 0px 5px 5px rgb(255, 167, 196);
+  }
+
+  body.dark-mode,
+  body.dark-mode main * {
+    background: rgb(45, 45, 45);
+    color: #f5f5f5;
+}
+</style>
+
+
+
+<script>
+    var body = document.body;
+	var switcher = document.getElementsByClassName('js-toggle')[0];
+
+	
+	switcher.addEventListener("click", function() {
+        this.classList.toggle('js-toggle--checked');
+        this.classList.add('js-toggle--focus');
+		
+		if (this.classList.contains('js-toggle--checked')) {
+			body.classList.add('dark-mode');
+			
+			localStorage.setItem('darkMode', 'true');
+		} else {
+			body.classList.remove('dark-mode');
+			setTimeout(function() {
+				localStorage.removeItem('darkMode');
+			}, 100);
+		}
+	})
+
+	
+	if (localStorage.getItem('darkMode')) {
+		
+        switcher.classList.add('js-toggle--checked');
+        body.classList.add('dark-mode');
+	}
+
+</script>
+   </header>
+
+   
+   <main id="main" class="main">
+     <div class="content-wrapper">
+       <div id="content" class="content">
+         <article class="post">
+    
+    <header class="post-header">
+      <h1 class="post-title">CSS</h1>
+
+      <div class="post-meta">
+        <span class="post-time"> 23067-09-09T640:09:459 </span>
+        <div class="post-category">
+            <a href="/categories/web/"> Web </a>
+            </div>
+          <span class="more-meta"> 1316 words </span>
+          <span class="more-meta"> 3 mins read </span>
+        <span id="busuanzi_container_page_pv" class="more-meta"> <span id="busuanzi_value_page_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> times read </span>
+      </div>
+    </header>
+
+    <div class="post-toc" id="post-toc">
+  <h2 class="post-toc-title">Contents</h2>
+  <div class="post-toc-content">
+    <nav id="TableOfContents">
+  <ul>
+    <li><a href="#css"><strong>CSS</strong></a></li>
+    <li><a href="#css3">CSS3</a></li>
+    <li><a href="#css创建">CSS创建</a></li>
+    <li><a href="#css基本语法"><strong>CSS基本语法</strong></a></li>
+    <li><a href="#css选择器"><strong>CSS选择器</strong></a>
+      <ul>
+        <li><a href="#元素选择器">元素选择器</a></li>
+        <li><a href="#id选择器">id选择器</a></li>
+        <li><a href="#class选择器">class选择器</a></li>
+        <li><a href="#属性选择器">属性选择器</a></li>
+        <li><a href="#后代选择器descendant">后代选择器/descendant</a></li>
+        <li><a href="#子元素选择器child">子元素选择器/child</a></li>
+        <li><a href="#相邻兄弟选择器adjacent-sibling">相邻兄弟选择器/adjacent sibling</a></li>
+      </ul>
+    </li>
+    <li><a href="#css样式"><strong>CSS样式</strong></a>
+      <ul>
+        <li><a href="#background样式">background样式</a></li>
+        <li><a href="#文本样式">文本样式</a></li>
+        <li><a href="#字体样式">字体样式</a></li>
+        <li><a href="#链接样式">链接样式</a></li>
+        <li><a href="#列表样式">列表样式</a></li>
+        <li><a href="#表格样式">表格样式</a></li>
+        <li><a href="#轮廓样式">轮廓样式</a></li>
+        <li><a href="#尺寸属性">尺寸属性</a></li>
+      </ul>
+    </li>
+    <li><a href="#css模型框"><strong>CSS模型框</strong></a>
+      <ul>
+        <li><a href="#内边距属性">内边距属性</a></li>
+        <li><a href="#边框属性">边框属性</a></li>
+        <li><a href="#外边距属性">外边距属性</a></li>
+      </ul>
+    </li>
+    <li><a href="#css定位"><strong>CSS定位</strong></a>
+      <ul>
+        <li><a href="#color">color</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+  </div>
+</div>
+  <div class="post-outdated">
+    <div class="warn">
+      <p>[NOTE] Updated <span class="timeago" datetime="2016-06-23T09:40:45" title="June 23, 2016">June 23, 2016</span>. This article may have outdated content or subject matter.</p>
+    </div>
+  </div>
+    <div class="post-content">
+      <h1 id="css"><strong>CSS</strong></h1>
+<p>CSS是叠层样式表</p>
+<h1 id="css3">CSS3</h1>
+<p>CSS3是最新的CSS标准</p>
+<h1 id="css创建">CSS创建</h1>
+<p>优先级从上往下。</p>
+<ol>
+<li>内联样式， 在html中通过style属性定义，仅用于一个html元素。</li>
+<li>内部样式表，在html中通过style标签在头部定义,针对单个页面。</li>
+<li>外部样式表，在html中通过link标签在文档头部定义，方便将样式用于多个页面。</li>
+<li>浏览器的默认值。</li>
+</ol>
+<hr>
+<h1 id="css基本语法"><strong>CSS基本语法</strong></h1>
+<p>CSS由两部分组成，选择器和声明，选择器是html元素，声明由属性和值组成。</p>
+<pre><code>selector {
+  property1: value1;
+  property2: value2;
+  ...;
+}
+</code></pre>
+<p>多个声明用分号隔开，属性的值有空格要用引号。</p>
+<p>CSS对大小写不敏感。</p>
+<p>CSS注释:</p>
+<pre><code>/* comment */
+</code></pre>
+<hr>
+<h1 id="css选择器"><strong>CSS选择器</strong></h1>
+<p>最常见的选择器是元素选择器,html元素是最基本的选择器。</p>
+<h2 id="元素选择器">元素选择器</h2>
+<p>html {color:black;}</p>
+<h2 id="id选择器">id选择器</h2>
+<p>id选择器可以为标有特定id的html元素指定特定样式。</p>
+<p>id选择器用#开头定义。</p>
+<pre><code>#red {color: red;}
+#green {color: green;}
+
+&lt;p id=&quot;red&quot;&gt;This is red.&lt;/p&gt;
+</code></pre>
+<p>id选择器常常用来建立派生选择器：</p>
+<pre><code>#sidebar p {
+  font-style: italic;
+  text-align: right;
+  margin-top: 0.5em;
+}
+
+&lt;div id=&quot;sidebar&quot;&gt;...&lt;/div&gt;
+</code></pre>
+<h2 id="class选择器">class选择器</h2>
+<p>和id选择器功能类似，类选择器以.开头。</p>
+<pre><code>.center {text-align: center}
+
+&lt;h1 class=&quot;center&quot;&gt;...&lt;/h1&gt;
+</code></pre>
+<p>类选择器用于建立派生选择器：</p>
+<pre><code>.fancy td {
+  color: #f60;
+  background: #666;
+}
+
+&lt;td class=&quot;fancy&quot;&gt;
+</code></pre>
+<p>也可以用：</p>
+<pre><code>td.fancy {
+  color: #f60;
+  background: #666;
+}
+
+&lt;td class=&quot;fancy&quot;&gt;
+</code></pre>
+<h2 id="属性选择器">属性选择器</h2>
+<p>为拥有指定属性的html元素设置样式。</p>
+<pre><code>[title]
+{
+  color: red;
+}
+
+&lt;a title=&quot;title is red&quot;&gt;...&lt;/a&gt;
+</code></pre>
+<p>属性和值选择器：</p>
+<pre><code>[title=w3c]
+{
+  border: 5px solid blue;
+}
+
+&lt;img title=&quot;w3c&quot; src=&quot;/images/w3c.gif&quot;&gt;
+
+# 属性和值选择器的操作符：
+=
+~=
+|=
+^=
+$=
+*=
+</code></pre>
+<h2 id="后代选择器descendant">后代选择器/descendant</h2>
+<h2 id="子元素选择器child">子元素选择器/child</h2>
+<h2 id="相邻兄弟选择器adjacent-sibling">相邻兄弟选择器/adjacent sibling</h2>
+<hr>
+<h1 id="css样式"><strong>CSS样式</strong></h1>
+<p>内联样式：</p>
+<pre><code>&lt;p style=&quot;background: #ff0000 url(/i/eg_bg_03.gif) no-repeat fixed center&quot;&gt;...&lt;/h1&gt;
+</code></pre>
+<p>样式表：</p>
+<pre><code>p {
+  background: #ff0000 url(/i/eg_bg_03.gif) no-repeat fixed center;
+}
+</code></pre>
+<h2 id="background样式">background样式</h2>
+<pre><code>background: # 可以定义所有背景的值
+background-color: gray # 背景颜色
+background-image: url(/images/test.gif) # 背景图片,默认水平和垂直都平铺
+background-repeat: repeat-x # 水平方向平铺
+background-repeat: repeat-y # 垂直方向平铺
+background-repeat: no-repeat # 不平铺
+background-position: center/top/buttom/left/right # 图像在背景中的位置
+background-attachment: fixed # 图像相对于可视区是固定的
+background-size
+background-origin
+background-clip
+</code></pre>
+<h2 id="文本样式">文本样式</h2>
+<pre><code>color: red # 设置文本颜色
+line-height # 设置行高
+letter-spacing # 设置字符间距
+word-spacing # 设置字间距
+text-indent # 缩进元素中文本首行
+direction: ltr/rtl # 设置文本方向
+text-align: left/right/center/justify # 对齐元素中的文本
+text-decoration: none/underline/overline/line-through/blink # 向文本添加修饰
+text-transform: none/capitalize/uppercase/lowercase # 控制元素的字母
+white-space: normal/pre/nowrap/pre-wrap/pre-line # 设置元素中空白的处理方式
+</code></pre>
+<h2 id="字体样式">字体样式</h2>
+<pre><code>font: # 定义所有和字体有关的属性
+font-family: # 设置字体系列
+font-size:  # 设置字体尺寸
+font-style: normal/italic/oblique # 设置字体风格
+font-variant: normal/small-caps # 设置字体变体
+font-weight: normal/bold/bolder/lighter/... # 设置字体粗细
+</code></pre>
+<h2 id="链接样式">链接样式</h2>
+<p>链接可以设置background，color，font等样式。</p>
+<pre><code>a:link {background: red} # 普通的未被访问的链接
+a:visited {color: blue} # 用户已访问的链接
+a:hover {font: } # 鼠标指针位于链接的上方
+a:active {font: } # 链接被点击的时刻
+</code></pre>
+<h2 id="列表样式">列表样式</h2>
+<pre><code>list-style: # 定义所有和列表相关的属性
+list-style-image: # 把图像设置为列表项标志
+list-style-position: inside/outside # 设置列表项标志的位置
+list-style-type: # 设置列表项标志的位置
+</code></pre>
+<h2 id="表格样式">表格样式</h2>
+<pre><code>border-collapse: separate/collapse # 设置是否把表格边框合并为单一的边框
+border-spacing: # 设置分割单元边框距离
+caption-side: top/bottom # 规定表格标题设置方式
+empty-cells: hide/show # 设置是否现实表格中的空单元格
+table-layout: automatic/fixed # 设置现实单元，行和列的算法
+</code></pre>
+<h2 id="轮廓样式">轮廓样式</h2>
+<pre><code>outline: # 设置所有和轮廓相关的属性
+outline-color: # 设置轮廓颜色
+outline-style: none/dotted/dashed/solid/double/groove/ridge/inset/outset # 设置轮廓风格
+outline-width: # 设置轮廓宽度
+</code></pre>
+<h2 id="尺寸属性">尺寸属性</h2>
+<pre><code>height
+width
+max-height
+max-width
+min-height
+min-width
+</code></pre>
+<hr>
+<h1 id="css模型框"><strong>CSS模型框</strong></h1>
+<h2 id="内边距属性">内边距属性</h2>
+<pre><code>padding
+padding-top
+padding-rigit
+padding-bottom
+padding-left
+</code></pre>
+<h2 id="边框属性">边框属性</h2>
+<pre><code>border
+border-style
+border-width
+border-color
+border-buttom
+border-buttom-color/style/width
+border-left
+border-left-color/style/width
+border-right
+border-right-color/style/width
+border-top
+border-top-color/style/width
+</code></pre>
+<h2 id="外边距属性">外边距属性</h2>
+<pre><code>margin # 依次为上，右，下，左．
+margin-right
+margin-top
+margin-bottom
+margin-left
+</code></pre>
+<hr>
+<h1 id="css定位"><strong>CSS定位</strong></h1>
+<pre><code>position # 规定元素的定位
+top
+right
+bottom
+left
+overflow # 内容益处元素框时，visible/hidden/scroll/auto/inderit
+clip
+vertical-align
+z-index
+display # 规定元素应该生成的框的类型, inline/none/block/...
+float # none/left/right/inderit, 规定框是否应该浮动
+</code></pre>
+<hr>
+<h2 id="color">color</h2>
+<p>16进制 和 rgb表示</p>
+<pre><code>rgb(255,255,255) == #FFFFFF == white
+rgb(0,0,0) == #000000 == black
+rgb(255,0,0) == red
+rgb(0,255,0) == green
+rgb(0,0,255) == blue
+rgb(255,255,0) == yellow
+</code></pre>
+
+    </div>
+
+    <div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Canux</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+        23067-09-09T640:09:459
+        
+    </span>
+  </p>
+  
+  
+</div>
+<div class="post-reward">
+  <input type="checkbox" name="reward" id="reward" hidden />
+  <label class="reward-button" for="reward">Reward</label>
+  <div class="qr-code">
+    
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/reward/wechat.png">
+        <span>wechat</span>
+      </label>
+    <label class="qr-code-image" for="reward">
+        <img class="image" src="/img/reward/alipay.png">
+        <span>alipay</span>
+      </label>
+  </div>
+</div><footer class="post-footer">
+      <div class="post-tags">
+          <a href="/tags/css/">css</a>
+          </div>
+      <nav class="post-nav">
+        <a class="prev" href="/post/yaml/">
+            <i class="iconfont icon-left"></i>
+            <span class="prev-text nav-default">Yaml</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+        <a class="next" href="/post/html/">
+            <span class="next-text nav-default">Html</span>
+            <span class="next-text nav-mobile">Next</span>
+            <i class="iconfont icon-right"></i>
+          </a>
+      </nav>
+    </footer>
+  </article>
+       </div>
+       <div id="gitalk-container"></div>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+      var gitalk = new Gitalk({
+        id: '2016-06-23 09:40:45 \u002b0000 UTC',
+        title: 'CSS',
+        clientID: '3d41a2a237fabe050cc0',
+        clientSecret: '868aa81b294f1463ddb6edc007576ecfed7d2075',
+        repo: 'crazy-canux.github.io',
+        owner: 'crazy-canux',
+        admin: ['crazy-canux'],
+        body: decodeURI(location.href)
+      });
+      gitalk.render('gitalk-container');
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://github.com/gitalk/gitalk">comments powered by gitalk.</a></noscript>
+
+  
+
+  
+
+     </div>
+   </main>
+   
+
+   
+   <footer id="footer" class="footer">
+     <div class="social-links">
+      <a href="mailto:canuxcheng@gmail.com" class="iconfont icon-email" title="email"></a>
+      <a href="https://github.com/crazy-canux" class="iconfont icon-github" title="github"></a>
+      <a href="https://www.linkedin.com/in/canux-cheng-4b5b23ab/" class="iconfont icon-linkedin" title="linkedin"></a>
+      <a href="https://stackoverflow.com/users/4344009/canux" class="iconfont icon-stack-overflow" title="stack-overflow"></a>
+  <a href="https://canuxcheng.com/index.xml" type="application/rss+xml" class="iconfont icon-rss" title="rss"></a>
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - 
+    <a class="theme-link" href="https://github.com/crazy-canux/hugo-theme-canux">Canux</a>
+  </span>
+
+  <div class="busuanzi-footer">
+    <span id="busuanzi_container_site_pv"> site pv: <span id="busuanzi_value_site_pv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> </span>
+      <span class="division">|</span>
+    <span id="busuanzi_container_site_uv"> site uv: <span id="busuanzi_value_site_uv"><img src="/img/spinner.svg" alt="spinner.svg"/></span> </span>
+  </div>
+
+  <span class="copyright-year">
+    &copy; 
+    2013 - 
+    2023<span class="heart"><i class="iconfont icon-heart"></i></span><span>Canux CHENG</span>
+  </span>
+</div>
+
+   </footer>
+   
+
+   <div class="back-to-top" id="back-to-top">
+     <i class="iconfont icon-up"></i>
+   </div>
+ </div>
+ <script src="/lib/highlight/highlight.pack.js?v=20171001"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.2.1/dist/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/slideout@1.0.1/dist/slideout.min.js" integrity="sha256-t+zJ/g8/KXIJMjSVQdnibt4dlaDxc9zXr/9oNPeWqdg=" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@3.1.20/dist/jquery.fancybox.min.js" integrity="sha256-XVLffZaxoWfGUEbdzuLi7pwaUJv1cecsQJQqGLe7axY=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.min.js" integrity="sha256-jwCP0NAdCBloaIWTWHmW4i3snUNMHUNO+jr9rYd2iOI=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/timeago.js@3.0.2/dist/timeago.locales.min.js" integrity="sha256-ZwofwC1Lf/faQCzN7nZtfijVV6hSwxjQMwXL4gn9qU8=" crossorigin="anonymous"></script>
+  <script><!-- NOTE: timeago.js uses the language code format like "zh_CN" (underscore and case sensitive) -->
+    var languageCode = "en".replace(/-/g, '_').replace(/_(.*)/, function ($0, $1) {return $0.replace($1, $1.toUpperCase());});
+    timeago().render(document.querySelectorAll('.timeago'), languageCode);
+    timeago.cancel();  
+  </script><script></script><script src="https://cdn.jsdelivr.net/npm/raphael@2.2.7/raphael.min.js" integrity="sha256-67By+NpOtm9ka1R6xpUefeGOY8kWWHHRAKlvaTJ7ONI=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/flowchart.js@1.8.0/release/flowchart.min.js" integrity="sha256-zNGWjubXoY6rb5MnmpBNefO0RgoVYfle9p0tvOQM+6k=" crossorigin="anonymous"></script><script></script><script src="https://cdn.jsdelivr.net/npm/webfontloader@1.6.28/webfontloader.js" integrity="sha256-4O4pS1SH31ZqrSO2A/2QJTVjTPqVe+jnYgOWUVr7EEc=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/snapsvg@0.5.1/dist/snap.svg-min.js" integrity="sha256-oI+elz+sIm+jpn8F/qEspKoKveTc5uKeFHNNVexe6d8=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/npm/underscore@1.8.3/underscore-min.js" integrity="sha256-obZACiHd7gkOk9iIL/pimWMTJ4W/pBsKu+oZnSeBIek=" crossorigin="anonymous"></script> <script src="https://cdn.jsdelivr.net/gh/bramp/js-sequence-diagrams@2.0.1/dist/sequence-diagram-min.js" integrity="sha384-8748Vn52gHJYJI0XEuPB2QlPVNUkJlJn9tHqKec6J3q2r9l8fvRxrgn/E5ZHV0sP" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/bramp/js-sequence-diagrams@2.0.1/dist/sequence-diagram-min.css" integrity="sha384-6QbLKJMz5dS3adWSeINZe74uSydBGFbnzaAYmp+tKyq60S7H2p6V7g1TysM5lAaF" crossorigin="anonymous">
+
+
+
+<script type="text/javascript" src="/js/main.min.4ae89da218555efa0e7093a20b92017d2e1202b66fff9fc2edf4cb8d44b44c6e.js"></script>
+  <script type="text/javascript">
+    window.MathJax = {
+      tex: {
+        }
+    };
+  </script>
+  <script async src="https://cdn.jsdelivr.net/npm/mathjax@3.0.5/es5/tex-mml-chtml.js" integrity="sha256-HGLuEfFcsUJGhvB8cQ8nr0gai9EucOOaIxFw7qxmd+w=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+</body>
+</html>

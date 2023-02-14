@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>capture on Morgoth</title>
+    <link>https://canuxcheng.com/tags/capture/</link>
+    <description>Recent content in capture on Morgoth</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 28 Jul 2021 16:08:54 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/capture/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CORS</title>
+      <link>https://canuxcheng.com/post/sec_cors/</link>
+      <pubDate>Wed, 28 Jul 2021 16:08:54 +0000</pubDate>
+      
+      <guid>https://canuxcheng.com/post/sec_cors/</guid>
+      <description>CORS CORS: Cross-Origin resource sharing, 跨域资源共享. 允许浏览器向跨源服务器发出XMLHttpRequest请求，从而克服AJAX只能同源使用的限制。 大部分浏览器都支持C</description>
+    </item>
+    
+    <item>
+      <title>Capture</title>
+      <link>https://canuxcheng.com/post/sec_capture/</link>
+      <pubDate>Sat, 28 Jul 2018 16:08:54 +0000</pubDate>
+      
+      <guid>https://canuxcheng.com/post/sec_capture/</guid>
+      <description>Packet Capture 网络抓包 Fiddler http://www.telerik.com/fiddler Wireshark https://www.wireshark.org/</description>
+    </item>
+    
+    <item>
+      <title>Csrf</title>
+      <link>https://canuxcheng.com/post/sec_csrf/</link>
+      <pubDate>Sat, 28 Jul 2018 16:08:54 +0000</pubDate>
+      
+      <guid>https://canuxcheng.com/post/sec_csrf/</guid>
+      <description>CSRF Cross-site request forgery, 跨站请求伪造． 发生条件： 登陆受信任网站A, 并在本地生成cookie 在不退出A的情况下，访问危险网站B 预防方法: 正确使用get,pos</description>
+    </item>
+    
+    <item>
+      <title>Cfssl</title>
+      <link>https://canuxcheng.com/post/sec_cfssl/</link>
+      <pubDate>Sat, 28 Jul 2018 16:08:54 +0800</pubDate>
+      
+      <guid>https://canuxcheng.com/post/sec_cfssl/</guid>
+      <description>cfssl https://github.com/cloudflare/cfssl</description>
+    </item>
+    
+    <item>
+      <title>Cryptographic</title>
+      <link>https://canuxcheng.com/post/sec_cryptographic/</link>
+      <pubDate>Mon, 27 Mar 2017 17:11:58 +0000</pubDate>
+      
+      <guid>https://canuxcheng.com/post/sec_cryptographic/</guid>
+      <description>PGP PGP: Pretty Good Privacy。 用于签名和加密解密。 PGP https://en.wikipedia.org/wiki/Pretty_Good_Privacy OpenPGP OpenPGP是PGP的标准,也有很多实现。 http://openpgp.org/ GnuPG GunPG: Gun Privacy Guard, 是基于openPGP的实现。 https://gnupg.org/ $ gpg</description>
+    </item>
+    
+  </channel>
+</rss>

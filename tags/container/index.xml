@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>container on Morgoth</title>
+    <link>https://canuxcheng.com/tags/container/</link>
+    <description>Recent content in container on Morgoth</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 05 Oct 2021 22:02:31 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/container/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Container Security</title>
+      <link>https://canuxcheng.com/post/container_security/</link>
+      <pubDate>Tue, 05 Oct 2021 22:02:31 +0000</pubDate>
+      
+      <guid>https://canuxcheng.com/post/container_security/</guid>
+      <description>Trivy </description>
+    </item>
+    
+    <item>
+      <title>Container</title>
+      <link>https://canuxcheng.com/post/container/</link>
+      <pubDate>Thu, 05 Apr 2018 22:02:31 +0000</pubDate>
+      
+      <guid>https://canuxcheng.com/post/container/</guid>
+      <description>Container OCI: Open Container Initiative. CRI: Container Runtime Interface. CNI: Container Network Interface. CSI: Container Storage Interface. OCI Open Container Initiative，也就是常说的OCI，是由多家公司共同成立的项目，并由linux基金会进行管理，</description>
+    </item>
+    
+    <item>
+      <title>Namespace</title>
+      <link>https://canuxcheng.com/post/container_ns/</link>
+      <pubDate>Thu, 05 Apr 2018 22:02:31 +0000</pubDate>
+      
+      <guid>https://canuxcheng.com/post/container_ns/</guid>
+      <description>NS namespace 是 Linux 内核用来隔离内核资源的方式 Linux namespace资源： Mount: 挂载点 Network: 网络设备/协议栈/端口 IPC: 进程间通信 USR: 用户和用户组 PID: 进程 UTS: 主机名和域名 Cgroup:</description>
+    </item>
+    
+  </channel>
+</rss>

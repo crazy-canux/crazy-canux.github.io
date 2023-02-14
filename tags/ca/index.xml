@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>CA on Morgoth</title>
+    <link>https://canuxcheng.com/tags/ca/</link>
+    <description>Recent content in CA on Morgoth</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 28 Jul 2021 16:08:54 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/ca/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Let&#39;s Encrypt</title>
+      <link>https://canuxcheng.com/post/sec_letsencrypt/</link>
+      <pubDate>Wed, 28 Jul 2021 16:08:54 +0000</pubDate>
+      
+      <guid>https://canuxcheng.com/post/sec_letsencrypt/</guid>
+      <description>Let&amp;rsquo;s Encrypt https://letsencrypt.org/ https://github.com/letsencrypt 是非盈利组织ISRG提供的免费的证书颁发机构。 let&amp;rsquo;s encrypt生成证书的工具很多certbot, acme.sh等. certbot https://github.com/certbot/certbot acme.sh https://github.com/acmesh-official/acme.sh</description>
+    </item>
+    
+    <item>
+      <title>AST</title>
+      <link>https://canuxcheng.com/post/sec_ast/</link>
+      <pubDate>Sat, 28 Jul 2018 16:08:54 +0000</pubDate>
+      
+      <guid>https://canuxcheng.com/post/sec_ast/</guid>
+      <description>AST AST: Application Security Testing, 静态应用程序安全测试, 对应用程序源代码执行直接的白盒分析. SAST SAST: Static Application Security Testing Tools: SonarQube, Trivy. DAST DAST: Dynamic Application Security Testing，动态应用程序安全测试, 对应用</description>
+    </item>
+    
+    <item>
+      <title>CA</title>
+      <link>https://canuxcheng.com/post/sec_ca/</link>
+      <pubDate>Sat, 28 Jul 2018 16:08:54 +0000</pubDate>
+      
+      <guid>https://canuxcheng.com/post/sec_ca/</guid>
+      <description>CA SSL: secure sockets layer TLS: transport layer security CA: Certificate Authority. SNI: server name indication 证书类型 x509: 只有公钥没有私钥匙 编码方式 pem: base64编码 der: 二进制 证书文件: crt: 证书文件（可以是pem或der编码</description>
+    </item>
+    
+  </channel>
+</rss>

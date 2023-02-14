@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>jquery on Morgoth</title>
+    <link>https://canuxcheng.com/tags/jquery/</link>
+    <description>Recent content in jquery on Morgoth</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Thu, 27 Oct 2016 22:19:20 +0800</lastBuildDate><atom:link href="https://canuxcheng.com/tags/jquery/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>jQuery</title>
+      <link>https://canuxcheng.com/post/js_jquery/</link>
+      <pubDate>Thu, 27 Oct 2016 22:19:20 +0800</pubDate>
+      
+      <guid>https://canuxcheng.com/post/js_jquery/</guid>
+      <description>jQuery https://github.com/jquery/jquery https://www.jquery123.com/ jquery是一个js库，简化了js编程。 install: $ npm install jqury jquery功能： HTML 元素选取 HTML 元素操作 HTML 事件函数 HTML DOM 遍历和修改 CSS 操作 JavaScript 特效和动画 AJAX</description>
+    </item>
+    
+  </channel>
+</rss>

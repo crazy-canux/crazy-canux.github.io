@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Storage on Morgoth</title>
+    <link>https://canuxcheng.com/categories/storage/</link>
+    <description>Recent content in Storage on Morgoth</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 23 Apr 2021 22:02:31 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/categories/storage/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AWS Storage</title>
+      <link>https://canuxcheng.com/post/aws_storage/</link>
+      <pubDate>Fri, 23 Apr 2021 22:02:31 +0000</pubDate>
+      
+      <guid>https://canuxcheng.com/post/aws_storage/</guid>
+      <description>AWS Storage S3 Simple Storage Service. S3分类： S3标准 S3标准-IA S3单区-IA S3智能分层 S3 Glacier S3 Glacire Deep Archive 特点: 无限存储 单个对象达到5Tb 一次写入，多次读取 99%持</description>
+    </item>
+    
+    <item>
+      <title>K8S CSI</title>
+      <link>https://canuxcheng.com/post/k8s_csi/</link>
+      <pubDate>Wed, 25 Mar 2020 20:55:52 +0800</pubDate>
+      
+      <guid>https://canuxcheng.com/post/k8s_csi/</guid>
+      <description>CSI https://github.com/container-storage-interface/spec 卷Volume 和docker中的一样。 volume支持的卷类型有: awsEBS, azureDisk, azureFile, gcePD, secret, configMap, emptyDir, hostPath, local, nfs等. apiVersion: v1 kind: Pod metadata: name: test-ebs spec: containers: - image: k8s.gcr.io/test-webserver name: test-container volumeMounts: - mountPath: /test-ebs name: test-volume volumes:</description>
+    </item>
+    
+    <item>
+      <title>Image</title>
+      <link>https://canuxcheng.com/post/container_image/</link>
+      <pubDate>Tue, 03 Dec 2019 21:50:47 +0800</pubDate>
+      
+      <guid>https://canuxcheng.com/post/container_image/</guid>
+      <description>image 容器镜像 docker image driver: aufs, btrfs, devicemapper, overlay. buildx 使用qume: // 安装bitfmt docker run --privileged --rm tonistiigi/binfmt --install all // 查看支持的平台 ls -l /proc/sys/fs/binfmt_misc/qemu-* 查看版本 docker buildx version 管理builder instance docker buildx create --append 添加</description>
+    </item>
+    
+    <item>
+      <title>Command</title>
+      <link>https://canuxcheng.com/post/storage_command/</link>
+      <pubDate>Sun, 31 Mar 2019 21:51:25 +0000</pubDate>
+      
+      <guid>https://canuxcheng.com/post/storage_command/</guid>
+      <description>sysstat: # &amp;lt;https://github.com/sysstat/sysstat&amp;gt; $ sudo apt-get install sysstat # 包括 iostat/mpstat/pidstat/tapestat/cifsiostat iostat -d -x -k 1 10 pidstat -d -p pid iotop # 查看进程的diskio $ sudo apt-get install iotop $ sudo iotop df df计算文件系统磁盘空间使用: df $ df -h # 查看目录信息</description>
+    </item>
+    
+    <item>
+      <title>Swarm CSI</title>
+      <link>https://canuxcheng.com/post/swarm_csi/</link>
+      <pubDate>Thu, 05 Apr 2018 22:02:31 +0000</pubDate>
+      
+      <guid>https://canuxcheng.com/post/swarm_csi/</guid>
+      <description>CSI CSI: Container Storage Interface CSI提供容器的数据持久化服务. 容器管理数据的两种方式： 数据卷(Volumes) 挂载主机目录(bind mounts) 临时文件系统(tmpfs)</description>
+    </item>
+    
+    <item>
+      <title>Monitoring</title>
+      <link>https://canuxcheng.com/post/storage_monitoring/</link>
+      <pubDate>Thu, 05 Apr 2018 21:47:54 +0000</pubDate>
+      
+      <guid>https://canuxcheng.com/post/storage_monitoring/</guid>
+      <description>Monitoring diskio IOPS: Input/Output Per Second. 每秒输入输出量，也叫TPS. SELECT non_negative_derivative(mean(reads),1s) as &amp;quot;read&amp;quot; FROM &amp;quot;diskio&amp;quot; SELECT non_negative_derivative(mean(writes),1s) as &amp;quot;write&amp;quot; FROM &amp;quot;diskio&amp;quot; throughput: SELECT non_negative_derivative(mean(read_bytes),1s) as &amp;quot;read&amp;quot; FROM &amp;quot;diskio&amp;quot; SELECT non_negative_derivative(mean(write_bytes),1s) as &amp;quot;write&amp;quot; FROM &amp;quot;diskio&amp;quot; Utilization: SELECT non_negative_derivative(last(&amp;quot;io_time&amp;quot;),1ms) FROM &amp;quot;diskio&amp;quot; WHERE &amp;quot;name&amp;quot; =~ /^(v|s|)d(a|b|c|d)$/ GROUP BY &amp;quot;host&amp;quot;,&amp;quot;name&amp;quot;,time(_interval) Queue length: SELECT non_negative_derivative(last(&amp;quot;weighted_io_time&amp;quot;,1ms)) FROM &amp;quot;diskio&amp;quot; WHERE &amp;quot;name&amp;quot; =~ /^(v|s|)d(a|b|c|d)$/ GROUP BY &amp;quot;host&amp;quot;,&amp;quot;name&amp;quot;,time(_interval)</description>
+    </item>
+    
+    <item>
+      <title>Storage</title>
+      <link>https://canuxcheng.com/post/storage/</link>
+      <pubDate>Thu, 05 Apr 2018 21:47:54 +0000</pubDate>
+      
+      <guid>https://canuxcheng.com/post/storage/</guid>
+      <description>Storage RAID RAID: redundant array of independent disks, 独立磁盘冗余数组． 存储方式 DAS: direct attached storage, 直连式存储，通过SCSI或FC连接服务器． NAS: network attached storage，网络接入存储，通过IP(N</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>oss on Morgoth</title>
+    <link>https://canuxcheng.com/tags/oss/</link>
+    <description>Recent content in oss on Morgoth</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 10 Jan 2020 20:55:52 +0800</lastBuildDate><atom:link href="https://canuxcheng.com/tags/oss/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Contribution</title>
+      <link>https://canuxcheng.com/post/k8s_oss/</link>
+      <pubDate>Fri, 10 Jan 2020 20:55:52 +0800</pubDate>
+      
+      <guid>https://canuxcheng.com/post/k8s_oss/</guid>
+      <description>Kubernetes Contribution https://github.com/kubernetes/community/blob/master/contributors/guide/contributor-cheatsheet/README-zh.md 创建google账号 推荐申请一个google邮箱。 在开发机配置git $ git config --global user.email name@gmail.com $ git config user.email name@gmail.com 签CLA并阅读CoC 个人开发者需要签署CLA</description>
+    </item>
+    
+    <item>
+      <title>Contribution</title>
+      <link>https://canuxcheng.com/post/go_oss/</link>
+      <pubDate>Mon, 01 Jan 2018 10:49:21 +0000</pubDate>
+      
+      <guid>https://canuxcheng.com/post/go_oss/</guid>
+      <description>Golang Contribution https://go.dev/doc/contribute 创建google账号 推荐申请一个google邮箱。 在开发机配置git $ git config --global user.email name@example.com $ git config user.email name@example.com 签CLA 个人开发者需要签署CLA。 https://cla.developers.google.com/about/google-individual 配置gi</description>
+    </item>
+    
+  </channel>
+</rss>
