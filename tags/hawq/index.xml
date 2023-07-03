@@ -1,20 +1,60 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>hawq on Morgoth</title>
-    <link>https://canuxcheng.com/tags/hawq/</link>
-    <description>Recent content in hawq on Morgoth</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <lastBuildDate>Mon, 24 Apr 2017 22:57:37 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/hawq/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>HAWQ</title>
-      <link>https://canuxcheng.com/post/hawq/</link>
-      <pubDate>Mon, 24 Apr 2017 22:57:37 +0000</pubDate>
-      
-      <guid>https://canuxcheng.com/post/hawq/</guid>
-      <description>HAWQ http://hawq.incubator.apache.org/ https://github.com/apache/incubator-hawq HAWQ是在Pivotal Greenplum和PostgreSQL基础上开发而来． HAWQ也就是Pivotal HDB. HAWQ和Pivota</description>
-    </item>
-    
-  </channel>
+    <channel>
+        <title>hawq on Morgoth</title>
+        <link>https://canuxcheng.com/tags/hawq/</link>
+        <description>Recent content in hawq on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Mon, 24 Apr 2017 22:57:37 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/hawq/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>HAWQ</title>
+        <link>https://canuxcheng.com/post/hawq/</link>
+        <pubDate>Mon, 24 Apr 2017 22:57:37 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/hawq/</guid>
+        <description>&lt;h1 id=&#34;hawq&#34;&gt;HAWQ&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://hawq.incubator.apache.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://hawq.incubator.apache.org/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/apache/incubator-hawq&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/apache/incubator-hawq&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;HAWQ是在Pivotal Greenplum和PostgreSQL基础上开发而来．&lt;/p&gt;
+&lt;p&gt;HAWQ也就是Pivotal HDB.&lt;/p&gt;
+&lt;p&gt;HAWQ和Pivotal　HDB是一个项目．&lt;/p&gt;
+&lt;p&gt;Hortonworks公司的HDP集成了HAWQ.&lt;/p&gt;
+&lt;p&gt;HAWQ可以通过HDFS在本机快速，交互查询hadoop数据．&lt;/p&gt;
+&lt;p&gt;hawq的交互式命令行接口, 类似于postgresql, 参考postgresql.&lt;/p&gt;
+&lt;p&gt;hawq的client: psql (参考postgresql)&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;psql&#34;&gt;psql&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;$ psql
+$ PGPASSWORD=&#39;password&#39;;psql -h &amp;lt;host&amp;gt; -p &amp;lt;port&amp;gt; -U &amp;lt;username&amp;gt; -d [database] -c &amp;quot;[psql command]&amp;quot;
+$ psql -l # 查看所有database
+
+# jdbc
+$ jdbc:pivotal:greenplum://hdm1:5432;DatabaseName=getstartdb;User=hdbuser;Password=hdbpass
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;sql&#34;&gt;sql&lt;/h1&gt;
+&lt;p&gt;AO(append only) table:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;gt; create table {table_name} (var type, var1 type1);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;parquet table:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;gt; create table {table_name} (var type, var1 type2) WITH (appendonly=true, orientation=parquet);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;AO table distributed by specified column and partitioned by range:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;gt; create table {table_name} (var type, var1 type1) distributed by range(var) partition by range(var1) (start val end val1 every val2);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;AO table distributed by randomly and partitioned by range:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;gt; create table {table_name} (var type, var1 type1) distributed randomly partition by range (var) (start(val) end (val1) every(val2));
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;parquet table distributed by specified column and partitoned by list:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;gt; create table {table_name} (var type, var1 type1) WITH (appendonly=true, orientation=parquet) distributed by (var) partition by list (var1) (partition name values (val), partition name1 values (val1));
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;parquet table distributed by randomly and partitioned by list:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;gt; create table {table_name} (var type, var1 type1) WITH (appendonly=true, orientation=parquet) distributed randomly partiton by list (var1) (partition name values (val), partition name1 values (val));
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

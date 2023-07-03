@@ -1,0 +1,795 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Ingress ingress controller:
+Ingress-nginx(nginx) aws-load-balancer-controller(alb) ingress-gce Traefik The kubernetes.io/ingress.class annotation is deprecated from kubernetes v1.22&#43;.通过IngressClasses来选择ingress controller。
+ingressClassName: nginx ingress 语法
+apiVersion: networking.k8s.io/v1 kind: Ingress metadata: name: minimal-ingress annotations: nginx.ingress.kubernetes.io/rewrite-target: / spec: ingressClassName: nginx-example defaultBackend: resource: apiGroup: k8s.example.com kind: StorageBucket name: static-assets rules: - http: paths: - path: /testpath pathType: Prefix backend: service: name: test port: number: 80 ImplementationSpecific：对于这种路径类型，匹配方法取决于 IngressClass。 具体实现可以将其作为单独的 pathType 处理或者与 Prefix 或 Exact 类型作相同处理。
+Exact：精确匹配 URL 路径，且区分大小写。
+Prefix：基于以 / 分隔的 URL 路径前缀匹配。匹配区分大小写，并且对路径中的元素逐个完成。 路径元素指的是由 / 分隔符分隔的路径中的标签列表。 如果每个 p 都是请求路径 p 的元素前缀，则请求与路径 p 匹配。'>
+<title>Ingress</title>
+
+<link rel='canonical' href='https://canuxcheng.com/post/k8s_ingress/'>
+
+<link rel="stylesheet" href="/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content='Ingress'>
+<meta property='og:description' content='Ingress ingress controller:
+Ingress-nginx(nginx) aws-load-balancer-controller(alb) ingress-gce Traefik The kubernetes.io/ingress.class annotation is deprecated from kubernetes v1.22&#43;.通过IngressClasses来选择ingress controller。
+ingressClassName: nginx ingress 语法
+apiVersion: networking.k8s.io/v1 kind: Ingress metadata: name: minimal-ingress annotations: nginx.ingress.kubernetes.io/rewrite-target: / spec: ingressClassName: nginx-example defaultBackend: resource: apiGroup: k8s.example.com kind: StorageBucket name: static-assets rules: - http: paths: - path: /testpath pathType: Prefix backend: service: name: test port: number: 80 ImplementationSpecific：对于这种路径类型，匹配方法取决于 IngressClass。 具体实现可以将其作为单独的 pathType 处理或者与 Prefix 或 Exact 类型作相同处理。
+Exact：精确匹配 URL 路径，且区分大小写。
+Prefix：基于以 / 分隔的 URL 路径前缀匹配。匹配区分大小写，并且对路径中的元素逐个完成。 路径元素指的是由 / 分隔符分隔的路径中的标签列表。 如果每个 p 都是请求路径 p 的元素前缀，则请求与路径 p 匹配。'>
+<meta property='og:url' content='https://canuxcheng.com/post/k8s_ingress/'>
+<meta property='og:site_name' content='Morgoth'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='k8s' /><meta property='article:published_time' content='2020-01-04T20:03:39&#43;08:00'/><meta property='article:modified_time' content='2020-01-04T20:03:39&#43;08:00'/>
+<meta name="twitter:title" content="Ingress">
+<meta name="twitter:description" content="Ingress ingress controller:
+Ingress-nginx(nginx) aws-load-balancer-controller(alb) ingress-gce Traefik The kubernetes.io/ingress.class annotation is deprecated from kubernetes v1.22&#43;.通过IngressClasses来选择ingress controller。
+ingressClassName: nginx ingress 语法
+apiVersion: networking.k8s.io/v1 kind: Ingress metadata: name: minimal-ingress annotations: nginx.ingress.kubernetes.io/rewrite-target: / spec: ingressClassName: nginx-example defaultBackend: resource: apiGroup: k8s.example.com kind: StorageBucket name: static-assets rules: - http: paths: - path: /testpath pathType: Prefix backend: service: name: test port: number: 80 ImplementationSpecific：对于这种路径类型，匹配方法取决于 IngressClass。 具体实现可以将其作为单独的 pathType 处理或者与 Prefix 或 Exact 类型作相同处理。
+Exact：精确匹配 URL 路径，且区分大小写。
+Prefix：基于以 / 分隔的 URL 路径前缀匹配。匹配区分大小写，并且对路径中的元素逐个完成。 路径元素指的是由 / 分隔符分隔的路径中的标签列表。 如果每个 p 都是请求路径 p 的元素前缀，则请求与路径 p 匹配。">
+    <link rel="shortcut icon" href="favicon.ico" />
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/home_hu6602fceeffaea48dc14f1109cef06aaf_168478_300x0_resize_q75_box.jpg" width="300"
+                            height="400" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Morgoth</a></h1>
+            <h2 class="site-description">Welcome</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='mailto:canuxcheng@163.com'
+                        target="_blank"
+                        title="E-mail"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-messages" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M21 14l-3 -3h-7a1 1 0 0 1 -1 -1v-6a1 1 0 0 1 1 -1h9a1 1 0 0 1 1 1v10" />
+  <path d="M14 15v2a1 1 0 0 1 -1 1h-7l-3 3v-10a1 1 0 0 1 1 -1h2" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/crazy-canux'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+
+        <li >
+            <a href='/' target="_blank">
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/about/' target="_blank">
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/categories/' target="_blank">
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                
+                <span>Categories</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/tags/' target="_blank">
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+                
+                <span>Tags</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/rtfm/' target="_blank">
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                
+                <span>RTFM</span>
+            </a>
+        </li>
+        
+        
+
+        <li >
+            <a href='/samuel/' target="_blank">
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-infinity" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M9.828 9.172a4 4 0 1 0 0 5.656 a10 10 0 0 0 2.172 -2.828a10 10 0 0 1 2.172 -2.828 a4 4 0 1 1 0 5.656a10 10 0 0 1 -2.172 -2.828a10 10 0 0 0 -2.172 -2.828" />
+</svg>
+
+
+
+                
+                <span>Samuel</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#ingress-nginx">ingress-nginx</a></li>
+    <li><a href="#traefik">traefik</a>
+      <ul>
+        <li><a href="#重要组件">重要组件</a></li>
+        <li><a href="#配置">配置</a></li>
+        <li><a href="#kubernetes-provider">kubernetes provider</a></li>
+        <li><a href="#https--tls">https &amp; tls</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/container/" >
+                Container
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/k8s_ingress/">Ingress</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jan 04, 2020</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    2 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="ingress">Ingress</h1>
+<p>ingress controller:</p>
+<ul>
+<li>Ingress-nginx(nginx)</li>
+<li>aws-load-balancer-controller(alb)</li>
+<li>ingress-gce</li>
+<li>Traefik</li>
+</ul>
+<p>The kubernetes.io/ingress.class annotation is deprecated from kubernetes v1.22+.通过IngressClasses来选择ingress controller。</p>
+<pre><code>ingressClassName: nginx
+</code></pre>
+<p>ingress 语法</p>
+<pre><code>apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: minimal-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx-example
+  defaultBackend:
+    resource:
+      apiGroup: k8s.example.com
+      kind: StorageBucket
+      name: static-assets
+  rules:
+  - http:
+      paths:
+      - path: /testpath
+        pathType: Prefix
+        backend:
+          service:
+            name: test
+            port:
+              number: 80
+</code></pre>
+<p>ImplementationSpecific：对于这种路径类型，匹配方法取决于 IngressClass。 具体实现可以将其作为单独的 pathType 处理或者与 Prefix 或 Exact 类型作相同处理。</p>
+<p>Exact：精确匹配 URL 路径，且区分大小写。</p>
+<p>Prefix：基于以 / 分隔的 URL 路径前缀匹配。匹配区分大小写，并且对路径中的元素逐个完成。 路径元素指的是由 / 分隔符分隔的路径中的标签列表。 如果每个 p 都是请求路径 p 的元素前缀，则请求与路径 p 匹配。</p>
+<hr>
+<h2 id="ingress-nginx">ingress-nginx</h2>
+<p><a class="link" href="https://github.com/kubernetes/ingress-nginx"  target="_blank" rel="noopener"
+    >https://github.com/kubernetes/ingress-nginx</a></p>
+<pre><code>// 部署
+ $ kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.34.1/deploy/static/provider/baremetal/deploy.yaml
+
+// 验证部署
+$ kubectl get pods --all-namespaces -l app.kubernetes.io/name=ingress-nginx --watch
+
+// Detect installed version
+POD_NAMESPACE=ingress-nginx
+POD_NAME=$(kubectl get pods -n $POD_NAMESPACE -l app.kubernetes.io/name=ingress-nginx -o jsonpath='{.items[0].metadata.name}')
+$ kubectl exec -it $POD_NAME -n $POD_NAMESPACE -- /nginx-ingress-controller --version
+</code></pre>
+<p>tls:</p>
+<p><a class="link" href="https://kubernetes.github.io/ingress-nginx/user-guide/tls/"  target="_blank" rel="noopener"
+    >https://kubernetes.github.io/ingress-nginx/user-guide/tls/</a></p>
+<p><a class="link" href="https://kubernetes.io/zh-cn/docs/concepts/services-networking/ingress/"  target="_blank" rel="noopener"
+    >https://kubernetes.io/zh-cn/docs/concepts/services-networking/ingress/</a></p>
+<hr>
+<h2 id="traefik">traefik</h2>
+<p>traefik2.2+</p>
+<p><a class="link" href="https://github.com/traefik/traefik"  target="_blank" rel="noopener"
+    >https://github.com/traefik/traefik</a></p>
+<p>install with helm:</p>
+<pre><code>helm repo add traefik https://helm.traefik.io/traefik
+helm repo update
+helm install --create-namespace traefik -n traefik traefik traefik/traefik -f ./value.yaml
+
+# expose dashboard:
+kubectl port-forward -n traefik $(kubectl get pods -n traefik --selector &quot;app.kubernetes.io/name=traefik&quot; --output=name) 9000:9000 --address 0.0.0.0
+</code></pre>
+<p>请求模型</p>
+<pre><code>Client =&gt; Traefik =&gt; Backend
+</code></pre>
+<p>端口:</p>
+<pre><code>9000: traefik管理页面端口
+</code></pre>
+<h3 id="重要组件">重要组件</h3>
+<ul>
+<li>Providers: 自动发现平台上的服务.</li>
+<li>Entrypoints: 监听传入的流量，定义接受请求的端口.</li>
+<li>Routers: 分析请求，负责将传入请求连接到负责处理的服务上.</li>
+<li>Middlewares: 在routers转给services之前修改请求.</li>
+<li>Services/LB: 将请求转给应用, 负责配置处理请求的实际服务.</li>
+</ul>
+<h3 id="配置">配置</h3>
+<p>两种配置类型</p>
+<ul>
+<li>静态配置: 启动时的配置，通过配置文件(/etc/traefik/traefik.[toml|yaml]，环境变量或命令行参数配置 providers和entrypoints等.</li>
+<li>动态配置: 动态的路由配置，定义系统如何处理请求,从providers获取动态配置.</li>
+</ul>
+<p>静态配置:</p>
+<ul>
+<li>entrypoints</li>
+<li>providers</li>
+<li>servertransport</li>
+<li>certificatesresolvers</li>
+<li>api</li>
+<li>ping</li>
+<li>experimental</li>
+<li>hostresolver</li>
+<li>accesslog</li>
+<li>log</li>
+<li>metrics(datadog, influxdb, prometheus,statsd)</li>
+<li>tracing(datadog, elastic, haystack, instana, jaeger, zipkin)</li>
+</ul>
+<p>全局配置:</p>
+<pre><code>--global.checknewversion
+--global.sendanonymoususagge
+</code></pre>
+<p>控制Traefik到Backend的连接的参数serversTransport:</p>
+<pre><code>--serversTransport.insecureSkipVerify=true
+# self-signed TLS CA.
+--serversTransport.rootCAs=foo.crt,bar.crt
+--serversTransport.maxIdleConnsPerHost=7
+--serversTransport.forwardingTimeouts.dialTimeout=1s
+--serversTransport.forwardingTimeouts.responseHeaderTimeout=1s
+--serversTransport.forwardingTimeouts.idleConnTimeout=1s
+</code></pre>
+<h3 id="kubernetes-provider">kubernetes provider</h3>
+<p>kubernetes provider有三种类型</p>
+<ul>
+<li>Ingress</li>
+<li>IngressRoute</li>
+<li>Gateway API</li>
+</ul>
+<h3 id="https--tls">https &amp; tls</h3>
+<p>traefik的证书可以是手动创建证书，也可以通过let&rsquo;s encrypt自动创建</p>
+<pre><code>---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: name
+  namespace: ns
+spec:
+  tls:
+    secretName: my-tls
+</code></pre>
+<p>通过Let&rsquo;s encrypt来自动创建证书有三种验证方式（tls, http, dns).</p>
+<pre><code>- &quot;--certificatesresolvers.myresolver.acme.httpchallenge=true&quot;
+- &quot;--certificatesresolvers.myresolver.acme.httpchallenge.entrypoint=web&quot;
+- &quot;--certificatesresolvers.myresolver.acme.tlschallenge=true&quot;
+- &quot;--certificatesresolvers.myresolver.acme.tlschallenge.entrypoint=websecure&quot;
+- &quot;--certificatesresolvers.myresolver.acme.email=canux.cheng@arm.com&quot;
+- &quot;--certificatesresolvers.myresolver.acme.storage=acme.json&quot;
+</code></pre>
+<hr>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/k8s/">k8s</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+</article>
+
+    
+
+    
+
+<aside class="related-content--wrapper">
+    <h2 class="section-title">Related content</h2>
+    <div class="related-content">
+        <div class="flex article-list--tile">
+            
+                
+<article class="">
+    <a href="/post/k8s_dashboard/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Dashboard</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/post/k8s_microservices/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Microservices</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/post/k8s_servicemesh/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Service Mesh</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/post/k8s_kubeadm/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Kubeadm</h2>
+        </div>
+    </a>
+</article>
+
+            
+                
+<article class="">
+    <a href="/post/k8s_minikube/">
+        
+        
+
+        <div class="article-details">
+            <h2 class="article-title">Minikube</h2>
+        </div>
+    </a>
+</article>
+
+            
+        </div>
+    </div>
+</aside>
+
+     
+    
+        
+    <div id="gitalk-container"></div>
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.18.0/js/md5.min.js"></script>
+<script>
+    const gitalk = new Gitalk({
+        clientID: "3d41a2a237fabe050cc0",
+        clientSecret: "868aa81b294f1463ddb6edc007576ecfed7d2075",
+        repo: "crazy-canux.github.io",
+        owner: "crazy-canux",
+        admin: ["crazy-canux"],
+        distractionFreeMode: false, 
+        id: md5(location.pathname), 
+    });
+    (function () {
+        if (
+            ["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1
+        ) {
+            document.getElementById("gitalk-container").innerHTML =
+                "Gitalk comments not available by default when the website is previewed locally.";
+            return;
+        }
+        gitalk.render("gitalk-container");
+    })();
+</script>
+
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2013 - 
+        
+        2023 Morgoth
+    </section>
+    
+    <section class="powerby">
+        
+            Designed by Canux <br/>
+        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
+        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

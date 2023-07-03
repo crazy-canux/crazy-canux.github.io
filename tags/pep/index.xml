@@ -1,20 +1,30 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>pep on Morgoth</title>
-    <link>https://canuxcheng.com/tags/pep/</link>
-    <description>Recent content in pep on Morgoth</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <lastBuildDate>Sat, 06 Aug 2016 16:54:08 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/pep/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>PEP</title>
-      <link>https://canuxcheng.com/post/python_pep/</link>
-      <pubDate>Sat, 06 Aug 2016 16:54:08 +0000</pubDate>
-      
-      <guid>https://canuxcheng.com/post/python_pep/</guid>
-      <description>PEP 8 &amp;ndash; Style Guide for Python Code https://www.python.org/dev/peps/pep-0008/ PEP 257 &amp;ndash; Docstring Conventions https://www.python.org/dev/peps/pep-0257/ PEP-20PEP 20 &amp;ndash; The Zen of Python https://www.python.org/dev/peps/pep-0020/ # 查看pep20 &amp;gt;import this</description>
-    </item>
-    
-  </channel>
+    <channel>
+        <title>pep on Morgoth</title>
+        <link>https://canuxcheng.com/tags/pep/</link>
+        <description>Recent content in pep on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Sat, 06 Aug 2016 16:54:08 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/pep/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>PEP</title>
+        <link>https://canuxcheng.com/post/python_pep/</link>
+        <pubDate>Sat, 06 Aug 2016 16:54:08 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/python_pep/</guid>
+        <description>&lt;h1 id=&#34;pep-8----style-guide-for-python-code&#34;&gt;PEP 8 &amp;ndash; Style Guide for Python Code&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.python.org/dev/peps/pep-0008/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.python.org/dev/peps/pep-0008/&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;pep-257----docstring-conventions&#34;&gt;PEP 257 &amp;ndash; Docstring Conventions&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.python.org/dev/peps/pep-0257/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.python.org/dev/peps/pep-0257/&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;pep-20pep-20----the-zen-of-python&#34;&gt;PEP-20PEP 20 &amp;ndash; The Zen of Python&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.python.org/dev/peps/pep-0020/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.python.org/dev/peps/pep-0020/&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 查看pep20
+&amp;gt;import this&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

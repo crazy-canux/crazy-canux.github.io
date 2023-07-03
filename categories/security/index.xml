@@ -1,130 +1,415 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Security on Morgoth</title>
-    <link>https://canuxcheng.com/categories/security/</link>
-    <description>Recent content in Security on Morgoth</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <lastBuildDate>Tue, 05 Oct 2021 22:02:31 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/categories/security/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Container Security</title>
-      <link>https://canuxcheng.com/post/container_security/</link>
-      <pubDate>Tue, 05 Oct 2021 22:02:31 +0000</pubDate>
-      
-      <guid>https://canuxcheng.com/post/container_security/</guid>
-      <description>Trivy </description>
-    </item>
-    
-    <item>
-      <title>CORS</title>
-      <link>https://canuxcheng.com/post/sec_cors/</link>
-      <pubDate>Wed, 28 Jul 2021 16:08:54 +0000</pubDate>
-      
-      <guid>https://canuxcheng.com/post/sec_cors/</guid>
-      <description>CORS CORS: Cross-Origin resource sharing, 跨域资源共享. 允许浏览器向跨源服务器发出XMLHttpRequest请求，从而克服AJAX只能同源使用的限制。 大部分浏览器都支持C</description>
-    </item>
-    
-    <item>
-      <title>Let&#39;s Encrypt</title>
-      <link>https://canuxcheng.com/post/sec_letsencrypt/</link>
-      <pubDate>Wed, 28 Jul 2021 16:08:54 +0000</pubDate>
-      
-      <guid>https://canuxcheng.com/post/sec_letsencrypt/</guid>
-      <description>Let&amp;rsquo;s Encrypt https://letsencrypt.org/ https://github.com/letsencrypt 是非盈利组织ISRG提供的免费的证书颁发机构。 let&amp;rsquo;s encrypt生成证书的工具很多certbot, acme.sh等. certbot https://github.com/certbot/certbot acme.sh https://github.com/acmesh-official/acme.sh</description>
-    </item>
-    
-    <item>
-      <title>AWS Security</title>
-      <link>https://canuxcheng.com/post/aws_security/</link>
-      <pubDate>Fri, 23 Apr 2021 22:02:31 +0000</pubDate>
-      
-      <guid>https://canuxcheng.com/post/aws_security/</guid>
-      <description>Security Acceptable Use Policy. IAM IAM: Identity and Access Management. STS: Security Token Service. ACL: Access control list. SG: Security Group. https://aws.amazon.com/cn/iam/ $aws iam list-users IAM的三种身份类型: Users Groups Roles IAM通过Policy(json)分配权限。 SSO sso登陆: aws sso</description>
-    </item>
-    
-    <item>
-      <title>Linux Security</title>
-      <link>https://canuxcheng.com/post/linux_security/</link>
-      <pubDate>Sun, 24 May 2020 15:30:42 +0800</pubDate>
-      
-      <guid>https://canuxcheng.com/post/linux_security/</guid>
-      <description>SeLinux Security-Enhanced Linux
-SecComp Secure computing mode (seccomp) is a Linux kernel feature.
-AppArmor AppArmor (Application Armor) is a Linux security module that protects an operating system and its applications from security threats.</description>
-    </item>
-    
-    <item>
-      <title>AST</title>
-      <link>https://canuxcheng.com/post/sec_ast/</link>
-      <pubDate>Sat, 28 Jul 2018 16:08:54 +0000</pubDate>
-      
-      <guid>https://canuxcheng.com/post/sec_ast/</guid>
-      <description>AST AST: Application Security Testing, 静态应用程序安全测试, 对应用程序源代码执行直接的白盒分析. SAST SAST: Static Application Security Testing Tools: SonarQube, Trivy. DAST DAST: Dynamic Application Security Testing，动态应用程序安全测试, 对应用</description>
-    </item>
-    
-    <item>
-      <title>CA</title>
-      <link>https://canuxcheng.com/post/sec_ca/</link>
-      <pubDate>Sat, 28 Jul 2018 16:08:54 +0000</pubDate>
-      
-      <guid>https://canuxcheng.com/post/sec_ca/</guid>
-      <description>CA SSL: secure sockets layer TLS: transport layer security CA: Certificate Authority. SNI: server name indication 证书类型 x509: 只有公钥没有私钥匙 编码方式 pem: base64编码 der: 二进制 证书文件: crt: 证书文件（可以是pem或der编码</description>
-    </item>
-    
-    <item>
-      <title>Capture</title>
-      <link>https://canuxcheng.com/post/sec_capture/</link>
-      <pubDate>Sat, 28 Jul 2018 16:08:54 +0000</pubDate>
-      
-      <guid>https://canuxcheng.com/post/sec_capture/</guid>
-      <description>Packet Capture 网络抓包 Fiddler http://www.telerik.com/fiddler Wireshark https://www.wireshark.org/</description>
-    </item>
-    
-    <item>
-      <title>Csrf</title>
-      <link>https://canuxcheng.com/post/sec_csrf/</link>
-      <pubDate>Sat, 28 Jul 2018 16:08:54 +0000</pubDate>
-      
-      <guid>https://canuxcheng.com/post/sec_csrf/</guid>
-      <description>CSRF Cross-site request forgery, 跨站请求伪造． 发生条件： 登陆受信任网站A, 并在本地生成cookie 在不退出A的情况下，访问危险网站B 预防方法: 正确使用get,pos</description>
-    </item>
-    
-    <item>
-      <title>Sql Injection</title>
-      <link>https://canuxcheng.com/post/sec_sqlinjection/</link>
-      <pubDate>Sat, 28 Jul 2018 16:08:54 +0000</pubDate>
-      
-      <guid>https://canuxcheng.com/post/sec_sqlinjection/</guid>
-      <description>SQL Injection 什么是sql injection:从数据库获取敏感信息,或者利用数据库的特性执行添加用户,导出文件等一系列恶意操作,甚至有可能获取数据库乃</description>
-    </item>
-    
-    <item>
-      <title>Xss</title>
-      <link>https://canuxcheng.com/post/sec_xss/</link>
-      <pubDate>Sat, 28 Jul 2018 16:08:54 +0000</pubDate>
-      
-      <guid>https://canuxcheng.com/post/sec_xss/</guid>
-      <description>XSS XSS: Cross Site Scripting, 跨站脚本攻击 XSS攻击涉及到攻击者，客户端，和web应用三者. XSS原理: Web应用未对用户提交请求的数据做充分的检查过滤,允许用</description>
-    </item>
-    
-    <item>
-      <title>Cfssl</title>
-      <link>https://canuxcheng.com/post/sec_cfssl/</link>
-      <pubDate>Sat, 28 Jul 2018 16:08:54 +0800</pubDate>
-      
-      <guid>https://canuxcheng.com/post/sec_cfssl/</guid>
-      <description>cfssl https://github.com/cloudflare/cfssl</description>
-    </item>
-    
-    <item>
-      <title>Cryptographic</title>
-      <link>https://canuxcheng.com/post/sec_cryptographic/</link>
-      <pubDate>Mon, 27 Mar 2017 17:11:58 +0000</pubDate>
-      
-      <guid>https://canuxcheng.com/post/sec_cryptographic/</guid>
-      <description>PGP PGP: Pretty Good Privacy。 用于签名和加密解密。 PGP https://en.wikipedia.org/wiki/Pretty_Good_Privacy OpenPGP OpenPGP是PGP的标准,也有很多实现。 http://openpgp.org/ GnuPG GunPG: Gun Privacy Guard, 是基于openPGP的实现。 https://gnupg.org/ $ gpg</description>
-    </item>
-    
-  </channel>
+    <channel>
+        <title>Security on Morgoth</title>
+        <link>https://canuxcheng.com/categories/security/</link>
+        <description>Recent content in Security on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Tue, 05 Oct 2021 22:02:31 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/categories/security/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Container Security</title>
+        <link>https://canuxcheng.com/post/container_security/</link>
+        <pubDate>Tue, 05 Oct 2021 22:02:31 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/container_security/</guid>
+        <description>&lt;h1 id=&#34;trivy&#34;&gt;Trivy&lt;/h1&gt;
+</description>
+        </item>
+        <item>
+        <title>CORS</title>
+        <link>https://canuxcheng.com/post/sec_cors/</link>
+        <pubDate>Wed, 28 Jul 2021 16:08:54 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/sec_cors/</guid>
+        <description>&lt;h1 id=&#34;cors&#34;&gt;CORS&lt;/h1&gt;
+&lt;p&gt;CORS: Cross-Origin resource sharing, 跨域资源共享.&lt;/p&gt;
+&lt;p&gt;允许浏览器向跨源服务器发出XMLHttpRequest请求，从而克服AJAX只能同源使用的限制。&lt;/p&gt;
+&lt;p&gt;大部分浏览器都支持CORS，所以只要服务器开启就能实现跨源通信。&lt;/p&gt;
+&lt;h1 id=&#34;简单请求&#34;&gt;简单请求&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;请求方法是以下三种方法之一：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;HEAD&lt;/li&gt;
+&lt;li&gt;GET&lt;/li&gt;
+&lt;li&gt;POST&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;HTTP的头信息不超出以下几种字段：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;Accept&lt;/li&gt;
+&lt;li&gt;Accept-Language&lt;/li&gt;
+&lt;li&gt;Content-Language&lt;/li&gt;
+&lt;li&gt;Last-Event-ID&lt;/li&gt;
+&lt;li&gt;Content-Type：application/x-www-form-urlencoded、multipart/form-data、text/plain.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;简单请求在header添加Origin字段说明请求的源(协议，域名，端口):&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Origin: https://domain.com:port
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;非简单请求&#34;&gt;非简单请求&lt;/h1&gt;
+&lt;p&gt;针对其它方法或字段类型.&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Let&#39;s Encrypt</title>
+        <link>https://canuxcheng.com/post/sec_letsencrypt/</link>
+        <pubDate>Wed, 28 Jul 2021 16:08:54 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/sec_letsencrypt/</guid>
+        <description>&lt;h1 id=&#34;lets-encrypt&#34;&gt;Let&amp;rsquo;s Encrypt&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://letsencrypt.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://letsencrypt.org/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/letsencrypt&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/letsencrypt&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;是非盈利组织ISRG提供的免费的证书颁发机构。&lt;/p&gt;
+&lt;p&gt;let&amp;rsquo;s encrypt生成证书的工具很多certbot, acme.sh等.&lt;/p&gt;
+&lt;h1 id=&#34;certbot&#34;&gt;certbot&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/certbot/certbot&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/certbot/certbot&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;acmesh&#34;&gt;acme.sh&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/acmesh-official/acme.sh&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/acmesh-official/acme.sh&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>AWS Security</title>
+        <link>https://canuxcheng.com/post/aws_security/</link>
+        <pubDate>Fri, 23 Apr 2021 22:02:31 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/aws_security/</guid>
+        <description>&lt;h1 id=&#34;security&#34;&gt;Security&lt;/h1&gt;
+&lt;p&gt;Acceptable Use Policy.&lt;/p&gt;
+&lt;h2 id=&#34;iam&#34;&gt;IAM&lt;/h2&gt;
+&lt;p&gt;IAM: Identity and Access Management.&lt;/p&gt;
+&lt;p&gt;STS: Security Token Service.&lt;/p&gt;
+&lt;p&gt;ACL: Access control list.&lt;/p&gt;
+&lt;p&gt;SG: Security Group.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://aws.amazon.com/cn/iam/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://aws.amazon.com/cn/iam/&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$aws iam list-users
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;IAM的三种身份类型:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Users&lt;/li&gt;
+&lt;li&gt;Groups&lt;/li&gt;
+&lt;li&gt;Roles&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;IAM通过Policy(json)分配权限。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;sso&#34;&gt;SSO&lt;/h2&gt;
+&lt;p&gt;sso登陆:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;aws sso login --no-browser 
+aws sso logout
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;secrets-manager&#34;&gt;Secrets Manager&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;acm&#34;&gt;ACM&lt;/h2&gt;
+&lt;p&gt;AWS Certificate Manager.&lt;/p&gt;
+&lt;p&gt;在route 53创建托管区(hosted zones)之后，可以在ACM申请证书。&lt;/p&gt;
+&lt;p&gt;申请好了证书，需要在route 53创建记录.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;aws acm list-certificates --region eu-west-1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;aws-load-balancer-controller可以自动关联ACM的证书和ingress.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;artifact&#34;&gt;Artifact&lt;/h2&gt;
+&lt;p&gt;自助的合规报告。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;waf&#34;&gt;WAF&lt;/h2&gt;
+&lt;h2 id=&#34;shield&#34;&gt;Shield&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;kms&#34;&gt;KMS&lt;/h2&gt;
+&lt;p&gt;Key Management Service.&lt;/p&gt;
+&lt;h2 id=&#34;inspector&#34;&gt;Inspector&lt;/h2&gt;
+&lt;h2 id=&#34;guardduty&#34;&gt;GuardDuty&lt;/h2&gt;
+&lt;h2 id=&#34;cognito&#34;&gt;Cognito&lt;/h2&gt;
+&lt;p&gt;支持google/amazon/MS-AD/SAML 登陆。&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Linux Security</title>
+        <link>https://canuxcheng.com/post/linux_security/</link>
+        <pubDate>Sun, 24 May 2020 15:30:42 +0800</pubDate>
+        
+        <guid>https://canuxcheng.com/post/linux_security/</guid>
+        <description>&lt;h1 id=&#34;selinux&#34;&gt;SeLinux&lt;/h1&gt;
+&lt;p&gt;Security-Enhanced Linux&lt;/p&gt;
+&lt;h1 id=&#34;seccomp&#34;&gt;SecComp&lt;/h1&gt;
+&lt;p&gt;Secure computing mode (seccomp) is a Linux kernel feature.&lt;/p&gt;
+&lt;h1 id=&#34;apparmor&#34;&gt;AppArmor&lt;/h1&gt;
+&lt;p&gt;AppArmor (Application Armor) is a Linux security module that protects an operating system and its applications from security threats.&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>AST</title>
+        <link>https://canuxcheng.com/post/sec_ast/</link>
+        <pubDate>Sat, 28 Jul 2018 16:08:54 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/sec_ast/</guid>
+        <description>&lt;h1 id=&#34;ast&#34;&gt;AST&lt;/h1&gt;
+&lt;p&gt;AST: Application Security Testing, 静态应用程序安全测试, 对应用程序源代码执行直接的白盒分析.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;sast&#34;&gt;SAST&lt;/h2&gt;
+&lt;p&gt;SAST: Static Application Security Testing&lt;/p&gt;
+&lt;p&gt;Tools: SonarQube, Trivy, Coverity.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;dast&#34;&gt;DAST&lt;/h2&gt;
+&lt;p&gt;DAST: Dynamic Application Security Testing，动态应用程序安全测试, 对应用程序进行黑盒分析.&lt;/p&gt;
+&lt;p&gt;Tools: AppScan, AWVS, OWASP ZAP, Arachni.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;iast&#34;&gt;IAST&lt;/h2&gt;
+&lt;p&gt;IAST: Interactive Application Security Testing，交互式应用程序安全测试, 结合了SAST和DAST的优点.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;sca&#34;&gt;SCA&lt;/h2&gt;
+&lt;p&gt;SCA: Software bill-of-materials, 开源组件安全扫描。&lt;/p&gt;
+&lt;p&gt;Tools： BlackDuck.&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>CA</title>
+        <link>https://canuxcheng.com/post/sec_ca/</link>
+        <pubDate>Sat, 28 Jul 2018 16:08:54 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/sec_ca/</guid>
+        <description>&lt;h1 id=&#34;ca&#34;&gt;CA&lt;/h1&gt;
+&lt;p&gt;SSL: secure sockets layer&lt;/p&gt;
+&lt;p&gt;TLS: transport layer security&lt;/p&gt;
+&lt;p&gt;CA: Certificate Authority.&lt;/p&gt;
+&lt;p&gt;SNI: server name indication&lt;/p&gt;
+&lt;p&gt;证书类型&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;x509: 只有公钥没有私钥匙&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;编码方式&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;pem: base64编码&lt;/li&gt;
+&lt;li&gt;der: 二进制&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;证书文件:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;crt: 证书文件（可以是pem或der编码）&lt;/li&gt;
+&lt;li&gt;cer: 证书文件（可以是pem或der编码）&lt;/li&gt;
+&lt;li&gt;csr: 申请签名的文件&lt;/li&gt;
+&lt;li&gt;key: 私钥文件&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;创建自签名证书&#34;&gt;创建自签名证书&lt;/h1&gt;
+&lt;p&gt;创建x509证书:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ openssl genrsa -out server.key 2048   // 创建key
+$ openssl req -new -key server.key -sha256 -out server.csr // 创建csr
+$ openssl x509 -req -days 365 -in server.csr -signkey server.key -sha256 -out server.crt // 创建证书
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看证书信息:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// pem编码
+$ openssl x509 -in cert.pem -noout -text
+// der编码
+$ openssl x509 -in cert.der -inform der -noout -text
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看证书有效期:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ openssl x509 -in ca.domain.com.crt -noout -dates
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;客户端&#34;&gt;客户端&lt;/h1&gt;
+&lt;p&gt;客户端需要信任证书.&lt;/p&gt;
+&lt;p&gt;Linux:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 添加
+$ cp my-cert.crt /usr/local/share/ca-certificates/my-cert.crt
+$ sudo update-ca-certificates
+
+// 删除
+$ rm /usr/local/share/ca-certificates/my-cert.crt
+$ sudo update-ca-certificates --fresh
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;windows:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 添加
+certutil -addstore -f &amp;quot;ROOT&amp;quot; my-cert.crt
+
+// 删除
+certutil -delstore &amp;quot;ROOT&amp;quot; my-cert.crt
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;证书验证&#34;&gt;证书验证&lt;/h1&gt;
+&lt;p&gt;系统默认的根证书在&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/etc/ssl/certs.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;python的requests包默认使用根证书在&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/usr/local/lib/python3.6/site-packages/requests/cacert.pem
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;requests也通过certifi来管理根证书&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/usr/local/lib/python3.6/site-packages/certifi/cacert.pem
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;可以通过设置REQUESTS_CA_BUNDLE环境变量来让requests使用系统的根证书。&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Capture</title>
+        <link>https://canuxcheng.com/post/sec_capture/</link>
+        <pubDate>Sat, 28 Jul 2018 16:08:54 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/sec_capture/</guid>
+        <description>&lt;h1 id=&#34;packet-capture&#34;&gt;Packet Capture&lt;/h1&gt;
+&lt;p&gt;网络抓包&lt;/p&gt;
+&lt;h1 id=&#34;fiddler&#34;&gt;Fiddler&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://www.telerik.com/fiddler&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://www.telerik.com/fiddler&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;wireshark&#34;&gt;Wireshark&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.wireshark.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.wireshark.org/&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Csrf</title>
+        <link>https://canuxcheng.com/post/sec_csrf/</link>
+        <pubDate>Sat, 28 Jul 2018 16:08:54 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/sec_csrf/</guid>
+        <description>&lt;h1 id=&#34;csrf&#34;&gt;CSRF&lt;/h1&gt;
+&lt;p&gt;Cross-site request forgery, 跨站请求伪造．&lt;/p&gt;
+&lt;p&gt;发生条件：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;登陆受信任网站A, 并在本地生成cookie&lt;/li&gt;
+&lt;li&gt;在不退出A的情况下，访问危险网站B&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;预防方法:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;正确使用get,post和cookie&lt;/li&gt;
+&lt;li&gt;在非get请求中增加伪随机数&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
+        <title>Sql Injection</title>
+        <link>https://canuxcheng.com/post/sec_sqlinjection/</link>
+        <pubDate>Sat, 28 Jul 2018 16:08:54 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/sec_sqlinjection/</guid>
+        <description>&lt;h1 id=&#34;sql-injection&#34;&gt;SQL Injection&lt;/h1&gt;
+&lt;p&gt;什么是sql injection:从数据库获取敏感信息,或者利用数据库的特性执行添加用户,导出文件等一系列恶意操作,甚至有可能获取数据库乃至系统用户最高权限。&lt;/p&gt;
+&lt;p&gt;原因:造成SQL注入的原因是因为程序没有有效过滤用户的输入.&lt;/p&gt;
+&lt;p&gt;预防：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;严格限制数据库的操作权限&lt;/li&gt;
+&lt;li&gt;检查输入的数据格式是否符合要求&lt;/li&gt;
+&lt;li&gt;对进入数据库的特殊字符进行转义&lt;/li&gt;
+&lt;li&gt;数据库查询语句使用数据库提供的参数化查询接口&lt;/li&gt;
+&lt;li&gt;在发布之前使用专业的sql注入检测工具进行检测&lt;/li&gt;
+&lt;li&gt;避免网站打印sql错误信息&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;通过表单注入：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;username =&amp;gt; myuser&#39; or &#39;foo&#39; = &#39;foo&#39; --
+SELECT * FROM user WHERE username=&#39;myuser&#39; or &#39;foo&#39; = &#39;foo&#39; --&#39;&#39; AND password=&#39;xxx&#39;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;mssql的sql语句可以执行dos命令:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;exec xp_cmdshell &#39;net user username 2546 /add&#39; # 新建系统用户
+exec xp_cmdshell &#39;net localgroup administrator username /add&#39; # 授权
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
+        <item>
+        <title>Xss</title>
+        <link>https://canuxcheng.com/post/sec_xss/</link>
+        <pubDate>Sat, 28 Jul 2018 16:08:54 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/sec_xss/</guid>
+        <description>&lt;h1 id=&#34;xss&#34;&gt;XSS&lt;/h1&gt;
+&lt;p&gt;XSS: Cross Site Scripting, 跨站脚本攻击&lt;/p&gt;
+&lt;p&gt;XSS攻击涉及到攻击者，客户端，和web应用三者.&lt;/p&gt;
+&lt;p&gt;XSS原理:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Web应用未对用户提交请求的数据做充分的检查过滤,允许用户在提交的数据中掺入HTML代码(最主要的是“&amp;gt;”、“&amp;lt;”),并将未经转义的恶意代码输出到第三方用户的浏览器解释执行,是导致XSS漏洞的产生原因。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;XSS目前主要手段和目的:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;盗用cookie,获取敏感信息&lt;/li&gt;
+&lt;li&gt;利用植入flash，通过crossdomain权限设置获取更高权限．&lt;/li&gt;
+&lt;li&gt;利用iframe, frame, XMLHttpRequests等方式以用户身份执行一些管理操作．&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;XSS预防:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;过滤特殊字符&lt;/li&gt;
+&lt;li&gt;使用http头指定类型&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
+        <title>Cfssl</title>
+        <link>https://canuxcheng.com/post/sec_cfssl/</link>
+        <pubDate>Sat, 28 Jul 2018 16:08:54 +0800</pubDate>
+        
+        <guid>https://canuxcheng.com/post/sec_cfssl/</guid>
+        <description>&lt;h1 id=&#34;cfssl&#34;&gt;cfssl&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/cloudflare/cfssl&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/cloudflare/cfssl&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Cryptographic</title>
+        <link>https://canuxcheng.com/post/sec_cryptographic/</link>
+        <pubDate>Mon, 27 Mar 2017 17:11:58 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/sec_cryptographic/</guid>
+        <description>&lt;h1 id=&#34;pgp&#34;&gt;PGP&lt;/h1&gt;
+&lt;p&gt;PGP: Pretty Good Privacy。&lt;/p&gt;
+&lt;p&gt;用于签名和加密解密。&lt;/p&gt;
+&lt;h2 id=&#34;pgp-1&#34;&gt;PGP&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/Pretty_Good_Privacy&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://en.wikipedia.org/wiki/Pretty_Good_Privacy&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;openpgp&#34;&gt;OpenPGP&lt;/h2&gt;
+&lt;p&gt;OpenPGP是PGP的标准,也有很多实现。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://openpgp.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://openpgp.org/&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;gnupg&#34;&gt;GnuPG&lt;/h2&gt;
+&lt;p&gt;GunPG: Gun Privacy Guard, 是基于openPGP的实现。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://gnupg.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://gnupg.org/&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ gpg --help
+
+$ 快速生成签名密钥对
+gpg --quick-generate-key &amp;quot;Canux&amp;quot;
+// 查看公钥
+gpg --list-keys
+// 查看私钥
+gpg --list-secret-keys
+// 删除私钥
+gpg --delete-secret-keys &amp;quot;Canux&amp;quot;
+// 删除公钥
+gpg --delete-keys &amp;quot;Canux&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;GPGME: GPG Made Easy, 是一个让应用程序使用GPG更容易的库．&lt;/p&gt;
+&lt;h1 id=&#34;openssl&#34;&gt;OpenSSL&lt;/h1&gt;
+&lt;p&gt;网络安全和密码工具。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.openssl.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.openssl.org/&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ openssl --help
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;单向哈希加密&#34;&gt;单向哈希加密&lt;/h1&gt;
+&lt;p&gt;md5和shaX都是常用的存储密码的加密方法.&lt;/p&gt;
+&lt;p&gt;rainbow table可以破解单向加密.&lt;/p&gt;
+&lt;p&gt;salt方法可以防止rainbow table破解.&lt;/p&gt;
+&lt;p&gt;scrypt是最难破解的加密方案.&lt;/p&gt;
+&lt;h2 id=&#34;md5&#34;&gt;md5&lt;/h2&gt;
+&lt;h2 id=&#34;sha1&#34;&gt;sha1&lt;/h2&gt;
+&lt;h2 id=&#34;sha256&#34;&gt;sha256&lt;/h2&gt;
+&lt;h2 id=&#34;sha512&#34;&gt;sha512&lt;/h2&gt;
+&lt;h2 id=&#34;hmac&#34;&gt;hmac&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;symmetric-cryptography&#34;&gt;Symmetric Cryptography&lt;/h1&gt;
+&lt;p&gt;对称加密就是加密和解密使用的密钥是相同的．&lt;/p&gt;
+&lt;h2 id=&#34;base32&#34;&gt;base32&lt;/h2&gt;
+&lt;h2 id=&#34;base64&#34;&gt;base64&lt;/h2&gt;
+&lt;h2 id=&#34;des&#34;&gt;des&lt;/h2&gt;
+&lt;h2 id=&#34;aes&#34;&gt;aes&lt;/h2&gt;
+&lt;h2 id=&#34;rc4&#34;&gt;rc4&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;asymmetric-cryptography&#34;&gt;Asymmetric Cryptography&lt;/h1&gt;
+&lt;p&gt;非对称加密就是存在两个密钥.&lt;/p&gt;
+&lt;h2 id=&#34;rsa&#34;&gt;rsa&lt;/h2&gt;
+&lt;h2 id=&#34;dsa&#34;&gt;dsa&lt;/h2&gt;
+&lt;h2 id=&#34;ecdsa&#34;&gt;ecdsa&lt;/h2&gt;
+&lt;h2 id=&#34;ecc&#34;&gt;ecc&lt;/h2&gt;
+&lt;p&gt;elliptic curves cryptography&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

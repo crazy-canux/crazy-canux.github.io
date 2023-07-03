@@ -1,20 +1,33 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>vue on Morgoth</title>
-    <link>https://canuxcheng.com/tags/vue/</link>
-    <description>Recent content in vue on Morgoth</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <lastBuildDate>Sun, 27 Jan 2019 22:19:20 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/vue/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Vue</title>
-      <link>https://canuxcheng.com/post/js_vue/</link>
-      <pubDate>Sun, 27 Jan 2019 22:19:20 +0000</pubDate>
-      
-      <guid>https://canuxcheng.com/post/js_vue/</guid>
-      <description>Vue https://github.com/vuejs/vue https://github.com/vuejs/vue-cli 安装 vue-cli: $ npm install -g @vue/cli 新建项目: $ cd &amp;lt;project&amp;gt; $ vue create &amp;lt;application&amp;gt; 测试: 打包:</description>
-    </item>
-    
-  </channel>
+    <channel>
+        <title>vue on Morgoth</title>
+        <link>https://canuxcheng.com/tags/vue/</link>
+        <description>Recent content in vue on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Sun, 27 Jan 2019 22:19:20 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/vue/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Vue</title>
+        <link>https://canuxcheng.com/post/js_vue/</link>
+        <pubDate>Sun, 27 Jan 2019 22:19:20 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/js_vue/</guid>
+        <description>&lt;h1 id=&#34;vue&#34;&gt;Vue&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/vuejs/vue&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/vuejs/vue&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/vuejs/vue-cli&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/vuejs/vue-cli&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;安装 vue-cli:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ npm install -g @vue/cli
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;新建项目:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ cd &amp;lt;project&amp;gt;
+$ vue create &amp;lt;application&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;测试:&lt;/p&gt;
+&lt;p&gt;打包:&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

@@ -1,38 +1,121 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Travel on Morgoth</title>
-    <link>https://canuxcheng.com/categories/travel/</link>
-    <description>Recent content in Travel on Morgoth</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en</language>
-    <lastBuildDate>Thu, 08 Mar 2018 16:41:50 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/categories/travel/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Brazil</title>
-      <link>https://canuxcheng.com/post/travel_brazil/</link>
-      <pubDate>Thu, 08 Mar 2018 16:41:50 +0000</pubDate>
-      
-      <guid>https://canuxcheng.com/post/travel_brazil/</guid>
-      <description>巴西之旅 看照片： 库里提巴 库里提巴（Curitiba）</description>
-    </item>
-    
-    <item>
-      <title>Germany</title>
-      <link>https://canuxcheng.com/post/travel_germany/</link>
-      <pubDate>Mon, 08 May 2017 16:41:50 +0000</pubDate>
-      
-      <guid>https://canuxcheng.com/post/travel_germany/</guid>
-      <description>德国之旅 看照片： http://user.qzone.qq.com/1085694641/4 德国是汽车之都。 德国有16个州。 城市州 德国16个州中的三个城市州 柏林 德国首都。 德国第一大城市。 汉堡 德国第二大城市。 不来梅 巴</description>
-    </item>
-    
-    <item>
-      <title>France</title>
-      <link>https://canuxcheng.com/post/travel_france/</link>
-      <pubDate>Sun, 10 Apr 2016 17:49:15 +0000</pubDate>
-      
-      <guid>https://canuxcheng.com/post/travel_france/</guid>
-      <description>法国之旅 看照片： http://user.qzone.qq.com/1085694641 戴高乐机场 雅高集团的宜必思酒店 SNCF的TVG火车 法国有22个大区。 法兰西岛 巴黎省(已去) 巴黎是法国首都，大区首府和该省省</description>
-    </item>
-    
-  </channel>
+    <channel>
+        <title>Travel on Morgoth</title>
+        <link>https://canuxcheng.com/categories/travel/</link>
+        <description>Recent content in Travel on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Thu, 08 Mar 2018 16:41:50 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/categories/travel/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Brazil</title>
+        <link>https://canuxcheng.com/post/travel_brazil/</link>
+        <pubDate>Thu, 08 Mar 2018 16:41:50 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/travel_brazil/</guid>
+        <description>&lt;h1 id=&#34;巴西之旅&#34;&gt;巴西之旅&lt;/h1&gt;
+&lt;p&gt;看照片：&lt;/p&gt;
+&lt;h1 id=&#34;库里提巴&#34;&gt;库里提巴&lt;/h1&gt;
+&lt;p&gt;库里提巴（Curitiba）&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Germany</title>
+        <link>https://canuxcheng.com/post/travel_germany/</link>
+        <pubDate>Mon, 08 May 2017 16:41:50 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/travel_germany/</guid>
+        <description>&lt;h1 id=&#34;德国之旅&#34;&gt;德国之旅&lt;/h1&gt;
+&lt;p&gt;看照片：&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://user.qzone.qq.com/1085694641/4&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://user.qzone.qq.com/1085694641/4&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;德国是汽车之都。&lt;/p&gt;
+&lt;p&gt;德国有16个州。&lt;/p&gt;
+&lt;h1 id=&#34;城市州&#34;&gt;城市州&lt;/h1&gt;
+&lt;p&gt;德国16个州中的三个城市州&lt;/p&gt;
+&lt;h2 id=&#34;柏林&#34;&gt;柏林&lt;/h2&gt;
+&lt;p&gt;德国首都。&lt;/p&gt;
+&lt;p&gt;德国第一大城市。&lt;/p&gt;
+&lt;h2 id=&#34;汉堡&#34;&gt;汉堡&lt;/h2&gt;
+&lt;p&gt;德国第二大城市。&lt;/p&gt;
+&lt;h2 id=&#34;不来梅&#34;&gt;不来梅&lt;/h2&gt;
+&lt;h1 id=&#34;巴伐利亚州拜仁洲&#34;&gt;巴伐利亚州(拜仁洲)&lt;/h1&gt;
+&lt;p&gt;慕尼黑是首府。&lt;/p&gt;
+&lt;h2 id=&#34;慕尼黑&#34;&gt;慕尼黑&lt;/h2&gt;
+&lt;p&gt;慕尼黑的奥特莱斯位于Ingolstadt Village。&lt;/p&gt;
+&lt;p&gt;奥迪的总部位于慕尼黑的Ingolstadt。&lt;/p&gt;
+&lt;p&gt;宝马总部位于慕尼黑。&lt;/p&gt;
+&lt;p&gt;德国第三大城市。&lt;/p&gt;
+&lt;h2 id=&#34;纽伦堡&#34;&gt;纽伦堡&lt;/h2&gt;
+&lt;h2 id=&#34;奥格斯堡&#34;&gt;奥格斯堡&lt;/h2&gt;
+&lt;h2 id=&#34;非森&#34;&gt;非森&lt;/h2&gt;
+&lt;p&gt;天鹅堡的所在地Fussen。&lt;/p&gt;
+&lt;h1 id=&#34;巴登符腾堡州&#34;&gt;巴登符腾堡州&lt;/h1&gt;
+&lt;p&gt;斯图加特是首府。&lt;/p&gt;
+&lt;h2 id=&#34;斯图加特&#34;&gt;斯图加特&lt;/h2&gt;
+&lt;p&gt;斯图加特的奥特莱斯位于Metzingen Village。&lt;/p&gt;
+&lt;p&gt;保时捷的总部。&lt;/p&gt;
+&lt;p&gt;奔驰的总部。&lt;/p&gt;
+&lt;h1 id=&#34;黑森州&#34;&gt;黑森州&lt;/h1&gt;
+&lt;p&gt;威斯巴登是首府。&lt;/p&gt;
+&lt;h2 id=&#34;威斯巴登&#34;&gt;威斯巴登&lt;/h2&gt;
+&lt;h2 id=&#34;法兰克福&#34;&gt;法兰克福&lt;/h2&gt;
+&lt;p&gt;该州最大城市,法国第五大城市。&lt;/p&gt;
+&lt;p&gt;法兰克福的奥特莱斯位于Wertheim Village。&lt;/p&gt;
+&lt;h1 id=&#34;北莱茵-威斯特法伦州&#34;&gt;北莱茵-威斯特法伦州&lt;/h1&gt;
+&lt;p&gt;杜塞尔多夫是首府。&lt;/p&gt;
+&lt;h2 id=&#34;杜塞尔多夫&#34;&gt;杜塞尔多夫&lt;/h2&gt;
+&lt;h2 id=&#34;科隆&#34;&gt;科隆&lt;/h2&gt;
+&lt;p&gt;该州最大城市，德国第四大城市。&lt;/p&gt;
+&lt;h1 id=&#34;下萨克森州&#34;&gt;下萨克森州&lt;/h1&gt;
+&lt;p&gt;汉诺威是首府。&lt;/p&gt;
+&lt;h2 id=&#34;汉诺威&#34;&gt;汉诺威&lt;/h2&gt;
+&lt;h2 id=&#34;沃尔夫斯堡&#34;&gt;沃尔夫斯堡&lt;/h2&gt;
+&lt;p&gt;大众总部。&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>France</title>
+        <link>https://canuxcheng.com/post/travel_france/</link>
+        <pubDate>Sun, 10 Apr 2016 17:49:15 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/travel_france/</guid>
+        <description>&lt;h1 id=&#34;法国之旅&#34;&gt;法国之旅&lt;/h1&gt;
+&lt;p&gt;看照片：&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://user.qzone.qq.com/1085694641&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://user.qzone.qq.com/1085694641&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;戴高乐机场&lt;/p&gt;
+&lt;p&gt;雅高集团的宜必思酒店&lt;/p&gt;
+&lt;p&gt;SNCF的TVG火车&lt;/p&gt;
+&lt;p&gt;法国有22个大区。&lt;/p&gt;
+&lt;h1 id=&#34;法兰西岛&#34;&gt;法兰西岛&lt;/h1&gt;
+&lt;h2 id=&#34;巴黎省已去&#34;&gt;巴黎省(已去)&lt;/h2&gt;
+&lt;p&gt;巴黎是法国首都，大区首府和该省省会。&lt;/p&gt;
+&lt;p&gt;埃菲尔铁塔&lt;/p&gt;
+&lt;p&gt;凯旋门&lt;/p&gt;
+&lt;p&gt;塞纳河&lt;/p&gt;
+&lt;p&gt;卢浮宫&lt;/p&gt;
+&lt;p&gt;巴黎圣母院&lt;/p&gt;
+&lt;h2 id=&#34;伊夫林省&#34;&gt;伊夫林省&lt;/h2&gt;
+&lt;p&gt;凡尔赛是该省省会。&lt;/p&gt;
+&lt;p&gt;著名景点凡尔赛宫。&lt;/p&gt;
+&lt;h2 id=&#34;塞纳-马恩省&#34;&gt;塞纳-马恩省&lt;/h2&gt;
+&lt;p&gt;著名景点枫丹白露。&lt;/p&gt;
+&lt;h1 id=&#34;弗朗什-孔泰&#34;&gt;弗朗什-孔泰&lt;/h1&gt;
+&lt;h2 id=&#34;杜省已去&#34;&gt;杜省(已去)&lt;/h2&gt;
+&lt;p&gt;贝桑松是大区首府和省会。&lt;/p&gt;
+&lt;p&gt;蒙贝利亚尔是杜省的一个区。&lt;/p&gt;
+&lt;h2 id=&#34;贝尔福地区已去&#34;&gt;贝尔福地区(已去)&lt;/h2&gt;
+&lt;p&gt;贝尔福是省会驻地,与瑞士相邻。&lt;/p&gt;
+&lt;p&gt;景点有贝尔福雄狮。&lt;/p&gt;
+&lt;p&gt;Eurockéennes法国最大的摇滚音乐节。&lt;/p&gt;
+&lt;h1 id=&#34;阿尔萨斯&#34;&gt;阿尔萨斯&lt;/h1&gt;
+&lt;p&gt;斯特拉斯堡是省会。&lt;/p&gt;
+&lt;h2 id=&#34;下莱茵省&#34;&gt;下莱茵省&lt;/h2&gt;
+&lt;p&gt;斯特拉斯堡是大区首府和省会。&lt;/p&gt;
+&lt;h2 id=&#34;上莱茵省已去&#34;&gt;上莱茵省(已去)&lt;/h2&gt;
+&lt;p&gt;科尔马是该省的首府,是童话小镇。&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>
