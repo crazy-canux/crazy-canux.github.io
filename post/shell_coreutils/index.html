@@ -38,6 +38,23 @@ man [command] info [command] 自定义外部命令：
 系统管理 cpu/mem/load
 # 查看cpu/mem/swap/system信息 vmstat vmstat 1 # 查看进程消耗的cpu/mem/swap/system等系统信息 top top -H # 查看线程 %cpu = cputime/realtime * 100% cpu_usage = %cpu/cpu-number %mem = RES/physicalMem * 100% htop $ sudo apt-get install htop $ sudo apt-get install sysstat (包括pidstat) pidstat -u -p pid // cpu pidstat -r -p pid //mem cpu/load:">
     <link rel="shortcut icon" href="favicon.ico" />
+<style>
+    :root {
+        --article-font-family: "Merriweather", var(--base-font-family);
+    }
+</style>
+
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap";
+    
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+    
+        document.head.appendChild(customFont);
+    }());
+</script>
 
     </head>
     <body class="
@@ -96,7 +113,7 @@ man [command] info [command] 自定义外部命令：
         
         <div class="site-meta">
             <h1 class="site-name"><a href="/">Morgoth</a></h1>
-            <h2 class="site-description">Welcome</h2>
+            <h2 class="site-description">Hello World!</h2>
         </div>
     </header><ol class="social-menu">
             
@@ -145,9 +162,8 @@ man [command] info [command] 自定义外部命令：
         
         
         
-
         <li >
-            <a href='/' target="_blank">
+            <a href='/' >
                 
                 
                 
@@ -166,9 +182,8 @@ man [command] info [command] 自定义外部命令：
         </li>
         
         
-
         <li >
-            <a href='/about/' target="_blank">
+            <a href='/about/' >
                 
                 
                 
@@ -186,7 +201,6 @@ man [command] info [command] 自定义外部命令：
         </li>
         
         
-
         <li >
             <a href='/categories/' target="_blank">
                 
@@ -208,7 +222,6 @@ man [command] info [command] 自定义外部命令：
         </li>
         
         
-
         <li >
             <a href='/tags/' target="_blank">
                 
@@ -228,7 +241,6 @@ man [command] info [command] 自定义外部命令：
         </li>
         
         
-
         <li >
             <a href='/rtfm/' target="_blank">
                 
@@ -248,7 +260,6 @@ man [command] info [command] 自定义外部命令：
         </li>
         
         
-
         <li >
             <a href='/samuel/' target="_blank">
                 
@@ -881,8 +892,7 @@ echo -n &quot;user:pw&quot; | base64</code></pre>
     <section class="powerby">
         
             Designed by Canux <br/>
-        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+        
     </section>
 </footer>
 
@@ -983,6 +993,10 @@ echo -n &quot;user:pw&quot; | base64</code></pre>
         document.head.appendChild(customFont);
     }());
 </script>
-
+<section class="powerby">
+    
+        Designed by Canux <br/>
+    
+</section>
     </body>
 </html>

@@ -20,6 +20,23 @@ vboxmanage vm
 vboxmanage vm
 // 导入ova $ vboxmanage import win7.ova // 添加host网络 $ vboxmanage modifyvm &amp;quot;win764&amp;quot; --nic1 hostonly --hostonlyadapter1 vboxnet0 // 添加bridge网络 $ vboxmanage modifyvm &amp;quot;Win732&amp;quot; --nic2 bridged --bridgeadapter2 docker_gwbridge // 重命名vm $ vboxmanage modifyvm &amp;lt;vm&amp;gt; --name &amp;lt;new-name&amp;gt; // 修改参数 $ vboxmanage modifyvm &amp;lt;vm&amp;gt; --memory 4096 --cpus 4 --hwvirtex on --ioapic on // 启动虚拟机 $ vboxmanage startvm &amp;quot;Win732&amp;quot; $ vboxmanage startvm &amp;lt;vm&amp;gt; --type headless $ VBoxHeadless --startvm &amp;lt;uuid|name&amp;gt; --vrde on // 控制虚拟机 $ vboxmanage controlvm &amp;lt;vm&amp;gt; pause/resume/reset/poweroff/savestate // 查看所有/运行虚拟机 $ vboxmanage list vms/runningvms // 删除vm $ vboxmanage unregistervm &amp;lt;vm&amp;gt; --delete // linux上执行命令 $ vboxmanage guestcontrol {} --username {} --password {} run --exe /bin/bash -- -l -c &#39;pwd&#39; // windows上执行命令 $ vboxmanage guestcontrol {} --username &#39;Administrator&#39; run --exe &#39;C:\\Program Files\\Oracle\\VirtualBox Guest Additions\\uninst.">
     <link rel="shortcut icon" href="favicon.ico" />
+<style>
+    :root {
+        --article-font-family: "Merriweather", var(--base-font-family);
+    }
+</style>
+
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap";
+    
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+    
+        document.head.appendChild(customFont);
+    }());
+</script>
 
     </head>
     <body class="
@@ -78,7 +95,7 @@ vboxmanage vm
         
         <div class="site-meta">
             <h1 class="site-name"><a href="/">Morgoth</a></h1>
-            <h2 class="site-description">Welcome</h2>
+            <h2 class="site-description">Hello World!</h2>
         </div>
     </header><ol class="social-menu">
             
@@ -127,9 +144,8 @@ vboxmanage vm
         
         
         
-
         <li >
-            <a href='/' target="_blank">
+            <a href='/' >
                 
                 
                 
@@ -148,9 +164,8 @@ vboxmanage vm
         </li>
         
         
-
         <li >
-            <a href='/about/' target="_blank">
+            <a href='/about/' >
                 
                 
                 
@@ -168,7 +183,6 @@ vboxmanage vm
         </li>
         
         
-
         <li >
             <a href='/categories/' target="_blank">
                 
@@ -190,7 +204,6 @@ vboxmanage vm
         </li>
         
         
-
         <li >
             <a href='/tags/' target="_blank">
                 
@@ -210,7 +223,6 @@ vboxmanage vm
         </li>
         
         
-
         <li >
             <a href='/rtfm/' target="_blank">
                 
@@ -230,7 +242,6 @@ vboxmanage vm
         </li>
         
         
-
         <li >
             <a href='/samuel/' target="_blank">
                 
@@ -488,8 +499,7 @@ $ sudo vboxmanage extpack uninstall \
     <section class="powerby">
         
             Designed by Canux <br/>
-        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+        
     </section>
 </footer>
 
@@ -590,6 +600,10 @@ $ sudo vboxmanage extpack uninstall \
         document.head.appendChild(customFont);
     }());
 </script>
-
+<section class="powerby">
+    
+        Designed by Canux <br/>
+    
+</section>
     </body>
 </html>

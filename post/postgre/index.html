@@ -32,6 +32,23 @@ postgresql的端口是5432．
 postgresql命令 安装完成后默认的admin就是postgres, postgres里有默认数据库postgres.
 $passwd postgres # 修改默认管理员用户postgres的密码 $su - postgres # 切换到默认的postgres用户 $ psql [OPTION]... [DBNAME [USERNAME]] $createuser &amp;lt;username&amp;gt; -P # 在命令行添加用户 $dropuser &amp;lt;username&amp;gt; # 在命令行删除用户 $createdb &amp;lt;database&amp;gt; -O &amp;lt;username&amp;gt; # 在命令行添加数据库 $dropdb &amp;lt;database&amp;gt; # 在命令行删除数据库 # 交互式: $ psql -U [username] [database] # 非交互式： $ PGPASSWORD=&#39;password&#39;;psql -h &amp;lt;host&amp;gt; -p &amp;lt;port&amp;gt; -U &amp;lt;username&amp;gt; -d [database] -c &amp;quot;[psql command]&amp;quot; 导出数据：">
     <link rel="shortcut icon" href="favicon.ico" />
+<style>
+    :root {
+        --article-font-family: "Merriweather", var(--base-font-family);
+    }
+</style>
+
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap";
+    
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+    
+        document.head.appendChild(customFont);
+    }());
+</script>
 
     </head>
     <body class="
@@ -90,7 +107,7 @@ $passwd postgres # 修改默认管理员用户postgres的密码 $su - postgres #
         
         <div class="site-meta">
             <h1 class="site-name"><a href="/">Morgoth</a></h1>
-            <h2 class="site-description">Welcome</h2>
+            <h2 class="site-description">Hello World!</h2>
         </div>
     </header><ol class="social-menu">
             
@@ -139,9 +156,8 @@ $passwd postgres # 修改默认管理员用户postgres的密码 $su - postgres #
         
         
         
-
         <li >
-            <a href='/' target="_blank">
+            <a href='/' >
                 
                 
                 
@@ -160,9 +176,8 @@ $passwd postgres # 修改默认管理员用户postgres的密码 $su - postgres #
         </li>
         
         
-
         <li >
-            <a href='/about/' target="_blank">
+            <a href='/about/' >
                 
                 
                 
@@ -180,7 +195,6 @@ $passwd postgres # 修改默认管理员用户postgres的密码 $su - postgres #
         </li>
         
         
-
         <li >
             <a href='/categories/' target="_blank">
                 
@@ -202,7 +216,6 @@ $passwd postgres # 修改默认管理员用户postgres的密码 $su - postgres #
         </li>
         
         
-
         <li >
             <a href='/tags/' target="_blank">
                 
@@ -222,7 +235,6 @@ $passwd postgres # 修改默认管理员用户postgres的密码 $su - postgres #
         </li>
         
         
-
         <li >
             <a href='/rtfm/' target="_blank">
                 
@@ -242,7 +254,6 @@ $passwd postgres # 修改默认管理员用户postgres的密码 $su - postgres #
         </li>
         
         
-
         <li >
             <a href='/samuel/' target="_blank">
                 
@@ -520,8 +531,7 @@ SELECT current_time;
     <section class="powerby">
         
             Designed by Canux <br/>
-        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+        
     </section>
 </footer>
 
@@ -622,6 +632,10 @@ SELECT current_time;
         document.head.appendChild(customFont);
     }());
 </script>
-
+<section class="powerby">
+    
+        Designed by Canux <br/>
+    
+</section>
     </body>
 </html>

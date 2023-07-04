@@ -95,6 +95,23 @@ consul https://github.com/prometheus/consul_exporter
 pushgateway https://github.com/prometheus/pushgateway
 由于Prometheus数据采集基于Pull模型进行设计，因此在网络环境的配置上必须要让Prometheus Server能够直接与Exporter进行通信。 当这种网络需求无法直接满足时，就可以利用PushGateway来进行中转。可以通过PushGateway将内部网络的监控数据主动Push到Gateway当中。而Prometheus Server则可以采用同样Pull的方式从PushGateway中获取到监控数据.">
     <link rel="shortcut icon" href="favicon.ico" />
+<style>
+    :root {
+        --article-font-family: "Merriweather", var(--base-font-family);
+    }
+</style>
+
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap";
+    
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+    
+        document.head.appendChild(customFont);
+    }());
+</script>
 
     </head>
     <body class="
@@ -153,7 +170,7 @@ pushgateway https://github.com/prometheus/pushgateway
         
         <div class="site-meta">
             <h1 class="site-name"><a href="/">Morgoth</a></h1>
-            <h2 class="site-description">Welcome</h2>
+            <h2 class="site-description">Hello World!</h2>
         </div>
     </header><ol class="social-menu">
             
@@ -202,9 +219,8 @@ pushgateway https://github.com/prometheus/pushgateway
         
         
         
-
         <li >
-            <a href='/' target="_blank">
+            <a href='/' >
                 
                 
                 
@@ -223,9 +239,8 @@ pushgateway https://github.com/prometheus/pushgateway
         </li>
         
         
-
         <li >
-            <a href='/about/' target="_blank">
+            <a href='/about/' >
                 
                 
                 
@@ -243,7 +258,6 @@ pushgateway https://github.com/prometheus/pushgateway
         </li>
         
         
-
         <li >
             <a href='/categories/' target="_blank">
                 
@@ -265,7 +279,6 @@ pushgateway https://github.com/prometheus/pushgateway
         </li>
         
         
-
         <li >
             <a href='/tags/' target="_blank">
                 
@@ -285,7 +298,6 @@ pushgateway https://github.com/prometheus/pushgateway
         </li>
         
         
-
         <li >
             <a href='/rtfm/' target="_blank">
                 
@@ -305,7 +317,6 @@ pushgateway https://github.com/prometheus/pushgateway
         </li>
         
         
-
         <li >
             <a href='/samuel/' target="_blank">
                 
@@ -665,8 +676,7 @@ pushgateway https://github.com/prometheus/pushgateway
     <section class="powerby">
         
             Designed by Canux <br/>
-        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+        
     </section>
 </footer>
 
@@ -767,6 +777,10 @@ pushgateway https://github.com/prometheus/pushgateway
         document.head.appendChild(customFont);
     }());
 </script>
-
+<section class="powerby">
+    
+        Designed by Canux <br/>
+    
+</section>
     </body>
 </html>

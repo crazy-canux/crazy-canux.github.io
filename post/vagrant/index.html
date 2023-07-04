@@ -35,6 +35,23 @@ vagrant还支持其它的providers(docker, vmware, hyper-v, aws)
 https://atlas.hashicorp.com/boxes/search
 初始化 $ mkdir -p /home/user/vagrant $ cd /vagrant # 在当前目录生成一个Vagrantfile文件, 需手动添加vm.box $ vagrant init # 相当于直接添加了vm.box到Vagrantfile. $ vagrant init [box-name] 添加box # 默认从https://atlas.hashicorp.com/boxes/search下载该box. $ vagrant box add [[--name ]box-name] hashicorp/precise64 # 也可以使用下载到本地的box $ vagrant box add [[--name ]box-name] /path/to/your.box # 也可以使用自己的服务器上的box $ vagrant box add [[--name ]box-name] URL # 添加box之后修改Vagrantfile,添加vm.box: Vagrant.configure(&amp;quot;2&amp;quot;) do |config| config.vm.box = &amp;quot;[box-name]&amp;quot; end 使用box $ vagrant up [box-name] $ vagrant up --provider docker/aws/vmware/hyperv/.">
     <link rel="shortcut icon" href="favicon.ico" />
+<style>
+    :root {
+        --article-font-family: "Merriweather", var(--base-font-family);
+    }
+</style>
+
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap";
+    
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+    
+        document.head.appendChild(customFont);
+    }());
+</script>
 
     </head>
     <body class="
@@ -93,7 +110,7 @@ https://atlas.hashicorp.com/boxes/search
         
         <div class="site-meta">
             <h1 class="site-name"><a href="/">Morgoth</a></h1>
-            <h2 class="site-description">Welcome</h2>
+            <h2 class="site-description">Hello World!</h2>
         </div>
     </header><ol class="social-menu">
             
@@ -142,9 +159,8 @@ https://atlas.hashicorp.com/boxes/search
         
         
         
-
         <li >
-            <a href='/' target="_blank">
+            <a href='/' >
                 
                 
                 
@@ -163,9 +179,8 @@ https://atlas.hashicorp.com/boxes/search
         </li>
         
         
-
         <li >
-            <a href='/about/' target="_blank">
+            <a href='/about/' >
                 
                 
                 
@@ -183,7 +198,6 @@ https://atlas.hashicorp.com/boxes/search
         </li>
         
         
-
         <li >
             <a href='/categories/' target="_blank">
                 
@@ -205,7 +219,6 @@ https://atlas.hashicorp.com/boxes/search
         </li>
         
         
-
         <li >
             <a href='/tags/' target="_blank">
                 
@@ -225,7 +238,6 @@ https://atlas.hashicorp.com/boxes/search
         </li>
         
         
-
         <li >
             <a href='/rtfm/' target="_blank">
                 
@@ -245,7 +257,6 @@ https://atlas.hashicorp.com/boxes/search
         </li>
         
         
-
         <li >
             <a href='/samuel/' target="_blank">
                 
@@ -565,8 +576,7 @@ password: vagrant
     <section class="powerby">
         
             Designed by Canux <br/>
-        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+        
     </section>
 </footer>
 
@@ -667,6 +677,10 @@ password: vagrant
         document.head.appendChild(customFont);
     }());
 </script>
-
+<section class="powerby">
+    
+        Designed by Canux <br/>
+    
+</section>
     </body>
 </html>

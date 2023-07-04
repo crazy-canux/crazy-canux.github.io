@@ -17,6 +17,23 @@ import &amp;quot;os&amp;quot; constants # flag 参数 const ( O_RDONLY int = sys
 <meta name="twitter:description" content="os 提供了操作系统的不依赖平台的接口
 import &amp;quot;os&amp;quot; constants # flag 参数 const ( O_RDONLY int = syscall.O_RDONLY O_WRONLY int = syscall.O_WRONLY O_RDWR int = syscall.O_RDWR O_CREATE int = syscall.O_CREATE # 不存在就创建 O_APPEND int = syscall.O_APPEND # 追加写入 O_TRUNC int = syscall.O_TRUNC # 打开时清空文件 O_EXCL int = syscall.O_EXCL O_SYNC int = syscall.O_SYNC ) const ( SEEK_SET int = 0 SEEK_CUR int = 1 SEEK_END int = 2 ) const ( // 操作系统指定的路径分隔符 PathSeperator = &#39;/&#39; // 操作系统指定的表分隔符 PathListSeparator = &#39;:&#39; ) // 操作系统空设备的名字 const DevNull = &amp;quot;/dev/null&amp;quot; variables var ( ErrInvalid = errors.">
     <link rel="shortcut icon" href="favicon.ico" />
+<style>
+    :root {
+        --article-font-family: "Merriweather", var(--base-font-family);
+    }
+</style>
+
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap";
+    
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+    
+        document.head.appendChild(customFont);
+    }());
+</script>
 
     </head>
     <body class="
@@ -75,7 +92,7 @@ import &amp;quot;os&amp;quot; constants # flag 参数 const ( O_RDONLY int = sys
         
         <div class="site-meta">
             <h1 class="site-name"><a href="/">Morgoth</a></h1>
-            <h2 class="site-description">Welcome</h2>
+            <h2 class="site-description">Hello World!</h2>
         </div>
     </header><ol class="social-menu">
             
@@ -124,9 +141,8 @@ import &amp;quot;os&amp;quot; constants # flag 参数 const ( O_RDONLY int = sys
         
         
         
-
         <li >
-            <a href='/' target="_blank">
+            <a href='/' >
                 
                 
                 
@@ -145,9 +161,8 @@ import &amp;quot;os&amp;quot; constants # flag 参数 const ( O_RDONLY int = sys
         </li>
         
         
-
         <li >
-            <a href='/about/' target="_blank">
+            <a href='/about/' >
                 
                 
                 
@@ -165,7 +180,6 @@ import &amp;quot;os&amp;quot; constants # flag 参数 const ( O_RDONLY int = sys
         </li>
         
         
-
         <li >
             <a href='/categories/' target="_blank">
                 
@@ -187,7 +201,6 @@ import &amp;quot;os&amp;quot; constants # flag 参数 const ( O_RDONLY int = sys
         </li>
         
         
-
         <li >
             <a href='/tags/' target="_blank">
                 
@@ -207,7 +220,6 @@ import &amp;quot;os&amp;quot; constants # flag 参数 const ( O_RDONLY int = sys
         </li>
         
         
-
         <li >
             <a href='/rtfm/' target="_blank">
                 
@@ -227,7 +239,6 @@ import &amp;quot;os&amp;quot; constants # flag 参数 const ( O_RDONLY int = sys
         </li>
         
         
-
         <li >
             <a href='/samuel/' target="_blank">
                 
@@ -1390,8 +1401,7 @@ func (f *FlagSet) Init(name string, errorHandling ErrorHandling)
     <section class="powerby">
         
             Designed by Canux <br/>
-        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+        
     </section>
 </footer>
 
@@ -1492,6 +1502,10 @@ func (f *FlagSet) Init(name string, errorHandling ErrorHandling)
         document.head.appendChild(customFont);
     }());
 </script>
-
+<section class="powerby">
+    
+        Designed by Canux <br/>
+    
+</section>
     </body>
 </html>

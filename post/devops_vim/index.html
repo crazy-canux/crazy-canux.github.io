@@ -32,6 +32,23 @@ vim --version 安装vim：
 $ sudo apt-get install vim $ yum install vim 源码安装vim：
 $ sudo apt-get build-dep vim $ cd vim/src $ ./configure \ --with-features=huge \ --with-compiledby=&amp;quot;Canux&amp;quot; \ --enable-multibyte \ --enable-gui=gtk2 \ --enable-gpm \ --prefix=/usr \ --enable-cscope \ --enable-fontset \ --enable-xim \ --enable-fail-if-missing \ --enable-mzschemeinterp \ --enable-perlinterp \ --enable-luainterp \ --enable-tclinterp\ --enable-rubyinterp \ --enable-pythoninterp \ --with-python-config-dir=/usr/lib/python2.7/config-x86_64-linux-gnu \ --enable-python3interp \ --with-python3-config-dir=/usr/lib/python3.4/config-3.4m-x86_64-linux-gnu $ make VIMRUNTIMEDIR=/usr/share/vim/vim74 $ sudo make install Vim相关项目 neovim https://github.">
     <link rel="shortcut icon" href="favicon.ico" />
+<style>
+    :root {
+        --article-font-family: "Merriweather", var(--base-font-family);
+    }
+</style>
+
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap";
+    
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+    
+        document.head.appendChild(customFont);
+    }());
+</script>
 
     </head>
     <body class="
@@ -90,7 +107,7 @@ $ sudo apt-get build-dep vim $ cd vim/src $ ./configure \ --with-features=huge \
         
         <div class="site-meta">
             <h1 class="site-name"><a href="/">Morgoth</a></h1>
-            <h2 class="site-description">Welcome</h2>
+            <h2 class="site-description">Hello World!</h2>
         </div>
     </header><ol class="social-menu">
             
@@ -139,9 +156,8 @@ $ sudo apt-get build-dep vim $ cd vim/src $ ./configure \ --with-features=huge \
         
         
         
-
         <li >
-            <a href='/' target="_blank">
+            <a href='/' >
                 
                 
                 
@@ -160,9 +176,8 @@ $ sudo apt-get build-dep vim $ cd vim/src $ ./configure \ --with-features=huge \
         </li>
         
         
-
         <li >
-            <a href='/about/' target="_blank">
+            <a href='/about/' >
                 
                 
                 
@@ -180,7 +195,6 @@ $ sudo apt-get build-dep vim $ cd vim/src $ ./configure \ --with-features=huge \
         </li>
         
         
-
         <li >
             <a href='/categories/' target="_blank">
                 
@@ -202,7 +216,6 @@ $ sudo apt-get build-dep vim $ cd vim/src $ ./configure \ --with-features=huge \
         </li>
         
         
-
         <li >
             <a href='/tags/' target="_blank">
                 
@@ -222,7 +235,6 @@ $ sudo apt-get build-dep vim $ cd vim/src $ ./configure \ --with-features=huge \
         </li>
         
         
-
         <li >
             <a href='/rtfm/' target="_blank">
                 
@@ -242,7 +254,6 @@ $ sudo apt-get build-dep vim $ cd vim/src $ ./configure \ --with-features=huge \
         </li>
         
         
-
         <li >
             <a href='/samuel/' target="_blank">
                 
@@ -668,8 +679,7 @@ g~~    # 转换当前行大小写
     <section class="powerby">
         
             Designed by Canux <br/>
-        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+        
     </section>
 </footer>
 
@@ -770,6 +780,10 @@ g~~    # 转换当前行大小写
         document.head.appendChild(customFont);
     }());
 </script>
-
+<section class="powerby">
+    
+        Designed by Canux <br/>
+    
+</section>
     </body>
 </html>

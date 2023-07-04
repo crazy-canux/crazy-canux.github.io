@@ -32,6 +32,23 @@ struct:
 type T struct {} methods:
 // 将当前测试标识为失败，但继续执行该文件剩下的测试 func (c *T) Fail() // 将当前测试标识为失败，并停止执行该测试, 继续执行下一个测试文件. func (c *T) FailNow() // 用于报告测试函数是否失败 func (c *T) Failed() bool func (c *T) Log(args ...interface{}) func (c *T) Logf(format string, args .">
     <link rel="shortcut icon" href="favicon.ico" />
+<style>
+    :root {
+        --article-font-family: "Merriweather", var(--base-font-family);
+    }
+</style>
+
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap";
+    
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+    
+        document.head.appendChild(customFont);
+    }());
+</script>
 
     </head>
     <body class="
@@ -90,7 +107,7 @@ type T struct {} methods:
         
         <div class="site-meta">
             <h1 class="site-name"><a href="/">Morgoth</a></h1>
-            <h2 class="site-description">Welcome</h2>
+            <h2 class="site-description">Hello World!</h2>
         </div>
     </header><ol class="social-menu">
             
@@ -139,9 +156,8 @@ type T struct {} methods:
         
         
         
-
         <li >
-            <a href='/' target="_blank">
+            <a href='/' >
                 
                 
                 
@@ -160,9 +176,8 @@ type T struct {} methods:
         </li>
         
         
-
         <li >
-            <a href='/about/' target="_blank">
+            <a href='/about/' >
                 
                 
                 
@@ -180,7 +195,6 @@ type T struct {} methods:
         </li>
         
         
-
         <li >
             <a href='/categories/' target="_blank">
                 
@@ -202,7 +216,6 @@ type T struct {} methods:
         </li>
         
         
-
         <li >
             <a href='/tags/' target="_blank">
                 
@@ -222,7 +235,6 @@ type T struct {} methods:
         </li>
         
         
-
         <li >
             <a href='/rtfm/' target="_blank">
                 
@@ -242,7 +254,6 @@ type T struct {} methods:
         </li>
         
         
-
         <li >
             <a href='/samuel/' target="_blank">
                 
@@ -588,8 +599,7 @@ func (c *B) Skipped() bool
     <section class="powerby">
         
             Designed by Canux <br/>
-        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+        
     </section>
 </footer>
 
@@ -690,6 +700,10 @@ func (c *B) Skipped() bool
         document.head.appendChild(customFont);
     }());
 </script>
-
+<section class="powerby">
+    
+        Designed by Canux <br/>
+    
+</section>
     </body>
 </html>

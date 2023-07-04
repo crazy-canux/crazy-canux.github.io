@@ -56,6 +56,23 @@ type DB struct {} functions:
 // 验证数据库驱动和参数,并不创建和数据库的连接． // driverName: mssql, mysql, postgres // mssql dataSourceName: &amp;quot;server=%s;port=%d;database=%s;user id=%s;password=%s&amp;quot; // mysql dataSourceName: &amp;quot;user:password@tcp(server:port)/database&amp;quot; Open(driverName, dataSourceName string) (*DB, error) methods:
 // 返回数据库下层驱动 func (db *DB) Driver() driver.">
     <link rel="shortcut icon" href="favicon.ico" />
+<style>
+    :root {
+        --article-font-family: "Merriweather", var(--base-font-family);
+    }
+</style>
+
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap";
+    
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+    
+        document.head.appendChild(customFont);
+    }());
+</script>
 
     </head>
     <body class="
@@ -114,7 +131,7 @@ type DB struct {} functions:
         
         <div class="site-meta">
             <h1 class="site-name"><a href="/">Morgoth</a></h1>
-            <h2 class="site-description">Welcome</h2>
+            <h2 class="site-description">Hello World!</h2>
         </div>
     </header><ol class="social-menu">
             
@@ -163,9 +180,8 @@ type DB struct {} functions:
         
         
         
-
         <li >
-            <a href='/' target="_blank">
+            <a href='/' >
                 
                 
                 
@@ -184,9 +200,8 @@ type DB struct {} functions:
         </li>
         
         
-
         <li >
-            <a href='/about/' target="_blank">
+            <a href='/about/' >
                 
                 
                 
@@ -204,7 +219,6 @@ type DB struct {} functions:
         </li>
         
         
-
         <li >
             <a href='/categories/' target="_blank">
                 
@@ -226,7 +240,6 @@ type DB struct {} functions:
         </li>
         
         
-
         <li >
             <a href='/tags/' target="_blank">
                 
@@ -246,7 +259,6 @@ type DB struct {} functions:
         </li>
         
         
-
         <li >
             <a href='/rtfm/' target="_blank">
                 
@@ -266,7 +278,6 @@ type DB struct {} functions:
         </li>
         
         
-
         <li >
             <a href='/samuel/' target="_blank">
                 
@@ -645,8 +656,7 @@ func (rs *Rows) Err() error
     <section class="powerby">
         
             Designed by Canux <br/>
-        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+        
     </section>
 </footer>
 
@@ -747,6 +757,10 @@ func (rs *Rows) Err() error
         document.head.appendChild(customFont);
     }());
 </script>
-
+<section class="powerby">
+    
+        Designed by Canux <br/>
+    
+</section>
     </body>
 </html>

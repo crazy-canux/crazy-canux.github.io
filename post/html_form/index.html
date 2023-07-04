@@ -23,6 +23,23 @@ form form元素定义html表单。支持全局属性和事件属性。
 &amp;lt;form action=&amp;quot;action_page.py&amp;quot;&amp;gt; &amp;lt;fieldset&amp;gt; &amp;lt;legend&amp;gt;Form information:&amp;lt;/legend&amp;gt; First name:&amp;lt;br&amp;gt; &amp;lt;input type=&amp;quot;text&amp;quot; name=&amp;quot;firstname&amp;quot;&amp;gt; &amp;lt;br&amp;gt; Last name:&amp;lt;br&amp;gt; &amp;lt;input type=&amp;quot;text&amp;quot; name=&amp;quot;lastname&amp;quot;&amp;gt; &amp;lt;/fieldset&amp;gt; &amp;lt;/form&amp;gt; # accept-charset属性规定服务器可处理的表单数据字符集。 # action属性规定当提交表单时向何处发送表单数据。 &amp;lt;form action=&amp;quot;action_page.py&amp;quot;&amp;gt; # autocomplete属性规定是否启用表单的自动完成功能 on/off # enctype属性规定在发送表单数据之前如何编码 application/x-www-form-urlencoded, 默认值，表示在发送前编码所有值． multipart/form-data, 不编码，在使用包含文件上传控件的表单必须使用． text/plain, 空格转换为&amp;quot;&#43;&amp;quot;加号，不对特殊字符编码． # method属性规定用于发送form-data的http方法 get/post # name属性规定表单名称 # novalidate属性规定提交表单时不验证 # target属性规定在何处打开URL。 _blank/_self/_parent/_top input input元素是最重要的表单元素。支持全局属性和事件属性。
 # type属性规定输入元素类型 button checkbox file hidden image password radio reset submit text # name属性定义input元素名称 # value属性定义input元素默认值 readonly disabled size maxlength alt accept checked src autocomplete autofocus form formaction formenctype formmethod formnovalidate formtarget height width list max min multiple pattern placeholder required step fieldset fieldset元素组合表单中的相关数据，支持全局属性和事件属性">
     <link rel="shortcut icon" href="favicon.ico" />
+<style>
+    :root {
+        --article-font-family: "Merriweather", var(--base-font-family);
+    }
+</style>
+
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap";
+    
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+    
+        document.head.appendChild(customFont);
+    }());
+</script>
 
     </head>
     <body class="
@@ -81,7 +98,7 @@ form form元素定义html表单。支持全局属性和事件属性。
         
         <div class="site-meta">
             <h1 class="site-name"><a href="/">Morgoth</a></h1>
-            <h2 class="site-description">Welcome</h2>
+            <h2 class="site-description">Hello World!</h2>
         </div>
     </header><ol class="social-menu">
             
@@ -130,9 +147,8 @@ form form元素定义html表单。支持全局属性和事件属性。
         
         
         
-
         <li >
-            <a href='/' target="_blank">
+            <a href='/' >
                 
                 
                 
@@ -151,9 +167,8 @@ form form元素定义html表单。支持全局属性和事件属性。
         </li>
         
         
-
         <li >
-            <a href='/about/' target="_blank">
+            <a href='/about/' >
                 
                 
                 
@@ -171,7 +186,6 @@ form form元素定义html表单。支持全局属性和事件属性。
         </li>
         
         
-
         <li >
             <a href='/categories/' target="_blank">
                 
@@ -193,7 +207,6 @@ form form元素定义html表单。支持全局属性和事件属性。
         </li>
         
         
-
         <li >
             <a href='/tags/' target="_blank">
                 
@@ -213,7 +226,6 @@ form form元素定义html表单。支持全局属性和事件属性。
         </li>
         
         
-
         <li >
             <a href='/rtfm/' target="_blank">
                 
@@ -233,7 +245,6 @@ form form元素定义html表单。支持全局属性和事件属性。
         </li>
         
         
-
         <li >
             <a href='/samuel/' target="_blank">
                 
@@ -591,8 +602,7 @@ step
     <section class="powerby">
         
             Designed by Canux <br/>
-        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+        
     </section>
 </footer>
 
@@ -693,6 +703,10 @@ step
         document.head.appendChild(customFont);
     }());
 </script>
-
+<section class="powerby">
+    
+        Designed by Canux <br/>
+    
+</section>
     </body>
 </html>

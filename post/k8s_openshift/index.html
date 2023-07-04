@@ -20,6 +20,23 @@ Deploy pre-install:
 Deploy pre-install:
 &amp;gt; check &amp;quot;sysctl net.ipv4.ip_forward&amp;quot; is set to 1 /etc/containers/registries.conf [registries.insecure] registries = [&#39;172.30.0.0/16&#39;] /etc/docker/daemon.json { &amp;quot;insecure-registries&amp;quot;: [ &amp;quot;172.30.0.0/16&amp;quot; ] } $ sudo systemctl daemon-reload $ sudo systemctl restart docker docker network inspect -f &amp;quot;{{range .IPAM.Config }}{{ .Subnet }}{{end}}&amp;quot; bridge # firewall-cmd --permanent --new-zone dockerc # firewall-cmd --permanent --zone dockerc --add-source 172.17.0.0/16 # firewall-cmd --permanent --zone dockerc --add-port 8443/tcp # firewall-cmd --permanent --zone dockerc --add-port 53/udp # firewall-cmd --permanent --zone dockerc --add-port 8053/udp # firewall-cmd --reload install:">
     <link rel="shortcut icon" href="favicon.ico" />
+<style>
+    :root {
+        --article-font-family: "Merriweather", var(--base-font-family);
+    }
+</style>
+
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap";
+    
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+    
+        document.head.appendChild(customFont);
+    }());
+</script>
 
     </head>
     <body class="
@@ -78,7 +95,7 @@ Deploy pre-install:
         
         <div class="site-meta">
             <h1 class="site-name"><a href="/">Morgoth</a></h1>
-            <h2 class="site-description">Welcome</h2>
+            <h2 class="site-description">Hello World!</h2>
         </div>
     </header><ol class="social-menu">
             
@@ -127,9 +144,8 @@ Deploy pre-install:
         
         
         
-
         <li >
-            <a href='/' target="_blank">
+            <a href='/' >
                 
                 
                 
@@ -148,9 +164,8 @@ Deploy pre-install:
         </li>
         
         
-
         <li >
-            <a href='/about/' target="_blank">
+            <a href='/about/' >
                 
                 
                 
@@ -168,7 +183,6 @@ Deploy pre-install:
         </li>
         
         
-
         <li >
             <a href='/categories/' target="_blank">
                 
@@ -190,7 +204,6 @@ Deploy pre-install:
         </li>
         
         
-
         <li >
             <a href='/tags/' target="_blank">
                 
@@ -210,7 +223,6 @@ Deploy pre-install:
         </li>
         
         
-
         <li >
             <a href='/rtfm/' target="_blank">
                 
@@ -230,7 +242,6 @@ Deploy pre-install:
         </li>
         
         
-
         <li >
             <a href='/samuel/' target="_blank">
                 
@@ -497,8 +508,7 @@ $ oc cluster add --base-dir=/opt/oc service-catalog
     <section class="powerby">
         
             Designed by Canux <br/>
-        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+        
     </section>
 </footer>
 
@@ -599,6 +609,10 @@ $ oc cluster add --base-dir=/opt/oc service-catalog
         document.head.appendChild(customFont);
     }());
 </script>
-
+<section class="powerby">
+    
+        Designed by Canux <br/>
+    
+</section>
     </body>
 </html>

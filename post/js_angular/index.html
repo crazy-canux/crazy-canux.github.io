@@ -56,6 +56,23 @@ $ ng v 新建项目:
 $ cd &amp;lt;project&amp;gt; $ ng new &amp;lt;application&amp;gt; # 严格模式 $ ng new &amp;lt;application&amp;gt; --strict $ ng generate &amp;lt;schematic&amp;gt; [options] appShell application class component directive enum guard interceptor interface library module pipe resolver service serviceWorker webWorker 测试项目:
 $ cd &amp;lt;my-app&amp;gt; $ ng serve // --open会自动打开浏览器 $ ng serve --open 打包:">
     <link rel="shortcut icon" href="favicon.ico" />
+<style>
+    :root {
+        --article-font-family: "Merriweather", var(--base-font-family);
+    }
+</style>
+
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap";
+    
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+    
+        document.head.appendChild(customFont);
+    }());
+</script>
 
     </head>
     <body class="
@@ -114,7 +131,7 @@ $ cd &amp;lt;my-app&amp;gt; $ ng serve // --open会自动打开浏览器 $ ng se
         
         <div class="site-meta">
             <h1 class="site-name"><a href="/">Morgoth</a></h1>
-            <h2 class="site-description">Welcome</h2>
+            <h2 class="site-description">Hello World!</h2>
         </div>
     </header><ol class="social-menu">
             
@@ -163,9 +180,8 @@ $ cd &amp;lt;my-app&amp;gt; $ ng serve // --open会自动打开浏览器 $ ng se
         
         
         
-
         <li >
-            <a href='/' target="_blank">
+            <a href='/' >
                 
                 
                 
@@ -184,9 +200,8 @@ $ cd &amp;lt;my-app&amp;gt; $ ng serve // --open会自动打开浏览器 $ ng se
         </li>
         
         
-
         <li >
-            <a href='/about/' target="_blank">
+            <a href='/about/' >
                 
                 
                 
@@ -204,7 +219,6 @@ $ cd &amp;lt;my-app&amp;gt; $ ng serve // --open会自动打开浏览器 $ ng se
         </li>
         
         
-
         <li >
             <a href='/categories/' target="_blank">
                 
@@ -226,7 +240,6 @@ $ cd &amp;lt;my-app&amp;gt; $ ng serve // --open会自动打开浏览器 $ ng se
         </li>
         
         
-
         <li >
             <a href='/tags/' target="_blank">
                 
@@ -246,7 +259,6 @@ $ cd &amp;lt;my-app&amp;gt; $ ng serve // --open会自动打开浏览器 $ ng se
         </li>
         
         
-
         <li >
             <a href='/rtfm/' target="_blank">
                 
@@ -266,7 +278,6 @@ $ cd &amp;lt;my-app&amp;gt; $ ng serve // --open会自动打开浏览器 $ ng se
         </li>
         
         
-
         <li >
             <a href='/samuel/' target="_blank">
                 
@@ -612,8 +623,7 @@ $ ng serve --open
     <section class="powerby">
         
             Designed by Canux <br/>
-        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+        
     </section>
 </footer>
 
@@ -714,6 +724,10 @@ $ ng serve --open
         document.head.appendChild(customFont);
     }());
 </script>
-
+<section class="powerby">
+    
+        Designed by Canux <br/>
+    
+</section>
     </body>
 </html>

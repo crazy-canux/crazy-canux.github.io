@@ -41,6 +41,23 @@ options: kubectl options # 查看所有命令可用选项 --kubeconfig kubectl -
 # 通过yaml或json文件创建资源 $ kubectl create -f FILENAME [options] options: -f/--filename kubectl create secret tls kubernetes-dashboard-tls --key ca.key --cert ca.crt -n kubernetes-dashboard // 输出一个资源的yaml格式. kubectl create deployment &amp;lt;name&amp;gt; --image=&amp;lt;img-name&amp;gt; --dry-run=client --output=yaml delete:
 // 删除资源 $ kubectl delete (-f FILENAME | -k DICT | TYPE [(NAME|-l label|--all)]) [optiions] options: -f/--filename --all --all-namespaces --force $ kubectl delete pods --all $ kubectl delete pod &amp;lt;name&amp;gt; // 删除指定ns下所有资源.">
     <link rel="shortcut icon" href="favicon.ico" />
+<style>
+    :root {
+        --article-font-family: "Merriweather", var(--base-font-family);
+    }
+</style>
+
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap";
+    
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+    
+        document.head.appendChild(customFont);
+    }());
+</script>
 
     </head>
     <body class="
@@ -99,7 +116,7 @@ options: kubectl options # 查看所有命令可用选项 --kubeconfig kubectl -
         
         <div class="site-meta">
             <h1 class="site-name"><a href="/">Morgoth</a></h1>
-            <h2 class="site-description">Welcome</h2>
+            <h2 class="site-description">Hello World!</h2>
         </div>
     </header><ol class="social-menu">
             
@@ -148,9 +165,8 @@ options: kubectl options # 查看所有命令可用选项 --kubeconfig kubectl -
         
         
         
-
         <li >
-            <a href='/' target="_blank">
+            <a href='/' >
                 
                 
                 
@@ -169,9 +185,8 @@ options: kubectl options # 查看所有命令可用选项 --kubeconfig kubectl -
         </li>
         
         
-
         <li >
-            <a href='/about/' target="_blank">
+            <a href='/about/' >
                 
                 
                 
@@ -189,7 +204,6 @@ options: kubectl options # 查看所有命令可用选项 --kubeconfig kubectl -
         </li>
         
         
-
         <li >
             <a href='/categories/' target="_blank">
                 
@@ -211,7 +225,6 @@ options: kubectl options # 查看所有命令可用选项 --kubeconfig kubectl -
         </li>
         
         
-
         <li >
             <a href='/tags/' target="_blank">
                 
@@ -231,7 +244,6 @@ options: kubectl options # 查看所有命令可用选项 --kubeconfig kubectl -
         </li>
         
         
-
         <li >
             <a href='/rtfm/' target="_blank">
                 
@@ -251,7 +263,6 @@ options: kubectl options # 查看所有命令可用选项 --kubeconfig kubectl -
         </li>
         
         
-
         <li >
             <a href='/samuel/' target="_blank">
                 
@@ -756,8 +767,7 @@ $ kubectl krew install ns
     <section class="powerby">
         
             Designed by Canux <br/>
-        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+        
     </section>
 </footer>
 
@@ -858,6 +868,10 @@ $ kubectl krew install ns
         document.head.appendChild(customFont);
     }());
 </script>
-
+<section class="powerby">
+    
+        Designed by Canux <br/>
+    
+</section>
     </body>
 </html>

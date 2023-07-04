@@ -38,6 +38,23 @@ pem: base64编码 der: 二进制 证书文件:
 crt: 证书文件（可以是pem或der编码） cer: 证书文件（可以是pem或der编码） csr: 申请签名的文件 key: 私钥文件 创建自签名证书 创建x509证书:
 $ openssl genrsa -out server.key 2048 // 创建key $ openssl req -new -key server.key -sha256 -out server.csr // 创建csr $ openssl x509 -req -days 365 -in server.csr -signkey server.key -sha256 -out server.crt // 创建证书 查看证书信息:">
     <link rel="shortcut icon" href="favicon.ico" />
+<style>
+    :root {
+        --article-font-family: "Merriweather", var(--base-font-family);
+    }
+</style>
+
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap";
+    
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+    
+        document.head.appendChild(customFont);
+    }());
+</script>
 
     </head>
     <body class="
@@ -96,7 +113,7 @@ $ openssl genrsa -out server.key 2048 // 创建key $ openssl req -new -key serve
         
         <div class="site-meta">
             <h1 class="site-name"><a href="/">Morgoth</a></h1>
-            <h2 class="site-description">Welcome</h2>
+            <h2 class="site-description">Hello World!</h2>
         </div>
     </header><ol class="social-menu">
             
@@ -145,9 +162,8 @@ $ openssl genrsa -out server.key 2048 // 创建key $ openssl req -new -key serve
         
         
         
-
         <li >
-            <a href='/' target="_blank">
+            <a href='/' >
                 
                 
                 
@@ -166,9 +182,8 @@ $ openssl genrsa -out server.key 2048 // 创建key $ openssl req -new -key serve
         </li>
         
         
-
         <li >
-            <a href='/about/' target="_blank">
+            <a href='/about/' >
                 
                 
                 
@@ -186,7 +201,6 @@ $ openssl genrsa -out server.key 2048 // 创建key $ openssl req -new -key serve
         </li>
         
         
-
         <li >
             <a href='/categories/' target="_blank">
                 
@@ -208,7 +222,6 @@ $ openssl genrsa -out server.key 2048 // 创建key $ openssl req -new -key serve
         </li>
         
         
-
         <li >
             <a href='/tags/' target="_blank">
                 
@@ -228,7 +241,6 @@ $ openssl genrsa -out server.key 2048 // 创建key $ openssl req -new -key serve
         </li>
         
         
-
         <li >
             <a href='/rtfm/' target="_blank">
                 
@@ -248,7 +260,6 @@ $ openssl genrsa -out server.key 2048 // 创建key $ openssl req -new -key serve
         </li>
         
         
-
         <li >
             <a href='/samuel/' target="_blank">
                 
@@ -524,8 +535,7 @@ certutil -delstore &quot;ROOT&quot; my-cert.crt
     <section class="powerby">
         
             Designed by Canux <br/>
-        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+        
     </section>
 </footer>
 
@@ -626,6 +636,10 @@ certutil -delstore &quot;ROOT&quot; my-cert.crt
         document.head.appendChild(customFont);
     }());
 </script>
-
+<section class="powerby">
+    
+        Designed by Canux <br/>
+    
+</section>
     </body>
 </html>

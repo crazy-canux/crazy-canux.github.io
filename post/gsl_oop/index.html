@@ -23,6 +23,23 @@ const ( SelectSend SelectRecv SelectDefault ) functions // 将src拷贝到dst, �
 type Kind uint const ( Invalid Kind = iota Bool Int ... Uint ... Float... Complex... Array Chan Func Interface Map Ptr Slice String Struct UnsafePointer ) method:
 func (k Kind) String() string StringHeader SliceHeader StructField StructTag ChanDir SelectDir SelectCase Method Type 用来表示一个go类型.">
     <link rel="shortcut icon" href="favicon.ico" />
+<style>
+    :root {
+        --article-font-family: "Merriweather", var(--base-font-family);
+    }
+</style>
+
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap";
+    
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+    
+        document.head.appendChild(customFont);
+    }());
+</script>
 
     </head>
     <body class="
@@ -81,7 +98,7 @@ func (k Kind) String() string StringHeader SliceHeader StructField StructTag Cha
         
         <div class="site-meta">
             <h1 class="site-name"><a href="/">Morgoth</a></h1>
-            <h2 class="site-description">Welcome</h2>
+            <h2 class="site-description">Hello World!</h2>
         </div>
     </header><ol class="social-menu">
             
@@ -130,9 +147,8 @@ func (k Kind) String() string StringHeader SliceHeader StructField StructTag Cha
         
         
         
-
         <li >
-            <a href='/' target="_blank">
+            <a href='/' >
                 
                 
                 
@@ -151,9 +167,8 @@ func (k Kind) String() string StringHeader SliceHeader StructField StructTag Cha
         </li>
         
         
-
         <li >
-            <a href='/about/' target="_blank">
+            <a href='/about/' >
                 
                 
                 
@@ -171,7 +186,6 @@ func (k Kind) String() string StringHeader SliceHeader StructField StructTag Cha
         </li>
         
         
-
         <li >
             <a href='/categories/' target="_blank">
                 
@@ -193,7 +207,6 @@ func (k Kind) String() string StringHeader SliceHeader StructField StructTag Cha
         </li>
         
         
-
         <li >
             <a href='/tags/' target="_blank">
                 
@@ -213,7 +226,6 @@ func (k Kind) String() string StringHeader SliceHeader StructField StructTag Cha
         </li>
         
         
-
         <li >
             <a href='/rtfm/' target="_blank">
                 
@@ -233,7 +245,6 @@ func (k Kind) String() string StringHeader SliceHeader StructField StructTag Cha
         </li>
         
         
-
         <li >
             <a href='/samuel/' target="_blank">
                 
@@ -621,8 +632,7 @@ func (v Value) Type() Type
     <section class="powerby">
         
             Designed by Canux <br/>
-        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+        
     </section>
 </footer>
 
@@ -723,6 +733,10 @@ func (v Value) Type() Type
         document.head.appendChild(customFont);
     }());
 </script>
-
+<section class="powerby">
+    
+        Designed by Canux <br/>
+    
+</section>
     </body>
 </html>

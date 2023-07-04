@@ -17,6 +17,23 @@ functions func EqualFold(s, t string) bool func HasPrefix(s, prefix string) bool
 <meta name="twitter:description" content="strings 实现了用于操作字符的函数.
 functions func EqualFold(s, t string) bool func HasPrefix(s, prefix string) bool func HasSuffix(s, suffix string) bool func Count(s, sep string) int func Contains(s, substr string) bool ... func Index(s, sep string) int ... func LastIndex(s, sep string) int ... func title(s string) string func ToLower(s string) string ... // 返回count个string func Repeat(s string, count int) string func Replace(s, old, new string, n int) string func Map(mapping func(rune) rune, s string) string func Trim(s string, cutset string) string .">
     <link rel="shortcut icon" href="favicon.ico" />
+<style>
+    :root {
+        --article-font-family: "Merriweather", var(--base-font-family);
+    }
+</style>
+
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap";
+    
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+    
+        document.head.appendChild(customFont);
+    }());
+</script>
 
     </head>
     <body class="
@@ -75,7 +92,7 @@ functions func EqualFold(s, t string) bool func HasPrefix(s, prefix string) bool
         
         <div class="site-meta">
             <h1 class="site-name"><a href="/">Morgoth</a></h1>
-            <h2 class="site-description">Welcome</h2>
+            <h2 class="site-description">Hello World!</h2>
         </div>
     </header><ol class="social-menu">
             
@@ -124,9 +141,8 @@ functions func EqualFold(s, t string) bool func HasPrefix(s, prefix string) bool
         
         
         
-
         <li >
-            <a href='/' target="_blank">
+            <a href='/' >
                 
                 
                 
@@ -145,9 +161,8 @@ functions func EqualFold(s, t string) bool func HasPrefix(s, prefix string) bool
         </li>
         
         
-
         <li >
-            <a href='/about/' target="_blank">
+            <a href='/about/' >
                 
                 
                 
@@ -165,7 +180,6 @@ functions func EqualFold(s, t string) bool func HasPrefix(s, prefix string) bool
         </li>
         
         
-
         <li >
             <a href='/categories/' target="_blank">
                 
@@ -187,7 +201,6 @@ functions func EqualFold(s, t string) bool func HasPrefix(s, prefix string) bool
         </li>
         
         
-
         <li >
             <a href='/tags/' target="_blank">
                 
@@ -207,7 +220,6 @@ functions func EqualFold(s, t string) bool func HasPrefix(s, prefix string) bool
         </li>
         
         
-
         <li >
             <a href='/rtfm/' target="_blank">
                 
@@ -227,7 +239,6 @@ functions func EqualFold(s, t string) bool func HasPrefix(s, prefix string) bool
         </li>
         
         
-
         <li >
             <a href='/samuel/' target="_blank">
                 
@@ -635,8 +646,7 @@ func MustCompilePOSIX(str string) *Regexp
     <section class="powerby">
         
             Designed by Canux <br/>
-        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+        
     </section>
 </footer>
 
@@ -737,6 +747,10 @@ func MustCompilePOSIX(str string) *Regexp
         document.head.appendChild(customFont);
     }());
 </script>
-
+<section class="powerby">
+    
+        Designed by Canux <br/>
+    
+</section>
     </body>
 </html>

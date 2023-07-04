@@ -41,6 +41,23 @@ $ sudo vim /etc/containerd/config.toml #disabled_plugins = [&amp;quot;cri&amp;qu
 # kubeadm-config.yaml kind: ClusterConfiguration apiVersion: kubeadm.k8s.io/v1beta3 kubernetesVersion: v1.21.0 // kubelet --version --- apiVersion: kubelet.config.k8s.io/v1beta1 kind: KubeletConfiguration cgroupDriver: systemd 安装kubeadm, kubelet, kubectl 在每台机器上安装 kubeadm, kubelet, kubectl:
 $ sudo apt-get update $ sudo apt-get install -y apt-transport-https ca-certificates curl $ sudo curl -fsSL https://mirrors.">
     <link rel="shortcut icon" href="favicon.ico" />
+<style>
+    :root {
+        --article-font-family: "Merriweather", var(--base-font-family);
+    }
+</style>
+
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap";
+    
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+    
+        document.head.appendChild(customFont);
+    }());
+</script>
 
     </head>
     <body class="
@@ -99,7 +116,7 @@ $ sudo apt-get update $ sudo apt-get install -y apt-transport-https ca-certifica
         
         <div class="site-meta">
             <h1 class="site-name"><a href="/">Morgoth</a></h1>
-            <h2 class="site-description">Welcome</h2>
+            <h2 class="site-description">Hello World!</h2>
         </div>
     </header><ol class="social-menu">
             
@@ -148,9 +165,8 @@ $ sudo apt-get update $ sudo apt-get install -y apt-transport-https ca-certifica
         
         
         
-
         <li >
-            <a href='/' target="_blank">
+            <a href='/' >
                 
                 
                 
@@ -169,9 +185,8 @@ $ sudo apt-get update $ sudo apt-get install -y apt-transport-https ca-certifica
         </li>
         
         
-
         <li >
-            <a href='/about/' target="_blank">
+            <a href='/about/' >
                 
                 
                 
@@ -189,7 +204,6 @@ $ sudo apt-get update $ sudo apt-get install -y apt-transport-https ca-certifica
         </li>
         
         
-
         <li >
             <a href='/categories/' target="_blank">
                 
@@ -211,7 +225,6 @@ $ sudo apt-get update $ sudo apt-get install -y apt-transport-https ca-certifica
         </li>
         
         
-
         <li >
             <a href='/tags/' target="_blank">
                 
@@ -231,7 +244,6 @@ $ sudo apt-get update $ sudo apt-get install -y apt-transport-https ca-certifica
         </li>
         
         
-
         <li >
             <a href='/rtfm/' target="_blank">
                 
@@ -251,7 +263,6 @@ $ sudo apt-get update $ sudo apt-get install -y apt-transport-https ca-certifica
         </li>
         
         
-
         <li >
             <a href='/samuel/' target="_blank">
                 
@@ -784,8 +795,7 @@ cgroupDriver: systemd
     <section class="powerby">
         
             Designed by Canux <br/>
-        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+        
     </section>
 </footer>
 
@@ -886,6 +896,10 @@ cgroupDriver: systemd
         document.head.appendChild(customFont);
     }());
 </script>
-
+<section class="powerby">
+    
+        Designed by Canux <br/>
+    
+</section>
     </body>
 </html>

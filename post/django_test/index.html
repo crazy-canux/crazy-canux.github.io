@@ -35,6 +35,23 @@ mkdir -p app/tests vi test_case1.py vi test_case2.py 配置和运行 默认情�
 vim project/settings.py DATABASES = { &#39;default&#39;: { &#39;NAME&#39;: &#39;mydb&#39;, &#39;TEST&#39;: { // 默认测试数据库是&#39;NAME&#39;前加&#39;test_&#39; (eg: &#39;test_mydb&#39;) // 可以通过TEST.NAME指定测试数据库 &#39;NAME&#39;: &#39;mytestdb&#39; } } } # 指定runner ## 默认 django.test.runner.DiscoverRunner TEST_RUNNER = &#39;site_main.base_tests.TestRunner # 指定fixture文件路径 FIXTURE_DIRS = (os.path.join(BASE_DIR, &#39;app&#39;, &#39;fixtures&#39;), ) 运行测试程序：
 $ python3 manage.py test // 查找test 开头的文件运行里面的 unittest.">
     <link rel="shortcut icon" href="favicon.ico" />
+<style>
+    :root {
+        --article-font-family: "Merriweather", var(--base-font-family);
+    }
+</style>
+
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap";
+    
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+    
+        document.head.appendChild(customFont);
+    }());
+</script>
 
     </head>
     <body class="
@@ -93,7 +110,7 @@ $ python3 manage.py test // 查找test 开头的文件运行里面的 unittest."
         
         <div class="site-meta">
             <h1 class="site-name"><a href="/">Morgoth</a></h1>
-            <h2 class="site-description">Welcome</h2>
+            <h2 class="site-description">Hello World!</h2>
         </div>
     </header><ol class="social-menu">
             
@@ -142,9 +159,8 @@ $ python3 manage.py test // 查找test 开头的文件运行里面的 unittest."
         
         
         
-
         <li >
-            <a href='/' target="_blank">
+            <a href='/' >
                 
                 
                 
@@ -163,9 +179,8 @@ $ python3 manage.py test // 查找test 开头的文件运行里面的 unittest."
         </li>
         
         
-
         <li >
-            <a href='/about/' target="_blank">
+            <a href='/about/' >
                 
                 
                 
@@ -183,7 +198,6 @@ $ python3 manage.py test // 查找test 开头的文件运行里面的 unittest."
         </li>
         
         
-
         <li >
             <a href='/categories/' target="_blank">
                 
@@ -205,7 +219,6 @@ $ python3 manage.py test // 查找test 开头的文件运行里面的 unittest."
         </li>
         
         
-
         <li >
             <a href='/tags/' target="_blank">
                 
@@ -225,7 +238,6 @@ $ python3 manage.py test // 查找test 开头的文件运行里面的 unittest."
         </li>
         
         
-
         <li >
             <a href='/rtfm/' target="_blank">
                 
@@ -245,7 +257,6 @@ $ python3 manage.py test // 查找test 开头的文件运行里面的 unittest."
         </li>
         
         
-
         <li >
             <a href='/samuel/' target="_blank">
                 
@@ -569,8 +580,7 @@ $ python3 manage.py dumpdata &gt; test_data.json
     <section class="powerby">
         
             Designed by Canux <br/>
-        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+        
     </section>
 </footer>
 
@@ -671,6 +681,10 @@ $ python3 manage.py dumpdata &gt; test_data.json
         document.head.appendChild(customFont);
     }());
 </script>
-
+<section class="powerby">
+    
+        Designed by Canux <br/>
+    
+</section>
     </body>
 </html>

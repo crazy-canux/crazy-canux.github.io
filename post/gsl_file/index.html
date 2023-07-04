@@ -14,6 +14,23 @@
 <meta name="twitter:title" content="GSL_file">
 <meta name="twitter:description" content="path function func IsAbs(path string) bool func Join(elem ...string) string func Split(path string) (dir, file string) func Join(elem ...string) string func Dir(path string) string func Base(path string) string func Ext(path string) string ... path/filepath Constants const ( Separator = os.PathSeparator ListSeparator = os.PathListSeparator ) Variable var ErrBadPattern = errors.New(&amp;quot;Syntax error in pattern&amp;quot;) var SkipDir = errors.New(&amp;quot;skip this diractory&amp;quot;) function func IsAbs(path string) bool func Abs(path string) (string, error) // 返回 targpath 相对于 basepath 的 路径 （相当于返回 targpath - basepath), 实际就是文件名.">
     <link rel="shortcut icon" href="favicon.ico" />
+<style>
+    :root {
+        --article-font-family: "Merriweather", var(--base-font-family);
+    }
+</style>
+
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap";
+    
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+    
+        document.head.appendChild(customFont);
+    }());
+</script>
 
     </head>
     <body class="
@@ -72,7 +89,7 @@
         
         <div class="site-meta">
             <h1 class="site-name"><a href="/">Morgoth</a></h1>
-            <h2 class="site-description">Welcome</h2>
+            <h2 class="site-description">Hello World!</h2>
         </div>
     </header><ol class="social-menu">
             
@@ -121,9 +138,8 @@
         
         
         
-
         <li >
-            <a href='/' target="_blank">
+            <a href='/' >
                 
                 
                 
@@ -142,9 +158,8 @@
         </li>
         
         
-
         <li >
-            <a href='/about/' target="_blank">
+            <a href='/about/' >
                 
                 
                 
@@ -162,7 +177,6 @@
         </li>
         
         
-
         <li >
             <a href='/categories/' target="_blank">
                 
@@ -184,7 +198,6 @@
         </li>
         
         
-
         <li >
             <a href='/tags/' target="_blank">
                 
@@ -204,7 +217,6 @@
         </li>
         
         
-
         <li >
             <a href='/rtfm/' target="_blank">
                 
@@ -224,7 +236,6 @@
         </li>
         
         
-
         <li >
             <a href='/samuel/' target="_blank">
                 
@@ -752,8 +763,7 @@ func (t *Template) Funcs(funcMap FuncMap) *Template
     <section class="powerby">
         
             Designed by Canux <br/>
-        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+        
     </section>
 </footer>
 
@@ -854,6 +864,10 @@ func (t *Template) Funcs(funcMap FuncMap) *Template
         document.head.appendChild(customFont);
     }());
 </script>
-
+<section class="powerby">
+    
+        Designed by Canux <br/>
+    
+</section>
     </body>
 </html>

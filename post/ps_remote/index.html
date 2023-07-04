@@ -38,6 +38,23 @@ $lvar1=&amp;quot;value1&amp;quot; $lvar2=&amp;quot;value2&amp;quot; Invoke-Comma
 $var1=&amp;quot;value1&amp;quot; Invoke-Command -ComputerName name -ScriptBlock { ... $using:var1 } 创建持久的远程处理：
 $session1=New-PSSession -ComputerName server1 Enter-PSSession -Session $session1 ... Invoke-Command -Session $session1 ... WMI Get-WmiObject Remove-WmiObject Invoke-WmiMethod Register-WmiEvent Set-WmiInstance # 用powershell跑一个wql。 Get-WmiObject -Query &amp;quot;select * from win32_service where name=&#39;winRM&#39;&amp;quot; | Format-List -Property Name,status # 远程管理 Get-WMIObject -ComputerName .">
     <link rel="shortcut icon" href="favicon.ico" />
+<style>
+    :root {
+        --article-font-family: "Merriweather", var(--base-font-family);
+    }
+</style>
+
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap";
+    
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+    
+        document.head.appendChild(customFont);
+    }());
+</script>
 
     </head>
     <body class="
@@ -96,7 +113,7 @@ $session1=New-PSSession -ComputerName server1 Enter-PSSession -Session $session1
         
         <div class="site-meta">
             <h1 class="site-name"><a href="/">Morgoth</a></h1>
-            <h2 class="site-description">Welcome</h2>
+            <h2 class="site-description">Hello World!</h2>
         </div>
     </header><ol class="social-menu">
             
@@ -145,9 +162,8 @@ $session1=New-PSSession -ComputerName server1 Enter-PSSession -Session $session1
         
         
         
-
         <li >
-            <a href='/' target="_blank">
+            <a href='/' >
                 
                 
                 
@@ -166,9 +182,8 @@ $session1=New-PSSession -ComputerName server1 Enter-PSSession -Session $session1
         </li>
         
         
-
         <li >
-            <a href='/about/' target="_blank">
+            <a href='/about/' >
                 
                 
                 
@@ -186,7 +201,6 @@ $session1=New-PSSession -ComputerName server1 Enter-PSSession -Session $session1
         </li>
         
         
-
         <li >
             <a href='/categories/' target="_blank">
                 
@@ -208,7 +222,6 @@ $session1=New-PSSession -ComputerName server1 Enter-PSSession -Session $session1
         </li>
         
         
-
         <li >
             <a href='/tags/' target="_blank">
                 
@@ -228,7 +241,6 @@ $session1=New-PSSession -ComputerName server1 Enter-PSSession -Session $session1
         </li>
         
         
-
         <li >
             <a href='/rtfm/' target="_blank">
                 
@@ -248,7 +260,6 @@ $session1=New-PSSession -ComputerName server1 Enter-PSSession -Session $session1
         </li>
         
         
-
         <li >
             <a href='/samuel/' target="_blank">
                 
@@ -514,8 +525,7 @@ Get-Service -ComputerName ...
     <section class="powerby">
         
             Designed by Canux <br/>
-        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+        
     </section>
 </footer>
 
@@ -616,6 +626,10 @@ Get-Service -ComputerName ...
         document.head.appendChild(customFont);
     }());
 </script>
-
+<section class="powerby">
+    
+        Designed by Canux <br/>
+    
+</section>
     </body>
 </html>

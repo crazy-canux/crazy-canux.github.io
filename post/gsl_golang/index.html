@@ -14,6 +14,23 @@
 <meta name="twitter:title" content="GSL_golang">
 <meta name="twitter:description" content="runtime constants // 指定编译器 const Compiler = &amp;quot;gc&amp;quot;/&amp;quot;gccgo&amp;quot; // 处理器架构: 386/amd64/arm const GOARCH string = theGoarch // 操作系统: linux/freebsd/darwin/win const GOOS string = theGoos variables var MemProfileRate int = 512 * 1024 functions func GOROOT() string func Version() string // 返回本地机器的逻辑cpu个数 func NumCPU() int //更改调度器可以使用的逻辑cpu数量, 默认只用一个cpu. func GOMAXPROCS(n int) int // 使当前goroutine让出绑定的cpu,其它goroutine可以继续执行. // 当前goroutine放回队列等待继续执行. func Gosched() // 终止当前goroutine,终止前执行所有defer. func Goexit() runtime/debug function // 设置最大线程数，默认1000. func SetMaxThreads(threads int) int runtime/cgo runtime/pprof runtime/race runtime/trace go expvar context unsafe errors function // 使用字符串创建一个错误, 返回一个error func New(text string) error ">
     <link rel="shortcut icon" href="favicon.ico" />
+<style>
+    :root {
+        --article-font-family: "Merriweather", var(--base-font-family);
+    }
+</style>
+
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap";
+    
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+    
+        document.head.appendChild(customFont);
+    }());
+</script>
 
     </head>
     <body class="
@@ -72,7 +89,7 @@
         
         <div class="site-meta">
             <h1 class="site-name"><a href="/">Morgoth</a></h1>
-            <h2 class="site-description">Welcome</h2>
+            <h2 class="site-description">Hello World!</h2>
         </div>
     </header><ol class="social-menu">
             
@@ -121,9 +138,8 @@
         
         
         
-
         <li >
-            <a href='/' target="_blank">
+            <a href='/' >
                 
                 
                 
@@ -142,9 +158,8 @@
         </li>
         
         
-
         <li >
-            <a href='/about/' target="_blank">
+            <a href='/about/' >
                 
                 
                 
@@ -162,7 +177,6 @@
         </li>
         
         
-
         <li >
             <a href='/categories/' target="_blank">
                 
@@ -184,7 +198,6 @@
         </li>
         
         
-
         <li >
             <a href='/tags/' target="_blank">
                 
@@ -204,7 +217,6 @@
         </li>
         
         
-
         <li >
             <a href='/rtfm/' target="_blank">
                 
@@ -224,7 +236,6 @@
         </li>
         
         
-
         <li >
             <a href='/samuel/' target="_blank">
                 
@@ -534,8 +545,7 @@ func New(text string) error
     <section class="powerby">
         
             Designed by Canux <br/>
-        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+        
     </section>
 </footer>
 
@@ -636,6 +646,10 @@ func New(text string) error
         document.head.appendChild(customFont);
     }());
 </script>
-
+<section class="powerby">
+    
+        Designed by Canux <br/>
+    
+</section>
     </body>
 </html>

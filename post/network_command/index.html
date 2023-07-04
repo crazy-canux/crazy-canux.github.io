@@ -14,6 +14,23 @@
 <meta name="twitter:title" content="Command">
 <meta name="twitter:description" content="telnet telnet nc/netcat // 有的系统默认安装netcat-traditional $ sudo apt-get install netcat-traditional // 安装netcat-openbsd $ sudo apt-get install netcat-openbsd // 设置默认值 $ sudo update-alternatives --config nc $ sudo update-alternatives --set nc /bin/nc.openbsd nc -z IP PORT # 查看指定tcp://ip:port是否监听 nc -zu IP PORT # 查看udp://ip:port是否监听 // 通过nc监听端口 nc -l PORT // 通过nc发送请求. echo -e &#39;{&amp;quot;method&amp;quot;:&amp;quot;test&amp;quot;,&amp;quot;params&amp;quot;:[&amp;quot;test&amp;quot;],&amp;quot;id&amp;quot;:1}&#39; | nc IP PORT ping $ sudo apt-get install iputils-ping ping # 用于确定网络的连通性 ifconfig $ sudo apt-get install net-tools ifconfig # 查看up的interface ifconfig -a # 查看所有的interface ifconfig &amp;lt;bridge&amp;gt;/&amp;lt;interface&amp;gt; up/down brctl $ sudo apt-get install bridge-utils brctl show brctl addbr &amp;lt;bridge&amp;gt; # 添加bridge brctl delbr &amp;lt;bridge&amp;gt; # 删除bridge brctl addif &amp;lt;bridge&amp;gt; &amp;lt;interface&amp;gt; # 绑定interface到bridge brctl delif &amp;lt;bridge&amp;gt; &amp;lt;interface&amp;gt; # 删除bridge上的interface route route # 操作路由表的命令 route -n ip $ sudo apt-get install iproute2 link">
     <link rel="shortcut icon" href="favicon.ico" />
+<style>
+    :root {
+        --article-font-family: "Merriweather", var(--base-font-family);
+    }
+</style>
+
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap";
+    
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+    
+        document.head.appendChild(customFont);
+    }());
+</script>
 
     </head>
     <body class="
@@ -72,7 +89,7 @@
         
         <div class="site-meta">
             <h1 class="site-name"><a href="/">Morgoth</a></h1>
-            <h2 class="site-description">Welcome</h2>
+            <h2 class="site-description">Hello World!</h2>
         </div>
     </header><ol class="social-menu">
             
@@ -121,9 +138,8 @@
         
         
         
-
         <li >
-            <a href='/' target="_blank">
+            <a href='/' >
                 
                 
                 
@@ -142,9 +158,8 @@
         </li>
         
         
-
         <li >
-            <a href='/about/' target="_blank">
+            <a href='/about/' >
                 
                 
                 
@@ -162,7 +177,6 @@
         </li>
         
         
-
         <li >
             <a href='/categories/' target="_blank">
                 
@@ -184,7 +198,6 @@
         </li>
         
         
-
         <li >
             <a href='/tags/' target="_blank">
                 
@@ -204,7 +217,6 @@
         </li>
         
         
-
         <li >
             <a href='/rtfm/' target="_blank">
                 
@@ -224,7 +236,6 @@
         </li>
         
         
-
         <li >
             <a href='/samuel/' target="_blank">
                 
@@ -595,8 +606,7 @@ $ wget -q -c -O /path/to/file.ext url
     <section class="powerby">
         
             Designed by Canux <br/>
-        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+        
     </section>
 </footer>
 
@@ -697,6 +707,10 @@ $ wget -q -c -O /path/to/file.ext url
         document.head.appendChild(customFont);
     }());
 </script>
-
+<section class="powerby">
+    
+        Designed by Canux <br/>
+    
+</section>
     </body>
 </html>

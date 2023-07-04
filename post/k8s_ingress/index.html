@@ -29,6 +29,23 @@ apiVersion: networking.k8s.io/v1 kind: Ingress metadata: name: minimal-ingress a
 Exact：精确匹配 URL 路径，且区分大小写。
 Prefix：基于以 / 分隔的 URL 路径前缀匹配。匹配区分大小写，并且对路径中的元素逐个完成。 路径元素指的是由 / 分隔符分隔的路径中的标签列表。 如果每个 p 都是请求路径 p 的元素前缀，则请求与路径 p 匹配。">
     <link rel="shortcut icon" href="favicon.ico" />
+<style>
+    :root {
+        --article-font-family: "Merriweather", var(--base-font-family);
+    }
+</style>
+
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap";
+    
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+    
+        document.head.appendChild(customFont);
+    }());
+</script>
 
     </head>
     <body class="
@@ -87,7 +104,7 @@ Prefix：基于以 / 分隔的 URL 路径前缀匹配。匹配区分大小写，
         
         <div class="site-meta">
             <h1 class="site-name"><a href="/">Morgoth</a></h1>
-            <h2 class="site-description">Welcome</h2>
+            <h2 class="site-description">Hello World!</h2>
         </div>
     </header><ol class="social-menu">
             
@@ -136,9 +153,8 @@ Prefix：基于以 / 分隔的 URL 路径前缀匹配。匹配区分大小写，
         
         
         
-
         <li >
-            <a href='/' target="_blank">
+            <a href='/' >
                 
                 
                 
@@ -157,9 +173,8 @@ Prefix：基于以 / 分隔的 URL 路径前缀匹配。匹配区分大小写，
         </li>
         
         
-
         <li >
-            <a href='/about/' target="_blank">
+            <a href='/about/' >
                 
                 
                 
@@ -177,7 +192,6 @@ Prefix：基于以 / 分隔的 URL 路径前缀匹配。匹配区分大小写，
         </li>
         
         
-
         <li >
             <a href='/categories/' target="_blank">
                 
@@ -199,7 +213,6 @@ Prefix：基于以 / 分隔的 URL 路径前缀匹配。匹配区分大小写，
         </li>
         
         
-
         <li >
             <a href='/tags/' target="_blank">
                 
@@ -219,7 +232,6 @@ Prefix：基于以 / 分隔的 URL 路径前缀匹配。匹配区分大小写，
         </li>
         
         
-
         <li >
             <a href='/rtfm/' target="_blank">
                 
@@ -239,7 +251,6 @@ Prefix：基于以 / 分隔的 URL 路径前缀匹配。匹配区分大小写，
         </li>
         
         
-
         <li >
             <a href='/samuel/' target="_blank">
                 
@@ -688,8 +699,7 @@ spec:
     <section class="powerby">
         
             Designed by Canux <br/>
-        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+        
     </section>
 </footer>
 
@@ -790,6 +800,10 @@ spec:
         document.head.appendChild(customFont);
     }());
 </script>
-
+<section class="powerby">
+    
+        Designed by Canux <br/>
+    
+</section>
     </body>
 </html>

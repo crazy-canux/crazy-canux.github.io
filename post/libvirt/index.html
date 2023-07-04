@@ -26,6 +26,23 @@ https://libvirt.org/
 $ sudo apt-get install libvirt-bin (包含virsh命令和libvirtd daemon) // libvirtd在container中无法运行；在container中安装libvirt-bin可以获取virsh命令远程访问libvirt-bin server. $ sudo apt-get install libvirt-dev # 库, python/go client依赖该库 $ sudo apt-get install virt-manager # windows管理工具 $ sudo apt-get install virt-view # ... $ sudo service libvirt-bin restart virsh libvirt的命令行工具
 $ virsh list --all # 查看所有虚拟机 $ virsh list --all --name # 只看domain name. $ virsh define /path/to/X.xml # 从xml配置文件定义一个domain $ virsh start # 启动虚拟机 $ virsh reboot # 重启虚拟机 $ virsh shutdown # 关闭虚拟机 $ virsh destroy # 强制关闭虚拟机 $ virsh undefine # 移除虚拟机 $ virsh vncdisplay # 查看虚拟机的vnc信息，可以通过vnc访问.">
     <link rel="shortcut icon" href="favicon.ico" />
+<style>
+    :root {
+        --article-font-family: "Merriweather", var(--base-font-family);
+    }
+</style>
+
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap";
+    
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+    
+        document.head.appendChild(customFont);
+    }());
+</script>
 
     </head>
     <body class="
@@ -84,7 +101,7 @@ $ virsh list --all # 查看所有虚拟机 $ virsh list --all --name # 只看dom
         
         <div class="site-meta">
             <h1 class="site-name"><a href="/">Morgoth</a></h1>
-            <h2 class="site-description">Welcome</h2>
+            <h2 class="site-description">Hello World!</h2>
         </div>
     </header><ol class="social-menu">
             
@@ -133,9 +150,8 @@ $ virsh list --all # 查看所有虚拟机 $ virsh list --all --name # 只看dom
         
         
         
-
         <li >
-            <a href='/' target="_blank">
+            <a href='/' >
                 
                 
                 
@@ -154,9 +170,8 @@ $ virsh list --all # 查看所有虚拟机 $ virsh list --all --name # 只看dom
         </li>
         
         
-
         <li >
-            <a href='/about/' target="_blank">
+            <a href='/about/' >
                 
                 
                 
@@ -174,7 +189,6 @@ $ virsh list --all # 查看所有虚拟机 $ virsh list --all --name # 只看dom
         </li>
         
         
-
         <li >
             <a href='/categories/' target="_blank">
                 
@@ -196,7 +210,6 @@ $ virsh list --all # 查看所有虚拟机 $ virsh list --all --name # 只看dom
         </li>
         
         
-
         <li >
             <a href='/tags/' target="_blank">
                 
@@ -216,7 +229,6 @@ $ virsh list --all # 查看所有虚拟机 $ virsh list --all --name # 只看dom
         </li>
         
         
-
         <li >
             <a href='/rtfm/' target="_blank">
                 
@@ -236,7 +248,6 @@ $ virsh list --all # 查看所有虚拟机 $ virsh list --all --name # 只看dom
         </li>
         
         
-
         <li >
             <a href='/samuel/' target="_blank">
                 
@@ -516,8 +527,7 @@ max_client_requests = 200　　 #每个客户端支持的最大连接数</code><
     <section class="powerby">
         
             Designed by Canux <br/>
-        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+        
     </section>
 </footer>
 
@@ -618,6 +628,10 @@ max_client_requests = 200　　 #每个客户端支持的最大连接数</code><
         document.head.appendChild(customFont);
     }());
 </script>
-
+<section class="powerby">
+    
+        Designed by Canux <br/>
+    
+</section>
     </body>
 </html>

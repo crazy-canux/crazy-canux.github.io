@@ -38,6 +38,23 @@ awk [-v var=value [-F *] [–] &#39;/pattern/ {action}&#39; file awk [-v var=val
 脚本中传递参数格式：
 awk [-f scriptfile]OR[&#39;/pattern/{action}&#39;] val1=value1 val2=value2 … file1 vala=valuea valb=valueb... file2 ... 如果通过shell传参数，把value改成$n即可。 可以通过命令返回值作为参数value。 也可以使用环境变量作为value，也可以给awk的环境变量赋值。 可以在任何位置定义变量（‘ ‘ 之后；-v之后；BEGIN中；{}中；END中）。 只有在-v和在BEGIN中定义的变量能在BEGIN中使用。 在END中定义的变量只能在END中使用，其它位置定义的变量都可以在{}中使用。 在任何位置定义的变量在END中都可以使用。">
     <link rel="shortcut icon" href="favicon.ico" />
+<style>
+    :root {
+        --article-font-family: "Merriweather", var(--base-font-family);
+    }
+</style>
+
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap";
+    
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+    
+        document.head.appendChild(customFont);
+    }());
+</script>
 
     </head>
     <body class="
@@ -96,7 +113,7 @@ awk [-f scriptfile]OR[&#39;/pattern/{action}&#39;] val1=value1 val2=value2 … f
         
         <div class="site-meta">
             <h1 class="site-name"><a href="/">Morgoth</a></h1>
-            <h2 class="site-description">Welcome</h2>
+            <h2 class="site-description">Hello World!</h2>
         </div>
     </header><ol class="social-menu">
             
@@ -145,9 +162,8 @@ awk [-f scriptfile]OR[&#39;/pattern/{action}&#39;] val1=value1 val2=value2 … f
         
         
         
-
         <li >
-            <a href='/' target="_blank">
+            <a href='/' >
                 
                 
                 
@@ -166,9 +182,8 @@ awk [-f scriptfile]OR[&#39;/pattern/{action}&#39;] val1=value1 val2=value2 … f
         </li>
         
         
-
         <li >
-            <a href='/about/' target="_blank">
+            <a href='/about/' >
                 
                 
                 
@@ -186,7 +201,6 @@ awk [-f scriptfile]OR[&#39;/pattern/{action}&#39;] val1=value1 val2=value2 … f
         </li>
         
         
-
         <li >
             <a href='/categories/' target="_blank">
                 
@@ -208,7 +222,6 @@ awk [-f scriptfile]OR[&#39;/pattern/{action}&#39;] val1=value1 val2=value2 … f
         </li>
         
         
-
         <li >
             <a href='/tags/' target="_blank">
                 
@@ -228,7 +241,6 @@ awk [-f scriptfile]OR[&#39;/pattern/{action}&#39;] val1=value1 val2=value2 … f
         </li>
         
         
-
         <li >
             <a href='/rtfm/' target="_blank">
                 
@@ -248,7 +260,6 @@ awk [-f scriptfile]OR[&#39;/pattern/{action}&#39;] val1=value1 val2=value2 … f
         </li>
         
         
-
         <li >
             <a href='/samuel/' target="_blank">
                 
@@ -744,8 +755,7 @@ system(“command options”),返回命令的退出状态。
     <section class="powerby">
         
             Designed by Canux <br/>
-        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+        
     </section>
 </footer>
 
@@ -846,6 +856,10 @@ system(“command options”),返回命令的退出状态。
         document.head.appendChild(customFont);
     }());
 </script>
-
+<section class="powerby">
+    
+        Designed by Canux <br/>
+    
+</section>
     </body>
 </html>

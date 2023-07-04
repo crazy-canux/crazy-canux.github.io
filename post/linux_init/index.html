@@ -32,6 +32,23 @@ https://www.freedesktop.org/software/systemd/man/systemd.unit.html#
 [Unit] Description=details After=containerd.service # 之前启动 Before= # 之后运行 Bindsto= # Wants=containerd.service # 弱依赖 Requires= # 强依赖 StartLimitInterval=10s StartLimitBurst=5 https://www.freedesktop.org/software/systemd/man/systemd.service.html#
 [Service] Type=simple/notify/dbus/forking/idle/oneshot ExecStartPre= ExecStart= ExecStartPost= ExecStop= ExecStopPost= ExecReload= KillMode=node/mixed/process/control-group Restart=no/on-success/on-failure/on-abnormal/on-abort/on-watchdog/always # always总是开机启动，即使systemctl enable.">
     <link rel="shortcut icon" href="favicon.ico" />
+<style>
+    :root {
+        --article-font-family: "Merriweather", var(--base-font-family);
+    }
+</style>
+
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap";
+    
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+    
+        document.head.appendChild(customFont);
+    }());
+</script>
 
     </head>
     <body class="
@@ -90,7 +107,7 @@ https://www.freedesktop.org/software/systemd/man/systemd.unit.html#
         
         <div class="site-meta">
             <h1 class="site-name"><a href="/">Morgoth</a></h1>
-            <h2 class="site-description">Welcome</h2>
+            <h2 class="site-description">Hello World!</h2>
         </div>
     </header><ol class="social-menu">
             
@@ -139,9 +156,8 @@ https://www.freedesktop.org/software/systemd/man/systemd.unit.html#
         
         
         
-
         <li >
-            <a href='/' target="_blank">
+            <a href='/' >
                 
                 
                 
@@ -160,9 +176,8 @@ https://www.freedesktop.org/software/systemd/man/systemd.unit.html#
         </li>
         
         
-
         <li >
-            <a href='/about/' target="_blank">
+            <a href='/about/' >
                 
                 
                 
@@ -180,7 +195,6 @@ https://www.freedesktop.org/software/systemd/man/systemd.unit.html#
         </li>
         
         
-
         <li >
             <a href='/categories/' target="_blank">
                 
@@ -202,7 +216,6 @@ https://www.freedesktop.org/software/systemd/man/systemd.unit.html#
         </li>
         
         
-
         <li >
             <a href='/tags/' target="_blank">
                 
@@ -222,7 +235,6 @@ https://www.freedesktop.org/software/systemd/man/systemd.unit.html#
         </li>
         
         
-
         <li >
             <a href='/rtfm/' target="_blank">
                 
@@ -242,7 +254,6 @@ https://www.freedesktop.org/software/systemd/man/systemd.unit.html#
         </li>
         
         
-
         <li >
             <a href='/samuel/' target="_blank">
                 
@@ -555,8 +566,7 @@ $ sudo initctl reload-configuration
     <section class="powerby">
         
             Designed by Canux <br/>
-        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+        
     </section>
 </footer>
 
@@ -657,6 +667,10 @@ $ sudo initctl reload-configuration
         document.head.appendChild(customFont);
     }());
 </script>
-
+<section class="powerby">
+    
+        Designed by Canux <br/>
+    
+</section>
     </body>
 </html>

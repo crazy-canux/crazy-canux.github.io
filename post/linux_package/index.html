@@ -23,6 +23,23 @@ dpkg dpkg的本地前端工具。
 deb - Debian binary package format dpkg - package manager for Debian dpkg dpkg -X ./xxx.deb xxx # 将deb包解压到xxx目录 dpkg -e ./xxx.deb xxx/DEBIAN # 将control信息解压 dpkg -l | grep pkg # 查看安装的包 dpkg-reconfigure - reconfigure an already installed package dpkg-reconfigure dpkg-deb - Debian package archive (.deb) manipulation tool 目录结构, DEBIAN/control是必需的
 |- debian_root |- DEBIAN |- control |- preinst/preinstallation # 解压deb包之前执行 |- prerm/preremove |- postinst/postinstallation # 解压完成之后执行，通常用来配置 |- postrm/postremove |- copyright |- changelog |- conffiles |- etc |- init.">
     <link rel="shortcut icon" href="favicon.ico" />
+<style>
+    :root {
+        --article-font-family: "Merriweather", var(--base-font-family);
+    }
+</style>
+
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap";
+    
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+    
+        document.head.appendChild(customFont);
+    }());
+</script>
 
     </head>
     <body class="
@@ -81,7 +98,7 @@ deb - Debian binary package format dpkg - package manager for Debian dpkg dpkg -
         
         <div class="site-meta">
             <h1 class="site-name"><a href="/">Morgoth</a></h1>
-            <h2 class="site-description">Welcome</h2>
+            <h2 class="site-description">Hello World!</h2>
         </div>
     </header><ol class="social-menu">
             
@@ -130,9 +147,8 @@ deb - Debian binary package format dpkg - package manager for Debian dpkg dpkg -
         
         
         
-
         <li >
-            <a href='/' target="_blank">
+            <a href='/' >
                 
                 
                 
@@ -151,9 +167,8 @@ deb - Debian binary package format dpkg - package manager for Debian dpkg dpkg -
         </li>
         
         
-
         <li >
-            <a href='/about/' target="_blank">
+            <a href='/about/' >
                 
                 
                 
@@ -171,7 +186,6 @@ deb - Debian binary package format dpkg - package manager for Debian dpkg dpkg -
         </li>
         
         
-
         <li >
             <a href='/categories/' target="_blank">
                 
@@ -193,7 +207,6 @@ deb - Debian binary package format dpkg - package manager for Debian dpkg dpkg -
         </li>
         
         
-
         <li >
             <a href='/tags/' target="_blank">
                 
@@ -213,7 +226,6 @@ deb - Debian binary package format dpkg - package manager for Debian dpkg dpkg -
         </li>
         
         
-
         <li >
             <a href='/rtfm/' target="_blank">
                 
@@ -233,7 +245,6 @@ deb - Debian binary package format dpkg - package manager for Debian dpkg dpkg -
         </li>
         
         
-
         <li >
             <a href='/samuel/' target="_blank">
                 
@@ -667,8 +678,7 @@ $ apt-cache --recurse depends &lt;pkg&gt;
     <section class="powerby">
         
             Designed by Canux <br/>
-        Built with <a href="https://gohugo.io/" target="_blank" rel="noopener">Hugo</a> <br />
-        Theme <b><a href="https://github.com/CaiJimmy/hugo-theme-stack" target="_blank" rel="noopener" data-version="3.16.0">Stack</a></b> designed by <a href="https://jimmycai.com" target="_blank" rel="noopener">Jimmy</a>
+        
     </section>
 </footer>
 
@@ -769,6 +779,10 @@ $ apt-cache --recurse depends &lt;pkg&gt;
         document.head.appendChild(customFont);
     }());
 </script>
-
+<section class="powerby">
+    
+        Designed by Canux <br/>
+    
+</section>
     </body>
 </html>
