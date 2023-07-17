@@ -6,7 +6,59 @@
         <description>Recent content on Morgoth</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Mon, 15 May 2023 09:41:39 +0800</lastBuildDate><atom:link href="https://canuxcheng.com/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 17 Jul 2023 14:46:57 +0800</lastBuildDate><atom:link href="https://canuxcheng.com/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>First_Aid</title>
+        <link>https://canuxcheng.com/post/first_aid/</link>
+        <pubDate>Mon, 17 Jul 2023 14:46:57 +0800</pubDate>
+        
+        <guid>https://canuxcheng.com/post/first_aid/</guid>
+        <description>&lt;h1 id=&#34;first-aid&#34;&gt;First Aid&lt;/h1&gt;
+&lt;p&gt;&lt;img src=&#34;https://canuxcheng.com/images/fa1.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;pic0&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://canuxcheng.com/images/fa2.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;pic1&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;确认现场环境安全&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;判断呼吸和意识&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;先跪下判断意识和呼吸情况，两手拍肩膀呼叫，判断意识，看胸口起伏判断呼吸，数数1001，1002，&amp;hellip; 1008 八秒；如果没有意识和呼吸才需要心肺复苏。否则可能是气道梗阻。&lt;/p&gt;
+&lt;h2 id=&#34;气道梗阻&#34;&gt;气道梗阻&lt;/h2&gt;
+&lt;p&gt;不完全气道梗阻：&lt;/p&gt;
+&lt;p&gt;有意识，能沟通，优先咳嗽排出。
+其次采用背部叩击。
+最后才使用腹部冲击（海姆利克法）。&lt;/p&gt;
+&lt;p&gt;完全气道梗阻：&lt;/p&gt;
+&lt;p&gt;没有意识，没有呼吸，需要心肺复苏。&lt;/p&gt;
+&lt;h2 id=&#34;心肺复苏&#34;&gt;心肺复苏&lt;/h2&gt;
+&lt;p&gt;来人啊，救命啊，有人晕倒了，我是急救员，请你拨打120，有AED一并带来，会急救的和我一起。&lt;/p&gt;
+&lt;p&gt;胸部按压30次01，02&amp;hellip; 30，深度5cm左右，确保完全回弹。&lt;/p&gt;
+&lt;p&gt;然后清理口腔异物，吹气两次。&lt;/p&gt;
+&lt;p&gt;胸部按压和吹气连续做5组。&lt;/p&gt;
+&lt;p&gt;每做完5组检查脉搏和呼吸。一只手放头部，另一只手两个指头放劲动脉。计数1001，1002，&amp;hellip; 1008；若有呼吸抢救成功，否则重复上述步骤。&lt;/p&gt;
+&lt;p&gt;如果有AED，随到随用，先打开电源，一个贴片用于病人右侧胸部上方，一个用于左侧胸部侧方，提醒旁人离开，开始分析是否需要除颤，若需要提示旁人离开，按下按钮。提示完成后继续心肺复苏。&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>Arduino</title>
         <link>https://canuxcheng.com/post/hardware_arduino/</link>
         <pubDate>Mon, 15 May 2023 09:41:39 +0800</pubDate>
@@ -15198,7 +15250,7 @@ password: vagrant
 </description>
         </item>
         <item>
-        <title>Misc</title>
+        <title>Django Misc</title>
         <link>https://canuxcheng.com/post/django_misc/</link>
         <pubDate>Wed, 04 Jan 2017 01:13:36 +0000</pubDate>
         

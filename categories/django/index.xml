@@ -57,7 +57,7 @@ logout(request)
 </description>
         </item>
         <item>
-        <title>Misc</title>
+        <title>Django Misc</title>
         <link>https://canuxcheng.com/post/django_misc/</link>
         <pubDate>Wed, 04 Jan 2017 01:13:36 +0000</pubDate>
         

@@ -2,25 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://canuxcheng.com/categories/</loc>
+    <lastmod>2023-07-17T14:46:57+08:00</lastmod>
+  </url><url>
+    <loc>https://canuxcheng.com/post/first_aid/</loc>
+    <lastmod>2023-07-17T14:46:57+08:00</lastmod>
+  </url><url>
+    <loc>https://canuxcheng.com/tags/misc/</loc>
+    <lastmod>2023-07-17T14:46:57+08:00</lastmod>
+  </url><url>
+    <loc>https://canuxcheng.com/categories/misc/</loc>
+    <lastmod>2023-07-17T14:46:57+08:00</lastmod>
+  </url><url>
+    <loc>https://canuxcheng.com/</loc>
+    <lastmod>2023-07-17T14:46:57+08:00</lastmod>
+  </url><url>
+    <loc>https://canuxcheng.com/post/</loc>
+    <lastmod>2023-07-17T14:46:57+08:00</lastmod>
+  </url><url>
+    <loc>https://canuxcheng.com/tags/</loc>
+    <lastmod>2023-07-17T14:46:57+08:00</lastmod>
+  </url><url>
     <loc>https://canuxcheng.com/tags/arduino/</loc>
     <lastmod>2023-05-15T09:41:39+08:00</lastmod>
   </url><url>
     <loc>https://canuxcheng.com/post/hardware_arduino/</loc>
     <lastmod>2023-05-15T09:41:39+08:00</lastmod>
   </url><url>
-    <loc>https://canuxcheng.com/categories/</loc>
-    <lastmod>2023-05-15T09:41:39+08:00</lastmod>
-  </url><url>
     <loc>https://canuxcheng.com/categories/hw/</loc>
-    <lastmod>2023-05-15T09:41:39+08:00</lastmod>
-  </url><url>
-    <loc>https://canuxcheng.com/</loc>
-    <lastmod>2023-05-15T09:41:39+08:00</lastmod>
-  </url><url>
-    <loc>https://canuxcheng.com/post/</loc>
-    <lastmod>2023-05-15T09:41:39+08:00</lastmod>
-  </url><url>
-    <loc>https://canuxcheng.com/tags/</loc>
     <lastmod>2023-05-15T09:41:39+08:00</lastmod>
   </url><url>
     <loc>https://canuxcheng.com/categories/cloud/</loc>
@@ -455,9 +464,6 @@
     <loc>https://canuxcheng.com/post/travel_brazil/</loc>
     <lastmod>2018-03-08T16:41:50+00:00</lastmod>
   </url><url>
-    <loc>https://canuxcheng.com/categories/misc/</loc>
-    <lastmod>2018-03-08T16:41:50+00:00</lastmod>
-  </url><url>
     <loc>https://canuxcheng.com/post/metrics_alertmanager/</loc>
     <lastmod>2018-01-18T19:23:25+00:00</lastmod>
   </url><url>
@@ -751,9 +757,6 @@
   </url><url>
     <loc>https://canuxcheng.com/post/vagrant/</loc>
     <lastmod>2017-01-12T21:00:01+00:00</lastmod>
-  </url><url>
-    <loc>https://canuxcheng.com/tags/misc/</loc>
-    <lastmod>2017-01-04T01:13:36+00:00</lastmod>
   </url><url>
     <loc>https://canuxcheng.com/post/django_misc/</loc>
     <lastmod>2017-01-04T01:13:36+00:00</lastmod>
