@@ -28027,7 +28027,7 @@ $ hdfs recoverLease
 &lt;p&gt;SNCF的TVG火车&lt;/p&gt;
 &lt;p&gt;法国有22个大区。&lt;/p&gt;
 &lt;h1 id=&#34;法兰西岛&#34;&gt;法兰西岛&lt;/h1&gt;
-&lt;h2 id=&#34;巴黎省已去&#34;&gt;巴黎省(已去)&lt;/h2&gt;
+&lt;h2 id=&#34;巴黎省&#34;&gt;巴黎省&lt;/h2&gt;
 &lt;p&gt;巴黎是法国首都，大区首府和该省省会。&lt;/p&gt;
 &lt;p&gt;埃菲尔铁塔&lt;/p&gt;
 &lt;p&gt;凯旋门&lt;/p&gt;
@@ -28040,10 +28040,10 @@ $ hdfs recoverLease
 &lt;h2 id=&#34;塞纳-马恩省&#34;&gt;塞纳-马恩省&lt;/h2&gt;
 &lt;p&gt;著名景点枫丹白露。&lt;/p&gt;
 &lt;h1 id=&#34;弗朗什-孔泰&#34;&gt;弗朗什-孔泰&lt;/h1&gt;
-&lt;h2 id=&#34;杜省已去&#34;&gt;杜省(已去)&lt;/h2&gt;
+&lt;h2 id=&#34;杜省&#34;&gt;杜省&lt;/h2&gt;
 &lt;p&gt;贝桑松是大区首府和省会。&lt;/p&gt;
 &lt;p&gt;蒙贝利亚尔是杜省的一个区。&lt;/p&gt;
-&lt;h2 id=&#34;贝尔福地区已去&#34;&gt;贝尔福地区(已去)&lt;/h2&gt;
+&lt;h2 id=&#34;贝尔福地区&#34;&gt;贝尔福地区&lt;/h2&gt;
 &lt;p&gt;贝尔福是省会驻地,与瑞士相邻。&lt;/p&gt;
 &lt;p&gt;景点有贝尔福雄狮。&lt;/p&gt;
 &lt;p&gt;Eurockéennes法国最大的摇滚音乐节。&lt;/p&gt;
@@ -28051,7 +28051,7 @@ $ hdfs recoverLease
 &lt;p&gt;斯特拉斯堡是省会。&lt;/p&gt;
 &lt;h2 id=&#34;下莱茵省&#34;&gt;下莱茵省&lt;/h2&gt;
 &lt;p&gt;斯特拉斯堡是大区首府和省会。&lt;/p&gt;
-&lt;h2 id=&#34;上莱茵省已去&#34;&gt;上莱茵省(已去)&lt;/h2&gt;
+&lt;h2 id=&#34;上莱茵省&#34;&gt;上莱茵省&lt;/h2&gt;
 &lt;p&gt;科尔马是该省的首府,是童话小镇。&lt;/p&gt;
 </description>
         </item>
@@ -28591,7 +28591,7 @@ def find_vm(si, name):
 &lt;p&gt;网络层&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;数据链路层&lt;/p&gt;
+&lt;p&gt;链路层&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;物理层&lt;/p&gt;
@@ -28601,8 +28601,8 @@ def find_vm(si, name):
 &lt;ul&gt;
 &lt;li&gt;应用层&lt;/li&gt;
 &lt;li&gt;传输层&lt;/li&gt;
-&lt;li&gt;网络互联层&lt;/li&gt;
-&lt;li&gt;主机到网络层&lt;/li&gt;
+&lt;li&gt;网络层&lt;/li&gt;
+&lt;li&gt;链路层&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2 id=&#34;应用层&#34;&gt;应用层&lt;/h2&gt;
 &lt;p&gt;0-1024是系统保留端口, 1024-65535是可用自定义端口&lt;/p&gt;
@@ -28636,14 +28636,16 @@ SNMPtrap: 162,
 &lt;p&gt;TCP：传输控制协议，提供可靠的、面向连接的字节流服务,建立连接需要三次握手．&lt;/p&gt;
 &lt;p&gt;UDP：数据报协议，提供不可靠的、无连接的面向数据报的服务。&lt;/p&gt;
 &lt;p&gt;SCTP：流控制传输协议。&lt;/p&gt;
-&lt;h2 id=&#34;网络互联层&#34;&gt;网络互联层&lt;/h2&gt;
+&lt;h2 id=&#34;网络层&#34;&gt;网络层&lt;/h2&gt;
+&lt;p&gt;也叫互联网层.&lt;/p&gt;
 &lt;p&gt;IP：网际协议，提供不可靠、无连接的数据报传送服务。&lt;/p&gt;
 &lt;p&gt;ICMP：Internet控制报文协议，传递差错报文和需要注意的信息，封装在IP数据报内部。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;# 基于ICMP的应用层：
 Ping:
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;IGMP：Internet组管理协议，用于支持主机和路由器进行多播，让一个物联网络上的所有系统知道主机当前所在的多播组，封装在IP数据报内部。&lt;/p&gt;
-&lt;h2 id=&#34;主机到网络层&#34;&gt;主机到网络层&lt;/h2&gt;
+&lt;h2 id=&#34;链路层&#34;&gt;链路层&lt;/h2&gt;
+&lt;p&gt;也叫数据链路层或网络接口层.&lt;/p&gt;
 &lt;p&gt;以太网帧结构：以太网首部+IP首部+TCP/UDP首部+应用数据+以太网尾部。&lt;/p&gt;
 &lt;p&gt;ARP：地址解析协议，为IP地址到硬件地址之间提供动态映射。&lt;/p&gt;
 &lt;p&gt;RARP：没有磁盘驱动器的系统使用。&lt;/p&gt;
@@ -33654,66 +33656,6 @@ GITHUB_URL=https://github.com/crazy-canux/crazy-canux.github.io.git
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;mailto:canuxcheng@163.com&#34; &gt;canuxcheng@163.com&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;商务邮箱(business)&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;mailto:canuxcheng@outlook.com&#34; &gt;canuxcheng@outlook.com&lt;/a&gt;&lt;/p&gt;
-&lt;hr&gt;
-</description>
-        </item>
-        <item>
-        <title>Media</title>
-        <link>https://canuxcheng.com/media/</link>
-        <pubDate>Mon, 01 Apr 2013 12:49:49 +0800</pubDate>
-        
-        <guid>https://canuxcheng.com/media/</guid>
-        <description>&lt;h1 id=&#34;gangs-of-london&#34;&gt;gangs of london&lt;/h1&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.meijutt.tv/content/meiju25362.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://www.meijutt.tv/content/meiju25362.html&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id=&#34;condor&#34;&gt;condor&lt;/h1&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.meijutt.tv/content/meiju23649.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://www.meijutt.tv/content/meiju23649.html&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id=&#34;bodyguard&#34;&gt;bodyguard&lt;/h1&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.meijutt.tv/content/meiju23903.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://www.meijutt.tv/content/meiju23903.html&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id=&#34;yellowwstone&#34;&gt;yellowwstone&lt;/h1&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.meijutt.tv/content/meiju25366.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://www.meijutt.tv/content/meiju25366.html&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id=&#34;homeland&#34;&gt;homeland&lt;/h1&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.meijutt.tv/content/meiju24703.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://www.meijutt.tv/content/meiju24703.html&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id=&#34;love-death--robots&#34;&gt;love, death &amp;amp; robots&lt;/h1&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.meijutt.tv/content/meiju24330.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://www.meijutt.tv/content/meiju24330.html&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id=&#34;the-mandolorian&#34;&gt;the mandolorian&lt;/h1&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.meijutt.tv/content/meiju24901.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://www.meijutt.tv/content/meiju24901.html&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id=&#34;kingdom&#34;&gt;kingdom&lt;/h1&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.meijutt.tv/content/meiju24216.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://www.meijutt.tv/content/meiju24216.html&lt;/a&gt;&lt;/p&gt;
-</description>
-        </item>
-        <item>
-        <title>Todo</title>
-        <link>https://canuxcheng.com/todo/</link>
-        <pubDate>Mon, 01 Apr 2013 12:49:49 +0800</pubDate>
-        
-        <guid>https://canuxcheng.com/todo/</guid>
-        <description>&lt;h1 id=&#34;todo&#34;&gt;TODO&lt;/h1&gt;
-&lt;p&gt;2013 - C + Linux + Shell + Vim + Git&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;Operations development:&lt;/p&gt;
-&lt;p&gt;2014 - Python + Oracle&lt;/p&gt;
-&lt;p&gt;2015 - Django + Mysql + HTML + CSS&lt;/p&gt;
-&lt;p&gt;2016 - PowerShell + Windows + Sql Server + ITIL Foundation&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;Testing development:&lt;/p&gt;
-&lt;p&gt;2017 - Mongodb + Agile + Ansible + Jenkins + QA&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;DevOps development:&lt;/p&gt;
-&lt;p&gt;2018 - JavaScript + Go&lt;/p&gt;
-&lt;p&gt;2019 - FullStack: Go/Python/JavaScript/Sql + PMP&lt;/p&gt;
-&lt;hr&gt;
-&lt;p&gt;Devops(development/operations/QA)&lt;/p&gt;
-&lt;p&gt;2020 - ITIL Practitioner&lt;/p&gt;
-&lt;p&gt;2021 - ITIL MALC/Expert&lt;/p&gt;
-&lt;p&gt;2022 - ITIL Master&lt;/p&gt;
 &lt;hr&gt;
 </description>
         </item>
