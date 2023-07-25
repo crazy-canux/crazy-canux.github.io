@@ -8,10 +8,10 @@
         <language>en-us</language>
         <lastBuildDate>Sat, 04 Jan 2020 21:53:40 +0800</lastBuildDate><atom:link href="https://canuxcheng.com/tags/docker/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Compose</title>
-        <link>https://canuxcheng.com/post/container_compose/</link>
+        <link>https://canuxcheng.com/post/cncf_compose/</link>
         <pubDate>Sat, 04 Jan 2020 21:53:40 +0800</pubDate>
         
-        <guid>https://canuxcheng.com/post/container_compose/</guid>
+        <guid>https://canuxcheng.com/post/cncf_compose/</guid>
         <description>&lt;h1 id=&#34;docker-compose&#34;&gt;docker-compose&lt;/h1&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/docker/compose&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/docker/compose&lt;/a&gt;&lt;/p&gt;
@@ -303,14 +303,14 @@ $ sudo mv ./kompose /usr/local/bin/kompose&lt;/code&gt;&lt;/pre&gt;
         </item>
         <item>
         <title>Image</title>
-        <link>https://canuxcheng.com/post/container_image/</link>
+        <link>https://canuxcheng.com/post/cncf_image/</link>
         <pubDate>Tue, 03 Dec 2019 21:50:47 +0800</pubDate>
         
-        <guid>https://canuxcheng.com/post/container_image/</guid>
+        <guid>https://canuxcheng.com/post/cncf_image/</guid>
         <description>&lt;h1 id=&#34;image&#34;&gt;image&lt;/h1&gt;
 &lt;p&gt;容器镜像&lt;/p&gt;
 &lt;p&gt;docker image driver: aufs, btrfs, devicemapper, overlay.&lt;/p&gt;
-&lt;h1 id=&#34;buildx&#34;&gt;buildx&lt;/h1&gt;
+&lt;h2 id=&#34;buildx&#34;&gt;buildx&lt;/h2&gt;
 &lt;p&gt;使用qume:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;// 安装bitfmt
 docker run --privileged --rm tonistiigi/binfmt --install all
@@ -363,7 +363,7 @@ docker buildx build --platform linux/amd64,linux/amd64/v2,linux/amd64/v3,linux/a
 docker buildx build -o type=docker --platform linux/amd64 -t name:1.0.0 .
 docker buildx build -o type=docker --platform linux/arm64 -t name:1.0.0-linux-arm64 .
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;overlay&#34;&gt;Overlay&lt;/h1&gt;
+&lt;h2 id=&#34;overlay&#34;&gt;Overlay&lt;/h2&gt;
 &lt;p&gt;最下层是一个 lower 层，也就是镜像层，它是一个只读层；&lt;/p&gt;
 &lt;p&gt;右上层是一个 upper 层，upper 是容器的读写层，upper 层采用了写实复制的机制，也就是说只有对某些文件需要进行修改的时候才会从 lower 层把这个文件拷贝上来，之后所有的修改操作都会对 upper 层的副本进行修改；&lt;/p&gt;
 &lt;p&gt;upper 并列的有一个 workdir，它的作用是充当一个中间层的作用。也就是说，当对 upper 层里面的副本进行修改时，会先放到 workdir，然后再从 workdir 移到 upper 里面去，这个是 overlay 的工作机制；&lt;/p&gt;
@@ -372,9 +372,9 @@ docker buildx build -o type=docker --platform linux/arm64 -t name:1.0.0-linux-ar
 mount -t overlay -o lowerdir=/path/lower,upperdir=/path/upper,workdir=/path/work overlay /path/di
 &lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
-&lt;h1 id=&#34;scratch&#34;&gt;scratch&lt;/h1&gt;
+&lt;h2 id=&#34;scratch&#34;&gt;scratch&lt;/h2&gt;
 &lt;p&gt;scratch是空白镜像，一般用于基础镜像构建.比如制作alpine/ubuntu/debian/busybox镜像.&lt;/p&gt;
-&lt;h1 id=&#34;ubuntudebian&#34;&gt;ubuntu/debian&lt;/h1&gt;
+&lt;h2 id=&#34;ubuntudebian&#34;&gt;ubuntu/debian&lt;/h2&gt;
 &lt;p&gt;Hash Sum mismatch:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;RUN set -ex \
 &amp;amp;&amp;amp; apt-get clean \
@@ -384,15 +384,15 @@ mount -t overlay -o lowerdir=/path/lower,upperdir=/path/upper,workdir=/path/work
 build-essential \
 &amp;amp;&amp;amp; rm -rf /var/lib/apt/lists/*
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;centosfedora&#34;&gt;centos/fedora&lt;/h1&gt;
-&lt;h1 id=&#34;buildpack-deps&#34;&gt;buildpack-deps&lt;/h1&gt;
+&lt;h2 id=&#34;centosfedora&#34;&gt;centos/fedora&lt;/h2&gt;
+&lt;h2 id=&#34;buildpack-deps&#34;&gt;buildpack-deps&lt;/h2&gt;
 &lt;p&gt;在ubuntu/debian基础上安装一些工具，比ubuntu/debian镜像更大.&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/docker-library/buildpack-deps&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/docker-library/buildpack-deps&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id=&#34;busybox&#34;&gt;busybox&lt;/h1&gt;
+&lt;h2 id=&#34;busybox&#34;&gt;busybox&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/docker-library/busybox&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/docker-library/busybox&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id=&#34;alpine推荐&#34;&gt;alpine(推荐)&lt;/h1&gt;
+&lt;h2 id=&#34;alpine推荐&#34;&gt;alpine(推荐)&lt;/h2&gt;
 &lt;p&gt;很多语言的都是基于alpine: python-version:alpine-version, golang-version:alpine-version.&lt;/p&gt;
 &lt;p&gt;一个基于musl和busybox的linux发行版.&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.alpinelinux.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -403,23 +403,32 @@ build-essential \
 # ln -s /lib/libc.musl-x86_64.so.1 /lib64/ld-linux-x86-64.so.2
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;注意wget 部分参数不可用.&lt;/p&gt;
-&lt;h1 id=&#34;distroless&#34;&gt;distroless&lt;/h1&gt;
+&lt;h2 id=&#34;distroless&#34;&gt;distroless&lt;/h2&gt;
 &lt;p&gt;google提供的只包含运行时的精简镜像.&lt;/p&gt;
 &lt;p&gt;缺点是没有包管理和shell，不方便调试.&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/GoogleContainerTools/distroless&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/GoogleContainerTools/distroless&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id=&#34;slim&#34;&gt;slim&lt;/h1&gt;
+&lt;h2 id=&#34;slim&#34;&gt;slim&lt;/h2&gt;
 &lt;p&gt;减小image大小,适用于web程序.&lt;/p&gt;
 &lt;p&gt;&amp;lt;https://github.com/docker-slim/docker-slim&lt;/p&gt;
 &lt;hr&gt;
+&lt;h2 id=&#34;registry&#34;&gt;registry&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Docker Hub Registry&lt;/li&gt;
+&lt;li&gt;Google Container Registry (gcr.io)&lt;/li&gt;
+&lt;li&gt;RedHat Quay Registry (quay.io)&lt;/li&gt;
+&lt;li&gt;GitHub Docker Packages (docker.pkg.github.com)&lt;/li&gt;
+&lt;li&gt;GitHub Container Registry (ghcr.io)&lt;/li&gt;
+&lt;li&gt;Kubernetes Registry(registry.k8s.io/k8s.gcr.io)&lt;/li&gt;
+&lt;/ul&gt;
 </description>
         </item>
         <item>
         <title>Docker</title>
-        <link>https://canuxcheng.com/post/container_docker/</link>
+        <link>https://canuxcheng.com/post/cncf_docker/</link>
         <pubDate>Thu, 05 Apr 2018 22:02:31 +0000</pubDate>
         
-        <guid>https://canuxcheng.com/post/container_docker/</guid>
+        <guid>https://canuxcheng.com/post/cncf_docker/</guid>
         <description>&lt;h1 id=&#34;docker&#34;&gt;Docker&lt;/h1&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://store.docker.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://store.docker.com/&lt;/a&gt;&lt;/p&gt;

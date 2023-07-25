@@ -7,20 +7,23 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <lastBuildDate>Tue, 05 Oct 2021 22:02:31 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/container/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>Container Security</title>
-        <link>https://canuxcheng.com/post/container_security/</link>
+        <title>Container Security &amp; Compliance</title>
+        <link>https://canuxcheng.com/post/cncf_security/</link>
         <pubDate>Tue, 05 Oct 2021 22:02:31 +0000</pubDate>
         
-        <guid>https://canuxcheng.com/post/container_security/</guid>
-        <description>&lt;h1 id=&#34;trivy&#34;&gt;Trivy&lt;/h1&gt;
+        <guid>https://canuxcheng.com/post/cncf_security/</guid>
+        <description>&lt;h1 id=&#34;security--compliance&#34;&gt;Security &amp;amp; Compliance&lt;/h1&gt;
+&lt;h2 id=&#34;open-policy-agent&#34;&gt;Open Policy Agent&lt;/h2&gt;
+&lt;h2 id=&#34;tuf&#34;&gt;TUF&lt;/h2&gt;
+&lt;h1 id=&#34;trivy&#34;&gt;Trivy&lt;/h1&gt;
 </description>
         </item>
         <item>
         <title>Container</title>
-        <link>https://canuxcheng.com/post/container/</link>
+        <link>https://canuxcheng.com/post/cncf_container/</link>
         <pubDate>Thu, 05 Apr 2018 22:02:31 +0000</pubDate>
         
-        <guid>https://canuxcheng.com/post/container/</guid>
+        <guid>https://canuxcheng.com/post/cncf_container/</guid>
         <description>&lt;h1 id=&#34;container&#34;&gt;Container&lt;/h1&gt;
 &lt;p&gt;OCI: Open Container Initiative.&lt;/p&gt;
 &lt;p&gt;CRI: Container Runtime Interface.&lt;/p&gt;
@@ -74,10 +77,10 @@
         </item>
         <item>
         <title>Namespace</title>
-        <link>https://canuxcheng.com/post/container_ns/</link>
+        <link>https://canuxcheng.com/post/cncf_ns/</link>
         <pubDate>Thu, 05 Apr 2018 22:02:31 +0000</pubDate>
         
-        <guid>https://canuxcheng.com/post/container_ns/</guid>
+        <guid>https://canuxcheng.com/post/cncf_ns/</guid>
         <description>&lt;h1 id=&#34;ns&#34;&gt;NS&lt;/h1&gt;
 &lt;p&gt;namespace 是 Linux 内核用来隔离内核资源的方式&lt;/p&gt;
 &lt;p&gt;Linux namespace资源：&lt;/p&gt;

@@ -2,29 +2,23 @@
 <html lang="en-us" dir="ltr">
     <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Serverless serverless是微服务架构的一种部署服务的方式.
-knative https://github.com/knative
-openfaas https://github.com/openfaas/faas
-serverless https://github.com/serverless/serverless
-fission openwhisk '>
+dapr knative https://github.com/knative
+KEDA https://github.com/kedacore/keda'>
 <title>Serverless</title>
 
 <link rel='canonical' href='https://canuxcheng.com/post/k8s_serverless/'>
 
 <link rel="stylesheet" href="/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content='Serverless'>
 <meta property='og:description' content='Serverless serverless是微服务架构的一种部署服务的方式.
-knative https://github.com/knative
-openfaas https://github.com/openfaas/faas
-serverless https://github.com/serverless/serverless
-fission openwhisk '>
+dapr knative https://github.com/knative
+KEDA https://github.com/kedacore/keda'>
 <meta property='og:url' content='https://canuxcheng.com/post/k8s_serverless/'>
 <meta property='og:site_name' content='Morgoth'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='k8s' /><meta property='article:published_time' content='2021-12-04T20:03:39&#43;08:00'/><meta property='article:modified_time' content='2021-12-04T20:03:39&#43;08:00'/>
 <meta name="twitter:title" content="Serverless">
 <meta name="twitter:description" content="Serverless serverless是微服务架构的一种部署服务的方式.
-knative https://github.com/knative
-openfaas https://github.com/openfaas/faas
-serverless https://github.com/serverless/serverless
-fission openwhisk ">
+dapr knative https://github.com/knative
+KEDA https://github.com/kedacore/keda">
     <link rel="shortcut icon" href="favicon.ico" />
 <style>
     :root {
@@ -315,11 +309,9 @@ fission openwhisk ">
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ul>
+    <li><a href="#dapr">dapr</a></li>
     <li><a href="#knative">knative</a></li>
-    <li><a href="#openfaas">openfaas</a></li>
-    <li><a href="#serverless-1">serverless</a></li>
-    <li><a href="#fission">fission</a></li>
-    <li><a href="#openwhisk">openwhisk</a></li>
+    <li><a href="#keda">KEDA</a></li>
   </ul>
 </nav>
         </div>
@@ -338,8 +330,8 @@ fission openwhisk ">
     
     <header class="article-category">
         
-            <a href="/categories/container/" >
-                Container
+            <a href="/categories/cncf/" >
+                CNCF
             </a>
         
     </header>
@@ -402,17 +394,13 @@ fission openwhisk ">
     <h1 id="serverless">Serverless</h1>
 <p>serverless是微服务架构的一种部署服务的方式.</p>
 <hr>
+<h2 id="dapr">dapr</h2>
 <h2 id="knative">knative</h2>
 <p><a class="link" href="https://github.com/knative"  target="_blank" rel="noopener"
     >https://github.com/knative</a></p>
-<h2 id="openfaas">openfaas</h2>
-<p><a class="link" href="https://github.com/openfaas/faas"  target="_blank" rel="noopener"
-    >https://github.com/openfaas/faas</a></p>
-<h2 id="serverless-1">serverless</h2>
-<p><a class="link" href="https://github.com/serverless/serverless"  target="_blank" rel="noopener"
-    >https://github.com/serverless/serverless</a></p>
-<h2 id="fission">fission</h2>
-<h2 id="openwhisk">openwhisk</h2>
+<h2 id="keda">KEDA</h2>
+<p><a class="link" href="https://github.com/kedacore/keda"  target="_blank" rel="noopener"
+    >https://github.com/kedacore/keda</a></p>
 
 </section>
 
@@ -430,85 +418,35 @@ fission openwhisk ">
 
 
     
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
 </article>
 
     
 
     
-
-<aside class="related-content--wrapper">
-    <h2 class="section-title">Related content</h2>
-    <div class="related-content">
-        <div class="flex article-list--tile">
-            
-                
-<article class="">
-    <a href="/post/k8s_kubevirt/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">KubeVirt</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="">
-    <a href="/post/k8s_cni/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">K8S CNI</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="">
-    <a href="/post/k8s_csi/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">K8S CSI</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="">
-    <a href="/post/k8s_cicd/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">CI/CD</h2>
-        </div>
-    </a>
-</article>
-
-            
-                
-<article class="">
-    <a href="/post/k8s_dns/">
-        
-        
-
-        <div class="article-details">
-            <h2 class="article-title">DNS</h2>
-        </div>
-    </a>
-</article>
-
-            
-        </div>
-    </div>
-</aside>
 
      
     

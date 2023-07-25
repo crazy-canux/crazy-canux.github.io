@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='image 容器镜像
+docker image driver: aufs, btrfs, devicemapper, overlay.
+buildx 使用qume:
+// 安装bitfmt docker run --privileged --rm tonistiigi/binfmt --install all // 查看支持的平台 ls -l /proc/sys/fs/binfmt_misc/qemu-* 查看版本
+docker buildx version 管理builder instance
+docker buildx create --append 添加node到builder实例。 --leave 从builder实例删除node --driver Driver to use(&amp;quot;docker&amp;quot;, &amp;quot;docker-container&amp;quot;, &amp;quot;kubernetes&amp;quot;) --name --use --node --platform --bootstrap 启动实例（以容器的形式启动） // 以本地是amd64为例，创建一个实例. docker buildx create --use --bootstrap --platform linux/amd64,linux/amd64/v2,linux/amd64/v3,linux/arm64,linux/arm/v7,linux/arm/v6 --name canux-builder // 如果没有qumu，可以把不同平台的远程机器加到builder实例. docker buildx create \ --name local_remote_builder \ --append --node &amp;lt;my-arm-server&amp;gt; \ --platform linux/arm64,linux/riscv64,linux/ppc64le,linux/s390x,linux/mips64le,linux/mips64,linux/arm/v7,linux/arm/v6 \ ssh://user@&amp;lt;my-arm-server&amp;gt; docker buildx rm docker buildx stop docker buildx inspect docker buildx use // 查看当前可用的builders docker buildx ls 构建多平台镜像'>
+<title>Image</title>
+
+<link rel='canonical' href='https://canuxcheng.com/post/cncf_image/'>
+
+<link rel="stylesheet" href="/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content='Image'>
+<meta property='og:description' content='image 容器镜像
+docker image driver: aufs, btrfs, devicemapper, overlay.
+buildx 使用qume:
+// 安装bitfmt docker run --privileged --rm tonistiigi/binfmt --install all // 查看支持的平台 ls -l /proc/sys/fs/binfmt_misc/qemu-* 查看版本
+docker buildx version 管理builder instance
+docker buildx create --append 添加node到builder实例。 --leave 从builder实例删除node --driver Driver to use(&amp;quot;docker&amp;quot;, &amp;quot;docker-container&amp;quot;, &amp;quot;kubernetes&amp;quot;) --name --use --node --platform --bootstrap 启动实例（以容器的形式启动） // 以本地是amd64为例，创建一个实例. docker buildx create --use --bootstrap --platform linux/amd64,linux/amd64/v2,linux/amd64/v3,linux/arm64,linux/arm/v7,linux/arm/v6 --name canux-builder // 如果没有qumu，可以把不同平台的远程机器加到builder实例. docker buildx create \ --name local_remote_builder \ --append --node &amp;lt;my-arm-server&amp;gt; \ --platform linux/arm64,linux/riscv64,linux/ppc64le,linux/s390x,linux/mips64le,linux/mips64,linux/arm/v7,linux/arm/v6 \ ssh://user@&amp;lt;my-arm-server&amp;gt; docker buildx rm docker buildx stop docker buildx inspect docker buildx use // 查看当前可用的builders docker buildx ls 构建多平台镜像'>
+<meta property='og:url' content='https://canuxcheng.com/post/cncf_image/'>
+<meta property='og:site_name' content='Morgoth'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='docker' /><meta property='article:published_time' content='2019-12-03T21:50:47&#43;08:00'/><meta property='article:modified_time' content='2019-12-03T21:50:47&#43;08:00'/>
+<meta name="twitter:title" content="Image">
+<meta name="twitter:description" content="image 容器镜像
+docker image driver: aufs, btrfs, devicemapper, overlay.
+buildx 使用qume:
+// 安装bitfmt docker run --privileged --rm tonistiigi/binfmt --install all // 查看支持的平台 ls -l /proc/sys/fs/binfmt_misc/qemu-* 查看版本
+docker buildx version 管理builder instance
+docker buildx create --append 添加node到builder实例。 --leave 从builder实例删除node --driver Driver to use(&amp;quot;docker&amp;quot;, &amp;quot;docker-container&amp;quot;, &amp;quot;kubernetes&amp;quot;) --name --use --node --platform --bootstrap 启动实例（以容器的形式启动） // 以本地是amd64为例，创建一个实例. docker buildx create --use --bootstrap --platform linux/amd64,linux/amd64/v2,linux/amd64/v3,linux/arm64,linux/arm/v7,linux/arm/v6 --name canux-builder // 如果没有qumu，可以把不同平台的远程机器加到builder实例. docker buildx create \ --name local_remote_builder \ --append --node &amp;lt;my-arm-server&amp;gt; \ --platform linux/arm64,linux/riscv64,linux/ppc64le,linux/s390x,linux/mips64le,linux/mips64,linux/arm/v7,linux/arm/v6 \ ssh://user@&amp;lt;my-arm-server&amp;gt; docker buildx rm docker buildx stop docker buildx inspect docker buildx use // 查看当前可用的builders docker buildx ls 构建多平台镜像">
+    <link rel="shortcut icon" href="favicon.ico" />
+<style>
+    :root {
+        --article-font-family: "Merriweather", var(--base-font-family);
+    }
+</style>
+
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap";
+    
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+    
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/home_hu6602fceeffaea48dc14f1109cef06aaf_168478_300x0_resize_q75_box.jpg" width="300"
+                            height="400" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Morgoth</a></h1>
+            <h2 class="site-description">Hello World!</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='mailto:canuxcheng@163.com'
+                        target="_blank"
+                        title="E-mail"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-messages" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M21 14l-3 -3h-7a1 1 0 0 1 -1 -1v-6a1 1 0 0 1 1 -1h9a1 1 0 0 1 1 1v10" />
+  <path d="M14 15v2a1 1 0 0 1 -1 1h-7l-3 3v-10a1 1 0 0 1 1 -1h2" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/crazy-canux'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/categories/' target="_blank">
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                
+                <span>Categories</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tags/' target="_blank">
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+                
+                <span>Tags</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/rtfm/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                
+                <span>RTFM</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/samuel/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-infinity" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M9.828 9.172a4 4 0 1 0 0 5.656 a10 10 0 0 0 2.172 -2.828a10 10 0 0 1 2.172 -2.828 a4 4 0 1 1 0 5.656a10 10 0 0 1 -2.172 -2.828a10 10 0 0 0 -2.172 -2.828" />
+</svg>
+
+
+
+                
+                <span>Samuel</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#buildx">buildx</a></li>
+    <li><a href="#overlay">Overlay</a></li>
+    <li><a href="#scratch">scratch</a></li>
+    <li><a href="#ubuntudebian">ubuntu/debian</a></li>
+    <li><a href="#centosfedora">centos/fedora</a></li>
+    <li><a href="#buildpack-deps">buildpack-deps</a></li>
+    <li><a href="#busybox">busybox</a></li>
+    <li><a href="#alpine推荐">alpine(推荐)</a></li>
+    <li><a href="#distroless">distroless</a></li>
+    <li><a href="#slim">slim</a></li>
+    <li><a href="#registry">registry</a></li>
+  </ul>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/cncf/" >
+                CNCF
+            </a>
+        
+            <a href="/categories/storage/" >
+                Storage
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/cncf_image/">Image</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Dec 03, 2019</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    2 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="image">image</h1>
+<p>容器镜像</p>
+<p>docker image driver: aufs, btrfs, devicemapper, overlay.</p>
+<h2 id="buildx">buildx</h2>
+<p>使用qume:</p>
+<pre><code>// 安装bitfmt
+docker run --privileged --rm tonistiigi/binfmt --install all
+
+// 查看支持的平台
+ls -l /proc/sys/fs/binfmt_misc/qemu-*
+</code></pre>
+<p>查看版本</p>
+<pre><code>docker buildx version
+</code></pre>
+<p>管理builder instance</p>
+<pre><code>docker buildx create
+--append 添加node到builder实例。
+--leave 从builder实例删除node
+--driver Driver to use(&quot;docker&quot;, &quot;docker-container&quot;, &quot;kubernetes&quot;)
+--name
+--use
+--node
+--platform 
+--bootstrap 启动实例（以容器的形式启动）
+
+// 以本地是amd64为例，创建一个实例.
+docker buildx create --use --bootstrap --platform linux/amd64,linux/amd64/v2,linux/amd64/v3,linux/arm64,linux/arm/v7,linux/arm/v6 --name canux-builder
+
+// 如果没有qumu，可以把不同平台的远程机器加到builder实例.
+docker buildx create \
+--name local_remote_builder \
+--append --node &lt;my-arm-server&gt; \
+--platform linux/arm64,linux/riscv64,linux/ppc64le,linux/s390x,linux/mips64le,linux/mips64,linux/arm/v7,linux/arm/v6 \
+ssh://user@&lt;my-arm-server&gt; 
+
+docker buildx rm
+
+docker buildx stop
+
+docker buildx inspect
+
+docker buildx use
+
+// 查看当前可用的builders
+docker buildx ls
+</code></pre>
+<p>构建多平台镜像</p>
+<pre><code>docker buildx build --platform &lt;p1,p2&gt; ...
+
+// 一次编译多个平台的镜像直接push到registry。
+docker buildx build --platform linux/amd64,linux/amd64/v2,linux/amd64/v3,linux/arm64,linux/arm/v7,linux/arm/v6 --push -t name/target:tag .
+
+// 编辑成不同的image 
+docker buildx build -o type=docker --platform linux/amd64 -t name:1.0.0 .
+docker buildx build -o type=docker --platform linux/arm64 -t name:1.0.0-linux-arm64 .
+</code></pre>
+<h2 id="overlay">Overlay</h2>
+<p>最下层是一个 lower 层，也就是镜像层，它是一个只读层；</p>
+<p>右上层是一个 upper 层，upper 是容器的读写层，upper 层采用了写实复制的机制，也就是说只有对某些文件需要进行修改的时候才会从 lower 层把这个文件拷贝上来，之后所有的修改操作都会对 upper 层的副本进行修改；</p>
+<p>upper 并列的有一个 workdir，它的作用是充当一个中间层的作用。也就是说，当对 upper 层里面的副本进行修改时，会先放到 workdir，然后再从 workdir 移到 upper 里面去，这个是 overlay 的工作机制；</p>
+<p>最上面的是 mergedir，是一个统一视图层。从 mergedir 里面可以看到 upper 和 lower 中所有数据的整合，然后我们 docker exec 到容器里面，看到一个文件系统其实就是 mergedir 统一视图层。</p>
+<pre><code># 挂载到overlay
+mount -t overlay -o lowerdir=/path/lower,upperdir=/path/upper,workdir=/path/work overlay /path/di
+</code></pre>
+<hr>
+<h2 id="scratch">scratch</h2>
+<p>scratch是空白镜像，一般用于基础镜像构建.比如制作alpine/ubuntu/debian/busybox镜像.</p>
+<h2 id="ubuntudebian">ubuntu/debian</h2>
+<p>Hash Sum mismatch:</p>
+<pre><code>RUN set -ex \
+&amp;&amp; apt-get clean \
+&amp;&amp; apt-get update -o Acquire::CompressionTypes::Order::=gz \
+&amp;&amp; apt-get update \
+&amp;&amp; apt-get install -y --allow-unauthenticated --no-install-recommends \
+build-essential \
+&amp;&amp; rm -rf /var/lib/apt/lists/*
+</code></pre>
+<h2 id="centosfedora">centos/fedora</h2>
+<h2 id="buildpack-deps">buildpack-deps</h2>
+<p>在ubuntu/debian基础上安装一些工具，比ubuntu/debian镜像更大.</p>
+<p><a class="link" href="https://github.com/docker-library/buildpack-deps"  target="_blank" rel="noopener"
+    >https://github.com/docker-library/buildpack-deps</a></p>
+<h2 id="busybox">busybox</h2>
+<p><a class="link" href="https://github.com/docker-library/busybox"  target="_blank" rel="noopener"
+    >https://github.com/docker-library/busybox</a></p>
+<h2 id="alpine推荐">alpine(推荐)</h2>
+<p>很多语言的都是基于alpine: python-version:alpine-version, golang-version:alpine-version.</p>
+<p>一个基于musl和busybox的linux发行版.</p>
+<p><a class="link" href="https://www.alpinelinux.org/"  target="_blank" rel="noopener"
+    >https://www.alpinelinux.org/</a></p>
+<p>alpine比distroless尺寸大，包含包管理和shell，方便调试.</p>
+<p>alpine使用musl代替glibc会导致有的程序无法运行, 解决:</p>
+<pre><code># mkdir /lib64
+# ln -s /lib/libc.musl-x86_64.so.1 /lib64/ld-linux-x86-64.so.2
+</code></pre>
+<p>注意wget 部分参数不可用.</p>
+<h2 id="distroless">distroless</h2>
+<p>google提供的只包含运行时的精简镜像.</p>
+<p>缺点是没有包管理和shell，不方便调试.</p>
+<p><a class="link" href="https://github.com/GoogleContainerTools/distroless"  target="_blank" rel="noopener"
+    >https://github.com/GoogleContainerTools/distroless</a></p>
+<h2 id="slim">slim</h2>
+<p>减小image大小,适用于web程序.</p>
+<p>&lt;https://github.com/docker-slim/docker-slim</p>
+<hr>
+<h2 id="registry">registry</h2>
+<ul>
+<li>Docker Hub Registry</li>
+<li>Google Container Registry (gcr.io)</li>
+<li>RedHat Quay Registry (quay.io)</li>
+<li>GitHub Docker Packages (docker.pkg.github.com)</li>
+<li>GitHub Container Registry (ghcr.io)</li>
+<li>Kubernetes Registry(registry.k8s.io/k8s.gcr.io)</li>
+</ul>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/docker/">docker</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    <div id="gitalk-container"></div>
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.18.0/js/md5.min.js"></script>
+<script>
+    const gitalk = new Gitalk({
+        clientID: "3d41a2a237fabe050cc0",
+        clientSecret: "868aa81b294f1463ddb6edc007576ecfed7d2075",
+        repo: "crazy-canux.github.io",
+        owner: "crazy-canux",
+        admin: ["crazy-canux"],
+        distractionFreeMode: false, 
+        id: md5(location.pathname), 
+    });
+    (function () {
+        if (
+            ["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1
+        ) {
+            document.getElementById("gitalk-container").innerHTML =
+                "Gitalk comments not available by default when the website is previewed locally.";
+            return;
+        }
+        gitalk.render("gitalk-container");
+    })();
+</script>
+
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2013 - 
+        
+        2023 Morgoth
+    </section>
+    
+    <section class="powerby">
+        
+            Designed by Canux <br/>
+        
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

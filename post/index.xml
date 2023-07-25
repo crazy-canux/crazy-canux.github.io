@@ -446,17 +446,13 @@ logout(request)
         <description>&lt;h1 id=&#34;serverless&#34;&gt;Serverless&lt;/h1&gt;
 &lt;p&gt;serverless是微服务架构的一种部署服务的方式.&lt;/p&gt;
 &lt;hr&gt;
+&lt;h2 id=&#34;dapr&#34;&gt;dapr&lt;/h2&gt;
 &lt;h2 id=&#34;knative&#34;&gt;knative&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/knative&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/knative&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;openfaas&#34;&gt;openfaas&lt;/h2&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/openfaas/faas&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://github.com/openfaas/faas&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;serverless-1&#34;&gt;serverless&lt;/h2&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/serverless/serverless&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://github.com/serverless/serverless&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;fission&#34;&gt;fission&lt;/h2&gt;
-&lt;h2 id=&#34;openwhisk&#34;&gt;openwhisk&lt;/h2&gt;
+&lt;h2 id=&#34;keda&#34;&gt;KEDA&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/kedacore/keda&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/kedacore/keda&lt;/a&gt;&lt;/p&gt;
 </description>
         </item>
         <item>
@@ -496,12 +492,15 @@ logout(request)
 </description>
         </item>
         <item>
-        <title>Container Security</title>
-        <link>https://canuxcheng.com/post/container_security/</link>
+        <title>Container Security &amp; Compliance</title>
+        <link>https://canuxcheng.com/post/cncf_security/</link>
         <pubDate>Tue, 05 Oct 2021 22:02:31 +0000</pubDate>
         
-        <guid>https://canuxcheng.com/post/container_security/</guid>
-        <description>&lt;h1 id=&#34;trivy&#34;&gt;Trivy&lt;/h1&gt;
+        <guid>https://canuxcheng.com/post/cncf_security/</guid>
+        <description>&lt;h1 id=&#34;security--compliance&#34;&gt;Security &amp;amp; Compliance&lt;/h1&gt;
+&lt;h2 id=&#34;open-policy-agent&#34;&gt;Open Policy Agent&lt;/h2&gt;
+&lt;h2 id=&#34;tuf&#34;&gt;TUF&lt;/h2&gt;
+&lt;h1 id=&#34;trivy&#34;&gt;Trivy&lt;/h1&gt;
 </description>
         </item>
         <item>
@@ -1731,6 +1730,9 @@ spec:
     uid: 72d9a349-aacd-42d2-a240-d775650d2455
 &lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
+&lt;h2 id=&#34;rook&#34;&gt;ROOK&lt;/h2&gt;
+&lt;h2 id=&#34;minio&#34;&gt;minio&lt;/h2&gt;
+&lt;h2 id=&#34;ceph&#34;&gt;ceph&lt;/h2&gt;
 </description>
         </item>
         <item>
@@ -2060,17 +2062,17 @@ $ kubectl krew install ns
         </item>
         <item>
         <title>CI/CD</title>
-        <link>https://canuxcheng.com/post/k8s_cicd/</link>
+        <link>https://canuxcheng.com/post/cncf_cicd/</link>
         <pubDate>Fri, 10 Jan 2020 20:55:52 +0800</pubDate>
         
-        <guid>https://canuxcheng.com/post/k8s_cicd/</guid>
-        <description>&lt;h1 id=&#34;argo-cd&#34;&gt;argo-cd&lt;/h1&gt;
+        <guid>https://canuxcheng.com/post/cncf_cicd/</guid>
+        <description>&lt;h1 id=&#34;continuous-integration--delivery&#34;&gt;Continuous Integration &amp;amp; Delivery&lt;/h1&gt;
+&lt;h2 id=&#34;argo-cd&#34;&gt;argo-cd&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/argoproj/argo-cd&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/argoproj/argo-cd&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id=&#34;flux-cd&#34;&gt;flux-cd&lt;/h1&gt;
+&lt;h2 id=&#34;flux-cd&#34;&gt;flux-cd&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/fluxcd/flux&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/fluxcd/flux&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id=&#34;jenkins-x&#34;&gt;jenkins-X&lt;/h1&gt;
 </description>
         </item>
         <item>
@@ -2931,17 +2933,15 @@ roleRef:
 &lt;pre&gt;&lt;code&gt;$ etcdctl get / --prefix --keys-only
 &lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;consul&#34;&gt;Consul&lt;/h2&gt;
-&lt;hr&gt;
 &lt;h2 id=&#34;zookeeper&#34;&gt;zookeeper&lt;/h2&gt;
 </description>
         </item>
         <item>
         <title>Compose</title>
-        <link>https://canuxcheng.com/post/container_compose/</link>
+        <link>https://canuxcheng.com/post/cncf_compose/</link>
         <pubDate>Sat, 04 Jan 2020 21:53:40 +0800</pubDate>
         
-        <guid>https://canuxcheng.com/post/container_compose/</guid>
+        <guid>https://canuxcheng.com/post/cncf_compose/</guid>
         <description>&lt;h1 id=&#34;docker-compose&#34;&gt;docker-compose&lt;/h1&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/docker/compose&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/docker/compose&lt;/a&gt;&lt;/p&gt;
@@ -3819,24 +3819,24 @@ sudo minikube start --vm-driver=none
         </item>
         <item>
         <title>Rancher</title>
-        <link>https://canuxcheng.com/post/rancher/</link>
+        <link>https://canuxcheng.com/post/cncf_rancher/</link>
         <pubDate>Tue, 03 Dec 2019 21:54:05 +0800</pubDate>
         
-        <guid>https://canuxcheng.com/post/rancher/</guid>
+        <guid>https://canuxcheng.com/post/cncf_rancher/</guid>
         <description>&lt;h1 id=&#34;rancher&#34;&gt;Rancher&lt;/h1&gt;
 &lt;h1 id=&#34;deploy&#34;&gt;Deploy&lt;/h1&gt;
 </description>
         </item>
         <item>
         <title>Image</title>
-        <link>https://canuxcheng.com/post/container_image/</link>
+        <link>https://canuxcheng.com/post/cncf_image/</link>
         <pubDate>Tue, 03 Dec 2019 21:50:47 +0800</pubDate>
         
-        <guid>https://canuxcheng.com/post/container_image/</guid>
+        <guid>https://canuxcheng.com/post/cncf_image/</guid>
         <description>&lt;h1 id=&#34;image&#34;&gt;image&lt;/h1&gt;
 &lt;p&gt;容器镜像&lt;/p&gt;
 &lt;p&gt;docker image driver: aufs, btrfs, devicemapper, overlay.&lt;/p&gt;
-&lt;h1 id=&#34;buildx&#34;&gt;buildx&lt;/h1&gt;
+&lt;h2 id=&#34;buildx&#34;&gt;buildx&lt;/h2&gt;
 &lt;p&gt;使用qume:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;// 安装bitfmt
 docker run --privileged --rm tonistiigi/binfmt --install all
@@ -3889,7 +3889,7 @@ docker buildx build --platform linux/amd64,linux/amd64/v2,linux/amd64/v3,linux/a
 docker buildx build -o type=docker --platform linux/amd64 -t name:1.0.0 .
 docker buildx build -o type=docker --platform linux/arm64 -t name:1.0.0-linux-arm64 .
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;overlay&#34;&gt;Overlay&lt;/h1&gt;
+&lt;h2 id=&#34;overlay&#34;&gt;Overlay&lt;/h2&gt;
 &lt;p&gt;最下层是一个 lower 层，也就是镜像层，它是一个只读层；&lt;/p&gt;
 &lt;p&gt;右上层是一个 upper 层，upper 是容器的读写层，upper 层采用了写实复制的机制，也就是说只有对某些文件需要进行修改的时候才会从 lower 层把这个文件拷贝上来，之后所有的修改操作都会对 upper 层的副本进行修改；&lt;/p&gt;
 &lt;p&gt;upper 并列的有一个 workdir，它的作用是充当一个中间层的作用。也就是说，当对 upper 层里面的副本进行修改时，会先放到 workdir，然后再从 workdir 移到 upper 里面去，这个是 overlay 的工作机制；&lt;/p&gt;
@@ -3898,9 +3898,9 @@ docker buildx build -o type=docker --platform linux/arm64 -t name:1.0.0-linux-ar
 mount -t overlay -o lowerdir=/path/lower,upperdir=/path/upper,workdir=/path/work overlay /path/di
 &lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
-&lt;h1 id=&#34;scratch&#34;&gt;scratch&lt;/h1&gt;
+&lt;h2 id=&#34;scratch&#34;&gt;scratch&lt;/h2&gt;
 &lt;p&gt;scratch是空白镜像，一般用于基础镜像构建.比如制作alpine/ubuntu/debian/busybox镜像.&lt;/p&gt;
-&lt;h1 id=&#34;ubuntudebian&#34;&gt;ubuntu/debian&lt;/h1&gt;
+&lt;h2 id=&#34;ubuntudebian&#34;&gt;ubuntu/debian&lt;/h2&gt;
 &lt;p&gt;Hash Sum mismatch:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;RUN set -ex \
 &amp;amp;&amp;amp; apt-get clean \
@@ -3910,15 +3910,15 @@ mount -t overlay -o lowerdir=/path/lower,upperdir=/path/upper,workdir=/path/work
 build-essential \
 &amp;amp;&amp;amp; rm -rf /var/lib/apt/lists/*
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;centosfedora&#34;&gt;centos/fedora&lt;/h1&gt;
-&lt;h1 id=&#34;buildpack-deps&#34;&gt;buildpack-deps&lt;/h1&gt;
+&lt;h2 id=&#34;centosfedora&#34;&gt;centos/fedora&lt;/h2&gt;
+&lt;h2 id=&#34;buildpack-deps&#34;&gt;buildpack-deps&lt;/h2&gt;
 &lt;p&gt;在ubuntu/debian基础上安装一些工具，比ubuntu/debian镜像更大.&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/docker-library/buildpack-deps&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/docker-library/buildpack-deps&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id=&#34;busybox&#34;&gt;busybox&lt;/h1&gt;
+&lt;h2 id=&#34;busybox&#34;&gt;busybox&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/docker-library/busybox&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/docker-library/busybox&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id=&#34;alpine推荐&#34;&gt;alpine(推荐)&lt;/h1&gt;
+&lt;h2 id=&#34;alpine推荐&#34;&gt;alpine(推荐)&lt;/h2&gt;
 &lt;p&gt;很多语言的都是基于alpine: python-version:alpine-version, golang-version:alpine-version.&lt;/p&gt;
 &lt;p&gt;一个基于musl和busybox的linux发行版.&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.alpinelinux.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -3929,15 +3929,24 @@ build-essential \
 # ln -s /lib/libc.musl-x86_64.so.1 /lib64/ld-linux-x86-64.so.2
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;注意wget 部分参数不可用.&lt;/p&gt;
-&lt;h1 id=&#34;distroless&#34;&gt;distroless&lt;/h1&gt;
+&lt;h2 id=&#34;distroless&#34;&gt;distroless&lt;/h2&gt;
 &lt;p&gt;google提供的只包含运行时的精简镜像.&lt;/p&gt;
 &lt;p&gt;缺点是没有包管理和shell，不方便调试.&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/GoogleContainerTools/distroless&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/GoogleContainerTools/distroless&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id=&#34;slim&#34;&gt;slim&lt;/h1&gt;
+&lt;h2 id=&#34;slim&#34;&gt;slim&lt;/h2&gt;
 &lt;p&gt;减小image大小,适用于web程序.&lt;/p&gt;
 &lt;p&gt;&amp;lt;https://github.com/docker-slim/docker-slim&lt;/p&gt;
 &lt;hr&gt;
+&lt;h2 id=&#34;registry&#34;&gt;registry&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Docker Hub Registry&lt;/li&gt;
+&lt;li&gt;Google Container Registry (gcr.io)&lt;/li&gt;
+&lt;li&gt;RedHat Quay Registry (quay.io)&lt;/li&gt;
+&lt;li&gt;GitHub Docker Packages (docker.pkg.github.com)&lt;/li&gt;
+&lt;li&gt;GitHub Container Registry (ghcr.io)&lt;/li&gt;
+&lt;li&gt;Kubernetes Registry(registry.k8s.io/k8s.gcr.io)&lt;/li&gt;
+&lt;/ul&gt;
 </description>
         </item>
         <item>
@@ -5281,10 +5290,10 @@ grok_timezone = &amp;quot;Local&amp;quot;
         </item>
         <item>
         <title>Container</title>
-        <link>https://canuxcheng.com/post/container/</link>
+        <link>https://canuxcheng.com/post/cncf_container/</link>
         <pubDate>Thu, 05 Apr 2018 22:02:31 +0000</pubDate>
         
-        <guid>https://canuxcheng.com/post/container/</guid>
+        <guid>https://canuxcheng.com/post/cncf_container/</guid>
         <description>&lt;h1 id=&#34;container&#34;&gt;Container&lt;/h1&gt;
 &lt;p&gt;OCI: Open Container Initiative.&lt;/p&gt;
 &lt;p&gt;CRI: Container Runtime Interface.&lt;/p&gt;
@@ -5338,10 +5347,10 @@ grok_timezone = &amp;quot;Local&amp;quot;
         </item>
         <item>
         <title>Docker</title>
-        <link>https://canuxcheng.com/post/container_docker/</link>
+        <link>https://canuxcheng.com/post/cncf_docker/</link>
         <pubDate>Thu, 05 Apr 2018 22:02:31 +0000</pubDate>
         
-        <guid>https://canuxcheng.com/post/container_docker/</guid>
+        <guid>https://canuxcheng.com/post/cncf_docker/</guid>
         <description>&lt;h1 id=&#34;docker&#34;&gt;Docker&lt;/h1&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://store.docker.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://store.docker.com/&lt;/a&gt;&lt;/p&gt;
@@ -5830,10 +5839,10 @@ docker-machine ls
         </item>
         <item>
         <title>Harbor</title>
-        <link>https://canuxcheng.com/post/harbor/</link>
+        <link>https://canuxcheng.com/post/cncf_harbor/</link>
         <pubDate>Thu, 05 Apr 2018 22:02:31 +0000</pubDate>
         
-        <guid>https://canuxcheng.com/post/harbor/</guid>
+        <guid>https://canuxcheng.com/post/cncf_harbor/</guid>
         <description>&lt;h1 id=&#34;harbor&#34;&gt;Harbor&lt;/h1&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/goharbor/harbor&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/goharbor/harbor&lt;/a&gt;&lt;/p&gt;
@@ -6131,10 +6140,10 @@ $ docker-compose up -d
         </item>
         <item>
         <title>Namespace</title>
-        <link>https://canuxcheng.com/post/container_ns/</link>
+        <link>https://canuxcheng.com/post/cncf_ns/</link>
         <pubDate>Thu, 05 Apr 2018 22:02:31 +0000</pubDate>
         
-        <guid>https://canuxcheng.com/post/container_ns/</guid>
+        <guid>https://canuxcheng.com/post/cncf_ns/</guid>
         <description>&lt;h1 id=&#34;ns&#34;&gt;NS&lt;/h1&gt;
 &lt;p&gt;namespace 是 Linux 内核用来隔离内核资源的方式&lt;/p&gt;
 &lt;p&gt;Linux namespace资源：&lt;/p&gt;
@@ -28542,8 +28551,10 @@ def find_vm(si, name):
 &lt;p&gt;小端： 低字节在起始地址，高字节在高地址&lt;/p&gt;
 &lt;p&gt;大端： 高字节在起始地址，低字节在高地址&lt;/p&gt;
 &lt;p&gt;linux一般是小端，unix一般是大端&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.rfc-editor.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.rfc-editor.org/&lt;/a&gt;&lt;/p&gt;
 &lt;hr&gt;
-&lt;h1 id=&#34;网络模型&#34;&gt;网络模型&lt;/h1&gt;
+&lt;h2 id=&#34;网络模型&#34;&gt;网络模型&lt;/h2&gt;
 &lt;p&gt;OSI七层模型:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
@@ -28575,7 +28586,7 @@ def find_vm(si, name):
 &lt;li&gt;网络层&lt;/li&gt;
 &lt;li&gt;链路层&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;应用层&#34;&gt;应用层&lt;/h2&gt;
+&lt;h3 id=&#34;应用层&#34;&gt;应用层&lt;/h3&gt;
 &lt;p&gt;0-1024是系统保留端口, 1024-65535是可用自定义端口&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml&lt;/a&gt;&lt;/p&gt;
@@ -28603,21 +28614,25 @@ NTP/SNTP: 123,
 SNMP：161,简单网络管理协议。
 SNMPtrap: 162,
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;传输层&#34;&gt;传输层&lt;/h2&gt;
+&lt;p&gt;查看端口&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;cat /etc/services
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;传输层&#34;&gt;传输层&lt;/h3&gt;
 &lt;p&gt;TCP：传输控制协议，提供可靠的、面向连接的字节流服务,建立连接需要三次握手．&lt;/p&gt;
 &lt;p&gt;UDP：数据报协议，提供不可靠的、无连接的面向数据报的服务。&lt;/p&gt;
 &lt;p&gt;SCTP：流控制传输协议。&lt;/p&gt;
-&lt;h2 id=&#34;网络层&#34;&gt;网络层&lt;/h2&gt;
+&lt;h3 id=&#34;网络层&#34;&gt;网络层&lt;/h3&gt;
 &lt;p&gt;也叫互联网层.&lt;/p&gt;
 &lt;p&gt;IP：网际协议，提供不可靠、无连接的数据报传送服务。&lt;/p&gt;
 &lt;p&gt;ICMP：Internet控制报文协议，传递差错报文和需要注意的信息，封装在IP数据报内部。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;# 基于ICMP的应用层：
 Ping:
+Traceroute:
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;IGMP：Internet组管理协议，用于支持主机和路由器进行多播，让一个物联网络上的所有系统知道主机当前所在的多播组，封装在IP数据报内部。&lt;/p&gt;
-&lt;h2 id=&#34;链路层&#34;&gt;链路层&lt;/h2&gt;
+&lt;h3 id=&#34;链路层&#34;&gt;链路层&lt;/h3&gt;
 &lt;p&gt;也叫数据链路层或网络接口层.&lt;/p&gt;
-&lt;p&gt;以太网帧结构：以太网首部+IP首部+TCP/UDP首部+应用数据+以太网尾部。&lt;/p&gt;
+&lt;p&gt;以太网帧结构：以太网首部+IP首部+TCP首部/UDP数据报+应用数据+以太网尾部。&lt;/p&gt;
 &lt;p&gt;ARP：地址解析协议，为IP地址到硬件地址之间提供动态映射。&lt;/p&gt;
 &lt;p&gt;RARP：没有磁盘驱动器的系统使用。&lt;/p&gt;
 &lt;p&gt;动态选路协议:&lt;/p&gt;
@@ -28628,12 +28643,19 @@ Ping:
 &lt;li&gt;CIDR：无类型域间选路&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
-&lt;h1 id=&#34;file&#34;&gt;File&lt;/h1&gt;
+&lt;h2 id=&#34;ip-address&#34;&gt;IP address&lt;/h2&gt;
+&lt;p&gt;A: 0 + 7 * network number + 24 * host number, 0.0.0.0 - 127.255.255.255
+B: 10 + 14 * network number + 16 * host number; 128.0.0.0 - 191.255.255.255
+C: 110 + 21 * network number + 8 * host number; 192.0.0.0 - 223.255.255.255
+D: 1110 + 28 * multicast number; 224.0.0.0 - 239.255.255.255
+E: 11110 + 27 * reserved; 240.0.0.0 - 247.255.255.255&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;file&#34;&gt;File&lt;/h2&gt;
 &lt;p&gt;File协议是本地文件协议&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;file:///C:/
 &lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
-&lt;h1 id=&#34;远程桌面协议&#34;&gt;远程桌面协议&lt;/h1&gt;
+&lt;h2 id=&#34;远程桌面协议&#34;&gt;远程桌面协议&lt;/h2&gt;
 &lt;p&gt;RDP: remote desktop protocol， windows系统之间的远程桌面协议。&lt;/p&gt;
 &lt;p&gt;RFB(VNC): remote frame buffer, 跨平台的远程桌面协议，cs架构。&lt;/p&gt;
 &lt;p&gt;VNC: 跨平台的RFB（VNC）工具有realvnc, tightvnc, tigervnc.&lt;/p&gt;

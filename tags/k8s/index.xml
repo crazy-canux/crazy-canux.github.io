@@ -15,17 +15,13 @@
         <description>&lt;h1 id=&#34;serverless&#34;&gt;Serverless&lt;/h1&gt;
 &lt;p&gt;serverless是微服务架构的一种部署服务的方式.&lt;/p&gt;
 &lt;hr&gt;
+&lt;h2 id=&#34;dapr&#34;&gt;dapr&lt;/h2&gt;
 &lt;h2 id=&#34;knative&#34;&gt;knative&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/knative&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/knative&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;openfaas&#34;&gt;openfaas&lt;/h2&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/openfaas/faas&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://github.com/openfaas/faas&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;serverless-1&#34;&gt;serverless&lt;/h2&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/serverless/serverless&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://github.com/serverless/serverless&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;fission&#34;&gt;fission&lt;/h2&gt;
-&lt;h2 id=&#34;openwhisk&#34;&gt;openwhisk&lt;/h2&gt;
+&lt;h2 id=&#34;keda&#34;&gt;KEDA&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/kedacore/keda&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/kedacore/keda&lt;/a&gt;&lt;/p&gt;
 </description>
         </item>
         <item>
@@ -343,21 +339,24 @@ spec:
     uid: 72d9a349-aacd-42d2-a240-d775650d2455
 &lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
+&lt;h2 id=&#34;rook&#34;&gt;ROOK&lt;/h2&gt;
+&lt;h2 id=&#34;minio&#34;&gt;minio&lt;/h2&gt;
+&lt;h2 id=&#34;ceph&#34;&gt;ceph&lt;/h2&gt;
 </description>
         </item>
         <item>
         <title>CI/CD</title>
-        <link>https://canuxcheng.com/post/k8s_cicd/</link>
+        <link>https://canuxcheng.com/post/cncf_cicd/</link>
         <pubDate>Fri, 10 Jan 2020 20:55:52 +0800</pubDate>
         
-        <guid>https://canuxcheng.com/post/k8s_cicd/</guid>
-        <description>&lt;h1 id=&#34;argo-cd&#34;&gt;argo-cd&lt;/h1&gt;
+        <guid>https://canuxcheng.com/post/cncf_cicd/</guid>
+        <description>&lt;h1 id=&#34;continuous-integration--delivery&#34;&gt;Continuous Integration &amp;amp; Delivery&lt;/h1&gt;
+&lt;h2 id=&#34;argo-cd&#34;&gt;argo-cd&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/argoproj/argo-cd&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/argoproj/argo-cd&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id=&#34;flux-cd&#34;&gt;flux-cd&lt;/h1&gt;
+&lt;h2 id=&#34;flux-cd&#34;&gt;flux-cd&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/fluxcd/flux&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/fluxcd/flux&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id=&#34;jenkins-x&#34;&gt;jenkins-X&lt;/h1&gt;
 </description>
         </item>
         <item>
@@ -1089,8 +1088,6 @@ roleRef:
 &lt;p&gt;查看所有key&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;$ etcdctl get / --prefix --keys-only
 &lt;/code&gt;&lt;/pre&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;consul&#34;&gt;Consul&lt;/h2&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;zookeeper&#34;&gt;zookeeper&lt;/h2&gt;
 </description>
