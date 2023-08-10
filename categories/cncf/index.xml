@@ -6,7 +6,16 @@
         <description>Recent content in CNCF on Morgoth</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Sat, 04 Dec 2021 20:03:39 +0800</lastBuildDate><atom:link href="https://canuxcheng.com/categories/cncf/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 04 Aug 2023 20:03:39 +0800</lastBuildDate><atom:link href="https://canuxcheng.com/categories/cncf/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Gateway API</title>
+        <link>https://canuxcheng.com/post/k8s_gatewayapi/</link>
+        <pubDate>Fri, 04 Aug 2023 20:03:39 +0800</pubDate>
+        
+        <guid>https://canuxcheng.com/post/k8s_gatewayapi/</guid>
+        <description>&lt;h1 id=&#34;gateway-api&#34;&gt;Gateway API&lt;/h1&gt;
+</description>
+        </item>
+        <item>
         <title>Serverless</title>
         <link>https://canuxcheng.com/post/k8s_serverless/</link>
         <pubDate>Sat, 04 Dec 2021 20:03:39 +0800</pubDate>
@@ -798,6 +807,10 @@ $ kubectl krew install ns
     &gt;https://github.com/kubernetes-sigs/cri-tools&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://kubernetes.io/docs/tasks/debug/debug-cluster/crictl/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://kubernetes.io/docs/tasks/debug/debug-cluster/crictl/&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;nerdctl&#34;&gt;nerdctl&lt;/h1&gt;
+&lt;p&gt;调试node。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/containerd/nerdctl&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/containerd/nerdctl&lt;/a&gt;&lt;/p&gt;
 &lt;h1 id=&#34;telepresence&#34;&gt;telepresence&lt;/h1&gt;
 &lt;p&gt;用于本地调试集群上的服务.&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/telepresenceio/telepresence&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -1432,8 +1445,8 @@ kubernetes-dashboard-tls --key ca.key --cert ca.crt
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://kubernetes.io/zh/docs/tasks/configure-pod-container/pull-image-private-registry/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://kubernetes.io/zh/docs/tasks/configure-pod-container/pull-image-private-registry/&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;给一个private registry创建secret:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ kubectl -n ns create secret docker-registry \
-regcred --docker-server=https://harbor.domain.com --docker-username=user --docker-password=pw --docker-email=canuxcheng@gmail.com 
+&lt;pre&gt;&lt;code&gt;$ kubectl -n ns create secret docker-registry &amp;lt;name&amp;gt; \
+--docker-server=https://harbor.domain.com --docker-username=user --docker-password=pw --docker-email=canuxcheng@gmail.com 
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;根据本地的文件创建secret（如果需要多个registry，可以先在本地登陆）&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;$ kubectl -n ns create secret generic regcred \
@@ -1529,6 +1542,7 @@ spec:
 &lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;authentication&#34;&gt;Authentication&lt;/h1&gt;
+&lt;p&gt;默认的ClusterRole和ClusterRoleBinding大部分是system:开头。&lt;/p&gt;
 &lt;h2 id=&#34;serviceaccont&#34;&gt;ServiceAccont&lt;/h2&gt;
 &lt;p&gt;服务账户是在具体名字空间的。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;apiVersion: v1
@@ -1554,19 +1568,6 @@ rules:
   resources: [&amp;quot;pods&amp;quot;]
   verbs: [&amp;quot;get&amp;quot;, &amp;quot;watch&amp;quot;, &amp;quot;list&amp;quot;]
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;clusterrole&#34;&gt;ClusterRole&lt;/h2&gt;
-&lt;p&gt;clusterrole给整个集群授权.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRole
-metadata:
-  # &amp;quot;namespace&amp;quot; 被忽略，因为 ClusterRoles 不受名字空间限制
-  name: secret-reader
-rules:
-- apiGroups: [&amp;quot;&amp;quot;]
-  # 在 HTTP 层面，用来访问 Secret 对象的资源的名称为 &amp;quot;secrets&amp;quot;
-  resources: [&amp;quot;secrets&amp;quot;]
-  verbs: [&amp;quot;get&amp;quot;, &amp;quot;watch&amp;quot;, &amp;quot;list&amp;quot;]
-&lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;rolebinding&#34;&gt;RoleBinding&lt;/h2&gt;
 &lt;p&gt;将role或clusterrole权限赋予具体的角色.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;apiVersion: rbac.authorization.k8s.io/v1
@@ -1585,6 +1586,19 @@ roleRef:
   kind: Role # 此字段必须是 Role 或 ClusterRole
   name: pod-reader     # 此字段必须与你要绑定的 Role 或 ClusterRole 的名称匹配
   apiGroup: rbac.authorization.k8s.io
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;clusterrole&#34;&gt;ClusterRole&lt;/h2&gt;
+&lt;p&gt;clusterrole给整个集群授权.不需要namespace.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  # &amp;quot;namespace&amp;quot; 被忽略，因为 ClusterRoles 不受名字空间限制
+  name: secret-reader
+rules:
+- apiGroups: [&amp;quot;&amp;quot;]
+  # 在 HTTP 层面，用来访问 Secret 对象的资源的名称为 &amp;quot;secrets&amp;quot;
+  resources: [&amp;quot;secrets&amp;quot;]
+  verbs: [&amp;quot;get&amp;quot;, &amp;quot;watch&amp;quot;, &amp;quot;list&amp;quot;]
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;clusterrolebinding&#34;&gt;ClusterRoleBinding&lt;/h2&gt;
 &lt;p&gt;跨集群授权（也就是要访问不同ns的资源).&lt;/p&gt;

@@ -3,7 +3,25 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://canuxcheng.com/categories/</loc>
-    <lastmod>2023-07-17T14:46:57+08:00</lastmod>
+    <lastmod>2023-08-04T20:03:39+08:00</lastmod>
+  </url><url>
+    <loc>https://canuxcheng.com/categories/cncf/</loc>
+    <lastmod>2023-08-04T20:03:39+08:00</lastmod>
+  </url><url>
+    <loc>https://canuxcheng.com/post/k8s_gatewayapi/</loc>
+    <lastmod>2023-08-04T20:03:39+08:00</lastmod>
+  </url><url>
+    <loc>https://canuxcheng.com/tags/k8s/</loc>
+    <lastmod>2023-08-04T20:03:39+08:00</lastmod>
+  </url><url>
+    <loc>https://canuxcheng.com/</loc>
+    <lastmod>2023-08-04T20:03:39+08:00</lastmod>
+  </url><url>
+    <loc>https://canuxcheng.com/post/</loc>
+    <lastmod>2023-08-04T20:03:39+08:00</lastmod>
+  </url><url>
+    <loc>https://canuxcheng.com/tags/</loc>
+    <lastmod>2023-08-04T20:03:39+08:00</lastmod>
   </url><url>
     <loc>https://canuxcheng.com/post/first_aid/</loc>
     <lastmod>2023-07-17T14:46:57+08:00</lastmod>
@@ -12,15 +30,6 @@
     <lastmod>2023-07-17T14:46:57+08:00</lastmod>
   </url><url>
     <loc>https://canuxcheng.com/categories/misc/</loc>
-    <lastmod>2023-07-17T14:46:57+08:00</lastmod>
-  </url><url>
-    <loc>https://canuxcheng.com/</loc>
-    <lastmod>2023-07-17T14:46:57+08:00</lastmod>
-  </url><url>
-    <loc>https://canuxcheng.com/post/</loc>
-    <lastmod>2023-07-17T14:46:57+08:00</lastmod>
-  </url><url>
-    <loc>https://canuxcheng.com/tags/</loc>
     <lastmod>2023-07-17T14:46:57+08:00</lastmod>
   </url><url>
     <loc>https://canuxcheng.com/tags/arduino/</loc>
@@ -49,12 +58,6 @@
   </url><url>
     <loc>https://canuxcheng.com/categories/django/</loc>
     <lastmod>2022-01-14T04:29:37+00:00</lastmod>
-  </url><url>
-    <loc>https://canuxcheng.com/categories/cncf/</loc>
-    <lastmod>2021-12-04T20:03:39+08:00</lastmod>
-  </url><url>
-    <loc>https://canuxcheng.com/tags/k8s/</loc>
-    <lastmod>2021-12-04T20:03:39+08:00</lastmod>
   </url><url>
     <loc>https://canuxcheng.com/post/k8s_serverless/</loc>
     <lastmod>2021-12-04T20:03:39+08:00</lastmod>

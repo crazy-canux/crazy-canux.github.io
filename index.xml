@@ -6,7 +6,16 @@
         <description>Recent content on Morgoth</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Mon, 17 Jul 2023 14:46:57 +0800</lastBuildDate><atom:link href="https://canuxcheng.com/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 04 Aug 2023 20:03:39 +0800</lastBuildDate><atom:link href="https://canuxcheng.com/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Gateway API</title>
+        <link>https://canuxcheng.com/post/k8s_gatewayapi/</link>
+        <pubDate>Fri, 04 Aug 2023 20:03:39 +0800</pubDate>
+        
+        <guid>https://canuxcheng.com/post/k8s_gatewayapi/</guid>
+        <description>&lt;h1 id=&#34;gateway-api&#34;&gt;Gateway API&lt;/h1&gt;
+</description>
+        </item>
+        <item>
         <title>First_Aid</title>
         <link>https://canuxcheng.com/post/first_aid/</link>
         <pubDate>Mon, 17 Jul 2023 14:46:57 +0800</pubDate>
@@ -2135,6 +2144,10 @@ $ kubectl krew install ns
     &gt;https://github.com/kubernetes-sigs/cri-tools&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://kubernetes.io/docs/tasks/debug/debug-cluster/crictl/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://kubernetes.io/docs/tasks/debug/debug-cluster/crictl/&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;nerdctl&#34;&gt;nerdctl&lt;/h1&gt;
+&lt;p&gt;调试node。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/containerd/nerdctl&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/containerd/nerdctl&lt;/a&gt;&lt;/p&gt;
 &lt;h1 id=&#34;telepresence&#34;&gt;telepresence&lt;/h1&gt;
 &lt;p&gt;用于本地调试集群上的服务.&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/telepresenceio/telepresence&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -2769,8 +2782,8 @@ kubernetes-dashboard-tls --key ca.key --cert ca.crt
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://kubernetes.io/zh/docs/tasks/configure-pod-container/pull-image-private-registry/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://kubernetes.io/zh/docs/tasks/configure-pod-container/pull-image-private-registry/&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;给一个private registry创建secret:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ kubectl -n ns create secret docker-registry \
-regcred --docker-server=https://harbor.domain.com --docker-username=user --docker-password=pw --docker-email=canuxcheng@gmail.com 
+&lt;pre&gt;&lt;code&gt;$ kubectl -n ns create secret docker-registry &amp;lt;name&amp;gt; \
+--docker-server=https://harbor.domain.com --docker-username=user --docker-password=pw --docker-email=canuxcheng@gmail.com 
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;根据本地的文件创建secret（如果需要多个registry，可以先在本地登陆）&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;$ kubectl -n ns create secret generic regcred \
@@ -2866,6 +2879,7 @@ spec:
 &lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;authentication&#34;&gt;Authentication&lt;/h1&gt;
+&lt;p&gt;默认的ClusterRole和ClusterRoleBinding大部分是system:开头。&lt;/p&gt;
 &lt;h2 id=&#34;serviceaccont&#34;&gt;ServiceAccont&lt;/h2&gt;
 &lt;p&gt;服务账户是在具体名字空间的。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;apiVersion: v1
@@ -2891,19 +2905,6 @@ rules:
   resources: [&amp;quot;pods&amp;quot;]
   verbs: [&amp;quot;get&amp;quot;, &amp;quot;watch&amp;quot;, &amp;quot;list&amp;quot;]
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;clusterrole&#34;&gt;ClusterRole&lt;/h2&gt;
-&lt;p&gt;clusterrole给整个集群授权.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;apiVersion: rbac.authorization.k8s.io/v1
-kind: ClusterRole
-metadata:
-  # &amp;quot;namespace&amp;quot; 被忽略，因为 ClusterRoles 不受名字空间限制
-  name: secret-reader
-rules:
-- apiGroups: [&amp;quot;&amp;quot;]
-  # 在 HTTP 层面，用来访问 Secret 对象的资源的名称为 &amp;quot;secrets&amp;quot;
-  resources: [&amp;quot;secrets&amp;quot;]
-  verbs: [&amp;quot;get&amp;quot;, &amp;quot;watch&amp;quot;, &amp;quot;list&amp;quot;]
-&lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;rolebinding&#34;&gt;RoleBinding&lt;/h2&gt;
 &lt;p&gt;将role或clusterrole权限赋予具体的角色.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;apiVersion: rbac.authorization.k8s.io/v1
@@ -2922,6 +2923,19 @@ roleRef:
   kind: Role # 此字段必须是 Role 或 ClusterRole
   name: pod-reader     # 此字段必须与你要绑定的 Role 或 ClusterRole 的名称匹配
   apiGroup: rbac.authorization.k8s.io
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;clusterrole&#34;&gt;ClusterRole&lt;/h2&gt;
+&lt;p&gt;clusterrole给整个集群授权.不需要namespace.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  # &amp;quot;namespace&amp;quot; 被忽略，因为 ClusterRoles 不受名字空间限制
+  name: secret-reader
+rules:
+- apiGroups: [&amp;quot;&amp;quot;]
+  # 在 HTTP 层面，用来访问 Secret 对象的资源的名称为 &amp;quot;secrets&amp;quot;
+  resources: [&amp;quot;secrets&amp;quot;]
+  verbs: [&amp;quot;get&amp;quot;, &amp;quot;watch&amp;quot;, &amp;quot;list&amp;quot;]
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;clusterrolebinding&#34;&gt;ClusterRoleBinding&lt;/h2&gt;
 &lt;p&gt;跨集群授权（也就是要访问不同ns的资源).&lt;/p&gt;
@@ -4420,10 +4434,87 @@ $ sudo vboxmanage extpack uninstall \
         <pubDate>Sun, 31 Mar 2019 21:51:25 +0000</pubDate>
         
         <guid>https://canuxcheng.com/post/network_command/</guid>
-        <description>&lt;h1 id=&#34;telnet&#34;&gt;telnet&lt;/h1&gt;
-&lt;pre&gt;&lt;code&gt;telnet
+        <description>&lt;h1 id=&#34;network-command&#34;&gt;network command&lt;/h1&gt;
+&lt;p&gt;network related command&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;net-tools&#34;&gt;net-tools&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/ecki/net-tools&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/ecki/net-tools&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo apt-get install net-tools
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;ncnetcat&#34;&gt;nc/netcat&lt;/h1&gt;
+&lt;h3 id=&#34;ifconfig&#34;&gt;ifconfig&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;ifconfig # 查看up的interface
+ifconfig -a  # 查看所有的interface
+ifconfig &amp;lt;bridge&amp;gt;/&amp;lt;interface&amp;gt; up/down
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;netstat&#34;&gt;netstat&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;netstat
+-a, --all, --listening # 显示所有socket, 默认只显示connected
+-l, --listening  # 显示listening
+-n, --numeric
+-p, --programs # 显示pid或程序名称
+# socket选项:
+-t, --tcp
+-u, --udp
+-w, --raw
+-x, --unix
+--ax25
+--ipx
+--netrom
+
+# 常用
+netstat -anp    # 查看哪些端口是打开的．
+sudo netstat -anp | grep port # 查看端口是否被使用
+sudo netstat -tulnp # 查看tcp&amp;amp;udp端口是否被监听
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;arp&#34;&gt;arp&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;arp # 用于确定IP地址的网卡物理地址
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;rarp&#34;&gt;rarp&lt;/h3&gt;
+&lt;h3 id=&#34;hostname&#34;&gt;hostname&lt;/h3&gt;
+&lt;h3 id=&#34;domainname&#34;&gt;domainname&lt;/h3&gt;
+&lt;h3 id=&#34;dnsdomainname&#34;&gt;dnsdomainname&lt;/h3&gt;
+&lt;h3 id=&#34;route&#34;&gt;route&lt;/h3&gt;
+&lt;p&gt;Flags:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;U: route is up&lt;/li&gt;
+&lt;li&gt;H: target is a host&lt;/li&gt;
+&lt;li&gt;G: use gateway&lt;/li&gt;
+&lt;li&gt;!: reject route&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Genmask: netmask for destination net.&lt;/p&gt;
+&lt;p&gt;Metric: 到target距离, hops.&lt;/p&gt;
+&lt;p&gt;Ref: 该路由引用次数&lt;/p&gt;
+&lt;p&gt;Use: 查找路由的次数&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;route -n
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;iputils&#34;&gt;iputils&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/iputils/iputils&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/iputils/iputils&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo apt-get install iputils-ping
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;ping&#34;&gt;ping&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;ping # 用于确定网络的连通性
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;arping&#34;&gt;arping&lt;/h3&gt;
+&lt;h3 id=&#34;tracepath&#34;&gt;tracepath&lt;/h3&gt;
+&lt;h3 id=&#34;clockdiff&#34;&gt;clockdiff&lt;/h3&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;traceroute&#34;&gt;traceroute&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;sudo apt install traceroute
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;tcpdump&#34;&gt;tcpdump&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;sudo apt-get install tcpdump
+
+tcpdump
+
+tcpdump udp port &amp;lt;port&amp;gt; 抓udp 在port端口的包
+tcpdump -i &amp;lt;interface&amp;gt; host &amp;lt;ip&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;ncnetcat&#34;&gt;nc/netcat&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;// 有的系统默认安装netcat-traditional
 $ sudo apt-get install netcat-traditional 
 // 安装netcat-openbsd
@@ -4441,32 +4532,23 @@ nc -l PORT
 // 通过nc发送请求.
 echo -e &#39;{&amp;quot;method&amp;quot;:&amp;quot;test&amp;quot;,&amp;quot;params&amp;quot;:[&amp;quot;test&amp;quot;],&amp;quot;id&amp;quot;:1}&#39; | nc IP PORT
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;ping&#34;&gt;ping&lt;/h1&gt;
-&lt;pre&gt;&lt;code&gt;$ sudo apt-get install iputils-ping
-ping # 用于确定网络的连通性
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;ifconfig&#34;&gt;ifconfig&lt;/h1&gt;
-&lt;pre&gt;&lt;code&gt;$ sudo apt-get install net-tools
-ifconfig # 查看up的interface
-ifconfig -a  # 查看所有的interface
-ifconfig &amp;lt;bridge&amp;gt;/&amp;lt;interface&amp;gt; up/down
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;brctl&#34;&gt;brctl&lt;/h1&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;brctl&#34;&gt;brctl&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;$ sudo apt-get install bridge-utils
+
 brctl show
 brctl addbr &amp;lt;bridge&amp;gt; # 添加bridge
 brctl delbr &amp;lt;bridge&amp;gt; # 删除bridge
 brctl addif &amp;lt;bridge&amp;gt; &amp;lt;interface&amp;gt; # 绑定interface到bridge
 brctl delif &amp;lt;bridge&amp;gt; &amp;lt;interface&amp;gt; # 删除bridge上的interface
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;route&#34;&gt;route&lt;/h1&gt;
-&lt;pre&gt;&lt;code&gt;route # 操作路由表的命令
-route -n
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;ip&#34;&gt;ip&lt;/h1&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;iproute2&#34;&gt;iproute2&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/shemminger/iproute2&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/shemminger/iproute2&lt;/a&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;$ sudo apt-get install iproute2
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;link&lt;/p&gt;
+&lt;h3 id=&#34;ip&#34;&gt;ip&lt;/h3&gt;
 &lt;pre&gt;&lt;code&gt;ip link show
 
 # 创建vlan
@@ -4489,50 +4571,35 @@ ip link delete eth1.10
 &lt;p&gt;rule&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;ip rule show
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;arp&#34;&gt;arp&lt;/h1&gt;
-&lt;pre&gt;&lt;code&gt;arp # 用于确定IP地址的网卡物理地址
+&lt;h3 id=&#34;devlink&#34;&gt;devlink&lt;/h3&gt;
+&lt;h3 id=&#34;ifstat&#34;&gt;ifstat&lt;/h3&gt;
+&lt;h3 id=&#34;bridge&#34;&gt;bridge&lt;/h3&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;dnsutils&#34;&gt;dnsutils&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;sudo apt-get install dnsutils
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;dig&#34;&gt;dig&lt;/h1&gt;
-&lt;h1 id=&#34;nslookup&#34;&gt;nslookup&lt;/h1&gt;
+&lt;h3 id=&#34;nslookup&#34;&gt;nslookup&lt;/h3&gt;
 &lt;pre&gt;&lt;code&gt;nslookup # 查询IP地址和对应的域名
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;ethtool&#34;&gt;ethtool&lt;/h1&gt;
-&lt;pre&gt;&lt;code&gt;ethtool # 查询网络设备信息
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;netstat&#34;&gt;netstat&lt;/h1&gt;
-&lt;pre&gt;&lt;code&gt;netstat
--a, --all, --listening # 显示所有socket, 默认只显示connected
--l, --listening  # 显示listening
--n, --numeric
--p, --programs # 显示pid或程序名称
-# socket选项:
--t, --tcp
--u, --udp
--w, --raw
--x, --unix
---ax25
---ipx
---netrom
+&lt;h3 id=&#34;dig&#34;&gt;dig&lt;/h3&gt;
+&lt;h3 id=&#34;nsupdate&#34;&gt;nsupdate&lt;/h3&gt;
+&lt;h3 id=&#34;delv&#34;&gt;delv&lt;/h3&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;ethtool&#34;&gt;ethtool&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;sudo apt-get install ethtool
 
-# 常用
-netstat -anp    # 查看哪些端口是打开的．
-sudo netstat -anp | grep port # 查看端口是否被使用
-sudo netstat -tulnp # 查看tcp&amp;amp;udp端口是否被监听
+ethtool # 查询网络设备信息
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;iftop&#34;&gt;iftop&lt;/h1&gt;
-&lt;p&gt;查看网络流量&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;# &amp;lt;http://www.ex-parrot.com/~pdw/iftop/&amp;gt;
-$ sudo apt-get install iftop
-$ sudo iftop
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;tcpdump&#34;&gt;tcpdump&lt;/h1&gt;
-&lt;pre&gt;&lt;code&gt;tcpdump
+&lt;hr&gt;
+&lt;h2 id=&#34;iftop&#34;&gt;iftop&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://www.ex-parrot.com/~pdw/iftop/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://www.ex-parrot.com/~pdw/iftop/&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo apt-get install iftop
 
-tcpdump udp port &amp;lt;port&amp;gt; 抓udp 在port端口的包
-tcpdump -i &amp;lt;interface&amp;gt; host &amp;lt;ip&amp;gt;
+sudo iftop
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;traceroute&#34;&gt;traceroute&lt;/h1&gt;
-&lt;h1 id=&#34;wget&#34;&gt;wget&lt;/h1&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;wget&#34;&gt;wget&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;wget [option] [URL]
 
 -a, --append-output=FILE 输出重定向到日志
@@ -4567,7 +4634,7 @@ wget --no-check-certificate --user &amp;lt;user&amp;gt; --password &amp;lt;pw&am
 $ wget -q -N -P /folder url
 $ wget -q -c -O /path/to/file.ext url
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;curl&#34;&gt;curl&lt;/h1&gt;
+&lt;h2 id=&#34;curl&#34;&gt;curl&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;curl
 -X/--request post/patch/delte/get/...
 -H/--header &#39;content-type: application/json&#39;
@@ -27407,6 +27474,8 @@ $ vault server -config=/etc/vault/config.hcl
 &lt;p&gt;login:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;// 跟据token登陆.
 $ vault login
+
+$vault login -token-only -method=oidc
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;operator:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;// init生成keys和token.
@@ -27473,15 +27542,25 @@ $ curl --header &amp;quot;X-Vault-Token: TOKEN&amp;quot; https://FQDN/v1/&amp;lt
 &lt;p&gt;通过pki engine来生成和管理证书。&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://learn.hashicorp.com/tutorials/vault/pki-engine&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://learn.hashicorp.com/tutorials/vault/pki-engine&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;generate证书:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;vault write --format=json &amp;lt;ns&amp;gt;/pki/issue/canuxcheng.com \
+&lt;p&gt;generate:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;vault write -format=json -namespace=&amp;lt;ns&amp;gt;  &amp;lt;pki_root&amp;gt;/issue/&amp;lt;role&amp;gt; \
 common_name=&amp;quot;canuxcheng.com&amp;quot; \
 alt_names=&amp;quot;canuxcheng.com,*.canuxcheng.com&amp;quot; \
-ttl=8760h format=pem_bundle \
+ttl=8760h \
+format=pem_bundle \
 | jq -r &#39;.data.certificate&#39; &amp;gt; canuxcheng.crt
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;删除证书:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;vault write &amp;lt;ns&amp;gt;/pki/revoke serial_number=&amp;quot;******&amp;quot;
+&lt;p&gt;list:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;vault list -namespace=&amp;lt;ns&amp;gt; &amp;lt;pki_root&amp;gt;/certs
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;verify:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;curl -s https://vault.canux.com/v1/&amp;lt;ns&amp;gt;/&amp;lt;pki_root&amp;gt;/cert/&amp;lt;serial-num&amp;gt; | jq -r &#39;.data.certificate&#39; | openssl x509 -in - -noout -text
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;revoke:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;vault write &amp;lt;ns&amp;gt;/&amp;lt;pki_root&amp;gt;/revoke serial_number=&amp;quot;******&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;remove expired ca:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;vault write &amp;lt;pki_root&amp;gt;/tidy tidy_cert_store=true tidy_revoked_certs=true
 &lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;vault--k8s&#34;&gt;vault + k8s&lt;/h1&gt;

@@ -3190,6 +3190,8 @@ $ vault server -config=/etc/vault/config.hcl
 &lt;p&gt;login:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;// 跟据token登陆.
 $ vault login
+
+$vault login -token-only -method=oidc
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;operator:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;// init生成keys和token.
@@ -3256,15 +3258,25 @@ $ curl --header &amp;quot;X-Vault-Token: TOKEN&amp;quot; https://FQDN/v1/&amp;lt
 &lt;p&gt;通过pki engine来生成和管理证书。&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://learn.hashicorp.com/tutorials/vault/pki-engine&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://learn.hashicorp.com/tutorials/vault/pki-engine&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;generate证书:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;vault write --format=json &amp;lt;ns&amp;gt;/pki/issue/canuxcheng.com \
+&lt;p&gt;generate:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;vault write -format=json -namespace=&amp;lt;ns&amp;gt;  &amp;lt;pki_root&amp;gt;/issue/&amp;lt;role&amp;gt; \
 common_name=&amp;quot;canuxcheng.com&amp;quot; \
 alt_names=&amp;quot;canuxcheng.com,*.canuxcheng.com&amp;quot; \
-ttl=8760h format=pem_bundle \
+ttl=8760h \
+format=pem_bundle \
 | jq -r &#39;.data.certificate&#39; &amp;gt; canuxcheng.crt
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;删除证书:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;vault write &amp;lt;ns&amp;gt;/pki/revoke serial_number=&amp;quot;******&amp;quot;
+&lt;p&gt;list:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;vault list -namespace=&amp;lt;ns&amp;gt; &amp;lt;pki_root&amp;gt;/certs
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;verify:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;curl -s https://vault.canux.com/v1/&amp;lt;ns&amp;gt;/&amp;lt;pki_root&amp;gt;/cert/&amp;lt;serial-num&amp;gt; | jq -r &#39;.data.certificate&#39; | openssl x509 -in - -noout -text
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;revoke:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;vault write &amp;lt;ns&amp;gt;/&amp;lt;pki_root&amp;gt;/revoke serial_number=&amp;quot;******&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;remove expired ca:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;vault write &amp;lt;pki_root&amp;gt;/tidy tidy_cert_store=true tidy_revoked_certs=true
 &lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;vault--k8s&#34;&gt;vault + k8s&lt;/h1&gt;

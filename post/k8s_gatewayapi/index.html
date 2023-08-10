@@ -1,48 +1,18 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Vault https://github.com/hashicorp/vault
-Install:
-https://learn.hashicorp.com/tutorials/vault/getting-started-install
-CLI 可以通过环境变量或者命令行参数指定server:
--address VAULT_ADDR -namespace VAULT_NAMESPACE vault [subcommand] -address=&amp;quot;https://server:8200&amp;quot; server:
-// 启动vault $ vault server -config=/etc/vault/config.hcl agent:
-$ vault agent login:
-// 跟据token登陆. $ vault login $vault login -token-only -method=oidc operator:
-// init生成keys和token. $ vault operator init // 通过keys unseal $ vault operator unseal // 通过token seal $ vault operator seal auth:
-// 查看auth $ vault auth list secrets
-// 查看secrets engine $ vault secrets list // enable kv $ vault secrets enable -path=&amp;lt;ns&amp;gt;/&amp;lt;name&amp;gt; kv $ vault secrets enable kv // disable kv $ vault secrets disable kv // 创建一个database engine vault secrets enable -path &amp;lt;ns&amp;gt;/mysql database // 创建rabbitmq engine vault secrets enable -path &amp;lt;ns&amp;gt;/rabbitmq rabbitmq policy'>
-<title>Vault</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Gateway API '>
+<title>Gateway API</title>
 
-<link rel='canonical' href='https://canuxcheng.com/post/devops_vault/'>
+<link rel='canonical' href='https://canuxcheng.com/post/k8s_gatewayapi/'>
 
-<link rel="stylesheet" href="/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content='Vault'>
-<meta property='og:description' content='Vault https://github.com/hashicorp/vault
-Install:
-https://learn.hashicorp.com/tutorials/vault/getting-started-install
-CLI 可以通过环境变量或者命令行参数指定server:
--address VAULT_ADDR -namespace VAULT_NAMESPACE vault [subcommand] -address=&amp;quot;https://server:8200&amp;quot; server:
-// 启动vault $ vault server -config=/etc/vault/config.hcl agent:
-$ vault agent login:
-// 跟据token登陆. $ vault login $vault login -token-only -method=oidc operator:
-// init生成keys和token. $ vault operator init // 通过keys unseal $ vault operator unseal // 通过token seal $ vault operator seal auth:
-// 查看auth $ vault auth list secrets
-// 查看secrets engine $ vault secrets list // enable kv $ vault secrets enable -path=&amp;lt;ns&amp;gt;/&amp;lt;name&amp;gt; kv $ vault secrets enable kv // disable kv $ vault secrets disable kv // 创建一个database engine vault secrets enable -path &amp;lt;ns&amp;gt;/mysql database // 创建rabbitmq engine vault secrets enable -path &amp;lt;ns&amp;gt;/rabbitmq rabbitmq policy'>
-<meta property='og:url' content='https://canuxcheng.com/post/devops_vault/'>
+<link rel="stylesheet" href="/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content='Gateway API'>
+<meta property='og:description' content='Gateway API '>
+<meta property='og:url' content='https://canuxcheng.com/post/k8s_gatewayapi/'>
 <meta property='og:site_name' content='Morgoth'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='vault' /><meta property='article:published_time' content='2016-04-15T09:41:39&#43;08:00'/><meta property='article:modified_time' content='2016-04-15T09:41:39&#43;08:00'/>
-<meta name="twitter:title" content="Vault">
-<meta name="twitter:description" content="Vault https://github.com/hashicorp/vault
-Install:
-https://learn.hashicorp.com/tutorials/vault/getting-started-install
-CLI 可以通过环境变量或者命令行参数指定server:
--address VAULT_ADDR -namespace VAULT_NAMESPACE vault [subcommand] -address=&amp;quot;https://server:8200&amp;quot; server:
-// 启动vault $ vault server -config=/etc/vault/config.hcl agent:
-$ vault agent login:
-// 跟据token登陆. $ vault login $vault login -token-only -method=oidc operator:
-// init生成keys和token. $ vault operator init // 通过keys unseal $ vault operator unseal // 通过token seal $ vault operator seal auth:
-// 查看auth $ vault auth list secrets
-// 查看secrets engine $ vault secrets list // enable kv $ vault secrets enable -path=&amp;lt;ns&amp;gt;/&amp;lt;name&amp;gt; kv $ vault secrets enable kv // disable kv $ vault secrets disable kv // 创建一个database engine vault secrets enable -path &amp;lt;ns&amp;gt;/mysql database // 创建rabbitmq engine vault secrets enable -path &amp;lt;ns&amp;gt;/rabbitmq rabbitmq policy">
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='k8s' /><meta property='article:published_time' content='2023-08-04T20:03:39&#43;08:00'/><meta property='article:modified_time' content='2023-08-04T20:03:39&#43;08:00'/>
+<meta name="twitter:title" content="Gateway API">
+<meta name="twitter:description" content="Gateway API ">
     <link rel="shortcut icon" href="favicon.ico" />
 <style>
     :root {
@@ -311,40 +281,7 @@ $ vault agent login:
     </ol>
 </aside>
 
-    <aside class="sidebar right-sidebar sticky">
-        
-            
-                
-    <section class="widget archives">
-        <div class="widget-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
-  <path stroke="none" d="M0 0h24v24H0z"/>
-  <line x1="5" y1="9" x2="19" y2="9" />
-  <line x1="5" y1="15" x2="19" y2="15" />
-  <line x1="11" y1="4" x2="7" y2="20" />
-  <line x1="17" y1="4" x2="13" y2="20" />
-</svg>
-
-
-
-        </div>
-        <h2 class="widget-title section-title">Table of contents</h2>
-        
-        <div class="widget--toc">
-            <nav id="TableOfContents">
-  <ul>
-    <li><a href="#vault-sidecar-agent-injector">Vault Sidecar Agent Injector</a></li>
-    <li><a href="#mutating-webhook-of-bank-vaults">mutating webhook of Bank-Vaults</a></li>
-    <li><a href="#vault-csi-provider">Vault CSI Provider</a></li>
-  </ul>
-</nav>
-        </div>
-    </section>
-
-            
-        
-    </aside>
-
+    
 
             <main class="main full-width">
     <article class="main-article">
@@ -354,12 +291,8 @@ $ vault agent login:
     
     <header class="article-category">
         
-            <a href="/categories/devops/" >
-                DevOps
-            </a>
-        
-            <a href="/categories/security/" >
-                Security
+            <a href="/categories/cncf/" >
+                CNCF
             </a>
         
     </header>
@@ -367,7 +300,7 @@ $ vault agent login:
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/post/devops_vault/">Vault</a>
+            <a href="/post/k8s_gatewayapi/">Gateway API</a>
         </h2>
     
         
@@ -389,7 +322,7 @@ $ vault agent login:
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">Apr 15, 2016</time>
+                <time class="article-time--published">Aug 04, 2023</time>
             </div>
         
 
@@ -404,7 +337,7 @@ $ vault agent login:
 
 
                 <time class="article-time--reading">
-                    2 minute read
+                    1 minute read
                 </time>
             </div>
         
@@ -419,136 +352,7 @@ $ vault agent login:
     <section class="article-content">
     
     
-    <h1 id="vault">Vault</h1>
-<p><a class="link" href="https://github.com/hashicorp/vault"  target="_blank" rel="noopener"
-    >https://github.com/hashicorp/vault</a></p>
-<p>Install:</p>
-<p><a class="link" href="https://learn.hashicorp.com/tutorials/vault/getting-started-install"  target="_blank" rel="noopener"
-    >https://learn.hashicorp.com/tutorials/vault/getting-started-install</a></p>
-<h1 id="cli">CLI</h1>
-<p>可以通过环境变量或者命令行参数指定server:</p>
-<pre><code>-address VAULT_ADDR
--namespace VAULT_NAMESPACE
-vault [subcommand] -address=&quot;https://server:8200&quot;
-</code></pre>
-<p>server:</p>
-<pre><code>// 启动vault
-$ vault server -config=/etc/vault/config.hcl
-</code></pre>
-<p>agent:</p>
-<pre><code>$ vault agent
-</code></pre>
-<p>login:</p>
-<pre><code>// 跟据token登陆.
-$ vault login
-
-$vault login -token-only -method=oidc
-</code></pre>
-<p>operator:</p>
-<pre><code>// init生成keys和token.
-$ vault operator init
-
-// 通过keys  unseal
-$ vault operator unseal
-
-// 通过token seal
-$ vault operator seal
-</code></pre>
-<p>auth:</p>
-<pre><code>// 查看auth
-$ vault auth list
-</code></pre>
-<p>secrets</p>
-<pre><code>// 查看secrets engine
-$ vault secrets list
-
-// enable kv
-$ vault secrets enable -path=&lt;ns&gt;/&lt;name&gt; kv
-$ vault secrets enable kv
-
-// disable kv
-$ vault secrets disable kv
-
-// 创建一个database engine
-vault secrets enable -path &lt;ns&gt;/mysql database
-// 创建rabbitmq engine
-vault secrets enable -path &lt;ns&gt;/rabbitmq rabbitmq
-</code></pre>
-<p>policy</p>
-<pre><code>// 查看policy
-$ vault policy list
-
-// 创建policy
-$ vault policy write &lt;my-policy&gt; ./my-policy.hcl
-</code></pre>
-<p>plugin:</p>
-<pre><code>$ vault plugin list database
-</code></pre>
-<p>read/write/delete/list:</p>
-<pre><code>$ vault read
-$ vault write
-$ vault write my-secret/my-app my-field=value
-$ vault delete
-$ vault list
-</code></pre>
-<h1 id="api">API</h1>
-<p><a class="link" href="https://www.vaultproject.io/api-docs"  target="_blank" rel="noopener"
-    >https://www.vaultproject.io/api-docs</a></p>
-<pre><code>$ curl --header &quot;X-Vault-Token: TOKEN&quot; https://FQDN/v1/&lt;engine-path&gt;/data/&lt;secret-path&gt;
-$ curl --header &quot;X-Vault-Token: TOKEN&quot; https://FQDN/v1/&lt;engine-path&gt;/data/&lt;secret-path&gt;?version=&lt;version&gt;
-</code></pre>
-<hr>
-<h1 id="auth-methods">auth methods</h1>
-<p><a class="link" href="https://www.vaultproject.io/docs/auth"  target="_blank" rel="noopener"
-    >https://www.vaultproject.io/docs/auth</a></p>
-<h1 id="secrets-engine">secrets engine</h1>
-<p><a class="link" href="https://www.vaultproject.io/docs/secrets"  target="_blank" rel="noopener"
-    >https://www.vaultproject.io/docs/secrets</a></p>
-<hr>
-<h1 id="vault-pki">vault PKI</h1>
-<p>通过pki engine来生成和管理证书。</p>
-<p><a class="link" href="https://learn.hashicorp.com/tutorials/vault/pki-engine"  target="_blank" rel="noopener"
-    >https://learn.hashicorp.com/tutorials/vault/pki-engine</a></p>
-<p>generate:</p>
-<pre><code>vault write -format=json -namespace=&lt;ns&gt;  &lt;pki_root&gt;/issue/&lt;role&gt; \
-common_name=&quot;canuxcheng.com&quot; \
-alt_names=&quot;canuxcheng.com,*.canuxcheng.com&quot; \
-ttl=8760h \
-format=pem_bundle \
-| jq -r '.data.certificate' &gt; canuxcheng.crt
-</code></pre>
-<p>list:</p>
-<pre><code>vault list -namespace=&lt;ns&gt; &lt;pki_root&gt;/certs
-</code></pre>
-<p>verify:</p>
-<pre><code>curl -s https://vault.canux.com/v1/&lt;ns&gt;/&lt;pki_root&gt;/cert/&lt;serial-num&gt; | jq -r '.data.certificate' | openssl x509 -in - -noout -text
-</code></pre>
-<p>revoke:</p>
-<pre><code>vault write &lt;ns&gt;/&lt;pki_root&gt;/revoke serial_number=&quot;******&quot;
-</code></pre>
-<p>remove expired ca:</p>
-<pre><code>vault write &lt;pki_root&gt;/tidy tidy_cert_store=true tidy_revoked_certs=true
-</code></pre>
-<hr>
-<h1 id="vault--k8s">vault + k8s</h1>
-<p>vault提供两种方式在k8s中使用secret.</p>
-<h2 id="vault-sidecar-agent-injector">Vault Sidecar Agent Injector</h2>
-<p><a class="link" href="https://www.vaultproject.io/docs/platform/k8s/injector"  target="_blank" rel="noopener"
-    >https://www.vaultproject.io/docs/platform/k8s/injector</a></p>
-<p><a class="link" href="https://github.com/hashicorp/vault-k8s"  target="_blank" rel="noopener"
-    >https://github.com/hashicorp/vault-k8s</a></p>
-<h2 id="mutating-webhook-of-bank-vaults">mutating webhook of Bank-Vaults</h2>
-<p><a class="link" href="https://banzaicloud.com/docs/bank-vaults/mutating-webhook/"  target="_blank" rel="noopener"
-    >https://banzaicloud.com/docs/bank-vaults/mutating-webhook/</a></p>
-<p><a class="link" href="https://github.com/banzaicloud/bank-vaults"  target="_blank" rel="noopener"
-    >https://github.com/banzaicloud/bank-vaults</a></p>
-<p><a class="link" href="https://banzaicloud.com/blog/inject-secrets-into-pods-vault-revisited/"  target="_blank" rel="noopener"
-    >https://banzaicloud.com/blog/inject-secrets-into-pods-vault-revisited/</a></p>
-<h2 id="vault-csi-provider">Vault CSI Provider</h2>
-<p><a class="link" href="https://www.vaultproject.io/docs/platform/k8s/csi"  target="_blank" rel="noopener"
-    >https://www.vaultproject.io/docs/platform/k8s/csi</a></p>
-<p><a class="link" href="https://github.com/kubernetes-sigs/secrets-store-csi-driver"  target="_blank" rel="noopener"
-    >https://github.com/kubernetes-sigs/secrets-store-csi-driver</a></p>
+    <h1 id="gateway-api">Gateway API</h1>
 
 </section>
 
@@ -557,7 +361,7 @@ format=pem_bundle \
     
     <section class="article-tags">
         
-            <a href="/tags/vault/">vault</a>
+            <a href="/tags/k8s/">k8s</a>
         
     </section>
 
