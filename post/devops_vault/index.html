@@ -514,14 +514,18 @@ $ curl --header &quot;X-Vault-Token: TOKEN&quot; https://FQDN/v1/&lt;engine-path
 common_name=&quot;canuxcheng.com&quot; \
 alt_names=&quot;canuxcheng.com,*.canuxcheng.com&quot; \
 ttl=8760h \
-format=pem_bundle \
-| jq -r '.data.certificate' &gt; canuxcheng.crt
+format=pem/der/pem_bundle \
+| tee \
+&gt;(jq -r '.data.certificate' &gt; canuxcheng.crt) \
+&gt;(jq -r '.data.private_key' &gt; private.key) 
 </code></pre>
 <p>list:</p>
 <pre><code>vault list -namespace=&lt;ns&gt; &lt;pki_root&gt;/certs
 </code></pre>
 <p>verify:</p>
-<pre><code>curl -s https://vault.canux.com/v1/&lt;ns&gt;/&lt;pki_root&gt;/cert/&lt;serial-num&gt; | jq -r '.data.certificate' | openssl x509 -in - -noout -text
+<pre><code>vault read -namespace=iac-phoenix/test it/pki/cert/&lt;sn&gt;
+
+curl -s https://vault.canux.com/v1/&lt;ns&gt;/&lt;pki_root&gt;/cert/&lt;serial-num&gt; | jq -r '.data.certificate' | openssl x509 -in - -noout -text
 </code></pre>
 <p>revoke:</p>
 <pre><code>vault write &lt;ns&gt;/&lt;pki_root&gt;/revoke serial_number=&quot;******&quot;

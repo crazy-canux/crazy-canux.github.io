@@ -592,6 +592,9 @@ response_dict = json.loads(response.content) # 使用requests获取的json数据
 &lt;p&gt;0-1024是系统保留端口, 1024-65535是可用自定义端口&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;8443:  tcp/udp - https port
+9443: tcp/udp tungsten-https
+4443: tcp/udp pharos&lt;/p&gt;
 &lt;p&gt;基于TCP的应用层&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;FTP: 21,
 SSH: 22,

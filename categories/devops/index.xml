@@ -3263,14 +3263,18 @@ $ curl --header &amp;quot;X-Vault-Token: TOKEN&amp;quot; https://FQDN/v1/&amp;lt
 common_name=&amp;quot;canuxcheng.com&amp;quot; \
 alt_names=&amp;quot;canuxcheng.com,*.canuxcheng.com&amp;quot; \
 ttl=8760h \
-format=pem_bundle \
-| jq -r &#39;.data.certificate&#39; &amp;gt; canuxcheng.crt
+format=pem/der/pem_bundle \
+| tee \
+&amp;gt;(jq -r &#39;.data.certificate&#39; &amp;gt; canuxcheng.crt) \
+&amp;gt;(jq -r &#39;.data.private_key&#39; &amp;gt; private.key) 
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;list:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;vault list -namespace=&amp;lt;ns&amp;gt; &amp;lt;pki_root&amp;gt;/certs
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;verify:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;curl -s https://vault.canux.com/v1/&amp;lt;ns&amp;gt;/&amp;lt;pki_root&amp;gt;/cert/&amp;lt;serial-num&amp;gt; | jq -r &#39;.data.certificate&#39; | openssl x509 -in - -noout -text
+&lt;pre&gt;&lt;code&gt;vault read -namespace=iac-phoenix/test it/pki/cert/&amp;lt;sn&amp;gt;
+
+curl -s https://vault.canux.com/v1/&amp;lt;ns&amp;gt;/&amp;lt;pki_root&amp;gt;/cert/&amp;lt;serial-num&amp;gt; | jq -r &#39;.data.certificate&#39; | openssl x509 -in - -noout -text
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;revoke:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;vault write &amp;lt;ns&amp;gt;/&amp;lt;pki_root&amp;gt;/revoke serial_number=&amp;quot;******&amp;quot;

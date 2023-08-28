@@ -13,6 +13,8 @@
         
         <guid>https://canuxcheng.com/post/k8s_gatewayapi/</guid>
         <description>&lt;h1 id=&#34;gateway-api&#34;&gt;Gateway API&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/kubernetes-sigs/gateway-api&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/kubernetes-sigs/gateway-api&lt;/a&gt;&lt;/p&gt;
 </description>
         </item>
         <item>
@@ -830,28 +832,39 @@ $ kubectl -n influxdata create cm dashboard-docker --from-file Docker.json -o ya
 &lt;h1 id=&#34;secret&#34;&gt;Secret&lt;/h1&gt;
 &lt;p&gt;secret只能在当前namespace使用.&lt;/p&gt;
 &lt;p&gt;data里的文件名就是挂载之后的文件名。&lt;/p&gt;
-&lt;p&gt;secret&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;apiVersion: v1
+&lt;p&gt;Opaque是用户自定义格式&lt;/p&gt;
+&lt;p&gt;generic secret&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;kubectl create secret generic empty-secret
+
+apiVersion: v1
 kind: Secret
+type: Opaque
 metadata:
   name: mysecret
   namespace: kube-system
-type: Opaque
 data:
   username: name 
   password: pw
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;创建generic账号:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ kubectl -n influxdata create secret generic \
-datasource --from-file=datasource.yaml 
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;创建tls账号:&lt;/p&gt;
+&lt;p&gt;创建tls secret账号:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;kubectl -n kubernetes-dashboard create secret tls \
 kubernetes-dashboard-tls --key ca.key --cert ca.crt 
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;创建docker-registry账号:&lt;/p&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://kubernetes.io/zh/docs/tasks/configure-pod-container/pull-image-private-registry/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://kubernetes.io/zh/docs/tasks/configure-pod-container/pull-image-private-registry/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;类型为 kubernetes.io/tls 的 Secret 中包含密钥和证书的 DER 数据，以 Base64 格式编码。 如果你熟悉私钥和证书的 PEM 格式，base64 与该格式相同，只是你需要略过 PEM 数据中所包含的第一行和最后一行。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;apiVersion: v1
+kind: Secret
+metadata:
+  name: secret-tls
+type: kubernetes.io/tls
+data:
+  tls.crt: |
+    MIIC2DCCAcCgAwIBAgIBATANBgkqh ...    
+  tls.key: |
+    MIIEpgIBAAKCAQEA7yn3bRHQ5FHMQ ...   
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;创建docker secret:&lt;/p&gt;
+&lt;p&gt;kubernetes.io/dockercfg	~/.dockercfg 文件的序列化形式&lt;/p&gt;
+&lt;p&gt;kubernetes.io/dockerconfigjson	~/.docker/config.json 文件的序列化形式&lt;/p&gt;
 &lt;p&gt;给一个private registry创建secret:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;$ kubectl -n ns create secret docker-registry &amp;lt;name&amp;gt; \
 --docker-server=https://harbor.domain.com --docker-username=user --docker-password=pw --docker-email=canuxcheng@gmail.com 
@@ -860,6 +873,15 @@ kubernetes-dashboard-tls --key ca.key --cert ca.crt
 &lt;pre&gt;&lt;code&gt;$ kubectl -n ns create secret generic regcred \
 --from-file=.dockerconfigjson=$HOME/.docker/config.json \
 --type=kubernetes.io/dockerconfigjson
+
+apiVersion: v1
+kind: Secret
+metadata:
+  name: artifactory-cred
+  namespace: ...
+type: kubernetes.io/dockerconfigjson
+data:
+  .dockerconfigjson: ewoJImF1d......
 &lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;service&#34;&gt;Service&lt;/h1&gt;

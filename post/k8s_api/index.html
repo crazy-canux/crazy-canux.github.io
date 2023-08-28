@@ -871,28 +871,39 @@ $ kubectl -n influxdata create cm dashboard-docker --from-file Docker.json -o ya
 <h1 id="secret">Secret</h1>
 <p>secret只能在当前namespace使用.</p>
 <p>data里的文件名就是挂载之后的文件名。</p>
-<p>secret</p>
-<pre><code>apiVersion: v1
+<p>Opaque是用户自定义格式</p>
+<p>generic secret</p>
+<pre><code>kubectl create secret generic empty-secret
+
+apiVersion: v1
 kind: Secret
+type: Opaque
 metadata:
   name: mysecret
   namespace: kube-system
-type: Opaque
 data:
   username: name 
   password: pw
 </code></pre>
-<p>创建generic账号:</p>
-<pre><code>$ kubectl -n influxdata create secret generic \
-datasource --from-file=datasource.yaml 
-</code></pre>
-<p>创建tls账号:</p>
+<p>创建tls secret账号:</p>
 <pre><code>kubectl -n kubernetes-dashboard create secret tls \
 kubernetes-dashboard-tls --key ca.key --cert ca.crt 
 </code></pre>
-<p>创建docker-registry账号:</p>
-<p><a class="link" href="https://kubernetes.io/zh/docs/tasks/configure-pod-container/pull-image-private-registry/"  target="_blank" rel="noopener"
-    >https://kubernetes.io/zh/docs/tasks/configure-pod-container/pull-image-private-registry/</a></p>
+<p>类型为 kubernetes.io/tls 的 Secret 中包含密钥和证书的 DER 数据，以 Base64 格式编码。 如果你熟悉私钥和证书的 PEM 格式，base64 与该格式相同，只是你需要略过 PEM 数据中所包含的第一行和最后一行。</p>
+<pre><code>apiVersion: v1
+kind: Secret
+metadata:
+  name: secret-tls
+type: kubernetes.io/tls
+data:
+  tls.crt: |
+    MIIC2DCCAcCgAwIBAgIBATANBgkqh ...    
+  tls.key: |
+    MIIEpgIBAAKCAQEA7yn3bRHQ5FHMQ ...   
+</code></pre>
+<p>创建docker secret:</p>
+<p>kubernetes.io/dockercfg	~/.dockercfg 文件的序列化形式</p>
+<p>kubernetes.io/dockerconfigjson	~/.docker/config.json 文件的序列化形式</p>
 <p>给一个private registry创建secret:</p>
 <pre><code>$ kubectl -n ns create secret docker-registry &lt;name&gt; \
 --docker-server=https://harbor.domain.com --docker-username=user --docker-password=pw --docker-email=canuxcheng@gmail.com 
@@ -901,6 +912,15 @@ kubernetes-dashboard-tls --key ca.key --cert ca.crt
 <pre><code>$ kubectl -n ns create secret generic regcred \
 --from-file=.dockerconfigjson=$HOME/.docker/config.json \
 --type=kubernetes.io/dockerconfigjson
+
+apiVersion: v1
+kind: Secret
+metadata:
+  name: artifactory-cred
+  namespace: ...
+type: kubernetes.io/dockerconfigjson
+data:
+  .dockerconfigjson: ewoJImF1d......
 </code></pre>
 <hr>
 <h1 id="service">Service</h1>
