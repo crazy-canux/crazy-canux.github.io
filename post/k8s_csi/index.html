@@ -2,7 +2,7 @@
 <html lang="en-us" dir="ltr">
     <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='CSI https://github.com/container-storage-interface/spec
-卷Volume 和docker中的一样。
+rook cubefs longhorn ceph minio 卷Volume 和docker中的一样。
 volume支持的卷类型有: awsEBS, azureDisk, azureFile, gcePD, secret, configMap, emptyDir, hostPath, local, nfs等.
 apiVersion: v1 kind: Pod metadata: name: test-ebs spec: containers: - image: k8s.gcr.io/test-webserver name: test-container volumeMounts: - mountPath: /test-ebs name: test-volume volumes: - name: test-volume # 此 AWS EBS 卷必须已经存在 awsElasticBlockStore: volumeID: &amp;quot;&amp;lt;volume-id&amp;gt;&amp;quot; fsType: ext4 AWS的EBS和EFS需要安装驱动:
 https://github.com/kubernetes-sigs/aws-ebs-csi-driver https://github.com/kubernetes-sigs/aws-efs-csi-driver
@@ -10,16 +10,14 @@ https://github.com/kubernetes-sigs/aws-ebs-csi-driver https://github.com/kuberne
 每个存储类包含provisioner, parameters和reclaimPolicy.
 内置provisioner的卷插件:
 awsEBS azureFile azureDisk gcePD openstack cinder 没有provisioner的卷类型可以使用外部插件或者自己开发.
-https://github.com/kubernetes-sigs/sig-storage-lib-external-provisioner
-awsEBS:
-kind: StorageClass apiVersion: storage.k8s.io/v1 metadata: name: sourcegraph labels: deploy: sourcegraph # provisioner: ebs.'>
+https://github.com/kubernetes-sigs/sig-storage-lib-external-provisioner'>
 <title>K8S CSI</title>
 
 <link rel='canonical' href='https://canuxcheng.com/post/k8s_csi/'>
 
 <link rel="stylesheet" href="/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content='K8S CSI'>
 <meta property='og:description' content='CSI https://github.com/container-storage-interface/spec
-卷Volume 和docker中的一样。
+rook cubefs longhorn ceph minio 卷Volume 和docker中的一样。
 volume支持的卷类型有: awsEBS, azureDisk, azureFile, gcePD, secret, configMap, emptyDir, hostPath, local, nfs等.
 apiVersion: v1 kind: Pod metadata: name: test-ebs spec: containers: - image: k8s.gcr.io/test-webserver name: test-container volumeMounts: - mountPath: /test-ebs name: test-volume volumes: - name: test-volume # 此 AWS EBS 卷必须已经存在 awsElasticBlockStore: volumeID: &amp;quot;&amp;lt;volume-id&amp;gt;&amp;quot; fsType: ext4 AWS的EBS和EFS需要安装驱动:
 https://github.com/kubernetes-sigs/aws-ebs-csi-driver https://github.com/kubernetes-sigs/aws-efs-csi-driver
@@ -27,15 +25,13 @@ https://github.com/kubernetes-sigs/aws-ebs-csi-driver https://github.com/kuberne
 每个存储类包含provisioner, parameters和reclaimPolicy.
 内置provisioner的卷插件:
 awsEBS azureFile azureDisk gcePD openstack cinder 没有provisioner的卷类型可以使用外部插件或者自己开发.
-https://github.com/kubernetes-sigs/sig-storage-lib-external-provisioner
-awsEBS:
-kind: StorageClass apiVersion: storage.k8s.io/v1 metadata: name: sourcegraph labels: deploy: sourcegraph # provisioner: ebs.'>
+https://github.com/kubernetes-sigs/sig-storage-lib-external-provisioner'>
 <meta property='og:url' content='https://canuxcheng.com/post/k8s_csi/'>
 <meta property='og:site_name' content='Morgoth'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='k8s' /><meta property='article:published_time' content='2020-03-25T20:55:52&#43;08:00'/><meta property='article:modified_time' content='2020-03-25T20:55:52&#43;08:00'/>
 <meta name="twitter:title" content="K8S CSI">
 <meta name="twitter:description" content="CSI https://github.com/container-storage-interface/spec
-卷Volume 和docker中的一样。
+rook cubefs longhorn ceph minio 卷Volume 和docker中的一样。
 volume支持的卷类型有: awsEBS, azureDisk, azureFile, gcePD, secret, configMap, emptyDir, hostPath, local, nfs等.
 apiVersion: v1 kind: Pod metadata: name: test-ebs spec: containers: - image: k8s.gcr.io/test-webserver name: test-container volumeMounts: - mountPath: /test-ebs name: test-volume volumes: - name: test-volume # 此 AWS EBS 卷必须已经存在 awsElasticBlockStore: volumeID: &amp;quot;&amp;lt;volume-id&amp;gt;&amp;quot; fsType: ext4 AWS的EBS和EFS需要安装驱动:
 https://github.com/kubernetes-sigs/aws-ebs-csi-driver https://github.com/kubernetes-sigs/aws-efs-csi-driver
@@ -43,9 +39,7 @@ https://github.com/kubernetes-sigs/aws-ebs-csi-driver https://github.com/kuberne
 每个存储类包含provisioner, parameters和reclaimPolicy.
 内置provisioner的卷插件:
 awsEBS azureFile azureDisk gcePD openstack cinder 没有provisioner的卷类型可以使用外部插件或者自己开发.
-https://github.com/kubernetes-sigs/sig-storage-lib-external-provisioner
-awsEBS:
-kind: StorageClass apiVersion: storage.k8s.io/v1 metadata: name: sourcegraph labels: deploy: sourcegraph # provisioner: ebs.">
+https://github.com/kubernetes-sigs/sig-storage-lib-external-provisioner">
     <link rel="shortcut icon" href="favicon.ico" />
 <style>
     :root {
@@ -348,9 +342,6 @@ kind: StorageClass apiVersion: storage.k8s.io/v1 metadata: name: sourcegraph lab
     <li><a href="#volumesnapshotclass">VolumeSnapshotClass</a></li>
     <li><a href="#volumesnapshot">VolumeSnapshot</a></li>
     <li><a href="#volumesnapshotcontent">VolumeSnapshotContent</a></li>
-    <li><a href="#rook">ROOK</a></li>
-    <li><a href="#minio">minio</a></li>
-    <li><a href="#ceph">ceph</a></li>
   </ul>
 </nav>
         </div>
@@ -437,6 +428,13 @@ kind: StorageClass apiVersion: storage.k8s.io/v1 metadata: name: sourcegraph lab
     <h1 id="csi">CSI</h1>
 <p><a class="link" href="https://github.com/container-storage-interface/spec"  target="_blank" rel="noopener"
     >https://github.com/container-storage-interface/spec</a></p>
+<ul>
+<li>rook</li>
+<li>cubefs</li>
+<li>longhorn</li>
+<li>ceph</li>
+<li>minio</li>
+</ul>
 <hr>
 <h2 id="卷volume">卷Volume</h2>
 <p>和docker中的一样。</p>
@@ -517,7 +515,7 @@ provisioner: kubernetes.io/no-provisioner
 volumeBindingMode: WaitForFirstConsumer
 </code></pre>
 <h2 id="持久卷pv">持久卷PV</h2>
-<p>pv没有namespace, 用来指定具体的存储资源。有静态和动态两种方式，最终需要绑定到pvc上。</p>
+<p>persistentvolume没有namespace, 用来指定具体的存储资源。有静态和动态两种方式，最终需要绑定到pvc上。</p>
 <p>pv的回收策略ReclaimPolicy:</p>
 <ul>
 <li>Retained保留</li>
@@ -570,6 +568,7 @@ spec:
 </code></pre>
 <h3 id="dynamic-volume-provisioning">dynamic volume provisioning</h3>
 <p>动态pv需要storageclass, 由StorageClass动态的创建PV, 不需要手动创建pv，只需要在pvc中指定storageclass即可.</p>
+<p>storageclass没有namespace</p>
 <pre><code>kind: StorageClass
 apiVersion: storage.k8s.io/v1
 metadata:
@@ -610,7 +609,6 @@ metadata:
 labels:
   app: demo
 spec:
-  storageClassName: 
   accessModes:
   - ReadWriteMany
   resources:
@@ -651,9 +649,6 @@ spec:
     uid: 72d9a349-aacd-42d2-a240-d775650d2455
 </code></pre>
 <hr>
-<h2 id="rook">ROOK</h2>
-<h2 id="minio">minio</h2>
-<h2 id="ceph">ceph</h2>
 
 </section>
 

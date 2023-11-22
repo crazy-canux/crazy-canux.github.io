@@ -1195,10 +1195,12 @@ package pkg # 使用和包一样的名字.
 &lt;p&gt;parallelism: 并行,让不同的代码在不同的物理处理器上同时执行.&lt;/p&gt;
 &lt;p&gt;process: 进程, 是系统资源和调度的基本单位，包括内存，句柄，线程等。&lt;/p&gt;
 &lt;p&gt;thread: 线程,是cpu调度和分配的基本单位,每个进程至少包含一个线程，初始线程就是主线程，每个线程绑定到一个逻辑cpu上运行。&lt;/p&gt;
-&lt;p&gt;coroutines: 协程&lt;/p&gt;
-&lt;p&gt;goroutines: go语言的协程，是并行的，通过channel来通信.&lt;/p&gt;
-&lt;p&gt;CSP: communicating sequential processes, 顺序通信进程&lt;/p&gt;
-&lt;p&gt;MPM: message pussing model, 消息传递模型&lt;/p&gt;
+&lt;p&gt;co-routine: 协程，大量线程会消耗内存和cpu调度，将线程分为内核态线程和用户态线程，每个用户态线程绑定到内核态线程，但是cpu不知道用户态线程的存在，我们把用户态线程叫协程。&lt;/p&gt;
+&lt;p&gt;goroutine: go语言的协程，是并行的，通过channel来通信.&lt;/p&gt;
+&lt;p&gt;GMP: goroutine的实现模型。&lt;/p&gt;
+&lt;p&gt;G: goroutine。
+M: thread，代表一个内核态线程，golang默认10000个，SetMaxThreads可以设置，P创建M，一个P可以创建多个M如果之前的阻塞了。
+P: processor, 包含了可运行的协程队列，由GOMAXPROCS确定个数，然后创建对应个数的P。&lt;/p&gt;
 &lt;h1 id=&#34;goroutines&#34;&gt;goroutines&lt;/h1&gt;
 &lt;p&gt;go关键字会启动一个新的goroutine并执行.&lt;/p&gt;
 &lt;p&gt;每个goroutine会绑定到一个逻辑处理器上运行，每个逻辑处理器会绑定到单个操作系统线程。&lt;/p&gt;

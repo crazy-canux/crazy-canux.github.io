@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>K8S on Morgoth</title>
+        <link>https://canuxcheng.com/categories/k8s/</link>
+        <description>Recent content in K8S on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Fri, 10 Jan 2020 20:55:52 +0800</lastBuildDate><atom:link href="https://canuxcheng.com/categories/k8s/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>CI/CD</title>
+        <link>https://canuxcheng.com/post/k8s_cicd/</link>
+        <pubDate>Fri, 10 Jan 2020 20:55:52 +0800</pubDate>
+        
+        <guid>https://canuxcheng.com/post/k8s_cicd/</guid>
+        <description>&lt;h1 id=&#34;continuous-integration--delivery&#34;&gt;Continuous Integration &amp;amp; Delivery&lt;/h1&gt;
+&lt;h2 id=&#34;argo-cd&#34;&gt;argo-cd&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/argoproj/argo-cd&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/argoproj/argo-cd&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;flux-cd&#34;&gt;flux-cd&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/fluxcd/flux&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/fluxcd/flux&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>

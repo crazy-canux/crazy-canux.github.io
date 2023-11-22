@@ -412,15 +412,6 @@ build-essential \
 &lt;p&gt;减小image大小,适用于web程序.&lt;/p&gt;
 &lt;p&gt;&amp;lt;https://github.com/docker-slim/docker-slim&lt;/p&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;registry&#34;&gt;registry&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Docker Hub Registry&lt;/li&gt;
-&lt;li&gt;Google Container Registry (gcr.io)&lt;/li&gt;
-&lt;li&gt;RedHat Quay Registry (quay.io)&lt;/li&gt;
-&lt;li&gt;GitHub Docker Packages (docker.pkg.github.com)&lt;/li&gt;
-&lt;li&gt;GitHub Container Registry (ghcr.io)&lt;/li&gt;
-&lt;li&gt;Kubernetes Registry(registry.k8s.io/k8s.gcr.io)&lt;/li&gt;
-&lt;/ul&gt;
 </description>
         </item>
         <item>

@@ -4,7 +4,8 @@
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Libvirt 支持多种虚拟化平台的库
 https://libvirt.org/
 安装:
-$ sudo apt-get install libvirt-bin (包含virsh命令和libvirtd daemon) // libvirtd在container中无法运行；在container中安装libvirt-bin可以获取virsh命令远程访问libvirt-bin server. $ sudo apt-get install libvirt-dev # 库, python/go client依赖该库 $ sudo apt-get install virt-manager # windows管理工具 $ sudo apt-get install virt-view # ... $ sudo service libvirt-bin restart virsh libvirt的命令行工具
+$ sudo apt-get install libvirt-bin (包含virsh命令和libvirtd daemon) // libvirtd在container中无法运行；在container中安装libvirt-bin可以获取virsh命令远程访问libvirt-bin server. libvirt-bin拆分成了两个包：
+libvirt-daemon-system libvirt-clients $ sudo apt-get install libvirt-dev # 库, python/go client依赖该库 $ sudo apt-get install virt-manager # windows管理工具 $ sudo apt-get install virt-view # ... $ sudo service libvirt-bin restart virsh libvirt的命令行工具
 $ virsh list --all # 查看所有虚拟机 $ virsh list --all --name # 只看domain name. $ virsh define /path/to/X.xml # 从xml配置文件定义一个domain $ virsh start # 启动虚拟机 $ virsh reboot # 重启虚拟机 $ virsh shutdown # 关闭虚拟机 $ virsh destroy # 强制关闭虚拟机 $ virsh undefine # 移除虚拟机 $ virsh vncdisplay # 查看虚拟机的vnc信息，可以通过vnc访问.'>
 <title>Libvirt</title>
 
@@ -14,7 +15,8 @@ $ virsh list --all # 查看所有虚拟机 $ virsh list --all --name # 只看dom
 <meta property='og:description' content='Libvirt 支持多种虚拟化平台的库
 https://libvirt.org/
 安装:
-$ sudo apt-get install libvirt-bin (包含virsh命令和libvirtd daemon) // libvirtd在container中无法运行；在container中安装libvirt-bin可以获取virsh命令远程访问libvirt-bin server. $ sudo apt-get install libvirt-dev # 库, python/go client依赖该库 $ sudo apt-get install virt-manager # windows管理工具 $ sudo apt-get install virt-view # ... $ sudo service libvirt-bin restart virsh libvirt的命令行工具
+$ sudo apt-get install libvirt-bin (包含virsh命令和libvirtd daemon) // libvirtd在container中无法运行；在container中安装libvirt-bin可以获取virsh命令远程访问libvirt-bin server. libvirt-bin拆分成了两个包：
+libvirt-daemon-system libvirt-clients $ sudo apt-get install libvirt-dev # 库, python/go client依赖该库 $ sudo apt-get install virt-manager # windows管理工具 $ sudo apt-get install virt-view # ... $ sudo service libvirt-bin restart virsh libvirt的命令行工具
 $ virsh list --all # 查看所有虚拟机 $ virsh list --all --name # 只看domain name. $ virsh define /path/to/X.xml # 从xml配置文件定义一个domain $ virsh start # 启动虚拟机 $ virsh reboot # 重启虚拟机 $ virsh shutdown # 关闭虚拟机 $ virsh destroy # 强制关闭虚拟机 $ virsh undefine # 移除虚拟机 $ virsh vncdisplay # 查看虚拟机的vnc信息，可以通过vnc访问.'>
 <meta property='og:url' content='https://canuxcheng.com/post/libvirt/'>
 <meta property='og:site_name' content='Morgoth'>
@@ -23,7 +25,8 @@ $ virsh list --all # 查看所有虚拟机 $ virsh list --all --name # 只看dom
 <meta name="twitter:description" content="Libvirt 支持多种虚拟化平台的库
 https://libvirt.org/
 安装:
-$ sudo apt-get install libvirt-bin (包含virsh命令和libvirtd daemon) // libvirtd在container中无法运行；在container中安装libvirt-bin可以获取virsh命令远程访问libvirt-bin server. $ sudo apt-get install libvirt-dev # 库, python/go client依赖该库 $ sudo apt-get install virt-manager # windows管理工具 $ sudo apt-get install virt-view # ... $ sudo service libvirt-bin restart virsh libvirt的命令行工具
+$ sudo apt-get install libvirt-bin (包含virsh命令和libvirtd daemon) // libvirtd在container中无法运行；在container中安装libvirt-bin可以获取virsh命令远程访问libvirt-bin server. libvirt-bin拆分成了两个包：
+libvirt-daemon-system libvirt-clients $ sudo apt-get install libvirt-dev # 库, python/go client依赖该库 $ sudo apt-get install virt-manager # windows管理工具 $ sudo apt-get install virt-view # ... $ sudo service libvirt-bin restart virsh libvirt的命令行工具
 $ virsh list --all # 查看所有虚拟机 $ virsh list --all --name # 只看domain name. $ virsh define /path/to/X.xml # 从xml配置文件定义一个domain $ virsh start # 启动虚拟机 $ virsh reboot # 重启虚拟机 $ virsh shutdown # 关闭虚拟机 $ virsh destroy # 强制关闭虚拟机 $ virsh undefine # 移除虚拟机 $ virsh vncdisplay # 查看虚拟机的vnc信息，可以通过vnc访问.">
     <link rel="shortcut icon" href="favicon.ico" />
 <style>
@@ -371,6 +374,10 @@ $ virsh list --all # 查看所有虚拟机 $ virsh list --all --name # 只看dom
 <p>安装:</p>
 <pre><code>$ sudo apt-get install libvirt-bin (包含virsh命令和libvirtd daemon)
 // libvirtd在container中无法运行；在container中安装libvirt-bin可以获取virsh命令远程访问libvirt-bin server.
+</code></pre>
+<p>libvirt-bin拆分成了两个包：</p>
+<pre><code>libvirt-daemon-system
+libvirt-clients
 
 $ sudo apt-get install libvirt-dev # 库, python/go client依赖该库
 

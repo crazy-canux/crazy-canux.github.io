@@ -112,6 +112,13 @@
         <description>&lt;h1 id=&#34;csi&#34;&gt;CSI&lt;/h1&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/container-storage-interface/spec&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/container-storage-interface/spec&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;rook&lt;/li&gt;
+&lt;li&gt;cubefs&lt;/li&gt;
+&lt;li&gt;longhorn&lt;/li&gt;
+&lt;li&gt;ceph&lt;/li&gt;
+&lt;li&gt;minio&lt;/li&gt;
+&lt;/ul&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;卷volume&#34;&gt;卷Volume&lt;/h2&gt;
 &lt;p&gt;和docker中的一样。&lt;/p&gt;
@@ -192,7 +199,7 @@ provisioner: kubernetes.io/no-provisioner
 volumeBindingMode: WaitForFirstConsumer
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;持久卷pv&#34;&gt;持久卷PV&lt;/h2&gt;
-&lt;p&gt;pv没有namespace, 用来指定具体的存储资源。有静态和动态两种方式，最终需要绑定到pvc上。&lt;/p&gt;
+&lt;p&gt;persistentvolume没有namespace, 用来指定具体的存储资源。有静态和动态两种方式，最终需要绑定到pvc上。&lt;/p&gt;
 &lt;p&gt;pv的回收策略ReclaimPolicy:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Retained保留&lt;/li&gt;
@@ -245,6 +252,7 @@ spec:
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h3 id=&#34;dynamic-volume-provisioning&#34;&gt;dynamic volume provisioning&lt;/h3&gt;
 &lt;p&gt;动态pv需要storageclass, 由StorageClass动态的创建PV, 不需要手动创建pv，只需要在pvc中指定storageclass即可.&lt;/p&gt;
+&lt;p&gt;storageclass没有namespace&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;kind: StorageClass
 apiVersion: storage.k8s.io/v1
 metadata:
@@ -285,7 +293,6 @@ metadata:
 labels:
   app: demo
 spec:
-  storageClassName: 
   accessModes:
   - ReadWriteMany
   resources:
@@ -326,9 +333,6 @@ spec:
     uid: 72d9a349-aacd-42d2-a240-d775650d2455
 &lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;rook&#34;&gt;ROOK&lt;/h2&gt;
-&lt;h2 id=&#34;minio&#34;&gt;minio&lt;/h2&gt;
-&lt;h2 id=&#34;ceph&#34;&gt;ceph&lt;/h2&gt;
 </description>
         </item>
         <item>
@@ -442,15 +446,6 @@ build-essential \
 &lt;p&gt;减小image大小,适用于web程序.&lt;/p&gt;
 &lt;p&gt;&amp;lt;https://github.com/docker-slim/docker-slim&lt;/p&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;registry&#34;&gt;registry&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Docker Hub Registry&lt;/li&gt;
-&lt;li&gt;Google Container Registry (gcr.io)&lt;/li&gt;
-&lt;li&gt;RedHat Quay Registry (quay.io)&lt;/li&gt;
-&lt;li&gt;GitHub Docker Packages (docker.pkg.github.com)&lt;/li&gt;
-&lt;li&gt;GitHub Container Registry (ghcr.io)&lt;/li&gt;
-&lt;li&gt;Kubernetes Registry(registry.k8s.io/k8s.gcr.io)&lt;/li&gt;
-&lt;/ul&gt;
 </description>
         </item>
         <item>

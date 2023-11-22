@@ -6,12 +6,20 @@
         <description>Recent content in Categories on Morgoth</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Fri, 04 Aug 2023 20:03:39 +0800</lastBuildDate><atom:link href="https://canuxcheng.com/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Thu, 19 Oct 2023 20:03:39 +0800</lastBuildDate><atom:link href="https://canuxcheng.com/categories/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>CNCF</title>
         <link>https://canuxcheng.com/categories/cncf/</link>
-        <pubDate>Fri, 04 Aug 2023 20:03:39 +0800</pubDate>
+        <pubDate>Thu, 19 Oct 2023 20:03:39 +0800</pubDate>
         
         <guid>https://canuxcheng.com/categories/cncf/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Security</title>
+        <link>https://canuxcheng.com/categories/security/</link>
+        <pubDate>Thu, 19 Oct 2023 20:03:39 +0800</pubDate>
+        
+        <guid>https://canuxcheng.com/categories/security/</guid>
         <description></description>
         </item>
         <item>
@@ -47,19 +55,19 @@
         <description></description>
         </item>
         <item>
-        <title>Security</title>
-        <link>https://canuxcheng.com/categories/security/</link>
-        <pubDate>Tue, 05 Oct 2021 22:02:31 +0000</pubDate>
-        
-        <guid>https://canuxcheng.com/categories/security/</guid>
-        <description></description>
-        </item>
-        <item>
         <title>DevOps</title>
         <link>https://canuxcheng.com/categories/devops/</link>
         <pubDate>Thu, 23 Sep 2021 22:02:31 +0000</pubDate>
         
         <guid>https://canuxcheng.com/categories/devops/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Virtualization</title>
+        <link>https://canuxcheng.com/categories/virtualization/</link>
+        <pubDate>Mon, 10 May 2021 20:55:52 +0800</pubDate>
+        
+        <guid>https://canuxcheng.com/categories/virtualization/</guid>
         <description></description>
         </item>
         <item>
@@ -103,11 +111,11 @@
         <description></description>
         </item>
         <item>
-        <title>Virtualization</title>
-        <link>https://canuxcheng.com/categories/virtualization/</link>
-        <pubDate>Mon, 03 Jun 2019 22:53:23 +0800</pubDate>
+        <title>K8S</title>
+        <link>https://canuxcheng.com/categories/k8s/</link>
+        <pubDate>Fri, 10 Jan 2020 20:55:52 +0800</pubDate>
         
-        <guid>https://canuxcheng.com/categories/virtualization/</guid>
+        <guid>https://canuxcheng.com/categories/k8s/</guid>
         <description></description>
         </item>
         <item>

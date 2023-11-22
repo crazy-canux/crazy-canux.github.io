@@ -6,7 +6,65 @@
         <description>Recent content in Virtualization on Morgoth</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Mon, 03 Jun 2019 22:53:23 +0800</lastBuildDate><atom:link href="https://canuxcheng.com/categories/virtualization/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Mon, 10 May 2021 20:55:52 +0800</lastBuildDate><atom:link href="https://canuxcheng.com/categories/virtualization/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>KubeVirt</title>
+        <link>https://canuxcheng.com/post/k8s_kubevirt/</link>
+        <pubDate>Mon, 10 May 2021 20:55:52 +0800</pubDate>
+        
+        <guid>https://canuxcheng.com/post/k8s_kubevirt/</guid>
+        <description>&lt;h1 id=&#34;kubevirt&#34;&gt;KubeVirt&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://kubevirt.io/quickstart_cloud/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://kubevirt.io/quickstart_cloud/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://quay.io/organization/kubevirt&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://quay.io/organization/kubevirt&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.fedoraproject.org/en-US/quick-docs/using-nested-virtualization-in-kvm/index.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://docs.fedoraproject.org/en-US/quick-docs/using-nested-virtualization-in-kvm/index.html&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;virtctl&#34;&gt;virtctl&lt;/h2&gt;
+&lt;h2 id=&#34;vm&#34;&gt;VM&lt;/h2&gt;
+&lt;p&gt;创建vm&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+name: testvm
+spec:
+running: false
+template:
+    metadata:
+    labels:
+        kubevirt.io/size: small
+        kubevirt.io/domain: testvm
+    spec:
+    domain:
+        devices:
+        disks:
+            - name: containerdisk
+            disk:
+                bus: virtio
+            - name: cloudinitdisk
+            disk:
+                bus: virtio
+        interfaces:
+        - name: default
+            masquerade: {}
+        resources:
+        requests:
+            memory: 64M
+    networks:
+    - name: default
+        pod: {}
+    volumes:
+        - name: containerdisk
+        containerDisk:
+            image: quay.io/kubevirt/cirros-container-disk-demo
+        - name: cloudinitdisk
+        cloudInitNoCloud:
+            userDataBase64: SGkuXG4=
+    nodeSelector:
+        kubernetes.io/arch: arm64
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
+        <item>
         <title>Virtualbox</title>
         <link>https://canuxcheng.com/post/virtualbox/</link>
         <pubDate>Mon, 03 Jun 2019 22:53:23 +0800</pubDate>
@@ -113,6 +171,10 @@ $ sudo vboxmanage extpack uninstall \
 &lt;p&gt;安装:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;$ sudo apt-get install libvirt-bin (包含virsh命令和libvirtd daemon)
 // libvirtd在container中无法运行；在container中安装libvirt-bin可以获取virsh命令远程访问libvirt-bin server.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;libvirt-bin拆分成了两个包：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;libvirt-daemon-system
+libvirt-clients
 
 $ sudo apt-get install libvirt-dev # 库, python/go client依赖该库
 

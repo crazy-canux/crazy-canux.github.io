@@ -9,14 +9,12 @@ yaml 部署k8s可以通过yaml文件来配置资源.
 资源对象组成部分:
 apiVersion: kind: metadata: 元数据 spec: 期望的状态 status: 观测到的状态 查看apiVersion:
 kubectl api-versions 查看Kind:
-kubectl api-resources metadata:
+kubectl api-resources # In a namespace kubectl api-resources --namespaced=true # Not in a namespace kubectl api-resources --namespaced=false metadata:
 metadata: name: namespace: labels/标签: 用户筛选资源，唯一的资源组合方法, 可以使用selector来查询. annotations/注解: 存储资源的非标识性信息，扩展资源的spec/status. ownerReference/关系: 方便反向查找创建资源的对象，方便进行级联删除。 spec:
 status:
 调度，抢占，驱逐 taints: 污点，使节点排斥特定pod。应用于node。
 taints: - effect: NoSchedule key: kubernetes.io/arch value: arm64 tolerations: 容忍度，使pod被吸引到特定节点。应用于pod。
-tolerations: - key: &amp;quot;key1&amp;quot; operator: &amp;quot;Equal&amp;quot;/&amp;quot;Exists&amp;quot; value: &amp;quot;value1&amp;quot; effect: &amp;quot;NoSchedule&amp;quot;/&amp;quot;NoExecute&amp;quot; nodeSelector: 节点选择，
-nodeSelector: kubernetes.io/arch: arm64 affinity: 亲和力，
-affinity: nodeAffinity: requiredDuringSchedulingIgnoredDuringExecution: nodeSelectorTerms: - matchExpressions: - key: kubernetes.'>
+tolerations: - key: &amp;quot;key1&amp;quot; operator: &amp;quot;Equal&amp;quot;/&amp;quot;Exists&amp;quot; value: &amp;quot;value1&amp;quot; effect: &amp;quot;NoSchedule&amp;quot;/&amp;quot;NoExecute&amp;quot; nodeSelector: 节点选择，'>
 <title>K8S API</title>
 
 <link rel='canonical' href='https://canuxcheng.com/post/k8s_api/'>
@@ -30,14 +28,12 @@ yaml 部署k8s可以通过yaml文件来配置资源.
 资源对象组成部分:
 apiVersion: kind: metadata: 元数据 spec: 期望的状态 status: 观测到的状态 查看apiVersion:
 kubectl api-versions 查看Kind:
-kubectl api-resources metadata:
+kubectl api-resources # In a namespace kubectl api-resources --namespaced=true # Not in a namespace kubectl api-resources --namespaced=false metadata:
 metadata: name: namespace: labels/标签: 用户筛选资源，唯一的资源组合方法, 可以使用selector来查询. annotations/注解: 存储资源的非标识性信息，扩展资源的spec/status. ownerReference/关系: 方便反向查找创建资源的对象，方便进行级联删除。 spec:
 status:
 调度，抢占，驱逐 taints: 污点，使节点排斥特定pod。应用于node。
 taints: - effect: NoSchedule key: kubernetes.io/arch value: arm64 tolerations: 容忍度，使pod被吸引到特定节点。应用于pod。
-tolerations: - key: &amp;quot;key1&amp;quot; operator: &amp;quot;Equal&amp;quot;/&amp;quot;Exists&amp;quot; value: &amp;quot;value1&amp;quot; effect: &amp;quot;NoSchedule&amp;quot;/&amp;quot;NoExecute&amp;quot; nodeSelector: 节点选择，
-nodeSelector: kubernetes.io/arch: arm64 affinity: 亲和力，
-affinity: nodeAffinity: requiredDuringSchedulingIgnoredDuringExecution: nodeSelectorTerms: - matchExpressions: - key: kubernetes.'>
+tolerations: - key: &amp;quot;key1&amp;quot; operator: &amp;quot;Equal&amp;quot;/&amp;quot;Exists&amp;quot; value: &amp;quot;value1&amp;quot; effect: &amp;quot;NoSchedule&amp;quot;/&amp;quot;NoExecute&amp;quot; nodeSelector: 节点选择，'>
 <meta property='og:url' content='https://canuxcheng.com/post/k8s_api/'>
 <meta property='og:site_name' content='Morgoth'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='k8s' /><meta property='article:published_time' content='2020-01-10T20:55:52&#43;08:00'/><meta property='article:modified_time' content='2020-01-10T20:55:52&#43;08:00'/>
@@ -50,14 +46,12 @@ yaml 部署k8s可以通过yaml文件来配置资源.
 资源对象组成部分:
 apiVersion: kind: metadata: 元数据 spec: 期望的状态 status: 观测到的状态 查看apiVersion:
 kubectl api-versions 查看Kind:
-kubectl api-resources metadata:
+kubectl api-resources # In a namespace kubectl api-resources --namespaced=true # Not in a namespace kubectl api-resources --namespaced=false metadata:
 metadata: name: namespace: labels/标签: 用户筛选资源，唯一的资源组合方法, 可以使用selector来查询. annotations/注解: 存储资源的非标识性信息，扩展资源的spec/status. ownerReference/关系: 方便反向查找创建资源的对象，方便进行级联删除。 spec:
 status:
 调度，抢占，驱逐 taints: 污点，使节点排斥特定pod。应用于node。
 taints: - effect: NoSchedule key: kubernetes.io/arch value: arm64 tolerations: 容忍度，使pod被吸引到特定节点。应用于pod。
-tolerations: - key: &amp;quot;key1&amp;quot; operator: &amp;quot;Equal&amp;quot;/&amp;quot;Exists&amp;quot; value: &amp;quot;value1&amp;quot; effect: &amp;quot;NoSchedule&amp;quot;/&amp;quot;NoExecute&amp;quot; nodeSelector: 节点选择，
-nodeSelector: kubernetes.io/arch: arm64 affinity: 亲和力，
-affinity: nodeAffinity: requiredDuringSchedulingIgnoredDuringExecution: nodeSelectorTerms: - matchExpressions: - key: kubernetes.">
+tolerations: - key: &amp;quot;key1&amp;quot; operator: &amp;quot;Equal&amp;quot;/&amp;quot;Exists&amp;quot; value: &amp;quot;value1&amp;quot; effect: &amp;quot;NoSchedule&amp;quot;/&amp;quot;NoExecute&amp;quot; nodeSelector: 节点选择，">
     <link rel="shortcut icon" href="favicon.ico" />
 <style>
     :root {
@@ -457,6 +451,12 @@ status: 观测到的状态
 </code></pre>
 <p>查看Kind:</p>
 <pre><code>kubectl api-resources
+
+# In a namespace
+kubectl api-resources --namespaced=true
+
+# Not in a namespace
+kubectl api-resources --namespaced=false
 </code></pre>
 <p>metadata:</p>
 <pre><code>metadata:
@@ -1019,11 +1019,17 @@ kind: ServiceAccount
 metadata:
   name: default
   namespace: default
-data:
-  namespace: ...
-  ca.crt: ...
-  token: ...
+</code></pre>
+<p>1.22之前k8s会自动给SA创建token.</p>
+<p>1.24之后使用TokenRequest获取有时间限制的token。</p>
+<p>创建持久化token</p>
+<pre><code>apiVersion: v1
+kind: Secret
 type: kubernetes.io/service-account-token
+metadata:
+  name: mysecretname
+  annotations:
+    kubernetes.io/service-account.name: myserviceaccount
 </code></pre>
 <h2 id="role">Role</h2>
 <p>通过role来给指定ns内的资源授权.</p>
@@ -1070,7 +1076,7 @@ rules:
   verbs: [&quot;get&quot;, &quot;watch&quot;, &quot;list&quot;]
 </code></pre>
 <h2 id="clusterrolebinding">ClusterRoleBinding</h2>
-<p>跨集群授权（也就是要访问不同ns的资源).</p>
+<p>跨集群授权（也就是要访问不同ns的资源).不需要namespace.</p>
 <pre><code>apiVersion: rbac.authorization.k8s.io/v1
 # 此集群角色绑定允许 “manager” 组中的任何人访问任何名字空间中的 secrets
 kind: ClusterRoleBinding

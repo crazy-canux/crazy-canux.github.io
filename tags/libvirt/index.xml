@@ -19,6 +19,10 @@
 &lt;p&gt;安装:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;$ sudo apt-get install libvirt-bin (包含virsh命令和libvirtd daemon)
 // libvirtd在container中无法运行；在container中安装libvirt-bin可以获取virsh命令远程访问libvirt-bin server.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;libvirt-bin拆分成了两个包：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;libvirt-daemon-system
+libvirt-clients
 
 $ sudo apt-get install libvirt-dev # 库, python/go client依赖该库
 

@@ -6,15 +6,36 @@
         <description>Recent content on Morgoth</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Fri, 04 Aug 2023 20:03:39 +0800</lastBuildDate><atom:link href="https://canuxcheng.com/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>Gateway API</title>
-        <link>https://canuxcheng.com/post/k8s_gatewayapi/</link>
+        <lastBuildDate>Thu, 19 Oct 2023 20:03:39 +0800</lastBuildDate><atom:link href="https://canuxcheng.com/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Security</title>
+        <link>https://canuxcheng.com/post/k8s_security/</link>
+        <pubDate>Thu, 19 Oct 2023 20:03:39 +0800</pubDate>
+        
+        <guid>https://canuxcheng.com/post/k8s_security/</guid>
+        <description>&lt;h1 id=&#34;k8s-security&#34;&gt;K8S Security&lt;/h1&gt;
+&lt;h2 id=&#34;tetragon&#34;&gt;Tetragon&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/cilium/tetragon&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/cilium/tetragon&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;falco&#34;&gt;Falco&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/falcosecurity/falco&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/falcosecurity/falco&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>API Gateway</title>
+        <link>https://canuxcheng.com/post/k8s_apigateway/</link>
         <pubDate>Fri, 04 Aug 2023 20:03:39 +0800</pubDate>
         
-        <guid>https://canuxcheng.com/post/k8s_gatewayapi/</guid>
-        <description>&lt;h1 id=&#34;gateway-api&#34;&gt;Gateway API&lt;/h1&gt;
+        <guid>https://canuxcheng.com/post/k8s_apigateway/</guid>
+        <description>&lt;h1 id=&#34;api-gateway&#34;&gt;API Gateway&lt;/h1&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/kubernetes-sigs/gateway-api&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/kubernetes-sigs/gateway-api&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;GatewayClass没有namespace&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;emissary ingress&lt;/li&gt;
+&lt;li&gt;kong&lt;/li&gt;
+&lt;li&gt;higress&lt;/li&gt;
+&lt;/ul&gt;
 </description>
         </item>
         <item>
@@ -449,21 +470,22 @@ logout(request)
 </description>
         </item>
         <item>
-        <title>Serverless</title>
-        <link>https://canuxcheng.com/post/k8s_serverless/</link>
+        <title>Application</title>
+        <link>https://canuxcheng.com/post/k8s_app/</link>
         <pubDate>Sat, 04 Dec 2021 20:03:39 +0800</pubDate>
         
-        <guid>https://canuxcheng.com/post/k8s_serverless/</guid>
-        <description>&lt;h1 id=&#34;serverless&#34;&gt;Serverless&lt;/h1&gt;
-&lt;p&gt;serverless是微服务架构的一种部署服务的方式.&lt;/p&gt;
+        <guid>https://canuxcheng.com/post/k8s_app/</guid>
+        <description>&lt;h1 id=&#34;application-definition--image-build&#34;&gt;Application Definition &amp;amp; Image Build&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;helm&lt;/li&gt;
+&lt;li&gt;backstage&lt;/li&gt;
+&lt;li&gt;buildpack.io&lt;/li&gt;
+&lt;li&gt;operatorframework&lt;/li&gt;
+&lt;li&gt;dapr&lt;/li&gt;
+&lt;li&gt;kubevela&lt;/li&gt;
+&lt;li&gt;kubevirt&lt;/li&gt;
+&lt;/ul&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;dapr&#34;&gt;dapr&lt;/h2&gt;
-&lt;h2 id=&#34;knative&#34;&gt;knative&lt;/h2&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/knative&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://github.com/knative&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;keda&#34;&gt;KEDA&lt;/h2&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/kedacore/keda&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://github.com/kedacore/keda&lt;/a&gt;&lt;/p&gt;
 </description>
         </item>
         <item>
@@ -523,18 +545,6 @@ logout(request)
     &gt;https://developer.mozilla.org/en-US/docs/Web/JavaScript&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.typescriptlang.org/docs/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.typescriptlang.org/docs/&lt;/a&gt;&lt;/p&gt;
-</description>
-        </item>
-        <item>
-        <title>Container Security &amp; Compliance</title>
-        <link>https://canuxcheng.com/post/cncf_security/</link>
-        <pubDate>Tue, 05 Oct 2021 22:02:31 +0000</pubDate>
-        
-        <guid>https://canuxcheng.com/post/cncf_security/</guid>
-        <description>&lt;h1 id=&#34;security--compliance&#34;&gt;Security &amp;amp; Compliance&lt;/h1&gt;
-&lt;h2 id=&#34;open-policy-agent&#34;&gt;Open Policy Agent&lt;/h2&gt;
-&lt;h2 id=&#34;tuf&#34;&gt;TUF&lt;/h2&gt;
-&lt;h1 id=&#34;trivy&#34;&gt;Trivy&lt;/h1&gt;
 </description>
         </item>
         <item>
@@ -789,12 +799,56 @@ TCO&lt;/p&gt;
         <pubDate>Mon, 10 May 2021 20:55:52 +0800</pubDate>
         
         <guid>https://canuxcheng.com/post/k8s_kubevirt/</guid>
-        <description>&lt;h1 id=&#34;infrastructure-add-ons&#34;&gt;Infrastructure add-ons&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;kubevirt&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-&lt;h1 id=&#34;kubevirt&#34;&gt;KubeVirt&lt;/h1&gt;
+        <description>&lt;h1 id=&#34;kubevirt&#34;&gt;KubeVirt&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://kubevirt.io/quickstart_cloud/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://kubevirt.io/quickstart_cloud/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://quay.io/organization/kubevirt&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://quay.io/organization/kubevirt&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.fedoraproject.org/en-US/quick-docs/using-nested-virtualization-in-kvm/index.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://docs.fedoraproject.org/en-US/quick-docs/using-nested-virtualization-in-kvm/index.html&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;virtctl&#34;&gt;virtctl&lt;/h2&gt;
+&lt;h2 id=&#34;vm&#34;&gt;VM&lt;/h2&gt;
+&lt;p&gt;创建vm&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+name: testvm
+spec:
+running: false
+template:
+    metadata:
+    labels:
+        kubevirt.io/size: small
+        kubevirt.io/domain: testvm
+    spec:
+    domain:
+        devices:
+        disks:
+            - name: containerdisk
+            disk:
+                bus: virtio
+            - name: cloudinitdisk
+            disk:
+                bus: virtio
+        interfaces:
+        - name: default
+            masquerade: {}
+        resources:
+        requests:
+            memory: 64M
+    networks:
+    - name: default
+        pod: {}
+    volumes:
+        - name: containerdisk
+        containerDisk:
+            image: quay.io/kubevirt/cirros-container-disk-demo
+        - name: cloudinitdisk
+        cloudInitNoCloud:
+            userDataBase64: SGkuXG4=
+    nodeSelector:
+        kubernetes.io/arch: arm64
+&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
@@ -1608,6 +1662,13 @@ $ sudo systemctl start kubelet docker
         <description>&lt;h1 id=&#34;csi&#34;&gt;CSI&lt;/h1&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/container-storage-interface/spec&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/container-storage-interface/spec&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;rook&lt;/li&gt;
+&lt;li&gt;cubefs&lt;/li&gt;
+&lt;li&gt;longhorn&lt;/li&gt;
+&lt;li&gt;ceph&lt;/li&gt;
+&lt;li&gt;minio&lt;/li&gt;
+&lt;/ul&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;卷volume&#34;&gt;卷Volume&lt;/h2&gt;
 &lt;p&gt;和docker中的一样。&lt;/p&gt;
@@ -1688,7 +1749,7 @@ provisioner: kubernetes.io/no-provisioner
 volumeBindingMode: WaitForFirstConsumer
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;持久卷pv&#34;&gt;持久卷PV&lt;/h2&gt;
-&lt;p&gt;pv没有namespace, 用来指定具体的存储资源。有静态和动态两种方式，最终需要绑定到pvc上。&lt;/p&gt;
+&lt;p&gt;persistentvolume没有namespace, 用来指定具体的存储资源。有静态和动态两种方式，最终需要绑定到pvc上。&lt;/p&gt;
 &lt;p&gt;pv的回收策略ReclaimPolicy:&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Retained保留&lt;/li&gt;
@@ -1741,6 +1802,7 @@ spec:
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h3 id=&#34;dynamic-volume-provisioning&#34;&gt;dynamic volume provisioning&lt;/h3&gt;
 &lt;p&gt;动态pv需要storageclass, 由StorageClass动态的创建PV, 不需要手动创建pv，只需要在pvc中指定storageclass即可.&lt;/p&gt;
+&lt;p&gt;storageclass没有namespace&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;kind: StorageClass
 apiVersion: storage.k8s.io/v1
 metadata:
@@ -1781,7 +1843,6 @@ metadata:
 labels:
   app: demo
 spec:
-  storageClassName: 
   accessModes:
   - ReadWriteMany
   resources:
@@ -1822,9 +1883,6 @@ spec:
     uid: 72d9a349-aacd-42d2-a240-d775650d2455
 &lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;rook&#34;&gt;ROOK&lt;/h2&gt;
-&lt;h2 id=&#34;minio&#34;&gt;minio&lt;/h2&gt;
-&lt;h2 id=&#34;ceph&#34;&gt;ceph&lt;/h2&gt;
 </description>
         </item>
         <item>
@@ -2158,10 +2216,10 @@ $ kubectl krew install ns
         </item>
         <item>
         <title>CI/CD</title>
-        <link>https://canuxcheng.com/post/cncf_cicd/</link>
+        <link>https://canuxcheng.com/post/k8s_cicd/</link>
         <pubDate>Fri, 10 Jan 2020 20:55:52 +0800</pubDate>
         
-        <guid>https://canuxcheng.com/post/cncf_cicd/</guid>
+        <guid>https://canuxcheng.com/post/k8s_cicd/</guid>
         <description>&lt;h1 id=&#34;continuous-integration--delivery&#34;&gt;Continuous Integration &amp;amp; Delivery&lt;/h1&gt;
 &lt;h2 id=&#34;argo-cd&#34;&gt;argo-cd&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/argoproj/argo-cd&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -2300,28 +2358,6 @@ git push ...
 </description>
         </item>
         <item>
-        <title>DNS</title>
-        <link>https://canuxcheng.com/post/k8s_dns/</link>
-        <pubDate>Fri, 10 Jan 2020 20:55:52 +0800</pubDate>
-        
-        <guid>https://canuxcheng.com/post/k8s_dns/</guid>
-        <description>&lt;h1 id=&#34;service-discovery-add-ons&#34;&gt;Service Discovery add-ons&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;coreDNS&lt;/li&gt;
-&lt;li&gt;kube-dns&lt;/li&gt;
-&lt;li&gt;gcp cloud dns&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;coredns&#34;&gt;CoreDNS&lt;/h2&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/coredns/coredns&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://github.com/coredns/coredns&lt;/a&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;kube-dns&#34;&gt;kube-dns&lt;/h2&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/kubernetes/dns&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://github.com/kubernetes/dns&lt;/a&gt;&lt;/p&gt;
-</description>
-        </item>
-        <item>
         <title>K8S API</title>
         <link>https://canuxcheng.com/post/k8s_api/</link>
         <pubDate>Fri, 10 Jan 2020 20:55:52 +0800</pubDate>
@@ -2347,6 +2383,12 @@ status: 观测到的状态
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;查看Kind:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;kubectl api-resources
+
+# In a namespace
+kubectl api-resources --namespaced=true
+
+# Not in a namespace
+kubectl api-resources --namespaced=false
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;metadata:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;metadata:
@@ -2909,11 +2951,17 @@ kind: ServiceAccount
 metadata:
   name: default
   namespace: default
-data:
-  namespace: ...
-  ca.crt: ...
-  token: ...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;1.22之前k8s会自动给SA创建token.&lt;/p&gt;
+&lt;p&gt;1.24之后使用TokenRequest获取有时间限制的token。&lt;/p&gt;
+&lt;p&gt;创建持久化token&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;apiVersion: v1
+kind: Secret
 type: kubernetes.io/service-account-token
+metadata:
+  name: mysecretname
+  annotations:
+    kubernetes.io/service-account.name: myserviceaccount
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;role&#34;&gt;Role&lt;/h2&gt;
 &lt;p&gt;通过role来给指定ns内的资源授权.&lt;/p&gt;
@@ -2960,7 +3008,7 @@ rules:
   verbs: [&amp;quot;get&amp;quot;, &amp;quot;watch&amp;quot;, &amp;quot;list&amp;quot;]
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;clusterrolebinding&#34;&gt;ClusterRoleBinding&lt;/h2&gt;
-&lt;p&gt;跨集群授权（也就是要访问不同ns的资源).&lt;/p&gt;
+&lt;p&gt;跨集群授权（也就是要访问不同ns的资源).不需要namespace.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;apiVersion: rbac.authorization.k8s.io/v1
 # 此集群角色绑定允许 “manager” 组中的任何人访问任何名字空间中的 secrets
 kind: ClusterRoleBinding
@@ -3025,13 +3073,18 @@ roleRef:
 </description>
         </item>
         <item>
-        <title>Service Registry&amp;Discovery</title>
-        <link>https://canuxcheng.com/post/k8s_serviceregistry/</link>
+        <title>Service Discovery</title>
+        <link>https://canuxcheng.com/post/k8s_servicediscovery/</link>
         <pubDate>Fri, 10 Jan 2020 20:55:52 +0800</pubDate>
         
-        <guid>https://canuxcheng.com/post/k8s_serviceregistry/</guid>
-        <description>&lt;h1 id=&#34;service-registry-and-discovery&#34;&gt;Service Registry and Discovery&lt;/h1&gt;
+        <guid>https://canuxcheng.com/post/k8s_servicediscovery/</guid>
+        <description>&lt;h1 id=&#34;coordination--service-discovery&#34;&gt;Coordination &amp;amp; Service Discovery&lt;/h1&gt;
 &lt;p&gt;微服务的服务注册和服务发现.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;coredns&lt;/li&gt;
+&lt;li&gt;etcd&lt;/li&gt;
+&lt;li&gt;zookeeper&lt;/li&gt;
+&lt;/ul&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;etcd&#34;&gt;Etcd&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/etcd-io/etcd&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -3349,6 +3402,234 @@ $ sudo mv ./kompose /usr/local/bin/kompose&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
+        <title>API Access Control</title>
+        <link>https://canuxcheng.com/post/k8s_accesscontrol/</link>
+        <pubDate>Sat, 04 Jan 2020 20:03:39 +0800</pubDate>
+        
+        <guid>https://canuxcheng.com/post/k8s_accesscontrol/</guid>
+        <description>&lt;h1 id=&#34;api-access-control&#34;&gt;API Access Control&lt;/h1&gt;
+&lt;h2 id=&#34;admission-controllers&#34;&gt;Admission Controllers&lt;/h2&gt;
+&lt;h3 id=&#34;mutatingadmissionwebhook&#34;&gt;MutatingAdmissionWebhook&lt;/h3&gt;
+&lt;h3 id=&#34;validatingadmissionwebhook&#34;&gt;ValidatingAdmissionWebhook&lt;/h3&gt;
+&lt;h3 id=&#34;validatingwebhookconfiguration&#34;&gt;ValidatingWebhookConfiguration&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingWebhookConfiguration
+metadata:
+  annotations:
+    meta.helm.sh/release-name: ingress-nginx-internal
+    meta.helm.sh/release-namespace: ingress-nginx
+  labels:
+    app.kubernetes.io/component: admission-webhook
+    app.kubernetes.io/instance: ingress-nginx-internal
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: ingress-nginx
+    app.kubernetes.io/part-of: ingress-nginx
+    app.kubernetes.io/version: 1.9.1
+    helm.sh/chart: ingress-nginx-4.8.1
+  name: ingress-nginx-internal-admission
+webhooks:
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    caBundle: 
+    service:
+      name: ingress-nginx-internal-controller-admission
+      namespace: ingress-nginx
+      path: /networking/v1/ingresses
+      port: 443
+  failurePolicy: Fail
+  matchPolicy: Equivalent
+  name: validate.nginx.ingress.kubernetes.io
+  namespaceSelector: {}
+  objectSelector: {}
+  rules:
+  - apiGroups:
+    - networking.k8s.io
+    apiVersions:
+    - v1
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - ingresses
+    scope: &#39;*&#39;
+  sideEffects: None
+  timeoutSeconds: 10
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;mutatingwebhookconfiguration&#34;&gt;MutatingWebhookConfiguration&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;apiVersion: admissionregistration.k8s.io/v1
+kind: MutatingWebhookConfiguration
+metadata:
+  annotations:
+    meta.helm.sh/release-name: vault-secrets-webhook
+    meta.helm.sh/release-namespace: vault-secrets-webhook
+  labels:
+    app.kubernetes.io/managed-by: Helm
+  name: vault-secrets-webhook
+webhooks:
+- admissionReviewVersions:
+  - v1beta1
+  clientConfig:
+    caBundle:
+    service:
+      name: vault-secrets-webhook
+      namespace: vault-secrets-webhook
+      path: /pods
+      port: 443
+  failurePolicy: Ignore
+  matchPolicy: Equivalent
+  name: pods.vault-secrets-webhook.admission.banzaicloud.com
+  namespaceSelector:
+    matchExpressions:
+    - key: name
+      operator: NotIn
+      values:
+      - kube-system
+    - key: kubernetes.io/metadata.name
+      operator: NotIn
+      values:
+      - kube-system
+    - key: kubernetes.io/metadata.name
+      operator: NotIn
+      values:
+      - vault-secrets-webhook
+  objectSelector:
+    matchExpressions:
+    - key: security.banzaicloud.io/mutate
+      operator: NotIn
+      values:
+      - skip
+  reinvocationPolicy: Never
+  rules:
+  - apiGroups:
+    - &#39;*&#39;
+    apiVersions:
+    - &#39;*&#39;
+    operations:
+    - CREATE
+    resources:
+    - pods
+    scope: &#39;*&#39;
+  sideEffects: NoneOnDryRun
+  timeoutSeconds: 10
+- admissionReviewVersions:
+  - v1beta1
+  clientConfig:
+    caBundle:
+    service:
+      name: vault-secrets-webhook
+      namespace: vault-secrets-webhook
+      path: /secrets
+      port: 443
+  failurePolicy: Ignore
+  matchPolicy: Equivalent
+  name: secrets.vault-secrets-webhook.admission.banzaicloud.com
+  namespaceSelector:
+    matchExpressions:
+    - key: name
+      operator: NotIn
+      values:
+      - kube-system
+    - key: kubernetes.io/metadata.name
+      operator: NotIn
+      values:
+      - kube-system
+    - key: kubernetes.io/metadata.name
+      operator: NotIn
+      values:
+      - vault-secrets-webhook
+  objectSelector:
+    matchExpressions:
+    - key: owner
+      operator: NotIn
+      values:
+      - helm
+    - key: security.banzaicloud.io/mutate
+      operator: NotIn
+      values:
+      - skip
+  reinvocationPolicy: Never
+  rules:
+  - apiGroups:
+    - &#39;*&#39;
+    apiVersions:
+    - &#39;*&#39;
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - secrets
+    scope: &#39;*&#39;
+  sideEffects: NoneOnDryRun
+  timeoutSeconds: 10
+- admissionReviewVersions:
+  - v1beta1
+  clientConfig:
+    caBundle:
+    service:
+      name: vault-secrets-webhook
+      namespace: vault-secrets-webhook
+      path: /configmaps
+      port: 443
+  failurePolicy: Ignore
+  matchPolicy: Equivalent
+  name: configmaps.vault-secrets-webhook.admission.banzaicloud.com
+  namespaceSelector:
+    matchExpressions:
+    - key: name
+      operator: NotIn
+      values:
+      - kube-system
+    - key: kubernetes.io/metadata.name
+      operator: NotIn
+      values:
+      - kube-system
+    - key: kubernetes.io/metadata.name
+      operator: NotIn
+      values:
+      - vault-secrets-webhook
+  objectSelector:
+    matchExpressions:
+    - key: owner
+      operator: NotIn
+      values:
+      - helm
+    - key: security.banzaicloud.io/mutate
+      operator: NotIn
+      values:
+      - skip
+  reinvocationPolicy: Never
+  rules:
+  - apiGroups:
+    - &#39;*&#39;
+    apiVersions:
+    - &#39;*&#39;
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - configmaps
+    scope: &#39;*&#39;
+  sideEffects: NoneOnDryRun
+  timeoutSeconds: 10&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
+        <item>
+        <title>Automation &amp; Configuration</title>
+        <link>https://canuxcheng.com/post/k8s_ac/</link>
+        <pubDate>Sat, 04 Jan 2020 20:03:39 +0800</pubDate>
+        
+        <guid>https://canuxcheng.com/post/k8s_ac/</guid>
+        <description>&lt;h1 id=&#34;automation--configuration&#34;&gt;Automation &amp;amp; Configuration&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Cloud Custodian&lt;/li&gt;
+&lt;li&gt;kubeedge&lt;/li&gt;
+&lt;li&gt;terraform&lt;/li&gt;
+&lt;li&gt;pulumi&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
         <title>Dashboard</title>
         <link>https://canuxcheng.com/post/k8s_dashboard/</link>
         <pubDate>Sat, 04 Jan 2020 20:03:39 +0800</pubDate>
@@ -3446,13 +3727,127 @@ $ kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/la
 </description>
         </item>
         <item>
-        <title>Ingress</title>
-        <link>https://canuxcheng.com/post/k8s_ingress/</link>
+        <title>Key Management</title>
+        <link>https://canuxcheng.com/post/k8s_km/</link>
         <pubDate>Sat, 04 Jan 2020 20:03:39 +0800</pubDate>
         
-        <guid>https://canuxcheng.com/post/k8s_ingress/</guid>
-        <description>&lt;h1 id=&#34;ingress&#34;&gt;Ingress&lt;/h1&gt;
-&lt;p&gt;ingress controller:&lt;/p&gt;
+        <guid>https://canuxcheng.com/post/k8s_km/</guid>
+        <description>&lt;h1 id=&#34;key-management&#34;&gt;Key Management&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;spiffe&lt;/li&gt;
+&lt;li&gt;spire&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
+        <title>Microservivce</title>
+        <link>https://canuxcheng.com/post/k8s_microservice/</link>
+        <pubDate>Sat, 04 Jan 2020 20:03:39 +0800</pubDate>
+        
+        <guid>https://canuxcheng.com/post/k8s_microservice/</guid>
+        <description>&lt;h1 id=&#34;microservivce&#34;&gt;Microservivce&lt;/h1&gt;
+&lt;p&gt;微服务是一种架构。&lt;/p&gt;
+&lt;p&gt;常见的架构:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Monolithic application 单体应用.&lt;/li&gt;
+&lt;li&gt;SOA(service-oriented architecture) 面向服务的体系结构.&lt;/li&gt;
+&lt;li&gt;MicroServices 微服务.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;微服务架构的服务治理包括:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;service registry 服务注册&lt;/li&gt;
+&lt;li&gt;service discovery 服务发现&lt;/li&gt;
+&lt;li&gt;observability 可观测性(metrics,logging,trace)&lt;/li&gt;
+&lt;li&gt;流量管理&lt;/li&gt;
+&lt;li&gt;安全&lt;/li&gt;
+&lt;li&gt;控制&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;微服务应用可以通过容器化(docker, k8s)部署，也可以通过serverless方式部署.&lt;/p&gt;
+&lt;p&gt;不同的语言有不同的微服务框架.
+java的dubbo, sprint boot.
+golang的go-kit,  go-zero, kratos.
+python的zappa, nameko.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;dapr&#34;&gt;Dapr&lt;/h2&gt;
+&lt;p&gt;Dapr is a portable, event-driven, runtime for building distributed applications across cloud and edge.&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Scheduling &amp; Orchestration</title>
+        <link>https://canuxcheng.com/post/k8s_so/</link>
+        <pubDate>Sat, 04 Jan 2020 20:03:39 +0800</pubDate>
+        
+        <guid>https://canuxcheng.com/post/k8s_so/</guid>
+        <description>&lt;h1 id=&#34;scheduling--orchestration&#34;&gt;Scheduling &amp;amp; Orchestration&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;KEDA&lt;/li&gt;
+&lt;li&gt;Crossplane&lt;/li&gt;
+&lt;li&gt;Knative&lt;/li&gt;
+&lt;li&gt;Kubeflow&lt;/li&gt;
+&lt;li&gt;Volcano&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
+        <title>Serverless</title>
+        <link>https://canuxcheng.com/post/k8s_serverless/</link>
+        <pubDate>Sat, 04 Jan 2020 20:03:39 +0800</pubDate>
+        
+        <guid>https://canuxcheng.com/post/k8s_serverless/</guid>
+        <description>&lt;h1 id=&#34;serverless&#34;&gt;Serverless&lt;/h1&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;knative&#34;&gt;Knative&lt;/h2&gt;
+&lt;p&gt;Knative is a developer-focused serverless application layer which is a great complement to the existing Kubernetes application constructs. Knative consists of three components: an HTTP-triggered autoscaling container runtime called “Knative Serving”, a CloudEvents-over-HTTP asynchronous routing layer called “Knative Eventing”, and a developer-focused function framework which leverages the Serving and Eventing components, called &amp;ldquo;Knative Functions&amp;rdquo;.&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Service Mesh</title>
+        <link>https://canuxcheng.com/post/k8s_servicemesh/</link>
+        <pubDate>Sat, 04 Jan 2020 20:03:39 +0800</pubDate>
+        
+        <guid>https://canuxcheng.com/post/k8s_servicemesh/</guid>
+        <description>&lt;h1 id=&#34;service-mesh&#34;&gt;Service Mesh&lt;/h1&gt;
+&lt;p&gt;servivce mesh是cncf基于sidecar推出的下一代面向云原生的微服务架构，是微服务基础设施, 用于处理微服务通信、治理、控制、可观测、安全等问题，具备业务无侵入、多语言、热升级等诸多特性.&lt;/p&gt;
+&lt;p&gt;sidecar: 边车模式，就是把业务无关的功能，日志记录、监控、流量控制、服务注册、服务发现、服务限流、服务熔断、鉴权、访问控制和服务调用可视化等独立出来。&lt;/p&gt;
+&lt;p&gt;特点:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;应用程序通信的中间层&lt;/li&gt;
+&lt;li&gt;轻量级网络代理&lt;/li&gt;
+&lt;li&gt;应用程序无感知&lt;/li&gt;
+&lt;li&gt;解耦应用程序的重试、超时、监控、追踪和服务发现.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Service Mesh是建立在物理或者虚拟网络层之上的，基于策略的微服务的流量控制，与一般的网络协议不同的是它有以下几个特点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;开发者驱动&lt;/li&gt;
+&lt;li&gt;可配置策略&lt;/li&gt;
+&lt;li&gt;服务优先的网络配置而不是协议&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;istio&#34;&gt;Istio&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;linkerd&#34;&gt;Linkerd&lt;/h2&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        <item>
+        <title>Service Proxy</title>
+        <link>https://canuxcheng.com/post/k8s_proxy/</link>
+        <pubDate>Sat, 04 Jan 2020 20:03:39 +0800</pubDate>
+        
+        <guid>https://canuxcheng.com/post/k8s_proxy/</guid>
+        <description>&lt;h1 id=&#34;service-proxy&#34;&gt;Service Proxy&lt;/h1&gt;
+&lt;p&gt;ingress =&amp;gt; gateway api&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;envoy&lt;/li&gt;
+&lt;li&gt;contour&lt;/li&gt;
+&lt;li&gt;traefik proxy&lt;/li&gt;
+&lt;li&gt;haproxy&lt;/li&gt;
+&lt;li&gt;metaLB&lt;/li&gt;
+&lt;li&gt;nginx&lt;/li&gt;
+&lt;li&gt;openelb&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;ingress-controller&#34;&gt;ingress controller&lt;/h2&gt;
 &lt;ul&gt;
 &lt;li&gt;Ingress-nginx(nginx)&lt;/li&gt;
 &lt;li&gt;aws-load-balancer-controller(alb)&lt;/li&gt;
@@ -3490,6 +3885,16 @@ spec:
 &lt;p&gt;ImplementationSpecific：对于这种路径类型，匹配方法取决于 IngressClass。 具体实现可以将其作为单独的 pathType 处理或者与 Prefix 或 Exact 类型作相同处理。&lt;/p&gt;
 &lt;p&gt;Exact：精确匹配 URL 路径，且区分大小写。&lt;/p&gt;
 &lt;p&gt;Prefix：基于以 / 分隔的 URL 路径前缀匹配。匹配区分大小写，并且对路径中的元素逐个完成。 路径元素指的是由 / 分隔符分隔的路径中的标签列表。 如果每个 p 都是请求路径 p 的元素前缀，则请求与路径 p 匹配。&lt;/p&gt;
+&lt;p&gt;ingressclass没有namespace。&lt;/p&gt;
+&lt;h2 id=&#34;gateway-api-controller&#34;&gt;gateway api controller&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;cilium&lt;/li&gt;
+&lt;li&gt;contour&lt;/li&gt;
+&lt;li&gt;GKE&lt;/li&gt;
+&lt;li&gt;EKS&lt;/li&gt;
+&lt;li&gt;kong&lt;/li&gt;
+&lt;li&gt;traefik&lt;/li&gt;
+&lt;/ul&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;ingress-nginx&#34;&gt;ingress-nginx&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/kubernetes/ingress-nginx&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -3598,72 +4003,6 @@ spec:
 - &amp;quot;--certificatesresolvers.myresolver.acme.email=canux.cheng@arm.com&amp;quot;
 - &amp;quot;--certificatesresolvers.myresolver.acme.storage=acme.json&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;hr&gt;
-</description>
-        </item>
-        <item>
-        <title>Microservices</title>
-        <link>https://canuxcheng.com/post/k8s_microservices/</link>
-        <pubDate>Sat, 04 Jan 2020 20:03:39 +0800</pubDate>
-        
-        <guid>https://canuxcheng.com/post/k8s_microservices/</guid>
-        <description>&lt;h1 id=&#34;microservivces&#34;&gt;Microservivces&lt;/h1&gt;
-&lt;p&gt;微服务是一种架构。&lt;/p&gt;
-&lt;p&gt;常见的架构:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;Monolithic application 单体应用.&lt;/li&gt;
-&lt;li&gt;SOA(service-oriented architecture) 面向服务的体系结构.&lt;/li&gt;
-&lt;li&gt;MicroServices 微服务.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;微服务架构的服务治理包括:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;service registry 服务注册&lt;/li&gt;
-&lt;li&gt;service discovery 服务发现&lt;/li&gt;
-&lt;li&gt;observability 可观测性(metrics,logging,trace)&lt;/li&gt;
-&lt;li&gt;流量管理&lt;/li&gt;
-&lt;li&gt;安全&lt;/li&gt;
-&lt;li&gt;控制&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;微服务应用可以通过容器化(docker, k8s)部署，也可以通过serverless方式部署.&lt;/p&gt;
-&lt;p&gt;不同的语言有不同的微服务框架.
-java的dubbo, sprint boot.
-golang的go-kit,  go-zero, kratos.
-python的zappa, nameko.&lt;/p&gt;
-&lt;p&gt;面向云原生的微服务架构是service mesh(istio, dapr).&lt;/p&gt;
-&lt;hr&gt;
-</description>
-        </item>
-        <item>
-        <title>Service Mesh</title>
-        <link>https://canuxcheng.com/post/k8s_servicemesh/</link>
-        <pubDate>Sat, 04 Jan 2020 20:03:39 +0800</pubDate>
-        
-        <guid>https://canuxcheng.com/post/k8s_servicemesh/</guid>
-        <description>&lt;h1 id=&#34;service-mesh&#34;&gt;Service Mesh&lt;/h1&gt;
-&lt;p&gt;servivce mesh是cncf基于sidecar推出的下一代面向云原生的微服务架构，是微服务基础设施, 用于处理微服务通信、治理、控制、可观测、安全等问题，具备业务无侵入、多语言、热升级等诸多特性.&lt;/p&gt;
-&lt;p&gt;sidecar: 边车模式，就是把业务无关的功能，日志记录、监控、流量控制、服务注册、服务发现、服务限流、服务熔断、鉴权、访问控制和服务调用可视化等独立出来。&lt;/p&gt;
-&lt;p&gt;特点:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;应用程序通信的中间层&lt;/li&gt;
-&lt;li&gt;轻量级网络代理&lt;/li&gt;
-&lt;li&gt;应用程序无感知&lt;/li&gt;
-&lt;li&gt;解耦应用程序的重试、超时、监控、追踪和服务发现.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;Service Mesh是建立在物理或者虚拟网络层之上的，基于策略的微服务的流量控制，与一般的网络协议不同的是它有以下几个特点：&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;开发者驱动&lt;/li&gt;
-&lt;li&gt;可配置策略&lt;/li&gt;
-&lt;li&gt;服务优先的网络配置而不是协议&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;dapr&#34;&gt;Dapr&lt;/h2&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/dapr&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://github.com/dapr&lt;/a&gt;&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;istio&#34;&gt;Istio&lt;/h2&gt;
-&lt;p&gt;Envoy&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;linkerd&#34;&gt;Linkerd&lt;/h2&gt;
 &lt;hr&gt;
 </description>
         </item>
@@ -3935,16 +4274,6 @@ sudo minikube start --vm-driver=none
 </description>
         </item>
         <item>
-        <title>Rancher</title>
-        <link>https://canuxcheng.com/post/cncf_rancher/</link>
-        <pubDate>Tue, 03 Dec 2019 21:54:05 +0800</pubDate>
-        
-        <guid>https://canuxcheng.com/post/cncf_rancher/</guid>
-        <description>&lt;h1 id=&#34;rancher&#34;&gt;Rancher&lt;/h1&gt;
-&lt;h1 id=&#34;deploy&#34;&gt;Deploy&lt;/h1&gt;
-</description>
-        </item>
-        <item>
         <title>Image</title>
         <link>https://canuxcheng.com/post/cncf_image/</link>
         <pubDate>Tue, 03 Dec 2019 21:50:47 +0800</pubDate>
@@ -4055,67 +4384,6 @@ build-essential \
 &lt;p&gt;减小image大小,适用于web程序.&lt;/p&gt;
 &lt;p&gt;&amp;lt;https://github.com/docker-slim/docker-slim&lt;/p&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;registry&#34;&gt;registry&lt;/h2&gt;
-&lt;ul&gt;
-&lt;li&gt;Docker Hub Registry&lt;/li&gt;
-&lt;li&gt;Google Container Registry (gcr.io)&lt;/li&gt;
-&lt;li&gt;RedHat Quay Registry (quay.io)&lt;/li&gt;
-&lt;li&gt;GitHub Docker Packages (docker.pkg.github.com)&lt;/li&gt;
-&lt;li&gt;GitHub Container Registry (ghcr.io)&lt;/li&gt;
-&lt;li&gt;Kubernetes Registry(registry.k8s.io/k8s.gcr.io)&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-        </item>
-        <item>
-        <title>OpenShift</title>
-        <link>https://canuxcheng.com/post/k8s_openshift/</link>
-        <pubDate>Mon, 02 Dec 2019 21:43:24 +0800</pubDate>
-        
-        <guid>https://canuxcheng.com/post/k8s_openshift/</guid>
-        <description>&lt;h1 id=&#34;openshift&#34;&gt;OpenShift&lt;/h1&gt;
-&lt;p&gt;readhat kubernetes.&lt;/p&gt;
-&lt;h1 id=&#34;deploy&#34;&gt;Deploy&lt;/h1&gt;
-&lt;p&gt;pre-install:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;gt; check &amp;quot;sysctl net.ipv4.ip_forward&amp;quot; is set to 1
-
-/etc/containers/registries.conf
-[registries.insecure]
-registries = [&#39;172.30.0.0/16&#39;]
-
-/etc/docker/daemon.json
-{
-    &amp;quot;insecure-registries&amp;quot;: [
-        &amp;quot;172.30.0.0/16&amp;quot;
-    ]
-}
-
-$ sudo systemctl daemon-reload
-$ sudo systemctl restart docker
-
-docker network inspect -f &amp;quot;{{range .IPAM.Config }}{{ .Subnet }}{{end}}&amp;quot; bridge
-
-# firewall-cmd --permanent --new-zone dockerc
-# firewall-cmd --permanent --zone dockerc --add-source 172.17.0.0/16
-# firewall-cmd --permanent --zone dockerc --add-port 8443/tcp
-# firewall-cmd --permanent --zone dockerc --add-port 53/udp
-# firewall-cmd --permanent --zone dockerc --add-port 8053/udp
-# firewall-cmd --reload
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;install:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;gt; download binary and put in $PATH
-# oc cluster up --public-hostname=&#39;your.domain.com&#39; --base-dir=/opt/oc
-
-# firewall-cmd --zone=public --add-port=8443/tcp --permanent
-# firewall-cmd --reload
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;test:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;gt; https://your.domain.com:8443
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;oc&#34;&gt;oc&lt;/h1&gt;
-&lt;p&gt;oc command&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ oc cluster up --enable [*]
-$ oc cluster add --base-dir=/opt/oc service-catalog
-&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
@@ -4337,6 +4605,13 @@ spec:
 &lt;p&gt;是k8s与container交互的标准.&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://kubernetes.io/zh/docs/setup/production-environment/container-runtimes/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://kubernetes.io/zh/docs/setup/production-environment/container-runtimes/&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;containerd&lt;/li&gt;
+&lt;li&gt;cri-o&lt;/li&gt;
+&lt;li&gt;rkt&lt;/li&gt;
+&lt;li&gt;kata&lt;/li&gt;
+&lt;li&gt;rancher&lt;/li&gt;
+&lt;/ul&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;docker&#34;&gt;docker&lt;/h2&gt;
 &lt;p&gt;k8s_1.20 开始警告不再支持docker.&lt;/p&gt;
@@ -6008,96 +6283,6 @@ docker-machine ls
 </description>
         </item>
         <item>
-        <title>Harbor</title>
-        <link>https://canuxcheng.com/post/cncf_harbor/</link>
-        <pubDate>Thu, 05 Apr 2018 22:02:31 +0000</pubDate>
-        
-        <guid>https://canuxcheng.com/post/cncf_harbor/</guid>
-        <description>&lt;h1 id=&#34;harbor&#34;&gt;Harbor&lt;/h1&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/goharbor/harbor&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://github.com/goharbor/harbor&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Habor是由VMWare中国团队开源的容器镜像仓库, 用于存储和分发docker镜像的registry服务器.&lt;/p&gt;
-&lt;p&gt;安装步骤:&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;下载并解压安装包, &lt;a class=&#34;link&#34; href=&#34;https://github.com/goharbor/harbor/releases&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://github.com/goharbor/harbor/releases&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;配置harbor.cfg;&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;修改配置:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;vim harbor.yml
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;运行安装程序:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;./install.sh --with-notary --with-clair --with-chartmuseum
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;修改web的port:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ vim /data/harbor/docker-compose.yml
-proxy:
-  ports:
-    - 8080:80 # 默认http是80
-    - 4433:443 # 默认https是443
-$ vim /data/harbor/harbor.yml
-hostname = ip
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;管理harbor:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;# cd /data/harbor
-# docker-compose down -v 　停止并删除container
-
-&amp;gt; 更新配置
-# ./prepare --with-notary --with-clair --with-chartmuseum
-
-&amp;gt; 启动
-# docker-compose up -d
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;docker使用harbor&#34;&gt;docker使用harbor&lt;/h1&gt;
-&lt;p&gt;Deploy a plain HTTP registry:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;# vim /etc/docker/daemon.json
-{  &amp;quot;insecure-registries&amp;quot; : [&amp;quot;myregistrydomain.com:5000&amp;quot;]}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;Use self-signed certificates:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;# cp your-ca /etc/docker/certs.d/harbor.domain.com/ca.crt
-# vim /lib/systemd/system/docker.service
-ExecStart=/usr/bin/dockerd --insecure-registry harbor.domain.com:port
-# systemctl daemon-reload
-# systemctl restart docker
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;update hosts on docker client:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;# vim /etc/hosts ip harbor.domain.com
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;create user account:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;https://&amp;lt;ip:port&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;push images to harbor:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ docker login harbor.domain.com:port
-$ docker tag SOURCE_IMAGE[:TAG] harbor.domain.com:port/&amp;lt;project&amp;gt;/IMAGE[:TAG]
-$ docker push harbor.domain.com:port/&amp;lt;project&amp;gt;/IMAGE[:TAG]
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;pull images from harbor:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ docker login harbor.domain.com:port
-$ docker pull harbor.domain.com:port/&amp;lt;project&amp;gt;/IMAGE[:TAG]
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;k8s使用harbor:&lt;/p&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id=&#34;修改存储路径&#34;&gt;修改存储路径&lt;/h1&gt;
-&lt;p&gt;默认路径是/data/registry&lt;/p&gt;
-&lt;p&gt;停服务:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ docker-compose down -v
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;修改路径:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ mv /data/* /new/path
-$ vim /new/path/harbor/harbor.yml
-data_volume: /new/path
-
-$ vim /new/path/harbor/docker-compose.yml
-/data =&amp;gt; /new/path
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;启动服务:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ cd /new/path
-$ docker-compose up -d
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-        </item>
-        <item>
         <title>Kubernetes</title>
         <link>https://canuxcheng.com/post/kubernetes/</link>
         <pubDate>Thu, 05 Apr 2018 22:02:31 +0000</pubDate>
@@ -6383,6 +6568,107 @@ $ nsenter -F/--no-fork ...
 
 $ nsenter -Z/--follow-context ...
 &lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
+        <item>
+        <title>Registry</title>
+        <link>https://canuxcheng.com/post/cncf_registry/</link>
+        <pubDate>Thu, 05 Apr 2018 22:02:31 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/cncf_registry/</guid>
+        <description>&lt;h1 id=&#34;container-registry&#34;&gt;Container Registry&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Docker Hub Registry&lt;/li&gt;
+&lt;li&gt;Google Container Registry (gcr.io)&lt;/li&gt;
+&lt;li&gt;RedHat Quay Registry (quay.io)&lt;/li&gt;
+&lt;li&gt;GitHub Docker Packages (docker.pkg.github.com)(Deprecated)&lt;/li&gt;
+&lt;li&gt;GitHub Container Registry (ghcr.io)&lt;/li&gt;
+&lt;li&gt;Kubernetes Registry(registry.k8s.io =&amp;gt; k8s.gcr.io)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;harbor&#34;&gt;Harbor&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/goharbor/harbor&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/goharbor/harbor&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Habor是由VMWare中国团队开源的容器镜像仓库, 用于存储和分发docker镜像的registry服务器.&lt;/p&gt;
+&lt;p&gt;安装步骤:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;下载并解压安装包, &lt;a class=&#34;link&#34; href=&#34;https://github.com/goharbor/harbor/releases&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/goharbor/harbor/releases&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;配置harbor.cfg;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;修改配置:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;vim harbor.yml
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;运行安装程序:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;./install.sh --with-notary --with-clair --with-chartmuseum
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;修改web的port:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ vim /data/harbor/docker-compose.yml
+proxy:
+  ports:
+    - 8080:80 # 默认http是80
+    - 4433:443 # 默认https是443
+$ vim /data/harbor/harbor.yml
+hostname = ip
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;管理harbor:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# cd /data/harbor
+# docker-compose down -v 　停止并删除container
+
+&amp;gt; 更新配置
+# ./prepare --with-notary --with-clair --with-chartmuseum
+
+&amp;gt; 启动
+# docker-compose up -d
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;docker使用harbor&#34;&gt;docker使用harbor&lt;/h2&gt;
+&lt;p&gt;Deploy a plain HTTP registry:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# vim /etc/docker/daemon.json
+{  &amp;quot;insecure-registries&amp;quot; : [&amp;quot;myregistrydomain.com:5000&amp;quot;]}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Use self-signed certificates:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# cp your-ca /etc/docker/certs.d/harbor.domain.com/ca.crt
+# vim /lib/systemd/system/docker.service
+ExecStart=/usr/bin/dockerd --insecure-registry harbor.domain.com:port
+# systemctl daemon-reload
+# systemctl restart docker
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;update hosts on docker client:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# vim /etc/hosts ip harbor.domain.com
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;create user account:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;https://&amp;lt;ip:port&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;push images to harbor:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ docker login harbor.domain.com:port
+$ docker tag SOURCE_IMAGE[:TAG] harbor.domain.com:port/&amp;lt;project&amp;gt;/IMAGE[:TAG]
+$ docker push harbor.domain.com:port/&amp;lt;project&amp;gt;/IMAGE[:TAG]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;pull images from harbor:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ docker login harbor.domain.com:port
+$ docker pull harbor.domain.com:port/&amp;lt;project&amp;gt;/IMAGE[:TAG]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;k8s使用harbor:&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;修改存储路径&#34;&gt;修改存储路径&lt;/h2&gt;
+&lt;p&gt;默认路径是/data/registry&lt;/p&gt;
+&lt;p&gt;停服务:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ docker-compose down -v
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;修改路径:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ mv /data/* /new/path
+$ vim /new/path/harbor/harbor.yml
+data_volume: /new/path
+
+$ vim /new/path/harbor/docker-compose.yml
+/data =&amp;gt; /new/path
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;启动服务:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ cd /new/path
+$ docker-compose up -d
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;artifactory&#34;&gt;Artifactory&lt;/h2&gt;
 </description>
         </item>
         <item>
@@ -8944,10 +9230,12 @@ package pkg # 使用和包一样的名字.
 &lt;p&gt;parallelism: 并行,让不同的代码在不同的物理处理器上同时执行.&lt;/p&gt;
 &lt;p&gt;process: 进程, 是系统资源和调度的基本单位，包括内存，句柄，线程等。&lt;/p&gt;
 &lt;p&gt;thread: 线程,是cpu调度和分配的基本单位,每个进程至少包含一个线程，初始线程就是主线程，每个线程绑定到一个逻辑cpu上运行。&lt;/p&gt;
-&lt;p&gt;coroutines: 协程&lt;/p&gt;
-&lt;p&gt;goroutines: go语言的协程，是并行的，通过channel来通信.&lt;/p&gt;
-&lt;p&gt;CSP: communicating sequential processes, 顺序通信进程&lt;/p&gt;
-&lt;p&gt;MPM: message pussing model, 消息传递模型&lt;/p&gt;
+&lt;p&gt;co-routine: 协程，大量线程会消耗内存和cpu调度，将线程分为内核态线程和用户态线程，每个用户态线程绑定到内核态线程，但是cpu不知道用户态线程的存在，我们把用户态线程叫协程。&lt;/p&gt;
+&lt;p&gt;goroutine: go语言的协程，是并行的，通过channel来通信.&lt;/p&gt;
+&lt;p&gt;GMP: goroutine的实现模型。&lt;/p&gt;
+&lt;p&gt;G: goroutine。
+M: thread，代表一个内核态线程，golang默认10000个，SetMaxThreads可以设置，P创建M，一个P可以创建多个M如果之前的阻塞了。
+P: processor, 包含了可运行的协程队列，由GOMAXPROCS确定个数，然后创建对应个数的P。&lt;/p&gt;
 &lt;h1 id=&#34;goroutines&#34;&gt;goroutines&lt;/h1&gt;
 &lt;p&gt;go关键字会启动一个新的goroutine并执行.&lt;/p&gt;
 &lt;p&gt;每个goroutine会绑定到一个逻辑处理器上运行，每个逻辑处理器会绑定到单个操作系统线程。&lt;/p&gt;
@@ -13001,6 +13289,10 @@ db.mycoll.help() # 查看所有collections的方法
 &lt;p&gt;安装:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;$ sudo apt-get install libvirt-bin (包含virsh命令和libvirtd daemon)
 // libvirtd在container中无法运行；在container中安装libvirt-bin可以获取virsh命令远程访问libvirt-bin server.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;libvirt-bin拆分成了两个包：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;libvirt-daemon-system
+libvirt-clients
 
 $ sudo apt-get install libvirt-dev # 库, python/go client依赖该库
 
