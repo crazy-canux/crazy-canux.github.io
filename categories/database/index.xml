@@ -24,7 +24,8 @@
 &lt;li&gt;Oracle Database&lt;/li&gt;
 &lt;li&gt;Microsoft SQL Server&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;amazon-aurora&#34;&gt;Amazon Aurora&lt;/h2&gt;
+&lt;h2 id=&#34;aurora-serverless&#34;&gt;Aurora Serverless&lt;/h2&gt;
+&lt;h2 id=&#34;aurora&#34;&gt;Aurora&lt;/h2&gt;
 &lt;p&gt;兼容mysql和postgresql.&lt;/p&gt;
 &lt;h2 id=&#34;dynamodb&#34;&gt;DynamoDB&lt;/h2&gt;
 &lt;p&gt;非关系数据库(NoSQL).&lt;/p&gt;
@@ -34,15 +35,13 @@
 &lt;p&gt;兼容MongoDB.&lt;/p&gt;
 &lt;h2 id=&#34;elasticcache&#34;&gt;ElasticCache&lt;/h2&gt;
 &lt;p&gt;内存数据库(in-memory). 兼容redis和memcached.&lt;/p&gt;
-&lt;h2 id=&#34;amazon-memorydb-for-redis&#34;&gt;Amazon MemoryDB for Redis&lt;/h2&gt;
 &lt;h2 id=&#34;keyspaces&#34;&gt;Keyspaces&lt;/h2&gt;
 &lt;p&gt;兼容cassandra的无服务器数据库。&lt;/p&gt;
 &lt;h2 id=&#34;redshift&#34;&gt;Redshift&lt;/h2&gt;
 &lt;p&gt;Amazon Redshift 是一项数据仓库服务，可用于进行大数据分析。&lt;/p&gt;
 &lt;h2 id=&#34;neptune&#34;&gt;Neptune&lt;/h2&gt;
 &lt;p&gt;图形数据库&lt;/p&gt;
-&lt;h2 id=&#34;qldb&#34;&gt;QLDB&lt;/h2&gt;
-&lt;p&gt;分类账数据库&lt;/p&gt;
+&lt;h2 id=&#34;timesteam&#34;&gt;Timesteam&lt;/h2&gt;
 </description>
         </item>
         <item>

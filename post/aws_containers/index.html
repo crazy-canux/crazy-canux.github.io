@@ -2,8 +2,8 @@
 <html lang="en-us" dir="ltr">
     <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='AWS Containers ECR Elastic Container Registry.
-ECS Elastic Container Service.
-EKS Elastic Kubernetes Service.
+ECS Anywhere ECS Elastic Container Service.
+EKS Distro EKS Anywhere EKS Elastic Kubernetes Service.
 通过AWS CLI创建EKS 通过MC创建的资源都可以通过CLI(aws)创建.
 创建具有公有和私有子网且符合 Amazon EKS 要求的 Amazon VPC
 $ aws cloudformation create-stack \ --stack-name my-eks-vpc-stack \ --region region-code \ --template-url https://amazon-eks.s3.us-west-2.amazonaws.com/cloudformation/2020-10-29/amazon-eks-vpc-private-subnets.yaml 创建集群 IAM 角色并向其附加所需的 Amazon EKS IAM 托管策略
@@ -14,8 +14,8 @@ $ aws cloudformation create-stack \ --stack-name my-eks-vpc-stack \ --region reg
 
 <link rel="stylesheet" href="/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content='AWS Containers'>
 <meta property='og:description' content='AWS Containers ECR Elastic Container Registry.
-ECS Elastic Container Service.
-EKS Elastic Kubernetes Service.
+ECS Anywhere ECS Elastic Container Service.
+EKS Distro EKS Anywhere EKS Elastic Kubernetes Service.
 通过AWS CLI创建EKS 通过MC创建的资源都可以通过CLI(aws)创建.
 创建具有公有和私有子网且符合 Amazon EKS 要求的 Amazon VPC
 $ aws cloudformation create-stack \ --stack-name my-eks-vpc-stack \ --region region-code \ --template-url https://amazon-eks.s3.us-west-2.amazonaws.com/cloudformation/2020-10-29/amazon-eks-vpc-private-subnets.yaml 创建集群 IAM 角色并向其附加所需的 Amazon EKS IAM 托管策略
@@ -25,8 +25,8 @@ $ aws cloudformation create-stack \ --stack-name my-eks-vpc-stack \ --region reg
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='aws' /><meta property='article:published_time' content='2021-04-23T22:02:31&#43;00:00'/><meta property='article:modified_time' content='2021-04-23T22:02:31&#43;00:00'/>
 <meta name="twitter:title" content="AWS Containers">
 <meta name="twitter:description" content="AWS Containers ECR Elastic Container Registry.
-ECS Elastic Container Service.
-EKS Elastic Kubernetes Service.
+ECS Anywhere ECS Elastic Container Service.
+EKS Distro EKS Anywhere EKS Elastic Kubernetes Service.
 通过AWS CLI创建EKS 通过MC创建的资源都可以通过CLI(aws)创建.
 创建具有公有和私有子网且符合 Amazon EKS 要求的 Amazon VPC
 $ aws cloudformation create-stack \ --stack-name my-eks-vpc-stack \ --region region-code \ --template-url https://amazon-eks.s3.us-west-2.amazonaws.com/cloudformation/2020-10-29/amazon-eks-vpc-private-subnets.yaml 创建集群 IAM 角色并向其附加所需的 Amazon EKS IAM 托管策略
@@ -322,7 +322,10 @@ $ aws cloudformation create-stack \ --stack-name my-eks-vpc-stack \ --region reg
             <nav id="TableOfContents">
   <ul>
     <li><a href="#ecr">ECR</a></li>
+    <li><a href="#ecs-anywhere">ECS Anywhere</a></li>
     <li><a href="#ecs">ECS</a></li>
+    <li><a href="#eks-distro">EKS Distro</a></li>
+    <li><a href="#eks-anywhere">EKS Anywhere</a></li>
     <li><a href="#eks">EKS</a>
       <ul>
         <li><a href="#通过aws-cli创建eks">通过AWS CLI创建EKS</a></li>
@@ -416,8 +419,11 @@ $ aws cloudformation create-stack \ --stack-name my-eks-vpc-stack \ --region reg
     <h1 id="aws-containers">AWS Containers</h1>
 <h2 id="ecr">ECR</h2>
 <p>Elastic Container Registry.</p>
+<h2 id="ecs-anywhere">ECS Anywhere</h2>
 <h2 id="ecs">ECS</h2>
 <p>Elastic Container Service.</p>
+<h2 id="eks-distro">EKS Distro</h2>
+<h2 id="eks-anywhere">EKS Anywhere</h2>
 <h2 id="eks">EKS</h2>
 <p>Elastic Kubernetes Service.</p>
 <h3 id="通过aws-cli创建eks">通过AWS CLI创建EKS</h3>
@@ -617,7 +623,7 @@ $ eksctl delete nodegroup --cluster my-cluster --region us-west-2 --name my-ng
         
             2013 - 
         
-        2023 Morgoth
+        2024 Morgoth
     </section>
     
     <section class="powerby">

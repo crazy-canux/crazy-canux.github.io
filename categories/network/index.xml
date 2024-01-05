@@ -53,15 +53,15 @@ kubernetes.io/cluster/${cluster-name}: owned/shared
 &lt;p&gt;可以通过external-DNS 自动同步eks上的service和ingress到dns。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;aws route53 list-hosted-zones
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;api-gateway&#34;&gt;API Gateway&lt;/h2&gt;
 &lt;h2 id=&#34;cloudfront&#34;&gt;CloudFront&lt;/h2&gt;
 &lt;p&gt;CDN服务.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;direct-connect&#34;&gt;Direct Connect&lt;/h2&gt;
 &lt;p&gt;提供数据中心和AWS直连。&lt;/p&gt;
-&lt;h2 id=&#34;aws-app-mesh&#34;&gt;AWS App Mesh&lt;/h2&gt;
-&lt;h2 id=&#34;aws-cloud-map&#34;&gt;AWs Cloud Map&lt;/h2&gt;
 &lt;h2 id=&#34;global-accelerator&#34;&gt;Global Accelerator&lt;/h2&gt;
+&lt;h2 id=&#34;privatelink&#34;&gt;PrivateLink&lt;/h2&gt;
+&lt;h2 id=&#34;transit-gateway&#34;&gt;Transit Gateway&lt;/h2&gt;
+&lt;h2 id=&#34;vpn&#34;&gt;VPN&lt;/h2&gt;
 </description>
         </item>
         <item>

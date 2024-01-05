@@ -131,6 +131,18 @@ aws sso logout
 &lt;h2 id=&#34;guardduty&#34;&gt;GuardDuty&lt;/h2&gt;
 &lt;h2 id=&#34;cognito&#34;&gt;Cognito&lt;/h2&gt;
 &lt;p&gt;支持google/amazon/MS-AD/SAML 登陆。&lt;/p&gt;
+&lt;h2 id=&#34;audit-manager&#34;&gt;Audit Manager&lt;/h2&gt;
+&lt;h2 id=&#34;cloudhsm&#34;&gt;CloudHSM&lt;/h2&gt;
+&lt;h2 id=&#34;detective&#34;&gt;Detective&lt;/h2&gt;
+&lt;h2 id=&#34;directory-service&#34;&gt;Directory Service&lt;/h2&gt;
+&lt;h2 id=&#34;firewall-manager&#34;&gt;Firewall Manager&lt;/h2&gt;
+&lt;h2 id=&#34;macie&#34;&gt;Macie&lt;/h2&gt;
+&lt;h2 id=&#34;network-firewall&#34;&gt;Network Firewall&lt;/h2&gt;
+&lt;h2 id=&#34;ram&#34;&gt;RAM&lt;/h2&gt;
+&lt;p&gt;Resource Access Manager&lt;/p&gt;
+&lt;h2 id=&#34;security-hub&#34;&gt;Security Hub&lt;/h2&gt;
+&lt;h2 id=&#34;sts&#34;&gt;STS&lt;/h2&gt;
+&lt;p&gt;Security Token Service&lt;/p&gt;
 </description>
         </item>
         <item>

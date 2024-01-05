@@ -124,8 +124,11 @@ template:
         <description>&lt;h1 id=&#34;aws-containers&#34;&gt;AWS Containers&lt;/h1&gt;
 &lt;h2 id=&#34;ecr&#34;&gt;ECR&lt;/h2&gt;
 &lt;p&gt;Elastic Container Registry.&lt;/p&gt;
+&lt;h2 id=&#34;ecs-anywhere&#34;&gt;ECS Anywhere&lt;/h2&gt;
 &lt;h2 id=&#34;ecs&#34;&gt;ECS&lt;/h2&gt;
 &lt;p&gt;Elastic Container Service.&lt;/p&gt;
+&lt;h2 id=&#34;eks-distro&#34;&gt;EKS Distro&lt;/h2&gt;
+&lt;h2 id=&#34;eks-anywhere&#34;&gt;EKS Anywhere&lt;/h2&gt;
 &lt;h2 id=&#34;eks&#34;&gt;EKS&lt;/h2&gt;
 &lt;p&gt;Elastic Kubernetes Service.&lt;/p&gt;
 &lt;h3 id=&#34;通过aws-cli创建eks&#34;&gt;通过AWS CLI创建EKS&lt;/h3&gt;

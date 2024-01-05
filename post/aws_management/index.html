@@ -1,51 +1,45 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='AWS Monitor CloudWatch 监控和管理服务，收集logs, metrics 和 events，支持基于metrics的alert。
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='AWS Monitor CLI Management Console Quotas Service Catalog CloudWatch 监控和管理服务，收集logs, metrics 和 events，支持基于metrics的alert。
 MTTR TCO
-CloudTrail 可以用来记录，持续监控和保留与AWS基础设施中的操作相关的账户活动。
+CloudWatch Logs CloudTrail 可以用来记录，持续监控和保留与AWS基础设施中的操作相关的账户活动。
 将审计记录插入S3或者cloudwatch log， 记录突发事件。
 AWS Config 提供基础设施的历史配置。基于规则持续评估基础设施。
 AWS Trusted Advisor 优化性能和安全性
-Amazon Grafana Amazon Prometheus Launch Wizard 应用程序部署指导.
-CloudFormation 提供基于模板(yaml/json)的基础设施服务(IaaS).
-OpsWorks 配置管理服务（chef, puppet).
-AWS Systems Manager 提供运维数据，并且在跨基础设施中进行自动化操作。
+Amazon Grafana Amazon Prometheus CloudFormation 提供基于模板(yaml/json)的基础设施服务(IaaS).
+Compute Optimizer Control Tower Health Dashboard AWS Systems Manager 提供运维数据，并且在跨基础设施中进行自动化操作。
 AWS Organizations 账号集中管理。
-AWS Control Tower AWS License Manager AWS Auto Scaling AWS Well-Architected Tool '>
+AWS License Manager Proton AWS Well-Architected Tool Financial Management Budgets Cost Explorer Savings Plans '>
 <title>AWS Management</title>
 
 <link rel='canonical' href='https://canuxcheng.com/post/aws_management/'>
 
 <link rel="stylesheet" href="/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content='AWS Management'>
-<meta property='og:description' content='AWS Monitor CloudWatch 监控和管理服务，收集logs, metrics 和 events，支持基于metrics的alert。
+<meta property='og:description' content='AWS Monitor CLI Management Console Quotas Service Catalog CloudWatch 监控和管理服务，收集logs, metrics 和 events，支持基于metrics的alert。
 MTTR TCO
-CloudTrail 可以用来记录，持续监控和保留与AWS基础设施中的操作相关的账户活动。
+CloudWatch Logs CloudTrail 可以用来记录，持续监控和保留与AWS基础设施中的操作相关的账户活动。
 将审计记录插入S3或者cloudwatch log， 记录突发事件。
 AWS Config 提供基础设施的历史配置。基于规则持续评估基础设施。
 AWS Trusted Advisor 优化性能和安全性
-Amazon Grafana Amazon Prometheus Launch Wizard 应用程序部署指导.
-CloudFormation 提供基于模板(yaml/json)的基础设施服务(IaaS).
-OpsWorks 配置管理服务（chef, puppet).
-AWS Systems Manager 提供运维数据，并且在跨基础设施中进行自动化操作。
+Amazon Grafana Amazon Prometheus CloudFormation 提供基于模板(yaml/json)的基础设施服务(IaaS).
+Compute Optimizer Control Tower Health Dashboard AWS Systems Manager 提供运维数据，并且在跨基础设施中进行自动化操作。
 AWS Organizations 账号集中管理。
-AWS Control Tower AWS License Manager AWS Auto Scaling AWS Well-Architected Tool '>
+AWS License Manager Proton AWS Well-Architected Tool Financial Management Budgets Cost Explorer Savings Plans '>
 <meta property='og:url' content='https://canuxcheng.com/post/aws_management/'>
 <meta property='og:site_name' content='Morgoth'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='aws' /><meta property='article:published_time' content='2021-09-23T22:02:31&#43;00:00'/><meta property='article:modified_time' content='2021-09-23T22:02:31&#43;00:00'/>
 <meta name="twitter:title" content="AWS Management">
-<meta name="twitter:description" content="AWS Monitor CloudWatch 监控和管理服务，收集logs, metrics 和 events，支持基于metrics的alert。
+<meta name="twitter:description" content="AWS Monitor CLI Management Console Quotas Service Catalog CloudWatch 监控和管理服务，收集logs, metrics 和 events，支持基于metrics的alert。
 MTTR TCO
-CloudTrail 可以用来记录，持续监控和保留与AWS基础设施中的操作相关的账户活动。
+CloudWatch Logs CloudTrail 可以用来记录，持续监控和保留与AWS基础设施中的操作相关的账户活动。
 将审计记录插入S3或者cloudwatch log， 记录突发事件。
 AWS Config 提供基础设施的历史配置。基于规则持续评估基础设施。
 AWS Trusted Advisor 优化性能和安全性
-Amazon Grafana Amazon Prometheus Launch Wizard 应用程序部署指导.
-CloudFormation 提供基于模板(yaml/json)的基础设施服务(IaaS).
-OpsWorks 配置管理服务（chef, puppet).
-AWS Systems Manager 提供运维数据，并且在跨基础设施中进行自动化操作。
+Amazon Grafana Amazon Prometheus CloudFormation 提供基于模板(yaml/json)的基础设施服务(IaaS).
+Compute Optimizer Control Tower Health Dashboard AWS Systems Manager 提供运维数据，并且在跨基础设施中进行自动化操作。
 AWS Organizations 账号集中管理。
-AWS Control Tower AWS License Manager AWS Auto Scaling AWS Well-Architected Tool ">
+AWS License Manager Proton AWS Well-Architected Tool Financial Management Budgets Cost Explorer Savings Plans ">
     <link rel="shortcut icon" href="favicon.ico" />
 <style>
     :root {
@@ -336,21 +330,32 @@ AWS Control Tower AWS License Manager AWS Auto Scaling AWS Well-Architected Tool
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ul>
+    <li><a href="#cli">CLI</a></li>
+    <li><a href="#management-console">Management Console</a></li>
+    <li><a href="#quotas">Quotas</a></li>
+    <li><a href="#service-catalog">Service Catalog</a></li>
     <li><a href="#cloudwatch">CloudWatch</a></li>
+    <li><a href="#cloudwatch-logs">CloudWatch Logs</a></li>
     <li><a href="#cloudtrail">CloudTrail</a></li>
     <li><a href="#aws-config">AWS Config</a></li>
     <li><a href="#aws-trusted-advisor">AWS Trusted Advisor</a></li>
     <li><a href="#amazon-grafana">Amazon Grafana</a></li>
     <li><a href="#amazon-prometheus">Amazon Prometheus</a></li>
-    <li><a href="#launch-wizard">Launch Wizard</a></li>
     <li><a href="#cloudformation">CloudFormation</a></li>
-    <li><a href="#opsworks">OpsWorks</a></li>
+    <li><a href="#compute-optimizer">Compute Optimizer</a></li>
+    <li><a href="#control-tower">Control Tower</a></li>
+    <li><a href="#health-dashboard">Health Dashboard</a></li>
     <li><a href="#aws-systems-manager">AWS Systems Manager</a></li>
     <li><a href="#aws-organizations">AWS Organizations</a></li>
-    <li><a href="#aws-control-tower">AWS Control Tower</a></li>
     <li><a href="#aws-license-manager">AWS License Manager</a></li>
-    <li><a href="#aws-auto-scaling">AWS Auto Scaling</a></li>
+    <li><a href="#proton">Proton</a></li>
     <li><a href="#aws-well-architected-tool">AWS Well-Architected Tool</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#budgets">Budgets</a></li>
+    <li><a href="#cost-explorer">Cost Explorer</a></li>
+    <li><a href="#savings-plans">Savings Plans</a></li>
   </ul>
 </nav>
         </div>
@@ -435,10 +440,15 @@ AWS Control Tower AWS License Manager AWS Auto Scaling AWS Well-Architected Tool
     
     
     <h1 id="aws-monitor">AWS Monitor</h1>
+<h2 id="cli">CLI</h2>
+<h2 id="management-console">Management Console</h2>
+<h2 id="quotas">Quotas</h2>
+<h2 id="service-catalog">Service Catalog</h2>
 <h2 id="cloudwatch">CloudWatch</h2>
 <p>监控和管理服务，收集logs, metrics 和 events，支持基于metrics的alert。</p>
 <p>MTTR
 TCO</p>
+<h2 id="cloudwatch-logs">CloudWatch Logs</h2>
 <h2 id="cloudtrail">CloudTrail</h2>
 <p>可以用来记录，持续监控和保留与AWS基础设施中的操作相关的账户活动。</p>
 <p>将审计记录插入S3或者cloudwatch log， 记录突发事件。</p>
@@ -448,26 +458,23 @@ TCO</p>
 <p>优化性能和安全性</p>
 <h2 id="amazon-grafana">Amazon Grafana</h2>
 <h2 id="amazon-prometheus">Amazon Prometheus</h2>
-<h2 id="launch-wizard">Launch Wizard</h2>
-<p>应用程序部署指导.</p>
-<hr>
 <h2 id="cloudformation">CloudFormation</h2>
 <p>提供基于模板(yaml/json)的基础设施服务(IaaS).</p>
-<hr>
-<h2 id="opsworks">OpsWorks</h2>
-<p>配置管理服务（chef, puppet).</p>
+<h2 id="compute-optimizer">Compute Optimizer</h2>
+<h2 id="control-tower">Control Tower</h2>
+<h2 id="health-dashboard">Health Dashboard</h2>
 <h2 id="aws-systems-manager">AWS Systems Manager</h2>
 <p>提供运维数据，并且在跨基础设施中进行自动化操作。</p>
-<hr>
 <h2 id="aws-organizations">AWS Organizations</h2>
 <p>账号集中管理。</p>
-<h2 id="aws-control-tower">AWS Control Tower</h2>
-<hr>
 <h2 id="aws-license-manager">AWS License Manager</h2>
-<hr>
-<h2 id="aws-auto-scaling">AWS Auto Scaling</h2>
-<hr>
+<h2 id="proton">Proton</h2>
 <h2 id="aws-well-architected-tool">AWS Well-Architected Tool</h2>
+<hr>
+<h1 id="financial-management">Financial Management</h1>
+<h2 id="budgets">Budgets</h2>
+<h2 id="cost-explorer">Cost Explorer</h2>
+<h2 id="savings-plans">Savings Plans</h2>
 
 </section>
 
@@ -557,7 +564,7 @@ TCO</p>
         
             2013 - 
         
-        2023 Morgoth
+        2024 Morgoth
     </section>
     
     <section class="powerby">

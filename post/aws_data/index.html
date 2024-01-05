@@ -1,32 +1,35 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Data Processing AWS Glue AWS上的ETL(extract, transform and load)服务，提供数据的提取，转换，加载服务。
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Data Processing Athena serverless交互式分析
+Data Exchange Glue AWS上的ETL(extract, transform and load)服务，提供数据的提取，转换，加载服务。
 Data pipeline 也是ETL服务。
 EMR EMR: Elastic MapReduce.
 AWS的大数据平台。支持spark, hive, hbase, flink, hudi 和presto.
-Data Analysis Athena serverless服务
+Kinesis Data Analytics Data Firehose Data Streams Lake Formation QuickSight OpenSearch MSK Data Analysis Athena serverless服务
 Quicksight AWS CloudSearch '>
 <title>AWS Data</title>
 
 <link rel='canonical' href='https://canuxcheng.com/post/aws_data/'>
 
 <link rel="stylesheet" href="/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content='AWS Data'>
-<meta property='og:description' content='Data Processing AWS Glue AWS上的ETL(extract, transform and load)服务，提供数据的提取，转换，加载服务。
+<meta property='og:description' content='Data Processing Athena serverless交互式分析
+Data Exchange Glue AWS上的ETL(extract, transform and load)服务，提供数据的提取，转换，加载服务。
 Data pipeline 也是ETL服务。
 EMR EMR: Elastic MapReduce.
 AWS的大数据平台。支持spark, hive, hbase, flink, hudi 和presto.
-Data Analysis Athena serverless服务
+Kinesis Data Analytics Data Firehose Data Streams Lake Formation QuickSight OpenSearch MSK Data Analysis Athena serverless服务
 Quicksight AWS CloudSearch '>
 <meta property='og:url' content='https://canuxcheng.com/post/aws_data/'>
 <meta property='og:site_name' content='Morgoth'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='aws' /><meta property='article:published_time' content='2021-04-23T22:02:31&#43;00:00'/><meta property='article:modified_time' content='2021-04-23T22:02:31&#43;00:00'/>
 <meta name="twitter:title" content="AWS Data">
-<meta name="twitter:description" content="Data Processing AWS Glue AWS上的ETL(extract, transform and load)服务，提供数据的提取，转换，加载服务。
+<meta name="twitter:description" content="Data Processing Athena serverless交互式分析
+Data Exchange Glue AWS上的ETL(extract, transform and load)服务，提供数据的提取，转换，加载服务。
 Data pipeline 也是ETL服务。
 EMR EMR: Elastic MapReduce.
 AWS的大数据平台。支持spark, hive, hbase, flink, hudi 和presto.
-Data Analysis Athena serverless服务
+Kinesis Data Analytics Data Firehose Data Streams Lake Formation QuickSight OpenSearch MSK Data Analysis Athena serverless服务
 Quicksight AWS CloudSearch ">
     <link rel="shortcut icon" href="favicon.ico" />
 <style>
@@ -318,14 +321,21 @@ Quicksight AWS CloudSearch ">
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ul>
-    <li><a href="#aws-glue">AWS Glue</a></li>
+    <li><a href="#athena">Athena</a></li>
+    <li><a href="#data-exchange">Data Exchange</a></li>
+    <li><a href="#glue">Glue</a></li>
     <li><a href="#data-pipeline">Data pipeline</a></li>
     <li><a href="#emr">EMR</a></li>
+    <li><a href="#kinesis">Kinesis</a></li>
+    <li><a href="#lake-formation">Lake Formation</a></li>
+    <li><a href="#quicksight">QuickSight</a></li>
+    <li><a href="#opensearch">OpenSearch</a></li>
+    <li><a href="#msk">MSK</a></li>
   </ul>
 
   <ul>
-    <li><a href="#athena">Athena</a></li>
-    <li><a href="#quicksight">Quicksight</a></li>
+    <li><a href="#athena-1">Athena</a></li>
+    <li><a href="#quicksight-1">Quicksight</a></li>
     <li><a href="#aws-cloudsearch">AWS CloudSearch</a></li>
   </ul>
 </nav>
@@ -407,18 +417,31 @@ Quicksight AWS CloudSearch ">
     
     
     <h1 id="data-processing">Data Processing</h1>
-<h2 id="aws-glue">AWS Glue</h2>
+<h2 id="athena">Athena</h2>
+<p>serverless交互式分析</p>
+<h2 id="data-exchange">Data Exchange</h2>
+<h2 id="glue">Glue</h2>
 <p>AWS上的ETL(extract, transform and load)服务，提供数据的提取，转换，加载服务。</p>
 <h2 id="data-pipeline">Data pipeline</h2>
 <p>也是ETL服务。</p>
 <h2 id="emr">EMR</h2>
 <p>EMR: Elastic MapReduce.</p>
 <p>AWS的大数据平台。支持spark, hive, hbase, flink, hudi 和presto.</p>
+<h2 id="kinesis">Kinesis</h2>
+<ul>
+<li>Data Analytics</li>
+<li>Data Firehose</li>
+<li>Data Streams</li>
+</ul>
+<h2 id="lake-formation">Lake Formation</h2>
+<h2 id="quicksight">QuickSight</h2>
+<h2 id="opensearch">OpenSearch</h2>
+<h2 id="msk">MSK</h2>
 <hr>
 <h1 id="data-analysis">Data Analysis</h1>
-<h2 id="athena">Athena</h2>
+<h2 id="athena-1">Athena</h2>
 <p>serverless服务</p>
-<h2 id="quicksight">Quicksight</h2>
+<h2 id="quicksight-1">Quicksight</h2>
 <h2 id="aws-cloudsearch">AWS CloudSearch</h2>
 <hr>
 
@@ -510,7 +533,7 @@ Quicksight AWS CloudSearch ">
         
             2013 - 
         
-        2023 Morgoth
+        2024 Morgoth
     </section>
     
     <section class="powerby">

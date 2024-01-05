@@ -505,26 +505,6 @@ logout(request)
 </description>
         </item>
         <item>
-        <title>AWS SAA</title>
-        <link>https://canuxcheng.com/post/aws_saa/</link>
-        <pubDate>Sat, 23 Oct 2021 22:02:31 +0000</pubDate>
-        
-        <guid>https://canuxcheng.com/post/aws_saa/</guid>
-        <description>&lt;h1 id=&#34;saa&#34;&gt;SAA&lt;/h1&gt;
-&lt;p&gt;Associate: 一年经验. Solutions Architect Associate(SAA); Developer, SysOps Administrator&lt;/p&gt;
-</description>
-        </item>
-        <item>
-        <title>AWS SAP</title>
-        <link>https://canuxcheng.com/post/aws_sap/</link>
-        <pubDate>Sat, 23 Oct 2021 22:02:31 +0000</pubDate>
-        
-        <guid>https://canuxcheng.com/post/aws_sap/</guid>
-        <description>&lt;h1 id=&#34;sap&#34;&gt;SAP&lt;/h1&gt;
-&lt;p&gt;Professional: 两年经验. Solutions Architect Professional(SAP), Devops Engineer.&lt;/p&gt;
-</description>
-        </item>
-        <item>
         <title>RTFM</title>
         <link>https://canuxcheng.com/rtfm/</link>
         <pubDate>Thu, 14 Oct 2021 01:54:39 -0400</pubDate>
@@ -554,10 +534,15 @@ logout(request)
         
         <guid>https://canuxcheng.com/post/aws_management/</guid>
         <description>&lt;h1 id=&#34;aws-monitor&#34;&gt;AWS Monitor&lt;/h1&gt;
+&lt;h2 id=&#34;cli&#34;&gt;CLI&lt;/h2&gt;
+&lt;h2 id=&#34;management-console&#34;&gt;Management Console&lt;/h2&gt;
+&lt;h2 id=&#34;quotas&#34;&gt;Quotas&lt;/h2&gt;
+&lt;h2 id=&#34;service-catalog&#34;&gt;Service Catalog&lt;/h2&gt;
 &lt;h2 id=&#34;cloudwatch&#34;&gt;CloudWatch&lt;/h2&gt;
 &lt;p&gt;监控和管理服务，收集logs, metrics 和 events，支持基于metrics的alert。&lt;/p&gt;
 &lt;p&gt;MTTR
 TCO&lt;/p&gt;
+&lt;h2 id=&#34;cloudwatch-logs&#34;&gt;CloudWatch Logs&lt;/h2&gt;
 &lt;h2 id=&#34;cloudtrail&#34;&gt;CloudTrail&lt;/h2&gt;
 &lt;p&gt;可以用来记录，持续监控和保留与AWS基础设施中的操作相关的账户活动。&lt;/p&gt;
 &lt;p&gt;将审计记录插入S3或者cloudwatch log， 记录突发事件。&lt;/p&gt;
@@ -567,26 +552,23 @@ TCO&lt;/p&gt;
 &lt;p&gt;优化性能和安全性&lt;/p&gt;
 &lt;h2 id=&#34;amazon-grafana&#34;&gt;Amazon Grafana&lt;/h2&gt;
 &lt;h2 id=&#34;amazon-prometheus&#34;&gt;Amazon Prometheus&lt;/h2&gt;
-&lt;h2 id=&#34;launch-wizard&#34;&gt;Launch Wizard&lt;/h2&gt;
-&lt;p&gt;应用程序部署指导.&lt;/p&gt;
-&lt;hr&gt;
 &lt;h2 id=&#34;cloudformation&#34;&gt;CloudFormation&lt;/h2&gt;
 &lt;p&gt;提供基于模板(yaml/json)的基础设施服务(IaaS).&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;opsworks&#34;&gt;OpsWorks&lt;/h2&gt;
-&lt;p&gt;配置管理服务（chef, puppet).&lt;/p&gt;
+&lt;h2 id=&#34;compute-optimizer&#34;&gt;Compute Optimizer&lt;/h2&gt;
+&lt;h2 id=&#34;control-tower&#34;&gt;Control Tower&lt;/h2&gt;
+&lt;h2 id=&#34;health-dashboard&#34;&gt;Health Dashboard&lt;/h2&gt;
 &lt;h2 id=&#34;aws-systems-manager&#34;&gt;AWS Systems Manager&lt;/h2&gt;
 &lt;p&gt;提供运维数据，并且在跨基础设施中进行自动化操作。&lt;/p&gt;
-&lt;hr&gt;
 &lt;h2 id=&#34;aws-organizations&#34;&gt;AWS Organizations&lt;/h2&gt;
 &lt;p&gt;账号集中管理。&lt;/p&gt;
-&lt;h2 id=&#34;aws-control-tower&#34;&gt;AWS Control Tower&lt;/h2&gt;
-&lt;hr&gt;
 &lt;h2 id=&#34;aws-license-manager&#34;&gt;AWS License Manager&lt;/h2&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;aws-auto-scaling&#34;&gt;AWS Auto Scaling&lt;/h2&gt;
-&lt;hr&gt;
+&lt;h2 id=&#34;proton&#34;&gt;Proton&lt;/h2&gt;
 &lt;h2 id=&#34;aws-well-architected-tool&#34;&gt;AWS Well-Architected Tool&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;financial-management&#34;&gt;Financial Management&lt;/h1&gt;
+&lt;h2 id=&#34;budgets&#34;&gt;Budgets&lt;/h2&gt;
+&lt;h2 id=&#34;cost-explorer&#34;&gt;Cost Explorer&lt;/h2&gt;
+&lt;h2 id=&#34;savings-plans&#34;&gt;Savings Plans&lt;/h2&gt;
 </description>
         </item>
         <item>
@@ -1022,7 +1004,6 @@ aws eks describe-addon-versions --addon-name aws-ebs-csi-driver
 &lt;li&gt;Spot实例&lt;/li&gt;
 &lt;li&gt;专用主机(dedicated)&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;ec2-image-builder&#34;&gt;EC2 Image Builder&lt;/h2&gt;
 &lt;h2 id=&#34;elastic-beanstalk&#34;&gt;Elastic Beanstalk&lt;/h2&gt;
 &lt;p&gt;features:&lt;/p&gt;
 &lt;ul&gt;
@@ -1034,12 +1015,16 @@ aws eks describe-addon-versions --addon-name aws-ebs-csi-driver
 &lt;h2 id=&#34;lambda&#34;&gt;Lambda&lt;/h2&gt;
 &lt;h2 id=&#34;lightsail&#34;&gt;Lightsail&lt;/h2&gt;
 &lt;h2 id=&#34;batch&#34;&gt;Batch&lt;/h2&gt;
-&lt;h2 id=&#34;sam&#34;&gt;SAM&lt;/h2&gt;
-&lt;p&gt;Serverless Application Model.&lt;/p&gt;
-&lt;h2 id=&#34;sar&#34;&gt;SAR&lt;/h2&gt;
-&lt;p&gt;Serverless Application Repository.&lt;/p&gt;
+&lt;h2 id=&#34;app-runner&#34;&gt;App Runner&lt;/h2&gt;
+&lt;h2 id=&#34;auto-scaling&#34;&gt;Auto Scaling&lt;/h2&gt;
+&lt;h2 id=&#34;fargate&#34;&gt;Fargate&lt;/h2&gt;
+&lt;h2 id=&#34;outposts&#34;&gt;Outposts&lt;/h2&gt;
+&lt;h2 id=&#34;wavelength&#34;&gt;Wavelength&lt;/h2&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;app-integration&#34;&gt;App Integration&lt;/h1&gt;
+&lt;h2 id=&#34;appflow&#34;&gt;AppFlow&lt;/h2&gt;
+&lt;h2 id=&#34;appsync&#34;&gt;AppSync&lt;/h2&gt;
+&lt;h2 id=&#34;eventbridge&#34;&gt;EventBridge&lt;/h2&gt;
 &lt;h2 id=&#34;step-functions&#34;&gt;Step Functions&lt;/h2&gt;
 &lt;p&gt;无服务架构.&lt;/p&gt;
 &lt;h2 id=&#34;sns&#34;&gt;SNS&lt;/h2&gt;
@@ -1052,12 +1037,17 @@ aws eks describe-addon-versions --addon-name aws-ebs-csi-driver
 &lt;li&gt;standard queue&lt;/li&gt;
 &lt;li&gt;FIFO queue&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;amazon-mq&#34;&gt;Amazon MQ&lt;/h2&gt;
+&lt;h2 id=&#34;mq&#34;&gt;MQ&lt;/h2&gt;
 &lt;p&gt;activeMQ 和 rabbitmq 托管服务。&lt;/p&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;business-app-integration&#34;&gt;Business app integration&lt;/h1&gt;
 &lt;h2 id=&#34;simple-email-service&#34;&gt;Simple Email Service&lt;/h2&gt;
 &lt;p&gt;SES&lt;/p&gt;
+&lt;h2 id=&#34;alexa-for-business&#34;&gt;Alexa for Business&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;终端用户计算&#34;&gt;终端用户计算&lt;/h1&gt;
+&lt;h2 id=&#34;appstream&#34;&gt;AppStream&lt;/h2&gt;
+&lt;h2 id=&#34;workspaces&#34;&gt;WorkSpaces&lt;/h2&gt;
 </description>
         </item>
         <item>
@@ -1069,8 +1059,11 @@ aws eks describe-addon-versions --addon-name aws-ebs-csi-driver
         <description>&lt;h1 id=&#34;aws-containers&#34;&gt;AWS Containers&lt;/h1&gt;
 &lt;h2 id=&#34;ecr&#34;&gt;ECR&lt;/h2&gt;
 &lt;p&gt;Elastic Container Registry.&lt;/p&gt;
+&lt;h2 id=&#34;ecs-anywhere&#34;&gt;ECS Anywhere&lt;/h2&gt;
 &lt;h2 id=&#34;ecs&#34;&gt;ECS&lt;/h2&gt;
 &lt;p&gt;Elastic Container Service.&lt;/p&gt;
+&lt;h2 id=&#34;eks-distro&#34;&gt;EKS Distro&lt;/h2&gt;
+&lt;h2 id=&#34;eks-anywhere&#34;&gt;EKS Anywhere&lt;/h2&gt;
 &lt;h2 id=&#34;eks&#34;&gt;EKS&lt;/h2&gt;
 &lt;p&gt;Elastic Kubernetes Service.&lt;/p&gt;
 &lt;h3 id=&#34;通过aws-cli创建eks&#34;&gt;通过AWS CLI创建EKS&lt;/h3&gt;
@@ -1190,18 +1183,31 @@ $ eksctl delete nodegroup --cluster my-cluster --region us-west-2 --name my-ng
         
         <guid>https://canuxcheng.com/post/aws_data/</guid>
         <description>&lt;h1 id=&#34;data-processing&#34;&gt;Data Processing&lt;/h1&gt;
-&lt;h2 id=&#34;aws-glue&#34;&gt;AWS Glue&lt;/h2&gt;
+&lt;h2 id=&#34;athena&#34;&gt;Athena&lt;/h2&gt;
+&lt;p&gt;serverless交互式分析&lt;/p&gt;
+&lt;h2 id=&#34;data-exchange&#34;&gt;Data Exchange&lt;/h2&gt;
+&lt;h2 id=&#34;glue&#34;&gt;Glue&lt;/h2&gt;
 &lt;p&gt;AWS上的ETL(extract, transform and load)服务，提供数据的提取，转换，加载服务。&lt;/p&gt;
 &lt;h2 id=&#34;data-pipeline&#34;&gt;Data pipeline&lt;/h2&gt;
 &lt;p&gt;也是ETL服务。&lt;/p&gt;
 &lt;h2 id=&#34;emr&#34;&gt;EMR&lt;/h2&gt;
 &lt;p&gt;EMR: Elastic MapReduce.&lt;/p&gt;
 &lt;p&gt;AWS的大数据平台。支持spark, hive, hbase, flink, hudi 和presto.&lt;/p&gt;
+&lt;h2 id=&#34;kinesis&#34;&gt;Kinesis&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Data Analytics&lt;/li&gt;
+&lt;li&gt;Data Firehose&lt;/li&gt;
+&lt;li&gt;Data Streams&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;lake-formation&#34;&gt;Lake Formation&lt;/h2&gt;
+&lt;h2 id=&#34;quicksight&#34;&gt;QuickSight&lt;/h2&gt;
+&lt;h2 id=&#34;opensearch&#34;&gt;OpenSearch&lt;/h2&gt;
+&lt;h2 id=&#34;msk&#34;&gt;MSK&lt;/h2&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;data-analysis&#34;&gt;Data Analysis&lt;/h1&gt;
-&lt;h2 id=&#34;athena&#34;&gt;Athena&lt;/h2&gt;
+&lt;h2 id=&#34;athena-1&#34;&gt;Athena&lt;/h2&gt;
 &lt;p&gt;serverless服务&lt;/p&gt;
-&lt;h2 id=&#34;quicksight&#34;&gt;Quicksight&lt;/h2&gt;
+&lt;h2 id=&#34;quicksight-1&#34;&gt;Quicksight&lt;/h2&gt;
 &lt;h2 id=&#34;aws-cloudsearch&#34;&gt;AWS CloudSearch&lt;/h2&gt;
 &lt;hr&gt;
 </description>
@@ -1224,7 +1230,8 @@ $ eksctl delete nodegroup --cluster my-cluster --region us-west-2 --name my-ng
 &lt;li&gt;Oracle Database&lt;/li&gt;
 &lt;li&gt;Microsoft SQL Server&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h2 id=&#34;amazon-aurora&#34;&gt;Amazon Aurora&lt;/h2&gt;
+&lt;h2 id=&#34;aurora-serverless&#34;&gt;Aurora Serverless&lt;/h2&gt;
+&lt;h2 id=&#34;aurora&#34;&gt;Aurora&lt;/h2&gt;
 &lt;p&gt;兼容mysql和postgresql.&lt;/p&gt;
 &lt;h2 id=&#34;dynamodb&#34;&gt;DynamoDB&lt;/h2&gt;
 &lt;p&gt;非关系数据库(NoSQL).&lt;/p&gt;
@@ -1234,15 +1241,13 @@ $ eksctl delete nodegroup --cluster my-cluster --region us-west-2 --name my-ng
 &lt;p&gt;兼容MongoDB.&lt;/p&gt;
 &lt;h2 id=&#34;elasticcache&#34;&gt;ElasticCache&lt;/h2&gt;
 &lt;p&gt;内存数据库(in-memory). 兼容redis和memcached.&lt;/p&gt;
-&lt;h2 id=&#34;amazon-memorydb-for-redis&#34;&gt;Amazon MemoryDB for Redis&lt;/h2&gt;
 &lt;h2 id=&#34;keyspaces&#34;&gt;Keyspaces&lt;/h2&gt;
 &lt;p&gt;兼容cassandra的无服务器数据库。&lt;/p&gt;
 &lt;h2 id=&#34;redshift&#34;&gt;Redshift&lt;/h2&gt;
 &lt;p&gt;Amazon Redshift 是一项数据仓库服务，可用于进行大数据分析。&lt;/p&gt;
 &lt;h2 id=&#34;neptune&#34;&gt;Neptune&lt;/h2&gt;
 &lt;p&gt;图形数据库&lt;/p&gt;
-&lt;h2 id=&#34;qldb&#34;&gt;QLDB&lt;/h2&gt;
-&lt;p&gt;分类账数据库&lt;/p&gt;
+&lt;h2 id=&#34;timesteam&#34;&gt;Timesteam&lt;/h2&gt;
 </description>
         </item>
         <item>
@@ -1292,15 +1297,15 @@ kubernetes.io/cluster/${cluster-name}: owned/shared
 &lt;p&gt;可以通过external-DNS 自动同步eks上的service和ingress到dns。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;aws route53 list-hosted-zones
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;api-gateway&#34;&gt;API Gateway&lt;/h2&gt;
 &lt;h2 id=&#34;cloudfront&#34;&gt;CloudFront&lt;/h2&gt;
 &lt;p&gt;CDN服务.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;direct-connect&#34;&gt;Direct Connect&lt;/h2&gt;
 &lt;p&gt;提供数据中心和AWS直连。&lt;/p&gt;
-&lt;h2 id=&#34;aws-app-mesh&#34;&gt;AWS App Mesh&lt;/h2&gt;
-&lt;h2 id=&#34;aws-cloud-map&#34;&gt;AWs Cloud Map&lt;/h2&gt;
 &lt;h2 id=&#34;global-accelerator&#34;&gt;Global Accelerator&lt;/h2&gt;
+&lt;h2 id=&#34;privatelink&#34;&gt;PrivateLink&lt;/h2&gt;
+&lt;h2 id=&#34;transit-gateway&#34;&gt;Transit Gateway&lt;/h2&gt;
+&lt;h2 id=&#34;vpn&#34;&gt;VPN&lt;/h2&gt;
 </description>
         </item>
         <item>
@@ -1356,6 +1361,18 @@ aws sso logout
 &lt;h2 id=&#34;guardduty&#34;&gt;GuardDuty&lt;/h2&gt;
 &lt;h2 id=&#34;cognito&#34;&gt;Cognito&lt;/h2&gt;
 &lt;p&gt;支持google/amazon/MS-AD/SAML 登陆。&lt;/p&gt;
+&lt;h2 id=&#34;audit-manager&#34;&gt;Audit Manager&lt;/h2&gt;
+&lt;h2 id=&#34;cloudhsm&#34;&gt;CloudHSM&lt;/h2&gt;
+&lt;h2 id=&#34;detective&#34;&gt;Detective&lt;/h2&gt;
+&lt;h2 id=&#34;directory-service&#34;&gt;Directory Service&lt;/h2&gt;
+&lt;h2 id=&#34;firewall-manager&#34;&gt;Firewall Manager&lt;/h2&gt;
+&lt;h2 id=&#34;macie&#34;&gt;Macie&lt;/h2&gt;
+&lt;h2 id=&#34;network-firewall&#34;&gt;Network Firewall&lt;/h2&gt;
+&lt;h2 id=&#34;ram&#34;&gt;RAM&lt;/h2&gt;
+&lt;p&gt;Resource Access Manager&lt;/p&gt;
+&lt;h2 id=&#34;security-hub&#34;&gt;Security Hub&lt;/h2&gt;
+&lt;h2 id=&#34;sts&#34;&gt;STS&lt;/h2&gt;
+&lt;p&gt;Security Token Service&lt;/p&gt;
 </description>
         </item>
         <item>
@@ -1423,7 +1440,7 @@ aws sso logout
 &lt;h2 id=&#34;aws-edr&#34;&gt;AWS EDR&lt;/h2&gt;
 &lt;p&gt;Elastic Disaster Recovery.&lt;/p&gt;
 &lt;hr&gt;
-&lt;h1 id=&#34;snow-family&#34;&gt;Snow family&lt;/h1&gt;
+&lt;h1 id=&#34;snow-family&#34;&gt;Snow Family&lt;/h1&gt;
 &lt;h2 id=&#34;snowcone&#34;&gt;Snowcone&lt;/h2&gt;
 &lt;h2 id=&#34;snowball&#34;&gt;Snowball&lt;/h2&gt;
 &lt;ul&gt;
@@ -1449,10 +1466,10 @@ aws sso logout
 &lt;h2 id=&#34;dms&#34;&gt;DMS&lt;/h2&gt;
 &lt;p&gt;Database Migration Service.&lt;/p&gt;
 &lt;p&gt;让您能够迁移关系数据库、非关系数据库和其他类型的数据存储。&lt;/p&gt;
+&lt;h2 id=&#34;sct&#34;&gt;SCT&lt;/h2&gt;
+&lt;p&gt;Schema Conversion Tool&lt;/p&gt;
 &lt;h2 id=&#34;datasync&#34;&gt;DataSync&lt;/h2&gt;
-&lt;h2 id=&#34;mainframe-modernization&#34;&gt;MainFrame Modernization&lt;/h2&gt;
 &lt;h2 id=&#34;migration-hub&#34;&gt;Migration Hub&lt;/h2&gt;
-&lt;h2 id=&#34;server-migration-service&#34;&gt;Server Migration Service&lt;/h2&gt;
 </description>
         </item>
         <item>
@@ -9615,11 +9632,22 @@ func (*WaitGroup) Wait()
 &lt;p&gt;提供底层的原子级内存操作，主要用于goroutine同步.&lt;/p&gt;
 &lt;p&gt;int32, int64, uint32, uint64, uintptr, pointer.&lt;/p&gt;
 &lt;h2 id=&#34;function&#34;&gt;function&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;func LoadInt32(addr *int32) (val int32)
-func StoreInt32(addr *int32, val int32)
-func AddInt32(addr *int32, delta int32) (new int32)
-func SwapInt32(addr *int32, new int32) (old int32)
-func CompareAndSwapInt32(addr *int32, old, new int32) (swapped bool)
+&lt;pre&gt;&lt;code&gt;func AddInt64(addr *int64, delta int64) (new int64)
+func AddUint64(addr *uint64, delta uint64) (new uint64)
+func LoadInt64(addr *int64) (val int64)
+func LoadUint64(addr *uint64) (val uint64)
+func StoreInt64(addr *int64, val int64)
+func StoreUint64(addr *uint64, val uint64)
+func SwapInt64(addr *int64, new int64) (old int64)
+func SwapUint64(addr *uint64, new uint64) (old uint64)
+func CompareAndSwapInt64(addr *int64, old, new int64) (swapped bool)
+func CompareAndSwapUint64(addr *uint64, old, new uint64) (swapped bool)
+
+
+
+
+
+Uint64
 &lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>

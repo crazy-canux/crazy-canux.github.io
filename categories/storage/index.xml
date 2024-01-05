@@ -71,7 +71,7 @@
 &lt;h2 id=&#34;aws-edr&#34;&gt;AWS EDR&lt;/h2&gt;
 &lt;p&gt;Elastic Disaster Recovery.&lt;/p&gt;
 &lt;hr&gt;
-&lt;h1 id=&#34;snow-family&#34;&gt;Snow family&lt;/h1&gt;
+&lt;h1 id=&#34;snow-family&#34;&gt;Snow Family&lt;/h1&gt;
 &lt;h2 id=&#34;snowcone&#34;&gt;Snowcone&lt;/h2&gt;
 &lt;h2 id=&#34;snowball&#34;&gt;Snowball&lt;/h2&gt;
 &lt;ul&gt;
@@ -97,10 +97,10 @@
 &lt;h2 id=&#34;dms&#34;&gt;DMS&lt;/h2&gt;
 &lt;p&gt;Database Migration Service.&lt;/p&gt;
 &lt;p&gt;让您能够迁移关系数据库、非关系数据库和其他类型的数据存储。&lt;/p&gt;
+&lt;h2 id=&#34;sct&#34;&gt;SCT&lt;/h2&gt;
+&lt;p&gt;Schema Conversion Tool&lt;/p&gt;
 &lt;h2 id=&#34;datasync&#34;&gt;DataSync&lt;/h2&gt;
-&lt;h2 id=&#34;mainframe-modernization&#34;&gt;MainFrame Modernization&lt;/h2&gt;
 &lt;h2 id=&#34;migration-hub&#34;&gt;Migration Hub&lt;/h2&gt;
-&lt;h2 id=&#34;server-migration-service&#34;&gt;Server Migration Service&lt;/h2&gt;
 </description>
         </item>
         <item>

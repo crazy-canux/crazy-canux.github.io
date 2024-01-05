@@ -13,10 +13,15 @@
         
         <guid>https://canuxcheng.com/post/aws_management/</guid>
         <description>&lt;h1 id=&#34;aws-monitor&#34;&gt;AWS Monitor&lt;/h1&gt;
+&lt;h2 id=&#34;cli&#34;&gt;CLI&lt;/h2&gt;
+&lt;h2 id=&#34;management-console&#34;&gt;Management Console&lt;/h2&gt;
+&lt;h2 id=&#34;quotas&#34;&gt;Quotas&lt;/h2&gt;
+&lt;h2 id=&#34;service-catalog&#34;&gt;Service Catalog&lt;/h2&gt;
 &lt;h2 id=&#34;cloudwatch&#34;&gt;CloudWatch&lt;/h2&gt;
 &lt;p&gt;监控和管理服务，收集logs, metrics 和 events，支持基于metrics的alert。&lt;/p&gt;
 &lt;p&gt;MTTR
 TCO&lt;/p&gt;
+&lt;h2 id=&#34;cloudwatch-logs&#34;&gt;CloudWatch Logs&lt;/h2&gt;
 &lt;h2 id=&#34;cloudtrail&#34;&gt;CloudTrail&lt;/h2&gt;
 &lt;p&gt;可以用来记录，持续监控和保留与AWS基础设施中的操作相关的账户活动。&lt;/p&gt;
 &lt;p&gt;将审计记录插入S3或者cloudwatch log， 记录突发事件。&lt;/p&gt;
@@ -26,26 +31,23 @@ TCO&lt;/p&gt;
 &lt;p&gt;优化性能和安全性&lt;/p&gt;
 &lt;h2 id=&#34;amazon-grafana&#34;&gt;Amazon Grafana&lt;/h2&gt;
 &lt;h2 id=&#34;amazon-prometheus&#34;&gt;Amazon Prometheus&lt;/h2&gt;
-&lt;h2 id=&#34;launch-wizard&#34;&gt;Launch Wizard&lt;/h2&gt;
-&lt;p&gt;应用程序部署指导.&lt;/p&gt;
-&lt;hr&gt;
 &lt;h2 id=&#34;cloudformation&#34;&gt;CloudFormation&lt;/h2&gt;
 &lt;p&gt;提供基于模板(yaml/json)的基础设施服务(IaaS).&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;opsworks&#34;&gt;OpsWorks&lt;/h2&gt;
-&lt;p&gt;配置管理服务（chef, puppet).&lt;/p&gt;
+&lt;h2 id=&#34;compute-optimizer&#34;&gt;Compute Optimizer&lt;/h2&gt;
+&lt;h2 id=&#34;control-tower&#34;&gt;Control Tower&lt;/h2&gt;
+&lt;h2 id=&#34;health-dashboard&#34;&gt;Health Dashboard&lt;/h2&gt;
 &lt;h2 id=&#34;aws-systems-manager&#34;&gt;AWS Systems Manager&lt;/h2&gt;
 &lt;p&gt;提供运维数据，并且在跨基础设施中进行自动化操作。&lt;/p&gt;
-&lt;hr&gt;
 &lt;h2 id=&#34;aws-organizations&#34;&gt;AWS Organizations&lt;/h2&gt;
 &lt;p&gt;账号集中管理。&lt;/p&gt;
-&lt;h2 id=&#34;aws-control-tower&#34;&gt;AWS Control Tower&lt;/h2&gt;
-&lt;hr&gt;
 &lt;h2 id=&#34;aws-license-manager&#34;&gt;AWS License Manager&lt;/h2&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;aws-auto-scaling&#34;&gt;AWS Auto Scaling&lt;/h2&gt;
-&lt;hr&gt;
+&lt;h2 id=&#34;proton&#34;&gt;Proton&lt;/h2&gt;
 &lt;h2 id=&#34;aws-well-architected-tool&#34;&gt;AWS Well-Architected Tool&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;financial-management&#34;&gt;Financial Management&lt;/h1&gt;
+&lt;h2 id=&#34;budgets&#34;&gt;Budgets&lt;/h2&gt;
+&lt;h2 id=&#34;cost-explorer&#34;&gt;Cost Explorer&lt;/h2&gt;
+&lt;h2 id=&#34;savings-plans&#34;&gt;Savings Plans&lt;/h2&gt;
 </description>
         </item>
         <item>

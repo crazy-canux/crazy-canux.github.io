@@ -292,11 +292,22 @@ func (*WaitGroup) Wait()
 &lt;p&gt;提供底层的原子级内存操作，主要用于goroutine同步.&lt;/p&gt;
 &lt;p&gt;int32, int64, uint32, uint64, uintptr, pointer.&lt;/p&gt;
 &lt;h2 id=&#34;function&#34;&gt;function&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;func LoadInt32(addr *int32) (val int32)
-func StoreInt32(addr *int32, val int32)
-func AddInt32(addr *int32, delta int32) (new int32)
-func SwapInt32(addr *int32, new int32) (old int32)
-func CompareAndSwapInt32(addr *int32, old, new int32) (swapped bool)
+&lt;pre&gt;&lt;code&gt;func AddInt64(addr *int64, delta int64) (new int64)
+func AddUint64(addr *uint64, delta uint64) (new uint64)
+func LoadInt64(addr *int64) (val int64)
+func LoadUint64(addr *uint64) (val uint64)
+func StoreInt64(addr *int64, val int64)
+func StoreUint64(addr *uint64, val uint64)
+func SwapInt64(addr *int64, new int64) (old int64)
+func SwapUint64(addr *uint64, new uint64) (old uint64)
+func CompareAndSwapInt64(addr *int64, old, new int64) (swapped bool)
+func CompareAndSwapUint64(addr *uint64, old, new uint64) (swapped bool)
+
+
+
+
+
+Uint64
 &lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
