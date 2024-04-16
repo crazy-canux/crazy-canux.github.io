@@ -6,7 +6,15 @@
         <description>Recent content in Categories on Morgoth</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Thu, 19 Oct 2023 20:03:39 +0800</lastBuildDate><atom:link href="https://canuxcheng.com/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 23 Jan 2024 22:02:31 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Cloud</title>
+        <link>https://canuxcheng.com/categories/cloud/</link>
+        <pubDate>Tue, 23 Jan 2024 22:02:31 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/categories/cloud/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>CNCF</title>
         <link>https://canuxcheng.com/categories/cncf/</link>
         <pubDate>Thu, 19 Oct 2023 20:03:39 +0800</pubDate>
@@ -36,14 +44,6 @@
         <pubDate>Mon, 15 May 2023 09:41:39 +0800</pubDate>
         
         <guid>https://canuxcheng.com/categories/hw/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>Cloud</title>
-        <link>https://canuxcheng.com/categories/cloud/</link>
-        <pubDate>Sun, 23 Apr 2023 22:02:31 +0000</pubDate>
-        
-        <guid>https://canuxcheng.com/categories/cloud/</guid>
         <description></description>
         </item>
         <item>
@@ -108,14 +108,6 @@
         <pubDate>Sun, 12 Jul 2020 21:18:33 +0000</pubDate>
         
         <guid>https://canuxcheng.com/categories/linux/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>K8S</title>
-        <link>https://canuxcheng.com/categories/k8s/</link>
-        <pubDate>Fri, 10 Jan 2020 20:55:52 +0800</pubDate>
-        
-        <guid>https://canuxcheng.com/categories/k8s/</guid>
         <description></description>
         </item>
         <item>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>docker on Morgoth</title>
+        <title>Docker on Morgoth</title>
         <link>https://canuxcheng.com/tags/docker/</link>
-        <description>Recent content in docker on Morgoth</description>
+        <description>Recent content in Docker on Morgoth</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <lastBuildDate>Sat, 04 Jan 2020 21:53:40 +0800</lastBuildDate><atom:link href="https://canuxcheng.com/tags/docker/index.xml" rel="self" type="application/rss+xml" /><item>
@@ -310,13 +310,20 @@ $ sudo mv ./kompose /usr/local/bin/kompose&lt;/code&gt;&lt;/pre&gt;
         <description>&lt;h1 id=&#34;image&#34;&gt;image&lt;/h1&gt;
 &lt;p&gt;容器镜像&lt;/p&gt;
 &lt;p&gt;docker image driver: aufs, btrfs, devicemapper, overlay.&lt;/p&gt;
-&lt;h2 id=&#34;buildx&#34;&gt;buildx&lt;/h2&gt;
+&lt;h2 id=&#34;multi-platform-images&#34;&gt;multi-platform images&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.docker.com/build/building/multi-platform/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://docs.docker.com/build/building/multi-platform/&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;qemu&#34;&gt;qemu&lt;/h3&gt;
 &lt;p&gt;使用qume:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;// 安装bitfmt
 docker run --privileged --rm tonistiigi/binfmt --install all
 
 // 查看支持的平台
 ls -l /proc/sys/fs/binfmt_misc/qemu-*
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;multiple-native-nodes&#34;&gt;multiple native nodes&lt;/h3&gt;
+&lt;p&gt;安装&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo apt install docker-buildx-plugin
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;查看版本&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;docker buildx version
@@ -363,6 +370,8 @@ docker buildx build --platform linux/amd64,linux/amd64/v2,linux/amd64/v3,linux/a
 docker buildx build -o type=docker --platform linux/amd64 -t name:1.0.0 .
 docker buildx build -o type=docker --platform linux/arm64 -t name:1.0.0-linux-arm64 .
 &lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;cross-compilation&#34;&gt;cross-compilation&lt;/h3&gt;
+&lt;hr&gt;
 &lt;h2 id=&#34;overlay&#34;&gt;Overlay&lt;/h2&gt;
 &lt;p&gt;最下层是一个 lower 层，也就是镜像层，它是一个只读层；&lt;/p&gt;
 &lt;p&gt;右上层是一个 upper 层，upper 是容器的读写层，upper 层采用了写实复制的机制，也就是说只有对某些文件需要进行修改的时候才会从 lower 层把这个文件拷贝上来，之后所有的修改操作都会对 upper 层的副本进行修改；&lt;/p&gt;

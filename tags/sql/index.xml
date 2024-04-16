@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>sql on Morgoth</title>
+        <title>Sql on Morgoth</title>
         <link>https://canuxcheng.com/tags/sql/</link>
-        <description>Recent content in sql on Morgoth</description>
+        <description>Recent content in Sql on Morgoth</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <lastBuildDate>Wed, 25 May 2016 22:06:13 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/sql/index.xml" rel="self" type="application/rss+xml" /><item>

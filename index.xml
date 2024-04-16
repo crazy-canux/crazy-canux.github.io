@@ -6,7 +6,52 @@
         <description>Recent content on Morgoth</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Thu, 19 Oct 2023 20:03:39 +0800</lastBuildDate><atom:link href="https://canuxcheng.com/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 23 Jan 2024 22:02:31 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>AWS Development</title>
+        <link>https://canuxcheng.com/post/aws_development/</link>
+        <pubDate>Tue, 23 Jan 2024 22:02:31 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/aws_development/</guid>
+        <description>&lt;h1 id=&#34;development&#34;&gt;Development&lt;/h1&gt;
+&lt;h2 id=&#34;tools&#34;&gt;Tools&lt;/h2&gt;
+&lt;h3 id=&#34;cloud9&#34;&gt;Cloud9&lt;/h3&gt;
+&lt;h3 id=&#34;codeartifact&#34;&gt;CodeArtifact&lt;/h3&gt;
+&lt;h3 id=&#34;codebuild&#34;&gt;CodeBuild&lt;/h3&gt;
+&lt;h3 id=&#34;codecommit&#34;&gt;CodeCommit&lt;/h3&gt;
+&lt;h3 id=&#34;codedeploy&#34;&gt;CodeDeploy&lt;/h3&gt;
+&lt;h3 id=&#34;codeguru&#34;&gt;CodeGuru&lt;/h3&gt;
+&lt;h3 id=&#34;codepipeline&#34;&gt;CodePipeline&lt;/h3&gt;
+&lt;h3 id=&#34;codestar&#34;&gt;CodeStar&lt;/h3&gt;
+&lt;h3 id=&#34;x-ray&#34;&gt;X-Ray&lt;/h3&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;blockchain&#34;&gt;Blockchain&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;multimedia&#34;&gt;Multimedia&lt;/h2&gt;
+&lt;h3 id=&#34;elastic-transcoder&#34;&gt;Elastic Transcoder&lt;/h3&gt;
+&lt;h3 id=&#34;kinesis-video-streams&#34;&gt;Kinesis Video Streams&lt;/h3&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;webmobile&#34;&gt;Web&amp;amp;Mobile&lt;/h2&gt;
+&lt;h3 id=&#34;amplify&#34;&gt;Amplify&lt;/h3&gt;
+&lt;h3 id=&#34;api-gateway&#34;&gt;API Gateway&lt;/h3&gt;
+&lt;h3 id=&#34;device-farm&#34;&gt;Device Farm&lt;/h3&gt;
+&lt;h3 id=&#34;pinpoint&#34;&gt;Pinpoint&lt;/h3&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;iot&#34;&gt;IoT&lt;/h2&gt;
+&lt;h3 id=&#34;iot-analytics&#34;&gt;IoT Analytics&lt;/h3&gt;
+&lt;h3 id=&#34;iot-core&#34;&gt;IoT Core&lt;/h3&gt;
+&lt;h3 id=&#34;iot-events&#34;&gt;IoT Events&lt;/h3&gt;
+&lt;p&gt;&amp;hellip;&amp;hellip;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;mlai&#34;&gt;ML&amp;amp;AI&lt;/h2&gt;
+&lt;h3 id=&#34;comprehend&#34;&gt;Comprehend&lt;/h3&gt;
+&lt;h3 id=&#34;forecast&#34;&gt;Forecast&lt;/h3&gt;
+&lt;h3 id=&#34;fraud-detector&#34;&gt;Fraud Detector&lt;/h3&gt;
+&lt;h3 id=&#34;kendra&#34;&gt;Kendra&lt;/h3&gt;
+&lt;h3 id=&#34;lex&#34;&gt;Lex&lt;/h3&gt;
+&lt;p&gt;&amp;hellip;&amp;hellip;&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>Security</title>
         <link>https://canuxcheng.com/post/k8s_security/</link>
         <pubDate>Thu, 19 Oct 2023 20:03:39 +0800</pubDate>
@@ -1335,7 +1380,8 @@ kubernetes.io/cluster/${cluster-name}: owned/shared
 &lt;hr&gt;
 &lt;h2 id=&#34;sso&#34;&gt;SSO&lt;/h2&gt;
 &lt;p&gt;sso登陆:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;aws sso login --no-browser 
+&lt;pre&gt;&lt;code&gt;aws configure sso
+aws sso login --no-browser 
 aws sso logout
 &lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
@@ -1920,7 +1966,7 @@ spec:
     &gt;https://github.com/ahmetb/kubectx&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;在master上通过kubectl命令管理集群.&lt;/p&gt;
 &lt;p&gt;kubectl 版本和集群版本之间的差异必须在一个小版本号内。 例如：v1.24 版本的客户端能与 v1.23、 v1.24 和 v1.25 版本的控制面通信。 用最新兼容版的 kubectl 有助于避免不可预见的问题。&lt;/p&gt;
-&lt;h1 id=&#34;options&#34;&gt;options:&lt;/h1&gt;
+&lt;h2 id=&#34;options&#34;&gt;Options&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;kubectl options # 查看所有命令可用选项
 
 --kubeconfig
@@ -1928,7 +1974,7 @@ kubectl --kubeconfig=$HOME/.kube.config (default)
 
 -n/--namespace
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;basic-command&#34;&gt;basic command&lt;/h1&gt;
+&lt;h2 id=&#34;basic-command&#34;&gt;basic command&lt;/h2&gt;
 &lt;p&gt;create:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;# 通过yaml或json文件创建资源
 $ kubectl create -f FILENAME [options]
@@ -2019,7 +2065,7 @@ kubectl explain deploy.spec
 &lt;pre&gt;&lt;code&gt;// 在线修改资源，直接生效.
 $ kubectl edit
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;advanced-commands&#34;&gt;advanced commands&lt;/h1&gt;
+&lt;h2 id=&#34;advanced-commands&#34;&gt;advanced commands&lt;/h2&gt;
 &lt;p&gt;apply:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;$ kubectl apply
 &lt;/code&gt;&lt;/pre&gt;
@@ -2038,9 +2084,10 @@ $ kubectl wait
 
 $ kubectl kustomize
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;deploy-command&#34;&gt;deploy command&lt;/h1&gt;
+&lt;h2 id=&#34;deploy-command&#34;&gt;deploy command&lt;/h2&gt;
 &lt;p&gt;scale:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;$ kubectl scale
+$ kubectl scale deployment &amp;lt;deploy-name&amp;gt; -n &amp;lt;ns&amp;gt; --replicas=0
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;autoscale:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;$ kubectl autoscale
@@ -2052,7 +2099,7 @@ $ kubectl rollout
 // 暂停/恢复/重启 deployment.
 kubectl rollout pause/resume/restart  deploy/katib-mysql -n kubeflow
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;debugtroubleshoot&#34;&gt;debug&amp;amp;troubleshoot&lt;/h1&gt;
+&lt;h2 id=&#34;debugtroubleshoot&#34;&gt;debug&amp;amp;troubleshoot&lt;/h2&gt;
 &lt;p&gt;describe:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;// like docker inspect
 $ kubectl describe (-f FILENAME | TYPE ... | TYPE/NAME) [options]
@@ -2123,7 +2170,7 @@ $ kubectl port-forward --address 0.0.0.0 -n kubernetes-dashboard service/kuberne
 // debug node -- 直接进入node的shell，log在/host/var/log
 kubectl debug node/&amp;lt;name&amp;gt;  -it   --image=ubuntu
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;cluster-management&#34;&gt;cluster management&lt;/h1&gt;
+&lt;h2 id=&#34;cluster-management&#34;&gt;cluster management&lt;/h2&gt;
 &lt;p&gt;top:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;$ kubectl top
 
@@ -2145,7 +2192,7 @@ kubectl drain &amp;lt;node&amp;gt; --delete-emptydir-data --ignore-daemonsets
 $ kubectl taint
 kubectl taint nodes &amp;lt;node&amp;gt; &amp;lt;key&amp;gt;=&amp;lt;value&amp;gt;:NoSchedule-
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;settings-commands&#34;&gt;Settings Commands&lt;/h1&gt;
+&lt;h2 id=&#34;settings-commands&#34;&gt;Settings Commands&lt;/h2&gt;
 &lt;p&gt;label&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;label          Update the labels on a resource
 
@@ -2181,7 +2228,7 @@ $ kubectl plugin list
 &lt;pre&gt;&lt;code&gt;version        Print the client and server version information.
 &lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
-&lt;h1 id=&#34;shell-auotcompletion&#34;&gt;shell-auotcompletion&lt;/h1&gt;
+&lt;h2 id=&#34;shell-auotcompletion&#34;&gt;shell-auotcompletion&lt;/h2&gt;
 &lt;p&gt;bash/zsh 自动补全工具.&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://kubernetes.io/docs/tasks/tools/install-kubectl/#enabling-shell-autocompletion&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://kubernetes.io/docs/tasks/tools/install-kubectl/#enabling-shell-autocompletion&lt;/a&gt;&lt;/p&gt;
@@ -2206,7 +2253,7 @@ $ kubectl krew upgrade
 // 卸载插件
 $ kubectl krew uninstall &amp;lt;name&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;kubectx&#34;&gt;kubectx&lt;/h1&gt;
+&lt;h2 id=&#34;kubectx&#34;&gt;kubectx&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/ahmetb/kubectx&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/ahmetb/kubectx&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;在cluster和namespace之间切换的命令行工具.&lt;/p&gt;
@@ -2221,11 +2268,11 @@ $ kubectl krew install ns
     &gt;https://github.com/kubernetes-sigs/cri-tools&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://kubernetes.io/docs/tasks/debug/debug-cluster/crictl/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://kubernetes.io/docs/tasks/debug/debug-cluster/crictl/&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id=&#34;nerdctl&#34;&gt;nerdctl&lt;/h1&gt;
+&lt;h2 id=&#34;nerdctl&#34;&gt;nerdctl&lt;/h2&gt;
 &lt;p&gt;调试node。&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/containerd/nerdctl&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/containerd/nerdctl&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id=&#34;telepresence&#34;&gt;telepresence&lt;/h1&gt;
+&lt;h2 id=&#34;telepresence&#34;&gt;telepresence&lt;/h2&gt;
 &lt;p&gt;用于本地调试集群上的服务.&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/telepresenceio/telepresence&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/telepresenceio/telepresence&lt;/a&gt;&lt;/p&gt;
@@ -2533,14 +2580,14 @@ spec:
     // 如果没有subpath，整个目录会被覆盖，目录下只有secret/configmap挂载的文件.
     volumeMounts: // secret以文件形式挂载到/etc/foo
     - name: my-secret
-      mountPath: &amp;quot;/etc/foo&amp;quot;
+      mountPath: &amp;quot;/etc/foo&amp;quot; // 挂载之后覆盖整个目录
       readOnly: true
     - name: my-configmap
       mountPath: &amp;quot;/etc/bar&amp;quot; // 挂载之后覆盖整个目录
-      // 如果有subpath, secret/configmap里的data文件名需要和subpath/mountpath指定的文件名一致.
+      // 如果有subpath, secret/configmap里的data里的文件名需要与subpath和mountpath指定的文件名一致.
     - name: config
-      mountPath: /etc/app/app.conf 
-      subPath: app.conf // 挂载之后只覆盖同名文件,其它文件不影响.
+      mountPath: /etc/app/app.conf  // 是文件，文件名要和subpath一致。
+      subPath: app.conf // 挂载之后只覆盖目录中同名文件,其它文件不影响.
 
     // lifecycle
     livenessProbe:
@@ -4299,13 +4346,20 @@ sudo minikube start --vm-driver=none
         <description>&lt;h1 id=&#34;image&#34;&gt;image&lt;/h1&gt;
 &lt;p&gt;容器镜像&lt;/p&gt;
 &lt;p&gt;docker image driver: aufs, btrfs, devicemapper, overlay.&lt;/p&gt;
-&lt;h2 id=&#34;buildx&#34;&gt;buildx&lt;/h2&gt;
+&lt;h2 id=&#34;multi-platform-images&#34;&gt;multi-platform images&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.docker.com/build/building/multi-platform/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://docs.docker.com/build/building/multi-platform/&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;qemu&#34;&gt;qemu&lt;/h3&gt;
 &lt;p&gt;使用qume:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;// 安装bitfmt
 docker run --privileged --rm tonistiigi/binfmt --install all
 
 // 查看支持的平台
 ls -l /proc/sys/fs/binfmt_misc/qemu-*
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;multiple-native-nodes&#34;&gt;multiple native nodes&lt;/h3&gt;
+&lt;p&gt;安装&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo apt install docker-buildx-plugin
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;查看版本&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;docker buildx version
@@ -4352,6 +4406,8 @@ docker buildx build --platform linux/amd64,linux/amd64/v2,linux/amd64/v3,linux/a
 docker buildx build -o type=docker --platform linux/amd64 -t name:1.0.0 .
 docker buildx build -o type=docker --platform linux/arm64 -t name:1.0.0-linux-arm64 .
 &lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;cross-compilation&#34;&gt;cross-compilation&lt;/h3&gt;
+&lt;hr&gt;
 &lt;h2 id=&#34;overlay&#34;&gt;Overlay&lt;/h2&gt;
 &lt;p&gt;最下层是一个 lower 层，也就是镜像层，它是一个只读层；&lt;/p&gt;
 &lt;p&gt;右上层是一个 upper 层，upper 是容器的读写层，upper 层采用了写实复制的机制，也就是说只有对某些文件需要进行修改的时候才会从 lower 层把这个文件拷贝上来，之后所有的修改操作都会对 upper 层的副本进行修改；&lt;/p&gt;
@@ -5282,17 +5338,24 @@ nginx -t 检查配置文件
 &lt;h2 id=&#34;sast&#34;&gt;SAST&lt;/h2&gt;
 &lt;p&gt;SAST: Static Application Security Testing&lt;/p&gt;
 &lt;p&gt;Tools: SonarQube, Trivy, Coverity.&lt;/p&gt;
+&lt;p&gt;gitlab SAST report.
+gitlab secret detection report.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;dast&#34;&gt;DAST&lt;/h2&gt;
 &lt;p&gt;DAST: Dynamic Application Security Testing，动态应用程序安全测试, 对应用程序进行黑盒分析.&lt;/p&gt;
-&lt;p&gt;Tools: AppScan, AWVS, OWASP ZAP, Arachni.&lt;/p&gt;
+&lt;p&gt;Tools:&lt;/p&gt;
+&lt;p&gt;ZAP Scan(OWASP ZAP)&lt;/p&gt;
+&lt;p&gt;synopsys WhiteHat Sentinel.&lt;/p&gt;
+&lt;p&gt;gitlab DAST report.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;iast&#34;&gt;IAST&lt;/h2&gt;
 &lt;p&gt;IAST: Interactive Application Security Testing，交互式应用程序安全测试, 结合了SAST和DAST的优点.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;sca&#34;&gt;SCA&lt;/h2&gt;
-&lt;p&gt;SCA: Software bill-of-materials, 开源组件安全扫描。&lt;/p&gt;
-&lt;p&gt;Tools： BlackDuck.&lt;/p&gt;
+&lt;p&gt;SCA: Software Composition Analysis.&lt;/p&gt;
+&lt;p&gt;SBOM (software Bill of Materials),开源组件安全扫描&lt;/p&gt;
+&lt;p&gt;Tools： BlackDuck, Jfrog Xray.&lt;/p&gt;
+&lt;p&gt;gitlab dependency scanning report.&lt;/p&gt;
 </description>
         </item>
         <item>
@@ -8490,7 +8553,7 @@ godoc -http=:6060
 &lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;go关键字&#34;&gt;Go关键字&lt;/h1&gt;
-&lt;pre&gt;&lt;code&gt;var const
+&lt;pre&gt;&lt;code&gt;var const 
 break continue for if else switch case default goto fallthrough
 func return defer
 package import
@@ -8871,6 +8934,11 @@ for _, value := range m {...}
 
 floatA := float64(uint64Var)
 &lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;others&#34;&gt;others&lt;/h2&gt;
+&lt;p&gt;any&lt;/p&gt;
+&lt;p&gt;comparable&lt;/p&gt;
+&lt;p&gt;byte&lt;/p&gt;
+&lt;p&gt;error&lt;/p&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;go控制流&#34;&gt;Go控制流&lt;/h1&gt;
 &lt;p&gt;go控制流的左大括号不能另起一行．&lt;/p&gt;
@@ -9576,6 +9644,7 @@ Mutex
 &lt;p&gt;method:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;// 加锁，如果已经加锁，阻塞至m解锁．
 func (m *Mutex) Lock()
+
 // 解锁，如果没有加锁，导致panic
 func (m *Mutex) Unlock()
 &lt;/code&gt;&lt;/pre&gt;
@@ -9584,12 +9653,15 @@ func (m *Mutex) Unlock()
 &lt;pre&gt;&lt;code&gt;type RWMutex struct {}
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;method:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;// 锁定为写入状态，禁止其它线程读写
+&lt;pre&gt;&lt;code&gt;// 锁定为写入状态，禁止其它线程读写，一次只能有一个线程持有。
 func (rw *RWMutex) Lock()
+
 // 解除写入锁定，如果没有加锁，导致panic
 func (rw *RWMutex) Unlock()
-// 锁定为读取状态，禁止其他线程写入，但是可以读
+
+// 锁定为读取状态，禁止其他线程写入，多个线程可以同时持有读锁。
 func (rw *RWMutex) RLock()
+
 // 解除读取锁，如果没有加锁，导致panic.
 func (rw *RWMutex) RUnlock()
 &lt;/code&gt;&lt;/pre&gt;
@@ -11380,6 +11452,12 @@ func Readlink(name string) (string, error)
 func Symlink(oldname, newname string) error // 创建符号连接
 func Link(oldname, newname string) error // 创建硬连接
 func TempDir() string // 返回一个用于保管临时文件的默认目录
+
+// 从filename指定的文件读取数据并返回, 成功返回文件内容和nil
+func ReadFile(filename string) ([]byte, error)
+
+// 向filename指定文件写入数据，如果文件存在先清空文件，如果不存在创建文件.
+func WriteFile(filename string, data []byte, perm os.FileMode) error
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;signal&#34;&gt;Signal&lt;/h2&gt;
 &lt;p&gt;interface:&lt;/p&gt;
@@ -11652,6 +11730,7 @@ var SocketDisableIPv6 bool
 &lt;hr&gt;
 &lt;h1 id=&#34;io&#34;&gt;io&lt;/h1&gt;
 &lt;p&gt;提供了对IO原语的基本接口&lt;/p&gt;
+&lt;p&gt;go1.16 删除了io/ioutil&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;import &amp;quot;io&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;variables-2&#34;&gt;variables&lt;/h2&gt;
@@ -11659,13 +11738,9 @@ var SocketDisableIPv6 bool
 var EOF = errors.New(&amp;quot;EOF&amp;quot;)
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;functions-2&#34;&gt;functions&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;func TeeReader(r Reader, w Writer) Reader
-
-// 返回一个串联的Reader接口,依次读.
-func MultiReader(readers ...Reader) Reader
-
-// 返回一个串联的Writer接口，依次写入．
-func MultiWriter(writers ...Writer) Writer
+&lt;pre&gt;&lt;code&gt;func ReadAll(r io.Reader) ([]byte, error)
+func ReadAtLeast(r Reader, buf []byte, min int) (n int, err error)
+func ReadFull(r Reader, buf []byte) (n int, err error)
 
 // 将src数据拷贝到dst, 直到EOF或出错，返回拷贝的字节数
 func Copy(dst Writer, src Reader) (written int64, err error)
@@ -11673,9 +11748,7 @@ func Copy(dst Writer, src Reader) (written int64, err error)
 // 类似Copy，不过只拷贝n个字节.
 func CopyN(dst Writer, src Reader, n int64) (written int64, err error)
 
-func ReadAtLeast(r Reader, buf []byte, min int) (n int, err error)
-
-func ReadFull(r Reader, buf []byte) (n int, err error)
+func CopyBuffer(dst Writer, src Reader, buf []byte) (written int64, err error)
 
 // 将字符串s写入w
 func WriteString(w Writer, s string) (n int, err error)
@@ -11718,30 +11791,6 @@ func WriteString(w Writer, s string) (n int, err error)
 }
 &lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
-&lt;h1 id=&#34;ioioutil&#34;&gt;io/ioutil&lt;/h1&gt;
-&lt;p&gt;实现一些增强的IO接口功能&lt;/p&gt;
-&lt;h2 id=&#34;variables-3&#34;&gt;variables&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;// 一个io.Writer接口，对它所有Write调用都会无实际操作成功返回.
-var Discard io.Writer = devNull(0)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;functions-3&#34;&gt;functions&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;func NopCloser(r io.Reader) io.ReadCloser
-
-func ReadAll(r io.Reader) ([]byte, error)
-
-// 从filename指定的文件读取数据并返回, 成功返回文件内容和nil
-func ReadFile(filename string) ([]byte, error)
-
-// 向filename指定文件写入数据，如果文件存在先清空文件，如果不存在创建文件.
-func WriteFile(filename string, data []byte, perm os.FileMode) error
-
-func ReadDir(dirname string) ([]os.FileInfo, error)
-
-func TempDir(dir, prefix string) (name string, err error)
-
-func TempFile(dir, prefix string) (f *os.File, err error)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;hr&gt;
 &lt;h1 id=&#34;bufio&#34;&gt;bufio&lt;/h1&gt;
 &lt;p&gt;bufio实现了有缓冲的IO&lt;/p&gt;
 &lt;h2 id=&#34;constants-2&#34;&gt;constants&lt;/h2&gt;
@@ -11750,14 +11799,14 @@ func TempFile(dir, prefix string) (f *os.File, err error)
     MaxScanTokenSize = 64 * 1024
 )
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;variables-4&#34;&gt;variables&lt;/h2&gt;
+&lt;h2 id=&#34;variables-3&#34;&gt;variables&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;// 会被Scanner返回的错误
 var (
     ErrInvalidUnreadByte = errors.New(&amp;quot;bufio: invalid use of UnreadByte&amp;quot;)
     ...
 )
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;functions-4&#34;&gt;functions&lt;/h2&gt;
+&lt;h2 id=&#34;functions-3&#34;&gt;functions&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;func ScanBytes(data []byte, atEOF bool) (advance int, token []byte, err error)
 
 func ScanRunes(data []byte, atEOF bool) (advance int, token []byte, err error)
@@ -11891,7 +11940,7 @@ func (s *Scanner) Err() error
 &lt;p&gt;指针：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;%p    十六进制表示(0x)
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;functions-5&#34;&gt;functions&lt;/h2&gt;
+&lt;h2 id=&#34;functions-4&#34;&gt;functions&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;// 返回一个包含该格式化字符串的错误
 func Errorf(format string, a ...interface{}) error
 
@@ -11990,7 +12039,7 @@ func Sscanf(str string, format string, a ...interface{}) (n int, err error)
     LstdFlags    = Ldate | Ltime      // 标准logger的初始值
 )
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;functions-6&#34;&gt;functions&lt;/h2&gt;
+&lt;h2 id=&#34;functions-5&#34;&gt;functions&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;func Printf(format string, v ...interface{})
 func Print(v ...interface{})
 func Println(v ...interface{})
@@ -12024,7 +12073,7 @@ func New(out io.Writer, prefix string, flag int) *Logger
 &lt;p&gt;第三方包:&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/alecthomas/kingpin&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/alecthomas/kingpin&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;variables-5&#34;&gt;variables&lt;/h2&gt;
+&lt;h2 id=&#34;variables-4&#34;&gt;variables&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;var CommandLine = NewFlagSet(os.Args[0], ExitOnError)
 
 //
@@ -12036,7 +12085,7 @@ var Usage = func() {
     PrintDefaults()
 }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;functions-7&#34;&gt;functions&lt;/h2&gt;
+&lt;h2 id=&#34;functions-6&#34;&gt;functions&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;// 返回已被设置的flag数量
 func NFlag() int
 // 返回已注册flag的结构体指针
@@ -28139,14 +28188,70 @@ $ tox
         
         <guid>https://canuxcheng.com/post/c_devops/</guid>
         <description>&lt;h1 id=&#34;ide&#34;&gt;IDE&lt;/h1&gt;
-&lt;p&gt;Windows: DEV C++&lt;/p&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://orwelldevcpp.blogspot.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;http://orwelldevcpp.blogspot.com/&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Linux: Vim + Gcc + Gdb&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Visual Studio&lt;/li&gt;
+&lt;li&gt;VSCode&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;compilers&#34;&gt;Compilers&lt;/h2&gt;
+&lt;p&gt;编译器组成：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;frontend&lt;/li&gt;
+&lt;li&gt;optimizer&lt;/li&gt;
+&lt;li&gt;backend&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://zh.cppreference.com/w/cpp/compiler_support&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://zh.cppreference.com/w/cpp/compiler_support&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;windows:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;llvm clang&lt;/li&gt;
+&lt;li&gt;Mingw&lt;/li&gt;
+&lt;li&gt;Msvc&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;linux:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;llvm clang&lt;/li&gt;
+&lt;li&gt;gcc&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;mac:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;llvm clang&lt;/li&gt;
+&lt;li&gt;gcc&lt;/li&gt;
+&lt;li&gt;apple clang&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;gcc&#34;&gt;gcc&lt;/h3&gt;
+&lt;p&gt;gnu gcc,g++&lt;/p&gt;
+&lt;h3 id=&#34;llvm-clang&#34;&gt;llvm clang&lt;/h3&gt;
+&lt;p&gt;llvm: low level virtual machine. (backend)&lt;/p&gt;
+&lt;p&gt;clang: c language.(frontend)&lt;/p&gt;
 &lt;hr&gt;
-&lt;h1 id=&#34;gccclang&#34;&gt;gcc/clang&lt;/h1&gt;
+&lt;h2 id=&#34;tools&#34;&gt;tools&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;CMake&lt;/li&gt;
+&lt;li&gt;MSBuild&lt;/li&gt;
+&lt;li&gt;Makefile&lt;/li&gt;
+&lt;/ul&gt;
 &lt;hr&gt;
-&lt;h1 id=&#34;gdb&#34;&gt;gdb&lt;/h1&gt;
+&lt;h2 id=&#34;gcc-1&#34;&gt;GCC&lt;/h2&gt;
+&lt;p&gt;&amp;ldquo;-ansi&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;for c: == -std=c90
+for cpp: ==-std=c++98&lt;/p&gt;
+&lt;p&gt;&amp;ldquo;-std&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;c++17, gnu++17, gnu17,c17
+gnu2x: 下个ISO C标准。
+c2x:下个ISO C标准。
+c++2a: 下个ISO C++标准
+gnu+2a:下个ISO C++标准&lt;/p&gt;
+&lt;p&gt;gcc8 开始支持c++20.
+gcc11开始支持c++23.&lt;/p&gt;
+&lt;h2 id=&#34;vscode&#34;&gt;vscode&lt;/h2&gt;
+&lt;p&gt;for macOS:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;xcode-select --install
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;extentions:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;c/c++&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </description>
         </item>
         <item>
@@ -30851,7 +30956,8 @@ string里面有空格用\开头。&lt;/code&gt;&lt;/pre&gt;
         
         <guid>https://canuxcheng.com/post/c_iso/</guid>
         <description>&lt;h1 id=&#34;c标准库&#34;&gt;C标准库&lt;/h1&gt;
-&lt;p&gt;ISO C89(ANSI C89) -&amp;gt; ISO C99 -&amp;gt; ISO C11&lt;/p&gt;
+&lt;p&gt;ISO C89(ANSI C89) -&amp;gt; ISO C95 -&amp;gt; ISO C99 -&amp;gt;&lt;/p&gt;
+&lt;p&gt;-&amp;gt; ISO C11 -&amp;gt; ISO C17 -&amp;gt; ISO C23&lt;/p&gt;
 &lt;p&gt;ANSI C 和 ISO C是对通用C语言的接口的定义。&lt;/p&gt;
 &lt;p&gt;符合这种标准的实现为C语言标准库,也叫libc。&lt;/p&gt;
 &lt;p&gt;官方网站：&lt;/p&gt;
@@ -30888,6 +30994,25 @@ string里面有空格用\开头。&lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;stdalignh&#34;&gt;&amp;lt;stdalign.h&amp;gt;&lt;/h2&gt;
 &lt;h2 id=&#34;stdatomich&#34;&gt;&amp;lt;stdatomic.h&amp;gt;&lt;/h2&gt;
 &lt;h2 id=&#34;threadsh&#34;&gt;&amp;lt;threads.h&amp;gt;&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;c标准&#34;&gt;C++标准&lt;/h1&gt;
+&lt;p&gt;C++98, C++11, C++14, C++17, C++20, C++23&lt;/p&gt;
+&lt;p&gt;c++ 头文件不带.h用来和C区分。&lt;/p&gt;
+&lt;h2 id=&#34;核心功能&#34;&gt;核心功能&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://zh.cppreference.com/w/cpp/language&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://zh.cppreference.com/w/cpp/language&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;标准库&#34;&gt;标准库&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://zh.cppreference.com/w/cpp/standard_library&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://zh.cppreference.com/w/cpp/standard_library&lt;/a&gt;&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://cplusplus.com/reference/iostream/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://cplusplus.com/reference/iostream/&lt;/a&gt;&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://cplusplus.com/reference/string/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://cplusplus.com/reference/string/&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;stl&#34;&gt;STL&lt;/h2&gt;
+&lt;h3 id=&#34;containers&#34;&gt;containers&lt;/h3&gt;
+&lt;h3 id=&#34;heading&#34;&gt;&lt;/h3&gt;
 </description>
         </item>
         <item>

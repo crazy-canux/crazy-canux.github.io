@@ -569,7 +569,7 @@ spec:
     &gt;https://github.com/ahmetb/kubectx&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;在master上通过kubectl命令管理集群.&lt;/p&gt;
 &lt;p&gt;kubectl 版本和集群版本之间的差异必须在一个小版本号内。 例如：v1.24 版本的客户端能与 v1.23、 v1.24 和 v1.25 版本的控制面通信。 用最新兼容版的 kubectl 有助于避免不可预见的问题。&lt;/p&gt;
-&lt;h1 id=&#34;options&#34;&gt;options:&lt;/h1&gt;
+&lt;h2 id=&#34;options&#34;&gt;Options&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;kubectl options # 查看所有命令可用选项
 
 --kubeconfig
@@ -577,7 +577,7 @@ kubectl --kubeconfig=$HOME/.kube.config (default)
 
 -n/--namespace
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;basic-command&#34;&gt;basic command&lt;/h1&gt;
+&lt;h2 id=&#34;basic-command&#34;&gt;basic command&lt;/h2&gt;
 &lt;p&gt;create:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;# 通过yaml或json文件创建资源
 $ kubectl create -f FILENAME [options]
@@ -668,7 +668,7 @@ kubectl explain deploy.spec
 &lt;pre&gt;&lt;code&gt;// 在线修改资源，直接生效.
 $ kubectl edit
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;advanced-commands&#34;&gt;advanced commands&lt;/h1&gt;
+&lt;h2 id=&#34;advanced-commands&#34;&gt;advanced commands&lt;/h2&gt;
 &lt;p&gt;apply:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;$ kubectl apply
 &lt;/code&gt;&lt;/pre&gt;
@@ -687,9 +687,10 @@ $ kubectl wait
 
 $ kubectl kustomize
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;deploy-command&#34;&gt;deploy command&lt;/h1&gt;
+&lt;h2 id=&#34;deploy-command&#34;&gt;deploy command&lt;/h2&gt;
 &lt;p&gt;scale:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;$ kubectl scale
+$ kubectl scale deployment &amp;lt;deploy-name&amp;gt; -n &amp;lt;ns&amp;gt; --replicas=0
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;autoscale:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;$ kubectl autoscale
@@ -701,7 +702,7 @@ $ kubectl rollout
 // 暂停/恢复/重启 deployment.
 kubectl rollout pause/resume/restart  deploy/katib-mysql -n kubeflow
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;debugtroubleshoot&#34;&gt;debug&amp;amp;troubleshoot&lt;/h1&gt;
+&lt;h2 id=&#34;debugtroubleshoot&#34;&gt;debug&amp;amp;troubleshoot&lt;/h2&gt;
 &lt;p&gt;describe:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;// like docker inspect
 $ kubectl describe (-f FILENAME | TYPE ... | TYPE/NAME) [options]
@@ -772,7 +773,7 @@ $ kubectl port-forward --address 0.0.0.0 -n kubernetes-dashboard service/kuberne
 // debug node -- 直接进入node的shell，log在/host/var/log
 kubectl debug node/&amp;lt;name&amp;gt;  -it   --image=ubuntu
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;cluster-management&#34;&gt;cluster management&lt;/h1&gt;
+&lt;h2 id=&#34;cluster-management&#34;&gt;cluster management&lt;/h2&gt;
 &lt;p&gt;top:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;$ kubectl top
 
@@ -794,7 +795,7 @@ kubectl drain &amp;lt;node&amp;gt; --delete-emptydir-data --ignore-daemonsets
 $ kubectl taint
 kubectl taint nodes &amp;lt;node&amp;gt; &amp;lt;key&amp;gt;=&amp;lt;value&amp;gt;:NoSchedule-
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;settings-commands&#34;&gt;Settings Commands&lt;/h1&gt;
+&lt;h2 id=&#34;settings-commands&#34;&gt;Settings Commands&lt;/h2&gt;
 &lt;p&gt;label&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;label          Update the labels on a resource
 
@@ -830,7 +831,7 @@ $ kubectl plugin list
 &lt;pre&gt;&lt;code&gt;version        Print the client and server version information.
 &lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
-&lt;h1 id=&#34;shell-auotcompletion&#34;&gt;shell-auotcompletion&lt;/h1&gt;
+&lt;h2 id=&#34;shell-auotcompletion&#34;&gt;shell-auotcompletion&lt;/h2&gt;
 &lt;p&gt;bash/zsh 自动补全工具.&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://kubernetes.io/docs/tasks/tools/install-kubectl/#enabling-shell-autocompletion&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://kubernetes.io/docs/tasks/tools/install-kubectl/#enabling-shell-autocompletion&lt;/a&gt;&lt;/p&gt;
@@ -855,7 +856,7 @@ $ kubectl krew upgrade
 // 卸载插件
 $ kubectl krew uninstall &amp;lt;name&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;kubectx&#34;&gt;kubectx&lt;/h1&gt;
+&lt;h2 id=&#34;kubectx&#34;&gt;kubectx&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/ahmetb/kubectx&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/ahmetb/kubectx&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;在cluster和namespace之间切换的命令行工具.&lt;/p&gt;
@@ -870,14 +871,29 @@ $ kubectl krew install ns
     &gt;https://github.com/kubernetes-sigs/cri-tools&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://kubernetes.io/docs/tasks/debug/debug-cluster/crictl/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://kubernetes.io/docs/tasks/debug/debug-cluster/crictl/&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id=&#34;nerdctl&#34;&gt;nerdctl&lt;/h1&gt;
+&lt;h2 id=&#34;nerdctl&#34;&gt;nerdctl&lt;/h2&gt;
 &lt;p&gt;调试node。&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/containerd/nerdctl&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/containerd/nerdctl&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id=&#34;telepresence&#34;&gt;telepresence&lt;/h1&gt;
+&lt;h2 id=&#34;telepresence&#34;&gt;telepresence&lt;/h2&gt;
 &lt;p&gt;用于本地调试集群上的服务.&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/telepresenceio/telepresence&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/telepresenceio/telepresence&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>CI/CD</title>
+        <link>https://canuxcheng.com/post/k8s_cicd/</link>
+        <pubDate>Fri, 10 Jan 2020 20:55:52 +0800</pubDate>
+        
+        <guid>https://canuxcheng.com/post/k8s_cicd/</guid>
+        <description>&lt;h1 id=&#34;continuous-integration--delivery&#34;&gt;Continuous Integration &amp;amp; Delivery&lt;/h1&gt;
+&lt;h2 id=&#34;argo-cd&#34;&gt;argo-cd&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/argoproj/argo-cd&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/argoproj/argo-cd&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;flux-cd&#34;&gt;flux-cd&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/fluxcd/flux&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/fluxcd/flux&lt;/a&gt;&lt;/p&gt;
 </description>
         </item>
         <item>
@@ -1167,14 +1183,14 @@ spec:
     // 如果没有subpath，整个目录会被覆盖，目录下只有secret/configmap挂载的文件.
     volumeMounts: // secret以文件形式挂载到/etc/foo
     - name: my-secret
-      mountPath: &amp;quot;/etc/foo&amp;quot;
+      mountPath: &amp;quot;/etc/foo&amp;quot; // 挂载之后覆盖整个目录
       readOnly: true
     - name: my-configmap
       mountPath: &amp;quot;/etc/bar&amp;quot; // 挂载之后覆盖整个目录
-      // 如果有subpath, secret/configmap里的data文件名需要和subpath/mountpath指定的文件名一致.
+      // 如果有subpath, secret/configmap里的data里的文件名需要与subpath和mountpath指定的文件名一致.
     - name: config
-      mountPath: /etc/app/app.conf 
-      subPath: app.conf // 挂载之后只覆盖同名文件,其它文件不影响.
+      mountPath: /etc/app/app.conf  // 是文件，文件名要和subpath一致。
+      subPath: app.conf // 挂载之后只覆盖目录中同名文件,其它文件不影响.
 
     // lifecycle
     livenessProbe:
@@ -2933,13 +2949,20 @@ sudo minikube start --vm-driver=none
         <description>&lt;h1 id=&#34;image&#34;&gt;image&lt;/h1&gt;
 &lt;p&gt;容器镜像&lt;/p&gt;
 &lt;p&gt;docker image driver: aufs, btrfs, devicemapper, overlay.&lt;/p&gt;
-&lt;h2 id=&#34;buildx&#34;&gt;buildx&lt;/h2&gt;
+&lt;h2 id=&#34;multi-platform-images&#34;&gt;multi-platform images&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.docker.com/build/building/multi-platform/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://docs.docker.com/build/building/multi-platform/&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;qemu&#34;&gt;qemu&lt;/h3&gt;
 &lt;p&gt;使用qume:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;// 安装bitfmt
 docker run --privileged --rm tonistiigi/binfmt --install all
 
 // 查看支持的平台
 ls -l /proc/sys/fs/binfmt_misc/qemu-*
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;multiple-native-nodes&#34;&gt;multiple native nodes&lt;/h3&gt;
+&lt;p&gt;安装&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo apt install docker-buildx-plugin
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;查看版本&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;docker buildx version
@@ -2986,6 +3009,8 @@ docker buildx build --platform linux/amd64,linux/amd64/v2,linux/amd64/v3,linux/a
 docker buildx build -o type=docker --platform linux/amd64 -t name:1.0.0 .
 docker buildx build -o type=docker --platform linux/arm64 -t name:1.0.0-linux-arm64 .
 &lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;cross-compilation&#34;&gt;cross-compilation&lt;/h3&gt;
+&lt;hr&gt;
 &lt;h2 id=&#34;overlay&#34;&gt;Overlay&lt;/h2&gt;
 &lt;p&gt;最下层是一个 lower 层，也就是镜像层，它是一个只读层；&lt;/p&gt;
 &lt;p&gt;右上层是一个 upper 层，upper 是容器的读写层，upper 层采用了写实复制的机制，也就是说只有对某些文件需要进行修改的时候才会从 lower 层把这个文件拷贝上来，之后所有的修改操作都会对 upper 层的副本进行修改；&lt;/p&gt;

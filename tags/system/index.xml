@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>system on Morgoth</title>
+        <title>System on Morgoth</title>
         <link>https://canuxcheng.com/tags/system/</link>
-        <description>Recent content in system on Morgoth</description>
+        <description>Recent content in System on Morgoth</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <lastBuildDate>Mon, 01 Jan 2018 10:49:21 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/system/index.xml" rel="self" type="application/rss+xml" /><item>
@@ -93,6 +93,12 @@ func Readlink(name string) (string, error)
 func Symlink(oldname, newname string) error // 创建符号连接
 func Link(oldname, newname string) error // 创建硬连接
 func TempDir() string // 返回一个用于保管临时文件的默认目录
+
+// 从filename指定的文件读取数据并返回, 成功返回文件内容和nil
+func ReadFile(filename string) ([]byte, error)
+
+// 向filename指定文件写入数据，如果文件存在先清空文件，如果不存在创建文件.
+func WriteFile(filename string, data []byte, perm os.FileMode) error
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;signal&#34;&gt;Signal&lt;/h2&gt;
 &lt;p&gt;interface:&lt;/p&gt;
@@ -365,6 +371,7 @@ var SocketDisableIPv6 bool
 &lt;hr&gt;
 &lt;h1 id=&#34;io&#34;&gt;io&lt;/h1&gt;
 &lt;p&gt;提供了对IO原语的基本接口&lt;/p&gt;
+&lt;p&gt;go1.16 删除了io/ioutil&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;import &amp;quot;io&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;variables-2&#34;&gt;variables&lt;/h2&gt;
@@ -372,13 +379,9 @@ var SocketDisableIPv6 bool
 var EOF = errors.New(&amp;quot;EOF&amp;quot;)
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;functions-2&#34;&gt;functions&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;func TeeReader(r Reader, w Writer) Reader
-
-// 返回一个串联的Reader接口,依次读.
-func MultiReader(readers ...Reader) Reader
-
-// 返回一个串联的Writer接口，依次写入．
-func MultiWriter(writers ...Writer) Writer
+&lt;pre&gt;&lt;code&gt;func ReadAll(r io.Reader) ([]byte, error)
+func ReadAtLeast(r Reader, buf []byte, min int) (n int, err error)
+func ReadFull(r Reader, buf []byte) (n int, err error)
 
 // 将src数据拷贝到dst, 直到EOF或出错，返回拷贝的字节数
 func Copy(dst Writer, src Reader) (written int64, err error)
@@ -386,9 +389,7 @@ func Copy(dst Writer, src Reader) (written int64, err error)
 // 类似Copy，不过只拷贝n个字节.
 func CopyN(dst Writer, src Reader, n int64) (written int64, err error)
 
-func ReadAtLeast(r Reader, buf []byte, min int) (n int, err error)
-
-func ReadFull(r Reader, buf []byte) (n int, err error)
+func CopyBuffer(dst Writer, src Reader, buf []byte) (written int64, err error)
 
 // 将字符串s写入w
 func WriteString(w Writer, s string) (n int, err error)
@@ -431,30 +432,6 @@ func WriteString(w Writer, s string) (n int, err error)
 }
 &lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
-&lt;h1 id=&#34;ioioutil&#34;&gt;io/ioutil&lt;/h1&gt;
-&lt;p&gt;实现一些增强的IO接口功能&lt;/p&gt;
-&lt;h2 id=&#34;variables-3&#34;&gt;variables&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;// 一个io.Writer接口，对它所有Write调用都会无实际操作成功返回.
-var Discard io.Writer = devNull(0)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;functions-3&#34;&gt;functions&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;func NopCloser(r io.Reader) io.ReadCloser
-
-func ReadAll(r io.Reader) ([]byte, error)
-
-// 从filename指定的文件读取数据并返回, 成功返回文件内容和nil
-func ReadFile(filename string) ([]byte, error)
-
-// 向filename指定文件写入数据，如果文件存在先清空文件，如果不存在创建文件.
-func WriteFile(filename string, data []byte, perm os.FileMode) error
-
-func ReadDir(dirname string) ([]os.FileInfo, error)
-
-func TempDir(dir, prefix string) (name string, err error)
-
-func TempFile(dir, prefix string) (f *os.File, err error)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;hr&gt;
 &lt;h1 id=&#34;bufio&#34;&gt;bufio&lt;/h1&gt;
 &lt;p&gt;bufio实现了有缓冲的IO&lt;/p&gt;
 &lt;h2 id=&#34;constants-2&#34;&gt;constants&lt;/h2&gt;
@@ -463,14 +440,14 @@ func TempFile(dir, prefix string) (f *os.File, err error)
     MaxScanTokenSize = 64 * 1024
 )
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;variables-4&#34;&gt;variables&lt;/h2&gt;
+&lt;h2 id=&#34;variables-3&#34;&gt;variables&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;// 会被Scanner返回的错误
 var (
     ErrInvalidUnreadByte = errors.New(&amp;quot;bufio: invalid use of UnreadByte&amp;quot;)
     ...
 )
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;functions-4&#34;&gt;functions&lt;/h2&gt;
+&lt;h2 id=&#34;functions-3&#34;&gt;functions&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;func ScanBytes(data []byte, atEOF bool) (advance int, token []byte, err error)
 
 func ScanRunes(data []byte, atEOF bool) (advance int, token []byte, err error)
@@ -604,7 +581,7 @@ func (s *Scanner) Err() error
 &lt;p&gt;指针：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;%p    十六进制表示(0x)
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;functions-5&#34;&gt;functions&lt;/h2&gt;
+&lt;h2 id=&#34;functions-4&#34;&gt;functions&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;// 返回一个包含该格式化字符串的错误
 func Errorf(format string, a ...interface{}) error
 
@@ -703,7 +680,7 @@ func Sscanf(str string, format string, a ...interface{}) (n int, err error)
     LstdFlags    = Ldate | Ltime      // 标准logger的初始值
 )
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;functions-6&#34;&gt;functions&lt;/h2&gt;
+&lt;h2 id=&#34;functions-5&#34;&gt;functions&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;func Printf(format string, v ...interface{})
 func Print(v ...interface{})
 func Println(v ...interface{})
@@ -737,7 +714,7 @@ func New(out io.Writer, prefix string, flag int) *Logger
 &lt;p&gt;第三方包:&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/alecthomas/kingpin&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/alecthomas/kingpin&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;variables-5&#34;&gt;variables&lt;/h2&gt;
+&lt;h2 id=&#34;variables-4&#34;&gt;variables&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;var CommandLine = NewFlagSet(os.Args[0], ExitOnError)
 
 //
@@ -749,7 +726,7 @@ var Usage = func() {
     PrintDefaults()
 }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;functions-7&#34;&gt;functions&lt;/h2&gt;
+&lt;h2 id=&#34;functions-6&#34;&gt;functions&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;// 返回已被设置的flag数量
 func NFlag() int
 // 返回已注册flag的结构体指针

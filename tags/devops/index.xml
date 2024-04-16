@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>devops on Morgoth</title>
+        <title>Devops on Morgoth</title>
         <link>https://canuxcheng.com/tags/devops/</link>
-        <description>Recent content in devops on Morgoth</description>
+        <description>Recent content in Devops on Morgoth</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <lastBuildDate>Mon, 01 Jan 2018 10:49:21 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/devops/index.xml" rel="self" type="application/rss+xml" /><item>
@@ -378,14 +378,70 @@ after_success:
         
         <guid>https://canuxcheng.com/post/c_devops/</guid>
         <description>&lt;h1 id=&#34;ide&#34;&gt;IDE&lt;/h1&gt;
-&lt;p&gt;Windows: DEV C++&lt;/p&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://orwelldevcpp.blogspot.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;http://orwelldevcpp.blogspot.com/&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Linux: Vim + Gcc + Gdb&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Visual Studio&lt;/li&gt;
+&lt;li&gt;VSCode&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;compilers&#34;&gt;Compilers&lt;/h2&gt;
+&lt;p&gt;编译器组成：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;frontend&lt;/li&gt;
+&lt;li&gt;optimizer&lt;/li&gt;
+&lt;li&gt;backend&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://zh.cppreference.com/w/cpp/compiler_support&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://zh.cppreference.com/w/cpp/compiler_support&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;windows:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;llvm clang&lt;/li&gt;
+&lt;li&gt;Mingw&lt;/li&gt;
+&lt;li&gt;Msvc&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;linux:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;llvm clang&lt;/li&gt;
+&lt;li&gt;gcc&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;mac:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;llvm clang&lt;/li&gt;
+&lt;li&gt;gcc&lt;/li&gt;
+&lt;li&gt;apple clang&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;gcc&#34;&gt;gcc&lt;/h3&gt;
+&lt;p&gt;gnu gcc,g++&lt;/p&gt;
+&lt;h3 id=&#34;llvm-clang&#34;&gt;llvm clang&lt;/h3&gt;
+&lt;p&gt;llvm: low level virtual machine. (backend)&lt;/p&gt;
+&lt;p&gt;clang: c language.(frontend)&lt;/p&gt;
 &lt;hr&gt;
-&lt;h1 id=&#34;gccclang&#34;&gt;gcc/clang&lt;/h1&gt;
+&lt;h2 id=&#34;tools&#34;&gt;tools&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;CMake&lt;/li&gt;
+&lt;li&gt;MSBuild&lt;/li&gt;
+&lt;li&gt;Makefile&lt;/li&gt;
+&lt;/ul&gt;
 &lt;hr&gt;
-&lt;h1 id=&#34;gdb&#34;&gt;gdb&lt;/h1&gt;
+&lt;h2 id=&#34;gcc-1&#34;&gt;GCC&lt;/h2&gt;
+&lt;p&gt;&amp;ldquo;-ansi&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;for c: == -std=c90
+for cpp: ==-std=c++98&lt;/p&gt;
+&lt;p&gt;&amp;ldquo;-std&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;c++17, gnu++17, gnu17,c17
+gnu2x: 下个ISO C标准。
+c2x:下个ISO C标准。
+c++2a: 下个ISO C++标准
+gnu+2a:下个ISO C++标准&lt;/p&gt;
+&lt;p&gt;gcc8 开始支持c++20.
+gcc11开始支持c++23.&lt;/p&gt;
+&lt;h2 id=&#34;vscode&#34;&gt;vscode&lt;/h2&gt;
+&lt;p&gt;for macOS:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;xcode-select --install
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;extentions:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;c/c++&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </description>
         </item>
         <item>

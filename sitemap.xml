@@ -2,8 +2,26 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://canuxcheng.com/tags/aws/</loc>
+    <lastmod>2024-01-23T22:02:31+00:00</lastmod>
+  </url><url>
+    <loc>https://canuxcheng.com/post/aws_development/</loc>
+    <lastmod>2024-01-23T22:02:31+00:00</lastmod>
+  </url><url>
     <loc>https://canuxcheng.com/categories/</loc>
-    <lastmod>2023-10-19T20:03:39+08:00</lastmod>
+    <lastmod>2024-01-23T22:02:31+00:00</lastmod>
+  </url><url>
+    <loc>https://canuxcheng.com/categories/cloud/</loc>
+    <lastmod>2024-01-23T22:02:31+00:00</lastmod>
+  </url><url>
+    <loc>https://canuxcheng.com/</loc>
+    <lastmod>2024-01-23T22:02:31+00:00</lastmod>
+  </url><url>
+    <loc>https://canuxcheng.com/post/</loc>
+    <lastmod>2024-01-23T22:02:31+00:00</lastmod>
+  </url><url>
+    <loc>https://canuxcheng.com/tags/</loc>
+    <lastmod>2024-01-23T22:02:31+00:00</lastmod>
   </url><url>
     <loc>https://canuxcheng.com/categories/cncf/</loc>
     <lastmod>2023-10-19T20:03:39+08:00</lastmod>
@@ -11,19 +29,10 @@
     <loc>https://canuxcheng.com/tags/k8s/</loc>
     <lastmod>2023-10-19T20:03:39+08:00</lastmod>
   </url><url>
-    <loc>https://canuxcheng.com/</loc>
-    <lastmod>2023-10-19T20:03:39+08:00</lastmod>
-  </url><url>
-    <loc>https://canuxcheng.com/post/</loc>
-    <lastmod>2023-10-19T20:03:39+08:00</lastmod>
-  </url><url>
     <loc>https://canuxcheng.com/categories/security/</loc>
     <lastmod>2023-10-19T20:03:39+08:00</lastmod>
   </url><url>
     <loc>https://canuxcheng.com/post/k8s_security/</loc>
-    <lastmod>2023-10-19T20:03:39+08:00</lastmod>
-  </url><url>
-    <loc>https://canuxcheng.com/tags/</loc>
     <lastmod>2023-10-19T20:03:39+08:00</lastmod>
   </url><url>
     <loc>https://canuxcheng.com/post/k8s_apigateway/</loc>
@@ -47,9 +56,6 @@
     <loc>https://canuxcheng.com/categories/hw/</loc>
     <lastmod>2023-05-15T09:41:39+08:00</lastmod>
   </url><url>
-    <loc>https://canuxcheng.com/categories/cloud/</loc>
-    <lastmod>2023-04-23T22:02:31+00:00</lastmod>
-  </url><url>
     <loc>https://canuxcheng.com/tags/gcp/</loc>
     <lastmod>2023-04-23T22:02:31+00:00</lastmod>
   </url><url>
@@ -67,9 +73,6 @@
   </url><url>
     <loc>https://canuxcheng.com/post/k8s_app/</loc>
     <lastmod>2021-12-04T20:03:39+08:00</lastmod>
-  </url><url>
-    <loc>https://canuxcheng.com/tags/aws/</loc>
-    <lastmod>2021-10-23T22:02:31+00:00</lastmod>
   </url><url>
     <loc>https://canuxcheng.com/post/aws_clf/</loc>
     <lastmod>2021-10-23T22:02:31+00:00</lastmod>
@@ -179,10 +182,10 @@
     <loc>https://canuxcheng.com/categories/linux/</loc>
     <lastmod>2020-07-12T21:18:33+00:00</lastmod>
   </url><url>
-    <loc>https://canuxcheng.com/tags/kernel/</loc>
+    <loc>https://canuxcheng.com/post/linux_kernel/</loc>
     <lastmod>2020-05-27T22:29:00+08:00</lastmod>
   </url><url>
-    <loc>https://canuxcheng.com/post/linux_kernel/</loc>
+    <loc>https://canuxcheng.com/tags/kernel/</loc>
     <lastmod>2020-05-27T22:29:00+08:00</lastmod>
   </url><url>
     <loc>https://canuxcheng.com/post/linux_security/</loc>
@@ -207,9 +210,6 @@
     <lastmod>2020-01-10T20:55:52+08:00</lastmod>
   </url><url>
     <loc>https://canuxcheng.com/post/k8s_oss/</loc>
-    <lastmod>2020-01-10T20:55:52+08:00</lastmod>
-  </url><url>
-    <loc>https://canuxcheng.com/categories/k8s/</loc>
     <lastmod>2020-01-10T20:55:52+08:00</lastmod>
   </url><url>
     <loc>https://canuxcheng.com/post/k8s_api/</loc>
@@ -803,10 +803,10 @@
     <loc>https://canuxcheng.com/post/js_bootstrap/</loc>
     <lastmod>2016-10-27T22:19:20+08:00</lastmod>
   </url><url>
-    <loc>https://canuxcheng.com/tags/jquery/</loc>
+    <loc>https://canuxcheng.com/post/js_jquery/</loc>
     <lastmod>2016-10-27T22:19:20+08:00</lastmod>
   </url><url>
-    <loc>https://canuxcheng.com/post/js_jquery/</loc>
+    <loc>https://canuxcheng.com/tags/jquery/</loc>
     <lastmod>2016-10-27T22:19:20+08:00</lastmod>
   </url><url>
     <loc>https://canuxcheng.com/post/django_test/</loc>

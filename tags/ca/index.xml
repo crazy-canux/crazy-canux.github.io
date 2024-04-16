@@ -39,17 +39,24 @@
 &lt;h2 id=&#34;sast&#34;&gt;SAST&lt;/h2&gt;
 &lt;p&gt;SAST: Static Application Security Testing&lt;/p&gt;
 &lt;p&gt;Tools: SonarQube, Trivy, Coverity.&lt;/p&gt;
+&lt;p&gt;gitlab SAST report.
+gitlab secret detection report.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;dast&#34;&gt;DAST&lt;/h2&gt;
 &lt;p&gt;DAST: Dynamic Application Security Testing，动态应用程序安全测试, 对应用程序进行黑盒分析.&lt;/p&gt;
-&lt;p&gt;Tools: AppScan, AWVS, OWASP ZAP, Arachni.&lt;/p&gt;
+&lt;p&gt;Tools:&lt;/p&gt;
+&lt;p&gt;ZAP Scan(OWASP ZAP)&lt;/p&gt;
+&lt;p&gt;synopsys WhiteHat Sentinel.&lt;/p&gt;
+&lt;p&gt;gitlab DAST report.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;iast&#34;&gt;IAST&lt;/h2&gt;
 &lt;p&gt;IAST: Interactive Application Security Testing，交互式应用程序安全测试, 结合了SAST和DAST的优点.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;sca&#34;&gt;SCA&lt;/h2&gt;
-&lt;p&gt;SCA: Software bill-of-materials, 开源组件安全扫描。&lt;/p&gt;
-&lt;p&gt;Tools： BlackDuck.&lt;/p&gt;
+&lt;p&gt;SCA: Software Composition Analysis.&lt;/p&gt;
+&lt;p&gt;SBOM (software Bill of Materials),开源组件安全扫描&lt;/p&gt;
+&lt;p&gt;Tools： BlackDuck, Jfrog Xray.&lt;/p&gt;
+&lt;p&gt;gitlab dependency scanning report.&lt;/p&gt;
 </description>
         </item>
         <item>

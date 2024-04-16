@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>shell on Morgoth</title>
+        <title>Shell on Morgoth</title>
         <link>https://canuxcheng.com/tags/shell/</link>
-        <description>Recent content in shell on Morgoth</description>
+        <description>Recent content in Shell on Morgoth</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <lastBuildDate>Wed, 14 Dec 2016 00:55:37 +0800</lastBuildDate><atom:link href="https://canuxcheng.com/tags/shell/index.xml" rel="self" type="application/rss+xml" /><item>

@@ -258,6 +258,25 @@ import &amp;quot;os&amp;quot; constants # flag 参数 const ( O_RDONLY int = sys
         
 
         <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https://canuxcheng.com/" selected></option>
+                        
+                    </select>
+                </li>
+            
             
             
                 <li id="dark-mode-toggle">
@@ -341,14 +360,9 @@ import &amp;quot;os&amp;quot; constants # flag 参数 const ( O_RDONLY int = sys
   </ul>
 
   <ul>
+    <li><a href="#constants-2">constants</a></li>
     <li><a href="#variables-3">variables</a></li>
     <li><a href="#functions-3">functions</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#constants-2">constants</a></li>
-    <li><a href="#variables-4">variables</a></li>
-    <li><a href="#functions-4">functions</a></li>
     <li><a href="#reader-1">Reader</a></li>
     <li><a href="#writer-1">Writer</a></li>
     <li><a href="#readwriter-1">ReadWriter</a></li>
@@ -357,7 +371,7 @@ import &amp;quot;os&amp;quot; constants # flag 参数 const ( O_RDONLY int = sys
   </ul>
 
   <ul>
-    <li><a href="#functions-5">functions</a></li>
+    <li><a href="#functions-4">functions</a></li>
     <li><a href="#stringer">Stringer</a></li>
     <li><a href="#gostringer">GoStringer</a></li>
     <li><a href="#state">State</a></li>
@@ -368,13 +382,13 @@ import &amp;quot;os&amp;quot; constants # flag 参数 const ( O_RDONLY int = sys
 
   <ul>
     <li><a href="#constants-3">Constants</a></li>
-    <li><a href="#functions-6">functions</a></li>
+    <li><a href="#functions-5">functions</a></li>
     <li><a href="#logger">Logger</a></li>
   </ul>
 
   <ul>
-    <li><a href="#variables-5">variables</a></li>
-    <li><a href="#functions-7">functions</a></li>
+    <li><a href="#variables-4">variables</a></li>
+    <li><a href="#functions-6">functions</a></li>
     <li><a href="#errorhandling">ErrorHandling</a></li>
     <li><a href="#flag-1">Flag</a></li>
     <li><a href="#flagset">FlagSet</a></li>
@@ -540,6 +554,12 @@ func Readlink(name string) (string, error)
 func Symlink(oldname, newname string) error // 创建符号连接
 func Link(oldname, newname string) error // 创建硬连接
 func TempDir() string // 返回一个用于保管临时文件的默认目录
+
+// 从filename指定的文件读取数据并返回, 成功返回文件内容和nil
+func ReadFile(filename string) ([]byte, error)
+
+// 向filename指定文件写入数据，如果文件存在先清空文件，如果不存在创建文件.
+func WriteFile(filename string, data []byte, perm os.FileMode) error
 </code></pre>
 <h2 id="signal">Signal</h2>
 <p>interface:</p>
@@ -812,6 +832,7 @@ var SocketDisableIPv6 bool
 <hr>
 <h1 id="io">io</h1>
 <p>提供了对IO原语的基本接口</p>
+<p>go1.16 删除了io/ioutil</p>
 <pre><code>import &quot;io&quot;
 </code></pre>
 <h2 id="variables-2">variables</h2>
@@ -819,13 +840,9 @@ var SocketDisableIPv6 bool
 var EOF = errors.New(&quot;EOF&quot;)
 </code></pre>
 <h2 id="functions-2">functions</h2>
-<pre><code>func TeeReader(r Reader, w Writer) Reader
-
-// 返回一个串联的Reader接口,依次读.
-func MultiReader(readers ...Reader) Reader
-
-// 返回一个串联的Writer接口，依次写入．
-func MultiWriter(writers ...Writer) Writer
+<pre><code>func ReadAll(r io.Reader) ([]byte, error)
+func ReadAtLeast(r Reader, buf []byte, min int) (n int, err error)
+func ReadFull(r Reader, buf []byte) (n int, err error)
 
 // 将src数据拷贝到dst, 直到EOF或出错，返回拷贝的字节数
 func Copy(dst Writer, src Reader) (written int64, err error)
@@ -833,9 +850,7 @@ func Copy(dst Writer, src Reader) (written int64, err error)
 // 类似Copy，不过只拷贝n个字节.
 func CopyN(dst Writer, src Reader, n int64) (written int64, err error)
 
-func ReadAtLeast(r Reader, buf []byte, min int) (n int, err error)
-
-func ReadFull(r Reader, buf []byte) (n int, err error)
+func CopyBuffer(dst Writer, src Reader, buf []byte) (written int64, err error)
 
 // 将字符串s写入w
 func WriteString(w Writer, s string) (n int, err error)
@@ -878,30 +893,6 @@ func WriteString(w Writer, s string) (n int, err error)
 }
 </code></pre>
 <hr>
-<h1 id="ioioutil">io/ioutil</h1>
-<p>实现一些增强的IO接口功能</p>
-<h2 id="variables-3">variables</h2>
-<pre><code>// 一个io.Writer接口，对它所有Write调用都会无实际操作成功返回.
-var Discard io.Writer = devNull(0)
-</code></pre>
-<h2 id="functions-3">functions</h2>
-<pre><code>func NopCloser(r io.Reader) io.ReadCloser
-
-func ReadAll(r io.Reader) ([]byte, error)
-
-// 从filename指定的文件读取数据并返回, 成功返回文件内容和nil
-func ReadFile(filename string) ([]byte, error)
-
-// 向filename指定文件写入数据，如果文件存在先清空文件，如果不存在创建文件.
-func WriteFile(filename string, data []byte, perm os.FileMode) error
-
-func ReadDir(dirname string) ([]os.FileInfo, error)
-
-func TempDir(dir, prefix string) (name string, err error)
-
-func TempFile(dir, prefix string) (f *os.File, err error)
-</code></pre>
-<hr>
 <h1 id="bufio">bufio</h1>
 <p>bufio实现了有缓冲的IO</p>
 <h2 id="constants-2">constants</h2>
@@ -910,14 +901,14 @@ func TempFile(dir, prefix string) (f *os.File, err error)
     MaxScanTokenSize = 64 * 1024
 )
 </code></pre>
-<h2 id="variables-4">variables</h2>
+<h2 id="variables-3">variables</h2>
 <pre><code>// 会被Scanner返回的错误
 var (
     ErrInvalidUnreadByte = errors.New(&quot;bufio: invalid use of UnreadByte&quot;)
     ...
 )
 </code></pre>
-<h2 id="functions-4">functions</h2>
+<h2 id="functions-3">functions</h2>
 <pre><code>func ScanBytes(data []byte, atEOF bool) (advance int, token []byte, err error)
 
 func ScanRunes(data []byte, atEOF bool) (advance int, token []byte, err error)
@@ -1051,7 +1042,7 @@ func (s *Scanner) Err() error
 <p>指针：</p>
 <pre><code>%p    十六进制表示(0x)
 </code></pre>
-<h2 id="functions-5">functions</h2>
+<h2 id="functions-4">functions</h2>
 <pre><code>// 返回一个包含该格式化字符串的错误
 func Errorf(format string, a ...interface{}) error
 
@@ -1150,7 +1141,7 @@ func Sscanf(str string, format string, a ...interface{}) (n int, err error)
     LstdFlags    = Ldate | Ltime      // 标准logger的初始值
 )
 </code></pre>
-<h2 id="functions-6">functions</h2>
+<h2 id="functions-5">functions</h2>
 <pre><code>func Printf(format string, v ...interface{})
 func Print(v ...interface{})
 func Println(v ...interface{})
@@ -1184,7 +1175,7 @@ func New(out io.Writer, prefix string, flag int) *Logger
 <p>第三方包:</p>
 <p><a class="link" href="https://github.com/alecthomas/kingpin"  target="_blank" rel="noopener"
     >https://github.com/alecthomas/kingpin</a></p>
-<h2 id="variables-5">variables</h2>
+<h2 id="variables-4">variables</h2>
 <pre><code>var CommandLine = NewFlagSet(os.Args[0], ExitOnError)
 
 //
@@ -1196,7 +1187,7 @@ var Usage = func() {
     PrintDefaults()
 }
 </code></pre>
-<h2 id="functions-7">functions</h2>
+<h2 id="functions-6">functions</h2>
 <pre><code>// 返回已被设置的flag数量
 func NFlag() int
 // 返回已注册flag的结构体指针
@@ -1316,7 +1307,7 @@ func (f *FlagSet) Init(name string, errorHandling ErrorHandling)
     
     <section class="article-tags">
         
-            <a href="/tags/system/">system</a>
+            <a href="/tags/system/">System</a>
         
     </section>
 

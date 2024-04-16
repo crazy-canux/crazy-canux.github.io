@@ -294,6 +294,25 @@ tolerations: - key: &amp;quot;key1&amp;quot; operator: &amp;quot;Equal&amp;quot;
         
 
         <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https://canuxcheng.com/" selected></option>
+                        
+                    </select>
+                </li>
+            
             
             
                 <li id="dark-mode-toggle">
@@ -584,14 +603,14 @@ spec:
     // 如果没有subpath，整个目录会被覆盖，目录下只有secret/configmap挂载的文件.
     volumeMounts: // secret以文件形式挂载到/etc/foo
     - name: my-secret
-      mountPath: &quot;/etc/foo&quot;
+      mountPath: &quot;/etc/foo&quot; // 挂载之后覆盖整个目录
       readOnly: true
     - name: my-configmap
       mountPath: &quot;/etc/bar&quot; // 挂载之后覆盖整个目录
-      // 如果有subpath, secret/configmap里的data文件名需要和subpath/mountpath指定的文件名一致.
+      // 如果有subpath, secret/configmap里的data里的文件名需要与subpath和mountpath指定的文件名一致.
     - name: config
-      mountPath: /etc/app/app.conf 
-      subPath: app.conf // 挂载之后只覆盖同名文件,其它文件不影响.
+      mountPath: /etc/app/app.conf  // 是文件，文件名要和subpath一致。
+      subPath: app.conf // 挂载之后只覆盖目录中同名文件,其它文件不影响.
 
     // lifecycle
     livenessProbe:
@@ -1099,7 +1118,7 @@ roleRef:
     
     <section class="article-tags">
         
-            <a href="/tags/k8s/">k8s</a>
+            <a href="/tags/k8s/">K8s</a>
         
     </section>
 

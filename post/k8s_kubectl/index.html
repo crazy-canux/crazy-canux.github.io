@@ -8,7 +8,7 @@ https://github.com/jonmosco/kube-ps1
 https://github.com/ahmetb/kubectx
 在master上通过kubectl命令管理集群.
 kubectl 版本和集群版本之间的差异必须在一个小版本号内。 例如：v1.24 版本的客户端能与 v1.23、 v1.24 和 v1.25 版本的控制面通信。 用最新兼容版的 kubectl 有助于避免不可预见的问题。
-options: kubectl options # 查看所有命令可用选项 --kubeconfig kubectl --kubeconfig=$HOME/.kube.config (default) -n/--namespace basic command create:
+Options kubectl options # 查看所有命令可用选项 --kubeconfig kubectl --kubeconfig=$HOME/.kube.config (default) -n/--namespace basic command create:
 # 通过yaml或json文件创建资源 $ kubectl create -f FILENAME [options] options: -f/--filename kubectl create secret tls kubernetes-dashboard-tls --key ca.key --cert ca.crt -n kubernetes-dashboard // 输出一个资源的yaml格式. kubectl create deployment &amp;lt;name&amp;gt; --image=&amp;lt;img-name&amp;gt; --dry-run=client --output=yaml delete:
 // 删除资源 $ kubectl delete (-f FILENAME | -k DICT | TYPE [(NAME|-l label|--all)]) [optiions] options: -f/--filename --all --all-namespaces --force $ kubectl delete pods --all $ kubectl delete pod &amp;lt;name&amp;gt; // 删除指定ns下所有资源.'>
 <title>Kubectl</title>
@@ -23,7 +23,7 @@ https://github.com/jonmosco/kube-ps1
 https://github.com/ahmetb/kubectx
 在master上通过kubectl命令管理集群.
 kubectl 版本和集群版本之间的差异必须在一个小版本号内。 例如：v1.24 版本的客户端能与 v1.23、 v1.24 和 v1.25 版本的控制面通信。 用最新兼容版的 kubectl 有助于避免不可预见的问题。
-options: kubectl options # 查看所有命令可用选项 --kubeconfig kubectl --kubeconfig=$HOME/.kube.config (default) -n/--namespace basic command create:
+Options kubectl options # 查看所有命令可用选项 --kubeconfig kubectl --kubeconfig=$HOME/.kube.config (default) -n/--namespace basic command create:
 # 通过yaml或json文件创建资源 $ kubectl create -f FILENAME [options] options: -f/--filename kubectl create secret tls kubernetes-dashboard-tls --key ca.key --cert ca.crt -n kubernetes-dashboard // 输出一个资源的yaml格式. kubectl create deployment &amp;lt;name&amp;gt; --image=&amp;lt;img-name&amp;gt; --dry-run=client --output=yaml delete:
 // 删除资源 $ kubectl delete (-f FILENAME | -k DICT | TYPE [(NAME|-l label|--all)]) [optiions] options: -f/--filename --all --all-namespaces --force $ kubectl delete pods --all $ kubectl delete pod &amp;lt;name&amp;gt; // 删除指定ns下所有资源.'>
 <meta property='og:url' content='https://canuxcheng.com/post/k8s_kubectl/'>
@@ -37,7 +37,7 @@ https://github.com/jonmosco/kube-ps1
 https://github.com/ahmetb/kubectx
 在master上通过kubectl命令管理集群.
 kubectl 版本和集群版本之间的差异必须在一个小版本号内。 例如：v1.24 版本的客户端能与 v1.23、 v1.24 和 v1.25 版本的控制面通信。 用最新兼容版的 kubectl 有助于避免不可预见的问题。
-options: kubectl options # 查看所有命令可用选项 --kubeconfig kubectl --kubeconfig=$HOME/.kube.config (default) -n/--namespace basic command create:
+Options kubectl options # 查看所有命令可用选项 --kubeconfig kubectl --kubeconfig=$HOME/.kube.config (default) -n/--namespace basic command create:
 # 通过yaml或json文件创建资源 $ kubectl create -f FILENAME [options] options: -f/--filename kubectl create secret tls kubernetes-dashboard-tls --key ca.key --cert ca.crt -n kubernetes-dashboard // 输出一个资源的yaml格式. kubectl create deployment &amp;lt;name&amp;gt; --image=&amp;lt;img-name&amp;gt; --dry-run=client --output=yaml delete:
 // 删除资源 $ kubectl delete (-f FILENAME | -k DICT | TYPE [(NAME|-l label|--all)]) [optiions] options: -f/--filename --all --all-namespaces --force $ kubectl delete pods --all $ kubectl delete pod &amp;lt;name&amp;gt; // 删除指定ns下所有资源.">
     <link rel="shortcut icon" href="favicon.ico" />
@@ -282,6 +282,25 @@ options: kubectl options # 查看所有命令可用选项 --kubeconfig kubectl -
         
 
         <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https://canuxcheng.com/" selected></option>
+                        
+                    </select>
+                </li>
+            
             
             
                 <li id="dark-mode-toggle">
@@ -308,7 +327,55 @@ options: kubectl options # 查看所有命令可用选项 --kubeconfig kubectl -
     </ol>
 </aside>
 
-    
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#options">Options</a></li>
+    <li><a href="#basic-command">basic command</a></li>
+    <li><a href="#advanced-commands">advanced commands</a></li>
+    <li><a href="#deploy-command">deploy command</a></li>
+    <li><a href="#debugtroubleshoot">debug&amp;troubleshoot</a></li>
+    <li><a href="#cluster-management">cluster management</a></li>
+    <li><a href="#settings-commands">Settings Commands</a></li>
+    <li><a href="#others">others</a></li>
+    <li><a href="#shell-auotcompletion">shell-auotcompletion</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#kubectx">kubectx</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#nerdctl">nerdctl</a></li>
+    <li><a href="#telepresence">telepresence</a></li>
+  </ul>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
 
             <main class="main full-width">
     <article class="main-article">
@@ -391,7 +458,7 @@ options: kubectl options # 查看所有命令可用选项 --kubeconfig kubectl -
     >https://github.com/ahmetb/kubectx</a></p>
 <p>在master上通过kubectl命令管理集群.</p>
 <p>kubectl 版本和集群版本之间的差异必须在一个小版本号内。 例如：v1.24 版本的客户端能与 v1.23、 v1.24 和 v1.25 版本的控制面通信。 用最新兼容版的 kubectl 有助于避免不可预见的问题。</p>
-<h1 id="options">options:</h1>
+<h2 id="options">Options</h2>
 <pre><code>kubectl options # 查看所有命令可用选项
 
 --kubeconfig
@@ -399,7 +466,7 @@ kubectl --kubeconfig=$HOME/.kube.config (default)
 
 -n/--namespace
 </code></pre>
-<h1 id="basic-command">basic command</h1>
+<h2 id="basic-command">basic command</h2>
 <p>create:</p>
 <pre><code># 通过yaml或json文件创建资源
 $ kubectl create -f FILENAME [options]
@@ -490,7 +557,7 @@ kubectl explain deploy.spec
 <pre><code>// 在线修改资源，直接生效.
 $ kubectl edit
 </code></pre>
-<h1 id="advanced-commands">advanced commands</h1>
+<h2 id="advanced-commands">advanced commands</h2>
 <p>apply:</p>
 <pre><code>$ kubectl apply
 </code></pre>
@@ -509,9 +576,10 @@ $ kubectl wait
 
 $ kubectl kustomize
 </code></pre>
-<h1 id="deploy-command">deploy command</h1>
+<h2 id="deploy-command">deploy command</h2>
 <p>scale:</p>
 <pre><code>$ kubectl scale
+$ kubectl scale deployment &lt;deploy-name&gt; -n &lt;ns&gt; --replicas=0
 </code></pre>
 <p>autoscale:</p>
 <pre><code>$ kubectl autoscale
@@ -523,7 +591,7 @@ $ kubectl rollout
 // 暂停/恢复/重启 deployment.
 kubectl rollout pause/resume/restart  deploy/katib-mysql -n kubeflow
 </code></pre>
-<h1 id="debugtroubleshoot">debug&amp;troubleshoot</h1>
+<h2 id="debugtroubleshoot">debug&amp;troubleshoot</h2>
 <p>describe:</p>
 <pre><code>// like docker inspect
 $ kubectl describe (-f FILENAME | TYPE ... | TYPE/NAME) [options]
@@ -594,7 +662,7 @@ $ kubectl port-forward --address 0.0.0.0 -n kubernetes-dashboard service/kuberne
 // debug node -- 直接进入node的shell，log在/host/var/log
 kubectl debug node/&lt;name&gt;  -it   --image=ubuntu
 </code></pre>
-<h1 id="cluster-management">cluster management</h1>
+<h2 id="cluster-management">cluster management</h2>
 <p>top:</p>
 <pre><code>$ kubectl top
 
@@ -616,7 +684,7 @@ kubectl drain &lt;node&gt; --delete-emptydir-data --ignore-daemonsets
 $ kubectl taint
 kubectl taint nodes &lt;node&gt; &lt;key&gt;=&lt;value&gt;:NoSchedule-
 </code></pre>
-<h1 id="settings-commands">Settings Commands</h1>
+<h2 id="settings-commands">Settings Commands</h2>
 <p>label</p>
 <pre><code>label          Update the labels on a resource
 
@@ -652,7 +720,7 @@ $ kubectl plugin list
 <pre><code>version        Print the client and server version information.
 </code></pre>
 <hr>
-<h1 id="shell-auotcompletion">shell-auotcompletion</h1>
+<h2 id="shell-auotcompletion">shell-auotcompletion</h2>
 <p>bash/zsh 自动补全工具.</p>
 <p><a class="link" href="https://kubernetes.io/docs/tasks/tools/install-kubectl/#enabling-shell-autocompletion"  target="_blank" rel="noopener"
     >https://kubernetes.io/docs/tasks/tools/install-kubectl/#enabling-shell-autocompletion</a></p>
@@ -677,7 +745,7 @@ $ kubectl krew upgrade
 // 卸载插件
 $ kubectl krew uninstall &lt;name&gt;
 </code></pre>
-<h1 id="kubectx">kubectx</h1>
+<h2 id="kubectx">kubectx</h2>
 <p><a class="link" href="https://github.com/ahmetb/kubectx"  target="_blank" rel="noopener"
     >https://github.com/ahmetb/kubectx</a></p>
 <p>在cluster和namespace之间切换的命令行工具.</p>
@@ -692,11 +760,11 @@ $ kubectl krew install ns
     >https://github.com/kubernetes-sigs/cri-tools</a></p>
 <p><a class="link" href="https://kubernetes.io/docs/tasks/debug/debug-cluster/crictl/"  target="_blank" rel="noopener"
     >https://kubernetes.io/docs/tasks/debug/debug-cluster/crictl/</a></p>
-<h1 id="nerdctl">nerdctl</h1>
+<h2 id="nerdctl">nerdctl</h2>
 <p>调试node。</p>
 <p><a class="link" href="https://github.com/containerd/nerdctl"  target="_blank" rel="noopener"
     >https://github.com/containerd/nerdctl</a></p>
-<h1 id="telepresence">telepresence</h1>
+<h2 id="telepresence">telepresence</h2>
 <p>用于本地调试集群上的服务.</p>
 <p><a class="link" href="https://github.com/telepresenceio/telepresence"  target="_blank" rel="noopener"
     >https://github.com/telepresenceio/telepresence</a></p>
@@ -708,7 +776,7 @@ $ kubectl krew install ns
     
     <section class="article-tags">
         
-            <a href="/tags/tag/">tag</a>
+            <a href="/tags/tag/">Tag</a>
         
     </section>
 

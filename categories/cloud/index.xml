@@ -6,7 +6,52 @@
         <description>Recent content in Cloud on Morgoth</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Sun, 23 Apr 2023 22:02:31 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/categories/cloud/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Tue, 23 Jan 2024 22:02:31 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/categories/cloud/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>AWS Development</title>
+        <link>https://canuxcheng.com/post/aws_development/</link>
+        <pubDate>Tue, 23 Jan 2024 22:02:31 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/aws_development/</guid>
+        <description>&lt;h1 id=&#34;development&#34;&gt;Development&lt;/h1&gt;
+&lt;h2 id=&#34;tools&#34;&gt;Tools&lt;/h2&gt;
+&lt;h3 id=&#34;cloud9&#34;&gt;Cloud9&lt;/h3&gt;
+&lt;h3 id=&#34;codeartifact&#34;&gt;CodeArtifact&lt;/h3&gt;
+&lt;h3 id=&#34;codebuild&#34;&gt;CodeBuild&lt;/h3&gt;
+&lt;h3 id=&#34;codecommit&#34;&gt;CodeCommit&lt;/h3&gt;
+&lt;h3 id=&#34;codedeploy&#34;&gt;CodeDeploy&lt;/h3&gt;
+&lt;h3 id=&#34;codeguru&#34;&gt;CodeGuru&lt;/h3&gt;
+&lt;h3 id=&#34;codepipeline&#34;&gt;CodePipeline&lt;/h3&gt;
+&lt;h3 id=&#34;codestar&#34;&gt;CodeStar&lt;/h3&gt;
+&lt;h3 id=&#34;x-ray&#34;&gt;X-Ray&lt;/h3&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;blockchain&#34;&gt;Blockchain&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;multimedia&#34;&gt;Multimedia&lt;/h2&gt;
+&lt;h3 id=&#34;elastic-transcoder&#34;&gt;Elastic Transcoder&lt;/h3&gt;
+&lt;h3 id=&#34;kinesis-video-streams&#34;&gt;Kinesis Video Streams&lt;/h3&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;webmobile&#34;&gt;Web&amp;amp;Mobile&lt;/h2&gt;
+&lt;h3 id=&#34;amplify&#34;&gt;Amplify&lt;/h3&gt;
+&lt;h3 id=&#34;api-gateway&#34;&gt;API Gateway&lt;/h3&gt;
+&lt;h3 id=&#34;device-farm&#34;&gt;Device Farm&lt;/h3&gt;
+&lt;h3 id=&#34;pinpoint&#34;&gt;Pinpoint&lt;/h3&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;iot&#34;&gt;IoT&lt;/h2&gt;
+&lt;h3 id=&#34;iot-analytics&#34;&gt;IoT Analytics&lt;/h3&gt;
+&lt;h3 id=&#34;iot-core&#34;&gt;IoT Core&lt;/h3&gt;
+&lt;h3 id=&#34;iot-events&#34;&gt;IoT Events&lt;/h3&gt;
+&lt;p&gt;&amp;hellip;&amp;hellip;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;mlai&#34;&gt;ML&amp;amp;AI&lt;/h2&gt;
+&lt;h3 id=&#34;comprehend&#34;&gt;Comprehend&lt;/h3&gt;
+&lt;h3 id=&#34;forecast&#34;&gt;Forecast&lt;/h3&gt;
+&lt;h3 id=&#34;fraud-detector&#34;&gt;Fraud Detector&lt;/h3&gt;
+&lt;h3 id=&#34;kendra&#34;&gt;Kendra&lt;/h3&gt;
+&lt;h3 id=&#34;lex&#34;&gt;Lex&lt;/h3&gt;
+&lt;p&gt;&amp;hellip;&amp;hellip;&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>GCP</title>
         <link>https://canuxcheng.com/post/gcp/</link>
         <pubDate>Sun, 23 Apr 2023 22:02:31 +0000</pubDate>
@@ -855,7 +900,8 @@ kubernetes.io/cluster/${cluster-name}: owned/shared
 &lt;hr&gt;
 &lt;h2 id=&#34;sso&#34;&gt;SSO&lt;/h2&gt;
 &lt;p&gt;sso登陆:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;aws sso login --no-browser 
+&lt;pre&gt;&lt;code&gt;aws configure sso
+aws sso login --no-browser 
 aws sso logout
 &lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;

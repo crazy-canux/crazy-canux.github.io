@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>arduino on Morgoth</title>
+        <title>Arduino on Morgoth</title>
         <link>https://canuxcheng.com/tags/arduino/</link>
-        <description>Recent content in arduino on Morgoth</description>
+        <description>Recent content in Arduino on Morgoth</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <lastBuildDate>Mon, 15 May 2023 09:41:39 +0800</lastBuildDate><atom:link href="https://canuxcheng.com/tags/arduino/index.xml" rel="self" type="application/rss+xml" /><item>

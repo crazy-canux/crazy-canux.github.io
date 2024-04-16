@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-        <title>concurrency on Morgoth</title>
+        <title>Concurrency on Morgoth</title>
         <link>https://canuxcheng.com/tags/concurrency/</link>
-        <description>Recent content in concurrency on Morgoth</description>
+        <description>Recent content in Concurrency on Morgoth</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <lastBuildDate>Mon, 01 Jan 2018 10:49:21 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/concurrency/index.xml" rel="self" type="application/rss+xml" /><item>
@@ -236,6 +236,7 @@ Mutex
 &lt;p&gt;method:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;// 加锁，如果已经加锁，阻塞至m解锁．
 func (m *Mutex) Lock()
+
 // 解锁，如果没有加锁，导致panic
 func (m *Mutex) Unlock()
 &lt;/code&gt;&lt;/pre&gt;
@@ -244,12 +245,15 @@ func (m *Mutex) Unlock()
 &lt;pre&gt;&lt;code&gt;type RWMutex struct {}
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;method:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;// 锁定为写入状态，禁止其它线程读写
+&lt;pre&gt;&lt;code&gt;// 锁定为写入状态，禁止其它线程读写，一次只能有一个线程持有。
 func (rw *RWMutex) Lock()
+
 // 解除写入锁定，如果没有加锁，导致panic
 func (rw *RWMutex) Unlock()
-// 锁定为读取状态，禁止其他线程写入，但是可以读
+
+// 锁定为读取状态，禁止其他线程写入，多个线程可以同时持有读锁。
 func (rw *RWMutex) RLock()
+
 // 解除读取锁，如果没有加锁，导致panic.
 func (rw *RWMutex) RUnlock()
 &lt;/code&gt;&lt;/pre&gt;
