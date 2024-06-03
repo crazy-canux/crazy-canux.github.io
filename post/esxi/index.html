@@ -38,6 +38,9 @@ vCenter Server是vSphere的高级管理系统．需单独购买．
 命令 vim-cmd:
 vim-cmd vmsvc/getallvms # 获取所有虚拟机 vim-cmd vmsvc/reload vim-cmd vmsvc/power.on vmid vim-cmd vmsvc/power.shutdown vimid vim-cmd vmsvc/power.off vimid vim-cmd vmsvc/power.reboot vimid # power on all vms for vm in `vim-cmd vmsvc/getallvms | awk &#39;{if (NR&amp;gt;1) {print $1}}&#39;`; do echo &amp;quot;power on ${vm}.">
     <link rel="shortcut icon" href="favicon.ico" />
+
+  
+
 <style>
     :root {
         --article-font-family: "Merriweather", var(--base-font-family);

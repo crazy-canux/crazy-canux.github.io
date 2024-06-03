@@ -32,6 +32,9 @@ EKS Distro EKS Anywhere EKS Elastic Kubernetes Service.
 $ aws cloudformation create-stack \ --stack-name my-eks-vpc-stack \ --region region-code \ --template-url https://amazon-eks.s3.us-west-2.amazonaws.com/cloudformation/2020-10-29/amazon-eks-vpc-private-subnets.yaml 创建集群 IAM 角色并向其附加所需的 Amazon EKS IAM 托管策略
 // 创建EKS IAM role aws iam create-role \ --role-name my-EKSClusterRole \ --assume-role-policy-document file://cluster-role-trust-policy.json&amp;quot; \ --permissions-boundary arn:aws:iam::&amp;lt;Your AWS ID&amp;gt;:policy/ProjAdminsPermBoundaryv2 { &amp;quot;Version&amp;quot;: &amp;quot;2012-10-17&amp;quot;, &amp;quot;Statement&amp;quot;: [ { &amp;quot;Effect&amp;quot;: &amp;quot;Allow&amp;quot;, &amp;quot;Principal&amp;quot;: { &amp;quot;Service&amp;quot;: &amp;quot;eks.">
     <link rel="shortcut icon" href="favicon.ico" />
+
+  
+
 <style>
     :root {
         --article-font-family: "Merriweather", var(--base-font-family);

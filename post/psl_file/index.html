@@ -23,6 +23,9 @@ C:\\test\\sub\\ import os function:
 os.path.expanduser(path) # 把path中~或~user扩展成绝对路径 expanduser(&amp;quot;~/src&amp;quot;) -&amp;gt; /home/user/src os.path.expandvars(path) # 把path中的shell变量$var 或 ${var} 还原． os.path.dirname(filename) # 返回filename的路径 dirname(&amp;quot;/home/user/file.py&amp;quot;) -&amp;gt; /home/user os.path.join(a, *p) # 拼结一个完整的路径　os.path.join(a, os.pardir) # 返回上级目录的路径 os.path.realpath(filename) # 返回filename的真实路径&#43;文件名 realpath(&#39;__file__&#39;) os.path.abspath(path) # 返回绝对路径, os.path.abspath(&#39;__file__&#39;) os.path.splitext(p) # 分解路径和扩展名返回组成的元组，/home/user/test.py -&amp;gt; (&amp;quot;/home/user/test&amp;quot;, &amp;quot;.py&amp;quot;) os.path.basename(p) # 返回最后一个组件名，也就是文件名 /home/user/test.py -&amp;gt; test.py os.path.getsize(filename) # 返回文件大小 os.path.exists(path) # 判断path(文件或目录)是否存在 os.path.isfile(path) # 判断path是否是常规文件 pathlib new in python3.4
 from pathlib import Path from pathlib import PurePosixPath from pathlib import PureWindowsPath stat fileinput filecmp fnmatch linecache glob functions:">
     <link rel="shortcut icon" href="favicon.ico" />
+
+  
+
 <style>
     :root {
         --article-font-family: "Merriweather", var(--base-font-family);

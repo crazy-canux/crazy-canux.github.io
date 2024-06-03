@@ -38,6 +38,9 @@ $lvar1=&amp;quot;value1&amp;quot; $lvar2=&amp;quot;value2&amp;quot; Invoke-Comma
 $var1=&amp;quot;value1&amp;quot; Invoke-Command -ComputerName name -ScriptBlock { ... $using:var1 } 创建持久的远程处理：
 $session1=New-PSSession -ComputerName server1 Enter-PSSession -Session $session1 ... Invoke-Command -Session $session1 ... WMI Get-WmiObject Remove-WmiObject Invoke-WmiMethod Register-WmiEvent Set-WmiInstance # 用powershell跑一个wql。 Get-WmiObject -Query &amp;quot;select * from win32_service where name=&#39;winRM&#39;&amp;quot; | Format-List -Property Name,status # 远程管理 Get-WMIObject -ComputerName .">
     <link rel="shortcut icon" href="favicon.ico" />
+
+  
+
 <style>
     :root {
         --article-font-family: "Merriweather", var(--base-font-family);

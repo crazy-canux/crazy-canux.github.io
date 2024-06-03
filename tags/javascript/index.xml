@@ -406,6 +406,8 @@ document.getElementbyId(&amp;quot;demo&amp;quot;).innerHTML = x;
 &lt;hr&gt;
 &lt;h1 id=&#34;文档&#34;&gt;文档&lt;/h1&gt;
 &lt;hr&gt;
+&lt;h1 id=&#34;jsx&#34;&gt;JSX&lt;/h1&gt;
+&lt;p&gt;JSX 是 JavaScript 语法扩展，可以让你在 JavaScript 文件中书写类似 HTML 的标签。虽然还有其它方式可以编写组件，但大部分 React 开发者更喜欢 JSX 的简洁性，并且在大部分代码库中使用它。&lt;/p&gt;
 </description>
         </item>
         <item>

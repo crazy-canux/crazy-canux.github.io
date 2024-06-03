@@ -44,6 +44,9 @@ func (v Vertex) MethodName() rType { ... } var v Vertex v.MethodName() // 操作
 指针接收者，调用方法的时候操作的是该指针指向的值.
 # 指针接收者的方法可以修改接收者指向的值 func (v *Vertex) MethodName() rType { ... } vp := new(Vertex) vp.MethodName() // 操作实际的值 # 使用值接收者来调用指针接收者的方法，编译器会自动做类型转换. var v Vertex v.MethodName() // (&amp;amp;v).MethodName() , 操作的是实际的值 接口/Interface 接口是引用类型.">
     <link rel="shortcut icon" href="favicon.ico" />
+
+  
+
 <style>
     :root {
         --article-font-family: "Merriweather", var(--base-font-family);

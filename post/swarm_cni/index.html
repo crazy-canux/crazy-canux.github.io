@@ -32,6 +32,9 @@ $ docker network ls # 查看所有网络 默认支持的三种模式:
 # 默认启动的容器都是桥接(docker0)，重启后容器的ip就变了。 docker run --network bridge ... docker run --network host ... # 容器和主机使用相同的ip docker run --network none ... # 容器不会分配局域网的ip 创建:
 docker network create -d &amp;lt;driver&amp;gt; ... [name] -d/--driver # 默认是bridge, 可选overlay/macvlan --subnet # CIDR格式 --gateway --ip-range 使用:">
     <link rel="shortcut icon" href="favicon.ico" />
+
+  
+
 <style>
     :root {
         --article-font-family: "Merriweather", var(--base-font-family);

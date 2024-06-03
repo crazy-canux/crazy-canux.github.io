@@ -6,7 +6,18 @@
         <description>Recent content in Web on Morgoth</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Fri, 05 Mar 2021 09:36:32 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/categories/web/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sat, 27 Jan 2024 22:19:20 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/categories/web/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>React</title>
+        <link>https://canuxcheng.com/post/js_react/</link>
+        <pubDate>Sat, 27 Jan 2024 22:19:20 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/js_react/</guid>
+        <description>&lt;h1 id=&#34;react&#34;&gt;React&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://react.dev/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://react.dev/&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>TypeScript</title>
         <link>https://canuxcheng.com/post/js_ts/</link>
         <pubDate>Fri, 05 Mar 2021 09:36:32 +0000</pubDate>
@@ -17,28 +28,9 @@
     &gt;https://github.com/microsoft/TypeScript&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.typescriptlang.org/zh/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.typescriptlang.org/zh/&lt;/a&gt;&lt;/p&gt;
-</description>
-        </item>
-        <item>
-        <title>Vue</title>
-        <link>https://canuxcheng.com/post/js_vue/</link>
-        <pubDate>Sun, 27 Jan 2019 22:19:20 +0000</pubDate>
-        
-        <guid>https://canuxcheng.com/post/js_vue/</guid>
-        <description>&lt;h1 id=&#34;vue&#34;&gt;Vue&lt;/h1&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/vuejs/vue&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://github.com/vuejs/vue&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/vuejs/vue-cli&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://github.com/vuejs/vue-cli&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;安装 vue-cli:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ npm install -g @vue/cli
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;新建项目:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ cd &amp;lt;project&amp;gt;
-$ vue create &amp;lt;application&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;测试:&lt;/p&gt;
-&lt;p&gt;打包:&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;tsx&#34;&gt;TSX&lt;/h1&gt;
+&lt;p&gt;&amp;ldquo;*.tsx&amp;rdquo; 是js的扩展，允许使用xml语法。&lt;/p&gt;
 </description>
         </item>
         <item>
@@ -786,9 +778,21 @@ $ ng serve --open
         <pubDate>Mon, 13 Mar 2017 09:36:32 +0000</pubDate>
         
         <guid>https://canuxcheng.com/post/js_devops/</guid>
-        <description>&lt;h1 id=&#34;eslint&#34;&gt;ESLint&lt;/h1&gt;
+        <description>&lt;h1 id=&#34;js--ts&#34;&gt;JS &amp;amp; TS&lt;/h1&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;eslint&#34;&gt;ESLint&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/typescript-eslint/typescript-eslint&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/typescript-eslint/typescript-eslint&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;linting.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;webpack&#34;&gt;Webpack&lt;/h2&gt;
+&lt;p&gt;bundling&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;rollup&#34;&gt;Rollup&lt;/h2&gt;
+&lt;p&gt;building package&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;jest&#34;&gt;Jest&lt;/h2&gt;
+&lt;p&gt;testing&lt;/p&gt;
 </description>
         </item>
         <item>
@@ -1191,6 +1195,8 @@ document.getElementbyId(&amp;quot;demo&amp;quot;).innerHTML = x;
 &lt;hr&gt;
 &lt;h1 id=&#34;文档&#34;&gt;文档&lt;/h1&gt;
 &lt;hr&gt;
+&lt;h1 id=&#34;jsx&#34;&gt;JSX&lt;/h1&gt;
+&lt;p&gt;JSX 是 JavaScript 语法扩展，可以让你在 JavaScript 文件中书写类似 HTML 的标签。虽然还有其它方式可以编写组件，但大部分 React 开发者更喜欢 JSX 的简洁性，并且在大部分代码库中使用它。&lt;/p&gt;
 </description>
         </item>
         <item>
@@ -1773,8 +1779,6 @@ npm whoami
 npm publish
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;发布好了可以去npm网站查看.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h1 id=&#34;配置&#34;&gt;配置&lt;/h1&gt;
 &lt;h2 id=&#34;folders&#34;&gt;folders&lt;/h2&gt;
 &lt;p&gt;nodejs加载的路径:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;1. 当前目录
@@ -1793,7 +1797,43 @@ $ npm config ls -l | grep prefix
 &lt;p&gt;package-lock.json&lt;/p&gt;
 &lt;h2 id=&#34;shrinkwrapjson&#34;&gt;shrinkwrap.json&lt;/h2&gt;
 &lt;hr&gt;
-&lt;hr&gt;
+&lt;h2 id=&#34;yarn&#34;&gt;yarn&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://yarnpkg.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://yarnpkg.com/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;使用corepack安装yarn。&lt;/p&gt;
+&lt;p&gt;激活corepack&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ corepack enable
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;安装yarn&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ corepack prepare yarn@3.8.1 --activate
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;CLI:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// create package.json
+$ yarn init
+
+// remove all local archives
+$ yarn cache clean  
+
+// add/remove/install dependencies
+$ yarn add ...
+$ yarn remove ...
+$ yarn install
+
+$ yarn node
+
+$ yarn npm info react
+
+// run script defined in package.json
+$ yarn run &amp;lt;scriptName&amp;gt;
+
+//  plugin management
+$ yarn plugin ......
+
+//  workspace management
+$ yarn workspaces ...
+$ yarn workspaces list
+$ yarn workspaces foreach // run command on all workspaces
+$ yarn &lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>

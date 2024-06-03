@@ -2,25 +2,34 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>https://canuxcheng.com/categories/</loc>
+    <lastmod>2024-01-27T22:19:20+00:00</lastmod>
+  </url><url>
+    <loc>https://canuxcheng.com/</loc>
+    <lastmod>2024-01-27T22:19:20+00:00</lastmod>
+  </url><url>
+    <loc>https://canuxcheng.com/post/</loc>
+    <lastmod>2024-01-27T22:19:20+00:00</lastmod>
+  </url><url>
+    <loc>https://canuxcheng.com/tags/react/</loc>
+    <lastmod>2024-01-27T22:19:20+00:00</lastmod>
+  </url><url>
+    <loc>https://canuxcheng.com/post/js_react/</loc>
+    <lastmod>2024-01-27T22:19:20+00:00</lastmod>
+  </url><url>
+    <loc>https://canuxcheng.com/tags/</loc>
+    <lastmod>2024-01-27T22:19:20+00:00</lastmod>
+  </url><url>
+    <loc>https://canuxcheng.com/categories/web/</loc>
+    <lastmod>2024-01-27T22:19:20+00:00</lastmod>
+  </url><url>
     <loc>https://canuxcheng.com/tags/aws/</loc>
     <lastmod>2024-01-23T22:02:31+00:00</lastmod>
   </url><url>
     <loc>https://canuxcheng.com/post/aws_development/</loc>
     <lastmod>2024-01-23T22:02:31+00:00</lastmod>
   </url><url>
-    <loc>https://canuxcheng.com/categories/</loc>
-    <lastmod>2024-01-23T22:02:31+00:00</lastmod>
-  </url><url>
     <loc>https://canuxcheng.com/categories/cloud/</loc>
-    <lastmod>2024-01-23T22:02:31+00:00</lastmod>
-  </url><url>
-    <loc>https://canuxcheng.com/</loc>
-    <lastmod>2024-01-23T22:02:31+00:00</lastmod>
-  </url><url>
-    <loc>https://canuxcheng.com/post/</loc>
-    <lastmod>2024-01-23T22:02:31+00:00</lastmod>
-  </url><url>
-    <loc>https://canuxcheng.com/tags/</loc>
     <lastmod>2024-01-23T22:02:31+00:00</lastmod>
   </url><url>
     <loc>https://canuxcheng.com/categories/cncf/</loc>
@@ -170,9 +179,6 @@
     <loc>https://canuxcheng.com/post/js_ts/</loc>
     <lastmod>2021-03-05T09:36:32+00:00</lastmod>
   </url><url>
-    <loc>https://canuxcheng.com/categories/web/</loc>
-    <lastmod>2021-03-05T09:36:32+00:00</lastmod>
-  </url><url>
     <loc>https://canuxcheng.com/tags/bitbake/</loc>
     <lastmod>2020-07-12T21:18:33+00:00</lastmod>
   </url><url>
@@ -304,12 +310,6 @@
   </url><url>
     <loc>https://canuxcheng.com/post/linux_init/</loc>
     <lastmod>2019-02-03T14:04:05+00:00</lastmod>
-  </url><url>
-    <loc>https://canuxcheng.com/tags/vue/</loc>
-    <lastmod>2019-01-27T22:19:20+00:00</lastmod>
-  </url><url>
-    <loc>https://canuxcheng.com/post/js_vue/</loc>
-    <lastmod>2019-01-27T22:19:20+00:00</lastmod>
   </url><url>
     <loc>https://canuxcheng.com/tags/nginx/</loc>
     <lastmod>2018-09-27T03:25:26+00:00</lastmod>

@@ -35,6 +35,9 @@ sudo apt install docker-buildx-plugin 查看版本
 docker buildx version 管理builder instance
 docker buildx create --append 添加node到builder实例。 --leave 从builder实例删除node --driver Driver to use(&amp;quot;docker&amp;quot;, &amp;quot;docker-container&amp;quot;, &amp;quot;kubernetes&amp;quot;) --name --use --node --platform --bootstrap 启动实例（以容器的形式启动） // 以本地是amd64为例，创建一个实例. docker buildx create --use --bootstrap --platform linux/amd64,linux/amd64/v2,linux/amd64/v3,linux/arm64,linux/arm/v7,linux/arm/v6 --name canux-builder // 如果没有qumu，可以把不同平台的远程机器加到builder实例.">
     <link rel="shortcut icon" href="favicon.ico" />
+
+  
+
 <style>
     :root {
         --article-font-family: "Merriweather", var(--base-font-family);

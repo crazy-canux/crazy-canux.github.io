@@ -29,6 +29,9 @@ urlpatterns是url()实例类型的python列表。
 from django.urls import path from . import views app_name = &#39;polls&#39; urlpatterns = [ # 普通视图 path(&#39;&#39;, views.index, name=&#39;index&#39;), # 类视图 path(&#39;&#39;, views.IndexView.as_view(), name=&#39;index&#39;), ] 没有命名的组 视图函数只有request参数，匹配的正则表达式作为位置参数。
 url(r&#39;^pattern1/pattern2/$&#39;, views.index, name=&#39;index&#39;), def index(request): .">
     <link rel="shortcut icon" href="favicon.ico" />
+
+  
+
 <style>
     :root {
         --article-font-family: "Merriweather", var(--base-font-family);

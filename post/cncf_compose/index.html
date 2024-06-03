@@ -23,6 +23,9 @@ https://docs.docker.com/compose/install/ $ sudo curl -L https://github.com/docke
 安装:
 https://docs.docker.com/compose/install/ $ sudo curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose $ sudo chmod &#43;x /usr/local/bin/docker-compose docker-compose命令 docker-compose [-f &amp;lt;arg&amp;gt;...] [options] [COMMAND] [ARGS...] -f/--file -p/--project-name # 默认目录名 -H/--host # 拉取compose文件中指定的镜像 $ docker-compose -f service.yml pull # 根据docker-compose.yml把stack打包成一个Distributed Application Bundles文件. $ docker-compose bundle -o &amp;lt;project name&amp;gt;.dab $ docker-compose start [servoce...] $ docker-compose stop [service...] $ docker-compose restart [service...] $ docker-compose up -d [service...] $ docker-compose down -v $ docker-compose logs -f docker-compose.">
     <link rel="shortcut icon" href="favicon.ico" />
+
+  
+
 <style>
     :root {
         --article-font-family: "Merriweather", var(--base-font-family);

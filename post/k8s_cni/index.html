@@ -44,6 +44,9 @@ $ kubectl get nodes $ kubectl get pod --all-namespaces 删除插件:
 删除插件会影响已经部署的pod.
 // 删除flannel $ kubectl delete -f X.yml $ sudo systemctl stop kubelet docker // 第二步，在node节点清理flannel网络留下的文件 ifconfig cni0 down ip link delete cni0 ifconfig flannel.1 down ip link delete flannel.">
     <link rel="shortcut icon" href="favicon.ico" />
+
+  
+
 <style>
     :root {
         --article-font-family: "Merriweather", var(--base-font-family);

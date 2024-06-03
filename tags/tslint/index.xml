@@ -12,9 +12,21 @@
         <pubDate>Mon, 13 Mar 2017 09:36:32 +0000</pubDate>
         
         <guid>https://canuxcheng.com/post/js_devops/</guid>
-        <description>&lt;h1 id=&#34;eslint&#34;&gt;ESLint&lt;/h1&gt;
+        <description>&lt;h1 id=&#34;js--ts&#34;&gt;JS &amp;amp; TS&lt;/h1&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;eslint&#34;&gt;ESLint&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/typescript-eslint/typescript-eslint&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/typescript-eslint/typescript-eslint&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;linting.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;webpack&#34;&gt;Webpack&lt;/h2&gt;
+&lt;p&gt;bundling&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;rollup&#34;&gt;Rollup&lt;/h2&gt;
+&lt;p&gt;building package&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;jest&#34;&gt;Jest&lt;/h2&gt;
+&lt;p&gt;testing&lt;/p&gt;
 </description>
         </item>
         

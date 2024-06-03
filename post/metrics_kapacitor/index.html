@@ -26,6 +26,9 @@ Open source framework for processing, monitoring, and alerting on time series da
 配置:
 hostname = &amp;quot;kapcitor-service&amp;quot; # 如果从influxdb读取数据需要配置该选项． [[influxdb]] enabled = true # 如果从该路径加载tickscript [[load]] enabled = true dir=&amp;quot;/etc/kapacitor/load&amp;quot; # tasks, 放到/etc/kapacitor/load/tasks/*.tick,重启kapacitor会自动加载task,并默认enable. ## 要求，ID和tick文件同名，tickscript开头需要指定dbrp, tickscript里面需要指定batch/stream. # templates... # handlers... CLI $ kapacitor help # 创建template(也就是变量可以单独赋值的tickscript) $ kapacitor define-template &amp;lt;name&amp;gt; -tick /path/template.tick $ kapacitor show-template &amp;lt;name&amp;gt; # 创建/更新 task, 创建的默认是disable状态. # 从tickscript创建task $ kapacitor define &amp;lt;name&amp;gt; -tick task.">
     <link rel="shortcut icon" href="favicon.ico" />
+
+  
+
 <style>
     :root {
         --article-font-family: "Merriweather", var(--base-font-family);

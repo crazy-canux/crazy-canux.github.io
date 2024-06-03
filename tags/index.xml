@@ -6,7 +6,15 @@
         <description>Recent content in Tags on Morgoth</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Tue, 23 Jan 2024 22:02:31 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sat, 27 Jan 2024 22:19:20 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>React</title>
+        <link>https://canuxcheng.com/tags/react/</link>
+        <pubDate>Sat, 27 Jan 2024 22:19:20 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/tags/react/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>Aws</title>
         <link>https://canuxcheng.com/tags/aws/</link>
         <pubDate>Tue, 23 Jan 2024 22:02:31 +0000</pubDate>
@@ -196,14 +204,6 @@
         <pubDate>Sun, 03 Feb 2019 14:04:05 +0000</pubDate>
         
         <guid>https://canuxcheng.com/tags/init/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>Vue</title>
-        <link>https://canuxcheng.com/tags/vue/</link>
-        <pubDate>Sun, 27 Jan 2019 22:19:20 +0000</pubDate>
-        
-        <guid>https://canuxcheng.com/tags/vue/</guid>
         <description></description>
         </item>
         <item>

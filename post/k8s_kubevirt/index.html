@@ -26,6 +26,9 @@ https://docs.fedoraproject.org/en-US/quick-docs/using-nested-virtualization-in-k
 virtctl VM 创建vm
 apiVersion: kubevirt.io/v1 kind: VirtualMachine metadata: name: testvm spec: running: false template: metadata: labels: kubevirt.io/size: small kubevirt.io/domain: testvm spec: domain: devices: disks: - name: containerdisk disk: bus: virtio - name: cloudinitdisk disk: bus: virtio interfaces: - name: default masquerade: {} resources: requests: memory: 64M networks: - name: default pod: {} volumes: - name: containerdisk containerDisk: image: quay.io/kubevirt/cirros-container-disk-demo - name: cloudinitdisk cloudInitNoCloud: userDataBase64: SGkuXG4= nodeSelector: kubernetes.">
     <link rel="shortcut icon" href="favicon.ico" />
+
+  
+
 <style>
     :root {
         --article-font-family: "Merriweather", var(--base-font-family);

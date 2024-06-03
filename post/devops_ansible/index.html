@@ -47,6 +47,9 @@ $ sudo vim /etc/ansible/ansible.cfg [defaults] ask_pass = False host_key_checkin
 Ad-hoc相当于直接运行shell命令 playbooks相当于运行shell脚本 ansible:
 $ ansible -i inventory group1:group1:group3/all ... $ansible --help -m MODULE_NAME, --module-name=MODULE_NAME # 执行模块，默认是command -M MODULE_PATH, --module-path=MODULE_PATH # 指定模块的路径 -a MODULE_ARGS, --args=MODULE_ARGS # 模块的参数 -i INVENTORY, --inventory INVENTORY # 默认/etc/ansible/hosts, 需要指定hosts分组 -f FORKS, --forks=FORKS # 指定并发进程的数量 -C, --check -D, --diff -l SUBSET, --limit=SUBSET --syntax-check --list-hosts -v, --verbose # -v, -vvv, -vvvv # 提权选项 -b, --become --become-method=BECOME_METHOD # sudo(default)/su/pbrun/pfexec/runas/doas --become-user=BECOME_USER # root(default) -K, --ask-become-pass # 连接选项 -u REMOTE_USER --ssh-common-args --ssh-extra-args -T TIMEOUT # default 10s -K, --ask-pass inventory inventory包括主机和分组,以及主机变量和分组变量.">
     <link rel="shortcut icon" href="favicon.ico" />
+
+  
+
 <style>
     :root {
         --article-font-family: "Merriweather", var(--base-font-family);

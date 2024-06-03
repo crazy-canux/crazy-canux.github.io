@@ -41,6 +41,9 @@ swarm命令 创建集群
 docker swarm init --advertise-addr &amp;lt;ip&amp;gt; 多网卡情况下指定manager的ip docker swarm join --token &amp;lt;token&amp;gt; &amp;lt;host:port&amp;gt; # 查看token docker swarm join-token manager 获取添加manager命令 docker swarm join-token worker 获取添加worker命令 docker swarm join-token -q worker docker swarm leave -f/--force docker swarm update 管理节点
 docker node ls docker node ls --format &amp;quot;{{.Hostname}}&amp;quot; ​ docker node rm ​ docker node inspect ​ # 查看node上运行的tasks/container docker node ps -f/--filter NODE ​ # 添加label, node.">
     <link rel="shortcut icon" href="favicon.ico" />
+
+  
+
 <style>
     :root {
         --article-font-family: "Merriweather", var(--base-font-family);

@@ -3562,8 +3562,11 @@ git branch -u &amp;lt;origin/branch&amp;gt; [branch] # 设置上游
 &lt;pre&gt;&lt;code&gt;git checkout [branch-name]
 git checkout -b [branch-name] [start-point] # 创建并切换到分支
 git checkout -B [branch-name] [start-point] # 强制执行
+
 git checkout -- file/path # 撤销工作目录中文件的修改
 git checkout [branch-name] -- file/path # 获取远程仓库的文件到当前工作目录
+
+git checkout -b &amp;lt;b-n&amp;gt; tags/v1.0.0 # 基于tag创建branch.
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;clone&#34;&gt;clone&lt;/h2&gt;
 &lt;p&gt;Clone a repository into a new directory&lt;/p&gt;

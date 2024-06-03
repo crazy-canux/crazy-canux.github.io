@@ -41,6 +41,9 @@ $pelican-quickstart 生成下列文件和目录:
 publishconf.py # 主配置文件 pelicanconf.py # 发布的配置文件 fabfile.py # fabric配置文件 Makefile # make配置文件 develop_server.sh # 用于开启测试服务器 content # 用于存放所有文章 output # 静态生成文件 发布站点 pelican部署博客:
 # 将rst或md格式转换成html,默认导入到output. $pelican content $pelican content -s pelicanconf.py # 启动web服务器预览 $cd output $python -m pelican.server $python2.7 -m SimpleHTTPServer $python3 -m http.server $firefox http://localhost:8000/ # 部署站点 # 一般publishconf.">
     <link rel="shortcut icon" href="favicon.ico" />
+
+  
+
 <style>
     :root {
         --article-font-family: "Merriweather", var(--base-font-family);

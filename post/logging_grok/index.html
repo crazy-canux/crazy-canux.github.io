@@ -50,6 +50,9 @@ TICK stack telegraf(agent): 通过logparser/tail插件解析log并写入influxdb
 pattern:
 # 通过已经定义的变量来定义filter patterns = [&#39;&#39;&#39;${&amp;lt;capture_syntax&amp;gt;[:&amp;lt;semantic_name&amp;gt;][:&amp;lt;modifier&amp;gt;]}&#39;&#39;&#39;] patterns = [&#39;&#39;&#39;%{TIMESTAMP_ISO8601:asctime:string} \[%{DATA:name:string}\] %{LOGLEVEL:levelname:string}: %{GREEDYDATA:message:string}&#39;&#39;&#39;] capture_syntax是已经定义好的pattern. semantic_name是field/tag的名字, 默认都是string类型的field modifier 是string/int/float/tag/drop/ts-&amp;quot;CUSTOM&amp;quot;/...类型 timestamp有特殊的modifier: timestamp 有特殊的modifier： Timestamp modifiers:ts (This will auto-learn the timestamp format) ts-ansic (&amp;quot;Mon Jan _2 15:04:05 2006&amp;quot;) ts-unix (&amp;quot;Mon Jan _2 15:04:05 MST 2006&amp;quot;) ts-ruby (&amp;quot;Mon Jan 02 15:04:05 -0700 2006&amp;quot;) ts-rfc822 (&amp;quot;02 Jan 06 15:04 MST&amp;quot;) ts-rfc822z (&amp;quot;02 Jan 06 15:04 -0700&amp;quot;) ts-rfc850 (&amp;quot;Monday, 02-Jan-06 15:04:05 MST&amp;quot;) ts-rfc1123 (&amp;quot;Mon, 02 Jan 2006 15:04:05 MST&amp;quot;) ts-rfc1123z (&amp;quot;Mon, 02 Jan 2006 15:04:05 -0700&amp;quot;) ts-rfc3339 (&amp;quot;2006-01-02T15:04:05Z07:00&amp;quot;) ts-rfc3339nano (&amp;quot;2006-01-02T15:04:05.">
     <link rel="shortcut icon" href="favicon.ico" />
+
+  
+
 <style>
     :root {
         --article-font-family: "Merriweather", var(--base-font-family);

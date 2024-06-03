@@ -29,6 +29,9 @@ from .models import Question admin.site.register(Question) 自定义管理表单
 from .models import Question class QuestionAdmin(admin.ModelAdmin): fileds = [&#39;pub_date&#39;, &#39;question_date&#39;] admin.site.register(Question, QuestionAdmin) 把表单分割成字段集：
 from .models import Question class QuestionAdmin(admin.ModelAdmin): fieldsets = [ (None, {&#39;fields&#39;: [&#39;question_text&#39;]}), (&#39;Date information&#39;, {&#39;fields&#39;: [&#39;pub_date&#39;]}), ] admin.site.register(Question, QuestionAdmin) 后台 django的后台管理程序。">
     <link rel="shortcut icon" href="favicon.ico" />
+
+  
+
 <style>
     :root {
         --article-font-family: "Merriweather", var(--base-font-family);

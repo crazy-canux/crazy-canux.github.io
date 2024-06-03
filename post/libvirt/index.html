@@ -29,6 +29,9 @@ $ sudo apt-get install libvirt-bin (包含virsh命令和libvirtd daemon) // libv
 libvirt-daemon-system libvirt-clients $ sudo apt-get install libvirt-dev # 库, python/go client依赖该库 $ sudo apt-get install virt-manager # windows管理工具 $ sudo apt-get install virt-view # ... $ sudo service libvirt-bin restart virsh libvirt的命令行工具
 $ virsh list --all # 查看所有虚拟机 $ virsh list --all --name # 只看domain name. $ virsh define /path/to/X.xml # 从xml配置文件定义一个domain $ virsh start # 启动虚拟机 $ virsh reboot # 重启虚拟机 $ virsh shutdown # 关闭虚拟机 $ virsh destroy # 强制关闭虚拟机 $ virsh undefine # 移除虚拟机 $ virsh vncdisplay # 查看虚拟机的vnc信息，可以通过vnc访问.">
     <link rel="shortcut icon" href="favicon.ico" />
+
+  
+
 <style>
     :root {
         --article-font-family: "Merriweather", var(--base-font-family);

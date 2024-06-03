@@ -41,6 +41,9 @@ from django.views.decorators.cache import cache_page
 {% load cache %} {% cache &amp;hellip; %} &amp;hellip; {% endcache %}
 redis CACHES = { &amp;quot;default&amp;quot;: { &amp;quot;BACKEND&amp;quot;: &amp;quot;django_redis.cache.RedisCache&amp;quot;, &amp;quot;LOCATION&amp;quot;: os.environ.get(&amp;quot;REDIS_URL&amp;quot;, &#39;&#39;), &amp;quot;OPTIONS&amp;quot;: { &amp;quot;CLIENT_CLASS&amp;quot;: &amp;quot;django_redis.client.DefaultClient&amp;quot;, }, &amp;quot;TIMEOUT&amp;quot;: 60, } } memcached CACHES = { &#39;default&#39;: { &#39;BACKEND&#39;: &#39;django.">
     <link rel="shortcut icon" href="favicon.ico" />
+
+  
+
 <style>
     :root {
         --article-font-family: "Merriweather", var(--base-font-family);

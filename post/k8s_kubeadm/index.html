@@ -41,6 +41,9 @@ $ sudo vim /etc/containerd/config.toml #disabled_plugins = [&amp;quot;cri&amp;qu
 # kubeadm-config.yaml kind: ClusterConfiguration apiVersion: kubeadm.k8s.io/v1beta3 kubernetesVersion: v1.21.0 // kubelet --version --- apiVersion: kubelet.config.k8s.io/v1beta1 kind: KubeletConfiguration cgroupDriver: systemd 安装kubeadm, kubelet, kubectl 在每台机器上安装 kubeadm, kubelet, kubectl:
 $ sudo apt-get update $ sudo apt-get install -y apt-transport-https ca-certificates curl $ sudo curl -fsSL https://mirrors.">
     <link rel="shortcut icon" href="favicon.ico" />
+
+  
+
 <style>
     :root {
         --article-font-family: "Merriweather", var(--base-font-family);

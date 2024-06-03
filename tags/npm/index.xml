@@ -73,8 +73,6 @@ npm whoami
 npm publish
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;发布好了可以去npm网站查看.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h1 id=&#34;配置&#34;&gt;配置&lt;/h1&gt;
 &lt;h2 id=&#34;folders&#34;&gt;folders&lt;/h2&gt;
 &lt;p&gt;nodejs加载的路径:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;1. 当前目录
@@ -93,7 +91,43 @@ $ npm config ls -l | grep prefix
 &lt;p&gt;package-lock.json&lt;/p&gt;
 &lt;h2 id=&#34;shrinkwrapjson&#34;&gt;shrinkwrap.json&lt;/h2&gt;
 &lt;hr&gt;
-&lt;hr&gt;
+&lt;h2 id=&#34;yarn&#34;&gt;yarn&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://yarnpkg.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://yarnpkg.com/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;使用corepack安装yarn。&lt;/p&gt;
+&lt;p&gt;激活corepack&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ corepack enable
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;安装yarn&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ corepack prepare yarn@3.8.1 --activate
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;CLI:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// create package.json
+$ yarn init
+
+// remove all local archives
+$ yarn cache clean  
+
+// add/remove/install dependencies
+$ yarn add ...
+$ yarn remove ...
+$ yarn install
+
+$ yarn node
+
+$ yarn npm info react
+
+// run script defined in package.json
+$ yarn run &amp;lt;scriptName&amp;gt;
+
+//  plugin management
+$ yarn plugin ......
+
+//  workspace management
+$ yarn workspaces ...
+$ yarn workspaces list
+$ yarn workspaces foreach // run command on all workspaces
+$ yarn &lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         

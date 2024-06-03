@@ -41,6 +41,9 @@ Options kubectl options # 查看所有命令可用选项 --kubeconfig kubectl --
 # 通过yaml或json文件创建资源 $ kubectl create -f FILENAME [options] options: -f/--filename kubectl create secret tls kubernetes-dashboard-tls --key ca.key --cert ca.crt -n kubernetes-dashboard // 输出一个资源的yaml格式. kubectl create deployment &amp;lt;name&amp;gt; --image=&amp;lt;img-name&amp;gt; --dry-run=client --output=yaml delete:
 // 删除资源 $ kubectl delete (-f FILENAME | -k DICT | TYPE [(NAME|-l label|--all)]) [optiions] options: -f/--filename --all --all-namespaces --force $ kubectl delete pods --all $ kubectl delete pod &amp;lt;name&amp;gt; // 删除指定ns下所有资源.">
     <link rel="shortcut icon" href="favicon.ico" />
+
+  
+
 <style>
     :root {
         --article-font-family: "Merriweather", var(--base-font-family);

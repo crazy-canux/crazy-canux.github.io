@@ -26,6 +26,9 @@ $ sudo apt-get install haproxy 配置:
 $ sudo vim /etc/haproxy/haproxy.cfg global:
 log /dev/log local0 log /dev/log local1 notice chroot /var/lib/haproxy stats socket /run/haproxy/admin.sock mode 660 level admin expose-fd listeners stats timeout 30s user haproxy group haproxy daemon # Default SSL material locations ca-base /etc/ssl/certs crt-base /etc/ssl/private # Default ciphers to use on SSL-enabled listening sockets. # For more information, see ciphers(1SSL). This list is from: # https://hynek.me/articles/hardening-your-web-servers-ssl-ciphers/ # An alternative list with additional directives can be obtained from # https://mozilla.">
     <link rel="shortcut icon" href="favicon.ico" />
+
+  
+
 <style>
     :root {
         --article-font-family: "Merriweather", var(--base-font-family);

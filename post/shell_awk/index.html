@@ -38,6 +38,9 @@ awk [-v var=value [-F *] [–] &#39;/pattern/ {action}&#39; file awk [-v var=val
 脚本中传递参数格式：
 awk [-f scriptfile]OR[&#39;/pattern/{action}&#39;] val1=value1 val2=value2 … file1 vala=valuea valb=valueb... file2 ... 如果通过shell传参数，把value改成$n即可。 可以通过命令返回值作为参数value。 也可以使用环境变量作为value，也可以给awk的环境变量赋值。 可以在任何位置定义变量（‘ ‘ 之后；-v之后；BEGIN中；{}中；END中）。 只有在-v和在BEGIN中定义的变量能在BEGIN中使用。 在END中定义的变量只能在END中使用，其它位置定义的变量都可以在{}中使用。 在任何位置定义的变量在END中都可以使用。">
     <link rel="shortcut icon" href="favicon.ico" />
+
+  
+
 <style>
     :root {
         --article-font-family: "Merriweather", var(--base-font-family);
