@@ -28,8 +28,10 @@
     &gt;https://github.com/microsoft/TypeScript&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.typescriptlang.org/zh/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.typescriptlang.org/zh/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/microsoft/tsdoc&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/microsoft/tsdoc&lt;/a&gt;&lt;/p&gt;
 &lt;hr&gt;
-&lt;h1 id=&#34;tsx&#34;&gt;TSX&lt;/h1&gt;
+&lt;h2 id=&#34;tsx&#34;&gt;TSX&lt;/h2&gt;
 &lt;p&gt;&amp;ldquo;*.tsx&amp;rdquo; 是js的扩展，允许使用xml语法。&lt;/p&gt;
 </description>
         </item>
@@ -1817,7 +1819,7 @@ $ yarn cache clean
 // add/remove/install dependencies
 $ yarn add ...
 $ yarn remove ...
-$ yarn install
+$ yarn install --inline-builds
 
 $ yarn node
 

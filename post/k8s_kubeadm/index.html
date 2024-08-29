@@ -8,7 +8,7 @@ Install 准备工作 https://kubernetes.io/zh/docs/setup/production-environment/
 默认的cgroup驱动时cgroupfs,如果系统是systemd，就会有两个cgroup driver，会出问题.
 如果修改cgroup driver需要同时修改CRI和kubelet.
 修改containerd的cgroup driver:
-$ sudo vim /etc/containerd/config.toml #disabled_plugins = [&amp;quot;cri&amp;quot;] [plugins.&amp;quot;io.containerd.grpc.v1.cri&amp;quot;.containerd.runtimes.runc.options] SystemdCgroup = true $ sudo systemctl restart containerd 修改kubelet的cgroup driver(kubeadm-config.yaml):
+$ sudo vim /etc/containerd/config.toml #disabled_plugins = [&quot;cri&quot;] [plugins.&quot;io.containerd.grpc.v1.cri&quot;.containerd.runtimes.runc.options] SystemdCgroup = true $ sudo systemctl restart containerd 修改kubelet的cgroup driver(kubeadm-config.yaml):
 # kubeadm-config.yaml kind: ClusterConfiguration apiVersion: kubeadm.k8s.io/v1beta3 kubernetesVersion: v1.21.0 // kubelet --version --- apiVersion: kubelet.config.k8s.io/v1beta1 kind: KubeletConfiguration cgroupDriver: systemd 安装kubeadm, kubelet, kubectl 在每台机器上安装 kubeadm, kubelet, kubectl:
 $ sudo apt-get update $ sudo apt-get install -y apt-transport-https ca-certificates curl $ sudo curl -fsSL https://mirrors.'>
 <title>Kubeadm</title>
@@ -23,7 +23,7 @@ Install 准备工作 https://kubernetes.io/zh/docs/setup/production-environment/
 默认的cgroup驱动时cgroupfs,如果系统是systemd，就会有两个cgroup driver，会出问题.
 如果修改cgroup driver需要同时修改CRI和kubelet.
 修改containerd的cgroup driver:
-$ sudo vim /etc/containerd/config.toml #disabled_plugins = [&amp;quot;cri&amp;quot;] [plugins.&amp;quot;io.containerd.grpc.v1.cri&amp;quot;.containerd.runtimes.runc.options] SystemdCgroup = true $ sudo systemctl restart containerd 修改kubelet的cgroup driver(kubeadm-config.yaml):
+$ sudo vim /etc/containerd/config.toml #disabled_plugins = [&quot;cri&quot;] [plugins.&quot;io.containerd.grpc.v1.cri&quot;.containerd.runtimes.runc.options] SystemdCgroup = true $ sudo systemctl restart containerd 修改kubelet的cgroup driver(kubeadm-config.yaml):
 # kubeadm-config.yaml kind: ClusterConfiguration apiVersion: kubeadm.k8s.io/v1beta3 kubernetesVersion: v1.21.0 // kubelet --version --- apiVersion: kubelet.config.k8s.io/v1beta1 kind: KubeletConfiguration cgroupDriver: systemd 安装kubeadm, kubelet, kubectl 在每台机器上安装 kubeadm, kubelet, kubectl:
 $ sudo apt-get update $ sudo apt-get install -y apt-transport-https ca-certificates curl $ sudo curl -fsSL https://mirrors.'>
 <meta property='og:url' content='https://canuxcheng.com/post/k8s_kubeadm/'>
@@ -37,7 +37,7 @@ Install 准备工作 https://kubernetes.io/zh/docs/setup/production-environment/
 默认的cgroup驱动时cgroupfs,如果系统是systemd，就会有两个cgroup driver，会出问题.
 如果修改cgroup driver需要同时修改CRI和kubelet.
 修改containerd的cgroup driver:
-$ sudo vim /etc/containerd/config.toml #disabled_plugins = [&amp;quot;cri&amp;quot;] [plugins.&amp;quot;io.containerd.grpc.v1.cri&amp;quot;.containerd.runtimes.runc.options] SystemdCgroup = true $ sudo systemctl restart containerd 修改kubelet的cgroup driver(kubeadm-config.yaml):
+$ sudo vim /etc/containerd/config.toml #disabled_plugins = [&quot;cri&quot;] [plugins.&quot;io.containerd.grpc.v1.cri&quot;.containerd.runtimes.runc.options] SystemdCgroup = true $ sudo systemctl restart containerd 修改kubelet的cgroup driver(kubeadm-config.yaml):
 # kubeadm-config.yaml kind: ClusterConfiguration apiVersion: kubeadm.k8s.io/v1beta3 kubernetesVersion: v1.21.0 // kubelet --version --- apiVersion: kubelet.config.k8s.io/v1beta1 kind: KubeletConfiguration cgroupDriver: systemd 安装kubeadm, kubelet, kubectl 在每台机器上安装 kubeadm, kubelet, kubectl:
 $ sudo apt-get update $ sudo apt-get install -y apt-transport-https ca-certificates curl $ sudo curl -fsSL https://mirrors.">
     <link rel="shortcut icon" href="favicon.ico" />
@@ -105,7 +105,7 @@ $ sudo apt-get update $ sudo apt-get install -y apt-transport-https ca-certifica
                     
                     
                         
-                        <img src="/img/home_hu6602fceeffaea48dc14f1109cef06aaf_168478_300x0_resize_q75_box.jpg" width="300"
+                        <img src="/img/home_hu10520392605785141645.jpg" width="300"
                             height="400" class="site-logo" loading="lazy" alt="Avatar">
                     
                 

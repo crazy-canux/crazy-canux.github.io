@@ -3,14 +3,14 @@
     <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='cache 缓存的backend可以是django内置的，也可以是第三方的。
 缓存整个站点
-MIDDLEWARE = [ &amp;lsquo;django.middleware.cache.UpdateCacheMiddleware&amp;rsquo;, &amp;lsquo;django.middleware.common.CommonMiddleware&amp;rsquo;, &amp;lsquo;django.middleware.cache.FetchFromCacheMiddleware&amp;rsquo;, ]
+MIDDLEWARE = [ &lsquo;django.middleware.cache.UpdateCacheMiddleware&rsquo;, &lsquo;django.middleware.common.CommonMiddleware&rsquo;, &lsquo;django.middleware.cache.FetchFromCacheMiddleware&rsquo;, ]
 视图缓存
 from django.views.decorators.cache import cache_page
-@cache_page(60 * 2) def my_view(request): &amp;hellip;
-或者在URLconf中指定 urlpatterns = [ path(&amp;lsquo;foo/int:code/&amp;rsquo;, cache_page(60 * 2)(my_view)), ]
+@cache_page(60 * 2) def my_view(request): &hellip;
+或者在URLconf中指定 urlpatterns = [ path(&lsquo;foo/int:code/&rsquo;, cache_page(60 * 2)(my_view)), ]
 模板片段缓存
-{% load cache %} {% cache &amp;hellip; %} &amp;hellip; {% endcache %}
-redis CACHES = { &amp;quot;default&amp;quot;: { &amp;quot;BACKEND&amp;quot;: &amp;quot;django_redis.cache.RedisCache&amp;quot;, &amp;quot;LOCATION&amp;quot;: os.environ.get(&amp;quot;REDIS_URL&amp;quot;, &#39;&#39;), &amp;quot;OPTIONS&amp;quot;: { &amp;quot;CLIENT_CLASS&amp;quot;: &amp;quot;django_redis.client.DefaultClient&amp;quot;, }, &amp;quot;TIMEOUT&amp;quot;: 60, } } memcached CACHES = { &#39;default&#39;: { &#39;BACKEND&#39;: &#39;django.'>
+{% load cache %} {% cache &hellip; %} &hellip; {% endcache %}
+redis CACHES = { &quot;default&quot;: { &quot;BACKEND&quot;: &quot;django_redis.cache.RedisCache&quot;, &quot;LOCATION&quot;: os.environ.get(&quot;REDIS_URL&quot;, &#39;&#39;), &quot;OPTIONS&quot;: { &quot;CLIENT_CLASS&quot;: &quot;django_redis.client.DefaultClient&quot;, }, &quot;TIMEOUT&quot;: 60, } } memcached CACHES = { &#39;default&#39;: { &#39;BACKEND&#39;: &#39;django.'>
 <title>Cache</title>
 
 <link rel='canonical' href='https://canuxcheng.com/post/django_cache/'>
@@ -18,28 +18,28 @@ redis CACHES = { &amp;quot;default&amp;quot;: { &amp;quot;BACKEND&amp;quot;: &am
 <link rel="stylesheet" href="/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content='Cache'>
 <meta property='og:description' content='cache 缓存的backend可以是django内置的，也可以是第三方的。
 缓存整个站点
-MIDDLEWARE = [ &amp;lsquo;django.middleware.cache.UpdateCacheMiddleware&amp;rsquo;, &amp;lsquo;django.middleware.common.CommonMiddleware&amp;rsquo;, &amp;lsquo;django.middleware.cache.FetchFromCacheMiddleware&amp;rsquo;, ]
+MIDDLEWARE = [ &lsquo;django.middleware.cache.UpdateCacheMiddleware&rsquo;, &lsquo;django.middleware.common.CommonMiddleware&rsquo;, &lsquo;django.middleware.cache.FetchFromCacheMiddleware&rsquo;, ]
 视图缓存
 from django.views.decorators.cache import cache_page
-@cache_page(60 * 2) def my_view(request): &amp;hellip;
-或者在URLconf中指定 urlpatterns = [ path(&amp;lsquo;foo/int:code/&amp;rsquo;, cache_page(60 * 2)(my_view)), ]
+@cache_page(60 * 2) def my_view(request): &hellip;
+或者在URLconf中指定 urlpatterns = [ path(&lsquo;foo/int:code/&rsquo;, cache_page(60 * 2)(my_view)), ]
 模板片段缓存
-{% load cache %} {% cache &amp;hellip; %} &amp;hellip; {% endcache %}
-redis CACHES = { &amp;quot;default&amp;quot;: { &amp;quot;BACKEND&amp;quot;: &amp;quot;django_redis.cache.RedisCache&amp;quot;, &amp;quot;LOCATION&amp;quot;: os.environ.get(&amp;quot;REDIS_URL&amp;quot;, &#39;&#39;), &amp;quot;OPTIONS&amp;quot;: { &amp;quot;CLIENT_CLASS&amp;quot;: &amp;quot;django_redis.client.DefaultClient&amp;quot;, }, &amp;quot;TIMEOUT&amp;quot;: 60, } } memcached CACHES = { &#39;default&#39;: { &#39;BACKEND&#39;: &#39;django.'>
+{% load cache %} {% cache &hellip; %} &hellip; {% endcache %}
+redis CACHES = { &quot;default&quot;: { &quot;BACKEND&quot;: &quot;django_redis.cache.RedisCache&quot;, &quot;LOCATION&quot;: os.environ.get(&quot;REDIS_URL&quot;, &#39;&#39;), &quot;OPTIONS&quot;: { &quot;CLIENT_CLASS&quot;: &quot;django_redis.client.DefaultClient&quot;, }, &quot;TIMEOUT&quot;: 60, } } memcached CACHES = { &#39;default&#39;: { &#39;BACKEND&#39;: &#39;django.'>
 <meta property='og:url' content='https://canuxcheng.com/post/django_cache/'>
 <meta property='og:site_name' content='Morgoth'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='cache' />
 <meta name="twitter:title" content="Cache">
 <meta name="twitter:description" content="cache 缓存的backend可以是django内置的，也可以是第三方的。
 缓存整个站点
-MIDDLEWARE = [ &amp;lsquo;django.middleware.cache.UpdateCacheMiddleware&amp;rsquo;, &amp;lsquo;django.middleware.common.CommonMiddleware&amp;rsquo;, &amp;lsquo;django.middleware.cache.FetchFromCacheMiddleware&amp;rsquo;, ]
+MIDDLEWARE = [ &lsquo;django.middleware.cache.UpdateCacheMiddleware&rsquo;, &lsquo;django.middleware.common.CommonMiddleware&rsquo;, &lsquo;django.middleware.cache.FetchFromCacheMiddleware&rsquo;, ]
 视图缓存
 from django.views.decorators.cache import cache_page
-@cache_page(60 * 2) def my_view(request): &amp;hellip;
-或者在URLconf中指定 urlpatterns = [ path(&amp;lsquo;foo/int:code/&amp;rsquo;, cache_page(60 * 2)(my_view)), ]
+@cache_page(60 * 2) def my_view(request): &hellip;
+或者在URLconf中指定 urlpatterns = [ path(&lsquo;foo/int:code/&rsquo;, cache_page(60 * 2)(my_view)), ]
 模板片段缓存
-{% load cache %} {% cache &amp;hellip; %} &amp;hellip; {% endcache %}
-redis CACHES = { &amp;quot;default&amp;quot;: { &amp;quot;BACKEND&amp;quot;: &amp;quot;django_redis.cache.RedisCache&amp;quot;, &amp;quot;LOCATION&amp;quot;: os.environ.get(&amp;quot;REDIS_URL&amp;quot;, &#39;&#39;), &amp;quot;OPTIONS&amp;quot;: { &amp;quot;CLIENT_CLASS&amp;quot;: &amp;quot;django_redis.client.DefaultClient&amp;quot;, }, &amp;quot;TIMEOUT&amp;quot;: 60, } } memcached CACHES = { &#39;default&#39;: { &#39;BACKEND&#39;: &#39;django.">
+{% load cache %} {% cache &hellip; %} &hellip; {% endcache %}
+redis CACHES = { &quot;default&quot;: { &quot;BACKEND&quot;: &quot;django_redis.cache.RedisCache&quot;, &quot;LOCATION&quot;: os.environ.get(&quot;REDIS_URL&quot;, &#39;&#39;), &quot;OPTIONS&quot;: { &quot;CLIENT_CLASS&quot;: &quot;django_redis.client.DefaultClient&quot;, }, &quot;TIMEOUT&quot;: 60, } } memcached CACHES = { &#39;default&#39;: { &#39;BACKEND&#39;: &#39;django.">
     <link rel="shortcut icon" href="favicon.ico" />
 
   
@@ -105,7 +105,7 @@ redis CACHES = { &amp;quot;default&amp;quot;: { &amp;quot;BACKEND&amp;quot;: &am
                     
                     
                         
-                        <img src="/img/home_hu6602fceeffaea48dc14f1109cef06aaf_168478_300x0_resize_q75_box.jpg" width="300"
+                        <img src="/img/home_hu10520392605785141645.jpg" width="300"
                             height="400" class="site-logo" loading="lazy" alt="Avatar">
                     
                 

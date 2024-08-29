@@ -4,8 +4,8 @@
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Monitoring network usage:
 bytes_sent(out) bytes_recv(in) packets:
 packets_sent(out) packets_recv(in) error_in/out:
-SELECT non_negative_derivative(mean(&amp;quot;err_in&amp;quot;), 1s) AS &amp;quot;recv&amp;quot;, non_negative_derivative(mean(&amp;quot;err_out&amp;quot;), 1s) AS &amp;quot;send&amp;quot; FROM &amp;quot;net&amp;quot; WHERE &amp;quot;interface&amp;quot; =~ /^(vlan|eth|ens|bond).*/ AND $timeFilter GROUP BY time($__interval), &amp;quot;host&amp;quot;, &amp;quot;interface&amp;quot; fill(none) drop_in/out:
-SELECT non_negative_derivative(mean(&amp;quot;drop_in&amp;quot;), 1s) AS &amp;quot;recv&amp;quot;, non_negative_derivative(mean(&amp;quot;drop_out&amp;quot;), 1s) AS &amp;quot;send&amp;quot; FROM &amp;quot;net&amp;quot; WHERE &amp;quot;interface&amp;quot; =~ /^(vlan|eth|ens|bond).*/ AND $timeFilter GROUP BY time($__interval), &amp;quot;host&amp;quot;, &amp;quot;interface&amp;quot; fill(none) '>
+SELECT non_negative_derivative(mean(&quot;err_in&quot;), 1s) AS &quot;recv&quot;, non_negative_derivative(mean(&quot;err_out&quot;), 1s) AS &quot;send&quot; FROM &quot;net&quot; WHERE &quot;interface&quot; =~ /^(vlan|eth|ens|bond).*/ AND $timeFilter GROUP BY time($__interval), &quot;host&quot;, &quot;interface&quot; fill(none) drop_in/out:
+SELECT non_negative_derivative(mean(&quot;drop_in&quot;), 1s) AS &quot;recv&quot;, non_negative_derivative(mean(&quot;drop_out&quot;), 1s) AS &quot;send&quot; FROM &quot;net&quot; WHERE &quot;interface&quot; =~ /^(vlan|eth|ens|bond).*/ AND $timeFilter GROUP BY time($__interval), &quot;host&quot;, &quot;interface&quot; fill(none) '>
 <title>Monitoring</title>
 
 <link rel='canonical' href='https://canuxcheng.com/post/network_monitoring/'>
@@ -14,8 +14,8 @@ SELECT non_negative_derivative(mean(&amp;quot;drop_in&amp;quot;), 1s) AS &amp;qu
 <meta property='og:description' content='Monitoring network usage:
 bytes_sent(out) bytes_recv(in) packets:
 packets_sent(out) packets_recv(in) error_in/out:
-SELECT non_negative_derivative(mean(&amp;quot;err_in&amp;quot;), 1s) AS &amp;quot;recv&amp;quot;, non_negative_derivative(mean(&amp;quot;err_out&amp;quot;), 1s) AS &amp;quot;send&amp;quot; FROM &amp;quot;net&amp;quot; WHERE &amp;quot;interface&amp;quot; =~ /^(vlan|eth|ens|bond).*/ AND $timeFilter GROUP BY time($__interval), &amp;quot;host&amp;quot;, &amp;quot;interface&amp;quot; fill(none) drop_in/out:
-SELECT non_negative_derivative(mean(&amp;quot;drop_in&amp;quot;), 1s) AS &amp;quot;recv&amp;quot;, non_negative_derivative(mean(&amp;quot;drop_out&amp;quot;), 1s) AS &amp;quot;send&amp;quot; FROM &amp;quot;net&amp;quot; WHERE &amp;quot;interface&amp;quot; =~ /^(vlan|eth|ens|bond).*/ AND $timeFilter GROUP BY time($__interval), &amp;quot;host&amp;quot;, &amp;quot;interface&amp;quot; fill(none) '>
+SELECT non_negative_derivative(mean(&quot;err_in&quot;), 1s) AS &quot;recv&quot;, non_negative_derivative(mean(&quot;err_out&quot;), 1s) AS &quot;send&quot; FROM &quot;net&quot; WHERE &quot;interface&quot; =~ /^(vlan|eth|ens|bond).*/ AND $timeFilter GROUP BY time($__interval), &quot;host&quot;, &quot;interface&quot; fill(none) drop_in/out:
+SELECT non_negative_derivative(mean(&quot;drop_in&quot;), 1s) AS &quot;recv&quot;, non_negative_derivative(mean(&quot;drop_out&quot;), 1s) AS &quot;send&quot; FROM &quot;net&quot; WHERE &quot;interface&quot; =~ /^(vlan|eth|ens|bond).*/ AND $timeFilter GROUP BY time($__interval), &quot;host&quot;, &quot;interface&quot; fill(none) '>
 <meta property='og:url' content='https://canuxcheng.com/post/network_monitoring/'>
 <meta property='og:site_name' content='Morgoth'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='monitoring' />
@@ -23,8 +23,8 @@ SELECT non_negative_derivative(mean(&amp;quot;drop_in&amp;quot;), 1s) AS &amp;qu
 <meta name="twitter:description" content="Monitoring network usage:
 bytes_sent(out) bytes_recv(in) packets:
 packets_sent(out) packets_recv(in) error_in/out:
-SELECT non_negative_derivative(mean(&amp;quot;err_in&amp;quot;), 1s) AS &amp;quot;recv&amp;quot;, non_negative_derivative(mean(&amp;quot;err_out&amp;quot;), 1s) AS &amp;quot;send&amp;quot; FROM &amp;quot;net&amp;quot; WHERE &amp;quot;interface&amp;quot; =~ /^(vlan|eth|ens|bond).*/ AND $timeFilter GROUP BY time($__interval), &amp;quot;host&amp;quot;, &amp;quot;interface&amp;quot; fill(none) drop_in/out:
-SELECT non_negative_derivative(mean(&amp;quot;drop_in&amp;quot;), 1s) AS &amp;quot;recv&amp;quot;, non_negative_derivative(mean(&amp;quot;drop_out&amp;quot;), 1s) AS &amp;quot;send&amp;quot; FROM &amp;quot;net&amp;quot; WHERE &amp;quot;interface&amp;quot; =~ /^(vlan|eth|ens|bond).*/ AND $timeFilter GROUP BY time($__interval), &amp;quot;host&amp;quot;, &amp;quot;interface&amp;quot; fill(none) ">
+SELECT non_negative_derivative(mean(&quot;err_in&quot;), 1s) AS &quot;recv&quot;, non_negative_derivative(mean(&quot;err_out&quot;), 1s) AS &quot;send&quot; FROM &quot;net&quot; WHERE &quot;interface&quot; =~ /^(vlan|eth|ens|bond).*/ AND $timeFilter GROUP BY time($__interval), &quot;host&quot;, &quot;interface&quot; fill(none) drop_in/out:
+SELECT non_negative_derivative(mean(&quot;drop_in&quot;), 1s) AS &quot;recv&quot;, non_negative_derivative(mean(&quot;drop_out&quot;), 1s) AS &quot;send&quot; FROM &quot;net&quot; WHERE &quot;interface&quot; =~ /^(vlan|eth|ens|bond).*/ AND $timeFilter GROUP BY time($__interval), &quot;host&quot;, &quot;interface&quot; fill(none) ">
     <link rel="shortcut icon" href="favicon.ico" />
 
   
@@ -90,7 +90,7 @@ SELECT non_negative_derivative(mean(&amp;quot;drop_in&amp;quot;), 1s) AS &amp;qu
                     
                     
                         
-                        <img src="/img/home_hu6602fceeffaea48dc14f1109cef06aaf_168478_300x0_resize_q75_box.jpg" width="300"
+                        <img src="/img/home_hu10520392605785141645.jpg" width="300"
                             height="400" class="site-logo" loading="lazy" alt="Avatar">
                     
                 

@@ -323,7 +323,14 @@ ls -l /proc/sys/fs/binfmt_misc/qemu-*
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h3 id=&#34;multiple-native-nodes&#34;&gt;multiple native nodes&lt;/h3&gt;
 &lt;p&gt;安装&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;sudo apt install docker-buildx-plugin
+&lt;pre&gt;&lt;code&gt;// linux
+sudo apt install docker-buildx-plugin
+
+// mac
+brew install docker-buildx
+mkdir -p ~/.docker/cli-plugins
+ln -sfn $(which docker-buildx) ~/.docker/cli-plugins/docker-buildx
+docker buildx install
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;查看版本&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;docker buildx version
@@ -460,6 +467,9 @@ $ service docker start
 
 linux:
 &amp;lt;https://docs.docker.com/engine/install/ubuntu/&amp;gt;
+
+mac:
+&amp;lt;https://github.com/abiosoft/colima/blob/main/docs/FAQ.md#docker&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h1 id=&#34;配置&#34;&gt;配置&lt;/h1&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.docker.com/engine/reference/commandline/dockerd/#daemon-configuration-file&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;

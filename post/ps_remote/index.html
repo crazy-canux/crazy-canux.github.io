@@ -7,9 +7,9 @@ Enter-PSSession -ComputerName name ... Exit-PSSession 一对多远程处理:
 同时远程到多台机器执行命令或脚本。
 Invoke-Command一次创建一个连接对象，返回PSComputerName属性，执行完后就关闭连接。
 Invoke-Command -ComputerName name1,name2 -ScriptBlock {command1;command2} Invoke-Command -ComputerName name1,name2 -FilePath filepath Invoke-Command -ComputerName (Get-Content hosts.txt) ... 通过argumentlist把本地的参数传给远程的命令:
-$lvar1=&amp;quot;value1&amp;quot; $lvar2=&amp;quot;value2&amp;quot; Invoke-Command -ComputerName name -ScriptBlock { Param($var1, $var2) ... } -ArgumentList $lvar1, $lvar2 通过$using:传本地参数到远程机器：
-$var1=&amp;quot;value1&amp;quot; Invoke-Command -ComputerName name -ScriptBlock { ... $using:var1 } 创建持久的远程处理：
-$session1=New-PSSession -ComputerName server1 Enter-PSSession -Session $session1 ... Invoke-Command -Session $session1 ... WMI Get-WmiObject Remove-WmiObject Invoke-WmiMethod Register-WmiEvent Set-WmiInstance # 用powershell跑一个wql。 Get-WmiObject -Query &amp;quot;select * from win32_service where name=&#39;winRM&#39;&amp;quot; | Format-List -Property Name,status # 远程管理 Get-WMIObject -ComputerName .'>
+$lvar1=&quot;value1&quot; $lvar2=&quot;value2&quot; Invoke-Command -ComputerName name -ScriptBlock { Param($var1, $var2) ... } -ArgumentList $lvar1, $lvar2 通过$using:传本地参数到远程机器：
+$var1=&quot;value1&quot; Invoke-Command -ComputerName name -ScriptBlock { ... $using:var1 } 创建持久的远程处理：
+$session1=New-PSSession -ComputerName server1 Enter-PSSession -Session $session1 ... Invoke-Command -Session $session1 ... WMI Get-WmiObject Remove-WmiObject Invoke-WmiMethod Register-WmiEvent Set-WmiInstance # 用powershell跑一个wql。 Get-WmiObject -Query &quot;select * from win32_service where name=&#39;winRM&#39;&quot; | Format-List -Property Name,status # 远程管理 Get-WMIObject -ComputerName .'>
 <title>Remote Management</title>
 
 <link rel='canonical' href='https://canuxcheng.com/post/ps_remote/'>
@@ -21,9 +21,9 @@ Enter-PSSession -ComputerName name ... Exit-PSSession 一对多远程处理:
 同时远程到多台机器执行命令或脚本。
 Invoke-Command一次创建一个连接对象，返回PSComputerName属性，执行完后就关闭连接。
 Invoke-Command -ComputerName name1,name2 -ScriptBlock {command1;command2} Invoke-Command -ComputerName name1,name2 -FilePath filepath Invoke-Command -ComputerName (Get-Content hosts.txt) ... 通过argumentlist把本地的参数传给远程的命令:
-$lvar1=&amp;quot;value1&amp;quot; $lvar2=&amp;quot;value2&amp;quot; Invoke-Command -ComputerName name -ScriptBlock { Param($var1, $var2) ... } -ArgumentList $lvar1, $lvar2 通过$using:传本地参数到远程机器：
-$var1=&amp;quot;value1&amp;quot; Invoke-Command -ComputerName name -ScriptBlock { ... $using:var1 } 创建持久的远程处理：
-$session1=New-PSSession -ComputerName server1 Enter-PSSession -Session $session1 ... Invoke-Command -Session $session1 ... WMI Get-WmiObject Remove-WmiObject Invoke-WmiMethod Register-WmiEvent Set-WmiInstance # 用powershell跑一个wql。 Get-WmiObject -Query &amp;quot;select * from win32_service where name=&#39;winRM&#39;&amp;quot; | Format-List -Property Name,status # 远程管理 Get-WMIObject -ComputerName .'>
+$lvar1=&quot;value1&quot; $lvar2=&quot;value2&quot; Invoke-Command -ComputerName name -ScriptBlock { Param($var1, $var2) ... } -ArgumentList $lvar1, $lvar2 通过$using:传本地参数到远程机器：
+$var1=&quot;value1&quot; Invoke-Command -ComputerName name -ScriptBlock { ... $using:var1 } 创建持久的远程处理：
+$session1=New-PSSession -ComputerName server1 Enter-PSSession -Session $session1 ... Invoke-Command -Session $session1 ... WMI Get-WmiObject Remove-WmiObject Invoke-WmiMethod Register-WmiEvent Set-WmiInstance # 用powershell跑一个wql。 Get-WmiObject -Query &quot;select * from win32_service where name=&#39;winRM&#39;&quot; | Format-List -Property Name,status # 远程管理 Get-WMIObject -ComputerName .'>
 <meta property='og:url' content='https://canuxcheng.com/post/ps_remote/'>
 <meta property='og:site_name' content='Morgoth'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='remote' /><meta property='article:published_time' content='2016-07-18T14:54:39&#43;00:00'/><meta property='article:modified_time' content='2016-07-18T14:54:39&#43;00:00'/>
@@ -34,9 +34,9 @@ Enter-PSSession -ComputerName name ... Exit-PSSession 一对多远程处理:
 同时远程到多台机器执行命令或脚本。
 Invoke-Command一次创建一个连接对象，返回PSComputerName属性，执行完后就关闭连接。
 Invoke-Command -ComputerName name1,name2 -ScriptBlock {command1;command2} Invoke-Command -ComputerName name1,name2 -FilePath filepath Invoke-Command -ComputerName (Get-Content hosts.txt) ... 通过argumentlist把本地的参数传给远程的命令:
-$lvar1=&amp;quot;value1&amp;quot; $lvar2=&amp;quot;value2&amp;quot; Invoke-Command -ComputerName name -ScriptBlock { Param($var1, $var2) ... } -ArgumentList $lvar1, $lvar2 通过$using:传本地参数到远程机器：
-$var1=&amp;quot;value1&amp;quot; Invoke-Command -ComputerName name -ScriptBlock { ... $using:var1 } 创建持久的远程处理：
-$session1=New-PSSession -ComputerName server1 Enter-PSSession -Session $session1 ... Invoke-Command -Session $session1 ... WMI Get-WmiObject Remove-WmiObject Invoke-WmiMethod Register-WmiEvent Set-WmiInstance # 用powershell跑一个wql。 Get-WmiObject -Query &amp;quot;select * from win32_service where name=&#39;winRM&#39;&amp;quot; | Format-List -Property Name,status # 远程管理 Get-WMIObject -ComputerName .">
+$lvar1=&quot;value1&quot; $lvar2=&quot;value2&quot; Invoke-Command -ComputerName name -ScriptBlock { Param($var1, $var2) ... } -ArgumentList $lvar1, $lvar2 通过$using:传本地参数到远程机器：
+$var1=&quot;value1&quot; Invoke-Command -ComputerName name -ScriptBlock { ... $using:var1 } 创建持久的远程处理：
+$session1=New-PSSession -ComputerName server1 Enter-PSSession -Session $session1 ... Invoke-Command -Session $session1 ... WMI Get-WmiObject Remove-WmiObject Invoke-WmiMethod Register-WmiEvent Set-WmiInstance # 用powershell跑一个wql。 Get-WmiObject -Query &quot;select * from win32_service where name=&#39;winRM&#39;&quot; | Format-List -Property Name,status # 远程管理 Get-WMIObject -ComputerName .">
     <link rel="shortcut icon" href="favicon.ico" />
 
   
@@ -102,7 +102,7 @@ $session1=New-PSSession -ComputerName server1 Enter-PSSession -Session $session1
                     
                     
                         
-                        <img src="/img/home_hu6602fceeffaea48dc14f1109cef06aaf_168478_300x0_resize_q75_box.jpg" width="300"
+                        <img src="/img/home_hu10520392605785141645.jpg" width="300"
                             height="400" class="site-logo" loading="lazy" alt="Avatar">
                     
                 

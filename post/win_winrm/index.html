@@ -8,16 +8,16 @@ https://msdn.microsoft.com/en-us/library/aa384426(v=vs.85).aspx
 WinRM设置:
 https://msdn.microsoft.com/en-us/library/aa384372(v=vs.85).aspx
 检查winrm所有配置：
-cmd&amp;gt; winrm get winrm/config 快速设置winrm：
-cmd&amp;gt; winrm quickconfig cmd&amp;gt; winrm quickconfig -transport:https 查看listener配置：
-cmd&amp;gt; winrm enumerate winrm/config/listener WinRM配置包括监听设置,协议设置,Client,Service和Winrs四部分.
+cmd&gt; winrm get winrm/config 快速设置winrm：
+cmd&gt; winrm quickconfig cmd&gt; winrm quickconfig -transport:https 查看listener配置：
+cmd&gt; winrm enumerate winrm/config/listener WinRM配置包括监听设置,协议设置,Client,Service和Winrs四部分.
 windows的三种网络安全协议。
 Basic是基本的明文协议, NTLM是早期的安全协议,Kerberos是最新的安全协议.
 service权限管理 查看service的auth配置：
-cmd&amp;gt; winrm get winrm/config/service/auth service只有Negotiate和Kerberos是默认开启的:
+cmd&gt; winrm get winrm/config/service/auth service只有Negotiate和Kerberos是默认开启的:
 Basic = false Kerberos = true Negotiate = true Certificate = false CredSSP = false Negotiate对domain用户选择kerberos,对local用户选择NTLM.
 设置service的Basic和Certificate和CredSSP(默认关闭)：
-#cmd&amp;gt; winrm set winrm/config/service/auth @{Basic=&amp;quot;true&amp;quot;} #cmd&amp;gt; winrm set winrm/config/service/auth @{Certificate=&amp;quot;true&amp;quot;} #cmd&amp;gt; winrm set winrm/config/service/auth @{CredSSP=&amp;quot;true&amp;quot;} 设置是否允许不加密：'>
+#cmd&gt; winrm set winrm/config/service/auth @{Basic=&quot;true&quot;} #cmd&gt; winrm set winrm/config/service/auth @{Certificate=&quot;true&quot;} #cmd&gt; winrm set winrm/config/service/auth @{CredSSP=&quot;true&quot;} 设置是否允许不加密：'>
 <title>WinRM</title>
 
 <link rel='canonical' href='https://canuxcheng.com/post/win_winrm/'>
@@ -30,16 +30,16 @@ https://msdn.microsoft.com/en-us/library/aa384426(v=vs.85).aspx
 WinRM设置:
 https://msdn.microsoft.com/en-us/library/aa384372(v=vs.85).aspx
 检查winrm所有配置：
-cmd&amp;gt; winrm get winrm/config 快速设置winrm：
-cmd&amp;gt; winrm quickconfig cmd&amp;gt; winrm quickconfig -transport:https 查看listener配置：
-cmd&amp;gt; winrm enumerate winrm/config/listener WinRM配置包括监听设置,协议设置,Client,Service和Winrs四部分.
+cmd&gt; winrm get winrm/config 快速设置winrm：
+cmd&gt; winrm quickconfig cmd&gt; winrm quickconfig -transport:https 查看listener配置：
+cmd&gt; winrm enumerate winrm/config/listener WinRM配置包括监听设置,协议设置,Client,Service和Winrs四部分.
 windows的三种网络安全协议。
 Basic是基本的明文协议, NTLM是早期的安全协议,Kerberos是最新的安全协议.
 service权限管理 查看service的auth配置：
-cmd&amp;gt; winrm get winrm/config/service/auth service只有Negotiate和Kerberos是默认开启的:
+cmd&gt; winrm get winrm/config/service/auth service只有Negotiate和Kerberos是默认开启的:
 Basic = false Kerberos = true Negotiate = true Certificate = false CredSSP = false Negotiate对domain用户选择kerberos,对local用户选择NTLM.
 设置service的Basic和Certificate和CredSSP(默认关闭)：
-#cmd&amp;gt; winrm set winrm/config/service/auth @{Basic=&amp;quot;true&amp;quot;} #cmd&amp;gt; winrm set winrm/config/service/auth @{Certificate=&amp;quot;true&amp;quot;} #cmd&amp;gt; winrm set winrm/config/service/auth @{CredSSP=&amp;quot;true&amp;quot;} 设置是否允许不加密：'>
+#cmd&gt; winrm set winrm/config/service/auth @{Basic=&quot;true&quot;} #cmd&gt; winrm set winrm/config/service/auth @{Certificate=&quot;true&quot;} #cmd&gt; winrm set winrm/config/service/auth @{CredSSP=&quot;true&quot;} 设置是否允许不加密：'>
 <meta property='og:url' content='https://canuxcheng.com/post/win_winrm/'>
 <meta property='og:site_name' content='Morgoth'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='winrm' /><meta property='article:published_time' content='2016-07-17T08:36:36&#43;00:00'/><meta property='article:modified_time' content='2016-07-17T08:36:36&#43;00:00'/>
@@ -51,16 +51,16 @@ https://msdn.microsoft.com/en-us/library/aa384426(v=vs.85).aspx
 WinRM设置:
 https://msdn.microsoft.com/en-us/library/aa384372(v=vs.85).aspx
 检查winrm所有配置：
-cmd&amp;gt; winrm get winrm/config 快速设置winrm：
-cmd&amp;gt; winrm quickconfig cmd&amp;gt; winrm quickconfig -transport:https 查看listener配置：
-cmd&amp;gt; winrm enumerate winrm/config/listener WinRM配置包括监听设置,协议设置,Client,Service和Winrs四部分.
+cmd&gt; winrm get winrm/config 快速设置winrm：
+cmd&gt; winrm quickconfig cmd&gt; winrm quickconfig -transport:https 查看listener配置：
+cmd&gt; winrm enumerate winrm/config/listener WinRM配置包括监听设置,协议设置,Client,Service和Winrs四部分.
 windows的三种网络安全协议。
 Basic是基本的明文协议, NTLM是早期的安全协议,Kerberos是最新的安全协议.
 service权限管理 查看service的auth配置：
-cmd&amp;gt; winrm get winrm/config/service/auth service只有Negotiate和Kerberos是默认开启的:
+cmd&gt; winrm get winrm/config/service/auth service只有Negotiate和Kerberos是默认开启的:
 Basic = false Kerberos = true Negotiate = true Certificate = false CredSSP = false Negotiate对domain用户选择kerberos,对local用户选择NTLM.
 设置service的Basic和Certificate和CredSSP(默认关闭)：
-#cmd&amp;gt; winrm set winrm/config/service/auth @{Basic=&amp;quot;true&amp;quot;} #cmd&amp;gt; winrm set winrm/config/service/auth @{Certificate=&amp;quot;true&amp;quot;} #cmd&amp;gt; winrm set winrm/config/service/auth @{CredSSP=&amp;quot;true&amp;quot;} 设置是否允许不加密：">
+#cmd&gt; winrm set winrm/config/service/auth @{Basic=&quot;true&quot;} #cmd&gt; winrm set winrm/config/service/auth @{Certificate=&quot;true&quot;} #cmd&gt; winrm set winrm/config/service/auth @{CredSSP=&quot;true&quot;} 设置是否允许不加密：">
     <link rel="shortcut icon" href="favicon.ico" />
 
   
@@ -126,7 +126,7 @@ Basic = false Kerberos = true Negotiate = true Certificate = false CredSSP = fal
                     
                     
                         
-                        <img src="/img/home_hu6602fceeffaea48dc14f1109cef06aaf_168478_300x0_resize_q75_box.jpg" width="300"
+                        <img src="/img/home_hu10520392605785141645.jpg" width="300"
                             height="400" class="site-logo" loading="lazy" alt="Avatar">
                     
                 

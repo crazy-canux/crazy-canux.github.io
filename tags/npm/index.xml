@@ -111,7 +111,7 @@ $ yarn cache clean
 // add/remove/install dependencies
 $ yarn add ...
 $ yarn remove ...
-$ yarn install
+$ yarn install --inline-builds
 
 $ yarn node
 

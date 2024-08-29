@@ -357,7 +357,14 @@ ls -l /proc/sys/fs/binfmt_misc/qemu-*
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h3 id=&#34;multiple-native-nodes&#34;&gt;multiple native nodes&lt;/h3&gt;
 &lt;p&gt;安装&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;sudo apt install docker-buildx-plugin
+&lt;pre&gt;&lt;code&gt;// linux
+sudo apt install docker-buildx-plugin
+
+// mac
+brew install docker-buildx
+mkdir -p ~/.docker/cli-plugins
+ln -sfn $(which docker-buildx) ~/.docker/cli-plugins/docker-buildx
+docker buildx install
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;查看版本&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;docker buildx version

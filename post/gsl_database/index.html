@@ -10,11 +10,11 @@ https://github.com/go-sql-driver/mysql
 postgresql driver:
 https://github.com/lib/pq
 https://github.com/jackc/pgx
-variables // QueryRow 没有返回row时，调用返回值的Scan方法会返回该变量 var ErrNoRows = errors.New(&amp;quot;sql: no rows in result set&amp;quot;) functions // 注册并命名一个数据库，在Open中使用该命名启用该驱动 // 如果注册同一名称两次或者driver参数为nil, 会导致panic. Register(name string, driver driver.Driver) DB DB是一个数据库句柄，代表一个具有零到多个底层连接的连接池．
+variables // QueryRow 没有返回row时，调用返回值的Scan方法会返回该变量 var ErrNoRows = errors.New(&quot;sql: no rows in result set&quot;) functions // 注册并命名一个数据库，在Open中使用该命名启用该驱动 // 如果注册同一名称两次或者driver参数为nil, 会导致panic. Register(name string, driver driver.Driver) DB DB是一个数据库句柄，代表一个具有零到多个底层连接的连接池．
 可以安全的被多个go程同时使用．
 struct:
 type DB struct {} functions:
-// 验证数据库驱动和参数,并不创建和数据库的连接． // driverName: mssql, mysql, postgres // mssql dataSourceName: &amp;quot;server=%s;port=%d;database=%s;user id=%s;password=%s&amp;quot; // mysql dataSourceName: &amp;quot;user:password@tcp(server:port)/database&amp;quot; Open(driverName, dataSourceName string) (*DB, error) methods:
+// 验证数据库驱动和参数,并不创建和数据库的连接． // driverName: mssql, mysql, postgres // mssql dataSourceName: &quot;server=%s;port=%d;database=%s;user id=%s;password=%s&quot; // mysql dataSourceName: &quot;user:password@tcp(server:port)/database&quot; Open(driverName, dataSourceName string) (*DB, error) methods:
 // 返回数据库下层驱动 func (db *DB) Driver() driver.'>
 <title>GSL_database</title>
 
@@ -30,11 +30,11 @@ https://github.com/go-sql-driver/mysql
 postgresql driver:
 https://github.com/lib/pq
 https://github.com/jackc/pgx
-variables // QueryRow 没有返回row时，调用返回值的Scan方法会返回该变量 var ErrNoRows = errors.New(&amp;quot;sql: no rows in result set&amp;quot;) functions // 注册并命名一个数据库，在Open中使用该命名启用该驱动 // 如果注册同一名称两次或者driver参数为nil, 会导致panic. Register(name string, driver driver.Driver) DB DB是一个数据库句柄，代表一个具有零到多个底层连接的连接池．
+variables // QueryRow 没有返回row时，调用返回值的Scan方法会返回该变量 var ErrNoRows = errors.New(&quot;sql: no rows in result set&quot;) functions // 注册并命名一个数据库，在Open中使用该命名启用该驱动 // 如果注册同一名称两次或者driver参数为nil, 会导致panic. Register(name string, driver driver.Driver) DB DB是一个数据库句柄，代表一个具有零到多个底层连接的连接池．
 可以安全的被多个go程同时使用．
 struct:
 type DB struct {} functions:
-// 验证数据库驱动和参数,并不创建和数据库的连接． // driverName: mssql, mysql, postgres // mssql dataSourceName: &amp;quot;server=%s;port=%d;database=%s;user id=%s;password=%s&amp;quot; // mysql dataSourceName: &amp;quot;user:password@tcp(server:port)/database&amp;quot; Open(driverName, dataSourceName string) (*DB, error) methods:
+// 验证数据库驱动和参数,并不创建和数据库的连接． // driverName: mssql, mysql, postgres // mssql dataSourceName: &quot;server=%s;port=%d;database=%s;user id=%s;password=%s&quot; // mysql dataSourceName: &quot;user:password@tcp(server:port)/database&quot; Open(driverName, dataSourceName string) (*DB, error) methods:
 // 返回数据库下层驱动 func (db *DB) Driver() driver.'>
 <meta property='og:url' content='https://canuxcheng.com/post/gsl_database/'>
 <meta property='og:site_name' content='Morgoth'>
@@ -49,11 +49,11 @@ https://github.com/go-sql-driver/mysql
 postgresql driver:
 https://github.com/lib/pq
 https://github.com/jackc/pgx
-variables // QueryRow 没有返回row时，调用返回值的Scan方法会返回该变量 var ErrNoRows = errors.New(&amp;quot;sql: no rows in result set&amp;quot;) functions // 注册并命名一个数据库，在Open中使用该命名启用该驱动 // 如果注册同一名称两次或者driver参数为nil, 会导致panic. Register(name string, driver driver.Driver) DB DB是一个数据库句柄，代表一个具有零到多个底层连接的连接池．
+variables // QueryRow 没有返回row时，调用返回值的Scan方法会返回该变量 var ErrNoRows = errors.New(&quot;sql: no rows in result set&quot;) functions // 注册并命名一个数据库，在Open中使用该命名启用该驱动 // 如果注册同一名称两次或者driver参数为nil, 会导致panic. Register(name string, driver driver.Driver) DB DB是一个数据库句柄，代表一个具有零到多个底层连接的连接池．
 可以安全的被多个go程同时使用．
 struct:
 type DB struct {} functions:
-// 验证数据库驱动和参数,并不创建和数据库的连接． // driverName: mssql, mysql, postgres // mssql dataSourceName: &amp;quot;server=%s;port=%d;database=%s;user id=%s;password=%s&amp;quot; // mysql dataSourceName: &amp;quot;user:password@tcp(server:port)/database&amp;quot; Open(driverName, dataSourceName string) (*DB, error) methods:
+// 验证数据库驱动和参数,并不创建和数据库的连接． // driverName: mssql, mysql, postgres // mssql dataSourceName: &quot;server=%s;port=%d;database=%s;user id=%s;password=%s&quot; // mysql dataSourceName: &quot;user:password@tcp(server:port)/database&quot; Open(driverName, dataSourceName string) (*DB, error) methods:
 // 返回数据库下层驱动 func (db *DB) Driver() driver.">
     <link rel="shortcut icon" href="favicon.ico" />
 
@@ -120,7 +120,7 @@ type DB struct {} functions:
                     
                     
                         
-                        <img src="/img/home_hu6602fceeffaea48dc14f1109cef06aaf_168478_300x0_resize_q75_box.jpg" width="300"
+                        <img src="/img/home_hu10520392605785141645.jpg" width="300"
                             height="400" class="site-logo" loading="lazy" alt="Avatar">
                     
                 

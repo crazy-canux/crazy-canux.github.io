@@ -6,7 +6,15 @@
         <description>Recent content in Categories on Morgoth</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Sat, 27 Jan 2024 22:19:20 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 28 Jul 2024 16:08:54 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/categories/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Security</title>
+        <link>https://canuxcheng.com/categories/security/</link>
+        <pubDate>Sun, 28 Jul 2024 16:08:54 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/categories/security/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>Web</title>
         <link>https://canuxcheng.com/categories/web/</link>
         <pubDate>Sat, 27 Jan 2024 22:19:20 +0000</pubDate>
@@ -28,14 +36,6 @@
         <pubDate>Thu, 19 Oct 2023 20:03:39 +0800</pubDate>
         
         <guid>https://canuxcheng.com/categories/cncf/</guid>
-        <description></description>
-        </item>
-        <item>
-        <title>Security</title>
-        <link>https://canuxcheng.com/categories/security/</link>
-        <pubDate>Thu, 19 Oct 2023 20:03:39 +0800</pubDate>
-        
-        <guid>https://canuxcheng.com/categories/security/</guid>
         <description></description>
         </item>
         <item>

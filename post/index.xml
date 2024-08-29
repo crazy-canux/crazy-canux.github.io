@@ -6,7 +6,20 @@
         <description>Recent content in Posts on Morgoth</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Sat, 27 Jan 2024 22:19:20 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 28 Jul 2024 16:08:54 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Secret</title>
+        <link>https://canuxcheng.com/post/sec_secret/</link>
+        <pubDate>Sun, 28 Jul 2024 16:08:54 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/sec_secret/</guid>
+        <description>&lt;h1 id=&#34;secret&#34;&gt;Secret&lt;/h1&gt;
+&lt;p&gt;secret scan tools&lt;/p&gt;
+&lt;h2 id=&#34;trufflehog&#34;&gt;trufflehog&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/trufflesecurity/trufflehog&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/trufflesecurity/trufflehog&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>React</title>
         <link>https://canuxcheng.com/post/js_react/</link>
         <pubDate>Sat, 27 Jan 2024 22:19:20 +0000</pubDate>
@@ -1525,8 +1538,10 @@ $ cdktf destroy
     &gt;https://github.com/microsoft/TypeScript&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.typescriptlang.org/zh/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.typescriptlang.org/zh/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/microsoft/tsdoc&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/microsoft/tsdoc&lt;/a&gt;&lt;/p&gt;
 &lt;hr&gt;
-&lt;h1 id=&#34;tsx&#34;&gt;TSX&lt;/h1&gt;
+&lt;h2 id=&#34;tsx&#34;&gt;TSX&lt;/h2&gt;
 &lt;p&gt;&amp;ldquo;*.tsx&amp;rdquo; 是js的扩展，允许使用xml语法。&lt;/p&gt;
 </description>
         </item>
@@ -4323,7 +4338,14 @@ ls -l /proc/sys/fs/binfmt_misc/qemu-*
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h3 id=&#34;multiple-native-nodes&#34;&gt;multiple native nodes&lt;/h3&gt;
 &lt;p&gt;安装&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;sudo apt install docker-buildx-plugin
+&lt;pre&gt;&lt;code&gt;// linux
+sudo apt install docker-buildx-plugin
+
+// mac
+brew install docker-buildx
+mkdir -p ~/.docker/cli-plugins
+ln -sfn $(which docker-buildx) ~/.docker/cli-plugins/docker-buildx
+docker buildx install
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;查看版本&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;docker buildx version
@@ -5282,6 +5304,10 @@ nginx -t 检查配置文件
 &lt;p&gt;Tools: SonarQube, Trivy, Coverity.&lt;/p&gt;
 &lt;p&gt;gitlab SAST report.
 gitlab secret detection report.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/aquasecurity/trivy&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/aquasecurity/trivy&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://scan.coverity.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://scan.coverity.com/&lt;/a&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;dast&#34;&gt;DAST&lt;/h2&gt;
 &lt;p&gt;DAST: Dynamic Application Security Testing，动态应用程序安全测试, 对应用程序进行黑盒分析.&lt;/p&gt;
@@ -5849,6 +5875,9 @@ $ service docker start
 
 linux:
 &amp;lt;https://docs.docker.com/engine/install/ubuntu/&amp;gt;
+
+mac:
+&amp;lt;https://github.com/abiosoft/colima/blob/main/docs/FAQ.md#docker&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h1 id=&#34;配置&#34;&gt;配置&lt;/h1&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.docker.com/engine/reference/commandline/dockerd/#daemon-configuration-file&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -17619,7 +17648,7 @@ $ yarn cache clean
 // add/remove/install dependencies
 $ yarn add ...
 $ yarn remove ...
-$ yarn install
+$ yarn install --inline-builds
 
 $ yarn node
 

@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='C标准库 ISO C89(ANSI C89) -&amp;gt; ISO C95 -&amp;gt; ISO C99 -&amp;gt;
--&amp;gt; ISO C11 -&amp;gt; ISO C17 -&amp;gt; ISO C23
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='C标准库 ISO C89(ANSI C89) -&gt; ISO C95 -&gt; ISO C99 -&gt;
+-&gt; ISO C11 -&gt; ISO C17 -&gt; ISO C23
 ANSI C 和 ISO C是对通用C语言的接口的定义。
 符合这种标准的实现为C语言标准库,也叫libc。
 官方网站：
 http://www.open-std.org/jtc1/sc22/wg14/www/standards
-C89和C99支持的头文件和函数 &amp;lt;assert.h&amp;gt; &amp;lt;ctype.h&amp;gt; &amp;lt;complex.h&amp;gt; &amp;lt;errno.h&amp;gt; &amp;lt;float.h&amp;gt; &amp;lt;fenv.h&amp;gt; &amp;lt;inttype.h&amp;gt; &amp;lt;iso646.h&amp;gt; &amp;lt;limits.h&amp;gt; &amp;lt;locale.h&amp;gt; &amp;lt;math.h&amp;gt; &amp;lt;setjmp.h&amp;gt; &amp;lt;signal.h&amp;gt; &amp;lt;stdarg.h&amp;gt; &amp;lt;stddef.h&amp;gt; &amp;lt;stdio.h&amp;gt; &amp;lt;stdlib.h&amp;gt; &amp;lt;string.h&amp;gt; &amp;lt;stdbool.h&amp;gt; &amp;lt;stdint.h&amp;gt; &amp;lt;time.h&amp;gt; &amp;lt;tgmath.h&amp;gt; &amp;lt;wchar.h&amp;gt; &amp;lt;wctype.h&amp;gt; C11支持的头文件和函数 &amp;lt;stdalign.h&amp;gt; &amp;lt;stdatomic.h&amp;gt; &amp;lt;threads.h&amp;gt; C&#43;&#43;标准 C&#43;&#43;98, C&#43;&#43;11, C&#43;&#43;14, C&#43;&#43;17, C&#43;&#43;20, C&#43;&#43;23
+C89和C99支持的头文件和函数 &lt;assert.h&gt; &lt;ctype.h&gt; &lt;complex.h&gt; &lt;errno.h&gt; &lt;float.h&gt; &lt;fenv.h&gt; &lt;inttype.h&gt; &lt;iso646.h&gt; &lt;limits.h&gt; &lt;locale.h&gt; &lt;math.h&gt; &lt;setjmp.h&gt; &lt;signal.h&gt; &lt;stdarg.h&gt; &lt;stddef.h&gt; &lt;stdio.h&gt; &lt;stdlib.h&gt; &lt;string.h&gt; &lt;stdbool.h&gt; &lt;stdint.h&gt; &lt;time.h&gt; &lt;tgmath.h&gt; &lt;wchar.h&gt; &lt;wctype.h&gt; C11支持的头文件和函数 &lt;stdalign.h&gt; &lt;stdatomic.h&gt; &lt;threads.h&gt; C&#43;&#43;标准 C&#43;&#43;98, C&#43;&#43;11, C&#43;&#43;14, C&#43;&#43;17, C&#43;&#43;20, C&#43;&#43;23
 c&#43;&#43; 头文件不带.h用来和C区分。
 核心功能 https://zh.cppreference.com/w/cpp/language
 标准库 https://zh.cppreference.com/w/cpp/standard_library'>
@@ -16,13 +16,13 @@ c&#43;&#43; 头文件不带.h用来和C区分。
 <link rel='canonical' href='https://canuxcheng.com/post/c_iso/'>
 
 <link rel="stylesheet" href="/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content='ISO'>
-<meta property='og:description' content='C标准库 ISO C89(ANSI C89) -&amp;gt; ISO C95 -&amp;gt; ISO C99 -&amp;gt;
--&amp;gt; ISO C11 -&amp;gt; ISO C17 -&amp;gt; ISO C23
+<meta property='og:description' content='C标准库 ISO C89(ANSI C89) -&gt; ISO C95 -&gt; ISO C99 -&gt;
+-&gt; ISO C11 -&gt; ISO C17 -&gt; ISO C23
 ANSI C 和 ISO C是对通用C语言的接口的定义。
 符合这种标准的实现为C语言标准库,也叫libc。
 官方网站：
 http://www.open-std.org/jtc1/sc22/wg14/www/standards
-C89和C99支持的头文件和函数 &amp;lt;assert.h&amp;gt; &amp;lt;ctype.h&amp;gt; &amp;lt;complex.h&amp;gt; &amp;lt;errno.h&amp;gt; &amp;lt;float.h&amp;gt; &amp;lt;fenv.h&amp;gt; &amp;lt;inttype.h&amp;gt; &amp;lt;iso646.h&amp;gt; &amp;lt;limits.h&amp;gt; &amp;lt;locale.h&amp;gt; &amp;lt;math.h&amp;gt; &amp;lt;setjmp.h&amp;gt; &amp;lt;signal.h&amp;gt; &amp;lt;stdarg.h&amp;gt; &amp;lt;stddef.h&amp;gt; &amp;lt;stdio.h&amp;gt; &amp;lt;stdlib.h&amp;gt; &amp;lt;string.h&amp;gt; &amp;lt;stdbool.h&amp;gt; &amp;lt;stdint.h&amp;gt; &amp;lt;time.h&amp;gt; &amp;lt;tgmath.h&amp;gt; &amp;lt;wchar.h&amp;gt; &amp;lt;wctype.h&amp;gt; C11支持的头文件和函数 &amp;lt;stdalign.h&amp;gt; &amp;lt;stdatomic.h&amp;gt; &amp;lt;threads.h&amp;gt; C&#43;&#43;标准 C&#43;&#43;98, C&#43;&#43;11, C&#43;&#43;14, C&#43;&#43;17, C&#43;&#43;20, C&#43;&#43;23
+C89和C99支持的头文件和函数 &lt;assert.h&gt; &lt;ctype.h&gt; &lt;complex.h&gt; &lt;errno.h&gt; &lt;float.h&gt; &lt;fenv.h&gt; &lt;inttype.h&gt; &lt;iso646.h&gt; &lt;limits.h&gt; &lt;locale.h&gt; &lt;math.h&gt; &lt;setjmp.h&gt; &lt;signal.h&gt; &lt;stdarg.h&gt; &lt;stddef.h&gt; &lt;stdio.h&gt; &lt;stdlib.h&gt; &lt;string.h&gt; &lt;stdbool.h&gt; &lt;stdint.h&gt; &lt;time.h&gt; &lt;tgmath.h&gt; &lt;wchar.h&gt; &lt;wctype.h&gt; C11支持的头文件和函数 &lt;stdalign.h&gt; &lt;stdatomic.h&gt; &lt;threads.h&gt; C&#43;&#43;标准 C&#43;&#43;98, C&#43;&#43;11, C&#43;&#43;14, C&#43;&#43;17, C&#43;&#43;20, C&#43;&#43;23
 c&#43;&#43; 头文件不带.h用来和C区分。
 核心功能 https://zh.cppreference.com/w/cpp/language
 标准库 https://zh.cppreference.com/w/cpp/standard_library'>
@@ -30,13 +30,13 @@ c&#43;&#43; 头文件不带.h用来和C区分。
 <meta property='og:site_name' content='Morgoth'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='iso' /><meta property='article:published_time' content='2016-04-01T21:54:16&#43;00:00'/><meta property='article:modified_time' content='2016-04-01T21:54:16&#43;00:00'/>
 <meta name="twitter:title" content="ISO">
-<meta name="twitter:description" content="C标准库 ISO C89(ANSI C89) -&amp;gt; ISO C95 -&amp;gt; ISO C99 -&amp;gt;
--&amp;gt; ISO C11 -&amp;gt; ISO C17 -&amp;gt; ISO C23
+<meta name="twitter:description" content="C标准库 ISO C89(ANSI C89) -&gt; ISO C95 -&gt; ISO C99 -&gt;
+-&gt; ISO C11 -&gt; ISO C17 -&gt; ISO C23
 ANSI C 和 ISO C是对通用C语言的接口的定义。
 符合这种标准的实现为C语言标准库,也叫libc。
 官方网站：
 http://www.open-std.org/jtc1/sc22/wg14/www/standards
-C89和C99支持的头文件和函数 &amp;lt;assert.h&amp;gt; &amp;lt;ctype.h&amp;gt; &amp;lt;complex.h&amp;gt; &amp;lt;errno.h&amp;gt; &amp;lt;float.h&amp;gt; &amp;lt;fenv.h&amp;gt; &amp;lt;inttype.h&amp;gt; &amp;lt;iso646.h&amp;gt; &amp;lt;limits.h&amp;gt; &amp;lt;locale.h&amp;gt; &amp;lt;math.h&amp;gt; &amp;lt;setjmp.h&amp;gt; &amp;lt;signal.h&amp;gt; &amp;lt;stdarg.h&amp;gt; &amp;lt;stddef.h&amp;gt; &amp;lt;stdio.h&amp;gt; &amp;lt;stdlib.h&amp;gt; &amp;lt;string.h&amp;gt; &amp;lt;stdbool.h&amp;gt; &amp;lt;stdint.h&amp;gt; &amp;lt;time.h&amp;gt; &amp;lt;tgmath.h&amp;gt; &amp;lt;wchar.h&amp;gt; &amp;lt;wctype.h&amp;gt; C11支持的头文件和函数 &amp;lt;stdalign.h&amp;gt; &amp;lt;stdatomic.h&amp;gt; &amp;lt;threads.h&amp;gt; C&#43;&#43;标准 C&#43;&#43;98, C&#43;&#43;11, C&#43;&#43;14, C&#43;&#43;17, C&#43;&#43;20, C&#43;&#43;23
+C89和C99支持的头文件和函数 &lt;assert.h&gt; &lt;ctype.h&gt; &lt;complex.h&gt; &lt;errno.h&gt; &lt;float.h&gt; &lt;fenv.h&gt; &lt;inttype.h&gt; &lt;iso646.h&gt; &lt;limits.h&gt; &lt;locale.h&gt; &lt;math.h&gt; &lt;setjmp.h&gt; &lt;signal.h&gt; &lt;stdarg.h&gt; &lt;stddef.h&gt; &lt;stdio.h&gt; &lt;stdlib.h&gt; &lt;string.h&gt; &lt;stdbool.h&gt; &lt;stdint.h&gt; &lt;time.h&gt; &lt;tgmath.h&gt; &lt;wchar.h&gt; &lt;wctype.h&gt; C11支持的头文件和函数 &lt;stdalign.h&gt; &lt;stdatomic.h&gt; &lt;threads.h&gt; C&#43;&#43;标准 C&#43;&#43;98, C&#43;&#43;11, C&#43;&#43;14, C&#43;&#43;17, C&#43;&#43;20, C&#43;&#43;23
 c&#43;&#43; 头文件不带.h用来和C区分。
 核心功能 https://zh.cppreference.com/w/cpp/language
 标准库 https://zh.cppreference.com/w/cpp/standard_library">
@@ -105,7 +105,7 @@ c&#43;&#43; 头文件不带.h用来和C区分。
                     
                     
                         
-                        <img src="/img/home_hu6602fceeffaea48dc14f1109cef06aaf_168478_300x0_resize_q75_box.jpg" width="300"
+                        <img src="/img/home_hu10520392605785141645.jpg" width="300"
                             height="400" class="site-logo" loading="lazy" alt="Avatar">
                     
                 

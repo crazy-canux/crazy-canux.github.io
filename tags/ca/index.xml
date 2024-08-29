@@ -6,7 +6,20 @@
         <description>Recent content in CA on Morgoth</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Wed, 28 Jul 2021 16:08:54 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/ca/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sun, 28 Jul 2024 16:08:54 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/ca/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Secret</title>
+        <link>https://canuxcheng.com/post/sec_secret/</link>
+        <pubDate>Sun, 28 Jul 2024 16:08:54 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/sec_secret/</guid>
+        <description>&lt;h1 id=&#34;secret&#34;&gt;Secret&lt;/h1&gt;
+&lt;p&gt;secret scan tools&lt;/p&gt;
+&lt;h2 id=&#34;trufflehog&#34;&gt;trufflehog&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/trufflesecurity/trufflehog&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/trufflesecurity/trufflehog&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>Let&#39;s Encrypt</title>
         <link>https://canuxcheng.com/post/sec_letsencrypt/</link>
         <pubDate>Wed, 28 Jul 2021 16:08:54 +0000</pubDate>
@@ -41,6 +54,10 @@
 &lt;p&gt;Tools: SonarQube, Trivy, Coverity.&lt;/p&gt;
 &lt;p&gt;gitlab SAST report.
 gitlab secret detection report.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/aquasecurity/trivy&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/aquasecurity/trivy&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://scan.coverity.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://scan.coverity.com/&lt;/a&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;dast&#34;&gt;DAST&lt;/h2&gt;
 &lt;p&gt;DAST: Dynamic Application Security Testing，动态应用程序安全测试, 对应用程序进行黑盒分析.&lt;/p&gt;
