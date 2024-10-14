@@ -13,8 +13,8 @@ kubectl api-resources # In a namespace kubectl api-resources --namespaced=true #
 metadata: name: namespace: labels/标签: 用户筛选资源，唯一的资源组合方法, 可以使用selector来查询. annotations/注解: 存储资源的非标识性信息，扩展资源的spec/status. ownerReference/关系: 方便反向查找创建资源的对象，方便进行级联删除。 spec:
 status:
 调度，抢占，驱逐 taints: 污点，使节点排斥特定pod。应用于node。
-taints: - effect: NoSchedule key: kubernetes.io/arch value: arm64 tolerations: 容忍度，使pod被吸引到特定节点。应用于pod。
-tolerations: - key: &quot;key1&quot; operator: &quot;Equal&quot;/&quot;Exists&quot; value: &quot;value1&quot; effect: &quot;NoSchedule&quot;/&quot;NoExecute&quot; nodeSelector: 节点选择，'>
+taints: - effect: NoSchedule key: kubernetes.io/arch value: arm64 tolerations: 容忍度，使pod被吸引到特定节点。应用于pod。 这个只能让pod能部署到加了污点的node，pod也能部署到其它没有加污点的node。
+'>
 <title>K8S API</title>
 
 <link rel='canonical' href='https://canuxcheng.com/post/k8s_api/'>
@@ -32,8 +32,8 @@ kubectl api-resources # In a namespace kubectl api-resources --namespaced=true #
 metadata: name: namespace: labels/标签: 用户筛选资源，唯一的资源组合方法, 可以使用selector来查询. annotations/注解: 存储资源的非标识性信息，扩展资源的spec/status. ownerReference/关系: 方便反向查找创建资源的对象，方便进行级联删除。 spec:
 status:
 调度，抢占，驱逐 taints: 污点，使节点排斥特定pod。应用于node。
-taints: - effect: NoSchedule key: kubernetes.io/arch value: arm64 tolerations: 容忍度，使pod被吸引到特定节点。应用于pod。
-tolerations: - key: &quot;key1&quot; operator: &quot;Equal&quot;/&quot;Exists&quot; value: &quot;value1&quot; effect: &quot;NoSchedule&quot;/&quot;NoExecute&quot; nodeSelector: 节点选择，'>
+taints: - effect: NoSchedule key: kubernetes.io/arch value: arm64 tolerations: 容忍度，使pod被吸引到特定节点。应用于pod。 这个只能让pod能部署到加了污点的node，pod也能部署到其它没有加污点的node。
+'>
 <meta property='og:url' content='https://canuxcheng.com/post/k8s_api/'>
 <meta property='og:site_name' content='Morgoth'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='k8s' /><meta property='article:published_time' content='2020-01-10T20:55:52&#43;08:00'/><meta property='article:modified_time' content='2020-01-10T20:55:52&#43;08:00'/>
@@ -50,12 +50,9 @@ kubectl api-resources # In a namespace kubectl api-resources --namespaced=true #
 metadata: name: namespace: labels/标签: 用户筛选资源，唯一的资源组合方法, 可以使用selector来查询. annotations/注解: 存储资源的非标识性信息，扩展资源的spec/status. ownerReference/关系: 方便反向查找创建资源的对象，方便进行级联删除。 spec:
 status:
 调度，抢占，驱逐 taints: 污点，使节点排斥特定pod。应用于node。
-taints: - effect: NoSchedule key: kubernetes.io/arch value: arm64 tolerations: 容忍度，使pod被吸引到特定节点。应用于pod。
-tolerations: - key: &quot;key1&quot; operator: &quot;Equal&quot;/&quot;Exists&quot; value: &quot;value1&quot; effect: &quot;NoSchedule&quot;/&quot;NoExecute&quot; nodeSelector: 节点选择，">
+taints: - effect: NoSchedule key: kubernetes.io/arch value: arm64 tolerations: 容忍度，使pod被吸引到特定节点。应用于pod。 这个只能让pod能部署到加了污点的node，pod也能部署到其它没有加污点的node。
+">
     <link rel="shortcut icon" href="favicon.ico" />
-
-  
-
 <style>
     :root {
         --article-font-family: "Merriweather", var(--base-font-family);
@@ -502,18 +499,16 @@ kubectl api-resources --namespaced=false
   key: kubernetes.io/arch
   value: arm64
 </code></pre>
-<p>tolerations: 容忍度，使pod被吸引到特定节点。应用于pod。</p>
+<p>tolerations: 容忍度，使pod被吸引到特定节点。应用于pod。
+这个只能让pod能部署到加了污点的node，pod也能部署到其它没有加污点的node。</p>
 <pre><code>tolerations:
 - key: &quot;key1&quot;
   operator: &quot;Equal&quot;/&quot;Exists&quot;
   value: &quot;value1&quot;
   effect: &quot;NoSchedule&quot;/&quot;NoExecute&quot;
 </code></pre>
-<p>nodeSelector: 节点选择，</p>
-<pre><code> nodeSelector:
-   kubernetes.io/arch: arm64
-</code></pre>
-<p>affinity: 亲和力，</p>
+<p>affinity: 亲和力，affinity可以通过label指定pod部署到node。
+但是不能保证其它pod不部署到这个node。</p>
 <pre><code>   affinity:
     nodeAffinity:
       requiredDuringSchedulingIgnoredDuringExecution:
@@ -523,6 +518,10 @@ kubectl api-resources --namespaced=false
             operator: In
             values:
             - arm64
+</code></pre>
+<p>nodeSelector: 节点选择，</p>
+<pre><code> nodeSelector:
+   kubernetes.io/arch: arm64
 </code></pre>
 <hr>
 <h1 id="pod">Pod</h1>

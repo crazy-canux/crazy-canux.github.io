@@ -8,7 +8,8 @@ type PrivateKey interface{} Hash type Hash uint method:
 func (h Hash) Avaliable() bool func (h Hash) Size() int func (h Hash) New() hash.Hash crypto/cipher 用于包装底层块加密算法的实现.
 Block 代表一个使用特定密钥的底层　加／解密器．
 type Block interface { BlockSize() int Encrypt(dst, src []byte) Decrypt(dst, src []byte) } BlockMode 代表一个工作在块模式(CBC, ECB等)的加／解密器
-type BlockMode interface { BlockSize() int CryptBlocks(dst, src []byte) } function:'>
+type BlockMode interface { BlockSize() int CryptBlocks(dst, src []byte) } function:
+'>
 <title>GSL_cryptographic</title>
 
 <link rel='canonical' href='https://canuxcheng.com/post/gsl_cryptographic/'>
@@ -21,7 +22,8 @@ type PrivateKey interface{} Hash type Hash uint method:
 func (h Hash) Avaliable() bool func (h Hash) Size() int func (h Hash) New() hash.Hash crypto/cipher 用于包装底层块加密算法的实现.
 Block 代表一个使用特定密钥的底层　加／解密器．
 type Block interface { BlockSize() int Encrypt(dst, src []byte) Decrypt(dst, src []byte) } BlockMode 代表一个工作在块模式(CBC, ECB等)的加／解密器
-type BlockMode interface { BlockSize() int CryptBlocks(dst, src []byte) } function:'>
+type BlockMode interface { BlockSize() int CryptBlocks(dst, src []byte) } function:
+'>
 <meta property='og:url' content='https://canuxcheng.com/post/gsl_cryptographic/'>
 <meta property='og:site_name' content='Morgoth'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='cryptographic' /><meta property='article:published_time' content='2018-01-01T10:49:21&#43;00:00'/><meta property='article:modified_time' content='2018-01-01T10:49:21&#43;00:00'/>
@@ -33,11 +35,9 @@ type PrivateKey interface{} Hash type Hash uint method:
 func (h Hash) Avaliable() bool func (h Hash) Size() int func (h Hash) New() hash.Hash crypto/cipher 用于包装底层块加密算法的实现.
 Block 代表一个使用特定密钥的底层　加／解密器．
 type Block interface { BlockSize() int Encrypt(dst, src []byte) Decrypt(dst, src []byte) } BlockMode 代表一个工作在块模式(CBC, ECB等)的加／解密器
-type BlockMode interface { BlockSize() int CryptBlocks(dst, src []byte) } function:">
+type BlockMode interface { BlockSize() int CryptBlocks(dst, src []byte) } function:
+">
     <link rel="shortcut icon" href="favicon.ico" />
-
-  
-
 <style>
     :root {
         --article-font-family: "Merriweather", var(--base-font-family);

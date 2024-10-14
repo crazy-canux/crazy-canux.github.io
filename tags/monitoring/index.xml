@@ -1414,6 +1414,35 @@ Run the image on the target location.&lt;/p&gt;
         </item>
         <item>
         <title>Monitoring</title>
+        <link>https://canuxcheng.com/post/network_monitoring/</link>
+        <pubDate>Sun, 03 Apr 2016 14:46:19 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/network_monitoring/</guid>
+        <description>&lt;h1 id=&#34;monitoring&#34;&gt;Monitoring&lt;/h1&gt;
+&lt;p&gt;network usage:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;bytes_sent(out)
+bytes_recv(in)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;packets:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;packets_sent(out)
+packets_recv(in)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;error_in/out:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;SELECT non_negative_derivative(mean(&amp;quot;err_in&amp;quot;), 1s) AS &amp;quot;recv&amp;quot;, non_negative_derivative(mean(&amp;quot;err_out&amp;quot;), 1s) AS &amp;quot;send&amp;quot;
+FROM &amp;quot;net&amp;quot;
+WHERE &amp;quot;interface&amp;quot; =~ /^(vlan|eth|ens|bond).*/ AND $timeFilter
+GROUP BY time($__interval), &amp;quot;host&amp;quot;, &amp;quot;interface&amp;quot; fill(none)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;drop_in/out:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;SELECT non_negative_derivative(mean(&amp;quot;drop_in&amp;quot;), 1s) AS &amp;quot;recv&amp;quot;, non_negative_derivative(mean(&amp;quot;drop_out&amp;quot;), 1s) AS &amp;quot;send&amp;quot;
+FROM &amp;quot;net&amp;quot;
+WHERE &amp;quot;interface&amp;quot; =~ /^(vlan|eth|ens|bond).*/ AND $timeFilter
+GROUP BY time($__interval), &amp;quot;host&amp;quot;, &amp;quot;interface&amp;quot; fill(none)
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
+        <item>
+        <title>Monitoring</title>
         <link>https://canuxcheng.com/post/win_monitoring/</link>
         <pubDate>Sun, 03 Apr 2016 14:15:40 +0000</pubDate>
         
@@ -2023,35 +2052,6 @@ longoutput - $LONGSERVICEOUTPUT$
         
         <guid>https://canuxcheng.com/post/metrics_zabbix/</guid>
         <description>&lt;h1 id=&#34;zabbix&#34;&gt;Zabbix&lt;/h1&gt;
-</description>
-        </item>
-        <item>
-        <title>Monitoring</title>
-        <link>https://canuxcheng.com/post/network_monitoring/</link>
-        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-        
-        <guid>https://canuxcheng.com/post/network_monitoring/</guid>
-        <description>&lt;h1 id=&#34;monitoring&#34;&gt;Monitoring&lt;/h1&gt;
-&lt;p&gt;network usage:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;bytes_sent(out)
-bytes_recv(in)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;packets:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;packets_sent(out)
-packets_recv(in)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;error_in/out:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;SELECT non_negative_derivative(mean(&amp;quot;err_in&amp;quot;), 1s) AS &amp;quot;recv&amp;quot;, non_negative_derivative(mean(&amp;quot;err_out&amp;quot;), 1s) AS &amp;quot;send&amp;quot;
-FROM &amp;quot;net&amp;quot;
-WHERE &amp;quot;interface&amp;quot; =~ /^(vlan|eth|ens|bond).*/ AND $timeFilter
-GROUP BY time($__interval), &amp;quot;host&amp;quot;, &amp;quot;interface&amp;quot; fill(none)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;drop_in/out:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;SELECT non_negative_derivative(mean(&amp;quot;drop_in&amp;quot;), 1s) AS &amp;quot;recv&amp;quot;, non_negative_derivative(mean(&amp;quot;drop_out&amp;quot;), 1s) AS &amp;quot;send&amp;quot;
-FROM &amp;quot;net&amp;quot;
-WHERE &amp;quot;interface&amp;quot; =~ /^(vlan|eth|ens|bond).*/ AND $timeFilter
-GROUP BY time($__interval), &amp;quot;host&amp;quot;, &amp;quot;interface&amp;quot; fill(none)
-&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         

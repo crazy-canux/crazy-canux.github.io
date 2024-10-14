@@ -12,7 +12,8 @@ $ scp sftp
 $ sftp 常用选项：
 -C compression # 不需要输入yes来交互, 或者修改/etc/ssh/ssh_config -o StrictHostKeyChecking=no -o UserKnownHostsFile /dev/null ssh也包括一些密钥管理的命令.
 ssh-keygen
-$ ssh-keygen -t rsa -C &#39;canuxcheng@gmail.com&#39; # 通过将本机的公钥拷贝到远程机器实现无密码访问． # 将本机的public-key拷贝到远程机器的authorized_keys. $ ssh-copy-id -i ~/.ssh/id_rsa.pub user@remote # 另外的拷贝方法 $ ssh user@host &quot;cat &gt;&gt; ~/.'>
+$ ssh-keygen -t rsa -C &#39;canuxcheng@gmail.com&#39; # 通过将本机的公钥拷贝到远程机器实现无密码访问． # 将本机的public-key拷贝到远程机器的authorized_keys. $ ssh-copy-id -i ~/.ssh/id_rsa.pub user@remote # 另外的拷贝方法 $ ssh user@host &quot;cat &gt;&gt; ~/.ssh/authorized_keys&quot; &lt; ~/.ssh/id_rsa.pub $ sudo service ssh restart # 需要重启ssh服务 非交互式通过命令行传密码的命令： $ sshpass -p [password] ssh-add
+'>
 <title>Ssh</title>
 
 <link rel='canonical' href='https://canuxcheng.com/post/ssh/'>
@@ -29,7 +30,8 @@ $ scp sftp
 $ sftp 常用选项：
 -C compression # 不需要输入yes来交互, 或者修改/etc/ssh/ssh_config -o StrictHostKeyChecking=no -o UserKnownHostsFile /dev/null ssh也包括一些密钥管理的命令.
 ssh-keygen
-$ ssh-keygen -t rsa -C &#39;canuxcheng@gmail.com&#39; # 通过将本机的公钥拷贝到远程机器实现无密码访问． # 将本机的public-key拷贝到远程机器的authorized_keys. $ ssh-copy-id -i ~/.ssh/id_rsa.pub user@remote # 另外的拷贝方法 $ ssh user@host &quot;cat &gt;&gt; ~/.'>
+$ ssh-keygen -t rsa -C &#39;canuxcheng@gmail.com&#39; # 通过将本机的公钥拷贝到远程机器实现无密码访问． # 将本机的public-key拷贝到远程机器的authorized_keys. $ ssh-copy-id -i ~/.ssh/id_rsa.pub user@remote # 另外的拷贝方法 $ ssh user@host &quot;cat &gt;&gt; ~/.ssh/authorized_keys&quot; &lt; ~/.ssh/id_rsa.pub $ sudo service ssh restart # 需要重启ssh服务 非交互式通过命令行传密码的命令： $ sshpass -p [password] ssh-add
+'>
 <meta property='og:url' content='https://canuxcheng.com/post/ssh/'>
 <meta property='og:site_name' content='Morgoth'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='ssh' /><meta property='article:published_time' content='2016-07-28T15:53:34&#43;00:00'/><meta property='article:modified_time' content='2016-07-28T15:53:34&#43;00:00'/>
@@ -45,11 +47,9 @@ $ scp sftp
 $ sftp 常用选项：
 -C compression # 不需要输入yes来交互, 或者修改/etc/ssh/ssh_config -o StrictHostKeyChecking=no -o UserKnownHostsFile /dev/null ssh也包括一些密钥管理的命令.
 ssh-keygen
-$ ssh-keygen -t rsa -C &#39;canuxcheng@gmail.com&#39; # 通过将本机的公钥拷贝到远程机器实现无密码访问． # 将本机的public-key拷贝到远程机器的authorized_keys. $ ssh-copy-id -i ~/.ssh/id_rsa.pub user@remote # 另外的拷贝方法 $ ssh user@host &quot;cat &gt;&gt; ~/.">
+$ ssh-keygen -t rsa -C &#39;canuxcheng@gmail.com&#39; # 通过将本机的公钥拷贝到远程机器实现无密码访问． # 将本机的public-key拷贝到远程机器的authorized_keys. $ ssh-copy-id -i ~/.ssh/id_rsa.pub user@remote # 另外的拷贝方法 $ ssh user@host &quot;cat &gt;&gt; ~/.ssh/authorized_keys&quot; &lt; ~/.ssh/id_rsa.pub $ sudo service ssh restart # 需要重启ssh服务 非交互式通过命令行传密码的命令： $ sshpass -p [password] ssh-add
+">
     <link rel="shortcut icon" href="favicon.ico" />
-
-  
-
 <style>
     :root {
         --article-font-family: "Merriweather", var(--base-font-family);

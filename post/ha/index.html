@@ -5,7 +5,8 @@
 安装:
 $ sudo apt-get install haproxy 配置:
 $ sudo vim /etc/haproxy/haproxy.cfg global:
-log /dev/log local0 log /dev/log local1 notice chroot /var/lib/haproxy stats socket /run/haproxy/admin.sock mode 660 level admin expose-fd listeners stats timeout 30s user haproxy group haproxy daemon # Default SSL material locations ca-base /etc/ssl/certs crt-base /etc/ssl/private # Default ciphers to use on SSL-enabled listening sockets. # For more information, see ciphers(1SSL). This list is from: # https://hynek.me/articles/hardening-your-web-servers-ssl-ciphers/ # An alternative list with additional directives can be obtained from # https://mozilla.'>
+log /dev/log local0 log /dev/log local1 notice chroot /var/lib/haproxy stats socket /run/haproxy/admin.sock mode 660 level admin expose-fd listeners stats timeout 30s user haproxy group haproxy daemon # Default SSL material locations ca-base /etc/ssl/certs crt-base /etc/ssl/private # Default ciphers to use on SSL-enabled listening sockets. # For more information, see ciphers(1SSL). This list is from: # https://hynek.me/articles/hardening-your-web-servers-ssl-ciphers/ # An alternative list with additional directives can be obtained from # https://mozilla.github.io/server-side-tls/ssl-config-generator/?server=haproxy ssl-default-bind-ciphers ECDH&#43;AESGCM:DH&#43;AESGCM:ECDH&#43;AES256:DH&#43;AES256:ECDH&#43;AES128:DH&#43;AES:RSA&#43;AESGCM:RSA&#43;AES:!aNULL:!MD5:!DSS ssl-default-bind-options no-sslv3 defaults:
+'>
 <title>HA</title>
 
 <link rel='canonical' href='https://canuxcheng.com/post/ha/'>
@@ -15,7 +16,8 @@ log /dev/log local0 log /dev/log local1 notice chroot /var/lib/haproxy stats soc
 安装:
 $ sudo apt-get install haproxy 配置:
 $ sudo vim /etc/haproxy/haproxy.cfg global:
-log /dev/log local0 log /dev/log local1 notice chroot /var/lib/haproxy stats socket /run/haproxy/admin.sock mode 660 level admin expose-fd listeners stats timeout 30s user haproxy group haproxy daemon # Default SSL material locations ca-base /etc/ssl/certs crt-base /etc/ssl/private # Default ciphers to use on SSL-enabled listening sockets. # For more information, see ciphers(1SSL). This list is from: # https://hynek.me/articles/hardening-your-web-servers-ssl-ciphers/ # An alternative list with additional directives can be obtained from # https://mozilla.'>
+log /dev/log local0 log /dev/log local1 notice chroot /var/lib/haproxy stats socket /run/haproxy/admin.sock mode 660 level admin expose-fd listeners stats timeout 30s user haproxy group haproxy daemon # Default SSL material locations ca-base /etc/ssl/certs crt-base /etc/ssl/private # Default ciphers to use on SSL-enabled listening sockets. # For more information, see ciphers(1SSL). This list is from: # https://hynek.me/articles/hardening-your-web-servers-ssl-ciphers/ # An alternative list with additional directives can be obtained from # https://mozilla.github.io/server-side-tls/ssl-config-generator/?server=haproxy ssl-default-bind-ciphers ECDH&#43;AESGCM:DH&#43;AESGCM:ECDH&#43;AES256:DH&#43;AES256:ECDH&#43;AES128:DH&#43;AES:RSA&#43;AESGCM:RSA&#43;AES:!aNULL:!MD5:!DSS ssl-default-bind-options no-sslv3 defaults:
+'>
 <meta property='og:url' content='https://canuxcheng.com/post/ha/'>
 <meta property='og:site_name' content='Morgoth'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='haproxy' /><meta property='article:tag' content='keepalived' /><meta property='article:published_time' content='2018-07-28T16:08:54&#43;00:00'/><meta property='article:modified_time' content='2018-07-28T16:08:54&#43;00:00'/>
@@ -24,11 +26,9 @@ log /dev/log local0 log /dev/log local1 notice chroot /var/lib/haproxy stats soc
 安装:
 $ sudo apt-get install haproxy 配置:
 $ sudo vim /etc/haproxy/haproxy.cfg global:
-log /dev/log local0 log /dev/log local1 notice chroot /var/lib/haproxy stats socket /run/haproxy/admin.sock mode 660 level admin expose-fd listeners stats timeout 30s user haproxy group haproxy daemon # Default SSL material locations ca-base /etc/ssl/certs crt-base /etc/ssl/private # Default ciphers to use on SSL-enabled listening sockets. # For more information, see ciphers(1SSL). This list is from: # https://hynek.me/articles/hardening-your-web-servers-ssl-ciphers/ # An alternative list with additional directives can be obtained from # https://mozilla.">
+log /dev/log local0 log /dev/log local1 notice chroot /var/lib/haproxy stats socket /run/haproxy/admin.sock mode 660 level admin expose-fd listeners stats timeout 30s user haproxy group haproxy daemon # Default SSL material locations ca-base /etc/ssl/certs crt-base /etc/ssl/private # Default ciphers to use on SSL-enabled listening sockets. # For more information, see ciphers(1SSL). This list is from: # https://hynek.me/articles/hardening-your-web-servers-ssl-ciphers/ # An alternative list with additional directives can be obtained from # https://mozilla.github.io/server-side-tls/ssl-config-generator/?server=haproxy ssl-default-bind-ciphers ECDH&#43;AESGCM:DH&#43;AESGCM:ECDH&#43;AES256:DH&#43;AES256:ECDH&#43;AES128:DH&#43;AES:RSA&#43;AESGCM:RSA&#43;AES:!aNULL:!MD5:!DSS ssl-default-bind-options no-sslv3 defaults:
+">
     <link rel="shortcut icon" href="favicon.ico" />
-
-  
-
 <style>
     :root {
         --article-font-family: "Merriweather", var(--base-font-family);

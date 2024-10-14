@@ -8,7 +8,8 @@ Habor是由VMWare中国团队开源的容器镜像仓库, 用于存储和分发d
 vim harbor.yml 运行安装程序:
 ./install.sh --with-notary --with-clair --with-chartmuseum 修改web的port:
 $ vim /data/harbor/docker-compose.yml proxy: ports: - 8080:80 # 默认http是80 - 4433:443 # 默认https是443 $ vim /data/harbor/harbor.yml hostname = ip 管理harbor:
-# cd /data/harbor # docker-compose down -v 停止并删除container &gt; 更新配置 # .'>
+# cd /data/harbor # docker-compose down -v 停止并删除container &gt; 更新配置 # ./prepare --with-notary --with-clair --with-chartmuseum &gt; 启动 # docker-compose up -d docker使用harbor Deploy a plain HTTP registry:
+'>
 <title>Registry</title>
 
 <link rel='canonical' href='https://canuxcheng.com/post/cncf_registry/'>
@@ -21,7 +22,8 @@ Habor是由VMWare中国团队开源的容器镜像仓库, 用于存储和分发d
 vim harbor.yml 运行安装程序:
 ./install.sh --with-notary --with-clair --with-chartmuseum 修改web的port:
 $ vim /data/harbor/docker-compose.yml proxy: ports: - 8080:80 # 默认http是80 - 4433:443 # 默认https是443 $ vim /data/harbor/harbor.yml hostname = ip 管理harbor:
-# cd /data/harbor # docker-compose down -v 停止并删除container &gt; 更新配置 # .'>
+# cd /data/harbor # docker-compose down -v 停止并删除container &gt; 更新配置 # ./prepare --with-notary --with-clair --with-chartmuseum &gt; 启动 # docker-compose up -d docker使用harbor Deploy a plain HTTP registry:
+'>
 <meta property='og:url' content='https://canuxcheng.com/post/cncf_registry/'>
 <meta property='og:site_name' content='Morgoth'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='harbor' /><meta property='article:tag' content='artifactory' /><meta property='article:tag' content='dragonfly' /><meta property='article:published_time' content='2018-04-05T22:02:31&#43;00:00'/><meta property='article:modified_time' content='2018-04-05T22:02:31&#43;00:00'/>
@@ -33,11 +35,9 @@ Habor是由VMWare中国团队开源的容器镜像仓库, 用于存储和分发d
 vim harbor.yml 运行安装程序:
 ./install.sh --with-notary --with-clair --with-chartmuseum 修改web的port:
 $ vim /data/harbor/docker-compose.yml proxy: ports: - 8080:80 # 默认http是80 - 4433:443 # 默认https是443 $ vim /data/harbor/harbor.yml hostname = ip 管理harbor:
-# cd /data/harbor # docker-compose down -v 停止并删除container &gt; 更新配置 # .">
+# cd /data/harbor # docker-compose down -v 停止并删除container &gt; 更新配置 # ./prepare --with-notary --with-clair --with-chartmuseum &gt; 启动 # docker-compose up -d docker使用harbor Deploy a plain HTTP registry:
+">
     <link rel="shortcut icon" href="favicon.ico" />
-
-  
-
 <style>
     :root {
         --article-font-family: "Merriweather", var(--base-font-family);

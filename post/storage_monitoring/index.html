@@ -26,9 +26,6 @@ SELECT non_negative_derivative(mean(read_bytes),1s) as &quot;read&quot; FROM &qu
 SELECT non_negative_derivative(last(&quot;io_time&quot;),1ms) FROM &quot;diskio&quot; WHERE &quot;name&quot; =~ /^(v|s|)d(a|b|c|d)$/ GROUP BY &quot;host&quot;,&quot;name&quot;,time(_interval) Queue length:
 SELECT non_negative_derivative(last(&quot;weighted_io_time&quot;,1ms)) FROM &quot;diskio&quot; WHERE &quot;name&quot; =~ /^(v|s|)d(a|b|c|d)$/ GROUP BY &quot;host&quot;,&quot;name&quot;,time(_interval) ">
     <link rel="shortcut icon" href="favicon.ico" />
-
-  
-
 <style>
     :root {
         --article-font-family: "Merriweather", var(--base-font-family);

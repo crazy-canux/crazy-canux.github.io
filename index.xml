@@ -934,6 +934,72 @@ template:
 </description>
         </item>
         <item>
+        <title>Cache</title>
+        <link>https://canuxcheng.com/post/django_cache/</link>
+        <pubDate>Tue, 04 May 2021 04:51:30 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/django_cache/</guid>
+        <description>&lt;h1 id=&#34;cache&#34;&gt;cache&lt;/h1&gt;
+&lt;p&gt;缓存的backend可以是django内置的，也可以是第三方的。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;缓存整个站点&lt;/p&gt;
+&lt;p&gt;MIDDLEWARE = [
+&amp;lsquo;django.middleware.cache.UpdateCacheMiddleware&amp;rsquo;,
+&amp;lsquo;django.middleware.common.CommonMiddleware&amp;rsquo;,
+&amp;lsquo;django.middleware.cache.FetchFromCacheMiddleware&amp;rsquo;,
+]&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;视图缓存&lt;/p&gt;
+&lt;p&gt;from django.views.decorators.cache import cache_page&lt;/p&gt;
+&lt;p&gt;@cache_page(60 * 2)
+def my_view(request):
+&amp;hellip;&lt;/p&gt;
+&lt;p&gt;或者在URLconf中指定
+urlpatterns = [
+path(&amp;lsquo;foo/&lt;a class=&#34;link&#34; href=&#34;int:code&#34; &gt;int:code&lt;/a&gt;/&amp;rsquo;, cache_page(60 * 2)(my_view)),
+]&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;模板片段缓存&lt;/p&gt;
+&lt;p&gt;{% load cache %}
+{% cache &amp;hellip; %}
+&amp;hellip;
+{% endcache %}&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;redis&#34;&gt;redis&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;CACHES = {
+    &amp;quot;default&amp;quot;: {
+        &amp;quot;BACKEND&amp;quot;: &amp;quot;django_redis.cache.RedisCache&amp;quot;,
+        &amp;quot;LOCATION&amp;quot;: os.environ.get(&amp;quot;REDIS_URL&amp;quot;, &#39;&#39;),
+        &amp;quot;OPTIONS&amp;quot;: {
+            &amp;quot;CLIENT_CLASS&amp;quot;: &amp;quot;django_redis.client.DefaultClient&amp;quot;,
+        },
+        &amp;quot;TIMEOUT&amp;quot;: 60,
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;memcached&#34;&gt;memcached&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;CACHES = {
+    &#39;default&#39;: {
+        &#39;BACKEND&#39;: &#39;django.core.cache.backends.memcached.MemcachedCache&#39;,
+        &#39;LOCATION&#39;: &#39;127.0.0.1:11211&#39;,
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;database&#34;&gt;database&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;CACHES = {
+    &#39;default&#39;: {
+        &#39;BACKEND&#39;: &#39;django.core.cache.backends.db.DatabaseCache&#39;,
+        &#39;LOCATION&#39;: &#39;my_cache_table&#39;,
+    }
+}&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
+        <item>
         <title>AWS</title>
         <link>https://canuxcheng.com/post/aws/</link>
         <pubDate>Fri, 23 Apr 2021 22:02:31 +0000</pubDate>
@@ -2536,18 +2602,16 @@ kubectl api-resources --namespaced=false
   key: kubernetes.io/arch
   value: arm64
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;tolerations: 容忍度，使pod被吸引到特定节点。应用于pod。&lt;/p&gt;
+&lt;p&gt;tolerations: 容忍度，使pod被吸引到特定节点。应用于pod。
+这个只能让pod能部署到加了污点的node，pod也能部署到其它没有加污点的node。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;tolerations:
 - key: &amp;quot;key1&amp;quot;
   operator: &amp;quot;Equal&amp;quot;/&amp;quot;Exists&amp;quot;
   value: &amp;quot;value1&amp;quot;
   effect: &amp;quot;NoSchedule&amp;quot;/&amp;quot;NoExecute&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;nodeSelector: 节点选择，&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt; nodeSelector:
-   kubernetes.io/arch: arm64
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;affinity: 亲和力，&lt;/p&gt;
+&lt;p&gt;affinity: 亲和力，affinity可以通过label指定pod部署到node。
+但是不能保证其它pod不部署到这个node。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;   affinity:
     nodeAffinity:
       requiredDuringSchedulingIgnoredDuringExecution:
@@ -2557,6 +2621,10 @@ kubectl api-resources --namespaced=false
             operator: In
             values:
             - arm64
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;nodeSelector: 节点选择，&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; nodeSelector:
+   kubernetes.io/arch: arm64
 &lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;pod&#34;&gt;Pod&lt;/h1&gt;
@@ -29249,6 +29317,35 @@ def find_vm(si, name):
 </description>
         </item>
         <item>
+        <title>Monitoring</title>
+        <link>https://canuxcheng.com/post/network_monitoring/</link>
+        <pubDate>Sun, 03 Apr 2016 14:46:19 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/network_monitoring/</guid>
+        <description>&lt;h1 id=&#34;monitoring&#34;&gt;Monitoring&lt;/h1&gt;
+&lt;p&gt;network usage:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;bytes_sent(out)
+bytes_recv(in)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;packets:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;packets_sent(out)
+packets_recv(in)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;error_in/out:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;SELECT non_negative_derivative(mean(&amp;quot;err_in&amp;quot;), 1s) AS &amp;quot;recv&amp;quot;, non_negative_derivative(mean(&amp;quot;err_out&amp;quot;), 1s) AS &amp;quot;send&amp;quot;
+FROM &amp;quot;net&amp;quot;
+WHERE &amp;quot;interface&amp;quot; =~ /^(vlan|eth|ens|bond).*/ AND $timeFilter
+GROUP BY time($__interval), &amp;quot;host&amp;quot;, &amp;quot;interface&amp;quot; fill(none)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;drop_in/out:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;SELECT non_negative_derivative(mean(&amp;quot;drop_in&amp;quot;), 1s) AS &amp;quot;recv&amp;quot;, non_negative_derivative(mean(&amp;quot;drop_out&amp;quot;), 1s) AS &amp;quot;send&amp;quot;
+FROM &amp;quot;net&amp;quot;
+WHERE &amp;quot;interface&amp;quot; =~ /^(vlan|eth|ens|bond).*/ AND $timeFilter
+GROUP BY time($__interval), &amp;quot;host&amp;quot;, &amp;quot;interface&amp;quot; fill(none)
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
+        <item>
         <title>Network</title>
         <link>https://canuxcheng.com/post/network/</link>
         <pubDate>Sun, 03 Apr 2016 14:46:19 +0000</pubDate>
@@ -34427,101 +34524,6 @@ draft: false&lt;/h2&gt;
         
         <guid>https://canuxcheng.com/search/</guid>
         <description></description>
-        </item>
-        <item>
-        <title>Cache</title>
-        <link>https://canuxcheng.com/post/django_cache/</link>
-        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-        
-        <guid>https://canuxcheng.com/post/django_cache/</guid>
-        <description>&lt;h1 id=&#34;cache&#34;&gt;cache&lt;/h1&gt;
-&lt;p&gt;缓存的backend可以是django内置的，也可以是第三方的。&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;缓存整个站点&lt;/p&gt;
-&lt;p&gt;MIDDLEWARE = [
-&amp;lsquo;django.middleware.cache.UpdateCacheMiddleware&amp;rsquo;,
-&amp;lsquo;django.middleware.common.CommonMiddleware&amp;rsquo;,
-&amp;lsquo;django.middleware.cache.FetchFromCacheMiddleware&amp;rsquo;,
-]&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;视图缓存&lt;/p&gt;
-&lt;p&gt;from django.views.decorators.cache import cache_page&lt;/p&gt;
-&lt;p&gt;@cache_page(60 * 2)
-def my_view(request):
-&amp;hellip;&lt;/p&gt;
-&lt;p&gt;或者在URLconf中指定
-urlpatterns = [
-path(&amp;lsquo;foo/&lt;a class=&#34;link&#34; href=&#34;int:code&#34; &gt;int:code&lt;/a&gt;/&amp;rsquo;, cache_page(60 * 2)(my_view)),
-]&lt;/p&gt;
-&lt;/li&gt;
-&lt;li&gt;
-&lt;p&gt;模板片段缓存&lt;/p&gt;
-&lt;p&gt;{% load cache %}
-{% cache &amp;hellip; %}
-&amp;hellip;
-{% endcache %}&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;redis&#34;&gt;redis&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;CACHES = {
-    &amp;quot;default&amp;quot;: {
-        &amp;quot;BACKEND&amp;quot;: &amp;quot;django_redis.cache.RedisCache&amp;quot;,
-        &amp;quot;LOCATION&amp;quot;: os.environ.get(&amp;quot;REDIS_URL&amp;quot;, &#39;&#39;),
-        &amp;quot;OPTIONS&amp;quot;: {
-            &amp;quot;CLIENT_CLASS&amp;quot;: &amp;quot;django_redis.client.DefaultClient&amp;quot;,
-        },
-        &amp;quot;TIMEOUT&amp;quot;: 60,
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;memcached&#34;&gt;memcached&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;CACHES = {
-    &#39;default&#39;: {
-        &#39;BACKEND&#39;: &#39;django.core.cache.backends.memcached.MemcachedCache&#39;,
-        &#39;LOCATION&#39;: &#39;127.0.0.1:11211&#39;,
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;database&#34;&gt;database&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;CACHES = {
-    &#39;default&#39;: {
-        &#39;BACKEND&#39;: &#39;django.core.cache.backends.db.DatabaseCache&#39;,
-        &#39;LOCATION&#39;: &#39;my_cache_table&#39;,
-    }
-}&lt;/code&gt;&lt;/pre&gt;
-</description>
-        </item>
-        <item>
-        <title>Monitoring</title>
-        <link>https://canuxcheng.com/post/network_monitoring/</link>
-        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-        
-        <guid>https://canuxcheng.com/post/network_monitoring/</guid>
-        <description>&lt;h1 id=&#34;monitoring&#34;&gt;Monitoring&lt;/h1&gt;
-&lt;p&gt;network usage:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;bytes_sent(out)
-bytes_recv(in)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;packets:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;packets_sent(out)
-packets_recv(in)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;error_in/out:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;SELECT non_negative_derivative(mean(&amp;quot;err_in&amp;quot;), 1s) AS &amp;quot;recv&amp;quot;, non_negative_derivative(mean(&amp;quot;err_out&amp;quot;), 1s) AS &amp;quot;send&amp;quot;
-FROM &amp;quot;net&amp;quot;
-WHERE &amp;quot;interface&amp;quot; =~ /^(vlan|eth|ens|bond).*/ AND $timeFilter
-GROUP BY time($__interval), &amp;quot;host&amp;quot;, &amp;quot;interface&amp;quot; fill(none)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;drop_in/out:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;SELECT non_negative_derivative(mean(&amp;quot;drop_in&amp;quot;), 1s) AS &amp;quot;recv&amp;quot;, non_negative_derivative(mean(&amp;quot;drop_out&amp;quot;), 1s) AS &amp;quot;send&amp;quot;
-FROM &amp;quot;net&amp;quot;
-WHERE &amp;quot;interface&amp;quot; =~ /^(vlan|eth|ens|bond).*/ AND $timeFilter
-GROUP BY time($__interval), &amp;quot;host&amp;quot;, &amp;quot;interface&amp;quot; fill(none)
-&lt;/code&gt;&lt;/pre&gt;
-</description>
         </item>
         
     </channel>

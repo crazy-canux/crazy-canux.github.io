@@ -495,18 +495,16 @@ kubectl api-resources --namespaced=false
   key: kubernetes.io/arch
   value: arm64
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;tolerations: 容忍度，使pod被吸引到特定节点。应用于pod。&lt;/p&gt;
+&lt;p&gt;tolerations: 容忍度，使pod被吸引到特定节点。应用于pod。
+这个只能让pod能部署到加了污点的node，pod也能部署到其它没有加污点的node。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;tolerations:
 - key: &amp;quot;key1&amp;quot;
   operator: &amp;quot;Equal&amp;quot;/&amp;quot;Exists&amp;quot;
   value: &amp;quot;value1&amp;quot;
   effect: &amp;quot;NoSchedule&amp;quot;/&amp;quot;NoExecute&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;nodeSelector: 节点选择，&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt; nodeSelector:
-   kubernetes.io/arch: arm64
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;affinity: 亲和力，&lt;/p&gt;
+&lt;p&gt;affinity: 亲和力，affinity可以通过label指定pod部署到node。
+但是不能保证其它pod不部署到这个node。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;   affinity:
     nodeAffinity:
       requiredDuringSchedulingIgnoredDuringExecution:
@@ -516,6 +514,10 @@ kubectl api-resources --namespaced=false
             operator: In
             values:
             - arm64
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;nodeSelector: 节点选择，&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; nodeSelector:
+   kubernetes.io/arch: arm64
 &lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;pod&#34;&gt;Pod&lt;/h1&gt;

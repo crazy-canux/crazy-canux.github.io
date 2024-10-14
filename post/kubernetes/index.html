@@ -12,7 +12,8 @@ kubeadm (k8s内置的，类似于docker swarm mode, 没有HA) kops (目前主要
 openshift-okd(redhat) rancher k8s集群组成 master aip-server, 提供资源操作唯一入口 scheduler, 负责资源调度 controller-manager, 负责维护集群状态 etcd(可以部署单独集群), 保存整个集群的状态 node kubelet, 负责维护容器生命周期, 还包括CNI CVI kube-proxy, 为service提供cluster内部的服务发现和负载均衡 CRI(containerd), 创建pod addons coredns flannel/cilium/calico dashboard, web-gui metrics-server, 取代heapster，用于cpu/memory监控 ingress-nginx, 为服务提供外网入口 federation, 提供跨可用区的集群 概念 k8s包含的重要概念:
 -: nodes, 运行pod的物理机或虚拟机. -: namespace, 对资源和对象的抽象集合．pods/deployments/services都属于某个ns. -: pods,一组紧密关联的容器集合，共享pid,ipc,network,uts,namespace.
 k8s业务类型:
--: long-running 长期伺服型 -&gt; RC, RS, Deployment -: batch 批处理型-&gt; Job -: node-daemon 节点后台支撑型-&gt; DaemonSet -: stateful application 有状态应用型-&gt; StatefulSet'>
+-: long-running 长期伺服型 -&gt; RC, RS, Deployment -: batch 批处理型-&gt; Job -: node-daemon 节点后台支撑型-&gt; DaemonSet -: stateful application 有状态应用型-&gt; StatefulSet
+'>
 <title>Kubernetes</title>
 
 <link rel='canonical' href='https://canuxcheng.com/post/kubernetes/'>
@@ -29,7 +30,8 @@ kubeadm (k8s内置的，类似于docker swarm mode, 没有HA) kops (目前主要
 openshift-okd(redhat) rancher k8s集群组成 master aip-server, 提供资源操作唯一入口 scheduler, 负责资源调度 controller-manager, 负责维护集群状态 etcd(可以部署单独集群), 保存整个集群的状态 node kubelet, 负责维护容器生命周期, 还包括CNI CVI kube-proxy, 为service提供cluster内部的服务发现和负载均衡 CRI(containerd), 创建pod addons coredns flannel/cilium/calico dashboard, web-gui metrics-server, 取代heapster，用于cpu/memory监控 ingress-nginx, 为服务提供外网入口 federation, 提供跨可用区的集群 概念 k8s包含的重要概念:
 -: nodes, 运行pod的物理机或虚拟机. -: namespace, 对资源和对象的抽象集合．pods/deployments/services都属于某个ns. -: pods,一组紧密关联的容器集合，共享pid,ipc,network,uts,namespace.
 k8s业务类型:
--: long-running 长期伺服型 -&gt; RC, RS, Deployment -: batch 批处理型-&gt; Job -: node-daemon 节点后台支撑型-&gt; DaemonSet -: stateful application 有状态应用型-&gt; StatefulSet'>
+-: long-running 长期伺服型 -&gt; RC, RS, Deployment -: batch 批处理型-&gt; Job -: node-daemon 节点后台支撑型-&gt; DaemonSet -: stateful application 有状态应用型-&gt; StatefulSet
+'>
 <meta property='og:url' content='https://canuxcheng.com/post/kubernetes/'>
 <meta property='og:site_name' content='Morgoth'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='k8s' /><meta property='article:published_time' content='2018-04-05T22:02:31&#43;00:00'/><meta property='article:modified_time' content='2018-04-05T22:02:31&#43;00:00'/>
@@ -45,11 +47,9 @@ kubeadm (k8s内置的，类似于docker swarm mode, 没有HA) kops (目前主要
 openshift-okd(redhat) rancher k8s集群组成 master aip-server, 提供资源操作唯一入口 scheduler, 负责资源调度 controller-manager, 负责维护集群状态 etcd(可以部署单独集群), 保存整个集群的状态 node kubelet, 负责维护容器生命周期, 还包括CNI CVI kube-proxy, 为service提供cluster内部的服务发现和负载均衡 CRI(containerd), 创建pod addons coredns flannel/cilium/calico dashboard, web-gui metrics-server, 取代heapster，用于cpu/memory监控 ingress-nginx, 为服务提供外网入口 federation, 提供跨可用区的集群 概念 k8s包含的重要概念:
 -: nodes, 运行pod的物理机或虚拟机. -: namespace, 对资源和对象的抽象集合．pods/deployments/services都属于某个ns. -: pods,一组紧密关联的容器集合，共享pid,ipc,network,uts,namespace.
 k8s业务类型:
--: long-running 长期伺服型 -&gt; RC, RS, Deployment -: batch 批处理型-&gt; Job -: node-daemon 节点后台支撑型-&gt; DaemonSet -: stateful application 有状态应用型-&gt; StatefulSet">
+-: long-running 长期伺服型 -&gt; RC, RS, Deployment -: batch 批处理型-&gt; Job -: node-daemon 节点后台支撑型-&gt; DaemonSet -: stateful application 有状态应用型-&gt; StatefulSet
+">
     <link rel="shortcut icon" href="favicon.ico" />
-
-  
-
 <style>
     :root {
         --article-font-family: "Merriweather", var(--base-font-family);

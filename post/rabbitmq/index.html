@@ -20,7 +20,7 @@ queue:　生产者和消费者都应该创建queue.(只能通过exchange接收me
 exchanges类型:
 fanout: 所有绑定到此exchange的queue都可以接收消息 direct: 通过routingKey和exchange决定的那个唯一的queue可以接收消息 topic：所有符合routingKey(此时可以是一个表达式)的routingKey所bind的queue可以接收消息 message类型:
 messages: 生产者产生的总消息数． messages_ready: 等待deliver给消费者的消息． messages_unack: 已经被consumer处理，但是没有被ack的消息． virtual hosts: 本质就是一个rabbitmq server,拥有独立的exchange,queue.默认是/(%2F).
-round-robin dispatch: 循环分发，按顺序分发message到consumer,如果message被consumer正确接收，就会从queue中移除．'>
+'>
 <title>Rabbitmq</title>
 
 <link rel='canonical' href='https://canuxcheng.com/post/rabbitmq/'>
@@ -45,7 +45,7 @@ queue:　生产者和消费者都应该创建queue.(只能通过exchange接收me
 exchanges类型:
 fanout: 所有绑定到此exchange的queue都可以接收消息 direct: 通过routingKey和exchange决定的那个唯一的queue可以接收消息 topic：所有符合routingKey(此时可以是一个表达式)的routingKey所bind的queue可以接收消息 message类型:
 messages: 生产者产生的总消息数． messages_ready: 等待deliver给消费者的消息． messages_unack: 已经被consumer处理，但是没有被ack的消息． virtual hosts: 本质就是一个rabbitmq server,拥有独立的exchange,queue.默认是/(%2F).
-round-robin dispatch: 循环分发，按顺序分发message到consumer,如果message被consumer正确接收，就会从queue中移除．'>
+'>
 <meta property='og:url' content='https://canuxcheng.com/post/rabbitmq/'>
 <meta property='og:site_name' content='Morgoth'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='rabbitmq' /><meta property='article:published_time' content='2017-09-25T09:41:39&#43;00:00'/><meta property='article:modified_time' content='2017-09-25T09:41:39&#43;00:00'/>
@@ -69,11 +69,8 @@ queue:　生产者和消费者都应该创建queue.(只能通过exchange接收me
 exchanges类型:
 fanout: 所有绑定到此exchange的queue都可以接收消息 direct: 通过routingKey和exchange决定的那个唯一的queue可以接收消息 topic：所有符合routingKey(此时可以是一个表达式)的routingKey所bind的queue可以接收消息 message类型:
 messages: 生产者产生的总消息数． messages_ready: 等待deliver给消费者的消息． messages_unack: 已经被consumer处理，但是没有被ack的消息． virtual hosts: 本质就是一个rabbitmq server,拥有独立的exchange,queue.默认是/(%2F).
-round-robin dispatch: 循环分发，按顺序分发message到consumer,如果message被consumer正确接收，就会从queue中移除．">
+">
     <link rel="shortcut icon" href="favicon.ico" />
-
-  
-
 <style>
     :root {
         --article-font-family: "Merriweather", var(--base-font-family);

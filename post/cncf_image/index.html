@@ -8,7 +8,8 @@ qemu 使用qume:
 // 安装bitfmt docker run --privileged --rm tonistiigi/binfmt --install all // 查看支持的平台 ls -l /proc/sys/fs/binfmt_misc/qemu-* multiple native nodes 安装
 // linux sudo apt install docker-buildx-plugin // mac brew install docker-buildx mkdir -p ~/.docker/cli-plugins ln -sfn $(which docker-buildx) ~/.docker/cli-plugins/docker-buildx docker buildx install 查看版本
 docker buildx version 管理builder instance
-docker buildx create --append 添加node到builder实例。 --leave 从builder实例删除node --driver Driver to use(&quot;docker&quot;, &quot;docker-container&quot;, &quot;kubernetes&quot;) --name --use --node --platform --bootstrap 启动实例（以容器的形式启动） // 以本地是amd64为例，创建一个实例.'>
+docker buildx create --append 添加node到builder实例。 --leave 从builder实例删除node --driver Driver to use(&quot;docker&quot;, &quot;docker-container&quot;, &quot;kubernetes&quot;) --name --use --node --platform --bootstrap 启动实例（以容器的形式启动） // 以本地是amd64为例，创建一个实例. docker buildx create --use --bootstrap --platform linux/amd64,linux/amd64/v2,linux/amd64/v3,linux/arm64,linux/arm/v7,linux/arm/v6 --name canux-builder // 如果没有qumu，可以把不同平台的远程机器加到builder实例. docker buildx create \ --name local_remote_builder \ --append --node &lt;my-arm-server&gt; \ --platform linux/arm64,linux/riscv64,linux/ppc64le,linux/s390x,linux/mips64le,linux/mips64,linux/arm/v7,linux/arm/v6 \ ssh://user@&lt;my-arm-server&gt; docker buildx rm docker buildx stop docker buildx inspect docker buildx use // 查看当前可用的builders docker buildx ls 构建多平台镜像
+'>
 <title>Image</title>
 
 <link rel='canonical' href='https://canuxcheng.com/post/cncf_image/'>
@@ -21,7 +22,8 @@ qemu 使用qume:
 // 安装bitfmt docker run --privileged --rm tonistiigi/binfmt --install all // 查看支持的平台 ls -l /proc/sys/fs/binfmt_misc/qemu-* multiple native nodes 安装
 // linux sudo apt install docker-buildx-plugin // mac brew install docker-buildx mkdir -p ~/.docker/cli-plugins ln -sfn $(which docker-buildx) ~/.docker/cli-plugins/docker-buildx docker buildx install 查看版本
 docker buildx version 管理builder instance
-docker buildx create --append 添加node到builder实例。 --leave 从builder实例删除node --driver Driver to use(&quot;docker&quot;, &quot;docker-container&quot;, &quot;kubernetes&quot;) --name --use --node --platform --bootstrap 启动实例（以容器的形式启动） // 以本地是amd64为例，创建一个实例.'>
+docker buildx create --append 添加node到builder实例。 --leave 从builder实例删除node --driver Driver to use(&quot;docker&quot;, &quot;docker-container&quot;, &quot;kubernetes&quot;) --name --use --node --platform --bootstrap 启动实例（以容器的形式启动） // 以本地是amd64为例，创建一个实例. docker buildx create --use --bootstrap --platform linux/amd64,linux/amd64/v2,linux/amd64/v3,linux/arm64,linux/arm/v7,linux/arm/v6 --name canux-builder // 如果没有qumu，可以把不同平台的远程机器加到builder实例. docker buildx create \ --name local_remote_builder \ --append --node &lt;my-arm-server&gt; \ --platform linux/arm64,linux/riscv64,linux/ppc64le,linux/s390x,linux/mips64le,linux/mips64,linux/arm/v7,linux/arm/v6 \ ssh://user@&lt;my-arm-server&gt; docker buildx rm docker buildx stop docker buildx inspect docker buildx use // 查看当前可用的builders docker buildx ls 构建多平台镜像
+'>
 <meta property='og:url' content='https://canuxcheng.com/post/cncf_image/'>
 <meta property='og:site_name' content='Morgoth'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='docker' /><meta property='article:published_time' content='2019-12-03T21:50:47&#43;08:00'/><meta property='article:modified_time' content='2019-12-03T21:50:47&#43;08:00'/>
@@ -33,11 +35,9 @@ qemu 使用qume:
 // 安装bitfmt docker run --privileged --rm tonistiigi/binfmt --install all // 查看支持的平台 ls -l /proc/sys/fs/binfmt_misc/qemu-* multiple native nodes 安装
 // linux sudo apt install docker-buildx-plugin // mac brew install docker-buildx mkdir -p ~/.docker/cli-plugins ln -sfn $(which docker-buildx) ~/.docker/cli-plugins/docker-buildx docker buildx install 查看版本
 docker buildx version 管理builder instance
-docker buildx create --append 添加node到builder实例。 --leave 从builder实例删除node --driver Driver to use(&quot;docker&quot;, &quot;docker-container&quot;, &quot;kubernetes&quot;) --name --use --node --platform --bootstrap 启动实例（以容器的形式启动） // 以本地是amd64为例，创建一个实例.">
+docker buildx create --append 添加node到builder实例。 --leave 从builder实例删除node --driver Driver to use(&quot;docker&quot;, &quot;docker-container&quot;, &quot;kubernetes&quot;) --name --use --node --platform --bootstrap 启动实例（以容器的形式启动） // 以本地是amd64为例，创建一个实例. docker buildx create --use --bootstrap --platform linux/amd64,linux/amd64/v2,linux/amd64/v3,linux/arm64,linux/arm/v7,linux/arm/v6 --name canux-builder // 如果没有qumu，可以把不同平台的远程机器加到builder实例. docker buildx create \ --name local_remote_builder \ --append --node &lt;my-arm-server&gt; \ --platform linux/arm64,linux/riscv64,linux/ppc64le,linux/s390x,linux/mips64le,linux/mips64,linux/arm/v7,linux/arm/v6 \ ssh://user@&lt;my-arm-server&gt; docker buildx rm docker buildx stop docker buildx inspect docker buildx use // 查看当前可用的builders docker buildx ls 构建多平台镜像
+">
     <link rel="shortcut icon" href="favicon.ico" />
-
-  
-
 <style>
     :root {
         --article-font-family: "Merriweather", var(--base-font-family);

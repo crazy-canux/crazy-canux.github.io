@@ -7,7 +7,8 @@ service文件位置:
 /etc/systemd/system/***.service /lib/systemd/system/*.service /usr/lib/systemd/system/*.service service文件编写:
 https://www.freedesktop.org/software/systemd/man/systemd.unit.html#
 [Unit] Description=details After=containerd.service # 之前启动 Before= # 之后运行 Bindsto= # Wants=containerd.service # 弱依赖 Requires= # 强依赖 StartLimitInterval=10s StartLimitBurst=5 https://www.freedesktop.org/software/systemd/man/systemd.service.html#
-[Service] Type=simple/notify/dbus/forking/idle/oneshot ExecStartPre= ExecStart= ExecStartPost= ExecStop= ExecStopPost= ExecReload= KillMode=node/mixed/process/control-group Restart=no/on-success/on-failure/on-abnormal/on-abort/on-watchdog/always # always总是开机启动，即使systemctl enable.'>
+[Service] Type=simple/notify/dbus/forking/idle/oneshot ExecStartPre= ExecStart= ExecStartPost= ExecStop= ExecStopPost= ExecReload= KillMode=node/mixed/process/control-group Restart=no/on-success/on-failure/on-abnormal/on-abort/on-watchdog/always # always总是开机启动，即使systemctl enable. RestartSec=3s # 重启之前等待的时间. TimeoutSec= # TimeoutStartSec&#43;TimeoutStopSec LimitNOFILE=49152 # 限制单个service的fd [Install] WantedBy=multi-user.target systemctl命令:
+'>
 <title>Init</title>
 
 <link rel='canonical' href='https://canuxcheng.com/post/linux_init/'>
@@ -19,7 +20,8 @@ service文件位置:
 /etc/systemd/system/***.service /lib/systemd/system/*.service /usr/lib/systemd/system/*.service service文件编写:
 https://www.freedesktop.org/software/systemd/man/systemd.unit.html#
 [Unit] Description=details After=containerd.service # 之前启动 Before= # 之后运行 Bindsto= # Wants=containerd.service # 弱依赖 Requires= # 强依赖 StartLimitInterval=10s StartLimitBurst=5 https://www.freedesktop.org/software/systemd/man/systemd.service.html#
-[Service] Type=simple/notify/dbus/forking/idle/oneshot ExecStartPre= ExecStart= ExecStartPost= ExecStop= ExecStopPost= ExecReload= KillMode=node/mixed/process/control-group Restart=no/on-success/on-failure/on-abnormal/on-abort/on-watchdog/always # always总是开机启动，即使systemctl enable.'>
+[Service] Type=simple/notify/dbus/forking/idle/oneshot ExecStartPre= ExecStart= ExecStartPost= ExecStop= ExecStopPost= ExecReload= KillMode=node/mixed/process/control-group Restart=no/on-success/on-failure/on-abnormal/on-abort/on-watchdog/always # always总是开机启动，即使systemctl enable. RestartSec=3s # 重启之前等待的时间. TimeoutSec= # TimeoutStartSec&#43;TimeoutStopSec LimitNOFILE=49152 # 限制单个service的fd [Install] WantedBy=multi-user.target systemctl命令:
+'>
 <meta property='og:url' content='https://canuxcheng.com/post/linux_init/'>
 <meta property='og:site_name' content='Morgoth'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='init' /><meta property='article:published_time' content='2019-02-03T14:04:05&#43;00:00'/><meta property='article:modified_time' content='2019-02-03T14:04:05&#43;00:00'/>
@@ -30,11 +32,9 @@ service文件位置:
 /etc/systemd/system/***.service /lib/systemd/system/*.service /usr/lib/systemd/system/*.service service文件编写:
 https://www.freedesktop.org/software/systemd/man/systemd.unit.html#
 [Unit] Description=details After=containerd.service # 之前启动 Before= # 之后运行 Bindsto= # Wants=containerd.service # 弱依赖 Requires= # 强依赖 StartLimitInterval=10s StartLimitBurst=5 https://www.freedesktop.org/software/systemd/man/systemd.service.html#
-[Service] Type=simple/notify/dbus/forking/idle/oneshot ExecStartPre= ExecStart= ExecStartPost= ExecStop= ExecStopPost= ExecReload= KillMode=node/mixed/process/control-group Restart=no/on-success/on-failure/on-abnormal/on-abort/on-watchdog/always # always总是开机启动，即使systemctl enable.">
+[Service] Type=simple/notify/dbus/forking/idle/oneshot ExecStartPre= ExecStart= ExecStartPost= ExecStop= ExecStopPost= ExecReload= KillMode=node/mixed/process/control-group Restart=no/on-success/on-failure/on-abnormal/on-abort/on-watchdog/always # always总是开机启动，即使systemctl enable. RestartSec=3s # 重启之前等待的时间. TimeoutSec= # TimeoutStartSec&#43;TimeoutStopSec LimitNOFILE=49152 # 限制单个service的fd [Install] WantedBy=multi-user.target systemctl命令:
+">
     <link rel="shortcut icon" href="favicon.ico" />
-
-  
-
 <style>
     :root {
         --article-font-family: "Merriweather", var(--base-font-family);

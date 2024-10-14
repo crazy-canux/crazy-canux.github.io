@@ -17,7 +17,8 @@ service权限管理 查看service的auth配置：
 cmd&gt; winrm get winrm/config/service/auth service只有Negotiate和Kerberos是默认开启的:
 Basic = false Kerberos = true Negotiate = true Certificate = false CredSSP = false Negotiate对domain用户选择kerberos,对local用户选择NTLM.
 设置service的Basic和Certificate和CredSSP(默认关闭)：
-#cmd&gt; winrm set winrm/config/service/auth @{Basic=&quot;true&quot;} #cmd&gt; winrm set winrm/config/service/auth @{Certificate=&quot;true&quot;} #cmd&gt; winrm set winrm/config/service/auth @{CredSSP=&quot;true&quot;} 设置是否允许不加密：'>
+#cmd&gt; winrm set winrm/config/service/auth @{Basic=&quot;true&quot;} #cmd&gt; winrm set winrm/config/service/auth @{Certificate=&quot;true&quot;} #cmd&gt; winrm set winrm/config/service/auth @{CredSSP=&quot;true&quot;} 设置是否允许不加密：
+'>
 <title>WinRM</title>
 
 <link rel='canonical' href='https://canuxcheng.com/post/win_winrm/'>
@@ -39,7 +40,8 @@ service权限管理 查看service的auth配置：
 cmd&gt; winrm get winrm/config/service/auth service只有Negotiate和Kerberos是默认开启的:
 Basic = false Kerberos = true Negotiate = true Certificate = false CredSSP = false Negotiate对domain用户选择kerberos,对local用户选择NTLM.
 设置service的Basic和Certificate和CredSSP(默认关闭)：
-#cmd&gt; winrm set winrm/config/service/auth @{Basic=&quot;true&quot;} #cmd&gt; winrm set winrm/config/service/auth @{Certificate=&quot;true&quot;} #cmd&gt; winrm set winrm/config/service/auth @{CredSSP=&quot;true&quot;} 设置是否允许不加密：'>
+#cmd&gt; winrm set winrm/config/service/auth @{Basic=&quot;true&quot;} #cmd&gt; winrm set winrm/config/service/auth @{Certificate=&quot;true&quot;} #cmd&gt; winrm set winrm/config/service/auth @{CredSSP=&quot;true&quot;} 设置是否允许不加密：
+'>
 <meta property='og:url' content='https://canuxcheng.com/post/win_winrm/'>
 <meta property='og:site_name' content='Morgoth'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='winrm' /><meta property='article:published_time' content='2016-07-17T08:36:36&#43;00:00'/><meta property='article:modified_time' content='2016-07-17T08:36:36&#43;00:00'/>
@@ -60,11 +62,9 @@ service权限管理 查看service的auth配置：
 cmd&gt; winrm get winrm/config/service/auth service只有Negotiate和Kerberos是默认开启的:
 Basic = false Kerberos = true Negotiate = true Certificate = false CredSSP = false Negotiate对domain用户选择kerberos,对local用户选择NTLM.
 设置service的Basic和Certificate和CredSSP(默认关闭)：
-#cmd&gt; winrm set winrm/config/service/auth @{Basic=&quot;true&quot;} #cmd&gt; winrm set winrm/config/service/auth @{Certificate=&quot;true&quot;} #cmd&gt; winrm set winrm/config/service/auth @{CredSSP=&quot;true&quot;} 设置是否允许不加密：">
+#cmd&gt; winrm set winrm/config/service/auth @{Basic=&quot;true&quot;} #cmd&gt; winrm set winrm/config/service/auth @{Certificate=&quot;true&quot;} #cmd&gt; winrm set winrm/config/service/auth @{CredSSP=&quot;true&quot;} 设置是否允许不加密：
+">
     <link rel="shortcut icon" href="favicon.ico" />
-
-  
-
 <style>
     :root {
         --article-font-family: "Merriweather", var(--base-font-family);

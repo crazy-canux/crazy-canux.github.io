@@ -10,7 +10,8 @@ Install 准备工作 https://kubernetes.io/zh/docs/setup/production-environment/
 修改containerd的cgroup driver:
 $ sudo vim /etc/containerd/config.toml #disabled_plugins = [&quot;cri&quot;] [plugins.&quot;io.containerd.grpc.v1.cri&quot;.containerd.runtimes.runc.options] SystemdCgroup = true $ sudo systemctl restart containerd 修改kubelet的cgroup driver(kubeadm-config.yaml):
 # kubeadm-config.yaml kind: ClusterConfiguration apiVersion: kubeadm.k8s.io/v1beta3 kubernetesVersion: v1.21.0 // kubelet --version --- apiVersion: kubelet.config.k8s.io/v1beta1 kind: KubeletConfiguration cgroupDriver: systemd 安装kubeadm, kubelet, kubectl 在每台机器上安装 kubeadm, kubelet, kubectl:
-$ sudo apt-get update $ sudo apt-get install -y apt-transport-https ca-certificates curl $ sudo curl -fsSL https://mirrors.'>
+$ sudo apt-get update $ sudo apt-get install -y apt-transport-https ca-certificates curl $ sudo curl -fsSL https://mirrors.aliyun.com/kubernetes/apt/doc/apt-key.gpg | sudo apt-key add - $ echo &quot;deb https://mirrors.aliyun.com/kubernetes/apt/ kubernetes-xenial main&quot; | sudo tee /etc/apt/sources.list.d/kubernetes.list $ sudo apt-get update $ sudo apt-get --yes --allow-unauthenticated install kubeadm kubelet kubectl $ sudo apt-mark hold kubelet kubeadm kubectl $ sudo systemctl enable kubelet Kubeadm CLI init:
+'>
 <title>Kubeadm</title>
 
 <link rel='canonical' href='https://canuxcheng.com/post/k8s_kubeadm/'>
@@ -25,7 +26,8 @@ Install 准备工作 https://kubernetes.io/zh/docs/setup/production-environment/
 修改containerd的cgroup driver:
 $ sudo vim /etc/containerd/config.toml #disabled_plugins = [&quot;cri&quot;] [plugins.&quot;io.containerd.grpc.v1.cri&quot;.containerd.runtimes.runc.options] SystemdCgroup = true $ sudo systemctl restart containerd 修改kubelet的cgroup driver(kubeadm-config.yaml):
 # kubeadm-config.yaml kind: ClusterConfiguration apiVersion: kubeadm.k8s.io/v1beta3 kubernetesVersion: v1.21.0 // kubelet --version --- apiVersion: kubelet.config.k8s.io/v1beta1 kind: KubeletConfiguration cgroupDriver: systemd 安装kubeadm, kubelet, kubectl 在每台机器上安装 kubeadm, kubelet, kubectl:
-$ sudo apt-get update $ sudo apt-get install -y apt-transport-https ca-certificates curl $ sudo curl -fsSL https://mirrors.'>
+$ sudo apt-get update $ sudo apt-get install -y apt-transport-https ca-certificates curl $ sudo curl -fsSL https://mirrors.aliyun.com/kubernetes/apt/doc/apt-key.gpg | sudo apt-key add - $ echo &quot;deb https://mirrors.aliyun.com/kubernetes/apt/ kubernetes-xenial main&quot; | sudo tee /etc/apt/sources.list.d/kubernetes.list $ sudo apt-get update $ sudo apt-get --yes --allow-unauthenticated install kubeadm kubelet kubectl $ sudo apt-mark hold kubelet kubeadm kubectl $ sudo systemctl enable kubelet Kubeadm CLI init:
+'>
 <meta property='og:url' content='https://canuxcheng.com/post/k8s_kubeadm/'>
 <meta property='og:site_name' content='Morgoth'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='k8s' /><meta property='article:published_time' content='2019-12-30T21:47:17&#43;08:00'/><meta property='article:modified_time' content='2019-12-30T21:47:17&#43;08:00'/>
@@ -39,11 +41,9 @@ Install 准备工作 https://kubernetes.io/zh/docs/setup/production-environment/
 修改containerd的cgroup driver:
 $ sudo vim /etc/containerd/config.toml #disabled_plugins = [&quot;cri&quot;] [plugins.&quot;io.containerd.grpc.v1.cri&quot;.containerd.runtimes.runc.options] SystemdCgroup = true $ sudo systemctl restart containerd 修改kubelet的cgroup driver(kubeadm-config.yaml):
 # kubeadm-config.yaml kind: ClusterConfiguration apiVersion: kubeadm.k8s.io/v1beta3 kubernetesVersion: v1.21.0 // kubelet --version --- apiVersion: kubelet.config.k8s.io/v1beta1 kind: KubeletConfiguration cgroupDriver: systemd 安装kubeadm, kubelet, kubectl 在每台机器上安装 kubeadm, kubelet, kubectl:
-$ sudo apt-get update $ sudo apt-get install -y apt-transport-https ca-certificates curl $ sudo curl -fsSL https://mirrors.">
+$ sudo apt-get update $ sudo apt-get install -y apt-transport-https ca-certificates curl $ sudo curl -fsSL https://mirrors.aliyun.com/kubernetes/apt/doc/apt-key.gpg | sudo apt-key add - $ echo &quot;deb https://mirrors.aliyun.com/kubernetes/apt/ kubernetes-xenial main&quot; | sudo tee /etc/apt/sources.list.d/kubernetes.list $ sudo apt-get update $ sudo apt-get --yes --allow-unauthenticated install kubeadm kubelet kubectl $ sudo apt-mark hold kubelet kubeadm kubectl $ sudo systemctl enable kubelet Kubeadm CLI init:
+">
     <link rel="shortcut icon" href="favicon.ico" />
-
-  
-
 <style>
     :root {
         --article-font-family: "Merriweather", var(--base-font-family);

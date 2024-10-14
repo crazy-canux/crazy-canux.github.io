@@ -10,7 +10,8 @@ swarmkit:
 https://github.com/docker/swarmkit
 swarm命令 创建集群
 docker swarm init --advertise-addr &lt;ip&gt; 多网卡情况下指定manager的ip docker swarm join --token &lt;token&gt; &lt;host:port&gt; # 查看token docker swarm join-token manager 获取添加manager命令 docker swarm join-token worker 获取添加worker命令 docker swarm join-token -q worker docker swarm leave -f/--force docker swarm update 管理节点
-docker node ls docker node ls --format &quot;{{.Hostname}}&quot; ​ docker node rm ​ docker node inspect ​ # 查看node上运行的tasks/container docker node ps -f/--filter NODE ​ # 添加label, node.'>
+docker node ls docker node ls --format &quot;{{.Hostname}}&quot; ​ docker node rm ​ docker node inspect ​ # 查看node上运行的tasks/container docker node ps -f/--filter NODE ​ # 添加label, node.labels.role=api docker node update --label-add role=api node1 # 删除label docker node update --label-rm role node1 ​ # 活跃节点 docker node update --availability active node1 # 指定该节点满载,不再分派任务,关闭已有任务并重新分派. docker node update --availability drain node1 # 已有任务继续运行,不分配新任务. docker node update --availability pause node1 # 查看所有node和label docker node ls -q | xargs docker node inspect -f &#39;{{ .ID }} [{{ .Description.Hostname }}]: {{ .Spec.Labels }}&#39; service
+'>
 <title>Swarm</title>
 
 <link rel='canonical' href='https://canuxcheng.com/post/swarm/'>
@@ -25,7 +26,8 @@ swarmkit:
 https://github.com/docker/swarmkit
 swarm命令 创建集群
 docker swarm init --advertise-addr &lt;ip&gt; 多网卡情况下指定manager的ip docker swarm join --token &lt;token&gt; &lt;host:port&gt; # 查看token docker swarm join-token manager 获取添加manager命令 docker swarm join-token worker 获取添加worker命令 docker swarm join-token -q worker docker swarm leave -f/--force docker swarm update 管理节点
-docker node ls docker node ls --format &quot;{{.Hostname}}&quot; ​ docker node rm ​ docker node inspect ​ # 查看node上运行的tasks/container docker node ps -f/--filter NODE ​ # 添加label, node.'>
+docker node ls docker node ls --format &quot;{{.Hostname}}&quot; ​ docker node rm ​ docker node inspect ​ # 查看node上运行的tasks/container docker node ps -f/--filter NODE ​ # 添加label, node.labels.role=api docker node update --label-add role=api node1 # 删除label docker node update --label-rm role node1 ​ # 活跃节点 docker node update --availability active node1 # 指定该节点满载,不再分派任务,关闭已有任务并重新分派. docker node update --availability drain node1 # 已有任务继续运行,不分配新任务. docker node update --availability pause node1 # 查看所有node和label docker node ls -q | xargs docker node inspect -f &#39;{{ .ID }} [{{ .Description.Hostname }}]: {{ .Spec.Labels }}&#39; service
+'>
 <meta property='og:url' content='https://canuxcheng.com/post/swarm/'>
 <meta property='og:site_name' content='Morgoth'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='swarm' /><meta property='article:published_time' content='2018-04-05T22:02:31&#43;00:00'/><meta property='article:modified_time' content='2018-04-05T22:02:31&#43;00:00'/>
@@ -39,11 +41,9 @@ swarmkit:
 https://github.com/docker/swarmkit
 swarm命令 创建集群
 docker swarm init --advertise-addr &lt;ip&gt; 多网卡情况下指定manager的ip docker swarm join --token &lt;token&gt; &lt;host:port&gt; # 查看token docker swarm join-token manager 获取添加manager命令 docker swarm join-token worker 获取添加worker命令 docker swarm join-token -q worker docker swarm leave -f/--force docker swarm update 管理节点
-docker node ls docker node ls --format &quot;{{.Hostname}}&quot; ​ docker node rm ​ docker node inspect ​ # 查看node上运行的tasks/container docker node ps -f/--filter NODE ​ # 添加label, node.">
+docker node ls docker node ls --format &quot;{{.Hostname}}&quot; ​ docker node rm ​ docker node inspect ​ # 查看node上运行的tasks/container docker node ps -f/--filter NODE ​ # 添加label, node.labels.role=api docker node update --label-add role=api node1 # 删除label docker node update --label-rm role node1 ​ # 活跃节点 docker node update --availability active node1 # 指定该节点满载,不再分派任务,关闭已有任务并重新分派. docker node update --availability drain node1 # 已有任务继续运行,不分配新任务. docker node update --availability pause node1 # 查看所有node和label docker node ls -q | xargs docker node inspect -f &#39;{{ .ID }} [{{ .Description.Hostname }}]: {{ .Spec.Labels }}&#39; service
+">
     <link rel="shortcut icon" href="favicon.ico" />
-
-  
-
 <style>
     :root {
         --article-font-family: "Merriweather", var(--base-font-family);

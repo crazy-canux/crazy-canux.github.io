@@ -6,7 +6,8 @@ $ python manage.py createsuperuser 管理员登陆界面：
 http://localhost:8000/admin/ 在admin.py中注册模型，然后就可以在登陆界面管理模型了
 from .models import Question admin.site.register(Question) 自定义管理表单：
 from .models import Question class QuestionAdmin(admin.ModelAdmin): fileds = [&#39;pub_date&#39;, &#39;question_date&#39;] admin.site.register(Question, QuestionAdmin) 把表单分割成字段集：
-from .models import Question class QuestionAdmin(admin.ModelAdmin): fieldsets = [ (None, {&#39;fields&#39;: [&#39;question_text&#39;]}), (&#39;Date information&#39;, {&#39;fields&#39;: [&#39;pub_date&#39;]}), ] admin.site.register(Question, QuestionAdmin) 后台 django的后台管理程序。'>
+from .models import Question class QuestionAdmin(admin.ModelAdmin): fieldsets = [ (None, {&#39;fields&#39;: [&#39;question_text&#39;]}), (&#39;Date information&#39;, {&#39;fields&#39;: [&#39;pub_date&#39;]}), ] admin.site.register(Question, QuestionAdmin) 后台 django的后台管理程序。
+'>
 <title>Admin</title>
 
 <link rel='canonical' href='https://canuxcheng.com/post/django_admin/'>
@@ -17,7 +18,8 @@ $ python manage.py createsuperuser 管理员登陆界面：
 http://localhost:8000/admin/ 在admin.py中注册模型，然后就可以在登陆界面管理模型了
 from .models import Question admin.site.register(Question) 自定义管理表单：
 from .models import Question class QuestionAdmin(admin.ModelAdmin): fileds = [&#39;pub_date&#39;, &#39;question_date&#39;] admin.site.register(Question, QuestionAdmin) 把表单分割成字段集：
-from .models import Question class QuestionAdmin(admin.ModelAdmin): fieldsets = [ (None, {&#39;fields&#39;: [&#39;question_text&#39;]}), (&#39;Date information&#39;, {&#39;fields&#39;: [&#39;pub_date&#39;]}), ] admin.site.register(Question, QuestionAdmin) 后台 django的后台管理程序。'>
+from .models import Question class QuestionAdmin(admin.ModelAdmin): fieldsets = [ (None, {&#39;fields&#39;: [&#39;question_text&#39;]}), (&#39;Date information&#39;, {&#39;fields&#39;: [&#39;pub_date&#39;]}), ] admin.site.register(Question, QuestionAdmin) 后台 django的后台管理程序。
+'>
 <meta property='og:url' content='https://canuxcheng.com/post/django_admin/'>
 <meta property='og:site_name' content='Morgoth'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='admin' /><meta property='article:published_time' content='2016-10-04T04:29:37&#43;00:00'/><meta property='article:modified_time' content='2016-10-04T04:29:37&#43;00:00'/>
@@ -27,11 +29,9 @@ $ python manage.py createsuperuser 管理员登陆界面：
 http://localhost:8000/admin/ 在admin.py中注册模型，然后就可以在登陆界面管理模型了
 from .models import Question admin.site.register(Question) 自定义管理表单：
 from .models import Question class QuestionAdmin(admin.ModelAdmin): fileds = [&#39;pub_date&#39;, &#39;question_date&#39;] admin.site.register(Question, QuestionAdmin) 把表单分割成字段集：
-from .models import Question class QuestionAdmin(admin.ModelAdmin): fieldsets = [ (None, {&#39;fields&#39;: [&#39;question_text&#39;]}), (&#39;Date information&#39;, {&#39;fields&#39;: [&#39;pub_date&#39;]}), ] admin.site.register(Question, QuestionAdmin) 后台 django的后台管理程序。">
+from .models import Question class QuestionAdmin(admin.ModelAdmin): fieldsets = [ (None, {&#39;fields&#39;: [&#39;question_text&#39;]}), (&#39;Date information&#39;, {&#39;fields&#39;: [&#39;pub_date&#39;]}), ] admin.site.register(Question, QuestionAdmin) 后台 django的后台管理程序。
+">
     <link rel="shortcut icon" href="favicon.ico" />
-
-  
-
 <style>
     :root {
         --article-font-family: "Merriweather", var(--base-font-family);

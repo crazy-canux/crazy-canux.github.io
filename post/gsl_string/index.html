@@ -2,24 +2,24 @@
 <html lang="en-us" dir="ltr">
     <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='strings 实现了用于操作字符的函数.
-functions func EqualFold(s, t string) bool func HasPrefix(s, prefix string) bool func HasSuffix(s, suffix string) bool func Count(s, sep string) int func Contains(s, substr string) bool ... func Index(s, sep string) int ... func LastIndex(s, sep string) int ... func title(s string) string func ToLower(s string) string ... // 返回count个string func Repeat(s string, count int) string func Replace(s, old, new string, n int) string func Map(mapping func(rune) rune, s string) string func Trim(s string, cutset string) string .'>
+functions func EqualFold(s, t string) bool func HasPrefix(s, prefix string) bool func HasSuffix(s, suffix string) bool func Count(s, sep string) int func Contains(s, substr string) bool ... func Index(s, sep string) int ... func LastIndex(s, sep string) int ... func title(s string) string func ToLower(s string) string ... // 返回count个string func Repeat(s string, count int) string func Replace(s, old, new string, n int) string func Map(mapping func(rune) rune, s string) string func Trim(s string, cutset string) string ... // 返回将字符串按照空白分割的多个字符串 func Fields(s string) []string // 按照f作为分隔符来分割字符串，返回切片 func FieldsFunc(s string, f func(rune) bool) []string func Split(s, sep string) []string ... // 将一系列字符串连接为一个字符串，之间用sep来分割. func Join(a []string, sep string) string Reader Replacer bytes 实现了操作[]bytes的常用函数.
+'>
 <title>GSL_string</title>
 
 <link rel='canonical' href='https://canuxcheng.com/post/gsl_string/'>
 
 <link rel="stylesheet" href="/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content='GSL_string'>
 <meta property='og:description' content='strings 实现了用于操作字符的函数.
-functions func EqualFold(s, t string) bool func HasPrefix(s, prefix string) bool func HasSuffix(s, suffix string) bool func Count(s, sep string) int func Contains(s, substr string) bool ... func Index(s, sep string) int ... func LastIndex(s, sep string) int ... func title(s string) string func ToLower(s string) string ... // 返回count个string func Repeat(s string, count int) string func Replace(s, old, new string, n int) string func Map(mapping func(rune) rune, s string) string func Trim(s string, cutset string) string .'>
+functions func EqualFold(s, t string) bool func HasPrefix(s, prefix string) bool func HasSuffix(s, suffix string) bool func Count(s, sep string) int func Contains(s, substr string) bool ... func Index(s, sep string) int ... func LastIndex(s, sep string) int ... func title(s string) string func ToLower(s string) string ... // 返回count个string func Repeat(s string, count int) string func Replace(s, old, new string, n int) string func Map(mapping func(rune) rune, s string) string func Trim(s string, cutset string) string ... // 返回将字符串按照空白分割的多个字符串 func Fields(s string) []string // 按照f作为分隔符来分割字符串，返回切片 func FieldsFunc(s string, f func(rune) bool) []string func Split(s, sep string) []string ... // 将一系列字符串连接为一个字符串，之间用sep来分割. func Join(a []string, sep string) string Reader Replacer bytes 实现了操作[]bytes的常用函数.
+'>
 <meta property='og:url' content='https://canuxcheng.com/post/gsl_string/'>
 <meta property='og:site_name' content='Morgoth'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='string' /><meta property='article:published_time' content='2018-01-01T10:49:21&#43;00:00'/><meta property='article:modified_time' content='2018-01-01T10:49:21&#43;00:00'/>
 <meta name="twitter:title" content="GSL_string">
 <meta name="twitter:description" content="strings 实现了用于操作字符的函数.
-functions func EqualFold(s, t string) bool func HasPrefix(s, prefix string) bool func HasSuffix(s, suffix string) bool func Count(s, sep string) int func Contains(s, substr string) bool ... func Index(s, sep string) int ... func LastIndex(s, sep string) int ... func title(s string) string func ToLower(s string) string ... // 返回count个string func Repeat(s string, count int) string func Replace(s, old, new string, n int) string func Map(mapping func(rune) rune, s string) string func Trim(s string, cutset string) string .">
+functions func EqualFold(s, t string) bool func HasPrefix(s, prefix string) bool func HasSuffix(s, suffix string) bool func Count(s, sep string) int func Contains(s, substr string) bool ... func Index(s, sep string) int ... func LastIndex(s, sep string) int ... func title(s string) string func ToLower(s string) string ... // 返回count个string func Repeat(s string, count int) string func Replace(s, old, new string, n int) string func Map(mapping func(rune) rune, s string) string func Trim(s string, cutset string) string ... // 返回将字符串按照空白分割的多个字符串 func Fields(s string) []string // 按照f作为分隔符来分割字符串，返回切片 func FieldsFunc(s string, f func(rune) bool) []string func Split(s, sep string) []string ... // 将一系列字符串连接为一个字符串，之间用sep来分割. func Join(a []string, sep string) string Reader Replacer bytes 实现了操作[]bytes的常用函数.
+">
     <link rel="shortcut icon" href="favicon.ico" />
-
-  
-
 <style>
     :root {
         --article-font-family: "Merriweather", var(--base-font-family);

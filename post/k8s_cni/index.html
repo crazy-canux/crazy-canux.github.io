@@ -11,7 +11,8 @@ $ sudo mkdir -p /opt/cni/bin // 下载并解压所有插件命令到该目录. n
 $ kubectl apply -f https://raw.githubusercontent.com/flannel-io/flannel/master/Documentation/kube-flannel.yml veryfy:
 $ kubectl get nodes $ kubectl get pod --all-namespaces 删除插件:
 删除插件会影响已经部署的pod.
-// 删除flannel $ kubectl delete -f X.yml $ sudo systemctl stop kubelet docker // 第二步，在node节点清理flannel网络留下的文件 ifconfig cni0 down ip link delete cni0 ifconfig flannel.1 down ip link delete flannel.'>
+// 删除flannel $ kubectl delete -f X.yml $ sudo systemctl stop kubelet docker // 第二步，在node节点清理flannel网络留下的文件 ifconfig cni0 down ip link delete cni0 ifconfig flannel.1 down ip link delete flannel.1 rm -rf /var/lib/cni /etc/cni /run/flannel $ sudo rm -rf /var/lib/kubelet /var/lib/etcd // 重启kubelet $ sudo systemctl start kubelet docker 修改配置:
+'>
 <title>K8S CNI</title>
 
 <link rel='canonical' href='https://canuxcheng.com/post/k8s_cni/'>
@@ -27,7 +28,8 @@ $ sudo mkdir -p /opt/cni/bin // 下载并解压所有插件命令到该目录. n
 $ kubectl apply -f https://raw.githubusercontent.com/flannel-io/flannel/master/Documentation/kube-flannel.yml veryfy:
 $ kubectl get nodes $ kubectl get pod --all-namespaces 删除插件:
 删除插件会影响已经部署的pod.
-// 删除flannel $ kubectl delete -f X.yml $ sudo systemctl stop kubelet docker // 第二步，在node节点清理flannel网络留下的文件 ifconfig cni0 down ip link delete cni0 ifconfig flannel.1 down ip link delete flannel.'>
+// 删除flannel $ kubectl delete -f X.yml $ sudo systemctl stop kubelet docker // 第二步，在node节点清理flannel网络留下的文件 ifconfig cni0 down ip link delete cni0 ifconfig flannel.1 down ip link delete flannel.1 rm -rf /var/lib/cni /etc/cni /run/flannel $ sudo rm -rf /var/lib/kubelet /var/lib/etcd // 重启kubelet $ sudo systemctl start kubelet docker 修改配置:
+'>
 <meta property='og:url' content='https://canuxcheng.com/post/k8s_cni/'>
 <meta property='og:site_name' content='Morgoth'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='k8s' /><meta property='article:published_time' content='2020-03-26T20:55:52&#43;08:00'/><meta property='article:modified_time' content='2020-03-26T20:55:52&#43;08:00'/>
@@ -42,11 +44,9 @@ $ sudo mkdir -p /opt/cni/bin // 下载并解压所有插件命令到该目录. n
 $ kubectl apply -f https://raw.githubusercontent.com/flannel-io/flannel/master/Documentation/kube-flannel.yml veryfy:
 $ kubectl get nodes $ kubectl get pod --all-namespaces 删除插件:
 删除插件会影响已经部署的pod.
-// 删除flannel $ kubectl delete -f X.yml $ sudo systemctl stop kubelet docker // 第二步，在node节点清理flannel网络留下的文件 ifconfig cni0 down ip link delete cni0 ifconfig flannel.1 down ip link delete flannel.">
+// 删除flannel $ kubectl delete -f X.yml $ sudo systemctl stop kubelet docker // 第二步，在node节点清理flannel网络留下的文件 ifconfig cni0 down ip link delete cni0 ifconfig flannel.1 down ip link delete flannel.1 rm -rf /var/lib/cni /etc/cni /run/flannel $ sudo rm -rf /var/lib/kubelet /var/lib/etcd // 重启kubelet $ sudo systemctl start kubelet docker 修改配置:
+">
     <link rel="shortcut icon" href="favicon.ico" />
-
-  
-
 <style>
     :root {
         --article-font-family: "Merriweather", var(--base-font-family);

@@ -12,7 +12,8 @@ $ sudo pip install ansible $ sudo apt-get install ansible $ sudo yum install ans
 ANSIBLE_CONFIG ansible.cfg .ansible.cfg /etc/ansible/ansible.cfg 手动配置:
 $ sudo vim /etc/ansible/ansible.cfg [defaults] ask_pass = False host_key_checking = False ansible命令 ansible运行命令的两种方式：
 Ad-hoc相当于直接运行shell命令 playbooks相当于运行shell脚本 ansible:
-$ ansible -i inventory group1:group1:group3/all ... $ansible --help -m MODULE_NAME, --module-name=MODULE_NAME # 执行模块，默认是command -M MODULE_PATH, --module-path=MODULE_PATH # 指定模块的路径 -a MODULE_ARGS, --args=MODULE_ARGS # 模块的参数 -i INVENTORY, --inventory INVENTORY # 默认/etc/ansible/hosts, 需要指定hosts分组 -f FORKS, --forks=FORKS # 指定并发进程的数量 -C, --check -D, --diff -l SUBSET, --limit=SUBSET --syntax-check --list-hosts -v, --verbose # -v, -vvv, -vvvv # 提权选项 -b, --become --become-method=BECOME_METHOD # sudo(default)/su/pbrun/pfexec/runas/doas --become-user=BECOME_USER # root(default) -K, --ask-become-pass # 连接选项 -u REMOTE_USER --ssh-common-args --ssh-extra-args -T TIMEOUT # default 10s -K, --ask-pass inventory inventory包括主机和分组,以及主机变量和分组变量.'>
+$ ansible -i inventory group1:group1:group3/all ... $ansible --help -m MODULE_NAME, --module-name=MODULE_NAME # 执行模块，默认是command -M MODULE_PATH, --module-path=MODULE_PATH # 指定模块的路径 -a MODULE_ARGS, --args=MODULE_ARGS # 模块的参数 -i INVENTORY, --inventory INVENTORY # 默认/etc/ansible/hosts, 需要指定hosts分组 -f FORKS, --forks=FORKS # 指定并发进程的数量 -C, --check -D, --diff -l SUBSET, --limit=SUBSET --syntax-check --list-hosts -v, --verbose # -v, -vvv, -vvvv # 提权选项 -b, --become --become-method=BECOME_METHOD # sudo(default)/su/pbrun/pfexec/runas/doas --become-user=BECOME_USER # root(default) -K, --ask-become-pass # 连接选项 -u REMOTE_USER --ssh-common-args --ssh-extra-args -T TIMEOUT # default 10s -K, --ask-pass inventory inventory包括主机和分组,以及主机变量和分组变量.
+'>
 <title>Ansible</title>
 
 <link rel='canonical' href='https://canuxcheng.com/post/devops_ansible/'>
@@ -29,7 +30,8 @@ $ sudo pip install ansible $ sudo apt-get install ansible $ sudo yum install ans
 ANSIBLE_CONFIG ansible.cfg .ansible.cfg /etc/ansible/ansible.cfg 手动配置:
 $ sudo vim /etc/ansible/ansible.cfg [defaults] ask_pass = False host_key_checking = False ansible命令 ansible运行命令的两种方式：
 Ad-hoc相当于直接运行shell命令 playbooks相当于运行shell脚本 ansible:
-$ ansible -i inventory group1:group1:group3/all ... $ansible --help -m MODULE_NAME, --module-name=MODULE_NAME # 执行模块，默认是command -M MODULE_PATH, --module-path=MODULE_PATH # 指定模块的路径 -a MODULE_ARGS, --args=MODULE_ARGS # 模块的参数 -i INVENTORY, --inventory INVENTORY # 默认/etc/ansible/hosts, 需要指定hosts分组 -f FORKS, --forks=FORKS # 指定并发进程的数量 -C, --check -D, --diff -l SUBSET, --limit=SUBSET --syntax-check --list-hosts -v, --verbose # -v, -vvv, -vvvv # 提权选项 -b, --become --become-method=BECOME_METHOD # sudo(default)/su/pbrun/pfexec/runas/doas --become-user=BECOME_USER # root(default) -K, --ask-become-pass # 连接选项 -u REMOTE_USER --ssh-common-args --ssh-extra-args -T TIMEOUT # default 10s -K, --ask-pass inventory inventory包括主机和分组,以及主机变量和分组变量.'>
+$ ansible -i inventory group1:group1:group3/all ... $ansible --help -m MODULE_NAME, --module-name=MODULE_NAME # 执行模块，默认是command -M MODULE_PATH, --module-path=MODULE_PATH # 指定模块的路径 -a MODULE_ARGS, --args=MODULE_ARGS # 模块的参数 -i INVENTORY, --inventory INVENTORY # 默认/etc/ansible/hosts, 需要指定hosts分组 -f FORKS, --forks=FORKS # 指定并发进程的数量 -C, --check -D, --diff -l SUBSET, --limit=SUBSET --syntax-check --list-hosts -v, --verbose # -v, -vvv, -vvvv # 提权选项 -b, --become --become-method=BECOME_METHOD # sudo(default)/su/pbrun/pfexec/runas/doas --become-user=BECOME_USER # root(default) -K, --ask-become-pass # 连接选项 -u REMOTE_USER --ssh-common-args --ssh-extra-args -T TIMEOUT # default 10s -K, --ask-pass inventory inventory包括主机和分组,以及主机变量和分组变量.
+'>
 <meta property='og:url' content='https://canuxcheng.com/post/devops_ansible/'>
 <meta property='og:site_name' content='Morgoth'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='ansible' /><meta property='article:published_time' content='2016-04-15T09:41:39&#43;08:00'/><meta property='article:modified_time' content='2016-04-15T09:41:39&#43;08:00'/>
@@ -45,11 +47,9 @@ $ sudo pip install ansible $ sudo apt-get install ansible $ sudo yum install ans
 ANSIBLE_CONFIG ansible.cfg .ansible.cfg /etc/ansible/ansible.cfg 手动配置:
 $ sudo vim /etc/ansible/ansible.cfg [defaults] ask_pass = False host_key_checking = False ansible命令 ansible运行命令的两种方式：
 Ad-hoc相当于直接运行shell命令 playbooks相当于运行shell脚本 ansible:
-$ ansible -i inventory group1:group1:group3/all ... $ansible --help -m MODULE_NAME, --module-name=MODULE_NAME # 执行模块，默认是command -M MODULE_PATH, --module-path=MODULE_PATH # 指定模块的路径 -a MODULE_ARGS, --args=MODULE_ARGS # 模块的参数 -i INVENTORY, --inventory INVENTORY # 默认/etc/ansible/hosts, 需要指定hosts分组 -f FORKS, --forks=FORKS # 指定并发进程的数量 -C, --check -D, --diff -l SUBSET, --limit=SUBSET --syntax-check --list-hosts -v, --verbose # -v, -vvv, -vvvv # 提权选项 -b, --become --become-method=BECOME_METHOD # sudo(default)/su/pbrun/pfexec/runas/doas --become-user=BECOME_USER # root(default) -K, --ask-become-pass # 连接选项 -u REMOTE_USER --ssh-common-args --ssh-extra-args -T TIMEOUT # default 10s -K, --ask-pass inventory inventory包括主机和分组,以及主机变量和分组变量.">
+$ ansible -i inventory group1:group1:group3/all ... $ansible --help -m MODULE_NAME, --module-name=MODULE_NAME # 执行模块，默认是command -M MODULE_PATH, --module-path=MODULE_PATH # 指定模块的路径 -a MODULE_ARGS, --args=MODULE_ARGS # 模块的参数 -i INVENTORY, --inventory INVENTORY # 默认/etc/ansible/hosts, 需要指定hosts分组 -f FORKS, --forks=FORKS # 指定并发进程的数量 -C, --check -D, --diff -l SUBSET, --limit=SUBSET --syntax-check --list-hosts -v, --verbose # -v, -vvv, -vvvv # 提权选项 -b, --become --become-method=BECOME_METHOD # sudo(default)/su/pbrun/pfexec/runas/doas --become-user=BECOME_USER # root(default) -K, --ask-become-pass # 连接选项 -u REMOTE_USER --ssh-common-args --ssh-extra-args -T TIMEOUT # default 10s -K, --ask-pass inventory inventory包括主机和分组,以及主机变量和分组变量.
+">
     <link rel="shortcut icon" href="favicon.ico" />
-
-  
-
 <style>
     :root {
         --article-font-family: "Merriweather", var(--base-font-family);

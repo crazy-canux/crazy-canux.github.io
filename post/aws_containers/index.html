@@ -7,7 +7,8 @@ EKS Distro EKS Anywhere EKS Elastic Kubernetes Service.
 通过AWS CLI创建EKS 通过MC创建的资源都可以通过CLI(aws)创建.
 创建具有公有和私有子网且符合 Amazon EKS 要求的 Amazon VPC
 $ aws cloudformation create-stack \ --stack-name my-eks-vpc-stack \ --region region-code \ --template-url https://amazon-eks.s3.us-west-2.amazonaws.com/cloudformation/2020-10-29/amazon-eks-vpc-private-subnets.yaml 创建集群 IAM 角色并向其附加所需的 Amazon EKS IAM 托管策略
-// 创建EKS IAM role aws iam create-role \ --role-name my-EKSClusterRole \ --assume-role-policy-document file://cluster-role-trust-policy.json&quot; \ --permissions-boundary arn:aws:iam::&lt;Your AWS ID&gt;:policy/ProjAdminsPermBoundaryv2 { &quot;Version&quot;: &quot;2012-10-17&quot;, &quot;Statement&quot;: [ { &quot;Effect&quot;: &quot;Allow&quot;, &quot;Principal&quot;: { &quot;Service&quot;: &quot;eks.'>
+// 创建EKS IAM role aws iam create-role \ --role-name my-EKSClusterRole \ --assume-role-policy-document file://cluster-role-trust-policy.json&quot; \ --permissions-boundary arn:aws:iam::&lt;Your AWS ID&gt;:policy/ProjAdminsPermBoundaryv2 { &quot;Version&quot;: &quot;2012-10-17&quot;, &quot;Statement&quot;: [ { &quot;Effect&quot;: &quot;Allow&quot;, &quot;Principal&quot;: { &quot;Service&quot;: &quot;eks.amazonaws.com&quot; }, &quot;Action&quot;: &quot;sts:AssumeRole&quot;, &quot;Condition&quot;: {} } ] } // 绑定role和eks策略 aws iam attach-role-policy \ --policy-arn arn:aws:iam::aws:policy/AmazonEKSClusterPolicy \ --role-name my-EKSClusterRole 创建EKS cluster:
+'>
 <title>AWS Containers</title>
 
 <link rel='canonical' href='https://canuxcheng.com/post/aws_containers/'>
@@ -19,7 +20,8 @@ EKS Distro EKS Anywhere EKS Elastic Kubernetes Service.
 通过AWS CLI创建EKS 通过MC创建的资源都可以通过CLI(aws)创建.
 创建具有公有和私有子网且符合 Amazon EKS 要求的 Amazon VPC
 $ aws cloudformation create-stack \ --stack-name my-eks-vpc-stack \ --region region-code \ --template-url https://amazon-eks.s3.us-west-2.amazonaws.com/cloudformation/2020-10-29/amazon-eks-vpc-private-subnets.yaml 创建集群 IAM 角色并向其附加所需的 Amazon EKS IAM 托管策略
-// 创建EKS IAM role aws iam create-role \ --role-name my-EKSClusterRole \ --assume-role-policy-document file://cluster-role-trust-policy.json&quot; \ --permissions-boundary arn:aws:iam::&lt;Your AWS ID&gt;:policy/ProjAdminsPermBoundaryv2 { &quot;Version&quot;: &quot;2012-10-17&quot;, &quot;Statement&quot;: [ { &quot;Effect&quot;: &quot;Allow&quot;, &quot;Principal&quot;: { &quot;Service&quot;: &quot;eks.'>
+// 创建EKS IAM role aws iam create-role \ --role-name my-EKSClusterRole \ --assume-role-policy-document file://cluster-role-trust-policy.json&quot; \ --permissions-boundary arn:aws:iam::&lt;Your AWS ID&gt;:policy/ProjAdminsPermBoundaryv2 { &quot;Version&quot;: &quot;2012-10-17&quot;, &quot;Statement&quot;: [ { &quot;Effect&quot;: &quot;Allow&quot;, &quot;Principal&quot;: { &quot;Service&quot;: &quot;eks.amazonaws.com&quot; }, &quot;Action&quot;: &quot;sts:AssumeRole&quot;, &quot;Condition&quot;: {} } ] } // 绑定role和eks策略 aws iam attach-role-policy \ --policy-arn arn:aws:iam::aws:policy/AmazonEKSClusterPolicy \ --role-name my-EKSClusterRole 创建EKS cluster:
+'>
 <meta property='og:url' content='https://canuxcheng.com/post/aws_containers/'>
 <meta property='og:site_name' content='Morgoth'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='aws' /><meta property='article:published_time' content='2021-04-23T22:02:31&#43;00:00'/><meta property='article:modified_time' content='2021-04-23T22:02:31&#43;00:00'/>
@@ -30,11 +32,9 @@ EKS Distro EKS Anywhere EKS Elastic Kubernetes Service.
 通过AWS CLI创建EKS 通过MC创建的资源都可以通过CLI(aws)创建.
 创建具有公有和私有子网且符合 Amazon EKS 要求的 Amazon VPC
 $ aws cloudformation create-stack \ --stack-name my-eks-vpc-stack \ --region region-code \ --template-url https://amazon-eks.s3.us-west-2.amazonaws.com/cloudformation/2020-10-29/amazon-eks-vpc-private-subnets.yaml 创建集群 IAM 角色并向其附加所需的 Amazon EKS IAM 托管策略
-// 创建EKS IAM role aws iam create-role \ --role-name my-EKSClusterRole \ --assume-role-policy-document file://cluster-role-trust-policy.json&quot; \ --permissions-boundary arn:aws:iam::&lt;Your AWS ID&gt;:policy/ProjAdminsPermBoundaryv2 { &quot;Version&quot;: &quot;2012-10-17&quot;, &quot;Statement&quot;: [ { &quot;Effect&quot;: &quot;Allow&quot;, &quot;Principal&quot;: { &quot;Service&quot;: &quot;eks.">
+// 创建EKS IAM role aws iam create-role \ --role-name my-EKSClusterRole \ --assume-role-policy-document file://cluster-role-trust-policy.json&quot; \ --permissions-boundary arn:aws:iam::&lt;Your AWS ID&gt;:policy/ProjAdminsPermBoundaryv2 { &quot;Version&quot;: &quot;2012-10-17&quot;, &quot;Statement&quot;: [ { &quot;Effect&quot;: &quot;Allow&quot;, &quot;Principal&quot;: { &quot;Service&quot;: &quot;eks.amazonaws.com&quot; }, &quot;Action&quot;: &quot;sts:AssumeRole&quot;, &quot;Condition&quot;: {} } ] } // 绑定role和eks策略 aws iam attach-role-policy \ --policy-arn arn:aws:iam::aws:policy/AmazonEKSClusterPolicy \ --role-name my-EKSClusterRole 创建EKS cluster:
+">
     <link rel="shortcut icon" href="favicon.ico" />
-
-  
-
 <style>
     :root {
         --article-font-family: "Merriweather", var(--base-font-family);

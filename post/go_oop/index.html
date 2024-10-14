@@ -11,7 +11,8 @@ type Vertex struct { ... } 值接收者:
 值接收者操作的是值的副本.
 func (v Vertex) MethodName() rType { ... } var v Vertex v.MethodName() // 操作值的副本 # 使用指针接收者来调用值接收者的方法，编译器会自动做类型转换 vp := new(Vertex) vp.MethodName() // 指针被解引用为值,(*vp).MethodName(),操作的是指针指向的值的副本. 指针接收者：
 指针接收者，调用方法的时候操作的是该指针指向的值.
-# 指针接收者的方法可以修改接收者指向的值 func (v *Vertex) MethodName() rType { ... } vp := new(Vertex) vp.MethodName() // 操作实际的值 # 使用值接收者来调用指针接收者的方法，编译器会自动做类型转换. var v Vertex v.MethodName() // (&amp;v).MethodName() , 操作的是实际的值 接口/Interface 接口是引用类型.'>
+# 指针接收者的方法可以修改接收者指向的值 func (v *Vertex) MethodName() rType { ... } vp := new(Vertex) vp.MethodName() // 操作实际的值 # 使用值接收者来调用指针接收者的方法，编译器会自动做类型转换. var v Vertex v.MethodName() // (&amp;v).MethodName() , 操作的是实际的值 接口/Interface 接口是引用类型.
+'>
 <title>OOP</title>
 
 <link rel='canonical' href='https://canuxcheng.com/post/go_oop/'>
@@ -27,7 +28,8 @@ type Vertex struct { ... } 值接收者:
 值接收者操作的是值的副本.
 func (v Vertex) MethodName() rType { ... } var v Vertex v.MethodName() // 操作值的副本 # 使用指针接收者来调用值接收者的方法，编译器会自动做类型转换 vp := new(Vertex) vp.MethodName() // 指针被解引用为值,(*vp).MethodName(),操作的是指针指向的值的副本. 指针接收者：
 指针接收者，调用方法的时候操作的是该指针指向的值.
-# 指针接收者的方法可以修改接收者指向的值 func (v *Vertex) MethodName() rType { ... } vp := new(Vertex) vp.MethodName() // 操作实际的值 # 使用值接收者来调用指针接收者的方法，编译器会自动做类型转换. var v Vertex v.MethodName() // (&amp;v).MethodName() , 操作的是实际的值 接口/Interface 接口是引用类型.'>
+# 指针接收者的方法可以修改接收者指向的值 func (v *Vertex) MethodName() rType { ... } vp := new(Vertex) vp.MethodName() // 操作实际的值 # 使用值接收者来调用指针接收者的方法，编译器会自动做类型转换. var v Vertex v.MethodName() // (&amp;v).MethodName() , 操作的是实际的值 接口/Interface 接口是引用类型.
+'>
 <meta property='og:url' content='https://canuxcheng.com/post/go_oop/'>
 <meta property='og:site_name' content='Morgoth'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='oop' /><meta property='article:published_time' content='2018-01-01T10:49:21&#43;00:00'/><meta property='article:modified_time' content='2018-01-01T10:49:21&#43;00:00'/>
@@ -42,11 +44,9 @@ type Vertex struct { ... } 值接收者:
 值接收者操作的是值的副本.
 func (v Vertex) MethodName() rType { ... } var v Vertex v.MethodName() // 操作值的副本 # 使用指针接收者来调用值接收者的方法，编译器会自动做类型转换 vp := new(Vertex) vp.MethodName() // 指针被解引用为值,(*vp).MethodName(),操作的是指针指向的值的副本. 指针接收者：
 指针接收者，调用方法的时候操作的是该指针指向的值.
-# 指针接收者的方法可以修改接收者指向的值 func (v *Vertex) MethodName() rType { ... } vp := new(Vertex) vp.MethodName() // 操作实际的值 # 使用值接收者来调用指针接收者的方法，编译器会自动做类型转换. var v Vertex v.MethodName() // (&amp;v).MethodName() , 操作的是实际的值 接口/Interface 接口是引用类型.">
+# 指针接收者的方法可以修改接收者指向的值 func (v *Vertex) MethodName() rType { ... } vp := new(Vertex) vp.MethodName() // 操作实际的值 # 使用值接收者来调用指针接收者的方法，编译器会自动做类型转换. var v Vertex v.MethodName() // (&amp;v).MethodName() , 操作的是实际的值 接口/Interface 接口是引用类型.
+">
     <link rel="shortcut icon" href="favicon.ico" />
-
-  
-
 <style>
     :root {
         --article-font-family: "Merriweather", var(--base-font-family);

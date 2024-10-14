@@ -8,7 +8,8 @@ vim app/tests.py from django.test import TestCase 多个测试文件
 mkdir -p app/tests vi test_case1.py vi test_case2.py 配置和运行 默认情况下运行 manage.py test 会创建测试数据库运行testcase，完成后自动销毁测试数据库.
 测试相关配置
 vim project/settings.py DATABASES = { &#39;default&#39;: { &#39;NAME&#39;: &#39;mydb&#39;, &#39;TEST&#39;: { // 默认测试数据库是&#39;NAME&#39;前加&#39;test_&#39; (eg: &#39;test_mydb&#39;) // 可以通过TEST.NAME指定测试数据库 &#39;NAME&#39;: &#39;mytestdb&#39; } } } # 指定runner ## 默认 django.test.runner.DiscoverRunner TEST_RUNNER = &#39;site_main.base_tests.TestRunner # 指定fixture文件路径 FIXTURE_DIRS = (os.path.join(BASE_DIR, &#39;app&#39;, &#39;fixtures&#39;), ) 运行测试程序：
-$ python3 manage.py test // 查找test 开头的文件运行里面的 unittest.'>
+$ python3 manage.py test // 查找test 开头的文件运行里面的 unittest.TestCase的子类. $ python3 manage.py test &lt;package&gt; // 运行指️定应用内的测试 $ python3 manage.py test &lt;module&gt; // 运行指定模块内的测试 $ python3 manage.py test &lt;module&gt;.tests.MyTestCase // 运行一个指定的testcase $ python3 manage.py test &lt;module&gt;.tests.MyTestCase.test_method // 运行一个指定的test method --keepdb // 保留测试数据库 --parallel // 并行运行测试。 -v/--verbosity 0/1/2/3 测试输出信息级别，默认为1， 0表示不输出。 -d/--debug-sql 输出测试执行的sql语句. Client 测试客户端是一个 Python 类，它充当一个虚拟的 Web 浏览器， 允许你测试视图并以编程方式与 Django 驱动的应用程序交互。
+'>
 <title>Test</title>
 
 <link rel='canonical' href='https://canuxcheng.com/post/django_test/'>
@@ -21,7 +22,8 @@ vim app/tests.py from django.test import TestCase 多个测试文件
 mkdir -p app/tests vi test_case1.py vi test_case2.py 配置和运行 默认情况下运行 manage.py test 会创建测试数据库运行testcase，完成后自动销毁测试数据库.
 测试相关配置
 vim project/settings.py DATABASES = { &#39;default&#39;: { &#39;NAME&#39;: &#39;mydb&#39;, &#39;TEST&#39;: { // 默认测试数据库是&#39;NAME&#39;前加&#39;test_&#39; (eg: &#39;test_mydb&#39;) // 可以通过TEST.NAME指定测试数据库 &#39;NAME&#39;: &#39;mytestdb&#39; } } } # 指定runner ## 默认 django.test.runner.DiscoverRunner TEST_RUNNER = &#39;site_main.base_tests.TestRunner # 指定fixture文件路径 FIXTURE_DIRS = (os.path.join(BASE_DIR, &#39;app&#39;, &#39;fixtures&#39;), ) 运行测试程序：
-$ python3 manage.py test // 查找test 开头的文件运行里面的 unittest.'>
+$ python3 manage.py test // 查找test 开头的文件运行里面的 unittest.TestCase的子类. $ python3 manage.py test &lt;package&gt; // 运行指️定应用内的测试 $ python3 manage.py test &lt;module&gt; // 运行指定模块内的测试 $ python3 manage.py test &lt;module&gt;.tests.MyTestCase // 运行一个指定的testcase $ python3 manage.py test &lt;module&gt;.tests.MyTestCase.test_method // 运行一个指定的test method --keepdb // 保留测试数据库 --parallel // 并行运行测试。 -v/--verbosity 0/1/2/3 测试输出信息级别，默认为1， 0表示不输出。 -d/--debug-sql 输出测试执行的sql语句. Client 测试客户端是一个 Python 类，它充当一个虚拟的 Web 浏览器， 允许你测试视图并以编程方式与 Django 驱动的应用程序交互。
+'>
 <meta property='og:url' content='https://canuxcheng.com/post/django_test/'>
 <meta property='og:site_name' content='Morgoth'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='test' /><meta property='article:published_time' content='2016-10-04T04:51:30&#43;00:00'/><meta property='article:modified_time' content='2016-10-04T04:51:30&#43;00:00'/>
@@ -33,11 +35,9 @@ vim app/tests.py from django.test import TestCase 多个测试文件
 mkdir -p app/tests vi test_case1.py vi test_case2.py 配置和运行 默认情况下运行 manage.py test 会创建测试数据库运行testcase，完成后自动销毁测试数据库.
 测试相关配置
 vim project/settings.py DATABASES = { &#39;default&#39;: { &#39;NAME&#39;: &#39;mydb&#39;, &#39;TEST&#39;: { // 默认测试数据库是&#39;NAME&#39;前加&#39;test_&#39; (eg: &#39;test_mydb&#39;) // 可以通过TEST.NAME指定测试数据库 &#39;NAME&#39;: &#39;mytestdb&#39; } } } # 指定runner ## 默认 django.test.runner.DiscoverRunner TEST_RUNNER = &#39;site_main.base_tests.TestRunner # 指定fixture文件路径 FIXTURE_DIRS = (os.path.join(BASE_DIR, &#39;app&#39;, &#39;fixtures&#39;), ) 运行测试程序：
-$ python3 manage.py test // 查找test 开头的文件运行里面的 unittest.">
+$ python3 manage.py test // 查找test 开头的文件运行里面的 unittest.TestCase的子类. $ python3 manage.py test &lt;package&gt; // 运行指️定应用内的测试 $ python3 manage.py test &lt;module&gt; // 运行指定模块内的测试 $ python3 manage.py test &lt;module&gt;.tests.MyTestCase // 运行一个指定的testcase $ python3 manage.py test &lt;module&gt;.tests.MyTestCase.test_method // 运行一个指定的test method --keepdb // 保留测试数据库 --parallel // 并行运行测试。 -v/--verbosity 0/1/2/3 测试输出信息级别，默认为1， 0表示不输出。 -d/--debug-sql 输出测试执行的sql语句. Client 测试客户端是一个 Python 类，它充当一个虚拟的 Web 浏览器， 允许你测试视图并以编程方式与 Django 驱动的应用程序交互。
+">
     <link rel="shortcut icon" href="favicon.ico" />
-
-  
-
 <style>
     :root {
         --article-font-family: "Merriweather", var(--base-font-family);

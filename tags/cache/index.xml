@@ -5,10 +5,11 @@
         <link>https://canuxcheng.com/tags/cache/</link>
         <description>Recent content in Cache on Morgoth</description>
         <generator>Hugo -- gohugo.io</generator>
-        <language>en-us</language><atom:link href="https://canuxcheng.com/tags/cache/index.xml" rel="self" type="application/rss+xml" /><item>
+        <language>en-us</language>
+        <lastBuildDate>Tue, 04 May 2021 04:51:30 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/cache/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Cache</title>
         <link>https://canuxcheng.com/post/django_cache/</link>
-        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+        <pubDate>Tue, 04 May 2021 04:51:30 +0000</pubDate>
         
         <guid>https://canuxcheng.com/post/django_cache/</guid>
         <description>&lt;h1 id=&#34;cache&#34;&gt;cache&lt;/h1&gt;

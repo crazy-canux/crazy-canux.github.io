@@ -27,7 +27,8 @@ class ClassName(object): def __new__(cls, *args, **kwargs): ... return ... def _
 类的数据属性仅仅是定义的类的变量．
 数据属性通常是静态变量, 也就是和类对象绑定, 与类的实例无关．
 直接通过类名来访问类的数据属性．不建议通过实例来访问类的数据属性．
-class ClassName(object): CONST_VARIABLE = &#39;value&#39; def __init__(self, *args, **kwargs): ClassName.'>
+class ClassName(object): CONST_VARIABLE = &#39;value&#39; def __init__(self, *args, **kwargs): ClassName.CONST_VARIABLE = &#39;new&#39; ClassName.CONST_VARIABLE = &#39;new value&#39; 类的方法属性仅仅是一个作为类定义的一部分定义的函数, 与类的实例无关．
+'>
 <title>OOP</title>
 
 <link rel='canonical' href='https://canuxcheng.com/post/python_oop/'>
@@ -59,7 +60,8 @@ class ClassName(object): def __new__(cls, *args, **kwargs): ... return ... def _
 类的数据属性仅仅是定义的类的变量．
 数据属性通常是静态变量, 也就是和类对象绑定, 与类的实例无关．
 直接通过类名来访问类的数据属性．不建议通过实例来访问类的数据属性．
-class ClassName(object): CONST_VARIABLE = &#39;value&#39; def __init__(self, *args, **kwargs): ClassName.'>
+class ClassName(object): CONST_VARIABLE = &#39;value&#39; def __init__(self, *args, **kwargs): ClassName.CONST_VARIABLE = &#39;new&#39; ClassName.CONST_VARIABLE = &#39;new value&#39; 类的方法属性仅仅是一个作为类定义的一部分定义的函数, 与类的实例无关．
+'>
 <meta property='og:url' content='https://canuxcheng.com/post/python_oop/'>
 <meta property='og:site_name' content='Morgoth'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='oop' /><meta property='article:published_time' content='2016-06-21T21:18:09&#43;00:00'/><meta property='article:modified_time' content='2016-06-21T21:18:09&#43;00:00'/>
@@ -90,11 +92,9 @@ class ClassName(object): def __new__(cls, *args, **kwargs): ... return ... def _
 类的数据属性仅仅是定义的类的变量．
 数据属性通常是静态变量, 也就是和类对象绑定, 与类的实例无关．
 直接通过类名来访问类的数据属性．不建议通过实例来访问类的数据属性．
-class ClassName(object): CONST_VARIABLE = &#39;value&#39; def __init__(self, *args, **kwargs): ClassName.">
+class ClassName(object): CONST_VARIABLE = &#39;value&#39; def __init__(self, *args, **kwargs): ClassName.CONST_VARIABLE = &#39;new&#39; ClassName.CONST_VARIABLE = &#39;new value&#39; 类的方法属性仅仅是一个作为类定义的一部分定义的函数, 与类的实例无关．
+">
     <link rel="shortcut icon" href="favicon.ico" />
-
-  
-
 <style>
     :root {
         --article-font-family: "Merriweather", var(--base-font-family);

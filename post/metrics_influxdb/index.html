@@ -11,7 +11,7 @@ $ sudo journalctl -u influxdb.service config:
 # 开通kapacitor的subscription功能 [[subscriber]] enable = true 数据结构 influxdb每条记录是一个point.
 points包括下面部分：
 measurement: a measurement, like cpu_load, 相当于表名 tags: zero or more tag, key=value, eg: host=ip fields: zero or more field, key=value, eg: value=0.18 time: a timestamp &lt;measurement&gt;[,&lt;tag-key&gt;=&lt;tag-value&gt;...] &lt;field-key&gt;=&lt;field-value&gt;[,&lt;field2-key&gt;=&lt;field2-value&gt;...] [unix-nano-timestamp] series: 在一个database中,相同的retention policy, measurement, tag set的数据集，叫一个序列．
-RP: retention policy, autogen是默认的存储策略, 用于设置数据保留时间.'>
+'>
 <title>Influxdb</title>
 
 <link rel='canonical' href='https://canuxcheng.com/post/metrics_influxdb/'>
@@ -27,7 +27,7 @@ $ sudo journalctl -u influxdb.service config:
 # 开通kapacitor的subscription功能 [[subscriber]] enable = true 数据结构 influxdb每条记录是一个point.
 points包括下面部分：
 measurement: a measurement, like cpu_load, 相当于表名 tags: zero or more tag, key=value, eg: host=ip fields: zero or more field, key=value, eg: value=0.18 time: a timestamp &lt;measurement&gt;[,&lt;tag-key&gt;=&lt;tag-value&gt;...] &lt;field-key&gt;=&lt;field-value&gt;[,&lt;field2-key&gt;=&lt;field2-value&gt;...] [unix-nano-timestamp] series: 在一个database中,相同的retention policy, measurement, tag set的数据集，叫一个序列．
-RP: retention policy, autogen是默认的存储策略, 用于设置数据保留时间.'>
+'>
 <meta property='og:url' content='https://canuxcheng.com/post/metrics_influxdb/'>
 <meta property='og:site_name' content='Morgoth'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='monitoring' /><meta property='article:published_time' content='2018-01-18T19:23:25&#43;00:00'/><meta property='article:modified_time' content='2018-01-18T19:23:25&#43;00:00'/>
@@ -42,11 +42,8 @@ $ sudo journalctl -u influxdb.service config:
 # 开通kapacitor的subscription功能 [[subscriber]] enable = true 数据结构 influxdb每条记录是一个point.
 points包括下面部分：
 measurement: a measurement, like cpu_load, 相当于表名 tags: zero or more tag, key=value, eg: host=ip fields: zero or more field, key=value, eg: value=0.18 time: a timestamp &lt;measurement&gt;[,&lt;tag-key&gt;=&lt;tag-value&gt;...] &lt;field-key&gt;=&lt;field-value&gt;[,&lt;field2-key&gt;=&lt;field2-value&gt;...] [unix-nano-timestamp] series: 在一个database中,相同的retention policy, measurement, tag set的数据集，叫一个序列．
-RP: retention policy, autogen是默认的存储策略, 用于设置数据保留时间.">
+">
     <link rel="shortcut icon" href="favicon.ico" />
-
-  
-
 <style>
     :root {
         --article-font-family: "Merriweather", var(--base-font-family);

@@ -2,24 +2,24 @@
 <html lang="en-us" dir="ltr">
     <head><meta charset='utf-8'>
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='os 提供了操作系统的不依赖平台的接口
-import &quot;os&quot; constants # flag 参数 const ( O_RDONLY int = syscall.O_RDONLY O_WRONLY int = syscall.O_WRONLY O_RDWR int = syscall.O_RDWR O_CREATE int = syscall.O_CREATE # 不存在就创建 O_APPEND int = syscall.O_APPEND # 追加写入 O_TRUNC int = syscall.O_TRUNC # 打开时清空文件 O_EXCL int = syscall.O_EXCL O_SYNC int = syscall.O_SYNC ) const ( SEEK_SET int = 0 SEEK_CUR int = 1 SEEK_END int = 2 ) const ( // 操作系统指定的路径分隔符 PathSeperator = &#39;/&#39; // 操作系统指定的表分隔符 PathListSeparator = &#39;:&#39; ) // 操作系统空设备的名字 const DevNull = &quot;/dev/null&quot; variables var ( ErrInvalid = errors.'>
+import &quot;os&quot; constants # flag 参数 const ( O_RDONLY int = syscall.O_RDONLY O_WRONLY int = syscall.O_WRONLY O_RDWR int = syscall.O_RDWR O_CREATE int = syscall.O_CREATE # 不存在就创建 O_APPEND int = syscall.O_APPEND # 追加写入 O_TRUNC int = syscall.O_TRUNC # 打开时清空文件 O_EXCL int = syscall.O_EXCL O_SYNC int = syscall.O_SYNC ) const ( SEEK_SET int = 0 SEEK_CUR int = 1 SEEK_END int = 2 ) const ( // 操作系统指定的路径分隔符 PathSeperator = &#39;/&#39; // 操作系统指定的表分隔符 PathListSeparator = &#39;:&#39; ) // 操作系统空设备的名字 const DevNull = &quot;/dev/null&quot; variables var ( ErrInvalid = errors.New(&quot;invalid argument&quot;) ... ) // 指向标准输入／输出／错误的文件描述符 var ( Stdin = NewFile(uintptr(syscall.Stdin), &quot;/dev/stdin&quot;) Stdout = NewFile(uintptr(syscall.Stdout), &quot;/dev/stdout&quot;) Stderr = NewFile(uintptr(syscall.Stderr), &quot;/dev/stderr&quot;) ) // 保存了命令行参数，第一个是程序名 var Args []string functions // 返回内核提供的主机名 func Hostname() (name string, err error) // 当前程序以给出的状态码马上退出，defer不会执行 func Exit(code int) // 返回key=value格式的环境变量的字符串的切片拷贝 func Environ() []string 文件相关的操作
+'>
 <title>GSL_system</title>
 
 <link rel='canonical' href='https://canuxcheng.com/post/gsl_system/'>
 
 <link rel="stylesheet" href="/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content='GSL_system'>
 <meta property='og:description' content='os 提供了操作系统的不依赖平台的接口
-import &quot;os&quot; constants # flag 参数 const ( O_RDONLY int = syscall.O_RDONLY O_WRONLY int = syscall.O_WRONLY O_RDWR int = syscall.O_RDWR O_CREATE int = syscall.O_CREATE # 不存在就创建 O_APPEND int = syscall.O_APPEND # 追加写入 O_TRUNC int = syscall.O_TRUNC # 打开时清空文件 O_EXCL int = syscall.O_EXCL O_SYNC int = syscall.O_SYNC ) const ( SEEK_SET int = 0 SEEK_CUR int = 1 SEEK_END int = 2 ) const ( // 操作系统指定的路径分隔符 PathSeperator = &#39;/&#39; // 操作系统指定的表分隔符 PathListSeparator = &#39;:&#39; ) // 操作系统空设备的名字 const DevNull = &quot;/dev/null&quot; variables var ( ErrInvalid = errors.'>
+import &quot;os&quot; constants # flag 参数 const ( O_RDONLY int = syscall.O_RDONLY O_WRONLY int = syscall.O_WRONLY O_RDWR int = syscall.O_RDWR O_CREATE int = syscall.O_CREATE # 不存在就创建 O_APPEND int = syscall.O_APPEND # 追加写入 O_TRUNC int = syscall.O_TRUNC # 打开时清空文件 O_EXCL int = syscall.O_EXCL O_SYNC int = syscall.O_SYNC ) const ( SEEK_SET int = 0 SEEK_CUR int = 1 SEEK_END int = 2 ) const ( // 操作系统指定的路径分隔符 PathSeperator = &#39;/&#39; // 操作系统指定的表分隔符 PathListSeparator = &#39;:&#39; ) // 操作系统空设备的名字 const DevNull = &quot;/dev/null&quot; variables var ( ErrInvalid = errors.New(&quot;invalid argument&quot;) ... ) // 指向标准输入／输出／错误的文件描述符 var ( Stdin = NewFile(uintptr(syscall.Stdin), &quot;/dev/stdin&quot;) Stdout = NewFile(uintptr(syscall.Stdout), &quot;/dev/stdout&quot;) Stderr = NewFile(uintptr(syscall.Stderr), &quot;/dev/stderr&quot;) ) // 保存了命令行参数，第一个是程序名 var Args []string functions // 返回内核提供的主机名 func Hostname() (name string, err error) // 当前程序以给出的状态码马上退出，defer不会执行 func Exit(code int) // 返回key=value格式的环境变量的字符串的切片拷贝 func Environ() []string 文件相关的操作
+'>
 <meta property='og:url' content='https://canuxcheng.com/post/gsl_system/'>
 <meta property='og:site_name' content='Morgoth'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='system' /><meta property='article:published_time' content='2018-01-01T10:49:21&#43;00:00'/><meta property='article:modified_time' content='2018-01-01T10:49:21&#43;00:00'/>
 <meta name="twitter:title" content="GSL_system">
 <meta name="twitter:description" content="os 提供了操作系统的不依赖平台的接口
-import &quot;os&quot; constants # flag 参数 const ( O_RDONLY int = syscall.O_RDONLY O_WRONLY int = syscall.O_WRONLY O_RDWR int = syscall.O_RDWR O_CREATE int = syscall.O_CREATE # 不存在就创建 O_APPEND int = syscall.O_APPEND # 追加写入 O_TRUNC int = syscall.O_TRUNC # 打开时清空文件 O_EXCL int = syscall.O_EXCL O_SYNC int = syscall.O_SYNC ) const ( SEEK_SET int = 0 SEEK_CUR int = 1 SEEK_END int = 2 ) const ( // 操作系统指定的路径分隔符 PathSeperator = &#39;/&#39; // 操作系统指定的表分隔符 PathListSeparator = &#39;:&#39; ) // 操作系统空设备的名字 const DevNull = &quot;/dev/null&quot; variables var ( ErrInvalid = errors.">
+import &quot;os&quot; constants # flag 参数 const ( O_RDONLY int = syscall.O_RDONLY O_WRONLY int = syscall.O_WRONLY O_RDWR int = syscall.O_RDWR O_CREATE int = syscall.O_CREATE # 不存在就创建 O_APPEND int = syscall.O_APPEND # 追加写入 O_TRUNC int = syscall.O_TRUNC # 打开时清空文件 O_EXCL int = syscall.O_EXCL O_SYNC int = syscall.O_SYNC ) const ( SEEK_SET int = 0 SEEK_CUR int = 1 SEEK_END int = 2 ) const ( // 操作系统指定的路径分隔符 PathSeperator = &#39;/&#39; // 操作系统指定的表分隔符 PathListSeparator = &#39;:&#39; ) // 操作系统空设备的名字 const DevNull = &quot;/dev/null&quot; variables var ( ErrInvalid = errors.New(&quot;invalid argument&quot;) ... ) // 指向标准输入／输出／错误的文件描述符 var ( Stdin = NewFile(uintptr(syscall.Stdin), &quot;/dev/stdin&quot;) Stdout = NewFile(uintptr(syscall.Stdout), &quot;/dev/stdout&quot;) Stderr = NewFile(uintptr(syscall.Stderr), &quot;/dev/stderr&quot;) ) // 保存了命令行参数，第一个是程序名 var Args []string functions // 返回内核提供的主机名 func Hostname() (name string, err error) // 当前程序以给出的状态码马上退出，defer不会执行 func Exit(code int) // 返回key=value格式的环境变量的字符串的切片拷贝 func Environ() []string 文件相关的操作
+">
     <link rel="shortcut icon" href="favicon.ico" />
-
-  
-
 <style>
     :root {
         --article-font-family: "Merriweather", var(--base-font-family);

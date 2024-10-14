@@ -12,7 +12,8 @@ OK 表示测试通过
 FAIL 表示测试没有通过，并引发一个AssertionError异常．
 ERROR 表示测试过程引发一个不是AssertionError的异常．
 # Python2.7 此处用的是标准库的unittest. import unittest import MyClass classes:
-unittest.TestCase: 每个实例就是一个test case. 使用TestCase.assert* 系列方法进行测试． unittest.TestSuite: 每个实例就是一个test suite. 多个test case放在一起就是一个test suite. unittest.TestLoader/unittest.defaultTestLoader: 用来加载TestCase到TestSuite. unittest.TestResult: 用来保存测试的结果． unittest.TestProgram/unittest.main(): 搜索该模块下所有test开头的测试用例方法并执行． fixtures对一个测试用例的环境的搭建和销毁，通过重载TestCase的setUp()和teaeDown()方法． unittest.'>
+unittest.TestCase: 每个实例就是一个test case. 使用TestCase.assert* 系列方法进行测试． unittest.TestSuite: 每个实例就是一个test suite. 多个test case放在一起就是一个test suite. unittest.TestLoader/unittest.defaultTestLoader: 用来加载TestCase到TestSuite. unittest.TestResult: 用来保存测试的结果． unittest.TestProgram/unittest.main(): 搜索该模块下所有test开头的测试用例方法并执行． fixtures对一个测试用例的环境的搭建和销毁，通过重载TestCase的setUp()和teaeDown()方法． unittest.TextTestRunner: 用来执行测试用例． unittest.TextTestResult: 用来打印格式化的测试结果． # unittest.TestCase # methods: assertXXX　系列方法． failXXX 系列方法 fail(self, msg=None) # test立即失败 addCleanup(self, function, *args, **kwargs) addTypeEqualityFunc(self, typeobj, function) countTestCases(self) debug(self) defaultTestResult() # return unittest.TestResult() doCleanups(self) id(self) run(self, result=None) # 可以在子类覆盖该方法． shortDescription(self) skipTest(self, reason) setUp(self) # 重写之后，每个case运行之前都会调用一次． tearDown(self) # 同上 # classmethods: setUpClass(cls) # 通过@classmethod重写，这样所有的case运行之前只调用一次，而不是每个case运行之前都调用． tearDownClass(cls) # 同上 # data: failureException = AssertionError longMessage = False maxDiff = 640 functions:
+'>
 <title>PSL_Test</title>
 
 <link rel='canonical' href='https://canuxcheng.com/post/psl_test/'>
@@ -29,7 +30,8 @@ OK 表示测试通过
 FAIL 表示测试没有通过，并引发一个AssertionError异常．
 ERROR 表示测试过程引发一个不是AssertionError的异常．
 # Python2.7 此处用的是标准库的unittest. import unittest import MyClass classes:
-unittest.TestCase: 每个实例就是一个test case. 使用TestCase.assert* 系列方法进行测试． unittest.TestSuite: 每个实例就是一个test suite. 多个test case放在一起就是一个test suite. unittest.TestLoader/unittest.defaultTestLoader: 用来加载TestCase到TestSuite. unittest.TestResult: 用来保存测试的结果． unittest.TestProgram/unittest.main(): 搜索该模块下所有test开头的测试用例方法并执行． fixtures对一个测试用例的环境的搭建和销毁，通过重载TestCase的setUp()和teaeDown()方法． unittest.'>
+unittest.TestCase: 每个实例就是一个test case. 使用TestCase.assert* 系列方法进行测试． unittest.TestSuite: 每个实例就是一个test suite. 多个test case放在一起就是一个test suite. unittest.TestLoader/unittest.defaultTestLoader: 用来加载TestCase到TestSuite. unittest.TestResult: 用来保存测试的结果． unittest.TestProgram/unittest.main(): 搜索该模块下所有test开头的测试用例方法并执行． fixtures对一个测试用例的环境的搭建和销毁，通过重载TestCase的setUp()和teaeDown()方法． unittest.TextTestRunner: 用来执行测试用例． unittest.TextTestResult: 用来打印格式化的测试结果． # unittest.TestCase # methods: assertXXX　系列方法． failXXX 系列方法 fail(self, msg=None) # test立即失败 addCleanup(self, function, *args, **kwargs) addTypeEqualityFunc(self, typeobj, function) countTestCases(self) debug(self) defaultTestResult() # return unittest.TestResult() doCleanups(self) id(self) run(self, result=None) # 可以在子类覆盖该方法． shortDescription(self) skipTest(self, reason) setUp(self) # 重写之后，每个case运行之前都会调用一次． tearDown(self) # 同上 # classmethods: setUpClass(cls) # 通过@classmethod重写，这样所有的case运行之前只调用一次，而不是每个case运行之前都调用． tearDownClass(cls) # 同上 # data: failureException = AssertionError longMessage = False maxDiff = 640 functions:
+'>
 <meta property='og:url' content='https://canuxcheng.com/post/psl_test/'>
 <meta property='og:site_name' content='Morgoth'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='test' /><meta property='article:published_time' content='2016-04-11T22:58:13&#43;00:00'/><meta property='article:modified_time' content='2016-04-11T22:58:13&#43;00:00'/>
@@ -45,11 +47,9 @@ OK 表示测试通过
 FAIL 表示测试没有通过，并引发一个AssertionError异常．
 ERROR 表示测试过程引发一个不是AssertionError的异常．
 # Python2.7 此处用的是标准库的unittest. import unittest import MyClass classes:
-unittest.TestCase: 每个实例就是一个test case. 使用TestCase.assert* 系列方法进行测试． unittest.TestSuite: 每个实例就是一个test suite. 多个test case放在一起就是一个test suite. unittest.TestLoader/unittest.defaultTestLoader: 用来加载TestCase到TestSuite. unittest.TestResult: 用来保存测试的结果． unittest.TestProgram/unittest.main(): 搜索该模块下所有test开头的测试用例方法并执行． fixtures对一个测试用例的环境的搭建和销毁，通过重载TestCase的setUp()和teaeDown()方法． unittest.">
+unittest.TestCase: 每个实例就是一个test case. 使用TestCase.assert* 系列方法进行测试． unittest.TestSuite: 每个实例就是一个test suite. 多个test case放在一起就是一个test suite. unittest.TestLoader/unittest.defaultTestLoader: 用来加载TestCase到TestSuite. unittest.TestResult: 用来保存测试的结果． unittest.TestProgram/unittest.main(): 搜索该模块下所有test开头的测试用例方法并执行． fixtures对一个测试用例的环境的搭建和销毁，通过重载TestCase的setUp()和teaeDown()方法． unittest.TextTestRunner: 用来执行测试用例． unittest.TextTestResult: 用来打印格式化的测试结果． # unittest.TestCase # methods: assertXXX　系列方法． failXXX 系列方法 fail(self, msg=None) # test立即失败 addCleanup(self, function, *args, **kwargs) addTypeEqualityFunc(self, typeobj, function) countTestCases(self) debug(self) defaultTestResult() # return unittest.TestResult() doCleanups(self) id(self) run(self, result=None) # 可以在子类覆盖该方法． shortDescription(self) skipTest(self, reason) setUp(self) # 重写之后，每个case运行之前都会调用一次． tearDown(self) # 同上 # classmethods: setUpClass(cls) # 通过@classmethod重写，这样所有的case运行之前只调用一次，而不是每个case运行之前都调用． tearDownClass(cls) # 同上 # data: failureException = AssertionError longMessage = False maxDiff = 640 functions:
+">
     <link rel="shortcut icon" href="favicon.ico" />
-
-  
-
 <style>
     :root {
         --article-font-family: "Merriweather", var(--base-font-family);

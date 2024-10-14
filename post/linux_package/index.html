@@ -4,7 +4,8 @@
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='DPKG debian的包管理机制。
 dpkg dpkg的本地前端工具。
 deb - Debian binary package format dpkg - package manager for Debian dpkg dpkg -X ./xxx.deb xxx # 将deb包解压到xxx目录 dpkg -e ./xxx.deb xxx/DEBIAN # 将control信息解压 dpkg -l | grep pkg # 查看安装的包 dpkg-reconfigure - reconfigure an already installed package dpkg-reconfigure dpkg-deb - Debian package archive (.deb) manipulation tool 目录结构, DEBIAN/control是必需的
-|- debian_root |- DEBIAN |- control |- preinst/preinstallation # 解压deb包之前执行 |- prerm/preremove |- postinst/postinstallation # 解压完成之后执行，通常用来配置 |- postrm/postremove |- copyright |- changelog |- conffiles |- etc |- init.'>
+|- debian_root |- DEBIAN |- control |- preinst/preinstallation # 解压deb包之前执行 |- prerm/preremove |- postinst/postinstallation # 解压完成之后执行，通常用来配置 |- postrm/postremove |- copyright |- changelog |- conffiles |- etc |- init.d/systemd |- &lt;service&gt; |- logrotate.d |- &lt;service&gt; |- user/local/... |- opt/... control:
+'>
 <title>Package</title>
 
 <link rel='canonical' href='https://canuxcheng.com/post/linux_package/'>
@@ -13,7 +14,8 @@ deb - Debian binary package format dpkg - package manager for Debian dpkg dpkg -
 <meta property='og:description' content='DPKG debian的包管理机制。
 dpkg dpkg的本地前端工具。
 deb - Debian binary package format dpkg - package manager for Debian dpkg dpkg -X ./xxx.deb xxx # 将deb包解压到xxx目录 dpkg -e ./xxx.deb xxx/DEBIAN # 将control信息解压 dpkg -l | grep pkg # 查看安装的包 dpkg-reconfigure - reconfigure an already installed package dpkg-reconfigure dpkg-deb - Debian package archive (.deb) manipulation tool 目录结构, DEBIAN/control是必需的
-|- debian_root |- DEBIAN |- control |- preinst/preinstallation # 解压deb包之前执行 |- prerm/preremove |- postinst/postinstallation # 解压完成之后执行，通常用来配置 |- postrm/postremove |- copyright |- changelog |- conffiles |- etc |- init.'>
+|- debian_root |- DEBIAN |- control |- preinst/preinstallation # 解压deb包之前执行 |- prerm/preremove |- postinst/postinstallation # 解压完成之后执行，通常用来配置 |- postrm/postremove |- copyright |- changelog |- conffiles |- etc |- init.d/systemd |- &lt;service&gt; |- logrotate.d |- &lt;service&gt; |- user/local/... |- opt/... control:
+'>
 <meta property='og:url' content='https://canuxcheng.com/post/linux_package/'>
 <meta property='og:site_name' content='Morgoth'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='package' /><meta property='article:published_time' content='2016-06-07T16:57:45&#43;00:00'/><meta property='article:modified_time' content='2016-06-07T16:57:45&#43;00:00'/>
@@ -21,11 +23,9 @@ deb - Debian binary package format dpkg - package manager for Debian dpkg dpkg -
 <meta name="twitter:description" content="DPKG debian的包管理机制。
 dpkg dpkg的本地前端工具。
 deb - Debian binary package format dpkg - package manager for Debian dpkg dpkg -X ./xxx.deb xxx # 将deb包解压到xxx目录 dpkg -e ./xxx.deb xxx/DEBIAN # 将control信息解压 dpkg -l | grep pkg # 查看安装的包 dpkg-reconfigure - reconfigure an already installed package dpkg-reconfigure dpkg-deb - Debian package archive (.deb) manipulation tool 目录结构, DEBIAN/control是必需的
-|- debian_root |- DEBIAN |- control |- preinst/preinstallation # 解压deb包之前执行 |- prerm/preremove |- postinst/postinstallation # 解压完成之后执行，通常用来配置 |- postrm/postremove |- copyright |- changelog |- conffiles |- etc |- init.">
+|- debian_root |- DEBIAN |- control |- preinst/preinstallation # 解压deb包之前执行 |- prerm/preremove |- postinst/postinstallation # 解压完成之后执行，通常用来配置 |- postrm/postremove |- copyright |- changelog |- conffiles |- etc |- init.d/systemd |- &lt;service&gt; |- logrotate.d |- &lt;service&gt; |- user/local/... |- opt/... control:
+">
     <link rel="shortcut icon" href="favicon.ico" />
-
-  
-
 <style>
     :root {
         --article-font-family: "Merriweather", var(--base-font-family);

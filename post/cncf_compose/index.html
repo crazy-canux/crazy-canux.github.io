@@ -4,7 +4,8 @@
 <meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='docker-compose https://github.com/docker/compose
 通过一个yaml文件来管理容器中的服务，包括网络和存储。
 安装:
-https://docs.docker.com/compose/install/ $ sudo curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose $ sudo chmod &#43;x /usr/local/bin/docker-compose docker-compose命令 docker-compose [-f &lt;arg&gt;...] [options] [COMMAND] [ARGS...] -f/--file -p/--project-name # 默认目录名 -H/--host # 拉取compose文件中指定的镜像 $ docker-compose -f service.yml pull # 根据docker-compose.yml把stack打包成一个Distributed Application Bundles文件. $ docker-compose bundle -o &lt;project name&gt;.dab $ docker-compose start [servoce...] $ docker-compose stop [service...] $ docker-compose restart [service...] $ docker-compose up -d [service...] $ docker-compose down -v $ docker-compose logs -f docker-compose.'>
+https://docs.docker.com/compose/install/ $ sudo curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose $ sudo chmod &#43;x /usr/local/bin/docker-compose docker-compose命令 docker-compose [-f &lt;arg&gt;...] [options] [COMMAND] [ARGS...] -f/--file -p/--project-name # 默认目录名 -H/--host # 拉取compose文件中指定的镜像 $ docker-compose -f service.yml pull # 根据docker-compose.yml把stack打包成一个Distributed Application Bundles文件. $ docker-compose bundle -o &lt;project name&gt;.dab $ docker-compose start [servoce...] $ docker-compose stop [service...] $ docker-compose restart [service...] $ docker-compose up -d [service...] $ docker-compose down -v $ docker-compose logs -f docker-compose.yml compose中的变量：
+'>
 <title>Compose</title>
 
 <link rel='canonical' href='https://canuxcheng.com/post/cncf_compose/'>
@@ -13,7 +14,8 @@ https://docs.docker.com/compose/install/ $ sudo curl -L https://github.com/docke
 <meta property='og:description' content='docker-compose https://github.com/docker/compose
 通过一个yaml文件来管理容器中的服务，包括网络和存储。
 安装:
-https://docs.docker.com/compose/install/ $ sudo curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose $ sudo chmod &#43;x /usr/local/bin/docker-compose docker-compose命令 docker-compose [-f &lt;arg&gt;...] [options] [COMMAND] [ARGS...] -f/--file -p/--project-name # 默认目录名 -H/--host # 拉取compose文件中指定的镜像 $ docker-compose -f service.yml pull # 根据docker-compose.yml把stack打包成一个Distributed Application Bundles文件. $ docker-compose bundle -o &lt;project name&gt;.dab $ docker-compose start [servoce...] $ docker-compose stop [service...] $ docker-compose restart [service...] $ docker-compose up -d [service...] $ docker-compose down -v $ docker-compose logs -f docker-compose.'>
+https://docs.docker.com/compose/install/ $ sudo curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose $ sudo chmod &#43;x /usr/local/bin/docker-compose docker-compose命令 docker-compose [-f &lt;arg&gt;...] [options] [COMMAND] [ARGS...] -f/--file -p/--project-name # 默认目录名 -H/--host # 拉取compose文件中指定的镜像 $ docker-compose -f service.yml pull # 根据docker-compose.yml把stack打包成一个Distributed Application Bundles文件. $ docker-compose bundle -o &lt;project name&gt;.dab $ docker-compose start [servoce...] $ docker-compose stop [service...] $ docker-compose restart [service...] $ docker-compose up -d [service...] $ docker-compose down -v $ docker-compose logs -f docker-compose.yml compose中的变量：
+'>
 <meta property='og:url' content='https://canuxcheng.com/post/cncf_compose/'>
 <meta property='og:site_name' content='Morgoth'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='docker' /><meta property='article:published_time' content='2020-01-04T21:53:40&#43;08:00'/><meta property='article:modified_time' content='2020-01-04T21:53:40&#43;08:00'/>
@@ -21,11 +23,9 @@ https://docs.docker.com/compose/install/ $ sudo curl -L https://github.com/docke
 <meta name="twitter:description" content="docker-compose https://github.com/docker/compose
 通过一个yaml文件来管理容器中的服务，包括网络和存储。
 安装:
-https://docs.docker.com/compose/install/ $ sudo curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose $ sudo chmod &#43;x /usr/local/bin/docker-compose docker-compose命令 docker-compose [-f &lt;arg&gt;...] [options] [COMMAND] [ARGS...] -f/--file -p/--project-name # 默认目录名 -H/--host # 拉取compose文件中指定的镜像 $ docker-compose -f service.yml pull # 根据docker-compose.yml把stack打包成一个Distributed Application Bundles文件. $ docker-compose bundle -o &lt;project name&gt;.dab $ docker-compose start [servoce...] $ docker-compose stop [service...] $ docker-compose restart [service...] $ docker-compose up -d [service...] $ docker-compose down -v $ docker-compose logs -f docker-compose.">
+https://docs.docker.com/compose/install/ $ sudo curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose $ sudo chmod &#43;x /usr/local/bin/docker-compose docker-compose命令 docker-compose [-f &lt;arg&gt;...] [options] [COMMAND] [ARGS...] -f/--file -p/--project-name # 默认目录名 -H/--host # 拉取compose文件中指定的镜像 $ docker-compose -f service.yml pull # 根据docker-compose.yml把stack打包成一个Distributed Application Bundles文件. $ docker-compose bundle -o &lt;project name&gt;.dab $ docker-compose start [servoce...] $ docker-compose stop [service...] $ docker-compose restart [service...] $ docker-compose up -d [service...] $ docker-compose down -v $ docker-compose logs -f docker-compose.yml compose中的变量：
+">
     <link rel="shortcut icon" href="favicon.ico" />
-
-  
-
 <style>
     :root {
         --article-font-family: "Merriweather", var(--base-font-family);
