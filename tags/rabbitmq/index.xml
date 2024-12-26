@@ -292,7 +292,8 @@ app.autodiscover_tasks()
 &lt;p&gt;inspect选项:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;-t, --timeout
 -d, --destination
--j, --json&lt;/code&gt;&lt;/pre&gt;
+-j, --json
+&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         

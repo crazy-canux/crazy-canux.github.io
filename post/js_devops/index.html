@@ -1,32 +1,41 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='JS &amp; TS ESLint https://github.com/typescript-eslint/typescript-eslint
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='JS &amp; TS vscode
+&quot;version&quot;: &quot;0.2.0&quot;, &quot;configurations&quot;: [ { &quot;name&quot;: &quot;Start Backend&quot;, &quot;type&quot;: &quot;node&quot;, &quot;runtimeExecutable&quot;: &quot;/Users/canche01/.nvm/versions/node/v18.20.3/bin/node&quot;, &quot;request&quot;: &quot;launch&quot;, &quot;args&quot;: [ &quot;package&quot;, &quot;start&quot;, &quot;--config&quot;, &quot;${workspaceFolder}/backstage/app-config.local.yaml&quot; ], &quot;cwd&quot;: &quot;${workspaceFolder}/backstage/packages/backend&quot;, &quot;program&quot;: &quot;${workspaceFolder}/backstage/node_modules/.bin/backstage-cli&quot;, &quot;skipFiles&quot;: [ &quot;&lt;node_internals&gt;/**&quot; ], &quot;console&quot;: &quot;integratedTerminal&quot; } ] ESLint https://github.com/typescript-eslint/typescript-eslint
 linting.
 Webpack bundling
 Rollup building package
-Jest testing
+gulp Automation - gulp is a toolkit that helps you automate painful or time-consuming tasks in your development workflow.
+https://github.com/gulpjs/gulp
+gulp command line
 '>
 <title>DevOps</title>
 
 <link rel='canonical' href='https://canuxcheng.com/post/js_devops/'>
 
 <link rel="stylesheet" href="/scss/style.min.8191399262444ab68b72a18c97392f5349be20a1615d77445be51e974c144cff.css"><meta property='og:title' content='DevOps'>
-<meta property='og:description' content='JS &amp; TS ESLint https://github.com/typescript-eslint/typescript-eslint
+<meta property='og:description' content='JS &amp; TS vscode
+&quot;version&quot;: &quot;0.2.0&quot;, &quot;configurations&quot;: [ { &quot;name&quot;: &quot;Start Backend&quot;, &quot;type&quot;: &quot;node&quot;, &quot;runtimeExecutable&quot;: &quot;/Users/canche01/.nvm/versions/node/v18.20.3/bin/node&quot;, &quot;request&quot;: &quot;launch&quot;, &quot;args&quot;: [ &quot;package&quot;, &quot;start&quot;, &quot;--config&quot;, &quot;${workspaceFolder}/backstage/app-config.local.yaml&quot; ], &quot;cwd&quot;: &quot;${workspaceFolder}/backstage/packages/backend&quot;, &quot;program&quot;: &quot;${workspaceFolder}/backstage/node_modules/.bin/backstage-cli&quot;, &quot;skipFiles&quot;: [ &quot;&lt;node_internals&gt;/**&quot; ], &quot;console&quot;: &quot;integratedTerminal&quot; } ] ESLint https://github.com/typescript-eslint/typescript-eslint
 linting.
 Webpack bundling
 Rollup building package
-Jest testing
+gulp Automation - gulp is a toolkit that helps you automate painful or time-consuming tasks in your development workflow.
+https://github.com/gulpjs/gulp
+gulp command line
 '>
 <meta property='og:url' content='https://canuxcheng.com/post/js_devops/'>
 <meta property='og:site_name' content='Morgoth'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='tslint' /><meta property='article:published_time' content='2017-03-13T09:36:32&#43;00:00'/><meta property='article:modified_time' content='2017-03-13T09:36:32&#43;00:00'/>
 <meta name="twitter:title" content="DevOps">
-<meta name="twitter:description" content="JS &amp; TS ESLint https://github.com/typescript-eslint/typescript-eslint
+<meta name="twitter:description" content="JS &amp; TS vscode
+&quot;version&quot;: &quot;0.2.0&quot;, &quot;configurations&quot;: [ { &quot;name&quot;: &quot;Start Backend&quot;, &quot;type&quot;: &quot;node&quot;, &quot;runtimeExecutable&quot;: &quot;/Users/canche01/.nvm/versions/node/v18.20.3/bin/node&quot;, &quot;request&quot;: &quot;launch&quot;, &quot;args&quot;: [ &quot;package&quot;, &quot;start&quot;, &quot;--config&quot;, &quot;${workspaceFolder}/backstage/app-config.local.yaml&quot; ], &quot;cwd&quot;: &quot;${workspaceFolder}/backstage/packages/backend&quot;, &quot;program&quot;: &quot;${workspaceFolder}/backstage/node_modules/.bin/backstage-cli&quot;, &quot;skipFiles&quot;: [ &quot;&lt;node_internals&gt;/**&quot; ], &quot;console&quot;: &quot;integratedTerminal&quot; } ] ESLint https://github.com/typescript-eslint/typescript-eslint
 linting.
 Webpack bundling
 Rollup building package
-Jest testing
+gulp Automation - gulp is a toolkit that helps you automate painful or time-consuming tasks in your development workflow.
+https://github.com/gulpjs/gulp
+gulp command line
 ">
     <link rel="shortcut icon" href="favicon.ico" />
 <style>
@@ -340,7 +349,8 @@ Jest testing
     <li><a href="#eslint">ESLint</a></li>
     <li><a href="#webpack">Webpack</a></li>
     <li><a href="#rollup">Rollup</a></li>
-    <li><a href="#jest">Jest</a></li>
+    <li><a href="#gulp">gulp</a></li>
+    <li><a href="#karma">karma</a></li>
   </ul>
 </nav>
         </div>
@@ -421,6 +431,29 @@ Jest testing
     
     
     <h1 id="js--ts">JS &amp; TS</h1>
+<p>vscode</p>
+<pre><code>    &quot;version&quot;: &quot;0.2.0&quot;,
+    &quot;configurations&quot;: [
+        {
+            &quot;name&quot;: &quot;Start Backend&quot;,
+            &quot;type&quot;: &quot;node&quot;,
+            &quot;runtimeExecutable&quot;:  &quot;/Users/canche01/.nvm/versions/node/v18.20.3/bin/node&quot;,
+            &quot;request&quot;: &quot;launch&quot;,
+            &quot;args&quot;: [
+                &quot;package&quot;,
+                &quot;start&quot;,
+                &quot;--config&quot;,
+                &quot;${workspaceFolder}/backstage/app-config.local.yaml&quot;
+            ],
+            &quot;cwd&quot;: &quot;${workspaceFolder}/backstage/packages/backend&quot;,
+            &quot;program&quot;: &quot;${workspaceFolder}/backstage/node_modules/.bin/backstage-cli&quot;,
+            &quot;skipFiles&quot;: [
+                &quot;&lt;node_internals&gt;/**&quot;
+            ],
+            &quot;console&quot;: &quot;integratedTerminal&quot;
+        }
+    ]
+</code></pre>
 <hr>
 <h2 id="eslint">ESLint</h2>
 <p><a class="link" href="https://github.com/typescript-eslint/typescript-eslint"  target="_blank" rel="noopener"
@@ -433,8 +466,36 @@ Jest testing
 <h2 id="rollup">Rollup</h2>
 <p>building package</p>
 <hr>
-<h2 id="jest">Jest</h2>
-<p>testing</p>
+<h2 id="gulp">gulp</h2>
+<p>Automation - gulp is a toolkit that helps you automate painful or time-consuming tasks in your development workflow.</p>
+<p><a class="link" href="https://github.com/gulpjs/gulp"  target="_blank" rel="noopener"
+    >https://github.com/gulpjs/gulp</a></p>
+<p>gulp command line</p>
+<pre><code>$ npm install --global gulp-cli
+</code></pre>
+<p>gulp for devDependencies</p>
+<pre><code>$ npm install --save-dev gulp
+</code></pre>
+<p>create gulpfile.js and test it.</p>
+<pre><code>$ vim gulpfile.js
+$ gulp
+</code></pre>
+<h2 id="karma">karma</h2>
+<p>A simple tool that allows you to execute JavaScript code in multiple real browsers.</p>
+<p>angularjs 的 test runner.</p>
+<p>The main purpose of Karma is to make your test-driven development easy, fast, and fun.</p>
+<p><a class="link" href="https://github.com/karma-runner/karma"  target="_blank" rel="noopener"
+    >https://github.com/karma-runner/karma</a></p>
+<p>karma command line:</p>
+<pre><code>$ npm install -g karma-cli
+</code></pre>
+<p>karma for devDependencies</p>
+<pre><code>$ npm install --save-dev karma
+$ npm install karma-jasmine karma-chrome-launcher jasmine-core --save-dev
+</code></pre>
+<p>run karma</p>
+<pre><code>$ karma start
+</code></pre>
 
 </section>
 

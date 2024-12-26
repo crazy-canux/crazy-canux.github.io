@@ -996,7 +996,8 @@ path(&amp;lsquo;foo/&lt;a class=&#34;link&#34; href=&#34;int:code&#34; &gt;int:c
         &#39;BACKEND&#39;: &#39;django.core.cache.backends.db.DatabaseCache&#39;,
         &#39;LOCATION&#39;: &#39;my_cache_table&#39;,
     }
-}&lt;/code&gt;&lt;/pre&gt;
+}
+&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
@@ -1690,6 +1691,10 @@ $ cdktf destroy
 &lt;hr&gt;
 &lt;h2 id=&#34;tsx&#34;&gt;TSX&lt;/h2&gt;
 &lt;p&gt;&amp;ldquo;*.tsx&amp;rdquo; 是js的扩展，允许使用xml语法。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;jsc&#34;&gt;jsc&lt;/h2&gt;
+&lt;p&gt;将TS编译成JS, tsconfig.json是配置文件。&lt;/p&gt;
+&lt;hr&gt;
 </description>
         </item>
         <item>
@@ -1747,7 +1752,8 @@ modprobe &amp;lt;name&amp;gt; 加载模块 # /etc/modules
 modprobe -r &amp;lt;name&amp;gt; 删除模块
 
 // modprobe 重启就没了
-echo &amp;quot;ipmi_devintf&amp;quot; &amp;gt;&amp;gt; /etc/modules&lt;/code&gt;&lt;/pre&gt;
+echo &amp;quot;ipmi_devintf&amp;quot; &amp;gt;&amp;gt; /etc/modules
+&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
@@ -3590,7 +3596,8 @@ list1:
 &lt;pre&gt;&lt;code&gt;$ curl -L https://github.com/kubernetes/kompose/releases/download/v1.19.0/kompose-linux-amd64 -o kompose
 
 $ chmod +x kompose
-$ sudo mv ./kompose /usr/local/bin/kompose&lt;/code&gt;&lt;/pre&gt;
+$ sudo mv ./kompose /usr/local/bin/kompose
+&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
@@ -3803,7 +3810,8 @@ webhooks:
     - configmaps
     scope: &#39;*&#39;
   sideEffects: NoneOnDryRun
-  timeoutSeconds: 10&lt;/code&gt;&lt;/pre&gt;
+  timeoutSeconds: 10
+&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
@@ -4798,7 +4806,8 @@ spec:
     # job is considered part of the release.
     &amp;quot;helm.sh/hook&amp;quot;: post-install, pre-install, ...
     &amp;quot;helm.sh/hook-weight&amp;quot;: &amp;quot;-5&amp;quot;
-    &amp;quot;helm.sh/hook-delete-policy&amp;quot;: hook-succeeded, hook-failed, ...&lt;/code&gt;&lt;/pre&gt;
+    &amp;quot;helm.sh/hook-delete-policy&amp;quot;: hook-succeeded, hook-failed, ...
+&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
@@ -5642,7 +5651,8 @@ certutil -delstore &amp;quot;ROOT&amp;quot; my-cert.crt
 &lt;pre&gt;&lt;code&gt;$ sudo apt-get install keepalived
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;配置:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ sudo vim /etc/keepalived/keepalived.conf&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo vim /etc/keepalived/keepalived.conf
+&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
@@ -5984,7 +5994,8 @@ grok_timezone = &amp;quot;Local&amp;quot;
 &lt;hr&gt;
 &lt;h1 id=&#34;misc&#34;&gt;misc&lt;/h1&gt;
 &lt;p&gt;get host ip(docker/docker_gwbridge) from container:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;ip route | awk &#39;/default/ { print $3 }&#39;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;ip route | awk &#39;/default/ { print $3 }&#39;
+&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
@@ -6028,7 +6039,7 @@ linux:
 mac:
 &amp;lt;https://github.com/abiosoft/colima/blob/main/docs/FAQ.md#docker&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;配置&#34;&gt;配置&lt;/h1&gt;
+&lt;h2 id=&#34;config&#34;&gt;config&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.docker.com/engine/reference/commandline/dockerd/#daemon-configuration-file&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://docs.docker.com/engine/reference/commandline/dockerd/#daemon-configuration-file&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;docker配置文件:&lt;/p&gt;
@@ -6095,7 +6106,7 @@ mac:
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.docker.com/config/daemon/systemd/#httphttps-proxy&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://docs.docker.com/config/daemon/systemd/#httphttps-proxy&lt;/a&gt;&lt;/p&gt;
 &lt;hr&gt;
-&lt;h1 id=&#34;docker命令&#34;&gt;docker命令&lt;/h1&gt;
+&lt;h2 id=&#34;docker命令&#34;&gt;docker命令&lt;/h2&gt;
 &lt;p&gt;system:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;$ docker system df	// Show docker disk usage
 $ docker system events	// Get real time events from the server
@@ -6155,15 +6166,21 @@ $ docker rm $(docker ps -a -q)
 # 清理停止的container
 $ docker container prune
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;制作镜像&lt;/p&gt;
+&lt;p&gt;制作镜像builder&lt;/p&gt;
+&lt;p&gt;build: deprecated.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;# 根据Dockerfile 构建image
-docker build [OPTIONS] PATH | URL | -
-docker build .  // 默认就是当前目录的Dockerfile
-docker build -t &amp;lt;repo&amp;gt;/&amp;lt;name&amp;gt;:&amp;lt;tag&amp;gt; .  // 创建tag
-docker build -f /path/to/mydockerfile . // 也可以指定其它路径的其它文件
-docker build --target &amp;lt;stage&amp;gt; . // 指定阶段构建.
-docker build ... --network=host // 使用host网络构建.
-docker build --no-cache // 不使用缓存数据
+docker builder [OPTIONS] PATH | URL | -
+docker builder build .  // 默认就是当前目录的Dockerfile
+docker builder build -t &amp;lt;repo&amp;gt;/&amp;lt;name&amp;gt;:&amp;lt;tag&amp;gt; .  // 创建tag
+docker builder build -f /path/to/mydockerfile . // 也可以指定其它路径的其它文件
+docker builder build --target &amp;lt;stage&amp;gt; . // 指定阶段构建.
+docker builder build ... --network=host // 使用host网络构建.
+docker builder build --no-cache // 不使用缓存数据
+--cache-from // 使用本地或registry上的cache
+--cache-to // cache存到本地或registry
+--progress = auto/plain/tty,  // plain 显示更多log。 
+
+docker builder prune --all // 清理所有image 的缓存。
 
 # 把image导出到tar包
 # 既可以从image也可以从container导出。
@@ -6338,7 +6355,7 @@ docker plugin rm name:tag
 docker plugin push name:tag
 &lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
-&lt;h1 id=&#34;dockerfile&#34;&gt;Dockerfile&lt;/h1&gt;
+&lt;h2 id=&#34;dockerfile&#34;&gt;Dockerfile&lt;/h2&gt;
 &lt;p&gt;每个命令都会创建一个layer,尽可能合并相同的命令。&lt;/p&gt;
 &lt;p&gt;ADD&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;# add可以是远程文件，不推荐使用
@@ -6444,7 +6461,7 @@ tmp?
 !README.md  
 &lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
-&lt;h1 id=&#34;docker-machine&#34;&gt;docker-machine&lt;/h1&gt;
+&lt;h2 id=&#34;docker-machine&#34;&gt;docker-machine&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/docker/machine&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/docker/machine&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;在本地安装docker和docker-machine，然后就可以从本机安装或管理远程机器上的docker.&lt;/p&gt;
@@ -6456,7 +6473,7 @@ tmp?
 &amp;amp;&amp;amp; curl -L $base/docker-machine-$(uname -s)-$(uname -m) &amp;gt;/tmp/docker-machine
 &amp;amp;&amp;amp; sudo install /tmp/docker-machine /usr/local/bin/docker-machine
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;docker-machine命令&#34;&gt;docker-machine命令&lt;/h2&gt;
+&lt;h3 id=&#34;docker-machine命令&#34;&gt;docker-machine命令&lt;/h3&gt;
 &lt;pre&gt;&lt;code&gt;docker-machine create -d generic \
 --generic-ip-address=remote-ip \
 --generic-ssh-user=user \
@@ -6465,7 +6482,7 @@ node1
 docker-machine ls
 &lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
-&lt;h1 id=&#34;oom&#34;&gt;OOM&lt;/h1&gt;
+&lt;h2 id=&#34;oom&#34;&gt;OOM&lt;/h2&gt;
 &lt;p&gt;kernel OOM 会导致kernel随机kill一些container释放内存。&lt;/p&gt;
 &lt;p&gt;防止kernel OOM的方法就是设置resource limit.&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.docker.com/config/containers/resource_constraints/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -6480,6 +6497,18 @@ docker-machine ls
 &lt;p&gt;非swarm模式可以用compose format 2 来做资源限制.&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.docker.com/compose/compose-file/compose-file-v2/#cpu-and-other-resources&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://docs.docker.com/compose/compose-file/compose-file-v2/#cpu-and-other-resources&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;colima&#34;&gt;colima&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/abiosoft/colima&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/abiosoft/colima&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;docker for mac&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;brew install colima
+colima start
+brew services restart colima
+
+sudo ln -sf /Users/canche01/.colima/default/docker.sock /var/run/docker.sock
+docker ps -a
+&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
@@ -12915,7 +12944,8 @@ app.autodiscover_tasks()
 &lt;p&gt;inspect选项:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;-t, --timeout
 -d, --destination
--j, --json&lt;/code&gt;&lt;/pre&gt;
+-j, --json
+&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
@@ -13570,7 +13600,8 @@ min_workers = 50　　　　　　    #libvirtd启动时，初始的工作线�
 max_workers = 200　　　　　　 #同上，最大数目
 max_requests = 1000　　　　　
 #最大同时支持的RPC调用，必须大于等于max_workers
-max_client_requests = 200　　 #每个客户端支持的最大连接数&lt;/code&gt;&lt;/pre&gt;
+max_client_requests = 200　　 #每个客户端支持的最大连接数
+&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
@@ -14418,6 +14449,29 @@ $ ng serve --open
         
         <guid>https://canuxcheng.com/post/js_devops/</guid>
         <description>&lt;h1 id=&#34;js--ts&#34;&gt;JS &amp;amp; TS&lt;/h1&gt;
+&lt;p&gt;vscode&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    &amp;quot;version&amp;quot;: &amp;quot;0.2.0&amp;quot;,
+    &amp;quot;configurations&amp;quot;: [
+        {
+            &amp;quot;name&amp;quot;: &amp;quot;Start Backend&amp;quot;,
+            &amp;quot;type&amp;quot;: &amp;quot;node&amp;quot;,
+            &amp;quot;runtimeExecutable&amp;quot;:  &amp;quot;/Users/canche01/.nvm/versions/node/v18.20.3/bin/node&amp;quot;,
+            &amp;quot;request&amp;quot;: &amp;quot;launch&amp;quot;,
+            &amp;quot;args&amp;quot;: [
+                &amp;quot;package&amp;quot;,
+                &amp;quot;start&amp;quot;,
+                &amp;quot;--config&amp;quot;,
+                &amp;quot;${workspaceFolder}/backstage/app-config.local.yaml&amp;quot;
+            ],
+            &amp;quot;cwd&amp;quot;: &amp;quot;${workspaceFolder}/backstage/packages/backend&amp;quot;,
+            &amp;quot;program&amp;quot;: &amp;quot;${workspaceFolder}/backstage/node_modules/.bin/backstage-cli&amp;quot;,
+            &amp;quot;skipFiles&amp;quot;: [
+                &amp;quot;&amp;lt;node_internals&amp;gt;/**&amp;quot;
+            ],
+            &amp;quot;console&amp;quot;: &amp;quot;integratedTerminal&amp;quot;
+        }
+    ]
+&lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;eslint&#34;&gt;ESLint&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/typescript-eslint/typescript-eslint&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -14430,8 +14484,36 @@ $ ng serve --open
 &lt;h2 id=&#34;rollup&#34;&gt;Rollup&lt;/h2&gt;
 &lt;p&gt;building package&lt;/p&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;jest&#34;&gt;Jest&lt;/h2&gt;
-&lt;p&gt;testing&lt;/p&gt;
+&lt;h2 id=&#34;gulp&#34;&gt;gulp&lt;/h2&gt;
+&lt;p&gt;Automation - gulp is a toolkit that helps you automate painful or time-consuming tasks in your development workflow.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/gulpjs/gulp&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/gulpjs/gulp&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;gulp command line&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ npm install --global gulp-cli
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;gulp for devDependencies&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ npm install --save-dev gulp
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;create gulpfile.js and test it.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ vim gulpfile.js
+$ gulp
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;karma&#34;&gt;karma&lt;/h2&gt;
+&lt;p&gt;A simple tool that allows you to execute JavaScript code in multiple real browsers.&lt;/p&gt;
+&lt;p&gt;angularjs 的 test runner.&lt;/p&gt;
+&lt;p&gt;The main purpose of Karma is to make your test-driven development easy, fast, and fun.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/karma-runner/karma&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/karma-runner/karma&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;karma command line:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ npm install -g karma-cli
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;karma for devDependencies&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ npm install --save-dev karma
+$ npm install karma-jasmine karma-chrome-launcher jasmine-core --save-dev
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;run karma&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ karma start
+&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
@@ -14844,37 +14926,18 @@ document.getElementbyId(&amp;quot;demo&amp;quot;).innerHTML = x;
         <pubDate>Mon, 13 Mar 2017 09:36:32 +0000</pubDate>
         
         <guid>https://canuxcheng.com/post/js_test/</guid>
-        <description>&lt;h1 id=&#34;gulp&#34;&gt;gulp&lt;/h1&gt;
-&lt;p&gt;Automation - gulp is a toolkit that helps you automate painful or time-consuming tasks in your development workflow.&lt;/p&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/gulpjs/gulp&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://github.com/gulpjs/gulp&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;gulp command line&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ npm install --global gulp-cli
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;gulp for devDependencies&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ npm install --save-dev gulp
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;create gulpfile.js and test it.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ vim gulpfile.js
-$ gulp
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;karma&#34;&gt;karma&lt;/h1&gt;
-&lt;p&gt;A simple tool that allows you to execute JavaScript code in multiple real browsers.&lt;/p&gt;
-&lt;p&gt;angularjs 的 test runner.&lt;/p&gt;
-&lt;p&gt;The main purpose of Karma is to make your test-driven development easy, fast, and fun.&lt;/p&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/karma-runner/karma&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://github.com/karma-runner/karma&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;karma command line:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ npm install -g karma-cli
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;karma for devDependencies&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ npm install --save-dev karma
-$ npm install karma-jasmine karma-chrome-launcher jasmine-core --save-dev
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;run karma&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ karma start
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;jasmine&#34;&gt;jasmine&lt;/h1&gt;
+        <description>&lt;h1 id=&#34;heading&#34;&gt;&lt;/h1&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;jest&#34;&gt;Jest&lt;/h2&gt;
+&lt;p&gt;for javascript.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/jestjs/jest&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/jestjs/jest&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;ts-jest&#34;&gt;TS Jest&lt;/h2&gt;
+&lt;p&gt;for typescript.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/kulshekhar/ts-jest&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/kulshekhar/ts-jest&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;jasmine&#34;&gt;jasmine&lt;/h2&gt;
 &lt;p&gt;A JavaScript Testing Framework&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/jasmine/jasmine&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/jasmine/jasmine&lt;/a&gt;&lt;/p&gt;
@@ -16155,7 +16218,8 @@ system(“command options”),返回命令的退出状态。
 &lt;hr&gt;
 &lt;h1 id=&#34;常用命令&#34;&gt;常用命令&lt;/h1&gt;
 &lt;p&gt;删除字符串前后空格:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;echo &amp;quot;string&amp;quot; |　awk &amp;quot;$1=$1&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;echo &amp;quot;string&amp;quot; |　awk &amp;quot;$1=$1&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
@@ -17770,11 +17834,24 @@ npm publish
 // 查看prefix (也是-g 安装的目录)
 $ npm config ls -l | grep prefix
 &lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
 &lt;h2 id=&#34;npmrc&#34;&gt;npmrc&lt;/h2&gt;
+&lt;p&gt;get token&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;curl -u&amp;lt;username&amp;gt;:&amp;lt;api-key&amp;gt; https://artifactory.canux.com/artifactory/api/npm/auth
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&amp;ldquo;.npmrc&amp;rdquo; 配置private registry&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;registry=https://artifactory.canux.com/artifactory/api/npm/iep.npm-virtual
+always-auth=true 
+email=&amp;lt;user-email&amp;gt;
+//artifactory.arm.com/artifactory/api/npm/:_auth=&amp;lt;token&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;npmignore&#34;&gt;npmignore&lt;/h2&gt;
+&lt;p&gt;打包的时候忽略的文件和目录，优先级高于gitignore。&lt;/p&gt;
 &lt;h2 id=&#34;packagejson&#34;&gt;package.json&lt;/h2&gt;
 &lt;p&gt;package.json&lt;/p&gt;
 &lt;p&gt;package-locks&lt;/p&gt;
 &lt;p&gt;package-lock.json&lt;/p&gt;
+&lt;hr&gt;
 &lt;h2 id=&#34;shrinkwrapjson&#34;&gt;shrinkwrap.json&lt;/h2&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;yarn&#34;&gt;yarn&lt;/h2&gt;
@@ -17788,7 +17865,13 @@ $ npm config ls -l | grep prefix
 &lt;pre&gt;&lt;code&gt;$ corepack prepare yarn@3.8.1 --activate
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;CLI:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;// create package.json
+&lt;pre&gt;&lt;code&gt;// yarn config, yarn 会读npmrc
+yarn config
+
+cacheFolder: $HOME/.yarn/berry/cache
+globalFolder: $HOME/.yarn/berry
+
+// create package.json
 $ yarn init
 
 // remove all local archives
@@ -17799,8 +17882,10 @@ $ yarn add ...
 $ yarn remove ...
 $ yarn install --inline-builds
 
+// nodejs
 $ yarn node
 
+// check npm package information
 $ yarn npm info react
 
 // run script defined in package.json
@@ -17813,7 +17898,12 @@ $ yarn plugin ......
 $ yarn workspaces ...
 $ yarn workspaces list
 $ yarn workspaces foreach // run command on all workspaces
-$ yarn &lt;/code&gt;&lt;/pre&gt;
+
+// login to private registry
+yarn npm login
+yarn npm logout
+yarn npm publish
+&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
@@ -18081,7 +18171,8 @@ ln -sf ../mods-available/ssl.load ssl.load
     LogLevel warn
     ErrorLog /var/log/apache2/error.log
     CustomLog /var/log/apache2/access.log combined
-&amp;lt;/VirtualHost&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&amp;lt;/VirtualHost&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
@@ -18445,7 +18536,8 @@ polls/
     
     test
     
-    testserver&lt;/code&gt;&lt;/pre&gt;
+    testserver
+&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
@@ -20863,7 +20955,8 @@ how
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.python.org/dev/peps/pep-0020/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.python.org/dev/peps/pep-0020/&lt;/a&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;# 查看pep20
-&amp;gt;import this&lt;/code&gt;&lt;/pre&gt;
+&amp;gt;import this
+&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
@@ -27287,7 +27380,8 @@ agent {
         label &#39;my-defined-label&#39;
         additionalBuildArgs  &#39;--build-arg version=1.0.2&#39;
     }
-}&lt;/code&gt;&lt;/pre&gt;
+}
+&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
@@ -31142,7 +31236,8 @@ sed   ‘/pattern/{{n; p;}}’   urfile   读取pattern下一行并打印。
 &lt;h1 id=&#34;常用&#34;&gt;常用&lt;/h1&gt;
 &lt;pre&gt;&lt;code&gt;sed   ‘$a   string’   filenames           #批量往文件最后一行添加内容
 sed   ‘$i    string’   filenames           #批量往文件倒数第二行添加内容
-string里面有空格用\开头。&lt;/code&gt;&lt;/pre&gt;
+string里面有空格用\开头。
+&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
@@ -31973,7 +32068,8 @@ unzip
 &lt;h1 id=&#34;数据处理&#34;&gt;数据处理&lt;/h1&gt;
 &lt;p&gt;base64&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;// 生成basic authentication.
-echo -n &amp;quot;user:pw&amp;quot; | base64&lt;/code&gt;&lt;/pre&gt;
+echo -n &amp;quot;user:pw&amp;quot; | base64
+&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>

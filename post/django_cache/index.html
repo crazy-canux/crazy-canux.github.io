@@ -10,7 +10,7 @@ from django.views.decorators.cache import cache_page
 或者在URLconf中指定 urlpatterns = [ path(&lsquo;foo/int:code/&rsquo;, cache_page(60 * 2)(my_view)), ]
 模板片段缓存
 {% load cache %} {% cache &hellip; %} &hellip; {% endcache %}
-redis CACHES = { &quot;default&quot;: { &quot;BACKEND&quot;: &quot;django_redis.cache.RedisCache&quot;, &quot;LOCATION&quot;: os.environ.get(&quot;REDIS_URL&quot;, &#39;&#39;), &quot;OPTIONS&quot;: { &quot;CLIENT_CLASS&quot;: &quot;django_redis.client.DefaultClient&quot;, }, &quot;TIMEOUT&quot;: 60, } } memcached CACHES = { &#39;default&#39;: { &#39;BACKEND&#39;: &#39;django.core.cache.backends.memcached.MemcachedCache&#39;, &#39;LOCATION&#39;: &#39;127.0.0.1:11211&#39;, } } database CACHES = { &#39;default&#39;: { &#39;BACKEND&#39;: &#39;django.core.cache.backends.db.DatabaseCache&#39;, &#39;LOCATION&#39;: &#39;my_cache_table&#39;, } }'>
+redis CACHES = { &quot;default&quot;: { &quot;BACKEND&quot;: &quot;django_redis.cache.RedisCache&quot;, &quot;LOCATION&quot;: os.environ.get(&quot;REDIS_URL&quot;, &#39;&#39;), &quot;OPTIONS&quot;: { &quot;CLIENT_CLASS&quot;: &quot;django_redis.client.DefaultClient&quot;, }, &quot;TIMEOUT&quot;: 60, } } memcached CACHES = { &#39;default&#39;: { &#39;BACKEND&#39;: &#39;django.core.cache.backends.memcached.MemcachedCache&#39;, &#39;LOCATION&#39;: &#39;127.0.0.1:11211&#39;, } } database CACHES = { &#39;default&#39;: { &#39;BACKEND&#39;: &#39;django.core.cache.backends.db.DatabaseCache&#39;, &#39;LOCATION&#39;: &#39;my_cache_table&#39;, } } '>
 <title>Cache</title>
 
 <link rel='canonical' href='https://canuxcheng.com/post/django_cache/'>
@@ -25,7 +25,7 @@ from django.views.decorators.cache import cache_page
 或者在URLconf中指定 urlpatterns = [ path(&lsquo;foo/int:code/&rsquo;, cache_page(60 * 2)(my_view)), ]
 模板片段缓存
 {% load cache %} {% cache &hellip; %} &hellip; {% endcache %}
-redis CACHES = { &quot;default&quot;: { &quot;BACKEND&quot;: &quot;django_redis.cache.RedisCache&quot;, &quot;LOCATION&quot;: os.environ.get(&quot;REDIS_URL&quot;, &#39;&#39;), &quot;OPTIONS&quot;: { &quot;CLIENT_CLASS&quot;: &quot;django_redis.client.DefaultClient&quot;, }, &quot;TIMEOUT&quot;: 60, } } memcached CACHES = { &#39;default&#39;: { &#39;BACKEND&#39;: &#39;django.core.cache.backends.memcached.MemcachedCache&#39;, &#39;LOCATION&#39;: &#39;127.0.0.1:11211&#39;, } } database CACHES = { &#39;default&#39;: { &#39;BACKEND&#39;: &#39;django.core.cache.backends.db.DatabaseCache&#39;, &#39;LOCATION&#39;: &#39;my_cache_table&#39;, } }'>
+redis CACHES = { &quot;default&quot;: { &quot;BACKEND&quot;: &quot;django_redis.cache.RedisCache&quot;, &quot;LOCATION&quot;: os.environ.get(&quot;REDIS_URL&quot;, &#39;&#39;), &quot;OPTIONS&quot;: { &quot;CLIENT_CLASS&quot;: &quot;django_redis.client.DefaultClient&quot;, }, &quot;TIMEOUT&quot;: 60, } } memcached CACHES = { &#39;default&#39;: { &#39;BACKEND&#39;: &#39;django.core.cache.backends.memcached.MemcachedCache&#39;, &#39;LOCATION&#39;: &#39;127.0.0.1:11211&#39;, } } database CACHES = { &#39;default&#39;: { &#39;BACKEND&#39;: &#39;django.core.cache.backends.db.DatabaseCache&#39;, &#39;LOCATION&#39;: &#39;my_cache_table&#39;, } } '>
 <meta property='og:url' content='https://canuxcheng.com/post/django_cache/'>
 <meta property='og:site_name' content='Morgoth'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='cache' /><meta property='article:published_time' content='2021-05-04T04:51:30&#43;00:00'/><meta property='article:modified_time' content='2021-05-04T04:51:30&#43;00:00'/>
@@ -39,7 +39,7 @@ from django.views.decorators.cache import cache_page
 或者在URLconf中指定 urlpatterns = [ path(&lsquo;foo/int:code/&rsquo;, cache_page(60 * 2)(my_view)), ]
 模板片段缓存
 {% load cache %} {% cache &hellip; %} &hellip; {% endcache %}
-redis CACHES = { &quot;default&quot;: { &quot;BACKEND&quot;: &quot;django_redis.cache.RedisCache&quot;, &quot;LOCATION&quot;: os.environ.get(&quot;REDIS_URL&quot;, &#39;&#39;), &quot;OPTIONS&quot;: { &quot;CLIENT_CLASS&quot;: &quot;django_redis.client.DefaultClient&quot;, }, &quot;TIMEOUT&quot;: 60, } } memcached CACHES = { &#39;default&#39;: { &#39;BACKEND&#39;: &#39;django.core.cache.backends.memcached.MemcachedCache&#39;, &#39;LOCATION&#39;: &#39;127.0.0.1:11211&#39;, } } database CACHES = { &#39;default&#39;: { &#39;BACKEND&#39;: &#39;django.core.cache.backends.db.DatabaseCache&#39;, &#39;LOCATION&#39;: &#39;my_cache_table&#39;, } }">
+redis CACHES = { &quot;default&quot;: { &quot;BACKEND&quot;: &quot;django_redis.cache.RedisCache&quot;, &quot;LOCATION&quot;: os.environ.get(&quot;REDIS_URL&quot;, &#39;&#39;), &quot;OPTIONS&quot;: { &quot;CLIENT_CLASS&quot;: &quot;django_redis.client.DefaultClient&quot;, }, &quot;TIMEOUT&quot;: 60, } } memcached CACHES = { &#39;default&#39;: { &#39;BACKEND&#39;: &#39;django.core.cache.backends.memcached.MemcachedCache&#39;, &#39;LOCATION&#39;: &#39;127.0.0.1:11211&#39;, } } database CACHES = { &#39;default&#39;: { &#39;BACKEND&#39;: &#39;django.core.cache.backends.db.DatabaseCache&#39;, &#39;LOCATION&#39;: &#39;my_cache_table&#39;, } } ">
     <link rel="shortcut icon" href="favicon.ico" />
 <style>
     :root {
@@ -488,7 +488,8 @@ path(&lsquo;foo/<a class="link" href="int:code" >int:code</a>/&rsquo;, cache_pag
         'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
         'LOCATION': 'my_cache_table',
     }
-}</code></pre>
+}
+</code></pre>
 
 </section>
 

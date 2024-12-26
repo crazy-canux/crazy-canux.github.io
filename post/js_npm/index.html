@@ -342,6 +342,7 @@ website https://www.npmjs.com CLI registry https://registry.npmjs.org config:
   <ul>
     <li><a href="#folders">folders</a></li>
     <li><a href="#npmrc">npmrc</a></li>
+    <li><a href="#npmignore">npmignore</a></li>
     <li><a href="#packagejson">package.json</a></li>
     <li><a href="#shrinkwrapjson">shrinkwrap.json</a></li>
     <li><a href="#yarn">yarn</a></li>
@@ -496,11 +497,24 @@ npm publish
 // 查看prefix (也是-g 安装的目录)
 $ npm config ls -l | grep prefix
 </code></pre>
+<hr>
 <h2 id="npmrc">npmrc</h2>
+<p>get token</p>
+<pre><code>curl -u&lt;username&gt;:&lt;api-key&gt; https://artifactory.canux.com/artifactory/api/npm/auth
+</code></pre>
+<p>&ldquo;.npmrc&rdquo; 配置private registry</p>
+<pre><code>registry=https://artifactory.canux.com/artifactory/api/npm/iep.npm-virtual
+always-auth=true 
+email=&lt;user-email&gt;
+//artifactory.arm.com/artifactory/api/npm/:_auth=&lt;token&gt;
+</code></pre>
+<h2 id="npmignore">npmignore</h2>
+<p>打包的时候忽略的文件和目录，优先级高于gitignore。</p>
 <h2 id="packagejson">package.json</h2>
 <p>package.json</p>
 <p>package-locks</p>
 <p>package-lock.json</p>
+<hr>
 <h2 id="shrinkwrapjson">shrinkwrap.json</h2>
 <hr>
 <h2 id="yarn">yarn</h2>
@@ -514,7 +528,13 @@ $ npm config ls -l | grep prefix
 <pre><code>$ corepack prepare yarn@3.8.1 --activate
 </code></pre>
 <p>CLI:</p>
-<pre><code>// create package.json
+<pre><code>// yarn config, yarn 会读npmrc
+yarn config
+
+cacheFolder: $HOME/.yarn/berry/cache
+globalFolder: $HOME/.yarn/berry
+
+// create package.json
 $ yarn init
 
 // remove all local archives
@@ -525,8 +545,10 @@ $ yarn add ...
 $ yarn remove ...
 $ yarn install --inline-builds
 
+// nodejs
 $ yarn node
 
+// check npm package information
 $ yarn npm info react
 
 // run script defined in package.json
@@ -539,7 +561,12 @@ $ yarn plugin ......
 $ yarn workspaces ...
 $ yarn workspaces list
 $ yarn workspaces foreach // run command on all workspaces
-$ yarn </code></pre>
+
+// login to private registry
+yarn npm login
+yarn npm logout
+yarn npm publish
+</code></pre>
 
 </section>
 

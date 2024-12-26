@@ -416,37 +416,18 @@ document.getElementbyId(&amp;quot;demo&amp;quot;).innerHTML = x;
         <pubDate>Mon, 13 Mar 2017 09:36:32 +0000</pubDate>
         
         <guid>https://canuxcheng.com/post/js_test/</guid>
-        <description>&lt;h1 id=&#34;gulp&#34;&gt;gulp&lt;/h1&gt;
-&lt;p&gt;Automation - gulp is a toolkit that helps you automate painful or time-consuming tasks in your development workflow.&lt;/p&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/gulpjs/gulp&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://github.com/gulpjs/gulp&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;gulp command line&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ npm install --global gulp-cli
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;gulp for devDependencies&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ npm install --save-dev gulp
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;create gulpfile.js and test it.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ vim gulpfile.js
-$ gulp
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;karma&#34;&gt;karma&lt;/h1&gt;
-&lt;p&gt;A simple tool that allows you to execute JavaScript code in multiple real browsers.&lt;/p&gt;
-&lt;p&gt;angularjs 的 test runner.&lt;/p&gt;
-&lt;p&gt;The main purpose of Karma is to make your test-driven development easy, fast, and fun.&lt;/p&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/karma-runner/karma&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://github.com/karma-runner/karma&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;karma command line:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ npm install -g karma-cli
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;karma for devDependencies&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ npm install --save-dev karma
-$ npm install karma-jasmine karma-chrome-launcher jasmine-core --save-dev
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;run karma&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ karma start
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;jasmine&#34;&gt;jasmine&lt;/h1&gt;
+        <description>&lt;h1 id=&#34;heading&#34;&gt;&lt;/h1&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;jest&#34;&gt;Jest&lt;/h2&gt;
+&lt;p&gt;for javascript.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/jestjs/jest&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/jestjs/jest&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;ts-jest&#34;&gt;TS Jest&lt;/h2&gt;
+&lt;p&gt;for typescript.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/kulshekhar/ts-jest&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/kulshekhar/ts-jest&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;jasmine&#34;&gt;jasmine&lt;/h2&gt;
 &lt;p&gt;A JavaScript Testing Framework&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/jasmine/jasmine&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/jasmine/jasmine&lt;/a&gt;&lt;/p&gt;

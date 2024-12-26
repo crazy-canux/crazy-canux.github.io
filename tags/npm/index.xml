@@ -84,11 +84,24 @@ npm publish
 // 查看prefix (也是-g 安装的目录)
 $ npm config ls -l | grep prefix
 &lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
 &lt;h2 id=&#34;npmrc&#34;&gt;npmrc&lt;/h2&gt;
+&lt;p&gt;get token&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;curl -u&amp;lt;username&amp;gt;:&amp;lt;api-key&amp;gt; https://artifactory.canux.com/artifactory/api/npm/auth
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&amp;ldquo;.npmrc&amp;rdquo; 配置private registry&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;registry=https://artifactory.canux.com/artifactory/api/npm/iep.npm-virtual
+always-auth=true 
+email=&amp;lt;user-email&amp;gt;
+//artifactory.arm.com/artifactory/api/npm/:_auth=&amp;lt;token&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;npmignore&#34;&gt;npmignore&lt;/h2&gt;
+&lt;p&gt;打包的时候忽略的文件和目录，优先级高于gitignore。&lt;/p&gt;
 &lt;h2 id=&#34;packagejson&#34;&gt;package.json&lt;/h2&gt;
 &lt;p&gt;package.json&lt;/p&gt;
 &lt;p&gt;package-locks&lt;/p&gt;
 &lt;p&gt;package-lock.json&lt;/p&gt;
+&lt;hr&gt;
 &lt;h2 id=&#34;shrinkwrapjson&#34;&gt;shrinkwrap.json&lt;/h2&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;yarn&#34;&gt;yarn&lt;/h2&gt;
@@ -102,7 +115,13 @@ $ npm config ls -l | grep prefix
 &lt;pre&gt;&lt;code&gt;$ corepack prepare yarn@3.8.1 --activate
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;CLI:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;// create package.json
+&lt;pre&gt;&lt;code&gt;// yarn config, yarn 会读npmrc
+yarn config
+
+cacheFolder: $HOME/.yarn/berry/cache
+globalFolder: $HOME/.yarn/berry
+
+// create package.json
 $ yarn init
 
 // remove all local archives
@@ -113,8 +132,10 @@ $ yarn add ...
 $ yarn remove ...
 $ yarn install --inline-builds
 
+// nodejs
 $ yarn node
 
+// check npm package information
 $ yarn npm info react
 
 // run script defined in package.json
@@ -127,7 +148,12 @@ $ yarn plugin ......
 $ yarn workspaces ...
 $ yarn workspaces list
 $ yarn workspaces foreach // run command on all workspaces
-$ yarn &lt;/code&gt;&lt;/pre&gt;
+
+// login to private registry
+yarn npm login
+yarn npm logout
+yarn npm publish
+&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         

@@ -22,7 +22,8 @@
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.python.org/dev/peps/pep-0020/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.python.org/dev/peps/pep-0020/&lt;/a&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;# 查看pep20
-&amp;gt;import this&lt;/code&gt;&lt;/pre&gt;
+&amp;gt;import this
+&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         

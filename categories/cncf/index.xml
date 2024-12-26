@@ -2067,7 +2067,8 @@ list1:
 &lt;pre&gt;&lt;code&gt;$ curl -L https://github.com/kubernetes/kompose/releases/download/v1.19.0/kompose-linux-amd64 -o kompose
 
 $ chmod +x kompose
-$ sudo mv ./kompose /usr/local/bin/kompose&lt;/code&gt;&lt;/pre&gt;
+$ sudo mv ./kompose /usr/local/bin/kompose
+&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
@@ -2280,7 +2281,8 @@ webhooks:
     - configmaps
     scope: &#39;*&#39;
   sideEffects: NoneOnDryRun
-  timeoutSeconds: 10&lt;/code&gt;&lt;/pre&gt;
+  timeoutSeconds: 10
+&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
@@ -3275,7 +3277,8 @@ spec:
     # job is considered part of the release.
     &amp;quot;helm.sh/hook&amp;quot;: post-install, pre-install, ...
     &amp;quot;helm.sh/hook-weight&amp;quot;: &amp;quot;-5&amp;quot;
-    &amp;quot;helm.sh/hook-delete-policy&amp;quot;: hook-succeeded, hook-failed, ...&lt;/code&gt;&lt;/pre&gt;
+    &amp;quot;helm.sh/hook-delete-policy&amp;quot;: hook-succeeded, hook-failed, ...
+&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
@@ -3378,7 +3381,8 @@ spec:
 &lt;hr&gt;
 &lt;h1 id=&#34;misc&#34;&gt;misc&lt;/h1&gt;
 &lt;p&gt;get host ip(docker/docker_gwbridge) from container:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;ip route | awk &#39;/default/ { print $3 }&#39;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;ip route | awk &#39;/default/ { print $3 }&#39;
+&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
@@ -3422,7 +3426,7 @@ linux:
 mac:
 &amp;lt;https://github.com/abiosoft/colima/blob/main/docs/FAQ.md#docker&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;配置&#34;&gt;配置&lt;/h1&gt;
+&lt;h2 id=&#34;config&#34;&gt;config&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.docker.com/engine/reference/commandline/dockerd/#daemon-configuration-file&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://docs.docker.com/engine/reference/commandline/dockerd/#daemon-configuration-file&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;docker配置文件:&lt;/p&gt;
@@ -3489,7 +3493,7 @@ mac:
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.docker.com/config/daemon/systemd/#httphttps-proxy&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://docs.docker.com/config/daemon/systemd/#httphttps-proxy&lt;/a&gt;&lt;/p&gt;
 &lt;hr&gt;
-&lt;h1 id=&#34;docker命令&#34;&gt;docker命令&lt;/h1&gt;
+&lt;h2 id=&#34;docker命令&#34;&gt;docker命令&lt;/h2&gt;
 &lt;p&gt;system:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;$ docker system df	// Show docker disk usage
 $ docker system events	// Get real time events from the server
@@ -3549,15 +3553,21 @@ $ docker rm $(docker ps -a -q)
 # 清理停止的container
 $ docker container prune
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;制作镜像&lt;/p&gt;
+&lt;p&gt;制作镜像builder&lt;/p&gt;
+&lt;p&gt;build: deprecated.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;# 根据Dockerfile 构建image
-docker build [OPTIONS] PATH | URL | -
-docker build .  // 默认就是当前目录的Dockerfile
-docker build -t &amp;lt;repo&amp;gt;/&amp;lt;name&amp;gt;:&amp;lt;tag&amp;gt; .  // 创建tag
-docker build -f /path/to/mydockerfile . // 也可以指定其它路径的其它文件
-docker build --target &amp;lt;stage&amp;gt; . // 指定阶段构建.
-docker build ... --network=host // 使用host网络构建.
-docker build --no-cache // 不使用缓存数据
+docker builder [OPTIONS] PATH | URL | -
+docker builder build .  // 默认就是当前目录的Dockerfile
+docker builder build -t &amp;lt;repo&amp;gt;/&amp;lt;name&amp;gt;:&amp;lt;tag&amp;gt; .  // 创建tag
+docker builder build -f /path/to/mydockerfile . // 也可以指定其它路径的其它文件
+docker builder build --target &amp;lt;stage&amp;gt; . // 指定阶段构建.
+docker builder build ... --network=host // 使用host网络构建.
+docker builder build --no-cache // 不使用缓存数据
+--cache-from // 使用本地或registry上的cache
+--cache-to // cache存到本地或registry
+--progress = auto/plain/tty,  // plain 显示更多log。 
+
+docker builder prune --all // 清理所有image 的缓存。
 
 # 把image导出到tar包
 # 既可以从image也可以从container导出。
@@ -3732,7 +3742,7 @@ docker plugin rm name:tag
 docker plugin push name:tag
 &lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
-&lt;h1 id=&#34;dockerfile&#34;&gt;Dockerfile&lt;/h1&gt;
+&lt;h2 id=&#34;dockerfile&#34;&gt;Dockerfile&lt;/h2&gt;
 &lt;p&gt;每个命令都会创建一个layer,尽可能合并相同的命令。&lt;/p&gt;
 &lt;p&gt;ADD&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;# add可以是远程文件，不推荐使用
@@ -3838,7 +3848,7 @@ tmp?
 !README.md  
 &lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
-&lt;h1 id=&#34;docker-machine&#34;&gt;docker-machine&lt;/h1&gt;
+&lt;h2 id=&#34;docker-machine&#34;&gt;docker-machine&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/docker/machine&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/docker/machine&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;在本地安装docker和docker-machine，然后就可以从本机安装或管理远程机器上的docker.&lt;/p&gt;
@@ -3850,7 +3860,7 @@ tmp?
 &amp;amp;&amp;amp; curl -L $base/docker-machine-$(uname -s)-$(uname -m) &amp;gt;/tmp/docker-machine
 &amp;amp;&amp;amp; sudo install /tmp/docker-machine /usr/local/bin/docker-machine
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;docker-machine命令&#34;&gt;docker-machine命令&lt;/h2&gt;
+&lt;h3 id=&#34;docker-machine命令&#34;&gt;docker-machine命令&lt;/h3&gt;
 &lt;pre&gt;&lt;code&gt;docker-machine create -d generic \
 --generic-ip-address=remote-ip \
 --generic-ssh-user=user \
@@ -3859,7 +3869,7 @@ node1
 docker-machine ls
 &lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
-&lt;h1 id=&#34;oom&#34;&gt;OOM&lt;/h1&gt;
+&lt;h2 id=&#34;oom&#34;&gt;OOM&lt;/h2&gt;
 &lt;p&gt;kernel OOM 会导致kernel随机kill一些container释放内存。&lt;/p&gt;
 &lt;p&gt;防止kernel OOM的方法就是设置resource limit.&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.docker.com/config/containers/resource_constraints/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -3874,6 +3884,18 @@ docker-machine ls
 &lt;p&gt;非swarm模式可以用compose format 2 来做资源限制.&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.docker.com/compose/compose-file/compose-file-v2/#cpu-and-other-resources&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://docs.docker.com/compose/compose-file/compose-file-v2/#cpu-and-other-resources&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;colima&#34;&gt;colima&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/abiosoft/colima&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/abiosoft/colima&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;docker for mac&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;brew install colima
+colima start
+brew services restart colima
+
+sudo ln -sf /Users/canche01/.colima/default/docker.sock /var/run/docker.sock
+docker ps -a
+&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>

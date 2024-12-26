@@ -33,6 +33,10 @@
 &lt;hr&gt;
 &lt;h2 id=&#34;tsx&#34;&gt;TSX&lt;/h2&gt;
 &lt;p&gt;&amp;ldquo;*.tsx&amp;rdquo; 是js的扩展，允许使用xml语法。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;jsc&#34;&gt;jsc&lt;/h2&gt;
+&lt;p&gt;将TS编译成JS, tsconfig.json是配置文件。&lt;/p&gt;
+&lt;hr&gt;
 </description>
         </item>
         <item>
@@ -781,6 +785,29 @@ $ ng serve --open
         
         <guid>https://canuxcheng.com/post/js_devops/</guid>
         <description>&lt;h1 id=&#34;js--ts&#34;&gt;JS &amp;amp; TS&lt;/h1&gt;
+&lt;p&gt;vscode&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    &amp;quot;version&amp;quot;: &amp;quot;0.2.0&amp;quot;,
+    &amp;quot;configurations&amp;quot;: [
+        {
+            &amp;quot;name&amp;quot;: &amp;quot;Start Backend&amp;quot;,
+            &amp;quot;type&amp;quot;: &amp;quot;node&amp;quot;,
+            &amp;quot;runtimeExecutable&amp;quot;:  &amp;quot;/Users/canche01/.nvm/versions/node/v18.20.3/bin/node&amp;quot;,
+            &amp;quot;request&amp;quot;: &amp;quot;launch&amp;quot;,
+            &amp;quot;args&amp;quot;: [
+                &amp;quot;package&amp;quot;,
+                &amp;quot;start&amp;quot;,
+                &amp;quot;--config&amp;quot;,
+                &amp;quot;${workspaceFolder}/backstage/app-config.local.yaml&amp;quot;
+            ],
+            &amp;quot;cwd&amp;quot;: &amp;quot;${workspaceFolder}/backstage/packages/backend&amp;quot;,
+            &amp;quot;program&amp;quot;: &amp;quot;${workspaceFolder}/backstage/node_modules/.bin/backstage-cli&amp;quot;,
+            &amp;quot;skipFiles&amp;quot;: [
+                &amp;quot;&amp;lt;node_internals&amp;gt;/**&amp;quot;
+            ],
+            &amp;quot;console&amp;quot;: &amp;quot;integratedTerminal&amp;quot;
+        }
+    ]
+&lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;eslint&#34;&gt;ESLint&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/typescript-eslint/typescript-eslint&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -793,8 +820,36 @@ $ ng serve --open
 &lt;h2 id=&#34;rollup&#34;&gt;Rollup&lt;/h2&gt;
 &lt;p&gt;building package&lt;/p&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;jest&#34;&gt;Jest&lt;/h2&gt;
-&lt;p&gt;testing&lt;/p&gt;
+&lt;h2 id=&#34;gulp&#34;&gt;gulp&lt;/h2&gt;
+&lt;p&gt;Automation - gulp is a toolkit that helps you automate painful or time-consuming tasks in your development workflow.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/gulpjs/gulp&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/gulpjs/gulp&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;gulp command line&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ npm install --global gulp-cli
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;gulp for devDependencies&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ npm install --save-dev gulp
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;create gulpfile.js and test it.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ vim gulpfile.js
+$ gulp
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;karma&#34;&gt;karma&lt;/h2&gt;
+&lt;p&gt;A simple tool that allows you to execute JavaScript code in multiple real browsers.&lt;/p&gt;
+&lt;p&gt;angularjs 的 test runner.&lt;/p&gt;
+&lt;p&gt;The main purpose of Karma is to make your test-driven development easy, fast, and fun.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/karma-runner/karma&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/karma-runner/karma&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;karma command line:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ npm install -g karma-cli
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;karma for devDependencies&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ npm install --save-dev karma
+$ npm install karma-jasmine karma-chrome-launcher jasmine-core --save-dev
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;run karma&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ karma start
+&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
@@ -1207,37 +1262,18 @@ document.getElementbyId(&amp;quot;demo&amp;quot;).innerHTML = x;
         <pubDate>Mon, 13 Mar 2017 09:36:32 +0000</pubDate>
         
         <guid>https://canuxcheng.com/post/js_test/</guid>
-        <description>&lt;h1 id=&#34;gulp&#34;&gt;gulp&lt;/h1&gt;
-&lt;p&gt;Automation - gulp is a toolkit that helps you automate painful or time-consuming tasks in your development workflow.&lt;/p&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/gulpjs/gulp&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://github.com/gulpjs/gulp&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;gulp command line&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ npm install --global gulp-cli
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;gulp for devDependencies&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ npm install --save-dev gulp
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;create gulpfile.js and test it.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ vim gulpfile.js
-$ gulp
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;karma&#34;&gt;karma&lt;/h1&gt;
-&lt;p&gt;A simple tool that allows you to execute JavaScript code in multiple real browsers.&lt;/p&gt;
-&lt;p&gt;angularjs 的 test runner.&lt;/p&gt;
-&lt;p&gt;The main purpose of Karma is to make your test-driven development easy, fast, and fun.&lt;/p&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/karma-runner/karma&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://github.com/karma-runner/karma&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;karma command line:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ npm install -g karma-cli
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;karma for devDependencies&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ npm install --save-dev karma
-$ npm install karma-jasmine karma-chrome-launcher jasmine-core --save-dev
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;run karma&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ karma start
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;jasmine&#34;&gt;jasmine&lt;/h1&gt;
+        <description>&lt;h1 id=&#34;heading&#34;&gt;&lt;/h1&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;jest&#34;&gt;Jest&lt;/h2&gt;
+&lt;p&gt;for javascript.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/jestjs/jest&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/jestjs/jest&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;ts-jest&#34;&gt;TS Jest&lt;/h2&gt;
+&lt;p&gt;for typescript.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/kulshekhar/ts-jest&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/kulshekhar/ts-jest&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;jasmine&#34;&gt;jasmine&lt;/h2&gt;
 &lt;p&gt;A JavaScript Testing Framework&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/jasmine/jasmine&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/jasmine/jasmine&lt;/a&gt;&lt;/p&gt;
@@ -1792,11 +1828,24 @@ npm publish
 // 查看prefix (也是-g 安装的目录)
 $ npm config ls -l | grep prefix
 &lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
 &lt;h2 id=&#34;npmrc&#34;&gt;npmrc&lt;/h2&gt;
+&lt;p&gt;get token&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;curl -u&amp;lt;username&amp;gt;:&amp;lt;api-key&amp;gt; https://artifactory.canux.com/artifactory/api/npm/auth
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&amp;ldquo;.npmrc&amp;rdquo; 配置private registry&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;registry=https://artifactory.canux.com/artifactory/api/npm/iep.npm-virtual
+always-auth=true 
+email=&amp;lt;user-email&amp;gt;
+//artifactory.arm.com/artifactory/api/npm/:_auth=&amp;lt;token&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;npmignore&#34;&gt;npmignore&lt;/h2&gt;
+&lt;p&gt;打包的时候忽略的文件和目录，优先级高于gitignore。&lt;/p&gt;
 &lt;h2 id=&#34;packagejson&#34;&gt;package.json&lt;/h2&gt;
 &lt;p&gt;package.json&lt;/p&gt;
 &lt;p&gt;package-locks&lt;/p&gt;
 &lt;p&gt;package-lock.json&lt;/p&gt;
+&lt;hr&gt;
 &lt;h2 id=&#34;shrinkwrapjson&#34;&gt;shrinkwrap.json&lt;/h2&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;yarn&#34;&gt;yarn&lt;/h2&gt;
@@ -1810,7 +1859,13 @@ $ npm config ls -l | grep prefix
 &lt;pre&gt;&lt;code&gt;$ corepack prepare yarn@3.8.1 --activate
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;CLI:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;// create package.json
+&lt;pre&gt;&lt;code&gt;// yarn config, yarn 会读npmrc
+yarn config
+
+cacheFolder: $HOME/.yarn/berry/cache
+globalFolder: $HOME/.yarn/berry
+
+// create package.json
 $ yarn init
 
 // remove all local archives
@@ -1821,8 +1876,10 @@ $ yarn add ...
 $ yarn remove ...
 $ yarn install --inline-builds
 
+// nodejs
 $ yarn node
 
+// check npm package information
 $ yarn npm info react
 
 // run script defined in package.json
@@ -1835,7 +1892,12 @@ $ yarn plugin ......
 $ yarn workspaces ...
 $ yarn workspaces list
 $ yarn workspaces foreach // run command on all workspaces
-$ yarn &lt;/code&gt;&lt;/pre&gt;
+
+// login to private registry
+yarn npm login
+yarn npm logout
+yarn npm publish
+&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
