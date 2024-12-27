@@ -60,8 +60,7 @@
 &lt;hr&gt;
 &lt;h1 id=&#34;misc&#34;&gt;misc&lt;/h1&gt;
 &lt;p&gt;get host ip(docker/docker_gwbridge) from container:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;ip route | awk &#39;/default/ { print $3 }&#39;
-&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;ip route | awk &#39;/default/ { print $3 }&#39;&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>

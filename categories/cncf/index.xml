@@ -2067,8 +2067,7 @@ list1:
 &lt;pre&gt;&lt;code&gt;$ curl -L https://github.com/kubernetes/kompose/releases/download/v1.19.0/kompose-linux-amd64 -o kompose
 
 $ chmod +x kompose
-$ sudo mv ./kompose /usr/local/bin/kompose
-&lt;/code&gt;&lt;/pre&gt;
+$ sudo mv ./kompose /usr/local/bin/kompose&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
@@ -2281,8 +2280,7 @@ webhooks:
     - configmaps
     scope: &#39;*&#39;
   sideEffects: NoneOnDryRun
-  timeoutSeconds: 10
-&lt;/code&gt;&lt;/pre&gt;
+  timeoutSeconds: 10&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
@@ -3277,8 +3275,7 @@ spec:
     # job is considered part of the release.
     &amp;quot;helm.sh/hook&amp;quot;: post-install, pre-install, ...
     &amp;quot;helm.sh/hook-weight&amp;quot;: &amp;quot;-5&amp;quot;
-    &amp;quot;helm.sh/hook-delete-policy&amp;quot;: hook-succeeded, hook-failed, ...
-&lt;/code&gt;&lt;/pre&gt;
+    &amp;quot;helm.sh/hook-delete-policy&amp;quot;: hook-succeeded, hook-failed, ...&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
@@ -3381,8 +3378,7 @@ spec:
 &lt;hr&gt;
 &lt;h1 id=&#34;misc&#34;&gt;misc&lt;/h1&gt;
 &lt;p&gt;get host ip(docker/docker_gwbridge) from container:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;ip route | awk &#39;/default/ { print $3 }&#39;
-&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;ip route | awk &#39;/default/ { print $3 }&#39;&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>

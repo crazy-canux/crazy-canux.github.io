@@ -63,8 +63,7 @@
 &lt;pre&gt;&lt;code&gt;$ sudo apt-get install keepalived
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;配置:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ sudo vim /etc/keepalived/keepalived.conf
-&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo vim /etc/keepalived/keepalived.conf&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         

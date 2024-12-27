@@ -344,7 +344,6 @@ website https://www.npmjs.com CLI registry https://registry.npmjs.org config:
     <li><a href="#npmrc">npmrc</a></li>
     <li><a href="#npmignore">npmignore</a></li>
     <li><a href="#packagejson">package.json</a></li>
-    <li><a href="#shrinkwrapjson">shrinkwrap.json</a></li>
     <li><a href="#yarn">yarn</a></li>
   </ul>
 </nav>
@@ -486,6 +485,8 @@ npm whoami
 npm publish
 </code></pre>
 <p>发布好了可以去npm网站查看.</p>
+<p>npm + shrinkwrap = yarn lock
+npm-shrinkwrap.json = yarn.lock</p>
 <h2 id="folders">folders</h2>
 <p>nodejs加载的路径:</p>
 <pre><code>1. 当前目录
@@ -515,8 +516,6 @@ email=&lt;user-email&gt;
 <p>package-locks</p>
 <p>package-lock.json</p>
 <hr>
-<h2 id="shrinkwrapjson">shrinkwrap.json</h2>
-<hr>
 <h2 id="yarn">yarn</h2>
 <p><a class="link" href="https://yarnpkg.com/"  target="_blank" rel="noopener"
     >https://yarnpkg.com/</a></p>
@@ -536,6 +535,9 @@ globalFolder: $HOME/.yarn/berry
 
 // create package.json
 $ yarn init
+
+// 设置project的yarn version，自动下载.yarn/release/yarn-&lt;version&gt;.cjs
+yarn set version berry
 
 // remove all local archives
 $ yarn cache clean  
@@ -566,7 +568,10 @@ $ yarn workspaces foreach // run command on all workspaces
 yarn npm login
 yarn npm logout
 yarn npm publish
-</code></pre>
+
+    npmRegistries:
+        &quot;https://artifactory.arm.com/artifactory/api/npm/iep.npm-virtual&quot;: 
+            npmAuthToken: &lt;token&gt;</code></pre>
 
 </section>
 

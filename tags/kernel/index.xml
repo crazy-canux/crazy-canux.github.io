@@ -22,8 +22,7 @@ modprobe &amp;lt;name&amp;gt; 加载模块 # /etc/modules
 modprobe -r &amp;lt;name&amp;gt; 删除模块
 
 // modprobe 重启就没了
-echo &amp;quot;ipmi_devintf&amp;quot; &amp;gt;&amp;gt; /etc/modules
-&lt;/code&gt;&lt;/pre&gt;
+echo &amp;quot;ipmi_devintf&amp;quot; &amp;gt;&amp;gt; /etc/modules&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         

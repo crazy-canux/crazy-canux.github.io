@@ -165,6 +165,7 @@ var varName1 = varValue1, varName2=varValue2, ...;
     let varName = varValue;
 }
 &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;let不能多次申明同一个变量。&lt;/p&gt;
 &lt;h2 id=&#34;const申明常量&#34;&gt;const申明常量&lt;/h2&gt;
 &lt;p&gt;const定义的变量与let相似， 但不能重新赋值.&lt;/p&gt;
 &lt;p&gt;它没有定义常量值。它定义了对值的常量引用。&lt;/p&gt;
@@ -334,6 +335,9 @@ for () {
 &lt;pre&gt;&lt;code&gt;// 可以在js代码或调试窗口打印变量值：
 console.log(10);
 &lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;输入&#34;&gt;输入&lt;/h2&gt;
+&lt;p&gt;prompt&lt;/p&gt;
+&lt;p&gt;alert和prompt会跳过渲染先被执行。&lt;/p&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;函数&#34;&gt;函数&lt;/h1&gt;
 &lt;p&gt;定义函数：&lt;/p&gt;

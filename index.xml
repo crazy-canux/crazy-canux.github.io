@@ -588,12 +588,12 @@ logout(request)
     &gt;https://golang.org/doc/&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.python.org/3/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://docs.python.org/3/&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://nodejs.org/en/docs/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://nodejs.org/en/docs/&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://developer.mozilla.org/en-US/docs/Web/JavaScript&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://developer.mozilla.org/en-US/docs/Web/JavaScript&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.typescriptlang.org/docs/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.typescriptlang.org/docs/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://nodejs.org/en/docs/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://nodejs.org/en/docs/&lt;/a&gt;&lt;/p&gt;
 </description>
         </item>
         <item>
@@ -996,8 +996,7 @@ path(&amp;lsquo;foo/&lt;a class=&#34;link&#34; href=&#34;int:code&#34; &gt;int:c
         &#39;BACKEND&#39;: &#39;django.core.cache.backends.db.DatabaseCache&#39;,
         &#39;LOCATION&#39;: &#39;my_cache_table&#39;,
     }
-}
-&lt;/code&gt;&lt;/pre&gt;
+}&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
@@ -1752,8 +1751,7 @@ modprobe &amp;lt;name&amp;gt; 加载模块 # /etc/modules
 modprobe -r &amp;lt;name&amp;gt; 删除模块
 
 // modprobe 重启就没了
-echo &amp;quot;ipmi_devintf&amp;quot; &amp;gt;&amp;gt; /etc/modules
-&lt;/code&gt;&lt;/pre&gt;
+echo &amp;quot;ipmi_devintf&amp;quot; &amp;gt;&amp;gt; /etc/modules&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
@@ -3596,8 +3594,7 @@ list1:
 &lt;pre&gt;&lt;code&gt;$ curl -L https://github.com/kubernetes/kompose/releases/download/v1.19.0/kompose-linux-amd64 -o kompose
 
 $ chmod +x kompose
-$ sudo mv ./kompose /usr/local/bin/kompose
-&lt;/code&gt;&lt;/pre&gt;
+$ sudo mv ./kompose /usr/local/bin/kompose&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
@@ -3810,8 +3807,7 @@ webhooks:
     - configmaps
     scope: &#39;*&#39;
   sideEffects: NoneOnDryRun
-  timeoutSeconds: 10
-&lt;/code&gt;&lt;/pre&gt;
+  timeoutSeconds: 10&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
@@ -4806,8 +4802,7 @@ spec:
     # job is considered part of the release.
     &amp;quot;helm.sh/hook&amp;quot;: post-install, pre-install, ...
     &amp;quot;helm.sh/hook-weight&amp;quot;: &amp;quot;-5&amp;quot;
-    &amp;quot;helm.sh/hook-delete-policy&amp;quot;: hook-succeeded, hook-failed, ...
-&lt;/code&gt;&lt;/pre&gt;
+    &amp;quot;helm.sh/hook-delete-policy&amp;quot;: hook-succeeded, hook-failed, ...&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
@@ -5651,8 +5646,7 @@ certutil -delstore &amp;quot;ROOT&amp;quot; my-cert.crt
 &lt;pre&gt;&lt;code&gt;$ sudo apt-get install keepalived
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;配置:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ sudo vim /etc/keepalived/keepalived.conf
-&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo vim /etc/keepalived/keepalived.conf&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
@@ -5994,8 +5988,7 @@ grok_timezone = &amp;quot;Local&amp;quot;
 &lt;hr&gt;
 &lt;h1 id=&#34;misc&#34;&gt;misc&lt;/h1&gt;
 &lt;p&gt;get host ip(docker/docker_gwbridge) from container:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;ip route | awk &#39;/default/ { print $3 }&#39;
-&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;ip route | awk &#39;/default/ { print $3 }&#39;&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
@@ -12944,8 +12937,7 @@ app.autodiscover_tasks()
 &lt;p&gt;inspect选项:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;-t, --timeout
 -d, --destination
--j, --json
-&lt;/code&gt;&lt;/pre&gt;
+-j, --json&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
@@ -13600,8 +13592,7 @@ min_workers = 50　　　　　　    #libvirtd启动时，初始的工作线�
 max_workers = 200　　　　　　 #同上，最大数目
 max_requests = 1000　　　　　
 #最大同时支持的RPC调用，必须大于等于max_workers
-max_client_requests = 200　　 #每个客户端支持的最大连接数
-&lt;/code&gt;&lt;/pre&gt;
+max_client_requests = 200　　 #每个客户端支持的最大连接数&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
@@ -14512,8 +14503,7 @@ $ gulp
 $ npm install karma-jasmine karma-chrome-launcher jasmine-core --save-dev
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;run karma&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ karma start
-&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;$ karma start&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
@@ -14675,6 +14665,7 @@ var varName1 = varValue1, varName2=varValue2, ...;
     let varName = varValue;
 }
 &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;let不能多次申明同一个变量。&lt;/p&gt;
 &lt;h2 id=&#34;const申明常量&#34;&gt;const申明常量&lt;/h2&gt;
 &lt;p&gt;const定义的变量与let相似， 但不能重新赋值.&lt;/p&gt;
 &lt;p&gt;它没有定义常量值。它定义了对值的常量引用。&lt;/p&gt;
@@ -14844,6 +14835,9 @@ for () {
 &lt;pre&gt;&lt;code&gt;// 可以在js代码或调试窗口打印变量值：
 console.log(10);
 &lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;输入&#34;&gt;输入&lt;/h2&gt;
+&lt;p&gt;prompt&lt;/p&gt;
+&lt;p&gt;alert和prompt会跳过渲染先被执行。&lt;/p&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;函数&#34;&gt;函数&lt;/h1&gt;
 &lt;p&gt;定义函数：&lt;/p&gt;
@@ -16218,8 +16212,7 @@ system(“command options”),返回命令的退出状态。
 &lt;hr&gt;
 &lt;h1 id=&#34;常用命令&#34;&gt;常用命令&lt;/h1&gt;
 &lt;p&gt;删除字符串前后空格:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;echo &amp;quot;string&amp;quot; |　awk &amp;quot;$1=$1&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;echo &amp;quot;string&amp;quot; |　awk &amp;quot;$1=$1&amp;quot;&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
@@ -17823,6 +17816,8 @@ npm whoami
 npm publish
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;发布好了可以去npm网站查看.&lt;/p&gt;
+&lt;p&gt;npm + shrinkwrap = yarn lock
+npm-shrinkwrap.json = yarn.lock&lt;/p&gt;
 &lt;h2 id=&#34;folders&#34;&gt;folders&lt;/h2&gt;
 &lt;p&gt;nodejs加载的路径:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;1. 当前目录
@@ -17852,8 +17847,6 @@ email=&amp;lt;user-email&amp;gt;
 &lt;p&gt;package-locks&lt;/p&gt;
 &lt;p&gt;package-lock.json&lt;/p&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;shrinkwrapjson&#34;&gt;shrinkwrap.json&lt;/h2&gt;
-&lt;hr&gt;
 &lt;h2 id=&#34;yarn&#34;&gt;yarn&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://yarnpkg.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://yarnpkg.com/&lt;/a&gt;&lt;/p&gt;
@@ -17873,6 +17866,9 @@ globalFolder: $HOME/.yarn/berry
 
 // create package.json
 $ yarn init
+
+// 设置project的yarn version，自动下载.yarn/release/yarn-&amp;lt;version&amp;gt;.cjs
+yarn set version berry
 
 // remove all local archives
 $ yarn cache clean  
@@ -17903,7 +17899,10 @@ $ yarn workspaces foreach // run command on all workspaces
 yarn npm login
 yarn npm logout
 yarn npm publish
-&lt;/code&gt;&lt;/pre&gt;
+
+    npmRegistries:
+        &amp;quot;https://artifactory.arm.com/artifactory/api/npm/iep.npm-virtual&amp;quot;: 
+            npmAuthToken: &amp;lt;token&amp;gt;&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
@@ -18171,8 +18170,7 @@ ln -sf ../mods-available/ssl.load ssl.load
     LogLevel warn
     ErrorLog /var/log/apache2/error.log
     CustomLog /var/log/apache2/access.log combined
-&amp;lt;/VirtualHost&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
+&amp;lt;/VirtualHost&amp;gt;&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
@@ -18536,8 +18534,7 @@ polls/
     
     test
     
-    testserver
-&lt;/code&gt;&lt;/pre&gt;
+    testserver&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
@@ -20955,8 +20952,7 @@ how
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.python.org/dev/peps/pep-0020/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.python.org/dev/peps/pep-0020/&lt;/a&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;# 查看pep20
-&amp;gt;import this
-&lt;/code&gt;&lt;/pre&gt;
+&amp;gt;import this&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
@@ -27380,8 +27376,7 @@ agent {
         label &#39;my-defined-label&#39;
         additionalBuildArgs  &#39;--build-arg version=1.0.2&#39;
     }
-}
-&lt;/code&gt;&lt;/pre&gt;
+}&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
@@ -31236,8 +31231,7 @@ sed   ‘/pattern/{{n; p;}}’   urfile   读取pattern下一行并打印。
 &lt;h1 id=&#34;常用&#34;&gt;常用&lt;/h1&gt;
 &lt;pre&gt;&lt;code&gt;sed   ‘$a   string’   filenames           #批量往文件最后一行添加内容
 sed   ‘$i    string’   filenames           #批量往文件倒数第二行添加内容
-string里面有空格用\开头。
-&lt;/code&gt;&lt;/pre&gt;
+string里面有空格用\开头。&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
@@ -32068,8 +32062,7 @@ unzip
 &lt;h1 id=&#34;数据处理&#34;&gt;数据处理&lt;/h1&gt;
 &lt;p&gt;base64&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;// 生成basic authentication.
-echo -n &amp;quot;user:pw&amp;quot; | base64
-&lt;/code&gt;&lt;/pre&gt;
+echo -n &amp;quot;user:pw&amp;quot; | base64&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
@@ -34556,7 +34549,7 @@ GITHUB_URL=https://github.com/crazy-canux/crazy-canux.github.io.git
         <description>&lt;h1 id=&#34;作者简介synopsis&#34;&gt;作者简介(Synopsis)&lt;/h1&gt;
 &lt;p&gt;程 伟&lt;/p&gt;
 &lt;p&gt;Canux CHENG&lt;/p&gt;
-&lt;p&gt;Interested in：DevSecOps, Cloud, AWS, GCP, Azure, Container, Kubernetes.&lt;/p&gt;
+&lt;p&gt;Interested in：DevSecOps, Cloud, AWS, GCP, Azure, Terraform, Kubernetes, Golang, Python, TS/JS/NodeJS&lt;/p&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;技术交流contact&#34;&gt;技术交流(Contact)&lt;/h1&gt;
 &lt;p&gt;了解项目情况，欢迎追踪我的Github&lt;/p&gt;

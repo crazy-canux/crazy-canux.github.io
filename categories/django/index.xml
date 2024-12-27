@@ -119,8 +119,7 @@ path(&amp;lsquo;foo/&lt;a class=&#34;link&#34; href=&#34;int:code&#34; &gt;int:c
         &#39;BACKEND&#39;: &#39;django.core.cache.backends.db.DatabaseCache&#39;,
         &#39;LOCATION&#39;: &#39;my_cache_table&#39;,
     }
-}
-&lt;/code&gt;&lt;/pre&gt;
+}&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
@@ -1682,8 +1681,7 @@ polls/
     
     test
     
-    testserver
-&lt;/code&gt;&lt;/pre&gt;
+    testserver&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         

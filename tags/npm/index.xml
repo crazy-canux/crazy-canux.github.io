@@ -73,6 +73,8 @@ npm whoami
 npm publish
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;发布好了可以去npm网站查看.&lt;/p&gt;
+&lt;p&gt;npm + shrinkwrap = yarn lock
+npm-shrinkwrap.json = yarn.lock&lt;/p&gt;
 &lt;h2 id=&#34;folders&#34;&gt;folders&lt;/h2&gt;
 &lt;p&gt;nodejs加载的路径:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;1. 当前目录
@@ -102,8 +104,6 @@ email=&amp;lt;user-email&amp;gt;
 &lt;p&gt;package-locks&lt;/p&gt;
 &lt;p&gt;package-lock.json&lt;/p&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;shrinkwrapjson&#34;&gt;shrinkwrap.json&lt;/h2&gt;
-&lt;hr&gt;
 &lt;h2 id=&#34;yarn&#34;&gt;yarn&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://yarnpkg.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://yarnpkg.com/&lt;/a&gt;&lt;/p&gt;
@@ -123,6 +123,9 @@ globalFolder: $HOME/.yarn/berry
 
 // create package.json
 $ yarn init
+
+// 设置project的yarn version，自动下载.yarn/release/yarn-&amp;lt;version&amp;gt;.cjs
+yarn set version berry
 
 // remove all local archives
 $ yarn cache clean  
@@ -153,7 +156,10 @@ $ yarn workspaces foreach // run command on all workspaces
 yarn npm login
 yarn npm logout
 yarn npm publish
-&lt;/code&gt;&lt;/pre&gt;
+
+    npmRegistries:
+        &amp;quot;https://artifactory.arm.com/artifactory/api/npm/iep.npm-virtual&amp;quot;: 
+            npmAuthToken: &amp;lt;token&amp;gt;&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         
