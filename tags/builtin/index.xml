@@ -124,19 +124,15 @@ type error interface {
         <pubDate>Mon, 15 Aug 2016 11:16:29 +0000</pubDate>
         
         <guid>https://canuxcheng.com/post/psl_builtins/</guid>
-        <description>&lt;h1 id=&#34;__builtins__&#34;&gt;_&lt;em&gt;builtins&lt;/em&gt;_&lt;/h1&gt;
+        <description>&lt;h1 id=&#34;_builtins_&#34;&gt;_&lt;em&gt;builtins&lt;/em&gt;_&lt;/h1&gt;
 &lt;p&gt;python的内置模块，所有python的内置功能都在这个模块中，不需要import导入就可以使用。&lt;/p&gt;
 &lt;p&gt;包括内置类类型以及所属的内置方法，和内置函数.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;builtin&lt;/strong&gt; - 包括内置类类型以及所属的内置方法，和内置函数.解释器不会自动导入．&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;builtin&lt;/strong&gt; - 包括内置类类型以及所属的内置方法，和内置函数.解释器不会自动导入．&lt;/p&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;builtins&lt;/strong&gt; - 仅仅是__builtin__的一个引用．解释器自动导入的．&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;builtins&lt;/strong&gt; - 仅仅是__builtin__的一个引用．解释器自动导入的．&lt;/p&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;
 &lt;p&gt;内置常量&lt;/p&gt;
 &lt;p&gt;内置函数(BIF)&lt;/p&gt;
 &lt;p&gt;内置类型(BIT)&lt;/p&gt;

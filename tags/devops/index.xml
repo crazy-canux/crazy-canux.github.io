@@ -6,7 +6,104 @@
         <description>Recent content in Devops on Morgoth</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Mon, 01 Jan 2018 10:49:21 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/devops/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 10 Jan 2025 09:41:39 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/devops/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>DevOps Metrics</title>
+        <link>https://canuxcheng.com/post/devops_metrics/</link>
+        <pubDate>Fri, 10 Jan 2025 09:41:39 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/devops_metrics/</guid>
+        <description>&lt;h1 id=&#34;devops-metrics&#34;&gt;DevOps Metrics&lt;/h1&gt;
+&lt;p&gt;从业务角度来看，公司希望更准确地度量其开发人员的生产力，原因如下:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Monitoring progress over time&lt;/li&gt;
+&lt;li&gt;Creation of benchmarks&lt;/li&gt;
+&lt;li&gt;Rewarding top performers&lt;/li&gt;
+&lt;li&gt;Determining resource allocation&lt;/li&gt;
+&lt;li&gt;Identification of more productive development processes&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;框架是想法、概念和关系的简单总结，因此基于您的上下文、环境和团队，您可以选择一组您可以解释的指标，以确定团队是否在它应该在的地方。&lt;/p&gt;
+&lt;h2 id=&#34;dora&#34;&gt;DORA&lt;/h2&gt;
+&lt;p&gt;DevOps Research and Assessment.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://getdx.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://getdx.com/&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;speed-metrics&#34;&gt;Speed metrics&lt;/h3&gt;
+&lt;p&gt;Deployment frequency: This measures how often a team deploys code to production.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Low performance: once per month - once per semester. (inadequate integration, lack of automation.)&lt;/li&gt;
+&lt;li&gt;Medium performance: once per month - once per week.&lt;/li&gt;
+&lt;li&gt;High performance: daily for multiple times per day.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Lead time for change: This measures the time it takes from the moment a code change is made until it is successfully deployed to production.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Low performance: one - six months. (time-consuming manual testing, lack of automation.)&lt;/li&gt;
+&lt;li&gt;Medium performance: one week - one month.&lt;/li&gt;
+&lt;li&gt;High performance: less than one day.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;stability-metrics&#34;&gt;Stability metrics&lt;/h3&gt;
+&lt;p&gt;change failure rate: This metric measures the proportion of deployments that result in failures.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Poor performance: 46% - 60%. (quality and reliability issues).&lt;/li&gt;
+&lt;li&gt;Average performance: 15%-45%.&lt;/li&gt;
+&lt;li&gt;High performance: 0% - 15%.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;mean time to restore: This metric helps assess team’s ability to handle incidents and failures.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Low performance: one week - one month. (lack of adequate monitoring and diagnostic tools).&lt;/li&gt;
+&lt;li&gt;Medium performance: one day - one week.&lt;/li&gt;
+&lt;li&gt;High performance: less than one day.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;space&#34;&gt;SPACE&lt;/h2&gt;
+&lt;p&gt;S: Satisfaction and well-being&lt;/p&gt;
+&lt;p&gt;P: Performance&lt;/p&gt;
+&lt;p&gt;A: Activity&lt;/p&gt;
+&lt;p&gt;C: Collaboration and communication&lt;/p&gt;
+&lt;p&gt;E: Efficiency and flow&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;devex&#34;&gt;DevEx&lt;/h2&gt;
+&lt;p&gt;Developer Experience: DevEx captures how developers feel, how they think, and how they value their work.&lt;/p&gt;
+&lt;h3 id=&#34;feedback-loops&#34;&gt;Feedback loops&lt;/h3&gt;
+&lt;p&gt;perceptions:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;satisfaction with automated test speed and output.&lt;/li&gt;
+&lt;li&gt;satisfaction with time it takes to validate a local change.&lt;/li&gt;
+&lt;li&gt;satisfaction with time it takes to deploy a change to production.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;workflows:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;time it takes to generate CI results.&lt;/li&gt;
+&lt;li&gt;code review turnaround time.&lt;/li&gt;
+&lt;li&gt;deployment lead time.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;cognitive-load&#34;&gt;Cognitive load&lt;/h3&gt;
+&lt;p&gt;perceptions&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;perceive complexity of codebase.&lt;/li&gt;
+&lt;li&gt;ease of debugging production systems&lt;/li&gt;
+&lt;li&gt;easy of understanding documentation.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;workflows&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;time it takes to get answers to technical questions.&lt;/li&gt;
+&lt;li&gt;manual steps required to deploy a change.&lt;/li&gt;
+&lt;li&gt;frequency of documentation improvements.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;flow-state&#34;&gt;Flow state&lt;/h3&gt;
+&lt;p&gt;perceptions&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;perceived ability to focus and avoid interruptions.&lt;/li&gt;
+&lt;li&gt;satisfaction with clarity of task or project goals.&lt;/li&gt;
+&lt;li&gt;perceived disruptiveness of being on-call.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;workflows&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;number of blocks of time without meetings or interruptions.&lt;/li&gt;
+&lt;li&gt;frequency of unplanned tasks or requests.&lt;/li&gt;
+&lt;li&gt;frequency of incidents requiring team attention.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
         <title>Devops</title>
         <link>https://canuxcheng.com/post/go_devops/</link>
         <pubDate>Mon, 01 Jan 2018 10:49:21 +0000</pubDate>

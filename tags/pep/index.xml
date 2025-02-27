@@ -12,17 +12,18 @@
         <pubDate>Sat, 06 Aug 2016 16:54:08 +0000</pubDate>
         
         <guid>https://canuxcheng.com/post/python_pep/</guid>
-        <description>&lt;h1 id=&#34;pep-8----style-guide-for-python-code&#34;&gt;PEP 8 &amp;ndash; Style Guide for Python Code&lt;/h1&gt;
+        <description>&lt;h1 id=&#34;pep-8--style-guide-for-python-code&#34;&gt;PEP 8 &amp;ndash; Style Guide for Python Code&lt;/h1&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.python.org/dev/peps/pep-0008/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.python.org/dev/peps/pep-0008/&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id=&#34;pep-257----docstring-conventions&#34;&gt;PEP 257 &amp;ndash; Docstring Conventions&lt;/h1&gt;
+&lt;h1 id=&#34;pep-257--docstring-conventions&#34;&gt;PEP 257 &amp;ndash; Docstring Conventions&lt;/h1&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.python.org/dev/peps/pep-0257/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.python.org/dev/peps/pep-0257/&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id=&#34;pep-20pep-20----the-zen-of-python&#34;&gt;PEP-20PEP 20 &amp;ndash; The Zen of Python&lt;/h1&gt;
+&lt;h1 id=&#34;pep-20pep-20--the-zen-of-python&#34;&gt;PEP-20PEP 20 &amp;ndash; The Zen of Python&lt;/h1&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.python.org/dev/peps/pep-0020/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.python.org/dev/peps/pep-0020/&lt;/a&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;# 查看pep20
-&amp;gt;import this&lt;/code&gt;&lt;/pre&gt;
+&amp;gt;import this
+&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         

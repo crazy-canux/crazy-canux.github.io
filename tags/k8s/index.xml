@@ -1401,7 +1401,8 @@ webhooks:
     - configmaps
     scope: &#39;*&#39;
   sideEffects: NoneOnDryRun
-  timeoutSeconds: 10&lt;/code&gt;&lt;/pre&gt;
+  timeoutSeconds: 10
+&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>

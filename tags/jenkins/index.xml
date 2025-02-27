@@ -85,7 +85,8 @@ agent {
         label &#39;my-defined-label&#39;
         additionalBuildArgs  &#39;--build-arg version=1.0.2&#39;
     }
-}&lt;/code&gt;&lt;/pre&gt;
+}
+&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         

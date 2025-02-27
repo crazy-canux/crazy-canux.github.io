@@ -6,7 +6,104 @@
         <description>Recent content in Posts on Morgoth</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Sun, 28 Jul 2024 16:08:54 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 10 Jan 2025 09:41:39 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>DevOps Metrics</title>
+        <link>https://canuxcheng.com/post/devops_metrics/</link>
+        <pubDate>Fri, 10 Jan 2025 09:41:39 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/devops_metrics/</guid>
+        <description>&lt;h1 id=&#34;devops-metrics&#34;&gt;DevOps Metrics&lt;/h1&gt;
+&lt;p&gt;从业务角度来看，公司希望更准确地度量其开发人员的生产力，原因如下:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Monitoring progress over time&lt;/li&gt;
+&lt;li&gt;Creation of benchmarks&lt;/li&gt;
+&lt;li&gt;Rewarding top performers&lt;/li&gt;
+&lt;li&gt;Determining resource allocation&lt;/li&gt;
+&lt;li&gt;Identification of more productive development processes&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;框架是想法、概念和关系的简单总结，因此基于您的上下文、环境和团队，您可以选择一组您可以解释的指标，以确定团队是否在它应该在的地方。&lt;/p&gt;
+&lt;h2 id=&#34;dora&#34;&gt;DORA&lt;/h2&gt;
+&lt;p&gt;DevOps Research and Assessment.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://getdx.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://getdx.com/&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;speed-metrics&#34;&gt;Speed metrics&lt;/h3&gt;
+&lt;p&gt;Deployment frequency: This measures how often a team deploys code to production.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Low performance: once per month - once per semester. (inadequate integration, lack of automation.)&lt;/li&gt;
+&lt;li&gt;Medium performance: once per month - once per week.&lt;/li&gt;
+&lt;li&gt;High performance: daily for multiple times per day.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Lead time for change: This measures the time it takes from the moment a code change is made until it is successfully deployed to production.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Low performance: one - six months. (time-consuming manual testing, lack of automation.)&lt;/li&gt;
+&lt;li&gt;Medium performance: one week - one month.&lt;/li&gt;
+&lt;li&gt;High performance: less than one day.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;stability-metrics&#34;&gt;Stability metrics&lt;/h3&gt;
+&lt;p&gt;change failure rate: This metric measures the proportion of deployments that result in failures.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Poor performance: 46% - 60%. (quality and reliability issues).&lt;/li&gt;
+&lt;li&gt;Average performance: 15%-45%.&lt;/li&gt;
+&lt;li&gt;High performance: 0% - 15%.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;mean time to restore: This metric helps assess team’s ability to handle incidents and failures.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Low performance: one week - one month. (lack of adequate monitoring and diagnostic tools).&lt;/li&gt;
+&lt;li&gt;Medium performance: one day - one week.&lt;/li&gt;
+&lt;li&gt;High performance: less than one day.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;space&#34;&gt;SPACE&lt;/h2&gt;
+&lt;p&gt;S: Satisfaction and well-being&lt;/p&gt;
+&lt;p&gt;P: Performance&lt;/p&gt;
+&lt;p&gt;A: Activity&lt;/p&gt;
+&lt;p&gt;C: Collaboration and communication&lt;/p&gt;
+&lt;p&gt;E: Efficiency and flow&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;devex&#34;&gt;DevEx&lt;/h2&gt;
+&lt;p&gt;Developer Experience: DevEx captures how developers feel, how they think, and how they value their work.&lt;/p&gt;
+&lt;h3 id=&#34;feedback-loops&#34;&gt;Feedback loops&lt;/h3&gt;
+&lt;p&gt;perceptions:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;satisfaction with automated test speed and output.&lt;/li&gt;
+&lt;li&gt;satisfaction with time it takes to validate a local change.&lt;/li&gt;
+&lt;li&gt;satisfaction with time it takes to deploy a change to production.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;workflows:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;time it takes to generate CI results.&lt;/li&gt;
+&lt;li&gt;code review turnaround time.&lt;/li&gt;
+&lt;li&gt;deployment lead time.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;cognitive-load&#34;&gt;Cognitive load&lt;/h3&gt;
+&lt;p&gt;perceptions&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;perceive complexity of codebase.&lt;/li&gt;
+&lt;li&gt;ease of debugging production systems&lt;/li&gt;
+&lt;li&gt;easy of understanding documentation.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;workflows&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;time it takes to get answers to technical questions.&lt;/li&gt;
+&lt;li&gt;manual steps required to deploy a change.&lt;/li&gt;
+&lt;li&gt;frequency of documentation improvements.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;flow-state&#34;&gt;Flow state&lt;/h3&gt;
+&lt;p&gt;perceptions&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;perceived ability to focus and avoid interruptions.&lt;/li&gt;
+&lt;li&gt;satisfaction with clarity of task or project goals.&lt;/li&gt;
+&lt;li&gt;perceived disruptiveness of being on-call.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;workflows&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;number of blocks of time without meetings or interruptions.&lt;/li&gt;
+&lt;li&gt;frequency of unplanned tasks or requests.&lt;/li&gt;
+&lt;li&gt;frequency of incidents requiring team attention.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
         <title>Secret</title>
         <link>https://canuxcheng.com/post/sec_secret/</link>
         <pubDate>Sun, 28 Jul 2024 16:08:54 +0000</pubDate>
@@ -915,7 +1012,8 @@ path(&amp;lsquo;foo/&lt;a class=&#34;link&#34; href=&#34;int:code&#34; &gt;int:c
         &#39;BACKEND&#39;: &#39;django.core.cache.backends.db.DatabaseCache&#39;,
         &#39;LOCATION&#39;: &#39;my_cache_table&#39;,
     }
-}&lt;/code&gt;&lt;/pre&gt;
+}
+&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
@@ -1670,7 +1768,8 @@ modprobe &amp;lt;name&amp;gt; 加载模块 # /etc/modules
 modprobe -r &amp;lt;name&amp;gt; 删除模块
 
 // modprobe 重启就没了
-echo &amp;quot;ipmi_devintf&amp;quot; &amp;gt;&amp;gt; /etc/modules&lt;/code&gt;&lt;/pre&gt;
+echo &amp;quot;ipmi_devintf&amp;quot; &amp;gt;&amp;gt; /etc/modules
+&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
@@ -3513,7 +3612,8 @@ list1:
 &lt;pre&gt;&lt;code&gt;$ curl -L https://github.com/kubernetes/kompose/releases/download/v1.19.0/kompose-linux-amd64 -o kompose
 
 $ chmod +x kompose
-$ sudo mv ./kompose /usr/local/bin/kompose&lt;/code&gt;&lt;/pre&gt;
+$ sudo mv ./kompose /usr/local/bin/kompose
+&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
@@ -3726,7 +3826,8 @@ webhooks:
     - configmaps
     scope: &#39;*&#39;
   sideEffects: NoneOnDryRun
-  timeoutSeconds: 10&lt;/code&gt;&lt;/pre&gt;
+  timeoutSeconds: 10
+&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
@@ -4721,7 +4822,8 @@ spec:
     # job is considered part of the release.
     &amp;quot;helm.sh/hook&amp;quot;: post-install, pre-install, ...
     &amp;quot;helm.sh/hook-weight&amp;quot;: &amp;quot;-5&amp;quot;
-    &amp;quot;helm.sh/hook-delete-policy&amp;quot;: hook-succeeded, hook-failed, ...&lt;/code&gt;&lt;/pre&gt;
+    &amp;quot;helm.sh/hook-delete-policy&amp;quot;: hook-succeeded, hook-failed, ...
+&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
@@ -5565,7 +5667,8 @@ certutil -delstore &amp;quot;ROOT&amp;quot; my-cert.crt
 &lt;pre&gt;&lt;code&gt;$ sudo apt-get install keepalived
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;配置:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ sudo vim /etc/keepalived/keepalived.conf&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo vim /etc/keepalived/keepalived.conf
+&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
@@ -5907,7 +6010,8 @@ grok_timezone = &amp;quot;Local&amp;quot;
 &lt;hr&gt;
 &lt;h1 id=&#34;misc&#34;&gt;misc&lt;/h1&gt;
 &lt;p&gt;get host ip(docker/docker_gwbridge) from container:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;ip route | awk &#39;/default/ { print $3 }&#39;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;ip route | awk &#39;/default/ { print $3 }&#39;
+&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
@@ -9003,6 +9107,7 @@ floatA := float64(uint64Var)
 &lt;hr&gt;
 &lt;h1 id=&#34;go控制流&#34;&gt;Go控制流&lt;/h1&gt;
 &lt;p&gt;go控制流的左大括号不能另起一行．&lt;/p&gt;
+&lt;p&gt;golang没有内置的while循环。&lt;/p&gt;
 &lt;h2 id=&#34;for循环&#34;&gt;for循环&lt;/h2&gt;
 &lt;p&gt;go只有for可以循环．&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;for i := 0; i &amp;lt; 10; i++ {
@@ -12856,7 +12961,8 @@ app.autodiscover_tasks()
 &lt;p&gt;inspect选项:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;-t, --timeout
 -d, --destination
--j, --json&lt;/code&gt;&lt;/pre&gt;
+-j, --json
+&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
@@ -13511,7 +13617,8 @@ min_workers = 50　　　　　　    #libvirtd启动时，初始的工作线�
 max_workers = 200　　　　　　 #同上，最大数目
 max_requests = 1000　　　　　
 #最大同时支持的RPC调用，必须大于等于max_workers
-max_client_requests = 200　　 #每个客户端支持的最大连接数&lt;/code&gt;&lt;/pre&gt;
+max_client_requests = 200　　 #每个客户端支持的最大连接数
+&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
@@ -14422,7 +14529,8 @@ $ gulp
 $ npm install karma-jasmine karma-chrome-launcher jasmine-core --save-dev
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;run karma&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ karma start&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;$ karma start
+&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
@@ -14452,6 +14560,7 @@ ES6.0 (2015)&lt;/p&gt;
 &lt;p&gt;JavaScript使用分号;表示一个语句结束, 一般一行写多个语句才需要显示添加分号．&lt;/p&gt;
 &lt;p&gt;javascript中运算符周围要有空格。&lt;/p&gt;
 &lt;p&gt;javascript中使用四个空格来缩进。&lt;/p&gt;
+&lt;p&gt;javascript不支持goto。&lt;/p&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;注释&#34;&gt;注释&lt;/h1&gt;
 &lt;p&gt;单行注释：&lt;/p&gt;
@@ -14839,7 +14948,7 @@ document.getElementbyId(&amp;quot;demo&amp;quot;).innerHTML = x;
         <pubDate>Mon, 13 Mar 2017 09:36:32 +0000</pubDate>
         
         <guid>https://canuxcheng.com/post/js_test/</guid>
-        <description>&lt;h1 id=&#34;heading&#34;&gt;&lt;/h1&gt;
+        <description>&lt;h1&gt;&lt;/h1&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;jest&#34;&gt;Jest&lt;/h2&gt;
 &lt;p&gt;for javascript.&lt;/p&gt;
@@ -16131,7 +16240,8 @@ system(“command options”),返回命令的退出状态。
 &lt;hr&gt;
 &lt;h1 id=&#34;常用命令&#34;&gt;常用命令&lt;/h1&gt;
 &lt;p&gt;删除字符串前后空格:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;echo &amp;quot;string&amp;quot; |　awk &amp;quot;$1=$1&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;echo &amp;quot;string&amp;quot; |　awk &amp;quot;$1=$1&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
@@ -17821,7 +17931,8 @@ yarn npm publish
 
     npmRegistries:
         &amp;quot;https://artifactory.arm.com/artifactory/api/npm/iep.npm-virtual&amp;quot;: 
-            npmAuthToken: &amp;lt;token&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+            npmAuthToken: &amp;lt;token&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
@@ -18089,7 +18200,8 @@ ln -sf ../mods-available/ssl.load ssl.load
     LogLevel warn
     ErrorLog /var/log/apache2/error.log
     CustomLog /var/log/apache2/access.log combined
-&amp;lt;/VirtualHost&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+&amp;lt;/VirtualHost&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
@@ -18166,42 +18278,28 @@ next
     |- asgi.py
 &lt;/code&gt;&lt;/pre&gt;
 &lt;blockquote&gt;
-&lt;p&gt;next 最外层根目录只是你项目的容器， 根目录名称对Django没有影响，你可以将它重命名为任何你喜欢的名称。&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;next 最外层根目录只是你项目的容器， 根目录名称对Django没有影响，你可以将它重命名为任何你喜欢的名称。&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;manage.py: 一个让你用各种方式管理 Django 项目的命令行工具。你可以阅读 django-admin and manage.py 获取所有 manage.py 的细节。&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;manage.py: 一个让你用各种方式管理 Django 项目的命令行工具。你可以阅读 django-admin and manage.py 获取所有 manage.py 的细节。&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;templates: project的模版.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;templates: project的模版.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;next 里层的目录包含你的项目，它是一个纯 Python 包。它的名字就是当你引用它内部任何东西时需要用到的 Python 包名。 (比如 next.urls).&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;next 里层的目录包含你的项目，它是一个纯 Python 包。它的名字就是当你引用它内部任何东西时需要用到的 Python 包名。 (比如 next.urls).&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;next/&lt;strong&gt;init&lt;/strong&gt;.py：一个空文件，告诉 Python 这个目录应该被认为是一个 Python 包。如果你是 Python 初学者，阅读官方文档中的 更多关于包的知识。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;next/&lt;strong&gt;init&lt;/strong&gt;.py：一个空文件，告诉 Python 这个目录应该被认为是一个 Python 包。如果你是 Python 初学者，阅读官方文档中的 更多关于包的知识。&lt;/p&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;next/settings.py：Django 项目的配置文件。如果你想知道这个文件是如何工作的，请查看 Django 配置 了解细节。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;next/settings.py：Django 项目的配置文件。如果你想知道这个文件是如何工作的，请查看 Django 配置 了解细节。&lt;/p&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;next/urls.py：Django 项目的 URL 声明，就像你网站的“目录”。阅读 URL调度器 文档来获取更多关于 URL 的内容。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;next/urls.py：Django 项目的 URL 声明，就像你网站的“目录”。阅读 URL调度器 文档来获取更多关于 URL 的内容。&lt;/p&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;next/asgi.py：作为你的项目的运行在 ASGI 兼容的Web服务器上的入口。阅读 如何使用 ASGI 来部署 了解更多细节。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;next/asgi.py：作为你的项目的运行在 ASGI 兼容的Web服务器上的入口。阅读 如何使用 ASGI 来部署 了解更多细节。&lt;/p&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;next/wsgi.py：作为你的项目的运行在 WSGI 兼容的Web服务器上的入口。阅读 如何使用 WSGI 进行部署 了解更多细节。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;next/wsgi.py：作为你的项目的运行在 WSGI 兼容的Web服务器上的入口。阅读 如何使用 WSGI 进行部署 了解更多细节。&lt;/p&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;
 &lt;p&gt;验证开发服务器：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;$python manage.py runserver
 $python manage.py runserver &amp;lt;ip address&amp;gt;:&amp;lt;port&amp;gt;
@@ -18376,32 +18474,23 @@ polls/
       |- style.css
 &lt;/code&gt;&lt;/pre&gt;
 &lt;blockquote&gt;
-&lt;p&gt;admin.py admin管理界面&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;admin.py admin管理界面&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;apps.py&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;apps.py&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;models.py 模型&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;models.py 模型&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;views.py 视图&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;views.py 视图&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;urls.py 新建的application的url&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;urls.py 新建的application的url&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;test.py 测试&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;test.py 测试&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;migrations 迁移文件夹&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;migrations 迁移文件夹&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;templates 应用的模版文件夹&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;templates 应用的模版文件夹&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;static 静态文件&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;static 静态文件&lt;/p&gt;&lt;/blockquote&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;django-admin--managepy&#34;&gt;django-admin &amp;amp; manage.py&lt;/h1&gt;
 &lt;pre&gt;&lt;code&gt;[staticfiles]
@@ -18453,7 +18542,8 @@ polls/
     
     test
     
-    testserver&lt;/code&gt;&lt;/pre&gt;
+    testserver
+&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
@@ -18528,19 +18618,15 @@ $ http -a &#39;username:password&#39; GET http://google.com
         <pubDate>Mon, 15 Aug 2016 11:16:29 +0000</pubDate>
         
         <guid>https://canuxcheng.com/post/psl_builtins/</guid>
-        <description>&lt;h1 id=&#34;__builtins__&#34;&gt;_&lt;em&gt;builtins&lt;/em&gt;_&lt;/h1&gt;
+        <description>&lt;h1 id=&#34;_builtins_&#34;&gt;_&lt;em&gt;builtins&lt;/em&gt;_&lt;/h1&gt;
 &lt;p&gt;python的内置模块，所有python的内置功能都在这个模块中，不需要import导入就可以使用。&lt;/p&gt;
 &lt;p&gt;包括内置类类型以及所属的内置方法，和内置函数.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;builtin&lt;/strong&gt; - 包括内置类类型以及所属的内置方法，和内置函数.解释器不会自动导入．&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;builtin&lt;/strong&gt; - 包括内置类类型以及所属的内置方法，和内置函数.解释器不会自动导入．&lt;/p&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;builtins&lt;/strong&gt; - 仅仅是__builtin__的一个引用．解释器自动导入的．&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;builtins&lt;/strong&gt; - 仅仅是__builtin__的一个引用．解释器自动导入的．&lt;/p&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;
 &lt;p&gt;内置常量&lt;/p&gt;
 &lt;p&gt;内置函数(BIF)&lt;/p&gt;
 &lt;p&gt;内置类型(BIT)&lt;/p&gt;
@@ -19544,21 +19630,19 @@ socketpair([family[, type[, proto]]]) -&amp;gt; (socket object, socket object)
         
         <guid>https://canuxcheng.com/post/psl_python/</guid>
         <description>&lt;h1 id=&#34;python-runtime-services&#34;&gt;Python Runtime Services&lt;/h1&gt;
-&lt;h2 id=&#34;__builtin__&#34;&gt;_&lt;em&gt;builtin&lt;/em&gt;_&lt;/h2&gt;
+&lt;h2 id=&#34;_builtin_&#34;&gt;_&lt;em&gt;builtin&lt;/em&gt;_&lt;/h2&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;builtin&lt;/strong&gt;/builtins - Built-in functions, exceptions, and other objects.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;builtin&lt;/strong&gt;/builtins - Built-in functions, exceptions, and other objects.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;python2叫__builtin__&lt;/p&gt;
 &lt;p&gt;python3叫builtins&lt;/p&gt;
-&lt;h2 id=&#34;__main__&#34;&gt;_&lt;em&gt;main&lt;/em&gt;_&lt;/h2&gt;
+&lt;h2 id=&#34;_main_&#34;&gt;_&lt;em&gt;main&lt;/em&gt;_&lt;/h2&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;main&lt;/strong&gt; - Top-level script environment.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;main&lt;/strong&gt; - Top-level script environment.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;pre&gt;&lt;code&gt;if __name__ == &amp;quot;__main__&amp;quot;:
     main()
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;当作为顶层脚本运行时(&lt;strong&gt;main&lt;/strong&gt;), 当作为一个模块运行时候就是模块名称．&lt;/p&gt;
-&lt;h2 id=&#34;__future__&#34;&gt;_&lt;em&gt;future&lt;/em&gt;_&lt;/h2&gt;
+&lt;h2 id=&#34;_future_&#34;&gt;_&lt;em&gt;future&lt;/em&gt;_&lt;/h2&gt;
 &lt;p&gt;把下一个版本的新特性导入到当前版本。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;from __future__ import &amp;lt;feature_name&amp;gt;
 
@@ -20861,17 +20945,18 @@ how
         <pubDate>Sat, 06 Aug 2016 16:54:08 +0000</pubDate>
         
         <guid>https://canuxcheng.com/post/python_pep/</guid>
-        <description>&lt;h1 id=&#34;pep-8----style-guide-for-python-code&#34;&gt;PEP 8 &amp;ndash; Style Guide for Python Code&lt;/h1&gt;
+        <description>&lt;h1 id=&#34;pep-8--style-guide-for-python-code&#34;&gt;PEP 8 &amp;ndash; Style Guide for Python Code&lt;/h1&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.python.org/dev/peps/pep-0008/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.python.org/dev/peps/pep-0008/&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id=&#34;pep-257----docstring-conventions&#34;&gt;PEP 257 &amp;ndash; Docstring Conventions&lt;/h1&gt;
+&lt;h1 id=&#34;pep-257--docstring-conventions&#34;&gt;PEP 257 &amp;ndash; Docstring Conventions&lt;/h1&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.python.org/dev/peps/pep-0257/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.python.org/dev/peps/pep-0257/&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id=&#34;pep-20pep-20----the-zen-of-python&#34;&gt;PEP-20PEP 20 &amp;ndash; The Zen of Python&lt;/h1&gt;
+&lt;h1 id=&#34;pep-20pep-20--the-zen-of-python&#34;&gt;PEP-20PEP 20 &amp;ndash; The Zen of Python&lt;/h1&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.python.org/dev/peps/pep-0020/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.python.org/dev/peps/pep-0020/&lt;/a&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;# 查看pep20
-&amp;gt;import this&lt;/code&gt;&lt;/pre&gt;
+&amp;gt;import this
+&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
@@ -21448,6 +21533,9 @@ go -&amp;gt; struct/map
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://yaml.org&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://yaml.org&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;Yaml Ain&amp;rsquo;t Markup Language.&lt;/p&gt;
+&lt;h2 id=&#34;yamllint&#34;&gt;yamllint&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/adrienverge/yamllint&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/adrienverge/yamllint&lt;/a&gt;&lt;/p&gt;
 </description>
         </item>
         <item>
@@ -23241,7 +23329,7 @@ class ClassName(object):
 &lt;p&gt;python标识符(变量，函数，参数，类等)由字母和下划线开头，还可以包含数字．不能是关键字．&lt;/p&gt;
 &lt;p&gt;python不支持方法或函数重载．&lt;/p&gt;
 &lt;p&gt;python不支持char和type类型．&lt;/p&gt;
-&lt;p&gt;python没有switch语句．&lt;/p&gt;
+&lt;p&gt;python没有switch和goto语句．&lt;/p&gt;
 &lt;p&gt;python支持多继承．&lt;/p&gt;
 &lt;p&gt;python不支持++/&amp;ndash;自增和自减运算符．&lt;/p&gt;
 &lt;p&gt;python支持连续比较，a&amp;lt;b&amp;lt;c.&lt;/p&gt;
@@ -23708,6 +23796,7 @@ del dic[&#39;key&#39;]
 &lt;p&gt;break语句：表示结束当前循环块，跳转到后面的语句．&lt;/p&gt;
 &lt;p&gt;pass语句： 表示不做任何事情，NOP.&lt;/p&gt;
 &lt;h2 id=&#34;if条件语句&#34;&gt;&lt;em&gt;if条件语句&lt;/em&gt;&lt;/h2&gt;
+&lt;p&gt;python没有switch，可以用if-elif-else实现。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;if condition:
     expression
 elif condition:
@@ -24840,8 +24929,7 @@ $ apt-cache --recurse depends &amp;lt;pkg&amp;gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;alien&#34;&gt;Alien&lt;/h1&gt;
 &lt;blockquote&gt;
-&lt;p&gt;alien is a program that converts between Red Hat rpm, Debian deb, Stampede slp, Slackware tgz, and Solaris pkg file formats.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;alien is a program that converts between Red Hat rpm, Debian deb, Stampede slp, Slackware tgz, and Solaris pkg file formats.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;h1 id=&#34;gbp&#34;&gt;gbp&lt;/h1&gt;
 &lt;p&gt;通过git来管理deb或rpm包．&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/agx/git-buildpackage&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -27295,7 +27383,8 @@ agent {
         label &#39;my-defined-label&#39;
         additionalBuildArgs  &#39;--build-arg version=1.0.2&#39;
     }
-}&lt;/code&gt;&lt;/pre&gt;
+}
+&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
@@ -29182,8 +29271,7 @@ invoke-sqlcmd -ServerInstance $serverinstance -Database $database -Query $sql
 &lt;hr&gt;
 &lt;h1 id=&#34;freetds&#34;&gt;freeTDS&lt;/h1&gt;
 &lt;blockquote&gt;
-&lt;p&gt;FreeTDS is a set of libraries for Unix and Linux that allows your programs to natively talk to Microsoft SQL Server and Sybase databases.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;FreeTDS is a set of libraries for Unix and Linux that allows your programs to natively talk to Microsoft SQL Server and Sybase databases.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://www.freetds.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;http://www.freetds.org/&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/FreeTDS/freetds&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -31150,7 +31238,8 @@ sed   ‘/pattern/{{n; p;}}’   urfile   读取pattern下一行并打印。
 &lt;h1 id=&#34;常用&#34;&gt;常用&lt;/h1&gt;
 &lt;pre&gt;&lt;code&gt;sed   ‘$a   string’   filenames           #批量往文件最后一行添加内容
 sed   ‘$i    string’   filenames           #批量往文件倒数第二行添加内容
-string里面有空格用\开头。&lt;/code&gt;&lt;/pre&gt;
+string里面有空格用\开头。
+&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
@@ -31216,7 +31305,7 @@ string里面有空格用\开头。&lt;/code&gt;&lt;/pre&gt;
     &gt;https://cplusplus.com/reference/string/&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;stl&#34;&gt;STL&lt;/h2&gt;
 &lt;h3 id=&#34;containers&#34;&gt;containers&lt;/h3&gt;
-&lt;h3 id=&#34;heading&#34;&gt;&lt;/h3&gt;
+&lt;h3&gt;&lt;/h3&gt;
 </description>
         </item>
         <item>
@@ -31981,7 +32070,8 @@ unzip
 &lt;h1 id=&#34;数据处理&#34;&gt;数据处理&lt;/h1&gt;
 &lt;p&gt;base64&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;// 生成basic authentication.
-echo -n &amp;quot;user:pw&amp;quot; | base64&lt;/code&gt;&lt;/pre&gt;
+echo -n &amp;quot;user:pw&amp;quot; | base64
+&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
@@ -32391,12 +32481,10 @@ Markdown和html有很大区别，html是一种发布格式，markdown是一种�
 &lt;h2 id=&#34;两个需要特殊处理的字符&#34;&gt;两个需要特殊处理的字符&lt;/h2&gt;
 &lt;p&gt;&amp;lt; 的表示方法：&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&amp;amp; l t ;&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;&amp;amp; l t ;&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;&amp;amp; 的表示方法：&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&amp;amp; a m p ;&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;&amp;amp; a m p ;&lt;/p&gt;&lt;/blockquote&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;区块元素&#34;&gt;区块元素&lt;/h1&gt;
 &lt;h2 id=&#34;段落和换行&#34;&gt;段落和换行&lt;/h2&gt;
@@ -32430,15 +32518,12 @@ Markdown和html有很大区别，html是一种发布格式，markdown是一种�
 &lt;p&gt;使用&amp;gt;表示单层区块引用：&lt;/p&gt;
 &lt;p&gt;&amp;gt; block&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;block&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;block&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;使用多个&amp;gt;嵌套使用：&lt;/p&gt;
 &lt;p&gt;&amp;gt;&amp;gt; block&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;block&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;block&lt;/p&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;
 &lt;p&gt;区块内也可以用标题，列表和代码区块等。&lt;/p&gt;
 &lt;h2 id=&#34;列表&#34;&gt;列表&lt;/h2&gt;
 &lt;h3 id=&#34;无序列表&#34;&gt;无序列表&lt;/h3&gt;
@@ -32447,20 +32532,17 @@ Markdown和html有很大区别，html是一种发布格式，markdown是一种�
 &lt;blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;shopping list&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
+&lt;/ul&gt;&lt;/blockquote&gt;
 &lt;p&gt;+ shoppint list&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;shopping list&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
+&lt;/ul&gt;&lt;/blockquote&gt;
 &lt;p&gt;- shopping list&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;ul&gt;
 &lt;li&gt;shopping list&lt;/li&gt;
-&lt;/ul&gt;
-&lt;/blockquote&gt;
+&lt;/ul&gt;&lt;/blockquote&gt;
 &lt;h3 id=&#34;有序列表&#34;&gt;有序列表&lt;/h3&gt;
 &lt;p&gt;有序列表使用数字和一个英文句点,符号和字符之间有空格：&lt;/p&gt;
 &lt;ol&gt;
@@ -32469,8 +32551,7 @@ Markdown和html有很大区别，html是一种发布格式，markdown是一种�
 &lt;blockquote&gt;
 &lt;ol&gt;
 &lt;li&gt;numbered list&lt;/li&gt;
-&lt;/ol&gt;
-&lt;/blockquote&gt;
+&lt;/ol&gt;&lt;/blockquote&gt;
 &lt;h2 id=&#34;代码区块&#34;&gt;代码区块&lt;/h2&gt;
 &lt;p&gt;简单地缩进 4 个空格或是 1 个制表符,一个代码区块会一直持续到没有缩进的那一行或是文件结尾。&lt;/p&gt;
 &lt;p&gt;这是一个普通段落：&lt;/p&gt;
@@ -32482,16 +32563,13 @@ Markdown和html有很大区别，html是一种发布格式，markdown是一种�
 &lt;p&gt;三个以上的*-_都可以产生分割线:&lt;/p&gt;
 &lt;p&gt;***&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;hr&gt;
-&lt;/blockquote&gt;
+&lt;hr&gt;&lt;/blockquote&gt;
 &lt;p&gt;---&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;hr&gt;
-&lt;/blockquote&gt;
+&lt;hr&gt;&lt;/blockquote&gt;
 &lt;p&gt;___&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;hr&gt;
-&lt;/blockquote&gt;
+&lt;hr&gt;&lt;/blockquote&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;区段元素&#34;&gt;区段元素&lt;/h1&gt;
 &lt;h2 id=&#34;链接&#34;&gt;链接&lt;/h2&gt;
@@ -32500,8 +32578,7 @@ Markdown和html有很大区别，html是一种发布格式，markdown是一种�
     &gt;https://github.com/crazy-canux&lt;/a&gt;)&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/crazy-canux&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;Link&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
+    &gt;Link&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
 &lt;h3 id=&#34;参考式链接&#34;&gt;参考式链接&lt;/h3&gt;
 &lt;p&gt;[Link][id]&lt;/p&gt;
 &lt;p&gt;[id]:https://github.com/crazy-canux&lt;/p&gt;
@@ -32510,37 +32587,30 @@ Markdown和html有很大区别，html是一种发布格式，markdown是一种�
 &lt;p&gt;&amp;lt;https://github.com/crazy-canux&amp;gt;&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/crazy-canux&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://github.com/crazy-canux&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
+    &gt;https://github.com/crazy-canux&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;邮箱：&lt;/p&gt;
 &lt;p&gt;&amp;lt;canuxcheng@gmail.com&amp;gt;&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;mailto:canuxcheng@gmail.com&#34; &gt;canuxcheng@gmail.com&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;mailto:canuxcheng@gmail.com&#34; &gt;canuxcheng@gmail.com&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
 &lt;h2 id=&#34;强调&#34;&gt;强调&lt;/h2&gt;
 &lt;p&gt;用一个*或_表示强调，符号和字符中间没有空格&lt;/p&gt;
 &lt;p&gt;斜体：*italic*&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;em&gt;italic&lt;/em&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;&lt;em&gt;italic&lt;/em&gt;&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;斜体： _italic_&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;em&gt;italic&lt;/em&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;&lt;em&gt;italic&lt;/em&gt;&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;粗体： **bold**&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;bold&lt;/strong&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;bold&lt;/strong&gt;&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;粗体： __bold__&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;bold&lt;/strong&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;bold&lt;/strong&gt;&lt;/p&gt;&lt;/blockquote&gt;
 &lt;h2 id=&#34;代码&#34;&gt;代码&lt;/h2&gt;
 &lt;p&gt;用反引号标记一小段代码：&lt;/p&gt;
 &lt;p&gt;`monospace`&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;code&gt;monospace&lt;/code&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;&lt;code&gt;monospace&lt;/code&gt;&lt;/p&gt;&lt;/blockquote&gt;
 &lt;h2 id=&#34;图片&#34;&gt;图片&lt;/h2&gt;
 &lt;h3 id=&#34;行内式图片&#34;&gt;行内式图片&lt;/h3&gt;
 &lt;p&gt;![pic](/path/to/img.jpg)&lt;/p&gt;
@@ -32554,8 +32624,7 @@ Markdown和html有很大区别，html是一种发布格式，markdown是一种�
 		alt=&#34;Pic&#34;
 	
 	
-&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
+&gt;&lt;/p&gt;&lt;/blockquote&gt;
 &lt;h3 id=&#34;参考式图片&#34;&gt;参考式图片&lt;/h3&gt;
 &lt;p&gt;![pic][id]&lt;/p&gt;
 &lt;p&gt;[id]: /path/to/img.jpg&lt;/p&gt;
@@ -32584,11 +32653,9 @@ Markdown和html有很大区别，html是一种发布格式，markdown是一种�
         <guid>https://canuxcheng.com/post/metrics_nagios/</guid>
         <description>&lt;h1 id=&#34;nagios&#34;&gt;Nagios&lt;/h1&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Nagios is the industry standard in IT infrastructure monitoring&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Nagios is the industry standard in IT infrastructure monitoring&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Nagios offers complete monitoring and alerting for servers, switches, applications, and services.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Nagios offers complete monitoring and alerting for servers, switches, applications, and services.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Nagios官方宣称nagios是IT基础监控的工业标准。&lt;/p&gt;
 &lt;p&gt;Nagios提供对服务器，交换机，应用和服务的完整的监控和警报。&lt;/p&gt;
 &lt;p&gt;Nagios是无agent的，nagios的plugin通过协议远程获取信息。&lt;/p&gt;
@@ -32625,8 +32692,7 @@ Markdown和html有很大区别，html是一种发布格式，markdown是一种�
 &lt;h1 id=&#34;nagios开源解决方案&#34;&gt;Nagios开源解决方案&lt;/h1&gt;
 &lt;h2 id=&#34;nagios-core&#34;&gt;Nagios core:&lt;/h2&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Nagios Core is the monitoring and alerting engine that serves as the primary application around which hundreds of Nagios projects are built.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Nagios Core is the monitoring and alerting engine that serves as the primary application around which hundreds of Nagios projects are built.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Nagios core是监控和警报的主引擎，围绕它建立了成千上万的项目。
 技术栈是c，只能安装在linux/unix系统。
 Nagios core只是一个监控套件，本身没有监控功能，需要插件来完成监控。&lt;/p&gt;
@@ -32636,8 +32702,7 @@ Nagios core只是一个监控套件，本身没有监控功能，需要插件来
     &gt;https://github.com/NagiosEnterprises/nagioscore&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;nagios-plugins&#34;&gt;Nagios plugins:&lt;/h2&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Efficient, standalone extensions that provide low-level intelligence for monitoring anything and everything with Nagios Core.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Efficient, standalone extensions that provide low-level intelligence for monitoring anything and everything with Nagios Core.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Nagios core的监控插件,也就是官方插件,主要是c、shell和perl。&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.nagios.org/projects/nagios-plugins/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.nagios.org/projects/nagios-plugins/&lt;/a&gt;&lt;/p&gt;
@@ -32645,15 +32710,13 @@ Nagios core只是一个监控套件，本身没有监控功能，需要插件来
     &gt;https://github.com/nagios-plugins/nagios-plugins&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;nagios-frontends&#34;&gt;Nagios frontends:&lt;/h2&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Web interfaces, themes, Windows and Linux interfaces, and mobile apps for Nagios. Change the look and style of Nagios to suite your needs.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Web interfaces, themes, Windows and Linux interfaces, and mobile apps for Nagios. Change the look and style of Nagios to suite your needs.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Nagios frontends包括了 主题,web接口,移动设备接口。&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.nagios.org/downloads/nagios-core-frontends/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.nagios.org/downloads/nagios-core-frontends/&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;nagios-config-toolsnagios-addons-projects&#34;&gt;Nagios config tools(Nagios addons projects):&lt;/h2&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Tools and GUIs for simplifying Nagios Core configuration.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Tools and GUIs for simplifying Nagios Core configuration.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;nagios core的组件。&lt;/p&gt;
 &lt;p&gt;包括Lilac,NagiosQL,NConf,OneCMDB,ignoramus&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.nagios.org/projects/nagios-config-tools/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -32664,8 +32727,7 @@ Nagios core只是一个监控套件，本身没有监控功能，需要插件来
     &gt;https://github.com/NagiosEnterprises&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;nagios-exchange&#34;&gt;Nagios exchange:&lt;/h2&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Nagios® Exchange is the central place where you&amp;rsquo;ll find all types of Nagios projects - plugins, addons, documentation, extensions, and more. This site is designed for the Nagios Community to share its Nagios creations.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Nagios® Exchange is the central place where you&amp;rsquo;ll find all types of Nagios projects - plugins, addons, documentation, extensions, and more. This site is designed for the Nagios Community to share its Nagios creations.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Nagios exchange是nagios的开源宝库。&lt;/p&gt;
 &lt;p&gt;包括第三方plugins、addons和docs。&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://exchange.nagios.org/https://exchange.nagios.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -32674,8 +32736,7 @@ Nagios core只是一个监控套件，本身没有监控功能，需要插件来
 &lt;h1 id=&#34;nagios商业解决方案&#34;&gt;Nagios商业解决方案&lt;/h1&gt;
 &lt;h2 id=&#34;nagios-xi&#34;&gt;Nagios XI:&lt;/h2&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Our most powerful IT infrastructure monitoring and IT monitoring software alerting solution for today’s demanding organizational requirements.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Our most powerful IT infrastructure monitoring and IT monitoring software alerting solution for today’s demanding organizational requirements.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Nagios XI 是现代化的商业监控解决套件。&lt;/p&gt;
 &lt;p&gt;Nagios XI 使用nagios core 4.0。&lt;/p&gt;
 &lt;p&gt;Nagios XI 架构：&lt;/p&gt;
@@ -32767,8 +32828,7 @@ Nagios core只是一个监控套件，本身没有监控功能，需要插件来
 &lt;blockquote&gt;
 &lt;p&gt;nagiosgraph parses output and performance data from Nagios plugins and stores
 the data in RRD files. nagiosgraph creates graphs and generates HTML pages with
-graphic reports from the data.&lt;/p&gt;
-&lt;/blockquote&gt;
+graphic reports from the data.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;基于RRD，绘制nagios的性能图。&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://nagiosgraph.sourceforge.net/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;http://nagiosgraph.sourceforge.net/&lt;/a&gt;&lt;/p&gt;
@@ -32841,8 +32901,7 @@ graphic reports from the data.&lt;/p&gt;
 &lt;p&gt;介绍Addons.&lt;/p&gt;
 &lt;h1 id=&#34;omd&#34;&gt;OMD&lt;/h1&gt;
 &lt;blockquote&gt;
-&lt;p&gt;OMD implements a completely new concept of how to install, maintain and update a monitoring system built on Nagios.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;OMD implements a completely new concept of how to install, maintain and update a monitoring system built on Nagios.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://omdistro.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;http://omdistro.org/&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://git.mathias-kettner.de/git/?p=omd.git;a=tree&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -32868,8 +32927,7 @@ graphic reports from the data.&lt;/p&gt;
 &lt;/ol&gt;
 &lt;h1 id=&#34;gearman&#34;&gt;Gearman&lt;/h1&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Gearman provides a generic application framework to farm out work to other machines or processes that are better suited to do the work.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Gearman provides a generic application framework to farm out work to other machines or processes that are better suited to do the work.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Gearman用来做任务分发的.&lt;/p&gt;
 &lt;p&gt;一个C++实现的Gearman Job Server:&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://gearman.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -32883,8 +32941,7 @@ graphic reports from the data.&lt;/p&gt;
     &gt;https://github.com/sni/mod_gearman&lt;/a&gt;&lt;/p&gt;
 &lt;h1 id=&#34;rrdtools&#34;&gt;rrdtools&lt;/h1&gt;
 &lt;blockquote&gt;
-&lt;p&gt;RRDtool is a little program for easily maintaining a database of time-series data. It comes with a charting program for drawing pretty graphs based on the data stored.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;RRDtool is a little program for easily maintaining a database of time-series data. It comes with a charting program for drawing pretty graphs based on the data stored.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;存储性能数据。&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://oss.oetiker.ch/rrdtool/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;http://oss.oetiker.ch/rrdtool/&lt;/a&gt;&lt;/p&gt;
@@ -32892,8 +32949,7 @@ graphic reports from the data.&lt;/p&gt;
     &gt;https://github.com/oetiker/rrdtool-1.x&lt;/a&gt;&lt;/p&gt;
 &lt;h1 id=&#34;pnp4nagios&#34;&gt;pnp4nagios&lt;/h1&gt;
 &lt;blockquote&gt;
-&lt;p&gt;PNP is an addon to Nagios which analyzes performance data provided by plugins and stores them automatically into RRD-databases.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;PNP is an addon to Nagios which analyzes performance data provided by plugins and stores them automatically into RRD-databases.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;基于RRD，绘制nagios的性能图。&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://docs.pnp4nagios.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;http://docs.pnp4nagios.org/&lt;/a&gt;&lt;/p&gt;
@@ -32913,8 +32969,7 @@ graphic reports from the data.&lt;/p&gt;
 &lt;/ol&gt;
 &lt;h1 id=&#34;nagvis&#34;&gt;Nagvis&lt;/h1&gt;
 &lt;blockquote&gt;
-&lt;p&gt;NagVis is a program for visualizing the data the monitoring core of your choice, for example Nagios, Naemon, Icinga or Shinken, in a human friendly way.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;NagVis is a program for visualizing the data the monitoring core of your choice, for example Nagios, Naemon, Icinga or Shinken, in a human friendly way.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;绘制监控地图。&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://www.nagvis.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;http://www.nagvis.org/&lt;/a&gt;&lt;/p&gt;
@@ -32922,8 +32977,7 @@ graphic reports from the data.&lt;/p&gt;
     &gt;https://github.com/NagVis/nagvis&lt;/a&gt;&lt;/p&gt;
 &lt;h1 id=&#34;dokuwiki&#34;&gt;dokuwiki&lt;/h1&gt;
 &lt;blockquote&gt;
-&lt;p&gt;DokuWiki is a simple to use and highly versatile Open Source wiki software that doesn&amp;rsquo;t require a database.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;DokuWiki is a simple to use and highly versatile Open Source wiki software that doesn&amp;rsquo;t require a database.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;创建监控的procedure。&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.dokuwiki.org/dokuwiki/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.dokuwiki.org/dokuwiki/&lt;/a&gt;&lt;/p&gt;
@@ -32938,21 +32992,17 @@ graphic reports from the data.&lt;/p&gt;
 &lt;p&gt;绘制性能图。&lt;/p&gt;
 &lt;p&gt;graphite-web&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;A highly scalable real-time graphing system&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;A highly scalable real-time graphing system&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;carbon&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Carbon is responsible for receiving metrics over the network, caching them in memory for &amp;ldquo;hot queries&amp;rdquo; from the Graphite-Web application, and persisting them to disk using the Whisper time-series library.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Carbon is responsible for receiving metrics over the network, caching them in memory for &amp;ldquo;hot queries&amp;rdquo; from the Graphite-Web application, and persisting them to disk using the Whisper time-series library.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;whisper/ceres&lt;/p&gt;
 &lt;p&gt;ceres会替代whisper。&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Whisper is a fixed-size database, similar in design and purpose to RRD (round-robin-database). It provides fast, reliable storage of numeric data over time. Whisper allows for higher resolution (seconds per point) of recent data to degrade into lower resolutions for long-term retention of historical data.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Whisper is a fixed-size database, similar in design and purpose to RRD (round-robin-database). It provides fast, reliable storage of numeric data over time. Whisper allows for higher resolution (seconds per point) of recent data to degrade into lower resolutions for long-term retention of historical data.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;h1 id=&#34;grafana&#34;&gt;grafana&lt;/h1&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Grafana is an open source, feature rich metrics dashboard and graph editor for Graphite, Elasticsearch, OpenTSDB, Prometheus and InfluxDB.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Grafana is an open source, feature rich metrics dashboard and graph editor for Graphite, Elasticsearch, OpenTSDB, Prometheus and InfluxDB.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;为graphite提供更好的可视化图形。&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/grafana/grafana&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/grafana/grafana&lt;/a&gt;&lt;/p&gt;
@@ -32960,22 +33010,19 @@ graphic reports from the data.&lt;/p&gt;
     &gt;http://grafana.org/&lt;/a&gt;&lt;/p&gt;
 &lt;h1 id=&#34;graphios&#34;&gt;graphios&lt;/h1&gt;
 &lt;blockquote&gt;
-&lt;p&gt;A program to send nagios perf data to graphite(carbon)/statsd/librato/influxdb&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;A program to send nagios perf data to graphite(carbon)/statsd/librato/influxdb&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;发送nagios性能数据到Graphite。&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/shawn-sterling/graphios&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/shawn-sterling/graphios&lt;/a&gt;&lt;/p&gt;
 &lt;h1 id=&#34;ledbetter&#34;&gt;Ledbetter&lt;/h1&gt;
 &lt;blockquote&gt;
-&lt;p&gt;A simple script for gathering Nagios problem statistics and submitting them to Graphite. It focuses on summary (overall, servicegroup and hostgroup) statistics and writes them to the nagios.problems metrics namespace within Graphite.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;A simple script for gathering Nagios problem statistics and submitting them to Graphite. It focuses on summary (overall, servicegroup and hostgroup) statistics and writes them to the nagios.problems metrics namespace within Graphite.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;发送nagios性能数据到Graphite。&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/github/ledbetter&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/github/ledbetter&lt;/a&gt;&lt;/p&gt;
 &lt;h1 id=&#34;nscp&#34;&gt;NSCP&lt;/h1&gt;
 &lt;blockquote&gt;
-&lt;p&gt;NSClient is an agent designed originally to work with Nagios but has since evolved into a fully fledged monitoring agent which can be used with numerous monitoring tools (like Icinga, Naemon, OP5, NetEye Opsview etc).&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;NSClient is an agent designed originally to work with Nagios but has since evolved into a fully fledged monitoring agent which can be used with numerous monitoring tools (like Icinga, Naemon, OP5, NetEye Opsview etc).&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;又叫NSClient++,现在同时支持windows和linux,主要用来安装到windows服务器,用于监控windows系统.&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://nsclient.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://nsclient.org/&lt;/a&gt;&lt;/p&gt;
@@ -33179,8 +33226,7 @@ longoutput - $LONGSERVICEOUTPUT$
 &lt;h2 id=&#34;什么是hexo&#34;&gt;什么是hexo&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;Hexo是用nodejs开发的快速、简洁且高效的博客框架，
-Hexo 使用Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。&lt;/p&gt;
-&lt;/blockquote&gt;
+Hexo 使用Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;hexo有大量的插件和主题。&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://hexo.io/plugins/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;plugins&lt;/a&gt;&lt;/p&gt;
@@ -33195,8 +33241,7 @@ Hexo 使用Markdown（或其他渲染引擎）解析文章，在几秒内，即�
 &lt;blockquote&gt;
 &lt;p&gt;Next是一种文雅的Hexo主题。
 一个主题，三种外观，选您所好。
-通过主题中的主题（亦称Scheme），您可以方便地改变您博客的外观，同时几乎所有配置同样适用。&lt;/p&gt;
-&lt;/blockquote&gt;
+通过主题中的主题（亦称Scheme），您可以方便地改变您博客的外观，同时几乎所有配置同样适用。&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/iissnan/hexo-theme-next&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;原生的Next&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/crazy-canux/hexo-theme-next&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -33270,278 +33315,201 @@ $hexo deploy
 &lt;p&gt;全局配置文件是&amp;lt;folder&amp;gt;/_config.yml&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;# Hexo Configuration&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;# Hexo Configuration&lt;/p&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;p&gt;## Docs: &lt;a class=&#34;link&#34; href=&#34;https://hexo.io/docs/configuration.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://hexo.io/docs/configuration.html&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
+    &gt;https://hexo.io/docs/configuration.html&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;p&gt;## Source: &lt;a class=&#34;link&#34; href=&#34;https://github.com/hexojs/hexo/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://github.com/hexojs/hexo/&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
+    &gt;https://github.com/hexojs/hexo/&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;# Site&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;# Site&lt;/p&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;   title:
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;   subtitle:
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;   description:
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;   author:
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;   language: zh-Hans
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;   timezone: Asia/Shanghai
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;# URL&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;# URL&lt;/p&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;p&gt;## If your site is put in a subdirectory, set url as &amp;lsquo;&lt;a class=&#34;link&#34; href=&#34;http://yoursite.com/child%27&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;http://yoursite.com/child&#39;&lt;/a&gt; and root as &amp;lsquo;/child/&amp;rsquo;&lt;/p&gt;
-&lt;/blockquote&gt;
+    &gt;http://yoursite.com/child&#39;&lt;/a&gt; and root as &amp;lsquo;/child/&amp;rsquo;&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;   url: http://&amp;lt;your-github-name&amp;gt;.github.io/
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;   root: /
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;   permalink: :year/:month/:day/:title/
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;   permalink_defaults:
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;# Directory&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;# Directory&lt;/p&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;   source_dir: source
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;   public_dir: public
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;   tag_dir: tags
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;   archive_dir: archives
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;   category_dir: categories
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;   code_dir: downloads/code
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;   i18n_dir: :lang
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;   skip_render:
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;# Writing&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;# Writing&lt;/p&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;   new_post_name: :title.md # File name of new posts
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;   default_layout: post # post | page | draft
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;   titlecase: false # Transform title into titlecase
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;   external_link: true # Open external links in new tab
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;   filename_case: 0
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;   render_drafts: false
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;   post_asset_folder: false
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;   relative_link: false
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;   future: true
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;   highlight:
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;   enable: true
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;   line_number: true
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;   auto_detect: true
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;   tab_replace: &#39;&#39;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;# Category &amp;amp; Tag&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;# Category &amp;amp; Tag&lt;/p&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;   default_category: uncategorized
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;   category_map:
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;   tag_map:
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;# Date / Time format&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;# Date / Time format&lt;/p&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;## Hexo uses Moment.js to parse and display date&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;## Hexo uses Moment.js to parse and display date&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;## You can customize the date format as defined in&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;## You can customize the date format as defined in&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;p&gt;## &lt;a class=&#34;link&#34; href=&#34;http://momentjs.com/docs/#/displaying/format/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;http://momentjs.com/docs/#/displaying/format/&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
+    &gt;http://momentjs.com/docs/#/displaying/format/&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;   date_format: YYYY-MM-DD
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;   time_format: HH:mm:ss
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;# Pagination&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;# Pagination&lt;/p&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;## Set per_page to 0 to disable pagination&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;## Set per_page to 0 to disable pagination&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;   per_page: 10
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;   pagination_dir: page
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;# Extensions&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;# Extensions&lt;/p&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;p&gt;## Plugins: &lt;a class=&#34;link&#34; href=&#34;https://hexo.io/plugins/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://hexo.io/plugins/&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
+    &gt;https://hexo.io/plugins/&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;p&gt;## Themes: &lt;a class=&#34;link&#34; href=&#34;https://hexo.io/themes/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://hexo.io/themes/&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
+    &gt;https://hexo.io/themes/&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;   theme: hexo-theme-canux
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;   Plugins:
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;   - hexo-deployer-git
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;# Extend plugins&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;# Extend plugins&lt;/p&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;## deploy&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;## deploy&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;   deploy:
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;     type: git
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;     repo:
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;        github: https://github.com/crazy-canux/crazy-canux.github.io.git,master
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;        coding: https://git.coding.net/Canux/Canux.git,master
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;h2 id=&#34;主题配置&#34;&gt;主题配置&lt;/h2&gt;
 &lt;p&gt;hexo官方默认主题是&amp;lt;folder&amp;gt;/themes/landscape。&lt;/p&gt;
 &lt;p&gt;主题配置文件是&amp;lt;folder&amp;gt;/themes/landscape/_config.yml&lt;/p&gt;
@@ -33576,95 +33544,73 @@ $hexo d
 &lt;p&gt;全局配置文件是&amp;lt;folder&amp;gt;/_config.yml&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;# Extensions&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;# Extensions&lt;/p&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;p&gt;## Plugins: &lt;a class=&#34;link&#34; href=&#34;https://hexo.io/plugins/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://hexo.io/plugins/&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
+    &gt;https://hexo.io/plugins/&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;p&gt;## Themes: &lt;a class=&#34;link&#34; href=&#34;https://hexo.io/themes/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://hexo.io/themes/&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
+    &gt;https://hexo.io/themes/&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;   theme: next
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;   Plugins:
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;   - hexo-deployer-git
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;# Extend plugins&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;# Extend plugins&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;## deploy&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;## deploy&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;   deploy:
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;   type: git
 
    repo: git@github.com:&amp;lt;your-github-name&amp;gt;/&amp;lt;your-github-name&amp;gt;.github.io.git
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;   branch: master
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;   message:
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;h1 id=&#34;站点地图&#34;&gt;站点地图&lt;/h1&gt;
 &lt;pre&gt;&lt;code&gt;$npm install hexo-generator-sitemap --save
 &lt;/code&gt;&lt;/pre&gt;
 &lt;blockquote&gt;
-&lt;p&gt;## sitemap&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;## sitemap&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;   sitemap:
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;       path: sitemap.xml
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/hexojs/hexo-generator-sitemap&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/hexojs/hexo-generator-sitemap&lt;/a&gt;&lt;/p&gt;
 &lt;h1 id=&#34;rss&#34;&gt;RSS&lt;/h1&gt;
 &lt;pre&gt;&lt;code&gt;$npm install hexo-generator-feed --save
 &lt;/code&gt;&lt;/pre&gt;
 &lt;blockquote&gt;
-&lt;p&gt;## feed&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;## feed&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;   feed:
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;     type: atom
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;     path: atom.xml
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;     limit: 20
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;     hub:
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/hexojs/hexo-generator-feed&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/hexojs/hexo-generator-feed&lt;/a&gt;&lt;/p&gt;
 &lt;h1 id=&#34;seo优化&#34;&gt;SEO优化&lt;/h1&gt;
@@ -33672,12 +33618,10 @@ $hexo d
 &lt;/code&gt;&lt;/pre&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;   sitemap:
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;       path: sitemap.xml
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/ludoviclefevre/hexo-generator-seo-friendly-sitemap&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/ludoviclefevre/hexo-generator-seo-friendly-sitemap&lt;/a&gt;&lt;/p&gt;
 &lt;hr&gt;
@@ -33694,570 +33638,415 @@ $hexo d
 &lt;p&gt;&amp;lt;folder&amp;gt;/themes/next/_config.yml&lt;/p&gt;
 &lt;h1 id=&#34;主题配置-1&#34;&gt;主题配置&lt;/h1&gt;
 &lt;blockquote&gt;
-&lt;p&gt;# &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;# &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;# 站点信息设置&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;# 站点信息设置&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;# &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;# &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;# 将制作好的favicon图标放到/source里面。&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;# 将制作好的favicon图标放到/source里面。&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;favicon: /favicon.ico
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;# SEO优化的关键字。&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;# SEO优化的关键字。&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;keywords: &amp;quot;Canux, CHENG, blog&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;# 指定站点的起始日期。&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;# 指定站点的起始日期。&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;since: 2013
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;# &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;# &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;# 菜单设置&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;# 菜单设置&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;# &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;# &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;# 顶部菜单栏&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;# 顶部菜单栏&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;menu:
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;  home: /
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;  about: /about
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;  categories: /categories
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;  tags: /tags
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;  archives: /archives
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;  #commonweal: /404.html
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;# 菜单栏图标,使用fontawsome&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;# 菜单栏图标,使用fontawsome&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;menu_icons:
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;  enable: true
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;  home: home
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;  about: user
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;  categories: th
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;  tags: tags
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;  archives: archive
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;  #commonweal: heartbeat
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;# &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;# &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;# 主题方案设计: Must | Mist | Pisces&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;# 主题方案设计: Must | Mist | Pisces&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;# &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;# &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;scheme: Muse
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;# &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;# &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;# 捐赠设置&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;# 捐赠设置&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;# &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;# &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;reward_comment: 您的支持是我创作的动力!
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;wechatpay: /images/myimages/wechatpay.jpg
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;alipay: /images/myimages/alipay.jpg
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;# &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;# &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;# 侧边栏设置&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;# 侧边栏设置&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;# &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;# &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;# 社交信息&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;# 社交信息&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;social:
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;  GitHub: https://github.com/crazy-canux
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;  Stackoverflow: http://stackoverflow.com/
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;  LinkedIn: http://www.linkedin.com/profile/preview?locale=zh_CN&amp;amp;trk=prof-0-sb-preview-primary-button
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;  E-mail: mailto:canuxcheng@gmail.com
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;# 社交信息图标，使用fontawsome。&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;# 社交信息图标，使用fontawsome。&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;social_icons:
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;  enable: true
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;  GitHub: github
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;  LinkedIn: linkedin
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;  Stackoverflow: stack-overflow
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;  E-mail: envelope
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;# 友情链接&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;# 友情链接&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;links_title: Links
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;links:
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;  CSDN: http://bbs.csdn.net/home
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;  51CTO: http://bbs.51cto.com/
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;  ChinaUnix: http://bbs.chinaunix.net/
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;  ITPUB: http://www.itpub.net/forum.php
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;# 侧边栏图像&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;# 侧边栏图像&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;avatar: /images/myimages/avatar.jpg
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;# TOC(table of contents)设置&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;# TOC(table of contents)设置&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;toc:
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;  enable: true
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;  number: true
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;#  设置 4.0 International 许可证: by | by-nc | by-nc-nd | by-nc-sa | by-nd | by-sa | zero&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;#  设置 4.0 International 许可证: by | by-nc | by-nc-nd | by-nc-sa | by-nd | by-sa | zero&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;creative_commons: zero
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;# 侧边栏位置: left | right&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;# 侧边栏位置: left | right&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;sidebar:
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;  position: left
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;# 侧边栏显示方式： post | always | hide | remove&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;# 侧边栏显示方式： post | always | hide | remove&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;display: post
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;# &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;# &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;# 其它设置&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;# 其它设置&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;# &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;# &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;# 使用Custom Logo.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;# 使用Custom Logo.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;custom_logo:
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;  enabled: false
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;  image:
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;# 代码高亮主题: normal | night | night eighties | night blue | night bright&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;# 代码高亮主题: normal | night | night eighties | night blue | night bright&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;highlight_theme: night eighties
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;# 自动滚动页面&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;# 自动滚动页面&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;scroll_to_more: true
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;# 自动摘录&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;# 自动摘录&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;auto_excerpt:
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;  enable: true
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;  length: 150
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;# 使用Lato font&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;# 使用Lato font&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;use_font_lato: true
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;# &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;# &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;# 第三方插件: 一般都需要去插件的官网注册使用。&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;# 第三方插件: 一般都需要去插件的官网注册使用。&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;# &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;# &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;# MathJax Support&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;# MathJax Support&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;mathjax: true
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;# Google Analytics - US&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;# Google Analytics - US&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;#google_analytics:
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;# Facebook sdk Analytics - US&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;# Facebook sdk Analytics - US&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;facebook_sdk:
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;  enable: false
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;  app_id: #&amp;lt;app_id&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;  fb_admin: #&amp;lt;user_id&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;  like_button: #true
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;  webmaster: #true
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;# CNZZ Analytics - CN&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;# CNZZ Analytics - CN&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;cnzz_siteid: ******
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;# leancloud Analytics - CN&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;# leancloud Analytics - CN&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;leancloud_visitors:
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;  enable: false
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;  app_id: #&amp;lt;app_id&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;  app_key: #&amp;lt;app_key&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;# Baidu Analytics&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;# Baidu Analytics&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;#baidu_analytics: ******
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;# Tencent Analytics&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;# Tencent Analytics&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;#tencent_analytics: ******
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;# Disqus - US&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;# Disqus - US&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;#disqus_shortname: ******
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;# Duoshuo - CN&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;# Duoshuo - CN&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;duoshuo_shortname: ******
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;# Make duoshuo show UA&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;# Make duoshuo show UA&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;duoshuo_info:
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;  ua_enable: true
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;  admin_enable: false
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;  user_id:
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;  #admin_nickname: ROOT
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;# Make duoshuo show hot artical&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;# Make duoshuo show hot artical&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;duoshuo_hotartical: true
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;# AddThis - US&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;# AddThis - US&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;#add_this_id:
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;# JiaThis - CN&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;# JiaThis - CN&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;jiathis: true
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;# Baidu Share&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;# Baidu Share&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;#baidushare: true
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;# Duoshuo Share&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;# Duoshuo Share&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;#duoshuo_share: true
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;# Swiftype - US&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;# Swiftype - US&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;swiftype_key: ******
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;# Tinysou - CN&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;# Tinysou - CN&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;#tinysou_Key
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;#! &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;#! &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;#! 谨慎编辑的主题信息&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;#! 谨慎编辑的主题信息&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;#! &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;#! &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;# 侧边栏移动插件 Motion&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;# 侧边栏移动插件 Motion&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;use_motion: true
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;# 图片弹出插件 Fancybox&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;# 图片弹出插件 Fancybox&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;fancybox: true
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;# Static files&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;# Static files&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;vendors: vendors
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;css: css
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;js: js
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;images: images
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;# Theme version&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;# Theme version&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;pre&gt;&lt;code&gt;version: 0.5.0
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/blockquote&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
 </description>
         </item>
         <item>

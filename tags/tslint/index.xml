@@ -76,7 +76,8 @@ $ gulp
 $ npm install karma-jasmine karma-chrome-launcher jasmine-core --save-dev
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;run karma&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ karma start&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;$ karma start
+&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         

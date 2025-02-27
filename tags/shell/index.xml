@@ -245,7 +245,8 @@ system(“command options”),返回命令的退出状态。
 &lt;hr&gt;
 &lt;h1 id=&#34;常用命令&#34;&gt;常用命令&lt;/h1&gt;
 &lt;p&gt;删除字符串前后空格:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;echo &amp;quot;string&amp;quot; |　awk &amp;quot;$1=$1&amp;quot;&lt;/code&gt;&lt;/pre&gt;
+&lt;pre&gt;&lt;code&gt;echo &amp;quot;string&amp;quot; |　awk &amp;quot;$1=$1&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
@@ -539,7 +540,8 @@ sed   ‘/pattern/{{n; p;}}’   urfile   读取pattern下一行并打印。
 &lt;h1 id=&#34;常用&#34;&gt;常用&lt;/h1&gt;
 &lt;pre&gt;&lt;code&gt;sed   ‘$a   string’   filenames           #批量往文件最后一行添加内容
 sed   ‘$i    string’   filenames           #批量往文件倒数第二行添加内容
-string里面有空格用\开头。&lt;/code&gt;&lt;/pre&gt;
+string里面有空格用\开头。
+&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
@@ -1304,7 +1306,8 @@ unzip
 &lt;h1 id=&#34;数据处理&#34;&gt;数据处理&lt;/h1&gt;
 &lt;p&gt;base64&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;// 生成basic authentication.
-echo -n &amp;quot;user:pw&amp;quot; | base64&lt;/code&gt;&lt;/pre&gt;
+echo -n &amp;quot;user:pw&amp;quot; | base64
+&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>

@@ -80,42 +80,28 @@ next
     |- asgi.py
 &lt;/code&gt;&lt;/pre&gt;
 &lt;blockquote&gt;
-&lt;p&gt;next 最外层根目录只是你项目的容器， 根目录名称对Django没有影响，你可以将它重命名为任何你喜欢的名称。&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;next 最外层根目录只是你项目的容器， 根目录名称对Django没有影响，你可以将它重命名为任何你喜欢的名称。&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;manage.py: 一个让你用各种方式管理 Django 项目的命令行工具。你可以阅读 django-admin and manage.py 获取所有 manage.py 的细节。&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;manage.py: 一个让你用各种方式管理 Django 项目的命令行工具。你可以阅读 django-admin and manage.py 获取所有 manage.py 的细节。&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;templates: project的模版.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;templates: project的模版.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;next 里层的目录包含你的项目，它是一个纯 Python 包。它的名字就是当你引用它内部任何东西时需要用到的 Python 包名。 (比如 next.urls).&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;next 里层的目录包含你的项目，它是一个纯 Python 包。它的名字就是当你引用它内部任何东西时需要用到的 Python 包名。 (比如 next.urls).&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;next/&lt;strong&gt;init&lt;/strong&gt;.py：一个空文件，告诉 Python 这个目录应该被认为是一个 Python 包。如果你是 Python 初学者，阅读官方文档中的 更多关于包的知识。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;next/&lt;strong&gt;init&lt;/strong&gt;.py：一个空文件，告诉 Python 这个目录应该被认为是一个 Python 包。如果你是 Python 初学者，阅读官方文档中的 更多关于包的知识。&lt;/p&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;next/settings.py：Django 项目的配置文件。如果你想知道这个文件是如何工作的，请查看 Django 配置 了解细节。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;next/settings.py：Django 项目的配置文件。如果你想知道这个文件是如何工作的，请查看 Django 配置 了解细节。&lt;/p&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;next/urls.py：Django 项目的 URL 声明，就像你网站的“目录”。阅读 URL调度器 文档来获取更多关于 URL 的内容。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;next/urls.py：Django 项目的 URL 声明，就像你网站的“目录”。阅读 URL调度器 文档来获取更多关于 URL 的内容。&lt;/p&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;next/asgi.py：作为你的项目的运行在 ASGI 兼容的Web服务器上的入口。阅读 如何使用 ASGI 来部署 了解更多细节。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;next/asgi.py：作为你的项目的运行在 ASGI 兼容的Web服务器上的入口。阅读 如何使用 ASGI 来部署 了解更多细节。&lt;/p&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;next/wsgi.py：作为你的项目的运行在 WSGI 兼容的Web服务器上的入口。阅读 如何使用 WSGI 进行部署 了解更多细节。&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;next/wsgi.py：作为你的项目的运行在 WSGI 兼容的Web服务器上的入口。阅读 如何使用 WSGI 进行部署 了解更多细节。&lt;/p&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;
 &lt;p&gt;验证开发服务器：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;$python manage.py runserver
 $python manage.py runserver &amp;lt;ip address&amp;gt;:&amp;lt;port&amp;gt;
@@ -290,32 +276,23 @@ polls/
       |- style.css
 &lt;/code&gt;&lt;/pre&gt;
 &lt;blockquote&gt;
-&lt;p&gt;admin.py admin管理界面&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;admin.py admin管理界面&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;apps.py&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;apps.py&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;models.py 模型&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;models.py 模型&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;views.py 视图&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;views.py 视图&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;urls.py 新建的application的url&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;urls.py 新建的application的url&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;test.py 测试&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;test.py 测试&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;migrations 迁移文件夹&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;migrations 迁移文件夹&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;templates 应用的模版文件夹&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;templates 应用的模版文件夹&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;static 静态文件&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;static 静态文件&lt;/p&gt;&lt;/blockquote&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;django-admin--managepy&#34;&gt;django-admin &amp;amp; manage.py&lt;/h1&gt;
 &lt;pre&gt;&lt;code&gt;[staticfiles]
@@ -367,7 +344,8 @@ polls/
     
     test
     
-    testserver&lt;/code&gt;&lt;/pre&gt;
+    testserver
+&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
@@ -377,21 +355,19 @@ polls/
         
         <guid>https://canuxcheng.com/post/psl_python/</guid>
         <description>&lt;h1 id=&#34;python-runtime-services&#34;&gt;Python Runtime Services&lt;/h1&gt;
-&lt;h2 id=&#34;__builtin__&#34;&gt;_&lt;em&gt;builtin&lt;/em&gt;_&lt;/h2&gt;
+&lt;h2 id=&#34;_builtin_&#34;&gt;_&lt;em&gt;builtin&lt;/em&gt;_&lt;/h2&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;builtin&lt;/strong&gt;/builtins - Built-in functions, exceptions, and other objects.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;builtin&lt;/strong&gt;/builtins - Built-in functions, exceptions, and other objects.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;python2叫__builtin__&lt;/p&gt;
 &lt;p&gt;python3叫builtins&lt;/p&gt;
-&lt;h2 id=&#34;__main__&#34;&gt;_&lt;em&gt;main&lt;/em&gt;_&lt;/h2&gt;
+&lt;h2 id=&#34;_main_&#34;&gt;_&lt;em&gt;main&lt;/em&gt;_&lt;/h2&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;main&lt;/strong&gt; - Top-level script environment.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;main&lt;/strong&gt; - Top-level script environment.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;pre&gt;&lt;code&gt;if __name__ == &amp;quot;__main__&amp;quot;:
     main()
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;当作为顶层脚本运行时(&lt;strong&gt;main&lt;/strong&gt;), 当作为一个模块运行时候就是模块名称．&lt;/p&gt;
-&lt;h2 id=&#34;__future__&#34;&gt;_&lt;em&gt;future&lt;/em&gt;_&lt;/h2&gt;
+&lt;h2 id=&#34;_future_&#34;&gt;_&lt;em&gt;future&lt;/em&gt;_&lt;/h2&gt;
 &lt;p&gt;把下一个版本的新特性导入到当前版本。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;from __future__ import &amp;lt;feature_name&amp;gt;
 
@@ -577,7 +553,7 @@ isgeneratorfunction() # 检查一个函数是否是生成器
 &lt;p&gt;python标识符(变量，函数，参数，类等)由字母和下划线开头，还可以包含数字．不能是关键字．&lt;/p&gt;
 &lt;p&gt;python不支持方法或函数重载．&lt;/p&gt;
 &lt;p&gt;python不支持char和type类型．&lt;/p&gt;
-&lt;p&gt;python没有switch语句．&lt;/p&gt;
+&lt;p&gt;python没有switch和goto语句．&lt;/p&gt;
 &lt;p&gt;python支持多继承．&lt;/p&gt;
 &lt;p&gt;python不支持++/&amp;ndash;自增和自减运算符．&lt;/p&gt;
 &lt;p&gt;python支持连续比较，a&amp;lt;b&amp;lt;c.&lt;/p&gt;
@@ -1044,6 +1020,7 @@ del dic[&#39;key&#39;]
 &lt;p&gt;break语句：表示结束当前循环块，跳转到后面的语句．&lt;/p&gt;
 &lt;p&gt;pass语句： 表示不做任何事情，NOP.&lt;/p&gt;
 &lt;h2 id=&#34;if条件语句&#34;&gt;&lt;em&gt;if条件语句&lt;/em&gt;&lt;/h2&gt;
+&lt;p&gt;python没有switch，可以用if-elif-else实现。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;if condition:
     expression
 elif condition:

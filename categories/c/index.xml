@@ -319,7 +319,7 @@ gcc -g -Wall -o libdynamic.so helloworld.o -L/dynamic/lib/path -ldynamic -Wl, -r
     &gt;https://cplusplus.com/reference/string/&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;stl&#34;&gt;STL&lt;/h2&gt;
 &lt;h3 id=&#34;containers&#34;&gt;containers&lt;/h3&gt;
-&lt;h3 id=&#34;heading&#34;&gt;&lt;/h3&gt;
+&lt;h3&gt;&lt;/h3&gt;
 </description>
         </item>
         

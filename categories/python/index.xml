@@ -12,19 +12,15 @@
         <pubDate>Mon, 15 Aug 2016 11:16:29 +0000</pubDate>
         
         <guid>https://canuxcheng.com/post/psl_builtins/</guid>
-        <description>&lt;h1 id=&#34;__builtins__&#34;&gt;_&lt;em&gt;builtins&lt;/em&gt;_&lt;/h1&gt;
+        <description>&lt;h1 id=&#34;_builtins_&#34;&gt;_&lt;em&gt;builtins&lt;/em&gt;_&lt;/h1&gt;
 &lt;p&gt;python的内置模块，所有python的内置功能都在这个模块中，不需要import导入就可以使用。&lt;/p&gt;
 &lt;p&gt;包括内置类类型以及所属的内置方法，和内置函数.&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;builtin&lt;/strong&gt; - 包括内置类类型以及所属的内置方法，和内置函数.解释器不会自动导入．&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;builtin&lt;/strong&gt; - 包括内置类类型以及所属的内置方法，和内置函数.解释器不会自动导入．&lt;/p&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;builtins&lt;/strong&gt; - 仅仅是__builtin__的一个引用．解释器自动导入的．&lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;builtins&lt;/strong&gt; - 仅仅是__builtin__的一个引用．解释器自动导入的．&lt;/p&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;
 &lt;p&gt;内置常量&lt;/p&gt;
 &lt;p&gt;内置函数(BIF)&lt;/p&gt;
 &lt;p&gt;内置类型(BIT)&lt;/p&gt;
@@ -1028,21 +1024,19 @@ socketpair([family[, type[, proto]]]) -&amp;gt; (socket object, socket object)
         
         <guid>https://canuxcheng.com/post/psl_python/</guid>
         <description>&lt;h1 id=&#34;python-runtime-services&#34;&gt;Python Runtime Services&lt;/h1&gt;
-&lt;h2 id=&#34;__builtin__&#34;&gt;_&lt;em&gt;builtin&lt;/em&gt;_&lt;/h2&gt;
+&lt;h2 id=&#34;_builtin_&#34;&gt;_&lt;em&gt;builtin&lt;/em&gt;_&lt;/h2&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;builtin&lt;/strong&gt;/builtins - Built-in functions, exceptions, and other objects.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;builtin&lt;/strong&gt;/builtins - Built-in functions, exceptions, and other objects.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;python2叫__builtin__&lt;/p&gt;
 &lt;p&gt;python3叫builtins&lt;/p&gt;
-&lt;h2 id=&#34;__main__&#34;&gt;_&lt;em&gt;main&lt;/em&gt;_&lt;/h2&gt;
+&lt;h2 id=&#34;_main_&#34;&gt;_&lt;em&gt;main&lt;/em&gt;_&lt;/h2&gt;
 &lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;main&lt;/strong&gt; - Top-level script environment.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;&lt;strong&gt;main&lt;/strong&gt; - Top-level script environment.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;pre&gt;&lt;code&gt;if __name__ == &amp;quot;__main__&amp;quot;:
     main()
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;当作为顶层脚本运行时(&lt;strong&gt;main&lt;/strong&gt;), 当作为一个模块运行时候就是模块名称．&lt;/p&gt;
-&lt;h2 id=&#34;__future__&#34;&gt;_&lt;em&gt;future&lt;/em&gt;_&lt;/h2&gt;
+&lt;h2 id=&#34;_future_&#34;&gt;_&lt;em&gt;future&lt;/em&gt;_&lt;/h2&gt;
 &lt;p&gt;把下一个版本的新特性导入到当前版本。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;from __future__ import &amp;lt;feature_name&amp;gt;
 
@@ -2235,17 +2229,18 @@ response_dict = json.loads(response.content) # 使用requests获取的json数据
         <pubDate>Sat, 06 Aug 2016 16:54:08 +0000</pubDate>
         
         <guid>https://canuxcheng.com/post/python_pep/</guid>
-        <description>&lt;h1 id=&#34;pep-8----style-guide-for-python-code&#34;&gt;PEP 8 &amp;ndash; Style Guide for Python Code&lt;/h1&gt;
+        <description>&lt;h1 id=&#34;pep-8--style-guide-for-python-code&#34;&gt;PEP 8 &amp;ndash; Style Guide for Python Code&lt;/h1&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.python.org/dev/peps/pep-0008/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.python.org/dev/peps/pep-0008/&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id=&#34;pep-257----docstring-conventions&#34;&gt;PEP 257 &amp;ndash; Docstring Conventions&lt;/h1&gt;
+&lt;h1 id=&#34;pep-257--docstring-conventions&#34;&gt;PEP 257 &amp;ndash; Docstring Conventions&lt;/h1&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.python.org/dev/peps/pep-0257/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.python.org/dev/peps/pep-0257/&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id=&#34;pep-20pep-20----the-zen-of-python&#34;&gt;PEP-20PEP 20 &amp;ndash; The Zen of Python&lt;/h1&gt;
+&lt;h1 id=&#34;pep-20pep-20--the-zen-of-python&#34;&gt;PEP-20PEP 20 &amp;ndash; The Zen of Python&lt;/h1&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.python.org/dev/peps/pep-0020/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.python.org/dev/peps/pep-0020/&lt;/a&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;# 查看pep20
-&amp;gt;import this&lt;/code&gt;&lt;/pre&gt;
+&amp;gt;import this
+&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
@@ -3373,7 +3368,7 @@ class ClassName(object):
 &lt;p&gt;python标识符(变量，函数，参数，类等)由字母和下划线开头，还可以包含数字．不能是关键字．&lt;/p&gt;
 &lt;p&gt;python不支持方法或函数重载．&lt;/p&gt;
 &lt;p&gt;python不支持char和type类型．&lt;/p&gt;
-&lt;p&gt;python没有switch语句．&lt;/p&gt;
+&lt;p&gt;python没有switch和goto语句．&lt;/p&gt;
 &lt;p&gt;python支持多继承．&lt;/p&gt;
 &lt;p&gt;python不支持++/&amp;ndash;自增和自减运算符．&lt;/p&gt;
 &lt;p&gt;python支持连续比较，a&amp;lt;b&amp;lt;c.&lt;/p&gt;
@@ -3840,6 +3835,7 @@ del dic[&#39;key&#39;]
 &lt;p&gt;break语句：表示结束当前循环块，跳转到后面的语句．&lt;/p&gt;
 &lt;p&gt;pass语句： 表示不做任何事情，NOP.&lt;/p&gt;
 &lt;h2 id=&#34;if条件语句&#34;&gt;&lt;em&gt;if条件语句&lt;/em&gt;&lt;/h2&gt;
+&lt;p&gt;python没有switch，可以用if-elif-else实现。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;if condition:
     expression
 elif condition:

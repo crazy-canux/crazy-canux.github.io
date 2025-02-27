@@ -6,7 +6,104 @@
         <description>Recent content in DevOps on Morgoth</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Thu, 23 Sep 2021 22:02:31 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/categories/devops/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Fri, 10 Jan 2025 09:41:39 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/categories/devops/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>DevOps Metrics</title>
+        <link>https://canuxcheng.com/post/devops_metrics/</link>
+        <pubDate>Fri, 10 Jan 2025 09:41:39 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/devops_metrics/</guid>
+        <description>&lt;h1 id=&#34;devops-metrics&#34;&gt;DevOps Metrics&lt;/h1&gt;
+&lt;p&gt;从业务角度来看，公司希望更准确地度量其开发人员的生产力，原因如下:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Monitoring progress over time&lt;/li&gt;
+&lt;li&gt;Creation of benchmarks&lt;/li&gt;
+&lt;li&gt;Rewarding top performers&lt;/li&gt;
+&lt;li&gt;Determining resource allocation&lt;/li&gt;
+&lt;li&gt;Identification of more productive development processes&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;框架是想法、概念和关系的简单总结，因此基于您的上下文、环境和团队，您可以选择一组您可以解释的指标，以确定团队是否在它应该在的地方。&lt;/p&gt;
+&lt;h2 id=&#34;dora&#34;&gt;DORA&lt;/h2&gt;
+&lt;p&gt;DevOps Research and Assessment.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://getdx.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://getdx.com/&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;speed-metrics&#34;&gt;Speed metrics&lt;/h3&gt;
+&lt;p&gt;Deployment frequency: This measures how often a team deploys code to production.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Low performance: once per month - once per semester. (inadequate integration, lack of automation.)&lt;/li&gt;
+&lt;li&gt;Medium performance: once per month - once per week.&lt;/li&gt;
+&lt;li&gt;High performance: daily for multiple times per day.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Lead time for change: This measures the time it takes from the moment a code change is made until it is successfully deployed to production.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Low performance: one - six months. (time-consuming manual testing, lack of automation.)&lt;/li&gt;
+&lt;li&gt;Medium performance: one week - one month.&lt;/li&gt;
+&lt;li&gt;High performance: less than one day.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;stability-metrics&#34;&gt;Stability metrics&lt;/h3&gt;
+&lt;p&gt;change failure rate: This metric measures the proportion of deployments that result in failures.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Poor performance: 46% - 60%. (quality and reliability issues).&lt;/li&gt;
+&lt;li&gt;Average performance: 15%-45%.&lt;/li&gt;
+&lt;li&gt;High performance: 0% - 15%.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;mean time to restore: This metric helps assess team’s ability to handle incidents and failures.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Low performance: one week - one month. (lack of adequate monitoring and diagnostic tools).&lt;/li&gt;
+&lt;li&gt;Medium performance: one day - one week.&lt;/li&gt;
+&lt;li&gt;High performance: less than one day.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;space&#34;&gt;SPACE&lt;/h2&gt;
+&lt;p&gt;S: Satisfaction and well-being&lt;/p&gt;
+&lt;p&gt;P: Performance&lt;/p&gt;
+&lt;p&gt;A: Activity&lt;/p&gt;
+&lt;p&gt;C: Collaboration and communication&lt;/p&gt;
+&lt;p&gt;E: Efficiency and flow&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;devex&#34;&gt;DevEx&lt;/h2&gt;
+&lt;p&gt;Developer Experience: DevEx captures how developers feel, how they think, and how they value their work.&lt;/p&gt;
+&lt;h3 id=&#34;feedback-loops&#34;&gt;Feedback loops&lt;/h3&gt;
+&lt;p&gt;perceptions:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;satisfaction with automated test speed and output.&lt;/li&gt;
+&lt;li&gt;satisfaction with time it takes to validate a local change.&lt;/li&gt;
+&lt;li&gt;satisfaction with time it takes to deploy a change to production.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;workflows:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;time it takes to generate CI results.&lt;/li&gt;
+&lt;li&gt;code review turnaround time.&lt;/li&gt;
+&lt;li&gt;deployment lead time.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;cognitive-load&#34;&gt;Cognitive load&lt;/h3&gt;
+&lt;p&gt;perceptions&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;perceive complexity of codebase.&lt;/li&gt;
+&lt;li&gt;ease of debugging production systems&lt;/li&gt;
+&lt;li&gt;easy of understanding documentation.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;workflows&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;time it takes to get answers to technical questions.&lt;/li&gt;
+&lt;li&gt;manual steps required to deploy a change.&lt;/li&gt;
+&lt;li&gt;frequency of documentation improvements.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;flow-state&#34;&gt;Flow state&lt;/h3&gt;
+&lt;p&gt;perceptions&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;perceived ability to focus and avoid interruptions.&lt;/li&gt;
+&lt;li&gt;satisfaction with clarity of task or project goals.&lt;/li&gt;
+&lt;li&gt;perceived disruptiveness of being on-call.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;workflows&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;number of blocks of time without meetings or interruptions.&lt;/li&gt;
+&lt;li&gt;frequency of unplanned tasks or requests.&lt;/li&gt;
+&lt;li&gt;frequency of incidents requiring team attention.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
         <title>AWS Management</title>
         <link>https://canuxcheng.com/post/aws_management/</link>
         <pubDate>Thu, 23 Sep 2021 22:02:31 +0000</pubDate>
@@ -2784,7 +2881,8 @@ agent {
         label &#39;my-defined-label&#39;
         additionalBuildArgs  &#39;--build-arg version=1.0.2&#39;
     }
-}&lt;/code&gt;&lt;/pre&gt;
+}
+&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
@@ -3948,11 +4046,9 @@ g~~    # 转换当前行大小写
         <guid>https://canuxcheng.com/post/metrics_nagios/</guid>
         <description>&lt;h1 id=&#34;nagios&#34;&gt;Nagios&lt;/h1&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Nagios is the industry standard in IT infrastructure monitoring&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Nagios is the industry standard in IT infrastructure monitoring&lt;/p&gt;&lt;/blockquote&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Nagios offers complete monitoring and alerting for servers, switches, applications, and services.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Nagios offers complete monitoring and alerting for servers, switches, applications, and services.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Nagios官方宣称nagios是IT基础监控的工业标准。&lt;/p&gt;
 &lt;p&gt;Nagios提供对服务器，交换机，应用和服务的完整的监控和警报。&lt;/p&gt;
 &lt;p&gt;Nagios是无agent的，nagios的plugin通过协议远程获取信息。&lt;/p&gt;
@@ -3989,8 +4085,7 @@ g~~    # 转换当前行大小写
 &lt;h1 id=&#34;nagios开源解决方案&#34;&gt;Nagios开源解决方案&lt;/h1&gt;
 &lt;h2 id=&#34;nagios-core&#34;&gt;Nagios core:&lt;/h2&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Nagios Core is the monitoring and alerting engine that serves as the primary application around which hundreds of Nagios projects are built.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Nagios Core is the monitoring and alerting engine that serves as the primary application around which hundreds of Nagios projects are built.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Nagios core是监控和警报的主引擎，围绕它建立了成千上万的项目。
 技术栈是c，只能安装在linux/unix系统。
 Nagios core只是一个监控套件，本身没有监控功能，需要插件来完成监控。&lt;/p&gt;
@@ -4000,8 +4095,7 @@ Nagios core只是一个监控套件，本身没有监控功能，需要插件来
     &gt;https://github.com/NagiosEnterprises/nagioscore&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;nagios-plugins&#34;&gt;Nagios plugins:&lt;/h2&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Efficient, standalone extensions that provide low-level intelligence for monitoring anything and everything with Nagios Core.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Efficient, standalone extensions that provide low-level intelligence for monitoring anything and everything with Nagios Core.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Nagios core的监控插件,也就是官方插件,主要是c、shell和perl。&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.nagios.org/projects/nagios-plugins/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.nagios.org/projects/nagios-plugins/&lt;/a&gt;&lt;/p&gt;
@@ -4009,15 +4103,13 @@ Nagios core只是一个监控套件，本身没有监控功能，需要插件来
     &gt;https://github.com/nagios-plugins/nagios-plugins&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;nagios-frontends&#34;&gt;Nagios frontends:&lt;/h2&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Web interfaces, themes, Windows and Linux interfaces, and mobile apps for Nagios. Change the look and style of Nagios to suite your needs.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Web interfaces, themes, Windows and Linux interfaces, and mobile apps for Nagios. Change the look and style of Nagios to suite your needs.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Nagios frontends包括了 主题,web接口,移动设备接口。&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.nagios.org/downloads/nagios-core-frontends/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.nagios.org/downloads/nagios-core-frontends/&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;nagios-config-toolsnagios-addons-projects&#34;&gt;Nagios config tools(Nagios addons projects):&lt;/h2&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Tools and GUIs for simplifying Nagios Core configuration.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Tools and GUIs for simplifying Nagios Core configuration.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;nagios core的组件。&lt;/p&gt;
 &lt;p&gt;包括Lilac,NagiosQL,NConf,OneCMDB,ignoramus&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.nagios.org/projects/nagios-config-tools/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -4028,8 +4120,7 @@ Nagios core只是一个监控套件，本身没有监控功能，需要插件来
     &gt;https://github.com/NagiosEnterprises&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;nagios-exchange&#34;&gt;Nagios exchange:&lt;/h2&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Nagios® Exchange is the central place where you&amp;rsquo;ll find all types of Nagios projects - plugins, addons, documentation, extensions, and more. This site is designed for the Nagios Community to share its Nagios creations.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Nagios® Exchange is the central place where you&amp;rsquo;ll find all types of Nagios projects - plugins, addons, documentation, extensions, and more. This site is designed for the Nagios Community to share its Nagios creations.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Nagios exchange是nagios的开源宝库。&lt;/p&gt;
 &lt;p&gt;包括第三方plugins、addons和docs。&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://exchange.nagios.org/https://exchange.nagios.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -4038,8 +4129,7 @@ Nagios core只是一个监控套件，本身没有监控功能，需要插件来
 &lt;h1 id=&#34;nagios商业解决方案&#34;&gt;Nagios商业解决方案&lt;/h1&gt;
 &lt;h2 id=&#34;nagios-xi&#34;&gt;Nagios XI:&lt;/h2&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Our most powerful IT infrastructure monitoring and IT monitoring software alerting solution for today’s demanding organizational requirements.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Our most powerful IT infrastructure monitoring and IT monitoring software alerting solution for today’s demanding organizational requirements.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Nagios XI 是现代化的商业监控解决套件。&lt;/p&gt;
 &lt;p&gt;Nagios XI 使用nagios core 4.0。&lt;/p&gt;
 &lt;p&gt;Nagios XI 架构：&lt;/p&gt;
@@ -4131,8 +4221,7 @@ Nagios core只是一个监控套件，本身没有监控功能，需要插件来
 &lt;blockquote&gt;
 &lt;p&gt;nagiosgraph parses output and performance data from Nagios plugins and stores
 the data in RRD files. nagiosgraph creates graphs and generates HTML pages with
-graphic reports from the data.&lt;/p&gt;
-&lt;/blockquote&gt;
+graphic reports from the data.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;基于RRD，绘制nagios的性能图。&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://nagiosgraph.sourceforge.net/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;http://nagiosgraph.sourceforge.net/&lt;/a&gt;&lt;/p&gt;
@@ -4205,8 +4294,7 @@ graphic reports from the data.&lt;/p&gt;
 &lt;p&gt;介绍Addons.&lt;/p&gt;
 &lt;h1 id=&#34;omd&#34;&gt;OMD&lt;/h1&gt;
 &lt;blockquote&gt;
-&lt;p&gt;OMD implements a completely new concept of how to install, maintain and update a monitoring system built on Nagios.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;OMD implements a completely new concept of how to install, maintain and update a monitoring system built on Nagios.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://omdistro.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;http://omdistro.org/&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://git.mathias-kettner.de/git/?p=omd.git;a=tree&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -4232,8 +4320,7 @@ graphic reports from the data.&lt;/p&gt;
 &lt;/ol&gt;
 &lt;h1 id=&#34;gearman&#34;&gt;Gearman&lt;/h1&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Gearman provides a generic application framework to farm out work to other machines or processes that are better suited to do the work.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Gearman provides a generic application framework to farm out work to other machines or processes that are better suited to do the work.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;Gearman用来做任务分发的.&lt;/p&gt;
 &lt;p&gt;一个C++实现的Gearman Job Server:&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://gearman.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -4247,8 +4334,7 @@ graphic reports from the data.&lt;/p&gt;
     &gt;https://github.com/sni/mod_gearman&lt;/a&gt;&lt;/p&gt;
 &lt;h1 id=&#34;rrdtools&#34;&gt;rrdtools&lt;/h1&gt;
 &lt;blockquote&gt;
-&lt;p&gt;RRDtool is a little program for easily maintaining a database of time-series data. It comes with a charting program for drawing pretty graphs based on the data stored.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;RRDtool is a little program for easily maintaining a database of time-series data. It comes with a charting program for drawing pretty graphs based on the data stored.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;存储性能数据。&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://oss.oetiker.ch/rrdtool/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;http://oss.oetiker.ch/rrdtool/&lt;/a&gt;&lt;/p&gt;
@@ -4256,8 +4342,7 @@ graphic reports from the data.&lt;/p&gt;
     &gt;https://github.com/oetiker/rrdtool-1.x&lt;/a&gt;&lt;/p&gt;
 &lt;h1 id=&#34;pnp4nagios&#34;&gt;pnp4nagios&lt;/h1&gt;
 &lt;blockquote&gt;
-&lt;p&gt;PNP is an addon to Nagios which analyzes performance data provided by plugins and stores them automatically into RRD-databases.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;PNP is an addon to Nagios which analyzes performance data provided by plugins and stores them automatically into RRD-databases.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;基于RRD，绘制nagios的性能图。&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://docs.pnp4nagios.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;http://docs.pnp4nagios.org/&lt;/a&gt;&lt;/p&gt;
@@ -4277,8 +4362,7 @@ graphic reports from the data.&lt;/p&gt;
 &lt;/ol&gt;
 &lt;h1 id=&#34;nagvis&#34;&gt;Nagvis&lt;/h1&gt;
 &lt;blockquote&gt;
-&lt;p&gt;NagVis is a program for visualizing the data the monitoring core of your choice, for example Nagios, Naemon, Icinga or Shinken, in a human friendly way.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;NagVis is a program for visualizing the data the monitoring core of your choice, for example Nagios, Naemon, Icinga or Shinken, in a human friendly way.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;绘制监控地图。&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://www.nagvis.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;http://www.nagvis.org/&lt;/a&gt;&lt;/p&gt;
@@ -4286,8 +4370,7 @@ graphic reports from the data.&lt;/p&gt;
     &gt;https://github.com/NagVis/nagvis&lt;/a&gt;&lt;/p&gt;
 &lt;h1 id=&#34;dokuwiki&#34;&gt;dokuwiki&lt;/h1&gt;
 &lt;blockquote&gt;
-&lt;p&gt;DokuWiki is a simple to use and highly versatile Open Source wiki software that doesn&amp;rsquo;t require a database.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;DokuWiki is a simple to use and highly versatile Open Source wiki software that doesn&amp;rsquo;t require a database.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;创建监控的procedure。&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.dokuwiki.org/dokuwiki/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.dokuwiki.org/dokuwiki/&lt;/a&gt;&lt;/p&gt;
@@ -4302,21 +4385,17 @@ graphic reports from the data.&lt;/p&gt;
 &lt;p&gt;绘制性能图。&lt;/p&gt;
 &lt;p&gt;graphite-web&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;A highly scalable real-time graphing system&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;A highly scalable real-time graphing system&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;carbon&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Carbon is responsible for receiving metrics over the network, caching them in memory for &amp;ldquo;hot queries&amp;rdquo; from the Graphite-Web application, and persisting them to disk using the Whisper time-series library.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Carbon is responsible for receiving metrics over the network, caching them in memory for &amp;ldquo;hot queries&amp;rdquo; from the Graphite-Web application, and persisting them to disk using the Whisper time-series library.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;whisper/ceres&lt;/p&gt;
 &lt;p&gt;ceres会替代whisper。&lt;/p&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Whisper is a fixed-size database, similar in design and purpose to RRD (round-robin-database). It provides fast, reliable storage of numeric data over time. Whisper allows for higher resolution (seconds per point) of recent data to degrade into lower resolutions for long-term retention of historical data.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Whisper is a fixed-size database, similar in design and purpose to RRD (round-robin-database). It provides fast, reliable storage of numeric data over time. Whisper allows for higher resolution (seconds per point) of recent data to degrade into lower resolutions for long-term retention of historical data.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;h1 id=&#34;grafana&#34;&gt;grafana&lt;/h1&gt;
 &lt;blockquote&gt;
-&lt;p&gt;Grafana is an open source, feature rich metrics dashboard and graph editor for Graphite, Elasticsearch, OpenTSDB, Prometheus and InfluxDB.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;Grafana is an open source, feature rich metrics dashboard and graph editor for Graphite, Elasticsearch, OpenTSDB, Prometheus and InfluxDB.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;为graphite提供更好的可视化图形。&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/grafana/grafana&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/grafana/grafana&lt;/a&gt;&lt;/p&gt;
@@ -4324,22 +4403,19 @@ graphic reports from the data.&lt;/p&gt;
     &gt;http://grafana.org/&lt;/a&gt;&lt;/p&gt;
 &lt;h1 id=&#34;graphios&#34;&gt;graphios&lt;/h1&gt;
 &lt;blockquote&gt;
-&lt;p&gt;A program to send nagios perf data to graphite(carbon)/statsd/librato/influxdb&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;A program to send nagios perf data to graphite(carbon)/statsd/librato/influxdb&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;发送nagios性能数据到Graphite。&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/shawn-sterling/graphios&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/shawn-sterling/graphios&lt;/a&gt;&lt;/p&gt;
 &lt;h1 id=&#34;ledbetter&#34;&gt;Ledbetter&lt;/h1&gt;
 &lt;blockquote&gt;
-&lt;p&gt;A simple script for gathering Nagios problem statistics and submitting them to Graphite. It focuses on summary (overall, servicegroup and hostgroup) statistics and writes them to the nagios.problems metrics namespace within Graphite.&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;A simple script for gathering Nagios problem statistics and submitting them to Graphite. It focuses on summary (overall, servicegroup and hostgroup) statistics and writes them to the nagios.problems metrics namespace within Graphite.&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;发送nagios性能数据到Graphite。&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/github/ledbetter&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/github/ledbetter&lt;/a&gt;&lt;/p&gt;
 &lt;h1 id=&#34;nscp&#34;&gt;NSCP&lt;/h1&gt;
 &lt;blockquote&gt;
-&lt;p&gt;NSClient is an agent designed originally to work with Nagios but has since evolved into a fully fledged monitoring agent which can be used with numerous monitoring tools (like Icinga, Naemon, OP5, NetEye Opsview etc).&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;p&gt;NSClient is an agent designed originally to work with Nagios but has since evolved into a fully fledged monitoring agent which can be used with numerous monitoring tools (like Icinga, Naemon, OP5, NetEye Opsview etc).&lt;/p&gt;&lt;/blockquote&gt;
 &lt;p&gt;又叫NSClient++,现在同时支持windows和linux,主要用来安装到windows服务器,用于监控windows系统.&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://nsclient.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://nsclient.org/&lt;/a&gt;&lt;/p&gt;

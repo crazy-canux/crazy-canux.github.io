@@ -159,7 +159,8 @@ yarn npm publish
 
     npmRegistries:
         &amp;quot;https://artifactory.arm.com/artifactory/api/npm/iep.npm-virtual&amp;quot;: 
-            npmAuthToken: &amp;lt;token&amp;gt;&lt;/code&gt;&lt;/pre&gt;
+            npmAuthToken: &amp;lt;token&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         

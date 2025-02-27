@@ -450,6 +450,7 @@ floatA := float64(uint64Var)
 &lt;hr&gt;
 &lt;h1 id=&#34;go控制流&#34;&gt;Go控制流&lt;/h1&gt;
 &lt;p&gt;go控制流的左大括号不能另起一行．&lt;/p&gt;
+&lt;p&gt;golang没有内置的while循环。&lt;/p&gt;
 &lt;h2 id=&#34;for循环&#34;&gt;for循环&lt;/h2&gt;
 &lt;p&gt;go只有for可以循环．&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;for i := 0; i &amp;lt; 10; i++ {
