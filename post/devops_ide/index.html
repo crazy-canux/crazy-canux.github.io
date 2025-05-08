@@ -388,6 +388,7 @@ https://github.com/microsoft/vscode-chrome-debug
     <li><a href="#golang">golang</a></li>
     <li><a href="#rest-client">rest client</a></li>
     <li><a href="#record">record</a></li>
+    <li><a href="#mcp">MCP</a></li>
   </ul>
 </nav>
         </div>
@@ -647,6 +648,35 @@ Content-Type: {{Content-Type}}
 <p><a class="link" href="https://github.com/arciisine/vscode-chronicler"  target="_blank" rel="noopener"
     >https://github.com/arciisine/vscode-chronicler</a></p>
 <p>支持远程debug的时候在本地录制，也就是本地是windows，只需要本地安装ffmpeg和chroicler。</p>
+<h2 id="mcp">MCP</h2>
+<p>&ldquo;&hellip;/Code/User/settings.json&rdquo;</p>
+<p><a class="link" href="https://github.com/GLips/Figma-Context-MCP"  target="_blank" rel="noopener"
+    >https://github.com/GLips/Figma-Context-MCP</a>
+<a class="link" href="https://github.com/modelcontextprotocol/servers"  target="_blank" rel="noopener"
+    >https://github.com/modelcontextprotocol/servers</a></p>
+<pre><code>&quot;mcp&quot;: {
+    &quot;servers&quot;: {
+        &quot;Figma MCP&quot;: {
+            &quot;command&quot;: &quot;npx&quot;,
+            &quot;type&quot;: &quot;stdio&quot;,
+            &quot;args&quot;: [
+            &quot;-y&quot;,
+            &quot;figma-developer-mcp&quot;,
+            &quot;--figma-api-key=somekey&quot;,
+            &quot;--stdio&quot;
+            ]
+        },
+        &quot;playwright&quot;: {
+            &quot;command&quot;: &quot;npx&quot;,
+            &quot;type&quot;: &quot;sudio&quot;,
+            &quot;args&quot;: [
+                &quot;@playwright/mcp@latest&quot;,
+                &quot;--headless&quot;
+            ]
+        }
+    }
+},
+</code></pre>
 
 </section>
 

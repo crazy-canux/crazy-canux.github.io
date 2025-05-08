@@ -40,11 +40,12 @@
         </item>
         <item>
         <title>Application</title>
-        <link>https://canuxcheng.com/post/k8s_app/</link>
+        <link>https://canuxcheng.com/post/cncf_application/</link>
         <pubDate>Sat, 04 Dec 2021 20:03:39 +0800</pubDate>
         
-        <guid>https://canuxcheng.com/post/k8s_app/</guid>
+        <guid>https://canuxcheng.com/post/cncf_application/</guid>
         <description>&lt;h1 id=&#34;application-definition--image-build&#34;&gt;Application Definition &amp;amp; Image Build&lt;/h1&gt;
+&lt;p&gt;application choreography.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;helm&lt;/li&gt;
 &lt;li&gt;backstage&lt;/li&gt;
@@ -55,6 +56,7 @@
 &lt;li&gt;kubevirt&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
+&lt;h2 id=&#34;backstage&#34;&gt;backstage&lt;/h2&gt;
 </description>
         </item>
         <item>
@@ -2287,17 +2289,21 @@ webhooks:
         </item>
         <item>
         <title>Automation &amp; Configuration</title>
-        <link>https://canuxcheng.com/post/k8s_ac/</link>
+        <link>https://canuxcheng.com/post/cncf_platform/</link>
         <pubDate>Sat, 04 Jan 2020 20:03:39 +0800</pubDate>
         
-        <guid>https://canuxcheng.com/post/k8s_ac/</guid>
+        <guid>https://canuxcheng.com/post/cncf_platform/</guid>
         <description>&lt;h1 id=&#34;automation--configuration&#34;&gt;Automation &amp;amp; Configuration&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;Cloud Custodian&lt;/li&gt;
 &lt;li&gt;kubeedge&lt;/li&gt;
-&lt;li&gt;terraform&lt;/li&gt;
 &lt;li&gt;pulumi&lt;/li&gt;
+&lt;li&gt;terraform&lt;/li&gt;
+&lt;li&gt;opentofu&lt;/li&gt;
+&lt;li&gt;kratix&lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;platform orchestration.&lt;/p&gt;
+&lt;h2 id=&#34;kratix&#34;&gt;kratix&lt;/h2&gt;
 </description>
         </item>
         <item>
@@ -2445,18 +2451,20 @@ python的zappa, nameko.&lt;/p&gt;
         </item>
         <item>
         <title>Scheduling &amp; Orchestration</title>
-        <link>https://canuxcheng.com/post/k8s_so/</link>
+        <link>https://canuxcheng.com/post/cncf_orchestration/</link>
         <pubDate>Sat, 04 Jan 2020 20:03:39 +0800</pubDate>
         
-        <guid>https://canuxcheng.com/post/k8s_so/</guid>
+        <guid>https://canuxcheng.com/post/cncf_orchestration/</guid>
         <description>&lt;h1 id=&#34;scheduling--orchestration&#34;&gt;Scheduling &amp;amp; Orchestration&lt;/h1&gt;
 &lt;ul&gt;
+&lt;li&gt;docker swarm.&lt;/li&gt;
 &lt;li&gt;KEDA&lt;/li&gt;
 &lt;li&gt;Crossplane&lt;/li&gt;
 &lt;li&gt;Knative&lt;/li&gt;
 &lt;li&gt;Kubeflow&lt;/li&gt;
 &lt;li&gt;Volcano&lt;/li&gt;
 &lt;/ul&gt;
+&lt;h2 id=&#34;crossplane&#34;&gt;Crossplane&lt;/h2&gt;
 </description>
         </item>
         <item>

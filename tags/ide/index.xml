@@ -192,6 +192,35 @@ Content-Type: {{Content-Type}}
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/arciisine/vscode-chronicler&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/arciisine/vscode-chronicler&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;支持远程debug的时候在本地录制，也就是本地是windows，只需要本地安装ffmpeg和chroicler。&lt;/p&gt;
+&lt;h2 id=&#34;mcp&#34;&gt;MCP&lt;/h2&gt;
+&lt;p&gt;&amp;ldquo;&amp;hellip;/Code/User/settings.json&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/GLips/Figma-Context-MCP&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/GLips/Figma-Context-MCP&lt;/a&gt;
+&lt;a class=&#34;link&#34; href=&#34;https://github.com/modelcontextprotocol/servers&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/modelcontextprotocol/servers&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;quot;mcp&amp;quot;: {
+    &amp;quot;servers&amp;quot;: {
+        &amp;quot;Figma MCP&amp;quot;: {
+            &amp;quot;command&amp;quot;: &amp;quot;npx&amp;quot;,
+            &amp;quot;type&amp;quot;: &amp;quot;stdio&amp;quot;,
+            &amp;quot;args&amp;quot;: [
+            &amp;quot;-y&amp;quot;,
+            &amp;quot;figma-developer-mcp&amp;quot;,
+            &amp;quot;--figma-api-key=somekey&amp;quot;,
+            &amp;quot;--stdio&amp;quot;
+            ]
+        },
+        &amp;quot;playwright&amp;quot;: {
+            &amp;quot;command&amp;quot;: &amp;quot;npx&amp;quot;,
+            &amp;quot;type&amp;quot;: &amp;quot;sudio&amp;quot;,
+            &amp;quot;args&amp;quot;: [
+                &amp;quot;@playwright/mcp@latest&amp;quot;,
+                &amp;quot;--headless&amp;quot;
+            ]
+        }
+    }
+},
+&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         

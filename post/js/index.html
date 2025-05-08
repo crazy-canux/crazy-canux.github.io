@@ -406,6 +406,15 @@ javascript不支持goto。
     <li><a href="#严格模式">严格模式</a></li>
     <li><a href="#debugger调试">debugger调试</a></li>
   </ul>
+
+  <ul>
+    <li>
+      <ul>
+        <li><a href="#commonjs">commonjs</a></li>
+        <li><a href="#es">ES</a></li>
+      </ul>
+    </li>
+  </ul>
 </nav>
         </div>
     </section>
@@ -880,6 +889,24 @@ document.getElementbyId(&quot;demo&quot;).innerHTML = x;
 </code></pre>
 <hr>
 <h1 id="模块和包">模块和包</h1>
+<h3 id="commonjs">commonjs</h3>
+<p>for old nodejs projects.</p>
+<pre><code>// import
+require()
+// export
+module.exports
+</code></pre>
+<p>支持单个对象，可以是默认对象</p>
+<p>extention: &ldquo;*.js&rdquo;</p>
+<h3 id="es">ES</h3>
+<p>for new nodejs projects.</p>
+<pre><code>// import
+import * from *
+// export
+export &lt;function&gt;
+</code></pre>
+<p>默认导出和命名导出都可以。</p>
+<p>extention: *.mjs&quot;</p>
 <hr>
 <h1 id="文档">文档</h1>
 <hr>

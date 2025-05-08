@@ -637,11 +637,12 @@ logout(request)
         </item>
         <item>
         <title>Application</title>
-        <link>https://canuxcheng.com/post/k8s_app/</link>
+        <link>https://canuxcheng.com/post/cncf_application/</link>
         <pubDate>Sat, 04 Dec 2021 20:03:39 +0800</pubDate>
         
-        <guid>https://canuxcheng.com/post/k8s_app/</guid>
+        <guid>https://canuxcheng.com/post/cncf_application/</guid>
         <description>&lt;h1 id=&#34;application-definition--image-build&#34;&gt;Application Definition &amp;amp; Image Build&lt;/h1&gt;
+&lt;p&gt;application choreography.&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;helm&lt;/li&gt;
 &lt;li&gt;backstage&lt;/li&gt;
@@ -652,6 +653,7 @@ logout(request)
 &lt;li&gt;kubevirt&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
+&lt;h2 id=&#34;backstage&#34;&gt;backstage&lt;/h2&gt;
 </description>
         </item>
         <item>
@@ -3913,17 +3915,21 @@ webhooks:
         </item>
         <item>
         <title>Automation &amp; Configuration</title>
-        <link>https://canuxcheng.com/post/k8s_ac/</link>
+        <link>https://canuxcheng.com/post/cncf_platform/</link>
         <pubDate>Sat, 04 Jan 2020 20:03:39 +0800</pubDate>
         
-        <guid>https://canuxcheng.com/post/k8s_ac/</guid>
+        <guid>https://canuxcheng.com/post/cncf_platform/</guid>
         <description>&lt;h1 id=&#34;automation--configuration&#34;&gt;Automation &amp;amp; Configuration&lt;/h1&gt;
 &lt;ul&gt;
 &lt;li&gt;Cloud Custodian&lt;/li&gt;
 &lt;li&gt;kubeedge&lt;/li&gt;
-&lt;li&gt;terraform&lt;/li&gt;
 &lt;li&gt;pulumi&lt;/li&gt;
+&lt;li&gt;terraform&lt;/li&gt;
+&lt;li&gt;opentofu&lt;/li&gt;
+&lt;li&gt;kratix&lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;platform orchestration.&lt;/p&gt;
+&lt;h2 id=&#34;kratix&#34;&gt;kratix&lt;/h2&gt;
 </description>
         </item>
         <item>
@@ -4071,18 +4077,20 @@ python的zappa, nameko.&lt;/p&gt;
         </item>
         <item>
         <title>Scheduling &amp; Orchestration</title>
-        <link>https://canuxcheng.com/post/k8s_so/</link>
+        <link>https://canuxcheng.com/post/cncf_orchestration/</link>
         <pubDate>Sat, 04 Jan 2020 20:03:39 +0800</pubDate>
         
-        <guid>https://canuxcheng.com/post/k8s_so/</guid>
+        <guid>https://canuxcheng.com/post/cncf_orchestration/</guid>
         <description>&lt;h1 id=&#34;scheduling--orchestration&#34;&gt;Scheduling &amp;amp; Orchestration&lt;/h1&gt;
 &lt;ul&gt;
+&lt;li&gt;docker swarm.&lt;/li&gt;
 &lt;li&gt;KEDA&lt;/li&gt;
 &lt;li&gt;Crossplane&lt;/li&gt;
 &lt;li&gt;Knative&lt;/li&gt;
 &lt;li&gt;Kubeflow&lt;/li&gt;
 &lt;li&gt;Volcano&lt;/li&gt;
 &lt;/ul&gt;
+&lt;h2 id=&#34;crossplane&#34;&gt;Crossplane&lt;/h2&gt;
 </description>
         </item>
         <item>
@@ -13888,6 +13896,35 @@ Content-Type: {{Content-Type}}
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/arciisine/vscode-chronicler&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/arciisine/vscode-chronicler&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;支持远程debug的时候在本地录制，也就是本地是windows，只需要本地安装ffmpeg和chroicler。&lt;/p&gt;
+&lt;h2 id=&#34;mcp&#34;&gt;MCP&lt;/h2&gt;
+&lt;p&gt;&amp;ldquo;&amp;hellip;/Code/User/settings.json&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/GLips/Figma-Context-MCP&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/GLips/Figma-Context-MCP&lt;/a&gt;
+&lt;a class=&#34;link&#34; href=&#34;https://github.com/modelcontextprotocol/servers&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/modelcontextprotocol/servers&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;quot;mcp&amp;quot;: {
+    &amp;quot;servers&amp;quot;: {
+        &amp;quot;Figma MCP&amp;quot;: {
+            &amp;quot;command&amp;quot;: &amp;quot;npx&amp;quot;,
+            &amp;quot;type&amp;quot;: &amp;quot;stdio&amp;quot;,
+            &amp;quot;args&amp;quot;: [
+            &amp;quot;-y&amp;quot;,
+            &amp;quot;figma-developer-mcp&amp;quot;,
+            &amp;quot;--figma-api-key=somekey&amp;quot;,
+            &amp;quot;--stdio&amp;quot;
+            ]
+        },
+        &amp;quot;playwright&amp;quot;: {
+            &amp;quot;command&amp;quot;: &amp;quot;npx&amp;quot;,
+            &amp;quot;type&amp;quot;: &amp;quot;sudio&amp;quot;,
+            &amp;quot;args&amp;quot;: [
+                &amp;quot;@playwright/mcp@latest&amp;quot;,
+                &amp;quot;--headless&amp;quot;
+            ]
+        }
+    }
+},
+&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
@@ -15016,6 +15053,24 @@ document.getElementbyId(&amp;quot;demo&amp;quot;).innerHTML = x;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;模块和包&#34;&gt;模块和包&lt;/h1&gt;
+&lt;h3 id=&#34;commonjs&#34;&gt;commonjs&lt;/h3&gt;
+&lt;p&gt;for old nodejs projects.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// import
+require()
+// export
+module.exports
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;支持单个对象，可以是默认对象&lt;/p&gt;
+&lt;p&gt;extention: &amp;ldquo;*.js&amp;rdquo;&lt;/p&gt;
+&lt;h3 id=&#34;es&#34;&gt;ES&lt;/h3&gt;
+&lt;p&gt;for new nodejs projects.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// import
+import * from *
+// export
+export &amp;lt;function&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;默认导出和命名导出都可以。&lt;/p&gt;
+&lt;p&gt;extention: *.mjs&amp;quot;&lt;/p&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;文档&#34;&gt;文档&lt;/h1&gt;
 &lt;hr&gt;
@@ -18013,6 +18068,34 @@ yarn npm publish
     npmRegistries:
         &amp;quot;https://artifactory.arm.com/artifactory/api/npm/iep.npm-virtual&amp;quot;: 
             npmAuthToken: &amp;lt;token&amp;gt;
+
+yarn build 
+&amp;quot;exports&amp;quot;: {
+    &amp;quot;.&amp;quot;: &amp;quot;./src/index.ts&amp;quot;,
+    &amp;quot;./alpha&amp;quot;: &amp;quot;./src/alpha.ts&amp;quot;,
+    &amp;quot;./package.json&amp;quot;: &amp;quot;./package.json&amp;quot;
+},
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;yalc&#34;&gt;yalc&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/wclr/yalc&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/wclr/yalc&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;install:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;npm i yalc -g
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;usage:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;yalc publish
+yalc add ...
+yalc remove ...
+yalc publish 
+yalc push
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;yalc publish需要exports dist，而不是src。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;quot;exports&amp;quot;: {
+    &amp;quot;.&amp;quot;: &amp;quot;./dist/index.cjs.js&amp;quot;,
+    &amp;quot;./alpha&amp;quot;: &amp;quot;./dist/alpha.cjs.js&amp;quot;,
+    &amp;quot;./package.json&amp;quot;: &amp;quot;./package.json&amp;quot;
+}
 &lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
@@ -29652,6 +29735,14 @@ E: 11110 + 27 * reserved; 240.0.0.0 - 247.255.255.255&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/FreeRDP/FreeRDP&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/FreeRDP/FreeRDP&lt;/a&gt;&lt;/p&gt;
 &lt;hr&gt;
+&lt;h2 id=&#34;url&#34;&gt;URL&lt;/h2&gt;
+&lt;p&gt;url中的保留自字符需要编码。&lt;/p&gt;
+&lt;p&gt;The percent-encoded values for the special characters are as follows:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# → %23
+? → %3F
+&amp;amp; → %26
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;These encodings are used in URLs to ensure that these characters are treated as literal values rather than special symbols.&lt;/p&gt;
 </description>
         </item>
         <item>

@@ -673,6 +673,14 @@ E: 11110 + 27 * reserved; 240.0.0.0 - 247.255.255.255&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/FreeRDP/FreeRDP&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/FreeRDP/FreeRDP&lt;/a&gt;&lt;/p&gt;
 &lt;hr&gt;
+&lt;h2 id=&#34;url&#34;&gt;URL&lt;/h2&gt;
+&lt;p&gt;url中的保留自字符需要编码。&lt;/p&gt;
+&lt;p&gt;The percent-encoded values for the special characters are as follows:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# → %23
+? → %3F
+&amp;amp; → %26
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;These encodings are used in URLs to ensure that these characters are treated as literal values rather than special symbols.&lt;/p&gt;
 </description>
         </item>
         

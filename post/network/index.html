@@ -387,6 +387,7 @@ FTP: 21, SSH: 22, Telnet: 23, SMTP: 25, DNS: 53, HTTP: 80, HTTPS: 443, POP3: 110
     <li><a href="#ip-address">IP address</a></li>
     <li><a href="#file">File</a></li>
     <li><a href="#远程桌面协议">远程桌面协议</a></li>
+    <li><a href="#url">URL</a></li>
   </ul>
 </nav>
         </div>
@@ -451,7 +452,7 @@ FTP: 21, SSH: 22, Telnet: 23, SMTP: 25, DNS: 53, HTTP: 80, HTTPS: 443, POP3: 110
 
 
                 <time class="article-time--reading">
-                    1 minute read
+                    2 minute read
                 </time>
             </div>
         
@@ -590,6 +591,14 @@ E: 11110 + 27 * reserved; 240.0.0.0 - 247.255.255.255</p>
 <p><a class="link" href="https://github.com/FreeRDP/FreeRDP"  target="_blank" rel="noopener"
     >https://github.com/FreeRDP/FreeRDP</a></p>
 <hr>
+<h2 id="url">URL</h2>
+<p>url中的保留自字符需要编码。</p>
+<p>The percent-encoded values for the special characters are as follows:</p>
+<pre><code># → %23
+? → %3F
+&amp; → %26
+</code></pre>
+<p>These encodings are used in URLs to ensure that these characters are treated as literal values rather than special symbols.</p>
 
 </section>
 

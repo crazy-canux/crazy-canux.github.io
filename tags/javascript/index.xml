@@ -408,6 +408,24 @@ document.getElementbyId(&amp;quot;demo&amp;quot;).innerHTML = x;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;模块和包&#34;&gt;模块和包&lt;/h1&gt;
+&lt;h3 id=&#34;commonjs&#34;&gt;commonjs&lt;/h3&gt;
+&lt;p&gt;for old nodejs projects.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// import
+require()
+// export
+module.exports
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;支持单个对象，可以是默认对象&lt;/p&gt;
+&lt;p&gt;extention: &amp;ldquo;*.js&amp;rdquo;&lt;/p&gt;
+&lt;h3 id=&#34;es&#34;&gt;ES&lt;/h3&gt;
+&lt;p&gt;for new nodejs projects.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// import
+import * from *
+// export
+export &amp;lt;function&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;默认导出和命名导出都可以。&lt;/p&gt;
+&lt;p&gt;extention: *.mjs&amp;quot;&lt;/p&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;文档&#34;&gt;文档&lt;/h1&gt;
 &lt;hr&gt;
