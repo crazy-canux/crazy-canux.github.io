@@ -654,28 +654,90 @@ Content-Type: {{Content-Type}}
     >https://github.com/GLips/Figma-Context-MCP</a>
 <a class="link" href="https://github.com/modelcontextprotocol/servers"  target="_blank" rel="noopener"
     >https://github.com/modelcontextprotocol/servers</a></p>
-<pre><code>&quot;mcp&quot;: {
+<pre><code>{
     &quot;servers&quot;: {
-        &quot;Figma MCP&quot;: {
+        &quot;postgres&quot;: {
             &quot;command&quot;: &quot;npx&quot;,
-            &quot;type&quot;: &quot;stdio&quot;,
             &quot;args&quot;: [
-            &quot;-y&quot;,
-            &quot;figma-developer-mcp&quot;,
-            &quot;--figma-api-key=somekey&quot;,
-            &quot;--stdio&quot;
+                &quot;-y&quot;,
+                &quot;@modelcontextprotocol/server-postgres&quot;,
+                &quot;postgresql://server?ssl=true&amp;sslmode=require&amp;rejectUnauthorized=false&quot;
+            ]
+        },
+        &quot;redis&quot;: {
+            &quot;command&quot;: &quot;npx&quot;,
+            &quot;args&quot;: [
+                &quot;-y&quot;,
+                &quot;@modelcontextprotocol/server-redis&quot;,
+                &quot;redis://localhost:6379&quot;
             ]
         },
         &quot;playwright&quot;: {
             &quot;command&quot;: &quot;npx&quot;,
-            &quot;type&quot;: &quot;sudio&quot;,
             &quot;args&quot;: [
-                &quot;@playwright/mcp@latest&quot;,
-                &quot;--headless&quot;
+                &quot;@playwright/mcp@latest&quot;
+            ]
+        },
+        &quot;Azure MCP Server&quot;: {
+            &quot;command&quot;: &quot;npx&quot;,
+            &quot;args&quot;: [
+                &quot;-y&quot;,
+                &quot;@azure/mcp@latest&quot;,
+                &quot;server&quot;,
+                &quot;start&quot;
+            ]
+        },
+        &quot;memory&quot;: {
+            &quot;command&quot;: &quot;npx&quot;,
+            &quot;args&quot;: [
+                &quot;-y&quot;,
+                &quot;@modelcontextprotocol/server-memory&quot;
+            ]
+        },
+        &quot;sequential-thinking&quot;: {
+            &quot;command&quot;: &quot;npx&quot;,
+            &quot;args&quot;: [
+                &quot;-y&quot;,
+                &quot;@modelcontextprotocol/server-sequential-thinking&quot;
+            ]
+        },
+        &quot;git&quot;: {
+            &quot;command&quot;: &quot;docker&quot;,
+            &quot;args&quot;: [
+                &quot;run&quot;,
+                &quot;--rm&quot;,
+                &quot;-i&quot;,
+                &quot;--mount&quot;,
+                &quot;type=bind,src=${workspaceFolder},dst=/workspace&quot;,
+                &quot;mcp/git&quot;
+            ]
+        },
+        &quot;filesystem&quot;: {
+            &quot;command&quot;: &quot;npx&quot;,
+            &quot;args&quot;: [
+                &quot;-y&quot;,
+                &quot;@modelcontextprotocol/server-filesystem&quot;,
+                &quot;${workspaceFolder}&quot;
+            ]
+        },
+        &quot;fetch&quot;: {
+            &quot;command&quot;: &quot;docker&quot;,
+            &quot;args&quot;: [
+                &quot;run&quot;,
+                &quot;-i&quot;,
+                &quot;--rm&quot;,
+                &quot;mcp/fetch&quot;
+            ]
+        },
+        &quot;kubernetes&quot;: {
+            &quot;command&quot;: &quot;npx&quot;,
+            &quot;args&quot;: [
+                &quot;-y&quot;,
+                &quot;mcp-server-kubernetes&quot;
             ]
         }
     }
-},
+}
 </code></pre>
 
 </section>

@@ -345,7 +345,6 @@ website https://www.npmjs.com CLI registry https://registry.npmjs.org config:
     <li><a href="#npmignore">npmignore</a></li>
     <li><a href="#packagejson">package.json</a></li>
     <li><a href="#yarn">yarn</a></li>
-    <li><a href="#yalc">yalc</a></li>
   </ul>
 </nav>
         </div>
@@ -580,27 +579,6 @@ yarn build
     &quot;./alpha&quot;: &quot;./src/alpha.ts&quot;,
     &quot;./package.json&quot;: &quot;./package.json&quot;
 },
-</code></pre>
-<hr>
-<h2 id="yalc">yalc</h2>
-<p><a class="link" href="https://github.com/wclr/yalc"  target="_blank" rel="noopener"
-    >https://github.com/wclr/yalc</a></p>
-<p>install:</p>
-<pre><code>npm i yalc -g
-</code></pre>
-<p>usage:</p>
-<pre><code>yalc publish
-yalc add ...
-yalc remove ...
-yalc publish 
-yalc push
-</code></pre>
-<p>yalc publish需要exports dist，而不是src。</p>
-<pre><code>&quot;exports&quot;: {
-    &quot;.&quot;: &quot;./dist/index.cjs.js&quot;,
-    &quot;./alpha&quot;: &quot;./dist/alpha.cjs.js&quot;,
-    &quot;./package.json&quot;: &quot;./package.json&quot;
-}
 </code></pre>
 
 </section>

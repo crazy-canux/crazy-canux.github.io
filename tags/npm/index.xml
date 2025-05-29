@@ -168,27 +168,6 @@ yarn build
     &amp;quot;./package.json&amp;quot;: &amp;quot;./package.json&amp;quot;
 },
 &lt;/code&gt;&lt;/pre&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;yalc&#34;&gt;yalc&lt;/h2&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/wclr/yalc&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://github.com/wclr/yalc&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;install:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;npm i yalc -g
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;usage:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;yalc publish
-yalc add ...
-yalc remove ...
-yalc publish 
-yalc push
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;yalc publish需要exports dist，而不是src。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;quot;exports&amp;quot;: {
-    &amp;quot;.&amp;quot;: &amp;quot;./dist/index.cjs.js&amp;quot;,
-    &amp;quot;./alpha&amp;quot;: &amp;quot;./dist/alpha.cjs.js&amp;quot;,
-    &amp;quot;./package.json&amp;quot;: &amp;quot;./package.json&amp;quot;
-}
-&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         

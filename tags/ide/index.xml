@@ -198,28 +198,90 @@ Content-Type: {{Content-Type}}
     &gt;https://github.com/GLips/Figma-Context-MCP&lt;/a&gt;
 &lt;a class=&#34;link&#34; href=&#34;https://github.com/modelcontextprotocol/servers&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/modelcontextprotocol/servers&lt;/a&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;&amp;quot;mcp&amp;quot;: {
+&lt;pre&gt;&lt;code&gt;{
     &amp;quot;servers&amp;quot;: {
-        &amp;quot;Figma MCP&amp;quot;: {
+        &amp;quot;postgres&amp;quot;: {
             &amp;quot;command&amp;quot;: &amp;quot;npx&amp;quot;,
-            &amp;quot;type&amp;quot;: &amp;quot;stdio&amp;quot;,
             &amp;quot;args&amp;quot;: [
-            &amp;quot;-y&amp;quot;,
-            &amp;quot;figma-developer-mcp&amp;quot;,
-            &amp;quot;--figma-api-key=somekey&amp;quot;,
-            &amp;quot;--stdio&amp;quot;
+                &amp;quot;-y&amp;quot;,
+                &amp;quot;@modelcontextprotocol/server-postgres&amp;quot;,
+                &amp;quot;postgresql://server?ssl=true&amp;amp;sslmode=require&amp;amp;rejectUnauthorized=false&amp;quot;
+            ]
+        },
+        &amp;quot;redis&amp;quot;: {
+            &amp;quot;command&amp;quot;: &amp;quot;npx&amp;quot;,
+            &amp;quot;args&amp;quot;: [
+                &amp;quot;-y&amp;quot;,
+                &amp;quot;@modelcontextprotocol/server-redis&amp;quot;,
+                &amp;quot;redis://localhost:6379&amp;quot;
             ]
         },
         &amp;quot;playwright&amp;quot;: {
             &amp;quot;command&amp;quot;: &amp;quot;npx&amp;quot;,
-            &amp;quot;type&amp;quot;: &amp;quot;sudio&amp;quot;,
             &amp;quot;args&amp;quot;: [
-                &amp;quot;@playwright/mcp@latest&amp;quot;,
-                &amp;quot;--headless&amp;quot;
+                &amp;quot;@playwright/mcp@latest&amp;quot;
+            ]
+        },
+        &amp;quot;Azure MCP Server&amp;quot;: {
+            &amp;quot;command&amp;quot;: &amp;quot;npx&amp;quot;,
+            &amp;quot;args&amp;quot;: [
+                &amp;quot;-y&amp;quot;,
+                &amp;quot;@azure/mcp@latest&amp;quot;,
+                &amp;quot;server&amp;quot;,
+                &amp;quot;start&amp;quot;
+            ]
+        },
+        &amp;quot;memory&amp;quot;: {
+            &amp;quot;command&amp;quot;: &amp;quot;npx&amp;quot;,
+            &amp;quot;args&amp;quot;: [
+                &amp;quot;-y&amp;quot;,
+                &amp;quot;@modelcontextprotocol/server-memory&amp;quot;
+            ]
+        },
+        &amp;quot;sequential-thinking&amp;quot;: {
+            &amp;quot;command&amp;quot;: &amp;quot;npx&amp;quot;,
+            &amp;quot;args&amp;quot;: [
+                &amp;quot;-y&amp;quot;,
+                &amp;quot;@modelcontextprotocol/server-sequential-thinking&amp;quot;
+            ]
+        },
+        &amp;quot;git&amp;quot;: {
+            &amp;quot;command&amp;quot;: &amp;quot;docker&amp;quot;,
+            &amp;quot;args&amp;quot;: [
+                &amp;quot;run&amp;quot;,
+                &amp;quot;--rm&amp;quot;,
+                &amp;quot;-i&amp;quot;,
+                &amp;quot;--mount&amp;quot;,
+                &amp;quot;type=bind,src=${workspaceFolder},dst=/workspace&amp;quot;,
+                &amp;quot;mcp/git&amp;quot;
+            ]
+        },
+        &amp;quot;filesystem&amp;quot;: {
+            &amp;quot;command&amp;quot;: &amp;quot;npx&amp;quot;,
+            &amp;quot;args&amp;quot;: [
+                &amp;quot;-y&amp;quot;,
+                &amp;quot;@modelcontextprotocol/server-filesystem&amp;quot;,
+                &amp;quot;${workspaceFolder}&amp;quot;
+            ]
+        },
+        &amp;quot;fetch&amp;quot;: {
+            &amp;quot;command&amp;quot;: &amp;quot;docker&amp;quot;,
+            &amp;quot;args&amp;quot;: [
+                &amp;quot;run&amp;quot;,
+                &amp;quot;-i&amp;quot;,
+                &amp;quot;--rm&amp;quot;,
+                &amp;quot;mcp/fetch&amp;quot;
+            ]
+        },
+        &amp;quot;kubernetes&amp;quot;: {
+            &amp;quot;command&amp;quot;: &amp;quot;npx&amp;quot;,
+            &amp;quot;args&amp;quot;: [
+                &amp;quot;-y&amp;quot;,
+                &amp;quot;mcp-server-kubernetes&amp;quot;
             ]
         }
     }
-},
+}
 &lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>

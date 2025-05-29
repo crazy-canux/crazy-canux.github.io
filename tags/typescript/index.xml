@@ -22,6 +22,7 @@
 &lt;hr&gt;
 &lt;h2 id=&#34;tsx&#34;&gt;TSX&lt;/h2&gt;
 &lt;p&gt;&amp;ldquo;*.tsx&amp;rdquo; 是js的扩展，允许使用xml语法。&lt;/p&gt;
+&lt;p&gt;typescript支持interface。&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;jsc&#34;&gt;jsc&lt;/h2&gt;
 &lt;p&gt;将TS编译成JS, tsconfig.json是配置文件。&lt;/p&gt;

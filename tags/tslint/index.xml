@@ -14,27 +14,73 @@
         <guid>https://canuxcheng.com/post/js_devops/</guid>
         <description>&lt;h1 id=&#34;js--ts&#34;&gt;JS &amp;amp; TS&lt;/h1&gt;
 &lt;p&gt;vscode&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;    &amp;quot;version&amp;quot;: &amp;quot;0.2.0&amp;quot;,
-    &amp;quot;configurations&amp;quot;: [
-        {
-            &amp;quot;name&amp;quot;: &amp;quot;Start Backend&amp;quot;,
-            &amp;quot;type&amp;quot;: &amp;quot;node&amp;quot;,
-            &amp;quot;runtimeExecutable&amp;quot;:  &amp;quot;/Users/canche01/.nvm/versions/node/v18.20.3/bin/node&amp;quot;,
-            &amp;quot;request&amp;quot;: &amp;quot;launch&amp;quot;,
-            &amp;quot;args&amp;quot;: [
-                &amp;quot;package&amp;quot;,
-                &amp;quot;start&amp;quot;,
-                &amp;quot;--config&amp;quot;,
-                &amp;quot;${workspaceFolder}/backstage/app-config.local.yaml&amp;quot;
-            ],
-            &amp;quot;cwd&amp;quot;: &amp;quot;${workspaceFolder}/backstage/packages/backend&amp;quot;,
-            &amp;quot;program&amp;quot;: &amp;quot;${workspaceFolder}/backstage/node_modules/.bin/backstage-cli&amp;quot;,
-            &amp;quot;skipFiles&amp;quot;: [
-                &amp;quot;&amp;lt;node_internals&amp;gt;/**&amp;quot;
-            ],
-            &amp;quot;console&amp;quot;: &amp;quot;integratedTerminal&amp;quot;
-        }
-    ]
+&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-json&#34; data-lang=&#34;json&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;{
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;version&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;0.2.0&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;configurations&amp;#34;&lt;/span&gt;: [
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Next.js: debug server-side&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;node-terminal&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;request&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;launch&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;command&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;npm run dev&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    },
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Next.js: debug client-side&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;chrome&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;request&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;launch&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;url&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;http://localhost:3000&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    },
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Next.js: debug client-side (Firefox)&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;firefox&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;request&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;launch&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;url&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;http://localhost:3000&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;reAttach&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;pathMappings&amp;#34;&lt;/span&gt;: [
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;url&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;webpack://_N_E&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;          &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;path&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;${workspaceFolder}&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      ]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    },
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;name&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;Next.js: debug full stack&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;type&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;node&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;request&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;launch&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;program&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;${workspaceFolder}/node_modules/next/dist/bin/next&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;runtimeArgs&amp;#34;&lt;/span&gt;: [&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;--inspect&amp;#34;&lt;/span&gt;],
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;skipFiles&amp;#34;&lt;/span&gt;: [&lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;&amp;lt;node_internals&amp;gt;/**&amp;#34;&lt;/span&gt;],
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;serverReadyAction&amp;#34;&lt;/span&gt;: {
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;action&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;debugWithEdge&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;killOnServerStop&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#66d9ef&#34;&gt;true&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;pattern&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;- Local:.+(https?://.+)&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;uriFormat&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;%s&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;        &lt;span style=&#34;color:#f92672&#34;&gt;&amp;#34;webRoot&amp;#34;&lt;/span&gt;: &lt;span style=&#34;color:#e6db74&#34;&gt;&amp;#34;${workspaceFolder}&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;      }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;    }
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;  ]
+&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;SPA: Single page application, 单页应用，like react, vue and angular.
+SSR: server side rendering. 服务端渲染, like next.js, nuxt.js&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;yalc&#34;&gt;yalc&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/wclr/yalc&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/wclr/yalc&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;install:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;npm i yalc -g
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;usage:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;yalc publish
+yalc add ...
+yalc remove ...
+yalc publish 
+yalc push
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;yalc publish需要exports dist，而不是src。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;quot;exports&amp;quot;: {
+    &amp;quot;.&amp;quot;: &amp;quot;./dist/index.cjs.js&amp;quot;,
+    &amp;quot;./alpha&amp;quot;: &amp;quot;./dist/alpha.cjs.js&amp;quot;,
+    &amp;quot;./package.json&amp;quot;: &amp;quot;./package.json&amp;quot;
+}
 &lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;eslint&#34;&gt;ESLint&lt;/h2&gt;
