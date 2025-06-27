@@ -216,23 +216,25 @@ class ClassName(BaseClass):
 class.__dict__ # 类的特殊属性
 </code></pre>
 <p>类的特殊属性：</p>
-<pre><code>class.__doc__ # 文档的特殊属性, 不会被继承.
-class.__name__ # class name
+<pre><code>class.__name__ # class namkkk
+class.__qualname__
+class.__module__
+class.__doc__ # 文档的特殊属性, 不会被继承.
+class.__annotations
+
 class.__bases__ # 类的父类构成的元组
-class.__dict__ # 以字典的形式存储对象的属性
+class.__orig_bases__
 # 新式类新增的三个特殊属性:
-class.__mro__ # 返回方法解析顺序的元组
+class.__mro__ # 返回方法解析顺序的元组, mro()
 class.__subclasses__() # 返回子类的列表
-class.mro()
+
+class.__dict__ # 以字典的形式存储对象的属性
+class.__weakref__
 </code></pre>
-<p>内置类的方法(BIM)的特殊属性:</p>
-<pre><code>bim.__doc__
-bim.__name__
-bim.__module__ # __builtin__ (Python 3: builtins)
-bim.__self__ # bim
-</code></pre>
-<p>自定义的方法的特殊属性(UDM):</p>
+<p>方法和函数的特殊属性：</p>
 <pre><code>'__doc__',
+'__annotations__'
+'__qualname__'
 '__name__',
 '__module__',
 '__self__',
@@ -361,25 +363,23 @@ class SortedKeyDict(dict):
 <p>python类有一些可自定义的特殊方法集，它们中的一些有预定义的默认行为，一些没有，留到需要的时候去实现。</p>
 <p>这些特殊方法是python中用来扩充类的方法。可以用来模拟标准类型或者重载操作符。</p>
 <p>这些特殊方法都是用双下划线开头和结尾的，也被称为魔法方法。</p>
-<p>基本特殊方法：</p>
+<p>对象创建和销毁：</p>
 <pre><code>__init__(self, *args, **kwargs) # 构造器，带一些可选的参数
 __new__(cls, *args, **kwargs) # 构造器，带一些可选的参数，通常用来设置不可变数据类型的子类。
 __del__(self) # 解构器
-
-__str__(self) # 可打印的字符输出，str(), print
+</code></pre>
+<p>字符串表示：</p>
+<pre><code>__str__(self) # str(), print() 
 obj = ClassName()
 print(obj) # 默认的类的__str__会调用__repr__
 # 可以通过重写__str__或__repr__来改变打印的内容
 
-__repr__(self) # 运行时的字符串输出，repr(), ``
+__repr__(self) # repr()
 obj = ClassName()
 obj # 默认的打印对象的运行时的字符串，&lt;test.RoundFloat at 0x7fb715253e90&gt;
-# 可以通过重写__repr__()改变打印的内容
+# 可以通过重写__repr__()改变打印的内o
 
-# Python 2: __unicode__，Python 3: 字符串默认unicode，无需 __unicode__
-# Python 2: __nonzero__，Python 3: __bool__
-__bool__(self)  # 为object定义False值，bool()
-__hash__(self)  # 返回对象hash值，hash()
+__bool__(self) # 用于bool判断真假
 </code></pre>
 <p>可调用对象的特殊方法：</p>
 <pre><code>__call__(self, *args) # 表示可调用的实例, callable(object) 会返回true.
@@ -395,27 +395,20 @@ tc()
 tc('arg1')
 </code></pre>
 <p>实例和类的检查相关特殊方法：</p>
-<p>可以控制内置方法的反射(自省)行为．</p>
 <pre><code>__instancecheck__(self, instance) # isinstance(instance, class)
 __subclasscheck__(self, subclass) # issubclass(subclass, class)
 </code></pre>
 <p>属性相关特殊方法：</p>
 <pre><code>__getattr__(self, name) # getattr(), 仅当属性没有在实例／类／父类的__dict__中找到才会调用．
+__getattribute__(self, name)
 __setattr__(self, name, value)
 __delattr__(self, name)
-</code></pre>
-<p>新式类的特殊方法：</p>
-<pre><code># 属性相关
-__getattribute__(self, name) # 总是被调用, 会覆盖__getattr__()
+__dir__(self) # dir()
 
 # 描述符相关
 __get__(self, instance, owner)
 __set__(self, instance, value)
 __delete__(self, instance)
-
-__slots__
-
-__metaclass__
 </code></pre>
 <p>with上下文管理特殊方法：</p>
 <pre><code>__enter__(self) # return self, 需要返回self
@@ -490,25 +483,14 @@ __coerce__(self, other)
         return getattr(self.__data, attr)
 </code></pre>
 <hr>
-<h1 id="新式类的特性">新式类的特性</h1>
-<p>随着类和类型的合并，所有类对应的内置函数都是工厂函数，调用工厂函数实际上就是类型实例化。</p>
-<p>属性相关的可定制特殊属性：</p>
-<p>旧式类和新式类都有__dict__属性用字典的方式存储属性，但是字典占用大量内存。</p>
-<p>新式类定义了一个新的属性__slots__用于取代__dict__属性, 是一个类的特殊变量属性。</p>
-<pre><code>__slots__
-</code></pre>
-<p>属性相关的特殊方法：</p>
-<pre><code>__getattribute__(self, name) # 新式类新增，总是被调用, 会覆盖__getattr__()
-</code></pre>
-<h1 id="metaclass">metaclass</h1>
+<h1 id="metaclass元类">metaclass元类</h1>
+<p>metaclass 是&quot;创建类的类&quot;。正如实例是类的实例化，类也是元类的实例化。在 Python 中，类本身也是对象，而元类就是用来创建这些类对象的。</p>
 <p>元类用来定义某些类是如何被创建的。改变类的默认行为和创建方式。</p>
 <p>大多数情况下不需要创建元类，一般使用系统的元类的默认方式。</p>
 <p>在执行类定义的时候，解释器必须知道这个类的元类；</p>
-<p>Python 2:
-class ClassName(object):
-<strong>metaclass</strong> = MetaClassName
-Python 3 推荐：
-class ClassName(metaclass=MetaClassName):</p>
+<pre><code>class ClassName(metaclass=MetaClassName):
+    pass
+</code></pre>
 <p>在执行类定义时候检查元类，元类传递三个参数到构造器：</p>
 <pre><code>类名
 从基类继承数据的元组, __bases__
@@ -522,11 +504,25 @@ class ClassName(metaclass=MetaClassName):</p>
     def __new__(cls, name, bases, dicts):
         super().__new__(cls, name, bases, dicts)
         # 在这里做一些你希望使用该元类的类在定义时做的操作
+    def __call__(cls, *args, **kwargs):
+       if cls not in cls._instances:
+          cls._instances[cls] = super().__call__(*args, **kwargs)
+      return cls._instances[cls]
 
 class ClassName(metaclass=MetaClassName):
+    def __init__(self, value):
+        self.value = value
     ...
 </code></pre>
 <p><a href="https://github.com/crazy-canux/python/tree/master/python/metaclass">https://github.com/crazy-canux/python/tree/master/python/metaclass</a></p>
+<p>使用场景：</p>
+<ul>
+<li>单例模式</li>
+<li>自动注册类</li>
+<li>属性验证和转</li>
+<li>ORM模型创建</li>
+<li>抽象基类和接口检查</li>
+</ul>
 <h2 id="abstractmethod">abstractmethod</h2>
 <p>抽象方法，类似于java的interface.</p>
 <p>最简单的抽象方法：</p>
@@ -536,18 +532,15 @@ def base_method(self):
 </code></pre>
 <p>或者使用abc标准库来实现：</p>
 <p><a href="https://github.com/crazy-canux/python/tree/master/python/psl/myabc.py">https://github.com/crazy-canux/python/tree/master/python/psl/myabc.py</a></p>
-<h1 id="descriptors">descriptors</h1>
-<p>研究描述符之前先搞清楚普通对象访问属性的优先级．</p>
+<hr>
+<h1 id="descriptors描述符">descriptors描述符</h1>
 <p>普通对象访问(set/get/delete)属性的优先级：</p>
 <pre><code>obj.__dict__['attr'] # 先访问实例对象
 obj.__class__.__dict__['attr'] # 再访问类对象
 obj.__class__.__base__.__dict__['attr'] # 接着访问基类的对象,不包括metaclass.
 __getattr__ # 如果实现了的话，优先级最低
 </code></pre>
-<p>descriptors描述符是python新式类的最关键的新特性．</p>
-<p>描述符是具有绑定行为的对象属性，属性访问被描述符协议中的方法覆盖．</p>
-<p>任何实现了下面三个描述符协议方法中的一个的新式类都是描述符.这三个特殊方法充当描述符协议．</p>
-<p>描述符相关的特殊方法：</p>
+<p>描述符是一个对象，它定义了当另一个对象的属性被访问时应该如何处理。任何定义了 <strong>get</strong>()、<strong>set</strong>() 或 <strong>delete</strong>() 方法的类都是描述符。</p>
 <pre><code>__get__(self, obj, type=None) # 返回一个属性的值
 __set__(self, obj, value) # 设置一个属性的值，返回None
 __delete__(self, obj) # 属性的引用递减，返回None
@@ -672,15 +665,10 @@ class Foo(object):
 <p><a href="https://github.com/crazy-canux/python/tree/master/python/descriptor">https://github.com/crazy-canux/python/tree/master/python/descriptor</a></p>
 <hr>
 <h1 id="super">super</h1>
-<p>super只能用于新式类。</p>
 <p>因为同名的方法子类会覆盖父类，在子类中调用父类的同名方法可以通过super内置函数。</p>
 <p>super()方法实际是一个构造器。自动找到基类方法，同时传入self参数。</p>
-<p>Python 2:
-super(type, obj) -&gt; bound super object; requires isinstance(obj, type), obj是实例
-super(type, type2) -&gt; bound super object; requires issubclass(type2, type), type2是类。
-super(type) -&gt; unbound super object
-Python 3 推荐：
-super().<strong>init</strong>() # 不需要传递参数</p>
+<pre><code>super().__init__() # 不需要传递参数
+</code></pre>
 <p>对于单继承, super用来调用父类同名方法。</p>
 <pre><code>class Child(Parent):
     def foo(self):
@@ -688,14 +676,24 @@ super().<strong>init</strong>() # 不需要传递参数</p>
 
 class Child(Parent):
     def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs) # Python 3 推荐写法
+        super().__init__(*args, **kwargs) 
         ...
 
     def foo(self, *args, **kwargs):
-        super().foo(*args, **kwargs) # Python 3 推荐写法
+        super().foo(*args, **kwargs) 
         ...
 </code></pre>
 <p>对于多继承，super用法参考上面的多继承．</p>
+<p>常用场景：</p>
+<ul>
+<li>调用父类构造函数</li>
+<li>扩展父类方法</li>
+<li>多重继承场景</li>
+<li>属性设置场景</li>
+<li>合作式继承</li>
+<li>类方法中使用</li>
+<li>静态方法中使用</li>
+</ul>
 <p>super()返回的对象有一个用于调用Descriptor的定制__getattribute__()方法．</p>
 <pre><code>super(B, obj).method() -&gt;
 obj.__class__.__mro__ -&gt;
@@ -703,8 +701,13 @@ A.__dict__['method'].__get__(obj, B)
 </code></pre>
 <p><a href="https://rhettinger.wordpress.com/2011/05/26/super-considered-super/">https://rhettinger.wordpress.com/2011/05/26/super-considered-super/</a></p>
 <h1 id="classmethod">classmethod</h1>
-<p>要写一个只在类中运行，而不在实例中运行的方法,可以使用类方法．</p>
-<p>通过classmethod装饰器来装饰该方法，并且方法的第一个参数是一个类cls.</p>
+<p>classmethod 是一个内置装饰器，用于将方法转换为类方法。类方法的特点是：</p>
+<ul>
+<li>第一个参数是类本身 cls，而不是实例 self</li>
+<li>可以通过类或实例调用</li>
+<li>可以访问类属性，但不能直接访问实例属性</li>
+<li>常用于创建备选构造函数</li>
+</ul>
 <p>类方法通常用于替代类构造函数．</p>
 <pre><code>class ClassName(object):
     @classmethod
@@ -714,30 +717,48 @@ A.__dict__['method'].__get__(obj, B)
 # 可以通过类来调用, 也就是可以直接调用非绑定方法．自动传入类作为第一个参数．
 ClassName.demo_cm(args, kwargs)
 # 也可以通过实例来调用, 自动传入类作为第一个参数
-ClassName().demo_cm(args, kwargs)
+ClassName().demo_cm(args, kwargs) // not recommend
 </code></pre>
 <p>描述符相关：</p>
 <pre><code>obj.function(*args) -&gt; function(type(obj), *args)
 Class.function(*args) -&gt; function(Class, *args)
 </code></pre>
+<p>常用场景：</p>
+<ul>
+<li>备选构造函数</li>
+<li>工厂方法模式</li>
+<li>访问和修改类属性</li>
+<li>配置和设置相关方o</li>
+<li>继承中的类方法</li>
+</ul>
 <h1 id="staticmethod">staticmethod</h1>
-<p>有一些跟类有关的功能，但在运行时又不需要类和实例参与的情况需要用到静态方法．</p>
-<p>通过staticmethod装饰器来装饰该方法，并且第一个参数不需要是类cls或实例self.</p>
-<p>比如修改环境变量或修改其它类的属性，相当于是在类中定义的一个普通函数．</p>
+<p>staticmethod 是一个内置装饰器，用于将方法转换为静态方法。静态方法的特点是：</p>
+<ul>
+<li>不接收隐式的第一个参数（不需要 self 或 cls）</li>
+<li>可以通过类或实例调……</li>
+<li>不能访问类或实例的属性</li>
+<li>行为类似普通函数，只是在类的命名空间中</li>
+</ul>
+<p>例子:</p>
 <pre><code>class ClassName(object):
     @staticmethod
     def demo_sm():
         ...
 
-# 可以直接调用非绑定方法,但是不会自动传入类．
 ClassName.demo_sm()
-# 也可以通过实例调用．但是不会自动传入实例．
 ClassName().demo_sm()
 </code></pre>
 <p>描述符相关：</p>
 <pre><code>obj.function(*args) -&gt; function(*args)
 Class.function(*args) -&gt; function(*args)
 </code></pre>
+<p>常用场景：</p>
+<ul>
+<li>工具函数</li>
+<li>验证和转换函数</li>
+<li>常量和配置相关</li>
+<li>工厂方法辅助函数</li>
+</ul>
 <hr>
 <h1 id="class-decorators">Class Decorators</h1>
 <p>类装饰器比函数装饰器更灵活，高内聚，封装性等优点．</p>
@@ -758,17 +779,6 @@ class ClassName(object):
 </code></pre>
 <p><a href="https://github.com/crazy-canux/python/blob/master/python/decorator/class_decorator.py">https://github.com/crazy-canux/python/blob/master/python/decorator/class_decorator.py</a></p>
 <hr>
-<h1 id="其它常见python-23差异">其它常见Python 2/3差异</h1>
-<ul>
-<li>print 语句 → print() 函数</li>
-<li>xrange → range</li>
-<li>raw_input → input</li>
-<li>basestring → str</li>
-<li>long/int → int</li>
-<li>Exception 捕获: except Exception as e</li>
-<li>dict(instance) → instance.<strong>dict</strong></li>
-<li>方法属性: Python 3 移除 im_class, im_func, im_self，使用 <strong>self</strong>、<strong>func</strong> 等</li>
-</ul>
 
         </div>
     </article>
