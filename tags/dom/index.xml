@@ -1,19 +1,226 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Dom on Morgoth</title>
-    <link>https://canuxcheng.com/tags/dom/</link>
-    <description>Recent content in Dom on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Wed, 15 Mar 2017 09:36:32 +0000</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/dom/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>JS DOM</title>
-      <link>https://canuxcheng.com/post/js_dom/</link>
-      <pubDate>Wed, 15 Mar 2017 09:36:32 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/js_dom/</guid>
-      <description>&lt;h1 id=&#34;dom&#34;&gt;DOM&lt;/h1&gt;&#xA;&lt;p&gt;DOM: document object model.&lt;/p&gt;&#xA;&lt;p&gt;当网页被加载时，浏览器会创建页面的文档对象模型(DOM).&lt;/p&gt;&#xA;&lt;p&gt;DOM操作需要在html加载完成后进程.&lt;/p&gt;&#xA;&lt;p&gt;js可以通过DOM访问html文档的所有元素.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;JavaScript 能够改变页面中的所有 HTML 元素&lt;/li&gt;&#xA;&lt;li&gt;JavaScript 能够改变页面中的所有 HTML 属性&lt;/li&gt;&#xA;&lt;li&gt;JavaScript 能够改变页面中的所有 CSS 样式&lt;/li&gt;&#xA;&lt;li&gt;JavaScript 能够对页面中的所有事件做出反应&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;查找html元素&#34;&gt;查找html元素&lt;/h2&gt;&#xA;&lt;p&gt;找到返回该元素的对象，没找到返回null.&lt;/p&gt;&#xA;&lt;p&gt;通过id:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;document.getElementById(&amp;quot;id&amp;quot;);&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;通过标签名:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;document.getElementsByTagName(&amp;quot;tag&amp;quot;);&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;通过类名:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;document.getElementsByName(&amp;quot;name&amp;quot;)&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;操作html元素或文本&#34;&gt;操作html元素或文本&lt;/h2&gt;&#xA;&lt;p&gt;操作标签或标签内的文本.&lt;/p&gt;&#xA;&lt;p&gt;直接改变html内容:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;# 绝不要使用在文档加载之后使用 document.write()。这会覆盖该文档&#xA;document.write(...);&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;改变元素的内容:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;document.getElementById(id).innerHTML = &amp;quot;new text&amp;quot;;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;操作html属性&#34;&gt;操作html属性&lt;/h2&gt;&#xA;&lt;p&gt;改变元素属性:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;document.getElementById(id).attribute = &amp;quot;new value&amp;quot;;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;操作css&#34;&gt;操作css&lt;/h2&gt;&#xA;&lt;pre&gt;&lt;code&gt;document.getElementById(id).style.property = &amp;quot;new style&amp;quot;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;增删html元素&#34;&gt;增删html元素&lt;/h2&gt;&#xA;&lt;p&gt;增加元素:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;var para = document.createElement(&amp;quot;p&amp;quot;);&#xA;var node = document.createTextNode(&amp;quot;new para&amp;quot;);&#xA;para.appendChild(node);&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;删除元素:&lt;/p&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Dom on Morgoth</title>
+        <link>https://canuxcheng.com/tags/dom/</link>
+        <description>Recent content in Dom on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Wed, 15 Mar 2017 09:36:32 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/dom/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>JS DOM</title>
+        <link>https://canuxcheng.com/post/js_dom/</link>
+        <pubDate>Wed, 15 Mar 2017 09:36:32 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/js_dom/</guid>
+        <description>&lt;h1 id=&#34;dom&#34;&gt;DOM&lt;/h1&gt;
+&lt;p&gt;DOM: document object model.&lt;/p&gt;
+&lt;p&gt;当网页被加载时，浏览器会创建页面的文档对象模型(DOM).&lt;/p&gt;
+&lt;p&gt;DOM操作需要在html加载完成后进程.&lt;/p&gt;
+&lt;p&gt;js可以通过DOM访问html文档的所有元素.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;JavaScript 能够改变页面中的所有 HTML 元素&lt;/li&gt;
+&lt;li&gt;JavaScript 能够改变页面中的所有 HTML 属性&lt;/li&gt;
+&lt;li&gt;JavaScript 能够改变页面中的所有 CSS 样式&lt;/li&gt;
+&lt;li&gt;JavaScript 能够对页面中的所有事件做出反应&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;查找html元素&#34;&gt;查找html元素&lt;/h2&gt;
+&lt;p&gt;找到返回该元素的对象，没找到返回null.&lt;/p&gt;
+&lt;p&gt;通过id:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;document.getElementById(&amp;quot;id&amp;quot;);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;通过标签名:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;document.getElementsByTagName(&amp;quot;tag&amp;quot;);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;通过类名:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;document.getElementsByName(&amp;quot;name&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;操作html元素或文本&#34;&gt;操作html元素或文本&lt;/h2&gt;
+&lt;p&gt;操作标签或标签内的文本.&lt;/p&gt;
+&lt;p&gt;直接改变html内容:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 绝不要使用在文档加载之后使用 document.write()。这会覆盖该文档
+document.write(...);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;改变元素的内容:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;document.getElementById(id).innerHTML = &amp;quot;new text&amp;quot;;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;操作html属性&#34;&gt;操作html属性&lt;/h2&gt;
+&lt;p&gt;改变元素属性:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;document.getElementById(id).attribute = &amp;quot;new value&amp;quot;;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;操作css&#34;&gt;操作css&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;document.getElementById(id).style.property = &amp;quot;new style&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;增删html元素&#34;&gt;增删html元素&lt;/h2&gt;
+&lt;p&gt;增加元素:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var para = document.createElement(&amp;quot;p&amp;quot;);
+var node = document.createTextNode(&amp;quot;new para&amp;quot;);
+para.appendChild(node);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;删除元素:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var parent = document.getElementById(&amp;quot;id&amp;quot;);
+var child = document.getElementById(&amp;quot;cid&amp;quot;);
+parent.removeChild(child);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;对事件做出反应&#34;&gt;对事件做出反应&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;function changetext(id) {
+    id.innerHTML = &amp;quot;new text&amp;quot;
+}
+&amp;lt;h1 onclick=&amp;quot;changetext(this)&amp;quot;&amp;gt;&amp;lt;/h1&amp;gt;
+
+document.getElementById(id).onclick=function(){...};
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;document&#34;&gt;Document&lt;/h1&gt;
+&lt;p&gt;集合:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;all[]
+anchors[]
+applets
+forms[]
+images[]
+links[]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;attribution:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;body
+cookie
+domain
+lastModified
+referrer
+title
+URL
+readyState // loading/interfactive/complete
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;method:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;open()
+close()
+getElementById() # 返回id对应的第一个对象
+getElementsByName() # 返回对应的所有对象的集合
+getElementsByTagName() # 同上
+write()
+writeln()
+createElement()
+createTextNode()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;element&#34;&gt;Element&lt;/h1&gt;
+&lt;p&gt;element表示html元素,拥有元素，文本和注释的子节点.&lt;/p&gt;
+&lt;p&gt;attribution:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;tagName // tag名字
+innerHTML // 元素里面的文本内容
+id
+title
+style
+className
+length
+nodeName // 和tagName相同
+nodeType // 节点类型: 1= 元素节点，2= 属性节点, 3= 文本节点, 8= 注释
+nodeValue // 文本节点的值
+parentNode // 父节点
+childNodes // 子节点
+firstChild
+lastChild
+nextSibling
+previousSibling
+ownerDocument // 返回当前根节点文档对象
+accesKey
+attributes
+contentEditable
+dir
+lang
+namespaceURI
+tabIndex
+textContent
+clientHeight
+clientWidth
+offsetHeight
+offsetWidth
+offsetLeft
+offsetParent
+offsetTop
+scrollHeight
+scrollLeft
+scrollTop
+scrollWidth
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;method:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;appendChild(node) // 在元素后追加node
+InsertBefore() // 在元素前插入node
+removeChild()
+replaceChild()
+cloneNode()
+
+compareDocumentPosition()
+getAttribute()
+getAttributeNode()
+getElementsByTagName()
+getFeature()
+getUserData()
+hasAttribute()
+hasAttributes()
+hasChildNodes()
+isDefaultNamespace()
+isEqualNode()
+isSameNode()
+isSupported()
+normalize()
+removeAttribute()
+removeAttributeNode()
+setArrbitute()
+setArrtibuteNode()
+setIdAttribute()
+setIdArrtibuteNode()
+setUserData()
+toString()
+item() #
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;attribute&#34;&gt;Attribute&lt;/h1&gt;
+&lt;p&gt;Attribute表示html属性&lt;/p&gt;
+&lt;p&gt;attribution:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;isId
+name
+value
+specified
+length
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;methods:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;gtNamedItem()
+item()
+removeNameItem()
+setNamedItem()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;event&#34;&gt;Event&lt;/h1&gt;
+&lt;p&gt;window事件:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 等待html加载完成
+onload
+window.onload = function(){};
+
+onunload
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;鼠标事件:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;onclick
+ondblclick
+onmousedown
+onmousemove
+onmouseout
+onmouseover
+onmouseup
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;键盘事件:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;onkeypress
+onkeydown
+onkeyup
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;表单事件:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;onsubmit
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;媒体事件:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;onabort
+onerror
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

@@ -1,19 +1,210 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Vim on Morgoth</title>
-    <link>https://canuxcheng.com/tags/vim/</link>
-    <description>Recent content in Vim on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sat, 02 Apr 2016 21:11:26 +0000</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/vim/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Vim</title>
-      <link>https://canuxcheng.com/post/devops_vim/</link>
-      <pubDate>Sat, 02 Apr 2016 21:11:26 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/devops_vim/</guid>
-      <description>&lt;h1 id=&#34;vim&#34;&gt;vim&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://www.vim.org&#34;&gt;http://www.vim.org&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/vim/vim&#34;&gt;https://github.com/vim/vim&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;类似编辑器:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;emacs&lt;/li&gt;&#xA;&lt;li&gt;Atom(github的开源跨平台编辑器，支持插件。)&lt;/li&gt;&#xA;&lt;li&gt;VSCode(微软的开源跨平台的编辑器，支持插件。)&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h1 id=&#34;vim安装和配置&#34;&gt;Vim安装和配置&lt;/h1&gt;&#xA;&lt;p&gt;查看vim版本和编译信息：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;vim --version&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;安装vim：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ sudo apt-get install vim&#xA;$ yum install vim&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;源码安装vim：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ sudo apt-get build-dep vim&#xA;$ cd vim/src&#xA;&#xA;$ ./configure \&#xA;--with-features=huge \&#xA;--with-compiledby=&amp;quot;Canux&amp;quot; \&#xA;--enable-multibyte \&#xA;--enable-gui=gtk2 \&#xA;--enable-gpm \&#xA;--prefix=/usr \&#xA;--enable-cscope \&#xA;--enable-fontset \&#xA;--enable-xim \&#xA;--enable-fail-if-missing \&#xA;--enable-mzschemeinterp \&#xA;--enable-perlinterp \&#xA;--enable-luainterp \&#xA;--enable-tclinterp\&#xA;--enable-rubyinterp \&#xA;--enable-pythoninterp \&#xA;--with-python-config-dir=/usr/lib/python2.7/config-x86_64-linux-gnu \&#xA;--enable-python3interp \&#xA;--with-python3-config-dir=/usr/lib/python3.4/config-3.4m-x86_64-linux-gnu&#xA;&#xA;$ make VIMRUNTIMEDIR=/usr/share/vim/vim74&#xA;$ sudo make install&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;vim相关项目&#34;&gt;Vim相关项目&lt;/h1&gt;&#xA;&lt;h2 id=&#34;neovim&#34;&gt;neovim&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/neovim/neovim&#34;&gt;https://github.com/neovim/neovim&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Vim on Morgoth</title>
+        <link>https://canuxcheng.com/tags/vim/</link>
+        <description>Recent content in Vim on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Sat, 02 Apr 2016 21:11:26 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/vim/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Vim</title>
+        <link>https://canuxcheng.com/post/devops_vim/</link>
+        <pubDate>Sat, 02 Apr 2016 21:11:26 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/devops_vim/</guid>
+        <description>&lt;h1 id=&#34;vim&#34;&gt;vim&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://www.vim.org&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://www.vim.org&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/vim/vim&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/vim/vim&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;类似编辑器:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;emacs&lt;/li&gt;
+&lt;li&gt;Atom(github的开源跨平台编辑器，支持插件。)&lt;/li&gt;
+&lt;li&gt;VSCode(微软的开源跨平台的编辑器，支持插件。)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;vim安装和配置&#34;&gt;Vim安装和配置&lt;/h1&gt;
+&lt;p&gt;查看vim版本和编译信息：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;vim --version
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;安装vim：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo apt-get install vim
+$ yum install vim
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;源码安装vim：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo apt-get build-dep vim
+$ cd vim/src
+
+$ ./configure \
+--with-features=huge \
+--with-compiledby=&amp;quot;Canux&amp;quot; \
+--enable-multibyte \
+--enable-gui=gtk2 \
+--enable-gpm \
+--prefix=/usr \
+--enable-cscope \
+--enable-fontset \
+--enable-xim \
+--enable-fail-if-missing \
+--enable-mzschemeinterp \
+--enable-perlinterp \
+--enable-luainterp \
+--enable-tclinterp\
+--enable-rubyinterp \
+--enable-pythoninterp \
+--with-python-config-dir=/usr/lib/python2.7/config-x86_64-linux-gnu \
+--enable-python3interp \
+--with-python3-config-dir=/usr/lib/python3.4/config-3.4m-x86_64-linux-gnu
+
+$ make VIMRUNTIMEDIR=/usr/share/vim/vim74
+$ sudo make install
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;vim相关项目&#34;&gt;Vim相关项目&lt;/h1&gt;
+&lt;h2 id=&#34;neovim&#34;&gt;neovim&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/neovim/neovim&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/neovim/neovim&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;vim的升级版，修复了vim的bug，同时集成了许多插件。&lt;/p&gt;
+&lt;h2 id=&#34;spacevim&#34;&gt;spacevim&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/SpaceVim/SpaceVim&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/SpaceVim/SpaceVim&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;更高效的vim.&lt;/p&gt;
+&lt;h2 id=&#34;sp13&#34;&gt;sp13&lt;/h2&gt;
+&lt;p&gt;分布式vim。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/spf13/spf13-vim&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/spf13/spf13-vim&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;vim-galore&#34;&gt;vim-galore&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/mhinz/vim-galore&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/mhinz/vim-galore&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;vim的知识库．&lt;/p&gt;
+&lt;h2 id=&#34;vimrc&#34;&gt;vimrc&lt;/h2&gt;
+&lt;p&gt;vim的终极配置．&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/amix/vimrc&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/amix/vimrc&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;vim常见用法和特殊用法&#34;&gt;vim常见用法和特殊用法&lt;/h1&gt;
+&lt;p&gt;vim的三种模式：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;v    # 视觉模式
+i    # 插入模式
+esc  # 普通模式
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;常用命令:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;:    # 进入命令行
+:help # 查看帮助
+:q
+:q!
+:qa
+:w
+:n1, n2 w
+:wq
+:x
+
+# 常用设置
+:set mouse=a # enable mouse
+:set list    # 查看tab键
+:set nolist
+:set nu
+:set nonu
+:! [shell-command]   # 可以运行外部命令
+
+# 替换
+:s/old/new    # 替换第一个
+:ns/old/new/g    # 替换行n
+:n1,n2s/old/new/g    # 替换n1-n2之间的全部
+:%s/old/new/g    # 替换整个文件
+:%s/old/new/gc    # 替换整个文件，弹出提示
+:%/^/inseart/g    # 行首插入
+:%/$/inseart/g    # 行尾插入
+
+# 删除
+:g/pattern/d    # 删除匹配的行
+:n1,n2g/pattern/d    # 删除n1-n2中匹配的行
+:v/pattern/d    # 删除不匹配的行
+:n1,n2d    # 删除n1-n2行
+:%s/^\s\+//g    # 删除行首空格
+:%s/\s\+$//g    # 删除行尾空格
+:1,$d    # 删除所有行，包括行号
+:%s/^.*$//g    # 清空内容，保留行号
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;常用快捷键：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 左右跳转快捷键
+n h    # left
+n l    # right
+0      # 跳转到一行的首字母
+^      # 跳转到一行的非空首字母
+n $    # 跳转一行的结尾
+
+# 上下跳转快捷键
+n k    # up
+n j    # down
+n G  # 跳转到行号n, 默认最后一行
+n gg # 同上，默认第一行
+
+# 文本移动(向前就是向右，向后就是向左)
+n w     # 向前移动n个单词
+n W     # 向前移动n个空格分割的单词
+n e     # 跳转到最后第n个单词
+n E     # 跳转到以空格分割的最后地n个单词
+n b     # 向后n个单词
+n B     # 向后n个单词，以空格分割
+
+# 模式匹配
+N  /{pattern}[/[offset]]&amp;lt;CR&amp;gt; # 向后查找N个匹配
+N  ?{pattern}[?[offset]]&amp;lt;CR&amp;gt; # 向前查找N个匹配
+N n # 向后查看
+N N # 向前查看
+
+# 大小写转换
+~    # 单个字符相互转换
+U    # 转换成大些
+u    # 转换成小写
+g~~    # 转换当前行大小写
+:%s/./\U&amp;amp;/g    # 全文改成大些
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;特殊字符处理：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 查看特殊字符，字符编码和二合字母
+:digraphs
+:h digraph-table
+# 直接使用字符编码,插入模式下输入
+&amp;lt;ctrl-v&amp;gt; + &amp;lt;dec&amp;gt;
+# 使用二合字母，插入模式下输入
+&amp;lt;ctrl-k&amp;gt; + &amp;lt;digraph&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;vim-plugins-manager&#34;&gt;vim-plugins-manager&lt;/h1&gt;
+&lt;p&gt;vim的插件管理器&lt;/p&gt;
+&lt;h2 id=&#34;pathogen&#34;&gt;pathogen&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/tpope/vim-pathogen&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/tpope/vim-pathogen&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;vim的本地管理插件。&lt;/p&gt;
+&lt;h2 id=&#34;vundle&#34;&gt;vundle&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/VundleVim/Vundle.vim&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/VundleVim/Vundle.vim&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;vim的在线管理插件。&lt;/p&gt;
+&lt;h2 id=&#34;vim-plug&#34;&gt;vim-plug&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/junegunn/vim-plug&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/junegunn/vim-plug&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;vundle的迷你版。&lt;/p&gt;
+&lt;h2 id=&#34;dein&#34;&gt;dein&lt;/h2&gt;
+&lt;p&gt;dein已经取代neobundle, 可以用于vim和neovim。&lt;/p&gt;
+&lt;p&gt;旧版本：&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/Shougo/neobundle.vim&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/Shougo/neobundle.vim&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;新版本：&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/Shougo/dein.vim&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/Shougo/dein.vim&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;vim-plugins&#34;&gt;vim-plugins&lt;/h1&gt;
+&lt;p&gt;vim常用的插件&lt;/p&gt;
+&lt;h2 id=&#34;ycm&#34;&gt;YCM&lt;/h2&gt;
+&lt;h2 id=&#34;syntastic&#34;&gt;syntastic&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;常用情景&#34;&gt;常用情景&lt;/h1&gt;
+&lt;p&gt;vim内部使用sudo保存:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;:w !sudo tee %
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

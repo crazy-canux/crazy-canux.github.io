@@ -1,19 +1,89 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Virtualbox on Morgoth</title>
-    <link>https://canuxcheng.com/tags/virtualbox/</link>
-    <description>Recent content in Virtualbox on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Mon, 03 Jun 2019 22:53:23 +0800</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/virtualbox/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Virtualbox</title>
-      <link>https://canuxcheng.com/post/virtualbox/</link>
-      <pubDate>Mon, 03 Jun 2019 22:53:23 +0800</pubDate>
-      <guid>https://canuxcheng.com/post/virtualbox/</guid>
-      <description>&lt;h1 id=&#34;virtualbox&#34;&gt;Virtualbox&lt;/h1&gt;&#xA;&lt;p&gt;虚拟化工具virtualbox.&lt;/p&gt;&#xA;&lt;h1 id=&#34;vboxmanage&#34;&gt;vboxmanage&lt;/h1&gt;&#xA;&lt;p&gt;vm&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;// 导入ova&#xA;$ vboxmanage import win7.ova &#xA;&#xA;// 添加host网络&#xA;$ vboxmanage modifyvm &amp;quot;win764&amp;quot; --nic1 hostonly --hostonlyadapter1 vboxnet0&#xA;// 添加bridge网络&#xA;$ vboxmanage modifyvm &amp;quot;Win732&amp;quot; --nic2 bridged --bridgeadapter2 docker_gwbridge&#xA;// 重命名vm&#xA;$ vboxmanage modifyvm &amp;lt;vm&amp;gt; --name &amp;lt;new-name&amp;gt; &#xA;// 修改参数&#xA;$ vboxmanage modifyvm &amp;lt;vm&amp;gt; --memory 4096 --cpus 4 --hwvirtex on --ioapic on&#xA;&#xA;// 启动虚拟机&#xA;$ vboxmanage startvm &amp;quot;Win732&amp;quot;&#xA;$ vboxmanage startvm &amp;lt;vm&amp;gt; --type headless &#xA;$ VBoxHeadless --startvm &amp;lt;uuid|name&amp;gt; --vrde on&#xA;&#xA;// 控制虚拟机&#xA;$ vboxmanage controlvm &amp;lt;vm&amp;gt; pause/resume/reset/poweroff/savestate&#xA;&#xA;// 查看所有/运行虚拟机&#xA;$ vboxmanage list vms/runningvms &#xA;&#xA;// 删除vm&#xA;$ vboxmanage unregistervm &amp;lt;vm&amp;gt; --delete&#xA;&#xA;// linux上执行命令&#xA;$ vboxmanage guestcontrol {} --username {} --password {} run --exe /bin/bash -- -l -c &#39;pwd&#39;&#xA;&#xA;// windows上执行命令&#xA;$ vboxmanage guestcontrol {} --username &#39;Administrator&#39; run --exe &#39;C:\\Program Files\\Oracle\\VirtualBox Guest Additions\\uninst.exe&#39; -- uninst.exe /S&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;media&lt;/p&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Virtualbox on Morgoth</title>
+        <link>https://canuxcheng.com/tags/virtualbox/</link>
+        <description>Recent content in Virtualbox on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Mon, 03 Jun 2019 22:53:23 +0800</lastBuildDate><atom:link href="https://canuxcheng.com/tags/virtualbox/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Virtualbox</title>
+        <link>https://canuxcheng.com/post/virtualbox/</link>
+        <pubDate>Mon, 03 Jun 2019 22:53:23 +0800</pubDate>
+        
+        <guid>https://canuxcheng.com/post/virtualbox/</guid>
+        <description>&lt;h1 id=&#34;virtualbox&#34;&gt;Virtualbox&lt;/h1&gt;
+&lt;p&gt;虚拟化工具virtualbox.&lt;/p&gt;
+&lt;h1 id=&#34;vboxmanage&#34;&gt;vboxmanage&lt;/h1&gt;
+&lt;p&gt;vm&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 导入ova
+$ vboxmanage import win7.ova 
+
+// 添加host网络
+$ vboxmanage modifyvm &amp;quot;win764&amp;quot; --nic1 hostonly --hostonlyadapter1 vboxnet0
+// 添加bridge网络
+$ vboxmanage modifyvm &amp;quot;Win732&amp;quot; --nic2 bridged --bridgeadapter2 docker_gwbridge
+// 重命名vm
+$ vboxmanage modifyvm &amp;lt;vm&amp;gt; --name &amp;lt;new-name&amp;gt; 
+// 修改参数
+$ vboxmanage modifyvm &amp;lt;vm&amp;gt; --memory 4096 --cpus 4 --hwvirtex on --ioapic on
+
+// 启动虚拟机
+$ vboxmanage startvm &amp;quot;Win732&amp;quot;
+$ vboxmanage startvm &amp;lt;vm&amp;gt; --type headless 
+$ VBoxHeadless --startvm &amp;lt;uuid|name&amp;gt; --vrde on
+
+// 控制虚拟机
+$ vboxmanage controlvm &amp;lt;vm&amp;gt; pause/resume/reset/poweroff/savestate
+
+// 查看所有/运行虚拟机
+$ vboxmanage list vms/runningvms 
+
+// 删除vm
+$ vboxmanage unregistervm &amp;lt;vm&amp;gt; --delete
+
+// linux上执行命令
+$ vboxmanage guestcontrol {} --username {} --password {} run --exe /bin/bash -- -l -c &#39;pwd&#39;
+
+// windows上执行命令
+$ vboxmanage guestcontrol {} --username &#39;Administrator&#39; run --exe &#39;C:\\Program Files\\Oracle\\VirtualBox Guest Additions\\uninst.exe&#39; -- uninst.exe /S
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;media&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 列出所有hdd
+$ vboxmanage list hdds
+
+// 删除hdd
+$ vboxmanage closemedium disk &amp;lt;uuid&amp;gt; --delete
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;snapshot&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;//查看快照
+$ vboxmanage snapshot &amp;lt;vm&amp;gt; list 
+
+$ vboxmanage snapshot &amp;lt;vm&amp;gt; take &amp;lt;name&amp;gt; --live --pause // 创建快照
+
+$ vboxmanage snapshot &amp;lt;vm&amp;gt; delete &amp;lt;snapshot-name/uuid&amp;gt; // 删除快照
+
+$ vboxmanage snapshot &amp;lt;vm&amp;gt; restore &amp;lt;name&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;hostonly-network&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ vboxmanage hostonlyif crate // 创建hostonly bridge
+$ vboxmanage hostonlyif ipconfig vboxnet0 --ip 192.168.1.1 --netmask 255.255.255.0 // 给hostonly bridge分配ip和netmask.
+$ vboxmanage hostonlyif remove &amp;lt;name&amp;gt;
+
+// 查看所有hostonly网路
+$ vboxmanage list hostonlyifs
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;bridge-network&lt;/p&gt;
+&lt;p&gt;nat-network&lt;/p&gt;
+&lt;p&gt;storage&lt;/p&gt;
+&lt;p&gt;extpack&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 安装扩展包
+$ sudo vboxmanage extpack install Oracle_VM_VirtualBox_Extension_Pack-6.0.8.vbox-extpack
+$ sudo vboxmanage extpack uninstall \
+&amp;quot;Oracle VM VirtualBox Extension Pack&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

@@ -1,19 +1,50 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Bitbake on Morgoth</title>
-    <link>https://canuxcheng.com/tags/bitbake/</link>
-    <description>Recent content in Bitbake on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sun, 12 Jul 2020 21:18:33 +0000</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/bitbake/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>BitBake</title>
-      <link>https://canuxcheng.com/post/linux_bitbake/</link>
-      <pubDate>Sun, 12 Jul 2020 21:18:33 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/linux_bitbake/</guid>
-      <description>&lt;h1 id=&#34;bitbake&#34;&gt;BitBake&lt;/h1&gt;&#xA;&lt;p&gt;bitbake是类似于make的构建工具，主要用于OpenEmbedded和yocto构建linux发行版.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/openembedded/bitbake&#34;&gt;https://github.com/openembedded/bitbake&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;bitbake:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ bitbake python -c devshell/devpyshell&#xA;$ bitbake python -c clean/cleanall/cleanstate&#xA;$ bitbake python -c compile&#xA;$ bitbake python -c fetch/fetchall&#xA;&#xA;# 查找下载地址&#xA;$ bitbake -e python | grep ^SRC_URI&#xA;&#xA;# 根据文件查找包名&#xA;bitbake&amp;gt; oe-pkgdata-util find-path /usr/bin/python3&#xA;&#xA;# 包名查找recipe&#xA;bitbake&amp;gt; oe-pkgdata-util lookup-recipe python3-core&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h1 id=&#34;openembedded&#34;&gt;openembedded&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/openembedded/openembedded-core&#34;&gt;https://github.com/openembedded/openembedded-core&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;yoctopoky&#34;&gt;yocto(poky)&lt;/h1&gt;&#xA;&lt;p&gt;poky是一个开源的最小构建示例，内置bitbake，可直接编译.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://git.yoctoproject.org/cgit/cgit.cgi/poky/log/&#34;&gt;http://git.yoctoproject.org/cgit/cgit.cgi/poky/log/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://git.yoctoproject.org/cgit/cgit.cgi/meta-virtualization/tree/recipes-containers&#34;&gt;http://git.yoctoproject.org/cgit/cgit.cgi/meta-virtualization/tree/recipes-containers&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/crazy-canux/poky&#34;&gt;https://github.com/crazy-canux/poky&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;toaster&#34;&gt;toaster&lt;/h1&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Bitbake on Morgoth</title>
+        <link>https://canuxcheng.com/tags/bitbake/</link>
+        <description>Recent content in Bitbake on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Sun, 12 Jul 2020 21:18:33 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/bitbake/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>BitBake</title>
+        <link>https://canuxcheng.com/post/linux_bitbake/</link>
+        <pubDate>Sun, 12 Jul 2020 21:18:33 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/linux_bitbake/</guid>
+        <description>&lt;h1 id=&#34;bitbake&#34;&gt;BitBake&lt;/h1&gt;
+&lt;p&gt;bitbake是类似于make的构建工具，主要用于OpenEmbedded和yocto构建linux发行版.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/openembedded/bitbake&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/openembedded/bitbake&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;bitbake:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ bitbake python -c devshell/devpyshell
+$ bitbake python -c clean/cleanall/cleanstate
+$ bitbake python -c compile
+$ bitbake python -c fetch/fetchall
+
+# 查找下载地址
+$ bitbake -e python | grep ^SRC_URI
+
+# 根据文件查找包名
+bitbake&amp;gt; oe-pkgdata-util find-path /usr/bin/python3
+
+# 包名查找recipe
+bitbake&amp;gt; oe-pkgdata-util lookup-recipe python3-core
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;openembedded&#34;&gt;openembedded&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/openembedded/openembedded-core&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/openembedded/openembedded-core&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;yoctopoky&#34;&gt;yocto(poky)&lt;/h1&gt;
+&lt;p&gt;poky是一个开源的最小构建示例，内置bitbake，可直接编译.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://git.yoctoproject.org/cgit/cgit.cgi/poky/log/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://git.yoctoproject.org/cgit/cgit.cgi/poky/log/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://git.yoctoproject.org/cgit/cgit.cgi/meta-virtualization/tree/recipes-containers&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://git.yoctoproject.org/cgit/cgit.cgi/meta-virtualization/tree/recipes-containers&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/crazy-canux/poky&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/crazy-canux/poky&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;toaster&#34;&gt;toaster&lt;/h1&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

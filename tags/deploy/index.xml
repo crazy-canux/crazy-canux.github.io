@@ -1,19 +1,170 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Deploy on Morgoth</title>
-    <link>https://canuxcheng.com/tags/deploy/</link>
-    <description>Recent content in Deploy on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Tue, 27 Sep 2016 10:23:22 +0000</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/deploy/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Deploy</title>
-      <link>https://canuxcheng.com/post/django_deploy/</link>
-      <pubDate>Tue, 27 Sep 2016 10:23:22 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/django_deploy/</guid>
-      <description>&lt;h1 id=&#34;发布django项目&#34;&gt;发布django项目&lt;/h1&gt;&#xA;&lt;p&gt;django内置一个轻量级web开发服务器。&lt;/p&gt;&#xA;&lt;p&gt;如果要发布django项目需要另外的操作。&lt;/p&gt;&#xA;&lt;p&gt;也可以发布到其它的云平台。&lt;/p&gt;&#xA;&lt;p&gt;一般通过wsgi或者asgi来部署.&lt;/p&gt;&#xA;&lt;h2 id=&#34;deploy时django的设置&#34;&gt;deploy时django的设置&lt;/h2&gt;&#xA;&lt;p&gt;settings.py中的设置：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;ALLOWED_HOSTS = [&#39;*&#39;]&#xA;DEBUG = False&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;wsgi-部署&#34;&gt;WSGI 部署&lt;/h1&gt;&#xA;&lt;h2 id=&#34;apache2--mod_wsgi&#34;&gt;apache2 + mod_wsgi&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/GrahamDumpleton/mod_wsgi&#34;&gt;https://github.com/GrahamDumpleton/mod_wsgi&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;mod_wsgi是C写的apache的模块，实现了兼容WSGI接口，用来部署python的web应用。&lt;/p&gt;&#xA;&lt;p&gt;作为apache2的模块安装&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;# ubuntu/debian&#xA;sudo aptitude install apache2 # 安装apache2&#xA;sudo aptitude install libapache2-mod-wsgi # for python2&#xA;sudo aptitude install libapache2-mod-wsgi-py3 # for python3&#xA;&#xA;# redhat/centos/fedora&#xA;sudo yum install httpd2&#xA;sudo yum install httpd-devel&#xA;sudo yum install mod_wsgi&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;Ubuntu创建网站的配置文件/etc/apache2/sites-available/mysite.conf:&lt;/p&gt;&#xA;&lt;p&gt;Fedora创建网站的配置文件/etc/httpd/conf.d/mysite.conf:&lt;/p&gt;&#xA;&lt;p&gt;一般部署到web服务器，/home/user/修改为/var/www/&lt;project-name&gt;/&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;# Include the project dir, can not inside VirtualHost section.&#xA;WSGIPythonPath /home/user/mysite&#xA;# If use virtualenv and named .venv&#xA;# WSGIPythonPath /home/user/mysite:/home/user/mysite/.venv/lib/python2.7/site-packages&#xA;&#xA;&amp;lt;VirtualHost *:80&amp;gt;&#xA;    ServerName localhost&#xA;    # ServerName yoursite.domain&#xA;    ServerAdmin canuxcheng@gmail.com&#xA;&#xA;    Alias /robots.txt /home/user/mysite/static/robots.txt&#xA;    Alias /favicon.ico /home/user/mysite/static/favicon.ico&#xA;&#xA;    Alias /media/ /home/user/mysite/media/&#xA;    Alias /static/ /home/user/mysite/static/&#xA;&#xA;    &amp;lt;Directory /home/user/mysite/media&amp;gt;&#xA;    Required all granted&#xA;    &amp;lt;/Directory&amp;gt;&#xA;&#xA;    &amp;lt;Directory /home/user/mysite/static&amp;gt;&#xA;    Required all granted&#xA;    &amp;lt;/Directory&amp;gt;&#xA;&#xA;    # If use daemon mode to run WSGI process.&#xA;    WSGIDaemonProcess mysite python-path=/home/user/mysite&#xA;    # If use virtualenv and named .venv&#xA;    # WSGIDaemonProcess mysite python-path=/home/user/mysite:/home/user/mysite/.venv/lib/python2.7/site-packages&#xA;    # WSGIProcessGroup mysite&#xA;&#xA;    WSGIScriptAlias / /home/user/mysite/mysite/wsgi.py&#xA;&#xA;    &amp;lt;Directory /home/user/mysite/mysite&amp;gt;&#xA;    &amp;lt;Files wsgi.py&amp;gt;&#xA;    Required all granted&#xA;    &amp;lt;/Files&amp;gt;&#xA;    &amp;lt;/Directory&amp;gt;&#xA;&#xA;    # check the log in /var/log/apache2/error_mysite.log or access_mysite.log&#xA;    ErrorLog ${APACHE_LOG_DIR}/error_mysite.log&#xA;    CustomLog ${APACHE_LOG_DIR}/access_mysite.log combined&#xA;&amp;lt;/VirtualHost&amp;gt;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;修改项目的wsgi.py:&lt;/p&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Deploy on Morgoth</title>
+        <link>https://canuxcheng.com/tags/deploy/</link>
+        <description>Recent content in Deploy on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Tue, 27 Sep 2016 10:23:22 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/deploy/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Deploy</title>
+        <link>https://canuxcheng.com/post/django_deploy/</link>
+        <pubDate>Tue, 27 Sep 2016 10:23:22 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/django_deploy/</guid>
+        <description>&lt;h1 id=&#34;发布django项目&#34;&gt;发布django项目&lt;/h1&gt;
+&lt;p&gt;django内置一个轻量级web开发服务器。&lt;/p&gt;
+&lt;p&gt;如果要发布django项目需要另外的操作。&lt;/p&gt;
+&lt;p&gt;也可以发布到其它的云平台。&lt;/p&gt;
+&lt;p&gt;一般通过wsgi或者asgi来部署.&lt;/p&gt;
+&lt;h2 id=&#34;deploy时django的设置&#34;&gt;deploy时django的设置&lt;/h2&gt;
+&lt;p&gt;settings.py中的设置：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ALLOWED_HOSTS = [&#39;*&#39;]
+DEBUG = False
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;wsgi-部署&#34;&gt;WSGI 部署&lt;/h1&gt;
+&lt;h2 id=&#34;apache2--mod_wsgi&#34;&gt;apache2 + mod_wsgi&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/GrahamDumpleton/mod_wsgi&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/GrahamDumpleton/mod_wsgi&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;mod_wsgi是C写的apache的模块，实现了兼容WSGI接口，用来部署python的web应用。&lt;/p&gt;
+&lt;p&gt;作为apache2的模块安装&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# ubuntu/debian
+sudo aptitude install apache2 # 安装apache2
+sudo aptitude install libapache2-mod-wsgi # for python2
+sudo aptitude install libapache2-mod-wsgi-py3 # for python3
+
+# redhat/centos/fedora
+sudo yum install httpd2
+sudo yum install httpd-devel
+sudo yum install mod_wsgi
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Ubuntu创建网站的配置文件/etc/apache2/sites-available/mysite.conf:&lt;/p&gt;
+&lt;p&gt;Fedora创建网站的配置文件/etc/httpd/conf.d/mysite.conf:&lt;/p&gt;
+&lt;p&gt;一般部署到web服务器，/home/user/修改为/var/www/&lt;project-name&gt;/&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# Include the project dir, can not inside VirtualHost section.
+WSGIPythonPath /home/user/mysite
+# If use virtualenv and named .venv
+# WSGIPythonPath /home/user/mysite:/home/user/mysite/.venv/lib/python2.7/site-packages
+
+&amp;lt;VirtualHost *:80&amp;gt;
+    ServerName localhost
+    # ServerName yoursite.domain
+    ServerAdmin canuxcheng@gmail.com
+
+    Alias /robots.txt /home/user/mysite/static/robots.txt
+    Alias /favicon.ico /home/user/mysite/static/favicon.ico
+
+    Alias /media/ /home/user/mysite/media/
+    Alias /static/ /home/user/mysite/static/
+
+    &amp;lt;Directory /home/user/mysite/media&amp;gt;
+    Required all granted
+    &amp;lt;/Directory&amp;gt;
+
+    &amp;lt;Directory /home/user/mysite/static&amp;gt;
+    Required all granted
+    &amp;lt;/Directory&amp;gt;
+
+    # If use daemon mode to run WSGI process.
+    WSGIDaemonProcess mysite python-path=/home/user/mysite
+    # If use virtualenv and named .venv
+    # WSGIDaemonProcess mysite python-path=/home/user/mysite:/home/user/mysite/.venv/lib/python2.7/site-packages
+    # WSGIProcessGroup mysite
+
+    WSGIScriptAlias / /home/user/mysite/mysite/wsgi.py
+
+    &amp;lt;Directory /home/user/mysite/mysite&amp;gt;
+    &amp;lt;Files wsgi.py&amp;gt;
+    Required all granted
+    &amp;lt;/Files&amp;gt;
+    &amp;lt;/Directory&amp;gt;
+
+    # check the log in /var/log/apache2/error_mysite.log or access_mysite.log
+    ErrorLog ${APACHE_LOG_DIR}/error_mysite.log
+    CustomLog ${APACHE_LOG_DIR}/access_mysite.log combined
+&amp;lt;/VirtualHost&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;修改项目的wsgi.py:&lt;/p&gt;
+&lt;p&gt;因为环境变量是进程范围的，在同一个进程运行多个站点会出问题，所以推荐多站点使用mod_wsgi的守护进程模式,也可以在单进程中覆盖DJANGO_SETTINGS_MODULE这个变量。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import os
+
+from django.core.wsgi import get_wsgi_application
+
+# If you have more than 1 django project you need to change this.
+# Or you can use daemon mode for WSGI process.
+# os.environ.setdefault(&amp;quot;DJANGO_SETTINGS_MODULE&amp;quot;, &amp;quot;mysite.settings&amp;quot;)
+os.environ[&amp;quot;DIANGO_SETTINGS_MODULE&amp;quot;] = &amp;quot;mysite.settings&amp;quot;
+application = get_wsgi_application()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;修改项目的settings.py:&lt;/p&gt;
+&lt;p&gt;ROOT表示存放位置，URL表示对应网址。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;DEBUG = False
+
+ALLOWED_HOSTS = [&#39;*&#39;]
+
+# Static files (CSS, JavaScript, Images)
+STATIC_URL = &#39;/static/&#39;
+
+STATIC_ROOT = os.path.join(BASE_DIR, &#39;static&#39;)
+
+# Media files (upload files)
+MEDIA_URL = &#39;/media/&#39;
+
+MEDIA_ROOT = os.path.join(BASE_DIR, &#39;media&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;收集静态文件和迁移：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$python manage.py makemigration
+$python mamage.py migrate
+$python manage.py collectstatic
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;设置权限：&lt;/p&gt;
+&lt;p&gt;Ubuntu默认用户和组是www-data,Fedora默认用户和组是apache。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$cd /home/user
+$sudo chgrp www-data mysite
+$sudo chmod g+w mysite
+$sudo chgrp www-data mysite/db.sqlite3
+$sudo chmod g+w mysite/db.sqlite3
+$sudo chgrp -R www-data mysite/media/uploads
+$sudo chmod -R g+w mysite/media/uploads
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Ubuntu激活网站：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$sudo a2ensite &amp;lt;newsite&amp;gt;
+$sudo service apache2 restart
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Fedora激活网站：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$sudo systemctl restart  httpd
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;uwsgi&#34;&gt;uWSGI&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/unbit/uwsgi&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/unbit/uwsgi&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;C写的wsgi应用服务器。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ python3 -m pip install uwsgi
+$ uwsgi --http :8000 --chdir /path/to/project --module mysite.wsgi
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;gunicorn&#34;&gt;Gunicorn&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/benoitc/gunicorn&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/benoitc/gunicorn&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;纯python写的WSGI服务器。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ python3 -m pip install gunicorn
+$ gunicorn mysite.wsgi
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;asgi&#34;&gt;ASGI&lt;/h1&gt;
+&lt;h2 id=&#34;uvicorn&#34;&gt;Uvicorn&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;$ python -m pip install uvicorn gunicorn
+$ gunicorn myproject.asgi:application -k uvicorn.workers.UvicornWorker
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;hypercorn&#34;&gt;Hypercorn&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;$ python -m pip install hypercorn
+$ hypercorn myproject.asgi:application
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;daphne&#34;&gt;Daphne&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;$ python -m pip install daphne
+$ daphne myproject.asgi:application
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

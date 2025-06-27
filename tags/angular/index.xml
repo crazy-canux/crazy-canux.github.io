@@ -1,19 +1,177 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Angular on Morgoth</title>
-    <link>https://canuxcheng.com/tags/angular/</link>
-    <description>Recent content in Angular on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Mon, 13 Mar 2017 09:36:32 +0000</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/angular/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Angular</title>
-      <link>https://canuxcheng.com/post/js_angular/</link>
-      <pubDate>Mon, 13 Mar 2017 09:36:32 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/js_angular/</guid>
-      <description>&lt;h1 id=&#34;angularjs&#34;&gt;angularjs&lt;/h1&gt;&#xA;&lt;p&gt;angularjs 1.*&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/angular/angular.js&#34;&gt;https://github.com/angular/angular.js&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://angularjs.org/&#34;&gt;https://angularjs.org/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/rev087/ng-inspector&#34;&gt;https://github.com/rev087/ng-inspector&lt;/a&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;angular&#34;&gt;Angular&lt;/h1&gt;&#xA;&lt;p&gt;Angular 是一个用 HTML 和 TypeScript 构建客户端应用的平台与框架。&lt;/p&gt;&#xA;&lt;p&gt;angular.js 的升级版&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/angular/angular&#34;&gt;https://github.com/angular/angular&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/angular/angular-cli&#34;&gt;https://github.com/angular/angular-cli&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://angular.io&#34;&gt;https://angular.io&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://angular.cn&#34;&gt;https://angular.cn&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;安装 angular-cli:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ npm install -g @angular/cli&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;查看版本:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ ng v&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;新建项目:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ cd &amp;lt;project&amp;gt;&#xA;$ ng new &amp;lt;application&amp;gt;&#xA;&#xA;# 严格模式&#xA;$ ng new &amp;lt;application&amp;gt; --strict&#xA;&#xA;$ ng generate &amp;lt;schematic&amp;gt; [options]&#xA;appShell&#xA;application&#xA;class&#xA;component&#xA;directive&#xA;enum&#xA;guard&#xA;interceptor&#xA;interface&#xA;library&#xA;module&#xA;pipe&#xA;resolver&#xA;service&#xA;serviceWorker&#xA;webWorker&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;测试项目:&lt;/p&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Angular on Morgoth</title>
+        <link>https://canuxcheng.com/tags/angular/</link>
+        <description>Recent content in Angular on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Mon, 13 Mar 2017 09:36:32 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/angular/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Angular</title>
+        <link>https://canuxcheng.com/post/js_angular/</link>
+        <pubDate>Mon, 13 Mar 2017 09:36:32 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/js_angular/</guid>
+        <description>&lt;h1 id=&#34;angularjs&#34;&gt;angularjs&lt;/h1&gt;
+&lt;p&gt;angularjs 1.*&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/angular/angular.js&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/angular/angular.js&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://angularjs.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://angularjs.org/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/rev087/ng-inspector&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/rev087/ng-inspector&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;angular&#34;&gt;Angular&lt;/h1&gt;
+&lt;p&gt;Angular 是一个用 HTML 和 TypeScript 构建客户端应用的平台与框架。&lt;/p&gt;
+&lt;p&gt;angular.js 的升级版&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/angular/angular&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/angular/angular&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/angular/angular-cli&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/angular/angular-cli&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://angular.io&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://angular.io&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://angular.cn&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://angular.cn&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;安装 angular-cli:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ npm install -g @angular/cli
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看版本:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ ng v
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;新建项目:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ cd &amp;lt;project&amp;gt;
+$ ng new &amp;lt;application&amp;gt;
+
+# 严格模式
+$ ng new &amp;lt;application&amp;gt; --strict
+
+$ ng generate &amp;lt;schematic&amp;gt; [options]
+appShell
+application
+class
+component
+directive
+enum
+guard
+interceptor
+interface
+library
+module
+pipe
+resolver
+service
+serviceWorker
+webWorker
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;测试项目:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ cd &amp;lt;my-app&amp;gt;
+$ ng serve
+// --open会自动打开浏览器
+$ ng serve --open
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;打包:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ ng build --prod
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;项目结构&#34;&gt;项目结构&lt;/h1&gt;
+&lt;p&gt;工作区配置：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;.editorconfig: 代码编辑器配置&lt;/li&gt;
+&lt;li&gt;angular.json:  为工作区所有项目指定CLI的默认配置，包括CLI要用到的构建，启动开发服务器和测试工具的配置项。&lt;/li&gt;
+&lt;li&gt;tsconfig.json: 工作空间所有项目的基本typescript配置。&lt;/li&gt;
+&lt;li&gt;tslint.json: 工作空间中所有项目的默认的TSlint配置。&lt;/li&gt;
+&lt;li&gt;src/: 根项目的源文件。&lt;/li&gt;
+&lt;li&gt;e2e/: 端到端测试文件。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;应用配置:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;.browserslistrc 配置前端工具之间共享的目标浏览器和node.js版本&lt;/li&gt;
+&lt;li&gt;karma.conf.js 应用的karma配置&lt;/li&gt;
+&lt;li&gt;tsconfig.app.json 应用的typescript配置.&lt;/li&gt;
+&lt;li&gt;tsconfig.spec.json 应用测试的typescript配置。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;应用源文件：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;app/ 包含定义应用逻辑和数据的组件文件。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;assets/ 包含要在构建应用时应该按原样复制的图像和静态文件。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;environments/ 包含特定目标环境的构建配置选项。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;favicon.ico 应用在标签栏中的图标。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;index.html 主页面。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;main.ts 应用的入口。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;polyfills.ts 为浏览器支持提供polyfill脚本。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;styles.css 列出为项目提供样式的css文件。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;app/app.component.ts  根组件AppComponent.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;app/app.component.html&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;app/app.component.css&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;app/app.component.spec.ts 根组件的单元测试.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;app/app.module.ts 定义名为AppModule根模块.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;module&#34;&gt;Module&lt;/h1&gt;
+&lt;p&gt;angular的模块化系统NgModule, 也就是根模块，习惯命名为AppModule,位于app.module.ts文件。&lt;/p&gt;
+&lt;p&gt;NgModule是一个带有@NgModule()装饰器的类，该装饰器是一个函数.&lt;/p&gt;
+&lt;p&gt;重要的属性:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;declarations: 可申明对象表，数据本NgModule的组件，指令和管道。&lt;/li&gt;
+&lt;li&gt;exports：导出表，能在其它模块的组件模板中使用的可申明对象的子集。&lt;/li&gt;
+&lt;li&gt;imports：导入表，导出了本模块中的组件模板所需的类的其它模块。&lt;/li&gt;
+&lt;li&gt;providers：本模块向全局服务中贡献的那些服务的创建器。&lt;/li&gt;
+&lt;li&gt;bootstrap：应用的主视图，称为根组件，是应用中所有其它视图的宿主。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;components&#34;&gt;components&lt;/h1&gt;
+&lt;p&gt;组件控制屏幕上被称为视图的一小片区域, 每个angular应用最少有一个根组件。&lt;/p&gt;
+&lt;p&gt;通过@Component装饰器定义组件.&lt;/p&gt;
+&lt;p&gt;组件配置选项：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;selector: 选择器&lt;/li&gt;
+&lt;li&gt;templateUrl: 该组件的HTML模板文件相对于组件文件的地址。&lt;/li&gt;
+&lt;li&gt;template: html&lt;/li&gt;
+&lt;li&gt;styleUrls: 该组件的CSS文件相对路径.&lt;/li&gt;
+&lt;li&gt;style: css&lt;/li&gt;
+&lt;li&gt;providers: 当前组件所需的服务提供者的一个数组。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;pipes&#34;&gt;pipes&lt;/h1&gt;
+&lt;p&gt;管道&lt;/p&gt;
+&lt;h1 id=&#34;directives&#34;&gt;directives&lt;/h1&gt;
+&lt;p&gt;指令就是带有@Directive()装饰器的类。&lt;/p&gt;
+&lt;p&gt;组件是特殊指令，angular还内置了结构型指令和属性型指令，也可以自定义指令。&lt;/p&gt;
+&lt;p&gt;结构型指(structural)令通过添加，移除或替换DOM元素来修改布局。&lt;/p&gt;
+&lt;p&gt;属性型指令(attribute)会修改现有元素的外观和行为。&lt;/p&gt;
+&lt;h1 id=&#34;services&#34;&gt;services&lt;/h1&gt;
+&lt;p&gt;服务类： 对于与特定视图无关并希望跨组件共享的数据或逻辑，可以创建服务类。&lt;/p&gt;
+&lt;h1 id=&#34;dependency-injection&#34;&gt;dependency injection&lt;/h1&gt;
+&lt;p&gt;依赖注入可以保持组件的精简和高效。&lt;/p&gt;
+&lt;p&gt;通过@Injectable装饰器来定义DI。&lt;/p&gt;
+&lt;h1 id=&#34;routing&#34;&gt;routing&lt;/h1&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

@@ -1,19 +1,41 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Utils on Morgoth</title>
-    <link>https://canuxcheng.com/tags/utils/</link>
-    <description>Recent content in Utils on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Tue, 26 Apr 2016 09:52:02 +0000</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/utils/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Utils</title>
-      <link>https://canuxcheng.com/post/ps_utils/</link>
-      <pubDate>Tue, 26 Apr 2016 09:52:02 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/ps_utils/</guid>
-      <description>&lt;h1 id=&#34;windows相关项目&#34;&gt;windows相关项目：&lt;/h1&gt;&#xA;&lt;h2 id=&#34;choco&#34;&gt;choco&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/chocolatey&#34;&gt;https://github.com/chocolatey&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;windows的apt/yum。&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/chocolatey/choco&#34;&gt;choco&lt;/a&gt; is replacement of &lt;a href=&#34;https://github.com/chocolatey/chocolatey&#34;&gt;chocolatey&lt;/a&gt;&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;choco install openssh&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;cmder&#34;&gt;cmder&lt;/h2&gt;&#xA;&lt;p&gt;cmd的升级版。&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/cmderdev/cmder&#34;&gt;https://github.com/cmderdev/cmder&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;babun&#34;&gt;babun&lt;/h2&gt;&#xA;&lt;p&gt;a linux-shell like on windows.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/babun/babun&#34;&gt;https://github.com/babun/babun&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;flinux&#34;&gt;flinux&lt;/h2&gt;&#xA;&lt;p&gt;run unmodified linux applications inside windows&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/wishstudio/flinux&#34;&gt;https://github.com/wishstudio/flinux&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Utils on Morgoth</title>
+        <link>https://canuxcheng.com/tags/utils/</link>
+        <description>Recent content in Utils on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Tue, 26 Apr 2016 09:52:02 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/utils/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Utils</title>
+        <link>https://canuxcheng.com/post/ps_utils/</link>
+        <pubDate>Tue, 26 Apr 2016 09:52:02 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/ps_utils/</guid>
+        <description>&lt;h1 id=&#34;windows相关项目&#34;&gt;windows相关项目：&lt;/h1&gt;
+&lt;h2 id=&#34;choco&#34;&gt;choco&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/chocolatey&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/chocolatey&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;windows的apt/yum。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/chocolatey/choco&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;choco&lt;/a&gt; is replacement of &lt;a class=&#34;link&#34; href=&#34;https://github.com/chocolatey/chocolatey&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;chocolatey&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;choco install openssh
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;cmder&#34;&gt;cmder&lt;/h2&gt;
+&lt;p&gt;cmd的升级版。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/cmderdev/cmder&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/cmderdev/cmder&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;babun&#34;&gt;babun&lt;/h2&gt;
+&lt;p&gt;a linux-shell like on windows.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/babun/babun&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/babun/babun&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;flinux&#34;&gt;flinux&lt;/h2&gt;
+&lt;p&gt;run unmodified linux applications inside windows&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/wishstudio/flinux&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/wishstudio/flinux&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

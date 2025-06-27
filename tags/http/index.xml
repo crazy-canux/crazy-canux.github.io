@@ -1,19 +1,77 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Http on Morgoth</title>
-    <link>https://canuxcheng.com/tags/http/</link>
-    <description>Recent content in Http on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Tue, 13 Sep 2016 01:39:34 +0000</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/http/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Http</title>
-      <link>https://canuxcheng.com/post/http/</link>
-      <pubDate>Tue, 13 Sep 2016 01:39:34 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/http/</guid>
-      <description>&lt;h1 id=&#34;httphttps&#34;&gt;HTTP/HTTPS&lt;/h1&gt;&#xA;&lt;p&gt;http port: 80&lt;/p&gt;&#xA;&lt;p&gt;https port: 443&lt;/p&gt;&#xA;&lt;p&gt;http/https的请求方式：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;get # 从服务器取出资源&#xA;post # 在服务器新建资源&#xA;put # 在服务器更新资源，客户端提供改变后的完整资源&#xA;delete # 从服务器删除资源&#xA;patch # 在服务器更新资源，客户端提供改变的属性&#xA;head # 获取资源的源数据&#xA;options # 获取资源的哪些信息是客户端可以改变的信息&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;URL: Uniform Resource Locator&lt;/p&gt;&#xA;&lt;p&gt;URI: Universal Resource Identifier&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;&amp;lt;scheme&amp;gt;://&amp;lt;netloc&amp;gt;/&amp;lt;path&amp;gt;;&amp;lt;params&amp;gt;?&amp;lt;query&amp;gt;#&amp;lt;fragment&amp;gt;&#xA;scheme: http/https/ftp/file&#xA;netloc: username:password@host:port&#xA;path: /path/to/path&#xA;params: options arguments&#xA;query: connector&amp;amp;key-value&#xA;fragment:&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;http命令&#34;&gt;http命令&lt;/h1&gt;&#xA;&lt;h2 id=&#34;curl&#34;&gt;curl&lt;/h2&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ curl [options] [URL...]&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;httpie&#34;&gt;httpie&lt;/h2&gt;&#xA;&lt;p&gt;python开发的类似于curl的命令行工具，同时还有wget的功能．&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/jakubroztocil/httpie&#34;&gt;https://github.com/jakubroztocil/httpie&lt;/a&gt;&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ sudo yum/apt-get install httpie&#xA;&#xA;$ http -a &#39;username:password&#39; GET http://google.com&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;python的http标准库&#34;&gt;python的http标准库&lt;/h1&gt;&#xA;&lt;p&gt;python2的http标准库&lt;/p&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Http on Morgoth</title>
+        <link>https://canuxcheng.com/tags/http/</link>
+        <description>Recent content in Http on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Tue, 13 Sep 2016 01:39:34 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/http/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Http</title>
+        <link>https://canuxcheng.com/post/http/</link>
+        <pubDate>Tue, 13 Sep 2016 01:39:34 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/http/</guid>
+        <description>&lt;h1 id=&#34;httphttps&#34;&gt;HTTP/HTTPS&lt;/h1&gt;
+&lt;p&gt;http port: 80&lt;/p&gt;
+&lt;p&gt;https port: 443&lt;/p&gt;
+&lt;p&gt;http/https的请求方式：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;get # 从服务器取出资源
+post # 在服务器新建资源
+put # 在服务器更新资源，客户端提供改变后的完整资源
+delete # 从服务器删除资源
+patch # 在服务器更新资源，客户端提供改变的属性
+head # 获取资源的源数据
+options # 获取资源的哪些信息是客户端可以改变的信息
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;URL: Uniform Resource Locator&lt;/p&gt;
+&lt;p&gt;URI: Universal Resource Identifier&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;scheme&amp;gt;://&amp;lt;netloc&amp;gt;/&amp;lt;path&amp;gt;;&amp;lt;params&amp;gt;?&amp;lt;query&amp;gt;#&amp;lt;fragment&amp;gt;
+scheme: http/https/ftp/file
+netloc: username:password@host:port
+path: /path/to/path
+params: options arguments
+query: connector&amp;amp;key-value
+fragment:
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;http命令&#34;&gt;http命令&lt;/h1&gt;
+&lt;h2 id=&#34;curl&#34;&gt;curl&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;$ curl [options] [URL...]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;httpie&#34;&gt;httpie&lt;/h2&gt;
+&lt;p&gt;python开发的类似于curl的命令行工具，同时还有wget的功能．&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/jakubroztocil/httpie&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/jakubroztocil/httpie&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo yum/apt-get install httpie
+
+$ http -a &#39;username:password&#39; GET http://google.com
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;python的http标准库&#34;&gt;python的http标准库&lt;/h1&gt;
+&lt;p&gt;python2的http标准库&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;httplib for client&lt;/li&gt;
+&lt;li&gt;BaseHTTPServer, CGIHTTPServer, SimpleHTTPServer, cookielib, Cookie for server&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;python3的标准库&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;http&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;python的url标准库&#34;&gt;python的url标准库&lt;/h1&gt;
+&lt;p&gt;python2的url标准库：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;urlparse&lt;/li&gt;
+&lt;li&gt;urllib&lt;/li&gt;
+&lt;li&gt;urllib2&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;python3的url标准库：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;urllib&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

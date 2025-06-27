@@ -1,19 +1,28 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Gin on Morgoth</title>
-    <link>https://canuxcheng.com/categories/gin/</link>
-    <description>Recent content in Gin on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Fri, 20 Jul 2018 23:14:07 +0800</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/categories/gin/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Gin</title>
-      <link>https://canuxcheng.com/post/gin/</link>
-      <pubDate>Fri, 20 Jul 2018 23:14:07 +0800</pubDate>
-      <guid>https://canuxcheng.com/post/gin/</guid>
-      <description>&lt;h1 id=&#34;gin&#34;&gt;Gin&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/gin-gonic/gin&#34;&gt;https://github.com/gin-gonic/gin&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;install&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ go get -u github.com/gin-gonic/gin&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;import&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;import &amp;quot;github.com/gin-gonic/gin&amp;quot;&#xA;&lt;/code&gt;&lt;/pre&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Gin on Morgoth</title>
+        <link>https://canuxcheng.com/categories/gin/</link>
+        <description>Recent content in Gin on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Fri, 20 Jul 2018 23:14:07 +0800</lastBuildDate><atom:link href="https://canuxcheng.com/categories/gin/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Gin</title>
+        <link>https://canuxcheng.com/post/gin/</link>
+        <pubDate>Fri, 20 Jul 2018 23:14:07 +0800</pubDate>
+        
+        <guid>https://canuxcheng.com/post/gin/</guid>
+        <description>&lt;h1 id=&#34;gin&#34;&gt;Gin&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/gin-gonic/gin&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/gin-gonic/gin&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;install&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ go get -u github.com/gin-gonic/gin
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;import&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import &amp;quot;github.com/gin-gonic/gin&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

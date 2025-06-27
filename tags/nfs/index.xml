@@ -1,19 +1,46 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Nfs on Morgoth</title>
-    <link>https://canuxcheng.com/tags/nfs/</link>
-    <description>Recent content in Nfs on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Thu, 28 Jul 2016 16:08:54 +0000</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/nfs/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Nfs</title>
-      <link>https://canuxcheng.com/post/nfs/</link>
-      <pubDate>Thu, 28 Jul 2016 16:08:54 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/nfs/</guid>
-      <description>&lt;h1 id=&#34;nfs&#34;&gt;NFS&lt;/h1&gt;&#xA;&lt;p&gt;NFS: Network File System&lt;/p&gt;&#xA;&lt;p&gt;安装：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;# 在nfs服务器安装nfs服务&#xA;$ sudo apt-get install nfs-kernel-server&#xA;# 添加共享目录并授权&#xA;$ sudo vim /etc/exports&#xA;/home/user/share *(rw,no_root_squash)&#xA;$ sudo service nfs-kernel-server restart&#xA;&#xA;# 在nfs客户端安装nfs客户端&#xA;$ sudo apt-get install nfs-common&#xA;# 自动挂载&#xA;$ sudo vim /etc/fstab&#xA;nfs-server-ip:/home/user/share /home/user1/share nfs auto 0 0&#xA;$ sudo mount -a&#xA;# 手动挂载&#xA;$ sudo mount -t nfs nfs-server-ip:/home/user/share /home/user1/share&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;nfs-server&#34;&gt;nfs-server&lt;/h1&gt;&#xA;&lt;p&gt;配置/etc/exports&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;/etc/exports  文件格式&#xA;&amp;lt;输出目录&amp;gt; [客户端1 选项（访问权限,用户映射,其他）] [客户端2 选项（访问权限,用户映射,其他）]&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h1 id=&#34;nfs-client&#34;&gt;nfs-client&lt;/h1&gt;&#xA;&lt;p&gt;配置/etc/fstab&lt;/p&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Nfs on Morgoth</title>
+        <link>https://canuxcheng.com/tags/nfs/</link>
+        <description>Recent content in Nfs on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Thu, 28 Jul 2016 16:08:54 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/nfs/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Nfs</title>
+        <link>https://canuxcheng.com/post/nfs/</link>
+        <pubDate>Thu, 28 Jul 2016 16:08:54 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/nfs/</guid>
+        <description>&lt;h1 id=&#34;nfs&#34;&gt;NFS&lt;/h1&gt;
+&lt;p&gt;NFS: Network File System&lt;/p&gt;
+&lt;p&gt;安装：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 在nfs服务器安装nfs服务
+$ sudo apt-get install nfs-kernel-server
+# 添加共享目录并授权
+$ sudo vim /etc/exports
+/home/user/share *(rw,no_root_squash)
+$ sudo service nfs-kernel-server restart
+
+# 在nfs客户端安装nfs客户端
+$ sudo apt-get install nfs-common
+# 自动挂载
+$ sudo vim /etc/fstab
+nfs-server-ip:/home/user/share /home/user1/share nfs auto 0 0
+$ sudo mount -a
+# 手动挂载
+$ sudo mount -t nfs nfs-server-ip:/home/user/share /home/user1/share
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;nfs-server&#34;&gt;nfs-server&lt;/h1&gt;
+&lt;p&gt;配置/etc/exports&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/etc/exports  文件格式
+&amp;lt;输出目录&amp;gt; [客户端1 选项（访问权限,用户映射,其他）] [客户端2 选项（访问权限,用户映射,其他）]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;nfs-client&#34;&gt;nfs-client&lt;/h1&gt;
+&lt;p&gt;配置/etc/fstab&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

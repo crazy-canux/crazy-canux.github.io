@@ -1,19 +1,27 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Kvm on Morgoth</title>
-    <link>https://canuxcheng.com/tags/kvm/</link>
-    <description>Recent content in Kvm on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Wed, 05 Apr 2017 21:47:54 +0000</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/kvm/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Kvm</title>
-      <link>https://canuxcheng.com/post/kvm/</link>
-      <pubDate>Wed, 05 Apr 2017 21:47:54 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/kvm/</guid>
-      <description>&lt;h1 id=&#34;kvm&#34;&gt;KVM&lt;/h1&gt;&#xA;&lt;p&gt;Kernel-based Virtual Machine.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;qemu&#34;&gt;Qemu&lt;/h1&gt;&#xA;&lt;p&gt;安装:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ sudo apt-get install qemu-system qemu-kvm&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Kvm on Morgoth</title>
+        <link>https://canuxcheng.com/tags/kvm/</link>
+        <description>Recent content in Kvm on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Wed, 05 Apr 2017 21:47:54 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/kvm/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Kvm</title>
+        <link>https://canuxcheng.com/post/kvm/</link>
+        <pubDate>Wed, 05 Apr 2017 21:47:54 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/kvm/</guid>
+        <description>&lt;h1 id=&#34;kvm&#34;&gt;KVM&lt;/h1&gt;
+&lt;p&gt;Kernel-based Virtual Machine.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;qemu&#34;&gt;Qemu&lt;/h1&gt;
+&lt;p&gt;安装:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo apt-get install qemu-system qemu-kvm
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

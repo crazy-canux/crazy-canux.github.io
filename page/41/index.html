@@ -1,483 +1,1263 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta name="generator" content="Hugo 0.147.9">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Morgoth - Morgoth</title>
-    <meta name="description" content="">
+<html lang="en-us" dir="ltr">
+    <head>
+	<meta name="generator" content="Hugo 0.147.9"><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Hello World!'>
+<title>Morgoth</title>
+
+<link rel='canonical' href='https://canuxcheng.com/'>
+
+<link rel="stylesheet" href="/scss/style.min.2d59822570c0be136f2ad87c952ef8788ac2a951067adda1c49b253bff7d0292.css"><meta property='og:title' content='Morgoth'>
+<meta property='og:description' content='Hello World!'>
+<meta property='og:url' content='https://canuxcheng.com/'>
+<meta property='og:site_name' content='Morgoth'>
+<meta property='og:type' content='website'><meta property='og:updated_time' content=' 2025-01-10T09:41:39&#43;00:00 '/>
+<meta name="twitter:title" content="Morgoth">
+<meta name="twitter:description" content="Hello World!"><link rel="alternate" type="application/rss&#43;xml" href="https://canuxcheng.com/index.xml">
+    <link rel="shortcut icon" href="favicon.ico" />
+<style>
+    :root {
+        --article-font-family: "Merriweather", var(--base-font-family);
+    }
+</style>
+
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap";
     
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
     
-    <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    
-    
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #f5f5f5;
-            color: #333;
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </head>
+    <body class="">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
         }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        header {
-            background: #fff;
-            padding: 1rem 0;
-            border-bottom: 1px solid #ddd;
-            margin-bottom: 2rem;
-        }
-        nav {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-        }
-        nav a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-        }
-        nav a:hover {
-            color: #007acc;
-        }
-        .site-title {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #007acc;
-        }
-        main {
-            background: #fff;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        .post-meta {
-            color: #666;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-        .post-content h1, .post-content h2, .post-content h3 {
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-        }
-        .post-list {
-            list-style: none;
-            padding: 0;
-        }
-        .post-list li {
-            margin-bottom: 1.5rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid #eee;
-        }
-        .post-list h2 {
-            margin: 0 0 0.5rem 0;
-        }
-        .post-list h2 a {
-            text-decoration: none;
-            color: #333;
-        }
-        .post-list h2 a:hover {
-            color: #007acc;
-        }
-        footer {
-            text-align: center;
-            padding: 2rem 0;
-            color: #666;
-            border-top: 1px solid #ddd;
-            margin-top: 2rem;
-        }
-    </style>
-</head>
-<body>
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
     <header>
-        <div class="container">
-            <nav>
-                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
                 
-                    <a href="/">Home</a>
+                    
+                    
+                    
+                        
+                        <img src="/img/home_hu_ee27fe234e3b32c2.jpg" width="300"
+                            height="400" class="site-logo" loading="lazy" alt="Avatar">
+                    
                 
-                    <a href="/about/">About</a>
+                </a>
                 
-                    <a href="/categories/">Categories</a>
+                    <span class="emoji">🍥</span>
                 
-                    <a href="/tags/">Tags</a>
-                
-                    <a href="/rtfm/">RTFM</a>
-                
-                    <a href="/samuel/">Samuel</a>
-                
-            </nav>
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Morgoth</a></h1>
+            <h2 class="site-description">Hello World!</h2>
         </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='mailto:canuxcheng@163.com'
+                        target="_blank"
+                        title="E-mail"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-messages" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M21 14l-3 -3h-7a1 1 0 0 1 -1 -1v-6a1 1 0 0 1 1 -1h9a1 1 0 0 1 1 1v10" />
+  <path d="M14 15v2a1 1 0 0 1 -1 1h-7l-3 3v-10a1 1 0 0 1 1 -1h2" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/crazy-canux'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/categories/' target="_blank">
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                
+                <span>Categories</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tags/' target="_blank">
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+                
+                <span>Tags</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/rtfm/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                
+                <span>RTFM</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/samuel/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-infinity" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M9.828 9.172a4 4 0 1 0 0 5.656 a10 10 0 0 0 2.172 -2.828a10 10 0 0 1 2.172 -2.828 a4 4 0 1 1 0 5.656a10 10 0 0 1 -2.172 -2.828a10 10 0 0 0 -2.172 -2.828" />
+</svg>
+
+
+
+                
+                <span>Samuel</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https://canuxcheng.com/" selected></option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                <form action="/search/" class="search-form widget" >
+        <p>
+            <label>Search</label>
+            <input name="keyword" required placeholder="Type something..." />
+        
+            <button title="Search">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+            </button>
+        </p>
+    </form>
+            
+        
+            
+                <section class="widget tagCloud">
+    <div class="widget-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+    </div>
+    <h2 class="widget-title section-title">Categories</h2>
+
+    <div class="tagCloud-tags">
+        
+            <a href="/categories/devops/" class="font_size_37">
+                DevOps
+            </a>
+        
+            <a href="/categories/cncf/" class="font_size_36">
+                CNCF
+            </a>
+        
+            <a href="/categories/web/" class="font_size_28">
+                Web
+            </a>
+        
+            <a href="/categories/network/" class="font_size_26">
+                Network
+            </a>
+        
+            <a href="/categories/golang/" class="font_size_22">
+                Golang
+            </a>
+        
+            <a href="/categories/python/" class="font_size_22">
+                Python
+            </a>
+        
+            <a href="/categories/linux/" class="font_size_21">
+                Linux
+            </a>
+        
+            <a href="/categories/cloud/" class="font_size_16">
+                Cloud
+            </a>
+        
+            <a href="/categories/security/" class="font_size_16">
+                Security
+            </a>
+        
+            <a href="/categories/django/" class="font_size_13">
+                Django
+            </a>
+        
+            <a href="/categories/windows/" class="font_size_12">
+                Windows
+            </a>
+        
+            <a href="/categories/bigdata/" class="font_size_9">
+                BigData
+            </a>
+        
+            <a href="/categories/database/" class="font_size_9">
+                Database
+            </a>
+        
+            <a href="/categories/storage/" class="font_size_7">
+                Storage
+            </a>
+        
+            <a href="/categories/virtualization/" class="font_size_7">
+                Virtualization
+            </a>
+        
+            <a href="/categories/c/" class="font_size_6">
+                C
+            </a>
+        
+            <a href="/categories/hw/" class="font_size_4">
+                HW
+            </a>
+        
+            <a href="/categories/misc/" class="font_size_4">
+                Misc
+            </a>
+        
+            <a href="/categories/gin/" class="font_size_1">
+                Gin
+            </a>
+        
+    </div>
+</section>
+
+            
+        
+            
+                <section class="widget tagCloud">
+    <div class="widget-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+    </div>
+    <h2 class="widget-title section-title">Tags</h2>
+
+    <div class="tagCloud-tags">
+        
+            <a href="/tags/k8s/" class="font_size_23">
+                K8s
+            </a>
+        
+            <a href="/tags/monitoring/" class="font_size_16">
+                Monitoring
+            </a>
+        
+            <a href="/tags/aws/" class="font_size_11">
+                Aws
+            </a>
+        
+            <a href="/tags/shell/" class="font_size_8">
+                Shell
+            </a>
+        
+            <a href="/tags/capture/" class="font_size_5">
+                Capture
+            </a>
+        
+            <a href="/tags/devops/" class="font_size_5">
+                Devops
+            </a>
+        
+            <a href="/tags/ca/" class="font_size_4">
+                CA
+            </a>
+        
+            <a href="/tags/hadoop/" class="font_size_4">
+                Hadoop
+            </a>
+        
+            <a href="/tags/logging/" class="font_size_4">
+                Logging
+            </a>
+        
+            <a href="/tags/oop/" class="font_size_4">
+                Oop
+            </a>
+        
+            <a href="/tags/package/" class="font_size_4">
+                Package
+            </a>
+        
+            <a href="/tags/admin/" class="font_size_3">
+                Admin
+            </a>
+        
+            <a href="/tags/concurrency/" class="font_size_3">
+                Concurrency
+            </a>
+        
+            <a href="/tags/docker/" class="font_size_3">
+                Docker
+            </a>
+        
+            <a href="/tags/document/" class="font_size_3">
+                Document
+            </a>
+        
+            <a href="/tags/golang/" class="font_size_3">
+                Golang
+            </a>
+        
+            <a href="/tags/misc/" class="font_size_3">
+                Misc
+            </a>
+        
+            <a href="/tags/network/" class="font_size_3">
+                Network
+            </a>
+        
+            <a href="/tags/python/" class="font_size_3">
+                Python
+            </a>
+        
+            <a href="/tags/swarm/" class="font_size_3">
+                Swarm
+            </a>
+        
+            <a href="/tags/test/" class="font_size_3">
+                Test
+            </a>
+        
+            <a href="/tags/testing/" class="font_size_3">
+                Testing
+            </a>
+        
+            <a href="/tags/tracing/" class="font_size_3">
+                Tracing
+            </a>
+        
+            <a href="/tags/web/" class="font_size_3">
+                Web
+            </a>
+        
+            <a href="/tags/builtin/" class="font_size_2">
+                Builtin
+            </a>
+        
+            <a href="/tags/command/" class="font_size_2">
+                Command
+            </a>
+        
+            <a href="/tags/container/" class="font_size_2">
+                Container
+            </a>
+        
+            <a href="/tags/cryptographic/" class="font_size_2">
+                Cryptographic
+            </a>
+        
+            <a href="/tags/data/" class="font_size_2">
+                Data
+            </a>
+        
+            <a href="/tags/debug/" class="font_size_2">
+                Debug
+            </a>
+        
+            <a href="/tags/file/" class="font_size_2">
+                File
+            </a>
+        
+            <a href="/tags/filesystem/" class="font_size_2">
+                Filesystem
+            </a>
+        
+            <a href="/tags/fpga/" class="font_size_2">
+                Fpga
+            </a>
+        
+            <a href="/tags/html/" class="font_size_2">
+                Html
+            </a>
+        
+            <a href="/tags/javascript/" class="font_size_2">
+                Javascript
+            </a>
+        
+            <a href="/tags/math/" class="font_size_2">
+                Math
+            </a>
+        
+            <a href="/tags/multimedia/" class="font_size_2">
+                Multimedia
+            </a>
+        
+            <a href="/tags/oss/" class="font_size_2">
+                Oss
+            </a>
+        
+            <a href="/tags/string/" class="font_size_2">
+                String
+            </a>
+        
+            <a href="/tags/summary/" class="font_size_2">
+                Summary
+            </a>
+        
+            <a href="/tags/system/" class="font_size_2">
+                System
+            </a>
+        
+            <a href="/tags/agile/" class="font_size_1">
+                Agile
+            </a>
+        
+            <a href="/tags/angular/" class="font_size_1">
+                Angular
+            </a>
+        
+            <a href="/tags/ansible/" class="font_size_1">
+                Ansible
+            </a>
+        
+            <a href="/tags/apache/" class="font_size_1">
+                Apache
+            </a>
+        
+            <a href="/tags/arduino/" class="font_size_1">
+                Arduino
+            </a>
+        
+            <a href="/tags/artifactory/" class="font_size_1">
+                Artifactory
+            </a>
+        
+            <a href="/tags/auth/" class="font_size_1">
+                Auth
+            </a>
+        
+            <a href="/tags/bigdata/" class="font_size_1">
+                Bigdata
+            </a>
+        
+            <a href="/tags/bitbake/" class="font_size_1">
+                Bitbake
+            </a>
+        
+    </div>
+</section>
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    
+    
+    
+    
+
+    <section class="article-list">
+        
+            
+<article class="">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/python/" >
+                Python
+            </a>
+        
     </header>
     
-    <div class="container">
-        <main>
-            
-<div class="home">
-    <h1>Morgoth</h1>
-    <p></p>
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/python_package/">Package</a>
+        </h2>
     
-    <section class="recent-posts">
-        <h2>Recent Posts</h2>
-        <ul class="post-list">
-            
-                <li>
-                    <h2><a href="https://canuxcheng.com/post/css/">CSS</a></h2>
-                    <div class="post-meta">
-                        <time>June 23, 2016</time>
-                        
-                            
-                                <span class="category">Web</span>
-                            
-                        
-                    </div>
-                    
-                        <p><h1 id="css"><strong>CSS</strong></h1>
-<p>CSS是叠层样式表</p>
-<h1 id="css3">CSS3</h1>
-<p>CSS3是最新的CSS标准</p>
-<h1 id="css创建">CSS创建</h1>
-<p>优先级从上往下。</p>
-<ol>
-<li>内联样式， 在html中通过style属性定义，仅用于一个html元素。</li>
-<li>内部样式表，在html中通过style标签在头部定义,针对单个页面。</li>
-<li>外部样式表，在html中通过link标签在文档头部定义，方便将样式用于多个页面。</li>
-<li>浏览器的默认值。</li>
-</ol>
-<hr>
-<h1 id="css基本语法"><strong>CSS基本语法</strong></h1>
-<p>CSS由两部分组成，选择器和声明，选择器是html元素，声明由属性和值组成。</p>
-<pre><code>selector {
-  property1: value1;
-  property2: value2;
-  ...;
-}
-</code></pre>
-<p>多个声明用分号隔开，属性的值有空格要用引号。</p>
-<p>CSS对大小写不敏感。</p>
-<p>CSS注释:</p>
-<pre><code>/* comment */
-</code></pre>
-<hr>
-<h1 id="css选择器"><strong>CSS选择器</strong></h1>
-<p>最常见的选择器是元素选择器,html元素是最基本的选择器。</p>
-<h2 id="元素选择器">元素选择器</h2>
-<p>html {color:black;}</p>
-<h2 id="id选择器">id选择器</h2>
-<p>id选择器可以为标有特定id的html元素指定特定样式。</p>
-<p>id选择器用#开头定义。</p>
-<pre><code>#red {color: red;}
-#green {color: green;}
+        
+    </div>
 
-&lt;p id=&quot;red&quot;&gt;This is red.&lt;/p&gt;
-</code></pre>
-<p>id选择器常常用来建立派生选择器：</p>
-<pre><code>#sidebar p {
-  font-style: italic;
-  text-align: right;
-  margin-top: 0.5em;
-}
-
-&lt;div id=&quot;sidebar&quot;&gt;...&lt;/div&gt;
-</code></pre>
-<h2 id="class选择器">class选择器</h2>
-<p>和id选择器功能类似，类选择器以.开头。</p>
-<pre><code>.center {text-align: center}
-
-&lt;h1 class=&quot;center&quot;&gt;...&lt;/h1&gt;
-</code></pre>
-<p>类选择器用于建立派生选择器：</p></p>
-                    
-                </li>
-            
-                <li>
-                    <h2><a href="https://canuxcheng.com/post/html/">Html</a></h2>
-                    <div class="post-meta">
-                        <time>June 23, 2016</time>
-                        
-                            
-                                <span class="category">Web</span>
-                            
-                        
-                    </div>
-                    
-                        <p><h1 id="html">HTML</h1>
-<p>HTML是超文本标记语言</p>
-<h1 id="xhtml">XHTML</h1>
-<p>XHTML是更严谨的更纯净的HTML</p>
-<h1 id="html5">HTML5</h1>
-<p>HTML5是下一代HTML</p>
-<hr>
-<h1 id="html元素和属性"><strong>html元素和属性</strong></h1>
-<p>html元素指从开始标签到结束标签的所有代码,包括元素内容：</p>
-<p>html元素可以嵌套。</p>
-<pre><code>&lt;p&gt; This is paragrph &lt;/p&gt;
-&lt;p&gt;&lt;/p&gt; # 空内容的元素
-&lt;br /&gt; # 空元素，在开始标签中关闭
-</code></pre>
-<p>html标签可以拥有属性，属性总是以name=&lsquo;value&rsquo;的形式出现，属性总是在html元素的开始标签中规定。</p>
-<pre><code>&lt;a href=&quot;http://www.test.com&quot;&gt;This is a link&lt;/a&gt;
-</code></pre>
-<p>html属性和值大小写不敏感，推荐使用小写,始终给属性值加引号。</p>
-<h2 id="html的全局属性标准属性">html的全局属性(标准属性)</h2>
-<p>参考：</p>
-<p><a href="http://www.w3school.com.cn/tags/html_ref_standardattributes.asp">http://www.w3school.com.cn/tags/html_ref_standardattributes.asp</a></p>
-<h2 id="html的事件属性">html的事件属性</h2>
-<p>参考：</p>
-<p><a href="http://www.w3school.com.cn/tags/html_ref_eventattributes.asp">http://www.w3school.com.cn/tags/html_ref_eventattributes.asp</a></p>
-<h2 id="html字符实体">html字符实体</h2>
-<p>参考：</p>
-<p><a href="http://www.w3school.com.cn/tags/html_ref_entities.html">http://www.w3school.com.cn/tags/html_ref_entities.html</a></p>
-<hr>
-<h1 id="html基本标签"><strong>html基本标签</strong></h1>
-<h2 id="doctype">DOCTYPE</h2>
-<pre><code># 文档类型
-&lt;!DOCTYPE html&gt;
-&lt;html&gt;
-
-&lt;head&gt;
-...
-&lt;/head&gt;
-
-&lt;body&gt;
-...
-&lt;/body&gt;
-
-&lt;/html&gt;
-</code></pre>
-<h2 id="html-1">html</h2>
-<pre><code># html文档,支持全局属性
-&lt;html&gt;
-...
-&lt;/html&gt;
-
-# mainfest属性，定义一个url，描述文档缓存信息
-
-# xmlns属性，定义XML的namespace属性
-</code></pre>
-<h2 id="注释">注释</h2>
-<pre><code># 注释, 浏览器会忽略注释,没有任何属性
-&lt;!-- This is a comment --&gt;
-</code></pre>
-<h2 id="空格">空格</h2>
-<pre><code>&amp;nbsp;    # 空格
-</code></pre>
-<hr>
-<h1 id="head"><strong>head</strong></h1>
-<h2 id="head-1">head</h2>
-<p>可以在head标签中使用的标签： link, style, base, meta, script, title.</p></p>
-                    
-                </li>
-            
-                <li>
-                    <h2><a href="https://canuxcheng.com/post/python_package/">Package</a></h2>
-                    <div class="post-meta">
-                        <time>June 22, 2016</time>
-                        
-                            
-                                <span class="category">Python</span>
-                            
-                        
-                    </div>
-                    
-                        <p><h1 id="package">Package</h1>
-<p>PEP426是python最新的打包标准，定义了wheel为最新的python包。</p>
-<p><a href="https://www.python.org/dev/peps/pep-0426/">https://www.python.org/dev/peps/pep-0426/</a></p>
-<h2 id="ensurepip">ensurepip</h2>
-<p>内置模块.提供使用pip从pypi安装模块。</p>
-<h2 id="distutils">distutils</h2>
-<p>内置的模块.处理简单的包安装,一般使用setuptools代替该模块。</p>
-<h2 id="venv">venv</h2>
-<p>python3新增了虚拟环境的包．python2中使用virtualenv.</p>
-<h2 id="zipapp">zipapp</h2>
-<p>python3新增管理可执行的python的zip包．</p>
-<hr>
-<h1 id="tpl">TPL</h1>
-<p>相关的第三方库</p>
-<h2 id="virtualenv">virtualenv</h2>
-<p>python3.5开始并入了虚拟化标准库venv.</p>
-<p>分离的虚拟的python环境,自动安装setuptools和pip和wheel</p>
-<p><a href="https://github.com/pypa/virtualenv">https://github.com/pypa/virtualenv</a></p>
-<pre><code>$cd project
-
-# 默认python2.7
-$virtualenv .env
-# 指定python3, 会安装pip/setuptools/wheel到当前环境.
-$$virtualenv -p `which python3.6` --pip 21.0.1 --setuptools 51.1.2 --wheel 0.36.2 .env
-
-# 激活虚拟环境
-$source .env/bin/activate
-
-# 先升级pip和setuptools
-$pip install pip
-$pip install setuptools
-$pip install wheel
-
-# 导出项目用的所有依赖库．
-$pip freeze &gt; requirements.txt
-# 在其它环境需要安装依赖：
-$pip install -r requirements.txt
-</code></pre>
-<p>virtualenvwrapper</p>
-<p><a href="https://bitbucket.org/virtualenvwrapper/virtualenvwrapper">https://bitbucket.org/virtualenvwrapper/virtualenvwrapper</a></p>
-<p>封装了virtualenv的工具:</p>
-<pre><code>$ pip install virtualenvwrapper
-
-# 创建主目录
-$ mkdir -p $WORKON_HOME
-
-# 最好写入到.bashrc/.zshrc:
-$ export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
-$ export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv
-$ export WORKON_HOME=~/.virtualenvs
-$ source /usr/local/bin/virtualenvwrapper.sh
-
-# 为每个项目创建独立python环境：
-$ mkvirtualenv -r requirementx.txt [project-name]
-# 不安装setuotools/wheel/pip
-$ mkvirtualenv --no-setuptools --no-wheel --no-pip [name]
-# 指定查找pip/setuptools的路径
---extra-search-dir=/usr/local/lib/python2.7/dist-packages
---extra-search-dir=/usr/lib/python2.7/dist-packages
-$ workon [project-name] # 切换到针对该项目的virtualenv
-(pro)$ /path/to/pip install [package] # 安装第三方包
-(pro)$ ~/.virtualenvs/[project-name]/bin/python setupt.py install # 源码安装
-(pro)$ lssitepackages # 查看安装的第三方包
-$ deactivate # 退出virtualenv
-$ rmvirtualenv [project-name] # 删除环境
-</code></pre>
-<p>pipenv</p></p>
-                    
-                </li>
-            
-                <li>
-                    <h2><a href="https://canuxcheng.com/post/python_summary/">Summary</a></h2>
-                    <div class="post-meta">
-                        <time>June 21, 2016</time>
-                        
-                            
-                                <span class="category">Python</span>
-                            
-                        
-                    </div>
-                    
-                        <p><h1 id="python难点总结">python难点总结</h1>
-<h1 id="多线程">多线程</h1>
-<ul>
-<li>
-<p>GIL</p>
-<p>GIL: Global Interpretror Lock. 全局解释器锁．</p>
-<p>python不建议使用多线程，用多进程代替．</p>
-</li>
-</ul>
-<hr>
-<h1 id="协程">协程</h1>
-<ul>
-<li>
-<p>coroutine</p>
-<p>协程就是同时开启两个任务，但一次只顺序执行一个．
-如果执行的任务阻塞，就切换到下一个继续执行．节省时间．</p>
-</li>
-</ul>
-<hr></p>
-                    
-                </li>
-            
-                <li>
-                    <h2><a href="https://canuxcheng.com/post/python/">Python</a></h2>
-                    <div class="post-meta">
-                        <time>June 21, 2016</time>
-                        
-                            
-                                <span class="category">Python</span>
-                            
-                        
-                    </div>
-                    
-                        <p><h1 id="python概述"><strong>Python概述</strong></h1>
-<p><a href="https://docs.python.org/2.7/index.html">https://docs.python.org/2.7/index.html</a></p>
-<p><a href="http://python.usyiyi.cn/translate/python_278/index.html">http://python.usyiyi.cn/translate/python_278/index.html</a></p>
-<p><a href="https://docs.python.org/3.5/index.html">https://docs.python.org/3.5/index.html</a></p>
-<p><a href="http://python.usyiyi.cn/translate/python_352/index.html">http://python.usyiyi.cn/translate/python_352/index.html</a></p>
-<p>python是一门优雅而健壮的语言.</p>
-<p>继承了编译语言(静态语言)的强大性和通用性.</p>
-<p>同时也借鉴了脚本语言(动态语言)的易用性．</p>
-<p>python特点：</p>
-<ul>
-<li>高级</li>
-<li>面向对象</li>
-<li>可升级</li>
-<li>可扩展</li>
-<li>可移植性</li>
-<li>易学</li>
-<li>易读</li>
-<li>易维护</li>
-<li>健壮性</li>
-<li>高效的快速原型开发工具</li>
-<li>内存管理器</li>
-<li>解释性和编译性</li>
-</ul>
-<hr>
-<h1 id="python基本语法"><strong>python基本语法</strong></h1>
-<p>python源程序叫xxx.py</p>
-<p>python中一切皆对象．</p>
-<p>python大小写敏感．</p>
-<p>python通过缩进和冒号:区分语法块，而不是大括号{}.</p>
-<p>python中的表达式(条件/循环表达式等)不需要用小括号()括起来．</p>
-<p>python标识符(变量，函数，参数，类等)由字母和下划线开头，还可以包含数字．不能是关键字．</p>
-<p>python不支持方法或函数重载．</p>
-<p>python不支持char和type类型．</p>
-<p>python没有switch语句．</p>
-<p>python支持多继承．</p>
-<p>python不支持++/&ndash;自增和自减运算符．</p>
-<p>python支持连续比较，a&lt;b&lt;c.</p>
-<h2 id="lexical-analysis">lexical analysis</h2>
-<p><a href="https://docs.python.org/2/reference/lexical_analysis.html">https://docs.python.org/2/reference/lexical_analysis.html</a></p>
-<p>Logical lines and physical lines：</p>
-<pre><code># python通过行尾的令牌NEWLINE表示逻辑行
-expression
-# 以操作系统的换行符表示物理行．
-\n
-</code></pre>
-<p>encoding declarations:</p>
-<pre><code># python脚本中的第一行或第二行的
-coding[=:]\s*([-\w.]+)
-# 注释与正则表达式匹配将被作为编码申明处理．
-</code></pre>
-<p>[Deprecated] explicit line joining:</p>
-<pre><code># 多个物理行通过反斜线backslash续行进行显示换行
-# 推荐用隐式换行．
-if a == b \
-       and c ==d: # 只有续行的最后一行可以有注释．反斜线的行不能注释.
-    print('more than one physical line.')
-</code></pre>
-<p>implicit line joining：</p></p>
-                    
-                </li>
-            
-        </ul>
-    </section>
     
     
-        <a href="/page/40/">← Previous</a>
     
     
-        <a href="/page/42/">Next →</a>
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jun 22, 2016</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    3 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
     
 </div>
 
-        </main>
-    </div>
+</header>
+</article>
+        
+            
+<article class="">
+    <header class="article-header">
+
+    <div class="article-details">
     
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Morgoth. Designed by Canux</p>
-        </div>
+    <header class="article-category">
+        
+            <a href="/categories/python/" >
+                Python
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/python_summary/">Summary</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jun 21, 2016</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
     </footer>
-</body>
+    
+
+    
+</div>
+
+</header>
+</article>
+        
+            
+<article class="">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/python/" >
+                Python
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/python_oop/">OOP</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jun 21, 2016</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    6 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+</article>
+        
+            
+<article class="">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/python/" >
+                Python
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/python/">Python</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jun 21, 2016</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    11 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+</article>
+        
+            
+<article class="">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/devops/" >
+                DevOps
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/devops_tmux/">Tmux</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jun 19, 2016</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+</article>
+        
+    </section>
+    <nav class='pagination'>
+        
+        
+
+        
+            
+                    <a class='page-link' href='/'>1</a>
+                
+            
+            
+                    
+                        
+                        <span class='page-link dots'>&hellip;</span>
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    <a class='page-link' href='/page/40/'>40</a>
+                
+            
+            
+                <span class='page-link current'>41</span>
+                
+            
+            
+                    <a class='page-link' href='/page/42/'>42</a>
+                
+            
+            
+                    
+                        
+                        <span class='page-link dots'>&hellip;</span>
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    <a class='page-link' href='/page/56/'>56</a>
+                
+            
+    </nav>
+
+<footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2013 - 
+        
+        2025 Morgoth
+    </section>
+    
+    <section class="powerby">
+        
+            Designed by Canux <br/>
+        
+    </section>
+</footer>
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
 </html>

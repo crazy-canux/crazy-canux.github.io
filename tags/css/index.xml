@@ -1,19 +1,248 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Css on Morgoth</title>
-    <link>https://canuxcheng.com/tags/css/</link>
-    <description>Recent content in Css on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Thu, 23 Jun 2016 09:40:45 +0000</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/css/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>CSS</title>
-      <link>https://canuxcheng.com/post/css/</link>
-      <pubDate>Thu, 23 Jun 2016 09:40:45 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/css/</guid>
-      <description>&lt;h1 id=&#34;css&#34;&gt;&lt;strong&gt;CSS&lt;/strong&gt;&lt;/h1&gt;&#xA;&lt;p&gt;CSS是叠层样式表&lt;/p&gt;&#xA;&lt;h1 id=&#34;css3&#34;&gt;CSS3&lt;/h1&gt;&#xA;&lt;p&gt;CSS3是最新的CSS标准&lt;/p&gt;&#xA;&lt;h1 id=&#34;css创建&#34;&gt;CSS创建&lt;/h1&gt;&#xA;&lt;p&gt;优先级从上往下。&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;内联样式， 在html中通过style属性定义，仅用于一个html元素。&lt;/li&gt;&#xA;&lt;li&gt;内部样式表，在html中通过style标签在头部定义,针对单个页面。&lt;/li&gt;&#xA;&lt;li&gt;外部样式表，在html中通过link标签在文档头部定义，方便将样式用于多个页面。&lt;/li&gt;&#xA;&lt;li&gt;浏览器的默认值。&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;css基本语法&#34;&gt;&lt;strong&gt;CSS基本语法&lt;/strong&gt;&lt;/h1&gt;&#xA;&lt;p&gt;CSS由两部分组成，选择器和声明，选择器是html元素，声明由属性和值组成。&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;selector {&#xA;  property1: value1;&#xA;  property2: value2;&#xA;  ...;&#xA;}&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;多个声明用分号隔开，属性的值有空格要用引号。&lt;/p&gt;&#xA;&lt;p&gt;CSS对大小写不敏感。&lt;/p&gt;&#xA;&lt;p&gt;CSS注释:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;/* comment */&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;css选择器&#34;&gt;&lt;strong&gt;CSS选择器&lt;/strong&gt;&lt;/h1&gt;&#xA;&lt;p&gt;最常见的选择器是元素选择器,html元素是最基本的选择器。&lt;/p&gt;&#xA;&lt;h2 id=&#34;元素选择器&#34;&gt;元素选择器&lt;/h2&gt;&#xA;&lt;p&gt;html {color:black;}&lt;/p&gt;&#xA;&lt;h2 id=&#34;id选择器&#34;&gt;id选择器&lt;/h2&gt;&#xA;&lt;p&gt;id选择器可以为标有特定id的html元素指定特定样式。&lt;/p&gt;&#xA;&lt;p&gt;id选择器用#开头定义。&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;#red {color: red;}&#xA;#green {color: green;}&#xA;&#xA;&amp;lt;p id=&amp;quot;red&amp;quot;&amp;gt;This is red.&amp;lt;/p&amp;gt;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;id选择器常常用来建立派生选择器：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;#sidebar p {&#xA;  font-style: italic;&#xA;  text-align: right;&#xA;  margin-top: 0.5em;&#xA;}&#xA;&#xA;&amp;lt;div id=&amp;quot;sidebar&amp;quot;&amp;gt;...&amp;lt;/div&amp;gt;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;class选择器&#34;&gt;class选择器&lt;/h2&gt;&#xA;&lt;p&gt;和id选择器功能类似，类选择器以.开头。&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;.center {text-align: center}&#xA;&#xA;&amp;lt;h1 class=&amp;quot;center&amp;quot;&amp;gt;...&amp;lt;/h1&amp;gt;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;类选择器用于建立派生选择器：&lt;/p&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Css on Morgoth</title>
+        <link>https://canuxcheng.com/tags/css/</link>
+        <description>Recent content in Css on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Thu, 23 Jun 2016 09:40:45 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/css/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>CSS</title>
+        <link>https://canuxcheng.com/post/css/</link>
+        <pubDate>Thu, 23 Jun 2016 09:40:45 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/css/</guid>
+        <description>&lt;h1 id=&#34;css&#34;&gt;&lt;strong&gt;CSS&lt;/strong&gt;&lt;/h1&gt;
+&lt;p&gt;CSS是叠层样式表&lt;/p&gt;
+&lt;h1 id=&#34;css3&#34;&gt;CSS3&lt;/h1&gt;
+&lt;p&gt;CSS3是最新的CSS标准&lt;/p&gt;
+&lt;h1 id=&#34;css创建&#34;&gt;CSS创建&lt;/h1&gt;
+&lt;p&gt;优先级从上往下。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;内联样式， 在html中通过style属性定义，仅用于一个html元素。&lt;/li&gt;
+&lt;li&gt;内部样式表，在html中通过style标签在头部定义,针对单个页面。&lt;/li&gt;
+&lt;li&gt;外部样式表，在html中通过link标签在文档头部定义，方便将样式用于多个页面。&lt;/li&gt;
+&lt;li&gt;浏览器的默认值。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;css基本语法&#34;&gt;&lt;strong&gt;CSS基本语法&lt;/strong&gt;&lt;/h1&gt;
+&lt;p&gt;CSS由两部分组成，选择器和声明，选择器是html元素，声明由属性和值组成。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;selector {
+  property1: value1;
+  property2: value2;
+  ...;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;多个声明用分号隔开，属性的值有空格要用引号。&lt;/p&gt;
+&lt;p&gt;CSS对大小写不敏感。&lt;/p&gt;
+&lt;p&gt;CSS注释:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/* comment */
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;css选择器&#34;&gt;&lt;strong&gt;CSS选择器&lt;/strong&gt;&lt;/h1&gt;
+&lt;p&gt;最常见的选择器是元素选择器,html元素是最基本的选择器。&lt;/p&gt;
+&lt;h2 id=&#34;元素选择器&#34;&gt;元素选择器&lt;/h2&gt;
+&lt;p&gt;html {color:black;}&lt;/p&gt;
+&lt;h2 id=&#34;id选择器&#34;&gt;id选择器&lt;/h2&gt;
+&lt;p&gt;id选择器可以为标有特定id的html元素指定特定样式。&lt;/p&gt;
+&lt;p&gt;id选择器用#开头定义。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#red {color: red;}
+#green {color: green;}
+
+&amp;lt;p id=&amp;quot;red&amp;quot;&amp;gt;This is red.&amp;lt;/p&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;id选择器常常用来建立派生选择器：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#sidebar p {
+  font-style: italic;
+  text-align: right;
+  margin-top: 0.5em;
+}
+
+&amp;lt;div id=&amp;quot;sidebar&amp;quot;&amp;gt;...&amp;lt;/div&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;class选择器&#34;&gt;class选择器&lt;/h2&gt;
+&lt;p&gt;和id选择器功能类似，类选择器以.开头。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;.center {text-align: center}
+
+&amp;lt;h1 class=&amp;quot;center&amp;quot;&amp;gt;...&amp;lt;/h1&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;类选择器用于建立派生选择器：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;.fancy td {
+  color: #f60;
+  background: #666;
+}
+
+&amp;lt;td class=&amp;quot;fancy&amp;quot;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;也可以用：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;td.fancy {
+  color: #f60;
+  background: #666;
+}
+
+&amp;lt;td class=&amp;quot;fancy&amp;quot;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;属性选择器&#34;&gt;属性选择器&lt;/h2&gt;
+&lt;p&gt;为拥有指定属性的html元素设置样式。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[title]
+{
+  color: red;
+}
+
+&amp;lt;a title=&amp;quot;title is red&amp;quot;&amp;gt;...&amp;lt;/a&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;属性和值选择器：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[title=w3c]
+{
+  border: 5px solid blue;
+}
+
+&amp;lt;img title=&amp;quot;w3c&amp;quot; src=&amp;quot;/images/w3c.gif&amp;quot;&amp;gt;
+
+# 属性和值选择器的操作符：
+=
+~=
+|=
+^=
+$=
+*=
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;后代选择器descendant&#34;&gt;后代选择器/descendant&lt;/h2&gt;
+&lt;h2 id=&#34;子元素选择器child&#34;&gt;子元素选择器/child&lt;/h2&gt;
+&lt;h2 id=&#34;相邻兄弟选择器adjacent-sibling&#34;&gt;相邻兄弟选择器/adjacent sibling&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;css样式&#34;&gt;&lt;strong&gt;CSS样式&lt;/strong&gt;&lt;/h1&gt;
+&lt;p&gt;内联样式：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;p style=&amp;quot;background: #ff0000 url(/i/eg_bg_03.gif) no-repeat fixed center&amp;quot;&amp;gt;...&amp;lt;/h1&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;样式表：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;p {
+  background: #ff0000 url(/i/eg_bg_03.gif) no-repeat fixed center;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;background样式&#34;&gt;background样式&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;background: # 可以定义所有背景的值
+background-color: gray # 背景颜色
+background-image: url(/images/test.gif) # 背景图片,默认水平和垂直都平铺
+background-repeat: repeat-x # 水平方向平铺
+background-repeat: repeat-y # 垂直方向平铺
+background-repeat: no-repeat # 不平铺
+background-position: center/top/buttom/left/right # 图像在背景中的位置
+background-attachment: fixed # 图像相对于可视区是固定的
+background-size
+background-origin
+background-clip
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;文本样式&#34;&gt;文本样式&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;color: red # 设置文本颜色
+line-height # 设置行高
+letter-spacing # 设置字符间距
+word-spacing # 设置字间距
+text-indent # 缩进元素中文本首行
+direction: ltr/rtl # 设置文本方向
+text-align: left/right/center/justify # 对齐元素中的文本
+text-decoration: none/underline/overline/line-through/blink # 向文本添加修饰
+text-transform: none/capitalize/uppercase/lowercase # 控制元素的字母
+white-space: normal/pre/nowrap/pre-wrap/pre-line # 设置元素中空白的处理方式
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;字体样式&#34;&gt;字体样式&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;font: # 定义所有和字体有关的属性
+font-family: # 设置字体系列
+font-size:  # 设置字体尺寸
+font-style: normal/italic/oblique # 设置字体风格
+font-variant: normal/small-caps # 设置字体变体
+font-weight: normal/bold/bolder/lighter/... # 设置字体粗细
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;链接样式&#34;&gt;链接样式&lt;/h2&gt;
+&lt;p&gt;链接可以设置background，color，font等样式。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;a:link {background: red} # 普通的未被访问的链接
+a:visited {color: blue} # 用户已访问的链接
+a:hover {font: } # 鼠标指针位于链接的上方
+a:active {font: } # 链接被点击的时刻
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;列表样式&#34;&gt;列表样式&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;list-style: # 定义所有和列表相关的属性
+list-style-image: # 把图像设置为列表项标志
+list-style-position: inside/outside # 设置列表项标志的位置
+list-style-type: # 设置列表项标志的位置
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;表格样式&#34;&gt;表格样式&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;border-collapse: separate/collapse # 设置是否把表格边框合并为单一的边框
+border-spacing: # 设置分割单元边框距离
+caption-side: top/bottom # 规定表格标题设置方式
+empty-cells: hide/show # 设置是否现实表格中的空单元格
+table-layout: automatic/fixed # 设置现实单元，行和列的算法
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;轮廓样式&#34;&gt;轮廓样式&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;outline: # 设置所有和轮廓相关的属性
+outline-color: # 设置轮廓颜色
+outline-style: none/dotted/dashed/solid/double/groove/ridge/inset/outset # 设置轮廓风格
+outline-width: # 设置轮廓宽度
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;尺寸属性&#34;&gt;尺寸属性&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;height
+width
+max-height
+max-width
+min-height
+min-width
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;css模型框&#34;&gt;&lt;strong&gt;CSS模型框&lt;/strong&gt;&lt;/h1&gt;
+&lt;h2 id=&#34;内边距属性&#34;&gt;内边距属性&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;padding
+padding-top
+padding-rigit
+padding-bottom
+padding-left
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;边框属性&#34;&gt;边框属性&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;border
+border-style
+border-width
+border-color
+border-buttom
+border-buttom-color/style/width
+border-left
+border-left-color/style/width
+border-right
+border-right-color/style/width
+border-top
+border-top-color/style/width
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;外边距属性&#34;&gt;外边距属性&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;margin # 依次为上，右，下，左．
+margin-right
+margin-top
+margin-bottom
+margin-left
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;css定位&#34;&gt;&lt;strong&gt;CSS定位&lt;/strong&gt;&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;position # 规定元素的定位
+top
+right
+bottom
+left
+overflow # 内容益处元素框时，visible/hidden/scroll/auto/inderit
+clip
+vertical-align
+z-index
+display # 规定元素应该生成的框的类型, inline/none/block/...
+float # none/left/right/inderit, 规定框是否应该浮动
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;color&#34;&gt;color&lt;/h2&gt;
+&lt;p&gt;16进制 和 rgb表示&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;rgb(255,255,255) == #FFFFFF == white
+rgb(0,0,0) == #000000 == black
+rgb(255,0,0) == red
+rgb(0,255,0) == green
+rgb(0,0,255) == blue
+rgb(255,255,0) == yellow
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

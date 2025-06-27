@@ -1,19 +1,27 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Ldap on Morgoth</title>
-    <link>https://canuxcheng.com/tags/ldap/</link>
-    <description>Recent content in Ldap on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Thu, 28 Jul 2016 16:08:54 +0000</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/ldap/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Ldap</title>
-      <link>https://canuxcheng.com/post/ldap/</link>
-      <pubDate>Thu, 28 Jul 2016 16:08:54 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/ldap/</guid>
-      <description>&lt;h1 id=&#34;ldap&#34;&gt;LDAP&lt;/h1&gt;&#xA;&lt;p&gt;LDAP占用tcp和udp的389端口。&lt;/p&gt;&#xA;&lt;p&gt;使用SSL的LDAP占用tcp和udp的636端口。&lt;/p&gt;&#xA;&lt;p&gt;Lightweight Directory Access Protocol.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://www.openldap.org/&#34;&gt;http://www.openldap.org/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;LDAP的windows工具：LDAPSoft LDAP Browser&lt;/p&gt;&#xA;&lt;hr&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Ldap on Morgoth</title>
+        <link>https://canuxcheng.com/tags/ldap/</link>
+        <description>Recent content in Ldap on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Thu, 28 Jul 2016 16:08:54 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/ldap/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Ldap</title>
+        <link>https://canuxcheng.com/post/ldap/</link>
+        <pubDate>Thu, 28 Jul 2016 16:08:54 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/ldap/</guid>
+        <description>&lt;h1 id=&#34;ldap&#34;&gt;LDAP&lt;/h1&gt;
+&lt;p&gt;LDAP占用tcp和udp的389端口。&lt;/p&gt;
+&lt;p&gt;使用SSL的LDAP占用tcp和udp的636端口。&lt;/p&gt;
+&lt;p&gt;Lightweight Directory Access Protocol.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://www.openldap.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://www.openldap.org/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;LDAP的windows工具：LDAPSoft LDAP Browser&lt;/p&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

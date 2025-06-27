@@ -1,19 +1,535 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Sql on Morgoth</title>
-    <link>https://canuxcheng.com/tags/sql/</link>
-    <description>Recent content in Sql on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Wed, 25 May 2016 22:06:13 +0000</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/sql/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>SQL</title>
-      <link>https://canuxcheng.com/post/sql/</link>
-      <pubDate>Wed, 25 May 2016 22:06:13 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/sql/</guid>
-      <description>&lt;h1 id=&#34;sql&#34;&gt;SQL&lt;/h1&gt;&#xA;&lt;p&gt;sql是结构化查询语言。&lt;/p&gt;&#xA;&lt;p&gt;sql是一种标准，几乎所有关系型数据库都遵守。&lt;/p&gt;&#xA;&lt;p&gt;但是不同的数据库又有自己的扩展。&lt;/p&gt;&#xA;&lt;p&gt;SQL分为两部分，DML和DDL。&lt;/p&gt;&#xA;&lt;p&gt;SQL大小写敏感，文本使用单引号，数值不需要引号。&lt;/p&gt;&#xA;&lt;h1 id=&#34;sql语法&#34;&gt;sql语法&lt;/h1&gt;&#xA;&lt;p&gt;sql注释:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;# 多行注释&#xA;/*&#xA;comment multi lines&#xA;in a sql file.&#xA;*/&#xA;&#xA;# 单行注释&#xA;/* comment single line */&#xA;&#xA;# 单行注释还可以直接用 -- 表示&#xA;select * from table -- where condition;&#xA;-- select * from table where condition;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;ddl&#34;&gt;DDL&lt;/h1&gt;&#xA;&lt;p&gt;DDL: 数据定义语言&lt;/p&gt;&#xA;&lt;h2 id=&#34;create&#34;&gt;create&lt;/h2&gt;&#xA;&lt;p&gt;创建数据库：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;CREATE DATABASE database_name;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;建表：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;CREATE TABLE table(&#xA;    column1 type1,&#xA;    column2 type2,&#xA;    ...&#xA;);&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;create也可以用来创建索引和视图．&lt;/p&gt;&#xA;&lt;h2 id=&#34;drop&#34;&gt;drop&lt;/h2&gt;&#xA;&lt;p&gt;删除数据库：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;DROP DATABASE database_name;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;删表：&lt;/p&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Sql on Morgoth</title>
+        <link>https://canuxcheng.com/tags/sql/</link>
+        <description>Recent content in Sql on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Wed, 25 May 2016 22:06:13 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/sql/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>SQL</title>
+        <link>https://canuxcheng.com/post/sql/</link>
+        <pubDate>Wed, 25 May 2016 22:06:13 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/sql/</guid>
+        <description>&lt;h1 id=&#34;sql&#34;&gt;SQL&lt;/h1&gt;
+&lt;p&gt;sql是结构化查询语言。&lt;/p&gt;
+&lt;p&gt;sql是一种标准，几乎所有关系型数据库都遵守。&lt;/p&gt;
+&lt;p&gt;但是不同的数据库又有自己的扩展。&lt;/p&gt;
+&lt;p&gt;SQL分为两部分，DML和DDL。&lt;/p&gt;
+&lt;p&gt;SQL大小写敏感，文本使用单引号，数值不需要引号。&lt;/p&gt;
+&lt;h1 id=&#34;sql语法&#34;&gt;sql语法&lt;/h1&gt;
+&lt;p&gt;sql注释:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 多行注释
+/*
+comment multi lines
+in a sql file.
+*/
+
+# 单行注释
+/* comment single line */
+
+# 单行注释还可以直接用 -- 表示
+select * from table -- where condition;
+-- select * from table where condition;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;ddl&#34;&gt;DDL&lt;/h1&gt;
+&lt;p&gt;DDL: 数据定义语言&lt;/p&gt;
+&lt;h2 id=&#34;create&#34;&gt;create&lt;/h2&gt;
+&lt;p&gt;创建数据库：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;CREATE DATABASE database_name;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;建表：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;CREATE TABLE table(
+    column1 type1,
+    column2 type2,
+    ...
+);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;create也可以用来创建索引和视图．&lt;/p&gt;
+&lt;h2 id=&#34;drop&#34;&gt;drop&lt;/h2&gt;
+&lt;p&gt;删除数据库：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;DROP DATABASE database_name;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;删表：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;DROP TABLE table;
+# 仅仅删除表中的数据，保留表
+TRUNCATE TABLE table;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;drop也可以用来删除索引和视图．&lt;/p&gt;
+&lt;h2 id=&#34;alter&#34;&gt;alter&lt;/h2&gt;
+&lt;p&gt;变更表：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 添加列
+ALTER TABLE table ADD COLUMN column type;
+
+# 删除列
+ALTER TABLE table DROP COLUMN column;
+
+# 改变列的数据类型
+# sql server
+ALTER TABLE table ALTER COLUMN column type;
+# mysql
+ALTER TABLE table MODIFY COLUMN column type;
+# mysql/oracle
+ALTER TABLE table MODIFY column type;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;dml&#34;&gt;DML&lt;/h1&gt;
+&lt;p&gt;DML: 数据操作语言&lt;/p&gt;
+&lt;h2 id=&#34;select&#34;&gt;select&lt;/h2&gt;
+&lt;p&gt;查询操作:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;SELECT * FROM table;
+# 单表查询
+SELECT column FROM table;
+# 多表查询
+SELECT table1.column1, table2.column2 FROM table1, table2;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;where子句选取数据：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;SELECT column FROM table WHERE condition;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;引号的使用：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 文本使用单引号，大部分数据库也接受双引号
+SELECT column FROM table WHERE name=&#39;text&#39;;
+# 数字不能使用引号．
+SELECT column FROM table WHERE id=number;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;where子句条件表达式可用的运算符：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;=
+&amp;lt;&amp;gt;
+!=
+&amp;gt;
+&amp;lt;
+&amp;gt;=
+&amp;lt;=
+
+BETWEEN [value1, value2]
+BETWEEN value1 AND value2
+NOT BETWEEN
+
+IN (value1, value2)
+NOT IN
+
+IS NULL
+IS NOT NULL
+
+LIKE
+NOT LIKE
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;like运算符的通配符：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;%    替代一个或多个字符
+_    替代一个字符
+[char list]    字符列中的任何单一字符
+[^char list]    不在字符列中的任何单一字符
+[!char list]    和上面一个等效
+SELECT * FROM table WHERE name LIKE &#39;[abc]%&#39; # 以abc开头的name
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;where子句多个条件可以使用的运算符：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;AND    与运算
+SELECT * FROM table WHERE name=&#39;canux&#39; AND id=10;
+OR    或运算
+SELECT * FROM table WHERE name=&#39;canux&#39; OR id=10;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;order by子句对结果进行排序,默认升序(ASC)：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 默认升序
+SELECT column, column1 FROM table ORDER BY column;
+SELECT column, column1 FROM table ORDER BY column, column1;
+SELECT column, column1 FROM table ORDER BY column ASC;
+# DESC降序
+SELECT column, column1 FROM table ORDER BY column DESC;
+SELECT column, column1 FROM table ORDER BY column DESC, column1 ASC;
+# 根据第几个字段排序
+SELECT column, column1 FROM table ORDER BY number;
+# 多个字段排序，优先级从前到后
+SELECT column FROM table ORDER BY column1, column2
+SELECT column FROM table ORDER BY column1 DESC, column2 DESC
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;top子句用于规定要返回的记录数目：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# SQL Server
+SELECT TOP number * FROM table;
+# mysql
+SELECT * FROM table LIMIT number;
+# oracle
+SELECT * FROM table WHERE ROWNUM &amp;lt;= number;
+
+Top 一般需要order by
+# number最小的10个
+select top 10 from table order by number
+# number最大的10个
+select top 10 from table order by number desc
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;group by子句用来分组，放在where子句后面如果有的话:&lt;/p&gt;
+&lt;p&gt;group by一定要用合计函数(count, max, min, sum, avg, &amp;hellip;).&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;SELECT column1, aggregate_function(column2) FROM table GROUP BY column1;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;having子句用来过滤group by的结果(相当where)，放在group by子句后面：&lt;/p&gt;
+&lt;p&gt;因为where不能和合计函数一起使用，所以使用having子句．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;SELECT column1, aggregate_function(column2) FROM table GROUP BY column1 HAVING aggregate_function(column) condition;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;distinct关键字排除重复：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;SELECT DISTINCT column FROM table;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;as关键字指定别名：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 指定表的别名
+SELECT alias_table1.column1, alias_table2.column2
+FROM table1 AS alias_table1, table2 AS alias_table2
+WHERE alias_table1.column2=&#39;test&#39;;
+
+# 指定字段别名
+SELECT column1 AS alias1, column2 AS alias2 FROM table;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;执行顺序：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;from -&amp;gt; where -&amp;gt; group by -&amp;gt; having -&amp;gt; select -&amp;gt; distinct -&amp;gt; union -&amp;gt; order by -&amp;gt; top
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;insert-into&#34;&gt;insert into&lt;/h2&gt;
+&lt;p&gt;向表格插入新的行：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 一次插入完整行
+INSERT INTO table VALUES (value1, value2, ...);
+# 一次插入多行
+INSERT INTO table VALUES (val11, val12, ...) (val21, val22, ...) ...
+# 一次插入一行的一部分
+INSERT INTO table (column1, column2, ...) VALUES (value1, value2, ...);
+# 一次插入多行的一部分
+INSERT INTO table (col1, col2, ...) VALUES (val11, val12, ...) (val21, val22, ...)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;update-set&#34;&gt;update set&lt;/h2&gt;
+&lt;p&gt;修改表中数据：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;UPDATE table SET column1=value1 WHERE condition;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;delete-from&#34;&gt;delete from&lt;/h2&gt;
+&lt;p&gt;删除表中的行：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;DELETE FROM table WHERE condition;
+DELETE FROM table; # 删除所有行
+
+TRUNCATE TABLE table; # mysql清空表的内容，不可恢复
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;函数&#34;&gt;函数&lt;/h1&gt;
+&lt;p&gt;不同的数据库内置的部分函数不同．下面只列出大部分数据库都有的函数．&lt;/p&gt;
+&lt;p&gt;sql内置两种函数：合计(aggregate)函数　和　标量(scalar)函数.&lt;/p&gt;
+&lt;p&gt;sql函数的语法：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;SELECT FUNCTION(args) FROM table ...;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;aggregate-function&#34;&gt;aggregate function&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;AVG()：　求平均值
+COUNT(): 统计行数
+FIRST(): 返回指定字段中第一个记录的值
+LAST():　返回指定字段中最后一个记录的值
+MAX():　返回一列中的最大值
+MIN():　返回一列中的最小值
+SUM():　返回一列的和
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;scalar-function&#34;&gt;scalar function&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;UCASE():　把字段的值转换为大写
+LCASE():　把字段的值转换为小写
+MID(column, start[, length]):　从文本字段中提取字符，start从１开始
+LEN(): 返回文本字段中的长度
+FORMAT(column, format): 对字段进行格式化
+ROUND(column, decimals): 把数值字段舍入为指定的小数位数
+NOW()    返回当前的日期和时间
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;join&#34;&gt;join&lt;/h1&gt;
+&lt;p&gt;为了从多个表中获取结果，就需要用join.&lt;/p&gt;
+&lt;h2 id=&#34;inner-join&#34;&gt;inner join&lt;/h2&gt;
+&lt;p&gt;inner join也就是默认的join.&lt;/p&gt;
+&lt;p&gt;全部匹配才返回．相当于table1和table2与.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 两张表连接
+SELECT table1.column, table2.column
+FROM table1 INNER JOIN table2
+ON table1.column = table2.column;
+
+# 三张表连接
+SELECT column
+FROM ((table1 INNER JOIN table2 ON table1.column1 = table2.column1) INNER JOIN table3
+ON table1.column2 = table3.column2);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;left-join&#34;&gt;left join&lt;/h2&gt;
+&lt;p&gt;左连接．返回左表table1的所有行，和右表table2匹配的行&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;SELECT column
+FROM table1 LEFT JOIN table2
+ON table1.column = table2.column;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;right-join&#34;&gt;right join&lt;/h2&gt;
+&lt;p&gt;右连接，返回右表table2的所有行，和左表table1匹配的行&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;SELECT column
+FROM table1 RIGHT JOIN table2
+ON table1.column = table2.column;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;full-join&#34;&gt;full join&lt;/h2&gt;
+&lt;p&gt;返回两张表的所有行．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;SELECT column
+FROM table1 FULL JOIN table2
+ON table1.column = table2.column;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;union&#34;&gt;union&lt;/h1&gt;
+&lt;p&gt;union操作符用于合并两个或多个select语句的结果集．&lt;/p&gt;
+&lt;p&gt;union只选取不同的值,也就是说table1和table2中的相同column只出现一次．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;SELECT column FROM table1
+UNION
+SELECT column FROM table2;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;union all会列出所有的值，包括重复的．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;SELECT column FROM table1
+UNION ALL
+SELECT column FROM table2;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;select-into&#34;&gt;select into&lt;/h1&gt;
+&lt;p&gt;创建表的备份复件．&lt;/p&gt;
+&lt;p&gt;把table1的所有列插入到table2:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;SELECT * INTO table2 FROM table1 WHERE condition;
+# table2属于另外一个数据库externaldatabase
+SELECT * INTO table2 IN externaldatabase FROM table1 WHERE condition;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;把table1的部分列插入到table2:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;SELECT column INTO table2 FROM table1 WHERE condition;
+# table2属于另外一个数据库externaldatabase
+SELECT column INTO table2 IN externaldatabase FROM table1 WHERE condition;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;mysql需要用insert into &amp;hellip; select:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 如果table2已经存在
+INSERT INTO table2 SELECT * FROM table1 WHERE condition;
+# 如果table2不存在
+CREATE TABLE table2 AS SELECT * FROM table1 WHERE condition;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;constraints&#34;&gt;constraints&lt;/h1&gt;
+&lt;p&gt;constraints约束用于限制加入表的数据的类型．&lt;/p&gt;
+&lt;h2 id=&#34;not-null&#34;&gt;NOT NULL&lt;/h2&gt;
+&lt;p&gt;not null强制约束列不能接受null值．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;CREATE TABLE tablename (
+    id int NOT NULL,
+    name varchar(255)
+);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;unique&#34;&gt;UNIQUE&lt;/h2&gt;
+&lt;p&gt;unique约束唯一标识数据库表中的每条记录．&lt;/p&gt;
+&lt;p&gt;每个表可以有多个unique约束．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# mysql:
+CREATE TABLE table (
+    id int NOT NULL,
+    name varchar(255),
+    UNIQUE (id)
+);
+
+# sql server/oracle:
+CREATE TABLE table(
+    id int NOT NULL UNIQUE,
+    name varchar(255)
+);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;给约束命名，并且标记多个列到unique:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;CREATE TABLE table (
+    id int NOT NULL,
+    firstname varchar(255),
+    lastname varchar(255),
+    CONSTRAINT constraintname UNIQUE (id, lastname)
+);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;给已经存在的表添加约束：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ALTER TABLE table ADD UNIQUE (id);
+# 给约束命名，并且标记多个列到unique
+ALTER TABLE table ADD CONSTRAINT constraintname UNIQUE (id, lastname);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;撤销约束：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# mysql:
+ALTER TABLE table DROP INDEX constraintname;
+# sql server/oracle:
+ALTER TABLE table DROP CONSTRAINTNAME constraintname;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;primary-key&#34;&gt;PRIMARY KEY&lt;/h2&gt;
+&lt;p&gt;primary key主键必须包含唯一的值，主键列不能包含NULL值．&lt;/p&gt;
+&lt;p&gt;每张表最多只能有一个主键．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# mysql:
+CREATE TABLE table (
+    id int NOT NULL,
+    firstname varchar(255),
+    lastname varchar(255),
+    PRIMARY KEY (id)
+);
+
+# sql server/oracle:
+CREATE TABLE table (
+    id int NOT NULL PRIMARY KEY,
+    firstname varchar(255),
+    lastname varchar(255)
+);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;给主键命名，并且添加多个列到primary key:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;CREATE TABLE table (
+    id int NOT NULL,
+    firstname varchar(255),
+    lastname varchar(255),
+    CONSTRAINT constraintname PRIMARY KEY (id, lastname)
+);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;给已经存在的表添加约束：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ALTER TABLE table ADD PRIMARY KEY (id);
+# 给约束命名，并且添加多个列到主键：
+ALTER TABLE table ADD CONSTRAINT constraintname PRIMARY KEY (id, lastname);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;撤销约束：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# mysql:
+ALTER TABLE table DROP PRIMARY KEY;
+# sql server/oracle:
+ALTER TABLE talbe DROP CONSTRAINT constraintname;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;foreign-key&#34;&gt;FOREIGN KEY&lt;/h2&gt;
+&lt;p&gt;一个表中的外键指向另一个表中的主键．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# mysql:
+CREATE TABLE table1 (
+    id_1 int NOT NULL,
+    id_2 int,
+    PRIMARY KEY (id_1),
+    FOREIGN KEY (id_2) REFERENCES table2(id_2)
+);
+
+# sql server/oracle:
+CREATE TABLE table1 (
+    id_1 int NOT NULL PRIMARY KEY,
+    id_2 int FOREIGN KEY REFERENCES table2(id_2)
+);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;给外键命名，并且添加多个列到foreign key:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;CREATE TABLE table1 (
+    id_1 int NOT NULL,
+    id_2 int,
+    PRIMARY KEY (id_1),
+    CONSTRAINT constraintname FOREIGN KEY (id_2) REFERENCES table2(id_2)
+);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;给已经存在的表添加约束：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ALTER TABLE table1 ADD FOREIGN KEY (id_2) REFERENCES table2(id_2);
+# 给外键命名，并且添加多列到外键
+ALTER TABLE table1 ADD CONSTRAINT constraintname FOREIGN KEY (id_2) REFERENCES table2(id_2);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;撤销约束：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# mysql:
+ALTER TABLE table1 DROP FOREIGN KEY constraintname;
+# sql server/oracle:
+ALTER TABLE table1 DROP CONSTRAINT constraintname;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;check&#34;&gt;CHECK&lt;/h2&gt;
+&lt;p&gt;check用于限制列中的值的范围．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# mysql:
+CREATE TABLE table (
+    id int NOT NULL,
+    firstname varchar(255),
+    lastname varchar(255),
+    CHECK (id&amp;gt;0)
+);
+
+# sql server/oracle:
+CREATE TABLE table (
+    id int NOT NULL CHECK (id&amp;gt;0),
+    firstname varchar(255),
+    lastname varchar(255)
+);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;给约束命名，并且添加多个列到约束：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;CREATE TABLE table (
+    id int NOT NULL,
+    firstname varchar(255),
+    lastname varchar(255),
+    CONSTRAINT constraintname CHECK (id&amp;gt;0 AND lastname=&#39;cheng&#39;)
+);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;给已经存在的表添加约束：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ALTER TABLE table ADD CHECK (id&amp;gt;0);
+# 给约束命名，并且添加多列到约束
+ALTER TABLE table ADD CONSTRAINT constraintname CHECK (id&amp;gt;0 AND lastname=&#39;cheng&#39;);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;撤销约束：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# mysql:
+ALTER TABLE table DROP CONSTRAINT constraintname;
+# sql server/oracle:
+ALTER TABLE table DROP CHECK constraintname;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;default&#34;&gt;DEFAULT&lt;/h2&gt;
+&lt;p&gt;default约束用于向列中插入默认值．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;CREATE TABLE table (
+    id int NOT NULL,
+    country varcha(255) DEFAULT &#39;china&#39;
+);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;给已经存在的表添加约束：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# mysql
+ALTER TABLE table ALTER country SET DEFAULT &#39;china&#39;;
+# sqlserver/oracle
+ALTER TABLE table ALTER COLUMN country SET DEFAULT &#39;china&#39;;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;撤销约束：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# mysql:
+ALTER TABLE table ALTER country DROP DEFAULT;
+# sql server/oracle:
+ALTER TABLE table ALTER COLUMN country DROP DEFAULT;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;increment&#34;&gt;increment&lt;/h1&gt;
+&lt;p&gt;auto increment在每次插入新记录时，自动创建主键字段的值．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# mysql使用auto_increment
+CREATE TABLE table (
+    id int NOT NULL AUTO_INCREMENT,
+    firstname varchar(255),
+    lastname varchar(255),
+    PRIMARY KEY (id)
+);
+
+# sql server使用identity:
+CREATE TABLE table (
+    id int PRIMARY KEY IDENTITY;
+    firstname varchar(255),
+    lastname varchar(255)
+);
+
+# oracle使用sequence对:
+CREATE SEQUENCE sequencename
+MINVALUE 1
+START WITH 1
+INCRREMENT BY 1
+CACHE 10
+# 使用nextval函数获取下一个值：
+INSERT INTO table (id, firstname, lastname) VALUES (sequencename.nextval, &#39;canux&#39;, &#39;cheng&#39;);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;auto increment的默认起始值是1,每次插入一行默认加一，可以修改起始值：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ALTER TABLE table AUTO_INCREMENT=10;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;index&#34;&gt;index&lt;/h1&gt;
+&lt;p&gt;创建索引可以快速高效查询数据，但是用户无法看到索引．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 在表中创建简单索引，允许使用重复的值:
+CREATE INDEX indexname ON table (column, column1, ...);
+
+# 在表中创建唯一索引，两个行不能有相同索引值:
+CREATE UNIQUE INDEX indexname ON table (column, column1, ...);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;删除索引：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# mysql:
+ALTER TABLE table DROP INDEX indexname;
+# sql server:
+DROP INDEX table.indexname;
+# oracle:
+DROP INDEX indexname;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;view&#34;&gt;view&lt;/h1&gt;
+&lt;p&gt;视图是基于sql语句的结果集的可视化的表：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;CREATE VIEW viewname AS SELECT * FROM table WHERE condition;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;更新视图：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;CREATE OR REPLACE VIEW viewname AS SELECT column FROM table WHERE condition;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查询视图：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;SELECT * FROM viewname;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;删除视图：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;DROP VIEW viewname;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

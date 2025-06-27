@@ -1,19 +1,147 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Apache on Morgoth</title>
-    <link>https://canuxcheng.com/tags/apache/</link>
-    <description>Recent content in Apache on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Tue, 27 Sep 2016 03:25:26 +0800</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/apache/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Apache</title>
-      <link>https://canuxcheng.com/post/apache/</link>
-      <pubDate>Tue, 27 Sep 2016 03:25:26 +0800</pubDate>
-      <guid>https://canuxcheng.com/post/apache/</guid>
-      <description>&lt;h1 id=&#34;apache&#34;&gt;Apache&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/apache/httpd&#34;&gt;https://github.com/apache/httpd&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://httpd.apache.org/&#34;&gt;http://httpd.apache.org/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;ubuntu/debian：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;sudo aptitude install apache2&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;redhat/centos/fedora:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ sudo yum install httpd2&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;启动服务器：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;service apache2 start&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;启动浏览器查看：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;http://localhost:80&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;apache命令&#34;&gt;apache命令&lt;/h1&gt;&#xA;&lt;p&gt;apache2ctl:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;// 检查配置&#xA;$ apache2ctl configtest&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;a2ensite&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;// 启用一个站点&#xA;$ sudo a2ensite &amp;lt;site&amp;gt;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;a2dissite&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ sudo a2dissite &amp;lt;site&amp;gt;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;a2enmod&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;// 启用一个模块&#xA;$ sudo a2enmod &amp;lt;mod&amp;gt;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;a2dismod&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ sudo a2dismod &amp;lt;mod&amp;gt;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h1 id=&#34;配置&#34;&gt;配置&lt;/h1&gt;&#xA;&lt;p&gt;配置站点site-enable/site.conf:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;&amp;lt;VirtualHost *:8080&amp;gt;&#xA;    ServerAdmin webmaster@localhost&#xA;    DocumentRoot /opt&#xA;&#xA;    # 适合多目录&#xA;    Alias /qa /opt/qa&#xA;    Alias /dev /opt/dev&#xA;&#xA;    ErrorLog ${APACHE_LOG_DIR}/error.log&#xA;    CustomLog ${APACHE_LOG_DIR}/access.log combined&#xA;&amp;lt;/VirtualHost&amp;gt;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;修改权限apache2.conf:&lt;/p&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Apache on Morgoth</title>
+        <link>https://canuxcheng.com/tags/apache/</link>
+        <description>Recent content in Apache on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Tue, 27 Sep 2016 03:25:26 +0800</lastBuildDate><atom:link href="https://canuxcheng.com/tags/apache/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Apache</title>
+        <link>https://canuxcheng.com/post/apache/</link>
+        <pubDate>Tue, 27 Sep 2016 03:25:26 +0800</pubDate>
+        
+        <guid>https://canuxcheng.com/post/apache/</guid>
+        <description>&lt;h1 id=&#34;apache&#34;&gt;Apache&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/apache/httpd&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/apache/httpd&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://httpd.apache.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://httpd.apache.org/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;ubuntu/debian：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo aptitude install apache2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;redhat/centos/fedora:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo yum install httpd2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;启动服务器：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;service apache2 start
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;启动浏览器查看：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;http://localhost:80
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;apache命令&#34;&gt;apache命令&lt;/h1&gt;
+&lt;p&gt;apache2ctl:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 检查配置
+$ apache2ctl configtest
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;a2ensite&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 启用一个站点
+$ sudo a2ensite &amp;lt;site&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;a2dissite&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo a2dissite &amp;lt;site&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;a2enmod&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 启用一个模块
+$ sudo a2enmod &amp;lt;mod&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;a2dismod&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo a2dismod &amp;lt;mod&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;配置&#34;&gt;配置&lt;/h1&gt;
+&lt;p&gt;配置站点site-enable/site.conf:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;VirtualHost *:8080&amp;gt;
+    ServerAdmin webmaster@localhost
+    DocumentRoot /opt
+
+    # 适合多目录
+    Alias /qa /opt/qa
+    Alias /dev /opt/dev
+
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+&amp;lt;/VirtualHost&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;修改权限apache2.conf:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;Directory /opt/qa&amp;gt;
+    Options Indexes FollowSymLinks
+    AllowOverride None
+    Require all granted
+&amp;lt;/Directory&amp;gt;
+
+&amp;lt;Directory /opt/dev&amp;gt;
+    Options Indexes FollowSymLinks
+    AllowOverride None
+    Require all granted
+&amp;lt;/Directory&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;修改端口ports.conf:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Listen 8080
+&amp;lt;IfModule ssl_module&amp;gt;
+        Listen 4433
+&amp;lt;/IfModule&amp;gt;
+&amp;lt;IfModule mod_gnutls.c&amp;gt;
+        Listen 4433
+&amp;lt;/IfModule&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;配置ssl和basic auth&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 安装创建账号的工具
+sudo apt-get install apache2-utils
+
+创建账号
+sudo htpasswd -c /etc/apache2/.htpasswd user
+sudo htpasswd /etc/apache2/.htpasswd another_user
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;启用依赖的模块:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;cd /etc/apache2/mods-enabled
+ln -sf ../mods-available/rewrite.load rewrite.load
+ln -sf ../mods-available/ssl.conf ssl.conf
+ln -sf ../mods-available/ssl.load ssl.load
+#ln -sf ../mods-available/slotmem_shm.load slotmem_shm.load
+#ln -sf ../mods-available/socache_shmcb.load socache_shmcb.load
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;修改site-avaliable/site.conf&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;VirtualHost *:80&amp;gt;
+    ServerAdmin webmaster@localhost
+    DocumentRoot /var/www
+
+    // 将http重定向到https, 如果注释掉，http和https都可以访问.
+    RewriteEngine on
+    RewriteCond %{SERVER_PORT} !^443$
+    RewriteRule ^/(.*) https://%{HTTP_HOST}/$1 [NC,R=301,L]
+
+    LogLevel warn
+    ErrorLog /var/log/apache2/error.log
+    CustomLog /var/log/apache2/access.log combined
+&amp;lt;/VirtualHost&amp;gt;
+
+&amp;lt;VirtualHost *:443&amp;gt;
+    ServerAdmin webmaster@localhost
+    DocumentRoot /var/www
+
+    // 开启ssl
+    SSLEngine on
+    SSLCertificateFile &amp;quot;/etc/apache2/user.domain.com.crt&amp;quot;
+    SSLCertificateKeyFile &amp;quot;/etc/apache2/user.domain.com.key&amp;quot;
+    BrowserMatch &amp;quot;MSIE [2-6]&amp;quot; nokeepalive ssl-unclean-shutdown downgrade-1.0 force-response-1.0
+    BrowserMatch &amp;quot;MSIE [17-9]&amp;quot; ssl-unclean-shutdown
+
+    // 开启basic auth.
+    &amp;lt;Directory &amp;quot;/var/www&amp;quot;&amp;gt;
+        AuthType Basic
+        AuthName &amp;quot;Restricted Content&amp;quot;
+        AuthUserFile /etc/apache2/.htpasswd
+        Require valid-user
+    &amp;lt;/Directory&amp;gt;
+
+    LogLevel warn
+    ErrorLog /var/log/apache2/error.log
+    CustomLog /var/log/apache2/access.log combined
+&amp;lt;/VirtualHost&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

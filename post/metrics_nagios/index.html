@@ -1,143 +1,535 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nagios - Morgoth</title>
-    <meta name="description" content="">
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Nagios Nagios is the industry standard in IT infrastructure monitoring
+Nagios offers complete monitoring and alerting for servers, switches, applications, and services.
+Nagios官方宣称nagios是IT基础监控的工业标准。
+Nagios提供对服务器，交换机，应用和服务的完整的监控和警报。
+Nagios是无agent的，nagios的plugin通过协议远程获取信息。
+https://www.nagios.org/
+https://www.nagios.com/
+https://exchange.nagios.org/
+https://github.com/NagiosEnterprises
+https://github.com/nagios-plugins
+Nagios安装配置 Nagios发展 Nagios core 1.0
+Nagios core 2.0
+Nagios core 3.0
+Nagios XI
+Nagios core 4.0
+目前nagios有两大阵营：
+开源解决方案： Nagios core
+商业解决方案： Nagios XI
+Nagios安装配置 安装和配置nagios core,plugins,addons参考
+官方文档:
+https://assets.nagios.com/downloads/nagioscore/docs/nagioscore/4/en/toc.html
+中文文档：
+http://nagios-cn.sourceforge.net/nagios-cn/index.html
+Nagios开源解决方案 Nagios core: Nagios Core is the monitoring and alerting engine that serves as the primary application around which hundreds of Nagios projects are built.
+'>
+<title>Nagios</title>
+
+<link rel='canonical' href='https://canuxcheng.com/post/metrics_nagios/'>
+
+<link rel="stylesheet" href="/scss/style.min.2d59822570c0be136f2ad87c952ef8788ac2a951067adda1c49b253bff7d0292.css"><meta property='og:title' content='Nagios'>
+<meta property='og:description' content='Nagios Nagios is the industry standard in IT infrastructure monitoring
+Nagios offers complete monitoring and alerting for servers, switches, applications, and services.
+Nagios官方宣称nagios是IT基础监控的工业标准。
+Nagios提供对服务器，交换机，应用和服务的完整的监控和警报。
+Nagios是无agent的，nagios的plugin通过协议远程获取信息。
+https://www.nagios.org/
+https://www.nagios.com/
+https://exchange.nagios.org/
+https://github.com/NagiosEnterprises
+https://github.com/nagios-plugins
+Nagios安装配置 Nagios发展 Nagios core 1.0
+Nagios core 2.0
+Nagios core 3.0
+Nagios XI
+Nagios core 4.0
+目前nagios有两大阵营：
+开源解决方案： Nagios core
+商业解决方案： Nagios XI
+Nagios安装配置 安装和配置nagios core,plugins,addons参考
+官方文档:
+https://assets.nagios.com/downloads/nagioscore/docs/nagioscore/4/en/toc.html
+中文文档：
+http://nagios-cn.sourceforge.net/nagios-cn/index.html
+Nagios开源解决方案 Nagios core: Nagios Core is the monitoring and alerting engine that serves as the primary application around which hundreds of Nagios projects are built.
+'>
+<meta property='og:url' content='https://canuxcheng.com/post/metrics_nagios/'>
+<meta property='og:site_name' content='Morgoth'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='monitoring' /><meta property='article:published_time' content='2016-03-25T11:15:48&#43;00:00'/><meta property='article:modified_time' content='2016-03-25T11:15:48&#43;00:00'/>
+<meta name="twitter:title" content="Nagios">
+<meta name="twitter:description" content="Nagios Nagios is the industry standard in IT infrastructure monitoring
+Nagios offers complete monitoring and alerting for servers, switches, applications, and services.
+Nagios官方宣称nagios是IT基础监控的工业标准。
+Nagios提供对服务器，交换机，应用和服务的完整的监控和警报。
+Nagios是无agent的，nagios的plugin通过协议远程获取信息。
+https://www.nagios.org/
+https://www.nagios.com/
+https://exchange.nagios.org/
+https://github.com/NagiosEnterprises
+https://github.com/nagios-plugins
+Nagios安装配置 Nagios发展 Nagios core 1.0
+Nagios core 2.0
+Nagios core 3.0
+Nagios XI
+Nagios core 4.0
+目前nagios有两大阵营：
+开源解决方案： Nagios core
+商业解决方案： Nagios XI
+Nagios安装配置 安装和配置nagios core,plugins,addons参考
+官方文档:
+https://assets.nagios.com/downloads/nagioscore/docs/nagioscore/4/en/toc.html
+中文文档：
+http://nagios-cn.sourceforge.net/nagios-cn/index.html
+Nagios开源解决方案 Nagios core: Nagios Core is the monitoring and alerting engine that serves as the primary application around which hundreds of Nagios projects are built.
+">
+    <link rel="shortcut icon" href="favicon.ico" />
+<style>
+    :root {
+        --article-font-family: "Merriweather", var(--base-font-family);
+    }
+</style>
+
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap";
     
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
     
-    <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    
-    
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #f5f5f5;
-            color: #333;
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
         }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        header {
-            background: #fff;
-            padding: 1rem 0;
-            border-bottom: 1px solid #ddd;
-            margin-bottom: 2rem;
-        }
-        nav {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-        }
-        nav a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-        }
-        nav a:hover {
-            color: #007acc;
-        }
-        .site-title {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #007acc;
-        }
-        main {
-            background: #fff;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        .post-meta {
-            color: #666;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-        .post-content h1, .post-content h2, .post-content h3 {
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-        }
-        .post-list {
-            list-style: none;
-            padding: 0;
-        }
-        .post-list li {
-            margin-bottom: 1.5rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid #eee;
-        }
-        .post-list h2 {
-            margin: 0 0 0.5rem 0;
-        }
-        .post-list h2 a {
-            text-decoration: none;
-            color: #333;
-        }
-        .post-list h2 a:hover {
-            color: #007acc;
-        }
-        footer {
-            text-align: center;
-            padding: 2rem 0;
-            color: #666;
-            border-top: 1px solid #ddd;
-            margin-top: 2rem;
-        }
-    </style>
-</head>
-<body>
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
     <header>
-        <div class="container">
-            <nav>
-                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
                 
-                    <a href="/">Home</a>
+                    
+                    
+                    
+                        
+                        <img src="/img/home_hu_ee27fe234e3b32c2.jpg" width="300"
+                            height="400" class="site-logo" loading="lazy" alt="Avatar">
+                    
                 
-                    <a href="/about/">About</a>
+                </a>
                 
-                    <a href="/categories/">Categories</a>
+                    <span class="emoji">🍥</span>
                 
-                    <a href="/tags/">Tags</a>
-                
-                    <a href="/rtfm/">RTFM</a>
-                
-                    <a href="/samuel/">Samuel</a>
-                
-            </nav>
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Morgoth</a></h1>
+            <h2 class="site-description">Hello World!</h2>
         </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='mailto:canuxcheng@163.com'
+                        target="_blank"
+                        title="E-mail"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-messages" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M21 14l-3 -3h-7a1 1 0 0 1 -1 -1v-6a1 1 0 0 1 1 -1h9a1 1 0 0 1 1 1v10" />
+  <path d="M14 15v2a1 1 0 0 1 -1 1h-7l-3 3v-10a1 1 0 0 1 1 -1h2" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/crazy-canux'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/categories/' target="_blank">
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                
+                <span>Categories</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tags/' target="_blank">
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+                
+                <span>Tags</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/rtfm/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                
+                <span>RTFM</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/samuel/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-infinity" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M9.828 9.172a4 4 0 1 0 0 5.656 a10 10 0 0 0 2.172 -2.828a10 10 0 0 1 2.172 -2.828 a4 4 0 1 1 0 5.656a10 10 0 0 1 -2.172 -2.828a10 10 0 0 0 -2.172 -2.828" />
+</svg>
+
+
+
+                
+                <span>Samuel</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https://canuxcheng.com/" selected></option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#nagios发展">Nagios发展</a></li>
+    <li><a href="#nagios安装配置-1">Nagios安装配置</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#nagios-core">Nagios core:</a></li>
+    <li><a href="#nagios-plugins">Nagios plugins:</a></li>
+    <li><a href="#nagios-frontends">Nagios frontends:</a></li>
+    <li><a href="#nagios-config-toolsnagios-addons-projects">Nagios config tools(Nagios addons projects):</a></li>
+    <li><a href="#nagios-exchange">Nagios exchange:</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#nagios-xi">Nagios XI:</a></li>
+    <li><a href="#nagios-network-analyzer">Nagios network analyzer</a></li>
+    <li><a href="#nagios-log-server">Nagios log server</a></li>
+    <li><a href="#nagios-fusion">Nagios fusion</a></li>
+    <li><a href="#nagios-incident-manager">Nagios incident manager</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#本地监控">本地监控</a></li>
+    <li><a href="#远程监控">远程监控</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#nrdpnscansca-ng">NRDP/NSCA/NSCA-ng</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#ndoutilsndoidoutilsido">NDOUtils(NDO)/IDOUtils(IDO)</a></li>
+    <li><a href="#nsti">NSTI</a></li>
+    <li><a href="#bpi">BPI</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#nconf">NCONF</a></li>
+    <li><a href="#dnx">DNX</a></li>
+    <li><a href="#nagiosgraph">Nagiosgraph</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#mod-gearman">Mod gearman</a></li>
+    <li><a href="#ndoutilslivestatus">NDOUtils/livestatus</a></li>
+    <li><a href="#thruk">Thruk</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#merlin">merlin</a></li>
+    <li><a href="#ndoutilsmk-livestatus">NDOUtils/MK livestatus</a></li>
+    <li><a href="#ninja">Ninja</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#negate">negate</a></li>
+    <li><a href="#check_http">check_http</a></li>
+  </ul>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/devops/" >
+                DevOps
+            </a>
+        
     </header>
     
-    <div class="container">
-        <main>
-            
-<div class="single-post">
-    <article>
-        <header>
-            <h1>Nagios</h1>
-            <div class="post-meta">
-                <time>March 25, 2016</time>
-                
-                    
-                        <span class="category">DevOps</span>
-                    
-                
-                
-                    
-                        <span class="tag">#monitoring</span>
-                    
-                
-            </div>
-        </header>
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/metrics_nagios/">Nagios</a>
+        </h2>
+    
         
-        <div class="post-content">
-            <h1 id="nagios">Nagios</h1>
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Mar 25, 2016</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    6 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="nagios">Nagios</h1>
 <blockquote>
 <p>Nagios is the industry standard in IT infrastructure monitoring</p></blockquote>
 <blockquote>
@@ -145,11 +537,16 @@
 <p>Nagios官方宣称nagios是IT基础监控的工业标准。</p>
 <p>Nagios提供对服务器，交换机，应用和服务的完整的监控和警报。</p>
 <p>Nagios是无agent的，nagios的plugin通过协议远程获取信息。</p>
-<p><a href="https://www.nagios.org/">https://www.nagios.org/</a></p>
-<p><a href="https://www.nagios.com/">https://www.nagios.com/</a></p>
-<p><a href="https://exchange.nagios.org/">https://exchange.nagios.org/</a></p>
-<p><a href="https://github.com/NagiosEnterprises">https://github.com/NagiosEnterprises</a></p>
-<p><a href="https://github.com/nagios-plugins">https://github.com/nagios-plugins</a></p>
+<p><a class="link" href="https://www.nagios.org/"  target="_blank" rel="noopener"
+    >https://www.nagios.org/</a></p>
+<p><a class="link" href="https://www.nagios.com/"  target="_blank" rel="noopener"
+    >https://www.nagios.com/</a></p>
+<p><a class="link" href="https://exchange.nagios.org/"  target="_blank" rel="noopener"
+    >https://exchange.nagios.org/</a></p>
+<p><a class="link" href="https://github.com/NagiosEnterprises"  target="_blank" rel="noopener"
+    >https://github.com/NagiosEnterprises</a></p>
+<p><a class="link" href="https://github.com/nagios-plugins"  target="_blank" rel="noopener"
+    >https://github.com/nagios-plugins</a></p>
 <hr>
 <h1 id="nagios安装配置">Nagios安装配置</h1>
 <h2 id="nagios发展">Nagios发展</h2>
@@ -164,9 +561,11 @@
 <h2 id="nagios安装配置-1">Nagios安装配置</h2>
 <p>安装和配置nagios core,plugins,addons参考</p>
 <p>官方文档:</p>
-<p><a href="https://assets.nagios.com/downloads/nagioscore/docs/nagioscore/4/en/toc.html">https://assets.nagios.com/downloads/nagioscore/docs/nagioscore/4/en/toc.html</a></p>
+<p><a class="link" href="https://assets.nagios.com/downloads/nagioscore/docs/nagioscore/4/en/toc.html"  target="_blank" rel="noopener"
+    >https://assets.nagios.com/downloads/nagioscore/docs/nagioscore/4/en/toc.html</a></p>
 <p>中文文档：</p>
-<p><a href="http://nagios-cn.sourceforge.net/nagios-cn/index.html">http://nagios-cn.sourceforge.net/nagios-cn/index.html</a></p>
+<p><a class="link" href="http://nagios-cn.sourceforge.net/nagios-cn/index.html"  target="_blank" rel="noopener"
+    >http://nagios-cn.sourceforge.net/nagios-cn/index.html</a></p>
 <hr>
 <h1 id="nagios开源解决方案">Nagios开源解决方案</h1>
 <h2 id="nagios-core">Nagios core:</h2>
@@ -175,33 +574,42 @@
 <p>Nagios core是监控和警报的主引擎，围绕它建立了成千上万的项目。
 技术栈是c，只能安装在linux/unix系统。
 Nagios core只是一个监控套件，本身没有监控功能，需要插件来完成监控。</p>
-<p><a href="https://www.nagios.org/projects/nagios-core/">https://www.nagios.org/projects/nagios-core/</a></p>
-<p><a href="https://github.com/NagiosEnterprises/nagioscore">https://github.com/NagiosEnterprises/nagioscore</a></p>
+<p><a class="link" href="https://www.nagios.org/projects/nagios-core/"  target="_blank" rel="noopener"
+    >https://www.nagios.org/projects/nagios-core/</a></p>
+<p><a class="link" href="https://github.com/NagiosEnterprises/nagioscore"  target="_blank" rel="noopener"
+    >https://github.com/NagiosEnterprises/nagioscore</a></p>
 <h2 id="nagios-plugins">Nagios plugins:</h2>
 <blockquote>
 <p>Efficient, standalone extensions that provide low-level intelligence for monitoring anything and everything with Nagios Core.</p></blockquote>
 <p>Nagios core的监控插件,也就是官方插件,主要是c、shell和perl。</p>
-<p><a href="https://www.nagios.org/projects/nagios-plugins/">https://www.nagios.org/projects/nagios-plugins/</a></p>
-<p><a href="https://github.com/nagios-plugins/nagios-plugins">https://github.com/nagios-plugins/nagios-plugins</a></p>
+<p><a class="link" href="https://www.nagios.org/projects/nagios-plugins/"  target="_blank" rel="noopener"
+    >https://www.nagios.org/projects/nagios-plugins/</a></p>
+<p><a class="link" href="https://github.com/nagios-plugins/nagios-plugins"  target="_blank" rel="noopener"
+    >https://github.com/nagios-plugins/nagios-plugins</a></p>
 <h2 id="nagios-frontends">Nagios frontends:</h2>
 <blockquote>
 <p>Web interfaces, themes, Windows and Linux interfaces, and mobile apps for Nagios. Change the look and style of Nagios to suite your needs.</p></blockquote>
 <p>Nagios frontends包括了 主题,web接口,移动设备接口。</p>
-<p><a href="https://www.nagios.org/downloads/nagios-core-frontends/">https://www.nagios.org/downloads/nagios-core-frontends/</a></p>
+<p><a class="link" href="https://www.nagios.org/downloads/nagios-core-frontends/"  target="_blank" rel="noopener"
+    >https://www.nagios.org/downloads/nagios-core-frontends/</a></p>
 <h2 id="nagios-config-toolsnagios-addons-projects">Nagios config tools(Nagios addons projects):</h2>
 <blockquote>
 <p>Tools and GUIs for simplifying Nagios Core configuration.</p></blockquote>
 <p>nagios core的组件。</p>
 <p>包括Lilac,NagiosQL,NConf,OneCMDB,ignoramus</p>
-<p><a href="https://www.nagios.org/projects/nagios-config-tools/">https://www.nagios.org/projects/nagios-config-tools/</a></p>
-<p><a href="https://www.nagios.org/downloads/nagios-core-addons/">https://www.nagios.org/downloads/nagios-core-addons/</a></p>
-<p><a href="https://github.com/NagiosEnterprises">https://github.com/NagiosEnterprises</a></p>
+<p><a class="link" href="https://www.nagios.org/projects/nagios-config-tools/"  target="_blank" rel="noopener"
+    >https://www.nagios.org/projects/nagios-config-tools/</a></p>
+<p><a class="link" href="https://www.nagios.org/downloads/nagios-core-addons/"  target="_blank" rel="noopener"
+    >https://www.nagios.org/downloads/nagios-core-addons/</a></p>
+<p><a class="link" href="https://github.com/NagiosEnterprises"  target="_blank" rel="noopener"
+    >https://github.com/NagiosEnterprises</a></p>
 <h2 id="nagios-exchange">Nagios exchange:</h2>
 <blockquote>
 <p>Nagios® Exchange is the central place where you&rsquo;ll find all types of Nagios projects - plugins, addons, documentation, extensions, and more. This site is designed for the Nagios Community to share its Nagios creations.</p></blockquote>
 <p>Nagios exchange是nagios的开源宝库。</p>
 <p>包括第三方plugins、addons和docs。</p>
-<p><a href="https://exchange.nagios.org/https://exchange.nagios.org/">https://exchange.nagios.org/https://exchange.nagios.org/</a></p>
+<p><a class="link" href="https://exchange.nagios.org/https://exchange.nagios.org/"  target="_blank" rel="noopener"
+    >https://exchange.nagios.org/https://exchange.nagios.org/</a></p>
 <hr>
 <h1 id="nagios商业解决方案">Nagios商业解决方案</h1>
 <h2 id="nagios-xi">Nagios XI:</h2>
@@ -210,7 +618,16 @@ Nagios core只是一个监控套件，本身没有监控功能，需要插件来
 <p>Nagios XI 是现代化的商业监控解决套件。</p>
 <p>Nagios XI 使用nagios core 4.0。</p>
 <p>Nagios XI 架构：</p>
-<p><img src="/images/nagiosxi.png" alt="pic"></p>
+<p><img src="/images/nagiosxi.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="pic"
+	
+	
+></p>
 <h2 id="nagios-network-analyzer">Nagios network analyzer</h2>
 <h2 id="nagios-log-server">Nagios log server</h2>
 <h2 id="nagios-fusion">Nagios fusion</h2>
@@ -254,81 +671,119 @@ Nagios core只是一个监控套件，本身没有监控功能，需要插件来
 </code></pre>
 <hr>
 <h1 id="nagios的组件">Nagios的组件</h1>
-<p><a href="https://www.nagios.org/downloads/nagios-core-addons/">https://www.nagios.org/downloads/nagios-core-addons/</a></p>
-<p><a href="https://github.com/NagiosEnterprises">https://github.com/NagiosEnterprises</a></p>
+<p><a class="link" href="https://www.nagios.org/downloads/nagios-core-addons/"  target="_blank" rel="noopener"
+    >https://www.nagios.org/downloads/nagios-core-addons/</a></p>
+<p><a class="link" href="https://github.com/NagiosEnterprises"  target="_blank" rel="noopener"
+    >https://github.com/NagiosEnterprises</a></p>
 <h2 id="ndoutilsndoidoutilsido">NDOUtils(NDO)/IDOUtils(IDO)</h2>
 <p>从nagios导出当前和历史数据到mysql数据库,需要安装数据库。</p>
 <p>相似功能有mk livestatus。</p>
 <p>N * (Nagios core + NDO module) -&gt; TCP/Socket -&gt; NDO2DB daemon -&gt; DB</p>
-<p><a href="https://github.com/NagiosEnterprises/ndoutils">https://github.com/NagiosEnterprises/ndoutils</a></p>
+<p><a class="link" href="https://github.com/NagiosEnterprises/ndoutils"  target="_blank" rel="noopener"
+    >https://github.com/NagiosEnterprises/ndoutils</a></p>
 <h2 id="nsti">NSTI</h2>
 <p>Nagios SNMP Trap Interface.</p>
-<p><a href="https://github.com/NagiosEnterprises/nsti">https://github.com/NagiosEnterprises/nsti</a></p>
+<p><a class="link" href="https://github.com/NagiosEnterprises/nsti"  target="_blank" rel="noopener"
+    >https://github.com/NagiosEnterprises/nsti</a></p>
 <h2 id="bpi">BPI</h2>
 <p>Nagios Business Process Intelligence.</p>
-<p><a href="https://github.com/NagiosEnterprises/nagiosbpi">https://github.com/NagiosEnterprises/nagiosbpi</a></p>
+<p><a class="link" href="https://github.com/NagiosEnterprises/nagiosbpi"  target="_blank" rel="noopener"
+    >https://github.com/NagiosEnterprises/nagiosbpi</a></p>
 <h1 id="其它组件介绍">其它组件介绍</h1>
 <h2 id="nconf">NCONF</h2>
 <p>nagios的基于web的配置工具。</p>
-<p><a href="http://www.nconf.org/dokuwiki/doku.php">http://www.nconf.org/dokuwiki/doku.php</a></p>
-<p><a href="https://github.com/nconf/nconf">https://github.com/nconf/nconf</a></p>
+<p><a class="link" href="http://www.nconf.org/dokuwiki/doku.php"  target="_blank" rel="noopener"
+    >http://www.nconf.org/dokuwiki/doku.php</a></p>
+<p><a class="link" href="https://github.com/nconf/nconf"  target="_blank" rel="noopener"
+    >https://github.com/nconf/nconf</a></p>
 <h2 id="dnx">DNX</h2>
 <p>分布式组件。</p>
-<p><a href="http://dnx.sourceforge.net/">http://dnx.sourceforge.net/</a></p>
-<p><a href="https://sourceforge.net/projects/dnx/">https://sourceforge.net/projects/dnx/</a></p>
+<p><a class="link" href="http://dnx.sourceforge.net/"  target="_blank" rel="noopener"
+    >http://dnx.sourceforge.net/</a></p>
+<p><a class="link" href="https://sourceforge.net/projects/dnx/"  target="_blank" rel="noopener"
+    >https://sourceforge.net/projects/dnx/</a></p>
 <h2 id="nagiosgraph">Nagiosgraph</h2>
 <blockquote>
 <p>nagiosgraph parses output and performance data from Nagios plugins and stores
 the data in RRD files. nagiosgraph creates graphs and generates HTML pages with
 graphic reports from the data.</p></blockquote>
 <p>基于RRD，绘制nagios的性能图。</p>
-<p><a href="http://nagiosgraph.sourceforge.net/">http://nagiosgraph.sourceforge.net/</a></p>
-<p><a href="https://sourceforge.net/projects/nagiosgraph/">https://sourceforge.net/projects/nagiosgraph/</a></p>
+<p><a class="link" href="http://nagiosgraph.sourceforge.net/"  target="_blank" rel="noopener"
+    >http://nagiosgraph.sourceforge.net/</a></p>
+<p><a class="link" href="https://sourceforge.net/projects/nagiosgraph/"  target="_blank" rel="noopener"
+    >https://sourceforge.net/projects/nagiosgraph/</a></p>
 <hr>
 <h1 id="consol的分布式监控方案">consol的分布式监控方案</h1>
 <p>一家德国的咨询和解决方案软件公司。</p>
 <p>可以通过 check_MK 的omd来安装。</p>
-<p><a href="https://www.consol.de/">https://www.consol.de/</a></p>
-<p><a href="https://labs.consol.de/index.html">https://labs.consol.de/index.html</a></p>
-<p><a href="https://github.com/ConSol">https://github.com/ConSol</a></p>
+<p><a class="link" href="https://www.consol.de/"  target="_blank" rel="noopener"
+    >https://www.consol.de/</a></p>
+<p><a class="link" href="https://labs.consol.de/index.html"  target="_blank" rel="noopener"
+    >https://labs.consol.de/index.html</a></p>
+<p><a class="link" href="https://github.com/ConSol"  target="_blank" rel="noopener"
+    >https://github.com/ConSol</a></p>
 <p>主要贡献组件：</p>
-<p><a href="https://github.com/sni">https://github.com/sni</a></p>
+<p><a class="link" href="https://github.com/sni"  target="_blank" rel="noopener"
+    >https://github.com/sni</a></p>
 <p>主要贡献插件：</p>
-<p><a href="https://github.com/lausser">https://github.com/lausser</a></p>
-<p><img src="/images/nagios.png" alt="pic"></p>
+<p><a class="link" href="https://github.com/lausser"  target="_blank" rel="noopener"
+    >https://github.com/lausser</a></p>
+<p><img src="/images/nagios.png"
+	
+	
+	
+	loading="lazy"
+	
+		alt="pic"
+	
+	
+></p>
 <h2 id="mod-gearman">Mod gearman</h2>
 <p>labs consol的分布式监控组件, gearman的worker。</p>
-<p><a href="http://www.mod-gearman.org/">http://www.mod-gearman.org/</a></p>
-<p><a href="https://github.com/sni/mod_gearman">https://github.com/sni/mod_gearman</a></p>
+<p><a class="link" href="http://www.mod-gearman.org/"  target="_blank" rel="noopener"
+    >http://www.mod-gearman.org/</a></p>
+<p><a class="link" href="https://github.com/sni/mod_gearman"  target="_blank" rel="noopener"
+    >https://github.com/sni/mod_gearman</a></p>
 <h2 id="ndoutilslivestatus">NDOUtils/livestatus</h2>
 <p>Event broker.</p>
 <h2 id="thruk">Thruk</h2>
 <p>基于perl的web框架catalyst的dashbord。</p>
-<p><a href="http://www.thruk.org/">http://www.thruk.org/</a></p>
-<p><a href="https://github.com/sni/Thruk">https://github.com/sni/Thruk</a></p>
+<p><a class="link" href="http://www.thruk.org/"  target="_blank" rel="noopener"
+    >http://www.thruk.org/</a></p>
+<p><a class="link" href="https://github.com/sni/Thruk"  target="_blank" rel="noopener"
+    >https://github.com/sni/Thruk</a></p>
 <hr>
 <h1 id="op5的分布式监控方案">Op5的分布式监控方案</h1>
 <p>一家瑞典的监控和解决方案公司。</p>
-<p><a href="https://www.op5.com/">https://www.op5.com/</a></p>
-<p><a href="https://kb.op5.com/dashboard.action">https://kb.op5.com/dashboard.action</a></p>
-<p><a href="https://github.com/op5">https://github.com/op5</a></p>
+<p><a class="link" href="https://www.op5.com/"  target="_blank" rel="noopener"
+    >https://www.op5.com/</a></p>
+<p><a class="link" href="https://kb.op5.com/dashboard.action"  target="_blank" rel="noopener"
+    >https://kb.op5.com/dashboard.action</a></p>
+<p><a class="link" href="https://github.com/op5"  target="_blank" rel="noopener"
+    >https://github.com/op5</a></p>
 <h2 id="merlin">merlin</h2>
 <p>分布式组件。</p>
-<p><a href="https://kb.op5.com/display/MERLIN/Distributed+%28Merlin%29+Home">https://kb.op5.com/display/MERLIN/Distributed+%28Merlin%29+Home</a></p>
-<p><a href="https://github.com/op5/merlin">https://github.com/op5/merlin</a></p>
+<p><a class="link" href="https://kb.op5.com/display/MERLIN/Distributed&#43;%28Merlin%29&#43;Home"  target="_blank" rel="noopener"
+    >https://kb.op5.com/display/MERLIN/Distributed+%28Merlin%29+Home</a></p>
+<p><a class="link" href="https://github.com/op5/merlin"  target="_blank" rel="noopener"
+    >https://github.com/op5/merlin</a></p>
 <h2 id="ndoutilsmk-livestatus">NDOUtils/MK livestatus</h2>
 <p>Eevent broker</p>
 <h2 id="ninja">Ninja</h2>
 <p>Dashboard.</p>
-<p><a href="https://kb.op5.com/display/GUI/GUI+%28Ninja%29+Home">https://kb.op5.com/display/GUI/GUI+%28Ninja%29+Home</a></p>
-<p><a href="https://github.com/op5/ninja">https://github.com/op5/ninja</a></p>
+<p><a class="link" href="https://kb.op5.com/display/GUI/GUI&#43;%28Ninja%29&#43;Home"  target="_blank" rel="noopener"
+    >https://kb.op5.com/display/GUI/GUI+%28Ninja%29+Home</a></p>
+<p><a class="link" href="https://github.com/op5/ninja"  target="_blank" rel="noopener"
+    >https://github.com/op5/ninja</a></p>
 <hr>
 <p>介绍Addons.</p>
 <h1 id="omd">OMD</h1>
 <blockquote>
 <p>OMD implements a completely new concept of how to install, maintain and update a monitoring system built on Nagios.</p></blockquote>
-<p><a href="http://omdistro.org/">http://omdistro.org/</a></p>
-<p><a href="http://git.mathias-kettner.de/git/?p=omd.git;a=tree">http://git.mathias-kettner.de/git/?p=omd.git;a=tree</a></p>
+<p><a class="link" href="http://omdistro.org/"  target="_blank" rel="noopener"
+    >http://omdistro.org/</a></p>
+<p><a class="link" href="http://git.mathias-kettner.de/git/?p=omd.git;a=tree"  target="_blank" rel="noopener"
+    >http://git.mathias-kettner.de/git/?p=omd.git;a=tree</a></p>
 <p>The Open Monitoring Distribution</p>
 <p>用于快速部署基于nagios的分布式监控，包括：</p>
 <ol>
@@ -353,23 +808,31 @@ graphic reports from the data.</p></blockquote>
 <p>Gearman provides a generic application framework to farm out work to other machines or processes that are better suited to do the work.</p></blockquote>
 <p>Gearman用来做任务分发的.</p>
 <p>一个C++实现的Gearman Job Server:</p>
-<p><a href="http://gearman.org/">http://gearman.org/</a></p>
-<p><a href="https://github.com/gearman/gearmand">https://github.com/gearman/gearmand</a></p>
+<p><a class="link" href="http://gearman.org/"  target="_blank" rel="noopener"
+    >http://gearman.org/</a></p>
+<p><a class="link" href="https://github.com/gearman/gearmand"  target="_blank" rel="noopener"
+    >https://github.com/gearman/gearmand</a></p>
 <p>一个C实现的Gearman worker:</p>
-<p><a href="http://www.mod-gearman.org/">http://www.mod-gearman.org/</a></p>
-<p><a href="https://github.com/sni/mod_gearman">https://github.com/sni/mod_gearman</a></p>
+<p><a class="link" href="http://www.mod-gearman.org/"  target="_blank" rel="noopener"
+    >http://www.mod-gearman.org/</a></p>
+<p><a class="link" href="https://github.com/sni/mod_gearman"  target="_blank" rel="noopener"
+    >https://github.com/sni/mod_gearman</a></p>
 <h1 id="rrdtools">rrdtools</h1>
 <blockquote>
 <p>RRDtool is a little program for easily maintaining a database of time-series data. It comes with a charting program for drawing pretty graphs based on the data stored.</p></blockquote>
 <p>存储性能数据。</p>
-<p><a href="http://oss.oetiker.ch/rrdtool/">http://oss.oetiker.ch/rrdtool/</a></p>
-<p><a href="https://github.com/oetiker/rrdtool-1.x">https://github.com/oetiker/rrdtool-1.x</a></p>
+<p><a class="link" href="http://oss.oetiker.ch/rrdtool/"  target="_blank" rel="noopener"
+    >http://oss.oetiker.ch/rrdtool/</a></p>
+<p><a class="link" href="https://github.com/oetiker/rrdtool-1.x"  target="_blank" rel="noopener"
+    >https://github.com/oetiker/rrdtool-1.x</a></p>
 <h1 id="pnp4nagios">pnp4nagios</h1>
 <blockquote>
 <p>PNP is an addon to Nagios which analyzes performance data provided by plugins and stores them automatically into RRD-databases.</p></blockquote>
 <p>基于RRD，绘制nagios的性能图。</p>
-<p><a href="http://docs.pnp4nagios.org/">http://docs.pnp4nagios.org/</a></p>
-<p><a href="https://github.com/lingej/pnp4nagios">https://github.com/lingej/pnp4nagios</a></p>
+<p><a class="link" href="http://docs.pnp4nagios.org/"  target="_blank" rel="noopener"
+    >http://docs.pnp4nagios.org/</a></p>
+<p><a class="link" href="https://github.com/lingej/pnp4nagios"  target="_blank" rel="noopener"
+    >https://github.com/lingej/pnp4nagios</a></p>
 <p>可以在nagios的service配置中添加“ostpl_enable-graph&quot;启用图形。</p>
 <p>templates.dist是自带模板</p>
 <p>templates是用户自定义模板</p>
@@ -386,17 +849,23 @@ graphic reports from the data.</p></blockquote>
 <blockquote>
 <p>NagVis is a program for visualizing the data the monitoring core of your choice, for example Nagios, Naemon, Icinga or Shinken, in a human friendly way.</p></blockquote>
 <p>绘制监控地图。</p>
-<p><a href="http://www.nagvis.org/">http://www.nagvis.org/</a></p>
-<p><a href="https://github.com/NagVis/nagvis">https://github.com/NagVis/nagvis</a></p>
+<p><a class="link" href="http://www.nagvis.org/"  target="_blank" rel="noopener"
+    >http://www.nagvis.org/</a></p>
+<p><a class="link" href="https://github.com/NagVis/nagvis"  target="_blank" rel="noopener"
+    >https://github.com/NagVis/nagvis</a></p>
 <h1 id="dokuwiki">dokuwiki</h1>
 <blockquote>
 <p>DokuWiki is a simple to use and highly versatile Open Source wiki software that doesn&rsquo;t require a database.</p></blockquote>
 <p>创建监控的procedure。</p>
-<p><a href="https://www.dokuwiki.org/dokuwiki/">https://www.dokuwiki.org/dokuwiki/</a></p>
-<p><a href="https://github.com/splitbrain/dokuwiki">https://github.com/splitbrain/dokuwiki</a></p>
+<p><a class="link" href="https://www.dokuwiki.org/dokuwiki/"  target="_blank" rel="noopener"
+    >https://www.dokuwiki.org/dokuwiki/</a></p>
+<p><a class="link" href="https://github.com/splitbrain/dokuwiki"  target="_blank" rel="noopener"
+    >https://github.com/splitbrain/dokuwiki</a></p>
 <h1 id="graphite">graphite</h1>
-<p><a href="https://github.com/graphite-project">https://github.com/graphite-project</a></p>
-<p><a href="http://graphite.readthedocs.io/en/latest/index.html">http://graphite.readthedocs.io/en/latest/index.html</a></p>
+<p><a class="link" href="https://github.com/graphite-project"  target="_blank" rel="noopener"
+    >https://github.com/graphite-project</a></p>
+<p><a class="link" href="http://graphite.readthedocs.io/en/latest/index.html"  target="_blank" rel="noopener"
+    >http://graphite.readthedocs.io/en/latest/index.html</a></p>
 <p>Zabbix,Sensu,Ganglia,Nagios/Naemon/Icinga/Shinken都可以配合使用。</p>
 <p>绘制性能图。</p>
 <p>graphite-web</p>
@@ -413,35 +882,45 @@ graphic reports from the data.</p></blockquote>
 <blockquote>
 <p>Grafana is an open source, feature rich metrics dashboard and graph editor for Graphite, Elasticsearch, OpenTSDB, Prometheus and InfluxDB.</p></blockquote>
 <p>为graphite提供更好的可视化图形。</p>
-<p><a href="https://github.com/grafana/grafana">https://github.com/grafana/grafana</a></p>
-<p><a href="http://grafana.org/">http://grafana.org/</a></p>
+<p><a class="link" href="https://github.com/grafana/grafana"  target="_blank" rel="noopener"
+    >https://github.com/grafana/grafana</a></p>
+<p><a class="link" href="http://grafana.org/"  target="_blank" rel="noopener"
+    >http://grafana.org/</a></p>
 <h1 id="graphios">graphios</h1>
 <blockquote>
 <p>A program to send nagios perf data to graphite(carbon)/statsd/librato/influxdb</p></blockquote>
 <p>发送nagios性能数据到Graphite。</p>
-<p><a href="https://github.com/shawn-sterling/graphios">https://github.com/shawn-sterling/graphios</a></p>
+<p><a class="link" href="https://github.com/shawn-sterling/graphios"  target="_blank" rel="noopener"
+    >https://github.com/shawn-sterling/graphios</a></p>
 <h1 id="ledbetter">Ledbetter</h1>
 <blockquote>
 <p>A simple script for gathering Nagios problem statistics and submitting them to Graphite. It focuses on summary (overall, servicegroup and hostgroup) statistics and writes them to the nagios.problems metrics namespace within Graphite.</p></blockquote>
 <p>发送nagios性能数据到Graphite。</p>
-<p><a href="https://github.com/github/ledbetter">https://github.com/github/ledbetter</a></p>
+<p><a class="link" href="https://github.com/github/ledbetter"  target="_blank" rel="noopener"
+    >https://github.com/github/ledbetter</a></p>
 <h1 id="nscp">NSCP</h1>
 <blockquote>
 <p>NSClient is an agent designed originally to work with Nagios but has since evolved into a fully fledged monitoring agent which can be used with numerous monitoring tools (like Icinga, Naemon, OP5, NetEye Opsview etc).</p></blockquote>
 <p>又叫NSClient++,现在同时支持windows和linux,主要用来安装到windows服务器,用于监控windows系统.</p>
-<p><a href="https://nsclient.org/">https://nsclient.org/</a></p>
-<p><a href="https://github.com/mickem/nscp">https://github.com/mickem/nscp</a></p>
+<p><a class="link" href="https://nsclient.org/"  target="_blank" rel="noopener"
+    >https://nsclient.org/</a></p>
+<p><a class="link" href="https://github.com/mickem/nscp"  target="_blank" rel="noopener"
+    >https://github.com/mickem/nscp</a></p>
 <hr>
 <p>介绍Plugins</p>
 <h1 id="monitoring-plugins">Monitoring Plugins</h1>
 <p>Nagios/naemon/icinga/shinken/centreon/opsview/sensu</p>
 <p>Office project:</p>
-<p><a href="https://github.com/monitoring-plugins">https://github.com/monitoring-plugins</a></p>
-<p><a href="https://www.monitoring-plugins.org/">https://www.monitoring-plugins.org/</a></p>
+<p><a class="link" href="https://github.com/monitoring-plugins"  target="_blank" rel="noopener"
+    >https://github.com/monitoring-plugins</a></p>
+<p><a class="link" href="https://www.monitoring-plugins.org/"  target="_blank" rel="noopener"
+    >https://www.monitoring-plugins.org/</a></p>
 <p>My plugin project:</p>
-<p><a href="https://github.com/crazy-canux/pymonitoringplugins">https://github.com/crazy-canux/pymonitoringplugins</a></p>
+<p><a class="link" href="https://github.com/crazy-canux/pymonitoringplugins"  target="_blank" rel="noopener"
+    >https://github.com/crazy-canux/pymonitoringplugins</a></p>
 <p>Open source project:</p>
-<p><a href="https://github.com/crazy-canux/awesome-monitoring">https://github.com/crazy-canux/awesome-monitoring</a></p>
+<p><a class="link" href="https://github.com/crazy-canux/awesome-monitoring"  target="_blank" rel="noopener"
+    >https://github.com/crazy-canux/awesome-monitoring</a></p>
 <h1 id="monitoring-plugins-1">monitoring-plugins</h1>
 <h2 id="negate">negate</h2>
 <p>设置相反状态</p>
@@ -567,13 +1046,17 @@ graphic reports from the data.</p></blockquote>
 </ul>
 <h1 id="monitoring插件开发">Monitoring插件开发</h1>
 <p>Nagios Plugin API:</p>
-<p><a href="https://assets.nagios.com/downloads/nagioscore/docs/nagioscore/3/en/pluginapi.html">https://assets.nagios.com/downloads/nagioscore/docs/nagioscore/3/en/pluginapi.html</a></p>
+<p><a class="link" href="https://assets.nagios.com/downloads/nagioscore/docs/nagioscore/3/en/pluginapi.html"  target="_blank" rel="noopener"
+    >https://assets.nagios.com/downloads/nagioscore/docs/nagioscore/3/en/pluginapi.html</a></p>
 <p>Developing Plugins For Use With Embedded Perl:</p>
-<p><a href="https://assets.nagios.com/downloads/nagioscore/docs/nagioscore/3/en/epnplugins.html">https://assets.nagios.com/downloads/nagioscore/docs/nagioscore/3/en/epnplugins.html</a></p>
+<p><a class="link" href="https://assets.nagios.com/downloads/nagioscore/docs/nagioscore/3/en/epnplugins.html"  target="_blank" rel="noopener"
+    >https://assets.nagios.com/downloads/nagioscore/docs/nagioscore/3/en/epnplugins.html</a></p>
 <p>Nagios plugin development guidelines:</p>
-<p><a href="https://nagios-plugins.org/doc/guidelines.html">https://nagios-plugins.org/doc/guidelines.html</a></p>
+<p><a class="link" href="https://nagios-plugins.org/doc/guidelines.html"  target="_blank" rel="noopener"
+    >https://nagios-plugins.org/doc/guidelines.html</a></p>
 <p>Monitoring Plugin Development Guidelines:</p>
-<p><a href="https://www.monitoring-plugins.org/doc/guidelines.html">https://www.monitoring-plugins.org/doc/guidelines.html</a></p>
+<p><a class="link" href="https://www.monitoring-plugins.org/doc/guidelines.html"  target="_blank" rel="noopener"
+    >https://www.monitoring-plugins.org/doc/guidelines.html</a></p>
 <p>Nagios不是基于agent的，所以插件都是通过协议来获取监控信息。</p>
 <p>plugin需要遵守下面规则：</p>
 <ol>
@@ -601,17 +1084,201 @@ longoutput - $LONGSERVICEOUTPUT$
 </code></pre>
 <hr>
 
-        </div>
-    </article>
-</div>
+</section>
 
-        </main>
-    </div>
+
+    <footer class="article-footer">
     
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Morgoth. Designed by Canux</p>
-        </div>
+    <section class="article-tags">
+        
+            <a href="/tags/monitoring/">Monitoring</a>
+        
+    </section>
+
+
     </footer>
-</body>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    <div id="gitalk-container"></div>
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.18.0/js/md5.min.js"></script>
+<script>
+    const gitalk = new Gitalk({
+        clientID: "3d41a2a237fabe050cc0",
+        clientSecret: "868aa81b294f1463ddb6edc007576ecfed7d2075",
+        repo: "crazy-canux.github.io",
+        owner: "crazy-canux",
+        admin: ["crazy-canux"],
+        distractionFreeMode: false, 
+        id: md5(location.pathname), 
+    });
+    (function () {
+        if (
+            ["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1
+        ) {
+            document.getElementById("gitalk-container").innerHTML =
+                "Gitalk comments not available by default when the website is previewed locally.";
+            return;
+        }
+        gitalk.render("gitalk-container");
+    })();
+</script>
+
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2013 - 
+        
+        2025 Morgoth
+    </section>
+    
+    <section class="powerby">
+        
+            Designed by Canux <br/>
+        
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
 </html>

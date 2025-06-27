@@ -1,19 +1,114 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Pelican on Morgoth</title>
-    <link>https://canuxcheng.com/tags/pelican/</link>
-    <description>Recent content in Pelican on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Mon, 01 Apr 2013 12:49:49 +0000</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/pelican/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Pelican</title>
-      <link>https://canuxcheng.com/post/pelican/</link>
-      <pubDate>Mon, 01 Apr 2013 12:49:49 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/pelican/</guid>
-      <description>&lt;h1 id=&#34;pelican&#34;&gt;Pelican&lt;/h1&gt;&#xA;&lt;p&gt;python开发的静态站点生成器.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://blog.getpelican.com/&#34;&gt;http://blog.getpelican.com/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/getpelican/pelican&#34;&gt;https://github.com/getpelican/pelican&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://pelican-docs-zh-cn.readthedocs.io/en/latest/getting_started.html&#34;&gt;http://pelican-docs-zh-cn.readthedocs.io/en/latest/getting_started.html&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://pelican-zh.readthedocs.io/en/latest/zh-cn/&#34;&gt;http://pelican-zh.readthedocs.io/en/latest/zh-cn/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;搭建博客&#34;&gt;搭建博客&lt;/h1&gt;&#xA;&lt;p&gt;创建环境:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$mkdir blog_pelican&#xA;$cd blog_pelican&#xA;$virtualenv .venv&#xA;$source .venv/bin/activate&#xA;$pip install pelican&#xA;$pip install markdown&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;创建pelican项目:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$pelican-quickstart&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;生成下列文件和目录:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;publishconf.py # 主配置文件&#xA;pelicanconf.py # 发布的配置文件&#xA;fabfile.py # fabric配置文件&#xA;Makefile   # make配置文件&#xA;develop_server.sh # 用于开启测试服务器&#xA;content # 用于存放所有文章&#xA;output # 静态生成文件&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h1 id=&#34;发布站点&#34;&gt;发布站点&lt;/h1&gt;&#xA;&lt;p&gt;pelican部署博客:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;# 将rst或md格式转换成html,默认导入到output.&#xA;$pelican content&#xA;$pelican content -s pelicanconf.py&#xA;&#xA;# 启动web服务器预览&#xA;$cd output&#xA;$python -m pelican.server&#xA;$python2.7 -m SimpleHTTPServer&#xA;$python3 -m http.server&#xA;$firefox http://localhost:8000/&#xA;&#xA;# 部署站点&#xA;# 一般publishconf.py导入pelicanconf.py即可，配置一样．&#xA;$pelican content -s publishconf.py&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;fabric部署博客:&lt;/p&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Pelican on Morgoth</title>
+        <link>https://canuxcheng.com/tags/pelican/</link>
+        <description>Recent content in Pelican on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Mon, 01 Apr 2013 12:49:49 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/pelican/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Pelican</title>
+        <link>https://canuxcheng.com/post/pelican/</link>
+        <pubDate>Mon, 01 Apr 2013 12:49:49 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/pelican/</guid>
+        <description>&lt;h1 id=&#34;pelican&#34;&gt;Pelican&lt;/h1&gt;
+&lt;p&gt;python开发的静态站点生成器.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://blog.getpelican.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://blog.getpelican.com/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/getpelican/pelican&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/getpelican/pelican&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://pelican-docs-zh-cn.readthedocs.io/en/latest/getting_started.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://pelican-docs-zh-cn.readthedocs.io/en/latest/getting_started.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://pelican-zh.readthedocs.io/en/latest/zh-cn/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://pelican-zh.readthedocs.io/en/latest/zh-cn/&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;搭建博客&#34;&gt;搭建博客&lt;/h1&gt;
+&lt;p&gt;创建环境:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$mkdir blog_pelican
+$cd blog_pelican
+$virtualenv .venv
+$source .venv/bin/activate
+$pip install pelican
+$pip install markdown
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;创建pelican项目:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$pelican-quickstart
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;生成下列文件和目录:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;publishconf.py # 主配置文件
+pelicanconf.py # 发布的配置文件
+fabfile.py # fabric配置文件
+Makefile   # make配置文件
+develop_server.sh # 用于开启测试服务器
+content # 用于存放所有文章
+output # 静态生成文件
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;发布站点&#34;&gt;发布站点&lt;/h1&gt;
+&lt;p&gt;pelican部署博客:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 将rst或md格式转换成html,默认导入到output.
+$pelican content
+$pelican content -s pelicanconf.py
+
+# 启动web服务器预览
+$cd output
+$python -m pelican.server
+$python2.7 -m SimpleHTTPServer
+$python3 -m http.server
+$firefox http://localhost:8000/
+
+# 部署站点
+# 一般publishconf.py导入pelicanconf.py即可，配置一样．
+$pelican content -s publishconf.py
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;fabric部署博客:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$fab github # 一键部署到github/coding.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;make部署博客:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$make github # 一键部署到github/coding.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;配置&#34;&gt;配置&lt;/h1&gt;
+&lt;p&gt;pelicanconf.py&lt;/p&gt;
+&lt;p&gt;publishconf.py&lt;/p&gt;
+&lt;p&gt;参考pelican和hexo的配置：&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/crazy-canux/blog_hexo&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/crazy-canux/blog_hexo&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/crazy-canux/blog_pelican&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/crazy-canux/blog_pelican&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;theme&#34;&gt;Theme&lt;/h1&gt;
+&lt;p&gt;添加主题&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$cd blog_pelican
+$git submodule add https://github.com/getpelican/pelican-themes.git themes
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;安装主题：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$cd pelican-themes
+$pelican-themes -i bootstrap2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;在pelicanconf.py添加主题：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;THEME = &#39;bootstrap2&#39;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;plugin&#34;&gt;Plugin&lt;/h1&gt;
+&lt;p&gt;添加插件：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$cd blog_pelican
+$git submodule add https://github.com/getpelican/pelican-plugins.git plugins
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;部署到github&#34;&gt;部署到github&lt;/h1&gt;
+&lt;p&gt;在makefile添加三个变量：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;GITHUB_BRANCH=master
+GITHUB_URL=https://github.com/crazy-canux/crazy-canux.github.io.git
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;修改makefile:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;github: publish
+    cd $(OUTPUTDIR); git init; git remote add origin $(GITHUB_URL); git add -A; git commit -m &amp;quot;[$(shell date +%Y%m%d)]update&amp;quot;; git push -f -u origin $(GITHUB_BRANCH)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;一键部署：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$make github
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

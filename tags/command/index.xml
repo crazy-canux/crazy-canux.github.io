@@ -1,26 +1,367 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Command on Morgoth</title>
-    <link>https://canuxcheng.com/tags/command/</link>
-    <description>Recent content in Command on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sun, 31 Mar 2019 21:51:25 +0000</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/command/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Command</title>
-      <link>https://canuxcheng.com/post/network_command/</link>
-      <pubDate>Sun, 31 Mar 2019 21:51:25 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/network_command/</guid>
-      <description>&lt;h1 id=&#34;network-command&#34;&gt;network command&lt;/h1&gt;&#xA;&lt;p&gt;network related command&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;net-tools&#34;&gt;net-tools&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/ecki/net-tools&#34;&gt;https://github.com/ecki/net-tools&lt;/a&gt;&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ sudo apt-get install net-tools&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h3 id=&#34;ifconfig&#34;&gt;ifconfig&lt;/h3&gt;&#xA;&lt;pre&gt;&lt;code&gt;ifconfig # 查看up的interface&#xA;ifconfig -a  # 查看所有的interface&#xA;ifconfig &amp;lt;bridge&amp;gt;/&amp;lt;interface&amp;gt; up/down&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h3 id=&#34;netstat&#34;&gt;netstat&lt;/h3&gt;&#xA;&lt;pre&gt;&lt;code&gt;netstat&#xA;-a, --all, --listening # 显示所有socket, 默认只显示connected&#xA;-l, --listening  # 显示listening&#xA;-n, --numeric&#xA;-p, --programs # 显示pid或程序名称&#xA;# socket选项:&#xA;-t, --tcp&#xA;-u, --udp&#xA;-w, --raw&#xA;-x, --unix&#xA;--ax25&#xA;--ipx&#xA;--netrom&#xA;&#xA;# 常用&#xA;netstat -anp    # 查看哪些端口是打开的．&#xA;sudo netstat -anp | grep port # 查看端口是否被使用&#xA;sudo netstat -tulnp # 查看tcp&amp;amp;udp端口是否被监听&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h3 id=&#34;arp&#34;&gt;arp&lt;/h3&gt;&#xA;&lt;pre&gt;&lt;code&gt;arp # 用于确定IP地址的网卡物理地址&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h3 id=&#34;rarp&#34;&gt;rarp&lt;/h3&gt;&#xA;&lt;h3 id=&#34;hostname&#34;&gt;hostname&lt;/h3&gt;&#xA;&lt;h3 id=&#34;domainname&#34;&gt;domainname&lt;/h3&gt;&#xA;&lt;h3 id=&#34;dnsdomainname&#34;&gt;dnsdomainname&lt;/h3&gt;&#xA;&lt;h3 id=&#34;route&#34;&gt;route&lt;/h3&gt;&#xA;&lt;p&gt;Flags:&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Command</title>
-      <link>https://canuxcheng.com/post/storage_command/</link>
-      <pubDate>Sun, 31 Mar 2019 21:51:25 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/storage_command/</guid>
-      <description>&lt;h1 id=&#34;sysstat&#34;&gt;sysstat:&lt;/h1&gt;&#xA;&lt;pre&gt;&lt;code&gt;# &amp;lt;https://github.com/sysstat/sysstat&amp;gt;&#xA;$ sudo apt-get install sysstat&#xA;# 包括 iostat/mpstat/pidstat/tapestat/cifsiostat&#xA;&#xA;iostat -d -x -k 1 10&#xA;&#xA;pidstat -d -p pid&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h1 id=&#34;iotop&#34;&gt;iotop&lt;/h1&gt;&#xA;&lt;pre&gt;&lt;code&gt;# 查看进程的diskio&#xA;$ sudo apt-get install iotop&#xA;$ sudo iotop&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h1 id=&#34;df&#34;&gt;df&lt;/h1&gt;&#xA;&lt;p&gt;df计算文件系统磁盘空间使用:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;df&#xA;$ df -h&#xA;&#xA;# 查看目录信息(读写哪个设备)&#xA;$ df /path/folder&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h1 id=&#34;dd&#34;&gt;dd&lt;/h1&gt;&#xA;&lt;p&gt;dd转化并拷贝文件:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;dd&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h1 id=&#34;fsck&#34;&gt;fsck&lt;/h1&gt;&#xA;&lt;p&gt;fsck检查并修复文件系统:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;fsck&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h1 id=&#34;fdisk&#34;&gt;fdisk&lt;/h1&gt;&#xA;&lt;p&gt;支持msdos，支持2T以下的磁盘.&lt;/p&gt;&#xA;&lt;p&gt;fdisk管理磁盘分区表:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;fdisk&#xA;fdisk -l&#xA;&#xA;fdisk /dev/sda # 可以创建新的磁盘分区&#xA;&amp;gt; n ...    创建新的分区&#xA;&amp;gt; t (8e表示linux LVM), 修改分区类型&#xA;&amp;gt; w 保存修改&#xA;partprobe /dev/sda # 在不重启的情况下保存分区&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h1 id=&#34;parted&#34;&gt;parted&lt;/h1&gt;&#xA;&lt;p&gt;支持gpt分区表，支持2T以上的大磁盘.&lt;/p&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Command on Morgoth</title>
+        <link>https://canuxcheng.com/tags/command/</link>
+        <description>Recent content in Command on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Sun, 31 Mar 2019 21:51:25 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/command/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Command</title>
+        <link>https://canuxcheng.com/post/network_command/</link>
+        <pubDate>Sun, 31 Mar 2019 21:51:25 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/network_command/</guid>
+        <description>&lt;h1 id=&#34;network-command&#34;&gt;network command&lt;/h1&gt;
+&lt;p&gt;network related command&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;net-tools&#34;&gt;net-tools&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/ecki/net-tools&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/ecki/net-tools&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo apt-get install net-tools
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;ifconfig&#34;&gt;ifconfig&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;ifconfig # 查看up的interface
+ifconfig -a  # 查看所有的interface
+ifconfig &amp;lt;bridge&amp;gt;/&amp;lt;interface&amp;gt; up/down
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;netstat&#34;&gt;netstat&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;netstat
+-a, --all, --listening # 显示所有socket, 默认只显示connected
+-l, --listening  # 显示listening
+-n, --numeric
+-p, --programs # 显示pid或程序名称
+# socket选项:
+-t, --tcp
+-u, --udp
+-w, --raw
+-x, --unix
+--ax25
+--ipx
+--netrom
+
+# 常用
+netstat -anp    # 查看哪些端口是打开的．
+sudo netstat -anp | grep port # 查看端口是否被使用
+sudo netstat -tulnp # 查看tcp&amp;amp;udp端口是否被监听
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;arp&#34;&gt;arp&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;arp # 用于确定IP地址的网卡物理地址
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;rarp&#34;&gt;rarp&lt;/h3&gt;
+&lt;h3 id=&#34;hostname&#34;&gt;hostname&lt;/h3&gt;
+&lt;h3 id=&#34;domainname&#34;&gt;domainname&lt;/h3&gt;
+&lt;h3 id=&#34;dnsdomainname&#34;&gt;dnsdomainname&lt;/h3&gt;
+&lt;h3 id=&#34;route&#34;&gt;route&lt;/h3&gt;
+&lt;p&gt;Flags:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;U: route is up&lt;/li&gt;
+&lt;li&gt;H: target is a host&lt;/li&gt;
+&lt;li&gt;G: use gateway&lt;/li&gt;
+&lt;li&gt;!: reject route&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Genmask: netmask for destination net.&lt;/p&gt;
+&lt;p&gt;Metric: 到target距离, hops.&lt;/p&gt;
+&lt;p&gt;Ref: 该路由引用次数&lt;/p&gt;
+&lt;p&gt;Use: 查找路由的次数&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;route -n
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;iputils&#34;&gt;iputils&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/iputils/iputils&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/iputils/iputils&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo apt-get install iputils-ping
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;ping&#34;&gt;ping&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;ping # 用于确定网络的连通性
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;arping&#34;&gt;arping&lt;/h3&gt;
+&lt;h3 id=&#34;tracepath&#34;&gt;tracepath&lt;/h3&gt;
+&lt;h3 id=&#34;clockdiff&#34;&gt;clockdiff&lt;/h3&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;traceroute&#34;&gt;traceroute&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;sudo apt install traceroute
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;tcpdump&#34;&gt;tcpdump&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;sudo apt-get install tcpdump
+
+tcpdump
+
+tcpdump udp port &amp;lt;port&amp;gt; 抓udp 在port端口的包
+tcpdump -i &amp;lt;interface&amp;gt; host &amp;lt;ip&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;ncnetcat&#34;&gt;nc/netcat&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;// 有的系统默认安装netcat-traditional
+$ sudo apt-get install netcat-traditional 
+// 安装netcat-openbsd
+$ sudo apt-get install netcat-openbsd
+// 设置默认值
+$ sudo update-alternatives --config nc
+$ sudo update-alternatives --set nc /bin/nc.openbsd
+
+nc -z IP PORT # 查看指定tcp://ip:port是否监听
+nc -zu IP PORT # 查看udp://ip:port是否监听
+
+// 通过nc监听端口
+nc -l PORT
+
+// 通过nc发送请求.
+echo -e &#39;{&amp;quot;method&amp;quot;:&amp;quot;test&amp;quot;,&amp;quot;params&amp;quot;:[&amp;quot;test&amp;quot;],&amp;quot;id&amp;quot;:1}&#39; | nc IP PORT
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;brctl&#34;&gt;brctl&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo apt-get install bridge-utils
+
+brctl show
+brctl addbr &amp;lt;bridge&amp;gt; # 添加bridge
+brctl delbr &amp;lt;bridge&amp;gt; # 删除bridge
+brctl addif &amp;lt;bridge&amp;gt; &amp;lt;interface&amp;gt; # 绑定interface到bridge
+brctl delif &amp;lt;bridge&amp;gt; &amp;lt;interface&amp;gt; # 删除bridge上的interface
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;iproute2&#34;&gt;iproute2&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/shemminger/iproute2&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/shemminger/iproute2&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo apt-get install iproute2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;ip&#34;&gt;ip&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;ip link show
+
+# 创建vlan
+ip link add link eth1 name eth1.10 type vlan id 10
+# 添加ip
+ip addr add 192.168.100.1/24 brd 192.168.100.255 dev eth1.10
+# 启动vlan
+ip link set dev eth1.10 up
+# 关闭vlan
+ip link set dev eth1.10 down
+# 删除vlan
+ip link delete eth1.10
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;addr/address&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ip addr show
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;route&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ip route show
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;rule&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ip rule show
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;devlink&#34;&gt;devlink&lt;/h3&gt;
+&lt;h3 id=&#34;ifstat&#34;&gt;ifstat&lt;/h3&gt;
+&lt;h3 id=&#34;bridge&#34;&gt;bridge&lt;/h3&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;dnsutils&#34;&gt;dnsutils&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;sudo apt-get install dnsutils
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;nslookup&#34;&gt;nslookup&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;nslookup # 查询IP地址和对应的域名
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;dig&#34;&gt;dig&lt;/h3&gt;
+&lt;h3 id=&#34;nsupdate&#34;&gt;nsupdate&lt;/h3&gt;
+&lt;h3 id=&#34;delv&#34;&gt;delv&lt;/h3&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;ethtool&#34;&gt;ethtool&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;sudo apt-get install ethtool
+
+ethtool # 查询网络设备信息
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;iftop&#34;&gt;iftop&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://www.ex-parrot.com/~pdw/iftop/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://www.ex-parrot.com/~pdw/iftop/&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo apt-get install iftop
+
+sudo iftop
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;wget&#34;&gt;wget&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;wget [option] [URL]
+
+-a, --append-output=FILE 输出重定向到日志
+-o, --output-file=FILE
+-q, --quiet    不输出
+-b, --background
+-nv, --no-verbose
+--header &amp;quot;authorization:c2FuZGJveDpTMG5pY3dhbGwK&amp;quot;
+
+-t, --tries=NUMBER    超时重连次数, 0表示不限制, 默认20
+-nc, --no-clobber    不覆盖原有文件
+-N, --timestamping   只下载比本地新的文件
+-c, --continue    断点续传,会覆盖-N
+-T, --timeout=SECONDS    超时时间, 默认900s
+-w, --wait=SECONDS    重连之间的等待时间
+-O, --output-document=FILE, 重命名下载文件
+
+-nH, --no-host-directories 不创建站点的根目录
+-x, --force-directories    创建和服务器一样的结构下载
+-P, --directory-prefix=PREFIX  指定下载的目录
+
+-R,  --reject=LIST 排除下载的文件
+-r, --recursive  迭代下载
+-np, --no-parent 不下载父目录的内容
+
+# 同步目录
+wget -Nc -r -np -nH --cut-dirs=3 -R &amp;quot;index.*, *.js, *.css, *.html, *.jpg, *.png, *.gif&amp;quot; -P /path/to/source/ http://host/path/to/dest/
+
+# ssl + basic auth
+wget --no-check-certificate --user &amp;lt;user&amp;gt; --password &amp;lt;pw&amp;gt; -nv -N -P &amp;lt;dest-folder&amp;gt; &amp;lt;src-url&amp;gt;
+
+$ wget -q -N -P /folder url
+$ wget -q -c -O /path/to/file.ext url
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;curl&#34;&gt;curl&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;curl
+-X/--request post/patch/delte/get/...
+-H/--header &#39;content-type: application/json&#39;
+-d/--data &#39;{&amp;quot;key&amp;quot;: &amp;quot;value&amp;quot;}&#39;
+--data-raw DATA  HTTP POST data, &#39;@&#39; allowed (H)
+--data-ascii DATA  HTTP POST ASCII data (H)
+--data-binary DATA  HTTP POST binary data (H)
+--data-urlencode DATA  HTTP POST data url encoded (H)
+-G, --get           Send the -d data with a HTTP GET (H)
+-k/--insecure    ignore ssl check.
+-u/--user &amp;lt;user:password&amp;gt;
+-s/--silent        Silent mode
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
+        <item>
+        <title>Command</title>
+        <link>https://canuxcheng.com/post/storage_command/</link>
+        <pubDate>Sun, 31 Mar 2019 21:51:25 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/storage_command/</guid>
+        <description>&lt;h1 id=&#34;sysstat&#34;&gt;sysstat:&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;# &amp;lt;https://github.com/sysstat/sysstat&amp;gt;
+$ sudo apt-get install sysstat
+# 包括 iostat/mpstat/pidstat/tapestat/cifsiostat
+
+iostat -d -x -k 1 10
+
+pidstat -d -p pid
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;iotop&#34;&gt;iotop&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;# 查看进程的diskio
+$ sudo apt-get install iotop
+$ sudo iotop
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;df&#34;&gt;df&lt;/h1&gt;
+&lt;p&gt;df计算文件系统磁盘空间使用:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;df
+$ df -h
+
+# 查看目录信息(读写哪个设备)
+$ df /path/folder
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;dd&#34;&gt;dd&lt;/h1&gt;
+&lt;p&gt;dd转化并拷贝文件:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;dd
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;fsck&#34;&gt;fsck&lt;/h1&gt;
+&lt;p&gt;fsck检查并修复文件系统:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;fsck
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;fdisk&#34;&gt;fdisk&lt;/h1&gt;
+&lt;p&gt;支持msdos，支持2T以下的磁盘.&lt;/p&gt;
+&lt;p&gt;fdisk管理磁盘分区表:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;fdisk
+fdisk -l
+
+fdisk /dev/sda # 可以创建新的磁盘分区
+&amp;gt; n ...    创建新的分区
+&amp;gt; t (8e表示linux LVM), 修改分区类型
+&amp;gt; w 保存修改
+partprobe /dev/sda # 在不重启的情况下保存分区
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;parted&#34;&gt;parted&lt;/h1&gt;
+&lt;p&gt;支持gpt分区表，支持2T以上的大磁盘.&lt;/p&gt;
+&lt;p&gt;大存储分区工具,比如nas,raid.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;parted /dev/sda print
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;mkfd&#34;&gt;mkfd&lt;/h1&gt;
+&lt;p&gt;mkfs:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;mkfs [options] [-t type fs-options] device [size]
+mkfs.ext4 /dev/sdb1 # 将分区格式化成ext4格式.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;mountumount&#34;&gt;mount/umount&lt;/h1&gt;
+&lt;p&gt;相关文件:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/etc/fstab
+/etc/mtab
+
+查看磁盘的uuid, 通过uuid挂载
+ls -l /dev/disk/by-uuid
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;mount/umount挂载文件系统:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;mount # 查看所有挂载信息
+
+mount -t type -o option device dir
+
+# 将目录挂载到指定磁盘分区
+mount -t ext4 /dev/sdb1 /opt
+等效修改/etc/fstab
+/dev/sdb1 /opt ext4 defaults 0 0
+
+# 将目录挂在到内存上.
+mount -t tmpfs -o size=100G tmpfs /var/www
+
+# 本机挂载, 将本机的folder2挂载到folder1, folder2中原有的内容会隐藏.
+mount --bind /path/folder1 /path/folder2
+/path/folder1 /path/folder2 none bind 0 0
+
+# 挂载到overlay
+mount -t overlay -o lowerdir=/path/lower,upperdir=/path/upper,workdir=/path/work overlay /path/dir
+
+umount
+umount device/dir
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;磁盘管理&#34;&gt;磁盘管理&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;# 先创建linux lvm分区
+pvcreate &amp;lt;pv-name&amp;gt; # 创建物理卷PV
+pvdisplay
+vgextend &amp;lt;vg-name&amp;gt; &amp;lt;pv-name&amp;gt;  # 给物理卷创建卷组VG
+vgdisplay
+lvextend -r -l +100%FREE &amp;lt;lv-path&amp;gt; # 将物理卷上的空闲空间全部放到逻辑卷LV上
+lvdisplay
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;sync同步缓存写入固态存储:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sync
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看所有硬件设备:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;lshw # 列出硬件
+lshw -class disk # 查看磁盘设备
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;设备管理:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;lspci # 列出所有PCI设备
+
+lsusb # 列出USB设备
+
+lsblk # 列出块设备
+
+setleds
+
+loadkeys
+
+dumpkeys
+
+MAKEDEV
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;iops&#34;&gt;IOPS&lt;/h1&gt;
+&lt;p&gt;磁盘IO.&lt;/p&gt;
+&lt;p&gt;安装fio:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo apt-get install fio
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;测试随机读写的IO:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 测试本地磁盘读写
+$ fio -filename=/dev/sda1 -direct=1 -iodepth 1 -thread -rw=randrw \
+-rwmixread=70 -ioengine=psync -bs=16k -size=200G -numjobs=30 -runtime=100 \
+-group_reporting -name=mytest
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

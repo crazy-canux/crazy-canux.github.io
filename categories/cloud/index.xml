@@ -1,124 +1,1257 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Cloud on Morgoth</title>
-    <link>https://canuxcheng.com/categories/cloud/</link>
-    <description>Recent content in Cloud on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Tue, 23 Jan 2024 22:02:31 +0000</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/categories/cloud/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>AWS Development</title>
-      <link>https://canuxcheng.com/post/aws_development/</link>
-      <pubDate>Tue, 23 Jan 2024 22:02:31 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/aws_development/</guid>
-      <description>&lt;h1 id=&#34;development&#34;&gt;Development&lt;/h1&gt;&#xA;&lt;h2 id=&#34;tools&#34;&gt;Tools&lt;/h2&gt;&#xA;&lt;h3 id=&#34;cloud9&#34;&gt;Cloud9&lt;/h3&gt;&#xA;&lt;h3 id=&#34;codeartifact&#34;&gt;CodeArtifact&lt;/h3&gt;&#xA;&lt;h3 id=&#34;codebuild&#34;&gt;CodeBuild&lt;/h3&gt;&#xA;&lt;h3 id=&#34;codecommit&#34;&gt;CodeCommit&lt;/h3&gt;&#xA;&lt;h3 id=&#34;codedeploy&#34;&gt;CodeDeploy&lt;/h3&gt;&#xA;&lt;h3 id=&#34;codeguru&#34;&gt;CodeGuru&lt;/h3&gt;&#xA;&lt;h3 id=&#34;codepipeline&#34;&gt;CodePipeline&lt;/h3&gt;&#xA;&lt;h3 id=&#34;codestar&#34;&gt;CodeStar&lt;/h3&gt;&#xA;&lt;h3 id=&#34;x-ray&#34;&gt;X-Ray&lt;/h3&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;blockchain&#34;&gt;Blockchain&lt;/h2&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;multimedia&#34;&gt;Multimedia&lt;/h2&gt;&#xA;&lt;h3 id=&#34;elastic-transcoder&#34;&gt;Elastic Transcoder&lt;/h3&gt;&#xA;&lt;h3 id=&#34;kinesis-video-streams&#34;&gt;Kinesis Video Streams&lt;/h3&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;webmobile&#34;&gt;Web&amp;amp;Mobile&lt;/h2&gt;&#xA;&lt;h3 id=&#34;amplify&#34;&gt;Amplify&lt;/h3&gt;&#xA;&lt;h3 id=&#34;api-gateway&#34;&gt;API Gateway&lt;/h3&gt;&#xA;&lt;h3 id=&#34;device-farm&#34;&gt;Device Farm&lt;/h3&gt;&#xA;&lt;h3 id=&#34;pinpoint&#34;&gt;Pinpoint&lt;/h3&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;iot&#34;&gt;IoT&lt;/h2&gt;&#xA;&lt;h3 id=&#34;iot-analytics&#34;&gt;IoT Analytics&lt;/h3&gt;&#xA;&lt;h3 id=&#34;iot-core&#34;&gt;IoT Core&lt;/h3&gt;&#xA;&lt;h3 id=&#34;iot-events&#34;&gt;IoT Events&lt;/h3&gt;&#xA;&lt;p&gt;&amp;hellip;&amp;hellip;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;mlai&#34;&gt;ML&amp;amp;AI&lt;/h2&gt;&#xA;&lt;h3 id=&#34;comprehend&#34;&gt;Comprehend&lt;/h3&gt;&#xA;&lt;h3 id=&#34;forecast&#34;&gt;Forecast&lt;/h3&gt;&#xA;&lt;h3 id=&#34;fraud-detector&#34;&gt;Fraud Detector&lt;/h3&gt;&#xA;&lt;h3 id=&#34;kendra&#34;&gt;Kendra&lt;/h3&gt;&#xA;&lt;h3 id=&#34;lex&#34;&gt;Lex&lt;/h3&gt;&#xA;&lt;p&gt;&amp;hellip;&amp;hellip;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>GCP</title>
-      <link>https://canuxcheng.com/post/gcp/</link>
-      <pubDate>Sun, 23 Apr 2023 22:02:31 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/gcp/</guid>
-      <description>&lt;h1 id=&#34;gcp&#34;&gt;GCP&lt;/h1&gt;&#xA;&lt;p&gt;gcp certification:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Google Cloud Certified Cloud Digital Leader&lt;/li&gt;&#xA;&lt;li&gt;Google Cloud Certified Associate Cloud Engineer&lt;/li&gt;&#xA;&lt;li&gt;Google Cloud Certified DevOps Engineer&lt;/li&gt;&#xA;&lt;li&gt;Google Cloud Certified Machine Learning Engineer&lt;/li&gt;&#xA;&lt;li&gt;Google Cloud Certified Professional Cloud Architect&lt;/li&gt;&#xA;&lt;li&gt;Google Cloud Certified Professional Data Engineer&lt;/li&gt;&#xA;&lt;li&gt;Google Cloud Certified Professional Network Engineer&lt;/li&gt;&#xA;&lt;li&gt;Google Cloud Certified Professional Security Engineer&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;cloud-sdk&#34;&gt;Cloud SDK&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://cloud.google.com/sdk/docs/install&#34;&gt;https://cloud.google.com/sdk/docs/install&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;默认安装的组件:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;bq&lt;/li&gt;&#xA;&lt;li&gt;bundled-python3-unix&lt;/li&gt;&#xA;&lt;li&gt;gsutil&lt;/li&gt;&#xA;&lt;li&gt;core&lt;/li&gt;&#xA;&lt;li&gt;gcloud-crc32c&lt;/li&gt;&#xA;&lt;li&gt;alpha&lt;/li&gt;&#xA;&lt;li&gt;beta&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;安装其它组件:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;gcloud components install app-engine-go docker-credential-gcr kustomize log-streaming terraform-tools app-engine-python app-engine-python-extras gke-gcloud-auth-plugin kubectl kubectl-oidc &#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;卸载:&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>AWS CLF</title>
-      <link>https://canuxcheng.com/post/aws_clf/</link>
-      <pubDate>Sat, 23 Oct 2021 22:02:31 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/aws_clf/</guid>
-      <description>&lt;h1 id=&#34;clf&#34;&gt;CLF&lt;/h1&gt;&#xA;&lt;p&gt;Foundational: 6个月经验. Cloud Practitioner Foundational(CLF).&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Fundamental cloud concepts for AWS&lt;/li&gt;&#xA;&lt;li&gt;Understanding AWS core services&lt;/li&gt;&#xA;&lt;li&gt;Introduction to security &amp;amp; architecture on AWS&lt;/li&gt;&#xA;&lt;li&gt;AWS certified cloud practitioner exam prep&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
-    </item>
-    <item>
-      <title>AWS Management</title>
-      <link>https://canuxcheng.com/post/aws_management/</link>
-      <pubDate>Thu, 23 Sep 2021 22:02:31 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/aws_management/</guid>
-      <description>&lt;h1 id=&#34;aws-monitor&#34;&gt;AWS Monitor&lt;/h1&gt;&#xA;&lt;h2 id=&#34;cli&#34;&gt;CLI&lt;/h2&gt;&#xA;&lt;h2 id=&#34;management-console&#34;&gt;Management Console&lt;/h2&gt;&#xA;&lt;h2 id=&#34;quotas&#34;&gt;Quotas&lt;/h2&gt;&#xA;&lt;h2 id=&#34;service-catalog&#34;&gt;Service Catalog&lt;/h2&gt;&#xA;&lt;h2 id=&#34;cloudwatch&#34;&gt;CloudWatch&lt;/h2&gt;&#xA;&lt;p&gt;监控和管理服务，收集logs, metrics 和 events，支持基于metrics的alert。&lt;/p&gt;&#xA;&lt;p&gt;MTTR&#xA;TCO&lt;/p&gt;&#xA;&lt;h2 id=&#34;cloudwatch-logs&#34;&gt;CloudWatch Logs&lt;/h2&gt;&#xA;&lt;h2 id=&#34;cloudtrail&#34;&gt;CloudTrail&lt;/h2&gt;&#xA;&lt;p&gt;可以用来记录，持续监控和保留与AWS基础设施中的操作相关的账户活动。&lt;/p&gt;&#xA;&lt;p&gt;将审计记录插入S3或者cloudwatch log， 记录突发事件。&lt;/p&gt;&#xA;&lt;h2 id=&#34;aws-config&#34;&gt;AWS Config&lt;/h2&gt;&#xA;&lt;p&gt;提供基础设施的历史配置。基于规则持续评估基础设施。&lt;/p&gt;&#xA;&lt;h2 id=&#34;aws-trusted-advisor&#34;&gt;AWS Trusted Advisor&lt;/h2&gt;&#xA;&lt;p&gt;优化性能和安全性&lt;/p&gt;&#xA;&lt;h2 id=&#34;amazon-grafana&#34;&gt;Amazon Grafana&lt;/h2&gt;&#xA;&lt;h2 id=&#34;amazon-prometheus&#34;&gt;Amazon Prometheus&lt;/h2&gt;&#xA;&lt;h2 id=&#34;cloudformation&#34;&gt;CloudFormation&lt;/h2&gt;&#xA;&lt;p&gt;提供基于模板(yaml/json)的基础设施服务(IaaS).&lt;/p&gt;&#xA;&lt;h2 id=&#34;compute-optimizer&#34;&gt;Compute Optimizer&lt;/h2&gt;&#xA;&lt;h2 id=&#34;control-tower&#34;&gt;Control Tower&lt;/h2&gt;&#xA;&lt;h2 id=&#34;health-dashboard&#34;&gt;Health Dashboard&lt;/h2&gt;&#xA;&lt;h2 id=&#34;aws-systems-manager&#34;&gt;AWS Systems Manager&lt;/h2&gt;&#xA;&lt;p&gt;提供运维数据，并且在跨基础设施中进行自动化操作。&lt;/p&gt;&#xA;&lt;h2 id=&#34;aws-organizations&#34;&gt;AWS Organizations&lt;/h2&gt;&#xA;&lt;p&gt;账号集中管理。&lt;/p&gt;&#xA;&lt;h2 id=&#34;aws-license-manager&#34;&gt;AWS License Manager&lt;/h2&gt;&#xA;&lt;h2 id=&#34;proton&#34;&gt;Proton&lt;/h2&gt;&#xA;&lt;h2 id=&#34;aws-well-architected-tool&#34;&gt;AWS Well-Architected Tool&lt;/h2&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;financial-management&#34;&gt;Financial Management&lt;/h1&gt;&#xA;&lt;h2 id=&#34;budgets&#34;&gt;Budgets&lt;/h2&gt;&#xA;&lt;h2 id=&#34;cost-explorer&#34;&gt;Cost Explorer&lt;/h2&gt;&#xA;&lt;h2 id=&#34;savings-plans&#34;&gt;Savings Plans&lt;/h2&gt;</description>
-    </item>
-    <item>
-      <title>AWS</title>
-      <link>https://canuxcheng.com/post/aws/</link>
-      <pubDate>Fri, 23 Apr 2021 22:02:31 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/aws/</guid>
-      <description>&lt;h1 id=&#34;aws&#34;&gt;AWS&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/donnemartin/awesome-aws&#34;&gt;https://github.com/donnemartin/awesome-aws&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;aws certification:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Foundational: 6个月经验. Cloud Practitioner Foundational(CLF).&lt;/li&gt;&#xA;&lt;li&gt;Associate: 一年经验. Solutions Architect Associate(SAA); Developer, SysOps Administrator&lt;/li&gt;&#xA;&lt;li&gt;Professional: 两年经验. Solutions Architect Professional(SAP), Devops Engineer.&lt;/li&gt;&#xA;&lt;li&gt;Specialty: 特殊领域.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;sdk&#34;&gt;SDK&lt;/h2&gt;&#xA;&lt;p&gt;python&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/boto/boto3&#34;&gt;https://github.com/boto/boto3&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;golang&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/aws/aws-sdk-go&#34;&gt;https://github.com/aws/aws-sdk-go&lt;/a&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;aws-management-console&#34;&gt;AWS Management Console&lt;/h2&gt;&#xA;&lt;p&gt;通过webUI管理资源.&#xA;kkkkjjkijijijkkjddkkkkjj&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;aws-command-line-interface&#34;&gt;AWS Command Line Interface&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/aws/aws-cli&#34;&gt;https://github.com/aws/aws-cli&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/awslabs/aws-shell&#34;&gt;https://github.com/awslabs/aws-shell&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;推荐使用awscli-V2:&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html&#34;&gt;https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;使用:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;aws [-h] [--profile PROFILE] [--debug]&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;option:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;-h, --help&#xA;--profile PROFILE&#xA;--debug&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;comand option:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;aws &amp;lt;service&amp;gt; &amp;lt;subcommand&amp;gt; help &#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h3 id=&#34;cli-credentials&#34;&gt;CLI credentials&lt;/h3&gt;&#xA;&lt;p&gt;优先级：&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;命令行选项&lt;/li&gt;&#xA;&lt;li&gt;credentials文件&lt;/li&gt;&#xA;&lt;li&gt;config文件&lt;/li&gt;&#xA;&lt;li&gt;容器凭证&lt;/li&gt;&#xA;&lt;li&gt;实例配置文件凭证&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;CLI&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;配置default profile&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>AWS Compute Services</title>
-      <link>https://canuxcheng.com/post/aws_cs/</link>
-      <pubDate>Fri, 23 Apr 2021 22:02:31 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/aws_cs/</guid>
-      <description>&lt;h1 id=&#34;aws-compute-service&#34;&gt;AWS Compute Service&lt;/h1&gt;&#xA;&lt;h2 id=&#34;ec2&#34;&gt;EC2&lt;/h2&gt;&#xA;&lt;p&gt;Elastic Compute.&lt;/p&gt;&#xA;&lt;p&gt;AMI: Amazon Machine Image.&lt;/p&gt;&#xA;&lt;p&gt;EC2实例类型:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;通用型实例&lt;/li&gt;&#xA;&lt;li&gt;计算优化型实例&lt;/li&gt;&#xA;&lt;li&gt;内存优化型实例&lt;/li&gt;&#xA;&lt;li&gt;加速计算型实例&lt;/li&gt;&#xA;&lt;li&gt;存储优化型实例&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;EC2付费类型:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;按需(on-demand)&lt;/li&gt;&#xA;&lt;li&gt;预留实例(reserved)&lt;/li&gt;&#xA;&lt;li&gt;储蓄计划(savings plans)&lt;/li&gt;&#xA;&lt;li&gt;Spot实例&lt;/li&gt;&#xA;&lt;li&gt;专用主机(dedicated)&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;elastic-beanstalk&#34;&gt;Elastic Beanstalk&lt;/h2&gt;&#xA;&lt;p&gt;features:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;monitoring&lt;/li&gt;&#xA;&lt;li&gt;deployment&lt;/li&gt;&#xA;&lt;li&gt;scaling&lt;/li&gt;&#xA;&lt;li&gt;EC2 customization&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;lambda&#34;&gt;Lambda&lt;/h2&gt;&#xA;&lt;h2 id=&#34;lightsail&#34;&gt;Lightsail&lt;/h2&gt;&#xA;&lt;h2 id=&#34;batch&#34;&gt;Batch&lt;/h2&gt;&#xA;&lt;h2 id=&#34;app-runner&#34;&gt;App Runner&lt;/h2&gt;&#xA;&lt;h2 id=&#34;auto-scaling&#34;&gt;Auto Scaling&lt;/h2&gt;&#xA;&lt;h2 id=&#34;fargate&#34;&gt;Fargate&lt;/h2&gt;&#xA;&lt;h2 id=&#34;outposts&#34;&gt;Outposts&lt;/h2&gt;&#xA;&lt;h2 id=&#34;wavelength&#34;&gt;Wavelength&lt;/h2&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;app-integration&#34;&gt;App Integration&lt;/h1&gt;&#xA;&lt;h2 id=&#34;appflow&#34;&gt;AppFlow&lt;/h2&gt;&#xA;&lt;h2 id=&#34;appsync&#34;&gt;AppSync&lt;/h2&gt;&#xA;&lt;h2 id=&#34;eventbridge&#34;&gt;EventBridge&lt;/h2&gt;&#xA;&lt;h2 id=&#34;step-functions&#34;&gt;Step Functions&lt;/h2&gt;&#xA;&lt;p&gt;无服务架构.&lt;/p&gt;&#xA;&lt;h2 id=&#34;sns&#34;&gt;SNS&lt;/h2&gt;&#xA;&lt;p&gt;Simple Notification Service是消息发布订阅服务.&lt;/p&gt;&#xA;&lt;h2 id=&#34;sqs&#34;&gt;SQS&lt;/h2&gt;&#xA;&lt;p&gt;Simple Queue Service是消息队列服务.&lt;/p&gt;&#xA;&lt;p&gt;支持256KB的payload.&lt;/p&gt;&#xA;&lt;p&gt;提供两种类型的queues:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;standard queue&lt;/li&gt;&#xA;&lt;li&gt;FIFO queue&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;mq&#34;&gt;MQ&lt;/h2&gt;&#xA;&lt;p&gt;activeMQ 和 rabbitmq 托管服务。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;business-app-integration&#34;&gt;Business app integration&lt;/h1&gt;&#xA;&lt;h2 id=&#34;simple-email-service&#34;&gt;Simple Email Service&lt;/h2&gt;&#xA;&lt;p&gt;SES&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>AWS Containers</title>
-      <link>https://canuxcheng.com/post/aws_containers/</link>
-      <pubDate>Fri, 23 Apr 2021 22:02:31 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/aws_containers/</guid>
-      <description>&lt;h1 id=&#34;aws-containers&#34;&gt;AWS Containers&lt;/h1&gt;&#xA;&lt;h2 id=&#34;ecr&#34;&gt;ECR&lt;/h2&gt;&#xA;&lt;p&gt;Elastic Container Registry.&lt;/p&gt;&#xA;&lt;h2 id=&#34;ecs-anywhere&#34;&gt;ECS Anywhere&lt;/h2&gt;&#xA;&lt;h2 id=&#34;ecs&#34;&gt;ECS&lt;/h2&gt;&#xA;&lt;p&gt;Elastic Container Service.&lt;/p&gt;&#xA;&lt;h2 id=&#34;eks-distro&#34;&gt;EKS Distro&lt;/h2&gt;&#xA;&lt;h2 id=&#34;eks-anywhere&#34;&gt;EKS Anywhere&lt;/h2&gt;&#xA;&lt;h2 id=&#34;eks&#34;&gt;EKS&lt;/h2&gt;&#xA;&lt;p&gt;Elastic Kubernetes Service.&lt;/p&gt;&#xA;&lt;h3 id=&#34;通过aws-cli创建eks&#34;&gt;通过AWS CLI创建EKS&lt;/h3&gt;&#xA;&lt;p&gt;通过MC创建的资源都可以通过CLI(aws)创建.&lt;/p&gt;&#xA;&lt;p&gt;创建具有公有和私有子网且符合 Amazon EKS 要求的 Amazon VPC&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ aws cloudformation create-stack \&#xA;--stack-name my-eks-vpc-stack \&#xA;--region region-code \&#xA;--template-url https://amazon-eks.s3.us-west-2.amazonaws.com/cloudformation/2020-10-29/amazon-eks-vpc-private-subnets.yaml &#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;创建集群 IAM 角色并向其附加所需的 Amazon EKS IAM 托管策略&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;// 创建EKS IAM role&#xA;aws iam create-role \&#xA;--role-name my-EKSClusterRole \&#xA;--assume-role-policy-document file://cluster-role-trust-policy.json&amp;quot; \&#xA;--permissions-boundary arn:aws:iam::&amp;lt;Your AWS ID&amp;gt;:policy/ProjAdminsPermBoundaryv2&#xA;&#xA;{&#xA;    &amp;quot;Version&amp;quot;: &amp;quot;2012-10-17&amp;quot;,&#xA;    &amp;quot;Statement&amp;quot;: [&#xA;        {&#xA;            &amp;quot;Effect&amp;quot;: &amp;quot;Allow&amp;quot;,&#xA;            &amp;quot;Principal&amp;quot;: {&#xA;                &amp;quot;Service&amp;quot;: &amp;quot;eks.amazonaws.com&amp;quot;&#xA;            },&#xA;            &amp;quot;Action&amp;quot;: &amp;quot;sts:AssumeRole&amp;quot;,&#xA;            &amp;quot;Condition&amp;quot;: {}&#xA;        }&#xA;    ]&#xA;}&#xA;&#xA;// 绑定role和eks策略&#xA;aws iam attach-role-policy \&#xA;--policy-arn arn:aws:iam::aws:policy/AmazonEKSClusterPolicy \&#xA;--role-name my-EKSClusterRole&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;创建EKS cluster:&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>AWS Data</title>
-      <link>https://canuxcheng.com/post/aws_data/</link>
-      <pubDate>Fri, 23 Apr 2021 22:02:31 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/aws_data/</guid>
-      <description>&lt;h1 id=&#34;data-processing&#34;&gt;Data Processing&lt;/h1&gt;&#xA;&lt;h2 id=&#34;athena&#34;&gt;Athena&lt;/h2&gt;&#xA;&lt;p&gt;serverless交互式分析&lt;/p&gt;&#xA;&lt;h2 id=&#34;data-exchange&#34;&gt;Data Exchange&lt;/h2&gt;&#xA;&lt;h2 id=&#34;glue&#34;&gt;Glue&lt;/h2&gt;&#xA;&lt;p&gt;AWS上的ETL(extract, transform and load)服务，提供数据的提取，转换，加载服务。&lt;/p&gt;&#xA;&lt;h2 id=&#34;data-pipeline&#34;&gt;Data pipeline&lt;/h2&gt;&#xA;&lt;p&gt;也是ETL服务。&lt;/p&gt;&#xA;&lt;h2 id=&#34;emr&#34;&gt;EMR&lt;/h2&gt;&#xA;&lt;p&gt;EMR: Elastic MapReduce.&lt;/p&gt;&#xA;&lt;p&gt;AWS的大数据平台。支持spark, hive, hbase, flink, hudi 和presto.&lt;/p&gt;&#xA;&lt;h2 id=&#34;kinesis&#34;&gt;Kinesis&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Data Analytics&lt;/li&gt;&#xA;&lt;li&gt;Data Firehose&lt;/li&gt;&#xA;&lt;li&gt;Data Streams&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;lake-formation&#34;&gt;Lake Formation&lt;/h2&gt;&#xA;&lt;h2 id=&#34;quicksight&#34;&gt;QuickSight&lt;/h2&gt;&#xA;&lt;h2 id=&#34;opensearch&#34;&gt;OpenSearch&lt;/h2&gt;&#xA;&lt;h2 id=&#34;msk&#34;&gt;MSK&lt;/h2&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;data-analysis&#34;&gt;Data Analysis&lt;/h1&gt;&#xA;&lt;h2 id=&#34;athena-1&#34;&gt;Athena&lt;/h2&gt;&#xA;&lt;p&gt;serverless服务&lt;/p&gt;&#xA;&lt;h2 id=&#34;quicksight-1&#34;&gt;Quicksight&lt;/h2&gt;&#xA;&lt;h2 id=&#34;aws-cloudsearch&#34;&gt;AWS CloudSearch&lt;/h2&gt;&#xA;&lt;hr&gt;</description>
-    </item>
-    <item>
-      <title>AWS Database</title>
-      <link>https://canuxcheng.com/post/aws_database/</link>
-      <pubDate>Fri, 23 Apr 2021 22:02:31 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/aws_database/</guid>
-      <description>&lt;h1 id=&#34;aws-database&#34;&gt;AWS Database&lt;/h1&gt;&#xA;&lt;h2 id=&#34;rds&#34;&gt;RDS&lt;/h2&gt;&#xA;&lt;p&gt;Relational Database Service， 关系型数据库服务.&lt;/p&gt;&#xA;&lt;p&gt;支持的数据库引擎：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Amazon Aurora&lt;/li&gt;&#xA;&lt;li&gt;PostgreSQL&lt;/li&gt;&#xA;&lt;li&gt;MySQL&lt;/li&gt;&#xA;&lt;li&gt;MariaDB&lt;/li&gt;&#xA;&lt;li&gt;Oracle Database&lt;/li&gt;&#xA;&lt;li&gt;Microsoft SQL Server&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;aurora-serverless&#34;&gt;Aurora Serverless&lt;/h2&gt;&#xA;&lt;h2 id=&#34;aurora&#34;&gt;Aurora&lt;/h2&gt;&#xA;&lt;p&gt;兼容mysql和postgresql.&lt;/p&gt;&#xA;&lt;h2 id=&#34;dynamodb&#34;&gt;DynamoDB&lt;/h2&gt;&#xA;&lt;p&gt;非关系数据库(NoSQL).&lt;/p&gt;&#xA;&lt;p&gt;DynamoDB是一项键值数据库服务. 无服务器，自动扩展。&lt;/p&gt;&#xA;&lt;p&gt;具有Key-Value数据库和Document数据库的功能。&lt;/p&gt;&#xA;&lt;h2 id=&#34;documentdb&#34;&gt;DocumentDB&lt;/h2&gt;&#xA;&lt;p&gt;兼容MongoDB.&lt;/p&gt;&#xA;&lt;h2 id=&#34;elasticcache&#34;&gt;ElasticCache&lt;/h2&gt;&#xA;&lt;p&gt;内存数据库(in-memory). 兼容redis和memcached.&lt;/p&gt;&#xA;&lt;h2 id=&#34;keyspaces&#34;&gt;Keyspaces&lt;/h2&gt;&#xA;&lt;p&gt;兼容cassandra的无服务器数据库。&lt;/p&gt;&#xA;&lt;h2 id=&#34;redshift&#34;&gt;Redshift&lt;/h2&gt;&#xA;&lt;p&gt;Amazon Redshift 是一项数据仓库服务，可用于进行大数据分析。&lt;/p&gt;&#xA;&lt;h2 id=&#34;neptune&#34;&gt;Neptune&lt;/h2&gt;&#xA;&lt;p&gt;图形数据库&lt;/p&gt;&#xA;&lt;h2 id=&#34;timesteam&#34;&gt;Timesteam&lt;/h2&gt;</description>
-    </item>
-    <item>
-      <title>AWS Network</title>
-      <link>https://canuxcheng.com/post/aws_network/</link>
-      <pubDate>Fri, 23 Apr 2021 22:02:31 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/aws_network/</guid>
-      <description>&lt;h1 id=&#34;aws-network&#34;&gt;AWS Network&lt;/h1&gt;&#xA;&lt;h2 id=&#34;vpc&#34;&gt;VPC&lt;/h2&gt;&#xA;&lt;p&gt;Virtual Private Cloud.&lt;/p&gt;&#xA;&lt;p&gt;EC2的私有内部网络.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;subnets&lt;/li&gt;&#xA;&lt;li&gt;route tables&lt;/li&gt;&#xA;&lt;li&gt;internet gateways&lt;/li&gt;&#xA;&lt;li&gt;nat gateways&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;ENI: Elastic network interfaces.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://canuxcheng.com/images/vpc.png&#34;&gt;pic&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;elb&#34;&gt;ELB&lt;/h2&gt;&#xA;&lt;p&gt;ELB: Elastic Load Balancing&lt;/p&gt;&#xA;&lt;p&gt;弹性负载均衡，可以和EC2,ECS和lambda集成.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://aws.amazon.com/cn/elasticloadbalancing/features/&#34;&gt;https://aws.amazon.com/cn/elasticloadbalancing/features/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;支持四种负载均衡器：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Classic Load Balancer(默认)&lt;/li&gt;&#xA;&lt;li&gt;Gateway Load Balancer&lt;/li&gt;&#xA;&lt;li&gt;Application Load Balancer(ALB)&lt;/li&gt;&#xA;&lt;li&gt;Network Load Balancer(NLB)&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://docs.aws.amazon.com/zh_cn/eks/latest/userguide/aws-load-balancer-controller.html&#34;&gt;https://docs.aws.amazon.com/zh_cn/eks/latest/userguide/aws-load-balancer-controller.html&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;可以使用aws默认自带的NLB controller.也可以通过安装aws-load-balancer-controller。推荐后者。&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/kubernetes-sigs/aws-load-balancer-controller&#34;&gt;https://github.com/kubernetes-sigs/aws-load-balancer-controller&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;需要给vpc上的node的subnet打tag:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;kubernetes.io/role/elb: 1&#xA;kubernetes.io/role/internal-elb: 1&#xA;kubernetes.io/cluster/${cluster-name}: owned/shared&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;route-53&#34;&gt;Route 53&lt;/h2&gt;&#xA;&lt;p&gt;DNS服务.&lt;/p&gt;&#xA;&lt;p&gt;在route 53创建托管区(hosted zones)之后，可以在ACM申请证书。&lt;/p&gt;&#xA;&lt;p&gt;申请好了证书，需要在route 53创建记录.&lt;/p&gt;&#xA;&lt;p&gt;可以通过external-DNS 自动同步eks上的service和ingress到dns。&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;aws route53 list-hosted-zones&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;cloudfront&#34;&gt;CloudFront&lt;/h2&gt;&#xA;&lt;p&gt;CDN服务.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;direct-connect&#34;&gt;Direct Connect&lt;/h2&gt;&#xA;&lt;p&gt;提供数据中心和AWS直连。&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>AWS Security</title>
-      <link>https://canuxcheng.com/post/aws_security/</link>
-      <pubDate>Fri, 23 Apr 2021 22:02:31 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/aws_security/</guid>
-      <description>&lt;h1 id=&#34;security&#34;&gt;Security&lt;/h1&gt;&#xA;&lt;p&gt;Acceptable Use Policy.&lt;/p&gt;&#xA;&lt;h2 id=&#34;iam&#34;&gt;IAM&lt;/h2&gt;&#xA;&lt;p&gt;IAM: Identity and Access Management.&lt;/p&gt;&#xA;&lt;p&gt;STS: Security Token Service.&lt;/p&gt;&#xA;&lt;p&gt;ACL: Access control list.&lt;/p&gt;&#xA;&lt;p&gt;SG: Security Group.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://aws.amazon.com/cn/iam/&#34;&gt;https://aws.amazon.com/cn/iam/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$aws iam list-users&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;IAM的三种身份类型:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Users&lt;/li&gt;&#xA;&lt;li&gt;Groups&lt;/li&gt;&#xA;&lt;li&gt;Roles&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;IAM通过Policy(json)分配权限。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;sso&#34;&gt;SSO&lt;/h2&gt;&#xA;&lt;p&gt;sso登陆:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;aws configure sso&#xA;aws sso login --no-browser &#xA;aws sso logout&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;secrets-manager&#34;&gt;Secrets Manager&lt;/h2&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;acm&#34;&gt;ACM&lt;/h2&gt;&#xA;&lt;p&gt;AWS Certificate Manager.&lt;/p&gt;&#xA;&lt;p&gt;在route 53创建托管区(hosted zones)之后，可以在ACM申请证书。&lt;/p&gt;&#xA;&lt;p&gt;申请好了证书，需要在route 53创建记录.&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;aws acm list-certificates --region eu-west-1&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;aws-load-balancer-controller可以自动关联ACM的证书和ingress.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;artifact&#34;&gt;Artifact&lt;/h2&gt;&#xA;&lt;p&gt;自助的合规报告。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;waf&#34;&gt;WAF&lt;/h2&gt;&#xA;&lt;h2 id=&#34;shield&#34;&gt;Shield&lt;/h2&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;kms&#34;&gt;KMS&lt;/h2&gt;&#xA;&lt;p&gt;Key Management Service.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>AWS Storage</title>
-      <link>https://canuxcheng.com/post/aws_storage/</link>
-      <pubDate>Fri, 23 Apr 2021 22:02:31 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/aws_storage/</guid>
-      <description>&lt;h1 id=&#34;aws-storage&#34;&gt;AWS Storage&lt;/h1&gt;&#xA;&lt;h2 id=&#34;s3&#34;&gt;S3&lt;/h2&gt;&#xA;&lt;p&gt;Simple Storage Service.&lt;/p&gt;&#xA;&lt;p&gt;S3分类：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;S3标准&lt;/li&gt;&#xA;&lt;li&gt;S3标准-IA&lt;/li&gt;&#xA;&lt;li&gt;S3单区-IA&lt;/li&gt;&#xA;&lt;li&gt;S3智能分层&lt;/li&gt;&#xA;&lt;li&gt;S3 Glacier&lt;/li&gt;&#xA;&lt;li&gt;S3 Glacire Deep Archive&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;特点:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;无限存储&lt;/li&gt;&#xA;&lt;li&gt;单个对象达到5Tb&lt;/li&gt;&#xA;&lt;li&gt;一次写入，多次读取&lt;/li&gt;&#xA;&lt;li&gt;99%持久性&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;s3-glacier&#34;&gt;S3 Glacier&lt;/h2&gt;&#xA;&lt;p&gt;用于存放归档文件，按照访问量收费。&lt;/p&gt;&#xA;&lt;h2 id=&#34;ebs&#34;&gt;EBS&lt;/h2&gt;&#xA;&lt;p&gt;Elastic Block Store.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/kubernetes-sigs/aws-ebs-csi-driver&#34;&gt;https://github.com/kubernetes-sigs/aws-ebs-csi-driver&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;EBS可以连接到EC2实例，可用区级资源，需要位于同一可用区中才能连接到EC2实例，卷不会自动扩展。&lt;/p&gt;&#xA;&lt;p&gt;EBS只能被单个EC2实例访问。&lt;/p&gt;&#xA;&lt;p&gt;特点:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;大小高达16Tb&lt;/li&gt;&#xA;&lt;li&gt;EC2实例终止后仍然存在&lt;/li&gt;&#xA;&lt;li&gt;默认情况下为固态(SSD)&lt;/li&gt;&#xA;&lt;li&gt;提供IOPS SSD和HDD选项&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;efs&#34;&gt;EFS&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/kubernetes-sigs/aws-efs-csi-driver&#34;&gt;https://github.com/kubernetes-sigs/aws-efs-csi-driver&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;Elastic File System 是linux的NFS服务.&lt;/p&gt;&#xA;&lt;p&gt;EFS是区域性服务，将数据存储在多个可用区中。可以被上千个EC2实例同时访问。&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;完全托管的NFS文件系统&lt;/li&gt;&#xA;&lt;li&gt;为linux负载而设计&lt;/li&gt;&#xA;&lt;li&gt;支持PB级别数据&lt;/li&gt;&#xA;&lt;li&gt;可以跨多个区域存储数据&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;EFS提供两种存储类型(StorageClass): Standard, Infrequent access.&lt;/p&gt;&#xA;&lt;h2 id=&#34;fsx&#34;&gt;FSx&lt;/h2&gt;&#xA;&lt;p&gt;FSx是windows File Server服务.&lt;/p&gt;&#xA;&lt;h2 id=&#34;storage-gateway&#34;&gt;Storage Gateway&lt;/h2&gt;&#xA;&lt;p&gt;支持三种类型:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Tape gateway&lt;/li&gt;&#xA;&lt;li&gt;Volume gateway&lt;/li&gt;&#xA;&lt;li&gt;File Gateway&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;aws-backup&#34;&gt;AWS Backup&lt;/h2&gt;&#xA;&lt;h2 id=&#34;aws-edr&#34;&gt;AWS EDR&lt;/h2&gt;&#xA;&lt;p&gt;Elastic Disaster Recovery.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>CDK</title>
-      <link>https://canuxcheng.com/post/cloud_cdk/</link>
-      <pubDate>Fri, 23 Apr 2021 22:02:31 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/cloud_cdk/</guid>
-      <description>&lt;h1 id=&#34;cdk&#34;&gt;CDK&lt;/h1&gt;&#xA;&lt;p&gt;Cloud Development Kit&lt;/p&gt;&#xA;&lt;p&gt;SDK一般是和service交互的。&#xA;CDK用来和基础设施交互的。&lt;/p&gt;&#xA;&lt;h2 id=&#34;aws-cdk&#34;&gt;AWS CDK&lt;/h2&gt;&#xA;&lt;p&gt;The AWS Cloud Development Kit (AWS CDK) is an open-source software development framework to define cloud infrastructure in code and provision it through AWS CloudFormation.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/aws/aws-cdk&#34;&gt;https://github.com/aws/aws-cdk&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;cdk8s&#34;&gt;CDK8S&lt;/h2&gt;&#xA;&lt;p&gt;cdk8s is an open-source software development framework for defining Kubernetes applications and reusable abstractions using familiar programming languages and rich object-oriented APIs. cdk8s apps synthesize into standard Kubernetes manifests which can be applied to any Kubernetes cluster.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>OpenStack</title>
-      <link>https://canuxcheng.com/post/cloud_openstack/</link>
-      <pubDate>Thu, 23 Feb 2017 22:02:31 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/cloud_openstack/</guid>
-      <description>&lt;h1 id=&#34;openstack&#34;&gt;OpenStack&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/openstack&#34;&gt;https://github.com/openstack&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/openstack-dev&#34;&gt;https://github.com/openstack-dev&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;openstack是一个云操作系统，通过数据中心可控制大型的计算，存储，网络等资源池．&lt;/p&gt;&#xA;&lt;p&gt;所有的管理通过前端的界面管理员就可以完成，同样也可以通过web接口让最终的用户部署资源．&lt;/p&gt;&#xA;&lt;p&gt;openstack的设计原则：&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://wiki.openstack.org/wiki/BasicDesignTenets&#34;&gt;https://wiki.openstack.org/wiki/BasicDesignTenets&lt;/a&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;horizon---openstack-dashboard&#34;&gt;horizon - OpenStack Dashboard&lt;/h1&gt;&#xA;&lt;p&gt;控制面板&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/openstack/horizon&#34;&gt;https://github.com/openstack/horizon&lt;/a&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;keystone---openstack-identity&#34;&gt;keystone - OpenStack Identity&lt;/h1&gt;&#xA;&lt;p&gt;认证服务&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/openstack/keystone&#34;&gt;https://github.com/openstack/keystone&lt;/a&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;nova---openstack-compute&#34;&gt;nova - OpenStack Compute&lt;/h1&gt;&#xA;&lt;p&gt;计算服务&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/openstack/nova&#34;&gt;https://github.com/openstack/nova&lt;/a&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;swift---openstack-storage&#34;&gt;swift - OpenStack Storage&lt;/h1&gt;&#xA;&lt;p&gt;存储服务&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/openstack/swift&#34;&gt;https://github.com/openstack/swift&lt;/a&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;neutron---openstack-networking&#34;&gt;neutron - OpenStack Networking&lt;/h1&gt;&#xA;&lt;p&gt;网络服务(原名quantum)&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/openstack/neutron&#34;&gt;https://github.com/openstack/neutron&lt;/a&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;glance---openstack-image-management&#34;&gt;glance - OpenStack Image Management&lt;/h1&gt;&#xA;&lt;p&gt;镜像管理&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/openstack/glance&#34;&gt;https://github.com/openstack/glance&lt;/a&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;cinder---openstack-block-storage&#34;&gt;cinder - OpenStack Block Storage&lt;/h1&gt;&#xA;&lt;p&gt;块存储服务&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/openstack/cinder&#34;&gt;https://github.com/openstack/cinder&lt;/a&gt;&lt;/p&gt;&#xA;&lt;hr&gt;</description>
-    </item>
-    <item>
-      <title>Terraform</title>
-      <link>https://canuxcheng.com/post/cloud_terraform/</link>
-      <pubDate>Fri, 15 Apr 2016 09:41:39 +0800</pubDate>
-      <guid>https://canuxcheng.com/post/cloud_terraform/</guid>
-      <description>&lt;h1 id=&#34;terraform&#34;&gt;Terraform&lt;/h1&gt;&#xA;&lt;p&gt;install:&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://learn.hashicorp.com/tutorials/terraform/install-cli&#34;&gt;https://learn.hashicorp.com/tutorials/terraform/install-cli&lt;/a&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;cli&#34;&gt;CLI&lt;/h2&gt;&#xA;&lt;p&gt;操作工作目录&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;// 初始化目录，会根据配置下载和安装provider.&#xA;terraform init&#xA;&#xA;terraform get&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;操作tf文件&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;// 格式化文件&#xA;terraform fmt -recursive&#xA;&#xA;// 验证文件&#xA;terraform validate &#xA;&#xA;// 可以通过终端验证函数.&#xA;terraform console&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;操作基础设施:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;terraform plan&#xA;terraform plan -out test.tfplan&#xA;&#xA;terraform apply -auto-approve&#xA;terraform apply test.tfplan&#xA;&#xA;terraform destroy&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;检查基础设施:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;terraform show&#xA;terraform graph&#xA;terraform output&#xA;terraform state list/show&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;认证:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;terraform login&#xA;terraform logout&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;tf&#34;&gt;TF&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.terraform.io/language&#34;&gt;https://www.terraform.io/language&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;注释:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;# comment &#xA;// comment&#xA;/* comment */&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h3 id=&#34;backend-and-state&#34;&gt;backend and state&lt;/h3&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.terraform.io/language/settings/backends&#34;&gt;https://www.terraform.io/language/settings/backends&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>CloudComputing</title>
-      <link>https://canuxcheng.com/post/cloud_computing/</link>
-      <pubDate>Tue, 05 Apr 2016 22:02:31 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/cloud_computing/</guid>
-      <description>&lt;h1 id=&#34;cloudcomputing&#34;&gt;CloudComputing&lt;/h1&gt;&#xA;&lt;p&gt;IAAS: Infrastructure as a service&lt;/p&gt;&#xA;&lt;p&gt;PAAS: Platform as a service&lt;/p&gt;&#xA;&lt;p&gt;SAAS: Software as a service&lt;/p&gt;&#xA;&lt;h1 id=&#34;serverless&#34;&gt;Serverless&lt;/h1&gt;&#xA;&lt;p&gt;Faas: Function as a service.&lt;/p&gt;&#xA;&lt;p&gt;Baas: Backend as a service.&lt;/p&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Cloud on Morgoth</title>
+        <link>https://canuxcheng.com/categories/cloud/</link>
+        <description>Recent content in Cloud on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Tue, 23 Jan 2024 22:02:31 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/categories/cloud/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>AWS Development</title>
+        <link>https://canuxcheng.com/post/aws_development/</link>
+        <pubDate>Tue, 23 Jan 2024 22:02:31 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/aws_development/</guid>
+        <description>&lt;h1 id=&#34;development&#34;&gt;Development&lt;/h1&gt;
+&lt;h2 id=&#34;tools&#34;&gt;Tools&lt;/h2&gt;
+&lt;h3 id=&#34;cloud9&#34;&gt;Cloud9&lt;/h3&gt;
+&lt;h3 id=&#34;codeartifact&#34;&gt;CodeArtifact&lt;/h3&gt;
+&lt;h3 id=&#34;codebuild&#34;&gt;CodeBuild&lt;/h3&gt;
+&lt;h3 id=&#34;codecommit&#34;&gt;CodeCommit&lt;/h3&gt;
+&lt;h3 id=&#34;codedeploy&#34;&gt;CodeDeploy&lt;/h3&gt;
+&lt;h3 id=&#34;codeguru&#34;&gt;CodeGuru&lt;/h3&gt;
+&lt;h3 id=&#34;codepipeline&#34;&gt;CodePipeline&lt;/h3&gt;
+&lt;h3 id=&#34;codestar&#34;&gt;CodeStar&lt;/h3&gt;
+&lt;h3 id=&#34;x-ray&#34;&gt;X-Ray&lt;/h3&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;blockchain&#34;&gt;Blockchain&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;multimedia&#34;&gt;Multimedia&lt;/h2&gt;
+&lt;h3 id=&#34;elastic-transcoder&#34;&gt;Elastic Transcoder&lt;/h3&gt;
+&lt;h3 id=&#34;kinesis-video-streams&#34;&gt;Kinesis Video Streams&lt;/h3&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;webmobile&#34;&gt;Web&amp;amp;Mobile&lt;/h2&gt;
+&lt;h3 id=&#34;amplify&#34;&gt;Amplify&lt;/h3&gt;
+&lt;h3 id=&#34;api-gateway&#34;&gt;API Gateway&lt;/h3&gt;
+&lt;h3 id=&#34;device-farm&#34;&gt;Device Farm&lt;/h3&gt;
+&lt;h3 id=&#34;pinpoint&#34;&gt;Pinpoint&lt;/h3&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;iot&#34;&gt;IoT&lt;/h2&gt;
+&lt;h3 id=&#34;iot-analytics&#34;&gt;IoT Analytics&lt;/h3&gt;
+&lt;h3 id=&#34;iot-core&#34;&gt;IoT Core&lt;/h3&gt;
+&lt;h3 id=&#34;iot-events&#34;&gt;IoT Events&lt;/h3&gt;
+&lt;p&gt;&amp;hellip;&amp;hellip;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;mlai&#34;&gt;ML&amp;amp;AI&lt;/h2&gt;
+&lt;h3 id=&#34;comprehend&#34;&gt;Comprehend&lt;/h3&gt;
+&lt;h3 id=&#34;forecast&#34;&gt;Forecast&lt;/h3&gt;
+&lt;h3 id=&#34;fraud-detector&#34;&gt;Fraud Detector&lt;/h3&gt;
+&lt;h3 id=&#34;kendra&#34;&gt;Kendra&lt;/h3&gt;
+&lt;h3 id=&#34;lex&#34;&gt;Lex&lt;/h3&gt;
+&lt;p&gt;&amp;hellip;&amp;hellip;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>GCP</title>
+        <link>https://canuxcheng.com/post/gcp/</link>
+        <pubDate>Sun, 23 Apr 2023 22:02:31 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/gcp/</guid>
+        <description>&lt;h1 id=&#34;gcp&#34;&gt;GCP&lt;/h1&gt;
+&lt;p&gt;gcp certification:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Google Cloud Certified Cloud Digital Leader&lt;/li&gt;
+&lt;li&gt;Google Cloud Certified Associate Cloud Engineer&lt;/li&gt;
+&lt;li&gt;Google Cloud Certified DevOps Engineer&lt;/li&gt;
+&lt;li&gt;Google Cloud Certified Machine Learning Engineer&lt;/li&gt;
+&lt;li&gt;Google Cloud Certified Professional Cloud Architect&lt;/li&gt;
+&lt;li&gt;Google Cloud Certified Professional Data Engineer&lt;/li&gt;
+&lt;li&gt;Google Cloud Certified Professional Network Engineer&lt;/li&gt;
+&lt;li&gt;Google Cloud Certified Professional Security Engineer&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;cloud-sdk&#34;&gt;Cloud SDK&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://cloud.google.com/sdk/docs/install&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://cloud.google.com/sdk/docs/install&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;默认安装的组件:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;bq&lt;/li&gt;
+&lt;li&gt;bundled-python3-unix&lt;/li&gt;
+&lt;li&gt;gsutil&lt;/li&gt;
+&lt;li&gt;core&lt;/li&gt;
+&lt;li&gt;gcloud-crc32c&lt;/li&gt;
+&lt;li&gt;alpha&lt;/li&gt;
+&lt;li&gt;beta&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;安装其它组件:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;gcloud components install app-engine-go docker-credential-gcr kustomize log-streaming terraform-tools app-engine-python app-engine-python-extras gke-gcloud-auth-plugin kubectl kubectl-oidc 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;卸载:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;gcloud components remove &amp;lt;component_id&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;升级&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;gcloud components update
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;gcp-command-line-interface&#34;&gt;GCP Command Line Interface&lt;/h2&gt;
+&lt;p&gt;使用:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;gcloud --help   
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;cli-credentials&#34;&gt;CLI credentials&lt;/h3&gt;
+&lt;p&gt;初始化：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;gcloud init
+gcloud init --no-launch-browser
+gcloud init --console-only
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;配置：&lt;/p&gt;
+&lt;p&gt;配置存储位置:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;linux/unix: ~/.config/gcloud
+windows: %APPDATA%\gcloud
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;配置管理:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 创建配置
+gcloud config configurations create [name]
+
+// 列出配置
+gcloud config configurations list
+
+// 查看配置属性
+gcloud config configurations describe [name]
+
+// 激活配置
+gcloud config configurations activate [name]
+
+// 删除配置
+gcloud config configurations delete [name]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;属性管理:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 查看属性
+gcloud config list
+
+// 切换account
+gcloud config set account [account]
+// 切换project
+gcloud config set project [project]
+
+// 查看可用属性
+gcloud config set --help
+
+// 显示可用属性的列表
+gcloud topic configurations
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;登录:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 默认打开浏览器授权
+gcloud auth login
+
+// 用于没有浏览器的机器
+// 复制gcloud auth login --remote-bootstrap=&amp;quot;命令在另外一台安装了浏览器和gcloud cli的机器打开。
+// 将浏览器的输出帖回没有浏览器的机器。
+gcloud auth login --no-browser
+
+// 用于没有浏览器的机器，复制Https网址打开浏览器授权。
+gcloud auth login --no-launch-browser
+
+// 列出账号.
+gcloud auth list
+
+// 禁止通过cli登录
+gcloud auth revoke [account]
+
+// 查找凭据文件位置
+gcloud info
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Application Default Credentials（ADC):&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 将用户凭据提供给ADC(用于sdk或者terraform等交互）。
+gcloud auth application-default login --no-launch-browser
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;交互式shell&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;gcloud beta interactive
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;compute&#34;&gt;compute&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Kubernetes: GKE(EKS)&lt;/li&gt;
+&lt;li&gt;Compute engine(EC2): compute engine&lt;/li&gt;
+&lt;li&gt;Batch&lt;/li&gt;
+&lt;li&gt;workload manager&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;serverless&#34;&gt;ServerLess&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;cloud run&lt;/li&gt;
+&lt;li&gt;cloud functions&lt;/li&gt;
+&lt;li&gt;app engine&lt;/li&gt;
+&lt;li&gt;api gateway&lt;/li&gt;
+&lt;li&gt;endpoints&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;network&#34;&gt;network&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;VPC&lt;/li&gt;
+&lt;li&gt;cloud router&lt;/li&gt;
+&lt;li&gt;cloud DNS(route53)&lt;/li&gt;
+&lt;li&gt;cloud domains(route53)&lt;/li&gt;
+&lt;li&gt;cloud firewall(DNS firewall, network firewall, SG, ACL)&lt;/li&gt;
+&lt;li&gt;cloud interconnect(direct connect)&lt;/li&gt;
+&lt;li&gt;cloud VPN&lt;/li&gt;
+&lt;li&gt;cloud NAT&lt;/li&gt;
+&lt;li&gt;cloud CDN&lt;/li&gt;
+&lt;li&gt;cloud load balancing&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;cloud-load-balancer&#34;&gt;Cloud Load balancer&lt;/h3&gt;
+&lt;p&gt;Application LB(http/https):&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;external LB(gce): external global lb(gke-l7-global-external-managed), external classic global lb(gke-l7-gxlb), external regional lb（gke-l7-regional-external-managed）.&lt;/li&gt;
+&lt;li&gt;internal LB(gce-internal, gke-l7-rilb): internal regional lb.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Proxy LB(TCP/SSL):&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;external&lt;/li&gt;
+&lt;li&gt;internal&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Passthrough LB(TCP/UDP):&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;external&lt;/li&gt;
+&lt;li&gt;internal&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;storage&#34;&gt;storage&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;persistent disk(EBS): (balanced/extreme/ssd/standard) 创建vm的时候创建块存储。&lt;/li&gt;
+&lt;li&gt;cloud storage(S3): (standard/nearline/coldline/archive) 可以在全球范围内随时存储和检索任意数量的数据&lt;/li&gt;
+&lt;li&gt;cloud storage for filebase(S3): 专为需要存储和提供用户生成的内容（如照片或视频）的应用开发者而打造的&lt;/li&gt;
+&lt;li&gt;filestore(EFS): file storage&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;database&#34;&gt;Database&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Cloud SQL(RDS, Aurora): RDBMA&lt;/li&gt;
+&lt;li&gt;Cloud Spanner(Aurora): RDBMS&lt;/li&gt;
+&lt;li&gt;Cloud Bigtable(dynamoDB): NoSQL: Key-value&lt;/li&gt;
+&lt;li&gt;datastore(dynamoDB): NoSQL: Indexed&lt;/li&gt;
+&lt;li&gt;memorystore(elastiCache): In-memory data store, memcached/redis&lt;/li&gt;
+&lt;li&gt;BigQuery&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;security&#34;&gt;Security&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;certificate authority service(ACM): Certificate management&lt;/li&gt;
+&lt;li&gt;cloud identity(IAM):&lt;/li&gt;
+&lt;li&gt;Identity and access management(IAM):&lt;/li&gt;
+&lt;li&gt;Identity-Aware Proxy(IAM):&lt;/li&gt;
+&lt;li&gt;cloud key management service(KMS):&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;IAM members:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;google account&lt;/li&gt;
+&lt;li&gt;google service account&lt;/li&gt;
+&lt;li&gt;google groups&lt;/li&gt;
+&lt;li&gt;cloud identity domain&lt;/li&gt;
+&lt;li&gt;google workspace domain&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;IAM basic roles:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Owner&lt;/li&gt;
+&lt;li&gt;Editor&lt;/li&gt;
+&lt;li&gt;Viewer&lt;/li&gt;
+&lt;li&gt;Billing Administrator&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Service account types:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;user created&lt;/li&gt;
+&lt;li&gt;built-in (compute engine or gke default SA)&lt;/li&gt;
+&lt;li&gt;Google APIs SA&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;operation&#34;&gt;Operation&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Monitoring&lt;/li&gt;
+&lt;li&gt;Debugger&lt;/li&gt;
+&lt;li&gt;Logging&lt;/li&gt;
+&lt;li&gt;Error reporting&lt;/li&gt;
+&lt;li&gt;Trace&lt;/li&gt;
+&lt;li&gt;Profiler&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;analytics&#34;&gt;Analytics&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;BigQuery&lt;/li&gt;
+&lt;li&gt;Pub/Sub&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;cicd&#34;&gt;CI/CD&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;cloud build&lt;/li&gt;
+&lt;li&gt;cloud deploy&lt;/li&gt;
+&lt;li&gt;container registry&lt;/li&gt;
+&lt;li&gt;artifact registry&lt;/li&gt;
+&lt;li&gt;source repositories&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;how-to-ssh-to-vm&#34;&gt;how to ssh to vm&lt;/h2&gt;
+&lt;h3 id=&#34;metadata&#34;&gt;Metadata&lt;/h3&gt;
+&lt;p&gt;分为Project metadata和instance metadata。&lt;/p&gt;
+&lt;h4 id=&#34;ssh&#34;&gt;ssh&lt;/h4&gt;
+&lt;p&gt;Only for external IP (public IP).&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ssh key for vm: add ssh pub key to instance metadata.&lt;/li&gt;
+&lt;li&gt;ssh key for project: add ssh pub key to project metadata.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;ssh to vm&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ssh username_from_metadata@external_IP
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;gcloud&#34;&gt;gcloud&lt;/h4&gt;
+&lt;p&gt;首次运行会创建ssh 密钥对，用户名是本地机器用户名,google_compute_engine.&lt;/p&gt;
+&lt;p&gt;公钥会自动上传到project/instance metadata.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;gcloud compute ssh public-instance \
+--project=PJ \
+--zone=RZ
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;os-login&#34;&gt;OS Login&lt;/h3&gt;
+&lt;p&gt;设置 OS Login 元数据时，Compute Engine 会删除虚拟机的 authorized_keys 文件，并且不再接受来自项目或实例元数据中存储的 SSH 密钥的连接。&lt;/p&gt;
+&lt;p&gt;用户名为canuxcheng@gmail.com =&amp;gt; canuxcheng_gmail_com&lt;/p&gt;
+&lt;h4 id=&#34;ssh-1&#34;&gt;ssh&lt;/h4&gt;
+&lt;p&gt;使用ssh需要将公钥上传到OS Login配置(忽略密钥中的用户名）。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;gcloud compute os-login ssh-keys add \
+--key-file=public_KEY_FILE_PATH \
+--project=PROJECT \
+--ttl=EXPIRE_TIME
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;ssh&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ssh canuxcheng_gmail_com@IP
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;gcloud-1&#34;&gt;gcloud&lt;/h4&gt;
+&lt;p&gt;首次运行会创建ssh 密钥对，公钥会自动上传到os login config.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;gcloud compute ssh instance --internal-ip --project=PJ --zone=RZ
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;iap&#34;&gt;IAP&lt;/h3&gt;
+&lt;p&gt;Identity-Aware Proxy&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://cloud.google.com/iap/docs/using-tcp-forwarding?_ga=2.127808461.-1134224509.1683858043&amp;amp;hl=zh-cn#firewall&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://cloud.google.com/iap/docs/using-tcp-forwarding?_ga=2.127808461.-1134224509.1683858043&amp;hl=zh-cn#firewall&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;use internal ip directly:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;gcloud compute ssh private-instance --project=PJ --zone=europe-west4-a --internal-ip
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;use iap:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;gcloud compute ssh private-instance \
+--project=PJ \
+--zone=RZ \
+--tunnel-through-iap 
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
+        <item>
+        <title>AWS CLF</title>
+        <link>https://canuxcheng.com/post/aws_clf/</link>
+        <pubDate>Sat, 23 Oct 2021 22:02:31 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/aws_clf/</guid>
+        <description>&lt;h1 id=&#34;clf&#34;&gt;CLF&lt;/h1&gt;
+&lt;p&gt;Foundational: 6个月经验. Cloud Practitioner Foundational(CLF).&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Fundamental cloud concepts for AWS&lt;/li&gt;
+&lt;li&gt;Understanding AWS core services&lt;/li&gt;
+&lt;li&gt;Introduction to security &amp;amp; architecture on AWS&lt;/li&gt;
+&lt;li&gt;AWS certified cloud practitioner exam prep&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
+        <title>AWS Management</title>
+        <link>https://canuxcheng.com/post/aws_management/</link>
+        <pubDate>Thu, 23 Sep 2021 22:02:31 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/aws_management/</guid>
+        <description>&lt;h1 id=&#34;aws-monitor&#34;&gt;AWS Monitor&lt;/h1&gt;
+&lt;h2 id=&#34;cli&#34;&gt;CLI&lt;/h2&gt;
+&lt;h2 id=&#34;management-console&#34;&gt;Management Console&lt;/h2&gt;
+&lt;h2 id=&#34;quotas&#34;&gt;Quotas&lt;/h2&gt;
+&lt;h2 id=&#34;service-catalog&#34;&gt;Service Catalog&lt;/h2&gt;
+&lt;h2 id=&#34;cloudwatch&#34;&gt;CloudWatch&lt;/h2&gt;
+&lt;p&gt;监控和管理服务，收集logs, metrics 和 events，支持基于metrics的alert。&lt;/p&gt;
+&lt;p&gt;MTTR
+TCO&lt;/p&gt;
+&lt;h2 id=&#34;cloudwatch-logs&#34;&gt;CloudWatch Logs&lt;/h2&gt;
+&lt;h2 id=&#34;cloudtrail&#34;&gt;CloudTrail&lt;/h2&gt;
+&lt;p&gt;可以用来记录，持续监控和保留与AWS基础设施中的操作相关的账户活动。&lt;/p&gt;
+&lt;p&gt;将审计记录插入S3或者cloudwatch log， 记录突发事件。&lt;/p&gt;
+&lt;h2 id=&#34;aws-config&#34;&gt;AWS Config&lt;/h2&gt;
+&lt;p&gt;提供基础设施的历史配置。基于规则持续评估基础设施。&lt;/p&gt;
+&lt;h2 id=&#34;aws-trusted-advisor&#34;&gt;AWS Trusted Advisor&lt;/h2&gt;
+&lt;p&gt;优化性能和安全性&lt;/p&gt;
+&lt;h2 id=&#34;amazon-grafana&#34;&gt;Amazon Grafana&lt;/h2&gt;
+&lt;h2 id=&#34;amazon-prometheus&#34;&gt;Amazon Prometheus&lt;/h2&gt;
+&lt;h2 id=&#34;cloudformation&#34;&gt;CloudFormation&lt;/h2&gt;
+&lt;p&gt;提供基于模板(yaml/json)的基础设施服务(IaaS).&lt;/p&gt;
+&lt;h2 id=&#34;compute-optimizer&#34;&gt;Compute Optimizer&lt;/h2&gt;
+&lt;h2 id=&#34;control-tower&#34;&gt;Control Tower&lt;/h2&gt;
+&lt;h2 id=&#34;health-dashboard&#34;&gt;Health Dashboard&lt;/h2&gt;
+&lt;h2 id=&#34;aws-systems-manager&#34;&gt;AWS Systems Manager&lt;/h2&gt;
+&lt;p&gt;提供运维数据，并且在跨基础设施中进行自动化操作。&lt;/p&gt;
+&lt;h2 id=&#34;aws-organizations&#34;&gt;AWS Organizations&lt;/h2&gt;
+&lt;p&gt;账号集中管理。&lt;/p&gt;
+&lt;h2 id=&#34;aws-license-manager&#34;&gt;AWS License Manager&lt;/h2&gt;
+&lt;h2 id=&#34;proton&#34;&gt;Proton&lt;/h2&gt;
+&lt;h2 id=&#34;aws-well-architected-tool&#34;&gt;AWS Well-Architected Tool&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;financial-management&#34;&gt;Financial Management&lt;/h1&gt;
+&lt;h2 id=&#34;budgets&#34;&gt;Budgets&lt;/h2&gt;
+&lt;h2 id=&#34;cost-explorer&#34;&gt;Cost Explorer&lt;/h2&gt;
+&lt;h2 id=&#34;savings-plans&#34;&gt;Savings Plans&lt;/h2&gt;
+</description>
+        </item>
+        <item>
+        <title>AWS</title>
+        <link>https://canuxcheng.com/post/aws/</link>
+        <pubDate>Fri, 23 Apr 2021 22:02:31 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/aws/</guid>
+        <description>&lt;h1 id=&#34;aws&#34;&gt;AWS&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/donnemartin/awesome-aws&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/donnemartin/awesome-aws&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;aws certification:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Foundational: 6个月经验. Cloud Practitioner Foundational(CLF).&lt;/li&gt;
+&lt;li&gt;Associate: 一年经验. Solutions Architect Associate(SAA); Developer, SysOps Administrator&lt;/li&gt;
+&lt;li&gt;Professional: 两年经验. Solutions Architect Professional(SAP), Devops Engineer.&lt;/li&gt;
+&lt;li&gt;Specialty: 特殊领域.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;sdk&#34;&gt;SDK&lt;/h2&gt;
+&lt;p&gt;python&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/boto/boto3&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/boto/boto3&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;golang&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/aws/aws-sdk-go&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/aws/aws-sdk-go&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;aws-management-console&#34;&gt;AWS Management Console&lt;/h2&gt;
+&lt;p&gt;通过webUI管理资源.
+kkkkjjkijijijkkjddkkkkjj&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;aws-command-line-interface&#34;&gt;AWS Command Line Interface&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/aws/aws-cli&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/aws/aws-cli&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/awslabs/aws-shell&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/awslabs/aws-shell&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;推荐使用awscli-V2:&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;使用:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;aws [-h] [--profile PROFILE] [--debug]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;option:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;-h, --help
+--profile PROFILE
+--debug
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;comand option:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;aws &amp;lt;service&amp;gt; &amp;lt;subcommand&amp;gt; help 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;cli-credentials&#34;&gt;CLI credentials&lt;/h3&gt;
+&lt;p&gt;优先级：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;命令行选项&lt;/li&gt;
+&lt;li&gt;credentials文件&lt;/li&gt;
+&lt;li&gt;config文件&lt;/li&gt;
+&lt;li&gt;容器凭证&lt;/li&gt;
+&lt;li&gt;实例配置文件凭证&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;CLI&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;配置default profile&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$aws configure
+AWS Access Key ID [None]: AKIAIOSFODNN7EXAMPLE
+AWS Secret Access Key [None]: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+Default region name [None]: us-west-2
+Default output format [None]: json/yaml/text/table/yaml-stream
+
+// 配置指定用户
+$aws configure --profile canux
+
+// 查看配置
+$aws configure  list
+$aws configure --profile canux list
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;命令行选项指定配置文件&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$aws --profile canux ...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;环境变量指定配置文件&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;export AWS_PROFILE=canux
+export AWS_DEFAULT_PROFILE=canux
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;Shared credentials file&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;文件配置&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// windows
+%USERPROFILE%\.aws\credentials
+
+// linux
+~/.aws/credentials 
+
+// 默认账号配置
+[default]
+aws_access_key_id=AKIAIOSFODNN7EXAMPLE
+aws_secret_access_key=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+
+// 指定用户配置
+[canux]
+aws_access_key_id=AKIAI44QH8DHBEXAMPLE
+aws_secret_access_key=je7MtGbClwBF/2Zp9Utk/h3yCo8nvbEXAMPLEKEY
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;通过环境变量配置&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;export AWS_ACCESS_KEY_ID=&amp;quot;id&amp;quot;
+export AWS_SECRET_ACCESS_KEY=&amp;quot;key&amp;quot;
+export AWS_SESSION_TOKEN=&amp;quot;token&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;Config file&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;配置文件&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// linux
+~/.aws/config
+
+[default]
+region = eu-west-1
+output = yaml
+
+[profile pro]
+sso_start_url = https://lz.awsapps.com/start
+sso_region = eu-west-1
+sso_role_name = ProjAdmins
+sso_account_id = 123404000510
+region = us-west-2
+output = json
+
+// windows
+%USERPROFILE%\.aws\config
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ul&gt;
+&lt;li&gt;IAM role&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;how to check:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$aws sts get-caller-identity --profile pro
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;services&#34;&gt;services&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;iam
+ec2
+sts
+eks
+
+aws eks describe-addon-versions --addon-name aws-ebs-csi-driver
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        <item>
+        <title>AWS Compute Services</title>
+        <link>https://canuxcheng.com/post/aws_cs/</link>
+        <pubDate>Fri, 23 Apr 2021 22:02:31 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/aws_cs/</guid>
+        <description>&lt;h1 id=&#34;aws-compute-service&#34;&gt;AWS Compute Service&lt;/h1&gt;
+&lt;h2 id=&#34;ec2&#34;&gt;EC2&lt;/h2&gt;
+&lt;p&gt;Elastic Compute.&lt;/p&gt;
+&lt;p&gt;AMI: Amazon Machine Image.&lt;/p&gt;
+&lt;p&gt;EC2实例类型:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;通用型实例&lt;/li&gt;
+&lt;li&gt;计算优化型实例&lt;/li&gt;
+&lt;li&gt;内存优化型实例&lt;/li&gt;
+&lt;li&gt;加速计算型实例&lt;/li&gt;
+&lt;li&gt;存储优化型实例&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;EC2付费类型:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;按需(on-demand)&lt;/li&gt;
+&lt;li&gt;预留实例(reserved)&lt;/li&gt;
+&lt;li&gt;储蓄计划(savings plans)&lt;/li&gt;
+&lt;li&gt;Spot实例&lt;/li&gt;
+&lt;li&gt;专用主机(dedicated)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;elastic-beanstalk&#34;&gt;Elastic Beanstalk&lt;/h2&gt;
+&lt;p&gt;features:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;monitoring&lt;/li&gt;
+&lt;li&gt;deployment&lt;/li&gt;
+&lt;li&gt;scaling&lt;/li&gt;
+&lt;li&gt;EC2 customization&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;lambda&#34;&gt;Lambda&lt;/h2&gt;
+&lt;h2 id=&#34;lightsail&#34;&gt;Lightsail&lt;/h2&gt;
+&lt;h2 id=&#34;batch&#34;&gt;Batch&lt;/h2&gt;
+&lt;h2 id=&#34;app-runner&#34;&gt;App Runner&lt;/h2&gt;
+&lt;h2 id=&#34;auto-scaling&#34;&gt;Auto Scaling&lt;/h2&gt;
+&lt;h2 id=&#34;fargate&#34;&gt;Fargate&lt;/h2&gt;
+&lt;h2 id=&#34;outposts&#34;&gt;Outposts&lt;/h2&gt;
+&lt;h2 id=&#34;wavelength&#34;&gt;Wavelength&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;app-integration&#34;&gt;App Integration&lt;/h1&gt;
+&lt;h2 id=&#34;appflow&#34;&gt;AppFlow&lt;/h2&gt;
+&lt;h2 id=&#34;appsync&#34;&gt;AppSync&lt;/h2&gt;
+&lt;h2 id=&#34;eventbridge&#34;&gt;EventBridge&lt;/h2&gt;
+&lt;h2 id=&#34;step-functions&#34;&gt;Step Functions&lt;/h2&gt;
+&lt;p&gt;无服务架构.&lt;/p&gt;
+&lt;h2 id=&#34;sns&#34;&gt;SNS&lt;/h2&gt;
+&lt;p&gt;Simple Notification Service是消息发布订阅服务.&lt;/p&gt;
+&lt;h2 id=&#34;sqs&#34;&gt;SQS&lt;/h2&gt;
+&lt;p&gt;Simple Queue Service是消息队列服务.&lt;/p&gt;
+&lt;p&gt;支持256KB的payload.&lt;/p&gt;
+&lt;p&gt;提供两种类型的queues:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;standard queue&lt;/li&gt;
+&lt;li&gt;FIFO queue&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;mq&#34;&gt;MQ&lt;/h2&gt;
+&lt;p&gt;activeMQ 和 rabbitmq 托管服务。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;business-app-integration&#34;&gt;Business app integration&lt;/h1&gt;
+&lt;h2 id=&#34;simple-email-service&#34;&gt;Simple Email Service&lt;/h2&gt;
+&lt;p&gt;SES&lt;/p&gt;
+&lt;h2 id=&#34;alexa-for-business&#34;&gt;Alexa for Business&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;终端用户计算&#34;&gt;终端用户计算&lt;/h1&gt;
+&lt;h2 id=&#34;appstream&#34;&gt;AppStream&lt;/h2&gt;
+&lt;h2 id=&#34;workspaces&#34;&gt;WorkSpaces&lt;/h2&gt;
+</description>
+        </item>
+        <item>
+        <title>AWS Containers</title>
+        <link>https://canuxcheng.com/post/aws_containers/</link>
+        <pubDate>Fri, 23 Apr 2021 22:02:31 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/aws_containers/</guid>
+        <description>&lt;h1 id=&#34;aws-containers&#34;&gt;AWS Containers&lt;/h1&gt;
+&lt;h2 id=&#34;ecr&#34;&gt;ECR&lt;/h2&gt;
+&lt;p&gt;Elastic Container Registry.&lt;/p&gt;
+&lt;h2 id=&#34;ecs-anywhere&#34;&gt;ECS Anywhere&lt;/h2&gt;
+&lt;h2 id=&#34;ecs&#34;&gt;ECS&lt;/h2&gt;
+&lt;p&gt;Elastic Container Service.&lt;/p&gt;
+&lt;h2 id=&#34;eks-distro&#34;&gt;EKS Distro&lt;/h2&gt;
+&lt;h2 id=&#34;eks-anywhere&#34;&gt;EKS Anywhere&lt;/h2&gt;
+&lt;h2 id=&#34;eks&#34;&gt;EKS&lt;/h2&gt;
+&lt;p&gt;Elastic Kubernetes Service.&lt;/p&gt;
+&lt;h3 id=&#34;通过aws-cli创建eks&#34;&gt;通过AWS CLI创建EKS&lt;/h3&gt;
+&lt;p&gt;通过MC创建的资源都可以通过CLI(aws)创建.&lt;/p&gt;
+&lt;p&gt;创建具有公有和私有子网且符合 Amazon EKS 要求的 Amazon VPC&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ aws cloudformation create-stack \
+--stack-name my-eks-vpc-stack \
+--region region-code \
+--template-url https://amazon-eks.s3.us-west-2.amazonaws.com/cloudformation/2020-10-29/amazon-eks-vpc-private-subnets.yaml 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;创建集群 IAM 角色并向其附加所需的 Amazon EKS IAM 托管策略&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 创建EKS IAM role
+aws iam create-role \
+--role-name my-EKSClusterRole \
+--assume-role-policy-document file://cluster-role-trust-policy.json&amp;quot; \
+--permissions-boundary arn:aws:iam::&amp;lt;Your AWS ID&amp;gt;:policy/ProjAdminsPermBoundaryv2
+
+{
+    &amp;quot;Version&amp;quot;: &amp;quot;2012-10-17&amp;quot;,
+    &amp;quot;Statement&amp;quot;: [
+        {
+            &amp;quot;Effect&amp;quot;: &amp;quot;Allow&amp;quot;,
+            &amp;quot;Principal&amp;quot;: {
+                &amp;quot;Service&amp;quot;: &amp;quot;eks.amazonaws.com&amp;quot;
+            },
+            &amp;quot;Action&amp;quot;: &amp;quot;sts:AssumeRole&amp;quot;,
+            &amp;quot;Condition&amp;quot;: {}
+        }
+    ]
+}
+
+// 绑定role和eks策略
+aws iam attach-role-policy \
+--policy-arn arn:aws:iam::aws:policy/AmazonEKSClusterPolicy \
+--role-name my-EKSClusterRole
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;创建EKS cluster:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;aws eks create-cluster --name my-cluster \
+--role-arn arn:aws:iam::&amp;lt;ID&amp;gt;:role/my-EKSClusterRole \
+--resources-vpc-config vpc.json / --resources-vpc-config subnetIds=subnet-6782e71e,subnet-e7e761ac,securityGroupIds=sg-6979fe18 \
+--kubernetes-network-config eks.json / --kubernetes-network-config serviceIpv4Cidr=string,ipFamily=string \
+--kubernetes-version &amp;lt;version&amp;gt; --tags &amp;lt;tags&amp;gt; --logging &amp;lt;logging&amp;gt; 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;给集群创建节点&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 创建节点IAM role
+aws iam create-role \
+--role-name my-EKSNodeRole \
+--assume-role-policy-document file://node-role-trust-policy.json&amp;quot; \
+--permissions-boundary arn:aws:iam::&amp;lt;ID&amp;gt;:policy/ProjAdminsPermBoundaryv2
+
+{
+    &amp;quot;Version&amp;quot;: &amp;quot;2012-10-17&amp;quot;,
+    &amp;quot;Statement&amp;quot;: [
+        {
+            &amp;quot;Effect&amp;quot;: &amp;quot;Allow&amp;quot;,
+            &amp;quot;Principal&amp;quot;: {
+                &amp;quot;Service&amp;quot;: &amp;quot;ec2.amazonaws.com&amp;quot;
+            },
+            &amp;quot;Action&amp;quot;: &amp;quot;sts:AssumeRole&amp;quot;,
+            &amp;quot;Condition&amp;quot;: {}
+        }
+    ]
+}
+
+// 绑定role和node策略
+aws iam attach-role-policy \
+--policy-arn arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy \
+--role-name my-EKSNodeRole 
+
+aws iam attach-role-policy \
+--policy-arn arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly \
+--role-name my-EKSNodeRole 
+
+aws iam attach-role-policy \
+--policy-arn arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy \
+--role-name my-EKSNodeRole 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;创建managed node group:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;aws eks create-nodegroup \
+--cluster-name my-cluster --nodegroup-name my-mng  --subnets &amp;lt;value&amp;gt; --node-role &amp;lt;value&amp;gt; \
+--scaling-config minSize=integer,maxSize=integer,desiredSize=integer \
+--instance-types &amp;lt;value&amp;gt; --ami-type &amp;lt;value&amp;gt; --remote-access &amp;lt;value&amp;gt; --disk-size &amp;lt;value&amp;gt; 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;将计算机配置为与您的集群通信&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;aws eks describe-cluster --name my-cluster
+// 通过aws eks自动更新kube.config文件.
+// 需要该role具有可以操作eks cluster的policy.
+$ aws eks update-kubeconfig --name my-cluster --role-arn &amp;lt;role&amp;gt; --region eu-west-1 --verbose
+
+$ kubectl get svc
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;删除集群和节点:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;aws eks delete-nodegroup --nodegroup-name my-mng --cluster-name my-cluster
+aws eks delete-cluster --name my-cluster
+aws cloudformation delete-stack --stack-name my-stack
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;通过eksctl创建eks&#34;&gt;通过eksctl创建EKS&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/weaveworks/eksctl&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/weaveworks/eksctl&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://eksctl.io/usage/schema/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://eksctl.io/usage/schema/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;创建集群和节点：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ eksctl create cluster -f/--config-file ./cluster.yaml
+$ eksctl create nodegroup -f/--config-file ./nodegroup.yaml
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;删除集群和节点&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ eksctl delete cluster --name my-cluster --region us-west-2
+$ eksctl delete nodegroup --cluster my-cluster --region us-west-2 --name my-ng
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;通过terraform创建eks&#34;&gt;通过Terraform创建EKS&lt;/h3&gt;
+</description>
+        </item>
+        <item>
+        <title>AWS Data</title>
+        <link>https://canuxcheng.com/post/aws_data/</link>
+        <pubDate>Fri, 23 Apr 2021 22:02:31 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/aws_data/</guid>
+        <description>&lt;h1 id=&#34;data-processing&#34;&gt;Data Processing&lt;/h1&gt;
+&lt;h2 id=&#34;athena&#34;&gt;Athena&lt;/h2&gt;
+&lt;p&gt;serverless交互式分析&lt;/p&gt;
+&lt;h2 id=&#34;data-exchange&#34;&gt;Data Exchange&lt;/h2&gt;
+&lt;h2 id=&#34;glue&#34;&gt;Glue&lt;/h2&gt;
+&lt;p&gt;AWS上的ETL(extract, transform and load)服务，提供数据的提取，转换，加载服务。&lt;/p&gt;
+&lt;h2 id=&#34;data-pipeline&#34;&gt;Data pipeline&lt;/h2&gt;
+&lt;p&gt;也是ETL服务。&lt;/p&gt;
+&lt;h2 id=&#34;emr&#34;&gt;EMR&lt;/h2&gt;
+&lt;p&gt;EMR: Elastic MapReduce.&lt;/p&gt;
+&lt;p&gt;AWS的大数据平台。支持spark, hive, hbase, flink, hudi 和presto.&lt;/p&gt;
+&lt;h2 id=&#34;kinesis&#34;&gt;Kinesis&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Data Analytics&lt;/li&gt;
+&lt;li&gt;Data Firehose&lt;/li&gt;
+&lt;li&gt;Data Streams&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;lake-formation&#34;&gt;Lake Formation&lt;/h2&gt;
+&lt;h2 id=&#34;quicksight&#34;&gt;QuickSight&lt;/h2&gt;
+&lt;h2 id=&#34;opensearch&#34;&gt;OpenSearch&lt;/h2&gt;
+&lt;h2 id=&#34;msk&#34;&gt;MSK&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;data-analysis&#34;&gt;Data Analysis&lt;/h1&gt;
+&lt;h2 id=&#34;athena-1&#34;&gt;Athena&lt;/h2&gt;
+&lt;p&gt;serverless服务&lt;/p&gt;
+&lt;h2 id=&#34;quicksight-1&#34;&gt;Quicksight&lt;/h2&gt;
+&lt;h2 id=&#34;aws-cloudsearch&#34;&gt;AWS CloudSearch&lt;/h2&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        <item>
+        <title>AWS Database</title>
+        <link>https://canuxcheng.com/post/aws_database/</link>
+        <pubDate>Fri, 23 Apr 2021 22:02:31 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/aws_database/</guid>
+        <description>&lt;h1 id=&#34;aws-database&#34;&gt;AWS Database&lt;/h1&gt;
+&lt;h2 id=&#34;rds&#34;&gt;RDS&lt;/h2&gt;
+&lt;p&gt;Relational Database Service， 关系型数据库服务.&lt;/p&gt;
+&lt;p&gt;支持的数据库引擎：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Amazon Aurora&lt;/li&gt;
+&lt;li&gt;PostgreSQL&lt;/li&gt;
+&lt;li&gt;MySQL&lt;/li&gt;
+&lt;li&gt;MariaDB&lt;/li&gt;
+&lt;li&gt;Oracle Database&lt;/li&gt;
+&lt;li&gt;Microsoft SQL Server&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;aurora-serverless&#34;&gt;Aurora Serverless&lt;/h2&gt;
+&lt;h2 id=&#34;aurora&#34;&gt;Aurora&lt;/h2&gt;
+&lt;p&gt;兼容mysql和postgresql.&lt;/p&gt;
+&lt;h2 id=&#34;dynamodb&#34;&gt;DynamoDB&lt;/h2&gt;
+&lt;p&gt;非关系数据库(NoSQL).&lt;/p&gt;
+&lt;p&gt;DynamoDB是一项键值数据库服务. 无服务器，自动扩展。&lt;/p&gt;
+&lt;p&gt;具有Key-Value数据库和Document数据库的功能。&lt;/p&gt;
+&lt;h2 id=&#34;documentdb&#34;&gt;DocumentDB&lt;/h2&gt;
+&lt;p&gt;兼容MongoDB.&lt;/p&gt;
+&lt;h2 id=&#34;elasticcache&#34;&gt;ElasticCache&lt;/h2&gt;
+&lt;p&gt;内存数据库(in-memory). 兼容redis和memcached.&lt;/p&gt;
+&lt;h2 id=&#34;keyspaces&#34;&gt;Keyspaces&lt;/h2&gt;
+&lt;p&gt;兼容cassandra的无服务器数据库。&lt;/p&gt;
+&lt;h2 id=&#34;redshift&#34;&gt;Redshift&lt;/h2&gt;
+&lt;p&gt;Amazon Redshift 是一项数据仓库服务，可用于进行大数据分析。&lt;/p&gt;
+&lt;h2 id=&#34;neptune&#34;&gt;Neptune&lt;/h2&gt;
+&lt;p&gt;图形数据库&lt;/p&gt;
+&lt;h2 id=&#34;timesteam&#34;&gt;Timesteam&lt;/h2&gt;
+</description>
+        </item>
+        <item>
+        <title>AWS Network</title>
+        <link>https://canuxcheng.com/post/aws_network/</link>
+        <pubDate>Fri, 23 Apr 2021 22:02:31 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/aws_network/</guid>
+        <description>&lt;h1 id=&#34;aws-network&#34;&gt;AWS Network&lt;/h1&gt;
+&lt;h2 id=&#34;vpc&#34;&gt;VPC&lt;/h2&gt;
+&lt;p&gt;Virtual Private Cloud.&lt;/p&gt;
+&lt;p&gt;EC2的私有内部网络.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;subnets&lt;/li&gt;
+&lt;li&gt;route tables&lt;/li&gt;
+&lt;li&gt;internet gateways&lt;/li&gt;
+&lt;li&gt;nat gateways&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;ENI: Elastic network interfaces.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://canuxcheng.com/images/vpc.png&#34; &gt;pic&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;elb&#34;&gt;ELB&lt;/h2&gt;
+&lt;p&gt;ELB: Elastic Load Balancing&lt;/p&gt;
+&lt;p&gt;弹性负载均衡，可以和EC2,ECS和lambda集成.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://aws.amazon.com/cn/elasticloadbalancing/features/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://aws.amazon.com/cn/elasticloadbalancing/features/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;支持四种负载均衡器：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Classic Load Balancer(默认)&lt;/li&gt;
+&lt;li&gt;Gateway Load Balancer&lt;/li&gt;
+&lt;li&gt;Application Load Balancer(ALB)&lt;/li&gt;
+&lt;li&gt;Network Load Balancer(NLB)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.aws.amazon.com/zh_cn/eks/latest/userguide/aws-load-balancer-controller.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://docs.aws.amazon.com/zh_cn/eks/latest/userguide/aws-load-balancer-controller.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;可以使用aws默认自带的NLB controller.也可以通过安装aws-load-balancer-controller。推荐后者。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/kubernetes-sigs/aws-load-balancer-controller&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/kubernetes-sigs/aws-load-balancer-controller&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;需要给vpc上的node的subnet打tag:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;kubernetes.io/role/elb: 1
+kubernetes.io/role/internal-elb: 1
+kubernetes.io/cluster/${cluster-name}: owned/shared
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;route-53&#34;&gt;Route 53&lt;/h2&gt;
+&lt;p&gt;DNS服务.&lt;/p&gt;
+&lt;p&gt;在route 53创建托管区(hosted zones)之后，可以在ACM申请证书。&lt;/p&gt;
+&lt;p&gt;申请好了证书，需要在route 53创建记录.&lt;/p&gt;
+&lt;p&gt;可以通过external-DNS 自动同步eks上的service和ingress到dns。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;aws route53 list-hosted-zones
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;cloudfront&#34;&gt;CloudFront&lt;/h2&gt;
+&lt;p&gt;CDN服务.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;direct-connect&#34;&gt;Direct Connect&lt;/h2&gt;
+&lt;p&gt;提供数据中心和AWS直连。&lt;/p&gt;
+&lt;h2 id=&#34;global-accelerator&#34;&gt;Global Accelerator&lt;/h2&gt;
+&lt;h2 id=&#34;privatelink&#34;&gt;PrivateLink&lt;/h2&gt;
+&lt;h2 id=&#34;transit-gateway&#34;&gt;Transit Gateway&lt;/h2&gt;
+&lt;h2 id=&#34;vpn&#34;&gt;VPN&lt;/h2&gt;
+</description>
+        </item>
+        <item>
+        <title>AWS Security</title>
+        <link>https://canuxcheng.com/post/aws_security/</link>
+        <pubDate>Fri, 23 Apr 2021 22:02:31 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/aws_security/</guid>
+        <description>&lt;h1 id=&#34;security&#34;&gt;Security&lt;/h1&gt;
+&lt;p&gt;Acceptable Use Policy.&lt;/p&gt;
+&lt;h2 id=&#34;iam&#34;&gt;IAM&lt;/h2&gt;
+&lt;p&gt;IAM: Identity and Access Management.&lt;/p&gt;
+&lt;p&gt;STS: Security Token Service.&lt;/p&gt;
+&lt;p&gt;ACL: Access control list.&lt;/p&gt;
+&lt;p&gt;SG: Security Group.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://aws.amazon.com/cn/iam/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://aws.amazon.com/cn/iam/&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$aws iam list-users
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;IAM的三种身份类型:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Users&lt;/li&gt;
+&lt;li&gt;Groups&lt;/li&gt;
+&lt;li&gt;Roles&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;IAM通过Policy(json)分配权限。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;sso&#34;&gt;SSO&lt;/h2&gt;
+&lt;p&gt;sso登陆:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;aws configure sso
+aws sso login --no-browser 
+aws sso logout
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;secrets-manager&#34;&gt;Secrets Manager&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;acm&#34;&gt;ACM&lt;/h2&gt;
+&lt;p&gt;AWS Certificate Manager.&lt;/p&gt;
+&lt;p&gt;在route 53创建托管区(hosted zones)之后，可以在ACM申请证书。&lt;/p&gt;
+&lt;p&gt;申请好了证书，需要在route 53创建记录.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;aws acm list-certificates --region eu-west-1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;aws-load-balancer-controller可以自动关联ACM的证书和ingress.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;artifact&#34;&gt;Artifact&lt;/h2&gt;
+&lt;p&gt;自助的合规报告。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;waf&#34;&gt;WAF&lt;/h2&gt;
+&lt;h2 id=&#34;shield&#34;&gt;Shield&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;kms&#34;&gt;KMS&lt;/h2&gt;
+&lt;p&gt;Key Management Service.&lt;/p&gt;
+&lt;h2 id=&#34;inspector&#34;&gt;Inspector&lt;/h2&gt;
+&lt;h2 id=&#34;guardduty&#34;&gt;GuardDuty&lt;/h2&gt;
+&lt;h2 id=&#34;cognito&#34;&gt;Cognito&lt;/h2&gt;
+&lt;p&gt;支持google/amazon/MS-AD/SAML 登陆。&lt;/p&gt;
+&lt;h2 id=&#34;audit-manager&#34;&gt;Audit Manager&lt;/h2&gt;
+&lt;h2 id=&#34;cloudhsm&#34;&gt;CloudHSM&lt;/h2&gt;
+&lt;h2 id=&#34;detective&#34;&gt;Detective&lt;/h2&gt;
+&lt;h2 id=&#34;directory-service&#34;&gt;Directory Service&lt;/h2&gt;
+&lt;h2 id=&#34;firewall-manager&#34;&gt;Firewall Manager&lt;/h2&gt;
+&lt;h2 id=&#34;macie&#34;&gt;Macie&lt;/h2&gt;
+&lt;h2 id=&#34;network-firewall&#34;&gt;Network Firewall&lt;/h2&gt;
+&lt;h2 id=&#34;ram&#34;&gt;RAM&lt;/h2&gt;
+&lt;p&gt;Resource Access Manager&lt;/p&gt;
+&lt;h2 id=&#34;security-hub&#34;&gt;Security Hub&lt;/h2&gt;
+&lt;h2 id=&#34;sts&#34;&gt;STS&lt;/h2&gt;
+&lt;p&gt;Security Token Service&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>AWS Storage</title>
+        <link>https://canuxcheng.com/post/aws_storage/</link>
+        <pubDate>Fri, 23 Apr 2021 22:02:31 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/aws_storage/</guid>
+        <description>&lt;h1 id=&#34;aws-storage&#34;&gt;AWS Storage&lt;/h1&gt;
+&lt;h2 id=&#34;s3&#34;&gt;S3&lt;/h2&gt;
+&lt;p&gt;Simple Storage Service.&lt;/p&gt;
+&lt;p&gt;S3分类：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;S3标准&lt;/li&gt;
+&lt;li&gt;S3标准-IA&lt;/li&gt;
+&lt;li&gt;S3单区-IA&lt;/li&gt;
+&lt;li&gt;S3智能分层&lt;/li&gt;
+&lt;li&gt;S3 Glacier&lt;/li&gt;
+&lt;li&gt;S3 Glacire Deep Archive&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;特点:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;无限存储&lt;/li&gt;
+&lt;li&gt;单个对象达到5Tb&lt;/li&gt;
+&lt;li&gt;一次写入，多次读取&lt;/li&gt;
+&lt;li&gt;99%持久性&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;s3-glacier&#34;&gt;S3 Glacier&lt;/h2&gt;
+&lt;p&gt;用于存放归档文件，按照访问量收费。&lt;/p&gt;
+&lt;h2 id=&#34;ebs&#34;&gt;EBS&lt;/h2&gt;
+&lt;p&gt;Elastic Block Store.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/kubernetes-sigs/aws-ebs-csi-driver&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/kubernetes-sigs/aws-ebs-csi-driver&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;EBS可以连接到EC2实例，可用区级资源，需要位于同一可用区中才能连接到EC2实例，卷不会自动扩展。&lt;/p&gt;
+&lt;p&gt;EBS只能被单个EC2实例访问。&lt;/p&gt;
+&lt;p&gt;特点:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;大小高达16Tb&lt;/li&gt;
+&lt;li&gt;EC2实例终止后仍然存在&lt;/li&gt;
+&lt;li&gt;默认情况下为固态(SSD)&lt;/li&gt;
+&lt;li&gt;提供IOPS SSD和HDD选项&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;efs&#34;&gt;EFS&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/kubernetes-sigs/aws-efs-csi-driver&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/kubernetes-sigs/aws-efs-csi-driver&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Elastic File System 是linux的NFS服务.&lt;/p&gt;
+&lt;p&gt;EFS是区域性服务，将数据存储在多个可用区中。可以被上千个EC2实例同时访问。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;完全托管的NFS文件系统&lt;/li&gt;
+&lt;li&gt;为linux负载而设计&lt;/li&gt;
+&lt;li&gt;支持PB级别数据&lt;/li&gt;
+&lt;li&gt;可以跨多个区域存储数据&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;EFS提供两种存储类型(StorageClass): Standard, Infrequent access.&lt;/p&gt;
+&lt;h2 id=&#34;fsx&#34;&gt;FSx&lt;/h2&gt;
+&lt;p&gt;FSx是windows File Server服务.&lt;/p&gt;
+&lt;h2 id=&#34;storage-gateway&#34;&gt;Storage Gateway&lt;/h2&gt;
+&lt;p&gt;支持三种类型:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Tape gateway&lt;/li&gt;
+&lt;li&gt;Volume gateway&lt;/li&gt;
+&lt;li&gt;File Gateway&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;aws-backup&#34;&gt;AWS Backup&lt;/h2&gt;
+&lt;h2 id=&#34;aws-edr&#34;&gt;AWS EDR&lt;/h2&gt;
+&lt;p&gt;Elastic Disaster Recovery.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;snow-family&#34;&gt;Snow Family&lt;/h1&gt;
+&lt;h2 id=&#34;snowcone&#34;&gt;Snowcone&lt;/h2&gt;
+&lt;h2 id=&#34;snowball&#34;&gt;Snowball&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;针对large-scale 数据传输&lt;/li&gt;
+&lt;li&gt;支持PB级别数据&lt;/li&gt;
+&lt;li&gt;通过物理设备上传数据到S3&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;snowmobile&#34;&gt;Snowmobile&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;针对large-scale数据传输&lt;/li&gt;
+&lt;li&gt;支持EB级别数据&lt;/li&gt;
+&lt;li&gt;通过工作站上传数据到S3&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;transfer-family&#34;&gt;Transfer family&lt;/h1&gt;
+&lt;p&gt;SFTP, FTPS, FTP.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;aws-migration-and-transfer&#34;&gt;AWS Migration and Transfer&lt;/h1&gt;
+&lt;h2 id=&#34;ads&#34;&gt;ADS&lt;/h2&gt;
+&lt;p&gt;Application Discovery Service.&lt;/p&gt;
+&lt;h2 id=&#34;ams&#34;&gt;AMS&lt;/h2&gt;
+&lt;p&gt;Application Migration Service.&lt;/p&gt;
+&lt;h2 id=&#34;dms&#34;&gt;DMS&lt;/h2&gt;
+&lt;p&gt;Database Migration Service.&lt;/p&gt;
+&lt;p&gt;让您能够迁移关系数据库、非关系数据库和其他类型的数据存储。&lt;/p&gt;
+&lt;h2 id=&#34;sct&#34;&gt;SCT&lt;/h2&gt;
+&lt;p&gt;Schema Conversion Tool&lt;/p&gt;
+&lt;h2 id=&#34;datasync&#34;&gt;DataSync&lt;/h2&gt;
+&lt;h2 id=&#34;migration-hub&#34;&gt;Migration Hub&lt;/h2&gt;
+</description>
+        </item>
+        <item>
+        <title>CDK</title>
+        <link>https://canuxcheng.com/post/cloud_cdk/</link>
+        <pubDate>Fri, 23 Apr 2021 22:02:31 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/cloud_cdk/</guid>
+        <description>&lt;h1 id=&#34;cdk&#34;&gt;CDK&lt;/h1&gt;
+&lt;p&gt;Cloud Development Kit&lt;/p&gt;
+&lt;p&gt;SDK一般是和service交互的。
+CDK用来和基础设施交互的。&lt;/p&gt;
+&lt;h2 id=&#34;aws-cdk&#34;&gt;AWS CDK&lt;/h2&gt;
+&lt;p&gt;The AWS Cloud Development Kit (AWS CDK) is an open-source software development framework to define cloud infrastructure in code and provision it through AWS CloudFormation.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/aws/aws-cdk&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/aws/aws-cdk&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;cdk8s&#34;&gt;CDK8S&lt;/h2&gt;
+&lt;p&gt;cdk8s is an open-source software development framework for defining Kubernetes applications and reusable abstractions using familiar programming languages and rich object-oriented APIs. cdk8s apps synthesize into standard Kubernetes manifests which can be applied to any Kubernetes cluster.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/cdk8s-team/cdk8s&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/cdk8s-team/cdk8s&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;ckdtf&#34;&gt;CKDTF&lt;/h1&gt;
+&lt;p&gt;Cloud Development Kit for Terraform (CDKTF) allows you to use familiar programming languages to define cloud infrastructure and provision it through HashiCorp Terraform. This gives you access to the entire Terraform ecosystem without learning HashiCorp Configuration Language (HCL) and lets you leverage the power of your existing toolchain for testing, dependency management, etc.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.terraform.io/cdktf&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.terraform.io/cdktf&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ npm install --global cdktf-cli@latest
+$ cd cdktf-demo
+$ cdktf init --template=&amp;quot;go&amp;quot; --local
+
+$ cdktf get
+$ go mod tidy
+
+$ cdktf synth
+$ cdktf deploy
+$ cdktf destroy
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
+        <item>
+        <title>OpenStack</title>
+        <link>https://canuxcheng.com/post/cloud_openstack/</link>
+        <pubDate>Thu, 23 Feb 2017 22:02:31 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/cloud_openstack/</guid>
+        <description>&lt;h1 id=&#34;openstack&#34;&gt;OpenStack&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/openstack&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/openstack&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/openstack-dev&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/openstack-dev&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;openstack是一个云操作系统，通过数据中心可控制大型的计算，存储，网络等资源池．&lt;/p&gt;
+&lt;p&gt;所有的管理通过前端的界面管理员就可以完成，同样也可以通过web接口让最终的用户部署资源．&lt;/p&gt;
+&lt;p&gt;openstack的设计原则：&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://wiki.openstack.org/wiki/BasicDesignTenets&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://wiki.openstack.org/wiki/BasicDesignTenets&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;horizon---openstack-dashboard&#34;&gt;horizon - OpenStack Dashboard&lt;/h1&gt;
+&lt;p&gt;控制面板&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/openstack/horizon&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/openstack/horizon&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;keystone---openstack-identity&#34;&gt;keystone - OpenStack Identity&lt;/h1&gt;
+&lt;p&gt;认证服务&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/openstack/keystone&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/openstack/keystone&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;nova---openstack-compute&#34;&gt;nova - OpenStack Compute&lt;/h1&gt;
+&lt;p&gt;计算服务&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/openstack/nova&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/openstack/nova&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;swift---openstack-storage&#34;&gt;swift - OpenStack Storage&lt;/h1&gt;
+&lt;p&gt;存储服务&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/openstack/swift&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/openstack/swift&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;neutron---openstack-networking&#34;&gt;neutron - OpenStack Networking&lt;/h1&gt;
+&lt;p&gt;网络服务(原名quantum)&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/openstack/neutron&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/openstack/neutron&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;glance---openstack-image-management&#34;&gt;glance - OpenStack Image Management&lt;/h1&gt;
+&lt;p&gt;镜像管理&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/openstack/glance&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/openstack/glance&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;cinder---openstack-block-storage&#34;&gt;cinder - OpenStack Block Storage&lt;/h1&gt;
+&lt;p&gt;块存储服务&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/openstack/cinder&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/openstack/cinder&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        <item>
+        <title>Terraform</title>
+        <link>https://canuxcheng.com/post/cloud_terraform/</link>
+        <pubDate>Fri, 15 Apr 2016 09:41:39 +0800</pubDate>
+        
+        <guid>https://canuxcheng.com/post/cloud_terraform/</guid>
+        <description>&lt;h1 id=&#34;terraform&#34;&gt;Terraform&lt;/h1&gt;
+&lt;p&gt;install:&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://learn.hashicorp.com/tutorials/terraform/install-cli&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://learn.hashicorp.com/tutorials/terraform/install-cli&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;cli&#34;&gt;CLI&lt;/h2&gt;
+&lt;p&gt;操作工作目录&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 初始化目录，会根据配置下载和安装provider.
+terraform init
+
+terraform get
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;操作tf文件&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 格式化文件
+terraform fmt -recursive
+
+// 验证文件
+terraform validate 
+
+// 可以通过终端验证函数.
+terraform console
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;操作基础设施:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;terraform plan
+terraform plan -out test.tfplan
+
+terraform apply -auto-approve
+terraform apply test.tfplan
+
+terraform destroy
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;检查基础设施:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;terraform show
+terraform graph
+terraform output
+terraform state list/show
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;认证:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;terraform login
+terraform logout
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;tf&#34;&gt;TF&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.terraform.io/language&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.terraform.io/language&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;注释:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# comment 
+// comment
+/* comment */
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;backend-and-state&#34;&gt;backend and state&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.terraform.io/language/settings/backends&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.terraform.io/language/settings/backends&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.terraform.io/language/state&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.terraform.io/language/state&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;provider&#34;&gt;provider&lt;/h3&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;data-sources&#34;&gt;data sources&lt;/h3&gt;
+&lt;p&gt;data source: 获取服务的参数&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;module&#34;&gt;module&lt;/h3&gt;
+&lt;p&gt;管理provider上的模块/服务.定义了input, resource/data source, output的就可以认为是module.&lt;/p&gt;
+&lt;h4 id=&#34;meta-arguments&#34;&gt;meta-arguments&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;providers&lt;/li&gt;
+&lt;li&gt;depends_on&lt;/li&gt;
+&lt;li&gt;count&lt;/li&gt;
+&lt;li&gt;for_each&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;resources&#34;&gt;resources&lt;/h3&gt;
+&lt;p&gt;resources: 创建服务的参数&lt;/p&gt;
+&lt;h4 id=&#34;meta-arguments-1&#34;&gt;meta-arguments&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;depends_on&lt;/li&gt;
+&lt;li&gt;count&lt;/li&gt;
+&lt;li&gt;for_each&lt;/li&gt;
+&lt;li&gt;provider&lt;/li&gt;
+&lt;li&gt;lifecycle&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;provisioner&#34;&gt;provisioner&lt;/h4&gt;
+&lt;p&gt;特殊的resource，可以在本地或远程机器做一些准备工作。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;variable&#34;&gt;Variable&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.terraform.io/language/values/variables&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.terraform.io/language/values/variables&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;input variable: 输入变量&lt;/p&gt;
+&lt;p&gt;local variable: 本地变量&lt;/p&gt;
+&lt;p&gt;output variable: 输出参数&lt;/p&gt;
+&lt;p&gt;子模块无法引用父模块的local变量， resource属性，input变量。但是可以通过output参数引用。&lt;/p&gt;
+&lt;p&gt;父模块无法引用子模块的local变量，resource属性。但是可以通过output参数引用，而且父模块可以通过input变量传值给子模块。&lt;/p&gt;
+&lt;h3 id=&#34;表达式&#34;&gt;表达式&lt;/h3&gt;
+&lt;h3 id=&#34;函数&#34;&gt;函数&lt;/h3&gt;
+&lt;h3 id=&#34;workspace&#34;&gt;workspace&lt;/h3&gt;
+&lt;p&gt;多环境构建（development, UAT, production).&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;terraform workspace new dev
+terraform workspace list
+terraform select &amp;lt;name&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;使用terraform.workspace作为参数.&lt;/p&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        <item>
+        <title>CloudComputing</title>
+        <link>https://canuxcheng.com/post/cloud_computing/</link>
+        <pubDate>Tue, 05 Apr 2016 22:02:31 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/cloud_computing/</guid>
+        <description>&lt;h1 id=&#34;cloudcomputing&#34;&gt;CloudComputing&lt;/h1&gt;
+&lt;p&gt;IAAS: Infrastructure as a service&lt;/p&gt;
+&lt;p&gt;PAAS: Platform as a service&lt;/p&gt;
+&lt;p&gt;SAAS: Software as a service&lt;/p&gt;
+&lt;h1 id=&#34;serverless&#34;&gt;Serverless&lt;/h1&gt;
+&lt;p&gt;Faas: Function as a service.&lt;/p&gt;
+&lt;p&gt;Baas: Backend as a service.&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

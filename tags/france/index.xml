@@ -1,19 +1,54 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>France on Morgoth</title>
-    <link>https://canuxcheng.com/tags/france/</link>
-    <description>Recent content in France on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sun, 10 Apr 2016 17:49:15 +0000</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/france/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>France</title>
-      <link>https://canuxcheng.com/post/travel_france/</link>
-      <pubDate>Sun, 10 Apr 2016 17:49:15 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/travel_france/</guid>
-      <description>&lt;h1 id=&#34;法国之旅&#34;&gt;法国之旅&lt;/h1&gt;&#xA;&lt;p&gt;看照片：&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://user.qzone.qq.com/1085694641&#34;&gt;http://user.qzone.qq.com/1085694641&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;戴高乐机场&lt;/p&gt;&#xA;&lt;p&gt;雅高集团的宜必思酒店&lt;/p&gt;&#xA;&lt;p&gt;SNCF的TVG火车&lt;/p&gt;&#xA;&lt;p&gt;法国有22个大区。&lt;/p&gt;&#xA;&lt;h1 id=&#34;法兰西岛&#34;&gt;法兰西岛&lt;/h1&gt;&#xA;&lt;h2 id=&#34;巴黎省&#34;&gt;巴黎省&lt;/h2&gt;&#xA;&lt;p&gt;巴黎是法国首都，大区首府和该省省会。&lt;/p&gt;&#xA;&lt;p&gt;埃菲尔铁塔&lt;/p&gt;&#xA;&lt;p&gt;凯旋门&lt;/p&gt;&#xA;&lt;p&gt;塞纳河&lt;/p&gt;&#xA;&lt;p&gt;卢浮宫&lt;/p&gt;&#xA;&lt;p&gt;巴黎圣母院&lt;/p&gt;&#xA;&lt;h2 id=&#34;伊夫林省&#34;&gt;伊夫林省&lt;/h2&gt;&#xA;&lt;p&gt;凡尔赛是该省省会。&lt;/p&gt;&#xA;&lt;p&gt;著名景点凡尔赛宫。&lt;/p&gt;&#xA;&lt;h2 id=&#34;塞纳-马恩省&#34;&gt;塞纳-马恩省&lt;/h2&gt;&#xA;&lt;p&gt;著名景点枫丹白露。&lt;/p&gt;&#xA;&lt;h1 id=&#34;弗朗什-孔泰&#34;&gt;弗朗什-孔泰&lt;/h1&gt;&#xA;&lt;h2 id=&#34;杜省&#34;&gt;杜省&lt;/h2&gt;&#xA;&lt;p&gt;贝桑松是大区首府和省会。&lt;/p&gt;&#xA;&lt;p&gt;蒙贝利亚尔是杜省的一个区。&lt;/p&gt;&#xA;&lt;h2 id=&#34;贝尔福地区&#34;&gt;贝尔福地区&lt;/h2&gt;&#xA;&lt;p&gt;贝尔福是省会驻地,与瑞士相邻。&lt;/p&gt;&#xA;&lt;p&gt;景点有贝尔福雄狮。&lt;/p&gt;&#xA;&lt;p&gt;Eurockéennes法国最大的摇滚音乐节。&lt;/p&gt;&#xA;&lt;h1 id=&#34;阿尔萨斯&#34;&gt;阿尔萨斯&lt;/h1&gt;&#xA;&lt;p&gt;斯特拉斯堡是省会。&lt;/p&gt;&#xA;&lt;h2 id=&#34;下莱茵省&#34;&gt;下莱茵省&lt;/h2&gt;&#xA;&lt;p&gt;斯特拉斯堡是大区首府和省会。&lt;/p&gt;&#xA;&lt;h2 id=&#34;上莱茵省&#34;&gt;上莱茵省&lt;/h2&gt;&#xA;&lt;p&gt;科尔马是该省的首府,是童话小镇。&lt;/p&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>France on Morgoth</title>
+        <link>https://canuxcheng.com/tags/france/</link>
+        <description>Recent content in France on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Sun, 10 Apr 2016 17:49:15 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/france/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>France</title>
+        <link>https://canuxcheng.com/post/travel_france/</link>
+        <pubDate>Sun, 10 Apr 2016 17:49:15 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/travel_france/</guid>
+        <description>&lt;h1 id=&#34;法国之旅&#34;&gt;法国之旅&lt;/h1&gt;
+&lt;p&gt;看照片：&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://user.qzone.qq.com/1085694641&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://user.qzone.qq.com/1085694641&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;戴高乐机场&lt;/p&gt;
+&lt;p&gt;雅高集团的宜必思酒店&lt;/p&gt;
+&lt;p&gt;SNCF的TVG火车&lt;/p&gt;
+&lt;p&gt;法国有22个大区。&lt;/p&gt;
+&lt;h1 id=&#34;法兰西岛&#34;&gt;法兰西岛&lt;/h1&gt;
+&lt;h2 id=&#34;巴黎省&#34;&gt;巴黎省&lt;/h2&gt;
+&lt;p&gt;巴黎是法国首都，大区首府和该省省会。&lt;/p&gt;
+&lt;p&gt;埃菲尔铁塔&lt;/p&gt;
+&lt;p&gt;凯旋门&lt;/p&gt;
+&lt;p&gt;塞纳河&lt;/p&gt;
+&lt;p&gt;卢浮宫&lt;/p&gt;
+&lt;p&gt;巴黎圣母院&lt;/p&gt;
+&lt;h2 id=&#34;伊夫林省&#34;&gt;伊夫林省&lt;/h2&gt;
+&lt;p&gt;凡尔赛是该省省会。&lt;/p&gt;
+&lt;p&gt;著名景点凡尔赛宫。&lt;/p&gt;
+&lt;h2 id=&#34;塞纳-马恩省&#34;&gt;塞纳-马恩省&lt;/h2&gt;
+&lt;p&gt;著名景点枫丹白露。&lt;/p&gt;
+&lt;h1 id=&#34;弗朗什-孔泰&#34;&gt;弗朗什-孔泰&lt;/h1&gt;
+&lt;h2 id=&#34;杜省&#34;&gt;杜省&lt;/h2&gt;
+&lt;p&gt;贝桑松是大区首府和省会。&lt;/p&gt;
+&lt;p&gt;蒙贝利亚尔是杜省的一个区。&lt;/p&gt;
+&lt;h2 id=&#34;贝尔福地区&#34;&gt;贝尔福地区&lt;/h2&gt;
+&lt;p&gt;贝尔福是省会驻地,与瑞士相邻。&lt;/p&gt;
+&lt;p&gt;景点有贝尔福雄狮。&lt;/p&gt;
+&lt;p&gt;Eurockéennes法国最大的摇滚音乐节。&lt;/p&gt;
+&lt;h1 id=&#34;阿尔萨斯&#34;&gt;阿尔萨斯&lt;/h1&gt;
+&lt;p&gt;斯特拉斯堡是省会。&lt;/p&gt;
+&lt;h2 id=&#34;下莱茵省&#34;&gt;下莱茵省&lt;/h2&gt;
+&lt;p&gt;斯特拉斯堡是大区首府和省会。&lt;/p&gt;
+&lt;h2 id=&#34;上莱茵省&#34;&gt;上莱茵省&lt;/h2&gt;
+&lt;p&gt;科尔马是该省的首府,是童话小镇。&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

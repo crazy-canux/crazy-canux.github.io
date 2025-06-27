@@ -1,26 +1,269 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>String on Morgoth</title>
-    <link>https://canuxcheng.com/tags/string/</link>
-    <description>Recent content in String on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Mon, 01 Jan 2018 10:49:21 +0000</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/string/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>GSL_string</title>
-      <link>https://canuxcheng.com/post/gsl_string/</link>
-      <pubDate>Mon, 01 Jan 2018 10:49:21 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/gsl_string/</guid>
-      <description>&lt;h1 id=&#34;strings&#34;&gt;strings&lt;/h1&gt;&#xA;&lt;p&gt;实现了用于操作字符的函数.&lt;/p&gt;&#xA;&lt;h2 id=&#34;functions&#34;&gt;functions&lt;/h2&gt;&#xA;&lt;pre&gt;&lt;code&gt;func EqualFold(s, t string) bool&#xA;&#xA;func HasPrefix(s, prefix string) bool&#xA;func HasSuffix(s, suffix string) bool&#xA;&#xA;func Count(s, sep string) int&#xA;&#xA;func Contains(s, substr string) bool&#xA;...&#xA;&#xA;func Index(s, sep string) int&#xA;...&#xA;&#xA;func LastIndex(s, sep string) int&#xA;...&#xA;&#xA;func title(s string) string&#xA;&#xA;func ToLower(s string) string&#xA;...&#xA;&#xA;// 返回count个string&#xA;func Repeat(s string, count int) string&#xA;&#xA;func Replace(s, old, new string, n int) string&#xA;&#xA;func Map(mapping func(rune) rune, s string) string&#xA;&#xA;func Trim(s string, cutset string) string&#xA;...&#xA;&#xA;// 返回将字符串按照空白分割的多个字符串&#xA;func Fields(s string) []string&#xA;// 按照f作为分隔符来分割字符串，返回切片&#xA;func FieldsFunc(s string, f func(rune) bool) []string&#xA;&#xA;func Split(s, sep string) []string&#xA;...&#xA;&#xA;// 将一系列字符串连接为一个字符串，之间用sep来分割.&#xA;func Join(a []string, sep string) string&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;reader&#34;&gt;Reader&lt;/h2&gt;&#xA;&lt;h2 id=&#34;replacer&#34;&gt;Replacer&lt;/h2&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;bytes&#34;&gt;bytes&lt;/h1&gt;&#xA;&lt;p&gt;实现了操作[]bytes的常用函数.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>PSL_String</title>
-      <link>https://canuxcheng.com/post/psl_string/</link>
-      <pubDate>Fri, 12 Aug 2016 16:49:07 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/psl_string/</guid>
-      <description>&lt;h1 id=&#34;text-processing-services&#34;&gt;Text Processing Services&lt;/h1&gt;&#xA;&lt;h2 id=&#34;string&#34;&gt;string&lt;/h2&gt;&#xA;&lt;pre&gt;&lt;code&gt;import string&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;classes:&lt;/p&gt;&#xA;&lt;p&gt;functions:&lt;/p&gt;&#xA;&lt;p&gt;data:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;ascii_letters&#xA;ascii_lowercase&#xA;ascii_uppercase&#xA;digits&#xA;...&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;re&#34;&gt;re&lt;/h2&gt;&#xA;&lt;pre&gt;&lt;code&gt;import re&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;classes:&lt;/p&gt;&#xA;&lt;p&gt;functions:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;compile(pattern, flags=0)&#xA;escape(pattern)&#xA;findall(pattern, string, flags=0)&#xA;finditer(pattern, string, flags=0)&#xA;match(pattern, string, flags=0) # if not match, return None, else return object.&#xA;search(pattern, string, flags=0)&#xA;purge()&#xA;split(pattern, string, maxsplit=0, flags=0) # 根据pattern分割string,返回分割后的列表．&#xA;sub(pattern, repl, string, count=0, flags=0)&#xA;subn(pattern, repl, string, count=0, flags=0)&#xA;template(pattern, flags=0)&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;data:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;# flags:&#xA;IGNORECASE # 大小写不敏感&#xA;LOCALE&#xA;MULTILINE&#xA;DOTALL&#xA;VERBOSE&#xA;UNICODE&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;modules:&lt;/p&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>String on Morgoth</title>
+        <link>https://canuxcheng.com/tags/string/</link>
+        <description>Recent content in String on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Mon, 01 Jan 2018 10:49:21 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/string/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>GSL_string</title>
+        <link>https://canuxcheng.com/post/gsl_string/</link>
+        <pubDate>Mon, 01 Jan 2018 10:49:21 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/gsl_string/</guid>
+        <description>&lt;h1 id=&#34;strings&#34;&gt;strings&lt;/h1&gt;
+&lt;p&gt;实现了用于操作字符的函数.&lt;/p&gt;
+&lt;h2 id=&#34;functions&#34;&gt;functions&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;func EqualFold(s, t string) bool
+
+func HasPrefix(s, prefix string) bool
+func HasSuffix(s, suffix string) bool
+
+func Count(s, sep string) int
+
+func Contains(s, substr string) bool
+...
+
+func Index(s, sep string) int
+...
+
+func LastIndex(s, sep string) int
+...
+
+func title(s string) string
+
+func ToLower(s string) string
+...
+
+// 返回count个string
+func Repeat(s string, count int) string
+
+func Replace(s, old, new string, n int) string
+
+func Map(mapping func(rune) rune, s string) string
+
+func Trim(s string, cutset string) string
+...
+
+// 返回将字符串按照空白分割的多个字符串
+func Fields(s string) []string
+// 按照f作为分隔符来分割字符串，返回切片
+func FieldsFunc(s string, f func(rune) bool) []string
+
+func Split(s, sep string) []string
+...
+
+// 将一系列字符串连接为一个字符串，之间用sep来分割.
+func Join(a []string, sep string) string
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;reader&#34;&gt;Reader&lt;/h2&gt;
+&lt;h2 id=&#34;replacer&#34;&gt;Replacer&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;bytes&#34;&gt;bytes&lt;/h1&gt;
+&lt;p&gt;实现了操作[]bytes的常用函数.&lt;/p&gt;
+&lt;h2 id=&#34;constants&#34;&gt;constants&lt;/h2&gt;
+&lt;h2 id=&#34;variables&#34;&gt;variables&lt;/h2&gt;
+&lt;h2 id=&#34;functions-1&#34;&gt;functions&lt;/h2&gt;
+&lt;h2 id=&#34;reader-1&#34;&gt;Reader&lt;/h2&gt;
+&lt;h2 id=&#34;buffer&#34;&gt;Buffer&lt;/h2&gt;
+&lt;p&gt;Buffer是一个实现了读写方法的可变大小的字节缓冲.&lt;/p&gt;
+&lt;p&gt;零值是一个空的可用于读写的缓冲.&lt;/p&gt;
+&lt;p&gt;struct:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type Buffer struct {}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;functions:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;func NewBuffer(buf []byte) *Buffer
+func NewBufferString(s string) *Buffer
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;methods:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;func (b *Buffer) String() string
+
+func (b *Buffer) Read(p []byte) (n int, err error)
+func (b *Buffer) Write(p []byte) (n int, err error)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;strconv&#34;&gt;strconv&lt;/h1&gt;
+&lt;p&gt;实现了基本数据类型和字符串的相互转换.&lt;/p&gt;
+&lt;h2 id=&#34;constants-1&#34;&gt;constants&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;const InitSize = intSize
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;variables-1&#34;&gt;Variables&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;var ErrRange = errors.New(&amp;quot;value out of range&amp;quot;)
+var ErrSyntax = errors.New(&amp;quot;invalid syntax&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;functions-2&#34;&gt;functions&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;// 返回一个字符是否是可打印的
+func IsPrint(r rune) bool
+
+// 返回字符串s是否可以不被修改的表示为一个反引号字符串
+func CanBackquote(s string) bool
+
+func Quote(s string) string
+...
+
+func Unquote(s string) (t string, err error)
+...
+
+func AppendInt(dst []byte, i int64, base int) []byte
+...
+
+// 字符串转换成其他类型
+func ParseInt(s string, base int, bitSize int) (i int64, err error)
+...
+
+// 其他类型转换为字符串
+func FormatInt(i int64, base int) string
+...
+
+// ParseInt(s, 10, 0)的简写, string -&amp;gt; int
+func Atoi(s string) (i int, err error)
+// FormatInt(i, 10)的简写, int -&amp;gt; string
+func Itoa(i int) string
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;numerror&#34;&gt;NumError&lt;/h2&gt;
+&lt;p&gt;表示一次失败的转换&lt;/p&gt;
+&lt;p&gt;struct:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type NumError struct {
+    Func string
+    Num string
+    Err error
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;methods:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;func (e *NumError) Error() string
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;unicode&#34;&gt;unicode&lt;/h1&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;regexp&#34;&gt;regexp&lt;/h1&gt;
+&lt;p&gt;实现了正则表达式搜索&lt;/p&gt;
+&lt;h2 id=&#34;functions-3&#34;&gt;functions&lt;/h2&gt;
+&lt;h2 id=&#34;regexp-1&#34;&gt;Regexp&lt;/h2&gt;
+&lt;p&gt;Regexp代表一个编译好的正则表达式．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type Regexp struct {}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;functions:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;func Compile(expr string) (*Regexp, error)
+
+func CompilePOSIX(expr string) (*Regexp, error)
+
+func MustCompile(str string) *Regexp
+
+func MustCompilePOSIX(str string) *Regexp
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;methods:&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;regexpsyntax&#34;&gt;regexp/syntax&lt;/h1&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;indexsuffixarray&#34;&gt;index/suffixarray&lt;/h1&gt;
+</description>
+        </item>
+        <item>
+        <title>PSL_String</title>
+        <link>https://canuxcheng.com/post/psl_string/</link>
+        <pubDate>Fri, 12 Aug 2016 16:49:07 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/psl_string/</guid>
+        <description>&lt;h1 id=&#34;text-processing-services&#34;&gt;Text Processing Services&lt;/h1&gt;
+&lt;h2 id=&#34;string&#34;&gt;string&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;import string
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;classes:&lt;/p&gt;
+&lt;p&gt;functions:&lt;/p&gt;
+&lt;p&gt;data:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ascii_letters
+ascii_lowercase
+ascii_uppercase
+digits
+...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;re&#34;&gt;re&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;import re
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;classes:&lt;/p&gt;
+&lt;p&gt;functions:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;compile(pattern, flags=0)
+escape(pattern)
+findall(pattern, string, flags=0)
+finditer(pattern, string, flags=0)
+match(pattern, string, flags=0) # if not match, return None, else return object.
+search(pattern, string, flags=0)
+purge()
+split(pattern, string, maxsplit=0, flags=0) # 根据pattern分割string,返回分割后的列表．
+sub(pattern, repl, string, count=0, flags=0)
+subn(pattern, repl, string, count=0, flags=0)
+template(pattern, flags=0)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;data:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# flags:
+IGNORECASE # 大小写不敏感
+LOCALE
+MULTILINE
+DOTALL
+VERBOSE
+UNICODE
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;modules:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# sre_parse module
+# functions:
+sre_parse.parse(str, flags=0, pattern=None)
+sre_parse.expand_template(template, match)
+sre_parse.parse_template(source, pattern)
+
+# sre_compile module
+# functions:
+sre_compile.compile(p, flags=0)
+sre_compile.isstring(obj)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;cstringio&#34;&gt;cStringIO&lt;/h2&gt;
+&lt;h2 id=&#34;stringio&#34;&gt;StringIO&lt;/h2&gt;
+&lt;h2 id=&#34;codecs&#34;&gt;codecs&lt;/h2&gt;
+&lt;p&gt;python的编码解码器coder/decoder。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import codecs
+
+# 使用注册名为encoding的编码器编码obj，encoding默认为ascii。
+# encode将unicode编码的obj编码成encoding编码对应的字节序列．
+codecs.encode(obj, [encoding[,errors]])
+codecs.encode(u&#39;hello world&#39;, &#39;utf-8&#39;) # 编码成utf-8字节序．
+
+# 使用注册名为encoding的解码器解码obj，encoding默认是ascii。
+# decode将原来按照encoding编码的obj解码成unicode字符串.
+codecs.decode(obj, [encoding[,errors]])
+codecs.decode(obj, &#39;utf-8&#39;) # 将utf-8编码的obj解码成unicode.
+
+# encoding取下面值:
+# ascii是默认值,gb2312, gbk, gb18030, utf-8, utf-16
+# ascii利用一个字节把字符转换成数字．
+# unicode利用多字节转换，支持多种编码方式，utf-8, uft-16.
+
+# errors取下面值：
+# strict, 默认值，抛出UnicodeError异常。
+# ignore
+# replace
+# xmlcharrefreplace
+# backslashreplace
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;functions:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;open(filename, mode=&#39;rb&#39;, encoding=None, errors=&#39;strict&#39;, buffering=1)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;data:&lt;/p&gt;
+&lt;h2 id=&#34;struct&#34;&gt;struct&lt;/h2&gt;
+&lt;h2 id=&#34;difflib&#34;&gt;difflib&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;import difflib
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;classes:&lt;/p&gt;
+&lt;p&gt;functions:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;get_close_matches(word, possibilities, n=3, cutoff=0.6)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;textwrap&#34;&gt;textwrap&lt;/h2&gt;
+&lt;h2 id=&#34;unicodedata&#34;&gt;unicodedata&lt;/h2&gt;
+&lt;h2 id=&#34;stringprep&#34;&gt;stringprep&lt;/h2&gt;
+&lt;h2 id=&#34;readline&#34;&gt;readline&lt;/h2&gt;
+&lt;h2 id=&#34;rlcompleter&#34;&gt;rlcompleter&lt;/h2&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

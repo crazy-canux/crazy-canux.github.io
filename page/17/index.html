@@ -1,399 +1,1263 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta name="generator" content="Hugo 0.147.9">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Morgoth - Morgoth</title>
-    <meta name="description" content="">
+<html lang="en-us" dir="ltr">
+    <head>
+	<meta name="generator" content="Hugo 0.147.9"><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Hello World!'>
+<title>Morgoth</title>
+
+<link rel='canonical' href='https://canuxcheng.com/'>
+
+<link rel="stylesheet" href="/scss/style.min.2d59822570c0be136f2ad87c952ef8788ac2a951067adda1c49b253bff7d0292.css"><meta property='og:title' content='Morgoth'>
+<meta property='og:description' content='Hello World!'>
+<meta property='og:url' content='https://canuxcheng.com/'>
+<meta property='og:site_name' content='Morgoth'>
+<meta property='og:type' content='website'><meta property='og:updated_time' content=' 2025-01-10T09:41:39&#43;00:00 '/>
+<meta name="twitter:title" content="Morgoth">
+<meta name="twitter:description" content="Hello World!"><link rel="alternate" type="application/rss&#43;xml" href="https://canuxcheng.com/index.xml">
+    <link rel="shortcut icon" href="favicon.ico" />
+<style>
+    :root {
+        --article-font-family: "Merriweather", var(--base-font-family);
+    }
+</style>
+
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap";
     
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
     
-    <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    
-    
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #f5f5f5;
-            color: #333;
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </head>
+    <body class="">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
         }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        header {
-            background: #fff;
-            padding: 1rem 0;
-            border-bottom: 1px solid #ddd;
-            margin-bottom: 2rem;
-        }
-        nav {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-        }
-        nav a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-        }
-        nav a:hover {
-            color: #007acc;
-        }
-        .site-title {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #007acc;
-        }
-        main {
-            background: #fff;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        .post-meta {
-            color: #666;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-        .post-content h1, .post-content h2, .post-content h3 {
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-        }
-        .post-list {
-            list-style: none;
-            padding: 0;
-        }
-        .post-list li {
-            margin-bottom: 1.5rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid #eee;
-        }
-        .post-list h2 {
-            margin: 0 0 0.5rem 0;
-        }
-        .post-list h2 a {
-            text-decoration: none;
-            color: #333;
-        }
-        .post-list h2 a:hover {
-            color: #007acc;
-        }
-        footer {
-            text-align: center;
-            padding: 2rem 0;
-            color: #666;
-            border-top: 1px solid #ddd;
-            margin-top: 2rem;
-        }
-    </style>
-</head>
-<body>
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
     <header>
-        <div class="container">
-            <nav>
-                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
                 
-                    <a href="/">Home</a>
+                    
+                    
+                    
+                        
+                        <img src="/img/home_hu_ee27fe234e3b32c2.jpg" width="300"
+                            height="400" class="site-logo" loading="lazy" alt="Avatar">
+                    
                 
-                    <a href="/about/">About</a>
+                </a>
                 
-                    <a href="/categories/">Categories</a>
+                    <span class="emoji">🍥</span>
                 
-                    <a href="/tags/">Tags</a>
-                
-                    <a href="/rtfm/">RTFM</a>
-                
-                    <a href="/samuel/">Samuel</a>
-                
-            </nav>
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Morgoth</a></h1>
+            <h2 class="site-description">Hello World!</h2>
         </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='mailto:canuxcheng@163.com'
+                        target="_blank"
+                        title="E-mail"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-messages" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M21 14l-3 -3h-7a1 1 0 0 1 -1 -1v-6a1 1 0 0 1 1 -1h9a1 1 0 0 1 1 1v10" />
+  <path d="M14 15v2a1 1 0 0 1 -1 1h-7l-3 3v-10a1 1 0 0 1 1 -1h2" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/crazy-canux'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/categories/' target="_blank">
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                
+                <span>Categories</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tags/' target="_blank">
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+                
+                <span>Tags</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/rtfm/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                
+                <span>RTFM</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/samuel/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-infinity" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M9.828 9.172a4 4 0 1 0 0 5.656 a10 10 0 0 0 2.172 -2.828a10 10 0 0 1 2.172 -2.828 a4 4 0 1 1 0 5.656a10 10 0 0 1 -2.172 -2.828a10 10 0 0 0 -2.172 -2.828" />
+</svg>
+
+
+
+                
+                <span>Samuel</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https://canuxcheng.com/" selected></option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                <form action="/search/" class="search-form widget" >
+        <p>
+            <label>Search</label>
+            <input name="keyword" required placeholder="Type something..." />
+        
+            <button title="Search">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+            </button>
+        </p>
+    </form>
+            
+        
+            
+                <section class="widget tagCloud">
+    <div class="widget-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+    </div>
+    <h2 class="widget-title section-title">Categories</h2>
+
+    <div class="tagCloud-tags">
+        
+            <a href="/categories/devops/" class="font_size_37">
+                DevOps
+            </a>
+        
+            <a href="/categories/cncf/" class="font_size_36">
+                CNCF
+            </a>
+        
+            <a href="/categories/web/" class="font_size_28">
+                Web
+            </a>
+        
+            <a href="/categories/network/" class="font_size_26">
+                Network
+            </a>
+        
+            <a href="/categories/golang/" class="font_size_22">
+                Golang
+            </a>
+        
+            <a href="/categories/python/" class="font_size_22">
+                Python
+            </a>
+        
+            <a href="/categories/linux/" class="font_size_21">
+                Linux
+            </a>
+        
+            <a href="/categories/cloud/" class="font_size_16">
+                Cloud
+            </a>
+        
+            <a href="/categories/security/" class="font_size_16">
+                Security
+            </a>
+        
+            <a href="/categories/django/" class="font_size_13">
+                Django
+            </a>
+        
+            <a href="/categories/windows/" class="font_size_12">
+                Windows
+            </a>
+        
+            <a href="/categories/bigdata/" class="font_size_9">
+                BigData
+            </a>
+        
+            <a href="/categories/database/" class="font_size_9">
+                Database
+            </a>
+        
+            <a href="/categories/storage/" class="font_size_7">
+                Storage
+            </a>
+        
+            <a href="/categories/virtualization/" class="font_size_7">
+                Virtualization
+            </a>
+        
+            <a href="/categories/c/" class="font_size_6">
+                C
+            </a>
+        
+            <a href="/categories/hw/" class="font_size_4">
+                HW
+            </a>
+        
+            <a href="/categories/misc/" class="font_size_4">
+                Misc
+            </a>
+        
+            <a href="/categories/gin/" class="font_size_1">
+                Gin
+            </a>
+        
+    </div>
+</section>
+
+            
+        
+            
+                <section class="widget tagCloud">
+    <div class="widget-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+    </div>
+    <h2 class="widget-title section-title">Tags</h2>
+
+    <div class="tagCloud-tags">
+        
+            <a href="/tags/k8s/" class="font_size_23">
+                K8s
+            </a>
+        
+            <a href="/tags/monitoring/" class="font_size_16">
+                Monitoring
+            </a>
+        
+            <a href="/tags/aws/" class="font_size_11">
+                Aws
+            </a>
+        
+            <a href="/tags/shell/" class="font_size_8">
+                Shell
+            </a>
+        
+            <a href="/tags/capture/" class="font_size_5">
+                Capture
+            </a>
+        
+            <a href="/tags/devops/" class="font_size_5">
+                Devops
+            </a>
+        
+            <a href="/tags/ca/" class="font_size_4">
+                CA
+            </a>
+        
+            <a href="/tags/hadoop/" class="font_size_4">
+                Hadoop
+            </a>
+        
+            <a href="/tags/logging/" class="font_size_4">
+                Logging
+            </a>
+        
+            <a href="/tags/oop/" class="font_size_4">
+                Oop
+            </a>
+        
+            <a href="/tags/package/" class="font_size_4">
+                Package
+            </a>
+        
+            <a href="/tags/admin/" class="font_size_3">
+                Admin
+            </a>
+        
+            <a href="/tags/concurrency/" class="font_size_3">
+                Concurrency
+            </a>
+        
+            <a href="/tags/docker/" class="font_size_3">
+                Docker
+            </a>
+        
+            <a href="/tags/document/" class="font_size_3">
+                Document
+            </a>
+        
+            <a href="/tags/golang/" class="font_size_3">
+                Golang
+            </a>
+        
+            <a href="/tags/misc/" class="font_size_3">
+                Misc
+            </a>
+        
+            <a href="/tags/network/" class="font_size_3">
+                Network
+            </a>
+        
+            <a href="/tags/python/" class="font_size_3">
+                Python
+            </a>
+        
+            <a href="/tags/swarm/" class="font_size_3">
+                Swarm
+            </a>
+        
+            <a href="/tags/test/" class="font_size_3">
+                Test
+            </a>
+        
+            <a href="/tags/testing/" class="font_size_3">
+                Testing
+            </a>
+        
+            <a href="/tags/tracing/" class="font_size_3">
+                Tracing
+            </a>
+        
+            <a href="/tags/web/" class="font_size_3">
+                Web
+            </a>
+        
+            <a href="/tags/builtin/" class="font_size_2">
+                Builtin
+            </a>
+        
+            <a href="/tags/command/" class="font_size_2">
+                Command
+            </a>
+        
+            <a href="/tags/container/" class="font_size_2">
+                Container
+            </a>
+        
+            <a href="/tags/cryptographic/" class="font_size_2">
+                Cryptographic
+            </a>
+        
+            <a href="/tags/data/" class="font_size_2">
+                Data
+            </a>
+        
+            <a href="/tags/debug/" class="font_size_2">
+                Debug
+            </a>
+        
+            <a href="/tags/file/" class="font_size_2">
+                File
+            </a>
+        
+            <a href="/tags/filesystem/" class="font_size_2">
+                Filesystem
+            </a>
+        
+            <a href="/tags/fpga/" class="font_size_2">
+                Fpga
+            </a>
+        
+            <a href="/tags/html/" class="font_size_2">
+                Html
+            </a>
+        
+            <a href="/tags/javascript/" class="font_size_2">
+                Javascript
+            </a>
+        
+            <a href="/tags/math/" class="font_size_2">
+                Math
+            </a>
+        
+            <a href="/tags/multimedia/" class="font_size_2">
+                Multimedia
+            </a>
+        
+            <a href="/tags/oss/" class="font_size_2">
+                Oss
+            </a>
+        
+            <a href="/tags/string/" class="font_size_2">
+                String
+            </a>
+        
+            <a href="/tags/summary/" class="font_size_2">
+                Summary
+            </a>
+        
+            <a href="/tags/system/" class="font_size_2">
+                System
+            </a>
+        
+            <a href="/tags/agile/" class="font_size_1">
+                Agile
+            </a>
+        
+            <a href="/tags/angular/" class="font_size_1">
+                Angular
+            </a>
+        
+            <a href="/tags/ansible/" class="font_size_1">
+                Ansible
+            </a>
+        
+            <a href="/tags/apache/" class="font_size_1">
+                Apache
+            </a>
+        
+            <a href="/tags/arduino/" class="font_size_1">
+                Arduino
+            </a>
+        
+            <a href="/tags/artifactory/" class="font_size_1">
+                Artifactory
+            </a>
+        
+            <a href="/tags/auth/" class="font_size_1">
+                Auth
+            </a>
+        
+            <a href="/tags/bigdata/" class="font_size_1">
+                Bigdata
+            </a>
+        
+            <a href="/tags/bitbake/" class="font_size_1">
+                Bitbake
+            </a>
+        
+    </div>
+</section>
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    
+    
+    
+    
+
+    <section class="article-list">
+        
+            
+<article class="">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/cncf/" >
+                CNCF
+            </a>
+        
     </header>
     
-    <div class="container">
-        <main>
-            
-<div class="home">
-    <h1>Morgoth</h1>
-    <p></p>
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/cncf_docker/">Docker</a>
+        </h2>
     
-    <section class="recent-posts">
-        <h2>Recent Posts</h2>
-        <ul class="post-list">
-            
-                <li>
-                    <h2><a href="https://canuxcheng.com/post/dns/">Dns</a></h2>
-                    <div class="post-meta">
-                        <time>May 3, 2018</time>
-                        
-                            
-                                <span class="category">Network</span>
-                            
-                        
-                    </div>
-                    
-                        <p><h1 id="dns">DNS</h1>
-<p>Domain Name System: 域名系统</p></p>
-                    
-                </li>
-            
-                <li>
-                    <h2><a href="https://canuxcheng.com/post/swarm_csi/">Swarm CSI</a></h2>
-                    <div class="post-meta">
-                        <time>April 5, 2018</time>
-                        
-                            
-                                <span class="category">CNCF</span>
-                            
-                                <span class="category">Storage</span>
-                            
-                        
-                    </div>
-                    
-                        <p><h1 id="csi">CSI</h1>
-<p>CSI: Container Storage Interface</p>
-<p>CSI提供容器的数据持久化服务.</p>
-<p>容器管理数据的两种方式：</p>
-<p>数据卷(Volumes)</p>
-<p>挂载主机目录(bind mounts)</p>
-<p>临时文件系统(tmpfs)</p>
-<h2 id="数据存储原理">数据存储原理</h2>
-<p>如果container上目录不存在，docker会自动创建</p>
-<p>如果container目录存在且有内容，会被host上的目录覆盖掉，但不会被删除.</p>
-<h2 id="volumes">Volumes</h2>
-<p>如果host上目录不存在，docker会自动创建</p>
-<p>volumes是被设计用来持久化数据的，它的生命周期独立于容器.数据卷通过docker volume命令管理的，位于/var/lib/docker/volumes/下面.</p>
-<p>Docker不会在容器被删除后自动删除 数据卷，并且也不存在垃圾回收这样的机制来处理没有任何容器引用的 数据卷。</p>
-<p>创建:</p>
-<pre><code>$ docker volume create &lt;volume-name&gt;
-$ docker volume rm &lt;volume-name&gt;
-</code></pre>
-<p>使用：</p>
-<pre><code>$ docker run -v/--volume myvolume:/var/lib/app ...
-$ docker run --mount source=myvolume,target=/var/lib/app ...
-</code></pre>
-<h2 id="bind-mount">Bind mount</h2>
-<p>如果host上目录不存在会报错，需要提前创建.</p>
-<p>bind mount就是直接将host路径挂在到docker．</p>
-<p>source和target都是文件，即可挂载单个文件.</p>
-<p>使用:</p>
-<pre><code>$ docker run -v/--volume /opt/app:/var/lib/app:ro ...
-$ docker run --mount type=bind,source=/opt/app,target=/var/lib/app,readonly ...
-</code></pre>
-<h2 id="tmpfs">tmpfs</h2>
-<p>tmpfs是临时文件系统，也叫内存文件系统，就是将数据存在内存上。</p>
-<p>tmpfs只能用于linux, 多个容器也不能共享，容器停止数据就销毁。</p></p>
-                    
-                </li>
-            
-                <li>
-                    <h2><a href="https://canuxcheng.com/post/swarm_cni/">Swarm CNI</a></h2>
-                    <div class="post-meta">
-                        <time>April 5, 2018</time>
-                        
-                            
-                                <span class="category">CNCF</span>
-                            
-                                <span class="category">Network</span>
-                            
-                        
-                    </div>
-                    
-                        <p><h1 id="cni">CNI</h1>
-<p>CNI: Container Network Intarface</p>
-<h2 id="单台host上的container通信">单台host上的container通信</h2>
-<ul>
-<li>none</li>
-<li>host</li>
-<li>bridge</li>
-</ul>
-<h2 id="多台host之间的container通信">多台host之间的container通信</h2>
-<ul>
-<li>overlay</li>
-<li>macvlan</li>
-</ul>
-<h3 id="提供overlaymacvlan的网络服务">提供overlay/macvlan的网络服务</h3>
-<p>vxlan encapsulated:</p>
-<ul>
-<li>canal</li>
-<li>flannel</li>
-<li>weave</li>
-</ul>
-<p>bgp unencapsulated:</p>
-<ul>
-<li>calico</li>
-<li>romana</li>
-<li>cilium</li>
-<li>kube-router</li>
-</ul>
-<hr>
-<h1 id="docker网络管理">Docker网络管理</h1>
-<p>查看:</p>
-<pre><code>$ docker network ls # 查看所有网络
-</code></pre>
-<p>默认支持的三种模式:</p>
-<pre><code># 默认启动的容器都是桥接(docker0)，重启后容器的ip就变了。
-docker run --network bridge  ...
-docker run --network host ... # 容器和主机使用相同的ip
-docker run --network none ... # 容器不会分配局域网的ip
-</code></pre>
-<p>创建:</p>
-<pre><code>docker network create -d &lt;driver&gt; ... [name]
--d/--driver # 默认是bridge, 可选overlay/macvlan
---subnet  # CIDR格式
---gateway
---ip-range
-</code></pre>
-<p>使用:</p></p>
-                    
-                </li>
-            
-                <li>
-                    <h2><a href="https://canuxcheng.com/post/swarm/">Swarm</a></h2>
-                    <div class="post-meta">
-                        <time>April 5, 2018</time>
-                        
-                            
-                                <span class="category">CNCF</span>
-                            
-                        
-                    </div>
-                    
-                        <p><h1 id="swarm">Swarm</h1>
-<p>docker swarm 是 docker内置的容器编排工具。</p>
-<p>从docker1.12开始swarm内置于docker engine.</p>
-<p>swarm mode具有内置kv存储，服务发现，负载均衡，路由网格，动态伸缩，滚动更新，安全传输等功能。</p>
-<p>swarm: 老版本的swarm, 需要kv store, 可以作为独立的container运行, 已废弃, 已经被docker swarm mode 代替.</p>
-<p><a href="https://github.com/docker/swarm">https://github.com/docker/swarm</a></p>
-<p>swarmkit:</p>
-<p><a href="https://github.com/docker/swarmkit">https://github.com/docker/swarmkit</a></p>
-<h1 id="swarm命令">swarm命令</h1>
-<p>创建集群</p>
-<pre><code>docker swarm init
---advertise-addr &lt;ip&gt; 多网卡情况下指定manager的ip
+        
+    </div>
 
-docker swarm join --token &lt;token&gt; &lt;host:port&gt;
-
-# 查看token
-docker swarm join-token manager   获取添加manager命令
-docker swarm join-token worker   获取添加worker命令
-docker swarm join-token -q worker
-
-docker swarm leave -f/--force
-
-docker swarm update
-</code></pre>
-<p>管理节点</p>
-<pre><code>docker node ls
-docker node ls --format &quot;{{.Hostname}}&quot;
-​
-docker node rm
-​
-docker node inspect
-​
-# 查看node上运行的tasks/container
-docker node ps -f/--filter NODE
-​
-# 添加label, node.labels.role=api
-docker node update --label-add role=api node1
-# 删除label
-docker node update --label-rm role node1
-​
-# 活跃节点
-docker node update --availability active node1
-# 指定该节点满载,不再分派任务,关闭已有任务并重新分派.
-docker node update --availability drain node1
-# 已有任务继续运行,不分配新任务.
-docker node update --availability pause node1
-
-# 查看所有node和label
-docker node ls -q | xargs docker node inspect -f '{{ .ID }} [{{ .Description.Hostname }}]: {{ .Spec.Labels }}'
-</code></pre>
-<p>service</p></p>
-                    
-                </li>
-            
-                <li>
-                    <h2><a href="https://canuxcheng.com/post/cncf_registry/">Registry</a></h2>
-                    <div class="post-meta">
-                        <time>April 5, 2018</time>
-                        
-                            
-                                <span class="category">CNCF</span>
-                            
-                        
-                    </div>
-                    
-                        <p><h1 id="container-registry">Container Registry</h1>
-<ul>
-<li>Docker Hub Registry</li>
-<li>Google Container Registry (gcr.io)</li>
-<li>RedHat Quay Registry (quay.io)</li>
-<li>GitHub Docker Packages (docker.pkg.github.com)(Deprecated)</li>
-<li>GitHub Container Registry (ghcr.io)</li>
-<li>Kubernetes Registry(registry.k8s.io =&gt; k8s.gcr.io)</li>
-</ul>
-<h2 id="harbor">Harbor</h2>
-<p><a href="https://github.com/goharbor/harbor">https://github.com/goharbor/harbor</a></p>
-<p>Habor是由VMWare中国团队开源的容器镜像仓库, 用于存储和分发docker镜像的registry服务器.</p>
-<p>安装步骤:</p>
-<ol>
-<li>下载并解压安装包, <a href="https://github.com/goharbor/harbor/releases">https://github.com/goharbor/harbor/releases</a></li>
-<li>配置harbor.cfg;</li>
-</ol>
-<p>修改配置:</p>
-<pre><code>vim harbor.yml
-</code></pre>
-<p>运行安装程序:</p>
-<pre><code>./install.sh --with-notary --with-clair --with-chartmuseum
-</code></pre>
-<p>修改web的port:</p>
-<pre><code>$ vim /data/harbor/docker-compose.yml
-proxy:
-  ports:
-    - 8080:80 # 默认http是80
-    - 4433:443 # 默认https是443
-$ vim /data/harbor/harbor.yml
-hostname = ip
-</code></pre>
-<p>管理harbor:</p>
-<pre><code># cd /data/harbor
-# docker-compose down -v 　停止并删除container
-
-&gt; 更新配置
-# ./prepare --with-notary --with-clair --with-chartmuseum
-
-&gt; 启动
-# docker-compose up -d
-</code></pre>
-<h2 id="docker使用harbor">docker使用harbor</h2>
-<p>Deploy a plain HTTP registry:</p></p>
-                    
-                </li>
-            
-        </ul>
-    </section>
     
     
-        <a href="/page/16/">← Previous</a>
     
     
-        <a href="/page/18/">Next →</a>
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Apr 05, 2018</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    6 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
     
 </div>
 
-        </main>
-    </div>
+</header>
+</article>
+        
+            
+<article class="">
+    <header class="article-header">
+
+    <div class="article-details">
     
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Morgoth. Designed by Canux</p>
-        </div>
+    <header class="article-category">
+        
+            <a href="/categories/cncf/" >
+                CNCF
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/kubernetes/">Kubernetes</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Apr 05, 2018</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    2 minute read
+                </time>
+            </div>
+        
     </footer>
-</body>
+    
+
+    
+</div>
+
+</header>
+</article>
+        
+            
+<article class="">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/cncf/" >
+                CNCF
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/cncf_ns/">Namespace</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Apr 05, 2018</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+</article>
+        
+            
+<article class="">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/cncf/" >
+                CNCF
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/cncf_registry/">Registry</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Apr 05, 2018</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+</article>
+        
+            
+<article class="">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/cncf/" >
+                CNCF
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/swarm/">Swarm</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Apr 05, 2018</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    3 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+</article>
+        
+    </section>
+    <nav class='pagination'>
+        
+        
+
+        
+            
+                    <a class='page-link' href='/'>1</a>
+                
+            
+            
+                    
+                        
+                        <span class='page-link dots'>&hellip;</span>
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    <a class='page-link' href='/page/16/'>16</a>
+                
+            
+            
+                <span class='page-link current'>17</span>
+                
+            
+            
+                    <a class='page-link' href='/page/18/'>18</a>
+                
+            
+            
+                    
+                        
+                        <span class='page-link dots'>&hellip;</span>
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    <a class='page-link' href='/page/56/'>56</a>
+                
+            
+    </nav>
+
+<footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2013 - 
+        
+        2025 Morgoth
+    </section>
+    
+    <section class="powerby">
+        
+            Designed by Canux <br/>
+        
+    </section>
+</footer>
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
 </html>

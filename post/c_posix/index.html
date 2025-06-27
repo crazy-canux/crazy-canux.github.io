@@ -1,143 +1,523 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Posix - Morgoth</title>
-    <meta name="description" content="">
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='POSIX标准 Portable Operating System Interface
+可移植性操作系统接口, POSIX兼容ISO C。
+所有Unix都遵循，几乎所有Linux都遵循，Windows部分支持。
+POSIX.1/IEEE 1003.1-1990
+POSIX.2/IEEE Std 1003.2-1992/ISO IEC 9945-2:1993)
+POSIX.1.b/IEEE Std 1003.1b-1993/ISO IEC 9945-1:1996)
+POSIX.1.c/IEEE Std 1003.1c-1995
+POSIX.1.d/IEEE Std 1003.1c-1999
+POSIX.1.g/IEEE Std 1003.1g-2000
+POSIX.1.j/IEEE Std 1003.1j-2000
+POSIX.1-2001/SUSv3(包括了所有C99的API)
+POSIX.1-2008/SUSv4
+官方网站：
+http://www.opengroup.org/austin/
+Cygwin 提供POSIX的API用于windows上开发Linux/Unix程序。
+源代码不能在windows运行。
+https://cygwin.com/index.html
+POSIX标准定义的必须头文件 &lt;dirent.h&gt; &lt;fcntl.h&gt; &lt;glob.h&gt; &lt;netdb.h&gt; &lt;pwd.h&gt; &lt;regex.h&gt; &lt;tar.h&gt; &lt;termios.h&gt; &lt;unistd.h&gt; &lt;utime.h&gt; &lt;utime.h&gt; &lt;wordexp.h&gt; &lt;arpa/inet.h&gt; &lt;net/if.h&gt; &lt;netinet/in.h&gt; &lt;netinet/tcp.h&gt; &lt;sys/mman.h&gt; &lt;sys/select.h&gt; &lt;sys/socket.h&gt; &lt;sys/stat.h&gt; &lt;sys/times.h&gt; &lt;sys/types.h&gt; &lt;sys/un.h&gt; &lt;sys/utsname.h&gt; &lt;wait.h&gt; POSIX标准定义的可选头文件 &lt;aio.h&gt; &lt;pthread.h&gt; &lt;semaphore.h&gt; &lt;mqueue.h&gt; &lt;sched.h&gt; &lt;spawn.h&gt; &lt;strops.h&gt; &lt;trace.h&gt; POSIX标准定义的XSI扩展头文件 &lt;sys/ipc.h&gt; &lt;sys/msg.h&gt; &lt;sys/sem.h&gt; &lt;sys/shm.h&gt; &lt;cpio.h&gt; &lt;dlfcn.h&gt; &lt;fmtmsg.h&gt; &lt;ftw.h&gt; &lt;iconv.h&gt; &lt;langinfo.h&gt; &lt;libgen.h&gt; &lt;monetary.h&gt; &lt;ndbm.h&gt; &lt;nl_types.h&gt; &lt;poll.h&gt; &lt;search.h&gt; &lt;strings.h&gt; &lt;syslog.h&gt; &lt;ucontext.h&gt; &lt;ulimit.h&gt; &lt;utmpx.h&gt; &lt;sys/resource.h&gt; &lt;sys/statvfs.h&gt; &lt;sys/time.h&gt; &lt;sys/timeb.h&gt; &lt;sys/uio.h&gt;'>
+<title>Posix</title>
+
+<link rel='canonical' href='https://canuxcheng.com/post/c_posix/'>
+
+<link rel="stylesheet" href="/scss/style.min.2d59822570c0be136f2ad87c952ef8788ac2a951067adda1c49b253bff7d0292.css"><meta property='og:title' content='Posix'>
+<meta property='og:description' content='POSIX标准 Portable Operating System Interface
+可移植性操作系统接口, POSIX兼容ISO C。
+所有Unix都遵循，几乎所有Linux都遵循，Windows部分支持。
+POSIX.1/IEEE 1003.1-1990
+POSIX.2/IEEE Std 1003.2-1992/ISO IEC 9945-2:1993)
+POSIX.1.b/IEEE Std 1003.1b-1993/ISO IEC 9945-1:1996)
+POSIX.1.c/IEEE Std 1003.1c-1995
+POSIX.1.d/IEEE Std 1003.1c-1999
+POSIX.1.g/IEEE Std 1003.1g-2000
+POSIX.1.j/IEEE Std 1003.1j-2000
+POSIX.1-2001/SUSv3(包括了所有C99的API)
+POSIX.1-2008/SUSv4
+官方网站：
+http://www.opengroup.org/austin/
+Cygwin 提供POSIX的API用于windows上开发Linux/Unix程序。
+源代码不能在windows运行。
+https://cygwin.com/index.html
+POSIX标准定义的必须头文件 &lt;dirent.h&gt; &lt;fcntl.h&gt; &lt;glob.h&gt; &lt;netdb.h&gt; &lt;pwd.h&gt; &lt;regex.h&gt; &lt;tar.h&gt; &lt;termios.h&gt; &lt;unistd.h&gt; &lt;utime.h&gt; &lt;utime.h&gt; &lt;wordexp.h&gt; &lt;arpa/inet.h&gt; &lt;net/if.h&gt; &lt;netinet/in.h&gt; &lt;netinet/tcp.h&gt; &lt;sys/mman.h&gt; &lt;sys/select.h&gt; &lt;sys/socket.h&gt; &lt;sys/stat.h&gt; &lt;sys/times.h&gt; &lt;sys/types.h&gt; &lt;sys/un.h&gt; &lt;sys/utsname.h&gt; &lt;wait.h&gt; POSIX标准定义的可选头文件 &lt;aio.h&gt; &lt;pthread.h&gt; &lt;semaphore.h&gt; &lt;mqueue.h&gt; &lt;sched.h&gt; &lt;spawn.h&gt; &lt;strops.h&gt; &lt;trace.h&gt; POSIX标准定义的XSI扩展头文件 &lt;sys/ipc.h&gt; &lt;sys/msg.h&gt; &lt;sys/sem.h&gt; &lt;sys/shm.h&gt; &lt;cpio.h&gt; &lt;dlfcn.h&gt; &lt;fmtmsg.h&gt; &lt;ftw.h&gt; &lt;iconv.h&gt; &lt;langinfo.h&gt; &lt;libgen.h&gt; &lt;monetary.h&gt; &lt;ndbm.h&gt; &lt;nl_types.h&gt; &lt;poll.h&gt; &lt;search.h&gt; &lt;strings.h&gt; &lt;syslog.h&gt; &lt;ucontext.h&gt; &lt;ulimit.h&gt; &lt;utmpx.h&gt; &lt;sys/resource.h&gt; &lt;sys/statvfs.h&gt; &lt;sys/time.h&gt; &lt;sys/timeb.h&gt; &lt;sys/uio.h&gt;'>
+<meta property='og:url' content='https://canuxcheng.com/post/c_posix/'>
+<meta property='og:site_name' content='Morgoth'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='posix' /><meta property='article:published_time' content='2016-04-02T11:18:05&#43;00:00'/><meta property='article:modified_time' content='2016-04-02T11:18:05&#43;00:00'/>
+<meta name="twitter:title" content="Posix">
+<meta name="twitter:description" content="POSIX标准 Portable Operating System Interface
+可移植性操作系统接口, POSIX兼容ISO C。
+所有Unix都遵循，几乎所有Linux都遵循，Windows部分支持。
+POSIX.1/IEEE 1003.1-1990
+POSIX.2/IEEE Std 1003.2-1992/ISO IEC 9945-2:1993)
+POSIX.1.b/IEEE Std 1003.1b-1993/ISO IEC 9945-1:1996)
+POSIX.1.c/IEEE Std 1003.1c-1995
+POSIX.1.d/IEEE Std 1003.1c-1999
+POSIX.1.g/IEEE Std 1003.1g-2000
+POSIX.1.j/IEEE Std 1003.1j-2000
+POSIX.1-2001/SUSv3(包括了所有C99的API)
+POSIX.1-2008/SUSv4
+官方网站：
+http://www.opengroup.org/austin/
+Cygwin 提供POSIX的API用于windows上开发Linux/Unix程序。
+源代码不能在windows运行。
+https://cygwin.com/index.html
+POSIX标准定义的必须头文件 &lt;dirent.h&gt; &lt;fcntl.h&gt; &lt;glob.h&gt; &lt;netdb.h&gt; &lt;pwd.h&gt; &lt;regex.h&gt; &lt;tar.h&gt; &lt;termios.h&gt; &lt;unistd.h&gt; &lt;utime.h&gt; &lt;utime.h&gt; &lt;wordexp.h&gt; &lt;arpa/inet.h&gt; &lt;net/if.h&gt; &lt;netinet/in.h&gt; &lt;netinet/tcp.h&gt; &lt;sys/mman.h&gt; &lt;sys/select.h&gt; &lt;sys/socket.h&gt; &lt;sys/stat.h&gt; &lt;sys/times.h&gt; &lt;sys/types.h&gt; &lt;sys/un.h&gt; &lt;sys/utsname.h&gt; &lt;wait.h&gt; POSIX标准定义的可选头文件 &lt;aio.h&gt; &lt;pthread.h&gt; &lt;semaphore.h&gt; &lt;mqueue.h&gt; &lt;sched.h&gt; &lt;spawn.h&gt; &lt;strops.h&gt; &lt;trace.h&gt; POSIX标准定义的XSI扩展头文件 &lt;sys/ipc.h&gt; &lt;sys/msg.h&gt; &lt;sys/sem.h&gt; &lt;sys/shm.h&gt; &lt;cpio.h&gt; &lt;dlfcn.h&gt; &lt;fmtmsg.h&gt; &lt;ftw.h&gt; &lt;iconv.h&gt; &lt;langinfo.h&gt; &lt;libgen.h&gt; &lt;monetary.h&gt; &lt;ndbm.h&gt; &lt;nl_types.h&gt; &lt;poll.h&gt; &lt;search.h&gt; &lt;strings.h&gt; &lt;syslog.h&gt; &lt;ucontext.h&gt; &lt;ulimit.h&gt; &lt;utmpx.h&gt; &lt;sys/resource.h&gt; &lt;sys/statvfs.h&gt; &lt;sys/time.h&gt; &lt;sys/timeb.h&gt; &lt;sys/uio.h&gt;">
+    <link rel="shortcut icon" href="favicon.ico" />
+<style>
+    :root {
+        --article-font-family: "Merriweather", var(--base-font-family);
+    }
+</style>
+
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap";
     
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
     
-    <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    
-    
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #f5f5f5;
-            color: #333;
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
         }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        header {
-            background: #fff;
-            padding: 1rem 0;
-            border-bottom: 1px solid #ddd;
-            margin-bottom: 2rem;
-        }
-        nav {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-        }
-        nav a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-        }
-        nav a:hover {
-            color: #007acc;
-        }
-        .site-title {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #007acc;
-        }
-        main {
-            background: #fff;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        .post-meta {
-            color: #666;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-        .post-content h1, .post-content h2, .post-content h3 {
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-        }
-        .post-list {
-            list-style: none;
-            padding: 0;
-        }
-        .post-list li {
-            margin-bottom: 1.5rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid #eee;
-        }
-        .post-list h2 {
-            margin: 0 0 0.5rem 0;
-        }
-        .post-list h2 a {
-            text-decoration: none;
-            color: #333;
-        }
-        .post-list h2 a:hover {
-            color: #007acc;
-        }
-        footer {
-            text-align: center;
-            padding: 2rem 0;
-            color: #666;
-            border-top: 1px solid #ddd;
-            margin-top: 2rem;
-        }
-    </style>
-</head>
-<body>
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
     <header>
-        <div class="container">
-            <nav>
-                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
                 
-                    <a href="/">Home</a>
+                    
+                    
+                    
+                        
+                        <img src="/img/home_hu_ee27fe234e3b32c2.jpg" width="300"
+                            height="400" class="site-logo" loading="lazy" alt="Avatar">
+                    
                 
-                    <a href="/about/">About</a>
+                </a>
                 
-                    <a href="/categories/">Categories</a>
+                    <span class="emoji">🍥</span>
                 
-                    <a href="/tags/">Tags</a>
-                
-                    <a href="/rtfm/">RTFM</a>
-                
-                    <a href="/samuel/">Samuel</a>
-                
-            </nav>
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Morgoth</a></h1>
+            <h2 class="site-description">Hello World!</h2>
         </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='mailto:canuxcheng@163.com'
+                        target="_blank"
+                        title="E-mail"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-messages" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M21 14l-3 -3h-7a1 1 0 0 1 -1 -1v-6a1 1 0 0 1 1 -1h9a1 1 0 0 1 1 1v10" />
+  <path d="M14 15v2a1 1 0 0 1 -1 1h-7l-3 3v-10a1 1 0 0 1 1 -1h2" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/crazy-canux'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/categories/' target="_blank">
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                
+                <span>Categories</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tags/' target="_blank">
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+                
+                <span>Tags</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/rtfm/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                
+                <span>RTFM</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/samuel/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-infinity" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M9.828 9.172a4 4 0 1 0 0 5.656 a10 10 0 0 0 2.172 -2.828a10 10 0 0 1 2.172 -2.828 a4 4 0 1 1 0 5.656a10 10 0 0 1 -2.172 -2.828a10 10 0 0 0 -2.172 -2.828" />
+</svg>
+
+
+
+                
+                <span>Samuel</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https://canuxcheng.com/" selected></option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#direnth">&lt;dirent.h&gt;</a></li>
+    <li><a href="#fcntlh">&lt;fcntl.h&gt;</a></li>
+    <li><a href="#globh">&lt;glob.h&gt;</a></li>
+    <li><a href="#netdbh">&lt;netdb.h&gt;</a></li>
+    <li><a href="#pwdh">&lt;pwd.h&gt;</a></li>
+    <li><a href="#regexh">&lt;regex.h&gt;</a></li>
+    <li><a href="#tarh">&lt;tar.h&gt;</a></li>
+    <li><a href="#termiosh">&lt;termios.h&gt;</a></li>
+    <li><a href="#unistdh">&lt;unistd.h&gt;</a></li>
+    <li><a href="#utimeh">&lt;utime.h&gt;</a></li>
+    <li><a href="#utimeh-1">&lt;utime.h&gt;</a></li>
+    <li><a href="#wordexph">&lt;wordexp.h&gt;</a></li>
+    <li><a href="#arpaineth">&lt;arpa/inet.h&gt;</a></li>
+    <li><a href="#netifh">&lt;net/if.h&gt;</a></li>
+    <li><a href="#netinetinh">&lt;netinet/in.h&gt;</a></li>
+    <li><a href="#netinettcph">&lt;netinet/tcp.h&gt;</a></li>
+    <li><a href="#sysmmanh">&lt;sys/mman.h&gt;</a></li>
+    <li><a href="#sysselecth">&lt;sys/select.h&gt;</a></li>
+    <li><a href="#syssocketh">&lt;sys/socket.h&gt;</a></li>
+    <li><a href="#sysstath">&lt;sys/stat.h&gt;</a></li>
+    <li><a href="#systimesh">&lt;sys/times.h&gt;</a></li>
+    <li><a href="#systypesh">&lt;sys/types.h&gt;</a></li>
+    <li><a href="#sysunh">&lt;sys/un.h&gt;</a></li>
+    <li><a href="#sysutsnameh">&lt;sys/utsname.h&gt;</a></li>
+    <li><a href="#waith">&lt;wait.h&gt;</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#aioh">&lt;aio.h&gt;</a></li>
+    <li><a href="#pthreadh">&lt;pthread.h&gt;</a></li>
+    <li><a href="#semaphoreh">&lt;semaphore.h&gt;</a></li>
+    <li><a href="#mqueueh">&lt;mqueue.h&gt;</a></li>
+    <li><a href="#schedh">&lt;sched.h&gt;</a></li>
+    <li><a href="#spawnh">&lt;spawn.h&gt;</a></li>
+    <li><a href="#stropsh">&lt;strops.h&gt;</a></li>
+    <li><a href="#traceh">&lt;trace.h&gt;</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#sysipch">&lt;sys/ipc.h&gt;</a></li>
+    <li><a href="#sysmsgh">&lt;sys/msg.h&gt;</a></li>
+    <li><a href="#syssemh">&lt;sys/sem.h&gt;</a></li>
+    <li><a href="#sysshmh">&lt;sys/shm.h&gt;</a></li>
+    <li><a href="#cpioh">&lt;cpio.h&gt;</a></li>
+    <li><a href="#dlfcnh">&lt;dlfcn.h&gt;</a></li>
+    <li><a href="#fmtmsgh">&lt;fmtmsg.h&gt;</a></li>
+    <li><a href="#ftwh">&lt;ftw.h&gt;</a></li>
+    <li><a href="#iconvh">&lt;iconv.h&gt;</a></li>
+    <li><a href="#langinfoh">&lt;langinfo.h&gt;</a></li>
+    <li><a href="#libgenh">&lt;libgen.h&gt;</a></li>
+    <li><a href="#monetaryh">&lt;monetary.h&gt;</a></li>
+    <li><a href="#ndbmh">&lt;ndbm.h&gt;</a></li>
+    <li><a href="#nl_typesh">&lt;nl_types.h&gt;</a></li>
+    <li><a href="#pollh">&lt;poll.h&gt;</a></li>
+    <li><a href="#searchh">&lt;search.h&gt;</a></li>
+    <li><a href="#stringsh">&lt;strings.h&gt;</a></li>
+    <li><a href="#syslogh">&lt;syslog.h&gt;</a></li>
+    <li><a href="#ucontexth">&lt;ucontext.h&gt;</a></li>
+    <li><a href="#ulimith">&lt;ulimit.h&gt;</a></li>
+    <li><a href="#utmpxh">&lt;utmpx.h&gt;</a></li>
+    <li><a href="#sysresourceh">&lt;sys/resource.h&gt;</a></li>
+    <li><a href="#sysstatvfsh">&lt;sys/statvfs.h&gt;</a></li>
+    <li><a href="#systimeh">&lt;sys/time.h&gt;</a></li>
+    <li><a href="#systimebh">&lt;sys/timeb.h&gt;</a></li>
+    <li><a href="#sysuioh">&lt;sys/uio.h&gt;</a></li>
+  </ul>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/c/" >
+                C
+            </a>
+        
     </header>
     
-    <div class="container">
-        <main>
-            
-<div class="single-post">
-    <article>
-        <header>
-            <h1>Posix</h1>
-            <div class="post-meta">
-                <time>April 2, 2016</time>
-                
-                    
-                        <span class="category">C</span>
-                    
-                
-                
-                    
-                        <span class="tag">#posix</span>
-                    
-                
-            </div>
-        </header>
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/c_posix/">Posix</a>
+        </h2>
+    
         
-        <div class="post-content">
-            <h1 id="posix标准">POSIX标准</h1>
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Apr 02, 2016</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="posix标准">POSIX标准</h1>
 <p>Portable Operating System Interface</p>
 <p>可移植性操作系统接口, POSIX兼容ISO C。</p>
 <p>所有Unix都遵循，几乎所有Linux都遵循，Windows部分支持。</p>
@@ -151,11 +531,13 @@
 <p>POSIX.1-2001/SUSv3(包括了所有C99的API)</p>
 <p>POSIX.1-2008/SUSv4</p>
 <p>官方网站：</p>
-<p><a href="http://www.opengroup.org/austin/">http://www.opengroup.org/austin/</a></p>
+<p><a class="link" href="http://www.opengroup.org/austin/"  target="_blank" rel="noopener"
+    >http://www.opengroup.org/austin/</a></p>
 <h1 id="cygwin">Cygwin</h1>
 <p>提供POSIX的API用于windows上开发Linux/Unix程序。</p>
 <p>源代码不能在windows运行。</p>
-<p><a href="https://cygwin.com/index.html">https://cygwin.com/index.html</a></p>
+<p><a class="link" href="https://cygwin.com/index.html"  target="_blank" rel="noopener"
+    >https://cygwin.com/index.html</a></p>
 <hr>
 <h1 id="posix标准定义的必须头文件">POSIX标准定义的必须头文件</h1>
 <h2 id="direnth">&lt;dirent.h&gt;</h2>
@@ -222,17 +604,201 @@
 <h2 id="systimebh">&lt;sys/timeb.h&gt;</h2>
 <h2 id="sysuioh">&lt;sys/uio.h&gt;</h2>
 
-        </div>
-    </article>
-</div>
+</section>
 
-        </main>
-    </div>
+
+    <footer class="article-footer">
     
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Morgoth. Designed by Canux</p>
-        </div>
+    <section class="article-tags">
+        
+            <a href="/tags/posix/">Posix</a>
+        
+    </section>
+
+
     </footer>
-</body>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    <div id="gitalk-container"></div>
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.18.0/js/md5.min.js"></script>
+<script>
+    const gitalk = new Gitalk({
+        clientID: "3d41a2a237fabe050cc0",
+        clientSecret: "868aa81b294f1463ddb6edc007576ecfed7d2075",
+        repo: "crazy-canux.github.io",
+        owner: "crazy-canux",
+        admin: ["crazy-canux"],
+        distractionFreeMode: false, 
+        id: md5(location.pathname), 
+    });
+    (function () {
+        if (
+            ["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1
+        ) {
+            document.getElementById("gitalk-container").innerHTML =
+                "Gitalk comments not available by default when the website is previewed locally.";
+            return;
+        }
+        gitalk.render("gitalk-container");
+    })();
+</script>
+
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2013 - 
+        
+        2025 Morgoth
+    </section>
+    
+    <section class="powerby">
+        
+            Designed by Canux <br/>
+        
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
 </html>

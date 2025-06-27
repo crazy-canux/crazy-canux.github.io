@@ -1,19 +1,112 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Dragonfly on Morgoth</title>
-    <link>https://canuxcheng.com/tags/dragonfly/</link>
-    <description>Recent content in Dragonfly on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Thu, 05 Apr 2018 22:02:31 +0000</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/dragonfly/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Registry</title>
-      <link>https://canuxcheng.com/post/cncf_registry/</link>
-      <pubDate>Thu, 05 Apr 2018 22:02:31 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/cncf_registry/</guid>
-      <description>&lt;h1 id=&#34;container-registry&#34;&gt;Container Registry&lt;/h1&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Docker Hub Registry&lt;/li&gt;&#xA;&lt;li&gt;Google Container Registry (gcr.io)&lt;/li&gt;&#xA;&lt;li&gt;RedHat Quay Registry (quay.io)&lt;/li&gt;&#xA;&lt;li&gt;GitHub Docker Packages (docker.pkg.github.com)(Deprecated)&lt;/li&gt;&#xA;&lt;li&gt;GitHub Container Registry (ghcr.io)&lt;/li&gt;&#xA;&lt;li&gt;Kubernetes Registry(registry.k8s.io =&amp;gt; k8s.gcr.io)&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;harbor&#34;&gt;Harbor&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/goharbor/harbor&#34;&gt;https://github.com/goharbor/harbor&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;Habor是由VMWare中国团队开源的容器镜像仓库, 用于存储和分发docker镜像的registry服务器.&lt;/p&gt;&#xA;&lt;p&gt;安装步骤:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;下载并解压安装包, &lt;a href=&#34;https://github.com/goharbor/harbor/releases&#34;&gt;https://github.com/goharbor/harbor/releases&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;配置harbor.cfg;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;修改配置:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;vim harbor.yml&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;运行安装程序:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;./install.sh --with-notary --with-clair --with-chartmuseum&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;修改web的port:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ vim /data/harbor/docker-compose.yml&#xA;proxy:&#xA;  ports:&#xA;    - 8080:80 # 默认http是80&#xA;    - 4433:443 # 默认https是443&#xA;$ vim /data/harbor/harbor.yml&#xA;hostname = ip&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;管理harbor:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;# cd /data/harbor&#xA;# docker-compose down -v 　停止并删除container&#xA;&#xA;&amp;gt; 更新配置&#xA;# ./prepare --with-notary --with-clair --with-chartmuseum&#xA;&#xA;&amp;gt; 启动&#xA;# docker-compose up -d&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;docker使用harbor&#34;&gt;docker使用harbor&lt;/h2&gt;&#xA;&lt;p&gt;Deploy a plain HTTP registry:&lt;/p&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Dragonfly on Morgoth</title>
+        <link>https://canuxcheng.com/tags/dragonfly/</link>
+        <description>Recent content in Dragonfly on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Thu, 05 Apr 2018 22:02:31 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/dragonfly/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Registry</title>
+        <link>https://canuxcheng.com/post/cncf_registry/</link>
+        <pubDate>Thu, 05 Apr 2018 22:02:31 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/cncf_registry/</guid>
+        <description>&lt;h1 id=&#34;container-registry&#34;&gt;Container Registry&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Docker Hub Registry&lt;/li&gt;
+&lt;li&gt;Google Container Registry (gcr.io)&lt;/li&gt;
+&lt;li&gt;RedHat Quay Registry (quay.io)&lt;/li&gt;
+&lt;li&gt;GitHub Docker Packages (docker.pkg.github.com)(Deprecated)&lt;/li&gt;
+&lt;li&gt;GitHub Container Registry (ghcr.io)&lt;/li&gt;
+&lt;li&gt;Kubernetes Registry(registry.k8s.io =&amp;gt; k8s.gcr.io)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;harbor&#34;&gt;Harbor&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/goharbor/harbor&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/goharbor/harbor&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Habor是由VMWare中国团队开源的容器镜像仓库, 用于存储和分发docker镜像的registry服务器.&lt;/p&gt;
+&lt;p&gt;安装步骤:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;下载并解压安装包, &lt;a class=&#34;link&#34; href=&#34;https://github.com/goharbor/harbor/releases&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/goharbor/harbor/releases&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;配置harbor.cfg;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;修改配置:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;vim harbor.yml
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;运行安装程序:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;./install.sh --with-notary --with-clair --with-chartmuseum
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;修改web的port:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ vim /data/harbor/docker-compose.yml
+proxy:
+  ports:
+    - 8080:80 # 默认http是80
+    - 4433:443 # 默认https是443
+$ vim /data/harbor/harbor.yml
+hostname = ip
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;管理harbor:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# cd /data/harbor
+# docker-compose down -v 　停止并删除container
+
+&amp;gt; 更新配置
+# ./prepare --with-notary --with-clair --with-chartmuseum
+
+&amp;gt; 启动
+# docker-compose up -d
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;docker使用harbor&#34;&gt;docker使用harbor&lt;/h2&gt;
+&lt;p&gt;Deploy a plain HTTP registry:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# vim /etc/docker/daemon.json
+{  &amp;quot;insecure-registries&amp;quot; : [&amp;quot;myregistrydomain.com:5000&amp;quot;]}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Use self-signed certificates:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# cp your-ca /etc/docker/certs.d/harbor.domain.com/ca.crt
+# vim /lib/systemd/system/docker.service
+ExecStart=/usr/bin/dockerd --insecure-registry harbor.domain.com:port
+# systemctl daemon-reload
+# systemctl restart docker
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;update hosts on docker client:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# vim /etc/hosts ip harbor.domain.com
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;create user account:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;https://&amp;lt;ip:port&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;push images to harbor:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ docker login harbor.domain.com:port
+$ docker tag SOURCE_IMAGE[:TAG] harbor.domain.com:port/&amp;lt;project&amp;gt;/IMAGE[:TAG]
+$ docker push harbor.domain.com:port/&amp;lt;project&amp;gt;/IMAGE[:TAG]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;pull images from harbor:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ docker login harbor.domain.com:port
+$ docker pull harbor.domain.com:port/&amp;lt;project&amp;gt;/IMAGE[:TAG]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;k8s使用harbor:&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;修改存储路径&#34;&gt;修改存储路径&lt;/h2&gt;
+&lt;p&gt;默认路径是/data/registry&lt;/p&gt;
+&lt;p&gt;停服务:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ docker-compose down -v
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;修改路径:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ mv /data/* /new/path
+$ vim /new/path/harbor/harbor.yml
+data_volume: /new/path
+
+$ vim /new/path/harbor/docker-compose.yml
+/data =&amp;gt; /new/path
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;启动服务:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ cd /new/path
+$ docker-compose up -d
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;artifactory&#34;&gt;Artifactory&lt;/h2&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

@@ -1,19 +1,195 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Markdown on Morgoth</title>
-    <link>https://canuxcheng.com/tags/markdown/</link>
-    <description>Recent content in Markdown on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Mon, 28 Mar 2016 22:03:15 +0000</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/markdown/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Markdown</title>
-      <link>https://canuxcheng.com/post/markdown/</link>
-      <pubDate>Mon, 28 Mar 2016 22:03:15 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/markdown/</guid>
-      <description>&lt;h1 id=&#34;markdown&#34;&gt;Markdown&lt;/h1&gt;&#xA;&lt;h2 id=&#34;markdown简介&#34;&gt;Markdown简介&lt;/h2&gt;&#xA;&lt;p&gt;Markdown是一种轻量级文本标记语言, Markdown的目标是实现易读易写。&#xA;Markdown和html有很大区别，html是一种发布格式，markdown是一种书写格式。&lt;/p&gt;&#xA;&lt;p&gt;Markdown 中文手册：&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://wowubuntu.com/markdown/index.html&#34;&gt;http://wowubuntu.com/markdown/index.html&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;Markdown 英文手册：&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://daringfireball.net/projects/markdown/syntax&#34;&gt;http://daringfireball.net/projects/markdown/syntax&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;Markdown文件的扩展名是md。&lt;/p&gt;&#xA;&lt;h2 id=&#34;两个需要特殊处理的字符&#34;&gt;两个需要特殊处理的字符&lt;/h2&gt;&#xA;&lt;p&gt;&amp;lt; 的表示方法：&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;&amp;amp; l t ;&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;p&gt;&amp;amp; 的表示方法：&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;&amp;amp; a m p ;&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;区块元素&#34;&gt;区块元素&lt;/h1&gt;&#xA;&lt;h2 id=&#34;段落和换行&#34;&gt;段落和换行&lt;/h2&gt;&#xA;&lt;p&gt;段落前后要有一个或以上的空行（空格或制表符都可以）。&lt;/p&gt;&#xA;&lt;h2 id=&#34;标题&#34;&gt;标题&lt;/h2&gt;&#xA;&lt;p&gt;markdown支持两个语法格式的标题&lt;/p&gt;&#xA;&lt;h3 id=&#34;setext格式&#34;&gt;setext格式&lt;/h3&gt;&#xA;&lt;p&gt;任意个数下等号=表示大标题:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;Title&#xA;======&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;任意个数下减号表示副标题：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;Subtitle&#xA;--------&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h3 id=&#34;atx格式&#34;&gt;atx格式&lt;/h3&gt;&#xA;&lt;p&gt;一到六个#表示一到六阶标题,#后面有空格&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;# 一阶标题&#xA;&#xA;## 二阶标题&#xA;&#xA;### 三阶标题&#xA;&#xA;#### 四阶标题&#xA;&#xA;##### 五阶标题&#xA;&#xA;###### 六阶标题&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;区块引用&#34;&gt;区块引用&lt;/h2&gt;&#xA;&lt;p&gt;使用&amp;gt;表示单层区块引用：&lt;/p&gt;&#xA;&lt;p&gt;&amp;gt; block&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;block&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;p&gt;使用多个&amp;gt;嵌套使用：&lt;/p&gt;&#xA;&lt;p&gt;&amp;gt;&amp;gt; block&lt;/p&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;block&lt;/p&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;&#xA;&lt;p&gt;区块内也可以用标题，列表和代码区块等。&lt;/p&gt;&#xA;&lt;h2 id=&#34;列表&#34;&gt;列表&lt;/h2&gt;&#xA;&lt;h3 id=&#34;无序列表&#34;&gt;无序列表&lt;/h3&gt;&#xA;&lt;p&gt;无序列表使用星号、加号或是减号作为列表标记,符号和字符之间有空格：&lt;/p&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Markdown on Morgoth</title>
+        <link>https://canuxcheng.com/tags/markdown/</link>
+        <description>Recent content in Markdown on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Mon, 28 Mar 2016 22:03:15 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/markdown/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Markdown</title>
+        <link>https://canuxcheng.com/post/markdown/</link>
+        <pubDate>Mon, 28 Mar 2016 22:03:15 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/markdown/</guid>
+        <description>&lt;h1 id=&#34;markdown&#34;&gt;Markdown&lt;/h1&gt;
+&lt;h2 id=&#34;markdown简介&#34;&gt;Markdown简介&lt;/h2&gt;
+&lt;p&gt;Markdown是一种轻量级文本标记语言, Markdown的目标是实现易读易写。
+Markdown和html有很大区别，html是一种发布格式，markdown是一种书写格式。&lt;/p&gt;
+&lt;p&gt;Markdown 中文手册：&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://wowubuntu.com/markdown/index.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://wowubuntu.com/markdown/index.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Markdown 英文手册：&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://daringfireball.net/projects/markdown/syntax&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://daringfireball.net/projects/markdown/syntax&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Markdown文件的扩展名是md。&lt;/p&gt;
+&lt;h2 id=&#34;两个需要特殊处理的字符&#34;&gt;两个需要特殊处理的字符&lt;/h2&gt;
+&lt;p&gt;&amp;lt; 的表示方法：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&amp;amp; l t ;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;&amp;amp; 的表示方法：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&amp;amp; a m p ;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;区块元素&#34;&gt;区块元素&lt;/h1&gt;
+&lt;h2 id=&#34;段落和换行&#34;&gt;段落和换行&lt;/h2&gt;
+&lt;p&gt;段落前后要有一个或以上的空行（空格或制表符都可以）。&lt;/p&gt;
+&lt;h2 id=&#34;标题&#34;&gt;标题&lt;/h2&gt;
+&lt;p&gt;markdown支持两个语法格式的标题&lt;/p&gt;
+&lt;h3 id=&#34;setext格式&#34;&gt;setext格式&lt;/h3&gt;
+&lt;p&gt;任意个数下等号=表示大标题:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Title
+======
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;任意个数下减号表示副标题：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Subtitle
+--------
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;atx格式&#34;&gt;atx格式&lt;/h3&gt;
+&lt;p&gt;一到六个#表示一到六阶标题,#后面有空格&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 一阶标题
+
+## 二阶标题
+
+### 三阶标题
+
+#### 四阶标题
+
+##### 五阶标题
+
+###### 六阶标题
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;区块引用&#34;&gt;区块引用&lt;/h2&gt;
+&lt;p&gt;使用&amp;gt;表示单层区块引用：&lt;/p&gt;
+&lt;p&gt;&amp;gt; block&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;block&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;使用多个&amp;gt;嵌套使用：&lt;/p&gt;
+&lt;p&gt;&amp;gt;&amp;gt; block&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;block&lt;/p&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;
+&lt;p&gt;区块内也可以用标题，列表和代码区块等。&lt;/p&gt;
+&lt;h2 id=&#34;列表&#34;&gt;列表&lt;/h2&gt;
+&lt;h3 id=&#34;无序列表&#34;&gt;无序列表&lt;/h3&gt;
+&lt;p&gt;无序列表使用星号、加号或是减号作为列表标记,符号和字符之间有空格：&lt;/p&gt;
+&lt;p&gt;* shopping list&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;shopping list&lt;/li&gt;
+&lt;/ul&gt;&lt;/blockquote&gt;
+&lt;p&gt;+ shoppint list&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;shopping list&lt;/li&gt;
+&lt;/ul&gt;&lt;/blockquote&gt;
+&lt;p&gt;- shopping list&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;ul&gt;
+&lt;li&gt;shopping list&lt;/li&gt;
+&lt;/ul&gt;&lt;/blockquote&gt;
+&lt;h3 id=&#34;有序列表&#34;&gt;有序列表&lt;/h3&gt;
+&lt;p&gt;有序列表使用数字和一个英文句点,符号和字符之间有空格：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;numbered list&lt;/li&gt;
+&lt;/ol&gt;
+&lt;blockquote&gt;
+&lt;ol&gt;
+&lt;li&gt;numbered list&lt;/li&gt;
+&lt;/ol&gt;&lt;/blockquote&gt;
+&lt;h2 id=&#34;代码区块&#34;&gt;代码区块&lt;/h2&gt;
+&lt;p&gt;简单地缩进 4 个空格或是 1 个制表符,一个代码区块会一直持续到没有缩进的那一行或是文件结尾。&lt;/p&gt;
+&lt;p&gt;这是一个普通段落：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;这是一个代码区块。
+    缩进
+代码区块结束。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;分割线&#34;&gt;分割线&lt;/h2&gt;
+&lt;p&gt;三个以上的*-_都可以产生分割线:&lt;/p&gt;
+&lt;p&gt;***&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;hr&gt;&lt;/blockquote&gt;
+&lt;p&gt;---&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;hr&gt;&lt;/blockquote&gt;
+&lt;p&gt;___&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;hr&gt;&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;区段元素&#34;&gt;区段元素&lt;/h1&gt;
+&lt;h2 id=&#34;链接&#34;&gt;链接&lt;/h2&gt;
+&lt;h3 id=&#34;行内式链接&#34;&gt;行内式链接&lt;/h3&gt;
+&lt;p&gt;[Link](&lt;a class=&#34;link&#34; href=&#34;https://github.com/crazy-canux&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/crazy-canux&lt;/a&gt;)&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/crazy-canux&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;Link&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h3 id=&#34;参考式链接&#34;&gt;参考式链接&lt;/h3&gt;
+&lt;p&gt;[Link][id]&lt;/p&gt;
+&lt;p&gt;[id]:https://github.com/crazy-canux&lt;/p&gt;
+&lt;h3 id=&#34;自动链接&#34;&gt;自动链接&lt;/h3&gt;
+&lt;p&gt;网址:&lt;/p&gt;
+&lt;p&gt;&amp;lt;https://github.com/crazy-canux&amp;gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/crazy-canux&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/crazy-canux&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;邮箱：&lt;/p&gt;
+&lt;p&gt;&amp;lt;canuxcheng@gmail.com&amp;gt;&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;mailto:canuxcheng@gmail.com&#34; &gt;canuxcheng@gmail.com&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h2 id=&#34;强调&#34;&gt;强调&lt;/h2&gt;
+&lt;p&gt;用一个*或_表示强调，符号和字符中间没有空格&lt;/p&gt;
+&lt;p&gt;斜体：*italic*&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;italic&lt;/em&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;斜体： _italic_&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;italic&lt;/em&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;粗体： **bold**&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;bold&lt;/strong&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;粗体： __bold__&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;bold&lt;/strong&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h2 id=&#34;代码&#34;&gt;代码&lt;/h2&gt;
+&lt;p&gt;用反引号标记一小段代码：&lt;/p&gt;
+&lt;p&gt;`monospace`&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;code&gt;monospace&lt;/code&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h2 id=&#34;图片&#34;&gt;图片&lt;/h2&gt;
+&lt;h3 id=&#34;行内式图片&#34;&gt;行内式图片&lt;/h3&gt;
+&lt;p&gt;![pic](/path/to/img.jpg)&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;img src=&#34;https://canuxcheng.com/path/to/img.jpg&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Pic&#34;
+	
+	
+&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h3 id=&#34;参考式图片&#34;&gt;参考式图片&lt;/h3&gt;
+&lt;p&gt;![pic][id]&lt;/p&gt;
+&lt;p&gt;[id]: /path/to/img.jpg&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;反斜线&#34;&gt;反斜线&lt;/h1&gt;
+&lt;p&gt;用反斜线\来转移字符&lt;/p&gt;
+&lt;p&gt;\   反斜线&lt;/p&gt;
+&lt;p&gt;`   反引号&lt;/p&gt;
+&lt;p&gt;*   星号&lt;/p&gt;
+&lt;p&gt;_   底线&lt;/p&gt;
+&lt;p&gt;{}  花括号&lt;/p&gt;
+&lt;p&gt;[]  方括号&lt;/p&gt;
+&lt;p&gt;()  括弧&lt;/p&gt;
+&lt;p&gt;#   井字号&lt;/p&gt;
+&lt;p&gt;+   加号&lt;/p&gt;
+&lt;p&gt;-   减号&lt;/p&gt;
+&lt;p&gt;.   英文句点&lt;/p&gt;
+&lt;p&gt;!   惊叹号&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

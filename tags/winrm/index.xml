@@ -1,19 +1,76 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Winrm on Morgoth</title>
-    <link>https://canuxcheng.com/tags/winrm/</link>
-    <description>Recent content in Winrm on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sun, 17 Jul 2016 08:36:36 +0000</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/winrm/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>WinRM</title>
-      <link>https://canuxcheng.com/post/win_winrm/</link>
-      <pubDate>Sun, 17 Jul 2016 08:36:36 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/win_winrm/</guid>
-      <description>&lt;h1 id=&#34;winrm&#34;&gt;WinRM&lt;/h1&gt;&#xA;&lt;p&gt;Windows Remote Management&lt;/p&gt;&#xA;&lt;p&gt;WinRM是WSMAN(WS-Management Protocol)的增强版。&lt;/p&gt;&#xA;&lt;p&gt;WinRM是基于SOAP的防火墙友好的远程协议。&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://msdn.microsoft.com/en-us/library/aa384426(v=vs.85).aspx&#34;&gt;https://msdn.microsoft.com/en-us/library/aa384426(v=vs.85).aspx&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;WinRM设置:&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://msdn.microsoft.com/en-us/library/aa384372(v=vs.85).aspx&#34;&gt;https://msdn.microsoft.com/en-us/library/aa384372(v=vs.85).aspx&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;检查winrm所有配置：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;cmd&amp;gt; winrm get winrm/config&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;快速设置winrm：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;cmd&amp;gt; winrm quickconfig&#xA;cmd&amp;gt; winrm quickconfig -transport:https&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;查看listener配置：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;cmd&amp;gt; winrm enumerate winrm/config/listener&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;WinRM配置包括监听设置,协议设置,Client,Service和Winrs四部分.&lt;/p&gt;&#xA;&lt;p&gt;windows的三种网络安全协议。&lt;/p&gt;&#xA;&lt;p&gt;Basic是基本的明文协议, NTLM是早期的安全协议,Kerberos是最新的安全协议.&lt;/p&gt;&#xA;&lt;h1 id=&#34;service权限管理&#34;&gt;service权限管理&lt;/h1&gt;&#xA;&lt;p&gt;查看service的auth配置：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;cmd&amp;gt; winrm get winrm/config/service/auth&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;service只有Negotiate和Kerberos是默认开启的:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;Basic = false&#xA;Kerberos = true&#xA;Negotiate = true&#xA;Certificate = false&#xA;CredSSP = false&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;Negotiate对domain用户选择kerberos,对local用户选择NTLM.&lt;/p&gt;&#xA;&lt;p&gt;设置service的Basic和Certificate和CredSSP(默认关闭)：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;#cmd&amp;gt; winrm set winrm/config/service/auth @{Basic=&amp;quot;true&amp;quot;}&#xA;#cmd&amp;gt; winrm set winrm/config/service/auth @{Certificate=&amp;quot;true&amp;quot;}&#xA;#cmd&amp;gt; winrm set winrm/config/service/auth @{CredSSP=&amp;quot;true&amp;quot;}&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;设置是否允许不加密：&lt;/p&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Winrm on Morgoth</title>
+        <link>https://canuxcheng.com/tags/winrm/</link>
+        <description>Recent content in Winrm on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Sun, 17 Jul 2016 08:36:36 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/winrm/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>WinRM</title>
+        <link>https://canuxcheng.com/post/win_winrm/</link>
+        <pubDate>Sun, 17 Jul 2016 08:36:36 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/win_winrm/</guid>
+        <description>&lt;h1 id=&#34;winrm&#34;&gt;WinRM&lt;/h1&gt;
+&lt;p&gt;Windows Remote Management&lt;/p&gt;
+&lt;p&gt;WinRM是WSMAN(WS-Management Protocol)的增强版。&lt;/p&gt;
+&lt;p&gt;WinRM是基于SOAP的防火墙友好的远程协议。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://msdn.microsoft.com/en-us/library/aa384426%28v=vs.85%29.aspx&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://msdn.microsoft.com/en-us/library/aa384426(v=vs.85).aspx&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;WinRM设置:&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://msdn.microsoft.com/en-us/library/aa384372%28v=vs.85%29.aspx&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://msdn.microsoft.com/en-us/library/aa384372(v=vs.85).aspx&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;检查winrm所有配置：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;cmd&amp;gt; winrm get winrm/config
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;快速设置winrm：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;cmd&amp;gt; winrm quickconfig
+cmd&amp;gt; winrm quickconfig -transport:https
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看listener配置：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;cmd&amp;gt; winrm enumerate winrm/config/listener
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;WinRM配置包括监听设置,协议设置,Client,Service和Winrs四部分.&lt;/p&gt;
+&lt;p&gt;windows的三种网络安全协议。&lt;/p&gt;
+&lt;p&gt;Basic是基本的明文协议, NTLM是早期的安全协议,Kerberos是最新的安全协议.&lt;/p&gt;
+&lt;h1 id=&#34;service权限管理&#34;&gt;service权限管理&lt;/h1&gt;
+&lt;p&gt;查看service的auth配置：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;cmd&amp;gt; winrm get winrm/config/service/auth
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;service只有Negotiate和Kerberos是默认开启的:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Basic = false
+Kerberos = true
+Negotiate = true
+Certificate = false
+CredSSP = false
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Negotiate对domain用户选择kerberos,对local用户选择NTLM.&lt;/p&gt;
+&lt;p&gt;设置service的Basic和Certificate和CredSSP(默认关闭)：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#cmd&amp;gt; winrm set winrm/config/service/auth @{Basic=&amp;quot;true&amp;quot;}
+#cmd&amp;gt; winrm set winrm/config/service/auth @{Certificate=&amp;quot;true&amp;quot;}
+#cmd&amp;gt; winrm set winrm/config/service/auth @{CredSSP=&amp;quot;true&amp;quot;}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;设置是否允许不加密：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#cmd&amp;gt; winrm set winrm/config/service @{AllowUnencrypted=&amp;quot;true&amp;quot;}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;client权限管理&#34;&gt;client权限管理&lt;/h1&gt;
+&lt;p&gt;查看client的auth配置：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;cmd&amp;gt; winrm get winrm/config/client/auth
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;设置client的CredSSP(默认关闭),其它默认都是开启：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#cmd&amp;gt; winrm set winrm/config/client/auth @{CredSSP=&amp;quot;true&amp;quot;}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;设置client的trustedhosts:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#cmd&amp;gt; winrm set winrm/config/client @{TrustedHosts=&amp;quot;*&amp;quot;}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;winrs&#34;&gt;Winrs&lt;/h1&gt;
+&lt;p&gt;winrs是winrm的客户端．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$winrs -r:http://&amp;lt;ip-address&amp;gt; -u:domain/user -p:pass command
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

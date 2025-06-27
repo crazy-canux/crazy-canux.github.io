@@ -1,26 +1,473 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Javascript on Morgoth</title>
-    <link>https://canuxcheng.com/tags/javascript/</link>
-    <description>Recent content in Javascript on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Mon, 13 Mar 2017 09:36:32 +0000</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/javascript/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>JavaScript</title>
-      <link>https://canuxcheng.com/post/js/</link>
-      <pubDate>Mon, 13 Mar 2017 09:36:32 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/js/</guid>
-      <description>&lt;h1 id=&#34;javascript概述&#34;&gt;JavaScript概述&lt;/h1&gt;&#xA;&lt;p&gt;Javascript包括三部分:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;ECMAScript核心,提供核心语言功能．&lt;/li&gt;&#xA;&lt;li&gt;DOM文档对象模型, 提供访问和操作网页内容的方法和接口．&lt;/li&gt;&#xA;&lt;li&gt;BOM浏览器对象模型, 提供与浏览器交互的方法和接口．&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;ES5.0 (2009)&#xA;ES5.1 (2011, ISO/IEC)&#xA;ES6.0 (2015)&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;javascript基本语法&#34;&gt;javascript基本语法&lt;/h1&gt;&#xA;&lt;p&gt;javascript源程序叫xxx.js.&lt;/p&gt;&#xA;&lt;p&gt;javascript大小写敏感．&lt;/p&gt;&#xA;&lt;p&gt;javascript使用驼峰命名法．&lt;/p&gt;&#xA;&lt;p&gt;javascript的标识符以字母，下划线或美元符号开头，还可以包含数字．不能是关键字．&lt;/p&gt;&#xA;&lt;p&gt;JvaScript代码块以大括号{}包围,开括号写在第一行结尾处，前面空格，闭括号单独一行。&lt;/p&gt;&#xA;&lt;p&gt;javascript中所有事物都是对象，都有属性和方法.&lt;/p&gt;&#xA;&lt;p&gt;JavaScript使用分号;表示一个语句结束, 一般一行写多个语句才需要显示添加分号．&lt;/p&gt;&#xA;&lt;p&gt;javascript中运算符周围要有空格。&lt;/p&gt;&#xA;&lt;p&gt;javascript中使用四个空格来缩进。&lt;/p&gt;&#xA;&lt;p&gt;javascript不支持goto。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;注释&#34;&gt;注释&lt;/h1&gt;&#xA;&lt;p&gt;单行注释：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;// comment&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;多行注释：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;/*&#xA; * comment1&#xA; * comment2&#xA; */&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;关键字&#34;&gt;关键字&lt;/h1&gt;&#xA;&lt;pre&gt;&lt;code&gt;# 数据类型&#xA;var function return typeof new delete&#xA;&#xA;# 流程控制&#xA;if else for in do while switch case default with break continue&#xA;&#xA;# 修饰符&#xA;void&#xA;&#xA;# 动作相关&#xA;instanceof this&#xA;&#xA;# 异常处理&#xA;try catch throw&#xA;&#xA;# 调试&#xA;debugger&#xA;&#xA;# ECMAScript2015&#xA;let const&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;运算符和优先级&#34;&gt;运算符和优先级&lt;/h1&gt;&#xA;&lt;h2 id=&#34;算数运算符&#34;&gt;算数运算符&lt;/h2&gt;&#xA;&lt;pre&gt;&lt;code&gt;+&#xA;-&#xA;* &#xA;**&#xA;/&#xA;%&#xA;++&#xA;--&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;赋值运算符&#34;&gt;赋值运算符&lt;/h2&gt;&#xA;&lt;pre&gt;&lt;code&gt;=&#xA;+=&#xA;-=&#xA;*=&#xA;/=&#xA;%=&#xA;&amp;lt;&amp;lt;=&#xA;&amp;gt;&amp;gt;=&#xA;&amp;gt;&amp;gt;&amp;gt;=&#xA;&amp;amp;=&#xA;^=&#xA;|=&#xA;**=&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;比较运算符&#34;&gt;比较运算符&lt;/h2&gt;&#xA;&lt;pre&gt;&lt;code&gt;// 在比较值钱进行类型转换.&#xA;==&#xA;&#xA;// 强制对值和类型进行比较.&#xA;===&#xA;&#xA;!=&#xA;&#xA;!==&#xA;&#xA;&amp;gt;&#xA;&amp;lt;&#xA;&amp;gt;=&#xA;&amp;lt;=&#xA;&#xA;// 三元运算符&#xA;?&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;逻辑运算符&#34;&gt;逻辑运算符&lt;/h2&gt;&#xA;&lt;pre&gt;&lt;code&gt;// 逻辑与&#xA;&amp;amp;&amp;amp;&#xA;&#xA;// 逻辑或&#xA;||&#xA;&#xA;// 逻辑非&#xA;!&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;类型运算符&#34;&gt;类型运算符&lt;/h2&gt;&#xA;&lt;pre&gt;&lt;code&gt;typeof&#xA;&#xA;instanceof&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;位运算符&#34;&gt;位运算符&lt;/h2&gt;&#xA;&lt;pre&gt;&lt;code&gt;&amp;amp;&#xA;|&#xA;~&#xA;^&#xA;&amp;lt;&amp;lt;&#xA;&amp;gt;&amp;gt;&#xA;&amp;gt;&amp;gt;&amp;gt;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;数据类型&#34;&gt;数据类型&lt;/h1&gt;&#xA;&lt;h2 id=&#34;var申明变量&#34;&gt;var申明变量&lt;/h2&gt;&#xA;&lt;p&gt;通过var申明的变量没有块作用域，在块之外也能访问.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>JS Test</title>
-      <link>https://canuxcheng.com/post/js_test/</link>
-      <pubDate>Mon, 13 Mar 2017 09:36:32 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/js_test/</guid>
-      <description>&lt;h1&gt;&lt;/h1&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;jest&#34;&gt;Jest&lt;/h2&gt;&#xA;&lt;p&gt;for javascript.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/jestjs/jest&#34;&gt;https://github.com/jestjs/jest&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;ts-jest&#34;&gt;TS Jest&lt;/h2&gt;&#xA;&lt;p&gt;for typescript.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/kulshekhar/ts-jest&#34;&gt;https://github.com/kulshekhar/ts-jest&lt;/a&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;jasmine&#34;&gt;jasmine&lt;/h2&gt;&#xA;&lt;p&gt;A JavaScript Testing Framework&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/jasmine/jasmine&#34;&gt;https://github.com/jasmine/jasmine&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;install jasmine to devDependencies&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ npm install --save-dev jasmineinit &#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;jasmine in project&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ npx jasmine init&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;set jasmine as test script in package.json&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;&amp;gt; &amp;quot;scripts&amp;quot;: { &amp;quot;test&amp;quot;: &amp;quot;jasmine&amp;quot; } &#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;run test&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ npm test&#xA;&lt;/code&gt;&lt;/pre&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Javascript on Morgoth</title>
+        <link>https://canuxcheng.com/tags/javascript/</link>
+        <description>Recent content in Javascript on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Mon, 13 Mar 2017 09:36:32 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/javascript/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>JavaScript</title>
+        <link>https://canuxcheng.com/post/js/</link>
+        <pubDate>Mon, 13 Mar 2017 09:36:32 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/js/</guid>
+        <description>&lt;h1 id=&#34;javascript概述&#34;&gt;JavaScript概述&lt;/h1&gt;
+&lt;p&gt;Javascript包括三部分:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;ECMAScript核心,提供核心语言功能．&lt;/li&gt;
+&lt;li&gt;DOM文档对象模型, 提供访问和操作网页内容的方法和接口．&lt;/li&gt;
+&lt;li&gt;BOM浏览器对象模型, 提供与浏览器交互的方法和接口．&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;ES5.0 (2009)
+ES5.1 (2011, ISO/IEC)
+ES6.0 (2015)&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;javascript基本语法&#34;&gt;javascript基本语法&lt;/h1&gt;
+&lt;p&gt;javascript源程序叫xxx.js.&lt;/p&gt;
+&lt;p&gt;javascript大小写敏感．&lt;/p&gt;
+&lt;p&gt;javascript使用驼峰命名法．&lt;/p&gt;
+&lt;p&gt;javascript的标识符以字母，下划线或美元符号开头，还可以包含数字．不能是关键字．&lt;/p&gt;
+&lt;p&gt;JvaScript代码块以大括号{}包围,开括号写在第一行结尾处，前面空格，闭括号单独一行。&lt;/p&gt;
+&lt;p&gt;javascript中所有事物都是对象，都有属性和方法.&lt;/p&gt;
+&lt;p&gt;JavaScript使用分号;表示一个语句结束, 一般一行写多个语句才需要显示添加分号．&lt;/p&gt;
+&lt;p&gt;javascript中运算符周围要有空格。&lt;/p&gt;
+&lt;p&gt;javascript中使用四个空格来缩进。&lt;/p&gt;
+&lt;p&gt;javascript不支持goto。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;注释&#34;&gt;注释&lt;/h1&gt;
+&lt;p&gt;单行注释：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// comment
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;多行注释：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/*
+ * comment1
+ * comment2
+ */
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;关键字&#34;&gt;关键字&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;# 数据类型
+var function return typeof new delete
+
+# 流程控制
+if else for in do while switch case default with break continue
+
+# 修饰符
+void
+
+# 动作相关
+instanceof this
+
+# 异常处理
+try catch throw
+
+# 调试
+debugger
+
+# ECMAScript2015
+let const
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;运算符和优先级&#34;&gt;运算符和优先级&lt;/h1&gt;
+&lt;h2 id=&#34;算数运算符&#34;&gt;算数运算符&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;+
+-
+* 
+**
+/
+%
+++
+--
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;赋值运算符&#34;&gt;赋值运算符&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;=
++=
+-=
+*=
+/=
+%=
+&amp;lt;&amp;lt;=
+&amp;gt;&amp;gt;=
+&amp;gt;&amp;gt;&amp;gt;=
+&amp;amp;=
+^=
+|=
+**=
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;比较运算符&#34;&gt;比较运算符&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;// 在比较值钱进行类型转换.
+==
+
+// 强制对值和类型进行比较.
+===
+
+!=
+
+!==
+
+&amp;gt;
+&amp;lt;
+&amp;gt;=
+&amp;lt;=
+
+// 三元运算符
+?
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;逻辑运算符&#34;&gt;逻辑运算符&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;// 逻辑与
+&amp;amp;&amp;amp;
+
+// 逻辑或
+||
+
+// 逻辑非
+!
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;类型运算符&#34;&gt;类型运算符&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;typeof
+
+instanceof
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;位运算符&#34;&gt;位运算符&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;&amp;amp;
+|
+~
+^
+&amp;lt;&amp;lt;
+&amp;gt;&amp;gt;
+&amp;gt;&amp;gt;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;数据类型&#34;&gt;数据类型&lt;/h1&gt;
+&lt;h2 id=&#34;var申明变量&#34;&gt;var申明变量&lt;/h2&gt;
+&lt;p&gt;通过var申明的变量没有块作用域，在块之外也能访问.&lt;/p&gt;
+&lt;p&gt;申明变量:&lt;/p&gt;
+&lt;p&gt;重复申明同名变量不会改变变量的值．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var varName;
+// 一次申明多个变量
+var varName1, varName2, ...;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;赋值:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;varName = varValue;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;申明并赋值:&lt;/p&gt;
+&lt;p&gt;动态类型语言，变量可以赋予不同类型值.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var varName = varValue;
+// 一次定义多个变量
+var varName1 = varValue1, varName2=varValue2, ...;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;申明变量类型:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var varName = new Boolean/Number/String/Array/Object;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;let申明变量&#34;&gt;let申明变量&lt;/h2&gt;
+&lt;p&gt;通过let申明有块作用域的变量.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;{
+    let varName = varValue;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;let不能多次申明同一个变量。&lt;/p&gt;
+&lt;h2 id=&#34;const申明常量&#34;&gt;const申明常量&lt;/h2&gt;
+&lt;p&gt;const定义的变量与let相似， 但不能重新赋值.&lt;/p&gt;
+&lt;p&gt;它没有定义常量值。它定义了对值的常量引用。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;{
+    const varName = varValue;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;常量对象的属性可以修改：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;const car = {type:&amp;quot;porsche&amp;quot;, model:&amp;quot;911&amp;quot;, color:&amp;quot;black&amp;quot;};
+car.color = &amp;quot;white&amp;quot;;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;常量数组元素可以修改：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;const cars = [&amp;quot;audi&amp;quot;, &amp;quot;bmw&amp;quot;];
+cars[0] = &amp;quot;honda&amp;quot;;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;布尔boolean&#34;&gt;布尔/Boolean&lt;/h2&gt;
+&lt;p&gt;布尔类型只有true和false两个值．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var x = true
+var y = false
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;数字number&#34;&gt;数字/Number&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;var name = 1.3
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;字符串string&#34;&gt;字符串/String&lt;/h2&gt;
+&lt;p&gt;字符串可以用单引号或双引号表示.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var name = &amp;quot;string&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;null&#34;&gt;Null&lt;/h2&gt;
+&lt;p&gt;Null类型只有一个特殊值null.表示一个空对象指针.&lt;/p&gt;
+&lt;p&gt;通过null清空变量的值．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;varName = null
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;undefined&#34;&gt;Undefined&lt;/h2&gt;
+&lt;p&gt;没有赋值的变量值为undefined.&lt;/p&gt;
+&lt;p&gt;Undefined类型只有一个特殊值undefined.&lt;/p&gt;
+&lt;h2 id=&#34;对象object&#34;&gt;对象/Object&lt;/h2&gt;
+&lt;p&gt;对象由大括号包围的键值对表示，中间用逗号隔开.&lt;/p&gt;
+&lt;p&gt;定义对象：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var obj = new Object;
+
+var obj = {key: &amp;quot;val&amp;quot;, key1: &amp;quot;val1&amp;quot;};
+
+var obj = {
+    firstName: &amp;quot;bill&amp;quot;, // 冒号后空格.
+    lastName: &amp;quot;gates&amp;quot; // 最后一个不要都好.
+};  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;访问对象属性:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;val = obj.key
+val = obj[&amp;quot;key&amp;quot;]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;访问对象方法:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;obj.method()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;typeof&#34;&gt;typeof&lt;/h2&gt;
+&lt;p&gt;该操作符可以返回数据类型:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;undefined
+boolean
+number
+string
+object
+function
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;控制流&#34;&gt;控制流&lt;/h1&gt;
+&lt;h2 id=&#34;if&#34;&gt;if&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;if (condition) {
+    expression;
+}
+
+if (condition) {
+    expression;
+} else {
+    expression;
+}
+
+if (condition) {
+    expression;
+} else if (condition) {
+    expression;
+} else {
+    expression;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;switch&#34;&gt;switch&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;switch(expression) {
+    case value:
+        statement;
+        break;
+    case value:
+        statement;
+        break;
+    ...
+    default:
+        statement;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;for&#34;&gt;for&lt;/h2&gt;
+&lt;p&gt;for:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;for (initialization; expression; post-loop-expression) {
+    statement;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;for-in:&lt;/p&gt;
+&lt;p&gt;循环遍历对象的属性&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;for (property in object) {
+    statement;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;while&#34;&gt;while&lt;/h2&gt;
+&lt;p&gt;do-while:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;do {
+    statement;
+} while (condition);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;while:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;while (condition) {
+    statement;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;with&#34;&gt;with&lt;/h2&gt;
+&lt;p&gt;将代码作用于设定到一个特定对象.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;with (expression) {
+    statement;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;break和continue&#34;&gt;break和continue&lt;/h2&gt;
+&lt;p&gt;label:&lt;/p&gt;
+&lt;p&gt;break和continue都可以和label配合使用.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;labelName: statement
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;break:&lt;/p&gt;
+&lt;p&gt;跳出循环(for, while).&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;labelName:
+for () {
+    for () {
+        if () {
+            break labelName; # 跳出最外层循环
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;continue:&lt;/p&gt;
+&lt;p&gt;继续下一次循环.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;labelName:
+for () {
+    for () {
+        if () {
+            continue labelName; # 从外层循环继续循环
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;文件和输入输出&#34;&gt;文件和输入输出&lt;/h1&gt;
+&lt;h2 id=&#34;输出&#34;&gt;输出&lt;/h2&gt;
+&lt;p&gt;alert写入警告框：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;window.alert(10);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;write写入html：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;document.write(10);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;innerHTML写入html:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;document.getElementById(&amp;quot;demo&amp;quot;).innerHTML = 10;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;console.log写入浏览器控制台:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 可以在js代码或调试窗口打印变量值：
+console.log(10);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;输入&#34;&gt;输入&lt;/h2&gt;
+&lt;p&gt;prompt&lt;/p&gt;
+&lt;p&gt;alert和prompt会跳过渲染先被执行。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;函数&#34;&gt;函数&lt;/h1&gt;
+&lt;p&gt;定义函数：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 没参数
+function funcName() {
+}
+
+// 带参数
+function funcName(args) {
+}
+
+// 使用变量
+var name = function(args) {};
+
+// 使用构造方法
+var name = new Function(args, return value);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;函数返回值:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function funcName() {
+    return ...
+}
+
+// 函数返回值赋值给变量
+var value = funcName()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;js的函数形式参数和实际参数可以是任意个数和任意类型．&lt;/p&gt;
+&lt;p&gt;函数内部定义的变量是局部变量,局部变量在函数运行后被删除．&lt;/p&gt;
+&lt;p&gt;如果把值赋给未申明的变量，该变量被自动作为全局变量．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;name = &amp;quot;value&amp;quot; 相当于全局变量
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;函数内部属性:&lt;/p&gt;
+&lt;p&gt;函数内部两个特殊对象arguments和this.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;arguments // 用来存储该函数的所有参数
+arguments.callee // 指针，指向该函数本身.
+
+this // 表示函数调用语句所处的作用域
+window // 当在全局调用this，引用的就是window对象.
+
+// 调用函数
+apply()
+call()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;错误和异常&#34;&gt;错误和异常&lt;/h1&gt;
+&lt;p&gt;try-catch:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;try {
+    statement;
+} catch(err) {
+    statement;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;throw:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;throw exception
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;严格模式&#34;&gt;严格模式&lt;/h2&gt;
+&lt;p&gt;通过在脚本或函数开头添加严格模式：&lt;/p&gt;
+&lt;p&gt;严格模式在不声明变量的情况下使用变量，是不允许的&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;quot;use strict&amp;quot;;
+......
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;debugger调试&#34;&gt;debugger调试&lt;/h2&gt;
+&lt;p&gt;debugger关键字会停止js的执行，如果有调试函数就调用。&lt;/p&gt;
+&lt;p&gt;如果调试器打开，会在debugger停止执行，如果没有打开调试器，会继续运行。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var x = 10;
+debugger;
+document.getElementbyId(&amp;quot;demo&amp;quot;).innerHTML = x;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;模块和包&#34;&gt;模块和包&lt;/h1&gt;
+&lt;h3 id=&#34;commonjs&#34;&gt;commonjs&lt;/h3&gt;
+&lt;p&gt;for old nodejs projects.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// import
+require()
+// export
+module.exports
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;支持单个对象，可以是默认对象&lt;/p&gt;
+&lt;p&gt;extention: &amp;ldquo;*.js&amp;rdquo;&lt;/p&gt;
+&lt;h3 id=&#34;es&#34;&gt;ES&lt;/h3&gt;
+&lt;p&gt;for new nodejs projects.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// import
+import * from *
+// export
+export &amp;lt;function&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;默认导出和命名导出都可以。&lt;/p&gt;
+&lt;p&gt;extention: *.mjs&amp;quot;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;文档&#34;&gt;文档&lt;/h1&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;jsx&#34;&gt;JSX&lt;/h1&gt;
+&lt;p&gt;JSX 是 JavaScript 语法扩展，可以让你在 JavaScript 文件中书写类似 HTML 的标签。虽然还有其它方式可以编写组件，但大部分 React 开发者更喜欢 JSX 的简洁性，并且在大部分代码库中使用它。&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>JS Test</title>
+        <link>https://canuxcheng.com/post/js_test/</link>
+        <pubDate>Mon, 13 Mar 2017 09:36:32 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/js_test/</guid>
+        <description>&lt;h1&gt;&lt;/h1&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;jest&#34;&gt;Jest&lt;/h2&gt;
+&lt;p&gt;for javascript.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/jestjs/jest&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/jestjs/jest&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;ts-jest&#34;&gt;TS Jest&lt;/h2&gt;
+&lt;p&gt;for typescript.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/kulshekhar/ts-jest&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/kulshekhar/ts-jest&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;jasmine&#34;&gt;jasmine&lt;/h2&gt;
+&lt;p&gt;A JavaScript Testing Framework&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/jasmine/jasmine&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/jasmine/jasmine&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;install jasmine to devDependencies&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ npm install --save-dev jasmineinit 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;jasmine in project&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ npx jasmine init
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;set jasmine as test script in package.json&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;gt; &amp;quot;scripts&amp;quot;: { &amp;quot;test&amp;quot;: &amp;quot;jasmine&amp;quot; } 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;run test&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ npm test
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

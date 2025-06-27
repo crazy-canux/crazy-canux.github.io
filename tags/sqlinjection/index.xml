@@ -1,19 +1,39 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Sqlinjection on Morgoth</title>
-    <link>https://canuxcheng.com/tags/sqlinjection/</link>
-    <description>Recent content in Sqlinjection on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sat, 28 Jul 2018 16:08:54 +0000</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/sqlinjection/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Sql Injection</title>
-      <link>https://canuxcheng.com/post/sec_sqlinjection/</link>
-      <pubDate>Sat, 28 Jul 2018 16:08:54 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/sec_sqlinjection/</guid>
-      <description>&lt;h1 id=&#34;sql-injection&#34;&gt;SQL Injection&lt;/h1&gt;&#xA;&lt;p&gt;什么是sql injection:从数据库获取敏感信息,或者利用数据库的特性执行添加用户,导出文件等一系列恶意操作,甚至有可能获取数据库乃至系统用户最高权限。&lt;/p&gt;&#xA;&lt;p&gt;原因:造成SQL注入的原因是因为程序没有有效过滤用户的输入.&lt;/p&gt;&#xA;&lt;p&gt;预防：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;严格限制数据库的操作权限&lt;/li&gt;&#xA;&lt;li&gt;检查输入的数据格式是否符合要求&lt;/li&gt;&#xA;&lt;li&gt;对进入数据库的特殊字符进行转义&lt;/li&gt;&#xA;&lt;li&gt;数据库查询语句使用数据库提供的参数化查询接口&lt;/li&gt;&#xA;&lt;li&gt;在发布之前使用专业的sql注入检测工具进行检测&lt;/li&gt;&#xA;&lt;li&gt;避免网站打印sql错误信息&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;通过表单注入：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;username =&amp;gt; myuser&#39; or &#39;foo&#39; = &#39;foo&#39; --&#xA;SELECT * FROM user WHERE username=&#39;myuser&#39; or &#39;foo&#39; = &#39;foo&#39; --&#39;&#39; AND password=&#39;xxx&#39;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;mssql的sql语句可以执行dos命令:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;exec xp_cmdshell &#39;net user username 2546 /add&#39; # 新建系统用户&#xA;exec xp_cmdshell &#39;net localgroup administrator username /add&#39; # 授权&#xA;&lt;/code&gt;&lt;/pre&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Sqlinjection on Morgoth</title>
+        <link>https://canuxcheng.com/tags/sqlinjection/</link>
+        <description>Recent content in Sqlinjection on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Sat, 28 Jul 2018 16:08:54 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/sqlinjection/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Sql Injection</title>
+        <link>https://canuxcheng.com/post/sec_sqlinjection/</link>
+        <pubDate>Sat, 28 Jul 2018 16:08:54 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/sec_sqlinjection/</guid>
+        <description>&lt;h1 id=&#34;sql-injection&#34;&gt;SQL Injection&lt;/h1&gt;
+&lt;p&gt;什么是sql injection:从数据库获取敏感信息,或者利用数据库的特性执行添加用户,导出文件等一系列恶意操作,甚至有可能获取数据库乃至系统用户最高权限。&lt;/p&gt;
+&lt;p&gt;原因:造成SQL注入的原因是因为程序没有有效过滤用户的输入.&lt;/p&gt;
+&lt;p&gt;预防：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;严格限制数据库的操作权限&lt;/li&gt;
+&lt;li&gt;检查输入的数据格式是否符合要求&lt;/li&gt;
+&lt;li&gt;对进入数据库的特殊字符进行转义&lt;/li&gt;
+&lt;li&gt;数据库查询语句使用数据库提供的参数化查询接口&lt;/li&gt;
+&lt;li&gt;在发布之前使用专业的sql注入检测工具进行检测&lt;/li&gt;
+&lt;li&gt;避免网站打印sql错误信息&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;通过表单注入：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;username =&amp;gt; myuser&#39; or &#39;foo&#39; = &#39;foo&#39; --
+SELECT * FROM user WHERE username=&#39;myuser&#39; or &#39;foo&#39; = &#39;foo&#39; --&#39;&#39; AND password=&#39;xxx&#39;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;mssql的sql语句可以执行dos命令:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;exec xp_cmdshell &#39;net user username 2546 /add&#39; # 新建系统用户
+exec xp_cmdshell &#39;net localgroup administrator username /add&#39; # 授权
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

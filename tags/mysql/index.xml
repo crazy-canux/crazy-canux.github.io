@@ -1,19 +1,255 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Mysql on Morgoth</title>
-    <link>https://canuxcheng.com/tags/mysql/</link>
-    <description>Recent content in Mysql on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Wed, 25 May 2016 12:14:59 +0000</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/mysql/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Mysql</title>
-      <link>https://canuxcheng.com/post/mysql/</link>
-      <pubDate>Wed, 25 May 2016 12:14:59 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/mysql/</guid>
-      <description>&lt;h1 id=&#34;mysql&#34;&gt;Mysql&lt;/h1&gt;&#xA;&lt;p&gt;安装mysql服务器&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ sudo apt-get install mysql-server&#xA;$ sudo yum install mysql-community-server&#xA;&#xA;$ sudo vim /etc/mysql/mysql.conf.d/mysqld.cnf&#xA;# 注意mysql的/etc/mysql/my.cnf和相关文件如果设置了bind-address = 127.0.0.1就无法远程访问，需要注释掉．&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;安装mysql客户端&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ sudo apt-get install mysql-client&#xA;$ sudo yum install mysql-community-client&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;安装开发工具：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ sudo apt-get install libmysqlclient-dev&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;CLI工具： mysql&lt;/p&gt;&#xA;&lt;p&gt;GUI工具： mysql workbench&lt;/p&gt;&#xA;&lt;p&gt;安装完成默认的数据库是 mysql。&lt;/p&gt;&#xA;&lt;p&gt;mysqld的默认端口是3306.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;mysql命令&#34;&gt;mysql命令&lt;/h1&gt;&#xA;&lt;p&gt;tips: 用户名密码有特殊字符用引号.&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ mysql [OPTIONS] [database]&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;初始化时需要用root用户进入mysql命令行&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ mysql -uroot -p&#xA;$ mysql -h&amp;lt;host&amp;gt; -P&amp;lt;port&amp;gt; -uroot -p&amp;lt;password&amp;gt;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;创建用户后用其它用户操作：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ mysql -u&amp;lt;user&amp;gt; -p&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;本地执行sql语句或mysql客户端命令:&lt;/p&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Mysql on Morgoth</title>
+        <link>https://canuxcheng.com/tags/mysql/</link>
+        <description>Recent content in Mysql on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Wed, 25 May 2016 12:14:59 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/mysql/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Mysql</title>
+        <link>https://canuxcheng.com/post/mysql/</link>
+        <pubDate>Wed, 25 May 2016 12:14:59 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/mysql/</guid>
+        <description>&lt;h1 id=&#34;mysql&#34;&gt;Mysql&lt;/h1&gt;
+&lt;p&gt;安装mysql服务器&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo apt-get install mysql-server
+$ sudo yum install mysql-community-server
+
+$ sudo vim /etc/mysql/mysql.conf.d/mysqld.cnf
+# 注意mysql的/etc/mysql/my.cnf和相关文件如果设置了bind-address = 127.0.0.1就无法远程访问，需要注释掉．
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;安装mysql客户端&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo apt-get install mysql-client
+$ sudo yum install mysql-community-client
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;安装开发工具：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo apt-get install libmysqlclient-dev
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;CLI工具： mysql&lt;/p&gt;
+&lt;p&gt;GUI工具： mysql workbench&lt;/p&gt;
+&lt;p&gt;安装完成默认的数据库是 mysql。&lt;/p&gt;
+&lt;p&gt;mysqld的默认端口是3306.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;mysql命令&#34;&gt;mysql命令&lt;/h1&gt;
+&lt;p&gt;tips: 用户名密码有特殊字符用引号.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ mysql [OPTIONS] [database]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;初始化时需要用root用户进入mysql命令行&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ mysql -uroot -p
+$ mysql -h&amp;lt;host&amp;gt; -P&amp;lt;port&amp;gt; -uroot -p&amp;lt;password&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;创建用户后用其它用户操作：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ mysql -u&amp;lt;user&amp;gt; -p
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;本地执行sql语句或mysql客户端命令:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ mysql -u&amp;lt;username&amp;gt; -p&amp;lt;password&amp;gt; &amp;lt;database&amp;gt; -e/--execute &amp;lt;sql query&amp;gt;
+$ mysql -u&amp;lt;username&amp;gt; -p&amp;lt;password&amp;gt; &amp;lt;database&amp;gt; &amp;lt; test.sql
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;远程执行sql语句或mysql客户端命令:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ mysql -h&amp;lt;host&amp;gt; -P&amp;lt;port&amp;gt; -u&amp;lt;username&amp;gt; -p&amp;lt;password&amp;gt; &amp;lt;database&amp;gt; -e/--execute &amp;lt;sql query&amp;gt;
+$ mysql -h&amp;lt;host&amp;gt; -P&amp;lt;port&amp;gt; -u&amp;lt;username&amp;gt; -p&amp;lt;password&amp;gt; &amp;lt;database&amp;gt; &amp;lt; test.sql
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;启用&amp;rsquo;load data local&amp;rsquo;命令：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 交互式
+$ mysql --local-infile=1 -uroot -ppassword
+# 非交互式
+$ mysql --local-infile=1 -uroot -pchengca w3c -e &amp;quot;LOAD DATA LOCAL INFILE &#39;/home/user/customers.txt&#39; INTO TABLE Customers COLUMNS TERMINATED BY &#39;\t&#39; LINES TERMINATED BY &#39;\n&#39;;&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;导出数据命令:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ mysqldump -u&amp;lt;username&amp;gt; -p&amp;lt;password&amp;gt; &amp;lt;databasename&amp;gt;  &amp;gt;  dump.sql
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;mycli:&lt;/p&gt;
+&lt;p&gt;A command line client for MySQL that can do auto-completion and syntax highlighting.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/dbcli/mycli&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/dbcli/mycli&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ pip install -U mycli
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;cli&#34;&gt;CLI&lt;/h1&gt;
+&lt;p&gt;先用mysql命令进入mysql的命令行。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;?         (\?) Synonym for help.
+help      (\h) Display this help.
+
+exit      (\q) Exit mysql. Same as quit.
+quit      (\q) Quit mysql.
+
+clear     (\c) Clear the current input statement.
+connect   (\r) Reconnect to the server. Optional arguments are db and host.
+delimiter (\d) Set statement delimiter.
+edit      (\e) Edit command with \$EDITOR.
+ego       (\G) Send command to mysql server, display result vertically.
+go        (\g) Send command to mysql server.
+nopager   (\n) Disable pager, print to stdout.
+notee     (\t) Don&#39;t write into outfile.
+pager     (\P) Set PAGER [to_pager]. Print the query results via PAGER.
+print     (\p) Print current command.
+prompt    (\R) Change your mysql prompt.
+rehash    (\#) Rebuild completion hash.
+
+source    (\.) Execute an SQL script file. Takes a file name as an argument.
+mysql&amp;gt; source /path/to/dump.sql # 从sql导入数据
+
+status    (\s) Get status information from the server.
+system    (\!) Execute a system shell command.
+tee       (\T) Set outfile [to_outfile]. Append everything into given outfile.
+
+use       (\u) Use another database. Takes database name as argument.
+mysql&amp;gt; use database # 切换到数据库
+
+charset   (\C) Switch to another charset. Might be needed for processing binlog with multi-byte charsets.
+warnings  (\W) Show warnings after every statement.
+nowarning (\w) Don&#39;t show warnings after every statement.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;其它可以在mysql客户端执行的命令：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 从本地一个文件导入数据，列分隔符为\t,行分隔符为\n
+LOAD DATA LOCAL INFILE &#39;/home/user/customers.txt&#39; INTO TABLE Customers COLUMNS TERMINATED BY &#39;\t&#39; LINES TERMINATED BY &#39;\n&#39;;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;数据类型&#34;&gt;数据类型&lt;/h1&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;函数和运算符&#34;&gt;函数和运算符&lt;/h1&gt;
+&lt;p&gt;date and time：&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://dev.mysql.com/doc/refman/8.0/en/date-and-time-functions.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://dev.mysql.com/doc/refman/8.0/en/date-and-time-functions.html&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;NOW() // &#39;2018-11-18 16:00:28&#39;
+UTC_TIMESTAMP() // &#39;2018-11-18 08:01:04&#39;
+CURDATE()  // &#39;2018-11-18&#39;
+UTC_DATE() // &#39;2018-11-18&#39;
+CURTIME()  // &#39;16:02:18&#39;
+UTC_TIME() // &#39;08:03:36&#39;
+
+UNIX_TIMESTAMP() // &#39;1542528051&#39;
+DATE() // &#39;2021-1-12&#39;
+TIME() // &#39;14:28:00&#39;
+DATEDIFF() 
+date_format(column, &#39;%Y-%m-%d&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;control flow:：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;CASE
+
+IF()
+IFNULL(column, 0)
+NULLIF()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;comparison:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;COALESCE(column, 0)
+
+ISNULL()
+IS NULL
+
+IN()
+NOT IN()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;sql&#34;&gt;SQL&lt;/h1&gt;
+&lt;p&gt;注意：hostname 指定能连接的server，%表示任何server．&lt;/p&gt;
+&lt;p&gt;查看版本：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;SELECT VERSION();
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看所有用户：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;SELECT DISTINCT(USER) FROM mysql.user;
+SELECT user,host,plugin FROM mysql.user;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看当前用户：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;SELECT USER();
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;创建/删除用户：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;CREATE USER &#39;username&#39;@&#39;%&#39; IDENTIFIED BY &#39;password&#39;;
+DROP USER &#39;username&#39;@&#39;%&#39;;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;设置和更改密码：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;UPDATE mysql.user SET PASSWORD(&#39;password&#39;) WHRER USER=&#39;username&#39; AND HOST=&#39;hostname&#39;;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看所有数据库：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;show databases;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看当前数据库：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;SELECT DATABASE();
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;创建/删除数据库：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;CREATE DATABASE databasename;
+DROP DATABASE databasename;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;指定数据库对用户授权：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;GRANT ALL PRIVILEGES ON databasename.* TO &#39;username&#39;@&#39;%&#39;;
+FLUSH PRIVILEGES;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看权限：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;SHOW GRANTS FOR &#39;username&#39;@&#39;%&#39;;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;使用数据库：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;use databasename
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看所有表：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;show tables;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看表结构：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;desc tablename;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;正则：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 类似like，特殊字符要用双反斜杠转义.
+select * from tablename where colume REGEXP &#39;...&#39;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看系统配置:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;show variables like &#39;version&#39;;
+select @@version;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;issue&#34;&gt;Issue&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;mysql8  workbench 连不上的问题 :&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;issue:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;authentication plugin &#39;caching_sha2_password&#39; cannot be loaded: the specified module could not be found。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;fix：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;mysql8 开始默认授权插件改成caching_sha2_password.
+可以指定为--default-authentication-plugin=mysql_native_password，
+alter user &#39;sandbox&#39;@&#39;%&#39; identified with mysql_native_password by &#39;password&#39;;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;max_commection 问题:&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;issue:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;当连接池连接数量超过最大连接数就无法再建立连接
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;fix:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;show processlist;
+show variables like &#39;max_connections&#39;;
+set global max_connections = 2048;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;3&#34;&gt;
+&lt;li&gt;1153, &amp;ldquo;Got a packet bigger than &amp;lsquo;max_allowed_packet&amp;rsquo; bytes&amp;rdquo;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;issue:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;请求数据超过限制，默认可能是4M
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;fix:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 设置成最大值1G
+select @@max_allowed_packet;
+SET GLOBAL max_allowed_packet = 1024 * 1024 * 1024;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;ol start=&#34;4&#34;&gt;
+&lt;li&gt;1205, &amp;lsquo;Lock wait timeout exceeded; try restarting transaction&amp;rsquo;&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;issue:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;后提交的事务等待前面处理的事务释放锁，但是在等待的时候超过了mysql的锁等待时
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;fix:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 首先优化表索引.
+select @@innodb_lock_wait_timeout
+set global innodb_lock_wait_timeout=100;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;5. 1840 (HY000) at line 24: @@GLOBAL.GTID_PURGED can only be set when @@GLOBAL.GTID_EXECUTED is empty.&lt;/p&gt;
+&lt;p&gt;fix:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;quot;mysql&amp;gt; reset master&amp;quot;.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;monitoring&#34;&gt;Monitoring&lt;/h1&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

@@ -1,19 +1,30 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Virtualization on Morgoth</title>
-    <link>https://canuxcheng.com/tags/virtualization/</link>
-    <description>Recent content in Virtualization on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Tue, 05 Apr 2016 21:47:54 +0000</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/virtualization/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Virtualization</title>
-      <link>https://canuxcheng.com/post/virtualization/</link>
-      <pubDate>Tue, 05 Apr 2016 21:47:54 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/virtualization/</guid>
-      <description>&lt;h1 id=&#34;virtualization&#34;&gt;Virtualization&lt;/h1&gt;&#xA;&lt;p&gt;虚拟化技术的发展：&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;DataCenter, 最原始的数据中心&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;Virtualization, 虚拟化技术，包括Kvm, Xen(Citrix), HyperV(MicroSoft), ESXi(VMware)等&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;hr&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Virtualization on Morgoth</title>
+        <link>https://canuxcheng.com/tags/virtualization/</link>
+        <description>Recent content in Virtualization on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Tue, 05 Apr 2016 21:47:54 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/virtualization/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Virtualization</title>
+        <link>https://canuxcheng.com/post/virtualization/</link>
+        <pubDate>Tue, 05 Apr 2016 21:47:54 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/virtualization/</guid>
+        <description>&lt;h1 id=&#34;virtualization&#34;&gt;Virtualization&lt;/h1&gt;
+&lt;p&gt;虚拟化技术的发展：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;DataCenter, 最原始的数据中心&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Virtualization, 虚拟化技术，包括Kvm, Xen(Citrix), HyperV(MicroSoft), ESXi(VMware)等&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

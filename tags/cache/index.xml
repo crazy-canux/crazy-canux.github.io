@@ -1,19 +1,78 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Cache on Morgoth</title>
-    <link>https://canuxcheng.com/tags/cache/</link>
-    <description>Recent content in Cache on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Tue, 04 May 2021 04:51:30 +0000</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/cache/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Cache</title>
-      <link>https://canuxcheng.com/post/django_cache/</link>
-      <pubDate>Tue, 04 May 2021 04:51:30 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/django_cache/</guid>
-      <description>&lt;h1 id=&#34;cache&#34;&gt;cache&lt;/h1&gt;&#xA;&lt;p&gt;缓存的backend可以是django内置的，也可以是第三方的。&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;缓存整个站点&lt;/p&gt;&#xA;&lt;p&gt;MIDDLEWARE = [&#xA;&amp;lsquo;django.middleware.cache.UpdateCacheMiddleware&amp;rsquo;,&#xA;&amp;lsquo;django.middleware.common.CommonMiddleware&amp;rsquo;,&#xA;&amp;lsquo;django.middleware.cache.FetchFromCacheMiddleware&amp;rsquo;,&#xA;]&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;视图缓存&lt;/p&gt;&#xA;&lt;p&gt;from django.views.decorators.cache import cache_page&lt;/p&gt;&#xA;&lt;p&gt;@cache_page(60 * 2)&#xA;def my_view(request):&#xA;&amp;hellip;&lt;/p&gt;&#xA;&lt;p&gt;或者在URLconf中指定&#xA;urlpatterns = [&#xA;path(&amp;lsquo;foo/&lt;a href=&#34;int:code&#34;&gt;int:code&lt;/a&gt;/&amp;rsquo;, cache_page(60 * 2)(my_view)),&#xA;]&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;模板片段缓存&lt;/p&gt;&#xA;&lt;p&gt;{% load cache %}&#xA;{% cache &amp;hellip; %}&#xA;&amp;hellip;&#xA;{% endcache %}&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;redis&#34;&gt;redis&lt;/h2&gt;&#xA;&lt;pre&gt;&lt;code&gt;CACHES = {&#xA;    &amp;quot;default&amp;quot;: {&#xA;        &amp;quot;BACKEND&amp;quot;: &amp;quot;django_redis.cache.RedisCache&amp;quot;,&#xA;        &amp;quot;LOCATION&amp;quot;: os.environ.get(&amp;quot;REDIS_URL&amp;quot;, &#39;&#39;),&#xA;        &amp;quot;OPTIONS&amp;quot;: {&#xA;            &amp;quot;CLIENT_CLASS&amp;quot;: &amp;quot;django_redis.client.DefaultClient&amp;quot;,&#xA;        },&#xA;        &amp;quot;TIMEOUT&amp;quot;: 60,&#xA;    }&#xA;}&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;memcached&#34;&gt;memcached&lt;/h2&gt;&#xA;&lt;pre&gt;&lt;code&gt;CACHES = {&#xA;    &#39;default&#39;: {&#xA;        &#39;BACKEND&#39;: &#39;django.core.cache.backends.memcached.MemcachedCache&#39;,&#xA;        &#39;LOCATION&#39;: &#39;127.0.0.1:11211&#39;,&#xA;    }&#xA;}&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;database&#34;&gt;database&lt;/h2&gt;&#xA;&lt;pre&gt;&lt;code&gt;CACHES = {&#xA;    &#39;default&#39;: {&#xA;        &#39;BACKEND&#39;: &#39;django.core.cache.backends.db.DatabaseCache&#39;,&#xA;        &#39;LOCATION&#39;: &#39;my_cache_table&#39;,&#xA;    }&#xA;}&#xA;&lt;/code&gt;&lt;/pre&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Cache on Morgoth</title>
+        <link>https://canuxcheng.com/tags/cache/</link>
+        <description>Recent content in Cache on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Tue, 04 May 2021 04:51:30 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/cache/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Cache</title>
+        <link>https://canuxcheng.com/post/django_cache/</link>
+        <pubDate>Tue, 04 May 2021 04:51:30 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/django_cache/</guid>
+        <description>&lt;h1 id=&#34;cache&#34;&gt;cache&lt;/h1&gt;
+&lt;p&gt;缓存的backend可以是django内置的，也可以是第三方的。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;缓存整个站点&lt;/p&gt;
+&lt;p&gt;MIDDLEWARE = [
+&amp;lsquo;django.middleware.cache.UpdateCacheMiddleware&amp;rsquo;,
+&amp;lsquo;django.middleware.common.CommonMiddleware&amp;rsquo;,
+&amp;lsquo;django.middleware.cache.FetchFromCacheMiddleware&amp;rsquo;,
+]&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;视图缓存&lt;/p&gt;
+&lt;p&gt;from django.views.decorators.cache import cache_page&lt;/p&gt;
+&lt;p&gt;@cache_page(60 * 2)
+def my_view(request):
+&amp;hellip;&lt;/p&gt;
+&lt;p&gt;或者在URLconf中指定
+urlpatterns = [
+path(&amp;lsquo;foo/&lt;a class=&#34;link&#34; href=&#34;int:code&#34; &gt;int:code&lt;/a&gt;/&amp;rsquo;, cache_page(60 * 2)(my_view)),
+]&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;模板片段缓存&lt;/p&gt;
+&lt;p&gt;{% load cache %}
+{% cache &amp;hellip; %}
+&amp;hellip;
+{% endcache %}&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;redis&#34;&gt;redis&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;CACHES = {
+    &amp;quot;default&amp;quot;: {
+        &amp;quot;BACKEND&amp;quot;: &amp;quot;django_redis.cache.RedisCache&amp;quot;,
+        &amp;quot;LOCATION&amp;quot;: os.environ.get(&amp;quot;REDIS_URL&amp;quot;, &#39;&#39;),
+        &amp;quot;OPTIONS&amp;quot;: {
+            &amp;quot;CLIENT_CLASS&amp;quot;: &amp;quot;django_redis.client.DefaultClient&amp;quot;,
+        },
+        &amp;quot;TIMEOUT&amp;quot;: 60,
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;memcached&#34;&gt;memcached&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;CACHES = {
+    &#39;default&#39;: {
+        &#39;BACKEND&#39;: &#39;django.core.cache.backends.memcached.MemcachedCache&#39;,
+        &#39;LOCATION&#39;: &#39;127.0.0.1:11211&#39;,
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;database&#34;&gt;database&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;CACHES = {
+    &#39;default&#39;: {
+        &#39;BACKEND&#39;: &#39;django.core.cache.backends.db.DatabaseCache&#39;,
+        &#39;LOCATION&#39;: &#39;my_cache_table&#39;,
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

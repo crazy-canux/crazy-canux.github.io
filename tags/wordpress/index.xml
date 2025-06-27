@@ -1,19 +1,86 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Wordpress on Morgoth</title>
-    <link>https://canuxcheng.com/tags/wordpress/</link>
-    <description>Recent content in Wordpress on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Fri, 18 Nov 2016 00:06:31 +0000</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/wordpress/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Wordpress</title>
-      <link>https://canuxcheng.com/post/wordpress/</link>
-      <pubDate>Fri, 18 Nov 2016 00:06:31 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/wordpress/</guid>
-      <description>&lt;h1 id=&#34;wordpress&#34;&gt;WordPress&lt;/h1&gt;&#xA;&lt;h1 id=&#34;安装&#34;&gt;安装&lt;/h1&gt;&#xA;&lt;p&gt;安装依赖：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$sudo apt install apache2&#xA;$sudo apt install mysql-server&#xA;$sudo apt install php5&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;下载wordpress：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$cd /var/www/html&#xA;$git clone https://github.com/WordPress/WordPress.git&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h1 id=&#34;配置&#34;&gt;配置&lt;/h1&gt;&#xA;&lt;p&gt;添加mysql数据库：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$mysql -u root -p&#xA;mysql&amp;gt; create user &#39;wordpress&#39;@&#39;localhost&#39; identified by &#39;******&#39;;&#xA;mysql&amp;gt; create database &#39;wordpress&#39;;&#xA;mysql&amp;gt; GRANT ALL PRIVILEGES ON wordpress.* TO &amp;quot;wordpress&amp;quot;@&amp;quot;localhost&amp;quot;;&#xA;mysql&amp;gt; FLUSH PRIVILEGES;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;编辑配置文件：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;wp-config.php&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;登陆并安装站点：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;http://localhost&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;管理界面：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;http://localhost/wp-admin&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;语言&#34;&gt;语言&lt;/h1&gt;&#xA;&lt;p&gt;下载相应的语言版本,中文下载中文版的wordpress.&lt;/p&gt;&#xA;&lt;p&gt;然后将wordpress/wp-content/languages拷贝到英文版的wordpress/wp-content下&lt;/p&gt;&#xA;&lt;p&gt;语言包路径:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;wordpress/wp-content/languages&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;主题&#34;&gt;主题&lt;/h1&gt;&#xA;&lt;p&gt;修改wp-config.php安装主题不用输入ftp信息：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;define(&amp;quot;FS_METHOD&amp;quot;, &amp;quot;direct&amp;quot;);&#xA;define(&amp;quot;FS_CHMOD_DIR&amp;quot;, 0777);&#xA;define(&amp;quot;FS_CHMOD_FILE&amp;quot;, 0777);&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;主题安装在：&lt;/p&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Wordpress on Morgoth</title>
+        <link>https://canuxcheng.com/tags/wordpress/</link>
+        <description>Recent content in Wordpress on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Fri, 18 Nov 2016 00:06:31 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/wordpress/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Wordpress</title>
+        <link>https://canuxcheng.com/post/wordpress/</link>
+        <pubDate>Fri, 18 Nov 2016 00:06:31 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/wordpress/</guid>
+        <description>&lt;h1 id=&#34;wordpress&#34;&gt;WordPress&lt;/h1&gt;
+&lt;h1 id=&#34;安装&#34;&gt;安装&lt;/h1&gt;
+&lt;p&gt;安装依赖：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$sudo apt install apache2
+$sudo apt install mysql-server
+$sudo apt install php5
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;下载wordpress：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$cd /var/www/html
+$git clone https://github.com/WordPress/WordPress.git
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;配置&#34;&gt;配置&lt;/h1&gt;
+&lt;p&gt;添加mysql数据库：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$mysql -u root -p
+mysql&amp;gt; create user &#39;wordpress&#39;@&#39;localhost&#39; identified by &#39;******&#39;;
+mysql&amp;gt; create database &#39;wordpress&#39;;
+mysql&amp;gt; GRANT ALL PRIVILEGES ON wordpress.* TO &amp;quot;wordpress&amp;quot;@&amp;quot;localhost&amp;quot;;
+mysql&amp;gt; FLUSH PRIVILEGES;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;编辑配置文件：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;wp-config.php
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;登陆并安装站点：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;http://localhost
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;管理界面：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;http://localhost/wp-admin
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;语言&#34;&gt;语言&lt;/h1&gt;
+&lt;p&gt;下载相应的语言版本,中文下载中文版的wordpress.&lt;/p&gt;
+&lt;p&gt;然后将wordpress/wp-content/languages拷贝到英文版的wordpress/wp-content下&lt;/p&gt;
+&lt;p&gt;语言包路径:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;wordpress/wp-content/languages
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;主题&#34;&gt;主题&lt;/h1&gt;
+&lt;p&gt;修改wp-config.php安装主题不用输入ftp信息：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;define(&amp;quot;FS_METHOD&amp;quot;, &amp;quot;direct&amp;quot;);
+define(&amp;quot;FS_CHMOD_DIR&amp;quot;, 0777);
+define(&amp;quot;FS_CHMOD_FILE&amp;quot;, 0777);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;主题安装在：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;wordpress/wp-content/themes
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;主题数据导入到:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;wordpress/wp-content/uploads
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;插件&#34;&gt;插件&lt;/h1&gt;
+&lt;p&gt;插件安装在：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;wordpress/wp-content/plugins
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;wordpress-reset&#34;&gt;WordPress Reset&lt;/h2&gt;
+&lt;p&gt;一款可以重置所有数据库数据的插件。&lt;/p&gt;
+&lt;h2 id=&#34;widget-settings-importexport&#34;&gt;widget-settings-importexport&lt;/h2&gt;
+&lt;h2 id=&#34;wordpress-importer&#34;&gt;wordpress-importer&lt;/h2&gt;
+&lt;h2 id=&#34;wordpress-move&#34;&gt;wordpress-move&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;设置&#34;&gt;设置&lt;/h1&gt;
+&lt;p&gt;默认的固定连接:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/index.php/%year%/%monthnum%/%day%/%postname%/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;主题开发&#34;&gt;主题开发&lt;/h1&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;插件开发&#34;&gt;插件开发&lt;/h1&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

@@ -1,19 +1,28 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Nginx on Morgoth</title>
-    <link>https://canuxcheng.com/tags/nginx/</link>
-    <description>Recent content in Nginx on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Thu, 27 Sep 2018 03:25:26 +0000</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/nginx/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Nginx</title>
-      <link>https://canuxcheng.com/post/nginx/</link>
-      <pubDate>Thu, 27 Sep 2018 03:25:26 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/nginx/</guid>
-      <description>&lt;h1 id=&#34;nginx&#34;&gt;Nginx&lt;/h1&gt;&#xA;&lt;p&gt;安装&lt;/p&gt;&#xA;&lt;p&gt;配置&lt;/p&gt;&#xA;&lt;p&gt;命令：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;nginx -s stop/quit/reload/reopen&#xA;nginx -V 详细信息&#xA;nginx -v 版本号&#xA;nginx -t 检查配置文件&#xA;&lt;/code&gt;&lt;/pre&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Nginx on Morgoth</title>
+        <link>https://canuxcheng.com/tags/nginx/</link>
+        <description>Recent content in Nginx on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Thu, 27 Sep 2018 03:25:26 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/nginx/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Nginx</title>
+        <link>https://canuxcheng.com/post/nginx/</link>
+        <pubDate>Thu, 27 Sep 2018 03:25:26 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/nginx/</guid>
+        <description>&lt;h1 id=&#34;nginx&#34;&gt;Nginx&lt;/h1&gt;
+&lt;p&gt;安装&lt;/p&gt;
+&lt;p&gt;配置&lt;/p&gt;
+&lt;p&gt;命令：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;nginx -s stop/quit/reload/reopen
+nginx -V 详细信息
+nginx -v 版本号
+nginx -t 检查配置文件
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

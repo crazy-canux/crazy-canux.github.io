@@ -1,19 +1,290 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Ide on Morgoth</title>
-    <link>https://canuxcheng.com/tags/ide/</link>
-    <description>Recent content in Ide on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sun, 02 Apr 2017 21:11:26 +0000</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/ide/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>IDE</title>
-      <link>https://canuxcheng.com/post/devops_ide/</link>
-      <pubDate>Sun, 02 Apr 2017 21:11:26 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/devops_ide/</guid>
-      <description>&lt;h1 id=&#34;jetbrains&#34;&gt;JetBrains&lt;/h1&gt;&#xA;&lt;p&gt;IntelliJ: Java的IDE, 安装Python的插件也支持python.&lt;/p&gt;&#xA;&lt;h2 id=&#34;pycharm&#34;&gt;PyCharm&lt;/h2&gt;&#xA;&lt;p&gt;PyCharm: Python的IDE.&lt;/p&gt;&#xA;&lt;h2 id=&#34;goland&#34;&gt;Goland&lt;/h2&gt;&#xA;&lt;p&gt;Goland: golang的IDE.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;vscode&#34;&gt;VSCode&lt;/h1&gt;&#xA;&lt;h2 id=&#34;intellisense--code-navigation&#34;&gt;IntelliSense &amp;amp; Code Navigation&lt;/h2&gt;&#xA;&lt;p&gt;Go to Definition: F12, 跳转到定义.&lt;/p&gt;&#xA;&lt;p&gt;Peek Definition: Alt + F12， 速览定义，不跳转.&lt;/p&gt;&#xA;&lt;p&gt;Go to references: Shift + F12, 转到引用.&lt;/p&gt;&#xA;&lt;h2 id=&#34;frontend&#34;&gt;frontend&lt;/h2&gt;&#xA;&lt;h3 id=&#34;vs-js-debug&#34;&gt;vs-js-debug&lt;/h3&gt;&#xA;&lt;p&gt;vscode内置了js/ts/node的debugger.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/microsoft/vscode-js-debug&#34;&gt;https://github.com/microsoft/vscode-js-debug&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h3 id=&#34;live-server&#34;&gt;live server&lt;/h3&gt;&#xA;&lt;p&gt;live preview(html, svg&amp;hellip;)&lt;/p&gt;&#xA;&lt;p&gt;如果用remote-ssh开启live server就是在远程机器上开启5500端口，webroot就是vscode打开的目录.&lt;/p&gt;&#xA;&lt;p&gt;如果是remote-ssh开发html，用这个preview很方便.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/ritwickdey/vscode-live-server&#34;&gt;https://github.com/ritwickdey/vscode-live-server&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h3 id=&#34;vscode-chrome-debug&#34;&gt;vscode-chrome-debug&lt;/h3&gt;&#xA;&lt;p&gt;打开的是安装vscode的机器上的chrome。&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/microsoft/vscode-chrome-debug&#34;&gt;https://github.com/microsoft/vscode-chrome-debug&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;通过live server监听remote-ssh机器上的5500，可以通过chrome远程调试静态站点。&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;{&#xA;    &amp;quot;version&amp;quot;: &amp;quot;0.2.0&amp;quot;,&#xA;    &amp;quot;configurations&amp;quot;: [&#xA;        {&#xA;            &amp;quot;name&amp;quot;: &amp;quot;angularjs&amp;quot;,&#xA;            &amp;quot;type&amp;quot;: &amp;quot;chrome&amp;quot;,&#xA;            &amp;quot;request&amp;quot;: &amp;quot;launch&amp;quot;,&#xA;            &amp;quot;url&amp;quot;: &amp;quot;http://remote-ssh-server:5500/path/to/index.html&amp;quot;,&#xA;            &amp;quot;webRoot&amp;quot;: &amp;quot;${workspaceFolder}/path/to/&amp;quot;,&#xA;        },&#xA;    ]&#xA;}&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;python&#34;&gt;python&lt;/h2&gt;&#xA;&lt;p&gt;debuging:&lt;/p&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Ide on Morgoth</title>
+        <link>https://canuxcheng.com/tags/ide/</link>
+        <description>Recent content in Ide on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Sun, 02 Apr 2017 21:11:26 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/ide/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>IDE</title>
+        <link>https://canuxcheng.com/post/devops_ide/</link>
+        <pubDate>Sun, 02 Apr 2017 21:11:26 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/devops_ide/</guid>
+        <description>&lt;h1 id=&#34;jetbrains&#34;&gt;JetBrains&lt;/h1&gt;
+&lt;p&gt;IntelliJ: Java的IDE, 安装Python的插件也支持python.&lt;/p&gt;
+&lt;h2 id=&#34;pycharm&#34;&gt;PyCharm&lt;/h2&gt;
+&lt;p&gt;PyCharm: Python的IDE.&lt;/p&gt;
+&lt;h2 id=&#34;goland&#34;&gt;Goland&lt;/h2&gt;
+&lt;p&gt;Goland: golang的IDE.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;vscode&#34;&gt;VSCode&lt;/h1&gt;
+&lt;h2 id=&#34;intellisense--code-navigation&#34;&gt;IntelliSense &amp;amp; Code Navigation&lt;/h2&gt;
+&lt;p&gt;Go to Definition: F12, 跳转到定义.&lt;/p&gt;
+&lt;p&gt;Peek Definition: Alt + F12， 速览定义，不跳转.&lt;/p&gt;
+&lt;p&gt;Go to references: Shift + F12, 转到引用.&lt;/p&gt;
+&lt;h2 id=&#34;frontend&#34;&gt;frontend&lt;/h2&gt;
+&lt;h3 id=&#34;vs-js-debug&#34;&gt;vs-js-debug&lt;/h3&gt;
+&lt;p&gt;vscode内置了js/ts/node的debugger.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/microsoft/vscode-js-debug&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/microsoft/vscode-js-debug&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;live-server&#34;&gt;live server&lt;/h3&gt;
+&lt;p&gt;live preview(html, svg&amp;hellip;)&lt;/p&gt;
+&lt;p&gt;如果用remote-ssh开启live server就是在远程机器上开启5500端口，webroot就是vscode打开的目录.&lt;/p&gt;
+&lt;p&gt;如果是remote-ssh开发html，用这个preview很方便.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/ritwickdey/vscode-live-server&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/ritwickdey/vscode-live-server&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;vscode-chrome-debug&#34;&gt;vscode-chrome-debug&lt;/h3&gt;
+&lt;p&gt;打开的是安装vscode的机器上的chrome。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/microsoft/vscode-chrome-debug&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/microsoft/vscode-chrome-debug&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;通过live server监听remote-ssh机器上的5500，可以通过chrome远程调试静态站点。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;{
+    &amp;quot;version&amp;quot;: &amp;quot;0.2.0&amp;quot;,
+    &amp;quot;configurations&amp;quot;: [
+        {
+            &amp;quot;name&amp;quot;: &amp;quot;angularjs&amp;quot;,
+            &amp;quot;type&amp;quot;: &amp;quot;chrome&amp;quot;,
+            &amp;quot;request&amp;quot;: &amp;quot;launch&amp;quot;,
+            &amp;quot;url&amp;quot;: &amp;quot;http://remote-ssh-server:5500/path/to/index.html&amp;quot;,
+            &amp;quot;webRoot&amp;quot;: &amp;quot;${workspaceFolder}/path/to/&amp;quot;,
+        },
+    ]
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;python&#34;&gt;python&lt;/h2&gt;
+&lt;p&gt;debuging:&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://code.visualstudio.com/docs/python/debugging&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://code.visualstudio.com/docs/python/debugging&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;debug current file:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;{
+    &amp;quot;name&amp;quot;: &amp;quot;current file&amp;quot;,
+    &amp;quot;type&amp;quot;: &amp;quot;python&amp;quot;,
+    &amp;quot;request&amp;quot;: &amp;quot;launch&amp;quot;,
+    &amp;quot;program&amp;quot;: &amp;quot;${file}&amp;quot;,
+    &amp;quot;console&amp;quot;: &amp;quot;integratedTerminal&amp;quot;,
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;debug with module:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;{
+    &amp;quot;name&amp;quot;: &amp;quot;module&amp;quot;,
+    &amp;quot;type&amp;quot;: &amp;quot;python&amp;quot;,
+    &amp;quot;request&amp;quot;: &amp;quot;launch&amp;quot;,
+    &amp;quot;module&amp;quot;: &amp;quot;module-name&amp;quot;,
+    &amp;quot;console&amp;quot;: &amp;quot;integratedTerminal&amp;quot;,
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;debug with attach:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// create ssh tunnel
+ssh -2 -L sourceport:localhost:5678 -i identifyfile user@remoteaddress
+{
+    &amp;quot;name&amp;quot;: &amp;quot;Python: Attach&amp;quot;,
+    &amp;quot;type&amp;quot;: &amp;quot;python&amp;quot;,
+    &amp;quot;request&amp;quot;: &amp;quot;attach&amp;quot;,
+    &amp;quot;port&amp;quot;: 5678,
+    &amp;quot;host&amp;quot;: &amp;quot;localhost&amp;quot;,
+    &amp;quot;pathMappings&amp;quot;: [
+        {
+            &amp;quot;localRoot&amp;quot;: &amp;quot;${workspaceFolder}&amp;quot;,
+            &amp;quot;remoteRoot&amp;quot;: &amp;quot;.&amp;quot;,
+        }
+    ]
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;testing:&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://code.visualstudio.com/docs/python/testing&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://code.visualstudio.com/docs/python/testing&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;unittest:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;{
+    &amp;quot;python.testing.autoTestDiscoverOnSaveEnabled&amp;quot;: true,
+    &amp;quot;python.testing.unittestArgs&amp;quot;: [
+        &amp;quot;-v&amp;quot;,
+        &amp;quot;-s&amp;quot;,
+        &amp;quot;./tests&amp;quot;,
+        &amp;quot;-p&amp;quot;,
+        &amp;quot;test_*.py&amp;quot;
+    ],
+    &amp;quot;python.testing.pytestEnabled&amp;quot;: false,
+    &amp;quot;python.testing.nosetestsEnabled&amp;quot;: false,
+    &amp;quot;python.testing.unittestEnabled&amp;quot;: true,
+    &amp;quot;restructuredtext.confPath&amp;quot;: &amp;quot;${workspaceFolder}/docs&amp;quot;,
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;django&#34;&gt;django&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://code.visualstudio.com/docs/python/tutorial-django&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://code.visualstudio.com/docs/python/tutorial-django&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;debugging:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;{
+    // 使用 IntelliSense 了解相关属性。
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    &amp;quot;version&amp;quot;: &amp;quot;0.2.0&amp;quot;,
+    &amp;quot;configurations&amp;quot;: [
+        {
+            &amp;quot;name&amp;quot;: &amp;quot;Python: Django&amp;quot;,
+            &amp;quot;type&amp;quot;: &amp;quot;python&amp;quot;,
+            &amp;quot;request&amp;quot;: &amp;quot;launch&amp;quot;,
+            &amp;quot;program&amp;quot;: &amp;quot;${workspaceFolder}/path/to/manage.py&amp;quot;,
+            &amp;quot;console&amp;quot;: &amp;quot;integratedTerminal&amp;quot;,
+            &amp;quot;args&amp;quot;: [
+                &amp;quot;runserver&amp;quot;,
+                &amp;quot;0:8888&amp;quot;
+            ],
+            &amp;quot;django&amp;quot;: true,
+            &amp;quot;env&amp;quot;: {
+            }
+        }
+    ]
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;golang&#34;&gt;golang&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/golang/vscode-go/blob/master/docs/debugging.md&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/golang/vscode-go/blob/master/docs/debugging.md&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;debugging:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;{
+    &amp;quot;version&amp;quot;: &amp;quot;0.2.0&amp;quot;,
+    &amp;quot;configurations&amp;quot;: [
+        {
+            &amp;quot;name&amp;quot;: &amp;quot;golang file&amp;quot;,
+            &amp;quot;type&amp;quot;: &amp;quot;go&amp;quot;,
+            &amp;quot;request&amp;quot;: &amp;quot;launch&amp;quot;,
+            &amp;quot;mode&amp;quot;: &amp;quot;auto&amp;quot;,
+            &amp;quot;program&amp;quot;: &amp;quot;${file}&amp;quot;
+        },
+        {
+            &amp;quot;name&amp;quot;: &amp;quot;gin debug&amp;quot;,
+            &amp;quot;type&amp;quot;: &amp;quot;go&amp;quot;,
+            &amp;quot;request&amp;quot;: &amp;quot;launch&amp;quot;,
+            &amp;quot;mode&amp;quot;: &amp;quot;auto&amp;quot;,
+            &amp;quot;program&amp;quot;: &amp;quot;${workspaceFolder}/backend/main.go&amp;quot;
+        },
+    ]
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;rest-client&#34;&gt;rest client&lt;/h2&gt;
+&lt;p&gt;调试rest API&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/Huachao/vscode-restclient&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/Huachao/vscode-restclient&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;example.api:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;@api = http://hostname:port/api/v0
+@Authorization = Basic a2FpemVuOkFybUFkbWluMSE=
+@Content-Type = application/json
+
+###
+GET {{api}}/users HTTP/1.1
+Authorization: {{Authorization}}
+Content-Type: {{Content-Type}}
+
+### 
+POST {{api}}/groupus HTTP/1.1
+Authorization: {{Authorization}}
+Content-Type: {{Content-Type}}
+{
+    key: value
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;record&#34;&gt;record&lt;/h2&gt;
+&lt;p&gt;vscode录制.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/microsoft/codetour&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/microsoft/codetour&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/arciisine/vscode-chronicler&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/arciisine/vscode-chronicler&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;支持远程debug的时候在本地录制，也就是本地是windows，只需要本地安装ffmpeg和chroicler。&lt;/p&gt;
+&lt;h2 id=&#34;mcp&#34;&gt;MCP&lt;/h2&gt;
+&lt;p&gt;&amp;ldquo;&amp;hellip;/Code/User/settings.json&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/GLips/Figma-Context-MCP&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/GLips/Figma-Context-MCP&lt;/a&gt;
+&lt;a class=&#34;link&#34; href=&#34;https://github.com/modelcontextprotocol/servers&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/modelcontextprotocol/servers&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;{
+    &amp;quot;servers&amp;quot;: {
+        &amp;quot;postgres&amp;quot;: {
+            &amp;quot;command&amp;quot;: &amp;quot;npx&amp;quot;,
+            &amp;quot;args&amp;quot;: [
+                &amp;quot;-y&amp;quot;,
+                &amp;quot;@modelcontextprotocol/server-postgres&amp;quot;,
+                &amp;quot;postgresql://server?ssl=true&amp;amp;sslmode=require&amp;amp;rejectUnauthorized=false&amp;quot;
+            ]
+        },
+        &amp;quot;redis&amp;quot;: {
+            &amp;quot;command&amp;quot;: &amp;quot;npx&amp;quot;,
+            &amp;quot;args&amp;quot;: [
+                &amp;quot;-y&amp;quot;,
+                &amp;quot;@modelcontextprotocol/server-redis&amp;quot;,
+                &amp;quot;redis://localhost:6379&amp;quot;
+            ]
+        },
+        &amp;quot;playwright&amp;quot;: {
+            &amp;quot;command&amp;quot;: &amp;quot;npx&amp;quot;,
+            &amp;quot;args&amp;quot;: [
+                &amp;quot;@playwright/mcp@latest&amp;quot;
+            ]
+        },
+        &amp;quot;Azure MCP Server&amp;quot;: {
+            &amp;quot;command&amp;quot;: &amp;quot;npx&amp;quot;,
+            &amp;quot;args&amp;quot;: [
+                &amp;quot;-y&amp;quot;,
+                &amp;quot;@azure/mcp@latest&amp;quot;,
+                &amp;quot;server&amp;quot;,
+                &amp;quot;start&amp;quot;
+            ]
+        },
+        &amp;quot;memory&amp;quot;: {
+            &amp;quot;command&amp;quot;: &amp;quot;npx&amp;quot;,
+            &amp;quot;args&amp;quot;: [
+                &amp;quot;-y&amp;quot;,
+                &amp;quot;@modelcontextprotocol/server-memory&amp;quot;
+            ]
+        },
+        &amp;quot;sequential-thinking&amp;quot;: {
+            &amp;quot;command&amp;quot;: &amp;quot;npx&amp;quot;,
+            &amp;quot;args&amp;quot;: [
+                &amp;quot;-y&amp;quot;,
+                &amp;quot;@modelcontextprotocol/server-sequential-thinking&amp;quot;
+            ]
+        },
+        &amp;quot;git&amp;quot;: {
+            &amp;quot;command&amp;quot;: &amp;quot;docker&amp;quot;,
+            &amp;quot;args&amp;quot;: [
+                &amp;quot;run&amp;quot;,
+                &amp;quot;--rm&amp;quot;,
+                &amp;quot;-i&amp;quot;,
+                &amp;quot;--mount&amp;quot;,
+                &amp;quot;type=bind,src=${workspaceFolder},dst=/workspace&amp;quot;,
+                &amp;quot;mcp/git&amp;quot;
+            ]
+        },
+        &amp;quot;filesystem&amp;quot;: {
+            &amp;quot;command&amp;quot;: &amp;quot;npx&amp;quot;,
+            &amp;quot;args&amp;quot;: [
+                &amp;quot;-y&amp;quot;,
+                &amp;quot;@modelcontextprotocol/server-filesystem&amp;quot;,
+                &amp;quot;${workspaceFolder}&amp;quot;
+            ]
+        },
+        &amp;quot;fetch&amp;quot;: {
+            &amp;quot;command&amp;quot;: &amp;quot;docker&amp;quot;,
+            &amp;quot;args&amp;quot;: [
+                &amp;quot;run&amp;quot;,
+                &amp;quot;-i&amp;quot;,
+                &amp;quot;--rm&amp;quot;,
+                &amp;quot;mcp/fetch&amp;quot;
+            ]
+        },
+        &amp;quot;kubernetes&amp;quot;: {
+            &amp;quot;command&amp;quot;: &amp;quot;npx&amp;quot;,
+            &amp;quot;args&amp;quot;: [
+                &amp;quot;-y&amp;quot;,
+                &amp;quot;mcp-server-kubernetes&amp;quot;
+            ]
+        }
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

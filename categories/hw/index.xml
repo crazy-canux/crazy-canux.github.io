@@ -1,40 +1,142 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>HW on Morgoth</title>
-    <link>https://canuxcheng.com/categories/hw/</link>
-    <description>Recent content in HW on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Mon, 15 May 2023 09:41:39 +0800</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/categories/hw/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Arduino</title>
-      <link>https://canuxcheng.com/post/hardware_arduino/</link>
-      <pubDate>Mon, 15 May 2023 09:41:39 +0800</pubDate>
-      <guid>https://canuxcheng.com/post/hardware_arduino/</guid>
-      <description>&lt;h1 id=&#34;arduino-uno&#34;&gt;Arduino Uno&lt;/h1&gt;&#xA;&lt;p&gt;tinogo-windows开发环境配置&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://tinygo.org/getting-started/install/windows/&#34;&gt;https://tinygo.org/getting-started/install/windows/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;scoop install go&#xA;scoop install tinygo&#xA;scoop install avrdude&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;windows烧写程序&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;tinygo flash -monitor -baudrate=9600 -target arduino -port COMX /path/to/blinky1&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;macos烧写程序&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;tinygo flash --target arduino -port /dev/cu.usbserial-0001 ./blinking.go&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;microcontroller&#34;&gt;Microcontroller&lt;/h2&gt;&#xA;&lt;p&gt;Arduino Uno 使用的是ATmega328p 控制器&lt;/p&gt;&#xA;&lt;p&gt;支持的外设接口:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;GPIO：general-purpose input/output，数字接口&lt;/li&gt;&#xA;&lt;li&gt;UART：Universal asynchronous receiver-transmitter，异步串行接口&lt;/li&gt;&#xA;&lt;li&gt;SPI：Serial Peripheral Interface，同步串行接口&lt;/li&gt;&#xA;&lt;li&gt;I2C：Inter-Integrated Circuit, 同步串行接口&lt;/li&gt;&#xA;&lt;li&gt;ADC：Analog-to-digital, 模拟转数字接口&lt;/li&gt;&#xA;&lt;li&gt;PWM: Pulse-width modulation,&lt;/li&gt;&#xA;&lt;li&gt;USB：不支持，异步串行接口&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;machine-包&#34;&gt;machine 包&lt;/h2&gt;&#xA;&lt;p&gt;machine包是tinygo中核心包&lt;/p&gt;&#xA;&lt;h2 id=&#34;driver&#34;&gt;Driver&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://tinygo.org/docs/reference/devices/&#34;&gt;https://tinygo.org/docs/reference/devices/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;安装支持的driver&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;go get tinygo.org/x/drivers&#xA;&lt;/code&gt;&lt;/pre&gt;</description>
-    </item>
-    <item>
-      <title>BSP</title>
-      <link>https://canuxcheng.com/post/hardware_bsp/</link>
-      <pubDate>Sat, 15 May 2021 09:41:39 +0800</pubDate>
-      <guid>https://canuxcheng.com/post/hardware_bsp/</guid>
-      <description>&lt;h1 id=&#34;bsp&#34;&gt;BSP&lt;/h1&gt;&#xA;&lt;p&gt;BSP，Board Support Package，板级支持包.&lt;/p&gt;&#xA;&lt;p&gt;熟悉常见的接口协议，如I2C, SPI, UART, USB等。&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>FPGA</title>
-      <link>https://canuxcheng.com/post/hardware_fpga/</link>
-      <pubDate>Sat, 15 May 2021 09:41:39 +0800</pubDate>
-      <guid>https://canuxcheng.com/post/hardware_fpga/</guid>
-      <description>&lt;h1 id=&#34;fpga&#34;&gt;FPGA&lt;/h1&gt;&#xA;&lt;p&gt;FPGA: Field Programmable Gate Array, 现场可编程逻辑门阵列.&lt;/p&gt;&#xA;&lt;p&gt;下面介绍各家厂商和对应的产品系列.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;xilinx赛灵思&#34;&gt;xilinx/赛灵思&lt;/h1&gt;&#xA;&lt;p&gt;Spartan&lt;/p&gt;&#xA;&lt;p&gt;Artix&lt;/p&gt;&#xA;&lt;p&gt;Kintex&lt;/p&gt;&#xA;&lt;p&gt;Virtex&lt;/p&gt;&#xA;&lt;p&gt;SoC/MPSoC&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;altera阿尔特拉&#34;&gt;Altera/阿尔特拉&lt;/h1&gt;&#xA;&lt;p&gt;被Intel英特尔收购&lt;/p&gt;&#xA;&lt;p&gt;MAXII&lt;/p&gt;&#xA;&lt;p&gt;Cyclone&lt;/p&gt;&#xA;&lt;p&gt;Stratix&lt;/p&gt;&#xA;&lt;p&gt;Arria&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;lattice莱迪思&#34;&gt;Lattice/莱迪思&lt;/h1&gt;&#xA;&lt;p&gt;ECP&lt;/p&gt;&#xA;&lt;p&gt;ICE&lt;/p&gt;&#xA;&lt;p&gt;Mach&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;synplicity&#34;&gt;Synplicity&lt;/h1&gt;&#xA;&lt;p&gt;被Synopsys新思科技收购&lt;/p&gt;&#xA;&lt;h2 id=&#34;haps&#34;&gt;HAPS&lt;/h2&gt;&#xA;&lt;p&gt;HAPS系列产品是专为ASIC/SOC设计者提供的高性能、高容量的基于FPGA的原型验证板.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Hardware</title>
-      <link>https://canuxcheng.com/post/hardware/</link>
-      <pubDate>Sat, 15 May 2021 09:41:39 +0800</pubDate>
-      <guid>https://canuxcheng.com/post/hardware/</guid>
-      <description>&lt;h1 id=&#34;hardware&#34;&gt;Hardware&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/micropython/micropython&#34;&gt;https://github.com/micropython/micropython&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/tinygo-org/tinygo&#34;&gt;https://github.com/tinygo-org/tinygo&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;soc&#34;&gt;SoC&lt;/h1&gt;&#xA;&lt;p&gt;SOC：（System-On-Chip)片上系统。可以简单的理解为把系统做在一块芯片上。&lt;/p&gt;&#xA;&lt;p&gt;AP: application processor, CPU, GPU, NPU, ISP, DSP, ROM/RAM.&lt;/p&gt;&#xA;&lt;p&gt;BP: base-band processor, BBU.&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://canuxcheng.com/images/chip.png&#34; alt=&#34;pic&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://canuxcheng.com/images/ISP.png&#34; alt=&#34;pic&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;EUV: Extreme Ultraviolet Lithography，极紫外光刻&lt;/p&gt;&#xA;&lt;p&gt;DSP: Digital Signal Processing.&lt;/p&gt;&#xA;&lt;p&gt;ISP: image signal process.&lt;/p&gt;&#xA;&lt;p&gt;厂商：紫光展锐，华为海思，全志科技，瑞芯微。&lt;/p&gt;&#xA;&lt;h1 id=&#34;rfic&#34;&gt;RFIC&lt;/h1&gt;&#xA;&lt;p&gt;射频芯片&lt;/p&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>HW on Morgoth</title>
+        <link>https://canuxcheng.com/categories/hw/</link>
+        <description>Recent content in HW on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Mon, 15 May 2023 09:41:39 +0800</lastBuildDate><atom:link href="https://canuxcheng.com/categories/hw/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Arduino</title>
+        <link>https://canuxcheng.com/post/hardware_arduino/</link>
+        <pubDate>Mon, 15 May 2023 09:41:39 +0800</pubDate>
+        
+        <guid>https://canuxcheng.com/post/hardware_arduino/</guid>
+        <description>&lt;h1 id=&#34;arduino-uno&#34;&gt;Arduino Uno&lt;/h1&gt;
+&lt;p&gt;tinogo-windows开发环境配置&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://tinygo.org/getting-started/install/windows/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://tinygo.org/getting-started/install/windows/&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;scoop install go
+scoop install tinygo
+scoop install avrdude
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;windows烧写程序&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;tinygo flash -monitor -baudrate=9600 -target arduino -port COMX /path/to/blinky1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;macos烧写程序&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;tinygo flash --target arduino -port /dev/cu.usbserial-0001 ./blinking.go
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;microcontroller&#34;&gt;Microcontroller&lt;/h2&gt;
+&lt;p&gt;Arduino Uno 使用的是ATmega328p 控制器&lt;/p&gt;
+&lt;p&gt;支持的外设接口:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;GPIO：general-purpose input/output，数字接口&lt;/li&gt;
+&lt;li&gt;UART：Universal asynchronous receiver-transmitter，异步串行接口&lt;/li&gt;
+&lt;li&gt;SPI：Serial Peripheral Interface，同步串行接口&lt;/li&gt;
+&lt;li&gt;I2C：Inter-Integrated Circuit, 同步串行接口&lt;/li&gt;
+&lt;li&gt;ADC：Analog-to-digital, 模拟转数字接口&lt;/li&gt;
+&lt;li&gt;PWM: Pulse-width modulation,&lt;/li&gt;
+&lt;li&gt;USB：不支持，异步串行接口&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;machine-包&#34;&gt;machine 包&lt;/h2&gt;
+&lt;p&gt;machine包是tinygo中核心包&lt;/p&gt;
+&lt;h2 id=&#34;driver&#34;&gt;Driver&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://tinygo.org/docs/reference/devices/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://tinygo.org/docs/reference/devices/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;安装支持的driver&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;go get tinygo.org/x/drivers
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
+        <item>
+        <title>BSP</title>
+        <link>https://canuxcheng.com/post/hardware_bsp/</link>
+        <pubDate>Sat, 15 May 2021 09:41:39 +0800</pubDate>
+        
+        <guid>https://canuxcheng.com/post/hardware_bsp/</guid>
+        <description>&lt;h1 id=&#34;bsp&#34;&gt;BSP&lt;/h1&gt;
+&lt;p&gt;BSP，Board Support Package，板级支持包.&lt;/p&gt;
+&lt;p&gt;熟悉常见的接口协议，如I2C, SPI, UART, USB等。&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>FPGA</title>
+        <link>https://canuxcheng.com/post/hardware_fpga/</link>
+        <pubDate>Sat, 15 May 2021 09:41:39 +0800</pubDate>
+        
+        <guid>https://canuxcheng.com/post/hardware_fpga/</guid>
+        <description>&lt;h1 id=&#34;fpga&#34;&gt;FPGA&lt;/h1&gt;
+&lt;p&gt;FPGA: Field Programmable Gate Array, 现场可编程逻辑门阵列.&lt;/p&gt;
+&lt;p&gt;下面介绍各家厂商和对应的产品系列.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;xilinx赛灵思&#34;&gt;xilinx/赛灵思&lt;/h1&gt;
+&lt;p&gt;Spartan&lt;/p&gt;
+&lt;p&gt;Artix&lt;/p&gt;
+&lt;p&gt;Kintex&lt;/p&gt;
+&lt;p&gt;Virtex&lt;/p&gt;
+&lt;p&gt;SoC/MPSoC&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;altera阿尔特拉&#34;&gt;Altera/阿尔特拉&lt;/h1&gt;
+&lt;p&gt;被Intel英特尔收购&lt;/p&gt;
+&lt;p&gt;MAXII&lt;/p&gt;
+&lt;p&gt;Cyclone&lt;/p&gt;
+&lt;p&gt;Stratix&lt;/p&gt;
+&lt;p&gt;Arria&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;lattice莱迪思&#34;&gt;Lattice/莱迪思&lt;/h1&gt;
+&lt;p&gt;ECP&lt;/p&gt;
+&lt;p&gt;ICE&lt;/p&gt;
+&lt;p&gt;Mach&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;synplicity&#34;&gt;Synplicity&lt;/h1&gt;
+&lt;p&gt;被Synopsys新思科技收购&lt;/p&gt;
+&lt;h2 id=&#34;haps&#34;&gt;HAPS&lt;/h2&gt;
+&lt;p&gt;HAPS系列产品是专为ASIC/SOC设计者提供的高性能、高容量的基于FPGA的原型验证板.&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Hardware</title>
+        <link>https://canuxcheng.com/post/hardware/</link>
+        <pubDate>Sat, 15 May 2021 09:41:39 +0800</pubDate>
+        
+        <guid>https://canuxcheng.com/post/hardware/</guid>
+        <description>&lt;h1 id=&#34;hardware&#34;&gt;Hardware&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/micropython/micropython&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/micropython/micropython&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/tinygo-org/tinygo&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/tinygo-org/tinygo&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;soc&#34;&gt;SoC&lt;/h1&gt;
+&lt;p&gt;SOC：（System-On-Chip)片上系统。可以简单的理解为把系统做在一块芯片上。&lt;/p&gt;
+&lt;p&gt;AP: application processor, CPU, GPU, NPU, ISP, DSP, ROM/RAM.&lt;/p&gt;
+&lt;p&gt;BP: base-band processor, BBU.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://canuxcheng.com/images/chip.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;pic&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://canuxcheng.com/images/ISP.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;pic&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;EUV: Extreme Ultraviolet Lithography，极紫外光刻&lt;/p&gt;
+&lt;p&gt;DSP: Digital Signal Processing.&lt;/p&gt;
+&lt;p&gt;ISP: image signal process.&lt;/p&gt;
+&lt;p&gt;厂商：紫光展锐，华为海思，全志科技，瑞芯微。&lt;/p&gt;
+&lt;h1 id=&#34;rfic&#34;&gt;RFIC&lt;/h1&gt;
+&lt;p&gt;射频芯片&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

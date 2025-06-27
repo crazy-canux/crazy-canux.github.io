@@ -1,19 +1,121 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Terraform on Morgoth</title>
-    <link>https://canuxcheng.com/tags/terraform/</link>
-    <description>Recent content in Terraform on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Fri, 15 Apr 2016 09:41:39 +0800</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/terraform/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Terraform</title>
-      <link>https://canuxcheng.com/post/cloud_terraform/</link>
-      <pubDate>Fri, 15 Apr 2016 09:41:39 +0800</pubDate>
-      <guid>https://canuxcheng.com/post/cloud_terraform/</guid>
-      <description>&lt;h1 id=&#34;terraform&#34;&gt;Terraform&lt;/h1&gt;&#xA;&lt;p&gt;install:&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://learn.hashicorp.com/tutorials/terraform/install-cli&#34;&gt;https://learn.hashicorp.com/tutorials/terraform/install-cli&lt;/a&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;cli&#34;&gt;CLI&lt;/h2&gt;&#xA;&lt;p&gt;操作工作目录&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;// 初始化目录，会根据配置下载和安装provider.&#xA;terraform init&#xA;&#xA;terraform get&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;操作tf文件&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;// 格式化文件&#xA;terraform fmt -recursive&#xA;&#xA;// 验证文件&#xA;terraform validate &#xA;&#xA;// 可以通过终端验证函数.&#xA;terraform console&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;操作基础设施:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;terraform plan&#xA;terraform plan -out test.tfplan&#xA;&#xA;terraform apply -auto-approve&#xA;terraform apply test.tfplan&#xA;&#xA;terraform destroy&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;检查基础设施:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;terraform show&#xA;terraform graph&#xA;terraform output&#xA;terraform state list/show&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;认证:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;terraform login&#xA;terraform logout&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;tf&#34;&gt;TF&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.terraform.io/language&#34;&gt;https://www.terraform.io/language&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;注释:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;# comment &#xA;// comment&#xA;/* comment */&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h3 id=&#34;backend-and-state&#34;&gt;backend and state&lt;/h3&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.terraform.io/language/settings/backends&#34;&gt;https://www.terraform.io/language/settings/backends&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Terraform on Morgoth</title>
+        <link>https://canuxcheng.com/tags/terraform/</link>
+        <description>Recent content in Terraform on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Fri, 15 Apr 2016 09:41:39 +0800</lastBuildDate><atom:link href="https://canuxcheng.com/tags/terraform/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Terraform</title>
+        <link>https://canuxcheng.com/post/cloud_terraform/</link>
+        <pubDate>Fri, 15 Apr 2016 09:41:39 +0800</pubDate>
+        
+        <guid>https://canuxcheng.com/post/cloud_terraform/</guid>
+        <description>&lt;h1 id=&#34;terraform&#34;&gt;Terraform&lt;/h1&gt;
+&lt;p&gt;install:&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://learn.hashicorp.com/tutorials/terraform/install-cli&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://learn.hashicorp.com/tutorials/terraform/install-cli&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;cli&#34;&gt;CLI&lt;/h2&gt;
+&lt;p&gt;操作工作目录&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 初始化目录，会根据配置下载和安装provider.
+terraform init
+
+terraform get
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;操作tf文件&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 格式化文件
+terraform fmt -recursive
+
+// 验证文件
+terraform validate 
+
+// 可以通过终端验证函数.
+terraform console
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;操作基础设施:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;terraform plan
+terraform plan -out test.tfplan
+
+terraform apply -auto-approve
+terraform apply test.tfplan
+
+terraform destroy
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;检查基础设施:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;terraform show
+terraform graph
+terraform output
+terraform state list/show
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;认证:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;terraform login
+terraform logout
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;tf&#34;&gt;TF&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.terraform.io/language&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.terraform.io/language&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;注释:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# comment 
+// comment
+/* comment */
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;backend-and-state&#34;&gt;backend and state&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.terraform.io/language/settings/backends&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.terraform.io/language/settings/backends&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.terraform.io/language/state&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.terraform.io/language/state&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;provider&#34;&gt;provider&lt;/h3&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;data-sources&#34;&gt;data sources&lt;/h3&gt;
+&lt;p&gt;data source: 获取服务的参数&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;module&#34;&gt;module&lt;/h3&gt;
+&lt;p&gt;管理provider上的模块/服务.定义了input, resource/data source, output的就可以认为是module.&lt;/p&gt;
+&lt;h4 id=&#34;meta-arguments&#34;&gt;meta-arguments&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;providers&lt;/li&gt;
+&lt;li&gt;depends_on&lt;/li&gt;
+&lt;li&gt;count&lt;/li&gt;
+&lt;li&gt;for_each&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;resources&#34;&gt;resources&lt;/h3&gt;
+&lt;p&gt;resources: 创建服务的参数&lt;/p&gt;
+&lt;h4 id=&#34;meta-arguments-1&#34;&gt;meta-arguments&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;depends_on&lt;/li&gt;
+&lt;li&gt;count&lt;/li&gt;
+&lt;li&gt;for_each&lt;/li&gt;
+&lt;li&gt;provider&lt;/li&gt;
+&lt;li&gt;lifecycle&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id=&#34;provisioner&#34;&gt;provisioner&lt;/h4&gt;
+&lt;p&gt;特殊的resource，可以在本地或远程机器做一些准备工作。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;variable&#34;&gt;Variable&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.terraform.io/language/values/variables&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.terraform.io/language/values/variables&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;input variable: 输入变量&lt;/p&gt;
+&lt;p&gt;local variable: 本地变量&lt;/p&gt;
+&lt;p&gt;output variable: 输出参数&lt;/p&gt;
+&lt;p&gt;子模块无法引用父模块的local变量， resource属性，input变量。但是可以通过output参数引用。&lt;/p&gt;
+&lt;p&gt;父模块无法引用子模块的local变量，resource属性。但是可以通过output参数引用，而且父模块可以通过input变量传值给子模块。&lt;/p&gt;
+&lt;h3 id=&#34;表达式&#34;&gt;表达式&lt;/h3&gt;
+&lt;h3 id=&#34;函数&#34;&gt;函数&lt;/h3&gt;
+&lt;h3 id=&#34;workspace&#34;&gt;workspace&lt;/h3&gt;
+&lt;p&gt;多环境构建（development, UAT, production).&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;terraform workspace new dev
+terraform workspace list
+terraform select &amp;lt;name&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;使用terraform.workspace作为参数.&lt;/p&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

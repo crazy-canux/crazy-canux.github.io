@@ -1,19 +1,298 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Gcp on Morgoth</title>
-    <link>https://canuxcheng.com/tags/gcp/</link>
-    <description>Recent content in Gcp on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sun, 23 Apr 2023 22:02:31 +0000</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/gcp/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>GCP</title>
-      <link>https://canuxcheng.com/post/gcp/</link>
-      <pubDate>Sun, 23 Apr 2023 22:02:31 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/gcp/</guid>
-      <description>&lt;h1 id=&#34;gcp&#34;&gt;GCP&lt;/h1&gt;&#xA;&lt;p&gt;gcp certification:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Google Cloud Certified Cloud Digital Leader&lt;/li&gt;&#xA;&lt;li&gt;Google Cloud Certified Associate Cloud Engineer&lt;/li&gt;&#xA;&lt;li&gt;Google Cloud Certified DevOps Engineer&lt;/li&gt;&#xA;&lt;li&gt;Google Cloud Certified Machine Learning Engineer&lt;/li&gt;&#xA;&lt;li&gt;Google Cloud Certified Professional Cloud Architect&lt;/li&gt;&#xA;&lt;li&gt;Google Cloud Certified Professional Data Engineer&lt;/li&gt;&#xA;&lt;li&gt;Google Cloud Certified Professional Network Engineer&lt;/li&gt;&#xA;&lt;li&gt;Google Cloud Certified Professional Security Engineer&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;cloud-sdk&#34;&gt;Cloud SDK&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://cloud.google.com/sdk/docs/install&#34;&gt;https://cloud.google.com/sdk/docs/install&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;默认安装的组件:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;bq&lt;/li&gt;&#xA;&lt;li&gt;bundled-python3-unix&lt;/li&gt;&#xA;&lt;li&gt;gsutil&lt;/li&gt;&#xA;&lt;li&gt;core&lt;/li&gt;&#xA;&lt;li&gt;gcloud-crc32c&lt;/li&gt;&#xA;&lt;li&gt;alpha&lt;/li&gt;&#xA;&lt;li&gt;beta&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;安装其它组件:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;gcloud components install app-engine-go docker-credential-gcr kustomize log-streaming terraform-tools app-engine-python app-engine-python-extras gke-gcloud-auth-plugin kubectl kubectl-oidc &#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;卸载:&lt;/p&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Gcp on Morgoth</title>
+        <link>https://canuxcheng.com/tags/gcp/</link>
+        <description>Recent content in Gcp on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Sun, 23 Apr 2023 22:02:31 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/gcp/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>GCP</title>
+        <link>https://canuxcheng.com/post/gcp/</link>
+        <pubDate>Sun, 23 Apr 2023 22:02:31 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/gcp/</guid>
+        <description>&lt;h1 id=&#34;gcp&#34;&gt;GCP&lt;/h1&gt;
+&lt;p&gt;gcp certification:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Google Cloud Certified Cloud Digital Leader&lt;/li&gt;
+&lt;li&gt;Google Cloud Certified Associate Cloud Engineer&lt;/li&gt;
+&lt;li&gt;Google Cloud Certified DevOps Engineer&lt;/li&gt;
+&lt;li&gt;Google Cloud Certified Machine Learning Engineer&lt;/li&gt;
+&lt;li&gt;Google Cloud Certified Professional Cloud Architect&lt;/li&gt;
+&lt;li&gt;Google Cloud Certified Professional Data Engineer&lt;/li&gt;
+&lt;li&gt;Google Cloud Certified Professional Network Engineer&lt;/li&gt;
+&lt;li&gt;Google Cloud Certified Professional Security Engineer&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;cloud-sdk&#34;&gt;Cloud SDK&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://cloud.google.com/sdk/docs/install&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://cloud.google.com/sdk/docs/install&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;默认安装的组件:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;bq&lt;/li&gt;
+&lt;li&gt;bundled-python3-unix&lt;/li&gt;
+&lt;li&gt;gsutil&lt;/li&gt;
+&lt;li&gt;core&lt;/li&gt;
+&lt;li&gt;gcloud-crc32c&lt;/li&gt;
+&lt;li&gt;alpha&lt;/li&gt;
+&lt;li&gt;beta&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;安装其它组件:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;gcloud components install app-engine-go docker-credential-gcr kustomize log-streaming terraform-tools app-engine-python app-engine-python-extras gke-gcloud-auth-plugin kubectl kubectl-oidc 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;卸载:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;gcloud components remove &amp;lt;component_id&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;升级&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;gcloud components update
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;gcp-command-line-interface&#34;&gt;GCP Command Line Interface&lt;/h2&gt;
+&lt;p&gt;使用:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;gcloud --help   
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;cli-credentials&#34;&gt;CLI credentials&lt;/h3&gt;
+&lt;p&gt;初始化：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;gcloud init
+gcloud init --no-launch-browser
+gcloud init --console-only
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;配置：&lt;/p&gt;
+&lt;p&gt;配置存储位置:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;linux/unix: ~/.config/gcloud
+windows: %APPDATA%\gcloud
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;配置管理:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 创建配置
+gcloud config configurations create [name]
+
+// 列出配置
+gcloud config configurations list
+
+// 查看配置属性
+gcloud config configurations describe [name]
+
+// 激活配置
+gcloud config configurations activate [name]
+
+// 删除配置
+gcloud config configurations delete [name]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;属性管理:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 查看属性
+gcloud config list
+
+// 切换account
+gcloud config set account [account]
+// 切换project
+gcloud config set project [project]
+
+// 查看可用属性
+gcloud config set --help
+
+// 显示可用属性的列表
+gcloud topic configurations
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;登录:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 默认打开浏览器授权
+gcloud auth login
+
+// 用于没有浏览器的机器
+// 复制gcloud auth login --remote-bootstrap=&amp;quot;命令在另外一台安装了浏览器和gcloud cli的机器打开。
+// 将浏览器的输出帖回没有浏览器的机器。
+gcloud auth login --no-browser
+
+// 用于没有浏览器的机器，复制Https网址打开浏览器授权。
+gcloud auth login --no-launch-browser
+
+// 列出账号.
+gcloud auth list
+
+// 禁止通过cli登录
+gcloud auth revoke [account]
+
+// 查找凭据文件位置
+gcloud info
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Application Default Credentials（ADC):&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 将用户凭据提供给ADC(用于sdk或者terraform等交互）。
+gcloud auth application-default login --no-launch-browser
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;交互式shell&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;gcloud beta interactive
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;compute&#34;&gt;compute&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Kubernetes: GKE(EKS)&lt;/li&gt;
+&lt;li&gt;Compute engine(EC2): compute engine&lt;/li&gt;
+&lt;li&gt;Batch&lt;/li&gt;
+&lt;li&gt;workload manager&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;serverless&#34;&gt;ServerLess&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;cloud run&lt;/li&gt;
+&lt;li&gt;cloud functions&lt;/li&gt;
+&lt;li&gt;app engine&lt;/li&gt;
+&lt;li&gt;api gateway&lt;/li&gt;
+&lt;li&gt;endpoints&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;network&#34;&gt;network&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;VPC&lt;/li&gt;
+&lt;li&gt;cloud router&lt;/li&gt;
+&lt;li&gt;cloud DNS(route53)&lt;/li&gt;
+&lt;li&gt;cloud domains(route53)&lt;/li&gt;
+&lt;li&gt;cloud firewall(DNS firewall, network firewall, SG, ACL)&lt;/li&gt;
+&lt;li&gt;cloud interconnect(direct connect)&lt;/li&gt;
+&lt;li&gt;cloud VPN&lt;/li&gt;
+&lt;li&gt;cloud NAT&lt;/li&gt;
+&lt;li&gt;cloud CDN&lt;/li&gt;
+&lt;li&gt;cloud load balancing&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;cloud-load-balancer&#34;&gt;Cloud Load balancer&lt;/h3&gt;
+&lt;p&gt;Application LB(http/https):&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;external LB(gce): external global lb(gke-l7-global-external-managed), external classic global lb(gke-l7-gxlb), external regional lb（gke-l7-regional-external-managed）.&lt;/li&gt;
+&lt;li&gt;internal LB(gce-internal, gke-l7-rilb): internal regional lb.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Proxy LB(TCP/SSL):&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;external&lt;/li&gt;
+&lt;li&gt;internal&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Passthrough LB(TCP/UDP):&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;external&lt;/li&gt;
+&lt;li&gt;internal&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;storage&#34;&gt;storage&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;persistent disk(EBS): (balanced/extreme/ssd/standard) 创建vm的时候创建块存储。&lt;/li&gt;
+&lt;li&gt;cloud storage(S3): (standard/nearline/coldline/archive) 可以在全球范围内随时存储和检索任意数量的数据&lt;/li&gt;
+&lt;li&gt;cloud storage for filebase(S3): 专为需要存储和提供用户生成的内容（如照片或视频）的应用开发者而打造的&lt;/li&gt;
+&lt;li&gt;filestore(EFS): file storage&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;database&#34;&gt;Database&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Cloud SQL(RDS, Aurora): RDBMA&lt;/li&gt;
+&lt;li&gt;Cloud Spanner(Aurora): RDBMS&lt;/li&gt;
+&lt;li&gt;Cloud Bigtable(dynamoDB): NoSQL: Key-value&lt;/li&gt;
+&lt;li&gt;datastore(dynamoDB): NoSQL: Indexed&lt;/li&gt;
+&lt;li&gt;memorystore(elastiCache): In-memory data store, memcached/redis&lt;/li&gt;
+&lt;li&gt;BigQuery&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;security&#34;&gt;Security&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;certificate authority service(ACM): Certificate management&lt;/li&gt;
+&lt;li&gt;cloud identity(IAM):&lt;/li&gt;
+&lt;li&gt;Identity and access management(IAM):&lt;/li&gt;
+&lt;li&gt;Identity-Aware Proxy(IAM):&lt;/li&gt;
+&lt;li&gt;cloud key management service(KMS):&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;IAM members:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;google account&lt;/li&gt;
+&lt;li&gt;google service account&lt;/li&gt;
+&lt;li&gt;google groups&lt;/li&gt;
+&lt;li&gt;cloud identity domain&lt;/li&gt;
+&lt;li&gt;google workspace domain&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;IAM basic roles:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Owner&lt;/li&gt;
+&lt;li&gt;Editor&lt;/li&gt;
+&lt;li&gt;Viewer&lt;/li&gt;
+&lt;li&gt;Billing Administrator&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Service account types:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;user created&lt;/li&gt;
+&lt;li&gt;built-in (compute engine or gke default SA)&lt;/li&gt;
+&lt;li&gt;Google APIs SA&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;operation&#34;&gt;Operation&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Monitoring&lt;/li&gt;
+&lt;li&gt;Debugger&lt;/li&gt;
+&lt;li&gt;Logging&lt;/li&gt;
+&lt;li&gt;Error reporting&lt;/li&gt;
+&lt;li&gt;Trace&lt;/li&gt;
+&lt;li&gt;Profiler&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;analytics&#34;&gt;Analytics&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;BigQuery&lt;/li&gt;
+&lt;li&gt;Pub/Sub&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;cicd&#34;&gt;CI/CD&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;cloud build&lt;/li&gt;
+&lt;li&gt;cloud deploy&lt;/li&gt;
+&lt;li&gt;container registry&lt;/li&gt;
+&lt;li&gt;artifact registry&lt;/li&gt;
+&lt;li&gt;source repositories&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;how-to-ssh-to-vm&#34;&gt;how to ssh to vm&lt;/h2&gt;
+&lt;h3 id=&#34;metadata&#34;&gt;Metadata&lt;/h3&gt;
+&lt;p&gt;分为Project metadata和instance metadata。&lt;/p&gt;
+&lt;h4 id=&#34;ssh&#34;&gt;ssh&lt;/h4&gt;
+&lt;p&gt;Only for external IP (public IP).&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ssh key for vm: add ssh pub key to instance metadata.&lt;/li&gt;
+&lt;li&gt;ssh key for project: add ssh pub key to project metadata.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;ssh to vm&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ssh username_from_metadata@external_IP
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;gcloud&#34;&gt;gcloud&lt;/h4&gt;
+&lt;p&gt;首次运行会创建ssh 密钥对，用户名是本地机器用户名,google_compute_engine.&lt;/p&gt;
+&lt;p&gt;公钥会自动上传到project/instance metadata.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;gcloud compute ssh public-instance \
+--project=PJ \
+--zone=RZ
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;os-login&#34;&gt;OS Login&lt;/h3&gt;
+&lt;p&gt;设置 OS Login 元数据时，Compute Engine 会删除虚拟机的 authorized_keys 文件，并且不再接受来自项目或实例元数据中存储的 SSH 密钥的连接。&lt;/p&gt;
+&lt;p&gt;用户名为canuxcheng@gmail.com =&amp;gt; canuxcheng_gmail_com&lt;/p&gt;
+&lt;h4 id=&#34;ssh-1&#34;&gt;ssh&lt;/h4&gt;
+&lt;p&gt;使用ssh需要将公钥上传到OS Login配置(忽略密钥中的用户名）。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;gcloud compute os-login ssh-keys add \
+--key-file=public_KEY_FILE_PATH \
+--project=PROJECT \
+--ttl=EXPIRE_TIME
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;ssh&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ssh canuxcheng_gmail_com@IP
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h4 id=&#34;gcloud-1&#34;&gt;gcloud&lt;/h4&gt;
+&lt;p&gt;首次运行会创建ssh 密钥对，公钥会自动上传到os login config.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;gcloud compute ssh instance --internal-ip --project=PJ --zone=RZ
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;iap&#34;&gt;IAP&lt;/h3&gt;
+&lt;p&gt;Identity-Aware Proxy&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://cloud.google.com/iap/docs/using-tcp-forwarding?_ga=2.127808461.-1134224509.1683858043&amp;amp;hl=zh-cn#firewall&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://cloud.google.com/iap/docs/using-tcp-forwarding?_ga=2.127808461.-1134224509.1683858043&amp;hl=zh-cn#firewall&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;use internal ip directly:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;gcloud compute ssh private-instance --project=PJ --zone=europe-west4-a --internal-ip
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;use iap:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;gcloud compute ssh private-instance \
+--project=PJ \
+--zone=RZ \
+--tunnel-through-iap 
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

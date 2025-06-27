@@ -1,68 +1,1447 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Shell on Morgoth</title>
-    <link>https://canuxcheng.com/tags/shell/</link>
-    <description>Recent content in Shell on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Wed, 14 Dec 2016 00:55:37 +0800</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/shell/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Awk</title>
-      <link>https://canuxcheng.com/post/shell_awk/</link>
-      <pubDate>Wed, 14 Dec 2016 00:55:37 +0800</pubDate>
-      <guid>https://canuxcheng.com/post/shell_awk/</guid>
-      <description>&lt;h1 id=&#34;awk&#34;&gt;awk&lt;/h1&gt;&#xA;&lt;p&gt;awk 是一门编程语言&lt;/p&gt;&#xA;&lt;p&gt;awk/nawk/gawk/mawk：比sed更高级的流编辑工具，是sed和grep的升级版，主要用于数据流处理。&lt;/p&gt;&#xA;&lt;p&gt;nawk： new awk。&lt;/p&gt;&#xA;&lt;p&gt;mawk： awk的解释器&lt;/p&gt;&#xA;&lt;p&gt;gawk是gnu的awk，功能更全面。&lt;/p&gt;&#xA;&lt;p&gt;awk命令格式：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;awk [-v var=value [-F *] [–] &#39;/pattern/ {action}&#39;  file&#xA;awk [-v var=value [-F *] [-f scriptfile ...] [–] file&#xA;awk [-v var=value [-F *] [-] &#39;BEGIN {} /pattern/ {action} END {}&#39;  file&#xA;BEGIN { }  在读取输入之前就操作&#xA;END { }    在读物输入之后操作&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;awk的指令需要用单引号包围；&#xA;模式需要用/pattern/包围；&#xA;过程需要用{command1；command2}包围，多个过程需要用；隔开。&lt;/p&gt;&#xA;&lt;p&gt;脚本中传递参数格式：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;awk [-f scriptfile]OR[&#39;/pattern/{action}&#39;] val1=value1 val2=value2 … file1   vala=valuea valb=valueb... file2 ...&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;如果通过shell传参数，把value改成$n即可。&#xA;可以通过命令返回值作为参数value。&#xA;也可以使用环境变量作为value，也可以给awk的环境变量赋值。&#xA;可以在任何位置定义变量（‘ ‘ 之后；-v之后；BEGIN中；{}中；END中）。&#xA;只有在-v和在BEGIN中定义的变量能在BEGIN中使用。&#xA;在END中定义的变量只能在END中使用，其它位置定义的变量都可以在{}中使用。&#xA;在任何位置定义的变量在END中都可以使用。&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Find</title>
-      <link>https://canuxcheng.com/post/shell_find/</link>
-      <pubDate>Wed, 20 Apr 2016 13:55:36 +0800</pubDate>
-      <guid>https://canuxcheng.com/post/shell_find/</guid>
-      <description>&lt;h1 id=&#34;find&#34;&gt;find&lt;/h1&gt;&#xA;&lt;p&gt;Find     查找，用于在目录中查找。&#xA;find  path  options  tests  actions&#xA;path 路径&#xA;options 选项&#xA;tests 测试&#xA;actions 动作&lt;/p&gt;&#xA;&lt;p&gt;optioins选项:&#xA;-follow&#xA;-depth&#xA;-maxdepth&#xA;-mindepth&#xA;find   dir  -mindepth  n     指定最小的目录深度，至少从dir往下n级目录开始往下搜索，dir和n级之间的忽略。&#xA;find   dir   -maxdepth  n      指定最大目录深度，不搜索n级之后的目录。&lt;/p&gt;&#xA;&lt;p&gt;test选项很多：&#xA;-newer   pattern   比pattern文件要新&#xA;-user    pattern      文件属主是pattern&#xA;-name   pattern    查找和type匹配的&#xA;-iname  pattern    查找和type匹配的，会忽略大小写&#xA;-iwholename&#xA;-path   pattern     按照文件路径匹配&#xA;-type   c           c是文件类型，按照文件类型匹配文件&#xA;-size   +/-    nk/c/w/k/b/M/G    匹配大于或小于n  kb/..  的文件&#xA;-perm   XXX       基于文件权限的匹配&#xA;find dir  –atime/mtime/ctime    +/-n    根据时间累匹配，atime表示访问时间，mtime表示修改时间，ctime表示变化时间，+表示大于，-表示小于，单位是天。&#xA;-a/-and   pattern&#xA;-o/-or     pattern&#xA;！/-not    pattern&#xA;find  dir  !  test   pattern   列出所有没有按照-options  pattern模式的项&#xA;(&amp;hellip;)    使用括号需要用引号来引用。&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Grep</title>
-      <link>https://canuxcheng.com/post/shell_grep/</link>
-      <pubDate>Wed, 20 Apr 2016 13:55:36 +0800</pubDate>
-      <guid>https://canuxcheng.com/post/shell_grep/</guid>
-      <description>&lt;h1 id=&#34;grep&#34;&gt;grep&lt;/h1&gt;&#xA;&lt;p&gt;grep相关的命令：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;grep&#xA;egrep == grep -E&#xA;fgrep == grep -F&#xA;rgrep == grep -r&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;grep:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;grep [OPTIONS] PATTERN [FILE/DIR...]&#xA;grep [OPTIONS] [-e PATTERN | -f FILE] [FILE/DIR...]&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;options:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;# Matcher Selection&#xA;-G, --basic-regexp grep默认只支持BRE, 只能使用基本的RE&#xA;-E, --extended-regexp 选择ERE, 可以使用扩展的RE&#xA;# grep -E &amp;quot;pattern1|pattern2&amp;quot; 比如支持或运算&#xA;-F, --fixed-strings&#xA;-P, --perl-regexp perl RE&#xA;&#xA;# Matching Control&#xA;-e PATTERN, --regexp=PATTERN    可以指定多个pattern&#xA;# grep -e pattern1 -e pattern2 filename 相当于或运算，满足一个就被过滤出来&#xA;-f FILE, --file=FILE    文件的每一行就是一个pattern.&#xA;-i, --ignore-case    忽略大小写&#xA;-v, --invert-match   忽略含有pattern的行&#xA;-w, --word-regexp    精确匹配一个单词&#xA;-x, --line-regexp    精确匹配一行&#xA;-y&#xA;&#xA;# General Output Control&#xA;-c, --count    统计匹配到的行数&#xA;--color[=WHEN], --colour[=WHEN]    输出匹配的pattern高亮&#xA;-L, --files-without-match    列出没有匹配到的文件名&#xA;-l, --files-with-matches    列出匹配到的文件的文件名&#xA;# grep -rl pattern1 | xargs grep -r pattern2    相当于与运算，过滤同时满足两个pattern&#xA;-m NUM, --max-count=NUM&#xA;-o, --only-matching    只输出匹配的部分&#xA;# grep -o pattern filename | wc -l 统计匹配的行数&#xA;-q, --quiet, --silent    不打印查找的结果&#xA;-s, --no-messages&#xA;&#xA;# Output Line Prefix Control&#xA;-b, --byte-offset    打印匹配的字符数或偏移量&#xA;-H, --with-filename&#xA;-h, --no-filename&#xA;--label=LABEL&#xA;-n, --line-number    打印匹配的行的行号&#xA;-T, --initial-tab&#xA;-u, --unix-byte-offsets&#xA;-Z, --null&#xA;&#xA;# Context Line Control&#xA;-A NUM, --after-context=NUM    打印匹配到的行的后NUM行&#xA;-B NUM, --before-context=NUM    打印匹配到的行的前NUM行j&#xA;-C NUM, -NUM, --context=NUM    打印匹配到的行的前NUM行和后NUM行&#xA;&#xA;# File and Directory Selection&#xA;-a, --text&#xA;--binary-files=TYPE&#xA;-D ACTION, --devices=ACTION&#xA;-d ACTION, --directories=ACTION&#xA;--exclude=GLOB    排除查找指定的文件&#xA;--exclude-from=FILE&#xA;--exclude-dir=DIR   排除查找指定的目录&#xA;-I&#xA;--include=GLOB     指定查找的文件&#xA;-r, --recursive    递归查找&#xA;-R, --dereference-recursive    递归查找&#xA;# grep -nR/-nr pattern filename    阅读源码可以递归查找并打印行号&#xA;&#xA;# Other Options&#xA;--line-buffered&#xA;--mmap&#xA;-U, --binary&#xA;-z, --null-data&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h1 id=&#34;ack&#34;&gt;ack&lt;/h1&gt;&#xA;&lt;p&gt;ack/ack2是grep的升级版&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Sed</title>
-      <link>https://canuxcheng.com/post/shell_sed/</link>
-      <pubDate>Sat, 02 Apr 2016 11:15:57 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/shell_sed/</guid>
-      <description>&lt;h1 id=&#34;sed&#34;&gt;sed&lt;/h1&gt;&#xA;&lt;p&gt;sed：stream editor  流编辑器 ，主要用于文本处理。&lt;/p&gt;&#xA;&lt;p&gt;sed命令格式：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;sed   -options   ’expression1;expression2’     file           执行多个命令&#xA;sed   -options   [-e ‘expression1’] [-e ‘expression2’]  file  执行多个命令&#xA;sed   -options   [-f   scriptfile]   file                     通过脚本执行命令&#xA;sed   -options   [-f   scriptfile]   file  &amp;gt;  newfile  #sed修改后重定向到新文件。&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;sed指令需要用单引号包围。使用双引号“”可以传递变量。&#xA;Sed默认并没有修改文件file中的数据。&#xA;sed默认在stdout输出文件的所有行。&#xA;Sed地址需要使用/address/来包围。&#xA;sed使用正则表达式可以用\BRE\包围，如果模式包含/，那么可以使用除了换行符之外的所有字符包围。&lt;/p&gt;&#xA;&lt;p&gt;options：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;-e：指定多个命令或脚本&#xA;-f：指定执行命令的脚本&#xA;-n：阻止自动输出，p可以打印匹配的行。&#xA;-i: 直接修改读入的文件的内容.&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;experssion：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;expression：指令由模式和过程组成。&#xA;[address]/[line-address][!]command[arguments]&#xA;[address]表示地址，一般用模式进行寻址，address缺省表示整个文件寻址，两个地址用，隔开。&#xA;[line-address]表示只能是一个地址。&#xA;[!] 表示不匹配该地址的所有行&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;Command:&lt;/p&gt;&#xA;&lt;p&gt;sed有25个命令。&lt;/p&gt;&#xA;&lt;p&gt;使用大括号{}在一个地址中做嵌套操作：例如：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;/address1/,/address2/{&#xA;    /^$/d&#xA;    s/string1/string2/&#xA;    …&#xA;}             // 单独一行，后面不能有空格&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;s命令：替换，替换模式空间中的行。&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;sed &#39;[address]s/oldpattern/newpattern/[flag]&#39; filename&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;flag:&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Shell</title>
-      <link>https://canuxcheng.com/post/shell/</link>
-      <pubDate>Fri, 01 Apr 2016 20:42:59 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/shell/</guid>
-      <description>&lt;h1 id=&#34;shell&#34;&gt;Shell&lt;/h1&gt;&#xA;&lt;p&gt;Linux的shell有很多种,大多数linux发行版的默认登录shell是BASH。&lt;/p&gt;&#xA;&lt;p&gt;查看当前使用的shell：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;echo $SHELL&#xA;echo $0&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;查看安装了哪些shell：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;cat /etc/shells&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;设置登陆shell:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$chsh -s $(which shellname)&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;shell分为登陆shell和交互式shell:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;# 输出有i的就是交互shell&#xA;$echo $-&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;非交互登陆shell:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;先运行系统配置文件/etc/profile(调用/etc/bash.bashrc和/etc/profile.d/*.sh)&lt;/li&gt;&#xA;&lt;li&gt;然后运行用户配置文件~/.profile(调用~/.bashrc和~/bin)&lt;/li&gt;&#xA;&lt;li&gt;最后退出用户登陆~/.bash_logout&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;交互非登陆shell:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;先运行/etc/bash.bashrc(调用/etc/bash_completion(调用/etc/bash_completion.d/*.sh))&lt;/li&gt;&#xA;&lt;li&gt;然后运行~/.bashrc(调用~/.bash_aliases和~/bash.d和~/bin)&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;shell相关项目&#34;&gt;shell相关项目&lt;/h1&gt;&#xA;&lt;h2 id=&#34;bash-it&#34;&gt;bash-it&lt;/h2&gt;&#xA;&lt;p&gt;大部分发行版默认使用bash,无需额外安装。&lt;/p&gt;&#xA;&lt;p&gt;bash的优化项目bash-it：&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/Bash-it/bash-it&#34;&gt;https://github.com/Bash-it/bash-it&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;zsh&#34;&gt;zsh&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://www.zsh.org/&#34;&gt;http://www.zsh.org/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;oh-my-zsh&#34;&gt;oh-my-zsh&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/robbyrussell/oh-my-zsh&#34;&gt;https://github.com/robbyrussell/oh-my-zsh&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;fish-shell&#34;&gt;fish-shell&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/fish-shell/fish-shell&#34;&gt;https://github.com/fish-shell/fish-shell&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;oh-my-fish&#34;&gt;oh-my-fish&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/oh-my-fish/oh-my-fish&#34;&gt;https://github.com/oh-my-fish/oh-my-fish&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;thefuck&#34;&gt;thefuck&lt;/h2&gt;&#xA;&lt;p&gt;一个纠正shell命令输错的命令&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/nvbn/thefuck&#34;&gt;https://github.com/nvbn/thefuck&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;shellcheck&#34;&gt;shellcheck&lt;/h2&gt;&#xA;&lt;p&gt;一个debug脚本的工具．&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/koalaman/shellcheck&#34;&gt;https://github.com/koalaman/shellcheck&lt;/a&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;shell-script&#34;&gt;shell script&lt;/h1&gt;&#xA;&lt;p&gt;基本语法&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;#!/usr/bin/env bash&#xA;&#xA;command1 &amp;amp;&amp;amp; command2    # 当command1执行成功（返回0)才会执行command2&#xA;command1 || command2    # 当command1执行失败（返回非0)才会执行command2&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;shell注释&#34;&gt;shell注释&lt;/h2&gt;&#xA;&lt;p&gt;单行注释：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;# comment&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;多行注释：&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Coreutils</title>
-      <link>https://canuxcheng.com/post/shell_coreutils/</link>
-      <pubDate>Thu, 31 Mar 2016 21:51:25 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/shell_coreutils/</guid>
-      <description>&lt;h1 id=&#34;linux的外部命令&#34;&gt;Linux的外部命令&lt;/h1&gt;&#xA;&lt;p&gt;Linux外部命令的项目是coreutils。&lt;/p&gt;&#xA;&lt;p&gt;外部命令在coreutils目录中&lt;/p&gt;&#xA;&lt;p&gt;查看外部命令所在目录：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;echo $PATH&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;外部命令在下列目录中：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;~/bin # 用户自定义&#xA;&#xA;/sbin&#xA;&#xA;/bin&#xA;&#xA;/usr/sbin&#xA;&#xA;/usr/bin&#xA;&#xA;/usr/local/sbin&#xA;&#xA;/usr/local/bin&#xA;&#xA;/usr/games&#xA;&#xA;/usr/local/games&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;查看外部命令手册的在线手册：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;man [command]&#xA;info [command]&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;自定义外部命令：&lt;/p&gt;&#xA;&lt;p&gt;添加$PATH变量，然后放到该目录。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;系统管理&#34;&gt;系统管理&lt;/h1&gt;&#xA;&lt;p&gt;cpu/mem/load&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;# 查看cpu/mem/swap/system信息&#xA;vmstat&#xA;vmstat 1&#xA;&#xA;# 查看进程消耗的cpu/mem/swap/system等系统信息&#xA;top&#xA;top -H  # 查看线程&#xA;%cpu = cputime/realtime * 100%&#xA;cpu_usage = %cpu/cpu-number&#xA;%mem = RES/physicalMem * 100%&#xA;&#xA;htop&#xA;$ sudo apt-get install htop&#xA;&#xA;$ sudo apt-get install sysstat (包括pidstat)&#xA;pidstat -u -p pid // cpu&#xA;pidstat -r -p pid //mem&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;cpu/load:&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Utils</title>
-      <link>https://canuxcheng.com/post/shell_utils/</link>
-      <pubDate>Thu, 31 Mar 2016 21:51:25 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/shell_utils/</guid>
-      <description>&lt;h1 id=&#34;linux的第三方命令&#34;&gt;Linux的第三方命令&lt;/h1&gt;&#xA;&lt;p&gt;Linux外部命令的项目是coreutils.&lt;/p&gt;&#xA;&lt;p&gt;外部命令在coreutils目录中.&lt;/p&gt;&#xA;&lt;p&gt;第三方命令(相当于外部命令)．&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;文件和目录管理&#34;&gt;文件和目录管理&lt;/h1&gt;&#xA;&lt;p&gt;autojump:&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/wting/autojump&#34;&gt;https://github.com/wting/autojump&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;fasd:&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/clvv/fasd&#34;&gt;https://github.com/clvv/fasd&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;fzf:&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/junegunn/fzf&#34;&gt;https://github.com/junegunn/fzf&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;压缩备份&#34;&gt;压缩备份&lt;/h1&gt;&#xA;&lt;h1 id=&#34;磁盘管理&#34;&gt;磁盘管理&lt;/h1&gt;&#xA;&lt;h1 id=&#34;设备管理&#34;&gt;设备管理&lt;/h1&gt;&#xA;&lt;hr&gt;</description>
-    </item>
-    <item>
-      <title>Builtins</title>
-      <link>https://canuxcheng.com/post/shell_builtins/</link>
-      <pubDate>Thu, 31 Mar 2016 21:51:03 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/shell_builtins/</guid>
-      <description>&lt;h1 id=&#34;linux内置命令&#34;&gt;Linux内置命令&lt;/h1&gt;&#xA;&lt;p&gt;内置命令在bash/builtins目录中&lt;/p&gt;&#xA;&lt;p&gt;shell命令分为内置命令和外部命令.&lt;/p&gt;&#xA;&lt;p&gt;查看一个命令是内置命令还是外部命令：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;type -a [command]&#xA;&#xA;提示&amp;quot;[command] is a shell builtin&amp;quot;就表示是内置命令，否则就是外部命令。&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;查看所有内置命令：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;help&#xA;enable -a&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;查看内置命令的帮助：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;help [command]&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;pre&gt;&lt;code&gt;type&#xA;enable&#xA;help&#xA;&#xA;caller&#xA;alias&#xA;bg&#xA;bind&#xA;break&#xA;builtin&#xA;command&#xA;compgen&#xA;complete&#xA;compopt&#xA;continue&#xA;declare&#xA;disown&#xA;let&#xA;local&#xA;logout&#xA;mapfile&#xA;popd&#xA;printf&#xA;pushd&#xA;read&#xA;readarray&#xA;readonly&#xA;return&#xA;shift&#xA;shopt&#xA;source&#xA;suspend&#xA;times&#xA;trap&#xA;true&#xA;typeset&#xA;ulimit&#xA;umask&#xA;unalias&#xA;unset&#xA;wait&#xA;eval&#xA;exec&#xA;exit&#xA;export&#xA;false&#xA;fc&#xA;fg&#xA;getopts&#xA;hash&#xA;history&#xA;jobs&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;路径相关:&lt;/p&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Shell on Morgoth</title>
+        <link>https://canuxcheng.com/tags/shell/</link>
+        <description>Recent content in Shell on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Wed, 14 Dec 2016 00:55:37 +0800</lastBuildDate><atom:link href="https://canuxcheng.com/tags/shell/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Awk</title>
+        <link>https://canuxcheng.com/post/shell_awk/</link>
+        <pubDate>Wed, 14 Dec 2016 00:55:37 +0800</pubDate>
+        
+        <guid>https://canuxcheng.com/post/shell_awk/</guid>
+        <description>&lt;h1 id=&#34;awk&#34;&gt;awk&lt;/h1&gt;
+&lt;p&gt;awk 是一门编程语言&lt;/p&gt;
+&lt;p&gt;awk/nawk/gawk/mawk：比sed更高级的流编辑工具，是sed和grep的升级版，主要用于数据流处理。&lt;/p&gt;
+&lt;p&gt;nawk： new awk。&lt;/p&gt;
+&lt;p&gt;mawk： awk的解释器&lt;/p&gt;
+&lt;p&gt;gawk是gnu的awk，功能更全面。&lt;/p&gt;
+&lt;p&gt;awk命令格式：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;awk [-v var=value [-F *] [–] &#39;/pattern/ {action}&#39;  file
+awk [-v var=value [-F *] [-f scriptfile ...] [–] file
+awk [-v var=value [-F *] [-] &#39;BEGIN {} /pattern/ {action} END {}&#39;  file
+BEGIN { }  在读取输入之前就操作
+END { }    在读物输入之后操作
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;awk的指令需要用单引号包围；
+模式需要用/pattern/包围；
+过程需要用{command1；command2}包围，多个过程需要用；隔开。&lt;/p&gt;
+&lt;p&gt;脚本中传递参数格式：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;awk [-f scriptfile]OR[&#39;/pattern/{action}&#39;] val1=value1 val2=value2 … file1   vala=valuea valb=valueb... file2 ...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如果通过shell传参数，把value改成$n即可。
+可以通过命令返回值作为参数value。
+也可以使用环境变量作为value，也可以给awk的环境变量赋值。
+可以在任何位置定义变量（‘ ‘ 之后；-v之后；BEGIN中；{}中；END中）。
+只有在-v和在BEGIN中定义的变量能在BEGIN中使用。
+在END中定义的变量只能在END中使用，其它位置定义的变量都可以在{}中使用。
+在任何位置定义的变量在END中都可以使用。&lt;/p&gt;
+&lt;p&gt;Options:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;-f: 指定运行脚本文件中的命令,可以指定多个脚本。
+-F: 指定输入字段分隔符，默认是空格键和制表符。
+-v  $val=value  定义变量
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;awk中的由空格或制表符分隔的单元作为一个字段&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$0	当前行的文本内容
+$1	第一个字段的文本内容
+$n	第n个字段的文本内容
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;awk中的常量和变量：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;常量：字符串型和数字型，字符串常量必须用“”引号引用。
+变量：变量名大小写敏感，字母或下划线开头，可以包含数字。
+awk会自动将变量根据环境初始化为空串或0.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;awk中的命令：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;print命令：
+print a,b   参数用，隔开，打印出来的就是用空格隔开的,eg：a b.
+print a“string”b  参数中用双引号打印出来就是原样输出,eg:astringb.
+Print     打印匹配到的行
+print “”  打印一个空行
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;printf命令：&lt;/p&gt;
+&lt;p&gt;格式化输出，和c语言中的printf类似。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;printf(format[,arguments])
+format是用“”引起来的格式
+arguments是一个可选的参数列表
+%s:字符串
+%d：十进制整数
+%f：浮点格式，默认精度小数点后6位。
+%%：打印%
+|%mX|:对于格式X按照默认的右对齐，精确到m位，左边补空格
+|%-mX|：对于格式X按照左对齐，精确到m位，右边补空格
+“%*.*g”， m， n， $val ： 动态指定精度，总共m位，小数点后n位。
+\t：跳格
+\n：换行
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;next命令：&lt;/p&gt;
+&lt;p&gt;取得下一条记录&lt;/p&gt;
+&lt;p&gt;delete命令：&lt;/p&gt;
+&lt;p&gt;删除&lt;/p&gt;
+&lt;p&gt;exit命令：&lt;/p&gt;
+&lt;p&gt;退出输入记录的处理，进入END。
+exit n   设置awk的退出状态。&lt;/p&gt;
+&lt;p&gt;awk中的内置的变量：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;FS  定义输入记录字段分隔符，默认是空格
+OFS 输出记录字段分隔符，默认是空格
+NF	当前输入记录的字段个数（列号）
+RS  输入记录分隔符，默认是换行符
+ORS 输出记录分隔符，默认是换行符
+NR	读入的输入记录的个数(行号）
+FILENAME 当前输入文件的名字
+CONVFMT 控制类型转换，默认为%.6g
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;在BEGIN{}中可以给变量赋值；在{}中用$来引用这些变量；在END{}中可以打印这些变量。&lt;/p&gt;
+&lt;p&gt;运算符：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;算数操作符：
++ - * / % ^
+
+赋值操作符：
+++ –-
++= -= *= /= %= ^=
+
+关系操作符：
+&amp;lt; &amp;gt; &amp;lt;= &amp;gt;=
+==(注意和赋值=的区别） !=
+~（匹配） !~（不匹配）
+
+布尔操作符：
+&amp;amp;&amp;amp; 逻辑与，优先级高于||
+|| 逻辑或
+！ 逻辑非
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;awk内置的语句：&lt;/p&gt;
+&lt;p&gt;和c语言相似&lt;/p&gt;
+&lt;p&gt;条件语句：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;if (expression)
+    action1
+[else if (expression2) {
+    action2
+    action3
+    ...
+}]  多个动作需要用{}包围
+[else if () {action1;action2;...}]  多个动作写在一行需要用；隔开。
+[else if () action ; else action]  在同一行用；结束一个语句
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;也可以用条件运算符代替条件语句：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;expression ? Action1 : action2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;循环语句：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;while (condition)
+    action
+
+while (condition) {
+    action1
+    action2
+    …
+}
+
+while (condition) { action1 ; action2 ; … }
+
+do
+    action
+while (condition)
+
+do {
+    action1
+    action2
+    …
+} while (condition)
+
+do { action1;action2;...} while (condition)
+
+for (set_counter; test_counter; increment_counter)
+    action
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;break:&lt;/p&gt;
+&lt;p&gt;退出循环&lt;/p&gt;
+&lt;p&gt;continue：&lt;/p&gt;
+&lt;p&gt;终止本次循环，进入下一次循环&lt;/p&gt;
+&lt;p&gt;数组：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;array[subscript] = value
+awk中的数组直接给数组元素赋值，不用指定数组大小。通过下标访问。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;关联数组：&lt;/p&gt;
+&lt;p&gt;awk中的数组是关联数组，也就是可以用数值和字符作为下标来访问。&lt;/p&gt;
+&lt;p&gt;in操作符用来测试variable是否是数组array的下标，如果是条件为真。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;for (variable in array)
+    print variable: array[variable]
+if (variable in array)
+    print variable: array[variable]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;删除数组元素：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;delete array[subscript]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;系统变量的数组：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ARGV：
+命令行参数数组，下标从0开始，不包括awk脚本本身和任何调用awk脚本指定的选项。
+akw -f awk.sh …    #不包括-f和awk.sh
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;ENVIRON：&lt;/p&gt;
+&lt;p&gt;环境变量数组，下标是环境变量的名字，元素是环境变量的值。&lt;/p&gt;
+&lt;p&gt;awk内置的函数：&lt;/p&gt;
+&lt;p&gt;函数分为算数函数和字符串函数。&lt;/p&gt;
+&lt;p&gt;算数函数有9个：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sin(x)：返回x的正弦
+cos(x)：返回x的余弦
+atan2(y,x)：返回y/x的反正切
+exp(x)：返回e的x次幂
+log(x)：返回以e为底的x的自然对数
+sqrt(x)：返回x的平方根
+int(x)：返回x的整数部分
+rand()：返回伪随机数r，0=&amp;lt; r &amp;lt;1
+srand(x)：建立rand（）的新的种子数
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;字符串函数：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;gsub(r,s,t) 在字符串t中用s替换和正则表达式r匹配的所有字符串，返回替换的个数。
+gsub(r,s) 相当于t=$0
+sub(r,s,t)用s替换正则表达式在t中的首次匹配。成功返回1，失败返回0.
+sub(r,s)相当于t=$0
+
+substr(s,p)返回s中从位置p开始的子串
+substr(s,p,n)返回s中从位置p开始最大长度为n的子串。
+
+index(s,t)返回子串t在s中的位置，如果没有指定s或没有匹配项返回0.也就是返回t中的首字母在s中是第几个字符，如果首字母重复出现返回第一个的位置。
+
+length(s)   返回字符串s长度，没有指定s返回$0的长度，\n \t \r 空格都算一个字节。
+
+match(s,r)如果正则表达式r在s中出现，返回出现的起始位置，没有匹配返回0.
+
+split(string, array, separator)
+将字符串string分解到数组array中，数组下标从1到n，string根据指定的分隔符来分解，如果没有指定分隔符，默认为FS。返回数组中元素个数。
+
+sprintf(“format”, expr)和printf一样。
+
+tolower(s)将s中的所有大写字母转换成小写并返回新的字符串
+toupper(s)将s中的左右小写字母转换成大写并返回新的字符串
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;其它函数：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;getline命令（其实是个函数）：
+获取下一条记录给$0,成功返回1，到达EOF返回0，失败返回-1.
+getline可以从文件中读取：getline &amp;lt; “filename”,每次读一行。
+getline从标准输入读取：getline &amp;lt; “-”,每次从stdin读取一行。
+将输入赋给一个变量：getline var_name.
+从管道读取：”command”|getline；“command”|getline var_name;把一个命令结果输出给getline.
+
+close()：关闭打开的文件和管道
+
+“command” | ...
+close(“command”)关闭输入管道
+
+...| “command“ &amp;gt; filename
+close(“command &amp;gt; filename”)关闭输出管道
+
+system()：执行一个命令。
+system(“command options”),返回命令的退出状态。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;可以定义自己的函数：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function yourfunctionname(parameter-list) {
+    statements
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;可以使用系统定义的变量、语句、函数来定义自己的函数。
+使用自己定义的函数可以将函数写成一个单独脚本，使用-f选项来指定多个脚本进行调用。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;常用命令&#34;&gt;常用命令&lt;/h1&gt;
+&lt;p&gt;删除字符串前后空格:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;echo &amp;quot;string&amp;quot; |　awk &amp;quot;$1=$1&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
+        <item>
+        <title>Find</title>
+        <link>https://canuxcheng.com/post/shell_find/</link>
+        <pubDate>Wed, 20 Apr 2016 13:55:36 +0800</pubDate>
+        
+        <guid>https://canuxcheng.com/post/shell_find/</guid>
+        <description>&lt;h1 id=&#34;find&#34;&gt;find&lt;/h1&gt;
+&lt;p&gt;Find     查找，用于在目录中查找。
+find  path  options  tests  actions
+path 路径
+options 选项
+tests 测试
+actions 动作&lt;/p&gt;
+&lt;p&gt;optioins选项:
+-follow
+-depth
+-maxdepth
+-mindepth
+find   dir  -mindepth  n     指定最小的目录深度，至少从dir往下n级目录开始往下搜索，dir和n级之间的忽略。
+find   dir   -maxdepth  n      指定最大目录深度，不搜索n级之后的目录。&lt;/p&gt;
+&lt;p&gt;test选项很多：
+-newer   pattern   比pattern文件要新
+-user    pattern      文件属主是pattern
+-name   pattern    查找和type匹配的
+-iname  pattern    查找和type匹配的，会忽略大小写
+-iwholename
+-path   pattern     按照文件路径匹配
+-type   c           c是文件类型，按照文件类型匹配文件
+-size   +/-    nk/c/w/k/b/M/G    匹配大于或小于n  kb/..  的文件
+-perm   XXX       基于文件权限的匹配
+find dir  –atime/mtime/ctime    +/-n    根据时间累匹配，atime表示访问时间，mtime表示修改时间，ctime表示变化时间，+表示大于，-表示小于，单位是天。
+-a/-and   pattern
+-o/-or     pattern
+！/-not    pattern
+find  dir  !  test   pattern   列出所有没有按照-options  pattern模式的项
+(&amp;hellip;)    使用括号需要用引号来引用。&lt;/p&gt;
+&lt;p&gt;action选项：
+-prune     如果是一个指定的目录就忽略这个目录,要用-path指定目录.
+-print          打印，换行符结尾,所有结果一行一个。
+-print0        打印，空字符结尾，所有结果打印到一行。
+-delete       删除
+-exec   command     执行一个命令
+exec   command   {}   ;&lt;/p&gt;
+&lt;p&gt;operators: find可以用一些运算符来连接多个test条件。
+！expr   #取反
+expr1    -a    expr2    #与运算，可以省略-a
+expr1    -o    expr2    #或运算&lt;/p&gt;
+&lt;p&gt;查找当前目录下除了develop里面的文件以外的30天之内修改过的.txt文件
+find .   -path ./develop -prune  -o  -mtime -30  -type f  -name  &amp;ldquo;*.txt&amp;rdquo;   -print&lt;/p&gt;
+&lt;p&gt;将前面的命令的结果通过管道和xargs作为后面命令的输入，类似于find命令的-exec选项。
+格式 ：command1   |   xargs   -options   command2
+Xargs   -n    number    设置每行显示的参数数量为number。
+Xargs  -d     char   指定char为界定符，也就是将char换成空格。
+Xargs  -I   {}    将命令参数用STDIN的参数替换掉。
+Xargs   -0       以/0为定界符，而不是空格。&lt;/p&gt;
+&lt;p&gt;find . -name “&lt;em&gt;.c” | xargs wc -l
+find . -name “&lt;/em&gt;.c” -exec wc -l {}   ;
+wc -l  &lt;code&gt;find . -name “*.c”&lt;/code&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Grep</title>
+        <link>https://canuxcheng.com/post/shell_grep/</link>
+        <pubDate>Wed, 20 Apr 2016 13:55:36 +0800</pubDate>
+        
+        <guid>https://canuxcheng.com/post/shell_grep/</guid>
+        <description>&lt;h1 id=&#34;grep&#34;&gt;grep&lt;/h1&gt;
+&lt;p&gt;grep相关的命令：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;grep
+egrep == grep -E
+fgrep == grep -F
+rgrep == grep -r
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;grep:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;grep [OPTIONS] PATTERN [FILE/DIR...]
+grep [OPTIONS] [-e PATTERN | -f FILE] [FILE/DIR...]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;options:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# Matcher Selection
+-G, --basic-regexp grep默认只支持BRE, 只能使用基本的RE
+-E, --extended-regexp 选择ERE, 可以使用扩展的RE
+# grep -E &amp;quot;pattern1|pattern2&amp;quot; 比如支持或运算
+-F, --fixed-strings
+-P, --perl-regexp perl RE
+
+# Matching Control
+-e PATTERN, --regexp=PATTERN    可以指定多个pattern
+# grep -e pattern1 -e pattern2 filename 相当于或运算，满足一个就被过滤出来
+-f FILE, --file=FILE    文件的每一行就是一个pattern.
+-i, --ignore-case    忽略大小写
+-v, --invert-match   忽略含有pattern的行
+-w, --word-regexp    精确匹配一个单词
+-x, --line-regexp    精确匹配一行
+-y
+
+# General Output Control
+-c, --count    统计匹配到的行数
+--color[=WHEN], --colour[=WHEN]    输出匹配的pattern高亮
+-L, --files-without-match    列出没有匹配到的文件名
+-l, --files-with-matches    列出匹配到的文件的文件名
+# grep -rl pattern1 | xargs grep -r pattern2    相当于与运算，过滤同时满足两个pattern
+-m NUM, --max-count=NUM
+-o, --only-matching    只输出匹配的部分
+# grep -o pattern filename | wc -l 统计匹配的行数
+-q, --quiet, --silent    不打印查找的结果
+-s, --no-messages
+
+# Output Line Prefix Control
+-b, --byte-offset    打印匹配的字符数或偏移量
+-H, --with-filename
+-h, --no-filename
+--label=LABEL
+-n, --line-number    打印匹配的行的行号
+-T, --initial-tab
+-u, --unix-byte-offsets
+-Z, --null
+
+# Context Line Control
+-A NUM, --after-context=NUM    打印匹配到的行的后NUM行
+-B NUM, --before-context=NUM    打印匹配到的行的前NUM行j
+-C NUM, -NUM, --context=NUM    打印匹配到的行的前NUM行和后NUM行
+
+# File and Directory Selection
+-a, --text
+--binary-files=TYPE
+-D ACTION, --devices=ACTION
+-d ACTION, --directories=ACTION
+--exclude=GLOB    排除查找指定的文件
+--exclude-from=FILE
+--exclude-dir=DIR   排除查找指定的目录
+-I
+--include=GLOB     指定查找的文件
+-r, --recursive    递归查找
+-R, --dereference-recursive    递归查找
+# grep -nR/-nr pattern filename    阅读源码可以递归查找并打印行号
+
+# Other Options
+--line-buffered
+--mmap
+-U, --binary
+-z, --null-data
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;ack&#34;&gt;ack&lt;/h1&gt;
+&lt;p&gt;ack/ack2是grep的升级版&lt;/p&gt;
+&lt;p&gt;ack:&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/beyondgrep/ack&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/beyondgrep/ack&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;ack2(ack-grep):&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/beyondgrep/ack2&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/beyondgrep/ack2&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;ag&#34;&gt;ag&lt;/h1&gt;
+&lt;p&gt;ack/ack2的升级版&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/ggreer/the_silver_searcher&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/ggreer/the_silver_searcher&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;安装：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$sudo apt-get install silversearcher-ag
+$sudo yum install the_silver_searcher
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;使用：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$man ag
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
+        <item>
+        <title>Sed</title>
+        <link>https://canuxcheng.com/post/shell_sed/</link>
+        <pubDate>Sat, 02 Apr 2016 11:15:57 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/shell_sed/</guid>
+        <description>&lt;h1 id=&#34;sed&#34;&gt;sed&lt;/h1&gt;
+&lt;p&gt;sed：stream editor  流编辑器 ，主要用于文本处理。&lt;/p&gt;
+&lt;p&gt;sed命令格式：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sed   -options   ’expression1;expression2’     file           执行多个命令
+sed   -options   [-e ‘expression1’] [-e ‘expression2’]  file  执行多个命令
+sed   -options   [-f   scriptfile]   file                     通过脚本执行命令
+sed   -options   [-f   scriptfile]   file  &amp;gt;  newfile  #sed修改后重定向到新文件。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;sed指令需要用单引号包围。使用双引号“”可以传递变量。
+Sed默认并没有修改文件file中的数据。
+sed默认在stdout输出文件的所有行。
+Sed地址需要使用/address/来包围。
+sed使用正则表达式可以用\BRE\包围，如果模式包含/，那么可以使用除了换行符之外的所有字符包围。&lt;/p&gt;
+&lt;p&gt;options：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;-e：指定多个命令或脚本
+-f：指定执行命令的脚本
+-n：阻止自动输出，p可以打印匹配的行。
+-i: 直接修改读入的文件的内容.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;experssion：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;expression：指令由模式和过程组成。
+[address]/[line-address][!]command[arguments]
+[address]表示地址，一般用模式进行寻址，address缺省表示整个文件寻址，两个地址用，隔开。
+[line-address]表示只能是一个地址。
+[!] 表示不匹配该地址的所有行
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Command:&lt;/p&gt;
+&lt;p&gt;sed有25个命令。&lt;/p&gt;
+&lt;p&gt;使用大括号{}在一个地址中做嵌套操作：例如：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/address1/,/address2/{
+    /^$/d
+    s/string1/string2/
+    …
+}             // 单独一行，后面不能有空格
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;s命令：替换，替换模式空间中的行。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sed &#39;[address]s/oldpattern/newpattern/[flag]&#39; filename
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;flag:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;n:替换每个寻址行的第n个匹配模式。默认n=1. n在1-512之间。
+g:替换每个寻址行的所有匹配模式。
+p:打印模式空间的内容
+w file：如果发生替换就将这一行写入file。只写入替换的行,不写入其它行.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;用反斜杠\转义换行符：&lt;/p&gt;
+&lt;p&gt;因为反斜杠在newpattern中也用于包含换行符。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 将匹配的项替换成两个换行符。
+sed &#39;
+s/pattern/\ (换行）
+\           （换行）
+string/&#39; filename
+等价于：
+sed &#39;s/pattern/\n\n/&#39; filename
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;用反斜杠\转义与符号&amp;amp;：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 结果是： string1 pattern string2 
+sed &#39;s/pattern/string1 &amp;amp; string2/g&#39; filename
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如果不转义&amp;amp;匹配整个pattern:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 结果是：string1 &amp;amp; string2
+sed &#39;s/pattern/string1 \&amp;amp; string2/g&#39; filename
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;用反斜杠\转义\n:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 将pattern中匹配到的第一个字串回调到newpattern中使用。
+sed &#39;s/pattern/\1/&#39; filename
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;d命令：删除，删除模式空间中的行，并不删除文件中的行。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&#39;[address]d&#39;
+&#39;1d&#39; 删除第一行
+&#39;$d&#39; 删除最后一行
+’/^$/d&#39; 删除空行
+‘/^\s\+$/d’  删除空白行（没有数字字符）
+‘/^\s*$/d’ 删除空白行（没有数字字符）
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;a/i/c命令：追加/插入/更改.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 在匹配到的行下面添加追加的内容
+&#39;[line-address]a string&#39; filename
+&#39;[line-address]a\
+string1\
+string2\
+string3&#39; filename   （追加三行）
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;i:同上，在匹配到的行上面插入内容。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 将匹配到的行替换掉。
+&#39;[address]c string&#39; filename
+&#39;[address]c\
+string1\
+string2\
+string3&#39; filename
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;l：列表命令&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sed &#39;[address]l&#39; filename   打印模式空间内容，将非打印字符显示为ASCII码
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;p：打印命令&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sed &#39;[address]p&#39; filename   打印模式空间内容
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;=：打印行号&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sed -n &#39;[line-address]=&#39;  filename  只打印行号
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;n：下一步&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sed &#39;[address]n&#39; filename
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;q:退出命令&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 一旦找到和line-address匹配的行，脚本立即退出。
+sed &#39;[line-address]q&#39; filename
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;r/w:读/写命令&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 读file文件追加在匹配到的行后面。
+sed &#39;[line-address]r file&#39;   filename
+
+// 将匹配到的行写入到file文件中
+sed &#39;[address]w file&#39;  filename
+
+sed –I &#39;s/.*/\L&amp;amp;/g&#39; urfile   全部转换成小写
+sed  -I &#39;s/.*/\U&amp;amp;/g&#39; urfile 全部转换成大写。
+sed   ‘/pattern/{{n; p;}}’   urfile   读取pattern下一行并打印。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;n：追加下一个输入行到匹配后面并在两者间嵌入新行，改变行号。&lt;/p&gt;
+&lt;p&gt;p：打印匹配的第一行。&lt;/p&gt;
+&lt;h1 id=&#34;常用&#34;&gt;常用&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;sed   ‘$a   string’   filenames           #批量往文件最后一行添加内容
+sed   ‘$i    string’   filenames           #批量往文件倒数第二行添加内容
+string里面有空格用\开头。
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
+        <item>
+        <title>Shell</title>
+        <link>https://canuxcheng.com/post/shell/</link>
+        <pubDate>Fri, 01 Apr 2016 20:42:59 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/shell/</guid>
+        <description>&lt;h1 id=&#34;shell&#34;&gt;Shell&lt;/h1&gt;
+&lt;p&gt;Linux的shell有很多种,大多数linux发行版的默认登录shell是BASH。&lt;/p&gt;
+&lt;p&gt;查看当前使用的shell：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;echo $SHELL
+echo $0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看安装了哪些shell：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;cat /etc/shells
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;设置登陆shell:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$chsh -s $(which shellname)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;shell分为登陆shell和交互式shell:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 输出有i的就是交互shell
+$echo $-
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;非交互登陆shell:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;先运行系统配置文件/etc/profile(调用/etc/bash.bashrc和/etc/profile.d/*.sh)&lt;/li&gt;
+&lt;li&gt;然后运行用户配置文件~/.profile(调用~/.bashrc和~/bin)&lt;/li&gt;
+&lt;li&gt;最后退出用户登陆~/.bash_logout&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;交互非登陆shell:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;先运行/etc/bash.bashrc(调用/etc/bash_completion(调用/etc/bash_completion.d/*.sh))&lt;/li&gt;
+&lt;li&gt;然后运行~/.bashrc(调用~/.bash_aliases和~/bash.d和~/bin)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;shell相关项目&#34;&gt;shell相关项目&lt;/h1&gt;
+&lt;h2 id=&#34;bash-it&#34;&gt;bash-it&lt;/h2&gt;
+&lt;p&gt;大部分发行版默认使用bash,无需额外安装。&lt;/p&gt;
+&lt;p&gt;bash的优化项目bash-it：&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/Bash-it/bash-it&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/Bash-it/bash-it&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;zsh&#34;&gt;zsh&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://www.zsh.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://www.zsh.org/&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;oh-my-zsh&#34;&gt;oh-my-zsh&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/robbyrussell/oh-my-zsh&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/robbyrussell/oh-my-zsh&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;fish-shell&#34;&gt;fish-shell&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/fish-shell/fish-shell&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/fish-shell/fish-shell&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;oh-my-fish&#34;&gt;oh-my-fish&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/oh-my-fish/oh-my-fish&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/oh-my-fish/oh-my-fish&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;thefuck&#34;&gt;thefuck&lt;/h2&gt;
+&lt;p&gt;一个纠正shell命令输错的命令&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/nvbn/thefuck&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/nvbn/thefuck&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;shellcheck&#34;&gt;shellcheck&lt;/h2&gt;
+&lt;p&gt;一个debug脚本的工具．&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/koalaman/shellcheck&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/koalaman/shellcheck&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;shell-script&#34;&gt;shell script&lt;/h1&gt;
+&lt;p&gt;基本语法&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#!/usr/bin/env bash
+
+command1 &amp;amp;&amp;amp; command2    # 当command1执行成功（返回0)才会执行command2
+command1 || command2    # 当command1执行失败（返回非0)才会执行command2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;shell注释&#34;&gt;shell注释&lt;/h2&gt;
+&lt;p&gt;单行注释：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# comment
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;多行注释：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;:&amp;lt;&amp;lt;!EOF!
+comment
+!EOF! can be any symbol and character.
+!EOF!
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;shell关键字和特殊符号&#34;&gt;shell关键字和特殊符号&lt;/h2&gt;
+&lt;p&gt;三个特殊命令&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;echo
+printf
+test
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;关键字&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;shell运算符和优先级&#34;&gt;shell运算符和优先级&lt;/h2&gt;
+&lt;p&gt;原生shell不支持数学运算，可以通过expr来实现．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# expr表达式内部运算符前后要空格.
+val=`expr 2 + 2`
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;算术运算符&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;+
+-
+*    # `expr $a \* $b`, 不要转义
+/
+%
+=     # a=$b
+==    # [ $a == $b ] , 需要中括号，需要空格
+!=    # [ $a != $b ], 同上
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;关系运算符&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 只支持数字，不支持字符串．需要中括号和空格
+-eq
+-ne
+-gt
+-lt
+-ge
+-le
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;布尔运算符&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 符合短路和斷路原则
+!     # [ !false ]
+-o    # [ exp1 -o exp2 ], 有一个为true就返回true
+-a    # [ exp1 -a exp2], 两个都是true才返回true
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;逻辑运算&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;||
+&amp;amp;&amp;amp;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;字符串运算符&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;=
+!=
+-Z    # 字符串长度为0返回true
+-n    # 字符串长度为0返回false
+str    # [ $a ], 字符串不为空返回true
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;文件测试运算符&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;-b
+-c
+-d
+-f
+-g
+-k
+-p
+-u
+-r
+-w
+-x
+-s
+-e
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;shell数据结构和变量&#34;&gt;shell数据结构和变量&lt;/h2&gt;
+&lt;p&gt;变量类型：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;局部变量
+环境变量
+shell变量
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;定义变量:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;等号前后不能有空格
+不能用数字开头命名变量
+不能用标点符号和关键字
+
+var=`ls /etc`  # 返回的是stdout+stderr
+var=$(ls /etc) # 返回的是stdou+stderr
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;使用变量：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$var
+${var}
+
+# 使用双引号
+var1=&amp;quot;pre${var}suf
+var2=&amp;quot;$var&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;只读变量:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;使用readonly定义只读变量，不能再重新赋值
+
+var=value
+readonly var
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;删除变量:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;使用unset删除变量，被删除的变量不能使用.
+
+var=value
+unset var
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;变量操作：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;${var/old/new} # 将变量中的old替换成new.
+${var:start:end} # 获取变量的start到end个字符，相当于var[start:end],下标从0开始.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;字符串类型：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;单引号的字符串是原样输出，其中的变量是无效的，里面不能有单引号.
+var=&#39;this is string&#39;
+
+双引号的字符串里面可以有变量，可以出现转义字符.
+var=&amp;quot;this is string&amp;quot;
+&amp;quot;outer \&amp;quot;inner string\&amp;quot; string&amp;quot;
+
+获取字符串长度
+var=&amp;quot;this is tring&amp;quot;
+echo ${#var}
+
+字符串切片
+var=&amp;quot;this is string&amp;quot;
+${var:start:end}    # 相当于var[start:end], 下标从0开始
+
+获取pattern在string中的起始下标
+string=&amp;quot;this is string&amp;quot;
+`expr index &amp;quot;$string&amp;quot; pattern`
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;数字类型：&lt;/p&gt;
+&lt;p&gt;数组:&lt;/p&gt;
+&lt;h2 id=&#34;shell控制流&#34;&gt;shell控制流&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;# [[ 里面不能用 -o/-a ]]
+if [[ $status1 -eq 0 ]] || [[  $status2 -eq 0 ]]
+if [[ $status1 -eq 0 ]] &amp;amp;&amp;amp; [[  $status2 -eq 0 ]]
+# [ 单层可以用-o/-a ]
+if [ $status1 -eq 0 -o $status2 -eq 0 ]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;if&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;if []; then command; ...; fi
+
+if condition
+then
+    command
+fi
+
+[]/test 中必须为执行的命令的stdout+stderr.
+if [ ! `cat file | grep pattern | wc -l` ]
+if [ ! 0 ] 此时0为真, [ ! 0 ]为假
+
+if command 看返回码$?, 0表示真,其它表示假.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;if-else&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;if condition; then command; ...; else command; fi
+
+if condition
+then
+    command
+else
+    command
+fi
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;if-elif-else&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;if condition; then command; ...; elif condition; then command; ...; else command; fi
+
+if condition
+then
+    command
+elif condition
+then
+    command
+else
+    command
+fi
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;while&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;while condition; do command;...; done
+
+while condition
+do
+    command
+done
+
+# 无限循环
+while :
+do
+    command
+done
+
+# 无限循环
+while true
+do
+    command
+done
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;for&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;for ((i=1; i&amp;lt;=100; i++))
+for i in {1..100}
+for i in `seq 1 100`
+
+for VAR in ${1,2,3,...}; do command; ...; done
+
+for var in item1 item2 ... itemN
+do
+    command
+done
+
+# 无限循环
+for (( ; ; ))
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;until&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;until condition; do command; ...; done
+
+until condition
+do
+    command
+done
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;case&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;case $VAR in
+val1)
+    command
+    ...
+    ;;
+val2)
+    command
+    ...
+    ;;
+esac
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;break&lt;/p&gt;
+&lt;p&gt;continue&lt;/p&gt;
+&lt;h2 id=&#34;shell函数&#34;&gt;shell函数&lt;/h2&gt;
+&lt;p&gt;return只是返回当前函数，不退出主程序&lt;/p&gt;
+&lt;p&gt;exit直接退出主程序&lt;/p&gt;
+&lt;p&gt;通过关键字function定义函数:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function Name {    // ()可省略
+function Name() {
+    ...
+    # 如果不显示调用return返回，则函数返回最后一条命令的结果
+    return $?
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;也可以直接定义函数:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Name() {
+    ...
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;函数返回码:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$?
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;函数参数：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$1 - $9 可以在函数内部获取调用函数时候传递进来的９个参数
+${10} - ${100} 获取第十个参数和后面的参数
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;特殊字符：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$# 表示传递到脚本的参数个数,不包括程序本身
+$* 传入所有参数
+$@ 传入所有参数
+$$
+$!
+$-
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;输入输出和重定向&#34;&gt;输入输出和重定向&lt;/h2&gt;
+&lt;p&gt;stdout和stdin重定向到一个地方:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;1&amp;gt; 只重定向stdout
+2&amp;gt; 只重定向stderr
+2&amp;gt;&amp;amp;1 同时重定向stdout+stderr
+
+main &amp;gt; 2&amp;gt;&amp;amp;1 log1.log | tee log2.log # 同时重定向到两个文件
+main 2&amp;gt;&amp;amp;1 | tee ${LOG} # 同时将stdout和stderr输出到终端和日志文件.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;文件包含&#34;&gt;文件包含&lt;/h2&gt;
+</description>
+        </item>
+        <item>
+        <title>Coreutils</title>
+        <link>https://canuxcheng.com/post/shell_coreutils/</link>
+        <pubDate>Thu, 31 Mar 2016 21:51:25 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/shell_coreutils/</guid>
+        <description>&lt;h1 id=&#34;linux的外部命令&#34;&gt;Linux的外部命令&lt;/h1&gt;
+&lt;p&gt;Linux外部命令的项目是coreutils。&lt;/p&gt;
+&lt;p&gt;外部命令在coreutils目录中&lt;/p&gt;
+&lt;p&gt;查看外部命令所在目录：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;echo $PATH
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;外部命令在下列目录中：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;~/bin # 用户自定义
+
+/sbin
+
+/bin
+
+/usr/sbin
+
+/usr/bin
+
+/usr/local/sbin
+
+/usr/local/bin
+
+/usr/games
+
+/usr/local/games
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看外部命令手册的在线手册：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;man [command]
+info [command]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;自定义外部命令：&lt;/p&gt;
+&lt;p&gt;添加$PATH变量，然后放到该目录。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;系统管理&#34;&gt;系统管理&lt;/h1&gt;
+&lt;p&gt;cpu/mem/load&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 查看cpu/mem/swap/system信息
+vmstat
+vmstat 1
+
+# 查看进程消耗的cpu/mem/swap/system等系统信息
+top
+top -H  # 查看线程
+%cpu = cputime/realtime * 100%
+cpu_usage = %cpu/cpu-number
+%mem = RES/physicalMem * 100%
+
+htop
+$ sudo apt-get install htop
+
+$ sudo apt-get install sysstat (包括pidstat)
+pidstat -u -p pid // cpu
+pidstat -r -p pid //mem
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;cpu/load:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo apt-get install sysstat (包括mpstat)
+mpstat -P ALL 1 5 // cpu
+
+uptime
+
+lscpu # 显示cpu架构的信息
+
+cat /proc/cpuinfo # 查看cpu信息
+cat /proc/cpuinfo | grep &amp;quot;processor&amp;quot; | wc -l # 逻辑cpu总数
+cat /proc/cpuinfo | grep &amp;quot;physical id&amp;quot; | sort | uniq | wc -l # 物理cpu个数
+cat /proc/cpuinfo | grep &amp;quot;cpu cores&amp;quot; | uniq # 物理cpu核数
+cat /proc/cpuinfo | grep -e &amp;quot;cpu cores&amp;quot;  -e &amp;quot;siblings&amp;quot; | sort | uniq # 和cpu cores一样说明没有启用超线程.
+processor: 逻辑cpu总数=物理cpu个数*物理cpu核数（非超线程），  物理cpu个数*物理cpu核数*2（超线程cpu).
+physical id :物理cpu个数(每个socket/插槽可以放一个物理cpu).
+cpu cores: 物理cpu有几个核(如果是超线程技术的cpu,每个核可以运行两个线程，或者说每个核对应两个逻辑cpu）。
+siblings： 每个物理cpu单个核心上的逻辑cpu个数
+
+strace
+strace -c -p pid
+strace -T -e epoll_wait -p pid
+
+dmesg
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;mem:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;free
+free -m
+
+cat /proc/meminfo # 查看内存信息
+
+pmap
+pmap -d pid
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;system:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;uname # 打印linux系统信息
+$ uname -a
+cat /etc/issue
+cat /proc/version
+
+lsb_release # 查看发行版本信息
+$ lsb_release -a
+
+getconf # 查询系统配置的变量，LONG_BIT表示系统位数
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;process:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ps
+# 格式化输出，逗号后面不能有空格
+ps -eo/-Ao %cpu/pcpu,%mem/pmem,stat,start/start_time/lstart,pid,ppid,cmd/args/command
+ps --ppid 1 -o pid,command | grep -v grep | grep daemon # 获取多进程程序主进程的pid
+
+pstree -a
+
+pkill
+pkill -f &amp;lt;pattern&amp;gt; # 杀死args匹配的进程
+
+pgrep -P pid
+
+# 内核也有一个kill命令
+kill
+
+killall
+killall -e &amp;lt;deamon&amp;gt; # 杀死匹配的守护进程.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;crontab:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo apt-get install cron
+# /etc/crontab 设置了环境变量
+crontab
+crontab -l # 列出
+crontab -e # 编辑
+crontab -u &amp;lt;user&amp;gt; file # 导入配置/etc/cron.d/my-cron-file
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;editor:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 修改默认编辑器nano
+select-editor
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;时区管理&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;timedatectl list-timezones # 查看所有时区
+sudo timedatectl set-timezone Asia/Shanghai # 设置时区
+ls -l /etc/localtime # 应该是一个链接
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;update-alternatives:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;update-alternatives --display python // 查看候选项
+update-alternatives --config python // 选择候选项
+update-alternatives --set python /usr/bin/python // 添加候选项
+update-alternatives --install /usr/bin/python python /usr/bin/python3.7 1 // 设置候选项的link
+update-alternatives --remove python /usr/bin/python3.5 // 删除候选项的link
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;用户和权限管理&#34;&gt;用户和权限管理&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;id
+id -u 打印当前用户uid(root uid=0)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;chmod:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 当文件的owner的x位置为s,表示设置了SUID, 仅对二进制可执行文件有效.
+# 如果执行者对该文件有可执行权限，那么执行者在执行该文件期间，就拥有了该文件的owner的权限.
+-rwsr-xr-x file
+chmod u+s &amp;lt;file&amp;gt; # 加SUID
+chmod 4777 &amp;lt;file&amp;gt;
+
+-rwxr-sr-x file/dir
+chmod g+s &amp;lt;file&amp;gt;/&amp;lt;dir&amp;gt; # 加SGID
+chmod 2777 &amp;lt;dir&amp;gt;
+
+drwxrwxrwt dir
+chmod o+t &amp;lt;dir&amp;gt; # 加SBIT
+chmod 1777 &amp;lt;dir&amp;gt;
+
+chown
+chgrp
+chattr
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;usermod&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 禁止root登录
+usermod --shell /sbin/nologin root
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;adduser:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;adduser 
+
+addgroup
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;useradd:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;useradd
+useradd -r -m -U -G sudo -s /bin/bash &amp;lt;user&amp;gt;
+-U, --user-group      create a group with the same name as the user
+-m, --create-home     create the user&#39;s home directory
+-s, --shell SHELL     login shell of the new account
+-r, --system          create a system account
+-G, --groups GROUPS   list of supplementary groups of the new account
+
+userdel
+
+usermod
+usermod -G g1,g2 -a user // 将用户追加到组
+
+users # 查看当前登陆的用户
+
+groupadd
+groupdel
+groupmod
+
+groups # 查看指定用户所属的组，默认当前用户的组
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;gpasswd:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ gpasswd -d &amp;lt;user&amp;gt; &amp;lt;group&amp;gt; // 从组里删除用户
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;chpasswd:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;echo &amp;quot;username:password&amp;quot; | chpasswd # 修改username的密码
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;passwd&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;passwd
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;su:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;su &amp;lt;user&amp;gt; -c &amp;lt;command&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;sudo:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo -i
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;文件和目录管理&#34;&gt;文件和目录管理&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;mkdir
+tree
+cat
+col
+colrm
+comm
+csplit
+ed
+ex
+fmt
+fold
+join
+look
+mtype
+pico
+sort
+tr
+expr
+uniq
+wc
+
+cksum
+cmp
+diff
+diffstat
+file
+cut
+less
+more
+locate
+lsattr
+mattrib
+mdel
+mdir
+mktemp
+mmove
+mren
+mtools
+mtoolstest
+mv
+od
+paste
+patch
+rcp
+rm
+split
+
+touch
+umask
+which
+cp
+whereis
+mcopy
+mshowfat
+lprm
+lpr
+lpq
+rev
+toilet
+aafire
+xeyes
+pv
+yes
+cal
+factor
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;typeset&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;typeset -u VAR // 变量大写
+VAR=&#39;test&#39;
+echo $VAR # TEST
+
+typeset -l VAR // 变量小写
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;tee&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;main &amp;gt; 2&amp;gt;&amp;amp;1 log1.log | tee log2.log # 同时重定向到两个文件
+main 2&amp;gt;&amp;amp;1 | tee ${LOG} # 同时将stdout和stderr输出到终端和日志文件.
+$ echo &amp;quot;content&amp;quot; | sudo tee filename # 写入到root权限的文件
+$ echo &amp;quot;text&amp;quot; | sudo tee -a filename # append
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;lsof查看打开的文件资源:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;lsof #
+lsof -i # 查看
+sudo lsof -i :port # 查看端口是否被使用
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;readlink:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;readlink 获取符号连接信息
+sudo readlink /proc/1/exe
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;ln:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ln TARGET LINK_NAME # 创建文件的硬链接,目录不能创建硬链接
+-s, --symbolic
+ln -s TARGET LINK_NAME # 创建文件或目录的软链接
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;dirname:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;dirname
+dirname $0   # 获取当前文件所在目录的相对路径, 也就是.
+$(cd $(dirname $0) &amp;amp;&amp;amp; pwd)    # 获取当前文件所在目录的绝对路径
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;rsync:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;rsync
+rsync [OPTION]... SRC [SRC]... DEST
+rsync [OPTION]... SRC [SRC]... [USER@]HOST:DEST
+rsync [OPTION]... [USER@]HOST:SRC [DEST]
+rsync -rtvzuOPH --delete
+-e &amp;quot;ssh -o StrictHostKeyChecking=no&amp;quot;
+-v verbose
+-a archive == -rlptgoD
+-u --update # 跳过目的地址上modification time更新的文件
+--inplace
+--append
+--append-verify
+-r --recursive
+-z --compress
+--progress
+--partial
+-P == --partial --progress
+--devices
+--specials
+-D == --devices --specials
+-H --hard-links  preserve hard-link
+-l --links  copy symlinks as symlinks 保留软链接
+-L          copy symlinks to dest 复制原始文件
+--delete  从dest删除src没有的文件
+-h --human-readable
+-g --group  preserve group
+-o --owner  preserve owner
+-p --perms  preserve permissions
+-t --times  preserve modification times
+-O, --omit-dir-times    忽略目录的modification times.
+--exclude 排除文件
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;计算文件空间使用:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;du
+$ du -sh
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;四个用到正则表达式的重要命令：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sed
+awk
+grep/ack/ag
+find
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;压缩备份&#34;&gt;压缩备份&lt;/h1&gt;
+&lt;p&gt;tar(.tar)&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;tar
+-c, --create   # 创建归档
+-u, --update    # 更新归档文件
+-x, --extract, --get    # 提取归档
+
+tar cvf name.tar folder
+tar xvf name.tar
+
+compression options:
+-j, --bzip2
+-J, --xz
+-z, --gzip, --gunzip, --ungzip
+-Z, --compress, --uncompress
+
+device selection and switching:
+-f, --file=ARCHIVE
+
+informative output:
+-v, --verbose
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;gzip(.gz)&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;gzip
+gunzip
+tar zxvf file.tar.gz
+tar zcvf file.tar.gz dir
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;bzip2(.bz2)&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;bzip2
+bunzip2
+tar jxvf file.tar.bz2
+tar jcvf file.tar.bz2 dir
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;compress(.z)&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;compress
+uncompress
+tar Zxvf file.tar.z
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;xz(.xz)&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;xz
+unxz
+tar Jxvf file.tar.xz
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;gzip/gunzip&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;gunzip name.gz
+gzip -d name.gz
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;zip(.zip)&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;zip
+unzip
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;7z(.7z)&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo apt-get install p7zip/p7zip-full/p7zip-rar
+7z
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;数据处理&#34;&gt;数据处理&lt;/h1&gt;
+&lt;p&gt;base64&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 生成basic authentication.
+echo -n &amp;quot;user:pw&amp;quot; | base64
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
+        <item>
+        <title>Utils</title>
+        <link>https://canuxcheng.com/post/shell_utils/</link>
+        <pubDate>Thu, 31 Mar 2016 21:51:25 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/shell_utils/</guid>
+        <description>&lt;h1 id=&#34;linux的第三方命令&#34;&gt;Linux的第三方命令&lt;/h1&gt;
+&lt;p&gt;Linux外部命令的项目是coreutils.&lt;/p&gt;
+&lt;p&gt;外部命令在coreutils目录中.&lt;/p&gt;
+&lt;p&gt;第三方命令(相当于外部命令)．&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;文件和目录管理&#34;&gt;文件和目录管理&lt;/h1&gt;
+&lt;p&gt;autojump:&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/wting/autojump&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/wting/autojump&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;fasd:&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/clvv/fasd&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/clvv/fasd&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;fzf:&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/junegunn/fzf&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/junegunn/fzf&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;压缩备份&#34;&gt;压缩备份&lt;/h1&gt;
+&lt;h1 id=&#34;磁盘管理&#34;&gt;磁盘管理&lt;/h1&gt;
+&lt;h1 id=&#34;设备管理&#34;&gt;设备管理&lt;/h1&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        <item>
+        <title>Builtins</title>
+        <link>https://canuxcheng.com/post/shell_builtins/</link>
+        <pubDate>Thu, 31 Mar 2016 21:51:03 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/shell_builtins/</guid>
+        <description>&lt;h1 id=&#34;linux内置命令&#34;&gt;Linux内置命令&lt;/h1&gt;
+&lt;p&gt;内置命令在bash/builtins目录中&lt;/p&gt;
+&lt;p&gt;shell命令分为内置命令和外部命令.&lt;/p&gt;
+&lt;p&gt;查看一个命令是内置命令还是外部命令：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type -a [command]
+
+提示&amp;quot;[command] is a shell builtin&amp;quot;就表示是内置命令，否则就是外部命令。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看所有内置命令：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;help
+enable -a
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看内置命令的帮助：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;help [command]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;pre&gt;&lt;code&gt;type
+enable
+help
+
+caller
+alias
+bg
+bind
+break
+builtin
+command
+compgen
+complete
+compopt
+continue
+declare
+disown
+let
+local
+logout
+mapfile
+popd
+printf
+pushd
+read
+readarray
+readonly
+return
+shift
+shopt
+source
+suspend
+times
+trap
+true
+typeset
+ulimit
+umask
+unalias
+unset
+wait
+eval
+exec
+exit
+export
+false
+fc
+fg
+getopts
+hash
+history
+jobs
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;路径相关:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;cd
+dirs
+pwd
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;test:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;test
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;set:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;set
+set -e 命令失败立即退出
+set -x 执行前打印每行命令
+set -u 未定义的变量会报错
+set -o pipefail 对于有管道的操作，返回最后一个非零返回值的命令的返回码.
+
+set +e 取消前面设置的-e
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;echo:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;echo
+echo &#39;origin&#39;  # 不打印变量
+echo &amp;quot;_${VAR}_&amp;quot; # 查看变量前后是否有空格.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;kill:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;kill
+
+# 查看所有信号
+kill -l 
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

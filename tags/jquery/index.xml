@@ -1,19 +1,168 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Jquery on Morgoth</title>
-    <link>https://canuxcheng.com/tags/jquery/</link>
-    <description>Recent content in Jquery on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Thu, 27 Oct 2016 22:19:20 +0800</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/jquery/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>jQuery</title>
-      <link>https://canuxcheng.com/post/js_jquery/</link>
-      <pubDate>Thu, 27 Oct 2016 22:19:20 +0800</pubDate>
-      <guid>https://canuxcheng.com/post/js_jquery/</guid>
-      <description>&lt;h1 id=&#34;jquery&#34;&gt;jQuery&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/jquery/jquery&#34;&gt;https://github.com/jquery/jquery&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.jquery123.com/&#34;&gt;https://www.jquery123.com/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;jquery是一个js库，简化了js编程。&lt;/p&gt;&#xA;&lt;p&gt;install:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ npm install jqury&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;jquery功能：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;HTML 元素选取&lt;/li&gt;&#xA;&lt;li&gt;HTML 元素操作&lt;/li&gt;&#xA;&lt;li&gt;HTML 事件函数&lt;/li&gt;&#xA;&lt;li&gt;HTML DOM 遍历和修改&lt;/li&gt;&#xA;&lt;li&gt;CSS 操作&lt;/li&gt;&#xA;&lt;li&gt;JavaScript 特效和动画&lt;/li&gt;&#xA;&lt;li&gt;AJAX&lt;/li&gt;&#xA;&lt;li&gt;Utilities&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h1 id=&#34;syntax&#34;&gt;syntax&lt;/h1&gt;&#xA;&lt;p&gt;对元素操作语法：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$(selector).action()&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;文档就绪函数:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$(document).ready(function(){&#xA;    ......&#xA;})&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;head中:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;&amp;lt;head&amp;gt;&#xA;&amp;lt;script type=&amp;quot;text/javascript&amp;gt;&#xA;$(document).ready(function(){&#xA;    $(&amp;quot;button&amp;quot;).click(function(){&#xA;        $(&amp;quot;p&amp;quot;).hide();&#xA;    })&#xA;})&#xA;&amp;lt;/script&amp;gt;&#xA;&amp;lt;/head&amp;gt;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;独立js文件&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;&amp;lt;head&amp;gt;&#xA;&amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;/path/to/my.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;&#xA;&amp;lt;/head&amp;gt;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h1 id=&#34;选择器&#34;&gt;选择器&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://api.jquery.com/category/selectors/&#34;&gt;https://api.jquery.com/category/selectors/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$(this).hide()   this表示当前html元素&#xA;$(&amp;quot;p.test&amp;quot;)    class=&amp;quot;test&amp;quot;的&amp;lt;p&amp;gt;&amp;lt;/p&amp;gt;元素&#xA;$(&amp;quot;p#test&amp;quot;)    id=&amp;quot;test&amp;quot;的&amp;lt;p&amp;gt;&amp;lt;/p&amp;gt;元素&#xA;$(&amp;quot;div#test .demo&amp;quot;)  id=&amp;quot;test&amp;quot;的&amp;lt;div&amp;gt;&amp;lt;/div&amp;gt;中class=demo的元素&#xA;$(&amp;quot;ul li:first&amp;quot;)  每个&amp;lt;ul&amp;gt;&amp;lt;/ul&amp;gt;的第一个&amp;lt;li&amp;gt;&amp;lt;/li&amp;gt;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;element选择器：&lt;/p&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Jquery on Morgoth</title>
+        <link>https://canuxcheng.com/tags/jquery/</link>
+        <description>Recent content in Jquery on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Thu, 27 Oct 2016 22:19:20 +0800</lastBuildDate><atom:link href="https://canuxcheng.com/tags/jquery/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>jQuery</title>
+        <link>https://canuxcheng.com/post/js_jquery/</link>
+        <pubDate>Thu, 27 Oct 2016 22:19:20 +0800</pubDate>
+        
+        <guid>https://canuxcheng.com/post/js_jquery/</guid>
+        <description>&lt;h1 id=&#34;jquery&#34;&gt;jQuery&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/jquery/jquery&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/jquery/jquery&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.jquery123.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.jquery123.com/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;jquery是一个js库，简化了js编程。&lt;/p&gt;
+&lt;p&gt;install:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ npm install jqury
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;jquery功能：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;HTML 元素选取&lt;/li&gt;
+&lt;li&gt;HTML 元素操作&lt;/li&gt;
+&lt;li&gt;HTML 事件函数&lt;/li&gt;
+&lt;li&gt;HTML DOM 遍历和修改&lt;/li&gt;
+&lt;li&gt;CSS 操作&lt;/li&gt;
+&lt;li&gt;JavaScript 特效和动画&lt;/li&gt;
+&lt;li&gt;AJAX&lt;/li&gt;
+&lt;li&gt;Utilities&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;syntax&#34;&gt;syntax&lt;/h1&gt;
+&lt;p&gt;对元素操作语法：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$(selector).action()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;文档就绪函数:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$(document).ready(function(){
+    ......
+})
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;head中:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;head&amp;gt;
+&amp;lt;script type=&amp;quot;text/javascript&amp;gt;
+$(document).ready(function(){
+    $(&amp;quot;button&amp;quot;).click(function(){
+        $(&amp;quot;p&amp;quot;).hide();
+    })
+})
+&amp;lt;/script&amp;gt;
+&amp;lt;/head&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;独立js文件&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;head&amp;gt;
+&amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;/path/to/my.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+&amp;lt;/head&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;选择器&#34;&gt;选择器&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://api.jquery.com/category/selectors/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://api.jquery.com/category/selectors/&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$(this).hide()   this表示当前html元素
+$(&amp;quot;p.test&amp;quot;)    class=&amp;quot;test&amp;quot;的&amp;lt;p&amp;gt;&amp;lt;/p&amp;gt;元素
+$(&amp;quot;p#test&amp;quot;)    id=&amp;quot;test&amp;quot;的&amp;lt;p&amp;gt;&amp;lt;/p&amp;gt;元素
+$(&amp;quot;div#test .demo&amp;quot;)  id=&amp;quot;test&amp;quot;的&amp;lt;div&amp;gt;&amp;lt;/div&amp;gt;中class=demo的元素
+$(&amp;quot;ul li:first&amp;quot;)  每个&amp;lt;ul&amp;gt;&amp;lt;/ul&amp;gt;的第一个&amp;lt;li&amp;gt;&amp;lt;/li&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;element选择器：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$(&amp;quot;p&amp;quot;).hide()   元素&amp;lt;p&amp;gt;&amp;lt;/p&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;id选择器:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$(&amp;quot;#test&amp;quot;).hide()  id=&amp;quot;test&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;class选择器:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$(&amp;quot;.test&amp;quot;).hide()  class=&amp;quot;test&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;attribute选择器:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$(&amp;quot;[href]&amp;quot;)   所有带href属性的元素
+$(&amp;quot;[href=&#39;value&#39;]&amp;quot;)  带有href属性且值等于value的元素
+$(&amp;quot;[href!=&#39;value&#39;]&amp;quot;)  带有href元素且值不等于value的元素
+$(&amp;quot;[href$=&#39;.jpg&#39;]&amp;quot;) 带有href属性且值以.jpg结尾的元素
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;子元素选择器/child:&lt;/p&gt;
+&lt;p&gt;后代选择器/descendant:&lt;/p&gt;
+&lt;h1 id=&#34;event事件&#34;&gt;Event/事件&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://api.jquery.com/category/events/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://api.jquery.com/category/events/&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$(selector).click(function) 单击事件
+$(selector).dblclick(function) 双击事件
+$(selector).focus(function) 焦点事件
+$(selector).mouseover(function) 鼠标悬停事件
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;effects效果&#34;&gt;Effects/效果&lt;/h1&gt;
+&lt;h2 id=&#34;basic&#34;&gt;basic&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;.hide()
+.show()
+.toggle()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;custom&#34;&gt;custom&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;.animate()
+.stop()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;fading&#34;&gt;fading&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;.fadeIn()
+.fadeOut()
+.fadeTo()
+.fadeToggle()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;sliding&#34;&gt;sliding&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;.slideDown()
+.slideToggle()
+.slideUp()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;core&#34;&gt;core&lt;/h1&gt;
+&lt;p&gt;核心功能&lt;/p&gt;
+&lt;h2 id=&#34;jquery-1&#34;&gt;jQuery()&lt;/h2&gt;
+&lt;h2 id=&#34;jquerynoconflict&#34;&gt;jQuery.noConflict()&lt;/h2&gt;
+&lt;p&gt;使用其它代替$&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;script type=&amp;quot;text/javascript&amp;gt;
+$.noConflict(); // 兼容其它库也是用$
+my(document).ready(function(){
+    my(&amp;quot;button&amp;quot;).click(function(){
+        my(&amp;quot;p&amp;quot;).hide();
+    })
+})
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;jqueryready&#34;&gt;jQuery.ready&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;文档操作&#34;&gt;文档操作&lt;/h1&gt;
+&lt;h1 id=&#34;属性操作&#34;&gt;属性操作&lt;/h1&gt;
+&lt;h1 id=&#34;css操作&#34;&gt;CSS操作&lt;/h1&gt;
+&lt;p&gt;jquey css选择器改变元素的css属性:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;.css()
+// 修改&amp;lt;p&amp;gt;&amp;lt;/p&amp;gt;元素的背景色
+$(&amp;quot;p&amp;quot;).css(&amp;quot;background-color&amp;quot;,&amp;quot;red&amp;quot;); 
+
+.addClass()
+.hasClass()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;attributes&#34;&gt;Attributes&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;.attr()
+
+.addClass()
+.hasClass()
+.html()
+.val()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;data&#34;&gt;Data&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;.data()
+
+.clearQueue()
+.dequeue()
+.queue()
+.removeData()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;ajax&#34;&gt;Ajax&lt;/h1&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

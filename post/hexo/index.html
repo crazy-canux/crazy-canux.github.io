@@ -1,150 +1,484 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hexo - Morgoth</title>
-    <meta name="description" content="">
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Hexo 什么是hexo Hexo是用nodejs开发的快速、简洁且高效的博客框架， Hexo 使用Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。
+hexo有大量的插件和主题。
+plugins
+themes
+安装hexo 需要安装依赖nodejs(包括npm)和git。
+安装hexo命令行插件hexo-cli：
+$sudo npm install hexo-cli -g Next Next是一种文雅的Hexo主题。 一个主题，三种外观，选您所好。 通过主题中的主题（亦称Scheme），您可以方便地改变您博客的外观，同时几乎所有配置同样适用。
+原生的Next
+作者的Next
+快速使用 初始化 初始化一个hexo的目录：
+$hexo init &lt;folder&gt; 安装依赖 进入hexo目录安装依赖：
+$cd &lt;folder&gt; $sudo npm install &lt;package-name&gt; 默认安装下列依赖：
+hexo hexo-server hexo-generator-index hexo-generator-archive hexo-generator-category hexo-generator-tag hexo-renderer-ejs hexo-renderer-marked hexo-renderer-stylus 查看文件和目录 安装完成后有下列
+文件：
+_config.yml db.json package.json 目录：
+node_modules scaffolds source themes 生成静态文件 $hexo g $hexo generate 启动本地服务器 $hexo s $hexo server 用浏览器打开链接即可本地查看默认博客。
+'>
+<title>Hexo</title>
+
+<link rel='canonical' href='https://canuxcheng.com/post/hexo/'>
+
+<link rel="stylesheet" href="/scss/style.min.2d59822570c0be136f2ad87c952ef8788ac2a951067adda1c49b253bff7d0292.css"><meta property='og:title' content='Hexo'>
+<meta property='og:description' content='Hexo 什么是hexo Hexo是用nodejs开发的快速、简洁且高效的博客框架， Hexo 使用Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。
+hexo有大量的插件和主题。
+plugins
+themes
+安装hexo 需要安装依赖nodejs(包括npm)和git。
+安装hexo命令行插件hexo-cli：
+$sudo npm install hexo-cli -g Next Next是一种文雅的Hexo主题。 一个主题，三种外观，选您所好。 通过主题中的主题（亦称Scheme），您可以方便地改变您博客的外观，同时几乎所有配置同样适用。
+原生的Next
+作者的Next
+快速使用 初始化 初始化一个hexo的目录：
+$hexo init &lt;folder&gt; 安装依赖 进入hexo目录安装依赖：
+$cd &lt;folder&gt; $sudo npm install &lt;package-name&gt; 默认安装下列依赖：
+hexo hexo-server hexo-generator-index hexo-generator-archive hexo-generator-category hexo-generator-tag hexo-renderer-ejs hexo-renderer-marked hexo-renderer-stylus 查看文件和目录 安装完成后有下列
+文件：
+_config.yml db.json package.json 目录：
+node_modules scaffolds source themes 生成静态文件 $hexo g $hexo generate 启动本地服务器 $hexo s $hexo server 用浏览器打开链接即可本地查看默认博客。
+'>
+<meta property='og:url' content='https://canuxcheng.com/post/hexo/'>
+<meta property='og:site_name' content='Morgoth'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='hexo' /><meta property='article:published_time' content='2016-03-22T12:59:10&#43;00:00'/><meta property='article:modified_time' content='2016-03-22T12:59:10&#43;00:00'/>
+<meta name="twitter:title" content="Hexo">
+<meta name="twitter:description" content="Hexo 什么是hexo Hexo是用nodejs开发的快速、简洁且高效的博客框架， Hexo 使用Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。
+hexo有大量的插件和主题。
+plugins
+themes
+安装hexo 需要安装依赖nodejs(包括npm)和git。
+安装hexo命令行插件hexo-cli：
+$sudo npm install hexo-cli -g Next Next是一种文雅的Hexo主题。 一个主题，三种外观，选您所好。 通过主题中的主题（亦称Scheme），您可以方便地改变您博客的外观，同时几乎所有配置同样适用。
+原生的Next
+作者的Next
+快速使用 初始化 初始化一个hexo的目录：
+$hexo init &lt;folder&gt; 安装依赖 进入hexo目录安装依赖：
+$cd &lt;folder&gt; $sudo npm install &lt;package-name&gt; 默认安装下列依赖：
+hexo hexo-server hexo-generator-index hexo-generator-archive hexo-generator-category hexo-generator-tag hexo-renderer-ejs hexo-renderer-marked hexo-renderer-stylus 查看文件和目录 安装完成后有下列
+文件：
+_config.yml db.json package.json 目录：
+node_modules scaffolds source themes 生成静态文件 $hexo g $hexo generate 启动本地服务器 $hexo s $hexo server 用浏览器打开链接即可本地查看默认博客。
+">
+    <link rel="shortcut icon" href="favicon.ico" />
+<style>
+    :root {
+        --article-font-family: "Merriweather", var(--base-font-family);
+    }
+</style>
+
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap";
     
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
     
-    <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    
-    
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #f5f5f5;
-            color: #333;
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
         }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        header {
-            background: #fff;
-            padding: 1rem 0;
-            border-bottom: 1px solid #ddd;
-            margin-bottom: 2rem;
-        }
-        nav {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-        }
-        nav a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-        }
-        nav a:hover {
-            color: #007acc;
-        }
-        .site-title {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #007acc;
-        }
-        main {
-            background: #fff;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        .post-meta {
-            color: #666;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-        .post-content h1, .post-content h2, .post-content h3 {
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-        }
-        .post-list {
-            list-style: none;
-            padding: 0;
-        }
-        .post-list li {
-            margin-bottom: 1.5rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid #eee;
-        }
-        .post-list h2 {
-            margin: 0 0 0.5rem 0;
-        }
-        .post-list h2 a {
-            text-decoration: none;
-            color: #333;
-        }
-        .post-list h2 a:hover {
-            color: #007acc;
-        }
-        footer {
-            text-align: center;
-            padding: 2rem 0;
-            color: #666;
-            border-top: 1px solid #ddd;
-            margin-top: 2rem;
-        }
-    </style>
-</head>
-<body>
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
     <header>
-        <div class="container">
-            <nav>
-                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
                 
-                    <a href="/">Home</a>
+                    
+                    
+                    
+                        
+                        <img src="/img/home_hu_ee27fe234e3b32c2.jpg" width="300"
+                            height="400" class="site-logo" loading="lazy" alt="Avatar">
+                    
                 
-                    <a href="/about/">About</a>
+                </a>
                 
-                    <a href="/categories/">Categories</a>
+                    <span class="emoji">🍥</span>
                 
-                    <a href="/tags/">Tags</a>
-                
-                    <a href="/rtfm/">RTFM</a>
-                
-                    <a href="/samuel/">Samuel</a>
-                
-            </nav>
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Morgoth</a></h1>
+            <h2 class="site-description">Hello World!</h2>
         </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='mailto:canuxcheng@163.com'
+                        target="_blank"
+                        title="E-mail"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-messages" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M21 14l-3 -3h-7a1 1 0 0 1 -1 -1v-6a1 1 0 0 1 1 -1h9a1 1 0 0 1 1 1v10" />
+  <path d="M14 15v2a1 1 0 0 1 -1 1h-7l-3 3v-10a1 1 0 0 1 1 -1h2" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/crazy-canux'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/categories/' target="_blank">
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                
+                <span>Categories</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tags/' target="_blank">
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+                
+                <span>Tags</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/rtfm/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                
+                <span>RTFM</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/samuel/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-infinity" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M9.828 9.172a4 4 0 1 0 0 5.656 a10 10 0 0 0 2.172 -2.828a10 10 0 0 1 2.172 -2.828 a4 4 0 1 1 0 5.656a10 10 0 0 1 -2.172 -2.828a10 10 0 0 0 -2.172 -2.828" />
+</svg>
+
+
+
+                
+                <span>Samuel</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https://canuxcheng.com/" selected></option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#什么是hexo">什么是hexo</a></li>
+    <li><a href="#安装hexo">安装hexo</a></li>
+    <li><a href="#next">Next</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#初始化">初始化</a></li>
+    <li><a href="#安装依赖">安装依赖</a></li>
+    <li><a href="#查看文件和目录">查看文件和目录</a></li>
+    <li><a href="#生成静态文件">生成静态文件</a></li>
+    <li><a href="#启动本地服务器">启动本地服务器</a></li>
+    <li><a href="#写博文">写博文</a></li>
+    <li><a href="#清理生成文件和缓存">清理生成文件和缓存</a></li>
+    <li><a href="#安装部署插件">安装部署插件</a></li>
+    <li><a href="#部署到github">部署到github</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#全局配置">全局配置</a></li>
+    <li><a href="#主题配置">主题配置</a></li>
+  </ul>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/web/" >
+                Web
+            </a>
+        
     </header>
     
-    <div class="container">
-        <main>
-            
-<div class="single-post">
-    <article>
-        <header>
-            <h1>Hexo</h1>
-            <div class="post-meta">
-                <time>March 22, 2016</time>
-                
-                    
-                        <span class="category">Web</span>
-                    
-                
-                
-                    
-                        <span class="tag">#hexo</span>
-                    
-                
-            </div>
-        </header>
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/hexo/">Hexo</a>
+        </h2>
+    
         
-        <div class="post-content">
-            <h1 id="hexo">Hexo</h1>
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Mar 22, 2016</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    4 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="hexo">Hexo</h1>
 <h2 id="什么是hexo">什么是hexo</h2>
 <blockquote>
 <p>Hexo是用nodejs开发的快速、简洁且高效的博客框架，
 Hexo 使用Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。</p></blockquote>
 <p>hexo有大量的插件和主题。</p>
-<p><a href="https://hexo.io/plugins/">plugins</a></p>
-<p><a href="https://hexo.io/themes/">themes</a></p>
+<p><a class="link" href="https://hexo.io/plugins/"  target="_blank" rel="noopener"
+    >plugins</a></p>
+<p><a class="link" href="https://hexo.io/themes/"  target="_blank" rel="noopener"
+    >themes</a></p>
 <h2 id="安装hexo">安装hexo</h2>
 <p>需要安装依赖nodejs(包括npm)和git。</p>
 <p>安装hexo命令行插件hexo-cli：</p>
@@ -155,8 +489,10 @@ Hexo 使用Markdown（或其他渲染引擎）解析文章，在几秒内，即�
 <p>Next是一种文雅的Hexo主题。
 一个主题，三种外观，选您所好。
 通过主题中的主题（亦称Scheme），您可以方便地改变您博客的外观，同时几乎所有配置同样适用。</p></blockquote>
-<p><a href="https://github.com/iissnan/hexo-theme-next">原生的Next</a></p>
-<p><a href="https://github.com/crazy-canux/hexo-theme-next">作者的Next</a></p>
+<p><a class="link" href="https://github.com/iissnan/hexo-theme-next"  target="_blank" rel="noopener"
+    >原生的Next</a></p>
+<p><a class="link" href="https://github.com/crazy-canux/hexo-theme-next"  target="_blank" rel="noopener"
+    >作者的Next</a></p>
 <hr>
 <h1 id="快速使用">快速使用</h1>
 <h2 id="初始化">初始化</h2>
@@ -212,7 +548,8 @@ $hexo server
 <h2 id="安装部署插件">安装部署插件</h2>
 <pre><code>$sudo npm install hexo-deployer-git --save
 </code></pre>
-<p>修改全局配置文件，参考插件的<a href="https://github.com/hexojs/hexo-deployer-git">github</a>
+<p>修改全局配置文件，参考插件的<a class="link" href="https://github.com/hexojs/hexo-deployer-git"  target="_blank" rel="noopener"
+    >github</a>
 针对github需要新建一个名字为&lt;your-github-name&gt;.github.io的仓库。</p>
 <h2 id="部署到github">部署到github</h2>
 <pre><code>$hexo d
@@ -227,9 +564,11 @@ $hexo deploy
 <blockquote>
 <p># Hexo Configuration</p></blockquote></blockquote>
 <blockquote>
-<p>## Docs: <a href="https://hexo.io/docs/configuration.html">https://hexo.io/docs/configuration.html</a></p></blockquote>
+<p>## Docs: <a class="link" href="https://hexo.io/docs/configuration.html"  target="_blank" rel="noopener"
+    >https://hexo.io/docs/configuration.html</a></p></blockquote>
 <blockquote>
-<p>## Source: <a href="https://github.com/hexojs/hexo/">https://github.com/hexojs/hexo/</a></p></blockquote>
+<p>## Source: <a class="link" href="https://github.com/hexojs/hexo/"  target="_blank" rel="noopener"
+    >https://github.com/hexojs/hexo/</a></p></blockquote>
 <blockquote>
 <blockquote>
 <p># Site</p></blockquote></blockquote>
@@ -255,7 +594,8 @@ $hexo deploy
 <blockquote>
 <p># URL</p></blockquote></blockquote>
 <blockquote>
-<p>## If your site is put in a subdirectory, set url as &lsquo;<a href="http://yoursite.com/child'">http://yoursite.com/child'</a> and root as &lsquo;/child/&rsquo;</p></blockquote>
+<p>## If your site is put in a subdirectory, set url as &lsquo;<a class="link" href="http://yoursite.com/child%27"  target="_blank" rel="noopener"
+    >http://yoursite.com/child'</a> and root as &lsquo;/child/&rsquo;</p></blockquote>
 <blockquote>
 <pre><code>   url: http://&lt;your-github-name&gt;.github.io/
 </code></pre></blockquote>
@@ -360,7 +700,8 @@ $hexo deploy
 <blockquote>
 <p>## You can customize the date format as defined in</p></blockquote>
 <blockquote>
-<p>## <a href="http://momentjs.com/docs/#/displaying/format/">http://momentjs.com/docs/#/displaying/format/</a></p></blockquote>
+<p>## <a class="link" href="http://momentjs.com/docs/#/displaying/format/"  target="_blank" rel="noopener"
+    >http://momentjs.com/docs/#/displaying/format/</a></p></blockquote>
 <blockquote>
 <pre><code>   date_format: YYYY-MM-DD
 </code></pre></blockquote>
@@ -382,9 +723,11 @@ $hexo deploy
 <blockquote>
 <p># Extensions</p></blockquote></blockquote>
 <blockquote>
-<p>## Plugins: <a href="https://hexo.io/plugins/">https://hexo.io/plugins/</a></p></blockquote>
+<p>## Plugins: <a class="link" href="https://hexo.io/plugins/"  target="_blank" rel="noopener"
+    >https://hexo.io/plugins/</a></p></blockquote>
 <blockquote>
-<p>## Themes: <a href="https://hexo.io/themes/">https://hexo.io/themes/</a></p></blockquote>
+<p>## Themes: <a class="link" href="https://hexo.io/themes/"  target="_blank" rel="noopener"
+    >https://hexo.io/themes/</a></p></blockquote>
 <blockquote>
 <pre><code>   theme: hexo-theme-canux
 </code></pre></blockquote>
@@ -440,7 +783,8 @@ $hexo d
 </ol>
 <hr>
 <h1 id="安装hexo插件">安装hexo插件</h1>
-<p><a href="https://hexo.io/plugins/">plugins</a></p>
+<p><a class="link" href="https://hexo.io/plugins/"  target="_blank" rel="noopener"
+    >plugins</a></p>
 <pre><code>$sudo npm install &lt;plugin-name&gt; --save
 </code></pre>
 <h1 id="配置hexo插件">配置hexo插件</h1>
@@ -449,9 +793,11 @@ $hexo d
 <blockquote>
 <p># Extensions</p></blockquote></blockquote>
 <blockquote>
-<p>## Plugins: <a href="https://hexo.io/plugins/">https://hexo.io/plugins/</a></p></blockquote>
+<p>## Plugins: <a class="link" href="https://hexo.io/plugins/"  target="_blank" rel="noopener"
+    >https://hexo.io/plugins/</a></p></blockquote>
 <blockquote>
-<p>## Themes: <a href="https://hexo.io/themes/">https://hexo.io/themes/</a></p></blockquote>
+<p>## Themes: <a class="link" href="https://hexo.io/themes/"  target="_blank" rel="noopener"
+    >https://hexo.io/themes/</a></p></blockquote>
 <blockquote>
 <pre><code>   theme: next
 </code></pre></blockquote>
@@ -490,7 +836,8 @@ $hexo d
 <blockquote>
 <pre><code>       path: sitemap.xml
 </code></pre></blockquote>
-<p><a href="https://github.com/hexojs/hexo-generator-sitemap">https://github.com/hexojs/hexo-generator-sitemap</a></p>
+<p><a class="link" href="https://github.com/hexojs/hexo-generator-sitemap"  target="_blank" rel="noopener"
+    >https://github.com/hexojs/hexo-generator-sitemap</a></p>
 <h1 id="rss">RSS</h1>
 <pre><code>$npm install hexo-generator-feed --save
 </code></pre>
@@ -511,7 +858,8 @@ $hexo d
 <blockquote>
 <pre><code>     hub:
 </code></pre></blockquote>
-<p><a href="https://github.com/hexojs/hexo-generator-feed">https://github.com/hexojs/hexo-generator-feed</a></p>
+<p><a class="link" href="https://github.com/hexojs/hexo-generator-feed"  target="_blank" rel="noopener"
+    >https://github.com/hexojs/hexo-generator-feed</a></p>
 <h1 id="seo优化">SEO优化</h1>
 <pre><code>$npm install hexo-generator-seo-friendly-sitemap --save
 </code></pre>
@@ -521,14 +869,17 @@ $hexo d
 <blockquote>
 <pre><code>       path: sitemap.xml
 </code></pre></blockquote>
-<p><a href="https://github.com/ludoviclefevre/hexo-generator-seo-friendly-sitemap">https://github.com/ludoviclefevre/hexo-generator-seo-friendly-sitemap</a></p>
+<p><a class="link" href="https://github.com/ludoviclefevre/hexo-generator-seo-friendly-sitemap"  target="_blank" rel="noopener"
+    >https://github.com/ludoviclefevre/hexo-generator-seo-friendly-sitemap</a></p>
 <hr>
 <h1 id="next-1">Next</h1>
 <p>以hexo主题next为例</p>
 <p>中文文档：</p>
-<p><a href="http://theme-next.iissnan.com/">http://theme-next.iissnan.com/</a></p>
+<p><a class="link" href="http://theme-next.iissnan.com/"  target="_blank" rel="noopener"
+    >http://theme-next.iissnan.com/</a></p>
 <p>英文文档：</p>
-<p><a href="https://github.com/iissnan/hexo-theme-next/blob/master/README.en.md">https://github.com/iissnan/hexo-theme-next/blob/master/README.en.md</a></p>
+<p><a class="link" href="https://github.com/iissnan/hexo-theme-next/blob/master/README.en.md"  target="_blank" rel="noopener"
+    >https://github.com/iissnan/hexo-theme-next/blob/master/README.en.md</a></p>
 <h1 id="主题配置文件">主题配置文件</h1>
 <p>主题配置文件在：</p>
 <p>&lt;folder&gt;/themes/next/_config.yml</p>
@@ -944,17 +1295,201 @@ $hexo d
 <pre><code>version: 0.5.0
 </code></pre></blockquote>
 
-        </div>
-    </article>
-</div>
+</section>
 
-        </main>
-    </div>
+
+    <footer class="article-footer">
     
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Morgoth. Designed by Canux</p>
-        </div>
+    <section class="article-tags">
+        
+            <a href="/tags/hexo/">Hexo</a>
+        
+    </section>
+
+
     </footer>
-</body>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    <div id="gitalk-container"></div>
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.18.0/js/md5.min.js"></script>
+<script>
+    const gitalk = new Gitalk({
+        clientID: "3d41a2a237fabe050cc0",
+        clientSecret: "868aa81b294f1463ddb6edc007576ecfed7d2075",
+        repo: "crazy-canux.github.io",
+        owner: "crazy-canux",
+        admin: ["crazy-canux"],
+        distractionFreeMode: false, 
+        id: md5(location.pathname), 
+    });
+    (function () {
+        if (
+            ["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1
+        ) {
+            document.getElementById("gitalk-container").innerHTML =
+                "Gitalk comments not available by default when the website is previewed locally.";
+            return;
+        }
+        gitalk.render("gitalk-container");
+    })();
+</script>
+
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2013 - 
+        
+        2025 Morgoth
+    </section>
+    
+    <section class="powerby">
+        
+            Designed by Canux <br/>
+        
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
 </html>

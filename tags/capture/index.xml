@@ -1,47 +1,194 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Capture on Morgoth</title>
-    <link>https://canuxcheng.com/tags/capture/</link>
-    <description>Recent content in Capture on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Wed, 28 Jul 2021 16:08:54 +0000</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/capture/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>CORS</title>
-      <link>https://canuxcheng.com/post/sec_cors/</link>
-      <pubDate>Wed, 28 Jul 2021 16:08:54 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/sec_cors/</guid>
-      <description>&lt;h1 id=&#34;cors&#34;&gt;CORS&lt;/h1&gt;&#xA;&lt;p&gt;CORS: Cross-Origin resource sharing, 跨域资源共享.&lt;/p&gt;&#xA;&lt;p&gt;是一种基于 HTTP 头的机制，该机制通过允许服务器标示除了它自己以外的其他源（域、协议或端口），使得浏览器允许这些源访问加载自己的资源。跨源资源共享还通过一种机制来检查服务器是否会允许要发送的真实请求，该机制通过浏览器发起一个到服务器托管的跨源资源的“预检”请求。在预检中，浏览器发送的头中标示有 HTTP 方法和真实请求中会用到的头。&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CORS&#34;&gt;https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CORS&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers&#34;&gt;https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;same-origin-policy&#34;&gt;same-origin policy&lt;/h2&gt;&#xA;&lt;p&gt;同源策略，是一种关键的安全机制，它限制由一个源加载的文档或脚本如何与来自另一个源的资源进行交互。&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy&#34;&gt;https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;同源包括：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;protocal (http, https, &amp;hellip;&amp;hellip;)&lt;/li&gt;&#xA;&lt;li&gt;host&lt;/li&gt;&#xA;&lt;li&gt;port(80, 443, &amp;hellip;&amp;hellip;)&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;简单请求&#34;&gt;简单请求&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CORS#%E7%AE%80%E5%8D%95%E8%AF%B7%E6%B1%82&#34;&gt;https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CORS#%E7%AE%80%E5%8D%95%E8%AF%B7%E6%B1%82&lt;/a&gt;&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;请求方法是以下三种方法之一：&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;HEAD&lt;/li&gt;&#xA;&lt;li&gt;GET&lt;/li&gt;&#xA;&lt;li&gt;POST&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;ol start=&#34;2&#34;&gt;&#xA;&lt;li&gt;HTTP的头信息不超出以下几种字段：&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Accept&lt;/li&gt;&#xA;&lt;li&gt;Accept-Language&lt;/li&gt;&#xA;&lt;li&gt;Content-Language&lt;/li&gt;&#xA;&lt;li&gt;Last-Event-ID&lt;/li&gt;&#xA;&lt;li&gt;Content-Type：application/x-www-form-urlencoded、multipart/form-data、text/plain.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;简单请求在header添加Origin字段说明请求的源(协议，域名，端口):&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;Origin: https://domain.com:port&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;预检请求&#34;&gt;预检请求&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CORS#%E9%A2%84%E6%A3%80%E8%AF%B7%E6%B1%82&#34;&gt;https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CORS#%E9%A2%84%E6%A3%80%E8%AF%B7%E6%B1%82&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;针对其它方法或字段类型.&lt;/p&gt;&#xA;&lt;h2 id=&#34;http-headers&#34;&gt;http headers&lt;/h2&gt;&#xA;&lt;p&gt;响应header中可以带以下字段：&lt;/p&gt;&#xA;&lt;p&gt;Access-Control-Allow-Origin&lt;/p&gt;&#xA;&lt;p&gt;Access-Control-Max-Age&lt;/p&gt;&#xA;&lt;p&gt;Access-Control-Allow-Credentials&lt;/p&gt;&#xA;&lt;p&gt;Access-Control-Allow-Methods&lt;/p&gt;&#xA;&lt;p&gt;Access-Control-Expose-Headers&#xA;Access-Control-Allow-Headers&lt;/p&gt;&#xA;&lt;p&gt;请求header中的字段：&lt;/p&gt;&#xA;&lt;p&gt;Origin&lt;/p&gt;&#xA;&lt;p&gt;Access-Control-Request-Method&lt;/p&gt;&#xA;&lt;p&gt;Access-Control-Request-Headers&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Access-Control-Request-Headers&#34;&gt;https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Access-Control-Request-Headers&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Capture</title>
-      <link>https://canuxcheng.com/post/sec_capture/</link>
-      <pubDate>Sat, 28 Jul 2018 16:08:54 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/sec_capture/</guid>
-      <description>&lt;h1 id=&#34;packet-capture&#34;&gt;Packet Capture&lt;/h1&gt;&#xA;&lt;p&gt;网络抓包&lt;/p&gt;&#xA;&lt;h1 id=&#34;fiddler&#34;&gt;Fiddler&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://www.telerik.com/fiddler&#34;&gt;http://www.telerik.com/fiddler&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;wireshark&#34;&gt;Wireshark&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.wireshark.org/&#34;&gt;https://www.wireshark.org/&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Csrf</title>
-      <link>https://canuxcheng.com/post/sec_csrf/</link>
-      <pubDate>Sat, 28 Jul 2018 16:08:54 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/sec_csrf/</guid>
-      <description>&lt;h1 id=&#34;csrf&#34;&gt;CSRF&lt;/h1&gt;&#xA;&lt;p&gt;Cross-site request forgery, 跨站请求伪造．&lt;/p&gt;&#xA;&lt;p&gt;发生条件：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;登陆受信任网站A, 并在本地生成cookie&lt;/li&gt;&#xA;&lt;li&gt;在不退出A的情况下，访问危险网站B&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;预防方法:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;正确使用get,post和cookie&lt;/li&gt;&#xA;&lt;li&gt;在非get请求中增加伪随机数&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
-    </item>
-    <item>
-      <title>Cfssl</title>
-      <link>https://canuxcheng.com/post/sec_cfssl/</link>
-      <pubDate>Sat, 28 Jul 2018 16:08:54 +0800</pubDate>
-      <guid>https://canuxcheng.com/post/sec_cfssl/</guid>
-      <description>&lt;h1 id=&#34;cfssl&#34;&gt;cfssl&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/cloudflare/cfssl&#34;&gt;https://github.com/cloudflare/cfssl&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Cryptographic</title>
-      <link>https://canuxcheng.com/post/sec_cryptographic/</link>
-      <pubDate>Mon, 27 Mar 2017 17:11:58 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/sec_cryptographic/</guid>
-      <description>&lt;h1 id=&#34;pgp&#34;&gt;PGP&lt;/h1&gt;&#xA;&lt;p&gt;PGP: Pretty Good Privacy。&lt;/p&gt;&#xA;&lt;p&gt;用于签名和加密解密。&lt;/p&gt;&#xA;&lt;h2 id=&#34;pgp-1&#34;&gt;PGP&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://en.wikipedia.org/wiki/Pretty_Good_Privacy&#34;&gt;https://en.wikipedia.org/wiki/Pretty_Good_Privacy&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;openpgp&#34;&gt;OpenPGP&lt;/h2&gt;&#xA;&lt;p&gt;OpenPGP是PGP的标准,也有很多实现。&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://openpgp.org/&#34;&gt;http://openpgp.org/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;gnupg&#34;&gt;GnuPG&lt;/h2&gt;&#xA;&lt;p&gt;GunPG: Gun Privacy Guard, 是基于openPGP的实现。&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://gnupg.org/&#34;&gt;https://gnupg.org/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ gpg --help&#xA;&#xA;$ 快速生成签名密钥对&#xA;gpg --quick-generate-key &amp;quot;Canux&amp;quot;&#xA;// 查看公钥&#xA;gpg --list-keys&#xA;// 查看私钥&#xA;gpg --list-secret-keys&#xA;// 删除私钥&#xA;gpg --delete-secret-keys &amp;quot;Canux&amp;quot;&#xA;// 删除公钥&#xA;gpg --delete-keys &amp;quot;Canux&amp;quot;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;GPGME: GPG Made Easy, 是一个让应用程序使用GPG更容易的库．&lt;/p&gt;&#xA;&lt;h1 id=&#34;openssl&#34;&gt;OpenSSL&lt;/h1&gt;&#xA;&lt;p&gt;网络安全和密码工具。&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.openssl.org/&#34;&gt;https://www.openssl.org/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ openssl --help&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;单向哈希加密&#34;&gt;单向哈希加密&lt;/h1&gt;&#xA;&lt;p&gt;md5和shaX都是常用的存储密码的加密方法.&lt;/p&gt;&#xA;&lt;p&gt;rainbow table可以破解单向加密.&lt;/p&gt;&#xA;&lt;p&gt;salt方法可以防止rainbow table破解.&lt;/p&gt;&#xA;&lt;p&gt;scrypt是最难破解的加密方案.&lt;/p&gt;&#xA;&lt;h2 id=&#34;md5&#34;&gt;md5&lt;/h2&gt;&#xA;&lt;h2 id=&#34;sha1&#34;&gt;sha1&lt;/h2&gt;&#xA;&lt;h2 id=&#34;sha256&#34;&gt;sha256&lt;/h2&gt;&#xA;&lt;h2 id=&#34;sha512&#34;&gt;sha512&lt;/h2&gt;&#xA;&lt;h2 id=&#34;hmac&#34;&gt;hmac&lt;/h2&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;symmetric-cryptography&#34;&gt;Symmetric Cryptography&lt;/h1&gt;&#xA;&lt;p&gt;对称加密就是加密和解密使用的密钥是相同的．&lt;/p&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Capture on Morgoth</title>
+        <link>https://canuxcheng.com/tags/capture/</link>
+        <description>Recent content in Capture on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Wed, 28 Jul 2021 16:08:54 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/capture/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>CORS</title>
+        <link>https://canuxcheng.com/post/sec_cors/</link>
+        <pubDate>Wed, 28 Jul 2021 16:08:54 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/sec_cors/</guid>
+        <description>&lt;h1 id=&#34;cors&#34;&gt;CORS&lt;/h1&gt;
+&lt;p&gt;CORS: Cross-Origin resource sharing, 跨域资源共享.&lt;/p&gt;
+&lt;p&gt;是一种基于 HTTP 头的机制，该机制通过允许服务器标示除了它自己以外的其他源（域、协议或端口），使得浏览器允许这些源访问加载自己的资源。跨源资源共享还通过一种机制来检查服务器是否会允许要发送的真实请求，该机制通过浏览器发起一个到服务器托管的跨源资源的“预检”请求。在预检中，浏览器发送的头中标示有 HTTP 方法和真实请求中会用到的头。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CORS&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CORS&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;same-origin-policy&#34;&gt;same-origin policy&lt;/h2&gt;
+&lt;p&gt;同源策略，是一种关键的安全机制，它限制由一个源加载的文档或脚本如何与来自另一个源的资源进行交互。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;同源包括：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;protocal (http, https, &amp;hellip;&amp;hellip;)&lt;/li&gt;
+&lt;li&gt;host&lt;/li&gt;
+&lt;li&gt;port(80, 443, &amp;hellip;&amp;hellip;)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;简单请求&#34;&gt;简单请求&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CORS#%E7%AE%80%E5%8D%95%E8%AF%B7%E6%B1%82&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CORS#%E7%AE%80%E5%8D%95%E8%AF%B7%E6%B1%82&lt;/a&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;请求方法是以下三种方法之一：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;HEAD&lt;/li&gt;
+&lt;li&gt;GET&lt;/li&gt;
+&lt;li&gt;POST&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol start=&#34;2&#34;&gt;
+&lt;li&gt;HTTP的头信息不超出以下几种字段：&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;Accept&lt;/li&gt;
+&lt;li&gt;Accept-Language&lt;/li&gt;
+&lt;li&gt;Content-Language&lt;/li&gt;
+&lt;li&gt;Last-Event-ID&lt;/li&gt;
+&lt;li&gt;Content-Type：application/x-www-form-urlencoded、multipart/form-data、text/plain.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;简单请求在header添加Origin字段说明请求的源(协议，域名，端口):&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Origin: https://domain.com:port
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;预检请求&#34;&gt;预检请求&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CORS#%E9%A2%84%E6%A3%80%E8%AF%B7%E6%B1%82&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://developer.mozilla.org/zh-CN/docs/Web/HTTP/CORS#%E9%A2%84%E6%A3%80%E8%AF%B7%E6%B1%82&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;针对其它方法或字段类型.&lt;/p&gt;
+&lt;h2 id=&#34;http-headers&#34;&gt;http headers&lt;/h2&gt;
+&lt;p&gt;响应header中可以带以下字段：&lt;/p&gt;
+&lt;p&gt;Access-Control-Allow-Origin&lt;/p&gt;
+&lt;p&gt;Access-Control-Max-Age&lt;/p&gt;
+&lt;p&gt;Access-Control-Allow-Credentials&lt;/p&gt;
+&lt;p&gt;Access-Control-Allow-Methods&lt;/p&gt;
+&lt;p&gt;Access-Control-Expose-Headers
+Access-Control-Allow-Headers&lt;/p&gt;
+&lt;p&gt;请求header中的字段：&lt;/p&gt;
+&lt;p&gt;Origin&lt;/p&gt;
+&lt;p&gt;Access-Control-Request-Method&lt;/p&gt;
+&lt;p&gt;Access-Control-Request-Headers&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Access-Control-Request-Headers&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://developer.mozilla.org/zh-CN/docs/Web/HTTP/Headers/Access-Control-Request-Headers&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Capture</title>
+        <link>https://canuxcheng.com/post/sec_capture/</link>
+        <pubDate>Sat, 28 Jul 2018 16:08:54 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/sec_capture/</guid>
+        <description>&lt;h1 id=&#34;packet-capture&#34;&gt;Packet Capture&lt;/h1&gt;
+&lt;p&gt;网络抓包&lt;/p&gt;
+&lt;h1 id=&#34;fiddler&#34;&gt;Fiddler&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://www.telerik.com/fiddler&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://www.telerik.com/fiddler&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;wireshark&#34;&gt;Wireshark&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.wireshark.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.wireshark.org/&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Csrf</title>
+        <link>https://canuxcheng.com/post/sec_csrf/</link>
+        <pubDate>Sat, 28 Jul 2018 16:08:54 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/sec_csrf/</guid>
+        <description>&lt;h1 id=&#34;csrf&#34;&gt;CSRF&lt;/h1&gt;
+&lt;p&gt;Cross-site request forgery, 跨站请求伪造．&lt;/p&gt;
+&lt;p&gt;发生条件：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;登陆受信任网站A, 并在本地生成cookie&lt;/li&gt;
+&lt;li&gt;在不退出A的情况下，访问危险网站B&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;预防方法:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;正确使用get,post和cookie&lt;/li&gt;
+&lt;li&gt;在非get请求中增加伪随机数&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
+        <title>Cfssl</title>
+        <link>https://canuxcheng.com/post/sec_cfssl/</link>
+        <pubDate>Sat, 28 Jul 2018 16:08:54 +0800</pubDate>
+        
+        <guid>https://canuxcheng.com/post/sec_cfssl/</guid>
+        <description>&lt;h1 id=&#34;cfssl&#34;&gt;cfssl&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/cloudflare/cfssl&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/cloudflare/cfssl&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Cryptographic</title>
+        <link>https://canuxcheng.com/post/sec_cryptographic/</link>
+        <pubDate>Mon, 27 Mar 2017 17:11:58 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/sec_cryptographic/</guid>
+        <description>&lt;h1 id=&#34;pgp&#34;&gt;PGP&lt;/h1&gt;
+&lt;p&gt;PGP: Pretty Good Privacy。&lt;/p&gt;
+&lt;p&gt;用于签名和加密解密。&lt;/p&gt;
+&lt;h2 id=&#34;pgp-1&#34;&gt;PGP&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://en.wikipedia.org/wiki/Pretty_Good_Privacy&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://en.wikipedia.org/wiki/Pretty_Good_Privacy&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;openpgp&#34;&gt;OpenPGP&lt;/h2&gt;
+&lt;p&gt;OpenPGP是PGP的标准,也有很多实现。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://openpgp.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://openpgp.org/&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;gnupg&#34;&gt;GnuPG&lt;/h2&gt;
+&lt;p&gt;GunPG: Gun Privacy Guard, 是基于openPGP的实现。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://gnupg.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://gnupg.org/&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ gpg --help
+
+$ 快速生成签名密钥对
+gpg --quick-generate-key &amp;quot;Canux&amp;quot;
+// 查看公钥
+gpg --list-keys
+// 查看私钥
+gpg --list-secret-keys
+// 删除私钥
+gpg --delete-secret-keys &amp;quot;Canux&amp;quot;
+// 删除公钥
+gpg --delete-keys &amp;quot;Canux&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;GPGME: GPG Made Easy, 是一个让应用程序使用GPG更容易的库．&lt;/p&gt;
+&lt;h1 id=&#34;openssl&#34;&gt;OpenSSL&lt;/h1&gt;
+&lt;p&gt;网络安全和密码工具。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.openssl.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.openssl.org/&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ openssl --help
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;单向哈希加密&#34;&gt;单向哈希加密&lt;/h1&gt;
+&lt;p&gt;md5和shaX都是常用的存储密码的加密方法.&lt;/p&gt;
+&lt;p&gt;rainbow table可以破解单向加密.&lt;/p&gt;
+&lt;p&gt;salt方法可以防止rainbow table破解.&lt;/p&gt;
+&lt;p&gt;scrypt是最难破解的加密方案.&lt;/p&gt;
+&lt;h2 id=&#34;md5&#34;&gt;md5&lt;/h2&gt;
+&lt;h2 id=&#34;sha1&#34;&gt;sha1&lt;/h2&gt;
+&lt;h2 id=&#34;sha256&#34;&gt;sha256&lt;/h2&gt;
+&lt;h2 id=&#34;sha512&#34;&gt;sha512&lt;/h2&gt;
+&lt;h2 id=&#34;hmac&#34;&gt;hmac&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;symmetric-cryptography&#34;&gt;Symmetric Cryptography&lt;/h1&gt;
+&lt;p&gt;对称加密就是加密和解密使用的密钥是相同的．&lt;/p&gt;
+&lt;h2 id=&#34;base32&#34;&gt;base32&lt;/h2&gt;
+&lt;h2 id=&#34;base64&#34;&gt;base64&lt;/h2&gt;
+&lt;h2 id=&#34;des&#34;&gt;des&lt;/h2&gt;
+&lt;h2 id=&#34;aes&#34;&gt;aes&lt;/h2&gt;
+&lt;h2 id=&#34;rc4&#34;&gt;rc4&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;asymmetric-cryptography&#34;&gt;Asymmetric Cryptography&lt;/h1&gt;
+&lt;p&gt;非对称加密就是存在两个密钥.&lt;/p&gt;
+&lt;h2 id=&#34;rsa&#34;&gt;rsa&lt;/h2&gt;
+&lt;h2 id=&#34;dsa&#34;&gt;dsa&lt;/h2&gt;
+&lt;h2 id=&#34;ecdsa&#34;&gt;ecdsa&lt;/h2&gt;
+&lt;h2 id=&#34;ecc&#34;&gt;ecc&lt;/h2&gt;
+&lt;p&gt;elliptic curves cryptography&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

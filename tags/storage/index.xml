@@ -1,19 +1,34 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Storage on Morgoth</title>
-    <link>https://canuxcheng.com/tags/storage/</link>
-    <description>Recent content in Storage on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Thu, 05 Apr 2018 21:47:54 +0000</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/storage/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Storage</title>
-      <link>https://canuxcheng.com/post/storage/</link>
-      <pubDate>Thu, 05 Apr 2018 21:47:54 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/storage/</guid>
-      <description>&lt;h1 id=&#34;storage&#34;&gt;Storage&lt;/h1&gt;&#xA;&lt;h1 id=&#34;raid&#34;&gt;RAID&lt;/h1&gt;&#xA;&lt;p&gt;RAID: redundant array of independent disks, 独立磁盘冗余数组．&lt;/p&gt;&#xA;&lt;h1 id=&#34;存储方式&#34;&gt;存储方式&lt;/h1&gt;&#xA;&lt;p&gt;DAS: direct attached storage, 直连式存储，通过SCSI或FC连接服务器．&lt;/p&gt;&#xA;&lt;p&gt;NAS: network attached storage，网络接入存储，通过IP(NFS/CIFS/..).&lt;/p&gt;&#xA;&lt;p&gt;SAN: storage area network, 存储区域网络，有IP或FC两种方式．&lt;/p&gt;&#xA;&lt;h1 id=&#34;存储接口&#34;&gt;存储接口&lt;/h1&gt;&#xA;&lt;p&gt;SCSI&lt;/p&gt;&#xA;&lt;p&gt;iSCSI&lt;/p&gt;&#xA;&lt;p&gt;SAS&lt;/p&gt;&#xA;&lt;p&gt;SATA&lt;/p&gt;&#xA;&lt;p&gt;FC&lt;/p&gt;&#xA;&lt;p&gt;FCoE&lt;/p&gt;&#xA;&lt;hr&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Storage on Morgoth</title>
+        <link>https://canuxcheng.com/tags/storage/</link>
+        <description>Recent content in Storage on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Thu, 05 Apr 2018 21:47:54 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/storage/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Storage</title>
+        <link>https://canuxcheng.com/post/storage/</link>
+        <pubDate>Thu, 05 Apr 2018 21:47:54 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/storage/</guid>
+        <description>&lt;h1 id=&#34;storage&#34;&gt;Storage&lt;/h1&gt;
+&lt;h1 id=&#34;raid&#34;&gt;RAID&lt;/h1&gt;
+&lt;p&gt;RAID: redundant array of independent disks, 独立磁盘冗余数组．&lt;/p&gt;
+&lt;h1 id=&#34;存储方式&#34;&gt;存储方式&lt;/h1&gt;
+&lt;p&gt;DAS: direct attached storage, 直连式存储，通过SCSI或FC连接服务器．&lt;/p&gt;
+&lt;p&gt;NAS: network attached storage，网络接入存储，通过IP(NFS/CIFS/..).&lt;/p&gt;
+&lt;p&gt;SAN: storage area network, 存储区域网络，有IP或FC两种方式．&lt;/p&gt;
+&lt;h1 id=&#34;存储接口&#34;&gt;存储接口&lt;/h1&gt;
+&lt;p&gt;SCSI&lt;/p&gt;
+&lt;p&gt;iSCSI&lt;/p&gt;
+&lt;p&gt;SAS&lt;/p&gt;
+&lt;p&gt;SATA&lt;/p&gt;
+&lt;p&gt;FC&lt;/p&gt;
+&lt;p&gt;FCoE&lt;/p&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

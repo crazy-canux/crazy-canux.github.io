@@ -1,19 +1,144 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Init on Morgoth</title>
-    <link>https://canuxcheng.com/tags/init/</link>
-    <description>Recent content in Init on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sun, 03 Feb 2019 14:04:05 +0000</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/init/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Init</title>
-      <link>https://canuxcheng.com/post/linux_init/</link>
-      <pubDate>Sun, 03 Feb 2019 14:04:05 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/linux_init/</guid>
-      <description>&lt;h1 id=&#34;linux-init&#34;&gt;Linux Init&lt;/h1&gt;&#xA;&lt;p&gt;linux系统启动的第一个进程,pid=1的进程.&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ ls -l /sbin/init&#xA;$ sudo readlink /sbin/init&#xA;/sbin/init -&amp;gt; upstart&#xA;/sbin/init -&amp;gt; /lib/systemd/systemd&#xA;&#xA;/etc/init.d&#xA;The directory containing System V init scripts.&#xA;通过service命令操作&#xA;&#xA;/etc/init&#xA;The directory containing upstart jobs.&#xA;通过initctl命令操作&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;systemd&#34;&gt;systemd&lt;/h1&gt;&#xA;&lt;p&gt;sytemd是upstart的替代版本．通过查看/sbin/init指向systemd还是upstart.&lt;/p&gt;&#xA;&lt;p&gt;service文件位置:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;/etc/systemd/system/***.service&#xA;/lib/systemd/system/*.service&#xA;/usr/lib/systemd/system/*.service&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;service文件编写:&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.freedesktop.org/software/systemd/man/systemd.unit.html#&#34;&gt;https://www.freedesktop.org/software/systemd/man/systemd.unit.html#&lt;/a&gt;&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;[Unit]&#xA;Description=details&#xA;After=containerd.service # 之前启动&#xA;Before= # 之后运行&#xA;Bindsto= #&#xA;Wants=containerd.service # 弱依赖&#xA;Requires= # 强依赖&#xA;StartLimitInterval=10s&#xA;StartLimitBurst=5&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.freedesktop.org/software/systemd/man/systemd.service.html#&#34;&gt;https://www.freedesktop.org/software/systemd/man/systemd.service.html#&lt;/a&gt;&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;[Service]&#xA;Type=simple/notify/dbus/forking/idle/oneshot&#xA;ExecStartPre=&#xA;ExecStart=&#xA;ExecStartPost=&#xA;ExecStop=&#xA;ExecStopPost=&#xA;ExecReload=&#xA;KillMode=node/mixed/process/control-group&#xA;Restart=no/on-success/on-failure/on-abnormal/on-abort/on-watchdog/always # always总是开机启动，即使systemctl enable.&#xA;RestartSec=3s # 重启之前等待的时间.&#xA;TimeoutSec=  # TimeoutStartSec+TimeoutStopSec&#xA;LimitNOFILE=49152 # 限制单个service的fd&#xA;&#xA;[Install]&#xA;WantedBy=multi-user.target&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;systemctl命令:&lt;/p&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Init on Morgoth</title>
+        <link>https://canuxcheng.com/tags/init/</link>
+        <description>Recent content in Init on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Sun, 03 Feb 2019 14:04:05 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/init/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Init</title>
+        <link>https://canuxcheng.com/post/linux_init/</link>
+        <pubDate>Sun, 03 Feb 2019 14:04:05 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/linux_init/</guid>
+        <description>&lt;h1 id=&#34;linux-init&#34;&gt;Linux Init&lt;/h1&gt;
+&lt;p&gt;linux系统启动的第一个进程,pid=1的进程.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ ls -l /sbin/init
+$ sudo readlink /sbin/init
+/sbin/init -&amp;gt; upstart
+/sbin/init -&amp;gt; /lib/systemd/systemd
+
+/etc/init.d
+The directory containing System V init scripts.
+通过service命令操作
+
+/etc/init
+The directory containing upstart jobs.
+通过initctl命令操作
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;systemd&#34;&gt;systemd&lt;/h1&gt;
+&lt;p&gt;sytemd是upstart的替代版本．通过查看/sbin/init指向systemd还是upstart.&lt;/p&gt;
+&lt;p&gt;service文件位置:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/etc/systemd/system/***.service
+/lib/systemd/system/*.service
+/usr/lib/systemd/system/*.service
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;service文件编写:&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.freedesktop.org/software/systemd/man/systemd.unit.html#&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.freedesktop.org/software/systemd/man/systemd.unit.html#&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[Unit]
+Description=details
+After=containerd.service # 之前启动
+Before= # 之后运行
+Bindsto= #
+Wants=containerd.service # 弱依赖
+Requires= # 强依赖
+StartLimitInterval=10s
+StartLimitBurst=5
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.freedesktop.org/software/systemd/man/systemd.service.html#&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.freedesktop.org/software/systemd/man/systemd.service.html#&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[Service]
+Type=simple/notify/dbus/forking/idle/oneshot
+ExecStartPre=
+ExecStart=
+ExecStartPost=
+ExecStop=
+ExecStopPost=
+ExecReload=
+KillMode=node/mixed/process/control-group
+Restart=no/on-success/on-failure/on-abnormal/on-abort/on-watchdog/always # always总是开机启动，即使systemctl enable.
+RestartSec=3s # 重启之前等待的时间.
+TimeoutSec=  # TimeoutStartSec+TimeoutStopSec
+LimitNOFILE=49152 # 限制单个service的fd
+
+[Install]
+WantedBy=multi-user.target
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;systemctl命令:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 修改后需要重新加载.service文件
+$ systemctl daemon-reload
+
+$ systemctl start/stop/status ***
+$ systemctl list-unit-files
+$ systemctl show docker
+
+# 设置开机自动启动
+//在/etc/systemd/system/multi-user.target.wants下创建链接
+$ systemctl enable ***
+$ systemctl disable ***
+$ systemctl is-enabled ***
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;日志管理:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo journalctl -fu docker.service
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;upstart&#34;&gt;upstart&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;/etc/init.d/***
+/etc/init/***.conf
+
+$ sudo service docker start/stop/status/reload/restart
+$ sudo initctl start/stop/status/reload/restart docker
+$ sudo initctl list
+
+# 设置开机自动启动
+$ update-rc.d *** defaults
+# 取消开机启动
+$ update-rc.d *** remove
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;日志管理:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ tail -f /var/log/upstart/docker.log
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Stanzas功能:&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://upstart.ubuntu.com/wiki/Stanzas?highlight=%28%28CategoryDoc%29%29#pid&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://upstart.ubuntu.com/wiki/Stanzas?highlight=%28%28CategoryDoc%29%29#pid&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 添加服务
+$ sudo vim /etc/init/docker.conf
+
+# docker - container daemon
+description  &amp;quot;docker&amp;quot;
+
+start on runlevel [2345]
+stop on runlevel [!2345]
+
+respawn
+# give up if restart occurs 10 times in 100 seconds.
+respawn limit 10 100
+
+pre-start script
+    # do something before start
+end script
+
+script
+    echo &amp;quot;ERROR: `date`: docker started by init.&amp;quot;
+    exec docker
+end script
+
+post-start script
+    # do something after start
+end script
+
+# 检查语法错误
+$ sudo init-checkconf /etc/init/docker.conf
+
+# 注册服务
+$ sudo initctl reload-configuration
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

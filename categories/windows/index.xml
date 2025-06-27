@@ -1,96 +1,1090 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Windows on Morgoth</title>
-    <link>https://canuxcheng.com/categories/windows/</link>
-    <description>Recent content in Windows on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Mon, 18 Jul 2016 14:54:39 +0000</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/categories/windows/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Remote Management</title>
-      <link>https://canuxcheng.com/post/ps_remote/</link>
-      <pubDate>Mon, 18 Jul 2016 14:54:39 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/ps_remote/</guid>
-      <description>&lt;h1 id=&#34;windows远程管理&#34;&gt;Windows远程管理&lt;/h1&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;WinRM, 远程处理,在远程机器上执行命令&lt;/li&gt;&#xA;&lt;li&gt;WMI/CIM&lt;/li&gt;&#xA;&lt;li&gt;RPC, 远程连接,在发起远程连接的机器上执行命令&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;winrm&#34;&gt;WinRM&lt;/h1&gt;&#xA;&lt;p&gt;一对一远程处理:&lt;/p&gt;&#xA;&lt;p&gt;类似于linux的ssh。&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;Enter-PSSession -ComputerName name&#xA;...&#xA;Exit-PSSession&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;一对多远程处理:&lt;/p&gt;&#xA;&lt;p&gt;同时远程到多台机器执行命令或脚本。&lt;/p&gt;&#xA;&lt;p&gt;Invoke-Command一次创建一个连接对象，返回PSComputerName属性，执行完后就关闭连接。&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;Invoke-Command -ComputerName name1,name2 -ScriptBlock {command1;command2}&#xA;&#xA;Invoke-Command -ComputerName name1,name2 -FilePath filepath&#xA;&#xA;Invoke-Command -ComputerName (Get-Content hosts.txt) ...&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;通过argumentlist把本地的参数传给远程的命令:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$lvar1=&amp;quot;value1&amp;quot;&#xA;$lvar2=&amp;quot;value2&amp;quot;&#xA;Invoke-Command -ComputerName name&#xA;-ScriptBlock {&#xA;Param($var1, $var2)&#xA;...&#xA;}&#xA;-ArgumentList $lvar1, $lvar2&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;通过$using:传本地参数到远程机器：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$var1=&amp;quot;value1&amp;quot;&#xA;Invoke-Command -ComputerName name&#xA;-ScriptBlock {&#xA;... $using:var1&#xA;}&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;创建持久的远程处理：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$session1=New-PSSession -ComputerName server1&#xA;Enter-PSSession -Session $session1 ...&#xA;Invoke-Command -Session $session1 ...&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;wmi&#34;&gt;WMI&lt;/h1&gt;&#xA;&lt;pre&gt;&lt;code&gt;Get-WmiObject&#xA;Remove-WmiObject&#xA;Invoke-WmiMethod&#xA;Register-WmiEvent&#xA;Set-WmiInstance&#xA;&#xA;# 用powershell跑一个wql。&#xA;Get-WmiObject -Query &amp;quot;select * from win32_service where name=&#39;winRM&#39;&amp;quot; | Format-List -Property Name,status&#xA;&#xA;# 远程管理&#xA;Get-WMIObject -ComputerName ...&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h1 id=&#34;cim&#34;&gt;CIM&lt;/h1&gt;&#xA;&lt;pre&gt;&lt;code&gt;Get-CimClass&#xA;Get-CimInstance&#xA;Get-CimSession&#xA;Get-CimAssociatedInstance&#xA;Invoke-CimMethod&#xA;New-CimInstance&#xA;New-CimSession&#xA;New-CimSessionOption&#xA;Register-CimIndicationEvent&#xA;Remove-CimInstance&#xA;Remove-CimSession&#xA;Set-CimInstance&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;rpc&#34;&gt;RPC&lt;/h1&gt;&#xA;&lt;pre&gt;&lt;code&gt;# 远程连接&#xA;Get-Service -ComputerName ...&#xA;&lt;/code&gt;&lt;/pre&gt;</description>
-    </item>
-    <item>
-      <title>WinRM</title>
-      <link>https://canuxcheng.com/post/win_winrm/</link>
-      <pubDate>Sun, 17 Jul 2016 08:36:36 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/win_winrm/</guid>
-      <description>&lt;h1 id=&#34;winrm&#34;&gt;WinRM&lt;/h1&gt;&#xA;&lt;p&gt;Windows Remote Management&lt;/p&gt;&#xA;&lt;p&gt;WinRM是WSMAN(WS-Management Protocol)的增强版。&lt;/p&gt;&#xA;&lt;p&gt;WinRM是基于SOAP的防火墙友好的远程协议。&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://msdn.microsoft.com/en-us/library/aa384426(v=vs.85).aspx&#34;&gt;https://msdn.microsoft.com/en-us/library/aa384426(v=vs.85).aspx&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;WinRM设置:&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://msdn.microsoft.com/en-us/library/aa384372(v=vs.85).aspx&#34;&gt;https://msdn.microsoft.com/en-us/library/aa384372(v=vs.85).aspx&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;检查winrm所有配置：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;cmd&amp;gt; winrm get winrm/config&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;快速设置winrm：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;cmd&amp;gt; winrm quickconfig&#xA;cmd&amp;gt; winrm quickconfig -transport:https&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;查看listener配置：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;cmd&amp;gt; winrm enumerate winrm/config/listener&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;WinRM配置包括监听设置,协议设置,Client,Service和Winrs四部分.&lt;/p&gt;&#xA;&lt;p&gt;windows的三种网络安全协议。&lt;/p&gt;&#xA;&lt;p&gt;Basic是基本的明文协议, NTLM是早期的安全协议,Kerberos是最新的安全协议.&lt;/p&gt;&#xA;&lt;h1 id=&#34;service权限管理&#34;&gt;service权限管理&lt;/h1&gt;&#xA;&lt;p&gt;查看service的auth配置：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;cmd&amp;gt; winrm get winrm/config/service/auth&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;service只有Negotiate和Kerberos是默认开启的:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;Basic = false&#xA;Kerberos = true&#xA;Negotiate = true&#xA;Certificate = false&#xA;CredSSP = false&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;Negotiate对domain用户选择kerberos,对local用户选择NTLM.&lt;/p&gt;&#xA;&lt;p&gt;设置service的Basic和Certificate和CredSSP(默认关闭)：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;#cmd&amp;gt; winrm set winrm/config/service/auth @{Basic=&amp;quot;true&amp;quot;}&#xA;#cmd&amp;gt; winrm set winrm/config/service/auth @{Certificate=&amp;quot;true&amp;quot;}&#xA;#cmd&amp;gt; winrm set winrm/config/service/auth @{CredSSP=&amp;quot;true&amp;quot;}&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;设置是否允许不加密：&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Coreutils</title>
-      <link>https://canuxcheng.com/post/ps_coreutils/</link>
-      <pubDate>Tue, 12 Jul 2016 17:24:25 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/ps_coreutils/</guid>
-      <description>&lt;h1 id=&#34;外部命令&#34;&gt;外部命令&lt;/h1&gt;&#xA;&lt;p&gt;powershell可以执行外部命令.&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;C:\Windows\System32\*.exe&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h1 id=&#34;cmd&#34;&gt;cmd&lt;/h1&gt;&#xA;&lt;h1 id=&#34;ping&#34;&gt;ping&lt;/h1&gt;&#xA;&lt;h1 id=&#34;netstat&#34;&gt;netstat&lt;/h1&gt;&#xA;&lt;h1 id=&#34;ipconfig&#34;&gt;ipconfig&lt;/h1&gt;&#xA;&lt;h1 id=&#34;route&#34;&gt;route&lt;/h1&gt;&#xA;&lt;h1 id=&#34;arp&#34;&gt;arp&lt;/h1&gt;&#xA;&lt;h1 id=&#34;nslookup&#34;&gt;nslookup&lt;/h1&gt;&#xA;&lt;h1 id=&#34;ftp&#34;&gt;ftp&lt;/h1&gt;&#xA;&lt;h1 id=&#34;mstsc&#34;&gt;mstsc&lt;/h1&gt;&#xA;&lt;p&gt;RDP client.&lt;/p&gt;&#xA;&lt;h1 id=&#34;taskmgr&#34;&gt;taskmgr&lt;/h1&gt;&#xA;&lt;p&gt;任务管理器．&lt;/p&gt;&#xA;&lt;h1 id=&#34;tskill&#34;&gt;tskill&lt;/h1&gt;&#xA;&lt;h1 id=&#34;tree&#34;&gt;tree&lt;/h1&gt;&#xA;&lt;h1 id=&#34;whoami&#34;&gt;whoami&lt;/h1&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;需要下载，然后放入环境变量的第三方命令.&lt;/p&gt;&#xA;&lt;h1 id=&#34;windump&#34;&gt;WinDump&lt;/h1&gt;&#xA;&lt;p&gt;Windows版本的tcpdump, 依赖WinPcap包．&lt;/p&gt;&#xA;&lt;p&gt;通过windump导出的*.pcap文件可以通过wireshark打开．&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Builtins</title>
-      <link>https://canuxcheng.com/post/ps_builtins/</link>
-      <pubDate>Tue, 24 May 2016 10:44:44 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/ps_builtins/</guid>
-      <description>&lt;h1 id=&#34;get-help和help&#34;&gt;Get-Help和Help:&lt;/h1&gt;&#xA;&lt;p&gt;get-help查看帮助信息,help分页查看帮助信息，man是help的别名&lt;/p&gt;&#xA;&lt;p&gt;命令说明：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;Get-Help&#xA;Help&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;查看所有命令和概念：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;Get-Help *&#xA;Help *&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;模糊查找命令和概念：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;Get-Help *&amp;lt;name&amp;gt;*&#xA;Help *&amp;lt;name&amp;gt;*&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;查看具体命令帮助：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;Get-Help {&amp;lt;CmdletName&amp;gt; | &amp;lt;TopicName&amp;gt;}&#xA;Help {&amp;lt;CmdletName&amp;gt; | &amp;lt;TopicName&amp;gt;}&#xA;&amp;lt;CmdletName&amp;gt; -?&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;get-help/help的选项:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;get-help get-help&#xA;-examples # 查看示例&#xA;-full # 查看所有帮助&#xA;-parameter # 查看选项的帮助&#xA;-detailed # 查看详细信息&#xA;-online # 打开文档中的link&#xA;-showwindow # 用窗口打开&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h1 id=&#34;helpfile&#34;&gt;Helpfile&lt;/h1&gt;&#xA;&lt;p&gt;3.0/4.0 需要先下载帮助手册：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;update-help&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;所有helpfile：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;Get-Help/Help about_*&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;查看具体helpfile：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;Get-Help/Help about_&amp;lt;name&amp;gt;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;cmdlets&#34;&gt;Cmdlets&lt;/h1&gt;&#xA;&lt;p&gt;cmdlets是powershell的内置命令,类型是System.Management.Automation.CmdletInfo&lt;/p&gt;&#xA;&lt;p&gt;cmdlets的方法：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;Equals&#xA;GetHashCode&#xA;GetType&#xA;ToString&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;cmdlets的属性：&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Admin</title>
-      <link>https://canuxcheng.com/post/win_admin/</link>
-      <pubDate>Tue, 26 Apr 2016 09:54:45 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/win_admin/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>PowerShell</title>
-      <link>https://canuxcheng.com/post/ps/</link>
-      <pubDate>Tue, 26 Apr 2016 09:52:02 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/ps/</guid>
-      <description>&lt;h1 id=&#34;powershell&#34;&gt;PowerShell&lt;/h1&gt;&#xA;&lt;p&gt;Console: command line interface&lt;/p&gt;&#xA;&lt;p&gt;ISE: script editor and console combination&lt;/p&gt;&#xA;&lt;p&gt;Version:&lt;/p&gt;&#xA;&lt;p&gt;2.0,3.0,4.0,5.0&lt;/p&gt;&#xA;&lt;p&gt;C:\Windows\System32\powershell 存放64位powershell&lt;/p&gt;&#xA;&lt;p&gt;C:\Windows\SysWOW64\powershell 存放32位powershell&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;&amp;gt;$PSVersionTable&#xA;&amp;gt;$HOST&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;Install/Update:&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.microsoft.com/zh-CN/download/details.aspx?id=40855&#34;&gt;https://www.microsoft.com/zh-CN/download/details.aspx?id=40855&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;安装Windows Management Framework4.0即可。&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;&amp;gt;$PSHOME&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;多版本时切换版本:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;&amp;gt;powershell -version 2&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;powershell相关项目&#34;&gt;powershell相关项目&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/Microsoft&#34;&gt;https://github.com/Microsoft&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/PowerShell&#34;&gt;https://github.com/PowerShell&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/PowerShellOrg&#34;&gt;https://github.com/PowerShellOrg&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;win32-openssh&#34;&gt;win32-openssh&lt;/h2&gt;&#xA;&lt;p&gt;windows的SSH。&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/PowerShell/Win32-OpenSSH&#34;&gt;https://github.com/PowerShell/Win32-OpenSSH&lt;/a&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;powershell命令&#34;&gt;powershell命令&lt;/h1&gt;&#xA;&lt;pre&gt;&lt;code&gt;&amp;gt;powershell -?&#xA;&amp;gt;powershell /?&#xA;&amp;gt;powershell -help&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;powershell-script&#34;&gt;powershell script&lt;/h1&gt;&#xA;&lt;p&gt;powershell是默认大小写不敏感的。&lt;/p&gt;&#xA;&lt;p&gt;同一行多个命令需要用分号;隔开。&lt;/p&gt;&#xA;&lt;p&gt;powershell的安全策略：&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;restricted(default)&lt;/li&gt;&#xA;&lt;li&gt;allsigned&lt;/li&gt;&#xA;&lt;li&gt;remotesigned&lt;/li&gt;&#xA;&lt;li&gt;unrestricted&lt;/li&gt;&#xA;&lt;li&gt;bypass&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h1 id=&#34;注释&#34;&gt;注释&lt;/h1&gt;&#xA;&lt;p&gt;单行注释：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;# comment&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;多行注释(文档注释)：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;&amp;lt;#&#xA;comment1&#xA;comment2&#xA;...&#xA;#&amp;gt;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;帮助文档:&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Utils</title>
-      <link>https://canuxcheng.com/post/ps_utils/</link>
-      <pubDate>Tue, 26 Apr 2016 09:52:02 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/ps_utils/</guid>
-      <description>&lt;h1 id=&#34;windows相关项目&#34;&gt;windows相关项目：&lt;/h1&gt;&#xA;&lt;h2 id=&#34;choco&#34;&gt;choco&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/chocolatey&#34;&gt;https://github.com/chocolatey&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;windows的apt/yum。&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/chocolatey/choco&#34;&gt;choco&lt;/a&gt; is replacement of &lt;a href=&#34;https://github.com/chocolatey/chocolatey&#34;&gt;chocolatey&lt;/a&gt;&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;choco install openssh&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;cmder&#34;&gt;cmder&lt;/h2&gt;&#xA;&lt;p&gt;cmd的升级版。&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/cmderdev/cmder&#34;&gt;https://github.com/cmderdev/cmder&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;babun&#34;&gt;babun&lt;/h2&gt;&#xA;&lt;p&gt;a linux-shell like on windows.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/babun/babun&#34;&gt;https://github.com/babun/babun&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;flinux&#34;&gt;flinux&lt;/h2&gt;&#xA;&lt;p&gt;run unmodified linux applications inside windows&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/wishstudio/flinux&#34;&gt;https://github.com/wishstudio/flinux&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>WMI</title>
-      <link>https://canuxcheng.com/post/win_wmi/</link>
-      <pubDate>Sun, 03 Apr 2016 14:15:47 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/win_wmi/</guid>
-      <description>&lt;h1 id=&#34;wmicim&#34;&gt;WMI/CIM&lt;/h1&gt;&#xA;&lt;p&gt;WMI: windows management instrumentation.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://msdn.microsoft.com/en-us/library/aa394582(v=vs.85).aspx&#34;&gt;https://msdn.microsoft.com/en-us/library/aa394582(v=vs.85).aspx&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;CIM: common information model.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://msdn.microsoft.com/en-us/library/aa389234(v=vs.85).aspx&#34;&gt;https://msdn.microsoft.com/en-us/library/aa389234(v=vs.85).aspx&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;DCOM: distributed COM.&lt;/p&gt;&#xA;&lt;p&gt;wmi通过DCOM远程连接，但是DCOM不能绕过防火墙。&lt;/p&gt;&#xA;&lt;p&gt;命名空间:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;root\cimv2&#xA;root\microsoftdns&#xA;root\securitycenter&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;WMI工具：&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;windows自带wmi测试工具wbemtest.&lt;/li&gt;&#xA;&lt;li&gt;WMI Explorer用于查找wmi和cim的Class和Properties.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://www.ks-soft.net/hostmon.eng/wmi/index.htm#SysReq&#34;&gt;http://www.ks-soft.net/hostmon.eng/wmi/index.htm#SysReq&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;windows怎样设置wmi：&lt;/p&gt;&#xA;&lt;p&gt;135 (Microsoft RPC), 137-139 (NetBIOS) and 445 (Microsoft DS). These are TCP ports.&lt;/p&gt;&#xA;&lt;p&gt;设置的用户需要是管理员组。&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://technet.microsoft.com/en-us/library/cc771551(v=ws.11).aspx&#34;&gt;https://technet.microsoft.com/en-us/library/cc771551(v=ws.11).aspx&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;给wmi设置fix port(server in DMZ)：&lt;/p&gt;&#xA;&lt;p&gt;使用过程中不需要指定端口。&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://msdn.microsoft.com/zh-cn/library/bb219447(v=vs.85).aspx&#34;&gt;https://msdn.microsoft.com/zh-cn/library/bb219447(v=vs.85).aspx&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;wmic&#34;&gt;wmic&lt;/h1&gt;&#xA;&lt;p&gt;wmic是wmi的客户端命令。&lt;/p&gt;&#xA;&lt;p&gt;windows的wmic：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;&amp;gt;wmic # 进入wmi的交互模式&#xA;&amp;gt;wmic -? # 查看帮助&#xA;&amp;gt;wmic /? # 查看帮助&#xA;&amp;gt;wmic ... # 非交互模式运行命令&#xA;&amp;gt;wmic process call create shutdown.exe # 本地关机&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;linux的wmic：&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>FileSystem</title>
-      <link>https://canuxcheng.com/post/win_filesystem/</link>
-      <pubDate>Sun, 03 Apr 2016 14:15:40 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/win_filesystem/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Monitoring</title>
-      <link>https://canuxcheng.com/post/win_monitoring/</link>
-      <pubDate>Sun, 03 Apr 2016 14:15:40 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/win_monitoring/</guid>
-      <description>&lt;h1 id=&#34;windows的services和process&#34;&gt;windows的services和process&lt;/h1&gt;&#xA;&lt;p&gt;services是windows的服务，有Name(Display Name)，Service Name，Description等属性。&lt;/p&gt;&#xA;&lt;p&gt;process是以.exe为后缀的application，有Name(product name)、original filename(Image Name)、file description(description)等属性。&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Windows</title>
-      <link>https://canuxcheng.com/post/win/</link>
-      <pubDate>Sun, 03 Apr 2016 14:15:40 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/win/</guid>
-      <description>&lt;h1 id=&#34;windows的ide&#34;&gt;windows的IDE&lt;/h1&gt;&#xA;&lt;p&gt;VS Enterprise: 收费企业版&#xA;VS Professional: 收费个人版&#xA;VS Community: 免费社区版&lt;/p&gt;&#xA;&lt;p&gt;windows的引导程序是ntloader。&lt;/p&gt;&#xA;&lt;p&gt;DOS和NT是windows系统的内核。&lt;/p&gt;&#xA;&lt;p&gt;BIOS和MBR基本输入输出系统和主引导记录。&lt;/p&gt;&#xA;&lt;p&gt;UEFI和GPT是统一的可扩展接口和GUID分区表。&lt;/p&gt;&#xA;&lt;p&gt;FAT是msdos的文件系统&lt;/p&gt;&#xA;&lt;p&gt;NTFS是msnt的文件系统&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;ad&#34;&gt;AD&lt;/h1&gt;&#xA;&lt;p&gt;AD: Active Directory&lt;/p&gt;&#xA;&lt;p&gt;管理工具：LDAPSoft AD Browser&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Regular Expression</title>
-      <link>https://canuxcheng.com/post/regularexpression/</link>
-      <pubDate>Sat, 02 Apr 2016 11:16:16 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/regularexpression/</guid>
-      <description>&lt;h1 id=&#34;re&#34;&gt;RE&lt;/h1&gt;&#xA;&lt;p&gt;在线检测：&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.regexpal.com/&#34;&gt;https://www.regexpal.com/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;RE分为BRE(basic RE), ERE(extended RE), SRE(simpla RE).&lt;/p&gt;&#xA;&lt;p&gt;在BRE中+?(){}|没有特殊含义，除非用\转义．&lt;/p&gt;&#xA;&lt;p&gt;在ERE中+?(){}被保留有特殊含义，除非用\转义才表示普通字符．&lt;/p&gt;&#xA;&lt;p&gt;命令find, grep, sed, awk等都可以使用正则表达式．&lt;/p&gt;&#xA;&lt;p&gt;特殊字符含义：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;()      对正则表达式分组, ERE&#xA;\n      再匹配前面的分组n次&#xA;&#xA;.       匹配任意单个字符, 换行符除外&#xA;^tux    匹配以tux开始的行&#xA;tux$    匹配以tux结束的行&#xA;&#xA;*+?{}特殊字符是贪婪匹配模式,也就是尽可能多的匹配&#xA;*           匹配前面一个字符0次或多次，包括前面这个字符本身&#xA;+           匹配前面一个字符1次或多次，包括前面这个字符, ERE&#xA;?           匹配前面一个字符0次或1次，包括前面这个字符, ERE&#xA;{n}         匹配前面一个字符n次，包括前面这个字符, ERE&#xA;{min,}      匹配前面一个字符至少min次，包括前面这个字符, ERE&#xA;{min,max}   匹配前面一个字符至少min次，最多max次，包括前面这个字符, ERE&#xA;&#xA;下面是非贪婪匹配模式&#xA;*?    匹配0个或多个&#xA;+?    匹配1个或多个&#xA;??    匹配０个或１个&#xA;{n}?        只匹配n个&#xA;{min,}?     至少min个&#xA;{min,max}?  至少min个，最多max个&#xA;&#xA;[abc]   匹配包含在[]中的任意一个字符，除了\, ^, -三个特殊字符&#xA;[^abc]  匹配不包含在[]中的任意一个字符(和上面相反)&#xA;[a-z]   匹配[]中指定范围内的任意一个字符&#xA;[abc\?] 用＼转义[]中的特殊字符&#xA;&#xA;|       表示逻辑或, ERE&#xA;&#xA;\       转义字符，将特殊字符转义成普通字符&#xA;&#xA;小括号表示分组&#xA;(...)&#xA;(?...)&#xA;(?iLmsux)&#xA;(?:...)&#xA;(?P&amp;lt;name&amp;gt;...)&#xA;(?P=name)&#xA;(?#...)&#xA;(?=...)&#xA;(?!...)&#xA;(?&amp;lt;=...)&#xA;(?&amp;lt;!...)&#xA;(?(id/name)yes-pattern|no-pattern)&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;匹配前面一个字符０次，包括前面这个字符，也就是说０次表示不匹配前面这个字符．&lt;/p&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Windows on Morgoth</title>
+        <link>https://canuxcheng.com/categories/windows/</link>
+        <description>Recent content in Windows on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Mon, 18 Jul 2016 14:54:39 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/categories/windows/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Remote Management</title>
+        <link>https://canuxcheng.com/post/ps_remote/</link>
+        <pubDate>Mon, 18 Jul 2016 14:54:39 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/ps_remote/</guid>
+        <description>&lt;h1 id=&#34;windows远程管理&#34;&gt;Windows远程管理&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;WinRM, 远程处理,在远程机器上执行命令&lt;/li&gt;
+&lt;li&gt;WMI/CIM&lt;/li&gt;
+&lt;li&gt;RPC, 远程连接,在发起远程连接的机器上执行命令&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;winrm&#34;&gt;WinRM&lt;/h1&gt;
+&lt;p&gt;一对一远程处理:&lt;/p&gt;
+&lt;p&gt;类似于linux的ssh。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Enter-PSSession -ComputerName name
+...
+Exit-PSSession
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;一对多远程处理:&lt;/p&gt;
+&lt;p&gt;同时远程到多台机器执行命令或脚本。&lt;/p&gt;
+&lt;p&gt;Invoke-Command一次创建一个连接对象，返回PSComputerName属性，执行完后就关闭连接。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Invoke-Command -ComputerName name1,name2 -ScriptBlock {command1;command2}
+
+Invoke-Command -ComputerName name1,name2 -FilePath filepath
+
+Invoke-Command -ComputerName (Get-Content hosts.txt) ...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;通过argumentlist把本地的参数传给远程的命令:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$lvar1=&amp;quot;value1&amp;quot;
+$lvar2=&amp;quot;value2&amp;quot;
+Invoke-Command -ComputerName name
+-ScriptBlock {
+Param($var1, $var2)
+...
+}
+-ArgumentList $lvar1, $lvar2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;通过$using:传本地参数到远程机器：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$var1=&amp;quot;value1&amp;quot;
+Invoke-Command -ComputerName name
+-ScriptBlock {
+... $using:var1
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;创建持久的远程处理：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$session1=New-PSSession -ComputerName server1
+Enter-PSSession -Session $session1 ...
+Invoke-Command -Session $session1 ...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;wmi&#34;&gt;WMI&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;Get-WmiObject
+Remove-WmiObject
+Invoke-WmiMethod
+Register-WmiEvent
+Set-WmiInstance
+
+# 用powershell跑一个wql。
+Get-WmiObject -Query &amp;quot;select * from win32_service where name=&#39;winRM&#39;&amp;quot; | Format-List -Property Name,status
+
+# 远程管理
+Get-WMIObject -ComputerName ...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;cim&#34;&gt;CIM&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;Get-CimClass
+Get-CimInstance
+Get-CimSession
+Get-CimAssociatedInstance
+Invoke-CimMethod
+New-CimInstance
+New-CimSession
+New-CimSessionOption
+Register-CimIndicationEvent
+Remove-CimInstance
+Remove-CimSession
+Set-CimInstance
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;rpc&#34;&gt;RPC&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;# 远程连接
+Get-Service -ComputerName ...
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
+        <item>
+        <title>WinRM</title>
+        <link>https://canuxcheng.com/post/win_winrm/</link>
+        <pubDate>Sun, 17 Jul 2016 08:36:36 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/win_winrm/</guid>
+        <description>&lt;h1 id=&#34;winrm&#34;&gt;WinRM&lt;/h1&gt;
+&lt;p&gt;Windows Remote Management&lt;/p&gt;
+&lt;p&gt;WinRM是WSMAN(WS-Management Protocol)的增强版。&lt;/p&gt;
+&lt;p&gt;WinRM是基于SOAP的防火墙友好的远程协议。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://msdn.microsoft.com/en-us/library/aa384426%28v=vs.85%29.aspx&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://msdn.microsoft.com/en-us/library/aa384426(v=vs.85).aspx&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;WinRM设置:&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://msdn.microsoft.com/en-us/library/aa384372%28v=vs.85%29.aspx&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://msdn.microsoft.com/en-us/library/aa384372(v=vs.85).aspx&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;检查winrm所有配置：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;cmd&amp;gt; winrm get winrm/config
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;快速设置winrm：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;cmd&amp;gt; winrm quickconfig
+cmd&amp;gt; winrm quickconfig -transport:https
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看listener配置：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;cmd&amp;gt; winrm enumerate winrm/config/listener
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;WinRM配置包括监听设置,协议设置,Client,Service和Winrs四部分.&lt;/p&gt;
+&lt;p&gt;windows的三种网络安全协议。&lt;/p&gt;
+&lt;p&gt;Basic是基本的明文协议, NTLM是早期的安全协议,Kerberos是最新的安全协议.&lt;/p&gt;
+&lt;h1 id=&#34;service权限管理&#34;&gt;service权限管理&lt;/h1&gt;
+&lt;p&gt;查看service的auth配置：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;cmd&amp;gt; winrm get winrm/config/service/auth
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;service只有Negotiate和Kerberos是默认开启的:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Basic = false
+Kerberos = true
+Negotiate = true
+Certificate = false
+CredSSP = false
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Negotiate对domain用户选择kerberos,对local用户选择NTLM.&lt;/p&gt;
+&lt;p&gt;设置service的Basic和Certificate和CredSSP(默认关闭)：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#cmd&amp;gt; winrm set winrm/config/service/auth @{Basic=&amp;quot;true&amp;quot;}
+#cmd&amp;gt; winrm set winrm/config/service/auth @{Certificate=&amp;quot;true&amp;quot;}
+#cmd&amp;gt; winrm set winrm/config/service/auth @{CredSSP=&amp;quot;true&amp;quot;}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;设置是否允许不加密：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#cmd&amp;gt; winrm set winrm/config/service @{AllowUnencrypted=&amp;quot;true&amp;quot;}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;client权限管理&#34;&gt;client权限管理&lt;/h1&gt;
+&lt;p&gt;查看client的auth配置：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;cmd&amp;gt; winrm get winrm/config/client/auth
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;设置client的CredSSP(默认关闭),其它默认都是开启：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#cmd&amp;gt; winrm set winrm/config/client/auth @{CredSSP=&amp;quot;true&amp;quot;}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;设置client的trustedhosts:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#cmd&amp;gt; winrm set winrm/config/client @{TrustedHosts=&amp;quot;*&amp;quot;}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;winrs&#34;&gt;Winrs&lt;/h1&gt;
+&lt;p&gt;winrs是winrm的客户端．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$winrs -r:http://&amp;lt;ip-address&amp;gt; -u:domain/user -p:pass command
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        <item>
+        <title>Coreutils</title>
+        <link>https://canuxcheng.com/post/ps_coreutils/</link>
+        <pubDate>Tue, 12 Jul 2016 17:24:25 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/ps_coreutils/</guid>
+        <description>&lt;h1 id=&#34;外部命令&#34;&gt;外部命令&lt;/h1&gt;
+&lt;p&gt;powershell可以执行外部命令.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;C:\Windows\System32\*.exe
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;cmd&#34;&gt;cmd&lt;/h1&gt;
+&lt;h1 id=&#34;ping&#34;&gt;ping&lt;/h1&gt;
+&lt;h1 id=&#34;netstat&#34;&gt;netstat&lt;/h1&gt;
+&lt;h1 id=&#34;ipconfig&#34;&gt;ipconfig&lt;/h1&gt;
+&lt;h1 id=&#34;route&#34;&gt;route&lt;/h1&gt;
+&lt;h1 id=&#34;arp&#34;&gt;arp&lt;/h1&gt;
+&lt;h1 id=&#34;nslookup&#34;&gt;nslookup&lt;/h1&gt;
+&lt;h1 id=&#34;ftp&#34;&gt;ftp&lt;/h1&gt;
+&lt;h1 id=&#34;mstsc&#34;&gt;mstsc&lt;/h1&gt;
+&lt;p&gt;RDP client.&lt;/p&gt;
+&lt;h1 id=&#34;taskmgr&#34;&gt;taskmgr&lt;/h1&gt;
+&lt;p&gt;任务管理器．&lt;/p&gt;
+&lt;h1 id=&#34;tskill&#34;&gt;tskill&lt;/h1&gt;
+&lt;h1 id=&#34;tree&#34;&gt;tree&lt;/h1&gt;
+&lt;h1 id=&#34;whoami&#34;&gt;whoami&lt;/h1&gt;
+&lt;hr&gt;
+&lt;p&gt;需要下载，然后放入环境变量的第三方命令.&lt;/p&gt;
+&lt;h1 id=&#34;windump&#34;&gt;WinDump&lt;/h1&gt;
+&lt;p&gt;Windows版本的tcpdump, 依赖WinPcap包．&lt;/p&gt;
+&lt;p&gt;通过windump导出的*.pcap文件可以通过wireshark打开．&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Builtins</title>
+        <link>https://canuxcheng.com/post/ps_builtins/</link>
+        <pubDate>Tue, 24 May 2016 10:44:44 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/ps_builtins/</guid>
+        <description>&lt;h1 id=&#34;get-help和help&#34;&gt;Get-Help和Help:&lt;/h1&gt;
+&lt;p&gt;get-help查看帮助信息,help分页查看帮助信息，man是help的别名&lt;/p&gt;
+&lt;p&gt;命令说明：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Get-Help
+Help
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看所有命令和概念：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Get-Help *
+Help *
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;模糊查找命令和概念：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Get-Help *&amp;lt;name&amp;gt;*
+Help *&amp;lt;name&amp;gt;*
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看具体命令帮助：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Get-Help {&amp;lt;CmdletName&amp;gt; | &amp;lt;TopicName&amp;gt;}
+Help {&amp;lt;CmdletName&amp;gt; | &amp;lt;TopicName&amp;gt;}
+&amp;lt;CmdletName&amp;gt; -?
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;get-help/help的选项:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;get-help get-help
+-examples # 查看示例
+-full # 查看所有帮助
+-parameter # 查看选项的帮助
+-detailed # 查看详细信息
+-online # 打开文档中的link
+-showwindow # 用窗口打开
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;helpfile&#34;&gt;Helpfile&lt;/h1&gt;
+&lt;p&gt;3.0/4.0 需要先下载帮助手册：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;update-help
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;所有helpfile：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Get-Help/Help about_*
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看具体helpfile：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Get-Help/Help about_&amp;lt;name&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;cmdlets&#34;&gt;Cmdlets&lt;/h1&gt;
+&lt;p&gt;cmdlets是powershell的内置命令,类型是System.Management.Automation.CmdletInfo&lt;/p&gt;
+&lt;p&gt;cmdlets的方法：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Equals
+GetHashCode
+GetType
+ToString
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;cmdlets的属性：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;CommandType
+DefaultParameterSet
+Definition
+HelpFile
+ImplementingType
+Module
+ModuleName
+Name
+Noun
+OutputType
+Parameters
+ParameterSets
+PSSnapln
+Verb
+Visibility
+DLL
+HelpUri
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;常用cmdlets命令：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Get-Command -CommandType cmdlet # 查看所有cmdlet
+
+Get-Command
+Invoke-Command
+Measure-Command
+Show-Command
+Trace-Command
+
+Get-Service
+New-Service
+Restart-Service
+Resume-Service
+Set-Service
+Stop-Service
+Suspend-Service
+
+Get-Process
+Debug-Process
+Start-Process
+Stop-Process
+Wait-Process
+
+Get-Member  # 查看属性
+Add-Member
+
+Get-Host
+Read-Host
+Write-Host
+Out-Host
+
+Out-Default
+Out-File    # 重定向，也可以用&amp;gt;, &amp;gt;&amp;gt;
+Out-GridView
+Out-Null
+Out-Printer
+Out-String
+
+Write-Debug
+Write-Error
+Write-EventLog
+Write-Output
+Write-Progress
+Write-Verbose
+Write-Warning
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;function&#34;&gt;Function&lt;/h1&gt;
+&lt;p&gt;powershell内置函数&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Get-Command -CommandType function # 查看所有function
+ls function:
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;所有function：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;prompt
+TabExpansion2
+Clear-Host
+more
+help
+mkdir
+Get-Verb
+oss
+cd..
+cd\
+ImportSystemModules
+Pause
+A:
+...
+Z:
+Get-FileHash
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;alias&#34;&gt;Alias&lt;/h1&gt;
+&lt;p&gt;powershell内置别名&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Get-Command -CommandType alias # 查看所有alias
+dir alias: # 查看所有alias
+ls alias: | where {$_.Definition.Startswith(&amp;quot;Start&amp;quot;)}
+
+Get-Alias # 查看所有alias
+Set-Alias
+New-Alias
+Import-Alias
+Export-Alias
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;常用alias：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ForEach-Object    %/foreach
+Where-Object    ?/where
+Select-Object    select
+Compare-Object    compare/diff
+Tee-Object    tee
+Sort-Object    sort
+
+Set-Location    cd/chdir/sl
+Get-Location    pwd/gl
+
+Clear-Content    clc
+Get-Content    cat/type/gc
+
+Clear-History    clhy
+Get-History    h/history/ghy
+Invoke-History    ihy/r
+
+Clear-Variable    clv
+Set-Variable    set/sv
+
+Clear-Item    cli
+Clear-ItemProperty    clp
+Copy-Item    copy/cp/cpi
+Remove-Item    del/erase/rd/ri/rm/rmdir
+Move-Item    mv/move/mi
+Get-ChildItem    dir/ls/gci
+
+Get-Process    ps/gps
+Stop-Process    kill/spps
+Start-Process    start/saps
+
+Clear-Host    clear/cls
+
+Write-Output    echo/write
+
+New-PSDrive    mount
+
+Invoke-WebRequest    curl/wget
+
+Start-Sleep    sleep
+
+help    man
+mkdir    md
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;provider&#34;&gt;Provider&lt;/h1&gt;
+&lt;p&gt;provider相关cmdlet：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Get-PSProvider # 查看provider
+Get-PSDrive    # 查看驱动器
+New-PSDrive    # 新建驱动器
+Remove-PSDrive    # 删除驱动器
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;所有provider：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 这三个驱动器可以用ls或dir直接查看内容
+ls alias:
+dir function:
+Alias   # 别名驱动器
+Function    # 函数驱动器
+Variable    # 变量驱动器
+
+# 这三个驱动器需要具体的驱动器,然后cd进去查看
+FileSystem    # 文件系统驱动器
+Environment
+Registry
+
+help/get-help &amp;lt;provider_name&amp;gt;    # 查看provider帮助
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;object&#34;&gt;object&lt;/h1&gt;
+&lt;p&gt;object主要通过管道|使用。&lt;/p&gt;
+&lt;p&gt;object相关的cmdlet：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Compare-Object
+ForEach-Object
+Group-Object
+Measure-Object
+New-Object
+Select-Object
+Sort-Object
+Tee-Object
+Where-Object
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;object转化：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;get-command -verb *convert*
+...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;导出object：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;get-command -verb *export*
+...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;导入object：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;get-command -verb *import*
+...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;module&#34;&gt;module&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;Get-Module
+get-module -listavailable # 查找安装的模块
+Import-Module
+import-module sqlps # 导入第三方mssql模块
+get-command -module sqlps # 查看模块中所有命令
+New-Module
+Remove-Module
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;format&#34;&gt;format&lt;/h1&gt;
+&lt;p&gt;安装路径有一些xml文件已经做了一些默认的格式化。&lt;/p&gt;
+&lt;p&gt;格式化的数据只能传给Out-File/out-host/out-printer/out-null/out-string/out-default.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Export-FormatData
+Get-FormatData
+Update-FormatData
+Format-Custom
+Format-List
+Format-Table
+Format-Wide
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
+        <item>
+        <title>Admin</title>
+        <link>https://canuxcheng.com/post/win_admin/</link>
+        <pubDate>Tue, 26 Apr 2016 09:54:45 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/win_admin/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>PowerShell</title>
+        <link>https://canuxcheng.com/post/ps/</link>
+        <pubDate>Tue, 26 Apr 2016 09:52:02 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/ps/</guid>
+        <description>&lt;h1 id=&#34;powershell&#34;&gt;PowerShell&lt;/h1&gt;
+&lt;p&gt;Console: command line interface&lt;/p&gt;
+&lt;p&gt;ISE: script editor and console combination&lt;/p&gt;
+&lt;p&gt;Version:&lt;/p&gt;
+&lt;p&gt;2.0,3.0,4.0,5.0&lt;/p&gt;
+&lt;p&gt;C:\Windows\System32\powershell 存放64位powershell&lt;/p&gt;
+&lt;p&gt;C:\Windows\SysWOW64\powershell 存放32位powershell&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;gt;$PSVersionTable
+&amp;gt;$HOST
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Install/Update:&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.microsoft.com/zh-CN/download/details.aspx?id=40855&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.microsoft.com/zh-CN/download/details.aspx?id=40855&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;安装Windows Management Framework4.0即可。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;gt;$PSHOME
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;多版本时切换版本:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;gt;powershell -version 2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;powershell相关项目&#34;&gt;powershell相关项目&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/Microsoft&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/Microsoft&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/PowerShell&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/PowerShell&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/PowerShellOrg&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/PowerShellOrg&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;win32-openssh&#34;&gt;win32-openssh&lt;/h2&gt;
+&lt;p&gt;windows的SSH。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/PowerShell/Win32-OpenSSH&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/PowerShell/Win32-OpenSSH&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;powershell命令&#34;&gt;powershell命令&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;&amp;gt;powershell -?
+&amp;gt;powershell /?
+&amp;gt;powershell -help
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;powershell-script&#34;&gt;powershell script&lt;/h1&gt;
+&lt;p&gt;powershell是默认大小写不敏感的。&lt;/p&gt;
+&lt;p&gt;同一行多个命令需要用分号;隔开。&lt;/p&gt;
+&lt;p&gt;powershell的安全策略：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;restricted(default)&lt;/li&gt;
+&lt;li&gt;allsigned&lt;/li&gt;
+&lt;li&gt;remotesigned&lt;/li&gt;
+&lt;li&gt;unrestricted&lt;/li&gt;
+&lt;li&gt;bypass&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;注释&#34;&gt;注释&lt;/h1&gt;
+&lt;p&gt;单行注释：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# comment
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;多行注释(文档注释)：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;#
+comment1
+comment2
+...
+#&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;帮助文档:&lt;/p&gt;
+&lt;p&gt;在脚本开头的注释中用下面关键字插入文档。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;#
+.SYNOPSIS
+Write your synopsis here.
+
+.DESCRIPTION
+Write your description here.
+
+.PARAMETER param1
+Write your param1 information here.
+
+.EXAMPLE
+Write your example1 here.
+
+.NOTES
+Write your notes here.
+
+.LINK
+http://test.com
+#&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;数据类型&#34;&gt;数据类型&lt;/h1&gt;
+&lt;h2 id=&#34;变量&#34;&gt;变量&lt;/h2&gt;
+&lt;p&gt;所有的变量都存储在Variable驱动器中,可以用Variable驱动器对变量操作。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ls Variable: # 查看所有变量
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;系统变量：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$_    # 表示管道中的当前对象
+?    # True表示上一个命令成功执行,False失败
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;自定义变量：&lt;/p&gt;
+&lt;p&gt;变量以$开头定义,但是$不是变量名的一部分。&lt;/p&gt;
+&lt;p&gt;变量包含数字，字母和小划线。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$var1=&amp;quot;test&amp;quot;
+$var1
+
+# 交换两个变量的值
+$var1,$var2=$var2,$var1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;变量类型：&lt;/p&gt;
+&lt;p&gt;可以不用指定变量类型。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[string]$str=&amp;quot;123&amp;quot;
+[int]$num=123
+[boolean]bool=&amp;quot;True&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;判断变量类型：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$str -is [string]
+$num -as [int]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;数组&#34;&gt;数组&lt;/h2&gt;
+&lt;p&gt;包含多个变量就是一个数组。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$var2=1,2,3
+$var2[index]
+$var2[0] # 数组第一个元素
+$var2[-1] # 数组最后一个元素
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;字典&#34;&gt;字典：&lt;/h2&gt;
+&lt;p&gt;hash类型。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;@{L=&amp;lt;key&amp;gt;;
+E={$_.&amp;lt;value&amp;gt;};
+formatstring=&amp;lt;format&amp;gt;}
+
+@{N=&amp;lt;key&amp;gt;;E={$_.&amp;lt;value&amp;gt;}}
+@{Label=&amp;lt;key&amp;gt;;E={$_.&amp;lt;value&amp;gt;}}
+@{Name=&amp;lt;key&amp;gt;;E={$_.&amp;lt;value&amp;gt;}}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;运算符&#34;&gt;运算符&lt;/h1&gt;
+&lt;p&gt;基本运算符：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;= # 赋值运算符，可以把任何数据类型包括对象赋值给变量
++ # 加法和字符串拼接
+- # 减法
+* # 乘法
+/ # 除法
+() # 优先运算符
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;特殊运算符：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$($procs[0].name) # 子变量
+&#39;$var&#39; # 单引号中的变量原样输出
+&amp;quot;$var&amp;quot; # 双引号中的变量被替换
+&amp;quot;`$var&amp;quot; # `重音符可以用在双引号中转义
+`t    # 制表符
+`n    # 换行符
+kb/mb/gt/tb/pb # 单位可以运算
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;比较运算符：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;-eq
+-ne
+-gt
+-ge
+-lt
+-le
+-contains 包含
+-notcontains
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;布尔运算符：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;-not 求反
+-and
+-or
+-xor
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;控制流&#34;&gt;控制流&lt;/h1&gt;
+&lt;p&gt;powershell支持foreach循环。&lt;/p&gt;
+&lt;p&gt;if条件语句：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;if ($this -eq $that) {
+    expression
+} elseif ($those -gt $these) {
+    expression2
+} else {
+    expression3
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;switch条件语句：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;switch ($condition) {
+    val1 {
+        expression
+        break
+    }
+    val2 {
+        expression2; break
+    }
+    default {
+        default_expression
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;foreach循环语句：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;foreach ($name in $names) {
+    expression
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;for循环语句：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;for ($loop=1; condition; $loop++)
+{
+    expression
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;while循环语句:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;while (condition)
+{
+    expression
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;do-while循环语句：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;do {
+    expression
+} while (condition)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;break语句：&lt;/p&gt;
+&lt;p&gt;break用于循环和switch语句。&lt;/p&gt;
+&lt;p&gt;continue语句：&lt;/p&gt;
+&lt;p&gt;continue用于循环语句。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;函数&#34;&gt;函数&lt;/h1&gt;
+&lt;p&gt;函数：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function name {
+    ...
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;调用函数:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;.\file.ps1
+name
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;选项：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[CmdletBinding()]
+Param(
+    [Parameter(Mandatory=$True)]
+    [String]$ComputerName, # ComputerName强制为通过命令行输入参数
+
+    [int]$EventID=1234, # EventID有默认参数
+
+    [Parameter(Mandatory=$True)][ValidateRange(0,23)]
+    [int]$Number # 给出参数的范围
+)
+
+[CmdletBinding(SupportsShouldProcess$True)] # 支持-whatif和-confirm
+[ValidateSet(1,3,8)] # 给出参数的可选值
+[alias(&amp;quot;id&amp;quot;, &amp;quot;nunber&amp;quot;)] # 给参数指定别名
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;模块&#34;&gt;模块&lt;/h1&gt;
+&lt;p&gt;系统模块路径：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;c:\Windows\System32\WindowsPowershell\v1.0\Modules\
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;函数可以打包成模块放在系统模块路径或用户自己的模块路径。&lt;/p&gt;
+&lt;p&gt;模块放到同名的目录mytools下，取名mytools.psm1&lt;/p&gt;
+&lt;p&gt;导入用户自己路径下的模块：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Import-Module -name C:\Modules\mytools
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;异常和错误处理&#34;&gt;异常和错误处理&lt;/h1&gt;
+&lt;p&gt;调试语句：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Write-Verbose &amp;quot;print verbose information.&amp;quot; # 打印调试信息
+
+Write-Debug &amp;quot;print debug information.&amp;quot; # 使用-Debug进入debug模式，exit退出。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;调试相关系统变量：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ErrorActionPreference=&#39;Continue&#39; # 调试的系统变量，默认报错继续执行
+
+$DebugPreference=&#39;SilentlyContinue&#39;
+
+$ErrorView=&#39;NormalView&#39;
+
+$Error 存储整个shell的错误。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;异常捕获：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Try {
+    expressions
+}
+Catch {
+    &amp;quot;execute when catch the error.&amp;quot;
+}
+Finally {
+    &amp;quot;execute anyway.&amp;quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;断点调试：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$Condition = {if ($a -is [int] -and $a -gt 100) {Write-Host &amp;quot;`$a was modified&amp;quot;}}
+$Breakpoint = Set-PSBreakpoint -Variable a -Mode Write -Script $psise.CurrentFile.FullPath -Action $Condition
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
+        <item>
+        <title>Utils</title>
+        <link>https://canuxcheng.com/post/ps_utils/</link>
+        <pubDate>Tue, 26 Apr 2016 09:52:02 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/ps_utils/</guid>
+        <description>&lt;h1 id=&#34;windows相关项目&#34;&gt;windows相关项目：&lt;/h1&gt;
+&lt;h2 id=&#34;choco&#34;&gt;choco&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/chocolatey&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/chocolatey&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;windows的apt/yum。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/chocolatey/choco&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;choco&lt;/a&gt; is replacement of &lt;a class=&#34;link&#34; href=&#34;https://github.com/chocolatey/chocolatey&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;chocolatey&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;choco install openssh
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;cmder&#34;&gt;cmder&lt;/h2&gt;
+&lt;p&gt;cmd的升级版。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/cmderdev/cmder&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/cmderdev/cmder&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;babun&#34;&gt;babun&lt;/h2&gt;
+&lt;p&gt;a linux-shell like on windows.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/babun/babun&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/babun/babun&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;flinux&#34;&gt;flinux&lt;/h2&gt;
+&lt;p&gt;run unmodified linux applications inside windows&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/wishstudio/flinux&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/wishstudio/flinux&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>WMI</title>
+        <link>https://canuxcheng.com/post/win_wmi/</link>
+        <pubDate>Sun, 03 Apr 2016 14:15:47 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/win_wmi/</guid>
+        <description>&lt;h1 id=&#34;wmicim&#34;&gt;WMI/CIM&lt;/h1&gt;
+&lt;p&gt;WMI: windows management instrumentation.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://msdn.microsoft.com/en-us/library/aa394582%28v=vs.85%29.aspx&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://msdn.microsoft.com/en-us/library/aa394582(v=vs.85).aspx&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;CIM: common information model.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://msdn.microsoft.com/en-us/library/aa389234%28v=vs.85%29.aspx&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://msdn.microsoft.com/en-us/library/aa389234(v=vs.85).aspx&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;DCOM: distributed COM.&lt;/p&gt;
+&lt;p&gt;wmi通过DCOM远程连接，但是DCOM不能绕过防火墙。&lt;/p&gt;
+&lt;p&gt;命名空间:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;root\cimv2
+root\microsoftdns
+root\securitycenter
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;WMI工具：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;windows自带wmi测试工具wbemtest.&lt;/li&gt;
+&lt;li&gt;WMI Explorer用于查找wmi和cim的Class和Properties.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://www.ks-soft.net/hostmon.eng/wmi/index.htm#SysReq&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://www.ks-soft.net/hostmon.eng/wmi/index.htm#SysReq&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;windows怎样设置wmi：&lt;/p&gt;
+&lt;p&gt;135 (Microsoft RPC), 137-139 (NetBIOS) and 445 (Microsoft DS). These are TCP ports.&lt;/p&gt;
+&lt;p&gt;设置的用户需要是管理员组。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://technet.microsoft.com/en-us/library/cc771551%28v=ws.11%29.aspx&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://technet.microsoft.com/en-us/library/cc771551(v=ws.11).aspx&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;给wmi设置fix port(server in DMZ)：&lt;/p&gt;
+&lt;p&gt;使用过程中不需要指定端口。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://msdn.microsoft.com/zh-cn/library/bb219447%28v=vs.85%29.aspx&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://msdn.microsoft.com/zh-cn/library/bb219447(v=vs.85).aspx&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;wmic&#34;&gt;wmic&lt;/h1&gt;
+&lt;p&gt;wmic是wmi的客户端命令。&lt;/p&gt;
+&lt;p&gt;windows的wmic：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;gt;wmic # 进入wmi的交互模式
+&amp;gt;wmic -? # 查看帮助
+&amp;gt;wmic /? # 查看帮助
+&amp;gt;wmic ... # 非交互模式运行命令
+&amp;gt;wmic process call create shutdown.exe # 本地关机
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;linux的wmic：&lt;/p&gt;
+&lt;p&gt;Linux需要自己创建wmic命令，可以通过samba获取，也可以安装openvas的安装包。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$man wmic
+$wmic -U [domain/]adminuser%password //host &amp;quot;select * from Win32_ComputerSystem&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mikepalmer.net/debianubuntu-wmi-client-package-with-openvas-libwmiclient1-patches/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://mikepalmer.net/debianubuntu-wmi-client-package-with-openvas-libwmiclient1-patches/&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;wmi的class&#34;&gt;WMI的Class&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://msdn.microsoft.com/zh-cn/library/aa394554%28v=vs.85%29.aspx&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://msdn.microsoft.com/zh-cn/library/aa394554(v=vs.85).aspx&lt;/a&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;wmi system class&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://msdn.microsoft.com/zh-cn/library/aa394583%28v=vs.85%29.aspx&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://msdn.microsoft.com/zh-cn/library/aa394583(v=vs.85).aspx&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; __Win32Provider
+ ...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;MSFT class&lt;/p&gt;
+&lt;p&gt;policy provider classes&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; MSFT_Providers
+ MSFT_Rule
+ MSFT_SomFilter
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;WMI Troubleshooting classes&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; MSFT_WmiProvider_Counters
+ MSTF_WmiSelfEvent
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;CIM class&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://msdn.microsoft.com/zh-cn/library/aa386179%28v=vs.85%29.aspx&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://msdn.microsoft.com/zh-cn/library/aa386179(v=vs.85).aspx&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; CIM_Action
+ ...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Standard Consumer class&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; ActiveScriptEventConsumer
+ CommandLineEventConsumer
+ LogFileEventConsumer
+ NTEventLogEventConsumer
+ ScriptingStandardConsumerSetting
+ SMTPEventConsumer
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;wmi的provider&#34;&gt;WMI的Provider&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://msdn.microsoft.com/zh-cn/library/aa394570%28v=vs.85%29.aspx&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://msdn.microsoft.com/zh-cn/library/aa394570(v=vs.85).aspx&lt;/a&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Win32 Provider&lt;/p&gt;
+&lt;p&gt;Computer System Hardware Classes&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://msdn.microsoft.com/zh-cn/library/aa389273%28v=vs.85%29.aspx&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://msdn.microsoft.com/zh-cn/library/aa389273(v=vs.85).aspx&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; Win32_Fan
+ ...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Operating System Classes&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://msdn.microsoft.com/zh-cn/library/dn792258%28v=vs.85%29.aspx&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://msdn.microsoft.com/zh-cn/library/dn792258(v=vs.85).aspx&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; Win32_ClassicCOMApplicationClasses
+ ...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Performance Counter Classes&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://msdn.microsoft.com/zh-cn/library/aa392738%28v=vs.85%29.aspx&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://msdn.microsoft.com/zh-cn/library/aa392738(v=vs.85).aspx&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; Win32_Perf
+ Win32_PerfFormattedData
+ Win32_PerfRawData
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;WMI Service Management Classes&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://msdn.microsoft.com/zh-cn/library/dn792273%28v=vs.85%29.aspx&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://msdn.microsoft.com/zh-cn/library/dn792273(v=vs.85).aspx&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; Win32_MethodParameterClass
+ Win32_WMISetting
+ Wim32_WMIElementSetting
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;wql&#34;&gt;wql&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://msdn.microsoft.com/zh-cn/library/aa394606%28v=vs.85%29.aspx&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://msdn.microsoft.com/zh-cn/library/aa394606(v=vs.85).aspx&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;wql关键字：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;SELECT, FROM, WHERE, AND, OR, NOT, NULL, IS, TRUE, FALSE, WITHIN, LIKE, HAVING
+REFERENCES OF, KEYSONLY, ISA, ASSOCIATORS OF, __CLASS, GROUP Clause
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;常用WQL：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;select * from meta_class where __class like &#39;%win32%&#39; # 查询wmi的类
+select * from meta_class where __class like &#39;%cim%&#39; # 查询cim的类
+
+select * from cim_datafile where drive=&amp;quot;c:&amp;quot; and path=&amp;quot;\\path\\&amp;quot; and filename like &amp;quot;%%&amp;quot; and extension like &#39;%%&#39;
+select * from cim_directory where drive=&amp;quot;c:&amp;quot; and path=&amp;quot;\\path\\&amp;quot;
+select * from cim_logicaldisk
+select * from win32_operationsystem
+select * from win32_service
+select * from win32_process
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        <item>
+        <title>FileSystem</title>
+        <link>https://canuxcheng.com/post/win_filesystem/</link>
+        <pubDate>Sun, 03 Apr 2016 14:15:40 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/win_filesystem/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Monitoring</title>
+        <link>https://canuxcheng.com/post/win_monitoring/</link>
+        <pubDate>Sun, 03 Apr 2016 14:15:40 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/win_monitoring/</guid>
+        <description>&lt;h1 id=&#34;windows的services和process&#34;&gt;windows的services和process&lt;/h1&gt;
+&lt;p&gt;services是windows的服务，有Name(Display Name)，Service Name，Description等属性。&lt;/p&gt;
+&lt;p&gt;process是以.exe为后缀的application，有Name(product name)、original filename(Image Name)、file description(description)等属性。&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Windows</title>
+        <link>https://canuxcheng.com/post/win/</link>
+        <pubDate>Sun, 03 Apr 2016 14:15:40 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/win/</guid>
+        <description>&lt;h1 id=&#34;windows的ide&#34;&gt;windows的IDE&lt;/h1&gt;
+&lt;p&gt;VS Enterprise: 收费企业版
+VS Professional: 收费个人版
+VS Community: 免费社区版&lt;/p&gt;
+&lt;p&gt;windows的引导程序是ntloader。&lt;/p&gt;
+&lt;p&gt;DOS和NT是windows系统的内核。&lt;/p&gt;
+&lt;p&gt;BIOS和MBR基本输入输出系统和主引导记录。&lt;/p&gt;
+&lt;p&gt;UEFI和GPT是统一的可扩展接口和GUID分区表。&lt;/p&gt;
+&lt;p&gt;FAT是msdos的文件系统&lt;/p&gt;
+&lt;p&gt;NTFS是msnt的文件系统&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;ad&#34;&gt;AD&lt;/h1&gt;
+&lt;p&gt;AD: Active Directory&lt;/p&gt;
+&lt;p&gt;管理工具：LDAPSoft AD Browser&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Regular Expression</title>
+        <link>https://canuxcheng.com/post/regularexpression/</link>
+        <pubDate>Sat, 02 Apr 2016 11:16:16 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/regularexpression/</guid>
+        <description>&lt;h1 id=&#34;re&#34;&gt;RE&lt;/h1&gt;
+&lt;p&gt;在线检测：&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.regexpal.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.regexpal.com/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;RE分为BRE(basic RE), ERE(extended RE), SRE(simpla RE).&lt;/p&gt;
+&lt;p&gt;在BRE中+?(){}|没有特殊含义，除非用\转义．&lt;/p&gt;
+&lt;p&gt;在ERE中+?(){}被保留有特殊含义，除非用\转义才表示普通字符．&lt;/p&gt;
+&lt;p&gt;命令find, grep, sed, awk等都可以使用正则表达式．&lt;/p&gt;
+&lt;p&gt;特殊字符含义：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;()      对正则表达式分组, ERE
+\n      再匹配前面的分组n次
+
+.       匹配任意单个字符, 换行符除外
+^tux    匹配以tux开始的行
+tux$    匹配以tux结束的行
+
+*+?{}特殊字符是贪婪匹配模式,也就是尽可能多的匹配
+*           匹配前面一个字符0次或多次，包括前面这个字符本身
++           匹配前面一个字符1次或多次，包括前面这个字符, ERE
+?           匹配前面一个字符0次或1次，包括前面这个字符, ERE
+{n}         匹配前面一个字符n次，包括前面这个字符, ERE
+{min,}      匹配前面一个字符至少min次，包括前面这个字符, ERE
+{min,max}   匹配前面一个字符至少min次，最多max次，包括前面这个字符, ERE
+
+下面是非贪婪匹配模式
+*?    匹配0个或多个
++?    匹配1个或多个
+??    匹配０个或１个
+{n}?        只匹配n个
+{min,}?     至少min个
+{min,max}?  至少min个，最多max个
+
+[abc]   匹配包含在[]中的任意一个字符，除了\, ^, -三个特殊字符
+[^abc]  匹配不包含在[]中的任意一个字符(和上面相反)
+[a-z]   匹配[]中指定范围内的任意一个字符
+[abc\?] 用＼转义[]中的特殊字符
+
+|       表示逻辑或, ERE
+
+\       转义字符，将特殊字符转义成普通字符
+
+小括号表示分组
+(...)
+(?...)
+(?iLmsux)
+(?:...)
+(?P&amp;lt;name&amp;gt;...)
+(?P=name)
+(?#...)
+(?=...)
+(?!...)
+(?&amp;lt;=...)
+(?&amp;lt;!...)
+(?(id/name)yes-pattern|no-pattern)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;匹配前面一个字符０次，包括前面这个字符，也就是说０次表示不匹配前面这个字符．&lt;/p&gt;
+&lt;p&gt;字符集:&lt;/p&gt;
+&lt;p&gt;下列字符集是posix标准，用在[]中，也就是[[:alnum:]].&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[:alnum:]    可打印的字符，包括空白字符
+[:alpha:]　　字母字符
+[:blank:]　　空格和制表符，space, \t
+[:cntrl&amp;quot;]    控制字符
+[:digit:]　　数字字符
+[:graph:]　　图形字符，不包括空白字符
+[:lower:]　　小写字符
+[:print:]　　可打印字符，包括空白字符
+[:punct:]　　标点符号字符
+[:space:]　　空白字符
+[:upper:]　　大写字符
+[:xdigit:]　 十六进制字符
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;字符集的简写(不同的编程语言可能不同)：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;\b      匹配单词边界
+\B      匹配单词的非边界
+\A      匹配字符串的起始
+\Z　　　匹配字符串的结束
+
+\d      匹配任何数字０－９
+\D      匹配任何非数字，等效[^\d]
+\w      匹配任何数字和字母，a-z,A-Z,0-9
+\W      匹配任何非数字和非字母
+\s      匹配任何空白字符,包括space,\t,\n,\r,\f
+\S      匹配任何非空白字符
+\h      匹配横向空白，包括space,\t
+\v      匹配纵向空白，包括\f,\r,\n
+\r      回车
+\R　　　匹配任何类型的断行
+
+\a
+\f
+\t
+\n
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;常用正则表达式&#34;&gt;常用正则表达式&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;.*           匹配任意字符０次或多次，除了换行符
+^$           匹配空白行
+[\s\S]       匹配任何空白字符和非空白字符
+^\s\+        行首空格
+\s\+$        行尾空格
+^[^&amp;lt;]        不以&amp;lt;开头的字符串
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

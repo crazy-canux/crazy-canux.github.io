@@ -1,19 +1,61 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Auth on Morgoth</title>
-    <link>https://canuxcheng.com/tags/auth/</link>
-    <description>Recent content in Auth on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Fri, 14 Jan 2022 04:29:37 +0000</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/auth/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Auth</title>
-      <link>https://canuxcheng.com/post/django_auth/</link>
-      <pubDate>Fri, 14 Jan 2022 04:29:37 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/django_auth/</guid>
-      <description>&lt;h1 id=&#34;authpy&#34;&gt;auth.py&lt;/h1&gt;&#xA;&lt;p&gt;自定义authentication backend.&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;from django.contrib.auth.backends import BaseBackend&#xA;&#xA;class MyBackend(BaseBackend):&#xA;    def authenticate(self, request):&#xA;        ...&#xA;    def get_user(self, user_id):&#xA;        ...&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;配置使用自定义backend&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;AUTHENTICATION_BACKENDS =  (&amp;quot;apps.ldap_auth.auth.MyBackend&amp;quot;,)&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/etianen/django-python3-ldap&#34;&gt;https://github.com/etianen/django-python3-ldap&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;auth&#34;&gt;auth&lt;/h1&gt;&#xA;&lt;p&gt;配置&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;INSTALLED_APPS = (&#xA;    &#39;django.contrib.auth&#39;，&#xA;    &#39;django.contrib.contenttypes&#39;&#xA;)&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;&amp;lsquo;django.contrib.auth&amp;rsquo; 包含了验证框架的内核和它的默认模型。&lt;/p&gt;&#xA;&lt;p&gt;&amp;lsquo;django.contrib.contenttypes&amp;rsquo; 是 Django content type system ，允许你创建的模型和权限相关联。&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;MIDDLEWARE_CLASSES = (&#xA;    &#39;django.contrib.sessions.middleware.SessionMiddleware&#39;,&#xA;    &#39;django.contrib.auth.middleware.AuthenticationMiddleware&#39;,&#xA;)&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;用户登录:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;from django.contrib.auth import authenticate, login&#xA;user = authenticate(username=&#39;name&#39;, password=&#39;pw&#39;)&#xA;login(request, user)&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;登陆时的默认验证后端:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;AUTHENTICATION_BACKENDS = [&#39;django.contrib.auth.backends.ModelBackend&#39;]&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;用户登出:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;from django.contrib.auth import logout&#xA;logout(request)&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Auth on Morgoth</title>
+        <link>https://canuxcheng.com/tags/auth/</link>
+        <description>Recent content in Auth on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Fri, 14 Jan 2022 04:29:37 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/auth/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Auth</title>
+        <link>https://canuxcheng.com/post/django_auth/</link>
+        <pubDate>Fri, 14 Jan 2022 04:29:37 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/django_auth/</guid>
+        <description>&lt;h1 id=&#34;authpy&#34;&gt;auth.py&lt;/h1&gt;
+&lt;p&gt;自定义authentication backend.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;from django.contrib.auth.backends import BaseBackend
+
+class MyBackend(BaseBackend):
+    def authenticate(self, request):
+        ...
+    def get_user(self, user_id):
+        ...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;配置使用自定义backend&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;AUTHENTICATION_BACKENDS =  (&amp;quot;apps.ldap_auth.auth.MyBackend&amp;quot;,)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/etianen/django-python3-ldap&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/etianen/django-python3-ldap&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;auth&#34;&gt;auth&lt;/h1&gt;
+&lt;p&gt;配置&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;INSTALLED_APPS = (
+    &#39;django.contrib.auth&#39;，
+    &#39;django.contrib.contenttypes&#39;
+)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&amp;lsquo;django.contrib.auth&amp;rsquo; 包含了验证框架的内核和它的默认模型。&lt;/p&gt;
+&lt;p&gt;&amp;lsquo;django.contrib.contenttypes&amp;rsquo; 是 Django content type system ，允许你创建的模型和权限相关联。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;MIDDLEWARE_CLASSES = (
+    &#39;django.contrib.sessions.middleware.SessionMiddleware&#39;,
+    &#39;django.contrib.auth.middleware.AuthenticationMiddleware&#39;,
+)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;用户登录:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;from django.contrib.auth import authenticate, login
+user = authenticate(username=&#39;name&#39;, password=&#39;pw&#39;)
+login(request, user)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;登陆时的默认验证后端:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;AUTHENTICATION_BACKENDS = [&#39;django.contrib.auth.backends.ModelBackend&#39;]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;用户登出:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;from django.contrib.auth import logout
+logout(request)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

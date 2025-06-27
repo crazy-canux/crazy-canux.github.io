@@ -1,19 +1,353 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Django on Morgoth</title>
-    <link>https://canuxcheng.com/tags/django/</link>
-    <description>Recent content in Django on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Tue, 20 Sep 2016 23:14:07 +0000</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/django/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Django</title>
-      <link>https://canuxcheng.com/post/django/</link>
-      <pubDate>Tue, 20 Sep 2016 23:14:07 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/django/</guid>
-      <description>&lt;h1 id=&#34;django&#34;&gt;Django&lt;/h1&gt;&#xA;&lt;p&gt;django是python的web框架。&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/django/django&#34;&gt;https://github.com/django/django&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.djangoproject.com/&#34;&gt;https://www.djangoproject.com/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://docs.djangoproject.com/zh-hans/3.1/contents/&#34;&gt;https://docs.djangoproject.com/zh-hans/3.1/contents/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;django遵守MVC设计模式，采用MTV框架。&lt;/p&gt;&#xA;&lt;p&gt;M: model,数据存取&lt;/p&gt;&#xA;&lt;p&gt;T: template，如何展现数据&lt;/p&gt;&#xA;&lt;p&gt;V: view，展现哪些数据&lt;/p&gt;&#xA;&lt;h1 id=&#34;安装&#34;&gt;安装&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://docs.djangoproject.com/zh-hans/3.1/faq/install/#faq-python-version-support&#34;&gt;https://docs.djangoproject.com/zh-hans/3.1/faq/install/#faq-python-version-support&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;django1.11是最后一个支持python2.7的长期支持版(2017.4).&lt;/p&gt;&#xA;&lt;p&gt;django2.0开始只支持python3(2018).&lt;/p&gt;&#xA;&lt;p&gt;本文以django3.1为例创建名为next的project.&lt;/p&gt;&#xA;&lt;p&gt;virtualenv中安装：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$mkdir next&#xA;$cd next&#xA;$virtualenv .venv&#xA;&#xA;# mac/linux&#xA;$source .venv/bin/activate&#xA;&#xA;# windows&#xA;&amp;gt;cd .venv/Scripts&#xA;&amp;gt;activate&#xA;&#xA;$pip install django&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;验证安装：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$python&#xA;&amp;gt;&amp;gt;&amp;gt;import django&#xA;&amp;gt;&amp;gt;&amp;gt;django.VERSION&#xA;&amp;gt;&amp;gt;&amp;gt;django.get_version()&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;安装使用的数据库引擎的库：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ sudo udo apt-get install libmysqlclient-dev&#xA;$ pip install mysqlclient&#xA;&#xA;$pip install psycopg2&#xA;&#xA;$pip install cx_Oracle&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;django默认是mysqlclient，可以使用pymysql替代：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;# vim settings.py&#xA;import pymysql&#xA;pymysql.version_info = (1, 4, 13, &amp;quot;final&amp;quot;, 0)&#xA;pymysql.install_as_MySQLdb()&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;project&#34;&gt;project&lt;/h1&gt;&#xA;&lt;p&gt;创建一个名为next的项目&lt;/p&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Django on Morgoth</title>
+        <link>https://canuxcheng.com/tags/django/</link>
+        <description>Recent content in Django on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Tue, 20 Sep 2016 23:14:07 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/django/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Django</title>
+        <link>https://canuxcheng.com/post/django/</link>
+        <pubDate>Tue, 20 Sep 2016 23:14:07 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/django/</guid>
+        <description>&lt;h1 id=&#34;django&#34;&gt;Django&lt;/h1&gt;
+&lt;p&gt;django是python的web框架。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/django/django&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/django/django&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.djangoproject.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.djangoproject.com/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.djangoproject.com/zh-hans/3.1/contents/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://docs.djangoproject.com/zh-hans/3.1/contents/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;django遵守MVC设计模式，采用MTV框架。&lt;/p&gt;
+&lt;p&gt;M: model,数据存取&lt;/p&gt;
+&lt;p&gt;T: template，如何展现数据&lt;/p&gt;
+&lt;p&gt;V: view，展现哪些数据&lt;/p&gt;
+&lt;h1 id=&#34;安装&#34;&gt;安装&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.djangoproject.com/zh-hans/3.1/faq/install/#faq-python-version-support&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://docs.djangoproject.com/zh-hans/3.1/faq/install/#faq-python-version-support&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;django1.11是最后一个支持python2.7的长期支持版(2017.4).&lt;/p&gt;
+&lt;p&gt;django2.0开始只支持python3(2018).&lt;/p&gt;
+&lt;p&gt;本文以django3.1为例创建名为next的project.&lt;/p&gt;
+&lt;p&gt;virtualenv中安装：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$mkdir next
+$cd next
+$virtualenv .venv
+
+# mac/linux
+$source .venv/bin/activate
+
+# windows
+&amp;gt;cd .venv/Scripts
+&amp;gt;activate
+
+$pip install django
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;验证安装：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$python
+&amp;gt;&amp;gt;&amp;gt;import django
+&amp;gt;&amp;gt;&amp;gt;django.VERSION
+&amp;gt;&amp;gt;&amp;gt;django.get_version()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;安装使用的数据库引擎的库：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo udo apt-get install libmysqlclient-dev
+$ pip install mysqlclient
+
+$pip install psycopg2
+
+$pip install cx_Oracle
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;django默认是mysqlclient，可以使用pymysql替代：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# vim settings.py
+import pymysql
+pymysql.version_info = (1, 4, 13, &amp;quot;final&amp;quot;, 0)
+pymysql.install_as_MySQLdb()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;project&#34;&gt;project&lt;/h1&gt;
+&lt;p&gt;创建一个名为next的项目&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ cd next
+$ django-admin startproject next.
+
+next
+|-- manage.py
+|-- next
+    |- __init__.py
+    |- settings.py
+    |- urls.py
+    |- wsgi.py
+    |- asgi.py
+&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;next 最外层根目录只是你项目的容器， 根目录名称对Django没有影响，你可以将它重命名为任何你喜欢的名称。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;manage.py: 一个让你用各种方式管理 Django 项目的命令行工具。你可以阅读 django-admin and manage.py 获取所有 manage.py 的细节。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;templates: project的模版.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;next 里层的目录包含你的项目，它是一个纯 Python 包。它的名字就是当你引用它内部任何东西时需要用到的 Python 包名。 (比如 next.urls).&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;next/&lt;strong&gt;init&lt;/strong&gt;.py：一个空文件，告诉 Python 这个目录应该被认为是一个 Python 包。如果你是 Python 初学者，阅读官方文档中的 更多关于包的知识。&lt;/p&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;next/settings.py：Django 项目的配置文件。如果你想知道这个文件是如何工作的，请查看 Django 配置 了解细节。&lt;/p&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;next/urls.py：Django 项目的 URL 声明，就像你网站的“目录”。阅读 URL调度器 文档来获取更多关于 URL 的内容。&lt;/p&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;next/asgi.py：作为你的项目的运行在 ASGI 兼容的Web服务器上的入口。阅读 如何使用 ASGI 来部署 了解更多细节。&lt;/p&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;next/wsgi.py：作为你的项目的运行在 WSGI 兼容的Web服务器上的入口。阅读 如何使用 WSGI 进行部署 了解更多细节。&lt;/p&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;
+&lt;p&gt;验证开发服务器：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$python manage.py runserver
+$python manage.py runserver &amp;lt;ip address&amp;gt;:&amp;lt;port&amp;gt;
+&amp;gt; py manage.py runserver
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;浏览器输入：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;http://127.0.0.1:8000
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;settingspy&#34;&gt;settings.py&lt;/h2&gt;
+&lt;p&gt;默认enable的app:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;INSTALLED_APPS = [
+    &#39;django.contrib.admin&#39;, //管理员站点， 你很快就会使用它。 
+    &#39;django.contrib.auth&#39;, //认证授权系统。
+    &#39;django.contrib.contenttypes&#39;, //内容类型框架。/
+    &#39;django.contrib.sessions&#39;, //会话框架。 
+    &#39;django.contrib.messages&#39;, //消息框架。 
+    &#39;django.contrib.staticfiles&#39;, //管理静态文件的框架。 
+]
+
+默认开启的某些应用需要至少一个数据表，所以，在使用他们之前需要在数据库中创建一些表
+$ python manage.py migrate
+&amp;gt; py manage.py migrate
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;默认enable的midleware:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;MIDDLEWARE = [
+    &#39;django.middleware.security.SecurityMiddleware&#39;,
+    &#39;django.contrib.sessions.middleware.SessionMiddleware&#39;,
+    &#39;django.middleware.common.CommonMiddleware&#39;,
+    &#39;django.middleware.csrf.CsrfViewMiddleware&#39;,
+    &#39;django.contrib.auth.middleware.AuthenticationMiddleware&#39;,
+    &#39;django.contrib.messages.middleware.MessageMiddleware&#39;,
+    &#39;django.middleware.clickjacking.XFrameOptionsMiddleware&#39;,
+]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;支持的template:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;TEMPLATES = [
+    {
+        &#39;BACKEND&#39;: &#39;django.template.backends.jinja2.Jinja2&#39;,
+        &#39;DIRS&#39;: [os.path.join(BASE_DIR, &#39;templates&#39;)],
+        &#39;APP_DIRS&#39;: True,
+        &#39;OPTIONS&#39;: {
+            &#39;context_processors&#39;: [
+                &#39;django.template.context_processors.debug&#39;,
+                &#39;django.template.context_processors.request&#39;,
+                &#39;django.contrib.auth.context_processors.auth&#39;,
+                &#39;django.contrib.messages.context_processors.messages&#39;,
+            ],
+        },
+    },
+    {
+        &#39;BACKEND&#39;: &#39;django.template.backends.django.DjangoTemplates&#39;,
+        &#39;DIRS&#39;: [os.path.join(BASE_DIR, &#39;templates&#39;)],
+        &#39;APP_DIRS&#39;: True,
+        &#39;OPTIONS&#39;: {
+            &#39;context_processors&#39;: [
+                &#39;django.template.context_processors.debug&#39;,
+                &#39;django.template.context_processors.request&#39;,
+                &#39;django.contrib.auth.context_processors.auth&#39;,
+                &#39;django.contrib.messages.context_processors.messages&#39;,
+            ],
+        },
+    }
+]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;默认的数据库:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;DATABASES = {
+    &#39;default&#39;: {
+        &#39;ENGINE&#39;: &#39;django.db.backends.sqlite3&#39;,
+        &#39;NAME&#39;: BASE_DIR / &#39;db.sqlite3&#39;,
+        &#39;TEST&#39;: {
+            // 默认测试数据库是test_ 加 default.NAME，TEST可以指定数据库名字.
+            &#39;NAME&#39;: &#39;test_db&#39;
+        }
+    }
+}
+
+// 可扩展的数据库
+ENGINE:
+    django.db.backends.mysql
+    django.db.backends.oracle
+    django.db.badkends.postgresql_psycopg2
+
+NAME:
+    your database name
+
+USER:
+    your database username
+
+PASSWORD:
+    your database password
+
+HOST:
+    local database or remote database
+
+PORT:
+    database port
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;其它配置：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;BASE_DIR = Path(__file__).resolve().parent.parent
+
+SECRET_KEY = &#39;-%b)79izbio$!(g!0io(he)giaqi1@))fzfq!t3s1g1dzysc(r&#39;
+
+WSGI_APPLICATION = &#39;next.wsgi.application&#39;
+
+ROOT_URLCONF = &#39;next.urls&#39;
+
+DEBUG = True # 开发用来调试
+DEBUG = False # 部署之后关闭
+
+ALLOWED_HOSTS = [] # 设置哪些域名可以访问，优先级高于web服务器，debug=false必须设置
+ALLOWED_HOSTS = [&#39;&#39;*&#39;&#39;] # 允许所有域名访问
+
+STATIC_URL = &#39;/static/&#39;
+STATIC_ROOT = &#39;/path/to/static&#39;
+# static目录存放js/css等静态文件,collectstatic命令用来收集静态文件。
+
+LANGUAGE_CODE = &#39;en-us&#39;
+TIME_ZONE = &#39;UTC&#39;
+USE_I18N = True
+USE_L10N = True
+USE_TZ = True
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;urlspy&#34;&gt;urls.py&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;from django.contrib import admin
+from django.urls import path, include
+
+urlpatterns = [
+    path(&#39;polls/&#39;, include(&#39;polls.urls&#39;)),
+    path(&#39;admin/&#39;, admin.site.urls),
+]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;在项目的urls添加所有应用的urls，为每个应用独立创建urls，方便管理。&lt;/p&gt;
+&lt;h2 id=&#34;wsgipy&#34;&gt;wsgi.py&lt;/h2&gt;
+&lt;p&gt;Web Server Gateway Interface.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import os
+from django.core.wsgi import get_wsgi_application
+
+os.environ.setdefault(&#39;DJANGO_SETTINGS_MODULE&#39;, &#39;next.settings&#39;)
+application = get_wsgi_application()
+django通过wsgi来部署，参考django的deploy。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;asgipy&#34;&gt;asgi.py&lt;/h2&gt;
+&lt;p&gt;Asynchronous Server Gateway Interface.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import os
+from django.core.asgi import get_asgi_application
+
+os.environ.setdefault(&#39;DJANGO_SETTINGS_MODULE&#39;, &#39;next.settings&#39;)
+application = get_asgi_application()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;application&#34;&gt;application&lt;/h1&gt;
+&lt;p&gt;应用，一个项目可以有多个应用，一个应用可以用到多个项目中。&lt;/p&gt;
+&lt;p&gt;可以单独打包应用发布到pypi，包名格式django-project，参考python的打包方法。&lt;/p&gt;
+&lt;p&gt;创建一个名为polls的应用：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$python manage.py startapp polls
+&amp;gt; py manage.py startapp polls
+
+polls/
+|- __init__.py
+|- admin.py
+|- apps.py
+|- models.py
+|- views.py
+|- tests.py (tests/test_case.py)
+|- migrations
+   |- __init__.py
+|- templates
+   |- polls
+      |- index.html
+|- static
+   |- polls
+      |- style.css
+&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;admin.py admin管理界面&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;apps.py&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;models.py 模型&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;views.py 视图&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;urls.py 新建的application的url&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;test.py 测试&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;migrations 迁移文件夹&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;templates 应用的模版文件夹&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;static 静态文件&lt;/p&gt;&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;django-admin--managepy&#34;&gt;django-admin &amp;amp; manage.py&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;[staticfiles]
+    collectstatic # 设置STATIC_ROOT = &#39;/var/www/static/project/&#39;用来收集静态文件
+    findstatic
+    runserver # 启动django自带的web开发服务器
+
+[sessions]
+    clearsessions
+
+[auth]
+    changepassword
+    createsuperuser
+    
+[contenttypes]
+    remove_stale_contenttypes
+
+[django]
+
+    startapp
+    
+    startproject
+    
+    check
+    compilemessages
+    createcachetable
+    dbshell # 数据库命令行
+    diffsettings
+    
+    dumpdata # 导出数据 (json, xml, yaml)
+    dumpdata &amp;gt; db.json
+    flush # 清空数据库
+    loaddata # 导入数据
+    loaddata db.json
+    
+    inspectdb
+    makemessages
+    
+    makemigrations # 创建迁移文件
+    migrate # 创建/更新表结构（执行迁移文件）
+    
+    sendtestemail
+    shell # 项目环境终端
+    showmigrations # 查看可迁移的文件
+    sqlflush
+    sqlmigrate # 查看迁移文件会执行哪些sql
+    sqlsequencereset
+    squashmigrations
+    
+    test
+    
+    testserver
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

@@ -1,19 +1,60 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Gitlab on Morgoth</title>
-    <link>https://canuxcheng.com/tags/gitlab/</link>
-    <description>Recent content in Gitlab on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Fri, 15 Apr 2016 09:41:39 +0000</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/gitlab/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Gitlab</title>
-      <link>https://canuxcheng.com/post/devops_gitlab/</link>
-      <pubDate>Fri, 15 Apr 2016 09:41:39 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/devops_gitlab/</guid>
-      <description>&lt;h1 id=&#34;gitlab&#34;&gt;Gitlab&lt;/h1&gt;&#xA;&lt;p&gt;gitlab是开源的有web界面的git服务器．&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://about.gitlab.com/&#34;&gt;https://about.gitlab.com/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;安装gitlab:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;sudo apt-get install -y curl openssh-server ca-certificates&#xA;sudo apt-get install -y postfix&#xA;curl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh | sudo bash&#xA;sudo EXTERNAL_URL=&amp;quot;http://gitlab.example.com&amp;quot; apt-get install gitlab-ce&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;配置:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;/etc/gitlab/gitlab.rb&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;升级gitlab:&lt;/p&gt;&#xA;&lt;p&gt;需要先升级到下个major版本的最后一个稳定版.&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;current:   9.4.7&#xA;patch: gitlab-ce=9.5.10&#xA;patch: gitlab-ce_10.8.7&#xA;patch: gitlab-ce=11.11.8&#xA;patch: gitlab-ce=12.0.12&#xA;target: 12.10.14&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;runner:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;#sudo curl -L --output /usr/local/bin/gitlab-runner https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-runner-linux-amd64&#xA;sudo chmod +x /usr/local/bin/gitlab-runner&#xA;sudo gitlab-runner install --user=canux --working-directory=/home/canux/gitlab&#xA;sudo gitlab-runner register&#xA;sudo gitlab-runner start&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;cli&#34;&gt;CLI&lt;/h1&gt;&#xA;&lt;p&gt;备份：&lt;/p&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Gitlab on Morgoth</title>
+        <link>https://canuxcheng.com/tags/gitlab/</link>
+        <description>Recent content in Gitlab on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Fri, 15 Apr 2016 09:41:39 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/gitlab/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Gitlab</title>
+        <link>https://canuxcheng.com/post/devops_gitlab/</link>
+        <pubDate>Fri, 15 Apr 2016 09:41:39 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/devops_gitlab/</guid>
+        <description>&lt;h1 id=&#34;gitlab&#34;&gt;Gitlab&lt;/h1&gt;
+&lt;p&gt;gitlab是开源的有web界面的git服务器．&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://about.gitlab.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://about.gitlab.com/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;安装gitlab:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo apt-get install -y curl openssh-server ca-certificates
+sudo apt-get install -y postfix
+curl https://packages.gitlab.com/install/repositories/gitlab/gitlab-ce/script.deb.sh | sudo bash
+sudo EXTERNAL_URL=&amp;quot;http://gitlab.example.com&amp;quot; apt-get install gitlab-ce
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;配置:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/etc/gitlab/gitlab.rb
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;升级gitlab:&lt;/p&gt;
+&lt;p&gt;需要先升级到下个major版本的最后一个稳定版.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;current:   9.4.7
+patch: gitlab-ce=9.5.10
+patch: gitlab-ce_10.8.7
+patch: gitlab-ce=11.11.8
+patch: gitlab-ce=12.0.12
+target: 12.10.14
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;runner:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#sudo curl -L --output /usr/local/bin/gitlab-runner https://gitlab-runner-downloads.s3.amazonaws.com/latest/binaries/gitlab-runner-linux-amd64
+sudo chmod +x /usr/local/bin/gitlab-runner
+sudo gitlab-runner install --user=canux --working-directory=/home/canux/gitlab
+sudo gitlab-runner register
+sudo gitlab-runner start
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;cli&#34;&gt;CLI&lt;/h1&gt;
+&lt;p&gt;备份：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;gt; 修改备份路径：gitlab_rails[&#39;backup_path&#39;] = &amp;quot;/var/opt/gitlab/backups&amp;quot;
+# gitlab-rake gitlab:backup:create
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;重新加载配置:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# gitlab-ctl reconfigure
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;重启:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# gitlab-ctl restart/start/stop
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

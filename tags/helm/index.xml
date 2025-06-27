@@ -1,19 +1,219 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Helm on Morgoth</title>
-    <link>https://canuxcheng.com/tags/helm/</link>
-    <description>Recent content in Helm on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Thu, 05 Sep 2019 22:02:31 +0000</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/helm/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Helm</title>
-      <link>https://canuxcheng.com/post/k8s_helm/</link>
-      <pubDate>Thu, 05 Sep 2019 22:02:31 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/k8s_helm/</guid>
-      <description>&lt;h1 id=&#34;helm&#34;&gt;Helm&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/helm/helm&#34;&gt;https://github.com/helm/helm&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;helm2有两个组件:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;helm: 客户端&lt;/li&gt;&#xA;&lt;li&gt;tiller: 服务端(helm3被移除)&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;概念:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;chart: helm包，包含运行一个应用所需的镜像，依赖和资源.&lt;/li&gt;&#xA;&lt;li&gt;repository: 用于发布和存储chart的仓库.&lt;/li&gt;&#xA;&lt;li&gt;release: 在k8s集群上运行的一个chart实例.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;repository有哪些:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;charts: OSS, public, 已经被artifacthub取代, &lt;a href=&#34;https://github.com/helm/charts&#34;&gt;https://github.com/helm/charts&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;artifacthub: OSS, public,  &lt;a href=&#34;https://artifacthub.io/&#34;&gt;https://artifacthub.io/&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;chartmuseum: OSS, private, self-host, &lt;a href=&#34;https://github.com/helm/chartmuseum&#34;&gt;https://github.com/helm/chartmuseum&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;harbor: OSS, private, self-host.&lt;/li&gt;&#xA;&lt;li&gt;artifactory(jfrog): enterprise, private, self-host.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;安装&#34;&gt;安装&lt;/h2&gt;&#xA;&lt;p&gt;helm和kubectl一样，访问指定配置的k8s集群。&lt;/p&gt;&#xA;&lt;p&gt;helm2需要安装tiller并且执行helm init初始化,helm不需要tiller.&lt;/p&gt;&#xA;&lt;p&gt;本地二进制安装helm3+:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;curl https://baltocdn.com/helm/signing.asc | sudo apt-key add -&#xA;sudo apt-get install apt-transport-https --yes&#xA;echo &amp;quot;deb https://baltocdn.com/helm/stable/debian/ all main&amp;quot; | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list&#xA;sudo apt-get update&#xA;sudo apt-get install helm&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;命令&#34;&gt;命令&lt;/h2&gt;&#xA;&lt;h3 id=&#34;repo管理&#34;&gt;repo管理&lt;/h3&gt;&#xA;&lt;p&gt;查看有哪些repo,默认没有repo&lt;/p&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Helm on Morgoth</title>
+        <link>https://canuxcheng.com/tags/helm/</link>
+        <description>Recent content in Helm on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Thu, 05 Sep 2019 22:02:31 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/helm/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Helm</title>
+        <link>https://canuxcheng.com/post/k8s_helm/</link>
+        <pubDate>Thu, 05 Sep 2019 22:02:31 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/k8s_helm/</guid>
+        <description>&lt;h1 id=&#34;helm&#34;&gt;Helm&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/helm/helm&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/helm/helm&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;helm2有两个组件:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;helm: 客户端&lt;/li&gt;
+&lt;li&gt;tiller: 服务端(helm3被移除)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;概念:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;chart: helm包，包含运行一个应用所需的镜像，依赖和资源.&lt;/li&gt;
+&lt;li&gt;repository: 用于发布和存储chart的仓库.&lt;/li&gt;
+&lt;li&gt;release: 在k8s集群上运行的一个chart实例.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;repository有哪些:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;charts: OSS, public, 已经被artifacthub取代, &lt;a class=&#34;link&#34; href=&#34;https://github.com/helm/charts&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/helm/charts&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;artifacthub: OSS, public,  &lt;a class=&#34;link&#34; href=&#34;https://artifacthub.io/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://artifacthub.io/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;chartmuseum: OSS, private, self-host, &lt;a class=&#34;link&#34; href=&#34;https://github.com/helm/chartmuseum&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/helm/chartmuseum&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;harbor: OSS, private, self-host.&lt;/li&gt;
+&lt;li&gt;artifactory(jfrog): enterprise, private, self-host.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;安装&#34;&gt;安装&lt;/h2&gt;
+&lt;p&gt;helm和kubectl一样，访问指定配置的k8s集群。&lt;/p&gt;
+&lt;p&gt;helm2需要安装tiller并且执行helm init初始化,helm不需要tiller.&lt;/p&gt;
+&lt;p&gt;本地二进制安装helm3+:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;curl https://baltocdn.com/helm/signing.asc | sudo apt-key add -
+sudo apt-get install apt-transport-https --yes
+echo &amp;quot;deb https://baltocdn.com/helm/stable/debian/ all main&amp;quot; | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
+sudo apt-get update
+sudo apt-get install helm
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;命令&#34;&gt;命令&lt;/h2&gt;
+&lt;h3 id=&#34;repo管理&#34;&gt;repo管理&lt;/h3&gt;
+&lt;p&gt;查看有哪些repo,默认没有repo&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ helm repo list 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;添加repo并命名&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ helm repo add [NAME] [URL] [flags]
+
+// 添加charts/artifactoryhub stable命名为stable
+$ helm repo add stable https://charts.helm.sh/stable
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;更新repo:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ helm repo update
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;chart管理&#34;&gt;chart管理&lt;/h3&gt;
+&lt;p&gt;从repo中查找chart:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ helm search hub [KEYWORD] [flags]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;从repo里面的chart里面搜索关键字:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ helm search repo [keyword] [flags]
+
+//查看repo里面所有chart
+$ helm search repo
+
+// 查看repo里面所有treafik chart
+$ helm search repo traefik
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看chart信息:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;helm show chart traefik/traefik
+helm show values traefik/traefik &amp;gt; value.yaml
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;下载chart:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;helm pull chart-name
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;release管理&#34;&gt;release管理&lt;/h3&gt;
+&lt;p&gt;install/upgrade/uninstall/rollback&lt;/p&gt;
+&lt;p&gt;status/list/get/history&lt;/p&gt;
+&lt;p&gt;安装chart:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;helm install [name] [chart] [flags]
+
+// 验证签名
+helm install --verify ...
+
+helm install traefik traefik/traefik
+
+// 需提前创建namespace, 修改value
+helm install kubernetes-dashboard kubernetes-dashboard/kubernetes-dashboard -f value.yaml -n kubernetes-dashboard
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看release(每个install都是一个release):&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;helm list
+-a, --all                  show all releases without any filter applied.
+-A, --all-namespaces       list releases across all namespaces.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;卸载release:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;helm uninstall kubernetes-dashboard -n kubernetes-dashboard
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看状态:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;helm status mysql
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;获取release信息:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;helm get manifest [name]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;misc&#34;&gt;misc&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;helm plugin
+helm env
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;chart开发&#34;&gt;chart开发&lt;/h2&gt;
+&lt;p&gt;创建chart:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;helm create my-chart
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;debug chart：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 检查语法
+helm lint my-chart
+
+// 模拟安装
+helm install my-chart ./my-chart --dry-run --debug
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;模板管理:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;helm template [name] [chart]
+
+// 在本地渲染模板
+helm template my-chart ./my-chart
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;依赖chart管理:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;helm dependency
+
+// 将依赖的chart下载到chart目录.
+helm dep up &amp;lt;chart-name&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;测试chart:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;helm test
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;打包chart:&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://helm.sh/zh/docs/topics/provenance/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://helm.sh/zh/docs/topics/provenance/&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;helm package my-chart
+
+// 会另外生成一个.prov文件
+helm package --sign --key &amp;quot;Canux&amp;quot; --keyring ~/.gnupg/secring.gpg my-chart
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;验证打包的chart:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;helm verify my-chart.tgz
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;生成index文件:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;helm repo index my-chart-folder --url &amp;lt;repo-url&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;上传chart到registry：&lt;/p&gt;
+&lt;p&gt;有的registry支持ui上直接upload，或者CLI上传，也可以通过helm push上传.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;helm registry login
+helm push my-chart.tgz oci://registry/helm-charts
+helm registry logout 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如果是OCI registry目前只支持以下命令：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;helm registry login/logout
+helm push
+helm pull
+helm show
+helm template
+helm install
+helm upgrade
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;chart 目录:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;values.yaml
+Chart.yaml
+charts/
+templates/
+templates/tests/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Chart.yaml语法:&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://helm.sh/zh/docs/topics/charts/#chartyaml-%E6%96%87%E4%BB%B6&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://helm.sh/zh/docs/topics/charts/#chartyaml-%E6%96%87%E4%BB%B6&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;template的流控制:&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://helm.sh/zh/docs/chart_template_guide/control_structures/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://helm.sh/zh/docs/chart_template_guide/control_structures/&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 用$代替. 来获取上一级的变量
+{{- range .Values.worker }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include &amp;quot;app.fullname&amp;quot; $ }}-worker-{{ .name }}
+labels:
+    {{- include &amp;quot;worker.labels&amp;quot; $ | nindent 4 }}
+spec:
+  {{- if not .autoscaling.enabled }}
+  replicas: {{ $.Values.replicaCount }}
+  {{- end }}
+  ......
+---
+{{- end }}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;template的函数:&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://helm.sh/zh/docs/chart_template_guide/function_list/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://helm.sh/zh/docs/chart_template_guide/function_list/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;hooks:&lt;/p&gt;
+&lt;p&gt;helm uninstall 不会删除有hook的资源。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://helm.sh/zh/docs/topics/charts_hooks/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://helm.sh/zh/docs/topics/charts_hooks/&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;  annotations:
+    # This is what defines this resource as a hook. Without this line, the
+    # job is considered part of the release.
+    &amp;quot;helm.sh/hook&amp;quot;: post-install, pre-install, ...
+    &amp;quot;helm.sh/hook-weight&amp;quot;: &amp;quot;-5&amp;quot;
+    &amp;quot;helm.sh/hook-delete-policy&amp;quot;: hook-succeeded, hook-failed, ...
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

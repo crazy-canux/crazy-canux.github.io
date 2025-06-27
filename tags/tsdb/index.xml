@@ -1,19 +1,45 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Tsdb on Morgoth</title>
-    <link>https://canuxcheng.com/tags/tsdb/</link>
-    <description>Recent content in Tsdb on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Tue, 03 Jan 2017 14:46:14 +0000</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/tsdb/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>TSDB</title>
-      <link>https://canuxcheng.com/post/database/</link>
-      <pubDate>Tue, 03 Jan 2017 14:46:14 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/database/</guid>
-      <description>&lt;h1 id=&#34;rdbms&#34;&gt;RDBMS&lt;/h1&gt;&#xA;&lt;p&gt;关系数据库管理系统。&lt;/p&gt;&#xA;&lt;p&gt;SQLite&lt;/p&gt;&#xA;&lt;p&gt;Oracle&lt;/p&gt;&#xA;&lt;p&gt;MSSQL&lt;/p&gt;&#xA;&lt;p&gt;Mysql&lt;/p&gt;&#xA;&lt;p&gt;Postgre&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;nosql&#34;&gt;NoSQL&lt;/h1&gt;&#xA;&lt;p&gt;NoSQL: Not only SQL.&lt;/p&gt;&#xA;&lt;p&gt;非关系型数据库。&lt;/p&gt;&#xA;&lt;p&gt;memcached(cache)&lt;/p&gt;&#xA;&lt;p&gt;redis(cache)&lt;/p&gt;&#xA;&lt;p&gt;mongodb&lt;/p&gt;&#xA;&lt;p&gt;hbase(hadoop)&lt;/p&gt;&#xA;&lt;p&gt;cassandra(hadoop)&lt;/p&gt;&#xA;&lt;p&gt;rethinkdb&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;tsdb&#34;&gt;TSDB&lt;/h1&gt;&#xA;&lt;p&gt;Time series database.&lt;/p&gt;&#xA;&lt;p&gt;时序数据库&lt;/p&gt;&#xA;&lt;p&gt;influxdb&lt;/p&gt;&#xA;&lt;p&gt;rrdtool&lt;/p&gt;&#xA;&lt;p&gt;graphite&lt;/p&gt;&#xA;&lt;p&gt;opentsdb&lt;/p&gt;&#xA;&lt;p&gt;premetheus&lt;/p&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Tsdb on Morgoth</title>
+        <link>https://canuxcheng.com/tags/tsdb/</link>
+        <description>Recent content in Tsdb on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Tue, 03 Jan 2017 14:46:14 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/tsdb/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>TSDB</title>
+        <link>https://canuxcheng.com/post/database/</link>
+        <pubDate>Tue, 03 Jan 2017 14:46:14 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/database/</guid>
+        <description>&lt;h1 id=&#34;rdbms&#34;&gt;RDBMS&lt;/h1&gt;
+&lt;p&gt;关系数据库管理系统。&lt;/p&gt;
+&lt;p&gt;SQLite&lt;/p&gt;
+&lt;p&gt;Oracle&lt;/p&gt;
+&lt;p&gt;MSSQL&lt;/p&gt;
+&lt;p&gt;Mysql&lt;/p&gt;
+&lt;p&gt;Postgre&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;nosql&#34;&gt;NoSQL&lt;/h1&gt;
+&lt;p&gt;NoSQL: Not only SQL.&lt;/p&gt;
+&lt;p&gt;非关系型数据库。&lt;/p&gt;
+&lt;p&gt;memcached(cache)&lt;/p&gt;
+&lt;p&gt;redis(cache)&lt;/p&gt;
+&lt;p&gt;mongodb&lt;/p&gt;
+&lt;p&gt;hbase(hadoop)&lt;/p&gt;
+&lt;p&gt;cassandra(hadoop)&lt;/p&gt;
+&lt;p&gt;rethinkdb&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;tsdb&#34;&gt;TSDB&lt;/h1&gt;
+&lt;p&gt;Time series database.&lt;/p&gt;
+&lt;p&gt;时序数据库&lt;/p&gt;
+&lt;p&gt;influxdb&lt;/p&gt;
+&lt;p&gt;rrdtool&lt;/p&gt;
+&lt;p&gt;graphite&lt;/p&gt;
+&lt;p&gt;opentsdb&lt;/p&gt;
+&lt;p&gt;premetheus&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

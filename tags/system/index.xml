@@ -1,26 +1,1085 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>System on Morgoth</title>
-    <link>https://canuxcheng.com/tags/system/</link>
-    <description>Recent content in System on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Mon, 01 Jan 2018 10:49:21 +0000</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/system/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>GSL_system</title>
-      <link>https://canuxcheng.com/post/gsl_system/</link>
-      <pubDate>Mon, 01 Jan 2018 10:49:21 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/gsl_system/</guid>
-      <description>&lt;h1 id=&#34;os&#34;&gt;os&lt;/h1&gt;&#xA;&lt;p&gt;提供了操作系统的不依赖平台的接口&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;import &amp;quot;os&amp;quot;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;constants&#34;&gt;constants&lt;/h2&gt;&#xA;&lt;pre&gt;&lt;code&gt;# flag 参数&#xA;const (&#xA;    O_RDONLY int = syscall.O_RDONLY&#xA;    O_WRONLY int = syscall.O_WRONLY&#xA;    O_RDWR int = syscall.O_RDWR&#xA;    O_CREATE int = syscall.O_CREATE # 不存在就创建&#xA;    O_APPEND int = syscall.O_APPEND # 追加写入&#xA;    O_TRUNC int = syscall.O_TRUNC # 打开时清空文件&#xA;    O_EXCL int = syscall.O_EXCL&#xA;    O_SYNC int = syscall.O_SYNC&#xA;)&#xA;&#xA;const (&#xA;    SEEK_SET int = 0&#xA;    SEEK_CUR int = 1&#xA;    SEEK_END int = 2&#xA;)&#xA;&#xA;const (&#xA;    // 操作系统指定的路径分隔符&#xA;    PathSeperator = &#39;/&#39;&#xA;    // 操作系统指定的表分隔符&#xA;    PathListSeparator = &#39;:&#39;&#xA;)&#xA;&#xA;// 操作系统空设备的名字&#xA;const DevNull = &amp;quot;/dev/null&amp;quot;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;variables&#34;&gt;variables&lt;/h2&gt;&#xA;&lt;pre&gt;&lt;code&gt;var (&#xA;    ErrInvalid = errors.New(&amp;quot;invalid argument&amp;quot;)&#xA;    ...&#xA;)&#xA;&#xA;// 指向标准输入／输出／错误的文件描述符&#xA;var (&#xA;    Stdin = NewFile(uintptr(syscall.Stdin), &amp;quot;/dev/stdin&amp;quot;)&#xA;    Stdout = NewFile(uintptr(syscall.Stdout), &amp;quot;/dev/stdout&amp;quot;)&#xA;    Stderr = NewFile(uintptr(syscall.Stderr), &amp;quot;/dev/stderr&amp;quot;)&#xA;)&#xA;&#xA;// 保存了命令行参数，第一个是程序名&#xA;var Args []string&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;functions&#34;&gt;functions&lt;/h2&gt;&#xA;&lt;pre&gt;&lt;code&gt;// 返回内核提供的主机名&#xA;func Hostname() (name string, err error)&#xA;&#xA;// 当前程序以给出的状态码马上退出，defer不会执行&#xA;func Exit(code int)&#xA;&#xA;// 返回key=value格式的环境变量的字符串的切片拷贝&#xA;func Environ() []string&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;文件相关的操作&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>PSL_System</title>
-      <link>https://canuxcheng.com/post/psl_system/</link>
-      <pubDate>Mon, 15 Aug 2016 11:04:12 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/psl_system/</guid>
-      <description>&lt;h1 id=&#34;generic-operating-system-services&#34;&gt;Generic Operating System Services&lt;/h1&gt;&#xA;&lt;h2 id=&#34;os&#34;&gt;os&lt;/h2&gt;&#xA;&lt;pre&gt;&lt;code&gt;import os&#xA;&#xA;os.path # 参考PSL_File&#xA;os.name&#xA;os.curdir&#xA;os.pardir # 表示上一级路径.., 需要用abspath解析&#xA;# os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), os.pardir))&#xA;os.sep&#xA;os.extsep&#xA;os.altsep&#xA;os.pathsep&#xA;os.linesep&#xA;os.defpath&#xA;os.devnull&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;classes:&lt;/p&gt;&#xA;&lt;p&gt;functions:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;WCOREDUMP(...)&#xA;...&#xA;&#xA;abort(...)&#xA;fork() # 创建一个子进程，返回0给子进程，返回子进程pid给父进程．&#xA;exec*&#xA;wait() # 等待子进程结束，返回(pid, status).&#xA;waitpid(pid, options) # 等待指定子进程结束.&#xA;listdir(path) # 列出目录下的文件和目录&#xA;makedirs(path [, mode=0o777], exist_ok=False)&#xA;mkdir(path [, mode=0777])&#xA;walk(top, topdown=True, onerror=None, followlinks=False) # 返回 (dirpath, dirnames, filenames) 类型的迭代器&#xA;remove(path) # 删除文件&#xA;rmdir(path) # 删除目录&#xA;removedirs(path)&#xA;symlink(src, dst)&#xA;chown(path, uid, gid)&#xA;chmod(path, mode=0o777)&#xA;...&#xA;&#xA;# 使用subprocess模块代替下列函数：&#xA;system(command) # 在subshell执行命令，返回退出码(windows系统始终为0),而非命令执行结果．&#xA;spawn*&#xA;popen*(command [, mode=&#39;r&#39; [, bufsize]]) # 执行命令，返回命令执行结果的文件句柄(file对象)&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;data:&lt;/p&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>System on Morgoth</title>
+        <link>https://canuxcheng.com/tags/system/</link>
+        <description>Recent content in System on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Mon, 01 Jan 2018 10:49:21 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/system/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>GSL_system</title>
+        <link>https://canuxcheng.com/post/gsl_system/</link>
+        <pubDate>Mon, 01 Jan 2018 10:49:21 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/gsl_system/</guid>
+        <description>&lt;h1 id=&#34;os&#34;&gt;os&lt;/h1&gt;
+&lt;p&gt;提供了操作系统的不依赖平台的接口&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import &amp;quot;os&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;constants&#34;&gt;constants&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;# flag 参数
+const (
+    O_RDONLY int = syscall.O_RDONLY
+    O_WRONLY int = syscall.O_WRONLY
+    O_RDWR int = syscall.O_RDWR
+    O_CREATE int = syscall.O_CREATE # 不存在就创建
+    O_APPEND int = syscall.O_APPEND # 追加写入
+    O_TRUNC int = syscall.O_TRUNC # 打开时清空文件
+    O_EXCL int = syscall.O_EXCL
+    O_SYNC int = syscall.O_SYNC
+)
+
+const (
+    SEEK_SET int = 0
+    SEEK_CUR int = 1
+    SEEK_END int = 2
+)
+
+const (
+    // 操作系统指定的路径分隔符
+    PathSeperator = &#39;/&#39;
+    // 操作系统指定的表分隔符
+    PathListSeparator = &#39;:&#39;
+)
+
+// 操作系统空设备的名字
+const DevNull = &amp;quot;/dev/null&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;variables&#34;&gt;variables&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;var (
+    ErrInvalid = errors.New(&amp;quot;invalid argument&amp;quot;)
+    ...
+)
+
+// 指向标准输入／输出／错误的文件描述符
+var (
+    Stdin = NewFile(uintptr(syscall.Stdin), &amp;quot;/dev/stdin&amp;quot;)
+    Stdout = NewFile(uintptr(syscall.Stdout), &amp;quot;/dev/stdout&amp;quot;)
+    Stderr = NewFile(uintptr(syscall.Stderr), &amp;quot;/dev/stderr&amp;quot;)
+)
+
+// 保存了命令行参数，第一个是程序名
+var Args []string
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;functions&#34;&gt;functions&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;// 返回内核提供的主机名
+func Hostname() (name string, err error)
+
+// 当前程序以给出的状态码马上退出，defer不会执行
+func Exit(code int)
+
+// 返回key=value格式的环境变量的字符串的切片拷贝
+func Environ() []string
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;文件相关的操作&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;func IsExist(err error) bool // 文件存在返回true
+func IsNotExist(err error) bool // 文件不存在返回true
+
+func IsPathSeparator(c uint8) bool
+...
+func SameFile(fi1, fi2 FileInfo) bool
+func Getwd() (dir string, err error)
+func Chdir(dir string) error
+func Chmod(name string, mode FileMode) error
+func Chown(name string, uid, gid int) error
+...
+func Mkdir(name string, perm FileMode) error // 创建单个目录
+func MkdirAll(path string, perm FileMode) error // 创建多级目录
+func Rename(oldpath, newpath string) error
+func Truncate(name string, size int64) error
+func Remove(name string) error
+func RemoveAll(path string) error
+func Readlink(name string) (string, error)
+func Symlink(oldname, newname string) error // 创建符号连接
+func Link(oldname, newname string) error // 创建硬连接
+func TempDir() string // 返回一个用于保管临时文件的默认目录
+
+// 从filename指定的文件读取数据并返回, 成功返回文件内容和nil
+func ReadFile(filename string) ([]byte, error)
+
+// 向filename指定文件写入数据，如果文件存在先清空文件，如果不存在创建文件.
+func WriteFile(filename string, data []byte, perm os.FileMode) error
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;signal&#34;&gt;Signal&lt;/h2&gt;
+&lt;p&gt;interface:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type Signal interface {
+    String() string
+    Signal()
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;variable:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var (
+    Interrupt Signal = syscall.SIGINT
+    Kill Signal = syscall.SIGKILL
+)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;filemode&#34;&gt;FileMode&lt;/h2&gt;
+&lt;p&gt;代表文件模式和权限位．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type FileMode uint32
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;constant:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;const (
+    ModeDir    FileMode = 1 &amp;lt;&amp;lt; (32 - 1 - iota) // d: 目录
+    ...
+    ModeType = ModeDir | ModeSymlink | ModeNamePipe | ModeSocket | ModeDevice
+    ModePerm FileMode = 0777
+)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;methods:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;func (m FileMode) IsDir() bool
+func (m FileMode) IsRegular() bool
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;fileinfo&#34;&gt;FileInfo&lt;/h2&gt;
+&lt;p&gt;用来描述一个文件对象&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type FileInfo interface {
+    Name() string
+    Size() int64
+    Mode() FileMode
+    ModeTime() time.Time
+    IsDir() bool
+    Sys() interface{}
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;function:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 获取一个文件对象
+func Stat(name string) (fi FileInfo, err error)
+
+func Lstat(name string) (fi FileInfo, err error)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;file&#34;&gt;File&lt;/h2&gt;
+&lt;p&gt;表示一个打开的文件对象&lt;/p&gt;
+&lt;p&gt;struct:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type File struct {}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;functions:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 采用flag=os.O_RDWR和perm=0666模式创建一个名为name的文件, 返回读写文件句柄
+// 文件已存在就截断
+func Create(name string) (file *File, err error)
+
+// 打开指定文件，返回只读文件句柄, flag=os.O_RDONLY
+func Open(name string) (file *File, err error)
+
+// 指定flag和perm创建／打开文件
+func OpenFile(name string, flag int, perm FileMode) (file *File, err error)
+
+// 使用给定的文件描述服和名称创建一个文件.
+func NewFile(fd uintptr, name string) *File
+
+// 返回一对关联的文件对象
+func Pipe() (r *File, w *File, err error)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;methods:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 从文件f中最多读取len(b)字节数据写入b, 返回读取的字节数
+// 返回0, io.EOF, 表示读取0个字节,文件终止．
+func (f *File) Read(b []byte) (n int, err error)
+
+func (f *File) ReadAt(b []byte, off int64) (n int, err error)
+
+// 向文件f写入len(b)字节数据b，返回写入字节数
+func (f *File) Write(b []byte) (n int, err error)
+
+func (f *File) WriteAt(b []byte, off int64) (ret int, err error)
+
+func (f *File) WriteString(s string) (ret int, err error)
+
+func (f *File) Close() error
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;process&#34;&gt;Process&lt;/h2&gt;
+&lt;p&gt;保存一个被StarProcess创建的进程的信息&lt;/p&gt;
+&lt;p&gt;struct:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type Process struct {
+    Pid int
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;functions:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 启动一个新进程
+func StartProcess(name string, argv []string, attr *ProcAttr) (*Process, error)
+
+// 查找一个运行中的进程
+func FindProcess(pid int) (p *Process, err error)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;methods:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 向进程发送信号
+func (p *Process) Signal(sig Signal) error
+
+// 阻塞直到进程退出
+func (p *Process) Wait() (*ProcessState, error)
+
+// 让进程立刻退出
+func (p *Process) Kill() error
+
+// 释放进程绑定的资源
+func (p *Process) Release() error
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;processstate&#34;&gt;ProcessState&lt;/h2&gt;
+&lt;p&gt;保管Wait函数报告的某个已退出进程的信息．&lt;/p&gt;
+&lt;p&gt;struct:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type ProcessState struct {}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;methods:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 返回一个已退出的进程的id
+func (p *ProcessState) Pid() int
+
+// 报告进程是否已退出
+func (p *ProcessState) Exited() bool
+
+// 报告进程是否成功退出
+func (p *ProcessState) Success() bool
+
+// 返回已退出进程及其子进程耗费的系统cpu时间
+func (p *ProcessState) SystemTime() time.Duration
+
+// 返回已退出进程及其子进程耗费的用户cpu时间
+func (p *ProcessState) UserTime() time.Duration
+
+func (p *ProcessState) Sys() interface{}
+
+func (p *ProcessState) SysUsage() interface{}
+
+func (p *ProcessState) String() string
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;procattr&#34;&gt;ProcAttr&lt;/h2&gt;
+&lt;p&gt;保存被StratProcess启动的新进程的属性&lt;/p&gt;
+&lt;p&gt;struct:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type ProcAttr struct {
+    Dir string
+    Env []string
+    Files []*File
+    Sys *syscall.SysProcAttr
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;osexec&#34;&gt;os/exec&lt;/h1&gt;
+&lt;p&gt;执行外部命令，包装了os.StartProcess函数，提供更高级的接口.&lt;/p&gt;
+&lt;h2 id=&#34;variable&#34;&gt;variable&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;var ErrNotFound = errors.New(&amp;quot;executable file not found in $PATH&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;functions-1&#34;&gt;functions&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;// 在环境变量指定的目录中搜索可执行文件file
+func LookPath(file string) (string, error)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;cmd&#34;&gt;Cmd&lt;/h2&gt;
+&lt;p&gt;表示一个准备执行或执行中的外部命令&lt;/p&gt;
+&lt;p&gt;struct:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type Cmd struct {
+    Path string
+    Args []string
+    Env []string
+    Dir string
+    stdin io.Reader
+    Stdout io.Writer
+    Stderr io.Writer
+    ExtraFiles []*os.File
+    SysProcAttr *syscall.SysProcAttr
+    Process *os.Process
+    ProcessState *os.ProcessState
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;functions:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 返回*Cmd
+func Command(name string, arg ***string) *Cmd
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;methods:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 同步：执行命令，并阻塞直到完成
+func (c *Cmd) Run() error
+
+// 异步：开始执行命令，不阻塞直接返回，
+func (c *Cmd) Start() error
+// 阻塞通过Start执行的命令直到完成，设置状态码并释放资源．
+func (c *Cmd) Wait() error
+
+func (c *Cmd) StdinPipe() (io.WriteCloser, error)
+func (c *Cmd) StdoutPipe() (io.ReadCloser, error)
+func (c *Cmd) StderrPipe() (io.ReadCloser, error)
+
+// 执行命令并返回stdout的切片
+func (c *Cmd) Output() ([]byte, error)
+// 执行命令并返回stdout和stderr合并后的切片
+func (c *Cmd) CombinedOutput() ([]byte, error)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;ossignal&#34;&gt;os/signal&lt;/h1&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;osuser&#34;&gt;os/user&lt;/h1&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;syscall&#34;&gt;syscall&lt;/h1&gt;
+&lt;p&gt;提供了操作系统级别的调用．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import &amp;quot;syscall&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;constants-1&#34;&gt;constants&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;const (
+    AF_ALG    = 0x26
+    ...
+)
+
+// 定义异常
+const (
+    E2BIG    = Errno(0x70)
+    ...
+)
+
+// 定义信号
+const (
+    SIGABRT    = Signal(0x6)
+    ...
+)
+
+const (
+    SYS_READ    = 0
+    ...
+)
+
+const (
+    SizeofSockaddrInet4    = 0x10
+    ...
+)
+
+const (
+    IFA_UNSPEC    = 0x0
+    ...
+)
+
+const (
+    SizeofSockFilter    = 0x8
+    ...
+)
+
+const (
+    VINTR    = 0x0
+    ...
+)
+
+const ImplementsGetwd = true
+
+const PathMax = 0x1000
+
+const SizeofInotifyEvent = 0x10
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;variables-1&#34;&gt;variables&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;var (
+    Stdin = 0
+    Stdout = 1
+    Stderr = 2
+)
+
+var ForkLock sync.RWMutex
+
+var SocketDisableIPv6 bool
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;others&#34;&gt;others&lt;/h2&gt;
+&lt;p&gt;参考文档&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;io&#34;&gt;io&lt;/h1&gt;
+&lt;p&gt;提供了对IO原语的基本接口&lt;/p&gt;
+&lt;p&gt;go1.16 删除了io/ioutil&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import &amp;quot;io&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;variables-2&#34;&gt;variables&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;// 放无法获取更多输入时Read方法返回os.EOF
+var EOF = errors.New(&amp;quot;EOF&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;functions-2&#34;&gt;functions&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;func ReadAll(r io.Reader) ([]byte, error)
+func ReadAtLeast(r Reader, buf []byte, min int) (n int, err error)
+func ReadFull(r Reader, buf []byte) (n int, err error)
+
+// 将src数据拷贝到dst, 直到EOF或出错，返回拷贝的字节数
+func Copy(dst Writer, src Reader) (written int64, err error)
+
+// 类似Copy，不过只拷贝n个字节.
+func CopyN(dst Writer, src Reader, n int64) (written int64, err error)
+
+func CopyBuffer(dst Writer, src Reader, buf []byte) (written int64, err error)
+
+// 将字符串s写入w
+func WriteString(w Writer, s string) (n int, err error)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;reader&#34;&gt;Reader&lt;/h2&gt;
+&lt;p&gt;用于包装基本的读取方法&lt;/p&gt;
+&lt;p&gt;os.File(os.Stdout, os.Stdin. os.Stderr), bytes.Buffer 和 bufio.Reader 都是io.Reader接口&lt;/p&gt;
+&lt;p&gt;interface:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type Reader interface {
+    Read(p []byte) (n int, err error)
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;writer&#34;&gt;Writer&lt;/h2&gt;
+&lt;p&gt;用于包装基本的写入方法&lt;/p&gt;
+&lt;p&gt;os.File(os.Stdin, os.Stderr, os.Stdin), bytes.Buffer 和 bufio.Writer, net/http.ResponseWriter 都是io.Writer接口&lt;/p&gt;
+&lt;p&gt;interface:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type Writer interface {
+    Write(p []byte) (n int, err error)
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;closer&#34;&gt;Closer&lt;/h2&gt;
+&lt;p&gt;用于包装基本的关闭方法&lt;/p&gt;
+&lt;p&gt;interface:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type Closer interface {
+    Close() error
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;seeker&#34;&gt;Seeker&lt;/h2&gt;
+&lt;p&gt;用于包装基本的移位方法&lt;/p&gt;
+&lt;p&gt;interface:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type Seeker interface {
+    Seek(offset int64, whence int) (int64, error)
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;readwriter&#34;&gt;ReadWriter&lt;/h2&gt;
+&lt;p&gt;interface:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type ReadWriter interface {
+    Reader
+    Writer
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;bufio&#34;&gt;bufio&lt;/h1&gt;
+&lt;p&gt;bufio实现了有缓冲的IO&lt;/p&gt;
+&lt;h2 id=&#34;constants-2&#34;&gt;constants&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;const (
+    // 用于缓冲一个token
+    MaxScanTokenSize = 64 * 1024
+)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;variables-3&#34;&gt;variables&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;// 会被Scanner返回的错误
+var (
+    ErrInvalidUnreadByte = errors.New(&amp;quot;bufio: invalid use of UnreadByte&amp;quot;)
+    ...
+)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;functions-3&#34;&gt;functions&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;func ScanBytes(data []byte, atEOF bool) (advance int, token []byte, err error)
+
+func ScanRunes(data []byte, atEOF bool) (advance int, token []byte, err error)
+
+func ScanWords(data []byte, atEOF bool) (advance int, token []byte, err error)
+
+// 将每一行文本去掉末尾的换行标记，然后作为一个token返回
+func ScanLines (data []byte, atEOF bool) (advance int, token []byte, err error)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;reader-1&#34;&gt;Reader&lt;/h2&gt;
+&lt;p&gt;给io.Reader接口对象附加缓冲&lt;/p&gt;
+&lt;p&gt;struct:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type Reader struct {}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;functions:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;func NewReader(rd io.Reader) *Reader
+
+func NewReaderSize(rd io.Reader, size int) *Reader
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;methods:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;func (b *Reader) Read(p []byte) (n int, err error)
+// 读取直到第一次遇到delim字节，返回一个包含已读取数据和delim字节的字符串
+// 当且仅当返回的切片不以delim结尾时，返回非nil错误
+func (b *Reader) ReadString(delim byte) (line string, err error)
+func (b *Reader) ReadBytes(delim byte) (line []byte, err error)
+func (b *Reader) ReadSlice(delim byte) (line []byte, err error)
+func (b *Reader) ReadLine() (line []byte, isPrefix bool, err error)
+
+func (b *Reader) ReadByte() (c byte, err error)
+func (b *Reader) ReadRune() (r rune, size int, err error)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;writer-1&#34;&gt;Writer&lt;/h2&gt;
+&lt;p&gt;给io.Writer接口对象提供缓冲&lt;/p&gt;
+&lt;p&gt;struct:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type Writer struct {}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;functions:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;func NewWriter(w io.Writer) *Writer
+
+func NewWriterSize(w io.Writer, size int) *Writer
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;methods:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;func (b *Writer) Write(p []byte) (nn int, err error)
+func (b *Writer) WriteString(s string) (int, error)
+func (b *Writer) WriteByte(c byte) error
+func (b *Writer) WriteRune(r rune) (size int, err error)
+
+func (b *Writer) Flush() error
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;readwriter-1&#34;&gt;ReadWriter&lt;/h2&gt;
+&lt;p&gt;struct:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type ReadWriter struct {
+    *Reader
+    *Writer
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;functions:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;func NewReadWriter(r *Reader, w *Writer) *ReadWriter
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;scanner&#34;&gt;Scanner&lt;/h2&gt;
+&lt;p&gt;提供了方便的读取数据接口&lt;/p&gt;
+&lt;p&gt;struct:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type Scanner struct {}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;functions:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 创建并返回一个从r读取数据的Scanner，默认分割函数是ScanLines
+func NewScanner(r io.Reader) *Scanner
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;methods:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 设置s的分割函数
+func (s *Scanner) Split(split SplitFunc)
+
+// 获取当前位置的token, 并让Scanner的扫描位置移动到下一个token.
+func (s *Scanner) Scan() bool
+
+// 返回最近一次Scan调用生成的token.
+func (s *Scanner) Bytes() []byte
+
+// 创建一个字符串保存Bytes返回的token,并返回
+func (s *Scanner) Text() string
+
+// 返回Scanner遇到的第一个非EOF错误
+func (s *Scanner) Err() error
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;splitfunc&#34;&gt;SplitFunc&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;type SplitFunc func(data []byte, atEOF bool) (advance int, token []byte, err error)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;fmt&#34;&gt;fmt&lt;/h1&gt;
+&lt;p&gt;实现了类似于C的printf/scanf的格式化IO.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import &amp;quot;fmt&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;通用占位符:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;%v    相应值的默认格式
+%+v   同时打印结构体的字段名
+%#v   相应值的go语法表示
+%T    相应值的类型的go语法表示
+%%    字面上的百分号
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;布尔类型：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;%t    true/false
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;整数类型：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;%b    二进制表示
+%c    相应的unicode码点所表示的字符
+%d    十进制表示
+%o    八进制表示
+%q    单引号包围的字符字面值
+%x    十六进制(字母小写)
+%X    十六进制(字母大写)
+%U    unicode格式
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;浮点数类型：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;%b    无小数部分的，指数为二的幂的科学计数法．
+%e    科学计数法
+%E    科学计数法
+%f    有小数点，而无指数
+%g    根据情况选择%e 或 %f
+%G    根据情况选择E% 或 %f
+
+%[宽度]Type
+%.[精度]Type
+%[宽度].[精度]Type
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;字符串与字节切片：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;%s    字符串或切片的字节
+%q    双引号包围的字符串
+%x    十六进制(小写字母)
+%X    十六进制(大写字母)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;指针：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;%p    十六进制表示(0x)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;functions-4&#34;&gt;functions&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;// 返回一个包含该格式化字符串的错误
+func Errorf(format string, a ...interface{}) error
+
+// 写入到STDOUT, 返回写入字节数
+// 默认格式化
+func Print(a ...interface{}) (n int, err error)
+// 默认格式化，自动结尾添加换行符
+func Println(a ...interface{}) (n int, err error)
+// 指定格式化
+func Printf(format string, a ...interface{}) (n int, err error)
+
+// 写入到w, 返回写入字节数
+// w: os.File bufio.Writer
+func Fprint(w io.Writer, a ...interface{}) (n int, err error)
+func Fprintln(w io.Writer, a ...interface{}) (n int, err error)
+func Fprintf(w io.Writer, format string, a ...interface{}) (n int, err error)
+
+// 返回该字符串
+func Sprint(a ...interface{}) string
+func Sprintln(a ...interface{}) string
+func Sprintf(format string, a ...interface{}) string
+
+// 从STDIN扫描文本存入a,返回成功扫描的个数
+// 换行视为空白，获取len(a)个条目才停止扫描
+func Scan(a ...interface{}) (n int, err error)
+// 换行才停止扫描
+func Scanln(a ...interface{}) (n int, err error)
+// 根据空格分割的条目格式化写入指定参数a
+func Scanf(format string, a ...interface{}) (n int, err error)
+
+// 从r扫描文本存入a, 返回成功扫描的条目
+// r: os.File bufio.Reader
+func Fscan(r io.Reader, a ...interface{}) (n int, err error)
+func Fscanln(r io.Reader, a ...interface{}) (n int, err error)
+func Fscanf(r io.Reader, format string, a ...interface{}) (n int, err error)
+
+// 从字符串str扫描文本存入a,  返回扫描成功的条目
+func Sscan(str string, a ...interface{}) (n int, err error)
+func Sscanln(str string, a ...interface{}) (n int, err error)
+func Sscanf(str string, format string, a ...interface{}) (n int, err error)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;stringer&#34;&gt;Stringer&lt;/h2&gt;
+&lt;p&gt;interface:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type Stringer initerface {
+    String() string
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;gostringer&#34;&gt;GoStringer&lt;/h2&gt;
+&lt;p&gt;interface:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type GoStringer interface {
+    GoString() string
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;state&#34;&gt;State&lt;/h2&gt;
+&lt;p&gt;interface:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type State interface {
+    Write(b []byte) (ret int, err error)
+    Width() (wid int, ok bool)
+    Precision() (prec int, ok bool)
+    Flag(c int) bool
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;formatter&#34;&gt;Formatter&lt;/h2&gt;
+&lt;p&gt;interface:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type Formatter interface {
+    Format(f State, c rune)
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;scanstate&#34;&gt;ScanState&lt;/h2&gt;
+&lt;p&gt;interface:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type ScanState interface {
+    ReadRune() (r rune, size int, err error)
+    UnreadRune() error
+    SkipSpace()
+    Token(skipSpace bool, f func(rune) bool) (token []byte, err error)
+    Width() (wid int, ok bool)
+    Read(buf []byte) (n int, err error)
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;scanner-1&#34;&gt;Scanner&lt;/h2&gt;
+&lt;p&gt;interface:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type Scanner interface {
+    Scan(state ScanState, verb rune) error
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;log&#34;&gt;log&lt;/h1&gt;
+&lt;p&gt;实现了简单的日志服务.&lt;/p&gt;
+&lt;h2 id=&#34;constants-3&#34;&gt;Constants&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;const (
+    Ldate        = 1 &amp;lt;&amp;lt; iota     // 日期
+    Ltime              // 时间
+    Lmicroseconds      // 微秒
+    Llongfile          // 绝对文件名和行好 /path/to/file.go:13
+    Lshortfile         // 文件名和行好, 覆盖上面字段 file.go:13
+    LstdFlags    = Ldate | Ltime      // 标准logger的初始值
+)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;functions-5&#34;&gt;functions&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;func Printf(format string, v ...interface{})
+func Print(v ...interface{})
+func Println(v ...interface{})
+
+// 下列函数在Print...函数基础上再调用os.Exit(1)
+func Fatalf(format string, v ...interface{})
+func Fatal(v ...interface{})
+func Fatalln(v ...interface{})
+
+// 下列函数在Print...函数基础上再调用panic(...)
+// panic会执行当前函数的defer, 然后退出当前函数，返回到调用者，
+// 调用函数会执行defer, 直到应用程序退出.最后panic.
+func Panicf(format string, v ...interface{})
+func Panic(v ...interface{})
+func Panicln(v ...interface{})
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;logger&#34;&gt;Logger&lt;/h2&gt;
+&lt;p&gt;struct:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type Logger struct {}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;function:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 创建一个Logger.
+func New(out io.Writer, prefix string, flag int) *Logger
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;methods:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;func (l *Logger) Flags() int
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;flag&#34;&gt;flag&lt;/h1&gt;
+&lt;p&gt;实现了命令行参数解析&lt;/p&gt;
+&lt;p&gt;第三方包:&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/alecthomas/kingpin&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/alecthomas/kingpin&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;variables-4&#34;&gt;variables&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;var CommandLine = NewFlagSet(os.Args[0], ExitOnError)
+
+//
+var ErrHelp = errors.New(&amp;quot;flag: help requested&amp;quot;)
+
+//
+var Usage = func() {
+    fmt.Fprintf(os.Stderr, &amp;quot;Usage of %s:\n&amp;quot;, os.Args[0])
+    PrintDefaults()
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;functions-6&#34;&gt;functions&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;// 返回已被设置的flag数量
+func NFlag() int
+// 返回已注册flag的结构体指针
+func Lookup(name string) *Flag
+
+// 非flag参数不能在flag参数前面指定，否则flag参数不会被解析．
+// 返回非flag参数个数
+func NArg() int
+// 返回所有非flag参数
+func Args() []string
+// 返回第i个非flag参数, i=0 就是第一个参数，而不是程序名称
+func Arg(i int) string
+
+// 向Stderr写入所有注册好的flag的默认值
+func PrintDefaults()
+
+// 从os.Args[1:] 中解析注册的flag.
+func Parse()
+// 返回是否Parse是否被调用过
+func Parsed() bool
+
+// 按照字典顺序遍历flag，并对每个flag调用fn, 只针对解析时设置了的flag
+func Visit(fn func(*Flag))
+// 按照字典顺序遍历flag,　并对每个flag调用fn, 针对所有flag.
+func VisitAll(fn func(*Flag))
+
+// 用指定的名称，默认值，帮助信息注册一个bool类型的flag
+// 返回一个保存了该flag的值的指针
+func Bool(name string, value bool, usage string) *bool
+// 用指定的名称，默认值，帮助信息注册一个bool类型的flag
+// 将flag值保存到指针p指向的变量
+func BoolVar(p *bool, name string, value bool, usage string)
+
+func Int
+func IntVar
+func Int64
+func Int64Var
+
+func Uint
+func UintVar
+func Uint64
+func Uint64Var
+
+func Float64
+func Float64Var
+
+func String
+func StringVar
+
+// time.Duration类型
+func Duration
+func DurationVar
+
+// 用指定的名字，帮助信息，注册一个flag，类型由value决定
+func Var(value Value, name string, usage string)
+// 设置已注册的flag的值
+func Set(name, value string) error
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;errorhandling&#34;&gt;ErrorHandling&lt;/h2&gt;
+&lt;p&gt;定义如何处理flag解析错误&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type ErrorHandling int
+
+const (
+    ContinueOnError ErrorHandling = iota
+    ExitOnError
+    PanicOnError
+)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;flag-1&#34;&gt;Flag&lt;/h2&gt;
+&lt;p&gt;定义一个flag&lt;/p&gt;
+&lt;p&gt;struct:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type Flag struct {
+    Name     string
+    Usage    string
+    Value    Value
+    DefValue string
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;flagset&#34;&gt;FlagSet&lt;/h2&gt;
+&lt;p&gt;代表一个已注册flag集合.&lt;/p&gt;
+&lt;p&gt;FlagSet零值没有名字，默认采用ContinueOnError.&lt;/p&gt;
+&lt;p&gt;struct:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type FlagSet struct {
+    Usage func()
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;functions:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 创建一个新的FlagSet叫name，采用errorHandling为错误处理策略
+func NewFlagSet(name string, errorHandling ErrorHandling) *FlagSet
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;methods:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 设置f的名字和错误处理策略.
+func (f *FlagSet) Init(name string, errorHandling ErrorHandling)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;value&#34;&gt;Value&lt;/h2&gt;
+&lt;p&gt;用于将动态值保存在flag里.&lt;/p&gt;
+&lt;p&gt;interface:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type Value interface {
+    String() string
+    Set(string) error
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;getter&#34;&gt;Getter&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;logrus&#34;&gt;logrus&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/sirupsen/logrus&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/sirupsen/logrus&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;cobra&#34;&gt;cobra&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/spf13/cobra&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/spf13/cobra&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>PSL_System</title>
+        <link>https://canuxcheng.com/post/psl_system/</link>
+        <pubDate>Mon, 15 Aug 2016 11:04:12 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/psl_system/</guid>
+        <description>&lt;h1 id=&#34;generic-operating-system-services&#34;&gt;Generic Operating System Services&lt;/h1&gt;
+&lt;h2 id=&#34;os&#34;&gt;os&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;import os
+
+os.path # 参考PSL_File
+os.name
+os.curdir
+os.pardir # 表示上一级路径.., 需要用abspath解析
+# os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), os.pardir))
+os.sep
+os.extsep
+os.altsep
+os.pathsep
+os.linesep
+os.defpath
+os.devnull
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;classes:&lt;/p&gt;
+&lt;p&gt;functions:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;WCOREDUMP(...)
+...
+
+abort(...)
+fork() # 创建一个子进程，返回0给子进程，返回子进程pid给父进程．
+exec*
+wait() # 等待子进程结束，返回(pid, status).
+waitpid(pid, options) # 等待指定子进程结束.
+listdir(path) # 列出目录下的文件和目录
+makedirs(path [, mode=0o777], exist_ok=False)
+mkdir(path [, mode=0777])
+walk(top, topdown=True, onerror=None, followlinks=False) # 返回 (dirpath, dirnames, filenames) 类型的迭代器
+remove(path) # 删除文件
+rmdir(path) # 删除目录
+removedirs(path)
+symlink(src, dst)
+chown(path, uid, gid)
+chmod(path, mode=0o777)
+...
+
+# 使用subprocess模块代替下列函数：
+system(command) # 在subshell执行命令，返回退出码(windows系统始终为0),而非命令执行结果．
+spawn*
+popen*(command [, mode=&#39;r&#39; [, bufsize]]) # 执行命令，返回命令执行结果的文件句柄(file对象)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;data:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;EX_CANTCREAT = 73
+...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;time&#34;&gt;time&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;import time
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;classes:&lt;/p&gt;
+&lt;p&gt;functions:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;clock()
+sleep(seconds) # 延迟
+tzset()
+
+# 获取时间戳(Epoch seconds)
+time() # 获取当前时间戳
+mktime(tuple) # mktime((2017,8,23,11,7,10,12)) , 参数是时间元组
+
+# 获取时间元组 (tm_year,tm_mon,tm_mday,tm_hour,tm_min, tm_sec,tm_wday,tm_yday,tm_isdst)
+localtime([seconds]) # 参数是时间戳
+gmtime([seconds]) # 参数是时间戳
+strptime(string, format) # 参数是时间字符串
+
+# 获取时间字符串
+asctime([tuple]) # 参数是时间元组
+strftime(format[, tuple]) # 参数是时间元组
+ctime(seconds) # 参数是时间戳
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;data:&lt;/p&gt;
+&lt;h2 id=&#34;logging&#34;&gt;logging&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;import logging
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;classes:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Logger(Filterer)
+# methods:
+setLevel(self, level) # 只会输出指定level以上的log, 默认是WARNING
+critical(self, msg, *args, **kwargs) # 50
+error(self, msg, *args, **kwargs) # 40
+warning(self, msg, *args, **kwargs) # 30
+info(self, msg, *args, **kwargs) # 20
+debug(self, msg, *args, **kwargs) # 10
+exception(self, msg, *args, **kwargs) #
+log(self, level, msg, *args, **kwargs) #
+addHandler(self, hdlr) # 添加handler到logger
+
+Formatter
+# %(asctime)s:%(levelname)s:%(name)s:%(message)s&#39;
+Formatter(fmt=None, datefmt=None)
+
+Handler(Filterer)
+# methods:
+setFormatter(self, fmt)
+setLevel(self, level)
+
+StreamHandler(Handler) # 默认打印到sys.stderr
+StreamHandler(stream=None)
+
+FileHandler(StreamHandler) # 打印到文件
+FileHandler(filename, mode=&#39;a&#39;, encoding=None, delay=0)
+
+# from logging.handlers import *
+WatchedFileHandler
+RotatingFileHandler
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;functions:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;basicConfig(**kwargs) # 设置log的格式
+# filename/filemode/format/datefmt/level/stream
+# format默认是BASIC_FORMAT.
+# level默认是warning/warn.
+# stream默认是sys.stderr,当filename和stream同时指定，stream被忽略．
+# datafmt
+# filename 日志文件名
+# filemode w每次覆盖写入，a每次追加写入
+
+getLogger(name=None) # 返回Logger类型对象
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;data:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;BASIC_FORMAT = &#39;%(levelname)s:%(name)s:%(message)s&#39;
+CRITICAL = 50
+FATAL = 50
+ERROR = 40
+WARN = 30
+WARNING = 30
+INFO = 20
+DEBUG = 10
+NOTSET = 0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;getopt&#34;&gt;getopt&lt;/h2&gt;
+&lt;p&gt;C风格的参数处理.&lt;/p&gt;
+&lt;h2 id=&#34;argparse&#34;&gt;argparse&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;import argparse
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;classes:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# argparse.ArgumentParser(_AttributeHolder, _ActionsContainer)
+parser = argparse.ArgumentParser()
+    prog -- The name of the program (default: sys.argv[0])
+    usage -- A usage message (default: auto-generated from arguments)
+    description -- A description of what the program does
+    epilog -- Text following the argument descriptions
+    parents -- Parsers whose arguments should be copied into this one
+    formatter_class -- HelpFormatter class for printing help messages
+    prefix_chars -- Characters that prefix optional arguments
+    fromfile_prefix_chars -- Characters that prefix files  containing additional arguments
+    argument_default -- The default value for all arguments
+    conflict_handler -- String indicating how to handle conflicts
+    add_help -- Add a -h/-help option
+# methods:
+add_argument_group(self, *args, **kwargs) # -&amp;gt; argparse._ArgumentGroup
+add_argument(self, *args, **kwargs)
+    name or flags - Either a name or a list of option strings, e.g. foo or -f, --foo.
+    action - The basic type of action to be taken when this argument is encountered at the command line.
+    nargs - The number of command-line arguments that should be consumed.
+    const - A constant value required by some action and nargs selections.
+    default - The value produced if the argument is absent from the command line.
+    type - The type to which the command-line argument should be converted.
+    choices - A container of the allowable values for the argument.
+    required - Whether or not the command-line option may be omitted (optionals only).
+    help - A brief description of what the argument does. # 用来打印默认值：%(default)s
+    metavar - A name for the argument in usage messages.
+    dest - The name of the attribute to be added to the object returned by.
+add_subparsers(self, **kwargs) # -&amp;gt; argparse._SubParsersAction
+add_mutually_exclusive_group(self, **kwargs)
+set_defaults(self, **kwargs)
+parse_args(self, args=None, namespace=None) # -&amp;gt; argparse.Namespace
+parse_known_args(self, args=None, namespace=None) # -&amp;gt; argparse.Namespace
+convert_arg_line_to_args(self, arg_line)
+error(self, message)
+exit(self, status=0, message=None)
+format_help(self)
+format_usage(self)
+format_version(self)
+print_help(self, file=None)
+print_usage(self, file=None)
+print_version(self, file=None)
+get_default(self, dest)
+register(self, registry_name, value, object)
+
+# argparse._ArgumentGroup
+# methods:
+add_argument(self, *args, **kwargs)
+add_argument_group(self, *args, **kwargs)
+add_mutually_exclusive_group(self, **kwargs)
+get_default(self, dest)
+register(self, registry_name, value, object)
+set_defaults(self, **kwargs)
+
+# argparse._SubParsersAction
+# methods:
+add_parser(self, name, **kwargs) # -&amp;gt; argparse.ArgumentParser
+
+# HelpFormatter
+
+# Action
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;functions:&lt;/p&gt;
+&lt;p&gt;data:&lt;/p&gt;
+&lt;h2 id=&#34;io&#34;&gt;io&lt;/h2&gt;
+&lt;h2 id=&#34;errno&#34;&gt;errno&lt;/h2&gt;
+&lt;h2 id=&#34;getpass&#34;&gt;getpass&lt;/h2&gt;
+&lt;h2 id=&#34;curses&#34;&gt;curses&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/crazy-canux/python/blob/master/python/psl/mycurses.py&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/crazy-canux/python/blob/master/python/psl/mycurses.py&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import curses
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;platform&#34;&gt;platform&lt;/h2&gt;
+&lt;h2 id=&#34;ctypes&#34;&gt;ctypes&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;import ctypes
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;unixlinux-sytem&#34;&gt;Unix/Linux sytem&lt;/h1&gt;
+&lt;h2 id=&#34;pwd&#34;&gt;pwd&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;import pwd
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;functions:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 根据用户名获取uid和gid
+pw = getpwnam(user)  
+pw.pw_uid
+pw.pw_gid
+
+getpwuid(uid)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;grp&#34;&gt;grp&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;import grp
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;functions:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;group = group.getgrnam(&amp;lt;group_name&amp;gt;)
+group.gr_name // 返回组名
+group.gr_mem // 返回该组的所有用户
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

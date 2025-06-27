@@ -1,19 +1,107 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Hugo on Morgoth</title>
-    <link>https://canuxcheng.com/tags/hugo/</link>
-    <description>Recent content in Hugo on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Mon, 01 Apr 2013 12:49:49 +0000</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Hugo</title>
-      <link>https://canuxcheng.com/post/hugo/</link>
-      <pubDate>Mon, 01 Apr 2013 12:49:49 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/hugo/</guid>
-      <description>&lt;h1 id=&#34;hugo&#34;&gt;Hugo&lt;/h1&gt;&#xA;&lt;p&gt;go开发的静态站点生成器.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/gohugoio/hugo&#34;&gt;https://github.com/gohugoio/hugo&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://gohugo.io/&#34;&gt;https://gohugo.io/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;搭建博客&#34;&gt;搭建博客&lt;/h1&gt;&#xA;&lt;p&gt;创建环境:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;# linux, ubuntu18.04默认是非extended, 19.04 默认extended。&#xA;$ sudo apt-get install hugo&#xA;&#xA;# extended支持Sass/scss&#xA;$ sudo snap install hugo --channel=extended&#xA;&#xA;# windows&#xA;PATH:   C:\Hugo\bin\hugo.exe&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;测试安装:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ hugo help&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;创建hugo项目:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ cd /home/canux/sites&#xA;&amp;gt; cd C:\hugo\sites&#xA;$ hugo new site canuxcheng.com&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;生成下列文件和目录:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;config.toml&#xA;archetypes&#xA;content    # md 文件&#xA;data&#xA;layouts&#xA;static&#xA;themes&#xA;bytes&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;theme&#34;&gt;Theme&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/gohugoio/hugoThemes&#34;&gt;https://github.com/gohugoio/hugoThemes&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;下载所有主题:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;cd blog&#xA;git clone --depth 1 --recursive https://github.com/gohugoio/hugoThemes.git themes&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;下载单个主题：&lt;/p&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Hugo on Morgoth</title>
+        <link>https://canuxcheng.com/tags/hugo/</link>
+        <description>Recent content in Hugo on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Mon, 01 Apr 2013 12:49:49 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/hugo/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Hugo</title>
+        <link>https://canuxcheng.com/post/hugo/</link>
+        <pubDate>Mon, 01 Apr 2013 12:49:49 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/hugo/</guid>
+        <description>&lt;h1 id=&#34;hugo&#34;&gt;Hugo&lt;/h1&gt;
+&lt;p&gt;go开发的静态站点生成器.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/gohugoio/hugo&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/gohugoio/hugo&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://gohugo.io/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://gohugo.io/&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;搭建博客&#34;&gt;搭建博客&lt;/h1&gt;
+&lt;p&gt;创建环境:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# linux, ubuntu18.04默认是非extended, 19.04 默认extended。
+$ sudo apt-get install hugo
+
+# extended支持Sass/scss
+$ sudo snap install hugo --channel=extended
+
+# windows
+PATH:   C:\Hugo\bin\hugo.exe
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;测试安装:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ hugo help
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;创建hugo项目:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ cd /home/canux/sites
+&amp;gt; cd C:\hugo\sites
+$ hugo new site canuxcheng.com
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;生成下列文件和目录:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;config.toml
+archetypes
+content    # md 文件
+data
+layouts
+static
+themes
+bytes
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;theme&#34;&gt;Theme&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/gohugoio/hugoThemes&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/gohugoio/hugoThemes&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;下载所有主题:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;cd blog
+git clone --depth 1 --recursive https://github.com/gohugoio/hugoThemes.git themes
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;下载单个主题：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;cd themes
+git clone url
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;在config.toml添加主题：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;theme = &#39;name&#39;
+themesDir = &amp;quot;/path/to/themes&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;创建主题:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ hugo new theme [name]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;添加自己的主题:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ git submodule add https://github.com/crazy-canux/hugo-theme-canux.git
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;克隆主题：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ git submodule init
+$ git submodule update
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;创建页面&#34;&gt;创建页面&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;## content/about.md
+$ hugo new about.md
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;创建文章&#34;&gt;创建文章&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;## content/post/page.md
+$ hugo new post/Shell.md
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;本地测试&#34;&gt;本地测试&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt; $ hugo server --theme=hyde --buildDrafts
+ $ firefox http://localhost:1313
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;部署到github&#34;&gt;部署到github&lt;/h1&gt;
+&lt;p&gt;先在github创建repo.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ hugo --theme=&amp;lt;theme&amp;gt; --baseUrl=&amp;quot;https://&amp;lt;user&amp;gt;.github.io/&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;push到github:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ cd public
+$ git init
+$ git remote add origin https://github.com/&amp;lt;user&amp;gt;/&amp;lt;user&amp;gt;.github.io.git
+$ git add -A
+$ git commit -m &amp;quot;first push.&amp;quot;
+$ git push -u origin master
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

@@ -1,19 +1,109 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Linux on Morgoth</title>
-    <link>https://canuxcheng.com/tags/linux/</link>
-    <description>Recent content in Linux on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Thu, 31 Mar 2016 21:48:59 +0000</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/linux/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Linux</title>
-      <link>https://canuxcheng.com/post/linux/</link>
-      <pubDate>Thu, 31 Mar 2016 21:48:59 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/linux/</guid>
-      <description>&lt;h1 id=&#34;linux&#34;&gt;Linux&lt;/h1&gt;&#xA;&lt;p&gt;Linux严格讲指的是Linux这一类操作系统的内核。&lt;/p&gt;&#xA;&lt;p&gt;Linux内核的github：&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/torvalds/linux&#34;&gt;https://github.com/torvalds/linux&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;Linux内核的站点：&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.kernel.org/&#34;&gt;https://www.kernel.org/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;商业化的linux系统：&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;redhat enterprise linux&lt;/li&gt;&#xA;&lt;li&gt;suse enterprise linux&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;免费的服务器版本：&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;centos (rhel的免费版服务器版)&lt;/li&gt;&#xA;&lt;li&gt;open suse&lt;/li&gt;&#xA;&lt;li&gt;debian/ubuntu&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;免费的桌面版本：&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;fedora (原来的redhat desktop linux)&lt;/li&gt;&#xA;&lt;li&gt;open suse&lt;/li&gt;&#xA;&lt;li&gt;debian/ubuntu&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h1 id=&#34;linux桌面环境&#34;&gt;Linux桌面环境&lt;/h1&gt;&#xA;&lt;p&gt;X windows&lt;/p&gt;&#xA;&lt;p&gt;KDE&lt;/p&gt;&#xA;&lt;p&gt;GNOME2(Mate)&lt;/p&gt;&#xA;&lt;p&gt;GNOME3(Mate/Cinnamon)&lt;/p&gt;&#xA;&lt;p&gt;Unity&lt;/p&gt;&#xA;&lt;p&gt;xface&lt;/p&gt;&#xA;&lt;p&gt;lxde&lt;/p&gt;&#xA;&lt;p&gt;enlightenment(&lt;a href=&#34;https://www.enlightenment.org/start&#34;&gt;https://www.enlightenment.org/start&lt;/a&gt;)&lt;/p&gt;&#xA;&lt;h1 id=&#34;linux桌面管理器&#34;&gt;Linux桌面管理器：&lt;/h1&gt;&#xA;&lt;p&gt;xDM&lt;/p&gt;&#xA;&lt;p&gt;gDM(gnome)&lt;/p&gt;&#xA;&lt;p&gt;kDM(kde)&lt;/p&gt;&#xA;&lt;p&gt;lightDM&lt;/p&gt;&#xA;&lt;h1 id=&#34;linux编程&#34;&gt;Linux编程&lt;/h1&gt;&#xA;&lt;h2 id=&#34;linux程序调用结构&#34;&gt;Linux程序调用结构：&lt;/h2&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;应用程序(包括shell外部命令)/Shell命令(也就是shell内部命令)&lt;/li&gt;&#xA;&lt;li&gt;C标准库glibc(包括ISO C和POSIC封装的系统系统调用)&lt;/li&gt;&#xA;&lt;li&gt;Linux系统调用&lt;/li&gt;&#xA;&lt;li&gt;Linux内核&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h2 id=&#34;查看手册&#34;&gt;查看手册：&lt;/h2&gt;&#xA;&lt;p&gt;查看man帮助:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ man man&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;手册章节:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Executable programs or shell commands&lt;/li&gt;&#xA;&lt;li&gt;System calls (functions provided by the kernel)&lt;/li&gt;&#xA;&lt;li&gt;Library calls (functions within program libraries)&lt;/li&gt;&#xA;&lt;li&gt;Special files (usually found in /dev)&lt;/li&gt;&#xA;&lt;li&gt;File formats and conventions eg /etc/passwd&lt;/li&gt;&#xA;&lt;li&gt;Games&lt;/li&gt;&#xA;&lt;li&gt;Miscellaneous (including macro packages and conventions), e.g. man(7), groff(7)&lt;/li&gt;&#xA;&lt;li&gt;System administration commands (usually only for root)&lt;/li&gt;&#xA;&lt;li&gt;Kernel routines [Non standard]&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;查看shell命令&lt;/p&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Linux on Morgoth</title>
+        <link>https://canuxcheng.com/tags/linux/</link>
+        <description>Recent content in Linux on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Thu, 31 Mar 2016 21:48:59 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/linux/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Linux</title>
+        <link>https://canuxcheng.com/post/linux/</link>
+        <pubDate>Thu, 31 Mar 2016 21:48:59 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/linux/</guid>
+        <description>&lt;h1 id=&#34;linux&#34;&gt;Linux&lt;/h1&gt;
+&lt;p&gt;Linux严格讲指的是Linux这一类操作系统的内核。&lt;/p&gt;
+&lt;p&gt;Linux内核的github：&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/torvalds/linux&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/torvalds/linux&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Linux内核的站点：&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.kernel.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.kernel.org/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;商业化的linux系统：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;redhat enterprise linux&lt;/li&gt;
+&lt;li&gt;suse enterprise linux&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;免费的服务器版本：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;centos (rhel的免费版服务器版)&lt;/li&gt;
+&lt;li&gt;open suse&lt;/li&gt;
+&lt;li&gt;debian/ubuntu&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;免费的桌面版本：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;fedora (原来的redhat desktop linux)&lt;/li&gt;
+&lt;li&gt;open suse&lt;/li&gt;
+&lt;li&gt;debian/ubuntu&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;linux桌面环境&#34;&gt;Linux桌面环境&lt;/h1&gt;
+&lt;p&gt;X windows&lt;/p&gt;
+&lt;p&gt;KDE&lt;/p&gt;
+&lt;p&gt;GNOME2(Mate)&lt;/p&gt;
+&lt;p&gt;GNOME3(Mate/Cinnamon)&lt;/p&gt;
+&lt;p&gt;Unity&lt;/p&gt;
+&lt;p&gt;xface&lt;/p&gt;
+&lt;p&gt;lxde&lt;/p&gt;
+&lt;p&gt;enlightenment(&lt;a class=&#34;link&#34; href=&#34;https://www.enlightenment.org/start&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.enlightenment.org/start&lt;/a&gt;)&lt;/p&gt;
+&lt;h1 id=&#34;linux桌面管理器&#34;&gt;Linux桌面管理器：&lt;/h1&gt;
+&lt;p&gt;xDM&lt;/p&gt;
+&lt;p&gt;gDM(gnome)&lt;/p&gt;
+&lt;p&gt;kDM(kde)&lt;/p&gt;
+&lt;p&gt;lightDM&lt;/p&gt;
+&lt;h1 id=&#34;linux编程&#34;&gt;Linux编程&lt;/h1&gt;
+&lt;h2 id=&#34;linux程序调用结构&#34;&gt;Linux程序调用结构：&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;应用程序(包括shell外部命令)/Shell命令(也就是shell内部命令)&lt;/li&gt;
+&lt;li&gt;C标准库glibc(包括ISO C和POSIC封装的系统系统调用)&lt;/li&gt;
+&lt;li&gt;Linux系统调用&lt;/li&gt;
+&lt;li&gt;Linux内核&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;查看手册&#34;&gt;查看手册：&lt;/h2&gt;
+&lt;p&gt;查看man帮助:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ man man
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;手册章节:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Executable programs or shell commands&lt;/li&gt;
+&lt;li&gt;System calls (functions provided by the kernel)&lt;/li&gt;
+&lt;li&gt;Library calls (functions within program libraries)&lt;/li&gt;
+&lt;li&gt;Special files (usually found in /dev)&lt;/li&gt;
+&lt;li&gt;File formats and conventions eg /etc/passwd&lt;/li&gt;
+&lt;li&gt;Games&lt;/li&gt;
+&lt;li&gt;Miscellaneous (including macro packages and conventions), e.g. man(7), groff(7)&lt;/li&gt;
+&lt;li&gt;System administration commands (usually only for root)&lt;/li&gt;
+&lt;li&gt;Kernel routines [Non standard]&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;查看shell命令&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;man 1 &amp;lt;cmd&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查到的是系统调用（实际上也是POSIX封装的同名函数）&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;man 2 &amp;lt;name&amp;gt;
+
+// 查看系统调用所有函数宏
+man 2 syscalls
+// 查看未实现的系统调用
+man 2 unimplemented
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查到的glibc（包括ISO C，POSIX的部分函数，其它库）&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;man 3 &amp;lt;name&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看标准：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;man 7 &amp;lt;name&amp;gt;
+
+// 查看glibc标准
+man 7 libc
+// 查看C和Linux的标准
+man 7 standards
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;grub&#34;&gt;Grub&lt;/h1&gt;
+&lt;p&gt;引导程序。&lt;/p&gt;
+&lt;p&gt;windows的引导程序是NTloader。&lt;/p&gt;
+&lt;p&gt;linux/unix的引导程序有lilo和grub。&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

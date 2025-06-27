@@ -1,26 +1,57 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Fpga on Morgoth</title>
-    <link>https://canuxcheng.com/tags/fpga/</link>
-    <description>Recent content in Fpga on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sat, 15 May 2021 09:41:39 +0800</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/fpga/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>BSP</title>
-      <link>https://canuxcheng.com/post/hardware_bsp/</link>
-      <pubDate>Sat, 15 May 2021 09:41:39 +0800</pubDate>
-      <guid>https://canuxcheng.com/post/hardware_bsp/</guid>
-      <description>&lt;h1 id=&#34;bsp&#34;&gt;BSP&lt;/h1&gt;&#xA;&lt;p&gt;BSP，Board Support Package，板级支持包.&lt;/p&gt;&#xA;&lt;p&gt;熟悉常见的接口协议，如I2C, SPI, UART, USB等。&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>FPGA</title>
-      <link>https://canuxcheng.com/post/hardware_fpga/</link>
-      <pubDate>Sat, 15 May 2021 09:41:39 +0800</pubDate>
-      <guid>https://canuxcheng.com/post/hardware_fpga/</guid>
-      <description>&lt;h1 id=&#34;fpga&#34;&gt;FPGA&lt;/h1&gt;&#xA;&lt;p&gt;FPGA: Field Programmable Gate Array, 现场可编程逻辑门阵列.&lt;/p&gt;&#xA;&lt;p&gt;下面介绍各家厂商和对应的产品系列.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;xilinx赛灵思&#34;&gt;xilinx/赛灵思&lt;/h1&gt;&#xA;&lt;p&gt;Spartan&lt;/p&gt;&#xA;&lt;p&gt;Artix&lt;/p&gt;&#xA;&lt;p&gt;Kintex&lt;/p&gt;&#xA;&lt;p&gt;Virtex&lt;/p&gt;&#xA;&lt;p&gt;SoC/MPSoC&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;altera阿尔特拉&#34;&gt;Altera/阿尔特拉&lt;/h1&gt;&#xA;&lt;p&gt;被Intel英特尔收购&lt;/p&gt;&#xA;&lt;p&gt;MAXII&lt;/p&gt;&#xA;&lt;p&gt;Cyclone&lt;/p&gt;&#xA;&lt;p&gt;Stratix&lt;/p&gt;&#xA;&lt;p&gt;Arria&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;lattice莱迪思&#34;&gt;Lattice/莱迪思&lt;/h1&gt;&#xA;&lt;p&gt;ECP&lt;/p&gt;&#xA;&lt;p&gt;ICE&lt;/p&gt;&#xA;&lt;p&gt;Mach&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;synplicity&#34;&gt;Synplicity&lt;/h1&gt;&#xA;&lt;p&gt;被Synopsys新思科技收购&lt;/p&gt;&#xA;&lt;h2 id=&#34;haps&#34;&gt;HAPS&lt;/h2&gt;&#xA;&lt;p&gt;HAPS系列产品是专为ASIC/SOC设计者提供的高性能、高容量的基于FPGA的原型验证板.&lt;/p&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Fpga on Morgoth</title>
+        <link>https://canuxcheng.com/tags/fpga/</link>
+        <description>Recent content in Fpga on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Sat, 15 May 2021 09:41:39 +0800</lastBuildDate><atom:link href="https://canuxcheng.com/tags/fpga/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>BSP</title>
+        <link>https://canuxcheng.com/post/hardware_bsp/</link>
+        <pubDate>Sat, 15 May 2021 09:41:39 +0800</pubDate>
+        
+        <guid>https://canuxcheng.com/post/hardware_bsp/</guid>
+        <description>&lt;h1 id=&#34;bsp&#34;&gt;BSP&lt;/h1&gt;
+&lt;p&gt;BSP，Board Support Package，板级支持包.&lt;/p&gt;
+&lt;p&gt;熟悉常见的接口协议，如I2C, SPI, UART, USB等。&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>FPGA</title>
+        <link>https://canuxcheng.com/post/hardware_fpga/</link>
+        <pubDate>Sat, 15 May 2021 09:41:39 +0800</pubDate>
+        
+        <guid>https://canuxcheng.com/post/hardware_fpga/</guid>
+        <description>&lt;h1 id=&#34;fpga&#34;&gt;FPGA&lt;/h1&gt;
+&lt;p&gt;FPGA: Field Programmable Gate Array, 现场可编程逻辑门阵列.&lt;/p&gt;
+&lt;p&gt;下面介绍各家厂商和对应的产品系列.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;xilinx赛灵思&#34;&gt;xilinx/赛灵思&lt;/h1&gt;
+&lt;p&gt;Spartan&lt;/p&gt;
+&lt;p&gt;Artix&lt;/p&gt;
+&lt;p&gt;Kintex&lt;/p&gt;
+&lt;p&gt;Virtex&lt;/p&gt;
+&lt;p&gt;SoC/MPSoC&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;altera阿尔特拉&#34;&gt;Altera/阿尔特拉&lt;/h1&gt;
+&lt;p&gt;被Intel英特尔收购&lt;/p&gt;
+&lt;p&gt;MAXII&lt;/p&gt;
+&lt;p&gt;Cyclone&lt;/p&gt;
+&lt;p&gt;Stratix&lt;/p&gt;
+&lt;p&gt;Arria&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;lattice莱迪思&#34;&gt;Lattice/莱迪思&lt;/h1&gt;
+&lt;p&gt;ECP&lt;/p&gt;
+&lt;p&gt;ICE&lt;/p&gt;
+&lt;p&gt;Mach&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;synplicity&#34;&gt;Synplicity&lt;/h1&gt;
+&lt;p&gt;被Synopsys新思科技收购&lt;/p&gt;
+&lt;h2 id=&#34;haps&#34;&gt;HAPS&lt;/h2&gt;
+&lt;p&gt;HAPS系列产品是专为ASIC/SOC设计者提供的高性能、高容量的基于FPGA的原型验证板.&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

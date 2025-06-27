@@ -1,19 +1,171 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Database on Morgoth</title>
-    <link>https://canuxcheng.com/tags/database/</link>
-    <description>Recent content in Database on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Mon, 01 Jan 2018 10:49:21 +0000</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/database/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>GSL_database</title>
-      <link>https://canuxcheng.com/post/gsl_database/</link>
-      <pubDate>Mon, 01 Jan 2018 10:49:21 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/gsl_database/</guid>
-      <description>&lt;h1 id=&#34;databasesql&#34;&gt;database/sql&lt;/h1&gt;&#xA;&lt;p&gt;使用该包，必须提供一个数据库驱动&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/golang/go/wiki/SQLDrivers&#34;&gt;https://github.com/golang/go/wiki/SQLDrivers&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;mssql driver:&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/denisenkom/go-mssqldb&#34;&gt;https://github.com/denisenkom/go-mssqldb&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;mysql driver:&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/go-sql-driver/mysql&#34;&gt;https://github.com/go-sql-driver/mysql&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;postgresql driver:&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/lib/pq&#34;&gt;https://github.com/lib/pq&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/jackc/pgx&#34;&gt;https://github.com/jackc/pgx&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;variables&#34;&gt;variables&lt;/h2&gt;&#xA;&lt;pre&gt;&lt;code&gt;// QueryRow 没有返回row时，调用返回值的Scan方法会返回该变量&#xA;var ErrNoRows = errors.New(&amp;quot;sql: no rows in result set&amp;quot;)&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;functions&#34;&gt;functions&lt;/h2&gt;&#xA;&lt;pre&gt;&lt;code&gt;// 注册并命名一个数据库，在Open中使用该命名启用该驱动&#xA;// 如果注册同一名称两次或者driver参数为nil, 会导致panic.&#xA;Register(name string, driver driver.Driver)&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;db&#34;&gt;DB&lt;/h2&gt;&#xA;&lt;p&gt;DB是一个数据库句柄，代表一个具有零到多个底层连接的连接池．&lt;/p&gt;&#xA;&lt;p&gt;可以安全的被多个go程同时使用．&lt;/p&gt;&#xA;&lt;p&gt;struct:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;type DB struct {}&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;functions:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;// 验证数据库驱动和参数,并不创建和数据库的连接．&#xA;// driverName: mssql, mysql, postgres&#xA;// mssql dataSourceName: &amp;quot;server=%s;port=%d;database=%s;user id=%s;password=%s&amp;quot;&#xA;// mysql dataSourceName: &amp;quot;user:password@tcp(server:port)/database&amp;quot;&#xA;Open(driverName, dataSourceName string) (*DB, error)&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;methods:&lt;/p&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Database on Morgoth</title>
+        <link>https://canuxcheng.com/tags/database/</link>
+        <description>Recent content in Database on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Mon, 01 Jan 2018 10:49:21 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/database/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>GSL_database</title>
+        <link>https://canuxcheng.com/post/gsl_database/</link>
+        <pubDate>Mon, 01 Jan 2018 10:49:21 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/gsl_database/</guid>
+        <description>&lt;h1 id=&#34;databasesql&#34;&gt;database/sql&lt;/h1&gt;
+&lt;p&gt;使用该包，必须提供一个数据库驱动&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/golang/go/wiki/SQLDrivers&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/golang/go/wiki/SQLDrivers&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;mssql driver:&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/denisenkom/go-mssqldb&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/denisenkom/go-mssqldb&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;mysql driver:&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/go-sql-driver/mysql&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/go-sql-driver/mysql&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;postgresql driver:&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/lib/pq&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/lib/pq&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/jackc/pgx&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/jackc/pgx&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;variables&#34;&gt;variables&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;// QueryRow 没有返回row时，调用返回值的Scan方法会返回该变量
+var ErrNoRows = errors.New(&amp;quot;sql: no rows in result set&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;functions&#34;&gt;functions&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;// 注册并命名一个数据库，在Open中使用该命名启用该驱动
+// 如果注册同一名称两次或者driver参数为nil, 会导致panic.
+Register(name string, driver driver.Driver)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;db&#34;&gt;DB&lt;/h2&gt;
+&lt;p&gt;DB是一个数据库句柄，代表一个具有零到多个底层连接的连接池．&lt;/p&gt;
+&lt;p&gt;可以安全的被多个go程同时使用．&lt;/p&gt;
+&lt;p&gt;struct:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type DB struct {}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;functions:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 验证数据库驱动和参数,并不创建和数据库的连接．
+// driverName: mssql, mysql, postgres
+// mssql dataSourceName: &amp;quot;server=%s;port=%d;database=%s;user id=%s;password=%s&amp;quot;
+// mysql dataSourceName: &amp;quot;user:password@tcp(server:port)/database&amp;quot;
+Open(driverName, dataSourceName string) (*DB, error)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;methods:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 返回数据库下层驱动
+func (db *DB) Driver() driver.Driver
+
+// 创建和数据库的连接,检查连接是否有效
+func (db *DB) Ping() error
+
+// 关闭数据库，释放资源
+func (db *DB) Close() error
+
+// 设置与数据库建立连接的最大数目, 默认０表示无限制.
+func (db *DB) SetMaxOpenConns(n int)
+
+// 设置连接池中的最大闲置连接数
+func (db *DB) SetMaxIdleConns(n int)
+
+// 执行命令但是不返回执行结果,一般用于(insert/update/delete)
+func (db *DB) Exec(query string, args ...interface{}) (Result, error)
+
+// 执行命令返回多行结果（一般用于select)
+func (db *DB) Query(query string, args ...interface{}) (*Rows, error)
+
+// 执行命令最多返回一行结果
+// 总是返回非nil值，直到返回值的Scan方法被调用，才会返回被延迟的错误.
+func (db *DB) QueryRow(query string, args ...interface{}) *Row
+
+// 创建一个准备好的状态用于之后的命令
+func (db *DB) Prepare(query string) (*Stmt, error)
+
+// 开始一个事务
+func (db *DB) Begin() (*Tx, error)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;stmt&#34;&gt;Stmt&lt;/h2&gt;
+&lt;p&gt;stmt是准备好的状态，可以安全的被多个go程同时使用．&lt;/p&gt;
+&lt;p&gt;struct:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type Stmt struct {}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;methods:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;func (s *Stmt) Exec(args ...interface{}) (Result, error)
+
+func (s *Stmt) Query(args ...interface{}) (*Rows, error)
+
+func (s *Stmt) QueryRow(args ...interface{}) *Row
+
+func (s *Stmt) Close() error
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;tx&#34;&gt;Tx&lt;/h2&gt;
+&lt;p&gt;Tx表示一个进行中的数据库事务．&lt;/p&gt;
+&lt;p&gt;一次事务必须以对Commit或Rollback的调用结束．&lt;/p&gt;
+&lt;p&gt;事务结束后，所有的操作都会失败并返回ErrTxDone.&lt;/p&gt;
+&lt;p&gt;struct:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type Tx struct {}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;methods:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;func (tx *Tx) Exec(query string, args ...interface{}) (Result, error)
+
+func (tx *Tx) Query(query string, args ...interface{}) (*Rows, error)
+
+func (tx *Tx) QueryRow(query string, args ...interface{}) *Row
+
+func (tx *Tx) Prepare(query string) (*Stmt, error)
+
+// 使用已存在的状态生成一个特定的状态．
+func (tx *Tx) Stmt(stmt *Stmt) *Stmt
+
+// 提交事务
+func (tx *Tx) Commit() error
+
+// 回滚事务
+func (tx *Tx) Rollback() error
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;scanner&#34;&gt;Scanner&lt;/h2&gt;
+&lt;p&gt;interface:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type Scanner interface {
+    Scan(src interface{}) error
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;result&#34;&gt;Result&lt;/h2&gt;
+&lt;p&gt;Exec方法返回Result.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type Result interface {
+    LastInsertId() (int64, error)
+    RowsAffected() (int64, error)
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;row&#34;&gt;Row&lt;/h2&gt;
+&lt;p&gt;QueryRow方法返回Row, 表示单行查询结果．&lt;/p&gt;
+&lt;p&gt;struct:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type Row struct {}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;methods:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 将该行查询结果各列分别保存进dest参数指定的值中．
+// 如果匹配多行，只取第一行，如果没有匹配行，返回ErrNoRows.
+func (r *Row) Scan(dest ...interface{}) error
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;rows&#34;&gt;Rows&lt;/h2&gt;
+&lt;p&gt;Query方法返回Rows, 表示查询的结果集，它的游标指向第０行，使用Next方法遍历该结果集．&lt;/p&gt;
+&lt;p&gt;struct:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type Rows struct {}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;methods:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 返回列名
+func (rs *Rows) Columns() ([]string, error)
+
+// 将当前行的各列结果填充进dest
+func (rs *Rows) Scan(dest ...interface{}) error
+
+// 准备用于Scan的下一行结果，每次调用Scan都要先调用Next
+func (rs *Rows) Next() bool
+
+func (rs *Rows) Close() error
+
+func (rs *Rows) Err() error
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;databasesqldriver&#34;&gt;database/sql/driver&lt;/h1&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

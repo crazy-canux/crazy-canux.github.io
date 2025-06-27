@@ -1,19 +1,280 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Builtins on Morgoth</title>
-    <link>https://canuxcheng.com/tags/builtins/</link>
-    <description>Recent content in Builtins on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Tue, 24 May 2016 10:44:44 +0000</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/builtins/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Builtins</title>
-      <link>https://canuxcheng.com/post/ps_builtins/</link>
-      <pubDate>Tue, 24 May 2016 10:44:44 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/ps_builtins/</guid>
-      <description>&lt;h1 id=&#34;get-help和help&#34;&gt;Get-Help和Help:&lt;/h1&gt;&#xA;&lt;p&gt;get-help查看帮助信息,help分页查看帮助信息，man是help的别名&lt;/p&gt;&#xA;&lt;p&gt;命令说明：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;Get-Help&#xA;Help&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;查看所有命令和概念：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;Get-Help *&#xA;Help *&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;模糊查找命令和概念：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;Get-Help *&amp;lt;name&amp;gt;*&#xA;Help *&amp;lt;name&amp;gt;*&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;查看具体命令帮助：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;Get-Help {&amp;lt;CmdletName&amp;gt; | &amp;lt;TopicName&amp;gt;}&#xA;Help {&amp;lt;CmdletName&amp;gt; | &amp;lt;TopicName&amp;gt;}&#xA;&amp;lt;CmdletName&amp;gt; -?&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;get-help/help的选项:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;get-help get-help&#xA;-examples # 查看示例&#xA;-full # 查看所有帮助&#xA;-parameter # 查看选项的帮助&#xA;-detailed # 查看详细信息&#xA;-online # 打开文档中的link&#xA;-showwindow # 用窗口打开&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h1 id=&#34;helpfile&#34;&gt;Helpfile&lt;/h1&gt;&#xA;&lt;p&gt;3.0/4.0 需要先下载帮助手册：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;update-help&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;所有helpfile：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;Get-Help/Help about_*&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;查看具体helpfile：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;Get-Help/Help about_&amp;lt;name&amp;gt;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;cmdlets&#34;&gt;Cmdlets&lt;/h1&gt;&#xA;&lt;p&gt;cmdlets是powershell的内置命令,类型是System.Management.Automation.CmdletInfo&lt;/p&gt;&#xA;&lt;p&gt;cmdlets的方法：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;Equals&#xA;GetHashCode&#xA;GetType&#xA;ToString&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;cmdlets的属性：&lt;/p&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Builtins on Morgoth</title>
+        <link>https://canuxcheng.com/tags/builtins/</link>
+        <description>Recent content in Builtins on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Tue, 24 May 2016 10:44:44 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/builtins/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Builtins</title>
+        <link>https://canuxcheng.com/post/ps_builtins/</link>
+        <pubDate>Tue, 24 May 2016 10:44:44 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/ps_builtins/</guid>
+        <description>&lt;h1 id=&#34;get-help和help&#34;&gt;Get-Help和Help:&lt;/h1&gt;
+&lt;p&gt;get-help查看帮助信息,help分页查看帮助信息，man是help的别名&lt;/p&gt;
+&lt;p&gt;命令说明：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Get-Help
+Help
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看所有命令和概念：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Get-Help *
+Help *
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;模糊查找命令和概念：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Get-Help *&amp;lt;name&amp;gt;*
+Help *&amp;lt;name&amp;gt;*
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看具体命令帮助：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Get-Help {&amp;lt;CmdletName&amp;gt; | &amp;lt;TopicName&amp;gt;}
+Help {&amp;lt;CmdletName&amp;gt; | &amp;lt;TopicName&amp;gt;}
+&amp;lt;CmdletName&amp;gt; -?
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;get-help/help的选项:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;get-help get-help
+-examples # 查看示例
+-full # 查看所有帮助
+-parameter # 查看选项的帮助
+-detailed # 查看详细信息
+-online # 打开文档中的link
+-showwindow # 用窗口打开
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;helpfile&#34;&gt;Helpfile&lt;/h1&gt;
+&lt;p&gt;3.0/4.0 需要先下载帮助手册：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;update-help
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;所有helpfile：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Get-Help/Help about_*
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看具体helpfile：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Get-Help/Help about_&amp;lt;name&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;cmdlets&#34;&gt;Cmdlets&lt;/h1&gt;
+&lt;p&gt;cmdlets是powershell的内置命令,类型是System.Management.Automation.CmdletInfo&lt;/p&gt;
+&lt;p&gt;cmdlets的方法：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Equals
+GetHashCode
+GetType
+ToString
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;cmdlets的属性：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;CommandType
+DefaultParameterSet
+Definition
+HelpFile
+ImplementingType
+Module
+ModuleName
+Name
+Noun
+OutputType
+Parameters
+ParameterSets
+PSSnapln
+Verb
+Visibility
+DLL
+HelpUri
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;常用cmdlets命令：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Get-Command -CommandType cmdlet # 查看所有cmdlet
+
+Get-Command
+Invoke-Command
+Measure-Command
+Show-Command
+Trace-Command
+
+Get-Service
+New-Service
+Restart-Service
+Resume-Service
+Set-Service
+Stop-Service
+Suspend-Service
+
+Get-Process
+Debug-Process
+Start-Process
+Stop-Process
+Wait-Process
+
+Get-Member  # 查看属性
+Add-Member
+
+Get-Host
+Read-Host
+Write-Host
+Out-Host
+
+Out-Default
+Out-File    # 重定向，也可以用&amp;gt;, &amp;gt;&amp;gt;
+Out-GridView
+Out-Null
+Out-Printer
+Out-String
+
+Write-Debug
+Write-Error
+Write-EventLog
+Write-Output
+Write-Progress
+Write-Verbose
+Write-Warning
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;function&#34;&gt;Function&lt;/h1&gt;
+&lt;p&gt;powershell内置函数&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Get-Command -CommandType function # 查看所有function
+ls function:
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;所有function：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;prompt
+TabExpansion2
+Clear-Host
+more
+help
+mkdir
+Get-Verb
+oss
+cd..
+cd\
+ImportSystemModules
+Pause
+A:
+...
+Z:
+Get-FileHash
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;alias&#34;&gt;Alias&lt;/h1&gt;
+&lt;p&gt;powershell内置别名&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Get-Command -CommandType alias # 查看所有alias
+dir alias: # 查看所有alias
+ls alias: | where {$_.Definition.Startswith(&amp;quot;Start&amp;quot;)}
+
+Get-Alias # 查看所有alias
+Set-Alias
+New-Alias
+Import-Alias
+Export-Alias
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;常用alias：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ForEach-Object    %/foreach
+Where-Object    ?/where
+Select-Object    select
+Compare-Object    compare/diff
+Tee-Object    tee
+Sort-Object    sort
+
+Set-Location    cd/chdir/sl
+Get-Location    pwd/gl
+
+Clear-Content    clc
+Get-Content    cat/type/gc
+
+Clear-History    clhy
+Get-History    h/history/ghy
+Invoke-History    ihy/r
+
+Clear-Variable    clv
+Set-Variable    set/sv
+
+Clear-Item    cli
+Clear-ItemProperty    clp
+Copy-Item    copy/cp/cpi
+Remove-Item    del/erase/rd/ri/rm/rmdir
+Move-Item    mv/move/mi
+Get-ChildItem    dir/ls/gci
+
+Get-Process    ps/gps
+Stop-Process    kill/spps
+Start-Process    start/saps
+
+Clear-Host    clear/cls
+
+Write-Output    echo/write
+
+New-PSDrive    mount
+
+Invoke-WebRequest    curl/wget
+
+Start-Sleep    sleep
+
+help    man
+mkdir    md
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;provider&#34;&gt;Provider&lt;/h1&gt;
+&lt;p&gt;provider相关cmdlet：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Get-PSProvider # 查看provider
+Get-PSDrive    # 查看驱动器
+New-PSDrive    # 新建驱动器
+Remove-PSDrive    # 删除驱动器
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;所有provider：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 这三个驱动器可以用ls或dir直接查看内容
+ls alias:
+dir function:
+Alias   # 别名驱动器
+Function    # 函数驱动器
+Variable    # 变量驱动器
+
+# 这三个驱动器需要具体的驱动器,然后cd进去查看
+FileSystem    # 文件系统驱动器
+Environment
+Registry
+
+help/get-help &amp;lt;provider_name&amp;gt;    # 查看provider帮助
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;object&#34;&gt;object&lt;/h1&gt;
+&lt;p&gt;object主要通过管道|使用。&lt;/p&gt;
+&lt;p&gt;object相关的cmdlet：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Compare-Object
+ForEach-Object
+Group-Object
+Measure-Object
+New-Object
+Select-Object
+Sort-Object
+Tee-Object
+Where-Object
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;object转化：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;get-command -verb *convert*
+...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;导出object：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;get-command -verb *export*
+...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;导入object：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;get-command -verb *import*
+...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;module&#34;&gt;module&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;Get-Module
+get-module -listavailable # 查找安装的模块
+Import-Module
+import-module sqlps # 导入第三方mssql模块
+get-command -module sqlps # 查看模块中所有命令
+New-Module
+Remove-Module
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;format&#34;&gt;format&lt;/h1&gt;
+&lt;p&gt;安装路径有一些xml文件已经做了一些默认的格式化。&lt;/p&gt;
+&lt;p&gt;格式化的数据只能传给Out-File/out-host/out-printer/out-null/out-string/out-default.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Export-FormatData
+Get-FormatData
+Update-FormatData
+Format-Custom
+Format-List
+Format-Table
+Format-Wide
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

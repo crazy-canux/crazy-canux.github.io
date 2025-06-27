@@ -1,33 +1,1751 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Python on Morgoth</title>
-    <link>https://canuxcheng.com/tags/python/</link>
-    <description>Recent content in Python on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Tue, 20 Sep 2016 23:14:07 +0000</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/python/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Django</title>
-      <link>https://canuxcheng.com/post/django/</link>
-      <pubDate>Tue, 20 Sep 2016 23:14:07 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/django/</guid>
-      <description>&lt;h1 id=&#34;django&#34;&gt;Django&lt;/h1&gt;&#xA;&lt;p&gt;django是python的web框架。&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/django/django&#34;&gt;https://github.com/django/django&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.djangoproject.com/&#34;&gt;https://www.djangoproject.com/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://docs.djangoproject.com/zh-hans/3.1/contents/&#34;&gt;https://docs.djangoproject.com/zh-hans/3.1/contents/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;django遵守MVC设计模式，采用MTV框架。&lt;/p&gt;&#xA;&lt;p&gt;M: model,数据存取&lt;/p&gt;&#xA;&lt;p&gt;T: template，如何展现数据&lt;/p&gt;&#xA;&lt;p&gt;V: view，展现哪些数据&lt;/p&gt;&#xA;&lt;h1 id=&#34;安装&#34;&gt;安装&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://docs.djangoproject.com/zh-hans/3.1/faq/install/#faq-python-version-support&#34;&gt;https://docs.djangoproject.com/zh-hans/3.1/faq/install/#faq-python-version-support&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;django1.11是最后一个支持python2.7的长期支持版(2017.4).&lt;/p&gt;&#xA;&lt;p&gt;django2.0开始只支持python3(2018).&lt;/p&gt;&#xA;&lt;p&gt;本文以django3.1为例创建名为next的project.&lt;/p&gt;&#xA;&lt;p&gt;virtualenv中安装：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$mkdir next&#xA;$cd next&#xA;$virtualenv .venv&#xA;&#xA;# mac/linux&#xA;$source .venv/bin/activate&#xA;&#xA;# windows&#xA;&amp;gt;cd .venv/Scripts&#xA;&amp;gt;activate&#xA;&#xA;$pip install django&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;验证安装：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$python&#xA;&amp;gt;&amp;gt;&amp;gt;import django&#xA;&amp;gt;&amp;gt;&amp;gt;django.VERSION&#xA;&amp;gt;&amp;gt;&amp;gt;django.get_version()&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;安装使用的数据库引擎的库：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ sudo udo apt-get install libmysqlclient-dev&#xA;$ pip install mysqlclient&#xA;&#xA;$pip install psycopg2&#xA;&#xA;$pip install cx_Oracle&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;django默认是mysqlclient，可以使用pymysql替代：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;# vim settings.py&#xA;import pymysql&#xA;pymysql.version_info = (1, 4, 13, &amp;quot;final&amp;quot;, 0)&#xA;pymysql.install_as_MySQLdb()&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;project&#34;&gt;project&lt;/h1&gt;&#xA;&lt;p&gt;创建一个名为next的项目&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>PSL_Python</title>
-      <link>https://canuxcheng.com/post/psl_python/</link>
-      <pubDate>Mon, 15 Aug 2016 11:04:12 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/psl_python/</guid>
-      <description>&lt;h1 id=&#34;python-runtime-services&#34;&gt;Python Runtime Services&lt;/h1&gt;&#xA;&lt;h2 id=&#34;_builtin_&#34;&gt;_&lt;em&gt;builtin&lt;/em&gt;_&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;&lt;strong&gt;builtin&lt;/strong&gt;/builtins - Built-in functions, exceptions, and other objects.&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;p&gt;python2叫__builtin__&lt;/p&gt;&#xA;&lt;p&gt;python3叫builtins&lt;/p&gt;&#xA;&lt;h2 id=&#34;_main_&#34;&gt;_&lt;em&gt;main&lt;/em&gt;_&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;&lt;strong&gt;main&lt;/strong&gt; - Top-level script environment.&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;pre&gt;&lt;code&gt;if __name__ == &amp;quot;__main__&amp;quot;:&#xA;    main()&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;当作为顶层脚本运行时(&lt;strong&gt;main&lt;/strong&gt;), 当作为一个模块运行时候就是模块名称．&lt;/p&gt;&#xA;&lt;h2 id=&#34;_future_&#34;&gt;_&lt;em&gt;future&lt;/em&gt;_&lt;/h2&gt;&#xA;&lt;p&gt;把下一个版本的新特性导入到当前版本。&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;from __future__ import &amp;lt;feature_name&amp;gt;&#xA;&#xA;# feature name:&#xA;all_feature_names # 一次导入所有feature&#xA;absolute_import # 绝对导入&#xA;division&#xA;generators&#xA;nested_scopes&#xA;print_function&#xA;unicode_literals # python2中u&#39;string&#39;才表示unicode, &#39;string&#39;表示str，python3中所有字符串都是unicode。&#xA;with_statement&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;data:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;all_feature_names&#xA;...&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;sys&#34;&gt;sys&lt;/h2&gt;&#xA;&lt;pre&gt;&lt;code&gt;import sys&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;Dynamic objects:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;# 动态对象&#xA;sys.argv # 命令行参数的列表，sys.argv[0]是程序名称, len(sys.argv)就是C语言中的argc&#xA;sys.path # 搜索的路径．import导入模块的搜索路径．&#xA;sys.modules # 字典格式的加载的模块.已经导入并加载的模块会加进来．&#xA;sys.stdin # 标准输入，用于input()&#xA;sys.stdout # 标准输出，用于print&#xA;sys.stderr # 标准出错&#xA;displayhook -- called to show results in an interactive session&#xA;excepthook --&#xA;last_type -- type of last uncaught exception&#xA;last_value -- value of last uncaught exception&#xA;last_traceback --&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;Static objects:&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Python</title>
-      <link>https://canuxcheng.com/post/python/</link>
-      <pubDate>Tue, 21 Jun 2016 21:18:09 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/python/</guid>
-      <description>&lt;h1 id=&#34;python概述&#34;&gt;&lt;strong&gt;Python概述&lt;/strong&gt;&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://docs.python.org/2.7/index.html&#34;&gt;https://docs.python.org/2.7/index.html&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://python.usyiyi.cn/translate/python_278/index.html&#34;&gt;http://python.usyiyi.cn/translate/python_278/index.html&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://docs.python.org/3.5/index.html&#34;&gt;https://docs.python.org/3.5/index.html&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://python.usyiyi.cn/translate/python_352/index.html&#34;&gt;http://python.usyiyi.cn/translate/python_352/index.html&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;python是一门优雅而健壮的语言.&lt;/p&gt;&#xA;&lt;p&gt;继承了编译语言(静态语言)的强大性和通用性.&lt;/p&gt;&#xA;&lt;p&gt;同时也借鉴了脚本语言(动态语言)的易用性．&lt;/p&gt;&#xA;&lt;p&gt;python特点：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;高级&lt;/li&gt;&#xA;&lt;li&gt;面向对象&lt;/li&gt;&#xA;&lt;li&gt;可升级&lt;/li&gt;&#xA;&lt;li&gt;可扩展&lt;/li&gt;&#xA;&lt;li&gt;可移植性&lt;/li&gt;&#xA;&lt;li&gt;易学&lt;/li&gt;&#xA;&lt;li&gt;易读&lt;/li&gt;&#xA;&lt;li&gt;易维护&lt;/li&gt;&#xA;&lt;li&gt;健壮性&lt;/li&gt;&#xA;&lt;li&gt;高效的快速原型开发工具&lt;/li&gt;&#xA;&lt;li&gt;内存管理器&lt;/li&gt;&#xA;&lt;li&gt;解释性和编译性&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;python基本语法&#34;&gt;&lt;strong&gt;python基本语法&lt;/strong&gt;&lt;/h1&gt;&#xA;&lt;p&gt;python源程序叫xxx.py&lt;/p&gt;&#xA;&lt;p&gt;python中一切皆对象．&lt;/p&gt;&#xA;&lt;p&gt;python大小写敏感．&lt;/p&gt;&#xA;&lt;p&gt;python通过缩进和冒号:区分语法块，而不是大括号{}.&lt;/p&gt;&#xA;&lt;p&gt;python中的表达式(条件/循环表达式等)不需要用小括号()括起来．&lt;/p&gt;&#xA;&lt;p&gt;python标识符(变量，函数，参数，类等)由字母和下划线开头，还可以包含数字．不能是关键字．&lt;/p&gt;&#xA;&lt;p&gt;python不支持方法或函数重载．&lt;/p&gt;&#xA;&lt;p&gt;python不支持char和type类型．&lt;/p&gt;&#xA;&lt;p&gt;python没有switch语句．&lt;/p&gt;&#xA;&lt;p&gt;python支持多继承．&lt;/p&gt;&#xA;&lt;p&gt;python不支持++/&amp;ndash;自增和自减运算符．&lt;/p&gt;&#xA;&lt;p&gt;python支持连续比较，a&amp;lt;b&amp;lt;c.&lt;/p&gt;&#xA;&lt;h2 id=&#34;lexical-analysis&#34;&gt;lexical analysis&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://docs.python.org/2/reference/lexical_analysis.html&#34;&gt;https://docs.python.org/2/reference/lexical_analysis.html&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;Logical lines and physical lines：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;# python通过行尾的令牌NEWLINE表示逻辑行&#xA;expression&#xA;# 以操作系统的换行符表示物理行．&#xA;\n&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;encoding declarations:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;# python脚本中的第一行或第二行的&#xA;coding[=:]\s*([-\w.]+)&#xA;# 注释与正则表达式匹配将被作为编码申明处理．&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;[Deprecated] explicit line joining:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;# 多个物理行通过反斜线backslash续行进行显示换行&#xA;# 推荐用隐式换行．&#xA;if a == b \&#xA;       and c ==d: # 只有续行的最后一行可以有注释．反斜线的行不能注释.&#xA;    print(&#39;more than one physical line.&#39;)&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;implicit line joining：&lt;/p&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Python on Morgoth</title>
+        <link>https://canuxcheng.com/tags/python/</link>
+        <description>Recent content in Python on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Tue, 20 Sep 2016 23:14:07 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/python/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Django</title>
+        <link>https://canuxcheng.com/post/django/</link>
+        <pubDate>Tue, 20 Sep 2016 23:14:07 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/django/</guid>
+        <description>&lt;h1 id=&#34;django&#34;&gt;Django&lt;/h1&gt;
+&lt;p&gt;django是python的web框架。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/django/django&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/django/django&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.djangoproject.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.djangoproject.com/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.djangoproject.com/zh-hans/3.1/contents/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://docs.djangoproject.com/zh-hans/3.1/contents/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;django遵守MVC设计模式，采用MTV框架。&lt;/p&gt;
+&lt;p&gt;M: model,数据存取&lt;/p&gt;
+&lt;p&gt;T: template，如何展现数据&lt;/p&gt;
+&lt;p&gt;V: view，展现哪些数据&lt;/p&gt;
+&lt;h1 id=&#34;安装&#34;&gt;安装&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.djangoproject.com/zh-hans/3.1/faq/install/#faq-python-version-support&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://docs.djangoproject.com/zh-hans/3.1/faq/install/#faq-python-version-support&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;django1.11是最后一个支持python2.7的长期支持版(2017.4).&lt;/p&gt;
+&lt;p&gt;django2.0开始只支持python3(2018).&lt;/p&gt;
+&lt;p&gt;本文以django3.1为例创建名为next的project.&lt;/p&gt;
+&lt;p&gt;virtualenv中安装：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$mkdir next
+$cd next
+$virtualenv .venv
+
+# mac/linux
+$source .venv/bin/activate
+
+# windows
+&amp;gt;cd .venv/Scripts
+&amp;gt;activate
+
+$pip install django
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;验证安装：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$python
+&amp;gt;&amp;gt;&amp;gt;import django
+&amp;gt;&amp;gt;&amp;gt;django.VERSION
+&amp;gt;&amp;gt;&amp;gt;django.get_version()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;安装使用的数据库引擎的库：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo udo apt-get install libmysqlclient-dev
+$ pip install mysqlclient
+
+$pip install psycopg2
+
+$pip install cx_Oracle
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;django默认是mysqlclient，可以使用pymysql替代：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# vim settings.py
+import pymysql
+pymysql.version_info = (1, 4, 13, &amp;quot;final&amp;quot;, 0)
+pymysql.install_as_MySQLdb()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;project&#34;&gt;project&lt;/h1&gt;
+&lt;p&gt;创建一个名为next的项目&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ cd next
+$ django-admin startproject next.
+
+next
+|-- manage.py
+|-- next
+    |- __init__.py
+    |- settings.py
+    |- urls.py
+    |- wsgi.py
+    |- asgi.py
+&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;next 最外层根目录只是你项目的容器， 根目录名称对Django没有影响，你可以将它重命名为任何你喜欢的名称。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;manage.py: 一个让你用各种方式管理 Django 项目的命令行工具。你可以阅读 django-admin and manage.py 获取所有 manage.py 的细节。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;templates: project的模版.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;next 里层的目录包含你的项目，它是一个纯 Python 包。它的名字就是当你引用它内部任何东西时需要用到的 Python 包名。 (比如 next.urls).&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;next/&lt;strong&gt;init&lt;/strong&gt;.py：一个空文件，告诉 Python 这个目录应该被认为是一个 Python 包。如果你是 Python 初学者，阅读官方文档中的 更多关于包的知识。&lt;/p&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;next/settings.py：Django 项目的配置文件。如果你想知道这个文件是如何工作的，请查看 Django 配置 了解细节。&lt;/p&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;next/urls.py：Django 项目的 URL 声明，就像你网站的“目录”。阅读 URL调度器 文档来获取更多关于 URL 的内容。&lt;/p&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;next/asgi.py：作为你的项目的运行在 ASGI 兼容的Web服务器上的入口。阅读 如何使用 ASGI 来部署 了解更多细节。&lt;/p&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;next/wsgi.py：作为你的项目的运行在 WSGI 兼容的Web服务器上的入口。阅读 如何使用 WSGI 进行部署 了解更多细节。&lt;/p&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;
+&lt;p&gt;验证开发服务器：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$python manage.py runserver
+$python manage.py runserver &amp;lt;ip address&amp;gt;:&amp;lt;port&amp;gt;
+&amp;gt; py manage.py runserver
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;浏览器输入：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;http://127.0.0.1:8000
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;settingspy&#34;&gt;settings.py&lt;/h2&gt;
+&lt;p&gt;默认enable的app:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;INSTALLED_APPS = [
+    &#39;django.contrib.admin&#39;, //管理员站点， 你很快就会使用它。 
+    &#39;django.contrib.auth&#39;, //认证授权系统。
+    &#39;django.contrib.contenttypes&#39;, //内容类型框架。/
+    &#39;django.contrib.sessions&#39;, //会话框架。 
+    &#39;django.contrib.messages&#39;, //消息框架。 
+    &#39;django.contrib.staticfiles&#39;, //管理静态文件的框架。 
+]
+
+默认开启的某些应用需要至少一个数据表，所以，在使用他们之前需要在数据库中创建一些表
+$ python manage.py migrate
+&amp;gt; py manage.py migrate
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;默认enable的midleware:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;MIDDLEWARE = [
+    &#39;django.middleware.security.SecurityMiddleware&#39;,
+    &#39;django.contrib.sessions.middleware.SessionMiddleware&#39;,
+    &#39;django.middleware.common.CommonMiddleware&#39;,
+    &#39;django.middleware.csrf.CsrfViewMiddleware&#39;,
+    &#39;django.contrib.auth.middleware.AuthenticationMiddleware&#39;,
+    &#39;django.contrib.messages.middleware.MessageMiddleware&#39;,
+    &#39;django.middleware.clickjacking.XFrameOptionsMiddleware&#39;,
+]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;支持的template:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;TEMPLATES = [
+    {
+        &#39;BACKEND&#39;: &#39;django.template.backends.jinja2.Jinja2&#39;,
+        &#39;DIRS&#39;: [os.path.join(BASE_DIR, &#39;templates&#39;)],
+        &#39;APP_DIRS&#39;: True,
+        &#39;OPTIONS&#39;: {
+            &#39;context_processors&#39;: [
+                &#39;django.template.context_processors.debug&#39;,
+                &#39;django.template.context_processors.request&#39;,
+                &#39;django.contrib.auth.context_processors.auth&#39;,
+                &#39;django.contrib.messages.context_processors.messages&#39;,
+            ],
+        },
+    },
+    {
+        &#39;BACKEND&#39;: &#39;django.template.backends.django.DjangoTemplates&#39;,
+        &#39;DIRS&#39;: [os.path.join(BASE_DIR, &#39;templates&#39;)],
+        &#39;APP_DIRS&#39;: True,
+        &#39;OPTIONS&#39;: {
+            &#39;context_processors&#39;: [
+                &#39;django.template.context_processors.debug&#39;,
+                &#39;django.template.context_processors.request&#39;,
+                &#39;django.contrib.auth.context_processors.auth&#39;,
+                &#39;django.contrib.messages.context_processors.messages&#39;,
+            ],
+        },
+    }
+]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;默认的数据库:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;DATABASES = {
+    &#39;default&#39;: {
+        &#39;ENGINE&#39;: &#39;django.db.backends.sqlite3&#39;,
+        &#39;NAME&#39;: BASE_DIR / &#39;db.sqlite3&#39;,
+        &#39;TEST&#39;: {
+            // 默认测试数据库是test_ 加 default.NAME，TEST可以指定数据库名字.
+            &#39;NAME&#39;: &#39;test_db&#39;
+        }
+    }
+}
+
+// 可扩展的数据库
+ENGINE:
+    django.db.backends.mysql
+    django.db.backends.oracle
+    django.db.badkends.postgresql_psycopg2
+
+NAME:
+    your database name
+
+USER:
+    your database username
+
+PASSWORD:
+    your database password
+
+HOST:
+    local database or remote database
+
+PORT:
+    database port
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;其它配置：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;BASE_DIR = Path(__file__).resolve().parent.parent
+
+SECRET_KEY = &#39;-%b)79izbio$!(g!0io(he)giaqi1@))fzfq!t3s1g1dzysc(r&#39;
+
+WSGI_APPLICATION = &#39;next.wsgi.application&#39;
+
+ROOT_URLCONF = &#39;next.urls&#39;
+
+DEBUG = True # 开发用来调试
+DEBUG = False # 部署之后关闭
+
+ALLOWED_HOSTS = [] # 设置哪些域名可以访问，优先级高于web服务器，debug=false必须设置
+ALLOWED_HOSTS = [&#39;&#39;*&#39;&#39;] # 允许所有域名访问
+
+STATIC_URL = &#39;/static/&#39;
+STATIC_ROOT = &#39;/path/to/static&#39;
+# static目录存放js/css等静态文件,collectstatic命令用来收集静态文件。
+
+LANGUAGE_CODE = &#39;en-us&#39;
+TIME_ZONE = &#39;UTC&#39;
+USE_I18N = True
+USE_L10N = True
+USE_TZ = True
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;urlspy&#34;&gt;urls.py&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;from django.contrib import admin
+from django.urls import path, include
+
+urlpatterns = [
+    path(&#39;polls/&#39;, include(&#39;polls.urls&#39;)),
+    path(&#39;admin/&#39;, admin.site.urls),
+]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;在项目的urls添加所有应用的urls，为每个应用独立创建urls，方便管理。&lt;/p&gt;
+&lt;h2 id=&#34;wsgipy&#34;&gt;wsgi.py&lt;/h2&gt;
+&lt;p&gt;Web Server Gateway Interface.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import os
+from django.core.wsgi import get_wsgi_application
+
+os.environ.setdefault(&#39;DJANGO_SETTINGS_MODULE&#39;, &#39;next.settings&#39;)
+application = get_wsgi_application()
+django通过wsgi来部署，参考django的deploy。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;asgipy&#34;&gt;asgi.py&lt;/h2&gt;
+&lt;p&gt;Asynchronous Server Gateway Interface.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import os
+from django.core.asgi import get_asgi_application
+
+os.environ.setdefault(&#39;DJANGO_SETTINGS_MODULE&#39;, &#39;next.settings&#39;)
+application = get_asgi_application()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;application&#34;&gt;application&lt;/h1&gt;
+&lt;p&gt;应用，一个项目可以有多个应用，一个应用可以用到多个项目中。&lt;/p&gt;
+&lt;p&gt;可以单独打包应用发布到pypi，包名格式django-project，参考python的打包方法。&lt;/p&gt;
+&lt;p&gt;创建一个名为polls的应用：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$python manage.py startapp polls
+&amp;gt; py manage.py startapp polls
+
+polls/
+|- __init__.py
+|- admin.py
+|- apps.py
+|- models.py
+|- views.py
+|- tests.py (tests/test_case.py)
+|- migrations
+   |- __init__.py
+|- templates
+   |- polls
+      |- index.html
+|- static
+   |- polls
+      |- style.css
+&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;admin.py admin管理界面&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;apps.py&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;models.py 模型&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;views.py 视图&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;urls.py 新建的application的url&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;test.py 测试&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;migrations 迁移文件夹&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;templates 应用的模版文件夹&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;static 静态文件&lt;/p&gt;&lt;/blockquote&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;django-admin--managepy&#34;&gt;django-admin &amp;amp; manage.py&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;[staticfiles]
+    collectstatic # 设置STATIC_ROOT = &#39;/var/www/static/project/&#39;用来收集静态文件
+    findstatic
+    runserver # 启动django自带的web开发服务器
+
+[sessions]
+    clearsessions
+
+[auth]
+    changepassword
+    createsuperuser
+    
+[contenttypes]
+    remove_stale_contenttypes
+
+[django]
+
+    startapp
+    
+    startproject
+    
+    check
+    compilemessages
+    createcachetable
+    dbshell # 数据库命令行
+    diffsettings
+    
+    dumpdata # 导出数据 (json, xml, yaml)
+    dumpdata &amp;gt; db.json
+    flush # 清空数据库
+    loaddata # 导入数据
+    loaddata db.json
+    
+    inspectdb
+    makemessages
+    
+    makemigrations # 创建迁移文件
+    migrate # 创建/更新表结构（执行迁移文件）
+    
+    sendtestemail
+    shell # 项目环境终端
+    showmigrations # 查看可迁移的文件
+    sqlflush
+    sqlmigrate # 查看迁移文件会执行哪些sql
+    sqlsequencereset
+    squashmigrations
+    
+    test
+    
+    testserver
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
+        <item>
+        <title>PSL_Python</title>
+        <link>https://canuxcheng.com/post/psl_python/</link>
+        <pubDate>Mon, 15 Aug 2016 11:04:12 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/psl_python/</guid>
+        <description>&lt;h1 id=&#34;python-runtime-services&#34;&gt;Python Runtime Services&lt;/h1&gt;
+&lt;h2 id=&#34;_builtin_&#34;&gt;_&lt;em&gt;builtin&lt;/em&gt;_&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;builtin&lt;/strong&gt;/builtins - Built-in functions, exceptions, and other objects.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;python2叫__builtin__&lt;/p&gt;
+&lt;p&gt;python3叫builtins&lt;/p&gt;
+&lt;h2 id=&#34;_main_&#34;&gt;_&lt;em&gt;main&lt;/em&gt;_&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;main&lt;/strong&gt; - Top-level script environment.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;pre&gt;&lt;code&gt;if __name__ == &amp;quot;__main__&amp;quot;:
+    main()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;当作为顶层脚本运行时(&lt;strong&gt;main&lt;/strong&gt;), 当作为一个模块运行时候就是模块名称．&lt;/p&gt;
+&lt;h2 id=&#34;_future_&#34;&gt;_&lt;em&gt;future&lt;/em&gt;_&lt;/h2&gt;
+&lt;p&gt;把下一个版本的新特性导入到当前版本。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;from __future__ import &amp;lt;feature_name&amp;gt;
+
+# feature name:
+all_feature_names # 一次导入所有feature
+absolute_import # 绝对导入
+division
+generators
+nested_scopes
+print_function
+unicode_literals # python2中u&#39;string&#39;才表示unicode, &#39;string&#39;表示str，python3中所有字符串都是unicode。
+with_statement
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;data:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;all_feature_names
+...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;sys&#34;&gt;sys&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;import sys
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Dynamic objects:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 动态对象
+sys.argv # 命令行参数的列表，sys.argv[0]是程序名称, len(sys.argv)就是C语言中的argc
+sys.path # 搜索的路径．import导入模块的搜索路径．
+sys.modules # 字典格式的加载的模块.已经导入并加载的模块会加进来．
+sys.stdin # 标准输入，用于input()
+sys.stdout # 标准输出，用于print
+sys.stderr # 标准出错
+displayhook -- called to show results in an interactive session
+excepthook --
+last_type -- type of last uncaught exception
+last_value -- value of last uncaught exception
+last_traceback --
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Static objects:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 静态对象
+float_info -- a dict with information about the float inplementation.
+long_info -- a struct sequence with information about the long implementation.
+maxint -- the largest supported integer (the smallest is -maxint-1).
+maxsize -- the largest supported length of containers.
+maxunicode -- the largest supported character
+builtin_module_names -- tuple of module names built into this interpreter
+version -- the version of this interpreter as a string
+version_info -- version information as a named tuple
+hexversion -- version information encoded as a single integer
+copyright -- copyright notice pertaining to this interpreter
+platform -- platform identifier # 可以判断操作系统类型
+sys.platform # &#39;win32&#39;, &#39;linux2&#39;, &#39;darwin&#39;
+executable -- absolute path of the executable binary of the Python interpreter
+prefix -- prefix used to find the Python library
+exec_prefix -- prefix used to find the machine-specific Python library
+float_repr_style -- string indicating the style of repr() output for floats
+__stdin__ -- the original stdin; don&#39;t touch!
+__stdout__ -- the original stdout; don&#39;t touch!
+__stderr__ -- the original stderr; don&#39;t touch!
+__displayhook__ -- the original displayhook; don&#39;t touch!
+__excepthook__ -- the original excepthook; don&#39;t touch!
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;functions:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;displayhook() -- print an object to the screen, and save it in __builtin__._
+excepthook() -- print an exception and its traceback to sys.stderr
+exc_info() -- 返回当前异常的线程安全的三个信息．type, value, traceback.
+exc_clear() -- 清空当前线程的异常状态
+exit() -- 抛出 SystemExit 异常退出解释器
+getdlopenflags() -- returns flags to be used for dlopen() calls
+getprofile() -- get the global profiling function
+getrefcount() -- return the reference count for an object (plus one :-)
+getrecursionlimit() -- return the max recursion depth for the interpreter
+getsizeof() -- return the size of an object in bytes
+gettrace() -- get the global debug tracing function
+setcheckinterval() -- control how often the interpreter checks for events
+setdlopenflags() -- set the flags to be used for dlopen() calls
+setprofile() -- set the global profiling function
+setrecursionlimit() -- set the max recursion depth for the interpreter
+settrace() -- set the global debug tracing function
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;data:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;flags # 命令行的状态，-d debug, -v verbose
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;sysconfig&#34;&gt;sysconfig&lt;/h2&gt;
+&lt;h2 id=&#34;future_builtins&#34;&gt;future_builtins&lt;/h2&gt;
+&lt;h2 id=&#34;warnings&#34;&gt;warnings&lt;/h2&gt;
+&lt;p&gt;python的警告模块，只警告，不中断程序运行．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import warnings
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;functions:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;warn(message[, category[, stacklevel]])
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;contextlib&#34;&gt;contextlib&lt;/h2&gt;
+&lt;p&gt;编写上下文管理器的模块．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import contextlib
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;abc&#34;&gt;abc&lt;/h2&gt;
+&lt;p&gt;实现抽象方法．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import abc
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;classes:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# abc.ABCMeta
+ABCMeta
+
+# abc.abstractproperty
+abstractproperty
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;functions:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;abstractmethod(funcobj)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;atexit&#34;&gt;atexit&lt;/h2&gt;
+&lt;h2 id=&#34;traceback&#34;&gt;traceback&lt;/h2&gt;
+&lt;p&gt;For python stack traces. 追踪python的堆栈信息．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import traceback
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;functions:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;extract_stack(f=None, limit=None)
+extract_tb(tb, limit=None)
+format_stack(f=None, limit=None)
+format_tb(tb, limit=None) # 格式化后返回字符串
+print_stack(f=None, limit=None, file=None)
+print_tb(tb, limit=None, file=None) # 直接打印stacktrace信息
+...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;gc&#34;&gt;gc&lt;/h2&gt;
+&lt;p&gt;garbage collector：python的垃圾回收模块．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import gc
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;inspect&#34;&gt;inspect&lt;/h2&gt;
+&lt;p&gt;从运行的python对象获取有用的信息．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import inspect
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;classes:&lt;/p&gt;
+&lt;p&gt;functions:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;classify_class_attrs(cls)
+stack(context=1)
+isgenerator()
+isgeneratorfunction() # 检查一个函数是否是生成器
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;data:&lt;/p&gt;
+&lt;h2 id=&#34;site&#34;&gt;site&lt;/h2&gt;
+&lt;h2 id=&#34;user&#34;&gt;user&lt;/h2&gt;
+&lt;h2 id=&#34;fpectl&#34;&gt;fpectl&lt;/h2&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        <item>
+        <title>Python</title>
+        <link>https://canuxcheng.com/post/python/</link>
+        <pubDate>Tue, 21 Jun 2016 21:18:09 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/python/</guid>
+        <description>&lt;h1 id=&#34;python概述&#34;&gt;&lt;strong&gt;Python概述&lt;/strong&gt;&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.python.org/2.7/index.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://docs.python.org/2.7/index.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://python.usyiyi.cn/translate/python_278/index.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://python.usyiyi.cn/translate/python_278/index.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.python.org/3.5/index.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://docs.python.org/3.5/index.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://python.usyiyi.cn/translate/python_352/index.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://python.usyiyi.cn/translate/python_352/index.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;python是一门优雅而健壮的语言.&lt;/p&gt;
+&lt;p&gt;继承了编译语言(静态语言)的强大性和通用性.&lt;/p&gt;
+&lt;p&gt;同时也借鉴了脚本语言(动态语言)的易用性．&lt;/p&gt;
+&lt;p&gt;python特点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;高级&lt;/li&gt;
+&lt;li&gt;面向对象&lt;/li&gt;
+&lt;li&gt;可升级&lt;/li&gt;
+&lt;li&gt;可扩展&lt;/li&gt;
+&lt;li&gt;可移植性&lt;/li&gt;
+&lt;li&gt;易学&lt;/li&gt;
+&lt;li&gt;易读&lt;/li&gt;
+&lt;li&gt;易维护&lt;/li&gt;
+&lt;li&gt;健壮性&lt;/li&gt;
+&lt;li&gt;高效的快速原型开发工具&lt;/li&gt;
+&lt;li&gt;内存管理器&lt;/li&gt;
+&lt;li&gt;解释性和编译性&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;python基本语法&#34;&gt;&lt;strong&gt;python基本语法&lt;/strong&gt;&lt;/h1&gt;
+&lt;p&gt;python源程序叫xxx.py&lt;/p&gt;
+&lt;p&gt;python中一切皆对象．&lt;/p&gt;
+&lt;p&gt;python大小写敏感．&lt;/p&gt;
+&lt;p&gt;python通过缩进和冒号:区分语法块，而不是大括号{}.&lt;/p&gt;
+&lt;p&gt;python中的表达式(条件/循环表达式等)不需要用小括号()括起来．&lt;/p&gt;
+&lt;p&gt;python标识符(变量，函数，参数，类等)由字母和下划线开头，还可以包含数字．不能是关键字．&lt;/p&gt;
+&lt;p&gt;python不支持方法或函数重载．&lt;/p&gt;
+&lt;p&gt;python不支持char和type类型．&lt;/p&gt;
+&lt;p&gt;python没有switch语句．&lt;/p&gt;
+&lt;p&gt;python支持多继承．&lt;/p&gt;
+&lt;p&gt;python不支持++/&amp;ndash;自增和自减运算符．&lt;/p&gt;
+&lt;p&gt;python支持连续比较，a&amp;lt;b&amp;lt;c.&lt;/p&gt;
+&lt;h2 id=&#34;lexical-analysis&#34;&gt;lexical analysis&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.python.org/2/reference/lexical_analysis.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://docs.python.org/2/reference/lexical_analysis.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Logical lines and physical lines：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# python通过行尾的令牌NEWLINE表示逻辑行
+expression
+# 以操作系统的换行符表示物理行．
+\n
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;encoding declarations:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# python脚本中的第一行或第二行的
+coding[=:]\s*([-\w.]+)
+# 注释与正则表达式匹配将被作为编码申明处理．
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;[Deprecated] explicit line joining:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 多个物理行通过反斜线backslash续行进行显示换行
+# 推荐用隐式换行．
+if a == b \
+       and c ==d: # 只有续行的最后一行可以有注释．反斜线的行不能注释.
+    print(&#39;more than one physical line.&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;implicit line joining：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 在括号(parentheses),方括号(square brackets)，大括号(curly braces)中的表达式可以分割多个物理行而不需要显示换行．
+test_list = [
+    &#39;a&#39;, # 每一行都可以注释
+    &#39;b&#39;
+]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;indentation:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 逻辑行的开头的空格和跳格用于缩进，python根据行的缩进级别区分语法块．
+# 缩进级别用于生成INDENT和DEDENT两个令牌
+pep8建议用四个空格表示一个缩进级别．
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;python2.7源代码格式:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#!/usr/bin/env python2.7
+# -*- coding: utf-8 -*-
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;执行python代码：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ python mycode.py
+# OR
+$ chmod u+x mycode.py
+$ ./mycode.py
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;python注释&#34;&gt;&lt;strong&gt;python注释&lt;/strong&gt;&lt;/h1&gt;
+&lt;p&gt;单行注释：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# comment
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;多行注释：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;quot;&amp;quot;&amp;quot;
+comment1
+
+comment2
+comment3
+&amp;quot;&amp;quot;&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;python3键字&#34;&gt;&lt;strong&gt;python3键字&lt;/strong&gt;&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;def lambda class import from
+if elif else while for continue break try except finally return pass
+global raise assert del yield with as
+and or not is in nonlocal
+False None True 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;python运算符和优先级&#34;&gt;&lt;strong&gt;python运算符和优先级&lt;/strong&gt;&lt;/h1&gt;
+&lt;p&gt;优先级从高到底：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 函数调用
+f(x)
+
+# 序列的切片
+seq[ind1:ind2:step]
+
+# 序列下标索引
+seq[index]
+
+# 属性运算.
+object.attribute
+
+# 算术运算符
+**   幂运算，乘方运算符, 等效内置函数pow(), 优先级高于单目运算符
+
+# 位运算(只能用于整数)
+~    按位取反
+# 单目运算符．
++expr    # 结果符号不变
+-expr    # 对结果符号取负
+
+# 算术运算符, 优先级一样
+*
+/    python2两个操作数都是整数时，结果是商舍去小数后的整数,也就是地板除; 只要有一个以上的浮点操作数,结果就是浮点数，也就是真正的除法．
+/    python3会自动转化成两个浮点数出发，结果永远是浮点数，永远是真正的除法．
+//   地板除，结果总是舍去小数部分．
+%
+
+# 算术运算符, 优先级一样
++
+-
+
+# 位运算(只能用于整数), 优先级一样．
+&amp;lt;&amp;lt;   左移位运算
+&amp;gt;&amp;gt;   右移位运算
+
+# 位运算(只能用于整数)
+&amp;amp;    按位与
+
+# 位运算(只能用于整数), 优先级一样
+^    按位异或
+|    按位或
+
+# 关系运算, 优先级一样
+&amp;lt;
+&amp;gt;
+&amp;lt;=
+&amp;gt;=
+
+# 关系运算, 优先级一样
+==
+!=
+# Python2的&amp;lt;&amp;gt;不再支持，使用!=
+
+# 赋值运算符和增量赋值
+=
++=
+-=
+*=
+/=
+%=
+**=
+&amp;lt;&amp;lt;=
+&amp;gt;&amp;gt;=
+&amp;amp;=
+|=
+^=
+
+# [New] 对象运算符, 优先级一样
+is
+is not
+
+# [New] 序列的元素/字典的键/集合的元素 成员运算符, 优先级一样
+in
+not in
+
+# boolean逻辑运算符
+not    逻辑非
+
+# boolean逻辑运算符, 优先级一样
+and    逻辑与
+or     逻辑或
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;python数据类型&#34;&gt;&lt;strong&gt;python数据类型&lt;/strong&gt;&lt;/h1&gt;
+&lt;p&gt;python中一切皆对象，每个对象都有身份(id()), 类型(type()) 和 值三个属性．&lt;/p&gt;
+&lt;p&gt;python中对象的类型和内存占用都是在运行时确定的．&lt;/p&gt;
+&lt;p&gt;is和is not可以判断两个变量是否指向同一个对象：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;a is b # 等价于 id(a) == id(b), 表示a和b是同一个对象
+a is not b # 等价于 id(a) != id(b), 表示a和b不是同一个对象
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;is和is not可以判断变量的类型:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import types
+type(a) is types.IntType
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;垃圾回收&#34;&gt;&lt;em&gt;垃圾回收&lt;/em&gt;&lt;/h2&gt;
+&lt;p&gt;Garbage Collector垃圾回收机制是引用计数为主，标记清除和分代收集为辅．&lt;/p&gt;
+&lt;p&gt;当对象被引用，包括对象在被创建，对象被作为参数传递给函数，对象成为容器对象的一个元素时，引用值增加．&lt;/p&gt;
+&lt;p&gt;当对象的引用被销毁，包括一个本地引用离开其作用域，对象的别名被del显示销毁，对象的别名被赋值给其它对象，对象被从一个窗口对象中移除，窗口对象本身被del显示销毁，引用值减少．&lt;/p&gt;
+&lt;p&gt;del语句会删除对象的一个引用．&lt;/p&gt;
+&lt;h2 id=&#34;变量和常量&#34;&gt;&lt;em&gt;变量和常量&lt;/em&gt;&lt;/h2&gt;
+&lt;p&gt;python是动态类型语言，变量不需要先申明，变量的类型和值在赋值的时候被初始化．&lt;/p&gt;
+&lt;p&gt;用全部小写表示变量：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;counter = 0
+miles = 100.03
+name = &amp;quot;canux&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;用全部大写表示常量：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;PIE = 3.14
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;类型总结&#34;&gt;&lt;em&gt;类型总结&lt;/em&gt;&lt;/h2&gt;
+&lt;p&gt;更新模型：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;不可变类型:immutable不可变类型就是变量的值是固定的，再次赋值就是重新创建了新的对象: 数字类型，字符串str，元组tuple，不可变集合frozenset.&lt;/li&gt;
+&lt;li&gt;可变类型:mutable可变类型就是变量的值是可以改变的: 列表list，字典dict，可变集合set.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;存储模型：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;scalar标量/原子类型:只能容纳单个对象：数字类型，字符串str&lt;/li&gt;
+&lt;li&gt;container容器类型:可以容纳多个对象：元组tuple，列表list，字典dict,集合set/frozenset.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;访问模型：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;直接存取:数字类型&lt;/li&gt;
+&lt;li&gt;索引访问:sequence序列是顺序访问：字符串str，元组tuple，列表list.&lt;/li&gt;
+&lt;li&gt;映射访问:mapping映射类型是映射访问,元素无序存放，通过唯一的key来访问：字典dict.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;数据拷贝&#34;&gt;数据拷贝&lt;/h2&gt;
+&lt;p&gt;浅拷贝:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;只拷贝顶层数据.
+
+对不可变对象不开辟新空间,相当于赋值操作;修改原数据,相当于定义了一个新的数据.拷贝的数据不变.
+a=10
+b=copy.copy(a)
+old_id  = id(a) == id(b)
+a=5 # 修改a相当于定义了新变量
+id(a) != old_id
+id(b) == old_id # id(b) 不变
+id(b) == 10
+
+对可变对象会在内存开辟新空间保存拷贝的数据;只拷贝第一层中的引用,原数据被修改,拷贝的对象也被修改.
+a=[1,2,3]
+b=copy.copy(a)
+id(a) != id(b)
+a[0]=5 # 改变a的数据
+b == a # b的数据也改变
+
+copy.copy()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;深拷贝:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;逐层拷贝数据,直到拷贝的所有引用都是不可变引用.
+
+深拷贝,一份数据改变,不影响另一份数据.
+
+copy.deepcopy()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;sequences序列类型&#34;&gt;&lt;em&gt;Sequences序列类型&lt;/em&gt;&lt;/h2&gt;
+&lt;p&gt;sequence序列是指成员有序排列，可以通过下标偏移量访问，同时可以进行切片操作．序列是可迭代的．&lt;/p&gt;
+&lt;p&gt;sequence索引操作：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;seq[ind] # 获取下标为ind的元素，下标从0开始．
+seq[-1] # 取最后一个元素
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;sequence切片操作：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;seq[ind1:ind2] # 获取下标从ind1到ind2间的元素的集合．不包括ind2.
+seq[:ind2] # ind1缺省默认为０.
+seq[ind1:] # ind2缺省表示从ind1到最后一个元素
+
+seq[ind1:ind2:step] # 以步长为step来切片
+seq[:ind2:step]
+seq[::step] # ind1缺省为０，ind2缺省为整个序列长度．
+seq[::-1]  # 翻转序列
+seq[::-step]  # 以步长为step翻转序列．
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;sequence算术运算：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;seq * number # 序列重复number次
+sql1 + seq2 # 两个序列连接
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;sequence成员运算：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;obj in seq # obj在包含在序列中,返回True
+obj not in seq # obj不包含在序列中返回True
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;数字类型&#34;&gt;&lt;em&gt;数字类型&lt;/em&gt;&lt;/h2&gt;
+&lt;p&gt;数字类型是不可变类型(immutable),是标量(scalar),是直接存储的．&lt;/p&gt;
+&lt;p&gt;0b开头表示二进制&lt;/p&gt;
+&lt;p&gt;0开头表示八进制&lt;/p&gt;
+&lt;p&gt;0x开头表示十六进制&lt;/p&gt;
+&lt;p&gt;数字类型转换的关系是整数转换成浮点数，非复数转换成复数．&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;int&lt;/p&gt;
+&lt;p&gt;Python3的int类型整合了short、int、long三种长度，统一为int类型，且没有长度限制。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;bool(int)&lt;/p&gt;
+&lt;p&gt;bool类继承自int.&lt;/p&gt;
+&lt;p&gt;bool类型只有True和False两个值．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;  bool类型取反: 
+  a = True
+  b = bool(1-a) # b=False
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;float&lt;/p&gt;
+&lt;p&gt;python中的float其实就包括了单精度和双精度，相当于float和double都可以用．&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;complex&lt;/p&gt;
+&lt;p&gt;python中有复数类型．&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;str&#34;&gt;&lt;em&gt;str&lt;/em&gt;&lt;/h2&gt;
+&lt;p&gt;python2中str和unicode继承自basestring, basestring继承自object.&lt;/p&gt;
+&lt;p&gt;python3中unicode和basestring在python3中被废弃．str直接继承自object.&lt;/p&gt;
+&lt;p&gt;python3中不再需要u/U来表示unicode字符串．&lt;/p&gt;
+&lt;p&gt;str类型是不可变类型(immutable),是标量(scalar),是序列(sequence)通过索引访问．&lt;/p&gt;
+&lt;p&gt;字符串表示方法：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&#39;This is a string&#39;
+&amp;quot;This is a string&amp;quot;
+&amp;quot;&amp;quot;&amp;quot;This is a string&amp;quot;&amp;quot;&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;字符串的续行：&lt;/p&gt;
+&lt;p&gt;下面都表示一个只有一行的字符串．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 一个引号的情况,需要在引号内部空格表示和下一行有空格，续行符前的空格可有可无．
+a = &#39;This is a &#39; \
+&#39;string&#39;
+
+b = &#39;This is a \
+string&#39;
+
+c = &amp;quot;This is a &amp;quot; \
+&amp;quot;string&amp;quot;
+
+d = &amp;quot;This is a \
+string&amp;quot;
+
+# 三引号续行符前的空格就表示和下一行有空格．
+c = &amp;quot;&amp;quot;&amp;quot;This is a \
+string&amp;quot;&amp;quot;&amp;quot;
+&amp;gt; This is a string
+
+c = &amp;quot;&amp;quot;&amp;quot;line1
+line2&amp;quot;&amp;quot;&amp;quot;
+&amp;gt; line1\nline2   没有续行符会在行尾加换行符号.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;编译时字符串连接：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;foo = &amp;quot;hello&amp;quot; &#39;world&#39;
+urllib.urlopen(&#39;http://&#39; # protocol
+&#39;localhost&#39; # hostname
+&#39;:8000&#39; # port
+&#39;/&#39;) # path
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;原始字符串：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 正常情况下在字符串中的特殊字符串(\加一个字符)表示特殊含义．是不可打印的．
+print(&#39;\n&#39;)
+# 如果需要表示正常含义需要转译(\用来转意)．
+print(&#39;\\n&#39;) # 需要转译．
+# 也可以使用原始字符串来表示正常含义．r&#39;&#39;和R&#39;&#39;都可以．
+print(r&#39;\n&#39;)
+open(r&#39;C:\windows\test.txt&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;字符串编码解码:&lt;/p&gt;
+&lt;p&gt;Unicode: Universal Multiple-Octet Coded Character Set. 使用十六进制表示．加上前缀U+&lt;/p&gt;
+&lt;p&gt;ASCII: American Standard Code for Information&lt;/p&gt;
+&lt;p&gt;UFT-8: Unicode Transformation Format&lt;/p&gt;
+&lt;p&gt;python2因为比unicode出现要早，所以python2默认使用的是ASCII编码．&lt;/p&gt;
+&lt;p&gt;python3 默认使用utf-8编码。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 获取默认编码
+import sys
+print(sys.getdefaultencoding())
+
+// python2
+a = u&#39;测试&#39;
+type(a) # unicode
+a # u&#39;\u6d4b\u8bd5&#39;,　十六进制表示
+
+// python2
+# str类型
+b = &#39;测试&#39;
+type(b) # str
+b # \xe6\xb5\x8b\xe8\xaf\x95
+
+// python2
+# encode将unicode类型编码成str类型用于数据传输．
+encode([encoding[,errors]]) # 编码
+c = a.encode(&#39;uft-8&#39;)
+type(c) # str
+c # \xe6\xb5\x8b\xe8\xaf\x95
+
+// python2
+# decode将str类型根据原来的编码类型解码成unicode类型进行阅读．
+decode([encoding[,errors]]) # 解码
+d = c.decode(&#39;utf-8&#39;) # 参数必须是原来的编码的类型
+type(d) # unicode
+d # u&#39;\u6d4b\u8bd5&#39;
+
+// python2
+# python2默认ascii编码，所以encode和decode默认都是ascii. 不能处理中文
+u&#39;测试&#39;.encode() # UnicodeEncodeError
+
+// python2
+# str+unicode, str会隐式的转换成unicode.
+&#39;测&#39; + u&#39;试&#39; -&amp;gt; &#39;测&#39;.decode() + u&#39;试&#39; # 因为decode默认是ascii不能解码中文,UnicodeDecodeError．
+&#39;测&#39;.decode(&#39;uft-8&#39;) + u&#39;试&#39;
+
+// python2
+# 对非unicode进行encode编码，会先隐式解码成unicode再编码
+&#39;测试&#39;.encode(&#39;utf-8&#39;) # UnicodeDecodeError, 因为&#39;测试&#39;.decode()默认用ascii解码
+&#39;测试&#39;.decode(&#39;utf-8&#39;).decode(&#39;utf-8&#39;)
+
+# python2程序中出现字符串一定加前缀u.表示成unicode格式
+u&#39;hello world&#39;
+# 不要用str(), 用unicode().
+# 只在写入文件／数据库／网络时才调用编码函数encode().
+# 只在读回数据时才调用解码函数decode().
+# 始终使用utf-8编码．否则容易出现乱码．
+
+// python3 默认类型非str，而是bytes。
+str.encode()  # str类型通过encode编码成types类型
+bytes.decode() # bytes类型通过decode解码成str类型
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;可迭代对象转换成字符串：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&#39;&#39;.join((&#39;a&#39;, &#39;b&#39;)) # 可迭代对象的元素需要是str类型.
+&#39;&#39;.join([&#39;a&#39;, &#39;b&#39;]) # 可迭代对象的元素需要是str类型.
+&#39;&#39;.join({&#39;a&#39;: &#39;b&#39;}) # 字典迭代键，可迭代对象的元素需要是str类型.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;tuple&#34;&gt;&lt;em&gt;tuple&lt;/em&gt;&lt;/h2&gt;
+&lt;p&gt;tuple类型是不可变类型(immutable),是容器(container),是序列(sequence)通过索引访问．&lt;/p&gt;
+&lt;p&gt;元组是不可变类型，不能对元组的元素进行增删操作．&lt;/p&gt;
+&lt;h2 id=&#34;list&#34;&gt;&lt;em&gt;list&lt;/em&gt;&lt;/h2&gt;
+&lt;p&gt;list类型是可变类型(immutable),是容器(container),是序列(sequence)通过索引访问．&lt;/p&gt;
+&lt;p&gt;列表元素增删修改：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 除了使用内置方法还可以使用序列的索引．
+lst[index] = value
+del lst[index]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;list-comprehensions列表解析&#34;&gt;&lt;em&gt;list comprehensions列表解析&lt;/em&gt;&lt;/h3&gt;
+&lt;p&gt;List Comprehensions列表解析,来自函数式编程语言Haskell.&lt;/p&gt;
+&lt;p&gt;列表解析使用中括号，列表解析返回一个列表。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;lst = [expression for item in iterable]
+# 嵌套if
+lst = [expression for item in iterable if condition]
+# 嵌套for
+lst = [expression for item in iterable for item1 in iterable1]
+
+[x ** 2 for x in range(10)]
+等效于,python2的内置函数map(), filter()都是函数式编程的应用．
+map(lambda x: x**2, range(10))
+
+[(x+1, y+1) for x in range(10) for y in range(10)]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;range&#34;&gt;&lt;em&gt;range&lt;/em&gt;&lt;/h2&gt;
+&lt;h2 id=&#34;bytes&#34;&gt;&lt;em&gt;bytes&lt;/em&gt;&lt;/h2&gt;
+&lt;h2 id=&#34;bytearray&#34;&gt;&lt;em&gt;bytearray&lt;/em&gt;&lt;/h2&gt;
+&lt;h2 id=&#34;memoryview&#34;&gt;&lt;em&gt;memoryview&lt;/em&gt;&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;dict&#34;&gt;&lt;em&gt;dict&lt;/em&gt;&lt;/h2&gt;
+&lt;p&gt;dict类型是可变类型(immutable),是容器(container),是映射(mapping)类型,是无序的,通过映射访问．&lt;/p&gt;
+&lt;p&gt;字典迭代键，字典的键必须是可哈希的，字典的键必须是不可变类型．列表/字典/可变集合等不可哈希对象不能用作字典的键．&lt;/p&gt;
+&lt;p&gt;所有不可变类型都是可哈希的，都可以作为字典的键．&lt;/p&gt;
+&lt;p&gt;可用内置函数hash()获取或判断是否能用作字典的键．&lt;/p&gt;
+&lt;p&gt;字典的键必须是唯一的，不能一个键对应多个值．有这种情况取最后一个赋值．&lt;/p&gt;
+&lt;p&gt;字典的键操作符：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 字典通过键操作符来读取元素的值
+dic[&#39;key&#39;]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;键成员操作符:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 取代has_key()和keys()内置方法
+&#39;key&#39; in dic # 推荐用 &#39;key&#39; in dic 判断键是否存在
+&#39;key&#39; not in dic
+# Python3中dict.keys()、dict.values()、dict.items()返回的是视图对象（可迭代），如需列表可用list(dict.keys())等。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;字典元素增删修改：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;dic[&#39;key&#39;] = &#39;value&#39;
+del dic[&#39;key&#39;]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;sets集合&#34;&gt;&lt;em&gt;Sets集合&lt;/em&gt;&lt;/h2&gt;
+&lt;p&gt;集合是一组无序排列的值，不能进行索引和切片操作，也不能进行键操作，只能通过for循环迭代集合元素．&lt;/p&gt;
+&lt;p&gt;集合分为可变集合和不可变集合.&lt;/p&gt;
+&lt;p&gt;集合运算符：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&#39;element&#39; in st 是成员
+&#39;element&#39; not in st 不是成员
+== 等于
+!= 不等于
+&amp;lt;  严格子集
+&amp;lt;= 非严格子集, 等效于issubset()
+&amp;gt; 严格超集
+&amp;gt;= 非严格超集, 等效于issuperset()
+| 联合, OR操作，等效于union()内置方法
+&amp;amp; 交集, AND操作，等效于intersection()内置方法
+- 差补或相对补集, 等效于difference()内置方法
+^ 对称差分或异或, XOR操作，等效于symmetric_difference()内置方法
+
+仅用于可变集合的运算符：
+|= 等效于update()内置方法
+&amp;amp;= 等效于intersection_update()内置方法
+-= 等效于difference_update()内置方法
+^= 等效于symmetric_difference_update()内置方法
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;集合运算返回结果的类型与左操作数的类型相同，左边是可变集合，结果就是可变集合，否则是不可变集合．&lt;/p&gt;
+&lt;h3 id=&#34;frozenset&#34;&gt;frozenset&lt;/h3&gt;
+&lt;p&gt;frozenset类型是不可变类型(immutable),是容器(container).&lt;/p&gt;
+&lt;h3 id=&#34;set&#34;&gt;set&lt;/h3&gt;
+&lt;p&gt;set类型是可变类型(mutable)，是容器(container).&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;python控制流&#34;&gt;&lt;strong&gt;python控制流&lt;/strong&gt;&lt;/h1&gt;
+&lt;p&gt;continue语句:表示立即终止本次循环，启动循环的下一次迭代．&lt;/p&gt;
+&lt;p&gt;break语句：表示结束当前循环块，跳转到后面的语句．&lt;/p&gt;
+&lt;p&gt;pass语句： 表示不做任何事情，NOP.&lt;/p&gt;
+&lt;h2 id=&#34;if条件语句&#34;&gt;&lt;em&gt;if条件语句&lt;/em&gt;&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;if condition:
+    expression
+elif condition:
+    expression
+else:
+    expression
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;python中的三目运算：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;X if C else Y
+等效于
+if C:
+    X
+else:
+    Y
+
+# 三目运算符高于赋值运算符．
+a = b if c else d
+# 等效于
+a = (b if c else d)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;while循环语句&#34;&gt;&lt;em&gt;while循环语句&lt;/em&gt;&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;while condition:
+    expression
+
+# while执行完会执行else(包括while不执行)，break会跳过else．
+while condition:
+    expression
+else:
+    expression
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;for循环语句&#34;&gt;&lt;em&gt;for循环语句&lt;/em&gt;&lt;/h2&gt;
+&lt;p&gt;for循环可以用于遍历序列，字典的键 和 文件的行，集合，列表解析，生成器表达式.&lt;/p&gt;
+&lt;p&gt;for循环会自动调用迭代器的next()方法，捕获StopIteration异常结束循环．&lt;/p&gt;
+&lt;p&gt;用for迭代可变对象的时候，不应该改变可变对象的元素的值．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;for condition:
+    expression
+
+# for执行完成会执行else, break会跳过else.
+for condition:
+    expression
+else:
+    expression
+
+# 字典有两种写法
+for loop in dic.keys()
+等效于
+for loop in dic
+
+# 文件有两种写法
+for loop in open(&#39;file&#39;, &#39;r&#39;).readlines():
+等效于
+for loop in open(&#39;file&#39;,&#39;r&#39;):
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;iterator迭代器-类型&#34;&gt;&lt;em&gt;iterator迭代器 类型&lt;/em&gt;&lt;/h2&gt;
+&lt;p&gt;Iterable: 能直接用于for循环的对象为可迭代对象Iterable.&lt;/p&gt;
+&lt;p&gt;Iterator: 能被next(g)内置函数调用并不断返回下一个值的对象为迭代器Iterator,迭代完成后抛出StopIteration异常．&lt;/p&gt;
+&lt;p&gt;file，enumerate和reversed内置类类型的工厂函数返回的都是迭代器类型．&lt;/p&gt;
+&lt;p&gt;创建迭代器的3种方法：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 通过内建函数iter()
+iter()
+
+# 通过工厂函数
+file()
+enumerate()
+reversed()
+
+# 自定义类，需要实现 __iter__() 和__next__() 两个方法(python3)
+class TestIterator(object):
+    def __iter__(self):
+        return self
+
+    def __next__(self):
+        if condition:
+            ...
+        else:
+            raise StopIteration()
+
+i = TestIterator()
+type(i) 
+&amp;gt; iterator
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;generator生成器类型&#34;&gt;&lt;em&gt;generator生成器类型&lt;/em&gt;&lt;/h2&gt;
+&lt;p&gt;生成器就是一个迭代器对象，在每次调用next()方法时返回一个值．直到抛出StopIteration异常, 生成器通常用于迭代一个巨大的数据集．&lt;/p&gt;
+&lt;p&gt;generator类类型,是一个迭代器，可以用for循环迭代:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;generator.close() # 在生成器内部抛出GeneratorExit异常要求生成器退出．
+generator.send(arg) # 将值回送给生成器．
+generator.throw(typ[,val[,tb]]) # 在生成器抛出异常
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;创建生成器的两种方法：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;使用列表解析的变种&lt;/p&gt;
+&lt;p&gt;g = (expression for item1 in iterable1 if condition1)
+type(g)&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;generator&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;next(g)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;使用yield关键字&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;有yield的函数返回的就是一个生成器．&lt;/p&gt;
+&lt;p&gt;yield函数能记住上一次返回时在函数体中的位置，迭代生成器会跳转至该函数中间，而且上次调用的所有局部变量保持不变．&lt;/p&gt;
+&lt;p&gt;yield函数和普通函数执行顺序不一样，普通函数顺序执行，遇到return或最后一行语句返回．&lt;/p&gt;
+&lt;p&gt;yield函数遇到yield语句返回，下次执行从上次返回的yield语句开始继续执行．遇到return语句抛出StopIteration异常．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;def gena():
+    yield &#39;first&#39;
+    yield &#39;second&#39;
+
+g = gena()
+type(g) 
+&amp;gt; generator
+
+next(g) # first
+next(g) # second
+next(g) # StopIteration
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;generator-expressions生成器表达式&#34;&gt;&lt;em&gt;generator expressions生成器表达式&lt;/em&gt;&lt;/h3&gt;
+&lt;p&gt;Generator Expressions生成器表达式, 是列表解析的一个扩展．&lt;/p&gt;
+&lt;p&gt;列表解析的缺点就是要迭代整个对象用来创建列表，对大的对象来说性能差.&lt;/p&gt;
+&lt;p&gt;生成器表达式就是结合生成器和列表解析解决这个问题．&lt;/p&gt;
+&lt;p&gt;生成器表达式不必创建完整的列表，而是一边循环一边计算，返回一个生成器对象。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;g = (expression for item1 in iterable1 if condition1)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;python文件和输入输出&#34;&gt;&lt;strong&gt;python文件和输入输出&lt;/strong&gt;&lt;/h1&gt;
+&lt;p&gt;python2使用open()内置函数打开文件，返回file类类型的对象，出错返回IOError异常.&lt;/p&gt;
+&lt;p&gt;file类类型对象是迭代器，同时也是上下文管理器．&lt;/p&gt;
+&lt;p&gt;python3废弃了file类类型，open()内置函数返回IO流．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# python2
+open(name[, mode=&#39;r&#39;[, buffering=-1]])
+
+mode
+r: 读，文件必须存在
+w: 写，文件不存在则创建，否则先清空文件再写入．
+a: 追加，文件存在就追加到文件结尾,否则就创建．
+t: text模式，这个是默认模式．不用指定．
+rb/wb/ab: 二进制读写．
+r+/w+/a+: 以读写模式打开文本文件．
+rb+/wb+/ab+: 以读写模式打开二进制文件．
+U: 提供通用换行符支持，文件必须存在
+
+buffering
+0: 不缓冲
+1: 只缓冲一行数据
+&amp;lt;0: 使用系统默认缓冲机制
+&amp;gt;1: 使用给定值作为缓冲区大小
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;通用换行符UNS:&lt;/p&gt;
+&lt;p&gt;Universal Newline Support.&lt;/p&gt;
+&lt;p&gt;如果是二进制文件读写rb/wb/ab，不会有换行符的问题，如果是文本文件建议用rU/wU/aU来读写.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# UNS会把
+\r\n
+\r
+\n
+# 都被替换为
+\n
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;文件可以使用with上下文管理器，并且迭代文件的行:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;with open(&#39;file&#39;, &#39;rU&#39;) as f:
+    for line in f:
+        ...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;标准文件:&lt;/p&gt;
+&lt;p&gt;系统默认的三个标准文件: sys.stdin, sys.stdout, sys.stderr.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# python2的关键字print会把语句打印到sys.stdout,并默认在语句结尾加换行符.
+print(expression)
+print(expression, end=&#39;&#39;) # 可以避免默认加换行符
+
+# 内置函数input()会从sys.stdin接受输入
+a = input()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;python错误和异常&#34;&gt;&lt;strong&gt;python错误和异常&lt;/strong&gt;&lt;/h1&gt;
+&lt;p&gt;参考内置的错误和异常.&lt;/p&gt;
+&lt;p&gt;BaseException是所有异常的基类． Exception是常规错误的基类.&lt;/p&gt;
+&lt;p&gt;错误和异常的检测和处理：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;try:
+    try_suite
+except Exception0[ as reason]: # reason可以用于在except_suite中打印具体的异常信息，reason是一个Exception0类型的实例．
+    except_suite
+except Exception1[ as reason]: # 可以有多个except用来捕获不同的异常，但是只有一个except会被执行.
+    except_suite
+except (Exception2, Exception3)[ as reason]: # 也可以在一个except中同时检测多个异常．放入一个tuple中. reason是一个实例的元组．
+    except_suite
+except Exception[, reason]: # 可以用Exception来捕获所有异常，而不用区分具体的异常．不推荐用逗号，应该用as代替．
+    except_suite
+[Deprecated] except:    # 不推荐此用法，和上面一个等效
+    except_suite
+...
+else:    # 可选， 没有异常触发except时运行else,　except和else只能运行一个．
+    expression
+finally:    # 可选，无论是否捕捉到异常都会执行的．
+    expression
+
+# 也可以不对异常处理
+try:
+    try_suite
+finally:
+    finally_suite
+
+# 异常的参数
+reason.__clas__.__name__  # 就是异常类的名字
+print(reason) # 打印异常参数．
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;raise触发异常&#34;&gt;&lt;em&gt;raise触发异常&lt;/em&gt;&lt;/h2&gt;
+&lt;p&gt;除了上面捕获解释器触发的异常，用户还可以用raise自己触发异常:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;raise [SomeException [, args [, traceback]]]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;SomeException可以是字符串，内置异常，第三方库异常类，自定义异常类, 或实例.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;raise ExceptionClass[, args[, traceback]] # 类
+raise ExceptionClass(arguments)[, args[, traceback]] # 实例
+raise ExceptionClass, instance # [TODO]
+raise instance # 触发实例异常, raise reason 就是跑出一个ExceptionClass类型的instance.
+raise string # 触发字符串异常
+raise # 重新触发前一个异常，如果之前没有异常触发TypeError.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;自定义异常和错误&#34;&gt;&lt;em&gt;自定义异常和错误&lt;/em&gt;&lt;/h2&gt;
+&lt;p&gt;自定义异常需要继承一个标准异常或者第三方库的异常来实现一个类．&lt;/p&gt;
+&lt;p&gt;通过raise来触发自定义的异常．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;class MyError(Exception/StandardError/Warning):
+    def __init__(self, msg):
+        super(...).__init__(self, ...)
+        ...
+    ...
+
+raise MyError, args
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;assert断言&#34;&gt;&lt;em&gt;assert断言&lt;/em&gt;&lt;/h2&gt;
+&lt;p&gt;断言语句等效assert表达式, 如果断言成功不采取任何措施，否则触发AssertionError异常．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;assert expression[, arguments]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;可以提供一个异常参数和捕获AssertionError异常:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;try:
+    assert expression, &amp;quot;If raise AssertionError, print this message.&amp;quot;
+except AssertionError as e:
+    print(&#39;%s: %s&#39; % (e.__class__.__name__, e))
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;with上下文管理&#34;&gt;&lt;em&gt;with上下文管理&lt;/em&gt;&lt;/h2&gt;
+&lt;p&gt;CMP: context management protocol.&lt;/p&gt;
+&lt;p&gt;with上下文管理仅用于支持上下文管理协议(CMP)的对象．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;with context_expr [as var]:
+    with_suite
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;with语句执行时就执行上下文符号（with和as之间的内容）来获得一个上下文管理器．&lt;/p&gt;
+&lt;p&gt;上下文管理器调用__context__()方法来返回一个上下文对象．&lt;/p&gt;
+&lt;p&gt;上下文对象会调用__enter_()方法完成with语句块执行前的准备工作．返回值赋给as后面的var变量．&lt;/p&gt;
+&lt;p&gt;with语句块执行完毕后调用__exit__()方法，&lt;strong&gt;exit&lt;/strong&gt;()有三个参数，如果没有异常都是None,否则是sys.exc_info()的三个返回值．&lt;/p&gt;
+&lt;p&gt;自定义上下文管理器:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;class CMPTest(object):
+    def __init__(self):
+        pass
+
+    def __enter__(self):
+        ...
+        return self
+
+    def __exit__(self, type, value, traceback):
+        ...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;父类实现了上下文管理协议，子类可以直接使用with.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;python函数&#34;&gt;&lt;strong&gt;python函数&lt;/strong&gt;&lt;/h1&gt;
+&lt;p&gt;定义/申明一个函数:&lt;/p&gt;
+&lt;p&gt;python对函数的申明和定义是一起的．&lt;/p&gt;
+&lt;p&gt;函数必须先定义/申明才能引用/调用.&lt;/p&gt;
+&lt;p&gt;通过关键字def来定义一个函数.&lt;/p&gt;
+&lt;p&gt;def function_name(arguments)
+expression&lt;/p&gt;
+&lt;p&gt;函数引用：&lt;/p&gt;
+&lt;p&gt;引用一个函数名并不会执行函数内容．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function_copy = function_name
+
+# 可以将函数作为参数传给另外一个函数，然后在另外一个函数调用该函数
+def fun_name(arg):
+    print(arg(10))
+fun_name(str)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;函数调用:&lt;/p&gt;
+&lt;p&gt;调用一个函数才会执行函数内容.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function_name(arguments)
+# 可以通过引用的副本来调用函数
+function_copy(args)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;函数的返回值：&lt;/p&gt;
+&lt;p&gt;省略return表示返回None. 单个return表示返回None.其它表示返回一个对象．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;return
+return return_value
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;函数的实参：&lt;/p&gt;
+&lt;p&gt;位置参数，调用的时候通过先后顺序传递的参数,函数定义时需要放在前面．&lt;/p&gt;
+&lt;p&gt;默认参数，在函数定义时就已经初始化的参数，调用时可以不再赋值．&lt;/p&gt;
+&lt;p&gt;默认参数在函数定义时需要放在位置参数的后面．否则抛出SytaxError.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;def function_test(position_args, keyword_args, *args, **kwargs):
+    pass
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;函数的形参：&lt;/p&gt;
+&lt;p&gt;位置参数，在函数调用时根据定义的参数的顺序来传递．&lt;/p&gt;
+&lt;p&gt;默认参数，在函数调用时如果没有传值则使用定义的默认值．&lt;/p&gt;
+&lt;p&gt;关键字参数，在函数调用时，根据定义时的参数名称来传值.&lt;/p&gt;
+&lt;p&gt;非关键字参数的传值不能在关键字参数后面．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;def func_test(arg1, arg2, arg3=&amp;quot;val1&amp;quot;, arg4=&amp;quot;val2&amp;quot;):
+    pass
+func_test(1, 2, 3, 4) # 位置参数
+func_test(1, 2) # 使用默认参数
+func_test(arg2=2, arg1=1) # 关键字传参
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;可变长度参数:&lt;/p&gt;
+&lt;p&gt;当函数参数不确定时，可以使用可变长度参数．&lt;/p&gt;
+&lt;p&gt;一个星号表示一个非关键字参数组成的元组(可以是其它序列，会自动转换成元组)．&lt;/p&gt;
+&lt;p&gt;两个星号表示一个关键字参数组成的字典．&lt;/p&gt;
+&lt;p&gt;函数定义时可变长度参数必须在位置参数和默认参数后面．而且关键字变长参数应该在最后.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;def func_test(position, default=&#39;value&#39;, *args, **kwargs):
+    pass
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;调用可变长度参数时，可以把非关键字变长参数放到一个元组，把关键字变长参数放到一个字典．&lt;/p&gt;
+&lt;p&gt;也可以在元组和字典中放部分参数，另外一部分直接传递, 非关键字参数的传值不能在关键字参数后面．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 注意，函数定义的时候星号是必须的，函数调用的时候也需要星号．
+args = (&#39;val1&#39;, &#39;val2&#39;)
+kwargs = {key1: &#39;val1&#39;, key2: &#39;val2&#39;}
+func_test(&#39;position&#39;, &#39;default&#39;, *args, **kwargs)
+# 部分传递，多出来的非关键字参数属于变长非关键字参数，多出来的关键字参数属于变长关键字参数．
+func_test(&#39;position&#39;, &#39;default&#39;, &#39;non-keyword&#39;, key=&#39;keyword&#39;, *(1,2), **{3: &#39;three&#39;})
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;函数的属性：&lt;/p&gt;
+&lt;p&gt;通过小数点来调用函数的属性．&lt;/p&gt;
+&lt;p&gt;内置函数的特殊属性(BIF)：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;function_test.__doc__
+function_test.__name__
+function_test.__module__ # __builtin__
+function_test.__self__ # None
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;自定义函数的属性(UDF)：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;dir(function_test)
+&#39;__doc__&#39;,
+&#39;__name__&#39;,
+&#39;func_closure&#39;,
+&#39;func_code&#39;,
+&#39;func_defaults&#39;,
+&#39;func_dict&#39;,
+&#39;func_doc&#39;,
+&#39;func_globals&#39;,
+&#39;func_name&#39;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;偏函数:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;from functools import partial
+partial(func, *args, **keywords) # 一个偏函数的类
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;变量作用域:&lt;/p&gt;
+&lt;p&gt;python搜索一个标识符先从局部作用域开始搜索，如果没有找到就在全局作用域找，否则抛出NameError异常．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 当在函数外部和内部都定义了同一个变量，局部变量会覆盖全局变量
+var = &#39;global&#39;
+def func_test(*args, **kwargs):
+    var = &#39;local&#39;
+    print(var)
+func_test() # local
+
+# 如果在函数内部使用一个不在函数内部定义的变量，就会在函数外部查找．
+var = &#39;global&#39;
+def func_test(*args, **kwargs):
+    print(var)
+func_test() # global
+
+# 在函数内部不能修改外部变量,只能引用.
+var = &#39;global&#39;
+def func_test(*args, **kwargs):
+    var += &#39;local&#39;
+    print(var)
+func_test() # UnboundLocalError: local variable &#39;var&#39; referenced before assignment
+
+# 如果需要在局部引用全局变量需要使用global关键字
+var = &#39;global&#39;
+def func(*args, **kwargs):
+    global var
+    var = &#39;local&#39;
+    print(var)
+func() # local
+print(var) # local # 全局变量在局部被修改．
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;lambda匿名函数&#34;&gt;&lt;em&gt;lambda匿名函数&lt;/em&gt;&lt;/h2&gt;
+&lt;p&gt;lambda匿名函数就是一个只有一行表达式，不需要通过def来命名的函数.&lt;/p&gt;
+&lt;p&gt;lambda匿名函数返回一个可调用的函数对象．&lt;/p&gt;
+&lt;p&gt;lambda匿名函数支持通过def定义的函数的所有功能．&lt;/p&gt;
+&lt;p&gt;lambda匿名函数中不能有return语句, expression的结果就是函数返回值．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;lambda [arg1[, arg2, ...argN]]: expression
+lambda *args, **kwargs: expression
+lambda : expression
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;functional-programming函数式编程&#34;&gt;&lt;em&gt;Functional Programming函数式编程&lt;/em&gt;&lt;/h2&gt;
+&lt;p&gt;python涉及到函数式编程主要有几个内置函数和lambda匿名函数．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;filter(function, iterable)
+result = filter(lambda x: x%2==0, [1,2,3,4,5])
+&amp;gt; x=1, 1%2==0 False
+&amp;gt; x=2, 2%2==0, True
+&amp;gt; x=3, 3%2==0, False
+print(list(result))
+&amp;gt; [2]
+
+map(function, iterable, ...)
+result = map(lambda x: x**2, [1,2,3])
+&amp;gt; x=1, x**2 =1
+&amp;gt; x=2, 2**2=4
+&amp;gt; x=3, 3**2=9
+print(list(result))
+&amp;gt; [1,4,9]
+
+from functools import reduce
+reduce(func, iterable[, initializer]) 
+reduce(lambda x,y: x*y, [1,2,3,4]
+&amp;gt; x=1,y=2, x*y=2
+&amp;gt; x=2, y=3, x*y=6
+&amp;gt; x=6, y=4, x*y=24
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;内嵌函数&#34;&gt;&lt;em&gt;内嵌函数&lt;/em&gt;&lt;/h2&gt;
+&lt;p&gt;可以在函数内部定义函数，内部函数不能在外部函数以外的地方调用．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;def outer(*args, **kwargs):
+    expression
+    def inner(arg): # 内嵌函数的参数不能是外部函数的参数．内部函数必须完全独立．
+        expression
+    inner(args)
+
+def outer(*args, **kwargs):
+    filter(lambda arg: expression, sequence)
+    map(lambda arg: expression, sequence)
+    functools.reduce(lambda arg: expression, sequence)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;可以在函数内部内嵌匿名函数，匿名函数可以使用外部函数的参数:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;def foo(x, y):
+    bar = lambda :x + y
+    print(bar())
+foo(4,3)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;递归：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;在函数中调用函数本身是一种递归方法
+def fib(n):
+    if n in[0, 1]:
+        val = 1
+    else:
+        val = fib(n-1) + fib(n-2)
+    return val
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;closure闭包&#34;&gt;&lt;em&gt;closure闭包&lt;/em&gt;&lt;/h2&gt;
+&lt;p&gt;在一个内部函数里对在外部作用域的变量进行引用，内部函数被认为是closure.&lt;/p&gt;
+&lt;p&gt;定义在外部函数内的但由内部函数引用的变量称为自由变量．&lt;/p&gt;
+&lt;p&gt;当自由变量是一个函数时，闭包就是一个装饰器，decorator是closure最常见的应用．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;def outer(free):
+    def clos(*args, **kwargs):
+        print(free)
+        print(args, kwargs)
+    return clos
+
+# 调用外部函数，返回一个内部函数的引用,　传入外部函数的就是自由变量,返回的内部函数就是闭包.
+first_clos = outer(1)
+
+# 调用closure
+first_clos(*args, **kwargs)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;decorator装饰器&#34;&gt;&lt;em&gt;decorator装饰器&lt;/em&gt;&lt;/h2&gt;
+&lt;p&gt;装饰器分为函数(方法)装饰器和类装器．函数中再定义函数是函数装饰器，函数中再定义类是类装饰器．&lt;/p&gt;
+&lt;p&gt;函数装饰器修饰函数和类中的方法，类装饰器修饰类．类装饰器参考OOP．&lt;/p&gt;
+&lt;p&gt;装饰器本质是一个函数，可以让其它函数在不做修改的情况下增加额外的功能．&lt;/p&gt;
+&lt;p&gt;常用于插入日志，性能测试，事务处理，缓存，权限校验等场景．&lt;/p&gt;
+&lt;p&gt;装饰器是用来装饰函数的包装，返回一个修改后的函数对象．将其重新赋值给原来的标识符，并永久失去对原始函数对象的访问．&lt;/p&gt;
+&lt;p&gt;符号@是装饰器的语法糖.&lt;/p&gt;
+&lt;p&gt;不带参数的装饰器：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;def deco_name(func):
+    def wrapper_name(*args, **kwargs): # 抽象出相同的部分进行包装
+        &amp;quot;&amp;quot;&amp;quot;Docs for wrapper_name.&amp;quot;&amp;quot;&amp;quot;
+        print(func.__name__) # 抽象出来的部分在这里实现
+        print(args, kwargs) # 可以引用func传入的参数
+        return func(*args, **kwargs) # 最后调用新增加的功能
+    return wrapper_name # 返回包装函数的引用.
+
+# 增加新功能,装饰后返回包装函数的一个引用,赋值给原来的foo．此时包装函数wrapper_name并不会执行
+@deco_name
+def foo(*args, **kwargs):
+    &amp;quot;&amp;quot;&amp;quot;Docs for foo.&amp;quot;&amp;quot;&amp;quot;
+    print(&#39;call foo&#39;)
+# 等效于
+foo = deco_name(foo)
+
+# 调用装饰后的函数,　调用的是装饰后的新的函数．
+foo(*args, **kwargs)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;带参数的装饰器:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;def deco_name(arg):
+    def deco_inner(func):
+        def wrapper_name(*args, **kwargs):
+            &amp;quot;&amp;quot;&amp;quot;Docs for wrapper_name.&amp;quot;&amp;quot;&amp;quot;
+            print(arg) # 通过装饰器的参数arg来做一些判断
+            print(func.__name__)
+            print(func.__doc__)
+            print(args, kwargs)
+            return func(*args, **kwargs)
+        return wrapper_name
+    return deco_inner
+
+# deco_name(arg)(foo) -&amp;gt; deco_inner(foo) -&amp;gt; wrapper_name
+@deco_name(arg=&amp;quot;value&amp;quot;)
+def foo(*args, **kwargs):
+    &amp;quot;&amp;quot;&amp;quot;Docs for foo.&amp;quot;&amp;quot;&amp;quot;
+    pass
+
+# wrapper_name(*args, **kwargs)
+foo(*args, **kwargs)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;装饰器的属性：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;foo.__name__ #  wrapper_name, 并非foo
+foo.__doc__ # &amp;quot;Docs for wrapper_name.&amp;quot;, 并非foo的doc.
+# 可以通过import functools.wraps来修饰wrapper_name改变这一属性．
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/crazy-canux/python/blob/master/python/psl/myfunctools.py&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/crazy-canux/python/blob/master/python/psl/myfunctools.py&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;多层装饰器：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;@foo
+@bar
+def func(*args, **kwargs):
+    ...
+
+func = foo(bar(func))
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/crazy-canux/python/blob/master/python/decorator/function_decorator.py&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/crazy-canux/python/blob/master/python/decorator/function_decorator.py&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;python模块和包&#34;&gt;&lt;strong&gt;python模块和包&lt;/strong&gt;&lt;/h1&gt;
+&lt;p&gt;名称空间：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;局部名称空间&lt;/li&gt;
+&lt;li&gt;全局名称空间&lt;/li&gt;
+&lt;li&gt;内建名称空间&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;python解释器最先加载内建名称空间，也就是__builtins__模块．&lt;/p&gt;
+&lt;p&gt;然后加载执行模块的全局名称空间，在模块执行时是活动名称空间．&lt;/p&gt;
+&lt;p&gt;最后加载局部名称空间，在执行期间是不断变化的．&lt;/p&gt;
+&lt;p&gt;名称空间和变量的作用域是有区别的．&lt;/p&gt;
+&lt;p&gt;变量／函数／方法先从局部名称空间开始查找，在找全局名称空间，最后查找内建名称空间．&lt;/p&gt;
+&lt;p&gt;如果都没找到就抛出NameError异常．&lt;/p&gt;
+&lt;p&gt;无限制名称空间，可以通过属性运算小数点来指定名称空间．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;module.var
+module.function()
+module.method()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;搜索路径:&lt;/p&gt;
+&lt;p&gt;搜索路径在不同的操作一同一般不同.&lt;/p&gt;
+&lt;p&gt;搜索路径通过两个变量来设置&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;shell的环境变量PYTHONPATH．&lt;/li&gt;
+&lt;li&gt;python解释器的变量sys.path列表里.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;在代码里修改搜索路径sys.path&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;sys.path.append(os.path.abspath(..))&lt;/li&gt;
+&lt;li&gt;sys.path.insert(0, os.path.abspath(..)) # 插入到最前面，也就是在sys.path的第一个&amp;rsquo;&amp;rsquo;(当前路径)的前面．&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;所有导入并加载的模块会存放在sys.modules中，导入模块时的搜索顺序&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;先搜索当前目录.(会覆盖同名的标准库), 其实是在运行过程中动态添加到sys.path中第一个&amp;rsquo;&amp;lsquo;的位置．&lt;/li&gt;
+&lt;li&gt;没有的话再搜索sys.path,按照这个列表的顺序搜索找到第一个，然后加载该模块.&lt;/li&gt;
+&lt;li&gt;没搜到抛出ImportError异常．&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;module模块&#34;&gt;&lt;em&gt;module模块&lt;/em&gt;&lt;/h2&gt;
+&lt;p&gt;模块就是一个python程序的源文件．模块是用来组织python代码的方法．&lt;/p&gt;
+&lt;p&gt;把其他模块中属性附加到你的模块中的操作叫做导入(import).&lt;/p&gt;
+&lt;p&gt;那些自我包含并且有组织的代码片断就是模块( module ).&lt;/p&gt;
+&lt;h2 id=&#34;package&#34;&gt;&lt;em&gt;package&lt;/em&gt;&lt;/h2&gt;
+&lt;p&gt;包就是把多个模块放在一个目录中，然后必须加上__init__.py文件．包是用来组织模块的．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 包支持模糊导入.
+[Deprecated] from package.module import * # 会导入包里面所有的变量，函数，类．
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;在__init__.py导入属性，导入时可以省略模块名：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;robot/__init__.py
+from robot.run import run, run_cli
+
+test.py
+from robot import run, run_cli # 可以省略属性所在的模块名
+run()
+run_cli()
+
+等效:
+test.py
+from robot.run import run, run_cli # 通过包名和模块名直接导入．
+run()
+run_cli()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;在__init__.py定义__all__变量来决定导入哪些属性．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;from robot.run import run, run_cli
+__all__ = [run, run_cli]
+
+from robot import * # 仅仅导入__all__指定的属性
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;import导入模块和包&#34;&gt;&lt;em&gt;import导入模块和包&lt;/em&gt;&lt;/h2&gt;
+&lt;p&gt;如果模块第一次被导入，就会被加载并执行．也就是说模块被加载时顶层的代码会被执行，一般包括全局变量，类和函数的申明．&lt;/p&gt;
+&lt;p&gt;一个模块无论被导入(import)多少次，只在第一次导入时被加载一次．除非用reload()函数．&lt;/p&gt;
+&lt;p&gt;import导入顺序(中间空一格)：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;标准库模块&lt;/li&gt;
+&lt;li&gt;第三方库模块&lt;/li&gt;
+&lt;li&gt;自定义模块&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;import关键字导入模块/包：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import module
+import package
+# 包可以多层嵌套
+import package.subpackage
+import package.subpackage.module
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;from-import关键字导入模块中的属性：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;from module import function/method/variable
+from package.module import function/method/variable
+from package.subpackage.module import function/method/variable
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;from-import关键字导入包中的的包/模块到当前的名称空间：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;from package import subpackage
+from package...subpackage import sub-subpackage
+from package import module
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;as关键字可以给模块/包/属性取别名：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import module/package/package.subpackage as alias
+from module/package.module/package.subpackage.module import function/method/variable as alias
+from package/package.subpackage import module/subpackage/sub-subpackage alias
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;相关的内置函数:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;locals()
+global()
+[Deprecated] reload() # 推荐用from imp import reload(), 重新导入一个已经导入的模块．
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;模块的特殊属性：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;__name__ # 模块的特殊属性
+# 如果模块直接运行，也就是作为top-level脚本运行．值为__main__.
+# 如果作为module,也就是(import/python -m)，值为模块名称.
+# 一般用来做单元测试.
+if __name__ == &amp;quot;__main__&amp;quot;:
+    main()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;pep0328&#34;&gt;&lt;em&gt;PEP0328&lt;/em&gt;&lt;/h1&gt;
+&lt;p&gt;多行导入：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 通过续行符
+from module import a, b, c, \
+    d, e, f
+
+# 通过分成两行导入
+from module import a, b, c
+from module import d, e, f
+
+# PEP328建议使用分组导入
+from module import (a, b, c,
+    d, e, f)
+
+# 不推荐使用模糊导入．
+[Deprecated] from module import *
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;绝对导入：&lt;/p&gt;
+&lt;p&gt;默认采用绝对导入，也就是通过完整的包路径来导入，避免和标准库模块冲突．&lt;/p&gt;
+&lt;p&gt;默认的包路径就是sys.path或PYTHONPATH.&lt;/p&gt;
+&lt;p&gt;只有import没有from的一定是绝对导入．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import package/module
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;相对导入： [TODO]&lt;/p&gt;
+&lt;p&gt;小数点开头表示相对导入，一个小数点表示当前的包，两个小数点表示上一层的包，以此类推．&lt;/p&gt;
+&lt;p&gt;相对导入一定是import-from结构．&lt;/p&gt;
+&lt;p&gt;相对导入的优先级低于绝对导入，也就是先去sys.path中查找，然后根据当前模块的相对位置查找．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;from . import package/module
+from .foo import bar
+from ..foo import bar
+from ...foo import bar
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;python文档&#34;&gt;&lt;strong&gt;python文档&lt;/strong&gt;&lt;/h1&gt;
+&lt;p&gt;文档注释:&lt;/p&gt;
+&lt;p&gt;python的文档注释采用reST风格的注释.&lt;/p&gt;
+&lt;p&gt;包/模块文档:&lt;/p&gt;
+&lt;p&gt;包括作者,版权,模块的信息.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;quot;&amp;quot;&amp;quot;
+File Summary
+
+Copyright
+
+License
+
+:author:
+:version:
+:since:
+
+Description
+&amp;quot;&amp;quot;&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;类/函数/方法文档:&lt;/p&gt;
+&lt;p&gt;包括作用,初始化方法参数和类型,函数和方法的参数和类型,返回类型和抛出异常,以及用法用例.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;quot;&amp;quot;&amp;quot;Summary
+
+:param param1: param1 used for what
+:type param1: param1 type
+:param param2: param2 used for what
+:type param2: param2 type
+...
+:returns param: return what
+:rtype param: return type
+...
+:raise exceptionname: raise what exception
+
+Usage/Description
+&amp;quot;&amp;quot;&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;文档的特殊属性:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;__doc__ # 函数/类/方法的特殊属性，用来表示文档的属性
+# 文档字符串不能被子类继承．
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

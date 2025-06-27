@@ -1,437 +1,1263 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-	<meta name="generator" content="Hugo 0.147.9">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Morgoth - Morgoth</title>
-    <meta name="description" content="">
+<html lang="en-us" dir="ltr">
+    <head>
+	<meta name="generator" content="Hugo 0.147.9"><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Hello World!'>
+<title>Morgoth</title>
+
+<link rel='canonical' href='https://canuxcheng.com/'>
+
+<link rel="stylesheet" href="/scss/style.min.2d59822570c0be136f2ad87c952ef8788ac2a951067adda1c49b253bff7d0292.css"><meta property='og:title' content='Morgoth'>
+<meta property='og:description' content='Hello World!'>
+<meta property='og:url' content='https://canuxcheng.com/'>
+<meta property='og:site_name' content='Morgoth'>
+<meta property='og:type' content='website'><meta property='og:updated_time' content=' 2025-01-10T09:41:39&#43;00:00 '/>
+<meta name="twitter:title" content="Morgoth">
+<meta name="twitter:description" content="Hello World!"><link rel="alternate" type="application/rss&#43;xml" href="https://canuxcheng.com/index.xml">
+    <link rel="shortcut icon" href="favicon.ico" />
+<style>
+    :root {
+        --article-font-family: "Merriweather", var(--base-font-family);
+    }
+</style>
+
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap";
     
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
     
-    <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    
-    
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #f5f5f5;
-            color: #333;
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </head>
+    <body class="">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
         }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        header {
-            background: #fff;
-            padding: 1rem 0;
-            border-bottom: 1px solid #ddd;
-            margin-bottom: 2rem;
-        }
-        nav {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-        }
-        nav a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-        }
-        nav a:hover {
-            color: #007acc;
-        }
-        .site-title {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #007acc;
-        }
-        main {
-            background: #fff;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        .post-meta {
-            color: #666;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-        .post-content h1, .post-content h2, .post-content h3 {
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-        }
-        .post-list {
-            list-style: none;
-            padding: 0;
-        }
-        .post-list li {
-            margin-bottom: 1.5rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid #eee;
-        }
-        .post-list h2 {
-            margin: 0 0 0.5rem 0;
-        }
-        .post-list h2 a {
-            text-decoration: none;
-            color: #333;
-        }
-        .post-list h2 a:hover {
-            color: #007acc;
-        }
-        footer {
-            text-align: center;
-            padding: 2rem 0;
-            color: #666;
-            border-top: 1px solid #ddd;
-            margin-top: 2rem;
-        }
-    </style>
-</head>
-<body>
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
     <header>
-        <div class="container">
-            <nav>
-                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
                 
-                    <a href="/">Home</a>
+                    
+                    
+                    
+                        
+                        <img src="/img/home_hu_ee27fe234e3b32c2.jpg" width="300"
+                            height="400" class="site-logo" loading="lazy" alt="Avatar">
+                    
                 
-                    <a href="/about/">About</a>
+                </a>
                 
-                    <a href="/categories/">Categories</a>
+                    <span class="emoji">🍥</span>
                 
-                    <a href="/tags/">Tags</a>
-                
-                    <a href="/rtfm/">RTFM</a>
-                
-                    <a href="/samuel/">Samuel</a>
-                
-            </nav>
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Morgoth</a></h1>
+            <h2 class="site-description">Hello World!</h2>
         </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='mailto:canuxcheng@163.com'
+                        target="_blank"
+                        title="E-mail"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-messages" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M21 14l-3 -3h-7a1 1 0 0 1 -1 -1v-6a1 1 0 0 1 1 -1h9a1 1 0 0 1 1 1v10" />
+  <path d="M14 15v2a1 1 0 0 1 -1 1h-7l-3 3v-10a1 1 0 0 1 1 -1h2" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/crazy-canux'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/categories/' target="_blank">
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                
+                <span>Categories</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tags/' target="_blank">
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+                
+                <span>Tags</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/rtfm/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                
+                <span>RTFM</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/samuel/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-infinity" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M9.828 9.172a4 4 0 1 0 0 5.656 a10 10 0 0 0 2.172 -2.828a10 10 0 0 1 2.172 -2.828 a4 4 0 1 1 0 5.656a10 10 0 0 1 -2.172 -2.828a10 10 0 0 0 -2.172 -2.828" />
+</svg>
+
+
+
+                
+                <span>Samuel</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https://canuxcheng.com/" selected></option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                <form action="/search/" class="search-form widget" >
+        <p>
+            <label>Search</label>
+            <input name="keyword" required placeholder="Type something..." />
+        
+            <button title="Search">
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="10" cy="10" r="7" />
+  <line x1="21" y1="21" x2="15" y2="15" />
+</svg>
+
+
+
+            </button>
+        </p>
+    </form>
+            
+        
+            
+                <section class="widget tagCloud">
+    <div class="widget-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+    </div>
+    <h2 class="widget-title section-title">Categories</h2>
+
+    <div class="tagCloud-tags">
+        
+            <a href="/categories/devops/" class="font_size_37">
+                DevOps
+            </a>
+        
+            <a href="/categories/cncf/" class="font_size_36">
+                CNCF
+            </a>
+        
+            <a href="/categories/web/" class="font_size_28">
+                Web
+            </a>
+        
+            <a href="/categories/network/" class="font_size_26">
+                Network
+            </a>
+        
+            <a href="/categories/golang/" class="font_size_22">
+                Golang
+            </a>
+        
+            <a href="/categories/python/" class="font_size_22">
+                Python
+            </a>
+        
+            <a href="/categories/linux/" class="font_size_21">
+                Linux
+            </a>
+        
+            <a href="/categories/cloud/" class="font_size_16">
+                Cloud
+            </a>
+        
+            <a href="/categories/security/" class="font_size_16">
+                Security
+            </a>
+        
+            <a href="/categories/django/" class="font_size_13">
+                Django
+            </a>
+        
+            <a href="/categories/windows/" class="font_size_12">
+                Windows
+            </a>
+        
+            <a href="/categories/bigdata/" class="font_size_9">
+                BigData
+            </a>
+        
+            <a href="/categories/database/" class="font_size_9">
+                Database
+            </a>
+        
+            <a href="/categories/storage/" class="font_size_7">
+                Storage
+            </a>
+        
+            <a href="/categories/virtualization/" class="font_size_7">
+                Virtualization
+            </a>
+        
+            <a href="/categories/c/" class="font_size_6">
+                C
+            </a>
+        
+            <a href="/categories/hw/" class="font_size_4">
+                HW
+            </a>
+        
+            <a href="/categories/misc/" class="font_size_4">
+                Misc
+            </a>
+        
+            <a href="/categories/gin/" class="font_size_1">
+                Gin
+            </a>
+        
+    </div>
+</section>
+
+            
+        
+            
+                <section class="widget tagCloud">
+    <div class="widget-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+    </div>
+    <h2 class="widget-title section-title">Tags</h2>
+
+    <div class="tagCloud-tags">
+        
+            <a href="/tags/k8s/" class="font_size_23">
+                K8s
+            </a>
+        
+            <a href="/tags/monitoring/" class="font_size_16">
+                Monitoring
+            </a>
+        
+            <a href="/tags/aws/" class="font_size_11">
+                Aws
+            </a>
+        
+            <a href="/tags/shell/" class="font_size_8">
+                Shell
+            </a>
+        
+            <a href="/tags/capture/" class="font_size_5">
+                Capture
+            </a>
+        
+            <a href="/tags/devops/" class="font_size_5">
+                Devops
+            </a>
+        
+            <a href="/tags/ca/" class="font_size_4">
+                CA
+            </a>
+        
+            <a href="/tags/hadoop/" class="font_size_4">
+                Hadoop
+            </a>
+        
+            <a href="/tags/logging/" class="font_size_4">
+                Logging
+            </a>
+        
+            <a href="/tags/oop/" class="font_size_4">
+                Oop
+            </a>
+        
+            <a href="/tags/package/" class="font_size_4">
+                Package
+            </a>
+        
+            <a href="/tags/admin/" class="font_size_3">
+                Admin
+            </a>
+        
+            <a href="/tags/concurrency/" class="font_size_3">
+                Concurrency
+            </a>
+        
+            <a href="/tags/docker/" class="font_size_3">
+                Docker
+            </a>
+        
+            <a href="/tags/document/" class="font_size_3">
+                Document
+            </a>
+        
+            <a href="/tags/golang/" class="font_size_3">
+                Golang
+            </a>
+        
+            <a href="/tags/misc/" class="font_size_3">
+                Misc
+            </a>
+        
+            <a href="/tags/network/" class="font_size_3">
+                Network
+            </a>
+        
+            <a href="/tags/python/" class="font_size_3">
+                Python
+            </a>
+        
+            <a href="/tags/swarm/" class="font_size_3">
+                Swarm
+            </a>
+        
+            <a href="/tags/test/" class="font_size_3">
+                Test
+            </a>
+        
+            <a href="/tags/testing/" class="font_size_3">
+                Testing
+            </a>
+        
+            <a href="/tags/tracing/" class="font_size_3">
+                Tracing
+            </a>
+        
+            <a href="/tags/web/" class="font_size_3">
+                Web
+            </a>
+        
+            <a href="/tags/builtin/" class="font_size_2">
+                Builtin
+            </a>
+        
+            <a href="/tags/command/" class="font_size_2">
+                Command
+            </a>
+        
+            <a href="/tags/container/" class="font_size_2">
+                Container
+            </a>
+        
+            <a href="/tags/cryptographic/" class="font_size_2">
+                Cryptographic
+            </a>
+        
+            <a href="/tags/data/" class="font_size_2">
+                Data
+            </a>
+        
+            <a href="/tags/debug/" class="font_size_2">
+                Debug
+            </a>
+        
+            <a href="/tags/file/" class="font_size_2">
+                File
+            </a>
+        
+            <a href="/tags/filesystem/" class="font_size_2">
+                Filesystem
+            </a>
+        
+            <a href="/tags/fpga/" class="font_size_2">
+                Fpga
+            </a>
+        
+            <a href="/tags/html/" class="font_size_2">
+                Html
+            </a>
+        
+            <a href="/tags/javascript/" class="font_size_2">
+                Javascript
+            </a>
+        
+            <a href="/tags/math/" class="font_size_2">
+                Math
+            </a>
+        
+            <a href="/tags/multimedia/" class="font_size_2">
+                Multimedia
+            </a>
+        
+            <a href="/tags/oss/" class="font_size_2">
+                Oss
+            </a>
+        
+            <a href="/tags/string/" class="font_size_2">
+                String
+            </a>
+        
+            <a href="/tags/summary/" class="font_size_2">
+                Summary
+            </a>
+        
+            <a href="/tags/system/" class="font_size_2">
+                System
+            </a>
+        
+            <a href="/tags/agile/" class="font_size_1">
+                Agile
+            </a>
+        
+            <a href="/tags/angular/" class="font_size_1">
+                Angular
+            </a>
+        
+            <a href="/tags/ansible/" class="font_size_1">
+                Ansible
+            </a>
+        
+            <a href="/tags/apache/" class="font_size_1">
+                Apache
+            </a>
+        
+            <a href="/tags/arduino/" class="font_size_1">
+                Arduino
+            </a>
+        
+            <a href="/tags/artifactory/" class="font_size_1">
+                Artifactory
+            </a>
+        
+            <a href="/tags/auth/" class="font_size_1">
+                Auth
+            </a>
+        
+            <a href="/tags/bigdata/" class="font_size_1">
+                Bigdata
+            </a>
+        
+            <a href="/tags/bitbake/" class="font_size_1">
+                Bitbake
+            </a>
+        
+    </div>
+</section>
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    
+    
+    
+    
+
+    <section class="article-list">
+        
+            
+<article class="">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/c/" >
+                C
+            </a>
+        
     </header>
     
-    <div class="container">
-        <main>
-            
-<div class="home">
-    <h1>Morgoth</h1>
-    <p></p>
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/c_iso/">ISO</a>
+        </h2>
     
-    <section class="recent-posts">
-        <h2>Recent Posts</h2>
-        <ul class="post-list">
-            
-                <li>
-                    <h2><a href="https://canuxcheng.com/post/regularexpression/">Regular Expression</a></h2>
-                    <div class="post-meta">
-                        <time>April 2, 2016</time>
-                        
-                            
-                                <span class="category">Linux</span>
-                            
-                                <span class="category">Windows</span>
-                            
-                        
-                    </div>
-                    
-                        <p><h1 id="re">RE</h1>
-<p>在线检测：</p>
-<p><a href="https://www.regexpal.com/">https://www.regexpal.com/</a></p>
-<p>RE分为BRE(basic RE), ERE(extended RE), SRE(simpla RE).</p>
-<p>在BRE中+?(){}|没有特殊含义，除非用\转义．</p>
-<p>在ERE中+?(){}被保留有特殊含义，除非用\转义才表示普通字符．</p>
-<p>命令find, grep, sed, awk等都可以使用正则表达式．</p>
-<p>特殊字符含义：</p>
-<pre><code>()      对正则表达式分组, ERE
-\n      再匹配前面的分组n次
+        
+    </div>
 
-.       匹配任意单个字符, 换行符除外
-^tux    匹配以tux开始的行
-tux$    匹配以tux结束的行
-
-*+?{}特殊字符是贪婪匹配模式,也就是尽可能多的匹配
-*           匹配前面一个字符0次或多次，包括前面这个字符本身
-+           匹配前面一个字符1次或多次，包括前面这个字符, ERE
-?           匹配前面一个字符0次或1次，包括前面这个字符, ERE
-{n}         匹配前面一个字符n次，包括前面这个字符, ERE
-{min,}      匹配前面一个字符至少min次，包括前面这个字符, ERE
-{min,max}   匹配前面一个字符至少min次，最多max次，包括前面这个字符, ERE
-
-下面是非贪婪匹配模式
-*?    匹配0个或多个
-+?    匹配1个或多个
-??    匹配０个或１个
-{n}?        只匹配n个
-{min,}?     至少min个
-{min,max}?  至少min个，最多max个
-
-[abc]   匹配包含在[]中的任意一个字符，除了\, ^, -三个特殊字符
-[^abc]  匹配不包含在[]中的任意一个字符(和上面相反)
-[a-z]   匹配[]中指定范围内的任意一个字符
-[abc\?] 用＼转义[]中的特殊字符
-
-|       表示逻辑或, ERE
-
-\       转义字符，将特殊字符转义成普通字符
-
-小括号表示分组
-(...)
-(?...)
-(?iLmsux)
-(?:...)
-(?P&lt;name&gt;...)
-(?P=name)
-(?#...)
-(?=...)
-(?!...)
-(?&lt;=...)
-(?&lt;!...)
-(?(id/name)yes-pattern|no-pattern)
-</code></pre>
-<p>匹配前面一个字符０次，包括前面这个字符，也就是说０次表示不匹配前面这个字符．</p></p>
-                    
-                </li>
-            
-                <li>
-                    <h2><a href="https://canuxcheng.com/post/shell_sed/">Sed</a></h2>
-                    <div class="post-meta">
-                        <time>April 2, 2016</time>
-                        
-                            
-                                <span class="category">Linux</span>
-                            
-                        
-                    </div>
-                    
-                        <p><h1 id="sed">sed</h1>
-<p>sed：stream editor  流编辑器 ，主要用于文本处理。</p>
-<p>sed命令格式：</p>
-<pre><code>sed   -options   ’expression1;expression2’     file           执行多个命令
-sed   -options   [-e ‘expression1’] [-e ‘expression2’]  file  执行多个命令
-sed   -options   [-f   scriptfile]   file                     通过脚本执行命令
-sed   -options   [-f   scriptfile]   file  &gt;  newfile  #sed修改后重定向到新文件。
-</code></pre>
-<p>sed指令需要用单引号包围。使用双引号“”可以传递变量。
-Sed默认并没有修改文件file中的数据。
-sed默认在stdout输出文件的所有行。
-Sed地址需要使用/address/来包围。
-sed使用正则表达式可以用\BRE\包围，如果模式包含/，那么可以使用除了换行符之外的所有字符包围。</p>
-<p>options：</p>
-<pre><code>-e：指定多个命令或脚本
--f：指定执行命令的脚本
--n：阻止自动输出，p可以打印匹配的行。
--i: 直接修改读入的文件的内容.
-</code></pre>
-<p>experssion：</p>
-<pre><code>expression：指令由模式和过程组成。
-[address]/[line-address][!]command[arguments]
-[address]表示地址，一般用模式进行寻址，address缺省表示整个文件寻址，两个地址用，隔开。
-[line-address]表示只能是一个地址。
-[!] 表示不匹配该地址的所有行
-</code></pre>
-<p>Command:</p>
-<p>sed有25个命令。</p>
-<p>使用大括号{}在一个地址中做嵌套操作：例如：</p>
-<pre><code>/address1/,/address2/{
-    /^$/d
-    s/string1/string2/
-    …
-}             // 单独一行，后面不能有空格
-</code></pre>
-<p>s命令：替换，替换模式空间中的行。</p>
-<pre><code>sed '[address]s/oldpattern/newpattern/[flag]' filename
-</code></pre>
-<p>flag:</p></p>
-                    
-                </li>
-            
-                <li>
-                    <h2><a href="https://canuxcheng.com/post/c_iso/">ISO</a></h2>
-                    <div class="post-meta">
-                        <time>April 1, 2016</time>
-                        
-                            
-                                <span class="category">C</span>
-                            
-                        
-                    </div>
-                    
-                        <p><h1 id="c标准库">C标准库</h1>
-<p>ISO C89(ANSI C89) -&gt; ISO C95 -&gt; ISO C99 -&gt;</p>
-<p>-&gt; ISO C11 -&gt; ISO C17 -&gt; ISO C23</p>
-<p>ANSI C 和 ISO C是对通用C语言的接口的定义。</p>
-<p>符合这种标准的实现为C语言标准库,也叫libc。</p>
-<p>官方网站：</p>
-<p><a href="http://www.open-std.org/jtc1/sc22/wg14/www/standards">http://www.open-std.org/jtc1/sc22/wg14/www/standards</a></p>
-<hr>
-<h1 id="c89和c99支持的头文件和函数">C89和C99支持的头文件和函数</h1>
-<h2 id="asserth">&lt;assert.h&gt;</h2>
-<h2 id="ctypeh">&lt;ctype.h&gt;</h2>
-<h2 id="complexh">&lt;complex.h&gt;</h2>
-<h2 id="errnoh">&lt;errno.h&gt;</h2>
-<h2 id="floath">&lt;float.h&gt;</h2>
-<h2 id="fenvh">&lt;fenv.h&gt;</h2>
-<h2 id="inttypeh">&lt;inttype.h&gt;</h2>
-<h2 id="iso646h">&lt;iso646.h&gt;</h2>
-<h2 id="limitsh">&lt;limits.h&gt;</h2>
-<h2 id="localeh">&lt;locale.h&gt;</h2>
-<h2 id="mathh">&lt;math.h&gt;</h2>
-<h2 id="setjmph">&lt;setjmp.h&gt;</h2>
-<h2 id="signalh">&lt;signal.h&gt;</h2>
-<h2 id="stdargh">&lt;stdarg.h&gt;</h2>
-<h2 id="stddefh">&lt;stddef.h&gt;</h2>
-<h2 id="stdioh">&lt;stdio.h&gt;</h2>
-<h2 id="stdlibh">&lt;stdlib.h&gt;</h2>
-<h2 id="stringh">&lt;string.h&gt;</h2>
-<h2 id="stdboolh">&lt;stdbool.h&gt;</h2>
-<h2 id="stdinth">&lt;stdint.h&gt;</h2>
-<h2 id="timeh">&lt;time.h&gt;</h2>
-<h2 id="tgmathh">&lt;tgmath.h&gt;</h2>
-<h2 id="wcharh">&lt;wchar.h&gt;</h2>
-<h2 id="wctypeh">&lt;wctype.h&gt;</h2>
-<hr>
-<h1 id="c11支持的头文件和函数">C11支持的头文件和函数</h1>
-<h2 id="stdalignh">&lt;stdalign.h&gt;</h2>
-<h2 id="stdatomich">&lt;stdatomic.h&gt;</h2>
-<h2 id="threadsh">&lt;threads.h&gt;</h2>
-<hr>
-<h1 id="c标准">C++标准</h1>
-<p>C++98, C++11, C++14, C++17, C++20, C++23</p>
-<p>c++ 头文件不带.h用来和C区分。</p>
-<h2 id="核心功能">核心功能</h2>
-<p><a href="https://zh.cppreference.com/w/cpp/language">https://zh.cppreference.com/w/cpp/language</a></p>
-<h2 id="标准库">标准库</h2>
-<p><a href="https://zh.cppreference.com/w/cpp/standard_library">https://zh.cppreference.com/w/cpp/standard_library</a></p></p>
-                    
-                </li>
-            
-                <li>
-                    <h2><a href="https://canuxcheng.com/post/shell/">Shell</a></h2>
-                    <div class="post-meta">
-                        <time>April 1, 2016</time>
-                        
-                            
-                                <span class="category">Linux</span>
-                            
-                        
-                    </div>
-                    
-                        <p><h1 id="shell">Shell</h1>
-<p>Linux的shell有很多种,大多数linux发行版的默认登录shell是BASH。</p>
-<p>查看当前使用的shell：</p>
-<pre><code>echo $SHELL
-echo $0
-</code></pre>
-<p>查看安装了哪些shell：</p>
-<pre><code>cat /etc/shells
-</code></pre>
-<p>设置登陆shell:</p>
-<pre><code>$chsh -s $(which shellname)
-</code></pre>
-<p>shell分为登陆shell和交互式shell:</p>
-<pre><code># 输出有i的就是交互shell
-$echo $-
-</code></pre>
-<p>非交互登陆shell:</p>
-<ul>
-<li>先运行系统配置文件/etc/profile(调用/etc/bash.bashrc和/etc/profile.d/*.sh)</li>
-<li>然后运行用户配置文件~/.profile(调用~/.bashrc和~/bin)</li>
-<li>最后退出用户登陆~/.bash_logout</li>
-</ul>
-<p>交互非登陆shell:</p>
-<ul>
-<li>先运行/etc/bash.bashrc(调用/etc/bash_completion(调用/etc/bash_completion.d/*.sh))</li>
-<li>然后运行~/.bashrc(调用~/.bash_aliases和~/bash.d和~/bin)</li>
-</ul>
-<hr>
-<h1 id="shell相关项目">shell相关项目</h1>
-<h2 id="bash-it">bash-it</h2>
-<p>大部分发行版默认使用bash,无需额外安装。</p>
-<p>bash的优化项目bash-it：</p>
-<p><a href="https://github.com/Bash-it/bash-it">https://github.com/Bash-it/bash-it</a></p>
-<h2 id="zsh">zsh</h2>
-<p><a href="http://www.zsh.org/">http://www.zsh.org/</a></p>
-<h2 id="oh-my-zsh">oh-my-zsh</h2>
-<p><a href="https://github.com/robbyrussell/oh-my-zsh">https://github.com/robbyrussell/oh-my-zsh</a></p>
-<h2 id="fish-shell">fish-shell</h2>
-<p><a href="https://github.com/fish-shell/fish-shell">https://github.com/fish-shell/fish-shell</a></p>
-<h2 id="oh-my-fish">oh-my-fish</h2>
-<p><a href="https://github.com/oh-my-fish/oh-my-fish">https://github.com/oh-my-fish/oh-my-fish</a></p>
-<h2 id="thefuck">thefuck</h2>
-<p>一个纠正shell命令输错的命令</p>
-<p><a href="https://github.com/nvbn/thefuck">https://github.com/nvbn/thefuck</a></p>
-<h2 id="shellcheck">shellcheck</h2>
-<p>一个debug脚本的工具．</p>
-<p><a href="https://github.com/koalaman/shellcheck">https://github.com/koalaman/shellcheck</a></p>
-<hr>
-<h1 id="shell-script">shell script</h1>
-<p>基本语法</p>
-<pre><code>#!/usr/bin/env bash
-
-command1 &amp;&amp; command2    # 当command1执行成功（返回0)才会执行command2
-command1 || command2    # 当command1执行失败（返回非0)才会执行command2
-</code></pre>
-<h2 id="shell注释">shell注释</h2>
-<p>单行注释：</p>
-<pre><code># comment
-</code></pre>
-<p>多行注释：</p></p>
-                    
-                </li>
-            
-                <li>
-                    <h2><a href="https://canuxcheng.com/post/shell_utils/">Utils</a></h2>
-                    <div class="post-meta">
-                        <time>March 31, 2016</time>
-                        
-                            
-                                <span class="category">Linux</span>
-                            
-                        
-                    </div>
-                    
-                        <p><h1 id="linux的第三方命令">Linux的第三方命令</h1>
-<p>Linux外部命令的项目是coreutils.</p>
-<p>外部命令在coreutils目录中.</p>
-<p>第三方命令(相当于外部命令)．</p>
-<hr>
-<h1 id="文件和目录管理">文件和目录管理</h1>
-<p>autojump:</p>
-<p><a href="https://github.com/wting/autojump">https://github.com/wting/autojump</a></p>
-<p>fasd:</p>
-<p><a href="https://github.com/clvv/fasd">https://github.com/clvv/fasd</a></p>
-<p>fzf:</p>
-<p><a href="https://github.com/junegunn/fzf">https://github.com/junegunn/fzf</a></p>
-<h1 id="压缩备份">压缩备份</h1>
-<h1 id="磁盘管理">磁盘管理</h1>
-<h1 id="设备管理">设备管理</h1>
-<hr></p>
-                    
-                </li>
-            
-        </ul>
-    </section>
     
     
-        <a href="/page/52/">← Previous</a>
     
     
-        <a href="/page/54/">Next →</a>
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Apr 01, 2016</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
     
 </div>
 
-        </main>
-    </div>
+</header>
+</article>
+        
+            
+<article class="">
+    <header class="article-header">
+
+    <div class="article-details">
     
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Morgoth. Designed by Canux</p>
-        </div>
+    <header class="article-category">
+        
+            <a href="/categories/linux/" >
+                Linux
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/shell/">Shell</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Apr 01, 2016</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    3 minute read
+                </time>
+            </div>
+        
     </footer>
-</body>
+    
+
+    
+</div>
+
+</header>
+</article>
+        
+            
+<article class="">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/linux/" >
+                Linux
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/shell_coreutils/">Coreutils</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Mar 31, 2016</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    4 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+</article>
+        
+            
+<article class="">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/linux/" >
+                Linux
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/shell_utils/">Utils</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Mar 31, 2016</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+</article>
+        
+            
+<article class="">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/linux/" >
+                Linux
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/shell_builtins/">Builtins</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Mar 31, 2016</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    1 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+</article>
+        
+    </section>
+    <nav class='pagination'>
+        
+        
+
+        
+            
+                    <a class='page-link' href='/'>1</a>
+                
+            
+            
+                    
+                        
+                        <span class='page-link dots'>&hellip;</span>
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    
+                
+            
+            
+                    <a class='page-link' href='/page/52/'>52</a>
+                
+            
+            
+                <span class='page-link current'>53</span>
+                
+            
+            
+                    <a class='page-link' href='/page/54/'>54</a>
+                
+            
+            
+                    
+                        
+                        <span class='page-link dots'>&hellip;</span>
+                    
+                
+            
+            
+                    <a class='page-link' href='/page/56/'>56</a>
+                
+            
+    </nav>
+
+<footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2013 - 
+        
+        2025 Morgoth
+    </section>
+    
+    <section class="powerby">
+        
+            Designed by Canux <br/>
+        
+    </section>
+</footer>
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
 </html>

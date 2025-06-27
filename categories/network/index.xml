@@ -1,194 +1,2215 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Network on Morgoth</title>
-    <link>https://canuxcheng.com/categories/network/</link>
-    <description>Recent content in Network on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Fri, 23 Apr 2021 22:02:31 +0000</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/categories/network/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>AWS Network</title>
-      <link>https://canuxcheng.com/post/aws_network/</link>
-      <pubDate>Fri, 23 Apr 2021 22:02:31 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/aws_network/</guid>
-      <description>&lt;h1 id=&#34;aws-network&#34;&gt;AWS Network&lt;/h1&gt;&#xA;&lt;h2 id=&#34;vpc&#34;&gt;VPC&lt;/h2&gt;&#xA;&lt;p&gt;Virtual Private Cloud.&lt;/p&gt;&#xA;&lt;p&gt;EC2的私有内部网络.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;subnets&lt;/li&gt;&#xA;&lt;li&gt;route tables&lt;/li&gt;&#xA;&lt;li&gt;internet gateways&lt;/li&gt;&#xA;&lt;li&gt;nat gateways&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;ENI: Elastic network interfaces.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://canuxcheng.com/images/vpc.png&#34;&gt;pic&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;elb&#34;&gt;ELB&lt;/h2&gt;&#xA;&lt;p&gt;ELB: Elastic Load Balancing&lt;/p&gt;&#xA;&lt;p&gt;弹性负载均衡，可以和EC2,ECS和lambda集成.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://aws.amazon.com/cn/elasticloadbalancing/features/&#34;&gt;https://aws.amazon.com/cn/elasticloadbalancing/features/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;支持四种负载均衡器：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Classic Load Balancer(默认)&lt;/li&gt;&#xA;&lt;li&gt;Gateway Load Balancer&lt;/li&gt;&#xA;&lt;li&gt;Application Load Balancer(ALB)&lt;/li&gt;&#xA;&lt;li&gt;Network Load Balancer(NLB)&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://docs.aws.amazon.com/zh_cn/eks/latest/userguide/aws-load-balancer-controller.html&#34;&gt;https://docs.aws.amazon.com/zh_cn/eks/latest/userguide/aws-load-balancer-controller.html&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;可以使用aws默认自带的NLB controller.也可以通过安装aws-load-balancer-controller。推荐后者。&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/kubernetes-sigs/aws-load-balancer-controller&#34;&gt;https://github.com/kubernetes-sigs/aws-load-balancer-controller&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;需要给vpc上的node的subnet打tag:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;kubernetes.io/role/elb: 1&#xA;kubernetes.io/role/internal-elb: 1&#xA;kubernetes.io/cluster/${cluster-name}: owned/shared&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;route-53&#34;&gt;Route 53&lt;/h2&gt;&#xA;&lt;p&gt;DNS服务.&lt;/p&gt;&#xA;&lt;p&gt;在route 53创建托管区(hosted zones)之后，可以在ACM申请证书。&lt;/p&gt;&#xA;&lt;p&gt;申请好了证书，需要在route 53创建记录.&lt;/p&gt;&#xA;&lt;p&gt;可以通过external-DNS 自动同步eks上的service和ingress到dns。&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;aws route53 list-hosted-zones&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;cloudfront&#34;&gt;CloudFront&lt;/h2&gt;&#xA;&lt;p&gt;CDN服务.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;direct-connect&#34;&gt;Direct Connect&lt;/h2&gt;&#xA;&lt;p&gt;提供数据中心和AWS直连。&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>K8S CNI</title>
-      <link>https://canuxcheng.com/post/k8s_cni/</link>
-      <pubDate>Thu, 26 Mar 2020 20:55:52 +0800</pubDate>
-      <guid>https://canuxcheng.com/post/k8s_cni/</guid>
-      <description>&lt;h1 id=&#34;network-add-ons&#34;&gt;Network add-ons&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/containernetworking&#34;&gt;https://github.com/containernetworking&lt;/a&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;flannel&lt;/li&gt;&#xA;&lt;li&gt;cilium&lt;/li&gt;&#xA;&lt;li&gt;calico&lt;/li&gt;&#xA;&lt;li&gt;vpc-cni (aws)&lt;/li&gt;&#xA;&lt;li&gt;kube-router&lt;/li&gt;&#xA;&lt;li&gt;weavenet&lt;/li&gt;&#xA;&lt;li&gt;antrea&lt;/li&gt;&#xA;&lt;li&gt;romana&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;cilium&#34;&gt;cilium&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/cilium/cilium&#34;&gt;https://github.com/cilium/cilium&lt;/a&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;flannel&#34;&gt;Flannel&lt;/h2&gt;&#xA;&lt;p&gt;flannel是k8s最常用的网络插件.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/coreos/flannel&#34;&gt;https://github.com/coreos/flannel&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;在所有node上部署cni-plugin:&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/containernetworking/plugins/releases&#34;&gt;https://github.com/containernetworking/plugins/releases&lt;/a&gt;&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ sudo mkdir -p /opt/cni/bin&#xA;// 下载并解压所有插件命令到该目录.&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;network-addon(master上操作即可):&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ kubectl apply -f https://raw.githubusercontent.com/flannel-io/flannel/master/Documentation/kube-flannel.yml&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;veryfy:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ kubectl get nodes&#xA;$ kubectl get pod --all-namespaces&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;删除插件:&lt;/p&gt;&#xA;&lt;p&gt;删除插件会影响已经部署的pod.&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;// 删除flannel &#xA;$ kubectl delete -f X.yml  &#xA;$ sudo systemctl stop kubelet docker&#xA;&#xA;// 第二步，在node节点清理flannel网络留下的文件&#xA;ifconfig cni0 down&#xA;ip link delete cni0 &#xA;ifconfig flannel.1 down&#xA;ip link delete flannel.1 &#xA;rm -rf /var/lib/cni /etc/cni /run/flannel&#xA;$ sudo rm -rf /var/lib/kubelet /var/lib/etcd&#xA;&#xA;// 重启kubelet&#xA;$ sudo systemctl start kubelet docker&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;修改配置:&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Command</title>
-      <link>https://canuxcheng.com/post/network_command/</link>
-      <pubDate>Sun, 31 Mar 2019 21:51:25 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/network_command/</guid>
-      <description>&lt;h1 id=&#34;network-command&#34;&gt;network command&lt;/h1&gt;&#xA;&lt;p&gt;network related command&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;net-tools&#34;&gt;net-tools&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/ecki/net-tools&#34;&gt;https://github.com/ecki/net-tools&lt;/a&gt;&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ sudo apt-get install net-tools&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h3 id=&#34;ifconfig&#34;&gt;ifconfig&lt;/h3&gt;&#xA;&lt;pre&gt;&lt;code&gt;ifconfig # 查看up的interface&#xA;ifconfig -a  # 查看所有的interface&#xA;ifconfig &amp;lt;bridge&amp;gt;/&amp;lt;interface&amp;gt; up/down&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h3 id=&#34;netstat&#34;&gt;netstat&lt;/h3&gt;&#xA;&lt;pre&gt;&lt;code&gt;netstat&#xA;-a, --all, --listening # 显示所有socket, 默认只显示connected&#xA;-l, --listening  # 显示listening&#xA;-n, --numeric&#xA;-p, --programs # 显示pid或程序名称&#xA;# socket选项:&#xA;-t, --tcp&#xA;-u, --udp&#xA;-w, --raw&#xA;-x, --unix&#xA;--ax25&#xA;--ipx&#xA;--netrom&#xA;&#xA;# 常用&#xA;netstat -anp    # 查看哪些端口是打开的．&#xA;sudo netstat -anp | grep port # 查看端口是否被使用&#xA;sudo netstat -tulnp # 查看tcp&amp;amp;udp端口是否被监听&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h3 id=&#34;arp&#34;&gt;arp&lt;/h3&gt;&#xA;&lt;pre&gt;&lt;code&gt;arp # 用于确定IP地址的网卡物理地址&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h3 id=&#34;rarp&#34;&gt;rarp&lt;/h3&gt;&#xA;&lt;h3 id=&#34;hostname&#34;&gt;hostname&lt;/h3&gt;&#xA;&lt;h3 id=&#34;domainname&#34;&gt;domainname&lt;/h3&gt;&#xA;&lt;h3 id=&#34;dnsdomainname&#34;&gt;dnsdomainname&lt;/h3&gt;&#xA;&lt;h3 id=&#34;route&#34;&gt;route&lt;/h3&gt;&#xA;&lt;p&gt;Flags:&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>HA</title>
-      <link>https://canuxcheng.com/post/ha/</link>
-      <pubDate>Sat, 28 Jul 2018 16:08:54 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/ha/</guid>
-      <description>&lt;h1 id=&#34;haproxy&#34;&gt;HAProxy&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.haproxy.com/&#34;&gt;https://www.haproxy.com/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;安装:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ sudo apt-get install haproxy&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;配置:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ sudo vim /etc/haproxy/haproxy.cfg&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;global:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;    log /dev/log    local0&#xA;    log /dev/log    local1 notice&#xA;    chroot /var/lib/haproxy&#xA;    stats socket /run/haproxy/admin.sock mode 660 level admin expose-fd listeners&#xA;    stats timeout 30s&#xA;    user haproxy&#xA;    group haproxy&#xA;    daemon&#xA;&#xA;    # Default SSL material locations&#xA;    ca-base /etc/ssl/certs&#xA;    crt-base /etc/ssl/private&#xA;&#xA;    # Default ciphers to use on SSL-enabled listening sockets.&#xA;    # For more information, see ciphers(1SSL). This list is from:&#xA;    #  https://hynek.me/articles/hardening-your-web-servers-ssl-ciphers/&#xA;    # An alternative list with additional directives can be obtained from&#xA;    #  https://mozilla.github.io/server-side-tls/ssl-config-generator/?server=haproxy&#xA;    ssl-default-bind-ciphers ECDH+AESGCM:DH+AESGCM:ECDH+AES256:DH+AES256:ECDH+AES128:DH+AES:RSA+AESGCM:RSA+AES:!aNULL:!MD5:!DSS&#xA;    ssl-default-bind-options no-sslv3&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;defaults:&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Restful</title>
-      <link>https://canuxcheng.com/post/rest/</link>
-      <pubDate>Sat, 07 Jul 2018 16:43:15 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/rest/</guid>
-      <description>&lt;h1 id=&#34;rest&#34;&gt;REST&lt;/h1&gt;&#xA;&lt;p&gt;REST: REpresentational State Transfer．&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;restclient&#34;&gt;restclient&lt;/h1&gt;&#xA;&lt;p&gt;一个是firefox的插件．&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/chao/RESTClient&#34;&gt;https://github.com/chao/RESTClient&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;另一个是java开发的application.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/wiztools/rest-client&#34;&gt;https://github.com/wiztools/rest-client&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;postman&#34;&gt;postman&lt;/h1&gt;&#xA;&lt;p&gt;postman是一个application,同时也可以从chrome启动.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/postmanlabs&#34;&gt;https://github.com/postmanlabs&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;soupui&#34;&gt;soupui&lt;/h1&gt;&#xA;&lt;p&gt;一个用于SOAP和REST的application.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/SmartBear/soapui&#34;&gt;https://github.com/SmartBear/soapui&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Webhook</title>
-      <link>https://canuxcheng.com/post/webhook/</link>
-      <pubDate>Sat, 07 Jul 2018 16:43:15 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/webhook/</guid>
-      <description>&lt;h1 id=&#34;webhook&#34;&gt;WebHook&lt;/h1&gt;&#xA;&lt;p&gt;用于server和server之间通讯．&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>WebService</title>
-      <link>https://canuxcheng.com/post/webservice/</link>
-      <pubDate>Sat, 07 Jul 2018 16:43:15 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/webservice/</guid>
-      <description>&lt;h1 id=&#34;webservice&#34;&gt;webservice&lt;/h1&gt;&#xA;&lt;p&gt;webservice用于server和browser之间通讯．&lt;/p&gt;&#xA;&lt;p&gt;webservice是基于http的，无状态的．&lt;/p&gt;&#xA;&lt;p&gt;webservice一般分为soap webservice和http webservice.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;soap&#34;&gt;SOAP&lt;/h1&gt;&#xA;&lt;p&gt;Simple Object Access Protocol, 简单对象访问协议，是一个基于XML的协议．&lt;/p&gt;&#xA;&lt;p&gt;简单来说SOAP的思想就是通过http + XML来在server和browser之间交换信息．&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;soupui&#34;&gt;soupui&lt;/h1&gt;&#xA;&lt;p&gt;一个用于SOAP和REST的application.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/SmartBear/soapui&#34;&gt;https://github.com/SmartBear/soapui&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Dns</title>
-      <link>https://canuxcheng.com/post/dns/</link>
-      <pubDate>Thu, 03 May 2018 14:46:19 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/dns/</guid>
-      <description>&lt;h1 id=&#34;dns&#34;&gt;DNS&lt;/h1&gt;&#xA;&lt;p&gt;Domain Name System: 域名系统&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Swarm CNI</title>
-      <link>https://canuxcheng.com/post/swarm_cni/</link>
-      <pubDate>Thu, 05 Apr 2018 22:02:31 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/swarm_cni/</guid>
-      <description>&lt;h1 id=&#34;cni&#34;&gt;CNI&lt;/h1&gt;&#xA;&lt;p&gt;CNI: Container Network Intarface&lt;/p&gt;&#xA;&lt;h2 id=&#34;单台host上的container通信&#34;&gt;单台host上的container通信&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;none&lt;/li&gt;&#xA;&lt;li&gt;host&lt;/li&gt;&#xA;&lt;li&gt;bridge&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;多台host之间的container通信&#34;&gt;多台host之间的container通信&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;overlay&lt;/li&gt;&#xA;&lt;li&gt;macvlan&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;提供overlaymacvlan的网络服务&#34;&gt;提供overlay/macvlan的网络服务&lt;/h3&gt;&#xA;&lt;p&gt;vxlan encapsulated:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;canal&lt;/li&gt;&#xA;&lt;li&gt;flannel&lt;/li&gt;&#xA;&lt;li&gt;weave&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;bgp unencapsulated:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;calico&lt;/li&gt;&#xA;&lt;li&gt;romana&lt;/li&gt;&#xA;&lt;li&gt;cilium&lt;/li&gt;&#xA;&lt;li&gt;kube-router&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;docker网络管理&#34;&gt;Docker网络管理&lt;/h1&gt;&#xA;&lt;p&gt;查看:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ docker network ls # 查看所有网络&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;默认支持的三种模式:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;# 默认启动的容器都是桥接(docker0)，重启后容器的ip就变了。&#xA;docker run --network bridge  ...&#xA;docker run --network host ... # 容器和主机使用相同的ip&#xA;docker run --network none ... # 容器不会分配局域网的ip&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;创建:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;docker network create -d &amp;lt;driver&amp;gt; ... [name]&#xA;-d/--driver # 默认是bridge, 可选overlay/macvlan&#xA;--subnet  # CIDR格式&#xA;--gateway&#xA;--ip-range&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;使用:&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Websocket</title>
-      <link>https://canuxcheng.com/post/websocket/</link>
-      <pubDate>Tue, 03 Apr 2018 14:46:19 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/websocket/</guid>
-      <description>&lt;h1 id=&#34;websocket&#34;&gt;WebSocket&lt;/h1&gt;&#xA;&lt;p&gt;websocket用于server和browser之间通讯．&lt;/p&gt;&#xA;&lt;p&gt;websocket采用特殊报头，使得浏览器和服务器只需要做一个握手的动作．&lt;/p&gt;&#xA;&lt;p&gt;通讯数据以\x00开头，以\xFF结尾．&lt;/p&gt;&#xA;&lt;p&gt;url:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;ws://&#xA;wss://&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;一个客户端只建立一个tcp连接&lt;/p&gt;&#xA;&lt;p&gt;服务端可以推送/push数据到web客户端&lt;/p&gt;&#xA;&lt;p&gt;有更加亲量级的头，减少数据传送．&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>GSL_network</title>
-      <link>https://canuxcheng.com/post/gsl_network/</link>
-      <pubDate>Mon, 01 Jan 2018 10:49:21 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/gsl_network/</guid>
-      <description>&lt;h1 id=&#34;net&#34;&gt;net&lt;/h1&gt;&#xA;&lt;p&gt;网络IO接口，包括TCP/IP, UDP, SOCKET, DNS&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;import &amp;quot;net&amp;quot;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;constants&#34;&gt;constants&lt;/h2&gt;&#xA;&lt;pre&gt;&lt;code&gt;const (&#xA;    IPv4len = 4&#xA;    IPv6len = 16&#xA;)&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;variables&#34;&gt;variables&lt;/h2&gt;&#xA;&lt;h2 id=&#34;functions&#34;&gt;functions&lt;/h2&gt;&#xA;&lt;h2 id=&#34;addr&#34;&gt;Addr&lt;/h2&gt;&#xA;&lt;p&gt;代表一个网络终端地址．&lt;/p&gt;&#xA;&lt;p&gt;TCPAddr, UDPAddr, IPAddr, UnixAddr 都实现了该接口&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;type Addr interface {&#xA;    Network() string&#xA;    String() string&#xA;}&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;tcpaddr&#34;&gt;TCPAddr&lt;/h2&gt;&#xA;&lt;p&gt;function:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;func ResolveTCPAddr(net, addr string) (*TCPAddr, error)&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;udpaddr&#34;&gt;UDPAddr&lt;/h2&gt;&#xA;&lt;p&gt;function:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;func ResolveUDPAddr(net, addr string) (*UDPAddr, error)&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;ipaddr&#34;&gt;IPAddr&lt;/h2&gt;&#xA;&lt;p&gt;function:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;func ResolveIPAddr(net, addr string) (*IPAddr, error)&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;unixaddr&#34;&gt;UnixAddr&lt;/h2&gt;&#xA;&lt;p&gt;function:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;func ResolveUnixAddr(net, addr string) (*UnixAddr, error)&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;conn&#34;&gt;Conn&lt;/h2&gt;&#xA;&lt;p&gt;该接口代表通用的面向流的网络连接．&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Rabbitmq</title>
-      <link>https://canuxcheng.com/post/rabbitmq/</link>
-      <pubDate>Mon, 25 Sep 2017 09:41:39 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/rabbitmq/</guid>
-      <description>&lt;h1 id=&#34;amqp&#34;&gt;AMQP&lt;/h1&gt;&#xA;&lt;p&gt;AMQP: Advanced Message Queuing Protocol,高级消息队列协议&lt;/p&gt;&#xA;&lt;p&gt;常用的开源AMQP框架：&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/rabbitmq&#34;&gt;https://github.com/rabbitmq&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/apache/kafka&#34;&gt;https://github.com/apache/kafka&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/apache/activemq&#34;&gt;https://github.com/apache/activemq&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;mqtt&#34;&gt;MQTT&lt;/h1&gt;&#xA;&lt;p&gt;MQTT: Message Queuing Telemetry Transport,消息队列遥测传输协议&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;rabbitmq&#34;&gt;Rabbitmq&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/rabbitmq&#34;&gt;https://github.com/rabbitmq&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;RabbitMQ是一个erlang开发的符合AMQP和MQTT的开源项目．&lt;/p&gt;&#xA;&lt;p&gt;rabbitmq-server也叫broker server&lt;/p&gt;&#xA;&lt;p&gt;rabbitmq的三个组件：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;exchange,　交换器，发送消息的实体&lt;/li&gt;&#xA;&lt;li&gt;binding, 绑定器，连接交换器和队列，并且封装消息的路由信息&lt;/li&gt;&#xA;&lt;li&gt;queue,　队列，接受消息的实体&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;workflow:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;producer(publish-message) =&amp;gt;&#xA;&#xA;rabbitmq-server =&amp;gt; exchange -&amp;gt; binding -&amp;gt; queue =&amp;gt;&#xA;&#xA;=&amp;gt; comsumer&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;producer: 生产message并且publish到rabbitmq-server.&lt;/p&gt;&#xA;&lt;p&gt;consumer: 连接到rabbitmq-server并且subscribe一些queue.&lt;/p&gt;&#xA;&lt;p&gt;connection: producer和consumer都是通过tcp连接到rabbitmq-server.&lt;/p&gt;&#xA;&lt;p&gt;channels: 建立在tcp连接中的虚拟连接，用于处理数据流动.&lt;/p&gt;&#xA;&lt;p&gt;queue:　生产者和消费者都应该创建queue.(只能通过exchange接收message)&lt;/p&gt;&#xA;&lt;p&gt;exchanges类型:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;fanout: 所有绑定到此exchange的queue都可以接收消息&lt;/li&gt;&#xA;&lt;li&gt;direct: 通过routingKey和exchange决定的那个唯一的queue可以接收消息&lt;/li&gt;&#xA;&lt;li&gt;topic：所有符合routingKey(此时可以是一个表达式)的routingKey所bind的queue可以接收消息&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;message类型:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;messages: 生产者产生的总消息数．&lt;/li&gt;&#xA;&lt;li&gt;messages_ready: 等待deliver给消费者的消息．&lt;/li&gt;&#xA;&lt;li&gt;messages_unack: 已经被consumer处理，但是没有被ack的消息．&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;virtual hosts: 本质就是一个rabbitmq server,拥有独立的exchange,queue.默认是/(%2F).&lt;/p&gt;&#xA;&lt;p&gt;round-robin dispatch: 循环分发，按顺序分发message到consumer,如果message被consumer正确接收，就会从queue中移除．&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Rpc</title>
-      <link>https://canuxcheng.com/post/rpc/</link>
-      <pubDate>Sun, 03 Sep 2017 14:46:19 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/rpc/</guid>
-      <description>&lt;h1 id=&#34;rpc&#34;&gt;RPC&lt;/h1&gt;&#xA;&lt;p&gt;Remote Procedure Call Protocol: 远程过程调用.&lt;/p&gt;&#xA;&lt;p&gt;google的rpc框架，支持多语言:&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/grpc/grpc&#34;&gt;https://github.com/grpc/grpc&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;facebook的rpc框架，贡献给了apache, 支持多语言:&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/apache/thrift&#34;&gt;https://github.com/apache/thrift&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Smtp</title>
-      <link>https://canuxcheng.com/post/smtp/</link>
-      <pubDate>Wed, 26 Apr 2017 09:56:04 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/smtp/</guid>
-      <description>&lt;h1 id=&#34;email&#34;&gt;Email&lt;/h1&gt;&#xA;&lt;p&gt;MTA: Mail Transfer Agent&lt;/p&gt;&#xA;&lt;p&gt;MUA: Mail User Agent&lt;/p&gt;&#xA;&lt;p&gt;python邮件服务器MTA：smtp协议&lt;/p&gt;&#xA;&lt;p&gt;python客户端MUA：本地协议pop3, 远程协议imap&lt;/p&gt;&#xA;&lt;h2 id=&#34;mailutils&#34;&gt;mailutils:&lt;/h2&gt;&#xA;&lt;p&gt;mailutils默认安装postfix,如果已经安装其它MTA就使用已经安装的．&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ sudo apt-get install mailutils&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;非交互安装mailutils:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;# 这里不用配置任何参数．&#xA;$ sudo debconf-set-selections &amp;lt;&amp;lt;&amp;lt; &amp;quot;postfix postfix/mailname string &amp;quot;&#xA;$ sudo debconf-set-selections &amp;lt;&amp;lt;&amp;lt; &amp;quot;postfix postfix/main_mailer_type string &#39;Internet Site&#39;&amp;quot;&#xA;$ sudo apt-get install -y mailutils&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;测试：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ echo &amp;quot;test mail body&amp;quot; | mail -s &amp;quot;test mail title&amp;quot; canuxcheng@gmail.com&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;sendmail&#34;&gt;sendmail&lt;/h1&gt;&#xA;&lt;p&gt;开源的smtp服务器．&lt;/p&gt;&#xA;&lt;p&gt;安装sendmail:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ sudo apt-get install sendmail&#xA;$ sudo apt-get install sendmail-cf&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;配置：&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Apache</title>
-      <link>https://canuxcheng.com/post/apache/</link>
-      <pubDate>Tue, 27 Sep 2016 03:25:26 +0800</pubDate>
-      <guid>https://canuxcheng.com/post/apache/</guid>
-      <description>&lt;h1 id=&#34;apache&#34;&gt;Apache&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/apache/httpd&#34;&gt;https://github.com/apache/httpd&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://httpd.apache.org/&#34;&gt;http://httpd.apache.org/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;ubuntu/debian：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;sudo aptitude install apache2&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;redhat/centos/fedora:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ sudo yum install httpd2&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;启动服务器：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;service apache2 start&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;启动浏览器查看：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;http://localhost:80&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;apache命令&#34;&gt;apache命令&lt;/h1&gt;&#xA;&lt;p&gt;apache2ctl:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;// 检查配置&#xA;$ apache2ctl configtest&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;a2ensite&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;// 启用一个站点&#xA;$ sudo a2ensite &amp;lt;site&amp;gt;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;a2dissite&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ sudo a2dissite &amp;lt;site&amp;gt;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;a2enmod&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;// 启用一个模块&#xA;$ sudo a2enmod &amp;lt;mod&amp;gt;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;a2dismod&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ sudo a2dismod &amp;lt;mod&amp;gt;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h1 id=&#34;配置&#34;&gt;配置&lt;/h1&gt;&#xA;&lt;p&gt;配置站点site-enable/site.conf:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;&amp;lt;VirtualHost *:8080&amp;gt;&#xA;    ServerAdmin webmaster@localhost&#xA;    DocumentRoot /opt&#xA;&#xA;    # 适合多目录&#xA;    Alias /qa /opt/qa&#xA;    Alias /dev /opt/dev&#xA;&#xA;    ErrorLog ${APACHE_LOG_DIR}/error.log&#xA;    CustomLog ${APACHE_LOG_DIR}/access.log combined&#xA;&amp;lt;/VirtualHost&amp;gt;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;修改权限apache2.conf:&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Http</title>
-      <link>https://canuxcheng.com/post/http/</link>
-      <pubDate>Tue, 13 Sep 2016 01:39:34 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/http/</guid>
-      <description>&lt;h1 id=&#34;httphttps&#34;&gt;HTTP/HTTPS&lt;/h1&gt;&#xA;&lt;p&gt;http port: 80&lt;/p&gt;&#xA;&lt;p&gt;https port: 443&lt;/p&gt;&#xA;&lt;p&gt;http/https的请求方式：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;get # 从服务器取出资源&#xA;post # 在服务器新建资源&#xA;put # 在服务器更新资源，客户端提供改变后的完整资源&#xA;delete # 从服务器删除资源&#xA;patch # 在服务器更新资源，客户端提供改变的属性&#xA;head # 获取资源的源数据&#xA;options # 获取资源的哪些信息是客户端可以改变的信息&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;URL: Uniform Resource Locator&lt;/p&gt;&#xA;&lt;p&gt;URI: Universal Resource Identifier&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;&amp;lt;scheme&amp;gt;://&amp;lt;netloc&amp;gt;/&amp;lt;path&amp;gt;;&amp;lt;params&amp;gt;?&amp;lt;query&amp;gt;#&amp;lt;fragment&amp;gt;&#xA;scheme: http/https/ftp/file&#xA;netloc: username:password@host:port&#xA;path: /path/to/path&#xA;params: options arguments&#xA;query: connector&amp;amp;key-value&#xA;fragment:&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;http命令&#34;&gt;http命令&lt;/h1&gt;&#xA;&lt;h2 id=&#34;curl&#34;&gt;curl&lt;/h2&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ curl [options] [URL...]&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;httpie&#34;&gt;httpie&lt;/h2&gt;&#xA;&lt;p&gt;python开发的类似于curl的命令行工具，同时还有wget的功能．&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/jakubroztocil/httpie&#34;&gt;https://github.com/jakubroztocil/httpie&lt;/a&gt;&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ sudo yum/apt-get install httpie&#xA;&#xA;$ http -a &#39;username:password&#39; GET http://google.com&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;python的http标准库&#34;&gt;python的http标准库&lt;/h1&gt;&#xA;&lt;p&gt;python2的http标准库&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>PSL_Network</title>
-      <link>https://canuxcheng.com/post/psl_network/</link>
-      <pubDate>Fri, 12 Aug 2016 14:21:36 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/psl_network/</guid>
-      <description>&lt;h1 id=&#34;internet-protocols-and-support&#34;&gt;Internet Protocols and Support&lt;/h1&gt;&#xA;&lt;p&gt;socketserver/http/ftp参考&lt;a href=&#34;https://super-devops.readthedocs.io/en/latest/&#34;&gt;https://super-devops.readthedocs.io/en/latest/&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;pop,imap/smtp参考&lt;a href=&#34;https://super-devops.readthedocs.io/en/latest/&#34;&gt;https://super-devops.readthedocs.io/en/latest/&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;h2 id=&#34;urllib&#34;&gt;urllib&lt;/h2&gt;&#xA;&lt;p&gt;urllib.request&lt;/p&gt;&#xA;&lt;p&gt;urllib.respponse&lt;/p&gt;&#xA;&lt;p&gt;urllib.parse&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;from urllib.parse import urlparse&#xA;from urllib.parse import urljoin&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;urllib.error&lt;/p&gt;&#xA;&lt;p&gt;urllib.robotparser&lt;/p&gt;&#xA;&lt;h2 id=&#34;ipaddress&#34;&gt;ipaddress&lt;/h2&gt;&#xA;&lt;h2 id=&#34;webbrowser&#34;&gt;webbrowser&lt;/h2&gt;&#xA;&lt;h2 id=&#34;cgi&#34;&gt;cgi&lt;/h2&gt;&#xA;&lt;h2 id=&#34;cgitb&#34;&gt;cgitb&lt;/h2&gt;&#xA;&lt;h2 id=&#34;wsgiref&#34;&gt;wsgiref&lt;/h2&gt;&#xA;&lt;h2 id=&#34;xmlrpc&#34;&gt;xmlrpc&lt;/h2&gt;&#xA;&lt;h2 id=&#34;socketserver&#34;&gt;socketserver&lt;/h2&gt;&#xA;&lt;h2 id=&#34;nntplib&#34;&gt;nntplib&lt;/h2&gt;&#xA;&lt;p&gt;network news transfer protocol&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;import nntplib&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;telnet&#34;&gt;telnet&lt;/h2&gt;&#xA;&lt;pre&gt;&lt;code&gt;import telnetlib&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;structured-markup-processing-tools&#34;&gt;Structured Markup Processing Tools&lt;/h1&gt;&#xA;&lt;h2 id=&#34;html&#34;&gt;html&lt;/h2&gt;&#xA;&lt;h2 id=&#34;xml&#34;&gt;xml&lt;/h2&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;internet-data-handling&#34;&gt;Internet Data Handling&lt;/h1&gt;&#xA;&lt;h2 id=&#34;json&#34;&gt;json&lt;/h2&gt;&#xA;&lt;p&gt;http api(restful)一般使用json格式的数据．&lt;/p&gt;&#xA;&lt;p&gt;python和json数据类型对应关系参考WEB/JSON.&lt;/p&gt;&#xA;&lt;p&gt;complex和class/def不能被编码.&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;import json&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;classes:&lt;/p&gt;&#xA;&lt;p&gt;functions:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;# 将转换后的json格式写入文件&#xA;dump(obj, fp, skipkeys=False, ensure_ascii=True, check_circular=True, allow_nan=True, cls=None, indent=None, separators=None, encoding=&#39;utf-8&#39;, default=None, sort_keys=False, **kw)&#xA;with open(file, &#39;w&#39;) as f:&#xA;    json.dump(dict_data, f)&#xA;&#xA;# 将dict类型转换成json格式&#xA;dumps(obj, skipkeys=False, ensure_ascii=True, check_circular=True, allow_nan=True, cls=None, indent=None, separators=None, encoding=&#39;utf-8&#39;, default=None, sort_keys=False, **kw)&#xA;json_data = json.dumps(dict_data)&#xA;&#xA;indent=4 # 写入自动缩进４个空格&#xA;&#xA;# 将读出的文件(json格式)转换成dict&#xA;load(fp, encoding=None, cls=None, object_hook=None, parse_float=None, parse_int=None, parse_constant=None, object_pairs_hook=None, **kw)&#xA;with open(file, &#39;r&#39;) as f:&#xA;    dict_data = json.load(f)&#xA;&#xA;# json类型变成dict类型&#xA;loads(s, encoding=None, cls=None, object_hook=None, parse_float=None, parse_int=None, parse_constant=None, object_pairs_hook=None, **kw)&#xA;response_dict = json.loads(response.content) # 使用requests获取的json数据,转化为dict类型&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;base64&#34;&gt;base64&lt;/h2&gt;&#xA;&lt;h2 id=&#34;mailcap&#34;&gt;mailcap&lt;/h2&gt;&#xA;&lt;h2 id=&#34;mailbox&#34;&gt;mailbox&lt;/h2&gt;&#xA;&lt;h2 id=&#34;minetypes&#34;&gt;minetypes&lt;/h2&gt;&#xA;&lt;h2 id=&#34;binhex&#34;&gt;binhex&lt;/h2&gt;&#xA;&lt;h2 id=&#34;binascii&#34;&gt;binascii&lt;/h2&gt;&#xA;&lt;h2 id=&#34;quopri&#34;&gt;quopri&lt;/h2&gt;&#xA;&lt;h2 id=&#34;uu&#34;&gt;uu&lt;/h2&gt;</description>
-    </item>
-    <item>
-      <title>Ftp</title>
-      <link>https://canuxcheng.com/post/ftp/</link>
-      <pubDate>Thu, 28 Jul 2016 16:08:54 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/ftp/</guid>
-      <description>&lt;h1 id=&#34;ftp&#34;&gt;FTP&lt;/h1&gt;&#xA;&lt;p&gt;ftp服务器有很多：&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;vsftpd&lt;/li&gt;&#xA;&lt;li&gt;proftpd&lt;/li&gt;&#xA;&lt;li&gt;pyftpdlib&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;vsftpd&#34;&gt;vsftpd&lt;/h1&gt;&#xA;&lt;p&gt;安装vsftpd:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ sudo apt-get install vsftpd&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;windows开启ftp服务和建立IIS站点即可。&lt;/p&gt;&#xA;&lt;p&gt;linux配置：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ vim /etc/vsftpd.conf&#xA;local_root=/home/canux/FTP&#xA;anon_root=/home/canux/FTP&#xA;local_enable=YES&#xA;anonymous_enable=YES&#xA;chroot_local_user=YES&#xA;$ sudo service vsftpd restart&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;ftp的网页浏览格式：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;ftp://host/path&#xA;ftp://username:password@host:port/path&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;ftp命令&#34;&gt;ftp命令&lt;/h1&gt;&#xA;&lt;h2 id=&#34;ftp-1&#34;&gt;ftp&lt;/h2&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ ftp [-46pinegvd] [host [port]]&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;python的ftp标准库&#34;&gt;python的FTP标准库&lt;/h1&gt;&#xA;&lt;h2 id=&#34;ftplib&#34;&gt;ftplib&lt;/h2&gt;&#xA;&lt;hr&gt;</description>
-    </item>
-    <item>
-      <title>Ldap</title>
-      <link>https://canuxcheng.com/post/ldap/</link>
-      <pubDate>Thu, 28 Jul 2016 16:08:54 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/ldap/</guid>
-      <description>&lt;h1 id=&#34;ldap&#34;&gt;LDAP&lt;/h1&gt;&#xA;&lt;p&gt;LDAP占用tcp和udp的389端口。&lt;/p&gt;&#xA;&lt;p&gt;使用SSL的LDAP占用tcp和udp的636端口。&lt;/p&gt;&#xA;&lt;p&gt;Lightweight Directory Access Protocol.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://www.openldap.org/&#34;&gt;http://www.openldap.org/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;LDAP的windows工具：LDAPSoft LDAP Browser&lt;/p&gt;&#xA;&lt;hr&gt;</description>
-    </item>
-    <item>
-      <title>Nfs</title>
-      <link>https://canuxcheng.com/post/nfs/</link>
-      <pubDate>Thu, 28 Jul 2016 16:08:54 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/nfs/</guid>
-      <description>&lt;h1 id=&#34;nfs&#34;&gt;NFS&lt;/h1&gt;&#xA;&lt;p&gt;NFS: Network File System&lt;/p&gt;&#xA;&lt;p&gt;安装：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;# 在nfs服务器安装nfs服务&#xA;$ sudo apt-get install nfs-kernel-server&#xA;# 添加共享目录并授权&#xA;$ sudo vim /etc/exports&#xA;/home/user/share *(rw,no_root_squash)&#xA;$ sudo service nfs-kernel-server restart&#xA;&#xA;# 在nfs客户端安装nfs客户端&#xA;$ sudo apt-get install nfs-common&#xA;# 自动挂载&#xA;$ sudo vim /etc/fstab&#xA;nfs-server-ip:/home/user/share /home/user1/share nfs auto 0 0&#xA;$ sudo mount -a&#xA;# 手动挂载&#xA;$ sudo mount -t nfs nfs-server-ip:/home/user/share /home/user1/share&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;nfs-server&#34;&gt;nfs-server&lt;/h1&gt;&#xA;&lt;p&gt;配置/etc/exports&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;/etc/exports  文件格式&#xA;&amp;lt;输出目录&amp;gt; [客户端1 选项（访问权限,用户映射,其他）] [客户端2 选项（访问权限,用户映射,其他）]&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h1 id=&#34;nfs-client&#34;&gt;nfs-client&lt;/h1&gt;&#xA;&lt;p&gt;配置/etc/fstab&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Ntp</title>
-      <link>https://canuxcheng.com/post/ntp/</link>
-      <pubDate>Thu, 28 Jul 2016 16:08:54 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/ntp/</guid>
-      <description>&lt;h1 id=&#34;ntp&#34;&gt;NTP&lt;/h1&gt;&#xA;&lt;p&gt;NFS: Network Time Protocol&lt;/p&gt;&#xA;&lt;p&gt;UTC: Coordinated Universal Time, 世界统一时间&lt;/p&gt;&#xA;&lt;p&gt;GMT: Greenwich Mean Time, 格林尼治标准时间, = UTC&lt;/p&gt;&#xA;&lt;p&gt;CET: Central European Time, 欧洲中部时间, = UTC+1, 下令时=UTC+2&lt;/p&gt;&#xA;&lt;p&gt;CST: Chinese Standard Time, 中国标准时间, = UTC+8&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;时区管理&#34;&gt;时区管理&lt;/h1&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ timedatectl list-timezones # 查看所有时区&#xA;$ sudo timedatectl set-timezone Asia/Shanghai # 设置时区&#xA;$ sudo timedatectl set-timezone Etc/UTC&#xA;$ ls -l /etc/localtime # 应该是一个链接&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;ntp-1&#34;&gt;ntp&lt;/h1&gt;&#xA;&lt;p&gt;安装:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ sudo apt-get install ntp&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;ntpdate&#34;&gt;ntpdate&lt;/h2&gt;&#xA;&lt;p&gt;从目标服务器同步.&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;ntpdate -u ip&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;ntpstat&#34;&gt;ntpstat&lt;/h2&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ sudo apt-get install ntpstat&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;chrony&#34;&gt;chrony&lt;/h1&gt;&#xA;&lt;p&gt;ntp的升级版.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Ssh</title>
-      <link>https://canuxcheng.com/post/ssh/</link>
-      <pubDate>Thu, 28 Jul 2016 15:53:34 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/ssh/</guid>
-      <description>&lt;h1 id=&#34;openssh&#34;&gt;OpenSSH&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://www.openssh.com/&#34;&gt;http://www.openssh.com/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;windows上支持ssh协议的客户端：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;putty&lt;/li&gt;&#xA;&lt;li&gt;xshell&lt;/li&gt;&#xA;&lt;li&gt;MobaXterm&lt;/li&gt;&#xA;&lt;li&gt;secureCRT&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;安装：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ sudo apt-get install openssh-server&#xA;$ sudo apt-get install openssh-client&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;ssh命令&#34;&gt;SSH命令&lt;/h1&gt;&#xA;&lt;p&gt;ssh是openssh协议的客户端．&lt;/p&gt;&#xA;&lt;p&gt;远程操作的命令包括ssh, scp, sftp.&lt;/p&gt;&#xA;&lt;p&gt;ssh&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ ssh&#xA;# 远程执行命令需要用双引号，不能用单引号&#xA;$ ssh username@host &amp;quot;command/script&amp;quot;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;scp&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ scp&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;sftp&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ sftp&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;常用选项：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;-C   compression&#xA;# 不需要输入yes来交互, 或者修改/etc/ssh/ssh_config&#xA;-o StrictHostKeyChecking=no&#xA;-o UserKnownHostsFile /dev/null&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;ssh也包括一些密钥管理的命令.&lt;/p&gt;&#xA;&lt;p&gt;ssh-keygen&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ ssh-keygen -t rsa -C &#39;canuxcheng@gmail.com&#39;&#xA;&#xA;# 通过将本机的公钥拷贝到远程机器实现无密码访问．&#xA;# 将本机的public-key拷贝到远程机器的authorized_keys.&#xA;$ ssh-copy-id -i ~/.ssh/id_rsa.pub user@remote&#xA;# 另外的拷贝方法&#xA;$ ssh user@host &amp;quot;cat &amp;gt;&amp;gt; ~/.ssh/authorized_keys&amp;quot; &amp;lt; ~/.ssh/id_rsa.pub&#xA;$ sudo service ssh restart # 需要重启ssh服务&#xA;&#xA;非交互式通过命令行传密码的命令：&#xA;$ sshpass -p [password]&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;ssh-add&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Snmp</title>
-      <link>https://canuxcheng.com/post/snmp/</link>
-      <pubDate>Tue, 26 Apr 2016 09:56:04 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/snmp/</guid>
-      <description>&lt;h1 id=&#34;snmp&#34;&gt;SNMP&lt;/h1&gt;&#xA;&lt;p&gt;Simple Network Management Protocol, 简单网络管理协议&lt;/p&gt;&#xA;&lt;p&gt;MIB&lt;/p&gt;&#xA;&lt;p&gt;SMI&lt;/p&gt;&#xA;&lt;p&gt;安装和配置snmp:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$sudo apt-get install snmp snmpd snmp-mibs-downloader&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;snmp命令&#34;&gt;snmp命令&lt;/h1&gt;&#xA;&lt;hr&gt;</description>
-    </item>
-    <item>
-      <title>Monitoring</title>
-      <link>https://canuxcheng.com/post/network_monitoring/</link>
-      <pubDate>Sun, 03 Apr 2016 14:46:19 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/network_monitoring/</guid>
-      <description>&lt;h1 id=&#34;monitoring&#34;&gt;Monitoring&lt;/h1&gt;&#xA;&lt;p&gt;network usage:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;bytes_sent(out)&#xA;bytes_recv(in)&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;packets:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;packets_sent(out)&#xA;packets_recv(in)&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;error_in/out:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;SELECT non_negative_derivative(mean(&amp;quot;err_in&amp;quot;), 1s) AS &amp;quot;recv&amp;quot;, non_negative_derivative(mean(&amp;quot;err_out&amp;quot;), 1s) AS &amp;quot;send&amp;quot;&#xA;FROM &amp;quot;net&amp;quot;&#xA;WHERE &amp;quot;interface&amp;quot; =~ /^(vlan|eth|ens|bond).*/ AND $timeFilter&#xA;GROUP BY time($__interval), &amp;quot;host&amp;quot;, &amp;quot;interface&amp;quot; fill(none)&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;drop_in/out:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;SELECT non_negative_derivative(mean(&amp;quot;drop_in&amp;quot;), 1s) AS &amp;quot;recv&amp;quot;, non_negative_derivative(mean(&amp;quot;drop_out&amp;quot;), 1s) AS &amp;quot;send&amp;quot;&#xA;FROM &amp;quot;net&amp;quot;&#xA;WHERE &amp;quot;interface&amp;quot; =~ /^(vlan|eth|ens|bond).*/ AND $timeFilter&#xA;GROUP BY time($__interval), &amp;quot;host&amp;quot;, &amp;quot;interface&amp;quot; fill(none)&#xA;&lt;/code&gt;&lt;/pre&gt;</description>
-    </item>
-    <item>
-      <title>Network</title>
-      <link>https://canuxcheng.com/post/network/</link>
-      <pubDate>Sun, 03 Apr 2016 14:46:19 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/network/</guid>
-      <description>&lt;h1 id=&#34;网络基础&#34;&gt;网络基础&lt;/h1&gt;&#xA;&lt;p&gt;小端： 低字节在起始地址，高字节在高地址&lt;/p&gt;&#xA;&lt;p&gt;大端： 高字节在起始地址，低字节在高地址&lt;/p&gt;&#xA;&lt;p&gt;linux一般是小端，unix一般是大端&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.rfc-editor.org/&#34;&gt;https://www.rfc-editor.org/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;网络模型&#34;&gt;网络模型&lt;/h2&gt;&#xA;&lt;p&gt;OSI七层模型:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;应用层&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;表示层&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;会话层&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;传输层&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;网络层&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;链路层&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;物理层&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;TCP/IP四层模型：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;应用层&lt;/li&gt;&#xA;&lt;li&gt;传输层&lt;/li&gt;&#xA;&lt;li&gt;网络层&lt;/li&gt;&#xA;&lt;li&gt;链路层&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;应用层&#34;&gt;应用层&lt;/h3&gt;&#xA;&lt;p&gt;0-1024是系统保留端口, 1024-65535是可用自定义端口&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml&#34;&gt;https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;8443:  tcp/udp - https port&#xA;9443: tcp/udp tungsten-https&#xA;4443: tcp/udp pharos&lt;/p&gt;&#xA;&lt;p&gt;基于TCP的应用层&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;FTP: 21,&#xA;SSH: 22,&#xA;Telnet: 23,&#xA;SMTP: 25,&#xA;DNS: 53,&#xA;HTTP: 80,&#xA;HTTPS: 443,&#xA;POP3: 110,&#xA;POP3 SSL: 995&#xA;IMAP: 143,&#xA;IMAP SSL: 993,&#xA;NNTP: 119,&#xA;NNTP SSL: 563,&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;基于UDP的应用层&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;SMTP: 25,&#xA;DNS: 53,&#xA;DHCP: 67,&#xA;TFTP：69,简单文件传输协议。&#xA;NTP/SNTP: 123,&#xA;SNMP：161,简单网络管理协议。&#xA;SNMPtrap: 162,&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;查看端口&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Samba</title>
-      <link>https://canuxcheng.com/post/samba/</link>
-      <pubDate>Sun, 03 Apr 2016 14:46:19 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/samba/</guid>
-      <description>&lt;h1 id=&#34;smbcifs&#34;&gt;SMB/CIFS&lt;/h1&gt;&#xA;&lt;p&gt;SMB/CIFS占用TCP和UDP的139和445端口。&lt;/p&gt;&#xA;&lt;p&gt;SMB: server message block.&lt;/p&gt;&#xA;&lt;p&gt;CIFS: common internet file system, 是SMB的升级版本。&lt;/p&gt;&#xA;&lt;h1 id=&#34;samba&#34;&gt;Samba&lt;/h1&gt;&#xA;&lt;p&gt;Samba: Linux/Unix上的SBM/CIFS,用于跨平台的共享。&lt;/p&gt;&#xA;&lt;p&gt;安装:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ sudo apt-get insall samba&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;配置：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ vim /etc/samba/smb.conf&#xA;[shared]&#xA;comment = share this folder&#xA;path = /home/canux/Share&#xA;public = yes&#xA;guest ok = yes&#xA;browsable = yes&#xA;writable = no&#xA;read only = yes&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;重启：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ sudo service smbd restart&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;windows访问：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;\\ip\folder&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;linux访问：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;connect to server -&amp;gt; smb://ip/folder&#xA;&lt;/code&gt;&lt;/pre&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Network on Morgoth</title>
+        <link>https://canuxcheng.com/categories/network/</link>
+        <description>Recent content in Network on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Fri, 23 Apr 2021 22:02:31 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/categories/network/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>AWS Network</title>
+        <link>https://canuxcheng.com/post/aws_network/</link>
+        <pubDate>Fri, 23 Apr 2021 22:02:31 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/aws_network/</guid>
+        <description>&lt;h1 id=&#34;aws-network&#34;&gt;AWS Network&lt;/h1&gt;
+&lt;h2 id=&#34;vpc&#34;&gt;VPC&lt;/h2&gt;
+&lt;p&gt;Virtual Private Cloud.&lt;/p&gt;
+&lt;p&gt;EC2的私有内部网络.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;subnets&lt;/li&gt;
+&lt;li&gt;route tables&lt;/li&gt;
+&lt;li&gt;internet gateways&lt;/li&gt;
+&lt;li&gt;nat gateways&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;ENI: Elastic network interfaces.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://canuxcheng.com/images/vpc.png&#34; &gt;pic&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;elb&#34;&gt;ELB&lt;/h2&gt;
+&lt;p&gt;ELB: Elastic Load Balancing&lt;/p&gt;
+&lt;p&gt;弹性负载均衡，可以和EC2,ECS和lambda集成.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://aws.amazon.com/cn/elasticloadbalancing/features/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://aws.amazon.com/cn/elasticloadbalancing/features/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;支持四种负载均衡器：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Classic Load Balancer(默认)&lt;/li&gt;
+&lt;li&gt;Gateway Load Balancer&lt;/li&gt;
+&lt;li&gt;Application Load Balancer(ALB)&lt;/li&gt;
+&lt;li&gt;Network Load Balancer(NLB)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.aws.amazon.com/zh_cn/eks/latest/userguide/aws-load-balancer-controller.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://docs.aws.amazon.com/zh_cn/eks/latest/userguide/aws-load-balancer-controller.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;可以使用aws默认自带的NLB controller.也可以通过安装aws-load-balancer-controller。推荐后者。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/kubernetes-sigs/aws-load-balancer-controller&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/kubernetes-sigs/aws-load-balancer-controller&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;需要给vpc上的node的subnet打tag:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;kubernetes.io/role/elb: 1
+kubernetes.io/role/internal-elb: 1
+kubernetes.io/cluster/${cluster-name}: owned/shared
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;route-53&#34;&gt;Route 53&lt;/h2&gt;
+&lt;p&gt;DNS服务.&lt;/p&gt;
+&lt;p&gt;在route 53创建托管区(hosted zones)之后，可以在ACM申请证书。&lt;/p&gt;
+&lt;p&gt;申请好了证书，需要在route 53创建记录.&lt;/p&gt;
+&lt;p&gt;可以通过external-DNS 自动同步eks上的service和ingress到dns。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;aws route53 list-hosted-zones
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;cloudfront&#34;&gt;CloudFront&lt;/h2&gt;
+&lt;p&gt;CDN服务.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;direct-connect&#34;&gt;Direct Connect&lt;/h2&gt;
+&lt;p&gt;提供数据中心和AWS直连。&lt;/p&gt;
+&lt;h2 id=&#34;global-accelerator&#34;&gt;Global Accelerator&lt;/h2&gt;
+&lt;h2 id=&#34;privatelink&#34;&gt;PrivateLink&lt;/h2&gt;
+&lt;h2 id=&#34;transit-gateway&#34;&gt;Transit Gateway&lt;/h2&gt;
+&lt;h2 id=&#34;vpn&#34;&gt;VPN&lt;/h2&gt;
+</description>
+        </item>
+        <item>
+        <title>K8S CNI</title>
+        <link>https://canuxcheng.com/post/k8s_cni/</link>
+        <pubDate>Thu, 26 Mar 2020 20:55:52 +0800</pubDate>
+        
+        <guid>https://canuxcheng.com/post/k8s_cni/</guid>
+        <description>&lt;h1 id=&#34;network-add-ons&#34;&gt;Network add-ons&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/containernetworking&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/containernetworking&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;flannel&lt;/li&gt;
+&lt;li&gt;cilium&lt;/li&gt;
+&lt;li&gt;calico&lt;/li&gt;
+&lt;li&gt;vpc-cni (aws)&lt;/li&gt;
+&lt;li&gt;kube-router&lt;/li&gt;
+&lt;li&gt;weavenet&lt;/li&gt;
+&lt;li&gt;antrea&lt;/li&gt;
+&lt;li&gt;romana&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;cilium&#34;&gt;cilium&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/cilium/cilium&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/cilium/cilium&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;flannel&#34;&gt;Flannel&lt;/h2&gt;
+&lt;p&gt;flannel是k8s最常用的网络插件.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/coreos/flannel&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/coreos/flannel&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;在所有node上部署cni-plugin:&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/containernetworking/plugins/releases&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/containernetworking/plugins/releases&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo mkdir -p /opt/cni/bin
+// 下载并解压所有插件命令到该目录.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;network-addon(master上操作即可):&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ kubectl apply -f https://raw.githubusercontent.com/flannel-io/flannel/master/Documentation/kube-flannel.yml
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;veryfy:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ kubectl get nodes
+$ kubectl get pod --all-namespaces
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;删除插件:&lt;/p&gt;
+&lt;p&gt;删除插件会影响已经部署的pod.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 删除flannel 
+$ kubectl delete -f X.yml  
+$ sudo systemctl stop kubelet docker
+
+// 第二步，在node节点清理flannel网络留下的文件
+ifconfig cni0 down
+ip link delete cni0 
+ifconfig flannel.1 down
+ip link delete flannel.1 
+rm -rf /var/lib/cni /etc/cni /run/flannel
+$ sudo rm -rf /var/lib/kubelet /var/lib/etcd
+
+// 重启kubelet
+$ sudo systemctl start kubelet docker
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;修改配置:&lt;/p&gt;
+&lt;p&gt;/etc/kube-flannel/net-conf.json&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;{
+  &amp;quot;Network&amp;quot;: &amp;quot;10.244.0.0/16&amp;quot;,
+  &amp;quot;SubnetLen&amp;quot;: 24,
+  &amp;quot;SubnetMin&amp;quot;: &amp;quot;10.244.0.0&amp;quot;,
+  &amp;quot;SubnetMax&amp;quot;: &amp;quot;10.244.255.0&amp;quot;,
+  &amp;quot;Backend&amp;quot;: {
+    &amp;quot;Type&amp;quot;: &amp;quot;vxlan&amp;quot;
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;使用kubeadm：&lt;/p&gt;
+&lt;p&gt;kubeadm init必须指定flannel的Network参数:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;--pod-network-cidr=10.244.0.0/16
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如果需要修改其它参数，同时需要修改kubeadm的配置&lt;/p&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        <item>
+        <title>Command</title>
+        <link>https://canuxcheng.com/post/network_command/</link>
+        <pubDate>Sun, 31 Mar 2019 21:51:25 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/network_command/</guid>
+        <description>&lt;h1 id=&#34;network-command&#34;&gt;network command&lt;/h1&gt;
+&lt;p&gt;network related command&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;net-tools&#34;&gt;net-tools&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/ecki/net-tools&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/ecki/net-tools&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo apt-get install net-tools
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;ifconfig&#34;&gt;ifconfig&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;ifconfig # 查看up的interface
+ifconfig -a  # 查看所有的interface
+ifconfig &amp;lt;bridge&amp;gt;/&amp;lt;interface&amp;gt; up/down
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;netstat&#34;&gt;netstat&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;netstat
+-a, --all, --listening # 显示所有socket, 默认只显示connected
+-l, --listening  # 显示listening
+-n, --numeric
+-p, --programs # 显示pid或程序名称
+# socket选项:
+-t, --tcp
+-u, --udp
+-w, --raw
+-x, --unix
+--ax25
+--ipx
+--netrom
+
+# 常用
+netstat -anp    # 查看哪些端口是打开的．
+sudo netstat -anp | grep port # 查看端口是否被使用
+sudo netstat -tulnp # 查看tcp&amp;amp;udp端口是否被监听
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;arp&#34;&gt;arp&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;arp # 用于确定IP地址的网卡物理地址
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;rarp&#34;&gt;rarp&lt;/h3&gt;
+&lt;h3 id=&#34;hostname&#34;&gt;hostname&lt;/h3&gt;
+&lt;h3 id=&#34;domainname&#34;&gt;domainname&lt;/h3&gt;
+&lt;h3 id=&#34;dnsdomainname&#34;&gt;dnsdomainname&lt;/h3&gt;
+&lt;h3 id=&#34;route&#34;&gt;route&lt;/h3&gt;
+&lt;p&gt;Flags:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;U: route is up&lt;/li&gt;
+&lt;li&gt;H: target is a host&lt;/li&gt;
+&lt;li&gt;G: use gateway&lt;/li&gt;
+&lt;li&gt;!: reject route&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Genmask: netmask for destination net.&lt;/p&gt;
+&lt;p&gt;Metric: 到target距离, hops.&lt;/p&gt;
+&lt;p&gt;Ref: 该路由引用次数&lt;/p&gt;
+&lt;p&gt;Use: 查找路由的次数&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;route -n
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;iputils&#34;&gt;iputils&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/iputils/iputils&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/iputils/iputils&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo apt-get install iputils-ping
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;ping&#34;&gt;ping&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;ping # 用于确定网络的连通性
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;arping&#34;&gt;arping&lt;/h3&gt;
+&lt;h3 id=&#34;tracepath&#34;&gt;tracepath&lt;/h3&gt;
+&lt;h3 id=&#34;clockdiff&#34;&gt;clockdiff&lt;/h3&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;traceroute&#34;&gt;traceroute&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;sudo apt install traceroute
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;tcpdump&#34;&gt;tcpdump&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;sudo apt-get install tcpdump
+
+tcpdump
+
+tcpdump udp port &amp;lt;port&amp;gt; 抓udp 在port端口的包
+tcpdump -i &amp;lt;interface&amp;gt; host &amp;lt;ip&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;ncnetcat&#34;&gt;nc/netcat&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;// 有的系统默认安装netcat-traditional
+$ sudo apt-get install netcat-traditional 
+// 安装netcat-openbsd
+$ sudo apt-get install netcat-openbsd
+// 设置默认值
+$ sudo update-alternatives --config nc
+$ sudo update-alternatives --set nc /bin/nc.openbsd
+
+nc -z IP PORT # 查看指定tcp://ip:port是否监听
+nc -zu IP PORT # 查看udp://ip:port是否监听
+
+// 通过nc监听端口
+nc -l PORT
+
+// 通过nc发送请求.
+echo -e &#39;{&amp;quot;method&amp;quot;:&amp;quot;test&amp;quot;,&amp;quot;params&amp;quot;:[&amp;quot;test&amp;quot;],&amp;quot;id&amp;quot;:1}&#39; | nc IP PORT
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;brctl&#34;&gt;brctl&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo apt-get install bridge-utils
+
+brctl show
+brctl addbr &amp;lt;bridge&amp;gt; # 添加bridge
+brctl delbr &amp;lt;bridge&amp;gt; # 删除bridge
+brctl addif &amp;lt;bridge&amp;gt; &amp;lt;interface&amp;gt; # 绑定interface到bridge
+brctl delif &amp;lt;bridge&amp;gt; &amp;lt;interface&amp;gt; # 删除bridge上的interface
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;iproute2&#34;&gt;iproute2&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/shemminger/iproute2&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/shemminger/iproute2&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo apt-get install iproute2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;ip&#34;&gt;ip&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;ip link show
+
+# 创建vlan
+ip link add link eth1 name eth1.10 type vlan id 10
+# 添加ip
+ip addr add 192.168.100.1/24 brd 192.168.100.255 dev eth1.10
+# 启动vlan
+ip link set dev eth1.10 up
+# 关闭vlan
+ip link set dev eth1.10 down
+# 删除vlan
+ip link delete eth1.10
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;addr/address&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ip addr show
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;route&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ip route show
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;rule&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ip rule show
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;devlink&#34;&gt;devlink&lt;/h3&gt;
+&lt;h3 id=&#34;ifstat&#34;&gt;ifstat&lt;/h3&gt;
+&lt;h3 id=&#34;bridge&#34;&gt;bridge&lt;/h3&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;dnsutils&#34;&gt;dnsutils&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;sudo apt-get install dnsutils
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;nslookup&#34;&gt;nslookup&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;nslookup # 查询IP地址和对应的域名
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;dig&#34;&gt;dig&lt;/h3&gt;
+&lt;h3 id=&#34;nsupdate&#34;&gt;nsupdate&lt;/h3&gt;
+&lt;h3 id=&#34;delv&#34;&gt;delv&lt;/h3&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;ethtool&#34;&gt;ethtool&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;sudo apt-get install ethtool
+
+ethtool # 查询网络设备信息
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;iftop&#34;&gt;iftop&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://www.ex-parrot.com/~pdw/iftop/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://www.ex-parrot.com/~pdw/iftop/&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo apt-get install iftop
+
+sudo iftop
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;wget&#34;&gt;wget&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;wget [option] [URL]
+
+-a, --append-output=FILE 输出重定向到日志
+-o, --output-file=FILE
+-q, --quiet    不输出
+-b, --background
+-nv, --no-verbose
+--header &amp;quot;authorization:c2FuZGJveDpTMG5pY3dhbGwK&amp;quot;
+
+-t, --tries=NUMBER    超时重连次数, 0表示不限制, 默认20
+-nc, --no-clobber    不覆盖原有文件
+-N, --timestamping   只下载比本地新的文件
+-c, --continue    断点续传,会覆盖-N
+-T, --timeout=SECONDS    超时时间, 默认900s
+-w, --wait=SECONDS    重连之间的等待时间
+-O, --output-document=FILE, 重命名下载文件
+
+-nH, --no-host-directories 不创建站点的根目录
+-x, --force-directories    创建和服务器一样的结构下载
+-P, --directory-prefix=PREFIX  指定下载的目录
+
+-R,  --reject=LIST 排除下载的文件
+-r, --recursive  迭代下载
+-np, --no-parent 不下载父目录的内容
+
+# 同步目录
+wget -Nc -r -np -nH --cut-dirs=3 -R &amp;quot;index.*, *.js, *.css, *.html, *.jpg, *.png, *.gif&amp;quot; -P /path/to/source/ http://host/path/to/dest/
+
+# ssl + basic auth
+wget --no-check-certificate --user &amp;lt;user&amp;gt; --password &amp;lt;pw&amp;gt; -nv -N -P &amp;lt;dest-folder&amp;gt; &amp;lt;src-url&amp;gt;
+
+$ wget -q -N -P /folder url
+$ wget -q -c -O /path/to/file.ext url
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;curl&#34;&gt;curl&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;curl
+-X/--request post/patch/delte/get/...
+-H/--header &#39;content-type: application/json&#39;
+-d/--data &#39;{&amp;quot;key&amp;quot;: &amp;quot;value&amp;quot;}&#39;
+--data-raw DATA  HTTP POST data, &#39;@&#39; allowed (H)
+--data-ascii DATA  HTTP POST ASCII data (H)
+--data-binary DATA  HTTP POST binary data (H)
+--data-urlencode DATA  HTTP POST data url encoded (H)
+-G, --get           Send the -d data with a HTTP GET (H)
+-k/--insecure    ignore ssl check.
+-u/--user &amp;lt;user:password&amp;gt;
+-s/--silent        Silent mode
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
+        <item>
+        <title>HA</title>
+        <link>https://canuxcheng.com/post/ha/</link>
+        <pubDate>Sat, 28 Jul 2018 16:08:54 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/ha/</guid>
+        <description>&lt;h1 id=&#34;haproxy&#34;&gt;HAProxy&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.haproxy.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.haproxy.com/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;安装:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo apt-get install haproxy
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;配置:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo vim /etc/haproxy/haproxy.cfg
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;global:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    log /dev/log    local0
+    log /dev/log    local1 notice
+    chroot /var/lib/haproxy
+    stats socket /run/haproxy/admin.sock mode 660 level admin expose-fd listeners
+    stats timeout 30s
+    user haproxy
+    group haproxy
+    daemon
+
+    # Default SSL material locations
+    ca-base /etc/ssl/certs
+    crt-base /etc/ssl/private
+
+    # Default ciphers to use on SSL-enabled listening sockets.
+    # For more information, see ciphers(1SSL). This list is from:
+    #  https://hynek.me/articles/hardening-your-web-servers-ssl-ciphers/
+    # An alternative list with additional directives can be obtained from
+    #  https://mozilla.github.io/server-side-tls/ssl-config-generator/?server=haproxy
+    ssl-default-bind-ciphers ECDH+AESGCM:DH+AESGCM:ECDH+AES256:DH+AES256:ECDH+AES128:DH+AES:RSA+AESGCM:RSA+AES:!aNULL:!MD5:!DSS
+    ssl-default-bind-options no-sslv3
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;defaults:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    log     global
+    mode    http
+    option  httplog
+    option  dontlognull
+    timeout connect 5000
+    timeout client  50000
+    timeout server  50000
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;frontend:&lt;/p&gt;
+&lt;p&gt;backend:&lt;/p&gt;
+&lt;p&gt;listen:&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;keepalived&#34;&gt;Keepalived&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.keepalived.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.keepalived.org/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;安装:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo apt-get install keepalived
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;配置:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo vim /etc/keepalived/keepalived.conf
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
+        <item>
+        <title>Restful</title>
+        <link>https://canuxcheng.com/post/rest/</link>
+        <pubDate>Sat, 07 Jul 2018 16:43:15 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/rest/</guid>
+        <description>&lt;h1 id=&#34;rest&#34;&gt;REST&lt;/h1&gt;
+&lt;p&gt;REST: REpresentational State Transfer．&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;restclient&#34;&gt;restclient&lt;/h1&gt;
+&lt;p&gt;一个是firefox的插件．&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/chao/RESTClient&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/chao/RESTClient&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;另一个是java开发的application.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/wiztools/rest-client&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/wiztools/rest-client&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;postman&#34;&gt;postman&lt;/h1&gt;
+&lt;p&gt;postman是一个application,同时也可以从chrome启动.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/postmanlabs&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/postmanlabs&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;soupui&#34;&gt;soupui&lt;/h1&gt;
+&lt;p&gt;一个用于SOAP和REST的application.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/SmartBear/soapui&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/SmartBear/soapui&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Webhook</title>
+        <link>https://canuxcheng.com/post/webhook/</link>
+        <pubDate>Sat, 07 Jul 2018 16:43:15 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/webhook/</guid>
+        <description>&lt;h1 id=&#34;webhook&#34;&gt;WebHook&lt;/h1&gt;
+&lt;p&gt;用于server和server之间通讯．&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>WebService</title>
+        <link>https://canuxcheng.com/post/webservice/</link>
+        <pubDate>Sat, 07 Jul 2018 16:43:15 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/webservice/</guid>
+        <description>&lt;h1 id=&#34;webservice&#34;&gt;webservice&lt;/h1&gt;
+&lt;p&gt;webservice用于server和browser之间通讯．&lt;/p&gt;
+&lt;p&gt;webservice是基于http的，无状态的．&lt;/p&gt;
+&lt;p&gt;webservice一般分为soap webservice和http webservice.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;soap&#34;&gt;SOAP&lt;/h1&gt;
+&lt;p&gt;Simple Object Access Protocol, 简单对象访问协议，是一个基于XML的协议．&lt;/p&gt;
+&lt;p&gt;简单来说SOAP的思想就是通过http + XML来在server和browser之间交换信息．&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;soupui&#34;&gt;soupui&lt;/h1&gt;
+&lt;p&gt;一个用于SOAP和REST的application.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/SmartBear/soapui&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/SmartBear/soapui&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Dns</title>
+        <link>https://canuxcheng.com/post/dns/</link>
+        <pubDate>Thu, 03 May 2018 14:46:19 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/dns/</guid>
+        <description>&lt;h1 id=&#34;dns&#34;&gt;DNS&lt;/h1&gt;
+&lt;p&gt;Domain Name System: 域名系统&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Swarm CNI</title>
+        <link>https://canuxcheng.com/post/swarm_cni/</link>
+        <pubDate>Thu, 05 Apr 2018 22:02:31 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/swarm_cni/</guid>
+        <description>&lt;h1 id=&#34;cni&#34;&gt;CNI&lt;/h1&gt;
+&lt;p&gt;CNI: Container Network Intarface&lt;/p&gt;
+&lt;h2 id=&#34;单台host上的container通信&#34;&gt;单台host上的container通信&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;none&lt;/li&gt;
+&lt;li&gt;host&lt;/li&gt;
+&lt;li&gt;bridge&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;多台host之间的container通信&#34;&gt;多台host之间的container通信&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;overlay&lt;/li&gt;
+&lt;li&gt;macvlan&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;提供overlaymacvlan的网络服务&#34;&gt;提供overlay/macvlan的网络服务&lt;/h3&gt;
+&lt;p&gt;vxlan encapsulated:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;canal&lt;/li&gt;
+&lt;li&gt;flannel&lt;/li&gt;
+&lt;li&gt;weave&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;bgp unencapsulated:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;calico&lt;/li&gt;
+&lt;li&gt;romana&lt;/li&gt;
+&lt;li&gt;cilium&lt;/li&gt;
+&lt;li&gt;kube-router&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;docker网络管理&#34;&gt;Docker网络管理&lt;/h1&gt;
+&lt;p&gt;查看:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ docker network ls # 查看所有网络
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;默认支持的三种模式:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 默认启动的容器都是桥接(docker0)，重启后容器的ip就变了。
+docker run --network bridge  ...
+docker run --network host ... # 容器和主机使用相同的ip
+docker run --network none ... # 容器不会分配局域网的ip
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;创建:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker network create -d &amp;lt;driver&amp;gt; ... [name]
+-d/--driver # 默认是bridge, 可选overlay/macvlan
+--subnet  # CIDR格式
+--gateway
+--ip-range
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;使用:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ docker network connect [OPTIONS] NETWORK CONTAINER
+$ docker network disconnect [OPTIONS] NETWORK CONTAINER
+$ docker run --network [name] --name [container-name] [image:tag]
+
+# 使用自定义bridge网络并指定IP:
+docker run --network [name] --ip [ip] ...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;opt可用的参数:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;com.docker.network.bridge.name # bridge名字
+com.docker.network.bridge.enable_ip_masquerade # iptables:nat, 容器访问外网.
+com.docker.network.bridge.enable_icc # iptables:filter, 同一网段容器相互访问.
+com.docker.network.bridge.host_binding_ipv4
+com.docker.network.driver.mtu
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;bridge网络&#34;&gt;bridge网络&lt;/h1&gt;
+&lt;p&gt;bridge网络不能跨主机通信(单网卡情况下), node1上的container不能通过container-hostname/ip访问node2上的container.&lt;/p&gt;
+&lt;p&gt;主要用于container访问host并通过host访问外部网络，container能通过ip访问host和局域网中的其他node,或者通过node访问外网。&lt;/p&gt;
+&lt;p&gt;host或局域网中的其它机器能通过container-ip(bridge网络)访问container.&lt;/p&gt;
+&lt;p&gt;创建:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ docker network create -d bridge ... [name]
+
+$ docker network create --driver=bridge --gateway=192.168.1.1 --subnet=192.168.1.0/24 --opt com.docker.network.bridge.name=br0 br0
+
+// 定制docker_gwbridge网络
+$ docker network create --subnet 172.26.0.0/16 --ip-range 172.26.0.0/16 --gateway 172.26.0.1 \ 
+--opt com.docker.network.bridge.name=docker_gwbridge \
+--opt com.docker.network.bridge.enable_icc=true \ 
+--opt com.docker.network.bridge.enable_ip_masquerade=true \ 
+docker_gwbridge
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;docker0:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// dockerd 自动的默认bridge网络，不推荐用于production.
+
+1. 删除docker0:
+
+// 停止
+$ ip link set dev docker0 down
+$ ifconfig docker0 down
+
+// 删除
+$ ip link delete docker0
+$ brctl delbr docker0
+
+2. 修改默认网络:
+$ vim /etc/docker/daemon.json
+{
+    &amp;quot;bip&amp;quot;: &amp;quot;192.168.1.5/24&amp;quot;,
+    &amp;quot;fixed-cidr&amp;quot;: &amp;quot;192.168.1.5/25&amp;quot;,
+    &amp;quot;fixed-cidr-v6&amp;quot;: &amp;quot;2001:db8::/64&amp;quot;,
+    &amp;quot;mtu&amp;quot;: 1500,
+    &amp;quot;default-gateway&amp;quot;: &amp;quot;10.20.1.1&amp;quot;,
+    &amp;quot;default-gateway-v6&amp;quot;: &amp;quot;2001:db8:abcd::89&amp;quot;,
+    &amp;quot;dns&amp;quot;: [&amp;quot;10.20.1.2&amp;quot;,&amp;quot;10.20.1.3&amp;quot;]
+}
+$ service docker restart
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;overlay网络&#34;&gt;overlay网络&lt;/h1&gt;
+&lt;p&gt;overlay网络可以实现容器之间的跨主机通信.&lt;/p&gt;
+&lt;p&gt;container通过overlay网络实现通信.container能通过service-name/container-ip访问其它container。&lt;/p&gt;
+&lt;p&gt;局域网中的node 既不能通过container-servicename也不能通过container-ip(overlay的ip)访问container, 也就是说外部服务只能通过expose port来访问container.&lt;/p&gt;
+&lt;p&gt;创建:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ docker network create -d overlay ... [name]
+
+$ docker network create --attachable --driver=overlay --gateway=172.27.0.1 --subnet=172.27.0.0/24 --ip-range=172.27.0.0/24 --opt com.docker.network.bridge.name=ol0 ol0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;macvlan&#34;&gt;macvlan&lt;/h1&gt;
+&lt;p&gt;macvlan不仅支持在interface上创建，还支持sub-interface(vlan).&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ip link set eth1 promisc on  |  
+ifconfig eth1 promisc 
+
+docker network create -d macvlan --subnet=192.168.100.0/24 --gateway=192.168.100.1 -o parent=eth1 lan0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        <item>
+        <title>Websocket</title>
+        <link>https://canuxcheng.com/post/websocket/</link>
+        <pubDate>Tue, 03 Apr 2018 14:46:19 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/websocket/</guid>
+        <description>&lt;h1 id=&#34;websocket&#34;&gt;WebSocket&lt;/h1&gt;
+&lt;p&gt;websocket用于server和browser之间通讯．&lt;/p&gt;
+&lt;p&gt;websocket采用特殊报头，使得浏览器和服务器只需要做一个握手的动作．&lt;/p&gt;
+&lt;p&gt;通讯数据以\x00开头，以\xFF结尾．&lt;/p&gt;
+&lt;p&gt;url:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ws://
+wss://
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;一个客户端只建立一个tcp连接&lt;/p&gt;
+&lt;p&gt;服务端可以推送/push数据到web客户端&lt;/p&gt;
+&lt;p&gt;有更加亲量级的头，减少数据传送．&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>GSL_network</title>
+        <link>https://canuxcheng.com/post/gsl_network/</link>
+        <pubDate>Mon, 01 Jan 2018 10:49:21 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/gsl_network/</guid>
+        <description>&lt;h1 id=&#34;net&#34;&gt;net&lt;/h1&gt;
+&lt;p&gt;网络IO接口，包括TCP/IP, UDP, SOCKET, DNS&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import &amp;quot;net&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;constants&#34;&gt;constants&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;const (
+    IPv4len = 4
+    IPv6len = 16
+)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;variables&#34;&gt;variables&lt;/h2&gt;
+&lt;h2 id=&#34;functions&#34;&gt;functions&lt;/h2&gt;
+&lt;h2 id=&#34;addr&#34;&gt;Addr&lt;/h2&gt;
+&lt;p&gt;代表一个网络终端地址．&lt;/p&gt;
+&lt;p&gt;TCPAddr, UDPAddr, IPAddr, UnixAddr 都实现了该接口&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type Addr interface {
+    Network() string
+    String() string
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;tcpaddr&#34;&gt;TCPAddr&lt;/h2&gt;
+&lt;p&gt;function:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;func ResolveTCPAddr(net, addr string) (*TCPAddr, error)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;udpaddr&#34;&gt;UDPAddr&lt;/h2&gt;
+&lt;p&gt;function:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;func ResolveUDPAddr(net, addr string) (*UDPAddr, error)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;ipaddr&#34;&gt;IPAddr&lt;/h2&gt;
+&lt;p&gt;function:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;func ResolveIPAddr(net, addr string) (*IPAddr, error)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;unixaddr&#34;&gt;UnixAddr&lt;/h2&gt;
+&lt;p&gt;function:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;func ResolveUnixAddr(net, addr string) (*UnixAddr, error)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;conn&#34;&gt;Conn&lt;/h2&gt;
+&lt;p&gt;该接口代表通用的面向流的网络连接．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type Conn interface {
+    Read()
+    Write()
+    Close()
+    LocalAddr()
+    RemoteAddr()
+    SetDeadline()
+    SetReadDeadline()
+    setWriteDeadline()
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;function:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// tcp: &amp;quot;tcp&amp;quot;、&amp;quot;tcp4&amp;quot;、&amp;quot;tcp6&amp;quot;、
+// unix: &amp;quot;unix&amp;quot;, &amp;quot;unixpacket&amp;quot;
+// unix: &amp;quot;unixgramh&amp;quot;
+// udp: &amp;quot;udp&amp;quot;、&amp;quot;udp4&amp;quot;、&amp;quot;udp6&amp;quot;、
+// ip: &amp;quot;ip&amp;quot;、&amp;quot;ip4&amp;quot;、&amp;quot;ip6&amp;quot;、
+func Dail(network, address string) (Conn, error)
+
+func DialTimeout(network, address string, timeout time.Duration) (Conn, error)
+
+func Pipe() (Conn, Conn)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;packetconn&#34;&gt;PacketConn&lt;/h2&gt;
+&lt;p&gt;该接口代表通用的面向数据包的网络连接．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type PacketConn interface {
+    ReadDrom()
+    WriteTo()
+    Close()
+    LocalAddr()
+    SetDeadline()
+    SetReadDeadline()
+    SetWriteDeadline()
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;function:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// ip: &amp;quot;ip&amp;quot;、&amp;quot;ip4&amp;quot;、&amp;quot;ip6&amp;quot;、
+// udp: &amp;quot;udp&amp;quot;、&amp;quot;udp4&amp;quot;、&amp;quot;udp6&amp;quot;、
+// unix: &amp;quot;unixgram&amp;quot;
+func ListenPacket(net, laddr string) (PacketConn, error)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;listener&#34;&gt;Listener&lt;/h2&gt;
+&lt;p&gt;通用的面向流的网络协议的公用的网络监听接口．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type Listener interface {
+    Addr() addr
+    Accept() (c Conn, err error)
+    Close() error
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;function:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// tcp: &amp;quot;tcp&amp;quot;、&amp;quot;tcp4&amp;quot;、&amp;quot;tcp6&amp;quot;、
+// unix: &amp;quot;unix&amp;quot;, &amp;quot;unixpacket&amp;quot;
+func Listen(net, laddr string) (Listener, error)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;ipconn&#34;&gt;IPConn&lt;/h2&gt;
+&lt;p&gt;实现了Conn和PacketConn接口．&lt;/p&gt;
+&lt;p&gt;function:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;func DilIP(netProto string, laddr, raddr *IPAddr) (*IPConn, error)
+func ListenIP(netProto string, laddr *IPAddr) (*IPConn, error)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;method:&lt;/p&gt;
+&lt;h2 id=&#34;udpconn&#34;&gt;UDPConn&lt;/h2&gt;
+&lt;p&gt;实现了Conn和PacketConn接口.&lt;/p&gt;
+&lt;p&gt;function:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;func DialUDP(net string, laddr, raddr *UDPAddr) (*UDPConn, error)
+func ListenDUP(net string, laddr *UDPAddr) (*UDPConn, error)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;method:&lt;/p&gt;
+&lt;h2 id=&#34;tcpconn&#34;&gt;TCPConn&lt;/h2&gt;
+&lt;p&gt;实现了Conn接口.&lt;/p&gt;
+&lt;p&gt;function:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;func DialTCP(net string, laddr, raddr *TCPAddr) (*TCPConn, error)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;method:&lt;/p&gt;
+&lt;h2 id=&#34;tcplistener&#34;&gt;TCPListener&lt;/h2&gt;
+&lt;p&gt;function:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;func ListenTCP(net string, laddr *TCPAddr) (*TCPListener, error)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;method:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;func (l *TCPListener) Accept() (Conn, error)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;unixconn&#34;&gt;UnixConn&lt;/h2&gt;
+&lt;p&gt;实现了Conn和PacketConn接口.&lt;/p&gt;
+&lt;p&gt;function:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;func DialUnix(net string, laddr, raddr *UnixAddr) (*UnixConn, error)
+func ListenUnixgram(net string, laddr *UnixAddr) (*UnixConn, error)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;method:&lt;/p&gt;
+&lt;h2 id=&#34;unixlistener&#34;&gt;UnixListener&lt;/h2&gt;
+&lt;p&gt;function:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;func ListenUnix(net string, laddr *UnixAddr) (*UnixListener, error)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;method:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;func (l *UnixListener) Accept() (c Conn, err error)
+func (l *UnixListener) AcceptUnix() (*UnixConn, error)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;nethttp&#34;&gt;net/http&lt;/h1&gt;
+&lt;p&gt;http协议客户端和服务器的实现&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import &amp;quot;net/http&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;constants-1&#34;&gt;constants&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;const (
+    MethodGet = &amp;quot;GET&amp;quot;
+    MethodHead = &amp;quot;HEAD&amp;quot;
+    MethodPost = &amp;quot;POST&amp;quot;
+    MethodPut = &amp;quot;PUT&amp;quot;
+    MethodPatch = &amp;quot;PATCH&amp;quot;
+    MethodDelete = &amp;quot;DELETE&amp;quot;
+    MethodConnect = &amp;quot;CONNECT&amp;quot;
+    MethodOptions = &amp;quot;OPTIONS&amp;quot;
+    MethodTrace = &amp;quot;TRACE&amp;quot;
+)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;variables-1&#34;&gt;variables&lt;/h2&gt;
+&lt;h2 id=&#34;functions-1&#34;&gt;functions&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;// 在w的header中添加Set-Cookie头．
+func SetCookie(w ResponseWriter, cookie *Cookie)
+
+func Handle(pattern string, handler Handler)
+
+// 注册一个handler和对应的pattern 到DefaultServeMux.
+func HandlerFunc(pattern string, handler func(ResponseWriter, *Request))
+
+// 为监听器收到的每个连接创建一个新的goroutine．
+// goroutine 会读取请求并调用handler回复该请求．
+func Serve(l net.Listener, handler Handler) error
+
+// 监听tcp地址addr, 使用handler参数调用Serve函数处理连接．
+// handler = nil 相当于DefaultServeMux
+func ListenAndServe(addr string, handler Handler) error
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;file&#34;&gt;File&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;type File interface {
+    io.Closer
+    io.Reader
+    Readdir(count int) ([]os.FileInfo, error)
+    Seek(offset int64, whence int) (int64, error)
+    Stat() (os.FileInfo, error)
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;filesystem&#34;&gt;FileSystem&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;type FileSystem interface {
+    Open(name string) (File, error)
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;dir&#34;&gt;Dir&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;type Dir string
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;method:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;func (d Dir) Open(name string) (File, error)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;handler&#34;&gt;Handler&lt;/h2&gt;
+&lt;p&gt;实现Handler接口的对象可以被注册为http的服务函数&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type Handler interface {
+    ServeHTTP(ResponseWriter, *Request)
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;function:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 对每个请求回复&amp;quot;404 page not found&amp;quot;
+func NotFoundHandler() Handler
+
+// 对每个请求使用状态码code重定向到url.
+func RedirectHandler(url string, code int) Handler
+
+func TimeoutHandler(h Handler, dt time.Duration, msg string) Handler
+
+// 将请求的URL.Path中的前缀prefix去除后再给h.
+func StripPrefix(prefix string, h Handler) Handler
+
+func FileServer(root FileSystem) Handler
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;handlerfunc&#34;&gt;HandlerFunc&lt;/h2&gt;
+&lt;p&gt;将普通函数转换成http的服务函数&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type HandlerFunc func(ResponseWriter, *Request)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;method:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// ServeHTTP会调用f(w, r)
+func (f HandlerFunc) ServeHTTP(w ResponseWriter, r *Request)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;servemux&#34;&gt;ServeMux&lt;/h2&gt;
+&lt;p&gt;ServeMux是http请求的多路转接器．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type ServeMux struct {}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;function:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 创建并返回一个新的*ServeMux
+func NewServeMux() *ServeMux
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;method:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;//
+func (mux *ServeMux) Handle(pattern string, handler Handler)
+
+func (mux *ServeMux) HandleFunc(pattern string, handler func(ResponseWriter, *Request))
+
+func (mux *ServeMux) Handler(r *Request) (h Handler, pattern string)
+
+func (mux *ServeMux) ServeHTTP(w ResponseWriter, r *Request)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;server&#34;&gt;Server&lt;/h2&gt;
+&lt;p&gt;定义了运行http服务端的参数．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type Server struct {
+    Addr string
+    Handler Handler
+    ReadTimeout time.Duration
+    WriteTimeout time.Duration
+    MaxHeaderBytes int
+    TLSConfig *tls.Config
+    TLSNextProto map[string]func(*Server, *tls.Conn, Handler)
+    ConnState func(net.Conn, ConnState)
+    ErrorLog *log.Logger
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;method:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;func (s *Server) SetKeepAlivesEnabled(v bool)
+
+func (s *Server) Serve(l net.Listener) error
+
+func (s *Server) ListenAndServe() error
+
+func (s *Server) ListenAndServeTLS(certFile, keyFile string) error
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;client&#34;&gt;Client&lt;/h2&gt;
+&lt;p&gt;代表一个http客户端.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type Client struct {
+    Transport RoundTripper
+    CheckRedirect func(req *Request, via []*Request) error
+    Jar CookieJar
+    Timeout time.Duration
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;header&#34;&gt;Header&lt;/h2&gt;
+&lt;p&gt;代表http的头部.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type Header map[string][]string
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;method:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;func (h Header) Get(key string) string
+func (h Header) Set(key, value string)
+...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;cookie&#34;&gt;Cookie&lt;/h2&gt;
+&lt;p&gt;代表一个http回复的头部中SetCookie头的值，或http请求的头部里面的cookie值．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type Cookie struct {
+    Name string
+    Value string
+    Path string
+    Domain string
+    Expires time.Time
+    RawExpires string
+    MaxAge int
+    Secure bool
+    HttpOnly bool
+    Raw string
+    Unparsed []string
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;method:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 返回cookie序列化的结果
+func (c *Cookie) String() string
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;request&#34;&gt;Request&lt;/h2&gt;
+&lt;p&gt;代表一个服务端接收的或客户端发送的http请求.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type Request struct {
+    Method string
+    URL *url.URL
+    Proto string // &amp;quot;HTTP/1.0&amp;quot;
+    ProtoMajor int // 1
+    ProtoMinor int // 0
+    Header Header
+    Body io.ReadCloser
+    ContentLength int64
+    TransferEncoding []string
+    Close bool
+    Host string
+    Form url.Values
+    PostForm url.Values
+    MultipartForm *multipart.Form
+    Trailer Header
+    RemoteAddr string
+    RequestURI string
+    TSL *tls.ConnectionState
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;function:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;func NewRequest(method, urlStr string, body io.Reader) (*Request, error)
+
+func ReadRequest(b *bufio.Reader) (req *Request, err error)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;method:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 解析并返回该请求r的header设置的cookie
+func (r *Request) Cookies() []*Cookie
+
+// 返回请求r中命名为name的cookie,如果未找到返回nil, ErrNoCookie.
+func (r *Request) Cookie(name string) (*cookie, error)
+
+//解析r.URL中的查询字符串，并将解析结果更新到r.Form字段.
+// post和put的body会同时更新到r.PostForm和r.Form.
+func (r *Request) ParseForm() error
+
+// 将请求的主体作为multipart/form-data解析.
+func (r *Request) ParseMultipartForm(maxMemory int64) error
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;response&#34;&gt;Response&lt;/h2&gt;
+&lt;p&gt;代表一个http请求的回复r&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type Response struct {
+    Status string
+    StatusCode int
+    Proto string
+    ProtoMajor int
+    ProtoMinor int
+    Header Header
+    Body io.ReadCloser
+    ContentLength int64
+    TransferEncoding []string
+    Close bool
+    Trailer Header
+    Request *Request
+    TLS *tls.ConnectionState
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;functions:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;func ReadResponse(r *bufio.Reader, req *Request) (*Response, error)
+
+func Head(url string) (resp *Response, err error)
+func Get(url string) (resp *Response, err error)
+func Post(url string, bodyType string, boyd io.Reader) (resp *Response, err error)
+func PostForm(url string, data url.Values) (resp *Response, err error)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;methods:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;func (r *Response) ProtoAtLeast(major, minor int) bool
+
+// 获取相应中的Set-Cookie设置的cookie
+func (r *Response) Cookies() []*Cookie
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;responsewriter&#34;&gt;ResponseWriter&lt;/h2&gt;
+&lt;p&gt;用于构造http回复.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type ResponseWriter interface {
+    Header() Header
+    WriteHeader(int)
+    Write([]byte) (int, error)
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;netmail&#34;&gt;net/mail&lt;/h1&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;netsmtp&#34;&gt;net/smtp&lt;/h1&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;netrpc&#34;&gt;net/rpc&lt;/h1&gt;
+&lt;p&gt;function:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 在DefaultServer注册并公布rcvr方法.
+func Register(rcvr interface{}) error
+
+// 接收连接，将每个连接交给DefaultServer服务.会阻塞.
+func Accept(lis net.Listener)
+
+// 在单个连接执行DefaultServer,会阻塞.
+func ServceConn(conn io.ReadWriteCloser)
+
+func HandleHTTP()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;call&#34;&gt;Call&lt;/h2&gt;
+&lt;p&gt;代表一个执行中或执行完毕的会话．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type Call struct {
+    ServiceMethod string
+    Args interface{}
+    Reply interface{}
+    Error error
+    Done chan *Call
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;client-1&#34;&gt;Client&lt;/h2&gt;
+&lt;p&gt;rpc客户端&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type client struct {}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;function:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;func NewClient(conn io.ReadWriteCloser) *Client
+
+func Dial(network, address string) (*Client, error)
+
+func DialHTTP(network, address string) (*Client, error)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;method:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 调用指定的方法，等待返回，将结果写入reply.
+func (client *Client) Call(serviceMethod string, args interface{}, reply interface{}) error
+
+func (client *Client) Go(serviceMethod string, args interface{}, reply interface{}, done chan *Call) *Call
+
+func (client *Client) Close() error
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;nettextproto&#34;&gt;net/textproto&lt;/h1&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;neturl&#34;&gt;net/url&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;scheme://[userinfo@]host/path[?query][#fragment]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;url&#34;&gt;URL&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;type URL struct {
+    Scheme string
+    Opaque string
+    User *Userinfo
+    Host string // host or host:port
+    Path string
+    RawQuery string
+    Fragment string
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;function:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;func Parse(rawurl string) (url *URL, err error)
+func ParseRequestURI(rawurl string) (url *URL, err error)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;methods:&lt;/p&gt;
+&lt;h2 id=&#34;userinfo&#34;&gt;Userinfo&lt;/h2&gt;
+&lt;h2 id=&#34;values&#34;&gt;VAlues&lt;/h2&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        <item>
+        <title>Rabbitmq</title>
+        <link>https://canuxcheng.com/post/rabbitmq/</link>
+        <pubDate>Mon, 25 Sep 2017 09:41:39 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/rabbitmq/</guid>
+        <description>&lt;h1 id=&#34;amqp&#34;&gt;AMQP&lt;/h1&gt;
+&lt;p&gt;AMQP: Advanced Message Queuing Protocol,高级消息队列协议&lt;/p&gt;
+&lt;p&gt;常用的开源AMQP框架：&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/rabbitmq&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/rabbitmq&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/apache/kafka&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/apache/kafka&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/apache/activemq&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/apache/activemq&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;mqtt&#34;&gt;MQTT&lt;/h1&gt;
+&lt;p&gt;MQTT: Message Queuing Telemetry Transport,消息队列遥测传输协议&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;rabbitmq&#34;&gt;Rabbitmq&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/rabbitmq&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/rabbitmq&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;RabbitMQ是一个erlang开发的符合AMQP和MQTT的开源项目．&lt;/p&gt;
+&lt;p&gt;rabbitmq-server也叫broker server&lt;/p&gt;
+&lt;p&gt;rabbitmq的三个组件：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;exchange,　交换器，发送消息的实体&lt;/li&gt;
+&lt;li&gt;binding, 绑定器，连接交换器和队列，并且封装消息的路由信息&lt;/li&gt;
+&lt;li&gt;queue,　队列，接受消息的实体&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;workflow:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;producer(publish-message) =&amp;gt;
+
+rabbitmq-server =&amp;gt; exchange -&amp;gt; binding -&amp;gt; queue =&amp;gt;
+
+=&amp;gt; comsumer
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;producer: 生产message并且publish到rabbitmq-server.&lt;/p&gt;
+&lt;p&gt;consumer: 连接到rabbitmq-server并且subscribe一些queue.&lt;/p&gt;
+&lt;p&gt;connection: producer和consumer都是通过tcp连接到rabbitmq-server.&lt;/p&gt;
+&lt;p&gt;channels: 建立在tcp连接中的虚拟连接，用于处理数据流动.&lt;/p&gt;
+&lt;p&gt;queue:　生产者和消费者都应该创建queue.(只能通过exchange接收message)&lt;/p&gt;
+&lt;p&gt;exchanges类型:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;fanout: 所有绑定到此exchange的queue都可以接收消息&lt;/li&gt;
+&lt;li&gt;direct: 通过routingKey和exchange决定的那个唯一的queue可以接收消息&lt;/li&gt;
+&lt;li&gt;topic：所有符合routingKey(此时可以是一个表达式)的routingKey所bind的queue可以接收消息&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;message类型:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;messages: 生产者产生的总消息数．&lt;/li&gt;
+&lt;li&gt;messages_ready: 等待deliver给消费者的消息．&lt;/li&gt;
+&lt;li&gt;messages_unack: 已经被consumer处理，但是没有被ack的消息．&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;virtual hosts: 本质就是一个rabbitmq server,拥有独立的exchange,queue.默认是/(%2F).&lt;/p&gt;
+&lt;p&gt;round-robin dispatch: 循环分发，按顺序分发message到consumer,如果message被consumer正确接收，就会从queue中移除．&lt;/p&gt;
+&lt;p&gt;no-ack: 每次consumer接收数据后，不管是否处理完成，就标记为ack,然后从queue中删除．但是如果处理过程异常，数据就会丢失．&lt;/p&gt;
+&lt;p&gt;ack: ack方式就是数据处理完成后发送ack,保证数据被处理再从queue删除，如果异常，会dispatch到别的consumer.&lt;/p&gt;
+&lt;p&gt;durable: 消息持久化，如果rabbitmq-server异常退出或服务器重启，为了保证数据还在，需要做数据持久化.&lt;/p&gt;
+&lt;p&gt;消息的状态信息：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;deliver: 消息投递给消费着．
+redeliver:　消息重新投递给消费者．&lt;/li&gt;
+&lt;li&gt;publish/subscribe: 将同一个消息deliver到多个consumer叫publish或subscribe.&lt;/li&gt;
+&lt;li&gt;ack: 已经处理完成的消息&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;安装&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo apt-get install rabbitmq-server
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;配置&lt;/p&gt;
+&lt;p&gt;rabbitmq-3.7 开始配置文件格式为sysctl，同时也兼容旧的erlang格式。&lt;/p&gt;
+&lt;p&gt;erlang格式：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[
+    {rabbit,
+        [
+            {heartbeat, 8000}
+        ]
+    }
+].
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;sysctl格式:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;key = value
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;rabbitmqctl-命令&#34;&gt;rabbitmqctl 命令&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo rabbitmqctl [-n node] [-t timeout] [-q] &amp;lt;commands&amp;gt; [command options]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;添加用户并授权：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 默认的guest/guest只能用于localhost.
+$ add_user [username] [password]
+$ delete_user &amp;lt;username&amp;gt;
+$ change_password &amp;lt;username&amp;gt; &amp;lt;newpassword&amp;gt;
+$ clear_password &amp;lt;username&amp;gt;
+$ set_user_tags [username] administrator
+$ list_users
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;权限管理:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;add_vhost &amp;lt;vhostpath&amp;gt;
+delete_vhost &amp;lt;vhostpath&amp;gt;
+list_vhosts [&amp;lt;vhostinfoitem&amp;gt; ...]
+set_permissions [-p &amp;lt;vhostpath&amp;gt;] &amp;lt;user&amp;gt; &amp;lt;conf&amp;gt; &amp;lt;write&amp;gt; &amp;lt;read&amp;gt;
+clear_permissions [-p &amp;lt;vhostpath&amp;gt;] &amp;lt;username&amp;gt;
+list_permissions [-p &amp;lt;vhostpath&amp;gt;]
+list_user_permissions &amp;lt;username&amp;gt;
+
+list_queues [-p &amp;lt;vhostpath&amp;gt;] [&amp;lt;queueinfoitem&amp;gt; ...]
+list_exchanges [-p &amp;lt;vhostpath&amp;gt;] [&amp;lt;exchangeinfoitem&amp;gt; ...]
+list_bindings [-p &amp;lt;vhostpath&amp;gt;] [&amp;lt;bindinginfoitem&amp;gt; ...]
+list_connections [&amp;lt;connectioninfoitem&amp;gt; ...]
+list_channels [&amp;lt;channelinfoitem&amp;gt; ...]
+list_consumers [-p &amp;lt;vhostpath&amp;gt;]
+status
+environment
+report
+eval &amp;lt;expr&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;rabbitmq-plugins-插件管理&#34;&gt;rabbitmq-plugins 插件管理&lt;/h2&gt;
+&lt;p&gt;启动web-gui:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ rabbitmq-plugins enable rabbitmq_management
+# http://localhost:15672 guest/guest
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;haproxy&#34;&gt;HAProxy&lt;/h1&gt;
+&lt;p&gt;rabbitmq-cluster部署：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;在所有node上安装rabbitmq-server.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;修改所有node的/etc/hosts，配置ip和hostname.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;同步所有node的cookie(/var/lib/rabbitmq/.erlang.cookie).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;启动所有node上的rabbitmq-server.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; # rabbitmq-server -detached
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;将所有slave node添加manager组成cluster.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; # rabbitmqctl stop_app
+ # rabbitmqctl reset
+ # rabbitmqctl join_cluster rabbit@manager
+ # rabbitmqctl start_app
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;检查cluster状态&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; # rabbitmqctl cluster_status
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;设置policy&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; # rabbitmqctl set_policy ha-all &amp;quot;&amp;quot; &#39;{&amp;quot;ha-mode&amp;quot;:&amp;quot;all&amp;quot;,&amp;quot;ha-sync-mode&amp;quot;:&amp;quot;automatic&amp;quot;}&#39;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;haproxy-server部署:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;在haproxy server安装haproxy&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;配置haproxy&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; # sudo vim /etc/haproxy/haproxy.cfg
+ global
+     log /dev/log    local0
+     log /dev/log    local1 notice
+     chroot /var/lib/haproxy
+     user haproxy
+     group haproxy
+     daemon
+ defaults
+     log     global
+     mode    tcp
+     maxconn 10000
+     timeout connect 3000
+     timeout client 1000s
+     timeout server 1000s
+ frontend rabbitmq_front
+     bind &amp;lt;haproxy-ip&amp;gt;:5672
+     reqadd X-Forwarded-Proto:\ amqp
+     default_backend rabbitmq_backend
+ backend rabbitmq_backend
+     balance roundrobin
+     server rabbitmq-master &amp;lt;master-ip&amp;gt;:5672 check
+     server rabbitmq-slave &amp;lt;slave-ip&amp;gt;:5672 check
+ bind 0.0.0.0:15672
+     server &amp;lt;master-hostname&amp;gt; &amp;lt;master-ip&amp;gt;:15672 check
+     server &amp;lt;slave-hostname&amp;gt; &amp;lt;slave-ip&amp;gt;:15672 check
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;重启haproxy service.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;celery&#34;&gt;Celery&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/celery&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/celery&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;可用配置，django需要加namespace作为前缀。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.celeryproject.org/en/stable/userguide/configuration.html#new-lowercase-settings&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://docs.celeryproject.org/en/stable/userguide/configuration.html#new-lowercase-settings&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;django中的celery配置&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;CELERY_BROKER_URL = &amp;quot;amqp://user:pw@amqp:5672&amp;quot;
+CELERY_ACCEPT_CONTENT = [&#39;json&#39;]
+CELERY_RESULT_SERIALIZER = &#39;json&#39;
+CELERY_EVENT_SERIALIZER = &#39;json&#39;
+CELERY_TIMEZONE = &#39;UTC&#39;
+CELERY_ENABLE_UTC = True
+CELERY_WORKER_PREFETCH_MULTIPLIER = 4
+CELERY_TASK_ACKS_LATE = False
+
+CELERY_TASK_SERIALIZER = &#39;json&#39;
+CELERY_TASK_QUEUES = (
+    Queue(&#39;queue1&#39;, Exchange(&#39;exchange1&#39;, type=&#39;direct&#39;), routing_key=&#39;default&#39;, queue_arguments={&#39;x-max-priority&#39;: 100}),
+    Queue(&#39;queue2&#39;, Exchange(&#39;exchange2&#39;, type=&#39;direct&#39;), routing_key=&#39;default&#39;, queue_arguments={&#39;x-max-priority&#39;: 100}),
+)
+CELERY_TASK_DEFAULT_QUEUE = &#39;default&#39;
+CELERY_TASK_DEFAULT_EXCHANGE = &#39;default&#39;
+CELERY_TASK_DEFAULT_EXCHANGE_TYPE = &#39;direct&#39;
+CELERY_TASK_DEFAULT_DELIVERY_MODE = &#39;persistent&#39;
+CELERY_TASK_DEFAULT_ROUTING_KEY = &#39;default&#39;
+CELERY_TASK_ROUTES = (
+    {
+        &amp;quot;proj.app1.tasks.task1&amp;quot;: {
+            &amp;quot;queue&amp;quot;: &amp;quot;queue1&amp;quot;,
+            &amp;quot;routing_key&amp;quot;: &amp;quot;default&amp;quot;
+        }
+    },
+    {
+        &amp;quot;proj.app2.tasks.task2&amp;quot;: {
+            &amp;quot;queue&amp;quot;: &amp;quot;queue2&amp;quot;,
+            &amp;quot;routing_key&amp;quot;: &amp;quot;default&amp;quot;
+        }
+    },
+)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;在project中创建celery的app:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import os
+from celery import Celery
+
+# set the default Django settings module for the &#39;celery&#39; program.
+os.environ.setdefault(&#39;DJANGO_SETTINGS_MODULE&#39;, &#39;site_main.settings&#39;)
+
+app = Celery(&#39;proj&#39;)
+
+// namespace就会去django的配置找前缀为celery的参数.
+app.config_from_object(&#39;django.conf:settings&#39;, namespace=&#39;CELERY&#39;)
+
+app.autodiscover_tasks()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;celery选项:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;celery [options] command [args]
+
+-A, --app &amp;lt;app&amp;gt;¶
+-b, --broker &amp;lt;broker&amp;gt;
+--result-backend &amp;lt;result_backend&amp;gt;
+--loader &amp;lt;loader&amp;gt;
+--config &amp;lt;config&amp;gt;
+--workdir &amp;lt;workdir&amp;gt;
+-C, --no-color
+-q, --quiet
+--version
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;worker选项:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;-n, --hostname
+-D, --detach
+-l, --loglevel
+-O default|fair
+// 默认的concurrency是cpu的个数，如果是container运行就是host的cpu个数，不是resourcelimit的cpu个数.
+-c, --concurrency
+// cpu密集型任务最好用prefork, IO密集最好用eventlet/gevent. 
+-P, --poo prefork(default)|eventlet|gevent|solo
+-E, --task-events, --events
+-Q, --queues
+-B, --beat
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;beat选项:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;--detach
+-s, --schedule
+-S, --scheduler
+-l, --loglevel
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;inspect选项:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;-t, --timeout
+-d, --destination
+-j, --json
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
+        <item>
+        <title>Rpc</title>
+        <link>https://canuxcheng.com/post/rpc/</link>
+        <pubDate>Sun, 03 Sep 2017 14:46:19 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/rpc/</guid>
+        <description>&lt;h1 id=&#34;rpc&#34;&gt;RPC&lt;/h1&gt;
+&lt;p&gt;Remote Procedure Call Protocol: 远程过程调用.&lt;/p&gt;
+&lt;p&gt;google的rpc框架，支持多语言:&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/grpc/grpc&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/grpc/grpc&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;facebook的rpc框架，贡献给了apache, 支持多语言:&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/apache/thrift&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/apache/thrift&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Smtp</title>
+        <link>https://canuxcheng.com/post/smtp/</link>
+        <pubDate>Wed, 26 Apr 2017 09:56:04 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/smtp/</guid>
+        <description>&lt;h1 id=&#34;email&#34;&gt;Email&lt;/h1&gt;
+&lt;p&gt;MTA: Mail Transfer Agent&lt;/p&gt;
+&lt;p&gt;MUA: Mail User Agent&lt;/p&gt;
+&lt;p&gt;python邮件服务器MTA：smtp协议&lt;/p&gt;
+&lt;p&gt;python客户端MUA：本地协议pop3, 远程协议imap&lt;/p&gt;
+&lt;h2 id=&#34;mailutils&#34;&gt;mailutils:&lt;/h2&gt;
+&lt;p&gt;mailutils默认安装postfix,如果已经安装其它MTA就使用已经安装的．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo apt-get install mailutils
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;非交互安装mailutils:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 这里不用配置任何参数．
+$ sudo debconf-set-selections &amp;lt;&amp;lt;&amp;lt; &amp;quot;postfix postfix/mailname string &amp;quot;
+$ sudo debconf-set-selections &amp;lt;&amp;lt;&amp;lt; &amp;quot;postfix postfix/main_mailer_type string &#39;Internet Site&#39;&amp;quot;
+$ sudo apt-get install -y mailutils
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;测试：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ echo &amp;quot;test mail body&amp;quot; | mail -s &amp;quot;test mail title&amp;quot; canuxcheng@gmail.com
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;sendmail&#34;&gt;sendmail&lt;/h1&gt;
+&lt;p&gt;开源的smtp服务器．&lt;/p&gt;
+&lt;p&gt;安装sendmail:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo apt-get install sendmail
+$ sudo apt-get install sendmail-cf
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;配置：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo vim /etc/hosts
+  127.0.0.1 localhost.localdomain    localhost    hostname
+
+$ sudo vim /etc/mail/sendmail.mc
+  modify 127.0.0.1 to 0.0.0.0, 才能发送给其它机器，否则只能发给本机．
+  DAEMON_OPTIONS(&#39;..., Port=smtp, Addr=127.0.0.1&#39;)dnl
+# mv sendmail.cf sendmail.cf.old
+# m4 sendmail.mc &amp;gt; sendmail.cf
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;postfix&#34;&gt;postfix&lt;/h1&gt;
+&lt;p&gt;比sendmail更友好的smtp服务器．&lt;/p&gt;
+&lt;p&gt;安装：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo apt-get install postfix
+# general type of mail configuration -&amp;gt; Internet site
+# system mail name -&amp;gt; 空着
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;配置：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 使用默认值即可.
+$ sudo vim /etc/postfix/main.cf
+inet_interfaces = all
+mydestination = localhost, $hostname, localhost.localdomain, localhost
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;python的email标准库&#34;&gt;Python的email标准库&lt;/h1&gt;
+&lt;p&gt;服务端：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;smtpd&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;客户端：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;smtplib&lt;/li&gt;
+&lt;li&gt;poplib&lt;/li&gt;
+&lt;li&gt;imaplib&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        </item>
+        <item>
+        <title>Apache</title>
+        <link>https://canuxcheng.com/post/apache/</link>
+        <pubDate>Tue, 27 Sep 2016 03:25:26 +0800</pubDate>
+        
+        <guid>https://canuxcheng.com/post/apache/</guid>
+        <description>&lt;h1 id=&#34;apache&#34;&gt;Apache&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/apache/httpd&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/apache/httpd&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://httpd.apache.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://httpd.apache.org/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;ubuntu/debian：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo aptitude install apache2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;redhat/centos/fedora:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo yum install httpd2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;启动服务器：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;service apache2 start
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;启动浏览器查看：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;http://localhost:80
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;apache命令&#34;&gt;apache命令&lt;/h1&gt;
+&lt;p&gt;apache2ctl:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 检查配置
+$ apache2ctl configtest
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;a2ensite&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 启用一个站点
+$ sudo a2ensite &amp;lt;site&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;a2dissite&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo a2dissite &amp;lt;site&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;a2enmod&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 启用一个模块
+$ sudo a2enmod &amp;lt;mod&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;a2dismod&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo a2dismod &amp;lt;mod&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;配置&#34;&gt;配置&lt;/h1&gt;
+&lt;p&gt;配置站点site-enable/site.conf:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;VirtualHost *:8080&amp;gt;
+    ServerAdmin webmaster@localhost
+    DocumentRoot /opt
+
+    # 适合多目录
+    Alias /qa /opt/qa
+    Alias /dev /opt/dev
+
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+&amp;lt;/VirtualHost&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;修改权限apache2.conf:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;Directory /opt/qa&amp;gt;
+    Options Indexes FollowSymLinks
+    AllowOverride None
+    Require all granted
+&amp;lt;/Directory&amp;gt;
+
+&amp;lt;Directory /opt/dev&amp;gt;
+    Options Indexes FollowSymLinks
+    AllowOverride None
+    Require all granted
+&amp;lt;/Directory&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;修改端口ports.conf:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Listen 8080
+&amp;lt;IfModule ssl_module&amp;gt;
+        Listen 4433
+&amp;lt;/IfModule&amp;gt;
+&amp;lt;IfModule mod_gnutls.c&amp;gt;
+        Listen 4433
+&amp;lt;/IfModule&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;配置ssl和basic auth&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 安装创建账号的工具
+sudo apt-get install apache2-utils
+
+创建账号
+sudo htpasswd -c /etc/apache2/.htpasswd user
+sudo htpasswd /etc/apache2/.htpasswd another_user
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;启用依赖的模块:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;cd /etc/apache2/mods-enabled
+ln -sf ../mods-available/rewrite.load rewrite.load
+ln -sf ../mods-available/ssl.conf ssl.conf
+ln -sf ../mods-available/ssl.load ssl.load
+#ln -sf ../mods-available/slotmem_shm.load slotmem_shm.load
+#ln -sf ../mods-available/socache_shmcb.load socache_shmcb.load
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;修改site-avaliable/site.conf&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;VirtualHost *:80&amp;gt;
+    ServerAdmin webmaster@localhost
+    DocumentRoot /var/www
+
+    // 将http重定向到https, 如果注释掉，http和https都可以访问.
+    RewriteEngine on
+    RewriteCond %{SERVER_PORT} !^443$
+    RewriteRule ^/(.*) https://%{HTTP_HOST}/$1 [NC,R=301,L]
+
+    LogLevel warn
+    ErrorLog /var/log/apache2/error.log
+    CustomLog /var/log/apache2/access.log combined
+&amp;lt;/VirtualHost&amp;gt;
+
+&amp;lt;VirtualHost *:443&amp;gt;
+    ServerAdmin webmaster@localhost
+    DocumentRoot /var/www
+
+    // 开启ssl
+    SSLEngine on
+    SSLCertificateFile &amp;quot;/etc/apache2/user.domain.com.crt&amp;quot;
+    SSLCertificateKeyFile &amp;quot;/etc/apache2/user.domain.com.key&amp;quot;
+    BrowserMatch &amp;quot;MSIE [2-6]&amp;quot; nokeepalive ssl-unclean-shutdown downgrade-1.0 force-response-1.0
+    BrowserMatch &amp;quot;MSIE [17-9]&amp;quot; ssl-unclean-shutdown
+
+    // 开启basic auth.
+    &amp;lt;Directory &amp;quot;/var/www&amp;quot;&amp;gt;
+        AuthType Basic
+        AuthName &amp;quot;Restricted Content&amp;quot;
+        AuthUserFile /etc/apache2/.htpasswd
+        Require valid-user
+    &amp;lt;/Directory&amp;gt;
+
+    LogLevel warn
+    ErrorLog /var/log/apache2/error.log
+    CustomLog /var/log/apache2/access.log combined
+&amp;lt;/VirtualHost&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
+        <item>
+        <title>Http</title>
+        <link>https://canuxcheng.com/post/http/</link>
+        <pubDate>Tue, 13 Sep 2016 01:39:34 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/http/</guid>
+        <description>&lt;h1 id=&#34;httphttps&#34;&gt;HTTP/HTTPS&lt;/h1&gt;
+&lt;p&gt;http port: 80&lt;/p&gt;
+&lt;p&gt;https port: 443&lt;/p&gt;
+&lt;p&gt;http/https的请求方式：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;get # 从服务器取出资源
+post # 在服务器新建资源
+put # 在服务器更新资源，客户端提供改变后的完整资源
+delete # 从服务器删除资源
+patch # 在服务器更新资源，客户端提供改变的属性
+head # 获取资源的源数据
+options # 获取资源的哪些信息是客户端可以改变的信息
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;URL: Uniform Resource Locator&lt;/p&gt;
+&lt;p&gt;URI: Universal Resource Identifier&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;scheme&amp;gt;://&amp;lt;netloc&amp;gt;/&amp;lt;path&amp;gt;;&amp;lt;params&amp;gt;?&amp;lt;query&amp;gt;#&amp;lt;fragment&amp;gt;
+scheme: http/https/ftp/file
+netloc: username:password@host:port
+path: /path/to/path
+params: options arguments
+query: connector&amp;amp;key-value
+fragment:
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;http命令&#34;&gt;http命令&lt;/h1&gt;
+&lt;h2 id=&#34;curl&#34;&gt;curl&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;$ curl [options] [URL...]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;httpie&#34;&gt;httpie&lt;/h2&gt;
+&lt;p&gt;python开发的类似于curl的命令行工具，同时还有wget的功能．&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/jakubroztocil/httpie&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/jakubroztocil/httpie&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo yum/apt-get install httpie
+
+$ http -a &#39;username:password&#39; GET http://google.com
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;python的http标准库&#34;&gt;python的http标准库&lt;/h1&gt;
+&lt;p&gt;python2的http标准库&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;httplib for client&lt;/li&gt;
+&lt;li&gt;BaseHTTPServer, CGIHTTPServer, SimpleHTTPServer, cookielib, Cookie for server&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;python3的标准库&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;http&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;python的url标准库&#34;&gt;python的url标准库&lt;/h1&gt;
+&lt;p&gt;python2的url标准库：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;urlparse&lt;/li&gt;
+&lt;li&gt;urllib&lt;/li&gt;
+&lt;li&gt;urllib2&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;python3的url标准库：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;urllib&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        <item>
+        <title>PSL_Network</title>
+        <link>https://canuxcheng.com/post/psl_network/</link>
+        <pubDate>Fri, 12 Aug 2016 14:21:36 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/psl_network/</guid>
+        <description>&lt;h1 id=&#34;internet-protocols-and-support&#34;&gt;Internet Protocols and Support&lt;/h1&gt;
+&lt;p&gt;socketserver/http/ftp参考&lt;a class=&#34;link&#34; href=&#34;https://super-devops.readthedocs.io/en/latest/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://super-devops.readthedocs.io/en/latest/&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;pop,imap/smtp参考&lt;a class=&#34;link&#34; href=&#34;https://super-devops.readthedocs.io/en/latest/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://super-devops.readthedocs.io/en/latest/&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;urllib&#34;&gt;urllib&lt;/h2&gt;
+&lt;p&gt;urllib.request&lt;/p&gt;
+&lt;p&gt;urllib.respponse&lt;/p&gt;
+&lt;p&gt;urllib.parse&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;from urllib.parse import urlparse
+from urllib.parse import urljoin
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;urllib.error&lt;/p&gt;
+&lt;p&gt;urllib.robotparser&lt;/p&gt;
+&lt;h2 id=&#34;ipaddress&#34;&gt;ipaddress&lt;/h2&gt;
+&lt;h2 id=&#34;webbrowser&#34;&gt;webbrowser&lt;/h2&gt;
+&lt;h2 id=&#34;cgi&#34;&gt;cgi&lt;/h2&gt;
+&lt;h2 id=&#34;cgitb&#34;&gt;cgitb&lt;/h2&gt;
+&lt;h2 id=&#34;wsgiref&#34;&gt;wsgiref&lt;/h2&gt;
+&lt;h2 id=&#34;xmlrpc&#34;&gt;xmlrpc&lt;/h2&gt;
+&lt;h2 id=&#34;socketserver&#34;&gt;socketserver&lt;/h2&gt;
+&lt;h2 id=&#34;nntplib&#34;&gt;nntplib&lt;/h2&gt;
+&lt;p&gt;network news transfer protocol&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import nntplib
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;telnet&#34;&gt;telnet&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;import telnetlib
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;structured-markup-processing-tools&#34;&gt;Structured Markup Processing Tools&lt;/h1&gt;
+&lt;h2 id=&#34;html&#34;&gt;html&lt;/h2&gt;
+&lt;h2 id=&#34;xml&#34;&gt;xml&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;internet-data-handling&#34;&gt;Internet Data Handling&lt;/h1&gt;
+&lt;h2 id=&#34;json&#34;&gt;json&lt;/h2&gt;
+&lt;p&gt;http api(restful)一般使用json格式的数据．&lt;/p&gt;
+&lt;p&gt;python和json数据类型对应关系参考WEB/JSON.&lt;/p&gt;
+&lt;p&gt;complex和class/def不能被编码.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import json
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;classes:&lt;/p&gt;
+&lt;p&gt;functions:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 将转换后的json格式写入文件
+dump(obj, fp, skipkeys=False, ensure_ascii=True, check_circular=True, allow_nan=True, cls=None, indent=None, separators=None, encoding=&#39;utf-8&#39;, default=None, sort_keys=False, **kw)
+with open(file, &#39;w&#39;) as f:
+    json.dump(dict_data, f)
+
+# 将dict类型转换成json格式
+dumps(obj, skipkeys=False, ensure_ascii=True, check_circular=True, allow_nan=True, cls=None, indent=None, separators=None, encoding=&#39;utf-8&#39;, default=None, sort_keys=False, **kw)
+json_data = json.dumps(dict_data)
+
+indent=4 # 写入自动缩进４个空格
+
+# 将读出的文件(json格式)转换成dict
+load(fp, encoding=None, cls=None, object_hook=None, parse_float=None, parse_int=None, parse_constant=None, object_pairs_hook=None, **kw)
+with open(file, &#39;r&#39;) as f:
+    dict_data = json.load(f)
+
+# json类型变成dict类型
+loads(s, encoding=None, cls=None, object_hook=None, parse_float=None, parse_int=None, parse_constant=None, object_pairs_hook=None, **kw)
+response_dict = json.loads(response.content) # 使用requests获取的json数据,转化为dict类型
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;base64&#34;&gt;base64&lt;/h2&gt;
+&lt;h2 id=&#34;mailcap&#34;&gt;mailcap&lt;/h2&gt;
+&lt;h2 id=&#34;mailbox&#34;&gt;mailbox&lt;/h2&gt;
+&lt;h2 id=&#34;minetypes&#34;&gt;minetypes&lt;/h2&gt;
+&lt;h2 id=&#34;binhex&#34;&gt;binhex&lt;/h2&gt;
+&lt;h2 id=&#34;binascii&#34;&gt;binascii&lt;/h2&gt;
+&lt;h2 id=&#34;quopri&#34;&gt;quopri&lt;/h2&gt;
+&lt;h2 id=&#34;uu&#34;&gt;uu&lt;/h2&gt;
+</description>
+        </item>
+        <item>
+        <title>Ftp</title>
+        <link>https://canuxcheng.com/post/ftp/</link>
+        <pubDate>Thu, 28 Jul 2016 16:08:54 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/ftp/</guid>
+        <description>&lt;h1 id=&#34;ftp&#34;&gt;FTP&lt;/h1&gt;
+&lt;p&gt;ftp服务器有很多：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;vsftpd&lt;/li&gt;
+&lt;li&gt;proftpd&lt;/li&gt;
+&lt;li&gt;pyftpdlib&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;vsftpd&#34;&gt;vsftpd&lt;/h1&gt;
+&lt;p&gt;安装vsftpd:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo apt-get install vsftpd
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;windows开启ftp服务和建立IIS站点即可。&lt;/p&gt;
+&lt;p&gt;linux配置：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ vim /etc/vsftpd.conf
+local_root=/home/canux/FTP
+anon_root=/home/canux/FTP
+local_enable=YES
+anonymous_enable=YES
+chroot_local_user=YES
+$ sudo service vsftpd restart
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;ftp的网页浏览格式：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ftp://host/path
+ftp://username:password@host:port/path
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;ftp命令&#34;&gt;ftp命令&lt;/h1&gt;
+&lt;h2 id=&#34;ftp-1&#34;&gt;ftp&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;$ ftp [-46pinegvd] [host [port]]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;python的ftp标准库&#34;&gt;python的FTP标准库&lt;/h1&gt;
+&lt;h2 id=&#34;ftplib&#34;&gt;ftplib&lt;/h2&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        <item>
+        <title>Ldap</title>
+        <link>https://canuxcheng.com/post/ldap/</link>
+        <pubDate>Thu, 28 Jul 2016 16:08:54 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/ldap/</guid>
+        <description>&lt;h1 id=&#34;ldap&#34;&gt;LDAP&lt;/h1&gt;
+&lt;p&gt;LDAP占用tcp和udp的389端口。&lt;/p&gt;
+&lt;p&gt;使用SSL的LDAP占用tcp和udp的636端口。&lt;/p&gt;
+&lt;p&gt;Lightweight Directory Access Protocol.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://www.openldap.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://www.openldap.org/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;LDAP的windows工具：LDAPSoft LDAP Browser&lt;/p&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        <item>
+        <title>Nfs</title>
+        <link>https://canuxcheng.com/post/nfs/</link>
+        <pubDate>Thu, 28 Jul 2016 16:08:54 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/nfs/</guid>
+        <description>&lt;h1 id=&#34;nfs&#34;&gt;NFS&lt;/h1&gt;
+&lt;p&gt;NFS: Network File System&lt;/p&gt;
+&lt;p&gt;安装：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 在nfs服务器安装nfs服务
+$ sudo apt-get install nfs-kernel-server
+# 添加共享目录并授权
+$ sudo vim /etc/exports
+/home/user/share *(rw,no_root_squash)
+$ sudo service nfs-kernel-server restart
+
+# 在nfs客户端安装nfs客户端
+$ sudo apt-get install nfs-common
+# 自动挂载
+$ sudo vim /etc/fstab
+nfs-server-ip:/home/user/share /home/user1/share nfs auto 0 0
+$ sudo mount -a
+# 手动挂载
+$ sudo mount -t nfs nfs-server-ip:/home/user/share /home/user1/share
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;nfs-server&#34;&gt;nfs-server&lt;/h1&gt;
+&lt;p&gt;配置/etc/exports&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/etc/exports  文件格式
+&amp;lt;输出目录&amp;gt; [客户端1 选项（访问权限,用户映射,其他）] [客户端2 选项（访问权限,用户映射,其他）]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;nfs-client&#34;&gt;nfs-client&lt;/h1&gt;
+&lt;p&gt;配置/etc/fstab&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Ntp</title>
+        <link>https://canuxcheng.com/post/ntp/</link>
+        <pubDate>Thu, 28 Jul 2016 16:08:54 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/ntp/</guid>
+        <description>&lt;h1 id=&#34;ntp&#34;&gt;NTP&lt;/h1&gt;
+&lt;p&gt;NFS: Network Time Protocol&lt;/p&gt;
+&lt;p&gt;UTC: Coordinated Universal Time, 世界统一时间&lt;/p&gt;
+&lt;p&gt;GMT: Greenwich Mean Time, 格林尼治标准时间, = UTC&lt;/p&gt;
+&lt;p&gt;CET: Central European Time, 欧洲中部时间, = UTC+1, 下令时=UTC+2&lt;/p&gt;
+&lt;p&gt;CST: Chinese Standard Time, 中国标准时间, = UTC+8&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;时区管理&#34;&gt;时区管理&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;$ timedatectl list-timezones # 查看所有时区
+$ sudo timedatectl set-timezone Asia/Shanghai # 设置时区
+$ sudo timedatectl set-timezone Etc/UTC
+$ ls -l /etc/localtime # 应该是一个链接
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;ntp-1&#34;&gt;ntp&lt;/h1&gt;
+&lt;p&gt;安装:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo apt-get install ntp
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;ntpdate&#34;&gt;ntpdate&lt;/h2&gt;
+&lt;p&gt;从目标服务器同步.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ntpdate -u ip
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;ntpstat&#34;&gt;ntpstat&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo apt-get install ntpstat
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;chrony&#34;&gt;chrony&lt;/h1&gt;
+&lt;p&gt;ntp的升级版.&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Ssh</title>
+        <link>https://canuxcheng.com/post/ssh/</link>
+        <pubDate>Thu, 28 Jul 2016 15:53:34 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/ssh/</guid>
+        <description>&lt;h1 id=&#34;openssh&#34;&gt;OpenSSH&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://www.openssh.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://www.openssh.com/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;windows上支持ssh协议的客户端：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;putty&lt;/li&gt;
+&lt;li&gt;xshell&lt;/li&gt;
+&lt;li&gt;MobaXterm&lt;/li&gt;
+&lt;li&gt;secureCRT&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;安装：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo apt-get install openssh-server
+$ sudo apt-get install openssh-client
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;ssh命令&#34;&gt;SSH命令&lt;/h1&gt;
+&lt;p&gt;ssh是openssh协议的客户端．&lt;/p&gt;
+&lt;p&gt;远程操作的命令包括ssh, scp, sftp.&lt;/p&gt;
+&lt;p&gt;ssh&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ ssh
+# 远程执行命令需要用双引号，不能用单引号
+$ ssh username@host &amp;quot;command/script&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;scp&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ scp
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;sftp&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sftp
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;常用选项：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;-C   compression
+# 不需要输入yes来交互, 或者修改/etc/ssh/ssh_config
+-o StrictHostKeyChecking=no
+-o UserKnownHostsFile /dev/null
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;ssh也包括一些密钥管理的命令.&lt;/p&gt;
+&lt;p&gt;ssh-keygen&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ ssh-keygen -t rsa -C &#39;canuxcheng@gmail.com&#39;
+
+# 通过将本机的公钥拷贝到远程机器实现无密码访问．
+# 将本机的public-key拷贝到远程机器的authorized_keys.
+$ ssh-copy-id -i ~/.ssh/id_rsa.pub user@remote
+# 另外的拷贝方法
+$ ssh user@host &amp;quot;cat &amp;gt;&amp;gt; ~/.ssh/authorized_keys&amp;quot; &amp;lt; ~/.ssh/id_rsa.pub
+$ sudo service ssh restart # 需要重启ssh服务
+
+非交互式通过命令行传密码的命令：
+$ sshpass -p [password]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;ssh-add&lt;/p&gt;
+&lt;p&gt;ssh-keysign&lt;/p&gt;
+&lt;p&gt;ssh-keyscan&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;启用root远程ssh&#34;&gt;启用root远程ssh&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo -i
+# passwd root
+# vim /etc/ssh/sshd_config
+&amp;gt; PermitRootLogin prohibit-password
+&amp;gt; PermitRootLogin yes
+# service ssh restart
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;ssh-tunel&#34;&gt;ssh tunel&lt;/h1&gt;
+&lt;p&gt;SSH Tunnel有三种&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;本地Local（ssh -NfL）, 在ssh client(本地)执行.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;  正向代理：（a能ssh到b，b能访问c，实现a访问c，相当于a是ssh client）A 通过 中转B连接 server C.
+
+  在A 上建立tunnel:
+  ssh -Nf -L  ssh-client-ip:ssh-client-port:remoteServerIp:remoteServerPort  user@agentIp
+
+ 访问ssh-client-ip/A的ssh-client-port 即可访问 remoteServerIp/C 的 remoteServerPort 提供的服务.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;远程Remote（ssh -NfR）, 在ssh server执行.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;  反向代理：（b能ssh到a，b能访问c，实现a访问c, a相当于ssh server, c相当于remote server) A 通过中转B访问server C.
+
+  在B上建立tunnel:
+  ssh -Nf -R  ssh-server-ip:ssh-server-port:remoteServerIp:remoteServerPort    user@agent
+
+  访问ssh-server-ip/A的ssh-server-port端口即可访问remoteServerIp/C 的 remoteServerPort 提供的服务。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;动态Dynamic（ssh -NfD）&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;  socks代理： a能ssh到B，b能访问一个网段，实现a访问该网段.
+
+  在a上建立tunnel
+  ssh -D [ssh-client-ip]:ssh-client-port user@agent
+
+  socks代理配置ssh-client-ip:ssh-client-port 即可通过B访问该网段。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
+        <title>Snmp</title>
+        <link>https://canuxcheng.com/post/snmp/</link>
+        <pubDate>Tue, 26 Apr 2016 09:56:04 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/snmp/</guid>
+        <description>&lt;h1 id=&#34;snmp&#34;&gt;SNMP&lt;/h1&gt;
+&lt;p&gt;Simple Network Management Protocol, 简单网络管理协议&lt;/p&gt;
+&lt;p&gt;MIB&lt;/p&gt;
+&lt;p&gt;SMI&lt;/p&gt;
+&lt;p&gt;安装和配置snmp:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$sudo apt-get install snmp snmpd snmp-mibs-downloader
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;snmp命令&#34;&gt;snmp命令&lt;/h1&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        <item>
+        <title>Monitoring</title>
+        <link>https://canuxcheng.com/post/network_monitoring/</link>
+        <pubDate>Sun, 03 Apr 2016 14:46:19 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/network_monitoring/</guid>
+        <description>&lt;h1 id=&#34;monitoring&#34;&gt;Monitoring&lt;/h1&gt;
+&lt;p&gt;network usage:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;bytes_sent(out)
+bytes_recv(in)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;packets:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;packets_sent(out)
+packets_recv(in)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;error_in/out:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;SELECT non_negative_derivative(mean(&amp;quot;err_in&amp;quot;), 1s) AS &amp;quot;recv&amp;quot;, non_negative_derivative(mean(&amp;quot;err_out&amp;quot;), 1s) AS &amp;quot;send&amp;quot;
+FROM &amp;quot;net&amp;quot;
+WHERE &amp;quot;interface&amp;quot; =~ /^(vlan|eth|ens|bond).*/ AND $timeFilter
+GROUP BY time($__interval), &amp;quot;host&amp;quot;, &amp;quot;interface&amp;quot; fill(none)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;drop_in/out:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;SELECT non_negative_derivative(mean(&amp;quot;drop_in&amp;quot;), 1s) AS &amp;quot;recv&amp;quot;, non_negative_derivative(mean(&amp;quot;drop_out&amp;quot;), 1s) AS &amp;quot;send&amp;quot;
+FROM &amp;quot;net&amp;quot;
+WHERE &amp;quot;interface&amp;quot; =~ /^(vlan|eth|ens|bond).*/ AND $timeFilter
+GROUP BY time($__interval), &amp;quot;host&amp;quot;, &amp;quot;interface&amp;quot; fill(none)
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
+        <item>
+        <title>Network</title>
+        <link>https://canuxcheng.com/post/network/</link>
+        <pubDate>Sun, 03 Apr 2016 14:46:19 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/network/</guid>
+        <description>&lt;h1 id=&#34;网络基础&#34;&gt;网络基础&lt;/h1&gt;
+&lt;p&gt;小端： 低字节在起始地址，高字节在高地址&lt;/p&gt;
+&lt;p&gt;大端： 高字节在起始地址，低字节在高地址&lt;/p&gt;
+&lt;p&gt;linux一般是小端，unix一般是大端&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.rfc-editor.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.rfc-editor.org/&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;网络模型&#34;&gt;网络模型&lt;/h2&gt;
+&lt;p&gt;OSI七层模型:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;应用层&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;表示层&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;会话层&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;传输层&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;网络层&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;链路层&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;物理层&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;TCP/IP四层模型：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;应用层&lt;/li&gt;
+&lt;li&gt;传输层&lt;/li&gt;
+&lt;li&gt;网络层&lt;/li&gt;
+&lt;li&gt;链路层&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;应用层&#34;&gt;应用层&lt;/h3&gt;
+&lt;p&gt;0-1024是系统保留端口, 1024-65535是可用自定义端口&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;8443:  tcp/udp - https port
+9443: tcp/udp tungsten-https
+4443: tcp/udp pharos&lt;/p&gt;
+&lt;p&gt;基于TCP的应用层&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;FTP: 21,
+SSH: 22,
+Telnet: 23,
+SMTP: 25,
+DNS: 53,
+HTTP: 80,
+HTTPS: 443,
+POP3: 110,
+POP3 SSL: 995
+IMAP: 143,
+IMAP SSL: 993,
+NNTP: 119,
+NNTP SSL: 563,
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;基于UDP的应用层&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;SMTP: 25,
+DNS: 53,
+DHCP: 67,
+TFTP：69,简单文件传输协议。
+NTP/SNTP: 123,
+SNMP：161,简单网络管理协议。
+SNMPtrap: 162,
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看端口&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;cat /etc/services
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;传输层&#34;&gt;传输层&lt;/h3&gt;
+&lt;p&gt;TCP：传输控制协议，提供可靠的、面向连接的字节流服务,建立连接需要三次握手．&lt;/p&gt;
+&lt;p&gt;UDP：数据报协议，提供不可靠的、无连接的面向数据报的服务。&lt;/p&gt;
+&lt;p&gt;SCTP：流控制传输协议。&lt;/p&gt;
+&lt;h3 id=&#34;网络层&#34;&gt;网络层&lt;/h3&gt;
+&lt;p&gt;也叫互联网层.&lt;/p&gt;
+&lt;p&gt;IP：网际协议，提供不可靠、无连接的数据报传送服务。&lt;/p&gt;
+&lt;p&gt;ICMP：Internet控制报文协议，传递差错报文和需要注意的信息，封装在IP数据报内部。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 基于ICMP的应用层：
+Ping:
+Traceroute:
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;IGMP：Internet组管理协议，用于支持主机和路由器进行多播，让一个物联网络上的所有系统知道主机当前所在的多播组，封装在IP数据报内部。&lt;/p&gt;
+&lt;h3 id=&#34;链路层&#34;&gt;链路层&lt;/h3&gt;
+&lt;p&gt;也叫数据链路层或网络接口层.&lt;/p&gt;
+&lt;p&gt;以太网帧结构：以太网首部+IP首部+TCP首部/UDP数据报+应用数据+以太网尾部。&lt;/p&gt;
+&lt;p&gt;ARP：地址解析协议，为IP地址到硬件地址之间提供动态映射。&lt;/p&gt;
+&lt;p&gt;RARP：没有磁盘驱动器的系统使用。&lt;/p&gt;
+&lt;p&gt;动态选路协议:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;RIP：选路信息协议&lt;/li&gt;
+&lt;li&gt;OSPF：开放最短路优先&lt;/li&gt;
+&lt;li&gt;IGP-EGP-BGP：边界网关协议&lt;/li&gt;
+&lt;li&gt;CIDR：无类型域间选路&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;ip-address&#34;&gt;IP address&lt;/h2&gt;
+&lt;p&gt;A: 0 + 7 * network number + 24 * host number, 0.0.0.0 - 127.255.255.255
+B: 10 + 14 * network number + 16 * host number; 128.0.0.0 - 191.255.255.255
+C: 110 + 21 * network number + 8 * host number; 192.0.0.0 - 223.255.255.255
+D: 1110 + 28 * multicast number; 224.0.0.0 - 239.255.255.255
+E: 11110 + 27 * reserved; 240.0.0.0 - 247.255.255.255&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;file&#34;&gt;File&lt;/h2&gt;
+&lt;p&gt;File协议是本地文件协议&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;file:///C:/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;远程桌面协议&#34;&gt;远程桌面协议&lt;/h2&gt;
+&lt;p&gt;RDP: remote desktop protocol， windows系统之间的远程桌面协议。&lt;/p&gt;
+&lt;p&gt;RFB(VNC): remote frame buffer, 跨平台的远程桌面协议，cs架构。&lt;/p&gt;
+&lt;p&gt;VNC: 跨平台的RFB（VNC）工具有realvnc, tightvnc, tigervnc.&lt;/p&gt;
+&lt;p&gt;remmina：基于gtk，支持RFB(VNC), RDP, SSH/SFTP协议。&lt;/p&gt;
+&lt;p&gt;krdc：基于kde，支持RFB(VNC), RDP协议。&lt;/p&gt;
+&lt;p&gt;mRemoteNG: RDP, VNC, SSH, Telnet, Http, Rlogin, RAW, ICA&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/mRemoteNG/mRemoteNG&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/mRemoteNG/mRemoteNG&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;FreeDRP: DRP&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/FreeRDP/FreeRDP&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/FreeRDP/FreeRDP&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;url&#34;&gt;URL&lt;/h2&gt;
+&lt;p&gt;url中的保留自字符需要编码。&lt;/p&gt;
+&lt;p&gt;The percent-encoded values for the special characters are as follows:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# → %23
+? → %3F
+&amp;amp; → %26
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;These encodings are used in URLs to ensure that these characters are treated as literal values rather than special symbols.&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Samba</title>
+        <link>https://canuxcheng.com/post/samba/</link>
+        <pubDate>Sun, 03 Apr 2016 14:46:19 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/samba/</guid>
+        <description>&lt;h1 id=&#34;smbcifs&#34;&gt;SMB/CIFS&lt;/h1&gt;
+&lt;p&gt;SMB/CIFS占用TCP和UDP的139和445端口。&lt;/p&gt;
+&lt;p&gt;SMB: server message block.&lt;/p&gt;
+&lt;p&gt;CIFS: common internet file system, 是SMB的升级版本。&lt;/p&gt;
+&lt;h1 id=&#34;samba&#34;&gt;Samba&lt;/h1&gt;
+&lt;p&gt;Samba: Linux/Unix上的SBM/CIFS,用于跨平台的共享。&lt;/p&gt;
+&lt;p&gt;安装:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo apt-get insall samba
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;配置：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ vim /etc/samba/smb.conf
+[shared]
+comment = share this folder
+path = /home/canux/Share
+public = yes
+guest ok = yes
+browsable = yes
+writable = no
+read only = yes
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;重启：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo service smbd restart
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;windows访问：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;\\ip\folder
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;linux访问：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;connect to server -&amp;gt; smb://ip/folder
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

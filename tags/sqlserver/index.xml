@@ -1,19 +1,406 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Sqlserver on Morgoth</title>
-    <link>https://canuxcheng.com/tags/sqlserver/</link>
-    <description>Recent content in Sqlserver on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Wed, 06 Apr 2016 15:33:42 +0000</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/sqlserver/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>MSSql</title>
-      <link>https://canuxcheng.com/post/mssql/</link>
-      <pubDate>Wed, 06 Apr 2016 15:33:42 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/mssql/</guid>
-      <description>&lt;h1 id=&#34;mssql&#34;&gt;MSSQL&lt;/h1&gt;&#xA;&lt;p&gt;商业版：&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;企业版&lt;/li&gt;&#xA;&lt;li&gt;商业智能版&lt;/li&gt;&#xA;&lt;li&gt;标准版&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;免费版：&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Express&lt;/li&gt;&#xA;&lt;li&gt;Developer&lt;/li&gt;&#xA;&lt;li&gt;Compact&lt;/li&gt;&#xA;&lt;li&gt;Web&lt;/li&gt;&#xA;&lt;li&gt;SQL Azure&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;system databases:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;master 主数据库&lt;/li&gt;&#xA;&lt;li&gt;model  模板数据库&lt;/li&gt;&#xA;&lt;li&gt;msdb   自动机数据库&lt;/li&gt;&#xA;&lt;li&gt;tempdb 零时交换数据库,不需要备份,挂载到独立的子系统。&lt;/li&gt;&#xA;&lt;li&gt;resource&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;default port：1433&lt;/p&gt;&#xA;&lt;p&gt;2008: max instance 16&lt;/p&gt;&#xA;&lt;p&gt;2012: max instance 256&lt;/p&gt;&#xA;&lt;p&gt;Client -&amp;gt; SNAC(OLE DB/ODBC) -&amp;gt; Network Libraries -&amp;gt; TDS &amp;lt;=&amp;gt; Server -&amp;gt; Endpoints -&amp;gt; SQL OS(relational engine/storage engine)&lt;/p&gt;&#xA;&lt;h2 id=&#34;gui&#34;&gt;GUI&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;SSMS&lt;/p&gt;&#xA;&lt;p&gt;SQL Server Management Studio是mssql的图形化管理界面。&lt;/p&gt;&#xA;&lt;p&gt;从模板中获取常用的SQL：&lt;/p&gt;&#xA;&lt;p&gt;view -&amp;gt; template explorer + query -&amp;gt; specify values for template parameters.&lt;/p&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Sqlserver on Morgoth</title>
+        <link>https://canuxcheng.com/tags/sqlserver/</link>
+        <description>Recent content in Sqlserver on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Wed, 06 Apr 2016 15:33:42 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/sqlserver/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>MSSql</title>
+        <link>https://canuxcheng.com/post/mssql/</link>
+        <pubDate>Wed, 06 Apr 2016 15:33:42 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/mssql/</guid>
+        <description>&lt;h1 id=&#34;mssql&#34;&gt;MSSQL&lt;/h1&gt;
+&lt;p&gt;商业版：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;企业版&lt;/li&gt;
+&lt;li&gt;商业智能版&lt;/li&gt;
+&lt;li&gt;标准版&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;免费版：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Express&lt;/li&gt;
+&lt;li&gt;Developer&lt;/li&gt;
+&lt;li&gt;Compact&lt;/li&gt;
+&lt;li&gt;Web&lt;/li&gt;
+&lt;li&gt;SQL Azure&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;system databases:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;master 主数据库&lt;/li&gt;
+&lt;li&gt;model  模板数据库&lt;/li&gt;
+&lt;li&gt;msdb   自动机数据库&lt;/li&gt;
+&lt;li&gt;tempdb 零时交换数据库,不需要备份,挂载到独立的子系统。&lt;/li&gt;
+&lt;li&gt;resource&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;default port：1433&lt;/p&gt;
+&lt;p&gt;2008: max instance 16&lt;/p&gt;
+&lt;p&gt;2012: max instance 256&lt;/p&gt;
+&lt;p&gt;Client -&amp;gt; SNAC(OLE DB/ODBC) -&amp;gt; Network Libraries -&amp;gt; TDS &amp;lt;=&amp;gt; Server -&amp;gt; Endpoints -&amp;gt; SQL OS(relational engine/storage engine)&lt;/p&gt;
+&lt;h2 id=&#34;gui&#34;&gt;GUI&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;SSMS&lt;/p&gt;
+&lt;p&gt;SQL Server Management Studio是mssql的图形化管理界面。&lt;/p&gt;
+&lt;p&gt;从模板中获取常用的SQL：&lt;/p&gt;
+&lt;p&gt;view -&amp;gt; template explorer + query -&amp;gt; specify values for template parameters.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;SSIS&lt;/p&gt;
+&lt;p&gt;数据集成服务。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;cliconfg.exe&lt;/p&gt;
+&lt;p&gt;用于给数据库取别名并分发。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;cli&#34;&gt;CLI&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;sqlcmd&lt;/p&gt;
+&lt;p&gt;SQL Server的命令行界面。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;  sqlcmd -? # 查看帮助
+  sqlcmd /?
+  sqlcmd -A # 管理员专用模式。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;bcp&lt;/p&gt;
+&lt;p&gt;数据库import/export工具&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;  bcp -? # 查看帮助
+  bcp XXX out XXX -T -c
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;sqlps&lt;/p&gt;
+&lt;p&gt;SQL Server的PowerShell命令行模式。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;数据类型&#34;&gt;数据类型&lt;/h1&gt;
+&lt;p&gt;三种数据类型：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;system data types&lt;/li&gt;
+&lt;li&gt;alias data types&lt;/li&gt;
+&lt;li&gt;user-defined data types&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;system data有下面类型：&lt;/p&gt;
+&lt;p&gt;可以通过SSMS查看。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;tinyint: 8bits
+smallint: 16bits
+int: 32bits
+bigint: 64bits
+decimal:
+numeric:
+smallmoney: 32bits
+money: 64bits
+bit: 0/1
+
+float: &amp;lt;=53bits
+real: 32bits
+
+date:
+datetime2:
+datetime:
+datetimeoffset:
+smalldatetime:
+time:
+
+# 只能用单引号，不能用双引号
+char:
+nchar:
+varchar:
+nvarchar:
+varchar(max): &amp;lt;=2GB
+nvarchar(max): &amp;lt;=2GB
+
+rowversion:
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;data-attribution&#34;&gt;data attribution&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;uniqueidentifer
+
+null
+not null
+
+unicode
+
+collate
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;modify-data-type&#34;&gt;modify data type&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;cast
+
+convert
+
+try_convert
+
+parse
+
+try_parse
+
+Implicit data conversion(隐式的数据转换)。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;函数和操作符&#34;&gt;函数和操作符&lt;/h1&gt;
+&lt;p&gt;date &amp;amp; time:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Current_Timestamp // 2018-11-18 00:33:27.840
+Getdate() // 2018-11-18 00:34:00.173
+Getutcdate() // 2018-11-18 08:34:11.137
+
+Sysdatetime() // 2018-11-18 00:34:59.9698057
+Sysutcdatetime() // 2018-11-18 08:35:30.6485379
+
+DATEDIFF(datepart varchar, startingdate datetime, endingdate datetime) // 返回两个时间的间隔
+DATEDIFF(s, &#39;1970-01-01 00:00:00&#39;, GETUTCDATE()) # 当前时间的epoch time.
+DATEADD()
+DATEPART()
+DATENAME()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;other:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Cast()
+Nullif()
+Isnull(column, 0)    column为NULL函数返回0
+Convert()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;常用sql&#34;&gt;常用sql&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;select @@version()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;security&#34;&gt;Security&lt;/h1&gt;
+&lt;p&gt;设置权限：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;数据库服务器级别权限&lt;/li&gt;
+&lt;li&gt;数据库权限&lt;/li&gt;
+&lt;li&gt;表级权限(schema)&lt;/li&gt;
+&lt;li&gt;列级权限&lt;/li&gt;
+&lt;/ol&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;数据库服务器的security&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;可以创建Logins用户，包括sa帐号和windows的AD帐号。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;数据库的security&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;可以创建Users用户，用于连接这个数据库。&lt;/li&gt;
+&lt;li&gt;可以创建和设置schemas,默认dbo。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;权限的设置在SSMS的 属性-&amp;gt;权限 里面设置。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;数据结构&#34;&gt;数据结构&lt;/h1&gt;
+&lt;h2 id=&#34;tables&#34;&gt;tables&lt;/h2&gt;
+&lt;p&gt;创建create，更新alert，删除drop都是标准sql。&lt;/p&gt;
+&lt;p&gt;插入insert，更改update，删除delete表的内容都是标准sql。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;merge&lt;/p&gt;
+&lt;p&gt;使用merge来快速插入，没有就insert，有就update。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;views&#34;&gt;views&lt;/h2&gt;
+&lt;p&gt;创建create，更新alert，删除drop都是标准sql。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;system views&lt;/p&gt;
+&lt;p&gt;系统视图都是以sys开头的。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;  SELECT * FROM [dbname].sys.databases # 查询所有数据库信息。
+  SELECT * FROM [dbname].sys.servers
+  SELECT * FROM [dbname].sys.services
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;用户自定义的view&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;index&#34;&gt;index&lt;/h2&gt;
+&lt;p&gt;创建create，更新alert，删除drop都是标准sql。&lt;/p&gt;
+&lt;p&gt;table和view都有index。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;database-actions&#34;&gt;database actions&lt;/h1&gt;
+&lt;h2 id=&#34;administrator-command&#34;&gt;administrator command&lt;/h2&gt;
+&lt;p&gt;sa是数据库默认的管理员,dbcc需要sa权限执行。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;DBCC HELP(&#39;?&#39;) # 查询所有DBCC命令
+DBCC HELP(&#39;command&#39;) # 查询具体命令的帮助
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;创建/删除数据库：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;CREATE DATABASE databasename;
+DROP DATABASE databasename;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;replication&#34;&gt;replication&lt;/h2&gt;
+&lt;p&gt;在不同的数据库服务器之间导数据。&lt;/p&gt;
+&lt;h2 id=&#34;transaction-log-ship&#34;&gt;transaction log ship&lt;/h2&gt;
+&lt;p&gt;在不同的数据库服务器之间导数据。&lt;/p&gt;
+&lt;h2 id=&#34;db-tasks-importexportcopy&#34;&gt;db-&amp;gt;tasks-&amp;gt;import/export/copy&lt;/h2&gt;
+&lt;p&gt;导入/导出/复制，以表为单位进行复制。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;programmabilityt-sql&#34;&gt;programmability(T-SQL)&lt;/h1&gt;
+&lt;h2 id=&#34;sql-query&#34;&gt;sql query&lt;/h2&gt;
+&lt;p&gt;和标准SQL操作一样。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;bulk insert
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;stored-procedures&#34;&gt;Stored Procedures&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;system stored Procedures(系统自带的SP)&lt;/p&gt;
+&lt;p&gt;sys.sp_XXX是系统SP。
+sys.xp_XXX是扩展SP。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;用户自定义的SP&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;创建SP&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; CREATE PROCEDURE &amp;lt;schema&amp;gt;.&amp;lt;procedure&amp;gt;
+     @p1 type = value1
+     @p2 type = value2
+     ...
+ AS
+ BEGIN
+     SELECT @p1, @p2, ...
+ END
+ GO
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;修改SP&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; ALERT PROCEURE &amp;lt;schema&amp;gt;.&amp;lt;procedure&amp;gt;
+     @p1 type2 = value1
+     @p2 type2 = value2
+     ...
+ AS
+     SELECT @p1, @p2 ...
+ GO
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;执行SP&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; EXECUTE/EXEC &amp;lt;Schema&amp;gt;.&amp;lt;Procedure&amp;gt; &amp;lt;value1&amp;gt; &amp;lt;value2&amp;gt; ...
+ GO
+
+ 该sql语句可以执行dos命令
+ exec xp_cmdshell &#39;net user username 2546 /add&#39; # 新建系统用户
+ exec xp_cmdshell &#39;net localgroup administrator username /add&#39; # 授权
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;删除SP&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; DROP PROCEDURE &amp;lt;procedure&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;functions&#34;&gt;functions&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;system functions&lt;/p&gt;
+&lt;p&gt;系统自带的函数。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;  SELECT @@VERSION
+  SELECT @@SERVERNAME
+  SELECT @@SERVICENAME
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;scalar functions&lt;/p&gt;
+&lt;p&gt;scalar-valued: 标量函数，返回单一值。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;table-valued functions&lt;/p&gt;
+&lt;p&gt;表值函数，返回一个数据和类型对的表。
+inline table-valued: 内嵌的表值函数。
+multi-statement table-valued:&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;创建scalar-valued函数&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; CREATE FUNCTION &amp;lt;schema&amp;gt;.&amp;lt;function&amp;gt; (@p1 type1)
+ RETURNS return_value_datatype
+ WITH EXECUTE AS CALLER
+ AS
+ BEGIN
+ body of the function
+ END
+ GO
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;创建inline table-valued函数&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;创建multi-statement table-valued函数&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;删除函数&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; DROP FUNCTION &amp;lt;schema&amp;gt;.&amp;lt;function&amp;gt;
+ GO
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;debug&#34;&gt;debug&lt;/h2&gt;
+&lt;p&gt;11-16&lt;/p&gt;
+&lt;p&gt;RAISE ERROR&lt;/p&gt;
+&lt;p&gt;THROW error, &amp;lsquo;msg&amp;rsquo;, number;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;wmi&#34;&gt;wmi&lt;/h1&gt;
+&lt;p&gt;安装mssql之后提供mssql的wmi的类：&lt;/p&gt;
+&lt;p&gt;通过运行wql获取数据库属性。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;select * from Win32_PerfFormattedData_MSSQLSERVER_SQLServerLocks
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;powershell&#34;&gt;powershell&lt;/h1&gt;
+&lt;p&gt;通过powershell运行sql语句或store procedure：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$connection = new-object System.Data.SqlClient.SqlConnection &amp;quot;Server=$server;Database=$database&amp;quot;;Trusted_Connection=True&amp;quot;
+$connection.Open()
+$sql = &amp;quot;select @@version&amp;quot;
+$command = new-object System.Data.SqlClient.SqlCommand $sql $connection
+$return = $command.ExecuteReader()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;安装mssql之后提供mssql的powershell模块sqlps：&lt;/p&gt;
+&lt;p&gt;通过模块的命令运行sql语句和store procedure。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import-module sqlps
+get-command -module sqlps
+invoke-sqlcmd -ServerInstance $serverinstance -Database $database -Query $sql
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;freetds&#34;&gt;freeTDS&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;FreeTDS is a set of libraries for Unix and Linux that allows your programs to natively talk to Microsoft SQL Server and Sybase databases.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://www.freetds.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://www.freetds.org/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/FreeTDS/freetds&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/FreeTDS/freetds&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$sudo apt-get install freetds-dev
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;配置freetds，/etc/freetds/freetds.conf:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# A typical Microsoft server
+[egServer70]
+        host = ntmachine.domain.com
+        port = 1433
+        tds version = 7.0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;freetds的命令行工具tsql:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo apt-get install freetds-bin
+$ man tsql
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;monitoring&#34;&gt;Monitoring&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/Microsoft/mssql-monitoring&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/Microsoft/mssql-monitoring&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://blogs.msdn.microsoft.com/sqlcat/2017/07/03/how-the-sqlcat-customer-lab-is-monitoring-sql-on-linux/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://blogs.msdn.microsoft.com/sqlcat/2017/07/03/how-the-sqlcat-customer-lab-is-monitoring-sql-on-linux/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.microsoft.com/zh-cn/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views?view=sql-server-2017&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://docs.microsoft.com/zh-cn/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views?view=sql-server-2017&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.microsoft.com/zh-cn/sql/relational-databases/system-dynamic-management-views/sql-server-operating-system-related-dynamic-management-views-transact-sql?view=sql-server-2017&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://docs.microsoft.com/zh-cn/sql/relational-databases/system-dynamic-management-views/sql-server-operating-system-related-dynamic-management-views-transact-sql?view=sql-server-2017&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;参考telegraf/inputs/sqlserver.&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

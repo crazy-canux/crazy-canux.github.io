@@ -1,40 +1,1203 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Oop on Morgoth</title>
-    <link>https://canuxcheng.com/tags/oop/</link>
-    <description>Recent content in Oop on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Mon, 01 Jan 2018 10:49:21 +0000</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/oop/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>GSL_oop</title>
-      <link>https://canuxcheng.com/post/gsl_oop/</link>
-      <pubDate>Mon, 01 Jan 2018 10:49:21 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/gsl_oop/</guid>
-      <description>&lt;h1 id=&#34;reflect&#34;&gt;reflect&lt;/h1&gt;&#xA;&lt;h2 id=&#34;constants&#34;&gt;constants&lt;/h2&gt;&#xA;&lt;p&gt;const:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;const (&#xA;    SelectSend&#xA;    SelectRecv&#xA;    SelectDefault&#xA;)&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;functions&#34;&gt;functions&lt;/h2&gt;&#xA;&lt;pre&gt;&lt;code&gt;// 将src拷贝到dst, 直到src被耗尽或dst被装满.&#xA;func Copy(dst, src Value) int&#xA;&#xA;// 判断两个值是否深度一致&#xA;func DeepEqual(a1, a2 interface{}) bool&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;kind&#34;&gt;Kind&lt;/h2&gt;&#xA;&lt;p&gt;表示Type类型值表示的具体分类.&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;type Kind uint&#xA;&#xA;const (&#xA;    Invalid Kind = iota&#xA;    Bool&#xA;    Int&#xA;    ...&#xA;    Uint&#xA;    ...&#xA;    Float...&#xA;    Complex...&#xA;    Array&#xA;    Chan&#xA;    Func&#xA;    Interface&#xA;    Map&#xA;    Ptr&#xA;    Slice&#xA;    String&#xA;    Struct&#xA;    UnsafePointer&#xA;)&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;method:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;func (k Kind) String() string&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;stringheader&#34;&gt;StringHeader&lt;/h2&gt;&#xA;&lt;h2 id=&#34;sliceheader&#34;&gt;SliceHeader&lt;/h2&gt;&#xA;&lt;h2 id=&#34;structfield&#34;&gt;StructField&lt;/h2&gt;&#xA;&lt;h2 id=&#34;structtag&#34;&gt;StructTag&lt;/h2&gt;&#xA;&lt;h2 id=&#34;chandir&#34;&gt;ChanDir&lt;/h2&gt;&#xA;&lt;h2 id=&#34;selectdir&#34;&gt;SelectDir&lt;/h2&gt;&#xA;&lt;h2 id=&#34;selectcase&#34;&gt;SelectCase&lt;/h2&gt;&#xA;&lt;h2 id=&#34;method&#34;&gt;Method&lt;/h2&gt;&#xA;&lt;h2 id=&#34;type&#34;&gt;Type&lt;/h2&gt;&#xA;&lt;p&gt;用来表示一个go类型.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>OOP</title>
-      <link>https://canuxcheng.com/post/go_oop/</link>
-      <pubDate>Mon, 01 Jan 2018 10:49:21 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/go_oop/</guid>
-      <description>&lt;h1 id=&#34;go面向对象&#34;&gt;Go面向对象&lt;/h1&gt;&#xA;&lt;p&gt;golang通过方法和接口实现面向对象.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;方法method&#34;&gt;方法/method&lt;/h1&gt;&#xA;&lt;p&gt;go中没有类，但是可以为结构体定义方法．&lt;/p&gt;&#xA;&lt;p&gt;方法就是一类带有特殊的　接收者参数　的函数．&lt;/p&gt;&#xA;&lt;p&gt;只能为同一包内定义的类型的接收者申明方法，不能为其它包内定义的类型的接收者申明方法．&lt;/p&gt;&#xA;&lt;p&gt;除了结构体还可以为非结构体申明方法，但是不能为内建类型申明方法．&lt;/p&gt;&#xA;&lt;p&gt;方法有两种接收者,值接收者和指针接收者.&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;type Vertex struct {&#xA;    ...&#xA;}&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;值接收者:&lt;/p&gt;&#xA;&lt;p&gt;值接收者操作的是值的副本.&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;func (v Vertex) MethodName() rType {&#xA;    ...&#xA;}&#xA;&#xA;var v Vertex&#xA;v.MethodName() // 操作值的副本&#xA;&#xA;# 使用指针接收者来调用值接收者的方法，编译器会自动做类型转换&#xA;vp := new(Vertex)&#xA;vp.MethodName() // 指针被解引用为值,(*vp).MethodName(),操作的是指针指向的值的副本.&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;指针接收者：&lt;/p&gt;&#xA;&lt;p&gt;指针接收者，调用方法的时候操作的是该指针指向的值.&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;# 指针接收者的方法可以修改接收者指向的值&#xA;func (v *Vertex) MethodName() rType {&#xA;    ...&#xA;}&#xA;&#xA;vp := new(Vertex)&#xA;vp.MethodName() // 操作实际的值&#xA;&#xA;# 使用值接收者来调用指针接收者的方法，编译器会自动做类型转换.&#xA;var v Vertex&#xA;v.MethodName() // (&amp;amp;v).MethodName() , 操作的是实际的值&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;接口interface&#34;&gt;接口/Interface&lt;/h1&gt;&#xA;&lt;p&gt;接口是引用类型.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>JS OOP</title>
-      <link>https://canuxcheng.com/post/js_oop/</link>
-      <pubDate>Wed, 15 Mar 2017 09:36:32 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/js_oop/</guid>
-      <description>&lt;h1 id=&#34;oop&#34;&gt;OOP&lt;/h1&gt;&#xA;&lt;p&gt;javascript中一切都是对象.&lt;/p&gt;&#xA;&lt;p&gt;javacript内置了Bull/Number/String/Object/Function/Array/Date/RegExp类型.&lt;/p&gt;&#xA;&lt;h1 id=&#34;object&#34;&gt;Object&lt;/h1&gt;&#xA;&lt;p&gt;创建Object实例:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;var obj = new Object();&#xA;&#xA;var obj = Object(); // new 可以省略&#xA;&#xA;var obj = ｛&#xA;    name: &amp;quot;value&amp;quot;&#xA;};&#xA;&#xA;var obj = {&#xA;    &amp;quot;name&amp;quot;: &amp;quot;value&amp;quot;&#xA;}&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;添加属性:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;obj.attr = &amp;quot;value&amp;quot;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;添加方法:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;obj.method =  methodName;&#xA;function methodName() {};&#xA;&#xA;obj.method = function() {};&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;删除属性:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;delete obj.attr&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;访问对象属性:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;obj.property&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;访问对象方法:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;obj.method()&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h1 id=&#34;boolean&#34;&gt;Boolean&lt;/h1&gt;&#xA;&lt;p&gt;attribution:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;constructor&#xA;prototype&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;method:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;toSource()&#xA;valueOf()&#xA;toString()&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h1 id=&#34;number&#34;&gt;Number&lt;/h1&gt;&#xA;&lt;p&gt;attribution:&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>OOP</title>
-      <link>https://canuxcheng.com/post/python_oop/</link>
-      <pubDate>Tue, 21 Jun 2016 21:18:09 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/python_oop/</guid>
-      <description>&lt;h1 id=&#34;面向对象oop&#34;&gt;面向对象/OOP&lt;/h1&gt;&#xA;&lt;p&gt;OOD: Object Oriented Design.&lt;/p&gt;&#xA;&lt;p&gt;面向过程的设计支持任何语言，但是如果语言本身内置面向过程的结构，就会更容易编程．&lt;/p&gt;&#xA;&lt;p&gt;OOP: Object Oriented Programming.&lt;/p&gt;&#xA;&lt;p&gt;python内置OOP的结构，但是不必一定要使用类和OOP.&lt;/p&gt;&#xA;&lt;p&gt;面向对象的两个主题就是类和类实例．&lt;/p&gt;&#xA;&lt;p&gt;创建实例的过程叫实例化．&lt;/p&gt;&#xA;&lt;p&gt;属性就是属于另一个对象的数据或函数元素．属性分为数据属性和函数属性．&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;类class&#34;&gt;类/Class&lt;/h1&gt;&#xA;&lt;p&gt;类是现实世界的抽象的实体以编程的形式出现，实例是这些对象的具体化．&lt;/p&gt;&#xA;&lt;p&gt;类是一种数据结构的定义，实例是申明了一个这种类型的变量．&lt;/p&gt;&#xA;&lt;p&gt;类的定义：&lt;/p&gt;&#xA;&lt;p&gt;Python 3 所有类默认继承自 object，即使不写 (object) 也是新式类。建议保留 (object) 以兼容性和可读性。&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;class ClassName(object):&#xA;    &amp;quot;&amp;quot;&amp;quot;Doc string.&amp;quot;&amp;quot;&amp;quot;&#xA;    class_suite&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;类的初始化方法init(相当于构造器):&lt;/p&gt;&#xA;&lt;p&gt;如果定义了__init__方法在实例化的时候会首先调用该方法，进行一些初始化的工作。&lt;/p&gt;&#xA;&lt;p&gt;init方法的第一个参数必须是实例self，而且不能有return语句。&lt;/p&gt;&#xA;&lt;p&gt;init方法一般用来设置实例属性(也就是数据属性)。&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;class ClassName(object):&#xA;    def __init__(self, *args, **kwargs):&#xA;        pass&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;特殊方法new:&lt;/p&gt;&#xA;&lt;p&gt;如果定义了__new__方法，会在init方法之前运行，并且返回一个实例，也就是__init__的self。&lt;/p&gt;&#xA;&lt;p&gt;new方法的第一个参数必须是类cls。并且需要返回一个实例。&lt;/p&gt;&#xA;&lt;p&gt;new方法在object中被定义为staticmethod。&lt;/p&gt;&#xA;&lt;p&gt;相当于析构器的特殊方法del:&lt;/p&gt;&#xA;&lt;p&gt;__del__特殊方法要在实例对象的所有引用都被清除后才会执行。&lt;/p&gt;&#xA;&lt;p&gt;不要在del中做与实例没有关系的事情，一般不建议实现该方法。&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;class ClassName(object):&#xA;&#xA;    def __new__(cls, *args, **kwargs):&#xA;        ...&#xA;        return ...&#xA;&#xA;    def __del__(self):&#xA;        ...&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;类属性&#34;&gt;类属性&lt;/h2&gt;&#xA;&lt;p&gt;类属性分为数据属性和方法属性。&lt;/p&gt;&#xA;&lt;p&gt;类的数据属性仅仅是定义的类的变量。&lt;/p&gt;&#xA;&lt;p&gt;数据属性通常是静态变量, 也就是和类对象绑定, 与类的实例无关。&lt;/p&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Oop on Morgoth</title>
+        <link>https://canuxcheng.com/tags/oop/</link>
+        <description>Recent content in Oop on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Mon, 01 Jan 2018 10:49:21 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/oop/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>GSL_oop</title>
+        <link>https://canuxcheng.com/post/gsl_oop/</link>
+        <pubDate>Mon, 01 Jan 2018 10:49:21 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/gsl_oop/</guid>
+        <description>&lt;h1 id=&#34;reflect&#34;&gt;reflect&lt;/h1&gt;
+&lt;h2 id=&#34;constants&#34;&gt;constants&lt;/h2&gt;
+&lt;p&gt;const:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;const (
+    SelectSend
+    SelectRecv
+    SelectDefault
+)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;functions&#34;&gt;functions&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;// 将src拷贝到dst, 直到src被耗尽或dst被装满.
+func Copy(dst, src Value) int
+
+// 判断两个值是否深度一致
+func DeepEqual(a1, a2 interface{}) bool
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;kind&#34;&gt;Kind&lt;/h2&gt;
+&lt;p&gt;表示Type类型值表示的具体分类.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type Kind uint
+
+const (
+    Invalid Kind = iota
+    Bool
+    Int
+    ...
+    Uint
+    ...
+    Float...
+    Complex...
+    Array
+    Chan
+    Func
+    Interface
+    Map
+    Ptr
+    Slice
+    String
+    Struct
+    UnsafePointer
+)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;method:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;func (k Kind) String() string
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;stringheader&#34;&gt;StringHeader&lt;/h2&gt;
+&lt;h2 id=&#34;sliceheader&#34;&gt;SliceHeader&lt;/h2&gt;
+&lt;h2 id=&#34;structfield&#34;&gt;StructField&lt;/h2&gt;
+&lt;h2 id=&#34;structtag&#34;&gt;StructTag&lt;/h2&gt;
+&lt;h2 id=&#34;chandir&#34;&gt;ChanDir&lt;/h2&gt;
+&lt;h2 id=&#34;selectdir&#34;&gt;SelectDir&lt;/h2&gt;
+&lt;h2 id=&#34;selectcase&#34;&gt;SelectCase&lt;/h2&gt;
+&lt;h2 id=&#34;method&#34;&gt;Method&lt;/h2&gt;
+&lt;h2 id=&#34;type&#34;&gt;Type&lt;/h2&gt;
+&lt;p&gt;用来表示一个go类型.&lt;/p&gt;
+&lt;p&gt;interface:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type Type interface {
+    Kind() Kind
+    Name() string
+    PkgPath() string
+    String() string
+    Size() uintptr
+    ...
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;functions:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 返回接口中保存的值的类型
+func TypeOf(i interface{}) Type
+
+// 返回类型t的指针的类型
+func PtrTo(t Type) Type
+
+// 返回类型t的slice的类型
+func SliceOf(t Type) Type
+
+// 返回一个键类型为key, 值类型为elem的map类型
+func MapOf(key, elem Type) Type
+
+// 返回元素类型为t, 方向为dir的chan类型
+func ChanOf(dir ChanDir, t Type) Type
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;value&#34;&gt;Value&lt;/h2&gt;
+&lt;p&gt;为go值提供反射接口.&lt;/p&gt;
+&lt;p&gt;struct:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type Value struct {}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;functions:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 返回一个接口i保存的具体值的Value
+func ValueOf(i interface{}) Value
+
+// 返回一个类型typ的零值的Value
+func Zero(typ Type) Value
+
+...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;methods:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 如果v是否持有值，如果v是Value零值，返回false.
+func (v Value) IsValid() bool
+
+func (v Value) IsNil() bool
+
+// 返回v持有值的分类，如果v是Value零值，返回Invalid
+func (v Value) Kind() Kind
+
+// 返回v持有的值的类型Type.
+func (v Value) Type() Type
+
+...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        <item>
+        <title>OOP</title>
+        <link>https://canuxcheng.com/post/go_oop/</link>
+        <pubDate>Mon, 01 Jan 2018 10:49:21 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/go_oop/</guid>
+        <description>&lt;h1 id=&#34;go面向对象&#34;&gt;Go面向对象&lt;/h1&gt;
+&lt;p&gt;golang通过方法和接口实现面向对象.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;方法method&#34;&gt;方法/method&lt;/h1&gt;
+&lt;p&gt;go中没有类，但是可以为结构体定义方法．&lt;/p&gt;
+&lt;p&gt;方法就是一类带有特殊的　接收者参数　的函数．&lt;/p&gt;
+&lt;p&gt;只能为同一包内定义的类型的接收者申明方法，不能为其它包内定义的类型的接收者申明方法．&lt;/p&gt;
+&lt;p&gt;除了结构体还可以为非结构体申明方法，但是不能为内建类型申明方法．&lt;/p&gt;
+&lt;p&gt;方法有两种接收者,值接收者和指针接收者.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type Vertex struct {
+    ...
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;值接收者:&lt;/p&gt;
+&lt;p&gt;值接收者操作的是值的副本.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;func (v Vertex) MethodName() rType {
+    ...
+}
+
+var v Vertex
+v.MethodName() // 操作值的副本
+
+# 使用指针接收者来调用值接收者的方法，编译器会自动做类型转换
+vp := new(Vertex)
+vp.MethodName() // 指针被解引用为值,(*vp).MethodName(),操作的是指针指向的值的副本.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;指针接收者：&lt;/p&gt;
+&lt;p&gt;指针接收者，调用方法的时候操作的是该指针指向的值.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 指针接收者的方法可以修改接收者指向的值
+func (v *Vertex) MethodName() rType {
+    ...
+}
+
+vp := new(Vertex)
+vp.MethodName() // 操作实际的值
+
+# 使用值接收者来调用指针接收者的方法，编译器会自动做类型转换.
+var v Vertex
+v.MethodName() // (&amp;amp;v).MethodName() , 操作的是实际的值
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;接口interface&#34;&gt;接口/Interface&lt;/h1&gt;
+&lt;p&gt;接口是引用类型.&lt;/p&gt;
+&lt;p&gt;接口类型是由一组方法签名定义的集合．&lt;/p&gt;
+&lt;p&gt;接口类型的值可以保存任何实现了这些方法的值．&lt;/p&gt;
+&lt;p&gt;某个类型实现了该接口的所有方法签名，就算实现了该接口,无需显示申明实现了哪个接口.&lt;/p&gt;
+&lt;p&gt;接口可以匿名嵌入其它接口，或嵌入到结构中．&lt;/p&gt;
+&lt;p&gt;一般只有一个方法的接口命名为MethodName + &amp;rsquo;er&#39;.&lt;/p&gt;
+&lt;p&gt;接口存储两个数据接口：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;iTable, 包含存储值的类型信息以及和该值关联的方法.&lt;/li&gt;
+&lt;li&gt;指向存储的值的指针.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;定义接口：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type IName interface {
+    MethodName()
+    ...
+}
+
+type SName struct {
+    ...
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;值接收者方法:&lt;/p&gt;
+&lt;p&gt;接口类型的值为值或指针都可以调用该方法.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;func (s SName) MethodName() {}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;指针接收者方法:&lt;/p&gt;
+&lt;p&gt;接口类型的值必须为指针才能调用该方法.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;func (s *SName) MethodName() {
+    ...
+}
+
+s := &amp;amp;SName{...}
+// i = &amp;amp;SName{...} //接口变量能保存实现了该接口的任意类型的对象
+i = s
+i.MethodName()
+
+# 接口类型为值时，调用失败
+var s SName
+i = s
+i.MethodName() // 调用失败
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;底层值为nil的接口值:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var i IName
+var s SName
+i = s    # 接口值为nil
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;空接口：&lt;/p&gt;
+&lt;p&gt;所有类型都实现了空接口.&lt;/p&gt;
+&lt;p&gt;指定了零个方法的接口值被称为空接口,一般用来处理未知类型的值.&lt;/p&gt;
+&lt;p&gt;当接口储存的类型和对象都为nil，接口才为nil&lt;/p&gt;
+&lt;p&gt;以空接口为参数的函数可以接收任意类型的值作为参数.&lt;/p&gt;
+&lt;p&gt;如果一个函数返回空接口就可以返回任意类型的值.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 空接口可以保存任何类型的值
+var i interface{}
+# 空接口作为形参
+func FuncName(i interface{}) {}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;指针的类型断言/comma-ok断言：&lt;/p&gt;
+&lt;p&gt;断言接口值i保存了具体类型Type, 并将底层类型为Type的值赋予变量t.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;只返回一个值，断言失败会触发panic.
+t := i.(Type)
+
+返回两个值，断言成功返回true, 失败返回false.
+t, ok := i.(Type)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;指针的类型选择/switch测试：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// i.(type) 是固定写法
+switch TypeValue := i.(type) {
+case Type1:
+    ...
+case Type2:
+    ...
+...
+default:
+    ...
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;嵌入接口:&lt;/p&gt;
+&lt;p&gt;接口中可以嵌入其它接口，这样实现了该接口的对象就隐式包含嵌入接口的所有方法.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type Interface interface {}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;封装&#34;&gt;封装&lt;/h2&gt;
+&lt;p&gt;小写字母开头的标识符（类型/属性/方法&amp;hellip;)是未公开的，只能在当前包引用，不能在其它包引用。&lt;/p&gt;
+&lt;p&gt;可以通过创建工厂函数对外暴露未公开的标识符:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;标识符才有公开或未公开属性，值没有&lt;/li&gt;
+&lt;li&gt;短变量声明操作符，有能力捕获引用的类型，并创建一个未公开的类型的变量；显示声明的变量不能引用未公开类型。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;通过工厂函数返回未公开类型的值:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# packageA
+type privateType  Type
+func New(args) privateType {
+    return privateType(args)
+}
+# packageB
+import packageA
+func main() {
+    b := packageA.New(args) // 返回一个值，而不是标识符
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;公开类型的未公开属性:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# packageA
+type Public struct {
+    private Type
+}
+
+# packageB
+import packageA
+func main() {
+    b := packageA.Public{
+        private: value, // panic, 公开类型的未公开属性不能通过字面量直接赋值
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;类型嵌套中的未公开类型的公开属性会提升到外部类型:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# packageA
+type inner struct { // inner private
+    In Type  // In public
+}
+type Outer struct {
+    inner
+    Out Type
+}
+
+# packageB
+import packageA
+func main() {
+    b := packageA.Outer{
+        Out: value, // 外部类型中的未公开内部类型不能通过字面量直接赋值
+    }
+    b.In = value // 内部类型的公开属性提升到外部类型。
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;多态&#34;&gt;多态&lt;/h2&gt;
+&lt;p&gt;形式参数是接口的函数，叫做多态函数.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;func FuncName(iVar IName) {}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;所有实现了接口的方法的实体类型，就可以作为参数传给多态函数.&lt;/p&gt;
+&lt;h2 id=&#34;继承&#34;&gt;继承&lt;/h2&gt;
+&lt;p&gt;通过类型嵌套实现继承，外部类型可以访问内部类型的属性和方法&lt;/p&gt;
+&lt;p&gt;如果外部类型实现同名的属性或方法，就会覆盖内部类型的属性或方法（不过内部类型的属性和方法还在，可以通过内部类型访问）&lt;/p&gt;
+&lt;p&gt;内部类型实现的接口，也会自动提升到外部类型。只要内部类型实现了某接口，外部类型相当于也实现了该接口。&lt;/p&gt;
+&lt;p&gt;如果匿名字段实现了一个方法，那么包含这个匿名字段的结构也可以调用该方法.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type Inner struct {
+    in Type
+}
+
+func (i *Inner) InnerMethod() {}
+
+type Outer struct {
+    Inner    // 只需要类型名称，不需要声明变量
+    out Type
+    ...
+}
+
+outer := Outer{}
+
+outer.Inner.InnerMethod() //始终可以访问内部类型的方法，即使外部类型实现同名方法
+outer.Inner.in // 同上
+
+outer.InnerMethod() //如果外部类型没有实现同名方法，就是内部类型方法，否则是外部类型方法
+outer.in // 同上
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;反射reflact&#34;&gt;反射/reflact&lt;/h1&gt;
+&lt;p&gt;反射就是检查程序在运行时的状态.&lt;/p&gt;
+&lt;p&gt;使用反射一般使用标准库reflect.&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>JS OOP</title>
+        <link>https://canuxcheng.com/post/js_oop/</link>
+        <pubDate>Wed, 15 Mar 2017 09:36:32 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/js_oop/</guid>
+        <description>&lt;h1 id=&#34;oop&#34;&gt;OOP&lt;/h1&gt;
+&lt;p&gt;javascript中一切都是对象.&lt;/p&gt;
+&lt;p&gt;javacript内置了Bull/Number/String/Object/Function/Array/Date/RegExp类型.&lt;/p&gt;
+&lt;h1 id=&#34;object&#34;&gt;Object&lt;/h1&gt;
+&lt;p&gt;创建Object实例:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var obj = new Object();
+
+var obj = Object(); // new 可以省略
+
+var obj = ｛
+    name: &amp;quot;value&amp;quot;
+};
+
+var obj = {
+    &amp;quot;name&amp;quot;: &amp;quot;value&amp;quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;添加属性:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;obj.attr = &amp;quot;value&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;添加方法:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;obj.method =  methodName;
+function methodName() {};
+
+obj.method = function() {};
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;删除属性:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;delete obj.attr
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;访问对象属性:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;obj.property
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;访问对象方法:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;obj.method()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;boolean&#34;&gt;Boolean&lt;/h1&gt;
+&lt;p&gt;attribution:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;constructor
+prototype
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;method:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;toSource()
+valueOf()
+toString()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;number&#34;&gt;Number&lt;/h1&gt;
+&lt;p&gt;attribution:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;constructor
+prototype
+
+MAX_VALUE
+MIN_VALUE
+NaN
+NEGATIVE_INFINITY
+POSITIVE_INFINITY
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;method:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;valueOf()
+toString()
+
+toLocaleString()
+toFixed()
+toExponential()
+toPrecision()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;string&#34;&gt;String&lt;/h1&gt;
+&lt;p&gt;attribution:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;constructor
+prototype
+
+length
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;method:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;toSource()
+toString()
+valueOf()
+
+anchor()
+big()
+indexOf()
+replace()
+match()
+search()
+toLowerCase()
+toUpperCase()
+...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;function&#34;&gt;Function&lt;/h1&gt;
+&lt;p&gt;attribution:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Infinity
+java
+NaN
+Packages
+undefined
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;method：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;decodeURI()
+decodeURIComponent()
+encodeURI()
+encodeURIComponent()
+escape()
+eval()
+getClass()
+isFinite()
+isNaN()
+parseFloat()
+parseInt()
+String()
+unescape()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;array&#34;&gt;Array&lt;/h1&gt;
+&lt;p&gt;创建对象:&lt;/p&gt;
+&lt;p&gt;new都可以省略.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var arr = new Array();
+
+var arr = new Array(size);
+
+var arr = new Array(element0, element1, ...);
+
+var arr = [];
+var arr = [1,2, &amp;quot;test&amp;quot;];
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;赋值:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;arr[index] = &amp;quot;value&amp;quot;;
+
+// 字符串下标，不能直接通过数组对象访问，只能通过对象方法访问.
+arr[&amp;quot;key&amp;quot;] = &amp;quot;value&amp;quot;;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;attribution:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;constructor
+prototype
+
+length // set或get数组中元素个数.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;method:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;toSource()
+toString()
+valueOf()
+
+toLocaleString()
+
+join(separator) // 返回按照分隔符分隔的字符串
+concat() // 拼接
+
+push() // 往数组末尾添加元素,返回最新长度.
+pop() // 移除数组末尾元素,并返回
+
+unshift() // 在数组开头添加元素，返回最新长度.
+shift() //　移除数组开头元素并返回
+
+reverse() // 对数组逆序排序操作．
+sort(sortby) // 对数组顺序排序操作
+
+slice(start, end) // 取下标为start和end之间的元素，不包括start和end.
+
+splice(index, howmany, item1, ...) // 删除，插入，替换功能.
+splice(index, howmany) // 从index开始，获取howmany个元素
+splice(index, 0, item) // 从index插入item
+splice(index, 1, item) // 用item替换index的元素
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;date&#34;&gt;Date&lt;/h1&gt;
+&lt;p&gt;创建对象:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var date = new Date();
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;attribution:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;constructor
+prototype
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;method:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;toString()
+toSource()
+valueOf()
+
+Date()
+UTC()
+parse(datestring) // 返回datestring的epoch毫秒数
+
+toLocalString()
+toLocalTimeString()
+toLocalDateString(0)
+toUTCString()
+toGMTString()
+toDateString()
+toTimeString()
+
+get...
+
+set...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;regexp&#34;&gt;RegExp&lt;/h1&gt;
+&lt;h1 id=&#34;math&#34;&gt;Math&lt;/h1&gt;
+&lt;h1 id=&#34;events&#34;&gt;Events&lt;/h1&gt;
+</description>
+        </item>
+        <item>
+        <title>OOP</title>
+        <link>https://canuxcheng.com/post/python_oop/</link>
+        <pubDate>Tue, 21 Jun 2016 21:18:09 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/python_oop/</guid>
+        <description>&lt;h1 id=&#34;面向对象oop&#34;&gt;面向对象/OOP&lt;/h1&gt;
+&lt;p&gt;OOD: Object Oriented Design.&lt;/p&gt;
+&lt;p&gt;面向过程的设计支持任何语言，但是如果语言本身内置面向过程的结构，就会更容易编程．&lt;/p&gt;
+&lt;p&gt;OOP: Object Oriented Programming.&lt;/p&gt;
+&lt;p&gt;python内置OOP的结构，但是不必一定要使用类和OOP.&lt;/p&gt;
+&lt;p&gt;面向对象的两个主题就是类和类实例．&lt;/p&gt;
+&lt;p&gt;创建实例的过程叫实例化．&lt;/p&gt;
+&lt;p&gt;属性就是属于另一个对象的数据或函数元素．属性分为数据属性和函数属性．&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;类class&#34;&gt;类/Class&lt;/h1&gt;
+&lt;p&gt;类是现实世界的抽象的实体以编程的形式出现，实例是这些对象的具体化．&lt;/p&gt;
+&lt;p&gt;类是一种数据结构的定义，实例是申明了一个这种类型的变量．&lt;/p&gt;
+&lt;p&gt;类的定义：&lt;/p&gt;
+&lt;p&gt;Python 3 所有类默认继承自 object，即使不写 (object) 也是新式类。建议保留 (object) 以兼容性和可读性。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;class ClassName(object):
+    &amp;quot;&amp;quot;&amp;quot;Doc string.&amp;quot;&amp;quot;&amp;quot;
+    class_suite
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;类的初始化方法init(相当于构造器):&lt;/p&gt;
+&lt;p&gt;如果定义了__init__方法在实例化的时候会首先调用该方法，进行一些初始化的工作。&lt;/p&gt;
+&lt;p&gt;init方法的第一个参数必须是实例self，而且不能有return语句。&lt;/p&gt;
+&lt;p&gt;init方法一般用来设置实例属性(也就是数据属性)。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;class ClassName(object):
+    def __init__(self, *args, **kwargs):
+        pass
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;特殊方法new:&lt;/p&gt;
+&lt;p&gt;如果定义了__new__方法，会在init方法之前运行，并且返回一个实例，也就是__init__的self。&lt;/p&gt;
+&lt;p&gt;new方法的第一个参数必须是类cls。并且需要返回一个实例。&lt;/p&gt;
+&lt;p&gt;new方法在object中被定义为staticmethod。&lt;/p&gt;
+&lt;p&gt;相当于析构器的特殊方法del:&lt;/p&gt;
+&lt;p&gt;__del__特殊方法要在实例对象的所有引用都被清除后才会执行。&lt;/p&gt;
+&lt;p&gt;不要在del中做与实例没有关系的事情，一般不建议实现该方法。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;class ClassName(object):
+
+    def __new__(cls, *args, **kwargs):
+        ...
+        return ...
+
+    def __del__(self):
+        ...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;类属性&#34;&gt;类属性&lt;/h2&gt;
+&lt;p&gt;类属性分为数据属性和方法属性。&lt;/p&gt;
+&lt;p&gt;类的数据属性仅仅是定义的类的变量。&lt;/p&gt;
+&lt;p&gt;数据属性通常是静态变量, 也就是和类对象绑定, 与类的实例无关。&lt;/p&gt;
+&lt;p&gt;直接通过类名来访问类的数据属性。不建议通过实例来访问类的数据属性。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;class ClassName(object):
+    CONST_VARIABLE = &#39;value&#39;
+
+    def __init__(self, *args, **kwargs):
+        ClassName.CONST_VARIABLE = &#39;new&#39;
+
+ClassName.CONST_VARIABLE = &#39;new value&#39;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;类的方法属性仅仅是一个作为类定义的一部分定义的函数, 与类的实例无关。&lt;/p&gt;
+&lt;p&gt;类中定义的方法的第一个参数是一个实例self。&lt;/p&gt;
+&lt;p&gt;方法属性必须绑定到一个实例才能被直接调用, 非绑定方法没有给出实例对象一般不能直接调用。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;class ClassName(object):
+    def func(self, *args, **kwargs):
+        pass
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Python 3 中，直接调用 ClassName.func() 会报错：TypeError: func() missing 1 required positional argument: &amp;lsquo;self&lt;/p&gt;
+&lt;p&gt;调用非绑定方法：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ClassName.func(ClassName()) # 除非传入实例作为第一个参数self的值
+# 常用场景： 调用父类中的非绑定方法
+class ClassName(BaseClass):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        ...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;调用绑定方法： 自动把实例作为self传入，不用显式传入。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ClassName().func()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看类的属性：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;dir(class) # 内建函数
+class.__dict__ # 类的特殊属性
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;类的特殊属性：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;class.__name__ # class namkkk
+class.__qualname__
+class.__module__
+class.__doc__ # 文档的特殊属性, 不会被继承.
+class.__annotations
+
+class.__bases__ # 类的父类构成的元组
+class.__orig_bases__
+# 新式类新增的三个特殊属性:
+class.__mro__ # 返回方法解析顺序的元组, mro()
+class.__subclasses__() # 返回子类的列表
+
+class.__dict__ # 以字典的形式存储对象的属性
+class.__weakref__
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;方法和函数的特殊属性：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&#39;__doc__&#39;,
+&#39;__annotations__&#39;
+&#39;__qualname__&#39;
+&#39;__name__&#39;,
+&#39;__module__&#39;,
+&#39;__self__&#39;,
+&#39;__func__&#39;, 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;实例instances&#34;&gt;实例/Instances&lt;/h1&gt;
+&lt;p&gt;实例化：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ins = ClassName()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;实例属性&#34;&gt;实例属性&lt;/h2&gt;
+&lt;p&gt;实例属性：&lt;/p&gt;
+&lt;p&gt;实例严格来说只有数据属性(方法属性应该属于类属性)，数据属性就是和某个实例相关联的数据值，这些值独立于其它实例或类，当一个实例被释放，相应的数据属性也被释放。通常通过init方法来设置实例的数据属性。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;class ClassName(object):
+    DATA = &amp;quot;in class&amp;quot; # 类的数据属性
+
+    def __init__(self, default=&amp;quot;default&amp;quot;, *args, **kwargs):
+        self.default = default # 当前实例的数据属性
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;区别类的数据属性和实例的数据属性。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;obj1 = ClassName()
+print(obj1.DATA) # &amp;quot;in class&amp;quot;, 当实例没有同名的数据属性，会访问类的数据属性。
+obj1.DATA = &amp;quot;in obj1&amp;quot; # 相当于给实例新建了一个数据属性，会覆盖类的数据属性。
+print(obj1.DATA) # &amp;quot;in obj1&amp;quot; 访问的是实例的数据属性，覆盖了类的数据属性。
+print(ClassName.DATA) # &amp;quot;in class&amp;quot; 访问类的数据属性。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看实例属性:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;instance.__dict__
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;实例的特殊属性：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;instance.__dict__ # 以字典的形式存储对象的属性
+instance.__class__ # 实例对应的类
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;封装encapsulation&#34;&gt;&lt;strong&gt;封装/Encapsulation&lt;/strong&gt;&lt;/h1&gt;
+&lt;p&gt;封装描述了对数据／信息进行隐藏的观念，对数据属性提供接口和访问函数．&lt;/p&gt;
+&lt;p&gt;默认情况下，数据属性和类属性都是public的．类所在的模块和导入了类的其它模块都可以使用．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var # public
+def method_name(self):
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;一个下划线开头的属性是protected,能在类本身和子类使用，类的实例可以直接访问，不可以用from module import *导入．&lt;/p&gt;
+&lt;p&gt;用于把属性限制在一个模块中．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;_xxx # protected
+def _xxx(self):
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;双下划线开头的属性是private, 只能类本身使用，类的实例不能直接访问，子类和其它类都不能使用,子类也不能覆盖．&lt;/p&gt;
+&lt;p&gt;用于把属性限制在一个类中.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;__xxx # private
+def __xxx(self):
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;系统已经定义的特殊方法，也称魔法方法．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;def __xxx__(self): # 系统定义的名字
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;composition&#34;&gt;Composition&lt;/h2&gt;
+&lt;p&gt;类之间的关系只有两种继承和包含.&lt;/p&gt;
+&lt;p&gt;创建复合对象时可以通过composition组合来增加功能和代码的重用性．&lt;/p&gt;
+&lt;p&gt;当类之间有显著不同，并且较小的类是较大的类所需的组件时一般使用组合．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;from .company import Company
+from .home import Home
+class Emp(object):
+    def __init__(self, *args, **kwargs):
+        self.comp = Company(args)
+        self.home = Home(kwargs)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;继承inheritance&#34;&gt;&lt;strong&gt;继承/Inheritance&lt;/strong&gt;&lt;/h1&gt;
+&lt;p&gt;利用类的两种方式就是包装和继承．&lt;/p&gt;
+&lt;h2 id=&#34;子类和派生&#34;&gt;子类和派生&lt;/h2&gt;
+&lt;p&gt;对于相同的类但是有不同的功能，可以通过derivation派生来实现．&lt;/p&gt;
+&lt;p&gt;通过使用一个已经定义好的类，扩展它或者修改，而不会影响系统中使用现存类的其它代码片段．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;class Father(object):
+    def woman(self):
+        ...
+
+class Mother(object);
+    def man(self):
+        ...
+
+class Child(Father, Mother):
+    def child(self):
+        ...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;继承&#34;&gt;继承&lt;/h2&gt;
+&lt;p&gt;继承描述了基类的属性如何遗传给派生类．&lt;/p&gt;
+&lt;p&gt;派生类（子类）继承自基类（父类）&lt;/p&gt;
+&lt;p&gt;python中的类需要继承一个或多个父类．&lt;/p&gt;
+&lt;p&gt;object类是所有类的父类．&lt;/p&gt;
+&lt;p&gt;子类继承了基类的属性和方法．&lt;/p&gt;
+&lt;p&gt;文档字符串__doc__是唯一的，不能继承．&lt;/p&gt;
+&lt;p&gt;一个类的__bases__属性可以查看它的父类组成的元组．不包括父类的父类．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;class.__bases__ # 类的父类构成的元组
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;实例调用方法时，默认调用的该对象的类的本身的方法，如果该类没有实现该方法才会调用父类的方法．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;class Parent(object):
+    def foo(self):
+        print(&amp;quot;in parent.&amp;quot;)
+
+class Child(Parent):
+    def foo(self):
+        print(&amp;quot;in child.&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;从内置类继承&#34;&gt;从内置类继承&lt;/h2&gt;
+&lt;p&gt;可以从内置类型继承子类，修改一些属性．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;class RoundFloat(float):
+    def __new__(cls, val):
+       return super(RoundFloat, cls).__new__(cls, round(val, 2))
+
+class SortedKeyDict(dict):
+    def keys(self):
+        return sorted(super(SortedKeyDict, self).keys())
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;multiple-inheritance多重继承&#34;&gt;Multiple inheritance多重继承&lt;/h2&gt;
+&lt;p&gt;由于类，类型，内建类型的子类都重新架构，新的类采用MRO算法来查找子类中使用的属性．&lt;/p&gt;
+&lt;p&gt;MRO: Method Resolution Order, 方法解释顺序．采用广度优先，从左至右边，来获取在子类中的属性．&lt;/p&gt;
+&lt;p&gt;可以通过新式类的特殊属性查看子类的属性的查找顺序：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;class.__mro__ # 返回方法解析顺序的元组
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;多继承，mro和super的用法：&lt;/p&gt;
+&lt;p&gt;super每次只调用MRO中的第一个父类，和getattr的顺序一样．并且相同的父类只调用一次．&lt;/p&gt;
+&lt;p&gt;数据属性，普通方法属性，特殊方法属性都是按照MRO顺序来查找．&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/crazy-canux/python/tree/master/python/multiple_inheritance&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/crazy-canux/python/tree/master/python/multiple_inheritance&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;多态polymorphism&#34;&gt;&lt;strong&gt;多态/Polymorphism&lt;/strong&gt;&lt;/h1&gt;
+&lt;p&gt;python不支持方法重载，但是可以通过对参数的判断，对不同的参数进行不同的处理。以此来实现重载的功能。&lt;/p&gt;
+&lt;p&gt;python可以重载魔法方法。&lt;/p&gt;
+&lt;h2 id=&#34;magicmethod&#34;&gt;magicmethod&lt;/h2&gt;
+&lt;p&gt;python类有一些可自定义的特殊方法集，它们中的一些有预定义的默认行为，一些没有，留到需要的时候去实现。&lt;/p&gt;
+&lt;p&gt;这些特殊方法是python中用来扩充类的方法。可以用来模拟标准类型或者重载操作符。&lt;/p&gt;
+&lt;p&gt;这些特殊方法都是用双下划线开头和结尾的，也被称为魔法方法。&lt;/p&gt;
+&lt;p&gt;对象创建和销毁：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;__init__(self, *args, **kwargs) # 构造器，带一些可选的参数
+__new__(cls, *args, **kwargs) # 构造器，带一些可选的参数，通常用来设置不可变数据类型的子类。
+__del__(self) # 解构器
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;字符串表示：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;__str__(self) # str(), print() 
+obj = ClassName()
+print(obj) # 默认的类的__str__会调用__repr__
+# 可以通过重写__str__或__repr__来改变打印的内容
+
+__repr__(self) # repr()
+obj = ClassName()
+obj # 默认的打印对象的运行时的字符串，&amp;lt;test.RoundFloat at 0x7fb715253e90&amp;gt;
+# 可以通过重写__repr__()改变打印的内o
+
+__bool__(self) # 用于bool判断真假
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;可调用对象的特殊方法：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;__call__(self, *args) # 表示可调用的实例, callable(object) 会返回true.
+
+class TestClass(object):
+    def __call__(self, *args):
+        print(&amp;quot;Instance is callable after implement call method in class.&amp;quot;)
+        print(&amp;quot;Args come from instance invoke is: {}&amp;quot;.format(args))
+
+tc = TestClass()
+callable(tc) # True
+tc()
+tc(&#39;arg1&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;实例和类的检查相关特殊方法：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;__instancecheck__(self, instance) # isinstance(instance, class)
+__subclasscheck__(self, subclass) # issubclass(subclass, class)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;属性相关特殊方法：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;__getattr__(self, name) # getattr(), 仅当属性没有在实例／类／父类的__dict__中找到才会调用．
+__getattribute__(self, name)
+__setattr__(self, name, value)
+__delattr__(self, name)
+__dir__(self) # dir()
+
+# 描述符相关
+__get__(self, instance, owner)
+__set__(self, instance, value)
+__delete__(self, instance)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;with上下文管理特殊方法：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;__enter__(self) # return self, 需要返回self
+__exit__(self, exc_type, exc_value, traceback)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;对象比较特殊方法：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;__cmp__(self, other) # cmp()
+__lt__(self, other)
+__le__(self, other)
+__eq__(self, other)
+__ne__(self, other)
+__gt__(self, other)
+__ge__(self, other)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;容器类型相关特殊方法:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;__len__(self) #　len()
+__getitem__(self, key) #
+__setitem__(self, key, value) #
+__delitem__(self, key) # del
+__reversed__(self) # reversed()
+__iter__(self) # iter()
+__contains__(self, item)
+__missing__(self, key)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/crazy-canux/python/blob/master/python/magicmethod/container.py&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/crazy-canux/python/blob/master/python/magicmethod/container.py&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;数值类型相关特殊方法：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;__add__(self, other)
+__sub__(self, other)
+__mul__(self, other)
+__div__(self, other)
+__truediv__(self, other)
+__floordiv__(self, other)
+__mod__(self, other)
+__divmod__(self, other)
+__pow__(self, other[, module])
+__lshift__(self, other)
+__rshift__(self, other)
+__and__(self, other)
+__xor__(self, other)
+__or__(self, other)
+
+__rxxx__(self, other)
+
+# 原位运算必须返回self.
+__ixxx__(self, other) # self += other -&amp;gt; self = self + other
+
+__neg__(self)
+__pos__(self)
+__abs__(self)
+__invert__(self)
+
+__complex__(self)
+__int__(self)
+__long__(self)
+__float__(self)
+
+__oct__(self)
+__hex__(self)
+
+__index__(self)
+__coerce__(self, other)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;delegation--wrapping&#34;&gt;Delegation &amp;amp; Wrapping&lt;/h2&gt;
+&lt;p&gt;Wrapping包装就是对一个已经存在的对象增加，删除或修改已经存在的功能．&lt;/p&gt;
+&lt;p&gt;Delegation授权(代理)是Wrapping包装的一个特性,用于简化处理相关命令性功能，最大化重用代码．&lt;/p&gt;
+&lt;p&gt;实现delegation的关键在于覆盖__getattr__()特殊方法．通过调用内置函数getattr()得到一个对象的默认行为．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;class Wrapper(object):
+    def __init__(self, obj):
+        self.__data = obj
+
+    def __getattr__(self, attr):
+        return getattr(self.__data, attr)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;metaclass元类&#34;&gt;metaclass元类&lt;/h1&gt;
+&lt;p&gt;metaclass 是&amp;quot;创建类的类&amp;quot;。正如实例是类的实例化，类也是元类的实例化。在 Python 中，类本身也是对象，而元类就是用来创建这些类对象的。&lt;/p&gt;
+&lt;p&gt;元类用来定义某些类是如何被创建的。改变类的默认行为和创建方式。&lt;/p&gt;
+&lt;p&gt;大多数情况下不需要创建元类，一般使用系统的元类的默认方式。&lt;/p&gt;
+&lt;p&gt;在执行类定义的时候，解释器必须知道这个类的元类；&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;class ClassName(metaclass=MetaClassName):
+    pass
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;在执行类定义时候检查元类，元类传递三个参数到构造器：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;类名
+从基类继承数据的元组, __bases__
+类的属性字典, __dict__
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;元类相关的可定制属性：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;__metaclass__
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;定义一个元类：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;class MetaClassName(type):
+    def __new__(cls, name, bases, dicts):
+        super().__new__(cls, name, bases, dicts)
+        # 在这里做一些你希望使用该元类的类在定义时做的操作
+    def __call__(cls, *args, **kwargs):
+       if cls not in cls._instances:
+          cls._instances[cls] = super().__call__(*args, **kwargs)
+      return cls._instances[cls]
+
+class ClassName(metaclass=MetaClassName):
+    def __init__(self, value):
+        self.value = value
+    ...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/crazy-canux/python/tree/master/python/metaclass&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/crazy-canux/python/tree/master/python/metaclass&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;使用场景：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;单例模式&lt;/li&gt;
+&lt;li&gt;自动注册类&lt;/li&gt;
+&lt;li&gt;属性验证和转&lt;/li&gt;
+&lt;li&gt;ORM模型创建&lt;/li&gt;
+&lt;li&gt;抽象基类和接口检查&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;abstractmethod&#34;&gt;abstractmethod&lt;/h2&gt;
+&lt;p&gt;抽象方法，类似于java的interface.&lt;/p&gt;
+&lt;p&gt;最简单的抽象方法：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 如果子类没有实现同名的该方法，就会抛出异常．
+def base_method(self):
+    raise NotImplementedError
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;或者使用abc标准库来实现：&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/crazy-canux/python/tree/master/python/psl/myabc.py&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/crazy-canux/python/tree/master/python/psl/myabc.py&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;descriptors描述符&#34;&gt;descriptors描述符&lt;/h1&gt;
+&lt;p&gt;普通对象访问(set/get/delete)属性的优先级：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;obj.__dict__[&#39;attr&#39;] # 先访问实例对象
+obj.__class__.__dict__[&#39;attr&#39;] # 再访问类对象
+obj.__class__.__base__.__dict__[&#39;attr&#39;] # 接着访问基类的对象,不包括metaclass.
+__getattr__ # 如果实现了的话，优先级最低
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;描述符是一个对象，它定义了当另一个对象的属性被访问时应该如何处理。任何定义了 &lt;strong&gt;get&lt;/strong&gt;()、&lt;strong&gt;set&lt;/strong&gt;() 或 &lt;strong&gt;delete&lt;/strong&gt;() 方法的类都是描述符。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;__get__(self, obj, type=None) # 返回一个属性的值
+__set__(self, obj, value) # 设置一个属性的值，返回None
+__delete__(self, obj) # 属性的引用递减，返回None
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;描述符是数据property，class，staticmethod，classmethod, 以及super的机制．&lt;/p&gt;
+&lt;p&gt;data descriptor:定义了__get__和__set__的对象是数据描述符, 主要用于数据属性．&lt;/p&gt;
+&lt;p&gt;non data descriptor:仅仅定义了__get__的对象是非数据描述符，主要用于方法属性．&lt;/p&gt;
+&lt;p&gt;如果实例的字典(obj.&lt;strong&gt;dict&lt;/strong&gt;)具有与数据描述符相同名称的条目，则数据描述符优先。&lt;/p&gt;
+&lt;p&gt;如果实例的字典(obj.&lt;strong&gt;dict&lt;/strong&gt;)具有与非数据描述符相同名称的条目，则字典条目优先。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;class DescriptorName(object):
+    def __init__(self, name):
+        self.name = name
+
+    def __get__(self, instance, typ):
+        print(&#39;__get__&#39;, instance, typ)
+        return self.name
+
+    def __set__(self, instance, value):
+        print(&#39;__set__&#39;, instance, value)
+        self.name = value
+
+class TestClass(object):
+    name = DescriptorName(&#39;canux&#39;)
+
+tc = TestClass()
+print(tc.name) # __get__(tc, type(tc))被调用
+print(TestClass.name) # __get__(None, TestClass)被调用
+tc.__dict__[&#39;name&#39;] = &#39;test&#39; # 无效
+tc.name = &#39;test&#39; # __set__被调用
+TestClass.name = &#39;test&#39; # 仅仅是重新定义类的属性，覆盖了描述符
+# 此时tc.__dict__有同名属性，如果定义了__set__
+print(tc.name) # __get__被调用，属性已经修改
+print(TestClass.name) # __get__被调用,属性已经修改
+# 如果没有定义__set__，就是调用的tc.__dict__里面的．
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;描述符访问属性的优先级：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;数据描述符(__set__, __get__)
+# 对于访问实例属性obj.__getattribute__调用方式：type(obj).__dict__[&#39;attr&#39;].__get__(obj, type(obj))
+# 对于访问类属性class.__getattribute__调用方式：ClassName.__dict__[&#39;attr&#39;].__get__(None, ClassName)
+instance.__dict__
+非数据描述符(__get__)
+__getattr__ # 如果实现了的话，在描述符中优先级最低
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;描述符是由__getattribute__特殊方法调用，覆盖该方法可以防止描述符自动调用.&lt;/p&gt;
+&lt;p&gt;obj.__getattribute__和class.__getattribute__的调用方式不同．&lt;/p&gt;
+&lt;p&gt;描述符的三个特殊方法一般是通过属性访问自动调用．&lt;/p&gt;
+&lt;p&gt;函数和方法的描述符：&lt;/p&gt;
+&lt;p&gt;在属性访问期间函数包括了__get__方法用于绑定方法．因此函数和方法是非数据描述符．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;class TClass(object):
+    def __get__(self, obj, typ=None):
+        return types.MethodType(self, obj, typ)
+
+
+    def tmethod(self, args):
+        return args
+
+class Foo(object):
+    @Tclass
+    def bar(self):
+        print(&#39;in bar&#39;)
+
+obj = TClass()
+TClass.__dict__[&#39;tmethod&#39;] # function __main__.f
+TClass.tmethod # unbound method TClass.tmethod
+obj.tmethod # bound method TClass.tmethod of &amp;lt;__main__.TClass object at 0x7f8a4f084c10&amp;gt;
+
+obj.function(*args) -&amp;gt; function(obj, *args)
+Class.function(*args) -&amp;gt; function(*args)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;property&#34;&gt;property&lt;/h2&gt;
+&lt;p&gt;property属性是一种有用的特殊类型的描述符． 也是descriptor的主要用途．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;property(fget=None, fset=None, fdel=None, doc=None) # 返回一个property类型的对象
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;通过上面的descriptor的普通方式实现纯pytho写的property:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;class Property(object):
+    def __init__(self, fget, fset, fdelete):
+        self.fget = fget
+        self.fset = fset
+        self.fdelete = fdelete
+
+    def __get__(self, obj, typ=None):
+        return self.fget(obj)
+
+    def __set__(self, obj, val):
+        self.fset(obj, val)
+
+    def __delete__(self, obj):
+        self.fdelete(obj)
+
+class Foo(object):
+    def fget(self):
+        print &#39;fget called&#39;
+
+    def fset(self, val):
+        print &#39;fset called&#39;
+
+    def fdelete(self):
+        print &#39;fdelete called&#39;
+
+    bar = Property(fget, fset, fdelete)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;通过装饰器@property来实现：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;class Person(object):
+    def __init__(self):
+        self._email = None
+
+    @property
+    def email(self):
+        return self._email
+
+    @email.setter
+    def email(self, value):
+        m = re.match(&#39;\W+@\W+\.\W+&#39;, value)
+        if not m:
+            raise Exception(&#39;email not valid&#39;)
+        self._email = value
+
+    @email.deleter
+    def email(self):
+        del self._email
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/crazy-canux/python/tree/master/python/descriptor&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/crazy-canux/python/tree/master/python/descriptor&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;super&#34;&gt;super&lt;/h1&gt;
+&lt;p&gt;因为同名的方法子类会覆盖父类，在子类中调用父类的同名方法可以通过super内置函数。&lt;/p&gt;
+&lt;p&gt;super()方法实际是一个构造器。自动找到基类方法，同时传入self参数。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;super().__init__() # 不需要传递参数
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;对于单继承, super用来调用父类同名方法。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;class Child(Parent):
+    def foo(self):
+        Parent.foo(self) # 可以手动调用父类同名的方法，调用非绑定方法，传入self参数。
+
+class Child(Parent):
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs) 
+        ...
+
+    def foo(self, *args, **kwargs):
+        super().foo(*args, **kwargs) 
+        ...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;对于多继承，super用法参考上面的多继承．&lt;/p&gt;
+&lt;p&gt;常用场景：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;调用父类构造函数&lt;/li&gt;
+&lt;li&gt;扩展父类方法&lt;/li&gt;
+&lt;li&gt;多重继承场景&lt;/li&gt;
+&lt;li&gt;属性设置场景&lt;/li&gt;
+&lt;li&gt;合作式继承&lt;/li&gt;
+&lt;li&gt;类方法中使用&lt;/li&gt;
+&lt;li&gt;静态方法中使用&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;super()返回的对象有一个用于调用Descriptor的定制__getattribute__()方法．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;super(B, obj).method() -&amp;gt;
+obj.__class__.__mro__ -&amp;gt;
+A.__dict__[&#39;method&#39;].__get__(obj, B)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://rhettinger.wordpress.com/2011/05/26/super-considered-super/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://rhettinger.wordpress.com/2011/05/26/super-considered-super/&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;classmethod&#34;&gt;classmethod&lt;/h1&gt;
+&lt;p&gt;classmethod 是一个内置装饰器，用于将方法转换为类方法。类方法的特点是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;第一个参数是类本身 cls，而不是实例 self&lt;/li&gt;
+&lt;li&gt;可以通过类或实例调用&lt;/li&gt;
+&lt;li&gt;可以访问类属性，但不能直接访问实例属性&lt;/li&gt;
+&lt;li&gt;常用于创建备选构造函数&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;类方法通常用于替代类构造函数．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;class ClassName(object):
+    @classmethod
+    def demo_cm(cls, *args, **kwargs):
+        ...
+
+# 可以通过类来调用, 也就是可以直接调用非绑定方法．自动传入类作为第一个参数．
+ClassName.demo_cm(args, kwargs)
+# 也可以通过实例来调用, 自动传入类作为第一个参数
+ClassName().demo_cm(args, kwargs) // not recommend
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;描述符相关：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;obj.function(*args) -&amp;gt; function(type(obj), *args)
+Class.function(*args) -&amp;gt; function(Class, *args)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;常用场景：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;备选构造函数&lt;/li&gt;
+&lt;li&gt;工厂方法模式&lt;/li&gt;
+&lt;li&gt;访问和修改类属性&lt;/li&gt;
+&lt;li&gt;配置和设置相关方o&lt;/li&gt;
+&lt;li&gt;继承中的类方法&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;staticmethod&#34;&gt;staticmethod&lt;/h1&gt;
+&lt;p&gt;staticmethod 是一个内置装饰器，用于将方法转换为静态方法。静态方法的特点是：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;不接收隐式的第一个参数（不需要 self 或 cls）&lt;/li&gt;
+&lt;li&gt;可以通过类或实例调……&lt;/li&gt;
+&lt;li&gt;不能访问类或实例的属性&lt;/li&gt;
+&lt;li&gt;行为类似普通函数，只是在类的命名空间中&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;例子:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;class ClassName(object):
+    @staticmethod
+    def demo_sm():
+        ...
+
+ClassName.demo_sm()
+ClassName().demo_sm()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;描述符相关：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;obj.function(*args) -&amp;gt; function(*args)
+Class.function(*args) -&amp;gt; function(*args)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;常用场景：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;工具函数&lt;/li&gt;
+&lt;li&gt;验证和转换函数&lt;/li&gt;
+&lt;li&gt;常量和配置相关&lt;/li&gt;
+&lt;li&gt;工厂方法辅助函数&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;class-decorators&#34;&gt;Class Decorators&lt;/h1&gt;
+&lt;p&gt;类装饰器比函数装饰器更灵活，高内聚，封装性等优点．&lt;/p&gt;
+&lt;p&gt;类装饰器用于装饰一个类.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;def deco_name(cls):
+    class WrapperName(cls, ...):
+        def __init__(self, *args, **kwargs):
+            cls.__init__()
+            ....__init__()
+            ...
+    return WrapperName
+
+@deco_name
+class ClassName(object):
+    def __init__(self, *args, **kwargs):
+        ...
+    ...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/crazy-canux/python/blob/master/python/decorator/class_decorator.py&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/crazy-canux/python/blob/master/python/decorator/class_decorator.py&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

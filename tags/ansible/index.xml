@@ -1,19 +1,206 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Ansible on Morgoth</title>
-    <link>https://canuxcheng.com/tags/ansible/</link>
-    <description>Recent content in Ansible on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Fri, 15 Apr 2016 09:41:39 +0800</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/ansible/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Ansible</title>
-      <link>https://canuxcheng.com/post/devops_ansible/</link>
-      <pubDate>Fri, 15 Apr 2016 09:41:39 +0800</pubDate>
-      <guid>https://canuxcheng.com/post/devops_ansible/</guid>
-      <description>&lt;h1 id=&#34;ansible&#34;&gt;Ansible&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/ansible/ansible&#34;&gt;https://github.com/ansible/ansible&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://www.ansible.com.cn/index.html&#34;&gt;http://www.ansible.com.cn/index.html&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;ansible通过SSH来远程管理Linux/Unix机器．&lt;/p&gt;&#xA;&lt;p&gt;ansible通过winrm+powershell来远程管理Windows机器．&lt;/p&gt;&#xA;&lt;p&gt;安装:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ sudo pip install ansible&#xA;$ sudo apt-get install ansible&#xA;$ sudo yum install ansible&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;配置：&lt;/p&gt;&#xA;&lt;p&gt;参考Network-SSH实现从controller到所有node的无密码登陆&lt;/p&gt;&#xA;&lt;p&gt;配置文件执行顺序:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;ANSIBLE_CONFIG&#xA;ansible.cfg&#xA;.ansible.cfg&#xA;/etc/ansible/ansible.cfg&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;手动配置:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ sudo vim /etc/ansible/ansible.cfg&#xA;[defaults]&#xA;ask_pass = False&#xA;host_key_checking = False&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h1 id=&#34;ansible命令&#34;&gt;ansible命令&lt;/h1&gt;&#xA;&lt;p&gt;ansible运行命令的两种方式：&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Ad-hoc相当于直接运行shell命令&lt;/li&gt;&#xA;&lt;li&gt;playbooks相当于运行shell脚本&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;ansible:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ ansible -i inventory group1:group1:group3/all ...&#xA;&#xA;$ansible --help&#xA;-m MODULE_NAME, --module-name=MODULE_NAME # 执行模块，默认是command&#xA;-M MODULE_PATH, --module-path=MODULE_PATH # 指定模块的路径&#xA;-a MODULE_ARGS, --args=MODULE_ARGS # 模块的参数&#xA;-i INVENTORY, --inventory INVENTORY # 默认/etc/ansible/hosts, 需要指定hosts分组&#xA;-f FORKS, --forks=FORKS # 指定并发进程的数量&#xA;-C, --check&#xA;-D, --diff&#xA;-l SUBSET, --limit=SUBSET&#xA;--syntax-check&#xA;--list-hosts&#xA;-v, --verbose # -v, -vvv, -vvvv&#xA;&#xA;# 提权选项&#xA;-b, --become&#xA;--become-method=BECOME_METHOD # sudo(default)/su/pbrun/pfexec/runas/doas&#xA;--become-user=BECOME_USER # root(default)&#xA;-K, --ask-become-pass&#xA;&#xA;# 连接选项&#xA;-u REMOTE_USER&#xA;--ssh-common-args&#xA;--ssh-extra-args&#xA;-T TIMEOUT # default 10s&#xA;-K, --ask-pass&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;inventory&#34;&gt;inventory&lt;/h1&gt;&#xA;&lt;p&gt;inventory包括主机和分组,以及主机变量和分组变量.&lt;/p&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Ansible on Morgoth</title>
+        <link>https://canuxcheng.com/tags/ansible/</link>
+        <description>Recent content in Ansible on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Fri, 15 Apr 2016 09:41:39 +0800</lastBuildDate><atom:link href="https://canuxcheng.com/tags/ansible/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Ansible</title>
+        <link>https://canuxcheng.com/post/devops_ansible/</link>
+        <pubDate>Fri, 15 Apr 2016 09:41:39 +0800</pubDate>
+        
+        <guid>https://canuxcheng.com/post/devops_ansible/</guid>
+        <description>&lt;h1 id=&#34;ansible&#34;&gt;Ansible&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/ansible/ansible&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/ansible/ansible&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://www.ansible.com.cn/index.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://www.ansible.com.cn/index.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;ansible通过SSH来远程管理Linux/Unix机器．&lt;/p&gt;
+&lt;p&gt;ansible通过winrm+powershell来远程管理Windows机器．&lt;/p&gt;
+&lt;p&gt;安装:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo pip install ansible
+$ sudo apt-get install ansible
+$ sudo yum install ansible
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;配置：&lt;/p&gt;
+&lt;p&gt;参考Network-SSH实现从controller到所有node的无密码登陆&lt;/p&gt;
+&lt;p&gt;配置文件执行顺序:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ANSIBLE_CONFIG
+ansible.cfg
+.ansible.cfg
+/etc/ansible/ansible.cfg
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;手动配置:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo vim /etc/ansible/ansible.cfg
+[defaults]
+ask_pass = False
+host_key_checking = False
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;ansible命令&#34;&gt;ansible命令&lt;/h1&gt;
+&lt;p&gt;ansible运行命令的两种方式：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Ad-hoc相当于直接运行shell命令&lt;/li&gt;
+&lt;li&gt;playbooks相当于运行shell脚本&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;ansible:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ ansible -i inventory group1:group1:group3/all ...
+
+$ansible --help
+-m MODULE_NAME, --module-name=MODULE_NAME # 执行模块，默认是command
+-M MODULE_PATH, --module-path=MODULE_PATH # 指定模块的路径
+-a MODULE_ARGS, --args=MODULE_ARGS # 模块的参数
+-i INVENTORY, --inventory INVENTORY # 默认/etc/ansible/hosts, 需要指定hosts分组
+-f FORKS, --forks=FORKS # 指定并发进程的数量
+-C, --check
+-D, --diff
+-l SUBSET, --limit=SUBSET
+--syntax-check
+--list-hosts
+-v, --verbose # -v, -vvv, -vvvv
+
+# 提权选项
+-b, --become
+--become-method=BECOME_METHOD # sudo(default)/su/pbrun/pfexec/runas/doas
+--become-user=BECOME_USER # root(default)
+-K, --ask-become-pass
+
+# 连接选项
+-u REMOTE_USER
+--ssh-common-args
+--ssh-extra-args
+-T TIMEOUT # default 10s
+-K, --ask-pass
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;inventory&#34;&gt;inventory&lt;/h1&gt;
+&lt;p&gt;inventory包括主机和分组,以及主机变量和分组变量.&lt;/p&gt;
+&lt;p&gt;可以是ini格式，也可以是yaml格式.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo vim /etc/ansible/hosts
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;ini格式:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;定义主机和主机变量
+[host1]
+node1 
+ansible_connection=ssh 
+ansible_host=host 
+ansible_port=port 
+ansible_user=user 
+ansible_ssh_pass=password
+
+定义分组和分组变量
+[group1]
+node1
+node2
+[group1:vars]
+ansible_connection=local/smart/ssh/paramiko
+ansible_host=
+ansible_port=
+ansible_user=
+ansible_ssh_pass=
+ansible_ssh_common_args=
+ansible_ssh_extra_args=
+ansible_become=
+ansible_become_method=
+ansible_become_user=
+ansible_become_pass=
+ansible_become_exe=
+ansible_become_flags=
+
+定义分组的分组, children是固定写法
+[big-group:children]
+group1
+group2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;yaml:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;all:
+  hosts:    # 定义主机和主机变量
+    node1:
+      ansible_host:
+      ip:
+      access_ip:
+  children:    # 定义分组和分组变量
+    group1:
+      hosts:
+        node1:
+      vars:
+        key: value
+    group2:
+      hosts:
+        node2:
+      vars:
+        key: value
+    big-group: # 定义分组的分组
+      children:
+        group1:
+          hosts:
+            node1:
+        group2:
+          hosts:
+            node2:
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;module&#34;&gt;module&lt;/h1&gt;
+&lt;p&gt;module也就是所说的task plugins/library plugins.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ ansible-doc -l/--list #　查看所有已经安装的模块
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;commands modules：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;command # 默认模块，用于在远程机器上执行命令
+shell # 和command相同，只是该模块支持管道和特殊字符，一般用来执行脚本和复杂命令
+raw
+expect
+script
+telnet
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;files modules:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;copy src dest mode ...
+synchronize src dest ...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;package modules:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;apt name/deb state=present/absent/latest/build-dep update_cache autoclean autoremove
+apt_repository repo state=present/absent
+apt_rpm pkg state=present/absent
+yum name state=present/absent/latest/installed/removed
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;adhoc&#34;&gt;adhoc&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;$ ansible group -m &amp;lt;module&amp;gt; -a &amp;lt;args&amp;gt; ...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;copy:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ ansible group -m copy -a &amp;quot;src=https://canuxcheng.com/sr dest=/dest mode=0655&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;playbooks&#34;&gt;playbooks&lt;/h1&gt;
+&lt;p&gt;playbook的格式是YAML.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ ansible-playbook -i inventory playbook.yaml -K -vvv &amp;gt; output.txt
+-i INVENTORY, --inventory INVENTORY # 默认/etc/ansible/hosts, 在playbook中指定hosts分组，而不是命令行
+
+- hosts: host-or-group
+  remote_user: user
+
+  task:
+  - name: task name.
+    module: args
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;variables:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;register: var   # 用var来存储task的结果,查看不同模块的返回值．
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;become:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;become: true
+become_user: root
+become_method: sudo
+become_flags:
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;debug:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;strategy: debug
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;awx&#34;&gt;awx&lt;/h1&gt;
+&lt;p&gt;ansible的web管理界面.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/ansible/awx&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/ansible/awx&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

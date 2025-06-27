@@ -1,26 +1,232 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Cryptographic on Morgoth</title>
-    <link>https://canuxcheng.com/tags/cryptographic/</link>
-    <description>Recent content in Cryptographic on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Mon, 01 Jan 2018 10:49:21 +0000</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/cryptographic/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>GSL_cryptographic</title>
-      <link>https://canuxcheng.com/post/gsl_cryptographic/</link>
-      <pubDate>Mon, 01 Jan 2018 10:49:21 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/gsl_cryptographic/</guid>
-      <description>&lt;h1 id=&#34;crypto&#34;&gt;crypto&lt;/h1&gt;&#xA;&lt;p&gt;收集了常用的密码常量&lt;/p&gt;&#xA;&lt;h2 id=&#34;functions&#34;&gt;functions&lt;/h2&gt;&#xA;&lt;pre&gt;&lt;code&gt;RegisterHash(h Hash, f func() hash.Hash)&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;publickey&#34;&gt;PublicKey&lt;/h2&gt;&#xA;&lt;p&gt;interface:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;type PublicKey interface{}&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;privatekey&#34;&gt;PrivateKey&lt;/h2&gt;&#xA;&lt;p&gt;interface:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;type PrivateKey interface{}&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;hash&#34;&gt;Hash&lt;/h2&gt;&#xA;&lt;pre&gt;&lt;code&gt;type Hash uint&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;method:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;func (h Hash) Avaliable() bool&#xA;func (h Hash) Size() int&#xA;func (h Hash) New() hash.Hash&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;cryptocipher&#34;&gt;crypto/cipher&lt;/h1&gt;&#xA;&lt;p&gt;用于包装底层块加密算法的实现.&lt;/p&gt;&#xA;&lt;h2 id=&#34;block&#34;&gt;Block&lt;/h2&gt;&#xA;&lt;p&gt;代表一个使用特定密钥的底层　加／解密器．&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;type Block interface {&#xA;    BlockSize() int&#xA;    Encrypt(dst, src []byte)&#xA;    Decrypt(dst, src []byte)&#xA;}&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;blockmode&#34;&gt;BlockMode&lt;/h2&gt;&#xA;&lt;p&gt;代表一个工作在块模式(CBC, ECB等)的加／解密器&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;type BlockMode interface {&#xA;    BlockSize() int&#xA;    CryptBlocks(dst, src []byte)&#xA;}&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;function:&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>PSL_Cryptographic</title>
-      <link>https://canuxcheng.com/post/psl_cryptographic/</link>
-      <pubDate>Sun, 14 Aug 2016 21:15:14 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/psl_cryptographic/</guid>
-      <description>&lt;h1 id=&#34;cryptographic-services&#34;&gt;Cryptographic Services&lt;/h1&gt;&#xA;&lt;h2 id=&#34;hashlib&#34;&gt;hashlib&lt;/h2&gt;&#xA;&lt;p&gt;哈希算法和摘要算法标准库，就是把任意长度的数据转换为一个长度固定的数据串．&lt;/p&gt;&#xA;&lt;p&gt;MD5: Message Digest Algorithm 5.&lt;/p&gt;&#xA;&lt;p&gt;SHA1: Secure Hash Algorithm.&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;import hashlib&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;classes:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;# methods:&#xA;# 哈希对象有下列方法：&#xA;update(arg) # 更新字符串&#xA;md5.update(&#39;string or read from a file&#39;) # 放入需要转换的内容&#xA;&#xA;digest() # 字符串&#xA;hexdigest() # 十六进制字符串&#xA;md5.hexdigest() # 获取md5十六进制字符串&#xA;&#xA;copy() # 复制哈希对象&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;functions:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;# 下类函数都返回哈希对象&#xA;new(name, string=&#39;&#39;)&#xA;md5()&#xA;md5 = hashlib.md5() # 创建一个md5的hash对象&#xA;sha1()&#xA;sha224()&#xA;sha256()&#xA;sha384()&#xA;sha512()&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;hmac&#34;&gt;hmac&lt;/h2&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;tpl&#34;&gt;TPL&lt;/h1&gt;&#xA;&lt;p&gt;相关的第三方库&lt;/p&gt;&#xA;&lt;h2 id=&#34;pycrypto&#34;&gt;pycrypto&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/dlitz/pycrypto&#34;&gt;https://github.com/dlitz/pycrypto&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;windows需要MS Visual C++ compiler for python2.7.&lt;/p&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Cryptographic on Morgoth</title>
+        <link>https://canuxcheng.com/tags/cryptographic/</link>
+        <description>Recent content in Cryptographic on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Mon, 01 Jan 2018 10:49:21 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/cryptographic/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>GSL_cryptographic</title>
+        <link>https://canuxcheng.com/post/gsl_cryptographic/</link>
+        <pubDate>Mon, 01 Jan 2018 10:49:21 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/gsl_cryptographic/</guid>
+        <description>&lt;h1 id=&#34;crypto&#34;&gt;crypto&lt;/h1&gt;
+&lt;p&gt;收集了常用的密码常量&lt;/p&gt;
+&lt;h2 id=&#34;functions&#34;&gt;functions&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;RegisterHash(h Hash, f func() hash.Hash)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;publickey&#34;&gt;PublicKey&lt;/h2&gt;
+&lt;p&gt;interface:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type PublicKey interface{}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;privatekey&#34;&gt;PrivateKey&lt;/h2&gt;
+&lt;p&gt;interface:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type PrivateKey interface{}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;hash&#34;&gt;Hash&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;type Hash uint
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;method:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;func (h Hash) Avaliable() bool
+func (h Hash) Size() int
+func (h Hash) New() hash.Hash
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;cryptocipher&#34;&gt;crypto/cipher&lt;/h1&gt;
+&lt;p&gt;用于包装底层块加密算法的实现.&lt;/p&gt;
+&lt;h2 id=&#34;block&#34;&gt;Block&lt;/h2&gt;
+&lt;p&gt;代表一个使用特定密钥的底层　加／解密器．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type Block interface {
+    BlockSize() int
+    Encrypt(dst, src []byte)
+    Decrypt(dst, src []byte)
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;blockmode&#34;&gt;BlockMode&lt;/h2&gt;
+&lt;p&gt;代表一个工作在块模式(CBC, ECB等)的加／解密器&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type BlockMode interface {
+    BlockSize() int
+    CryptBlocks(dst, src []byte)
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;function:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 返回一个BlockMode接口，底层用b加密，初始向量长度等于b的块尺寸.
+func NewCBCEncrypter(b Block, iv []byte) BlockMode
+
+// 返回一个BlockMode接口，底层用b解密，初始向量长度等于b的块尺寸.
+func NewCBCDecrypter(b Block, iv []byte) BlockMode
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;stream&#34;&gt;Stream&lt;/h2&gt;
+&lt;p&gt;stream接口表示一个流模式的加／解密器．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type Stream interface {
+    XORKeyStream(dst, src []byte)
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;function:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;func NewCFBEncrypter(block Block, iv []byte) Stream
+
+func NewCFBDecrypter(block Block, iv []byte) Stream
+
+func NewOFB(b Block, iv []byte) Stream
+
+func NewCTR(b Block, iv []byte) Stream
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;cryptorand&#34;&gt;crypto/rand&lt;/h1&gt;
+&lt;p&gt;用于加解密的更安全的随机数生成器.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;cryptoaes&#34;&gt;crypto/aes&lt;/h1&gt;
+&lt;p&gt;对称加密算法,aes加密算法用于取代des算法.&lt;/p&gt;
+&lt;h2 id=&#34;constants&#34;&gt;constants&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;const BlockSize = 16
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;function&#34;&gt;function&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;// 创建一个cipher.Block接口, key为密钥，长度只能是16(aes-128),24(aes-192),32(aes-256)字节.
+func NewCipher(key []byte) (cipher.Block, error)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;cryptodsa&#34;&gt;crypto/dsa&lt;/h1&gt;
+&lt;p&gt;非对称，数字签名算法dsa.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;cryptorsa&#34;&gt;crypto/rsa&lt;/h1&gt;
+&lt;p&gt;非对称加密算法rsa.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;cryptomd5&#34;&gt;crypto/md5&lt;/h1&gt;
+&lt;h2 id=&#34;constants-1&#34;&gt;constants&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;const BlockSize = 64
+const Size = 16
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;function-1&#34;&gt;function&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;// 返回data的ms5检验和
+func Sum(data []byte) [Size]byte
+
+func New() hash.Hash
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;cryptosha1&#34;&gt;crypto/sha1&lt;/h1&gt;
+&lt;h2 id=&#34;constants-2&#34;&gt;constants&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;// SHA1块大小
+const BlockSize = 64
+
+// SHA1校验和的字节数
+const Size = 20
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;functions-1&#34;&gt;functions&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;// 返回数据data的SHA1校验和
+func Sum(data []byte) [Size]byte
+
+// 返回一个使用新的SHA1校验的hash.Hash接口
+func New() hash.Hash
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;cryptosha256&#34;&gt;crypto/sha256&lt;/h1&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;cryptosha512&#34;&gt;crypto/sha512&lt;/h1&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;hash-1&#34;&gt;hash&lt;/h1&gt;
+&lt;h2 id=&#34;hash-2&#34;&gt;Hash&lt;/h2&gt;
+&lt;p&gt;被所有hash函数实现的公共接口&lt;/p&gt;
+&lt;p&gt;interface:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type Hash interface {
+    io.Writer
+    Sum(b []byte) []byte
+    Reset()
+    Size() int
+    BlockSize() int
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;hash32&#34;&gt;Hash32&lt;/h2&gt;
+&lt;p&gt;被所有32位hash函数实现的公共接口&lt;/p&gt;
+&lt;p&gt;interface:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type Hash32 interface {
+    Hash
+    Sum32() uint32
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;hash64&#34;&gt;Hash64&lt;/h2&gt;
+&lt;p&gt;被所有64位hash函数实现的公共接口&lt;/p&gt;
+&lt;p&gt;interface:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type Hash64 interface {
+    Hash
+    Sum64() uint64
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;hashadler32&#34;&gt;hash/adler32&lt;/h1&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;hashcrc32&#34;&gt;hash/crc32&lt;/h1&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;hashcrc64&#34;&gt;hash/crc64&lt;/h1&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;hashfnv&#34;&gt;hash/fnv&lt;/h1&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        <item>
+        <title>PSL_Cryptographic</title>
+        <link>https://canuxcheng.com/post/psl_cryptographic/</link>
+        <pubDate>Sun, 14 Aug 2016 21:15:14 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/psl_cryptographic/</guid>
+        <description>&lt;h1 id=&#34;cryptographic-services&#34;&gt;Cryptographic Services&lt;/h1&gt;
+&lt;h2 id=&#34;hashlib&#34;&gt;hashlib&lt;/h2&gt;
+&lt;p&gt;哈希算法和摘要算法标准库，就是把任意长度的数据转换为一个长度固定的数据串．&lt;/p&gt;
+&lt;p&gt;MD5: Message Digest Algorithm 5.&lt;/p&gt;
+&lt;p&gt;SHA1: Secure Hash Algorithm.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import hashlib
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;classes:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# methods:
+# 哈希对象有下列方法：
+update(arg) # 更新字符串
+md5.update(&#39;string or read from a file&#39;) # 放入需要转换的内容
+
+digest() # 字符串
+hexdigest() # 十六进制字符串
+md5.hexdigest() # 获取md5十六进制字符串
+
+copy() # 复制哈希对象
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;functions:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 下类函数都返回哈希对象
+new(name, string=&#39;&#39;)
+md5()
+md5 = hashlib.md5() # 创建一个md5的hash对象
+sha1()
+sha224()
+sha256()
+sha384()
+sha512()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;hmac&#34;&gt;hmac&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;tpl&#34;&gt;TPL&lt;/h1&gt;
+&lt;p&gt;相关的第三方库&lt;/p&gt;
+&lt;h2 id=&#34;pycrypto&#34;&gt;pycrypto&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/dlitz/pycrypto&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/dlitz/pycrypto&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;windows需要MS Visual C++ compiler for python2.7.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ pip install pycrypto
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;ecdsa&#34;&gt;ecdsa&lt;/h2&gt;
+&lt;p&gt;pure-python ECDSA signature/verification&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/warner/python-ecdsa&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/warner/python-ecdsa&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ pip install ecdsa
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;pygpgme&#34;&gt;pygpgme&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://pypi.python.org/pypi/pygpgme&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://pypi.python.org/pypi/pygpgme&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;A Python wrapper for the GPGME library.&lt;/p&gt;
+&lt;p&gt;Windows安装失败？&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 需要先安装gpgme的开发库
+$ sudo apt-get install libgpgme11-dev
+$ pip install pygpgme
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

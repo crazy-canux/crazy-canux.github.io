@@ -1,40 +1,532 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Package on Morgoth</title>
-    <link>https://canuxcheng.com/tags/package/</link>
-    <description>Recent content in Package on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Tue, 23 Apr 2019 21:42:07 +0800</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/package/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Package</title>
-      <link>https://canuxcheng.com/post/go_package/</link>
-      <pubDate>Tue, 23 Apr 2019 21:42:07 +0800</pubDate>
-      <guid>https://canuxcheng.com/post/go_package/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Package</title>
-      <link>https://canuxcheng.com/post/python_package/</link>
-      <pubDate>Wed, 22 Jun 2016 05:17:19 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/python_package/</guid>
-      <description>&lt;h1 id=&#34;package&#34;&gt;Package&lt;/h1&gt;&#xA;&lt;p&gt;PEP426是python最新的打包标准，定义了wheel为最新的python包。&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.python.org/dev/peps/pep-0426/&#34;&gt;https://www.python.org/dev/peps/pep-0426/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;ensurepip&#34;&gt;ensurepip&lt;/h2&gt;&#xA;&lt;p&gt;内置模块.提供使用pip从pypi安装模块。&lt;/p&gt;&#xA;&lt;h2 id=&#34;distutils&#34;&gt;distutils&lt;/h2&gt;&#xA;&lt;p&gt;内置的模块.处理简单的包安装,一般使用setuptools代替该模块。&lt;/p&gt;&#xA;&lt;h2 id=&#34;venv&#34;&gt;venv&lt;/h2&gt;&#xA;&lt;p&gt;python3新增了虚拟环境的包．python2中使用virtualenv.&lt;/p&gt;&#xA;&lt;h2 id=&#34;zipapp&#34;&gt;zipapp&lt;/h2&gt;&#xA;&lt;p&gt;python3新增管理可执行的python的zip包．&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;tpl&#34;&gt;TPL&lt;/h1&gt;&#xA;&lt;p&gt;相关的第三方库&lt;/p&gt;&#xA;&lt;h2 id=&#34;virtualenv&#34;&gt;virtualenv&lt;/h2&gt;&#xA;&lt;p&gt;python3.5开始并入了虚拟化标准库venv.&lt;/p&gt;&#xA;&lt;p&gt;分离的虚拟的python环境,自动安装setuptools和pip和wheel&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/pypa/virtualenv&#34;&gt;https://github.com/pypa/virtualenv&lt;/a&gt;&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$cd project&#xA;&#xA;# 默认python2.7&#xA;$virtualenv .env&#xA;# 指定python3, 会安装pip/setuptools/wheel到当前环境.&#xA;$$virtualenv -p `which python3.6` --pip 21.0.1 --setuptools 51.1.2 --wheel 0.36.2 .env&#xA;&#xA;# 激活虚拟环境&#xA;$source .env/bin/activate&#xA;&#xA;# 先升级pip和setuptools&#xA;$pip install pip&#xA;$pip install setuptools&#xA;$pip install wheel&#xA;&#xA;# 导出项目用的所有依赖库．&#xA;$pip freeze &amp;gt; requirements.txt&#xA;# 在其它环境需要安装依赖：&#xA;$pip install -r requirements.txt&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;virtualenvwrapper&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://bitbucket.org/virtualenvwrapper/virtualenvwrapper&#34;&gt;https://bitbucket.org/virtualenvwrapper/virtualenvwrapper&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;封装了virtualenv的工具:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ pip install virtualenvwrapper&#xA;&#xA;# 创建主目录&#xA;$ mkdir -p $WORKON_HOME&#xA;&#xA;# 最好写入到.bashrc/.zshrc:&#xA;$ export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python&#xA;$ export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv&#xA;$ export WORKON_HOME=~/.virtualenvs&#xA;$ source /usr/local/bin/virtualenvwrapper.sh&#xA;&#xA;# 为每个项目创建独立python环境：&#xA;$ mkvirtualenv -r requirementx.txt [project-name]&#xA;# 不安装setuotools/wheel/pip&#xA;$ mkvirtualenv --no-setuptools --no-wheel --no-pip [name]&#xA;# 指定查找pip/setuptools的路径&#xA;--extra-search-dir=/usr/local/lib/python2.7/dist-packages&#xA;--extra-search-dir=/usr/lib/python2.7/dist-packages&#xA;$ workon [project-name] # 切换到针对该项目的virtualenv&#xA;(pro)$ /path/to/pip install [package] # 安装第三方包&#xA;(pro)$ ~/.virtualenvs/[project-name]/bin/python setupt.py install # 源码安装&#xA;(pro)$ lssitepackages # 查看安装的第三方包&#xA;$ deactivate # 退出virtualenv&#xA;$ rmvirtualenv [project-name] # 删除环境&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;pipenv&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Package</title>
-      <link>https://canuxcheng.com/post/linux_package/</link>
-      <pubDate>Tue, 07 Jun 2016 16:57:45 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/linux_package/</guid>
-      <description>&lt;h1 id=&#34;dpkg&#34;&gt;DPKG&lt;/h1&gt;&#xA;&lt;p&gt;debian的包管理机制。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;dpkg-1&#34;&gt;dpkg&lt;/h2&gt;&#xA;&lt;p&gt;dpkg的本地前端工具。&lt;/p&gt;&#xA;&lt;h3 id=&#34;deb---debian-binary-package-format&#34;&gt;deb - Debian binary package format&lt;/h3&gt;&#xA;&lt;h3 id=&#34;dpkg---package-manager-for-debian&#34;&gt;dpkg - package manager for Debian&lt;/h3&gt;&#xA;&lt;pre&gt;&lt;code&gt;dpkg&#xA;dpkg -X  ./xxx.deb  xxx  # 将deb包解压到xxx目录&#xA;dpkg -e  ./xxx.deb  xxx/DEBIAN # 将control信息解压&#xA;dpkg -l | grep pkg # 查看安装的包&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h3 id=&#34;dpkg-reconfigure---reconfigure-an-already-installed-package&#34;&gt;dpkg-reconfigure - reconfigure an already installed package&lt;/h3&gt;&#xA;&lt;pre&gt;&lt;code&gt;dpkg-reconfigure&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h3 id=&#34;dpkg-deb---debian-package-archive-deb-manipulation-tool&#34;&gt;dpkg-deb - Debian package archive (.deb) manipulation tool&lt;/h3&gt;&#xA;&lt;p&gt;目录结构, DEBIAN/control是必需的&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;|- debian_root&#xA;   |- DEBIAN&#xA;      |- control&#xA;      |- preinst/preinstallation # 解压deb包之前执行&#xA;      |- prerm/preremove&#xA;      |- postinst/postinstallation # 解压完成之后执行，通常用来配置&#xA;      |- postrm/postremove&#xA;      |- copyright&#xA;      |- changelog&#xA;      |- conffiles&#xA;   |- etc&#xA;      |- init.d/systemd&#xA;         |- &amp;lt;service&amp;gt;&#xA;      |- logrotate.d&#xA;         |- &amp;lt;service&amp;gt;&#xA;   |- user/local/...&#xA;   |- opt/...&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;control:&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Package</title>
-      <link>https://canuxcheng.com/post/c_package/</link>
-      <pubDate>Mon, 11 Apr 2016 22:57:37 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/c_package/</guid>
-      <description>&lt;h1 id=&#34;package&#34;&gt;Package&lt;/h1&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Package on Morgoth</title>
+        <link>https://canuxcheng.com/tags/package/</link>
+        <description>Recent content in Package on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Tue, 23 Apr 2019 21:42:07 +0800</lastBuildDate><atom:link href="https://canuxcheng.com/tags/package/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Package</title>
+        <link>https://canuxcheng.com/post/go_package/</link>
+        <pubDate>Tue, 23 Apr 2019 21:42:07 +0800</pubDate>
+        
+        <guid>https://canuxcheng.com/post/go_package/</guid>
+        <description></description>
+        </item>
+        <item>
+        <title>Package</title>
+        <link>https://canuxcheng.com/post/python_package/</link>
+        <pubDate>Wed, 22 Jun 2016 05:17:19 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/python_package/</guid>
+        <description>&lt;h1 id=&#34;package&#34;&gt;Package&lt;/h1&gt;
+&lt;p&gt;PEP426是python最新的打包标准，定义了wheel为最新的python包。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.python.org/dev/peps/pep-0426/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.python.org/dev/peps/pep-0426/&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;ensurepip&#34;&gt;ensurepip&lt;/h2&gt;
+&lt;p&gt;内置模块.提供使用pip从pypi安装模块。&lt;/p&gt;
+&lt;h2 id=&#34;distutils&#34;&gt;distutils&lt;/h2&gt;
+&lt;p&gt;内置的模块.处理简单的包安装,一般使用setuptools代替该模块。&lt;/p&gt;
+&lt;h2 id=&#34;venv&#34;&gt;venv&lt;/h2&gt;
+&lt;p&gt;python3新增了虚拟环境的包．python2中使用virtualenv.&lt;/p&gt;
+&lt;h2 id=&#34;zipapp&#34;&gt;zipapp&lt;/h2&gt;
+&lt;p&gt;python3新增管理可执行的python的zip包．&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;tpl&#34;&gt;TPL&lt;/h1&gt;
+&lt;p&gt;相关的第三方库&lt;/p&gt;
+&lt;h2 id=&#34;virtualenv&#34;&gt;virtualenv&lt;/h2&gt;
+&lt;p&gt;python3.5开始并入了虚拟化标准库venv.&lt;/p&gt;
+&lt;p&gt;分离的虚拟的python环境,自动安装setuptools和pip和wheel&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/pypa/virtualenv&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/pypa/virtualenv&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$cd project
+
+# 默认python2.7
+$virtualenv .env
+# 指定python3, 会安装pip/setuptools/wheel到当前环境.
+$$virtualenv -p `which python3.6` --pip 21.0.1 --setuptools 51.1.2 --wheel 0.36.2 .env
+
+# 激活虚拟环境
+$source .env/bin/activate
+
+# 先升级pip和setuptools
+$pip install pip
+$pip install setuptools
+$pip install wheel
+
+# 导出项目用的所有依赖库．
+$pip freeze &amp;gt; requirements.txt
+# 在其它环境需要安装依赖：
+$pip install -r requirements.txt
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;virtualenvwrapper&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://bitbucket.org/virtualenvwrapper/virtualenvwrapper&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://bitbucket.org/virtualenvwrapper/virtualenvwrapper&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;封装了virtualenv的工具:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ pip install virtualenvwrapper
+
+# 创建主目录
+$ mkdir -p $WORKON_HOME
+
+# 最好写入到.bashrc/.zshrc:
+$ export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
+$ export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv
+$ export WORKON_HOME=~/.virtualenvs
+$ source /usr/local/bin/virtualenvwrapper.sh
+
+# 为每个项目创建独立python环境：
+$ mkvirtualenv -r requirementx.txt [project-name]
+# 不安装setuotools/wheel/pip
+$ mkvirtualenv --no-setuptools --no-wheel --no-pip [name]
+# 指定查找pip/setuptools的路径
+--extra-search-dir=/usr/local/lib/python2.7/dist-packages
+--extra-search-dir=/usr/lib/python2.7/dist-packages
+$ workon [project-name] # 切换到针对该项目的virtualenv
+(pro)$ /path/to/pip install [package] # 安装第三方包
+(pro)$ ~/.virtualenvs/[project-name]/bin/python setupt.py install # 源码安装
+(pro)$ lssitepackages # 查看安装的第三方包
+$ deactivate # 退出virtualenv
+$ rmvirtualenv [project-name] # 删除环境
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;pipenv&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/pypa/pipenv&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/pypa/pipenv&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;封装了virtualenv的工具，用于取代virtualenvwrapper.&lt;/p&gt;
+&lt;h2 id=&#34;setuptools&#34;&gt;setuptools&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/pypa/setuptools&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/pypa/setuptools&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/pypa/wheel&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/pypa/wheel&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;python2.7.9和python3.4以及virtualenv自带setuptools．&lt;/p&gt;
+&lt;p&gt;支持sdist打包成tar.gz包,和wheel打包成whl包．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$pip install -U pip
+$pip install -U setuotools
+$pip install -U wheel
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;创建setup.py文件：&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://pypi.python.org/pypi?%3Aaction=list_classifiers&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://pypi.python.org/pypi?%3Aaction=list_classifiers&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import os
+
+from setuptools import setup, find_packages
+
+import project
+
+def read(readme):
+    extend = os.path.splitext(readme)[1]
+    # pypi只识别reST格式
+    if (extend == &amp;quot;.rst&amp;quot;):
+        import codecs
+        return codecs.open(readme, &#39;r&#39;, &#39;utf-8&#39;).read()
+    # pypandoc可以将markdown格式转换成reST格式
+    elif (extend == &amp;quot;.md&amp;quot;):
+        import pypandoc
+        return pypandoc.convert(readme, &#39;rst&#39;)
+
+setup(
+    # metadata:
+    name=project,
+    version=project.__version__,
+    url=&#39;&#39;,
+    download_url=&#39;&#39;,
+    author=&#39;&#39;,
+    author_email=&#39;&#39;,
+    maintainer=&#39;&#39;,
+    maintainer_email=&#39;&#39;,
+    description=&#39;&#39;
+    long_description=read(&#39;README.XXX&#39;),
+    license=&#39;&#39;,
+    platforms=&#39;any&#39;,
+    keywords=&#39;&#39;,
+    classifiers=[
+        &#39;Development Status :: 5 - Production/Stable&#39;,
+        ...
+    ],
+
+    # options
+
+    # 指定源码的位置
+    packages=find_packages(),
+    package_dir={},
+
+    # 需要和源码一起安装的非代码文件,写入MANIFEST.in
+    # 比如文档和测试文件
+    package_data={}, # 将指定的文件放入安装路径
+    include_package_data=None, # True表示
+    exclude_package_data=None,
+
+    # 不需要和源码一起安装的非代码文件.
+    # 比如配置文件
+    data_files=[(dest, source),()],
+
+    # 通过pip安装requirement
+    install_requires=[&#39;a==1.0.0&#39;, &#39;b&amp;gt;=1.0.0&#39;],
+    # python版本的要求
+    python_requires=&#39;&amp;gt;=3&#39;,
+    setup_requires=[],
+    extras_require=None,
+    test_require=[]
+
+    zip_safe=True,
+
+    # 安装一个命令
+    scripts=[],    # 会被添加到环境变量用于命令.
+
+    entry_points={}
+
+    # preinst/postinst
+    cmdclass={
+        &amp;quot;develop&amp;quot;: PostInstDevelop,
+        &amp;quot;install&amp;quot;: PostInstInstall
+    }
+)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;怎样实现postinst功能：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;from setuptools.command.develop import develop
+from setuptools.command.install import install
+
+class InstDevelop(develop):
+    def run(self):
+        # your preinst code here for develop.
+        develop.run(self)
+        # your postinst code here for develop.
+
+class InstInstall(install):
+    def run(self):
+        # your preinst code here for install.
+        install.run(self)
+        # your postinst code here for install.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;创建setup.cfg文件：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[wheel]
+universal = 1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;创建README.rst文件：&lt;/p&gt;
+&lt;p&gt;可以是rst格式也可是是md格式。&lt;/p&gt;
+&lt;p&gt;如果是md格式不要使用类似于***的分割线。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;参考rst和md的文档
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;创建MAINFEST.in文件：&lt;/p&gt;
+&lt;p&gt;默认只有python模块和包会被打包，如果需要其它文件需要添加到这个文件中。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;include LICENSE README.rst AUTHORS.rst CONTRIBUTING.rst
+recursive-include docs *
+graft examples
+graft tests
+global-exclude *.py[co]
+prune docs/_build
+prune docs/_themes
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;创建__init__.py文件：&lt;/p&gt;
+&lt;p&gt;位于project/project/__init__.py，安装后用import导入，help(project)看到的信息。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;NAME: 自动获取的项目名字 - 该文件注释的总结部分
+FILE: /install_path/project/project/__init__.py
+DESCRIPTION: 该文件的注释，除总结部分
+PACKAGE CONTENTS: 在project/project/自动获取的py文件名
+DATA: __开头和结尾的变量
+VERSION: __version__变量的值
+AUTHOR: __author__变量的值
+
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+&amp;quot;&amp;quot;&amp;quot;
+SUMMARY
+
+Descriptions
+&amp;quot;&amp;quot;&amp;quot;
+
+__version__ = &#39;&#39;
+__author__ = &#39;&#39;
+
+...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;发布到pypi主服务器pypi：&lt;/p&gt;
+&lt;p&gt;去pypi注册帐号&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://pypi.python.org/pypi&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://pypi.python.org/pypi&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;创建~/.pypirc文件&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[distutils]
+index-servers = pypi
+
+[pypi]
+username = &amp;lt;username&amp;gt;
+password = &amp;lt;password&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;在索引中注册项目(不再支持，直接upload)：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[Deprecated] $ python setup.py register -r pypi
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;先打包, 在dist目录生成包:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ python setup.py sdist # 生成tarball
+$ python setup.py bdist_wheel # 安装wheel后，可以用setuptools生成wheel包
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;再上传到pypi(推荐):&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ pip install twine
+$ twine upload dist/*
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;打包并上传到pypi：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$python setup.py sdist upload -r pypi
+$python setup.py bdist_wheel upload -r pypi
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;cython&#34;&gt;cython&lt;/h2&gt;
+&lt;p&gt;编译成.so文件&lt;/p&gt;
+&lt;p&gt;安装:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo pip install cython
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;在setup.py中引用:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;from Cython.Build import cythonize
+from Cython.Distutils import build_ext
+
+def add_extensions(modules):
+    extensions = []
+    for module in modules:
+        level = module
+        for depth in range(10):
+            source_dir = level + &amp;quot;.py&amp;quot;
+            if glob.glob(source_dir):
+                extensions.append(Extension(module, [source_dir], include_dirs=[&amp;quot;.&amp;quot;], extra_compile_args=[&#39;-O3&#39;]),)
+            level = os.path.join(level, &amp;quot;*&amp;quot;)
+    print(extensions)
+    return extensions
+
+INCLUDE_PACKAGES = []
+EXCLUDE_PACKAGES = []    
+
+setup(
+    ext_modules=cythonize(
+        add_extensions(INCLUDE_PACKAGES),
+        build_dir=&amp;quot;build&amp;quot;,
+        # 指定 .py =&amp;gt; .c 使用8个线程编译.
+        nthreads=8,
+        compiler_directives=dict(
+            always_allow_keywords=True,
+            language_level=3),
+        exclude=EXCLUDE_PACKAGES),
+    cmdclass={
+        &amp;quot;install&amp;quot;: InstInstall,
+        &amp;quot;build_ext&amp;quot;: build_ext
+    },
+)
+
+// -j 8 指定.c =&amp;gt; .so 使用8个线程编译.
+$ python3 setup.py build_ext --inplace -j 8 
+// 删除符号信息
+$ find sandbox/ -name &amp;quot;*.so&amp;quot; -exec strip {} \; 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;pbr&#34;&gt;pbr&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/openstack-dev/pbr&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/openstack-dev/pbr&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;扩展点entry-points&#34;&gt;扩展点（Entry Points）&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;pkg_resources&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;entry_point_inspector&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/dhellmann/entry_point_inspector&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/dhellmann/entry_point_inspector&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;stevedore&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://docs.openstack.org/developer/stevedore/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://docs.openstack.org/developer/stevedore/&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Package</title>
+        <link>https://canuxcheng.com/post/linux_package/</link>
+        <pubDate>Tue, 07 Jun 2016 16:57:45 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/linux_package/</guid>
+        <description>&lt;h1 id=&#34;dpkg&#34;&gt;DPKG&lt;/h1&gt;
+&lt;p&gt;debian的包管理机制。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;dpkg-1&#34;&gt;dpkg&lt;/h2&gt;
+&lt;p&gt;dpkg的本地前端工具。&lt;/p&gt;
+&lt;h3 id=&#34;deb---debian-binary-package-format&#34;&gt;deb - Debian binary package format&lt;/h3&gt;
+&lt;h3 id=&#34;dpkg---package-manager-for-debian&#34;&gt;dpkg - package manager for Debian&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;dpkg
+dpkg -X  ./xxx.deb  xxx  # 将deb包解压到xxx目录
+dpkg -e  ./xxx.deb  xxx/DEBIAN # 将control信息解压
+dpkg -l | grep pkg # 查看安装的包
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;dpkg-reconfigure---reconfigure-an-already-installed-package&#34;&gt;dpkg-reconfigure - reconfigure an already installed package&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;dpkg-reconfigure
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;dpkg-deb---debian-package-archive-deb-manipulation-tool&#34;&gt;dpkg-deb - Debian package archive (.deb) manipulation tool&lt;/h3&gt;
+&lt;p&gt;目录结构, DEBIAN/control是必需的&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;|- debian_root
+   |- DEBIAN
+      |- control
+      |- preinst/preinstallation # 解压deb包之前执行
+      |- prerm/preremove
+      |- postinst/postinstallation # 解压完成之后执行，通常用来配置
+      |- postrm/postremove
+      |- copyright
+      |- changelog
+      |- conffiles
+   |- etc
+      |- init.d/systemd
+         |- &amp;lt;service&amp;gt;
+      |- logrotate.d
+         |- &amp;lt;service&amp;gt;
+   |- user/local/...
+   |- opt/...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;control:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Package
+Version
+Description
+Maintain:
+Section: utils/net/mail/text/x11/...
+Priority: required/standard/optional/extra/...
+Essential: yes/no
+Architecture: i386/amd64/...
+Source:
+Depends:    # 运行该process需要的依萊, 只能安装之前安装好，或者用gdebi安装
+Pre-Depends:
+Recommends:
+Suggests:
+...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;postrm:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;case &amp;quot;$1&amp;quot; in
+    remove)
+        remove
+        echo &amp;quot;Remove complete&amp;quot;
+    ;;
+
+    purge)
+        purge
+        echo &amp;quot;Purge complete&amp;quot;
+    ;;
+
+    upgrade|failed-upgrade|disappear)
+        echo &amp;quot;Do nothing&amp;quot;
+    ;;
+
+    abort-install|abort-upgrade)
+        echo &amp;quot;Do nothing&amp;quot;
+    ;;
+
+    *)
+        echo &amp;quot;$0 called with unknown argument \`$1&#39;&amp;quot; 1&amp;gt;&amp;amp;2
+        exit 1
+    ;;
+esac
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;创建debian包&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ dpkg-deb -b|--build &amp;lt;directory&amp;gt; [&amp;lt;deb&amp;gt;]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看包信息&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ dpkg-deb -I XXX.deb
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;dpkg-query---a-tool-to-query-the-dpkg-database&#34;&gt;dpkg-query - a tool to query the dpkg database&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;dpkg-query
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;gdebi---simple-tool-to-install-deb-files&#34;&gt;gdebi - Simple tool to install deb files&lt;/h2&gt;
+&lt;p&gt;dpkg的本地前端工具。&lt;/p&gt;
+&lt;p&gt;使用gdebi安装deb包会自动解决依赖问题:&lt;/p&gt;
+&lt;p&gt;安装gdebi:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo apt-get install gdebi-core
+$ sudo apt-get install gdebi-gtk
+$ sudo aptitude install gdebi-core # install gdebi itself
+$ sudo aptitude install gdebi-gtk # install gdebi GUI
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;使用gdebi:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo gdebi XXX.deb # install package
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;apt---command-line-interface&#34;&gt;apt - command-line interface&lt;/h2&gt;
+&lt;p&gt;dpkg的远程前端工具。&lt;/p&gt;
+&lt;p&gt;apt - command-line interface&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ apt install package
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;apt-get - APT package handling utility &amp;ndash; command-line interface&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo apt-get option command package
+
+# command:
+install
+remove
+purge
+download
+source
+update
+
+# install
+# 可以通过apt-cache madison查看version
+apt-get install &amp;lt;package&amp;gt;=&amp;lt;version&amp;gt;
+
+# option:
+-d, --download-only
+--print-uris
+-y,--yes,--assume-yes    # 交互时确认
+-f,--force-yes
+--reinstall
+--allow-unauthenticated
+--allow-downgrades (&amp;gt;= ubuntu1604)
+
+# 打印在当前环境安装该包需要的所有以来的下载连接信息
+apt-get --print-uris install package
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;aptitude - high-level interface to the package manager&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo aptitude install package
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;apt-cache - query the APT cache&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ apt-cache showpkg &amp;lt;pkg&amp;gt;
+$ apt-cache showsrc &amp;lt;pkg&amp;gt;
+$ apt-cache search &amp;lt;pkg&amp;gt;
+$ apt-cache madison &amp;lt;pkg&amp;gt; # 查看当前源可以安装的版本
+$ apt-cache policy &amp;lt;pkg&amp;gt;
+
+# 查看哪些包依赖该包
+$ apt-cache rdepends &amp;lt;pkg&amp;gt;
+# 查看该包依赖哪些包
+$ apt-cache depends &amp;lt;pkg&amp;gt;
+# 查看依赖，　以及依赖的依赖
+$ apt-cache --recurse depends &amp;lt;pkg&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;rpm&#34;&gt;RPM&lt;/h1&gt;
+&lt;p&gt;redhat的包管理机制。&lt;/p&gt;
+&lt;h2 id=&#34;rpm-1&#34;&gt;rpm&lt;/h2&gt;
+&lt;p&gt;rpm的本地前端工具。&lt;/p&gt;
+&lt;p&gt;rpm - RPM Package Manager&lt;/p&gt;
+&lt;h2 id=&#34;yum&#34;&gt;yum&lt;/h2&gt;
+&lt;p&gt;rpm的远程前端工具。&lt;/p&gt;
+&lt;p&gt;yum - redirecting to DNF Command Reference&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;zypper&#34;&gt;zypper&lt;/h1&gt;
+&lt;p&gt;suse的包管理机制。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;alien&#34;&gt;Alien&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;alien is a program that converts between Red Hat rpm, Debian deb, Stampede slp, Slackware tgz, and Solaris pkg file formats.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h1 id=&#34;gbp&#34;&gt;gbp&lt;/h1&gt;
+&lt;p&gt;通过git来管理deb或rpm包．&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/agx/git-buildpackage&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/agx/git-buildpackage&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$sudo -E pip install gbp
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;fpm&#34;&gt;fpm&lt;/h1&gt;
+&lt;p&gt;通过fpm来创建deb/rpm包&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/jordansissel/fpm&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/jordansissel/fpm&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;patch&#34;&gt;patch&lt;/h1&gt;
+</description>
+        </item>
+        <item>
+        <title>Package</title>
+        <link>https://canuxcheng.com/post/c_package/</link>
+        <pubDate>Mon, 11 Apr 2016 22:57:37 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/c_package/</guid>
+        <description>&lt;h1 id=&#34;package&#34;&gt;Package&lt;/h1&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

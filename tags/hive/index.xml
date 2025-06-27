@@ -1,19 +1,53 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Hive on Morgoth</title>
-    <link>https://canuxcheng.com/tags/hive/</link>
-    <description>Recent content in Hive on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Mon, 24 Apr 2017 22:57:37 +0000</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/hive/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Hive</title>
-      <link>https://canuxcheng.com/post/hive/</link>
-      <pubDate>Mon, 24 Apr 2017 22:57:37 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/hive/</guid>
-      <description>&lt;h1 id=&#34;hive&#34;&gt;Hive&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/apache/hive&#34;&gt;https://github.com/apache/hive&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://hive.apache.org/&#34;&gt;http://hive.apache.org/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;Hive2数据仓库用于读取，写入和管理使用SQL的大型分布式数据集．&lt;/p&gt;&#xA;&lt;p&gt;hive2的client: beeline(hive命令的升级版)&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;hivebeeline&#34;&gt;hive/beeline&lt;/h1&gt;&#xA;&lt;p&gt;hive&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ hive --help&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;beeline&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ beeline --silent=true&#xA;beeline&amp;gt; !connect jdbc:hive2://[ip]:[port]/[database] [username] [password]&#xA;&#xA;$ beeline -u &amp;quot;jdbc:hive2://[ip]:10000[/database]&amp;quot; -n [username] -p [password] -e &amp;quot;USE [database]; ...&amp;quot;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;sql&#34;&gt;sql&lt;/h1&gt;&#xA;&lt;p&gt;normal table:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;&amp;gt; create table tablename (var type, var1 type1);&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;parquet table:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;&amp;gt; create table {table_name} (var type, var1 type1) STORED AS PARQUET;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;partition table:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;&amp;gt; create table {table_name} (var type, var1 type1) PARTITION BY (var2 type2);&#xA;&amp;gt; insert into {table_name} PARTITION (var2 = {pid}) VALUES {values};&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;parquet partition table:&lt;/p&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Hive on Morgoth</title>
+        <link>https://canuxcheng.com/tags/hive/</link>
+        <description>Recent content in Hive on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Mon, 24 Apr 2017 22:57:37 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/hive/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Hive</title>
+        <link>https://canuxcheng.com/post/hive/</link>
+        <pubDate>Mon, 24 Apr 2017 22:57:37 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/hive/</guid>
+        <description>&lt;h1 id=&#34;hive&#34;&gt;Hive&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/apache/hive&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/apache/hive&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://hive.apache.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://hive.apache.org/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Hive2数据仓库用于读取，写入和管理使用SQL的大型分布式数据集．&lt;/p&gt;
+&lt;p&gt;hive2的client: beeline(hive命令的升级版)&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;hivebeeline&#34;&gt;hive/beeline&lt;/h1&gt;
+&lt;p&gt;hive&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ hive --help
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;beeline&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ beeline --silent=true
+beeline&amp;gt; !connect jdbc:hive2://[ip]:[port]/[database] [username] [password]
+
+$ beeline -u &amp;quot;jdbc:hive2://[ip]:10000[/database]&amp;quot; -n [username] -p [password] -e &amp;quot;USE [database]; ...&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;sql&#34;&gt;sql&lt;/h1&gt;
+&lt;p&gt;normal table:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;gt; create table tablename (var type, var1 type1);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;parquet table:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;gt; create table {table_name} (var type, var1 type1) STORED AS PARQUET;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;partition table:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;gt; create table {table_name} (var type, var1 type1) PARTITION BY (var2 type2);
+&amp;gt; insert into {table_name} PARTITION (var2 = {pid}) VALUES {values};
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;parquet partition table:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;gt; create table {table_name} (var type, var1 type1) PARTITIONED BY (var2 type2) STORED AS PARQUET;
+&amp;gt; insert into {table_name} PARTITION (var2 = {pid}) VALUES {values};
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

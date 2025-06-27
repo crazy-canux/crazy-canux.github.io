@@ -1,19 +1,48 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Samba on Morgoth</title>
-    <link>https://canuxcheng.com/tags/samba/</link>
-    <description>Recent content in Samba on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sun, 03 Apr 2016 14:46:19 +0000</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/samba/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Samba</title>
-      <link>https://canuxcheng.com/post/samba/</link>
-      <pubDate>Sun, 03 Apr 2016 14:46:19 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/samba/</guid>
-      <description>&lt;h1 id=&#34;smbcifs&#34;&gt;SMB/CIFS&lt;/h1&gt;&#xA;&lt;p&gt;SMB/CIFS占用TCP和UDP的139和445端口。&lt;/p&gt;&#xA;&lt;p&gt;SMB: server message block.&lt;/p&gt;&#xA;&lt;p&gt;CIFS: common internet file system, 是SMB的升级版本。&lt;/p&gt;&#xA;&lt;h1 id=&#34;samba&#34;&gt;Samba&lt;/h1&gt;&#xA;&lt;p&gt;Samba: Linux/Unix上的SBM/CIFS,用于跨平台的共享。&lt;/p&gt;&#xA;&lt;p&gt;安装:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ sudo apt-get insall samba&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;配置：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ vim /etc/samba/smb.conf&#xA;[shared]&#xA;comment = share this folder&#xA;path = /home/canux/Share&#xA;public = yes&#xA;guest ok = yes&#xA;browsable = yes&#xA;writable = no&#xA;read only = yes&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;重启：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ sudo service smbd restart&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;windows访问：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;\\ip\folder&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;linux访问：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;connect to server -&amp;gt; smb://ip/folder&#xA;&lt;/code&gt;&lt;/pre&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Samba on Morgoth</title>
+        <link>https://canuxcheng.com/tags/samba/</link>
+        <description>Recent content in Samba on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Sun, 03 Apr 2016 14:46:19 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/samba/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Samba</title>
+        <link>https://canuxcheng.com/post/samba/</link>
+        <pubDate>Sun, 03 Apr 2016 14:46:19 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/samba/</guid>
+        <description>&lt;h1 id=&#34;smbcifs&#34;&gt;SMB/CIFS&lt;/h1&gt;
+&lt;p&gt;SMB/CIFS占用TCP和UDP的139和445端口。&lt;/p&gt;
+&lt;p&gt;SMB: server message block.&lt;/p&gt;
+&lt;p&gt;CIFS: common internet file system, 是SMB的升级版本。&lt;/p&gt;
+&lt;h1 id=&#34;samba&#34;&gt;Samba&lt;/h1&gt;
+&lt;p&gt;Samba: Linux/Unix上的SBM/CIFS,用于跨平台的共享。&lt;/p&gt;
+&lt;p&gt;安装:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo apt-get insall samba
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;配置：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ vim /etc/samba/smb.conf
+[shared]
+comment = share this folder
+path = /home/canux/Share
+public = yes
+guest ok = yes
+browsable = yes
+writable = no
+read only = yes
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;重启：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo service smbd restart
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;windows访问：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;\\ip\folder
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;linux访问：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;connect to server -&amp;gt; smb://ip/folder
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

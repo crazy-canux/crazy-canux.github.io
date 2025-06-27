@@ -1,19 +1,53 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Arduino on Morgoth</title>
-    <link>https://canuxcheng.com/tags/arduino/</link>
-    <description>Recent content in Arduino on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Mon, 15 May 2023 09:41:39 +0800</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/arduino/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Arduino</title>
-      <link>https://canuxcheng.com/post/hardware_arduino/</link>
-      <pubDate>Mon, 15 May 2023 09:41:39 +0800</pubDate>
-      <guid>https://canuxcheng.com/post/hardware_arduino/</guid>
-      <description>&lt;h1 id=&#34;arduino-uno&#34;&gt;Arduino Uno&lt;/h1&gt;&#xA;&lt;p&gt;tinogo-windows开发环境配置&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://tinygo.org/getting-started/install/windows/&#34;&gt;https://tinygo.org/getting-started/install/windows/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;scoop install go&#xA;scoop install tinygo&#xA;scoop install avrdude&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;windows烧写程序&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;tinygo flash -monitor -baudrate=9600 -target arduino -port COMX /path/to/blinky1&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;macos烧写程序&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;tinygo flash --target arduino -port /dev/cu.usbserial-0001 ./blinking.go&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;microcontroller&#34;&gt;Microcontroller&lt;/h2&gt;&#xA;&lt;p&gt;Arduino Uno 使用的是ATmega328p 控制器&lt;/p&gt;&#xA;&lt;p&gt;支持的外设接口:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;GPIO：general-purpose input/output，数字接口&lt;/li&gt;&#xA;&lt;li&gt;UART：Universal asynchronous receiver-transmitter，异步串行接口&lt;/li&gt;&#xA;&lt;li&gt;SPI：Serial Peripheral Interface，同步串行接口&lt;/li&gt;&#xA;&lt;li&gt;I2C：Inter-Integrated Circuit, 同步串行接口&lt;/li&gt;&#xA;&lt;li&gt;ADC：Analog-to-digital, 模拟转数字接口&lt;/li&gt;&#xA;&lt;li&gt;PWM: Pulse-width modulation,&lt;/li&gt;&#xA;&lt;li&gt;USB：不支持，异步串行接口&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;machine-包&#34;&gt;machine 包&lt;/h2&gt;&#xA;&lt;p&gt;machine包是tinygo中核心包&lt;/p&gt;&#xA;&lt;h2 id=&#34;driver&#34;&gt;Driver&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://tinygo.org/docs/reference/devices/&#34;&gt;https://tinygo.org/docs/reference/devices/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;安装支持的driver&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;go get tinygo.org/x/drivers&#xA;&lt;/code&gt;&lt;/pre&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Arduino on Morgoth</title>
+        <link>https://canuxcheng.com/tags/arduino/</link>
+        <description>Recent content in Arduino on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Mon, 15 May 2023 09:41:39 +0800</lastBuildDate><atom:link href="https://canuxcheng.com/tags/arduino/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Arduino</title>
+        <link>https://canuxcheng.com/post/hardware_arduino/</link>
+        <pubDate>Mon, 15 May 2023 09:41:39 +0800</pubDate>
+        
+        <guid>https://canuxcheng.com/post/hardware_arduino/</guid>
+        <description>&lt;h1 id=&#34;arduino-uno&#34;&gt;Arduino Uno&lt;/h1&gt;
+&lt;p&gt;tinogo-windows开发环境配置&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://tinygo.org/getting-started/install/windows/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://tinygo.org/getting-started/install/windows/&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;scoop install go
+scoop install tinygo
+scoop install avrdude
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;windows烧写程序&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;tinygo flash -monitor -baudrate=9600 -target arduino -port COMX /path/to/blinky1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;macos烧写程序&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;tinygo flash --target arduino -port /dev/cu.usbserial-0001 ./blinking.go
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;microcontroller&#34;&gt;Microcontroller&lt;/h2&gt;
+&lt;p&gt;Arduino Uno 使用的是ATmega328p 控制器&lt;/p&gt;
+&lt;p&gt;支持的外设接口:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;GPIO：general-purpose input/output，数字接口&lt;/li&gt;
+&lt;li&gt;UART：Universal asynchronous receiver-transmitter，异步串行接口&lt;/li&gt;
+&lt;li&gt;SPI：Serial Peripheral Interface，同步串行接口&lt;/li&gt;
+&lt;li&gt;I2C：Inter-Integrated Circuit, 同步串行接口&lt;/li&gt;
+&lt;li&gt;ADC：Analog-to-digital, 模拟转数字接口&lt;/li&gt;
+&lt;li&gt;PWM: Pulse-width modulation,&lt;/li&gt;
+&lt;li&gt;USB：不支持，异步串行接口&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;machine-包&#34;&gt;machine 包&lt;/h2&gt;
+&lt;p&gt;machine包是tinygo中核心包&lt;/p&gt;
+&lt;h2 id=&#34;driver&#34;&gt;Driver&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://tinygo.org/docs/reference/devices/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://tinygo.org/docs/reference/devices/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;安装支持的driver&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;go get tinygo.org/x/drivers
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

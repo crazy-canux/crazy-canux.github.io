@@ -1,47 +1,857 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Devops on Morgoth</title>
-    <link>https://canuxcheng.com/tags/devops/</link>
-    <description>Recent content in Devops on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Fri, 10 Jan 2025 09:41:39 +0000</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/devops/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>DevOps Metrics</title>
-      <link>https://canuxcheng.com/post/devops_metrics/</link>
-      <pubDate>Fri, 10 Jan 2025 09:41:39 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/devops_metrics/</guid>
-      <description>&lt;h1 id=&#34;devops-metrics&#34;&gt;DevOps Metrics&lt;/h1&gt;&#xA;&lt;p&gt;从业务角度来看，公司希望更准确地度量其开发人员的生产力，原因如下:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Monitoring progress over time&lt;/li&gt;&#xA;&lt;li&gt;Creation of benchmarks&lt;/li&gt;&#xA;&lt;li&gt;Rewarding top performers&lt;/li&gt;&#xA;&lt;li&gt;Determining resource allocation&lt;/li&gt;&#xA;&lt;li&gt;Identification of more productive development processes&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;框架是想法、概念和关系的简单总结，因此基于您的上下文、环境和团队，您可以选择一组您可以解释的指标，以确定团队是否在它应该在的地方。&lt;/p&gt;&#xA;&lt;h2 id=&#34;dora&#34;&gt;DORA&lt;/h2&gt;&#xA;&lt;p&gt;DevOps Research and Assessment.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://getdx.com/&#34;&gt;https://getdx.com/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h3 id=&#34;speed-metrics&#34;&gt;Speed metrics&lt;/h3&gt;&#xA;&lt;p&gt;Deployment frequency: This measures how often a team deploys code to production.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Low performance: once per month - once per semester. (inadequate integration, lack of automation.)&lt;/li&gt;&#xA;&lt;li&gt;Medium performance: once per month - once per week.&lt;/li&gt;&#xA;&lt;li&gt;High performance: daily for multiple times per day.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Lead time for change: This measures the time it takes from the moment a code change is made until it is successfully deployed to production.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Devops</title>
-      <link>https://canuxcheng.com/post/go_devops/</link>
-      <pubDate>Mon, 01 Jan 2018 10:49:21 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/go_devops/</guid>
-      <description>&lt;h1 id=&#34;go&#34;&gt;Go&lt;/h1&gt;&#xA;&lt;p&gt;go有三种安装方式：&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;源码安装&lt;/li&gt;&#xA;&lt;li&gt;标准包安装&lt;/li&gt;&#xA;&lt;li&gt;第三方工具安装&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;GOROOT:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;GOROOT 就是go的安装目录&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;windows标准包安装go:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;msi指定安装路径，自动添加%GOROOT%/bin到环境变量&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;linux标准包安装go:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;下载.tar.gz包解压到/usr/local/go&#xA;GOROOT=/usr/local/go&#xA;export PATH=$PATH:/usr/local/go/bin&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;验证安装：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ go --help&#xA;$ go version&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;第三方工具gvm安装go:&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://github.com/moovweb/gvm&#34;&gt;http://github.com/moovweb/gvm&lt;/a&gt;&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ gvm install go1.9.2&#xA;$ gvm use go1.9.2&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;gopath&#34;&gt;GOPATH&lt;/h1&gt;&#xA;&lt;p&gt;gopath用来存放go源码，go的可运行文件，以及相应的编译之后的包文件．&lt;/p&gt;&#xA;&lt;p&gt;GOPATH 从go1.1到1.7都需要设置，而且不能是go的安装目录, go1.8开始有默认值:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;GOPATH=$USERPROFILE%go&#xA;GOPATH=$HOME/go&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;gopath结构：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;src    存放源码&#xA;pkg    编译后的库文件&#xA;bin    编译后生成的可执行文件&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;gopath有多个值时用冒号分开即可.&lt;/p&gt;&#xA;&lt;h1 id=&#34;gobin&#34;&gt;GOBIN&lt;/h1&gt;&#xA;&lt;p&gt;默认值&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;GOBIN=$HOME/go/bin&#xA;export PATH=$PATH:$HOME/go/bin&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;go get 和 go install 安装的二进制到GOBIN。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;go命令&#34;&gt;go命令&lt;/h1&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ go help [command]&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;get&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>DevOps</title>
-      <link>https://canuxcheng.com/post/devops/</link>
-      <pubDate>Fri, 15 Apr 2016 09:41:39 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/devops/</guid>
-      <description>&lt;h1 id=&#34;devops&#34;&gt;DevOps&lt;/h1&gt;&#xA;&lt;p&gt;DevOps包括ChatOps, 敏捷开发，持续集成,持续交付,持续发布/部署，QA(自动化测试），智能监控和日志管理等内容．&lt;/p&gt;&#xA;&lt;p&gt;DevOps涉及到三个部门：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Development&lt;/li&gt;&#xA;&lt;li&gt;Operations&lt;/li&gt;&#xA;&lt;li&gt;Quality Assurance&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;ci&#34;&gt;CI&lt;/h1&gt;&#xA;&lt;p&gt;Continuous Integration.&lt;/p&gt;&#xA;&lt;p&gt;持续集成包括：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;编译代码.&lt;/li&gt;&#xA;&lt;li&gt;静态代码分析.&lt;/li&gt;&#xA;&lt;li&gt;自动化测试，例如selenium.&lt;/li&gt;&#xA;&lt;li&gt;代码覆盖率分析.&lt;/li&gt;&#xA;&lt;li&gt;构建，例如docker.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h1 id=&#34;cd&#34;&gt;CD&lt;/h1&gt;&#xA;&lt;p&gt;Continuous Delivery.&lt;/p&gt;&#xA;&lt;p&gt;持续交付包括：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;将通过测试的代码部署到Staging.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h1 id=&#34;continuous-releasedeploy&#34;&gt;Continuous Release/Deploy&lt;/h1&gt;&#xA;&lt;p&gt;持续部署/发布包括：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;将通过评审的交付代码部署到Production.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;cicd的工具&#34;&gt;CI/CD的工具&lt;/h1&gt;&#xA;&lt;p&gt;持续集成和部署&lt;/p&gt;&#xA;&lt;h2 id=&#34;jenkins&#34;&gt;Jenkins&lt;/h2&gt;&#xA;&lt;h2 id=&#34;travis-ci&#34;&gt;travis CI&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://travis-ci.org/&#34;&gt;https://travis-ci.org/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;travis CI是基于github的CI工具, 部署代码然后运行测试代码.&lt;/p&gt;&#xA;&lt;p&gt;在github项目添加.travis.yml文件：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;language: python&#xA;python:&#xA;  - &amp;quot;2.7&amp;quot;&#xA;install:&#xA;  - pip install -r requirements.txt&#xA;  - pip install coveralls&#xA;script:&#xA;  - coverage run --source=pymonitoringplugins setup.py test&#xA;after_success:&#xA;  - coveralls&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;circleci&#34;&gt;circleci&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://circleci.com/&#34;&gt;https://circleci.com/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;coverage的工具&#34;&gt;coverage的工具&lt;/h1&gt;&#xA;&lt;p&gt;统计单元测试的覆盖率&lt;/p&gt;&#xA;&lt;h2 id=&#34;coveralls&#34;&gt;coveralls&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://coveralls.io/&#34;&gt;https://coveralls.io/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;codecov&#34;&gt;codecov&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://codecov.io/&#34;&gt;https://codecov.io/&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>DevOps</title>
-      <link>https://canuxcheng.com/post/c_devops/</link>
-      <pubDate>Mon, 11 Apr 2016 22:57:37 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/c_devops/</guid>
-      <description>&lt;h1 id=&#34;ide&#34;&gt;IDE&lt;/h1&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Visual Studio&lt;/li&gt;&#xA;&lt;li&gt;VSCode&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;compilers&#34;&gt;Compilers&lt;/h2&gt;&#xA;&lt;p&gt;编译器组成：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;frontend&lt;/li&gt;&#xA;&lt;li&gt;optimizer&lt;/li&gt;&#xA;&lt;li&gt;backend&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://zh.cppreference.com/w/cpp/compiler_support&#34;&gt;https://zh.cppreference.com/w/cpp/compiler_support&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;windows:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;llvm clang&lt;/li&gt;&#xA;&lt;li&gt;Mingw&lt;/li&gt;&#xA;&lt;li&gt;Msvc&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;linux:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;llvm clang&lt;/li&gt;&#xA;&lt;li&gt;gcc&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;mac:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;llvm clang&lt;/li&gt;&#xA;&lt;li&gt;gcc&lt;/li&gt;&#xA;&lt;li&gt;apple clang&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;gcc&#34;&gt;gcc&lt;/h3&gt;&#xA;&lt;p&gt;gnu gcc,g++&lt;/p&gt;&#xA;&lt;h3 id=&#34;llvm-clang&#34;&gt;llvm clang&lt;/h3&gt;&#xA;&lt;p&gt;llvm: low level virtual machine. (backend)&lt;/p&gt;&#xA;&lt;p&gt;clang: c language.(frontend)&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;tools&#34;&gt;tools&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;CMake&lt;/li&gt;&#xA;&lt;li&gt;MSBuild&lt;/li&gt;&#xA;&lt;li&gt;Makefile&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;gcc-1&#34;&gt;GCC&lt;/h2&gt;&#xA;&lt;p&gt;&amp;ldquo;-ansi&amp;rdquo;&lt;/p&gt;&#xA;&lt;p&gt;for c: == -std=c90&#xA;for cpp: ==-std=c++98&lt;/p&gt;&#xA;&lt;p&gt;&amp;ldquo;-std&amp;rdquo;&lt;/p&gt;&#xA;&lt;p&gt;c++17, gnu++17, gnu17,c17&#xA;gnu2x: 下个ISO C标准。&#xA;c2x:下个ISO C标准。&#xA;c++2a: 下个ISO C++标准&#xA;gnu+2a:下个ISO C++标准&lt;/p&gt;&#xA;&lt;p&gt;gcc8 开始支持c++20.&#xA;gcc11开始支持c++23.&lt;/p&gt;&#xA;&lt;h2 id=&#34;vscode&#34;&gt;vscode&lt;/h2&gt;&#xA;&lt;p&gt;for macOS:&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>DevOps</title>
-      <link>https://canuxcheng.com/post/python_devops/</link>
-      <pubDate>Sun, 03 Apr 2016 10:49:21 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/python_devops/</guid>
-      <description>&lt;h1 id=&#34;python&#34;&gt;Python&lt;/h1&gt;&#xA;&lt;p&gt;python2的最后一个版本是python2.7, 2020年停止更新.&lt;/p&gt;&#xA;&lt;p&gt;Windows安装：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;Python2.7.9之后的版本直接下载msi安装即可．&#xA;选择自动设置PATH，默认安装pip和setuptools.&#xA;可以使用IDLE或python命令行或cmd执行python命令&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;Linux安装：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$sudo apt-get install python&#xA;$sudo yum install python&#xA;&#xA;$sudo apt-get install python-dev&#xA;$sudo apt-get install python3-dev&#xA;$sudo yum install python-devel&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;标准库的路径：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;C:\Python*\Lib&#xA;/usr/lib/python*/&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;python的IDE：&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Windows: IDLE&lt;/li&gt;&#xA;&lt;li&gt;Linux: Vim&lt;/li&gt;&#xA;&lt;li&gt;Pycharm/VS&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;python命令&#34;&gt;python命令&lt;/h1&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ python/ipython     # 进入python解释器&#xA;&amp;gt;&amp;gt;&amp;gt;exit()/Ctrl+d     # 退出python解释器&#xA;&amp;gt;&amp;gt;&amp;gt;help()            # 进入help工具&#xA;help&amp;gt;quit            # 退出help工具&#xA;$ pydoc --help        # 文档工具&#xA;&#xA;# -c　cmd, __name__ != &#39;__main__&#39;&#xA;$ python -c &#39;import module/package; expressions&#39;&#xA;# -m mod, __name__ == &#39;__main__&#39;&#xA;$ python -m &#39;module/package&#39;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;python的可用接口&#34;&gt;python的可用接口&lt;/h1&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;python内置常量，函数，类和异常．&lt;/p&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Devops on Morgoth</title>
+        <link>https://canuxcheng.com/tags/devops/</link>
+        <description>Recent content in Devops on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Fri, 10 Jan 2025 09:41:39 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/devops/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>DevOps Metrics</title>
+        <link>https://canuxcheng.com/post/devops_metrics/</link>
+        <pubDate>Fri, 10 Jan 2025 09:41:39 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/devops_metrics/</guid>
+        <description>&lt;h1 id=&#34;devops-metrics&#34;&gt;DevOps Metrics&lt;/h1&gt;
+&lt;p&gt;从业务角度来看，公司希望更准确地度量其开发人员的生产力，原因如下:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Monitoring progress over time&lt;/li&gt;
+&lt;li&gt;Creation of benchmarks&lt;/li&gt;
+&lt;li&gt;Rewarding top performers&lt;/li&gt;
+&lt;li&gt;Determining resource allocation&lt;/li&gt;
+&lt;li&gt;Identification of more productive development processes&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;框架是想法、概念和关系的简单总结，因此基于您的上下文、环境和团队，您可以选择一组您可以解释的指标，以确定团队是否在它应该在的地方。&lt;/p&gt;
+&lt;h2 id=&#34;dora&#34;&gt;DORA&lt;/h2&gt;
+&lt;p&gt;DevOps Research and Assessment.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://getdx.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://getdx.com/&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;speed-metrics&#34;&gt;Speed metrics&lt;/h3&gt;
+&lt;p&gt;Deployment frequency: This measures how often a team deploys code to production.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Low performance: once per month - once per semester. (inadequate integration, lack of automation.)&lt;/li&gt;
+&lt;li&gt;Medium performance: once per month - once per week.&lt;/li&gt;
+&lt;li&gt;High performance: daily for multiple times per day.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Lead time for change: This measures the time it takes from the moment a code change is made until it is successfully deployed to production.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Low performance: one - six months. (time-consuming manual testing, lack of automation.)&lt;/li&gt;
+&lt;li&gt;Medium performance: one week - one month.&lt;/li&gt;
+&lt;li&gt;High performance: less than one day.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;stability-metrics&#34;&gt;Stability metrics&lt;/h3&gt;
+&lt;p&gt;change failure rate: This metric measures the proportion of deployments that result in failures.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Poor performance: 46% - 60%. (quality and reliability issues).&lt;/li&gt;
+&lt;li&gt;Average performance: 15%-45%.&lt;/li&gt;
+&lt;li&gt;High performance: 0% - 15%.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;mean time to restore: This metric helps assess team’s ability to handle incidents and failures.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Low performance: one week - one month. (lack of adequate monitoring and diagnostic tools).&lt;/li&gt;
+&lt;li&gt;Medium performance: one day - one week.&lt;/li&gt;
+&lt;li&gt;High performance: less than one day.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;space&#34;&gt;SPACE&lt;/h2&gt;
+&lt;p&gt;S: Satisfaction and well-being&lt;/p&gt;
+&lt;p&gt;P: Performance&lt;/p&gt;
+&lt;p&gt;A: Activity&lt;/p&gt;
+&lt;p&gt;C: Collaboration and communication&lt;/p&gt;
+&lt;p&gt;E: Efficiency and flow&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;devex&#34;&gt;DevEx&lt;/h2&gt;
+&lt;p&gt;Developer Experience: DevEx captures how developers feel, how they think, and how they value their work.&lt;/p&gt;
+&lt;h3 id=&#34;feedback-loops&#34;&gt;Feedback loops&lt;/h3&gt;
+&lt;p&gt;perceptions:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;satisfaction with automated test speed and output.&lt;/li&gt;
+&lt;li&gt;satisfaction with time it takes to validate a local change.&lt;/li&gt;
+&lt;li&gt;satisfaction with time it takes to deploy a change to production.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;workflows:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;time it takes to generate CI results.&lt;/li&gt;
+&lt;li&gt;code review turnaround time.&lt;/li&gt;
+&lt;li&gt;deployment lead time.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;cognitive-load&#34;&gt;Cognitive load&lt;/h3&gt;
+&lt;p&gt;perceptions&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;perceive complexity of codebase.&lt;/li&gt;
+&lt;li&gt;ease of debugging production systems&lt;/li&gt;
+&lt;li&gt;easy of understanding documentation.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;workflows&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;time it takes to get answers to technical questions.&lt;/li&gt;
+&lt;li&gt;manual steps required to deploy a change.&lt;/li&gt;
+&lt;li&gt;frequency of documentation improvements.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;flow-state&#34;&gt;Flow state&lt;/h3&gt;
+&lt;p&gt;perceptions&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;perceived ability to focus and avoid interruptions.&lt;/li&gt;
+&lt;li&gt;satisfaction with clarity of task or project goals.&lt;/li&gt;
+&lt;li&gt;perceived disruptiveness of being on-call.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;workflows&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;number of blocks of time without meetings or interruptions.&lt;/li&gt;
+&lt;li&gt;frequency of unplanned tasks or requests.&lt;/li&gt;
+&lt;li&gt;frequency of incidents requiring team attention.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
+        <title>Devops</title>
+        <link>https://canuxcheng.com/post/go_devops/</link>
+        <pubDate>Mon, 01 Jan 2018 10:49:21 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/go_devops/</guid>
+        <description>&lt;h1 id=&#34;go&#34;&gt;Go&lt;/h1&gt;
+&lt;p&gt;go有三种安装方式：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;源码安装&lt;/li&gt;
+&lt;li&gt;标准包安装&lt;/li&gt;
+&lt;li&gt;第三方工具安装&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;GOROOT:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;GOROOT 就是go的安装目录
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;windows标准包安装go:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;msi指定安装路径，自动添加%GOROOT%/bin到环境变量
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;linux标准包安装go:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;下载.tar.gz包解压到/usr/local/go
+GOROOT=/usr/local/go
+export PATH=$PATH:/usr/local/go/bin
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;验证安装：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ go --help
+$ go version
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;第三方工具gvm安装go:&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://github.com/moovweb/gvm&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://github.com/moovweb/gvm&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ gvm install go1.9.2
+$ gvm use go1.9.2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;gopath&#34;&gt;GOPATH&lt;/h1&gt;
+&lt;p&gt;gopath用来存放go源码，go的可运行文件，以及相应的编译之后的包文件．&lt;/p&gt;
+&lt;p&gt;GOPATH 从go1.1到1.7都需要设置，而且不能是go的安装目录, go1.8开始有默认值:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;GOPATH=$USERPROFILE%go
+GOPATH=$HOME/go
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;gopath结构：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;src    存放源码
+pkg    编译后的库文件
+bin    编译后生成的可执行文件
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;gopath有多个值时用冒号分开即可.&lt;/p&gt;
+&lt;h1 id=&#34;gobin&#34;&gt;GOBIN&lt;/h1&gt;
+&lt;p&gt;默认值&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;GOBIN=$HOME/go/bin
+export PATH=$PATH:$HOME/go/bin
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;go get 和 go install 安装的二进制到GOBIN。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;go命令&#34;&gt;go命令&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;$ go help [command]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;get&lt;/p&gt;
+&lt;p&gt;下载并安装包和依赖, 也就是安装第三方的库．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ go get [...] [packages]
+
+&amp;gt; go get安装第三方包如果出现依赖无法安装，可以通过github下载．
+$ cd golang.org/x
+$ git clone https://github.com/golang/crypto.git crypto
+$ go install golang.org/x/crypto/ssh
+
+go get -u (without any arguments) now only upgrades the direct and indirect dependencies of your current package, and no longer examines your entire module.
+
+go get -u ./... from your module root upgrades all the direct and indirect dependencies of your module, and now excludes test dependencies.
+
+go get -u -t ./... is similar, but also upgrades test dependencies.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;build&lt;/p&gt;
+&lt;p&gt;编译包和依赖&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ go build [-o output] [-i] [build flags] [packages]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;install&lt;/p&gt;
+&lt;p&gt;编译并安装包和依赖&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ go install [build flags] [packages]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;run&lt;/p&gt;
+&lt;p&gt;编译并运行程序&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ go run [...] gofiles... [...]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;fmt&lt;/p&gt;
+&lt;p&gt;格式化代码和文档：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ go fmt [...] [packages]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;vet&lt;/p&gt;
+&lt;p&gt;检测代码常见错误:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ go vet [-n] [-x] [build flags] [vet flags] [packages]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;test&lt;/p&gt;
+&lt;p&gt;测试包:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ go test [...] [packages] [...]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;doc&lt;/p&gt;
+&lt;p&gt;查看文档：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ go doc [package/symbol]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;tool&lt;/p&gt;
+&lt;p&gt;运行工具:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ go tool [-n] command [args...]
+
+addr2line
+
+asm
+
+buildid
+
+cgo
+
+// 查看汇编代码
+compile
+go tool compile -S pkg.go
+
+cover
+dist
+doc
+fix
+link
+nm
+objdump
+pack
+pprof
+test2json
+trace
+vet
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;mod&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;go mod init &amp;lt;name&amp;gt;
+go mod tidy // 添加缺少的，删除多余的.
+go mod download // 下载包
+go mod verify 
+go mod edit
+go mod graph
+go mod why
+go mod vendor
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;env&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 通过env 设置golang的变量，取代系统环境变量
+go env
+go env -w GOROOT=&amp;quot;/usr/local/go&amp;quot;
+go env -w GOPATH=&amp;quot;$HOME/go&amp;quot;
+go env -w GOBIN=&amp;quot;$HOME/go/bin&amp;quot;
+go env -w GO111MODULE=on
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;clean&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;go clean -cache
+go clean -modcache
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;安装第三方包&#34;&gt;安装第三方包&lt;/h1&gt;
+&lt;p&gt;go get的功能很有限．&lt;/p&gt;
+&lt;p&gt;godep和golide都会被官方的dep取代．&lt;/p&gt;
+&lt;h2 id=&#34;depdeprecated&#34;&gt;dep(deprecated)&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/golang/dep&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/golang/dep&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;无法解决GFW的问题.&lt;/p&gt;
+&lt;p&gt;安装：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ go get -u github.com/golang/dep/cmd/dep
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;go官方包管理器&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 初始化一个使用dep管理包的项目，
+# 创建Gopkg.toml, Gopkg.lock, vendor/
+$ dep init
+
+$ dep status
+
+$ dep prune
+
+$ dep ensure
+$ dep ensure -update
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;module&#34;&gt;module&lt;/h2&gt;
+&lt;p&gt;vgo已经集成到go1.11&lt;/p&gt;
+&lt;p&gt;通过go mod init初始化两个文件.&lt;/p&gt;
+&lt;p&gt;go.mod:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;module
+go
+require
+exclude
+replace
+
+// 使用本地module,或使用指定repo里面的module
+replace github.com/crazy-canux/go-devops =&amp;gt; /path/to/local/github.com/crazy-canux/go-devops
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;go.sum:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;go env -w GOSUMDB=off
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;设置相关环境变量:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;GO111MODULE:
+// auto/on/off
+go env -w GO111MODULE=on
+
+GOPROXY:
+go env -w GOPROXY=https://goproxy.cn,direct
+https://proxy.golang.org //默认值
+https://goproxy.cn
+https://goproxy.io
+https://mirrors.aliyun.com/goproxy/
+
+GOSUMDB:
+
+GOPRIVATE
+
+GONOPROXY
+
+GONOSUMDB
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;项目结构&#34;&gt;项目结构&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;cmd: 可执行文件入口
+pkg: 核心代码库
+api: api的spec, openapi/swagger/json/protocol/grpc
+hack: 构建/测试相关脚本
+plugin: 插件
+staging: wip
+third_party: 第三方工具/代码
+vendor: 项目依赖
+build
+test
+docs
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;没有子目录包结构：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;go-devops
+    |- README.md
+    |- doc.go
+    |- grafana.go
+    |- grafana_test.go
+    ...
+
+import &amp;quot;go-devops&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;有子目录的包结构：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;go-devops
+    |- README.md
+    |- doc.go // package go_devops
+    |- grafana
+       |- doc.go // package grafana
+       |- grafana.go
+       |- grafana_test.go
+
+import &amp;quot;go-devops/grafana&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;proxy&#34;&gt;proxy&lt;/h1&gt;
+&lt;p&gt;goproxy.io&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/goproxyio/goproxy&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/goproxyio/goproxy&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;goproxy.cn&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/goproxy/goproxy.cn&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/goproxy/goproxy.cn&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>DevOps</title>
+        <link>https://canuxcheng.com/post/devops/</link>
+        <pubDate>Fri, 15 Apr 2016 09:41:39 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/devops/</guid>
+        <description>&lt;h1 id=&#34;devops&#34;&gt;DevOps&lt;/h1&gt;
+&lt;p&gt;DevOps包括ChatOps, 敏捷开发，持续集成,持续交付,持续发布/部署，QA(自动化测试），智能监控和日志管理等内容．&lt;/p&gt;
+&lt;p&gt;DevOps涉及到三个部门：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Development&lt;/li&gt;
+&lt;li&gt;Operations&lt;/li&gt;
+&lt;li&gt;Quality Assurance&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;ci&#34;&gt;CI&lt;/h1&gt;
+&lt;p&gt;Continuous Integration.&lt;/p&gt;
+&lt;p&gt;持续集成包括：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;编译代码.&lt;/li&gt;
+&lt;li&gt;静态代码分析.&lt;/li&gt;
+&lt;li&gt;自动化测试，例如selenium.&lt;/li&gt;
+&lt;li&gt;代码覆盖率分析.&lt;/li&gt;
+&lt;li&gt;构建，例如docker.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;cd&#34;&gt;CD&lt;/h1&gt;
+&lt;p&gt;Continuous Delivery.&lt;/p&gt;
+&lt;p&gt;持续交付包括：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;将通过测试的代码部署到Staging.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;continuous-releasedeploy&#34;&gt;Continuous Release/Deploy&lt;/h1&gt;
+&lt;p&gt;持续部署/发布包括：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;将通过评审的交付代码部署到Production.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;cicd的工具&#34;&gt;CI/CD的工具&lt;/h1&gt;
+&lt;p&gt;持续集成和部署&lt;/p&gt;
+&lt;h2 id=&#34;jenkins&#34;&gt;Jenkins&lt;/h2&gt;
+&lt;h2 id=&#34;travis-ci&#34;&gt;travis CI&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://travis-ci.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://travis-ci.org/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;travis CI是基于github的CI工具, 部署代码然后运行测试代码.&lt;/p&gt;
+&lt;p&gt;在github项目添加.travis.yml文件：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;language: python
+python:
+  - &amp;quot;2.7&amp;quot;
+install:
+  - pip install -r requirements.txt
+  - pip install coveralls
+script:
+  - coverage run --source=pymonitoringplugins setup.py test
+after_success:
+  - coveralls
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;circleci&#34;&gt;circleci&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://circleci.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://circleci.com/&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;coverage的工具&#34;&gt;coverage的工具&lt;/h1&gt;
+&lt;p&gt;统计单元测试的覆盖率&lt;/p&gt;
+&lt;h2 id=&#34;coveralls&#34;&gt;coveralls&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://coveralls.io/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://coveralls.io/&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;codecov&#34;&gt;codecov&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://codecov.io/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://codecov.io/&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;stackstorm&#34;&gt;stackstorm&lt;/h1&gt;
+&lt;p&gt;StackStorm is a platform for integration and automation across services and tools, taking actions in response to events.&lt;/p&gt;
+&lt;p&gt;For DevOps and ChatOps.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/StackStorm/st2&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/StackStorm/st2&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;drone&#34;&gt;Drone&lt;/h1&gt;
+&lt;p&gt;Drone is a Continuous Delivery platform built on Docker, written in Go&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/drone/drone&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/drone/drone&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;supervisor&#34;&gt;supervisor&lt;/h1&gt;
+&lt;p&gt;Supervisor process control system for UNIX/Linux.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/Supervisor/supervisor&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/Supervisor/supervisor&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ pip install supervisor
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;redmine&#34;&gt;redmine&lt;/h1&gt;
+&lt;p&gt;ruby开发的项目管理工具,集成bug和wiki工具．&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;dokuwiki&#34;&gt;dokuwiki&lt;/h1&gt;
+&lt;p&gt;php开发的wiki管理工具&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;atlassian&#34;&gt;Atlassian&lt;/h1&gt;
+&lt;p&gt;Jira for Porject Management.&lt;/p&gt;
+&lt;p&gt;Bitbucket for Source code management.&lt;/p&gt;
+&lt;p&gt;Bamboo for CI/CD.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;bugzilla&#34;&gt;bugzilla&lt;/h1&gt;
+&lt;p&gt;perl开发的bug追踪系统．&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;errbot&#34;&gt;errbot&lt;/h1&gt;
+&lt;p&gt;python开发的ChatOps工具．&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/errbotio/errbot&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/errbotio/errbot&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;zulip&#34;&gt;zulip&lt;/h1&gt;
+&lt;p&gt;团队聊天工具介绍&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/zulip/zulip&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/zulip/zulip&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>DevOps</title>
+        <link>https://canuxcheng.com/post/c_devops/</link>
+        <pubDate>Mon, 11 Apr 2016 22:57:37 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/c_devops/</guid>
+        <description>&lt;h1 id=&#34;ide&#34;&gt;IDE&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Visual Studio&lt;/li&gt;
+&lt;li&gt;VSCode&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;compilers&#34;&gt;Compilers&lt;/h2&gt;
+&lt;p&gt;编译器组成：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;frontend&lt;/li&gt;
+&lt;li&gt;optimizer&lt;/li&gt;
+&lt;li&gt;backend&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://zh.cppreference.com/w/cpp/compiler_support&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://zh.cppreference.com/w/cpp/compiler_support&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;windows:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;llvm clang&lt;/li&gt;
+&lt;li&gt;Mingw&lt;/li&gt;
+&lt;li&gt;Msvc&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;linux:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;llvm clang&lt;/li&gt;
+&lt;li&gt;gcc&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;mac:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;llvm clang&lt;/li&gt;
+&lt;li&gt;gcc&lt;/li&gt;
+&lt;li&gt;apple clang&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;gcc&#34;&gt;gcc&lt;/h3&gt;
+&lt;p&gt;gnu gcc,g++&lt;/p&gt;
+&lt;h3 id=&#34;llvm-clang&#34;&gt;llvm clang&lt;/h3&gt;
+&lt;p&gt;llvm: low level virtual machine. (backend)&lt;/p&gt;
+&lt;p&gt;clang: c language.(frontend)&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;tools&#34;&gt;tools&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;CMake&lt;/li&gt;
+&lt;li&gt;MSBuild&lt;/li&gt;
+&lt;li&gt;Makefile&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;gcc-1&#34;&gt;GCC&lt;/h2&gt;
+&lt;p&gt;&amp;ldquo;-ansi&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;for c: == -std=c90
+for cpp: ==-std=c++98&lt;/p&gt;
+&lt;p&gt;&amp;ldquo;-std&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;c++17, gnu++17, gnu17,c17
+gnu2x: 下个ISO C标准。
+c2x:下个ISO C标准。
+c++2a: 下个ISO C++标准
+gnu+2a:下个ISO C++标准&lt;/p&gt;
+&lt;p&gt;gcc8 开始支持c++20.
+gcc11开始支持c++23.&lt;/p&gt;
+&lt;h2 id=&#34;vscode&#34;&gt;vscode&lt;/h2&gt;
+&lt;p&gt;for macOS:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;xcode-select --install
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;extentions:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;c/c++&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
+        <title>DevOps</title>
+        <link>https://canuxcheng.com/post/python_devops/</link>
+        <pubDate>Sun, 03 Apr 2016 10:49:21 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/python_devops/</guid>
+        <description>&lt;h1 id=&#34;python&#34;&gt;Python&lt;/h1&gt;
+&lt;p&gt;python2的最后一个版本是python2.7, 2020年停止更新.&lt;/p&gt;
+&lt;p&gt;Windows安装：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Python2.7.9之后的版本直接下载msi安装即可．
+选择自动设置PATH，默认安装pip和setuptools.
+可以使用IDLE或python命令行或cmd执行python命令
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Linux安装：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$sudo apt-get install python
+$sudo yum install python
+
+$sudo apt-get install python-dev
+$sudo apt-get install python3-dev
+$sudo yum install python-devel
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;标准库的路径：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;C:\Python*\Lib
+/usr/lib/python*/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;python的IDE：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Windows: IDLE&lt;/li&gt;
+&lt;li&gt;Linux: Vim&lt;/li&gt;
+&lt;li&gt;Pycharm/VS&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;python命令&#34;&gt;python命令&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;$ python/ipython     # 进入python解释器
+&amp;gt;&amp;gt;&amp;gt;exit()/Ctrl+d     # 退出python解释器
+&amp;gt;&amp;gt;&amp;gt;help()            # 进入help工具
+help&amp;gt;quit            # 退出help工具
+$ pydoc --help        # 文档工具
+
+# -c　cmd, __name__ != &#39;__main__&#39;
+$ python -c &#39;import module/package; expressions&#39;
+# -m mod, __name__ == &#39;__main__&#39;
+$ python -m &#39;module/package&#39;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;python的可用接口&#34;&gt;python的可用接口&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;python内置常量，函数，类和异常．&lt;/p&gt;
+&lt;p&gt;C/C++实现的，不需要导入就可以使用的。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;python标准库&lt;/p&gt;
+&lt;p&gt;python实现的，需要导入才能使用的。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;python外部库&lt;/p&gt;
+&lt;p&gt;需要安装和导入才能使用的。外部库是对python代码的补充。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;python框架&lt;/p&gt;
+&lt;p&gt;需要安装和导入才能使用的。python代码是对外部库的补充。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;python的其它解释器&#34;&gt;python的其它解释器&lt;/h1&gt;
+&lt;h2 id=&#34;cpython&#34;&gt;cpython&lt;/h2&gt;
+&lt;p&gt;python的默认解释器，安装python即可获得。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/python/cpython&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/python/cpython&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;stackless&#34;&gt;stackless&lt;/h2&gt;
+&lt;p&gt;cpython的增强版，支持多线程。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://bitbucket.org/stackless-dev/stackless&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://bitbucket.org/stackless-dev/stackless&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;pypy&#34;&gt;pypy&lt;/h2&gt;
+&lt;p&gt;用python写的python解释器。&lt;/p&gt;
+&lt;p&gt;比cpython更快的python。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://bitbucket.org/pypy/pypy&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://bitbucket.org/pypy/pypy&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;jpython&#34;&gt;jpython&lt;/h2&gt;
+&lt;p&gt;java开发的可以运行在JVM平台的python解释器。&lt;/p&gt;
+&lt;h2 id=&#34;ironpython&#34;&gt;ironpython&lt;/h2&gt;
+&lt;p&gt;C#开发的可以运行在.net/mono平台的python解释器。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;python开发相关的工具&#34;&gt;python开发相关的工具&lt;/h1&gt;
+&lt;h2 id=&#34;ipython&#34;&gt;ipython&lt;/h2&gt;
+&lt;p&gt;python写的交互式解释器。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/ipython/ipython&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/ipython/ipython&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$pip install ipython
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;pyenv&#34;&gt;pyenv&lt;/h2&gt;
+&lt;p&gt;python的版本管理工具,　用于管理多个pyton版本.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/yyuu/pyenv&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/yyuu/pyenv&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;安装第三方库&#34;&gt;安装第三方库&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://pypi.python.org/pypi&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://pypi.python.org/pypi&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;第三方库路径：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;C:\Python*\Lib\site-packages
+~/.local/lib/python*/site-packages
+/usr/local/lib/python*/dist-packages
+/usr/local/lib/python*/site-packages
+/usr/lib/python*/dist-packages
+/usr/lib/python*/site-packages
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;二进制安装：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$sudo apt-get install python-&amp;lt;packagename&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;源码安装第三方库：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ cd package
+$ python setup.py install
+
+# 安装到　~/.local/lib/python*/site-packages
+$ python setup.py install --user
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;easy_install(setuptools)安装：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;https://github.com/pypa/setuptools&amp;gt;
+easy_install安装egg包,不推荐使用．
+setuptools带的工具,从pypi的egg归档格式中安装。
+python2.7.9, python3.4, virtualenv自带setuptools.
+缺点是不支持卸载。
+
+$sudo apt-get install python-setuptools
+$sudo yum install python-setuptools
+
+$ sudo apt-get install python3-setuptools
+
+$ pip install -U setuptools
+
+$sudo -E easy_install packagename[=version] # 安装
+$sudo -E easy_install -U packagename[=version] # 升级
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;pip安装：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;https://github.com/pypa/pip&amp;gt;
+直接从pypi安装wheel格式和sdist格式(也就是tarball)。
+
+$sudo apt-get install python-pip
+$sudo apt-get install python-wheel
+$sudo yum install python-pip
+$sudo yum install python-wheel
+
+$ sudo apt-get install python3-pip
+$ sudo apt-get install python3-wheel
+
+$pip install -U pip
+$pip install -U wheel
+$pip install -U setuptools
+
+$ pip install packagename[==version] # 安装
+$ pip install -U packagename[==version] # 升级
+$ pip uninstall packagename # 卸载
+$ pip install XXX.whl # 安装wheel包
+
+$ pip3 install/uninstall &amp;lt;packagename&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;pip命令:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$pip list
+$pip search packagename
+$pip freeze &amp;gt; requirements.txt
+$pip install -r requirements.txt
+
+$ pip install [options] &amp;lt;requirement specifier&amp;gt; [package-index-options]
+
+$ pip install --target &amp;lt;dir&amp;gt; # 通过target指定安装的具体site-packages路径,不包括scripts/data
+$ pip install --prefix &amp;lt;dir&amp;gt; # 通过prefix指定安装的bin, lib等路径，会安装scripts/data等
+$ pip install --root &amp;lt;dir&amp;gt; # 会自动创建&amp;lt;dir&amp;gt;/usr/local/bin,&amp;lt;dir&amp;gt;/usr/local/lib来安装
+$ pip install --user # 安装到/home/$USER/.local/lib
+
+# 下面是通过源码安装，不能通过whl等二进制安装
+$ pip install --install-option=&amp;quot;--&amp;lt;options&amp;gt;&amp;quot; # 通过源码安装，传递参数给python setup.py install
+$ pip install --global-option=...
+
+# 一般指定了其它安装路径都需要用-I, 因为如果系统路径已经安装，就不会再安装
+$ pip install -I/--ignore-installed # 重新安装, 配合--prefix使用.
+
+# General options:
+--log &amp;lt;path&amp;gt;
+--timeout &amp;lt;sec&amp;gt;
+--trusted-host &amp;lt;hostname&amp;gt;
+--cache-dir &amp;lt;dir&amp;gt;
+--no-cache-dir
+--disable-pip-version-check
+
+# Package index options
+-i, --index-url &amp;lt;url&amp;gt;
+--extra-index-url &amp;lt;url&amp;gt;
+--no-index
+-f, --find-links &amp;lt;url&amp;gt;
+--process-dependency-links
+
+# 手动修改pip的源
+$ sudo vim /etc/pip.conf
+
+[global]
+timeout=120
+no-cache-dir = false
+trusted-host = pypi.douban.com
+index-url = http://pypi.douban.com/simple
+# index-url = https://&amp;lt;user&amp;gt;:&amp;lt;password&amp;gt;@ip:port/simple
+
+[freeze]
+timeout = 10
+
+[install]
+ignore-installed = true
+no-dependencies = yes
+no-compile = no
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;pip-tools&lt;/p&gt;
+&lt;p&gt;根据项目中的import导出依赖。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/jazzband/pip-tools&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/jazzband/pip-tools&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;pipreqs&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/bndr/pipreqs&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/bndr/pipreqs&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;python代码检查&#34;&gt;python代码检查&lt;/h1&gt;
+&lt;h2 id=&#34;flake8&#34;&gt;flake8&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/PyCQA/flake8&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/PyCQA/flake8&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Include: pyflakes, pep8/pycodestyle, McCabe&lt;/p&gt;
+&lt;h2 id=&#34;pylama&#34;&gt;pylama&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/klen/pylama&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/klen/pylama&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Include: pyflakes, pylint, pep8/pycodestyle, pep257/pydocstyle, mccabe, radon, ghslint(for js)&lt;/p&gt;
+&lt;h2 id=&#34;pep8pycodestyle&#34;&gt;pep8/pycodestyle&lt;/h2&gt;
+&lt;p&gt;Simple Python style checker in one Python file.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/PyCQA/pycodestyle&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/PyCQA/pycodestyle&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;pep257pydocstyle&#34;&gt;pep257/pydocstyle&lt;/h2&gt;
+&lt;p&gt;docstring style checker&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/PyCQA/pydocstyle&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/PyCQA/pydocstyle&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;jedi&#34;&gt;jedi&lt;/h2&gt;
+&lt;p&gt;Awesome autocompletion and static analysis library for python.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/davidhalter/jedi&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/davidhalter/jedi&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;mccabe&#34;&gt;mccabe&lt;/h2&gt;
+&lt;p&gt;McCabe complexity checker for Python&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/PyCQA/mccabe&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/PyCQA/mccabe&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;pyflakes&#34;&gt;pyflakes&lt;/h2&gt;
+&lt;p&gt;A simple program which checks Python source files for errors.&lt;/p&gt;
+&lt;p&gt;Faster than pylint.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/PyCQA/pyflakes&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/PyCQA/pyflakes&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;pylint&#34;&gt;pylint&lt;/h2&gt;
+&lt;p&gt;A Python source code analyzer which looks for programming errors, helps enforcing a coding standard and sniffs for some code smells&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/PyCQA/pylint&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/PyCQA/pylint&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$pylint --list-msgs
+$pylint --help-msg=C6409
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;rope&#34;&gt;rope&lt;/h2&gt;
+&lt;p&gt;A python refactoring library&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/python-rope/rope&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/python-rope/rope&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;python项目结构&#34;&gt;python项目结构&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;.
+|-- README.rst
+|-- LICENSE
+|-- AUTHORS.rst
+|-- CONTRIBUTING.rst
+
+|-- project    项目源代码目录
+    |-- __init__.py 包文件
+    |-- &amp;lt;module&amp;gt;.py // 模块名不要和已知的包重名
+    ...
+|-- docs       用来存放文档
+    |-- conf.py
+    |-- index.rst
+    ...
+
+|-- tests 用来存放测试相关的文件(不能有__init__.py)
+|-- examples 用来存放使用本包相关的例子(不能有__init__.py)
+
+|-- bin 用来存放将被setup.py安装的二进制脚本
+|-- data 用来存放其它类型文件
+|-- etc 用来存放配置文件
+|-- tools 用来存放与工具相关shell脚本
+|-- scripts 用来存放安装相关的脚本
+
+|-- setup.py 标准安装脚本
+|-- setup.cfg
+|-- MANIFEST.in
+
+|-- .gitignore
+|-- .gitattributes
+|-- requirements.txt 依赖的环境
+|-- Makefile
+|-- fabfile.py
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;cicd&#34;&gt;CICD&lt;/h1&gt;
+&lt;h2 id=&#34;buildbot&#34;&gt;buildbot&lt;/h2&gt;
+&lt;p&gt;Python-based continuous integration testing framework&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/buildbot/buildbot&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/buildbot/buildbot&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;pybuilder&#34;&gt;pybuilder&lt;/h2&gt;
+&lt;p&gt;Continuous build tool for Python.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/pybuilder/pybuilder&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/pybuilder/pybuilder&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;pypi&#34;&gt;pypi&lt;/h1&gt;
+&lt;p&gt;创建私有的pypi服务器&lt;/p&gt;
+&lt;h2 id=&#34;pypiserver&#34;&gt;pypiserver&lt;/h2&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

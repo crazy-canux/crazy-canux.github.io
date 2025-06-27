@@ -1,26 +1,407 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>File on Morgoth</title>
-    <link>https://canuxcheng.com/tags/file/</link>
-    <description>Recent content in File on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Mon, 01 Jan 2018 10:49:21 +0000</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/file/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>GSL_file</title>
-      <link>https://canuxcheng.com/post/gsl_file/</link>
-      <pubDate>Mon, 01 Jan 2018 10:49:21 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/gsl_file/</guid>
-      <description>&lt;h1 id=&#34;path&#34;&gt;path&lt;/h1&gt;&#xA;&lt;h2 id=&#34;function&#34;&gt;function&lt;/h2&gt;&#xA;&lt;pre&gt;&lt;code&gt;func IsAbs(path string) bool&#xA;func Join(elem ...string) string&#xA;func Split(path string) (dir, file string)&#xA;func Join(elem ...string) string&#xA;func Dir(path string) string&#xA;func Base(path string) string&#xA;func Ext(path string) string &#xA;...&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;pathfilepath&#34;&gt;path/filepath&lt;/h1&gt;&#xA;&lt;h2 id=&#34;constants&#34;&gt;Constants&lt;/h2&gt;&#xA;&lt;pre&gt;&lt;code&gt;const (&#xA;    Separator = os.PathSeparator&#xA;    ListSeparator = os.PathListSeparator&#xA;)&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;variable&#34;&gt;Variable&lt;/h2&gt;&#xA;&lt;pre&gt;&lt;code&gt;var ErrBadPattern = errors.New(&amp;quot;Syntax error in pattern&amp;quot;)&#xA;&#xA;var SkipDir = errors.New(&amp;quot;skip this diractory&amp;quot;)&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;function-1&#34;&gt;function&lt;/h2&gt;&#xA;&lt;pre&gt;&lt;code&gt;func IsAbs(path string) bool&#xA;func Abs(path string) (string, error)&#xA;&#xA;// 返回 targpath 相对于 basepath 的 路径 （相当于返回 targpath - basepath), 实际就是文件名.&#xA;func Rel(basepath, targpath string) (string, error)&#xA;&#xA;func Split(path string) (dir, file string)&#xA;func Join(elem ...string) string&#xA;func Dir(path string) string&#xA;func Base(path string) string&#xA;func Ext(path string) string) // 包括小数点&#xA;func Walk(root string, walkFn WalkFunc) error&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;walkfunc&#34;&gt;WalkFunc&lt;/h2&gt;&#xA;&lt;p&gt;调用Walk时会对每个目录和文件调用该函数.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>PSL_File</title>
-      <link>https://canuxcheng.com/post/psl_file/</link>
-      <pubDate>Sun, 14 Aug 2016 20:51:28 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/psl_file/</guid>
-      <description>&lt;h1 id=&#34;file-and-directory-access&#34;&gt;File and Directory Access&lt;/h1&gt;&#xA;&lt;h2 id=&#34;ospath&#34;&gt;os.path&lt;/h2&gt;&#xA;&lt;p&gt;windows的路径要写成：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;C:\\test\\sub\\&#xA;&#xA;import os&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;function:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;os.path.expanduser(path) # 把path中~或~user扩展成绝对路径 expanduser(&amp;quot;~/src&amp;quot;) -&amp;gt; /home/user/src&#xA;os.path.expandvars(path) # 把path中的shell变量$var 或 ${var} 还原．&#xA;os.path.dirname(filename) # 返回filename的路径 dirname(&amp;quot;/home/user/file.py&amp;quot;) -&amp;gt; /home/user&#xA;os.path.join(a, *p) # 拼结一个完整的路径　&#xA;os.path.join(a, os.pardir) # 返回上级目录的路径&#xA;os.path.realpath(filename) # 返回filename的真实路径+文件名 realpath(&#39;__file__&#39;)&#xA;os.path.abspath(path) # 返回绝对路径, os.path.abspath(&#39;__file__&#39;)&#xA;os.path.splitext(p) # 分解路径和扩展名返回组成的元组，/home/user/test.py -&amp;gt; (&amp;quot;/home/user/test&amp;quot;, &amp;quot;.py&amp;quot;)&#xA;os.path.basename(p) # 返回最后一个组件名，也就是文件名 /home/user/test.py -&amp;gt; test.py&#xA;os.path.getsize(filename) # 返回文件大小&#xA;os.path.exists(path) # 判断path(文件或目录)是否存在&#xA;os.path.isfile(path) # 判断path是否是常规文件&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;pathlib&#34;&gt;pathlib&lt;/h2&gt;&#xA;&lt;p&gt;new in python3.4&lt;/p&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>File on Morgoth</title>
+        <link>https://canuxcheng.com/tags/file/</link>
+        <description>Recent content in File on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Mon, 01 Jan 2018 10:49:21 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/file/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>GSL_file</title>
+        <link>https://canuxcheng.com/post/gsl_file/</link>
+        <pubDate>Mon, 01 Jan 2018 10:49:21 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/gsl_file/</guid>
+        <description>&lt;h1 id=&#34;path&#34;&gt;path&lt;/h1&gt;
+&lt;h2 id=&#34;function&#34;&gt;function&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;func IsAbs(path string) bool
+func Join(elem ...string) string
+func Split(path string) (dir, file string)
+func Join(elem ...string) string
+func Dir(path string) string
+func Base(path string) string
+func Ext(path string) string 
+...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;pathfilepath&#34;&gt;path/filepath&lt;/h1&gt;
+&lt;h2 id=&#34;constants&#34;&gt;Constants&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;const (
+    Separator = os.PathSeparator
+    ListSeparator = os.PathListSeparator
+)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;variable&#34;&gt;Variable&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;var ErrBadPattern = errors.New(&amp;quot;Syntax error in pattern&amp;quot;)
+
+var SkipDir = errors.New(&amp;quot;skip this diractory&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;function-1&#34;&gt;function&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;func IsAbs(path string) bool
+func Abs(path string) (string, error)
+
+// 返回 targpath 相对于 basepath 的 路径 （相当于返回 targpath - basepath), 实际就是文件名.
+func Rel(basepath, targpath string) (string, error)
+
+func Split(path string) (dir, file string)
+func Join(elem ...string) string
+func Dir(path string) string
+func Base(path string) string
+func Ext(path string) string) // 包括小数点
+func Walk(root string, walkFn WalkFunc) error
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;walkfunc&#34;&gt;WalkFunc&lt;/h2&gt;
+&lt;p&gt;调用Walk时会对每个目录和文件调用该函数.&lt;/p&gt;
+&lt;p&gt;如果该函数返回错误，Walk函数会中止.&lt;/p&gt;
+&lt;p&gt;如果该函数返回SkipDir, Walk会掉过处理该目录，继续处理其它内容.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type WalkFunc func(path string, info os.FileInfo, err error) error
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;encoding&#34;&gt;encoding&lt;/h1&gt;
+&lt;p&gt;定义了供其它包使用的在字节和文本之间转换数据的接口.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import &amp;quot;encoding&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;encodingjson&#34;&gt;encoding/json&lt;/h1&gt;
+&lt;p&gt;go和json数据类型对应关系，参考WEB/JSON.&lt;/p&gt;
+&lt;p&gt;在线获取json的go数据结构:&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/mholt/json-to-go&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/mholt/json-to-go&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mholt.github.io/json-to-go&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://mholt.github.io/json-to-go&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;chan/complex/func类型不能编码为json.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import &amp;quot;encoding/json&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;constants-1&#34;&gt;constants&lt;/h2&gt;
+&lt;h2 id=&#34;variables&#34;&gt;variables&lt;/h2&gt;
+&lt;h2 id=&#34;functions&#34;&gt;functions&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;# 返回golang对象v的json编码(将go的对象转换为json对象), 可以打tag.
+&amp;gt; &amp;quot;-&amp;quot; 该字段不会输出到json
+&amp;gt; myName 在json中的名字
+&amp;gt; omitempty 允许json中没有该字段
+&amp;gt; Type 如果指定类型，会转换成指定的类型出现在json
+json.Marshal(v interface{}) ([]byte, error)
+
+# 具有缩进功能
+json.MarshalIndent(v interface{}, prefix, indent string) ([]byte, error)
+
+# 将json对象data转换成go对象，存入v
+# 只有可导出字段才会在json中找到.
+&amp;gt; Bool                   对应JSON布尔类型
+&amp;gt; float64                对应JSON数字类型
+&amp;gt; string                 对应JSON字符串类型
+&amp;gt; []interface{}          对应JSON数组
+&amp;gt; map[string]interface{} 对应JSON对象
+&amp;gt; nil                    对应JSON的null
+json.Unmarshal(data []byte, v interface{}) error
+
+// 将json格式的src中的无用的空白字符剔除后写入dst.
+func Compact(dst *bytes.Buffer, src []byte) error
+
+// 格式化json，以便json编码能安全的嵌入html的&amp;lt;script&amp;gt;标签
+func HTMLEscape(dst *bytes.Buffer, src []byte)
+
+//
+func Indent(dst *bytes.Buffer, src []byte, prefix, indent string) error
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;marshaler&#34;&gt;Marshaler&lt;/h2&gt;
+&lt;p&gt;interface:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type Marshaler interface {
+    MarshalJSON() ([]byte, error)
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;unmarshaler&#34;&gt;Unmarshaler&lt;/h2&gt;
+&lt;p&gt;interface:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type Unmarshaler interface {
+    UnmarshalJSON([] byte) error
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;decoder&#34;&gt;Decoder&lt;/h2&gt;
+&lt;p&gt;从输入流解码json对象&lt;/p&gt;
+&lt;p&gt;struct:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type Decoder struct {}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;function:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;func NewDecoder(r io.Reader) *Decoder
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;method:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 从dec读取下一个对象存入v.
+func (dec *Decoder) Decode(v interface{}) error
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;encoder&#34;&gt;Encoder&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;encodingcsv&#34;&gt;encoding/csv&lt;/h1&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;encodinggob&#34;&gt;encoding/gob&lt;/h1&gt;
+&lt;p&gt;go binary, go的数据持久化包，用于编码器和解码器之间交换二进制数据.&lt;/p&gt;
+&lt;h2 id=&#34;functions-1&#34;&gt;functions&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;func Register(value interface{})
+
+func RegisterName(name string, value interface{})
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;gobdecoder&#34;&gt;GobDecoder&lt;/h2&gt;
+&lt;h2 id=&#34;gobencoder&#34;&gt;GobEncoder&lt;/h2&gt;
+&lt;h2 id=&#34;decoder-1&#34;&gt;Decoder&lt;/h2&gt;
+&lt;p&gt;管理从远端读取数据的类型和信息的解码操作.&lt;/p&gt;
+&lt;p&gt;struct:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type Decoder struct {}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;functions:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 返回一个从r读取数据的Decoder
+func NewDecoder(r io.Reader) *Decoder
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;methods:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 从dec读取下一个值并存入e
+func (dec *Decoder) Decode(e interface{}) error
+
+func (dec *Decoder) DecodeValue(v reflect.Value) error
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;encoder-1&#34;&gt;Encoder&lt;/h2&gt;
+&lt;p&gt;管理数据类型和信息编码后发送到远端的操作.&lt;/p&gt;
+&lt;p&gt;struct:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type Encoder struct {}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;functions:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 返回一个将编码后数据写入w的Encoder
+func NewEncoder(w io.Writer) *Encoder
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;methods:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 将e编码后发送到enc
+func (enc *Encoder) Encode(e interface{}) error
+
+func (enc *Encoder) EncodeValue(value reflect.Value) error
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;commontype&#34;&gt;CommonType&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;type CommonType struct {
+    Name string
+    Id typeId
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;texttemplate&#34;&gt;text/template&lt;/h1&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;texttemplateparse&#34;&gt;text/template/parse&lt;/h1&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;textscanner&#34;&gt;text/scanner&lt;/h1&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;texttabwriter&#34;&gt;text/tabwriter&lt;/h1&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;html&#34;&gt;html&lt;/h1&gt;
+&lt;p&gt;提供了用于转义和解转义html文本的函数．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import &amp;quot;net&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;functions-2&#34;&gt;functions&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;// 将　&amp;lt;, &amp;gt;, &amp;amp;, &#39;, &amp;quot; 转义为字符实体 &amp;amp;lt, &amp;amp;gt, &amp;amp;#39,
+ func EscapeString(s string) string
+
+ func UnescapeString(s string) string
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;htmltemplate&#34;&gt;html/template&lt;/h1&gt;
+&lt;p&gt;实现了数据驱动模板，用于生成可对抗代码注入的安全html输出．&lt;/p&gt;
+&lt;h2 id=&#34;functions-3&#34;&gt;functions&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;// 将b转义后写入w．
+func HTMLEscape(w io.Writer, b []byte)
+
+// 转义s之后,返回结果字符串.
+func HTMLEscapeString(s string) string
+
+// 转义多个字符串，返回结果字符串.
+func HTMLEscaper(args ...interface{}) string
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;funcmap&#34;&gt;FuncMap&lt;/h2&gt;
+&lt;p&gt;定义函数名字符串到函数的映射，每个函数必须要1到2个返回值．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type FuncMap map[string]interface{}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;template&#34;&gt;Template&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;type Template struct {
+    Tree *parse.Tree
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;function:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 创建名为name的模板
+func New(name string) *Template
+
+// 在err非nil时panic, 检测模板是否正确．
+// 通过template.New().Parse() 返回值作为参数.
+func Must(t *Template, err error) *Template
+
+// 创建一个模板，并解析filenames作为模板内容
+// 第一个文件名为模板名字(不包括扩展名)
+func ParseFiles(filenames ...string) (*Template, error)
+
+// 创建一个模板，并解析匹配pattern的文件．
+// 匹配的第一个文件名为模板名字(不包括扩展名)
+func ParseGlob(pattern string) (*Template, error)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;methods:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 将字符串str解析为模板
+func (t *Template) Parse(str string) (*Template, error)
+
+// 将文件解析为模板
+func (t *Template) ParseFiles(filenames ...string) (*Template, error)
+
+//
+func (t *Template) ParseGlob(pattern string) (*Template, error)
+
+// 将解析好的模板应用到data上，并将输出写入wr.
+func (t *Template) Execute(wr io.Writer, data interface{}) (err error)
+
+// 使用和t关联的名为name的模板
+func (t *Template) ExecuteTemplate(wr io.Writer, name string, data interface{}) error
+
+// 注册函数到模板t, funcMap的key是模板中调用的函数名，value是实际的函数
+func (t *Template) Funcs(funcMap FuncMap) *Template
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;yaml&#34;&gt;yaml&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/go-yaml/yaml&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/go-yaml/yaml&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;toml&#34;&gt;toml&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/toml-lang/toml&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/toml-lang/toml&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/BurntSushi/toml&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/BurntSushi/toml&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>PSL_File</title>
+        <link>https://canuxcheng.com/post/psl_file/</link>
+        <pubDate>Sun, 14 Aug 2016 20:51:28 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/psl_file/</guid>
+        <description>&lt;h1 id=&#34;file-and-directory-access&#34;&gt;File and Directory Access&lt;/h1&gt;
+&lt;h2 id=&#34;ospath&#34;&gt;os.path&lt;/h2&gt;
+&lt;p&gt;windows的路径要写成：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;C:\\test\\sub\\
+
+import os
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;function:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;os.path.expanduser(path) # 把path中~或~user扩展成绝对路径 expanduser(&amp;quot;~/src&amp;quot;) -&amp;gt; /home/user/src
+os.path.expandvars(path) # 把path中的shell变量$var 或 ${var} 还原．
+os.path.dirname(filename) # 返回filename的路径 dirname(&amp;quot;/home/user/file.py&amp;quot;) -&amp;gt; /home/user
+os.path.join(a, *p) # 拼结一个完整的路径　
+os.path.join(a, os.pardir) # 返回上级目录的路径
+os.path.realpath(filename) # 返回filename的真实路径+文件名 realpath(&#39;__file__&#39;)
+os.path.abspath(path) # 返回绝对路径, os.path.abspath(&#39;__file__&#39;)
+os.path.splitext(p) # 分解路径和扩展名返回组成的元组，/home/user/test.py -&amp;gt; (&amp;quot;/home/user/test&amp;quot;, &amp;quot;.py&amp;quot;)
+os.path.basename(p) # 返回最后一个组件名，也就是文件名 /home/user/test.py -&amp;gt; test.py
+os.path.getsize(filename) # 返回文件大小
+os.path.exists(path) # 判断path(文件或目录)是否存在
+os.path.isfile(path) # 判断path是否是常规文件
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;pathlib&#34;&gt;pathlib&lt;/h2&gt;
+&lt;p&gt;new in python3.4&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;from pathlib import Path
+from pathlib import PurePosixPath
+from pathlib import PureWindowsPath
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;stat&#34;&gt;stat&lt;/h2&gt;
+&lt;h2 id=&#34;fileinput&#34;&gt;fileinput&lt;/h2&gt;
+&lt;h2 id=&#34;filecmp&#34;&gt;filecmp&lt;/h2&gt;
+&lt;h2 id=&#34;fnmatch&#34;&gt;fnmatch&lt;/h2&gt;
+&lt;h2 id=&#34;linecache&#34;&gt;linecache&lt;/h2&gt;
+&lt;h2 id=&#34;glob&#34;&gt;glob&lt;/h2&gt;
+&lt;p&gt;functions:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;glob(pathname) # 返回匹配pathname路径下正则表达式的所有文件组成的列表
+iglob(pathname) # 同上，返回generator.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;shutil&#34;&gt;shutil&lt;/h2&gt;
+&lt;p&gt;Utility functions for copying and archiving files and directory trees.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import shutil
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;functions:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;copy(src, dst)
+copy2(src, dst)
+...
+rmtree(path, ignore_errors=False, onerror=None) # 删除指定的目录,path不能是文件．
+unregister_archive_format(name)
+move(src, dst)
+...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;tempfile&#34;&gt;tempfile&lt;/h2&gt;
+&lt;h2 id=&#34;macpath&#34;&gt;macpath&lt;/h2&gt;
+&lt;h2 id=&#34;configparser&#34;&gt;ConfigParser&lt;/h2&gt;
+&lt;p&gt;一般用来处理*.ini文件，格式为：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[section]
+option-key = option-value
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;导入：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import ConfigParser
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;classes:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ConfigParser.ConfigParser(defaults=None)
+# methods:
+read(filenames) # 读取ini文件
+sections() # 获取所有section
+options(section) # 获取section的所有option
+get(section, option, raw=False, vars=None) # 返回字符串
+getint(section, options)
+getfloat(section, options)
+getboolean(section, options) # 大小写都可以:0/1, false/true, no/yes, off/on
+set(section, option, value)
+has_section(section)
+has_option(section, option)
+remove_section(section)
+remove_option(section, option)
+write(fp)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;issue:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;默认是全部小写写入.
+config = ConfigParser.ConfigParser(allow_no_value=True)
+config.optionxform =str # 原样写入
+
+from configparser import ConfigParser, ExtendedInterpolation
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;变量:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 默认interpolation只支持section之间变量
+[section1]
+1var1 = /opt
+1var2 = %(1var1)s/test
+
+// 扩展interpolation支持section变量引用
+config = ConfigParser(interpolation=ExtendedInterpolation())
+
+[section1]
+1var1 = /opt
+[section2]
+2var1 = ${section1:1var1}/test
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;file-formats&#34;&gt;File Formats&lt;/h1&gt;
+&lt;h2 id=&#34;csv&#34;&gt;csv&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;import csv
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;classes:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# csv.DictReader
+DictReader(self, f, fieldnames=None, restkey=None, restval=None, dialect=&#39;excel&#39;, *args, **kwds)
+# methods
+next()
+
+# csv.DictWriter
+DictWriter(self, f, fieldnames, restval=&#39;&#39;, extrasaction=&#39;raise&#39;, dialect=&#39;excel&#39;, *args, **kwargs)
+# mthods
+writeheader()
+writerow(rowdict)
+writerows(rowdicts)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;functions:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 返回DictReader对象
+reader(iterable, dialect=&#39;excel&#39;, **kwargs)
+
+// 返回DictWriter对象
+writer(fileobj, dialect=&#39;excel&#39;, **kwargs)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;data:&lt;/p&gt;
+&lt;h2 id=&#34;robotparser&#34;&gt;robotparser&lt;/h2&gt;
+&lt;h2 id=&#34;netrc&#34;&gt;netrc&lt;/h2&gt;
+&lt;h2 id=&#34;xdrlib&#34;&gt;xdrlib&lt;/h2&gt;
+&lt;h2 id=&#34;plistlib&#34;&gt;plistlib&lt;/h2&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

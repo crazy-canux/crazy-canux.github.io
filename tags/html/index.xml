@@ -1,26 +1,693 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Html on Morgoth</title>
-    <link>https://canuxcheng.com/tags/html/</link>
-    <description>Recent content in Html on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Mon, 31 Oct 2016 04:00:49 +0000</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/html/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Html Form</title>
-      <link>https://canuxcheng.com/post/html_form/</link>
-      <pubDate>Mon, 31 Oct 2016 04:00:49 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/html_form/</guid>
-      <description>&lt;h1 id=&#34;html表单&#34;&gt;html表单&lt;/h1&gt;&#xA;&lt;p&gt;html表单用于搜集不同类型的用户输入。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;form&#34;&gt;&lt;strong&gt;form&lt;/strong&gt;&lt;/h1&gt;&#xA;&lt;p&gt;form元素定义html表单。支持全局属性和事件属性。&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;&amp;lt;form action=&amp;quot;action_page.py&amp;quot;&amp;gt;&#xA;&amp;lt;fieldset&amp;gt;&#xA;&amp;lt;legend&amp;gt;Form information:&amp;lt;/legend&amp;gt;&#xA;First name:&amp;lt;br&amp;gt;&#xA;&amp;lt;input type=&amp;quot;text&amp;quot; name=&amp;quot;firstname&amp;quot;&amp;gt;&#xA;&amp;lt;br&amp;gt;&#xA;Last name:&amp;lt;br&amp;gt;&#xA;&amp;lt;input type=&amp;quot;text&amp;quot; name=&amp;quot;lastname&amp;quot;&amp;gt;&#xA;&amp;lt;/fieldset&amp;gt;&#xA;&amp;lt;/form&amp;gt;&#xA;&#xA;# accept-charset属性规定服务器可处理的表单数据字符集。&#xA;&#xA;# action属性规定当提交表单时向何处发送表单数据。&#xA;&amp;lt;form action=&amp;quot;action_page.py&amp;quot;&amp;gt;&#xA;&#xA;# autocomplete属性规定是否启用表单的自动完成功能&#xA;on/off&#xA;&#xA;# enctype属性规定在发送表单数据之前如何编码&#xA;application/x-www-form-urlencoded, 默认值，表示在发送前编码所有值．&#xA;multipart/form-data, 不编码，在使用包含文件上传控件的表单必须使用．&#xA;text/plain, 空格转换为&amp;quot;+&amp;quot;加号，不对特殊字符编码．&#xA;&#xA;# method属性规定用于发送form-data的http方法&#xA;get/post&#xA;&#xA;# name属性规定表单名称&#xA;# novalidate属性规定提交表单时不验证&#xA;&#xA;# target属性规定在何处打开URL。&#xA;_blank/_self/_parent/_top&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;input&#34;&gt;&lt;strong&gt;input&lt;/strong&gt;&lt;/h1&gt;&#xA;&lt;p&gt;input元素是最重要的表单元素。支持全局属性和事件属性。&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;# type属性规定输入元素类型&#xA;button&#xA;checkbox&#xA;file&#xA;hidden&#xA;image&#xA;password&#xA;radio&#xA;reset&#xA;submit&#xA;text&#xA;&#xA;# name属性定义input元素名称&#xA;# value属性定义input元素默认值&#xA;readonly&#xA;disabled&#xA;size&#xA;maxlength&#xA;alt&#xA;accept&#xA;checked&#xA;src&#xA;&#xA;autocomplete&#xA;autofocus&#xA;form&#xA;formaction&#xA;formenctype&#xA;formmethod&#xA;formnovalidate&#xA;formtarget&#xA;height&#xA;width&#xA;list&#xA;max&#xA;min&#xA;multiple&#xA;pattern&#xA;placeholder&#xA;required&#xA;step&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;fieldset&#34;&gt;&lt;strong&gt;fieldset&lt;/strong&gt;&lt;/h1&gt;&#xA;&lt;p&gt;fieldset元素组合表单中的相关数据，支持全局属性和事件属性&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Html</title>
-      <link>https://canuxcheng.com/post/html/</link>
-      <pubDate>Thu, 23 Jun 2016 09:40:39 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/html/</guid>
-      <description>&lt;h1 id=&#34;html&#34;&gt;HTML&lt;/h1&gt;&#xA;&lt;p&gt;HTML是超文本标记语言&lt;/p&gt;&#xA;&lt;h1 id=&#34;xhtml&#34;&gt;XHTML&lt;/h1&gt;&#xA;&lt;p&gt;XHTML是更严谨的更纯净的HTML&lt;/p&gt;&#xA;&lt;h1 id=&#34;html5&#34;&gt;HTML5&lt;/h1&gt;&#xA;&lt;p&gt;HTML5是下一代HTML&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;html元素和属性&#34;&gt;&lt;strong&gt;html元素和属性&lt;/strong&gt;&lt;/h1&gt;&#xA;&lt;p&gt;html元素指从开始标签到结束标签的所有代码,包括元素内容：&lt;/p&gt;&#xA;&lt;p&gt;html元素可以嵌套。&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;&amp;lt;p&amp;gt; This is paragrph &amp;lt;/p&amp;gt;&#xA;&amp;lt;p&amp;gt;&amp;lt;/p&amp;gt; # 空内容的元素&#xA;&amp;lt;br /&amp;gt; # 空元素，在开始标签中关闭&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;html标签可以拥有属性，属性总是以name=&amp;lsquo;value&amp;rsquo;的形式出现，属性总是在html元素的开始标签中规定。&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;&amp;lt;a href=&amp;quot;http://www.test.com&amp;quot;&amp;gt;This is a link&amp;lt;/a&amp;gt;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;html属性和值大小写不敏感，推荐使用小写,始终给属性值加引号。&lt;/p&gt;&#xA;&lt;h2 id=&#34;html的全局属性标准属性&#34;&gt;html的全局属性(标准属性)&lt;/h2&gt;&#xA;&lt;p&gt;参考：&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://www.w3school.com.cn/tags/html_ref_standardattributes.asp&#34;&gt;http://www.w3school.com.cn/tags/html_ref_standardattributes.asp&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;html的事件属性&#34;&gt;html的事件属性&lt;/h2&gt;&#xA;&lt;p&gt;参考：&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://www.w3school.com.cn/tags/html_ref_eventattributes.asp&#34;&gt;http://www.w3school.com.cn/tags/html_ref_eventattributes.asp&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;html字符实体&#34;&gt;html字符实体&lt;/h2&gt;&#xA;&lt;p&gt;参考：&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://www.w3school.com.cn/tags/html_ref_entities.html&#34;&gt;http://www.w3school.com.cn/tags/html_ref_entities.html&lt;/a&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;html基本标签&#34;&gt;&lt;strong&gt;html基本标签&lt;/strong&gt;&lt;/h1&gt;&#xA;&lt;h2 id=&#34;doctype&#34;&gt;DOCTYPE&lt;/h2&gt;&#xA;&lt;pre&gt;&lt;code&gt;# 文档类型&#xA;&amp;lt;!DOCTYPE html&amp;gt;&#xA;&amp;lt;html&amp;gt;&#xA;&#xA;&amp;lt;head&amp;gt;&#xA;...&#xA;&amp;lt;/head&amp;gt;&#xA;&#xA;&amp;lt;body&amp;gt;&#xA;...&#xA;&amp;lt;/body&amp;gt;&#xA;&#xA;&amp;lt;/html&amp;gt;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;html-1&#34;&gt;html&lt;/h2&gt;&#xA;&lt;pre&gt;&lt;code&gt;# html文档,支持全局属性&#xA;&amp;lt;html&amp;gt;&#xA;...&#xA;&amp;lt;/html&amp;gt;&#xA;&#xA;# mainfest属性，定义一个url，描述文档缓存信息&#xA;&#xA;# xmlns属性，定义XML的namespace属性&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;注释&#34;&gt;注释&lt;/h2&gt;&#xA;&lt;pre&gt;&lt;code&gt;# 注释, 浏览器会忽略注释,没有任何属性&#xA;&amp;lt;!-- This is a comment --&amp;gt;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;空格&#34;&gt;空格&lt;/h2&gt;&#xA;&lt;pre&gt;&lt;code&gt;&amp;amp;nbsp;    # 空格&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;head&#34;&gt;&lt;strong&gt;head&lt;/strong&gt;&lt;/h1&gt;&#xA;&lt;h2 id=&#34;head-1&#34;&gt;head&lt;/h2&gt;&#xA;&lt;p&gt;可以在head标签中使用的标签： link, style, base, meta, script, title.&lt;/p&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Html on Morgoth</title>
+        <link>https://canuxcheng.com/tags/html/</link>
+        <description>Recent content in Html on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Mon, 31 Oct 2016 04:00:49 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/html/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Html Form</title>
+        <link>https://canuxcheng.com/post/html_form/</link>
+        <pubDate>Mon, 31 Oct 2016 04:00:49 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/html_form/</guid>
+        <description>&lt;h1 id=&#34;html表单&#34;&gt;html表单&lt;/h1&gt;
+&lt;p&gt;html表单用于搜集不同类型的用户输入。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;form&#34;&gt;&lt;strong&gt;form&lt;/strong&gt;&lt;/h1&gt;
+&lt;p&gt;form元素定义html表单。支持全局属性和事件属性。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;form action=&amp;quot;action_page.py&amp;quot;&amp;gt;
+&amp;lt;fieldset&amp;gt;
+&amp;lt;legend&amp;gt;Form information:&amp;lt;/legend&amp;gt;
+First name:&amp;lt;br&amp;gt;
+&amp;lt;input type=&amp;quot;text&amp;quot; name=&amp;quot;firstname&amp;quot;&amp;gt;
+&amp;lt;br&amp;gt;
+Last name:&amp;lt;br&amp;gt;
+&amp;lt;input type=&amp;quot;text&amp;quot; name=&amp;quot;lastname&amp;quot;&amp;gt;
+&amp;lt;/fieldset&amp;gt;
+&amp;lt;/form&amp;gt;
+
+# accept-charset属性规定服务器可处理的表单数据字符集。
+
+# action属性规定当提交表单时向何处发送表单数据。
+&amp;lt;form action=&amp;quot;action_page.py&amp;quot;&amp;gt;
+
+# autocomplete属性规定是否启用表单的自动完成功能
+on/off
+
+# enctype属性规定在发送表单数据之前如何编码
+application/x-www-form-urlencoded, 默认值，表示在发送前编码所有值．
+multipart/form-data, 不编码，在使用包含文件上传控件的表单必须使用．
+text/plain, 空格转换为&amp;quot;+&amp;quot;加号，不对特殊字符编码．
+
+# method属性规定用于发送form-data的http方法
+get/post
+
+# name属性规定表单名称
+# novalidate属性规定提交表单时不验证
+
+# target属性规定在何处打开URL。
+_blank/_self/_parent/_top
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;input&#34;&gt;&lt;strong&gt;input&lt;/strong&gt;&lt;/h1&gt;
+&lt;p&gt;input元素是最重要的表单元素。支持全局属性和事件属性。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# type属性规定输入元素类型
+button
+checkbox
+file
+hidden
+image
+password
+radio
+reset
+submit
+text
+
+# name属性定义input元素名称
+# value属性定义input元素默认值
+readonly
+disabled
+size
+maxlength
+alt
+accept
+checked
+src
+
+autocomplete
+autofocus
+form
+formaction
+formenctype
+formmethod
+formnovalidate
+formtarget
+height
+width
+list
+max
+min
+multiple
+pattern
+placeholder
+required
+step
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;fieldset&#34;&gt;&lt;strong&gt;fieldset&lt;/strong&gt;&lt;/h1&gt;
+&lt;p&gt;fieldset元素组合表单中的相关数据，支持全局属性和事件属性&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# disable属性规定应该禁用fieldset
+# form属性规定fieldset所属的一个或多个表单。
+# name属性规定fieldset名称。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;legend&#34;&gt;&lt;strong&gt;legend&lt;/strong&gt;&lt;/h1&gt;
+&lt;p&gt;legend元素为fieldset元素定义标题，支持全局属性和事件属性,支持样式。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;select&#34;&gt;&lt;strong&gt;select&lt;/strong&gt;&lt;/h1&gt;
+&lt;p&gt;定义下拉列表。支持全局属性和事件属性。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;form action=&amp;quot;action_page.py&amp;quot;&amp;gt;
+&amp;lt;select name=&amp;quot;cars&amp;quot;&amp;gt;
+&amp;lt;option value=&amp;quot;volvo&amp;quot;&amp;gt;volvo&amp;lt;/option&amp;gt;
+&amp;lt;option value=&amp;quot;audi&amp;quot;&amp;gt;audi&amp;lt;/option&amp;gt;
+&amp;lt;/select&amp;gt;
+&amp;lt;/form&amp;gt;
+
+# autofocus属性规定在页面加载后文本区域自动获得焦点
+# disable
+# form
+# multiple
+# name
+# required
+# size
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;optgroup&#34;&gt;&lt;strong&gt;optgroup&lt;/strong&gt;&lt;/h1&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;option&#34;&gt;&lt;strong&gt;option&lt;/strong&gt;&lt;/h1&gt;
+&lt;p&gt;定义选项。支持全局属性和事件属性。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# disabled
+# label
+# selected
+# value
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;label&#34;&gt;&lt;strong&gt;label&lt;/strong&gt;&lt;/h1&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;button&#34;&gt;&lt;strong&gt;button&lt;/strong&gt;&lt;/h1&gt;
+&lt;p&gt;定义可点击的按钮，支持全局属性和事件属性。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;button type=&amp;quot;button&amp;quot; onclick=&amp;quot;alert(&amp;quot;hello world&amp;quot;)&amp;quot;&amp;gt;Click Me&amp;lt;/button&amp;gt;
+
+# name属性规定按钮名称
+# type属性规定按钮类型
+# value属性规定按钮初始值
+# autofocus
+# disabled
+# form
+# formaction
+# formenctype
+# formmethod
+# formnovalidate
+# formtarget
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;textarea&#34;&gt;&lt;strong&gt;textarea&lt;/strong&gt;&lt;/h1&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;datalist&#34;&gt;&lt;strong&gt;datalist&lt;/strong&gt;&lt;/h1&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;keygen&#34;&gt;&lt;strong&gt;keygen&lt;/strong&gt;&lt;/h1&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;output&#34;&gt;&lt;strong&gt;output&lt;/strong&gt;&lt;/h1&gt;
+</description>
+        </item>
+        <item>
+        <title>Html</title>
+        <link>https://canuxcheng.com/post/html/</link>
+        <pubDate>Thu, 23 Jun 2016 09:40:39 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/html/</guid>
+        <description>&lt;h1 id=&#34;html&#34;&gt;HTML&lt;/h1&gt;
+&lt;p&gt;HTML是超文本标记语言&lt;/p&gt;
+&lt;h1 id=&#34;xhtml&#34;&gt;XHTML&lt;/h1&gt;
+&lt;p&gt;XHTML是更严谨的更纯净的HTML&lt;/p&gt;
+&lt;h1 id=&#34;html5&#34;&gt;HTML5&lt;/h1&gt;
+&lt;p&gt;HTML5是下一代HTML&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;html元素和属性&#34;&gt;&lt;strong&gt;html元素和属性&lt;/strong&gt;&lt;/h1&gt;
+&lt;p&gt;html元素指从开始标签到结束标签的所有代码,包括元素内容：&lt;/p&gt;
+&lt;p&gt;html元素可以嵌套。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;p&amp;gt; This is paragrph &amp;lt;/p&amp;gt;
+&amp;lt;p&amp;gt;&amp;lt;/p&amp;gt; # 空内容的元素
+&amp;lt;br /&amp;gt; # 空元素，在开始标签中关闭
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;html标签可以拥有属性，属性总是以name=&amp;lsquo;value&amp;rsquo;的形式出现，属性总是在html元素的开始标签中规定。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;a href=&amp;quot;http://www.test.com&amp;quot;&amp;gt;This is a link&amp;lt;/a&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;html属性和值大小写不敏感，推荐使用小写,始终给属性值加引号。&lt;/p&gt;
+&lt;h2 id=&#34;html的全局属性标准属性&#34;&gt;html的全局属性(标准属性)&lt;/h2&gt;
+&lt;p&gt;参考：&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://www.w3school.com.cn/tags/html_ref_standardattributes.asp&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://www.w3school.com.cn/tags/html_ref_standardattributes.asp&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;html的事件属性&#34;&gt;html的事件属性&lt;/h2&gt;
+&lt;p&gt;参考：&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://www.w3school.com.cn/tags/html_ref_eventattributes.asp&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://www.w3school.com.cn/tags/html_ref_eventattributes.asp&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;html字符实体&#34;&gt;html字符实体&lt;/h2&gt;
+&lt;p&gt;参考：&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://www.w3school.com.cn/tags/html_ref_entities.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://www.w3school.com.cn/tags/html_ref_entities.html&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;html基本标签&#34;&gt;&lt;strong&gt;html基本标签&lt;/strong&gt;&lt;/h1&gt;
+&lt;h2 id=&#34;doctype&#34;&gt;DOCTYPE&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;# 文档类型
+&amp;lt;!DOCTYPE html&amp;gt;
+&amp;lt;html&amp;gt;
+
+&amp;lt;head&amp;gt;
+...
+&amp;lt;/head&amp;gt;
+
+&amp;lt;body&amp;gt;
+...
+&amp;lt;/body&amp;gt;
+
+&amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;html-1&#34;&gt;html&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;# html文档,支持全局属性
+&amp;lt;html&amp;gt;
+...
+&amp;lt;/html&amp;gt;
+
+# mainfest属性，定义一个url，描述文档缓存信息
+
+# xmlns属性，定义XML的namespace属性
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;注释&#34;&gt;注释&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;# 注释, 浏览器会忽略注释,没有任何属性
+&amp;lt;!-- This is a comment --&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;空格&#34;&gt;空格&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;&amp;amp;nbsp;    # 空格
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;head&#34;&gt;&lt;strong&gt;head&lt;/strong&gt;&lt;/h1&gt;
+&lt;h2 id=&#34;head-1&#34;&gt;head&lt;/h2&gt;
+&lt;p&gt;可以在head标签中使用的标签： link, style, base, meta, script, title.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# html文档的头部, head支持全局属性
+&amp;lt;head&amp;gt;
+
+  &amp;lt;base&amp;gt;
+  &amp;lt;meta&amp;gt;
+  &amp;lt;title&amp;gt; 必须的
+  
+  &amp;lt;link&amp;gt;
+  &amp;lt;style&amp;gt;
+  
+  &amp;lt;script&amp;gt;
+
+&amp;lt;/head&amp;gt;
+
+# profile属性
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;title&#34;&gt;title&lt;/h2&gt;
+&lt;p&gt;定义文档标题，支持全局属性。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# dir属性规定元素中内容的文本方向
+# lang属性规定元素中内容的语言编码
+# xml:lang属性规定xhtml文档中元素内容的语言编码
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;base&#34;&gt;base&lt;/h2&gt;
+&lt;p&gt;定义页面所有的链接的默认地址和默认目标。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# href属性规定页面中所有相对链接的基准url
+# target属性规定在何处打开页面中的链接
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;meta&#34;&gt;meta&lt;/h2&gt;
+&lt;p&gt;定义元数据,支持全局属性&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# content属性
+# http-equiv
+# name
+# scheme
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;body&#34;&gt;&lt;strong&gt;body&lt;/strong&gt;&lt;/h1&gt;
+&lt;h2 id=&#34;body-1&#34;&gt;body&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;# html文档的主体, 支持样式，支持全局属性和事件属性
+&amp;lt;body&amp;gt;
+&amp;lt;/body&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;h1-h6&#34;&gt;h1-h6&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;# 标题,浏览器会自动在标题前后添加空行,支持样式
+&amp;lt;h1&amp;gt;This is the max heading&amp;lt;/h1&amp;gt;
+...
+&amp;lt;h6&amp;gt;This is the min heading&amp;lt;/h6&amp;gt;
+
+# 支持部分全局属性
+# id,class,title,style,dir,lang,xml:lang
+
+# 支持部分事件属性
+# onclick,ondblclick,onmousedown,onmouseup,onmouseover,
+# onmousemove, ommouseout,onkeypress,onkeydown,onkeyup
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;hr&#34;&gt;hr&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;# 水平线分割线，支持样式，支持全局属性和事件属性
+&amp;lt;hr /&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;段落&#34;&gt;&lt;strong&gt;段落&lt;/strong&gt;&lt;/h1&gt;
+&lt;h2 id=&#34;p&#34;&gt;p&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;# 段落, 浏览器会自动在段落前后添加空行,支持样式，支持全局属性和事件属性
+&amp;lt;p&amp;gt;This is a paragraph&amp;lt;/p&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;br&#34;&gt;br&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;# 空行, 支持全局属性和事件属性
+&amp;lt;br /&amp;gt;
+
+# clear属性
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;链接和图像&#34;&gt;&lt;strong&gt;链接和图像&lt;/strong&gt;&lt;/h1&gt;
+&lt;p&gt;URL: Uniform Resource Locator&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;scheme://host.domain:port/path/filename
+scheme: http/https/ftp/file
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;url只能使用ASCII字符集。&lt;/p&gt;
+&lt;p&gt;参考：&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://www.w3school.com.cn/tags/html_ref_urlencode.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://www.w3school.com.cn/tags/html_ref_urlencode.html&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;a&#34;&gt;a&lt;/h2&gt;
+&lt;p&gt;支持全局属性和事件属性&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# href属性定义指向另一个文档的链接
+&amp;lt;a href=&amp;quot;http://www.test.com&amp;quot;&amp;gt;Click me as link&amp;lt;/a&amp;gt;
+
+# target属性，定义被链接的文档在何处显示, blank在新窗口显示,rect, circle, poly
+&amp;lt;a href=&amp;quot;http://www.test.com&amp;quot; target=&amp;quot;_blank&amp;quot;&amp;gt;Link&amp;lt;/a&amp;gt;
+
+# name属性定义文档内的书签
+&amp;lt;a href=&amp;quot;http://www.test.com&amp;quot; name=&amp;quot;label&amp;quot;&amp;gt;Link&amp;lt;/a&amp;gt;
+
+# hreflang
+
+# rel
+
+# download
+
+# media
+
+# type
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;img&#34;&gt;img&lt;/h2&gt;
+&lt;p&gt;支持全局属性和事件属性&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# src属性定义源
+&amp;lt;img src=&amp;quot;url&amp;quot; /&amp;gt;
+
+# alt属性，当图像不能显示，就显示alt的默认值。
+&amp;lt;img src=&amp;quot;http://www.test.com/images/test.img&amp;quot; alt=&amp;quot;default value&amp;quot;/&amp;gt;
+
+# height
+
+# ismap
+
+# longdesc
+
+# usemap
+
+# width
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;map&#34;&gt;map&lt;/h2&gt;
+&lt;p&gt;支持全局属性和事件属性&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# id属性为map定义唯一的名称
+&amp;lt;map id=&amp;quot;planetmap&amp;quot;&amp;gt;
+  ...
+&amp;lt;/map&amp;gt;
+
+# name属性为image-map规定的名称
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;area&#34;&gt;area&lt;/h2&gt;
+&lt;p&gt;支持全局属性和事件属性&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# alt
+# coords
+# href
+# nohref
+# shape
+# target
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;样式&#34;&gt;&lt;strong&gt;样式&lt;/strong&gt;&lt;/h1&gt;
+&lt;p&gt;内联样式,定义在html元素内部。style样式属性可以包含任何的css属性。&lt;/p&gt;
+&lt;p&gt;内联样式优先级最高。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;h1 style=&amp;quot;font-family:verdana&amp;quot;&amp;gt;A heading&amp;lt;/h1&amp;gt;
+&amp;lt;p style=&amp;quot;font-family:arial;color:red;font-size:20px&amp;quot;&amp;gt;A paragraph&amp;lt;/p&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;style&#34;&gt;style&lt;/h2&gt;
+&lt;p&gt;内部样式表,位于head标签内部。支持全局属性和事件属性&lt;/p&gt;
+&lt;p&gt;优先级仅次于内联样式。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;head&amp;gt;
+  &amp;lt;style type=&amp;quot;text/css&amp;quot;&amp;gt;
+    h1 {color: red}
+    p {color: blue}
+  &amp;lt;/style&amp;gt;
+&amp;lt;/head&amp;gt;
+
+# type属性规定样式表的MIME类型
+
+# media属性规定不同的媒体类型
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;link&#34;&gt;link&lt;/h2&gt;
+&lt;p&gt;外部样式表,支持全局属性和事件属性&lt;/p&gt;
+&lt;p&gt;优先级仅高于浏览器缺省值。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;head&amp;gt;
+  &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; type=&amp;quot;text/css&amp;quot; href=&amp;quot;mystyle.css&amp;quot;&amp;gt;
+&amp;lt;/head&amp;gt;
+
+# href属性规定被链接文档的位置
+# hreflang属性规定被链接文档中文本的语言
+# media属性规定被链接文档被显示在什么设备
+# rel属性规定当前文档与被链接文档的关系
+# sizes属性规定rel=&#39;icon&#39;的尺寸
+# type属性规定被链接文档的MINE类型
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;div&#34;&gt;div&lt;/h2&gt;
+&lt;p&gt;分类块级元素,支持样式，支持全局属性和事件属性&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;div&amp;gt; 使用样式属性
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;span&#34;&gt;span&lt;/h2&gt;
+&lt;p&gt;分类行内元素，支持样式，支持全局属性和事件属性&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;span&amp;gt; 定义文档中的行内的块
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;格式化&#34;&gt;&lt;strong&gt;格式化&lt;/strong&gt;&lt;/h1&gt;
+&lt;h2 id=&#34;文本格式化标签&#34;&gt;文本格式化标签&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;b&amp;gt; 定义粗体文本
+&amp;lt;big&amp;gt; 定义大号字
+&amp;lt;em&amp;gt; 定义着重文字
+&amp;lt;i&amp;gt; 定义斜体字
+&amp;lt;small&amp;gt; 定义小号字
+&amp;lt;strong&amp;gt; 定义加重语气
+&amp;lt;sub&amp;gt; 定义下标字
+&amp;lt;sup&amp;gt; 定义上标字
+&amp;lt;ins&amp;gt; 定义插入字
+&amp;lt;del&amp;gt; 定义删除字
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;计算机输出标签&#34;&gt;计算机输出标签&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;code&amp;gt; 定义计算机代码
+&amp;lt;kbd&amp;gt; 定义键盘码
+&amp;lt;samp&amp;gt; 定义计算机代码样本
+&amp;lt;tt&amp;gt; 定义打字机代码
+&amp;lt;var&amp;gt; 定义变量
+&amp;lt;pre&amp;gt; 定义预格式文本
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;引用和术语标签&#34;&gt;引用和术语标签&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;abbr&amp;gt; 定义缩写
+&amp;lt;p&amp;gt;&amp;lt;abbr title=&amp;quot;Hyper Text Markup Language&amp;quot;&amp;gt;HTML&amp;lt;/abbr&amp;gt;is perfect.&amp;lt;/p&amp;gt;
+
+&amp;lt;acronym&amp;gt; 定义首字母缩写
+&amp;lt;address&amp;gt; 定义地址
+&amp;lt;bdo&amp;gt; 定义文字方向
+&amp;lt;blockquote&amp;gt; 定义长的引用
+&amp;lt;q&amp;gt; 定义短的引用
+&amp;lt;cite&amp;gt; 定义著作的标题
+&amp;lt;dfn&amp;gt; 定义一个项目或缩写
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;表格&#34;&gt;&lt;strong&gt;表格&lt;/strong&gt;&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;table border=&amp;quot;1&amp;quot;&amp;gt;
+  &amp;lt;caption&amp;gt;The title&amp;lt;/caption&amp;gt;
+  &amp;lt;tr&amp;gt;
+    &amp;lt;th&amp;gt;Month&amp;lt;/th&amp;gt;
+    &amp;lt;th&amp;gt;Saving&amp;lt;/th&amp;gt;
+  &amp;lt;/tr&amp;gt;
+  &amp;lt;tr&amp;gt;
+    &amp;lt;td&amp;gt;Jan.&amp;lt;/td&amp;gt;
+    &amp;lt;td&amp;gt;$100&amp;lt;/td&amp;gt;
+  &amp;lt;/tr&amp;gt;
+&amp;lt;/table&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;table&#34;&gt;table&lt;/h2&gt;
+&lt;p&gt;定义表格,支持事件属性和全局属性&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# border属性规定表格边框宽度
+# cellpadding属性规定单元边沿与其内容之间的空白
+# cellspacing属性规定单元格之间的空白
+# frame属性规定外侧边框的哪个部分是可见的
+# rules属性规定内侧边框的哪个部分是可见的
+# summary属性规定表格的摘要
+# width属性规定表格的宽度
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;caption&#34;&gt;caption&lt;/h2&gt;
+&lt;p&gt;定义表格标题,支持样式，支持事件属性和全局属性&lt;/p&gt;
+&lt;h2 id=&#34;tr&#34;&gt;tr&lt;/h2&gt;
+&lt;p&gt;定义表格的行,支持事件属性和全局属性&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# align属性定义表格内容对齐方式
+# char属性规定根据哪个字符来进行文本对齐
+# charoff属性规定第一个对齐字符的偏移量
+# valign属性规定表格中内容的垂直对齐方式
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;th-td&#34;&gt;th td&lt;/h2&gt;
+&lt;p&gt;th定义表格表头,支持全局属性和事件属性&lt;/p&gt;
+&lt;p&gt;td定义表格单元,支持全局属性和事件属性&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# abbr属性规定单元格中内容的缩写版本
+# align属性规定单元格内容的水平对齐方式
+# axis属性对单元进行分类
+# char
+# charoff
+# colspan
+# headers
+# rowspan
+# scope
+# valign
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;col&#34;&gt;col&lt;/h2&gt;
+&lt;p&gt;定义用于表格的属性&lt;/p&gt;
+&lt;h2 id=&#34;colgroup&#34;&gt;colgroup&lt;/h2&gt;
+&lt;p&gt;定义表格的组&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;列表&#34;&gt;&lt;strong&gt;列表&lt;/strong&gt;&lt;/h1&gt;
+&lt;h2 id=&#34;ol&#34;&gt;ol&lt;/h2&gt;
+&lt;p&gt;定义有序列表,支持全局属性和事件属性&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;ol&amp;gt;
+  &amp;lt;li&amp;gt;first one&amp;lt;/li&amp;gt;
+  &amp;lt;li&amp;gt;second one&amp;lt;/li&amp;gt;
+&amp;lt;/ol&amp;gt;
+
+# reversed属性规定列表顺序为降序
+# start属性有序列表的起始值
+# type属性规定在列表中使用的标记类型
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;ul&#34;&gt;ul&lt;/h2&gt;
+&lt;p&gt;定义无序列表,支持样式，支持全局属性和事件属性&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;ul&amp;gt;
+  &amp;lt;li&amp;gt;coffee&amp;lt;/li&amp;gt;
+  &amp;lt;li&amp;gt;tea&amp;lt;/li&amp;gt;
+&amp;lt;ul&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;li&#34;&gt;li&lt;/h2&gt;
+&lt;p&gt;定义列表项,支持样式，支持全局属性和事件属性&lt;/p&gt;
+&lt;h2 id=&#34;dl-dt-dd&#34;&gt;dl dt dd&lt;/h2&gt;
+&lt;p&gt;dl定义定义列表,dt定义定义项目,dd定义定义的描述,都支持全局属性和事件属性&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;dl&amp;gt;
+  &amp;lt;dt&amp;gt;computer&amp;lt;/dt&amp;gt;
+  &amp;lt;dd&amp;gt;used to monitor...&amp;lt;/dd&amp;gt;
+&amp;lt;/dl&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;网站布局&#34;&gt;&lt;strong&gt;网站布局&lt;/strong&gt;&lt;/h1&gt;
+&lt;p&gt;使用html5的网站布局标签.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;head&amp;gt;
+  &amp;lt;style&amp;gt;
+    header {}
+    nav {}
+    section {}
+    footer {}
+  &amp;lt;/style&amp;gt;
+&amp;lt;/head&amp;gt;
+
+&amp;lt;body&amp;gt;
+  &amp;lt;header&amp;gt;...&amp;lt;/header&amp;gt;
+  ...
+  &amp;lt;footer&amp;gt;...&amp;lt;/footer&amp;gt;
+&amp;lt;/body&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;也可以使用id选择器：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;head&amp;gt;
+  &amp;lt;style&amp;gt;
+  #header {}
+  ...
+  #footer {}
+  &amp;lt;/style&amp;gt;
+&amp;lt;/head&amp;gt;
+
+&amp;lt;body&amp;gt;
+  &amp;lt;div id=&amp;quot;header&amp;quot;&amp;gt;...&amp;lt;/div&amp;gt;
+  ...
+  &amp;lt;div id=&amp;quot;footer&amp;quot;&amp;gt;...&amp;lt;/div&amp;gt;
+&amp;lt;/body&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;header标签&#34;&gt;header标签&lt;/h2&gt;
+&lt;h2 id=&#34;nav标签&#34;&gt;nav标签&lt;/h2&gt;
+&lt;h2 id=&#34;section标签&#34;&gt;section标签&lt;/h2&gt;
+&lt;h2 id=&#34;article标签&#34;&gt;article标签&lt;/h2&gt;
+&lt;h2 id=&#34;aside标签&#34;&gt;aside标签&lt;/h2&gt;
+&lt;h2 id=&#34;footer标签&#34;&gt;footer标签&lt;/h2&gt;
+&lt;h2 id=&#34;details标签&#34;&gt;details标签&lt;/h2&gt;
+&lt;h2 id=&#34;summary标签&#34;&gt;summary标签&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;框架&#34;&gt;&lt;strong&gt;框架&lt;/strong&gt;&lt;/h1&gt;
+&lt;p&gt;框架可以在一个html添加多个页面。&lt;/p&gt;
+&lt;p&gt;垂直框架：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;frameset cols=&amp;quot;50%, 50%&amp;quot;&amp;gt;
+  &amp;lt;frame src=&amp;quot;a.html&amp;quot;&amp;gt;
+  &amp;lt;frame src=&amp;quot;b.html&amp;quot;&amp;gt;
+&amp;lt;/frameset&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;水平框架：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;frameset rows=&amp;quot;50%, 50%&amp;quot;&amp;gt;
+  &amp;lt;frame src=&amp;quot;a.html&amp;quot;&amp;gt;
+  &amp;lt;frame src=&amp;quot;b.html&amp;quot;&amp;gt;
+&amp;lt;/frameset&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;混合框架：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;frameset rows=&amp;quot;50%, 50%&amp;quot;&amp;gt;
+
+  &amp;lt;frame src=&amp;quot;a.html&amp;quot;&amp;gt;
+
+  &amp;lt;frameset cols=&amp;quot;%25, 75%&amp;quot;&amp;gt;
+    &amp;lt;frame src=&amp;quot;b.html&amp;quot;&amp;gt;
+    &amp;lt;frame src=&amp;quot;c.html&amp;quot;&amp;gt;
+  &amp;lt;/frameset&amp;gt;
+  
+&amp;lt;/frameset&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;frameset标签&#34;&gt;frameset标签&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;# cols属性定义框架中列的数目和尺寸
+# rows属性定义框架中行的数目和尺寸
+
+# 标准属性：
+id,class,title,style
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;frame标签&#34;&gt;frame标签&lt;/h2&gt;
+&lt;p&gt;定义frameset中的一个特定的窗口。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# frameborder属性规定是否现实框架周围的边框
+# longdesc属性
+# marginheight属性
+# marginwidth属性
+# name属性
+# scrolling属性
+# src属性
+
+# 标准属性：
+id,class,title,style
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;iframe标签&#34;&gt;iframe标签&lt;/h2&gt;
+&lt;p&gt;内联框架。&lt;/p&gt;
+&lt;p&gt;把内容放在iframe标签中，在无法理解iframe的浏览器显示。&lt;/p&gt;
+&lt;p&gt;支持事件属性和全局属性。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# frameborder属性
+# height属性
+# width属性
+# longdesc属性
+# marginheight属性
+# marginwidth属性
+# name属性
+# scrolling属性
+# src属性
+# sandbox
+# seamless
+# srcdoc
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;noframes标签&#34;&gt;noframes标签&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;脚本&#34;&gt;&lt;strong&gt;脚本&lt;/strong&gt;&lt;/h1&gt;
+&lt;p&gt;在html中插入javascript等脚本&lt;/p&gt;
+&lt;h2 id=&#34;script标签&#34;&gt;script标签&lt;/h2&gt;
+&lt;p&gt;定义客户端脚本，支持全局属性&lt;/p&gt;
+&lt;p&gt;直接嵌入javascript代码时注意代码中如果有&amp;lt;/script&amp;gt;需要转义．&lt;/p&gt;
+&lt;p&gt;通过src属性指定外部javascript脚本的script标签中不能包含额外的javascript代码．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;!-- 直接嵌入javascript代码 --&amp;gt;
+&amp;lt;script type=&amp;quot;text/javascript&amp;quot;&amp;gt;
+  document.write(&amp;quot;hello javascript&amp;quot;)
+&amp;lt;/script&amp;gt;
+
+&amp;lt;!-- 指定外部javascript脚本　--&amp;gt;
+&amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;example.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+
+# type 可选，指定脚本MIME类型，比如text/javascript
+# src 可选，表示指定的外部文件
+# charset 可选，表示通过src属性指定的代码的字符集
+# defer 可选，表示外部脚本可以延迟到文档完全被解析和显示之后再执行
+# async 可选，表示应该立即下载外部脚本
+
+&amp;lt;!DOCTYPE html&amp;gt;
+&amp;lt;html&amp;gt;
+&amp;lt;head&amp;gt;
+  ...head content...
+  
+  &amp;lt;!-- head中的script是调用才执行的，或者是事件触发的，可以提前备加载 --&amp;gt;
+  &amp;lt;script&amp;gt;...&amp;lt;/script&amp;gt;
+&amp;lt;/head&amp;gt;
+&amp;lt;body&amp;gt;
+  ...body content...
+
+  &amp;lt;!-- 页面内容先呈现，然后按顺序加载和解析脚本 --&amp;gt;
+  &amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;example.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+
+  &amp;lt;!-- defer表示整个页面解析完后才加载和解析脚本 --&amp;gt;
+  &amp;lt;script type=&amp;quot;text/javascript&amp;quot; defer=&amp;quot;defer&amp;quot; src=&amp;quot;example.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+
+  &amp;lt;!-- async表示在加载页面期间异步加载和解析脚本 --&amp;gt;
+  &amp;lt;script type=&amp;quot;text/javascript&amp;quot; async src=&amp;quot;example.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+
+&amp;lt;/body&amp;gt;
+&amp;lt;/html&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;noscript标签&#34;&gt;noscript标签&lt;/h2&gt;
+&lt;p&gt;针对早期不支持javascript的浏览器，为不支持客户端脚本的浏览器定义替代内容,支持全局属性&lt;/p&gt;
+&lt;p&gt;当浏览器不支持，就显示noscript标签的内容，否则就不显示．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt;script type=&amp;quot;text/javascript&amp;quot; src=&amp;quot;example.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+&amp;lt;noscript&amp;gt;Your browser does not support javascript&amp;lt;/noscript&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

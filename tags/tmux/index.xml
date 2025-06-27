@@ -1,19 +1,165 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Tmux on Morgoth</title>
-    <link>https://canuxcheng.com/tags/tmux/</link>
-    <description>Recent content in Tmux on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sun, 19 Jun 2016 11:17:53 +0000</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/tmux/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Tmux</title>
-      <link>https://canuxcheng.com/post/devops_tmux/</link>
-      <pubDate>Sun, 19 Jun 2016 11:17:53 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/devops_tmux/</guid>
-      <description>&lt;h1 id=&#34;tmux&#34;&gt;tmux&lt;/h1&gt;&#xA;&lt;p&gt;tmux是终端复用工具，类似于gnu screen。&lt;/p&gt;&#xA;&lt;p&gt;tmux三个基本概念：&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;会话（session）&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;窗口（window）&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;面板（pane）&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;tmux使用c/s架构，tmux命令启动tmux服务器，一个tmux服务有多个session，&#xA;每个session就是tmux管理下的伪终端集合，一个session有多个window与之关联，&#xA;每个window就是一个伪终端，占据整个屏幕，一个window可以被分割成多个pane。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;tmux安装和配置&#34;&gt;tmux安装和配置&lt;/h1&gt;&#xA;&lt;p&gt;tmux依赖libevent和ncurses库。&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://libevent.org/&#34;&gt;http://libevent.org/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ sudo yum install libevent-devel&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://invisible-island.net/ncurses/&#34;&gt;http://invisible-island.net/ncurses/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ sudo yum install ncurese-devel&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://tmux.github.io/&#34;&gt;http://tmux.github.io/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;sudo apt-get install tmux&#xA;sudo yum install tmux&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;用户配置文件： ~/.tmux.conf&lt;/p&gt;&#xA;&lt;p&gt;系统配置文件： /etc/tmux.conf&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;tmux相关项目&#34;&gt;tmux相关项目&lt;/h1&gt;&#xA;&lt;h2 id=&#34;tpm&#34;&gt;TPM&lt;/h2&gt;&#xA;&lt;p&gt;Tmux Plugins Manager.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/tmux-plugins/tpm&#34;&gt;https://github.com/tmux-plugins/tpm&lt;/a&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;tmux用法&#34;&gt;tmux用法&lt;/h1&gt;&#xA;&lt;pre&gt;&lt;code&gt;man tmux&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;开启tmux：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;tmux&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;退出tmux：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;exit&#xA;ctrl + d&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;列出tmux会话：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;tmux ls&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;tmux快捷键&#34;&gt;tmux快捷键&lt;/h2&gt;&#xA;&lt;p&gt;tmux的prefix是ctrl-b&lt;/p&gt;&#xA;&lt;p&gt;按下ctrl-b然后松开，通知tmux下面的按键是快捷键。&lt;/p&gt;&#xA;&lt;p&gt;查看所有快捷键：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;ctrl-b + ?&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;显示时间：&lt;/p&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Tmux on Morgoth</title>
+        <link>https://canuxcheng.com/tags/tmux/</link>
+        <description>Recent content in Tmux on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Sun, 19 Jun 2016 11:17:53 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/tmux/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Tmux</title>
+        <link>https://canuxcheng.com/post/devops_tmux/</link>
+        <pubDate>Sun, 19 Jun 2016 11:17:53 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/devops_tmux/</guid>
+        <description>&lt;h1 id=&#34;tmux&#34;&gt;tmux&lt;/h1&gt;
+&lt;p&gt;tmux是终端复用工具，类似于gnu screen。&lt;/p&gt;
+&lt;p&gt;tmux三个基本概念：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;会话（session）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;窗口（window）&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;面板（pane）&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;tmux使用c/s架构，tmux命令启动tmux服务器，一个tmux服务有多个session，
+每个session就是tmux管理下的伪终端集合，一个session有多个window与之关联，
+每个window就是一个伪终端，占据整个屏幕，一个window可以被分割成多个pane。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;tmux安装和配置&#34;&gt;tmux安装和配置&lt;/h1&gt;
+&lt;p&gt;tmux依赖libevent和ncurses库。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://libevent.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://libevent.org/&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo yum install libevent-devel
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://invisible-island.net/ncurses/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://invisible-island.net/ncurses/&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo yum install ncurese-devel
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://tmux.github.io/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://tmux.github.io/&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo apt-get install tmux
+sudo yum install tmux
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;用户配置文件： ~/.tmux.conf&lt;/p&gt;
+&lt;p&gt;系统配置文件： /etc/tmux.conf&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;tmux相关项目&#34;&gt;tmux相关项目&lt;/h1&gt;
+&lt;h2 id=&#34;tpm&#34;&gt;TPM&lt;/h2&gt;
+&lt;p&gt;Tmux Plugins Manager.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/tmux-plugins/tpm&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/tmux-plugins/tpm&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;tmux用法&#34;&gt;tmux用法&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;man tmux
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;开启tmux：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;tmux
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;退出tmux：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;exit
+ctrl + d
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;列出tmux会话：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;tmux ls
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;tmux快捷键&#34;&gt;tmux快捷键&lt;/h2&gt;
+&lt;p&gt;tmux的prefix是ctrl-b&lt;/p&gt;
+&lt;p&gt;按下ctrl-b然后松开，通知tmux下面的按键是快捷键。&lt;/p&gt;
+&lt;p&gt;查看所有快捷键：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ctrl-b + ?
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;显示时间：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ctrl-b + t
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;session操作&#34;&gt;session操作&lt;/h2&gt;
+&lt;p&gt;交互式选择一个session:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ctrl-b + s
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;选择一个session来detach：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ctrl-b + D
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;detach当前session:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ctrl-b + d
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;重命名当前的session：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ctrl-b + $
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;window操作&#34;&gt;window操作&lt;/h2&gt;
+&lt;p&gt;交互式选择一个window:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ctrl-b + w
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;创建一个新window:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ctrl-b + c
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;关闭当前window:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ctrl-b + &amp;amp;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;切换到上一个window:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ctrl-b + p
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;切换到下一个window:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ctrl-b + n
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;移到之前选中的window：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ctrl-b + l
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;使用window号切换window:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ctrl-b + [number]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;重命名window:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ctrl-b + ,
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;pane操作&#34;&gt;pane操作&lt;/h2&gt;
+&lt;p&gt;横向分屏:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ctrl-b + %
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;纵向分屏:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ctrl-b + &amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;选择pane:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ctrl-b + [方向键]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;关闭当前pane:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ctrl-b + x
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;显示pane号:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ctrl-b + q
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;把当前的pane变成一个window：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ctrl-b + !
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;移动到之前的活跃的pane：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ctrl-b + ;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;选择当前window的下一个pane：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ctrl-b + o
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;tmux使用鼠标和粘贴复制&#34;&gt;tmux使用鼠标和粘贴复制&lt;/h2&gt;
+&lt;p&gt;复制：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;shift-鼠标左键
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;粘贴：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;shift-鼠标右键
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;列出所有粘贴缓冲区：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ctrl-b + #
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;交互式选择一个缓冲区的内容粘贴：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ctrl-b + =
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;使用复制模式：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ctrl-b + [
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;使用粘贴模式：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ctrl-b + ]
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

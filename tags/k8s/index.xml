@@ -1,173 +1,2334 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>K8s on Morgoth</title>
-    <link>https://canuxcheng.com/tags/k8s/</link>
-    <description>Recent content in K8s on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Thu, 19 Oct 2023 20:03:39 +0800</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/k8s/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Security</title>
-      <link>https://canuxcheng.com/post/k8s_security/</link>
-      <pubDate>Thu, 19 Oct 2023 20:03:39 +0800</pubDate>
-      <guid>https://canuxcheng.com/post/k8s_security/</guid>
-      <description>&lt;h1 id=&#34;k8s-security&#34;&gt;K8S Security&lt;/h1&gt;&#xA;&lt;h2 id=&#34;tetragon&#34;&gt;Tetragon&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/cilium/tetragon&#34;&gt;https://github.com/cilium/tetragon&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;falco&#34;&gt;Falco&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/falcosecurity/falco&#34;&gt;https://github.com/falcosecurity/falco&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>API Gateway</title>
-      <link>https://canuxcheng.com/post/k8s_apigateway/</link>
-      <pubDate>Fri, 04 Aug 2023 20:03:39 +0800</pubDate>
-      <guid>https://canuxcheng.com/post/k8s_apigateway/</guid>
-      <description>&lt;h1 id=&#34;api-gateway&#34;&gt;API Gateway&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/kubernetes-sigs/gateway-api&#34;&gt;https://github.com/kubernetes-sigs/gateway-api&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;GatewayClass没有namespace&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;emissary ingress&lt;/li&gt;&#xA;&lt;li&gt;kong&lt;/li&gt;&#xA;&lt;li&gt;higress&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
-    </item>
-    <item>
-      <title>Application</title>
-      <link>https://canuxcheng.com/post/cncf_application/</link>
-      <pubDate>Sat, 04 Dec 2021 20:03:39 +0800</pubDate>
-      <guid>https://canuxcheng.com/post/cncf_application/</guid>
-      <description>&lt;h1 id=&#34;application-definition--image-build&#34;&gt;Application Definition &amp;amp; Image Build&lt;/h1&gt;&#xA;&lt;p&gt;application choreography.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;helm&lt;/li&gt;&#xA;&lt;li&gt;backstage&lt;/li&gt;&#xA;&lt;li&gt;buildpack.io&lt;/li&gt;&#xA;&lt;li&gt;operatorframework&lt;/li&gt;&#xA;&lt;li&gt;dapr&lt;/li&gt;&#xA;&lt;li&gt;kubevela&lt;/li&gt;&#xA;&lt;li&gt;kubevirt&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;backstage&#34;&gt;backstage&lt;/h2&gt;</description>
-    </item>
-    <item>
-      <title>KubeVirt</title>
-      <link>https://canuxcheng.com/post/k8s_kubevirt/</link>
-      <pubDate>Mon, 10 May 2021 20:55:52 +0800</pubDate>
-      <guid>https://canuxcheng.com/post/k8s_kubevirt/</guid>
-      <description>&lt;h1 id=&#34;kubevirt&#34;&gt;KubeVirt&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://kubevirt.io/quickstart_cloud/&#34;&gt;https://kubevirt.io/quickstart_cloud/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://quay.io/organization/kubevirt&#34;&gt;https://quay.io/organization/kubevirt&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://docs.fedoraproject.org/en-US/quick-docs/using-nested-virtualization-in-kvm/index.html&#34;&gt;https://docs.fedoraproject.org/en-US/quick-docs/using-nested-virtualization-in-kvm/index.html&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;virtctl&#34;&gt;virtctl&lt;/h2&gt;&#xA;&lt;h2 id=&#34;vm&#34;&gt;VM&lt;/h2&gt;&#xA;&lt;p&gt;创建vm&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;apiVersion: kubevirt.io/v1&#xA;kind: VirtualMachine&#xA;metadata:&#xA;name: testvm&#xA;spec:&#xA;running: false&#xA;template:&#xA;    metadata:&#xA;    labels:&#xA;        kubevirt.io/size: small&#xA;        kubevirt.io/domain: testvm&#xA;    spec:&#xA;    domain:&#xA;        devices:&#xA;        disks:&#xA;            - name: containerdisk&#xA;            disk:&#xA;                bus: virtio&#xA;            - name: cloudinitdisk&#xA;            disk:&#xA;                bus: virtio&#xA;        interfaces:&#xA;        - name: default&#xA;            masquerade: {}&#xA;        resources:&#xA;        requests:&#xA;            memory: 64M&#xA;    networks:&#xA;    - name: default&#xA;        pod: {}&#xA;    volumes:&#xA;        - name: containerdisk&#xA;        containerDisk:&#xA;            image: quay.io/kubevirt/cirros-container-disk-demo&#xA;        - name: cloudinitdisk&#xA;        cloudInitNoCloud:&#xA;            userDataBase64: SGkuXG4=&#xA;    nodeSelector:&#xA;        kubernetes.io/arch: arm64&#xA;&lt;/code&gt;&lt;/pre&gt;</description>
-    </item>
-    <item>
-      <title>K8S CNI</title>
-      <link>https://canuxcheng.com/post/k8s_cni/</link>
-      <pubDate>Thu, 26 Mar 2020 20:55:52 +0800</pubDate>
-      <guid>https://canuxcheng.com/post/k8s_cni/</guid>
-      <description>&lt;h1 id=&#34;network-add-ons&#34;&gt;Network add-ons&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/containernetworking&#34;&gt;https://github.com/containernetworking&lt;/a&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;flannel&lt;/li&gt;&#xA;&lt;li&gt;cilium&lt;/li&gt;&#xA;&lt;li&gt;calico&lt;/li&gt;&#xA;&lt;li&gt;vpc-cni (aws)&lt;/li&gt;&#xA;&lt;li&gt;kube-router&lt;/li&gt;&#xA;&lt;li&gt;weavenet&lt;/li&gt;&#xA;&lt;li&gt;antrea&lt;/li&gt;&#xA;&lt;li&gt;romana&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;cilium&#34;&gt;cilium&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/cilium/cilium&#34;&gt;https://github.com/cilium/cilium&lt;/a&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;flannel&#34;&gt;Flannel&lt;/h2&gt;&#xA;&lt;p&gt;flannel是k8s最常用的网络插件.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/coreos/flannel&#34;&gt;https://github.com/coreos/flannel&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;在所有node上部署cni-plugin:&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/containernetworking/plugins/releases&#34;&gt;https://github.com/containernetworking/plugins/releases&lt;/a&gt;&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ sudo mkdir -p /opt/cni/bin&#xA;// 下载并解压所有插件命令到该目录.&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;network-addon(master上操作即可):&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ kubectl apply -f https://raw.githubusercontent.com/flannel-io/flannel/master/Documentation/kube-flannel.yml&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;veryfy:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ kubectl get nodes&#xA;$ kubectl get pod --all-namespaces&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;删除插件:&lt;/p&gt;&#xA;&lt;p&gt;删除插件会影响已经部署的pod.&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;// 删除flannel &#xA;$ kubectl delete -f X.yml  &#xA;$ sudo systemctl stop kubelet docker&#xA;&#xA;// 第二步，在node节点清理flannel网络留下的文件&#xA;ifconfig cni0 down&#xA;ip link delete cni0 &#xA;ifconfig flannel.1 down&#xA;ip link delete flannel.1 &#xA;rm -rf /var/lib/cni /etc/cni /run/flannel&#xA;$ sudo rm -rf /var/lib/kubelet /var/lib/etcd&#xA;&#xA;// 重启kubelet&#xA;$ sudo systemctl start kubelet docker&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;修改配置:&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>K8S CSI</title>
-      <link>https://canuxcheng.com/post/k8s_csi/</link>
-      <pubDate>Wed, 25 Mar 2020 20:55:52 +0800</pubDate>
-      <guid>https://canuxcheng.com/post/k8s_csi/</guid>
-      <description>&lt;h1 id=&#34;csi&#34;&gt;CSI&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/container-storage-interface/spec&#34;&gt;https://github.com/container-storage-interface/spec&lt;/a&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;rook&lt;/li&gt;&#xA;&lt;li&gt;cubefs&lt;/li&gt;&#xA;&lt;li&gt;longhorn&lt;/li&gt;&#xA;&lt;li&gt;ceph&lt;/li&gt;&#xA;&lt;li&gt;minio&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;卷volume&#34;&gt;卷Volume&lt;/h2&gt;&#xA;&lt;p&gt;和docker中的一样。&lt;/p&gt;&#xA;&lt;p&gt;volume支持的卷类型有: awsEBS, azureDisk, azureFile, gcePD, secret, configMap, emptyDir, hostPath, local, nfs等.&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;apiVersion: v1&#xA;kind: Pod&#xA;metadata:&#xA;  name: test-ebs&#xA;spec:&#xA;  containers:&#xA;  - image: k8s.gcr.io/test-webserver&#xA;    name: test-container&#xA;    volumeMounts:&#xA;    - mountPath: /test-ebs&#xA;      name: test-volume&#xA;  volumes:&#xA;  - name: test-volume&#xA;    # 此 AWS EBS 卷必须已经存在&#xA;    awsElasticBlockStore:&#xA;      volumeID: &amp;quot;&amp;lt;volume-id&amp;gt;&amp;quot;&#xA;      fsType: ext4&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;AWS的EBS和EFS需要安装驱动:&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/kubernetes-sigs/aws-ebs-csi-driver&#34;&gt;https://github.com/kubernetes-sigs/aws-ebs-csi-driver&lt;/a&gt;&#xA;&lt;a href=&#34;https://github.com/kubernetes-sigs/aws-efs-csi-driver&#34;&gt;https://github.com/kubernetes-sigs/aws-efs-csi-driver&lt;/a&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;存储类storageclass&#34;&gt;存储类StorageClass&lt;/h2&gt;&#xA;&lt;p&gt;storageclass没有namespace.&lt;/p&gt;&#xA;&lt;p&gt;每个存储类包含provisioner, parameters和reclaimPolicy.&lt;/p&gt;&#xA;&lt;p&gt;内置provisioner的卷插件:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;awsEBS&lt;/li&gt;&#xA;&lt;li&gt;azureFile&lt;/li&gt;&#xA;&lt;li&gt;azureDisk&lt;/li&gt;&#xA;&lt;li&gt;gcePD&lt;/li&gt;&#xA;&lt;li&gt;openstack cinder&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;没有provisioner的卷类型可以使用外部插件或者自己开发.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/kubernetes-sigs/sig-storage-lib-external-provisioner&#34;&gt;https://github.com/kubernetes-sigs/sig-storage-lib-external-provisioner&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>CI/CD</title>
-      <link>https://canuxcheng.com/post/k8s_cicd/</link>
-      <pubDate>Fri, 10 Jan 2020 20:55:52 +0800</pubDate>
-      <guid>https://canuxcheng.com/post/k8s_cicd/</guid>
-      <description>&lt;h1 id=&#34;continuous-integration--delivery&#34;&gt;Continuous Integration &amp;amp; Delivery&lt;/h1&gt;&#xA;&lt;h2 id=&#34;argo-cd&#34;&gt;argo-cd&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/argoproj/argo-cd&#34;&gt;https://github.com/argoproj/argo-cd&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;flux-cd&#34;&gt;flux-cd&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/fluxcd/flux&#34;&gt;https://github.com/fluxcd/flux&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>K8S API</title>
-      <link>https://canuxcheng.com/post/k8s_api/</link>
-      <pubDate>Fri, 10 Jan 2020 20:55:52 +0800</pubDate>
-      <guid>https://canuxcheng.com/post/k8s_api/</guid>
-      <description>&lt;h1 id=&#34;api&#34;&gt;API&lt;/h1&gt;&#xA;&lt;p&gt;api-server统一的操作入口.&lt;/p&gt;&#xA;&lt;p&gt;kubectl, UI, 等都是通过api-server操作资源.&lt;/p&gt;&#xA;&lt;p&gt;payload可以是json，也可以是yaml.&lt;/p&gt;&#xA;&lt;p&gt;yaml文件中#表示行注释。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;yaml&#34;&gt;yaml&lt;/h1&gt;&#xA;&lt;p&gt;部署k8s可以通过yaml文件来配置资源.&lt;/p&gt;&#xA;&lt;p&gt;资源对象组成部分:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;apiVersion: &#xA;kind: &#xA;metadata: 元数据&#xA;spec: 期望的状态&#xA;status: 观测到的状态&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;查看apiVersion:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;kubectl api-versions&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;查看Kind:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;kubectl api-resources&#xA;&#xA;# In a namespace&#xA;kubectl api-resources --namespaced=true&#xA;&#xA;# Not in a namespace&#xA;kubectl api-resources --namespaced=false&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;metadata:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;metadata:&#xA;&#xA;  name:&#xA;  namespace:&#xA;&#xA;  labels/标签: 用户筛选资源，唯一的资源组合方法, 可以使用selector来查询.&#xA;&#xA;  annotations/注解: 存储资源的非标识性信息，扩展资源的spec/status.&#xA;&#xA;  ownerReference/关系: 方便反向查找创建资源的对象，方便进行级联删除。&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;spec:&lt;/p&gt;&#xA;&lt;p&gt;status:&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;调度抢占驱逐&#34;&gt;调度，抢占，驱逐&lt;/h1&gt;&#xA;&lt;p&gt;taints: 污点，使节点排斥特定pod。应用于node。&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;taints:&#xA;- effect: NoSchedule&#xA;  key: kubernetes.io/arch&#xA;  value: arm64&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;tolerations: 容忍度，使pod被吸引到特定节点。应用于pod。&#xA;这个只能让pod能部署到加了污点的node，pod也能部署到其它没有加污点的node。&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Operator</title>
-      <link>https://canuxcheng.com/post/k8s_operator/</link>
-      <pubDate>Fri, 10 Jan 2020 20:55:52 +0800</pubDate>
-      <guid>https://canuxcheng.com/post/k8s_operator/</guid>
-      <description>&lt;h1 id=&#34;operator&#34;&gt;Operator&lt;/h1&gt;&#xA;&lt;p&gt;TPR(Third Party Resource) 在k8s 1.7 被集成，并命名为CRD(Custom Resource Definition).&lt;/p&gt;&#xA;&lt;p&gt;通过CRD，K8S可以动态的添加和管理资源，controller跟踪这些资源。&lt;/p&gt;&#xA;&lt;p&gt;CRD+custom Controller = decalartive API(声明式API),一般分为通用性controller和operator.&lt;/p&gt;&#xA;&lt;p&gt;通用型controller一般用于平台需求，operator一般用于部署特定应用.&lt;/p&gt;&#xA;&lt;p&gt;用于开发operator的工具有kubebuilder和operator-sdk, 他们都是基于controller-runtime开发.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/operator-framework/awesome-operators&#34;&gt;https://github.com/operator-framework/awesome-operators&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://access.redhat.com/documentation/zh-cn/openshift_container_platform/4.2/html/operators/index&#34;&gt;https://access.redhat.com/documentation/zh-cn/openshift_container_platform/4.2/html/operators/index&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://operatorhub.io/&#34;&gt;https://operatorhub.io/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;开发示例:&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/kubernetes/sample-controller&#34;&gt;https://github.com/kubernetes/sample-controller&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;operator的build三种模式:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;go&lt;/li&gt;&#xA;&lt;li&gt;ansible&lt;/li&gt;&#xA;&lt;li&gt;helm&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;operator的run三种模式:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;在集群外部本地运行（开发测试).&lt;/li&gt;&#xA;&lt;li&gt;作为deployment在集群内部运行.&lt;/li&gt;&#xA;&lt;li&gt;通过OLM部署.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;operator-sdk&#34;&gt;operator-sdk&lt;/h1&gt;&#xA;&lt;p&gt;redhat的operator-sdk可以方便的开发opeartor.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/operator-framework/operator-sdk&#34;&gt;https://github.com/operator-framework/operator-sdk&lt;/a&gt;&#xA;&lt;a href=&#34;https://sdk.operatorframework.io/docs/installation/&#34;&gt;https://sdk.operatorframework.io/docs/installation/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;kubebuilder&#34;&gt;kubebuilder&lt;/h1&gt;&#xA;&lt;p&gt;sig维护的kubebuilder也能方便的开发operator.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/kubernetes-sigs/kubebuilder&#34;&gt;https://github.com/kubernetes-sigs/kubebuilder&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Service Discovery</title>
-      <link>https://canuxcheng.com/post/k8s_servicediscovery/</link>
-      <pubDate>Fri, 10 Jan 2020 20:55:52 +0800</pubDate>
-      <guid>https://canuxcheng.com/post/k8s_servicediscovery/</guid>
-      <description>&lt;h1 id=&#34;coordination--service-discovery&#34;&gt;Coordination &amp;amp; Service Discovery&lt;/h1&gt;&#xA;&lt;p&gt;微服务的服务注册和服务发现.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;coredns&lt;/li&gt;&#xA;&lt;li&gt;etcd&lt;/li&gt;&#xA;&lt;li&gt;zookeeper&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;etcd&#34;&gt;Etcd&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/etcd-io/etcd&#34;&gt;https://github.com/etcd-io/etcd&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;类似的有consul和zoomkeeper.&lt;/p&gt;&#xA;&lt;h3 id=&#34;etcdctl&#34;&gt;etcdctl&lt;/h3&gt;&#xA;&lt;p&gt;使用证书访问:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ etcdctl \&#xA;--cacert=/etc/kubernetes/pki/etcd/ca.crt \&#xA;--cert=/etc/kubernetes/pki/etcd/server.crt  \&#xA;--key=/etc/kubernetes/pki/etcd/server.key \&#xA;--insecure-skip-tls-verify=true \&#xA;&amp;lt;command&amp;gt;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;查看所有key&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ etcdctl get / --prefix --keys-only&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;zookeeper&#34;&gt;zookeeper&lt;/h2&gt;</description>
-    </item>
-    <item>
-      <title>API Access Control</title>
-      <link>https://canuxcheng.com/post/k8s_accesscontrol/</link>
-      <pubDate>Sat, 04 Jan 2020 20:03:39 +0800</pubDate>
-      <guid>https://canuxcheng.com/post/k8s_accesscontrol/</guid>
-      <description>&lt;h1 id=&#34;api-access-control&#34;&gt;API Access Control&lt;/h1&gt;&#xA;&lt;h2 id=&#34;admission-controllers&#34;&gt;Admission Controllers&lt;/h2&gt;&#xA;&lt;h3 id=&#34;mutatingadmissionwebhook&#34;&gt;MutatingAdmissionWebhook&lt;/h3&gt;&#xA;&lt;h3 id=&#34;validatingadmissionwebhook&#34;&gt;ValidatingAdmissionWebhook&lt;/h3&gt;&#xA;&lt;h3 id=&#34;validatingwebhookconfiguration&#34;&gt;ValidatingWebhookConfiguration&lt;/h3&gt;&#xA;&lt;pre&gt;&lt;code&gt;apiVersion: admissionregistration.k8s.io/v1&#xA;kind: ValidatingWebhookConfiguration&#xA;metadata:&#xA;  annotations:&#xA;    meta.helm.sh/release-name: ingress-nginx-internal&#xA;    meta.helm.sh/release-namespace: ingress-nginx&#xA;  labels:&#xA;    app.kubernetes.io/component: admission-webhook&#xA;    app.kubernetes.io/instance: ingress-nginx-internal&#xA;    app.kubernetes.io/managed-by: Helm&#xA;    app.kubernetes.io/name: ingress-nginx&#xA;    app.kubernetes.io/part-of: ingress-nginx&#xA;    app.kubernetes.io/version: 1.9.1&#xA;    helm.sh/chart: ingress-nginx-4.8.1&#xA;  name: ingress-nginx-internal-admission&#xA;webhooks:&#xA;- admissionReviewVersions:&#xA;  - v1&#xA;  clientConfig:&#xA;    caBundle: &#xA;    service:&#xA;      name: ingress-nginx-internal-controller-admission&#xA;      namespace: ingress-nginx&#xA;      path: /networking/v1/ingresses&#xA;      port: 443&#xA;  failurePolicy: Fail&#xA;  matchPolicy: Equivalent&#xA;  name: validate.nginx.ingress.kubernetes.io&#xA;  namespaceSelector: {}&#xA;  objectSelector: {}&#xA;  rules:&#xA;  - apiGroups:&#xA;    - networking.k8s.io&#xA;    apiVersions:&#xA;    - v1&#xA;    operations:&#xA;    - CREATE&#xA;    - UPDATE&#xA;    resources:&#xA;    - ingresses&#xA;    scope: &#39;*&#39;&#xA;  sideEffects: None&#xA;  timeoutSeconds: 10&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h3 id=&#34;mutatingwebhookconfiguration&#34;&gt;MutatingWebhookConfiguration&lt;/h3&gt;&#xA;&lt;pre&gt;&lt;code&gt;apiVersion: admissionregistration.k8s.io/v1&#xA;kind: MutatingWebhookConfiguration&#xA;metadata:&#xA;  annotations:&#xA;    meta.helm.sh/release-name: vault-secrets-webhook&#xA;    meta.helm.sh/release-namespace: vault-secrets-webhook&#xA;  labels:&#xA;    app.kubernetes.io/managed-by: Helm&#xA;  name: vault-secrets-webhook&#xA;webhooks:&#xA;- admissionReviewVersions:&#xA;  - v1beta1&#xA;  clientConfig:&#xA;    caBundle:&#xA;    service:&#xA;      name: vault-secrets-webhook&#xA;      namespace: vault-secrets-webhook&#xA;      path: /pods&#xA;      port: 443&#xA;  failurePolicy: Ignore&#xA;  matchPolicy: Equivalent&#xA;  name: pods.vault-secrets-webhook.admission.banzaicloud.com&#xA;  namespaceSelector:&#xA;    matchExpressions:&#xA;    - key: name&#xA;      operator: NotIn&#xA;      values:&#xA;      - kube-system&#xA;    - key: kubernetes.io/metadata.name&#xA;      operator: NotIn&#xA;      values:&#xA;      - kube-system&#xA;    - key: kubernetes.io/metadata.name&#xA;      operator: NotIn&#xA;      values:&#xA;      - vault-secrets-webhook&#xA;  objectSelector:&#xA;    matchExpressions:&#xA;    - key: security.banzaicloud.io/mutate&#xA;      operator: NotIn&#xA;      values:&#xA;      - skip&#xA;  reinvocationPolicy: Never&#xA;  rules:&#xA;  - apiGroups:&#xA;    - &#39;*&#39;&#xA;    apiVersions:&#xA;    - &#39;*&#39;&#xA;    operations:&#xA;    - CREATE&#xA;    resources:&#xA;    - pods&#xA;    scope: &#39;*&#39;&#xA;  sideEffects: NoneOnDryRun&#xA;  timeoutSeconds: 10&#xA;- admissionReviewVersions:&#xA;  - v1beta1&#xA;  clientConfig:&#xA;    caBundle:&#xA;    service:&#xA;      name: vault-secrets-webhook&#xA;      namespace: vault-secrets-webhook&#xA;      path: /secrets&#xA;      port: 443&#xA;  failurePolicy: Ignore&#xA;  matchPolicy: Equivalent&#xA;  name: secrets.vault-secrets-webhook.admission.banzaicloud.com&#xA;  namespaceSelector:&#xA;    matchExpressions:&#xA;    - key: name&#xA;      operator: NotIn&#xA;      values:&#xA;      - kube-system&#xA;    - key: kubernetes.io/metadata.name&#xA;      operator: NotIn&#xA;      values:&#xA;      - kube-system&#xA;    - key: kubernetes.io/metadata.name&#xA;      operator: NotIn&#xA;      values:&#xA;      - vault-secrets-webhook&#xA;  objectSelector:&#xA;    matchExpressions:&#xA;    - key: owner&#xA;      operator: NotIn&#xA;      values:&#xA;      - helm&#xA;    - key: security.banzaicloud.io/mutate&#xA;      operator: NotIn&#xA;      values:&#xA;      - skip&#xA;  reinvocationPolicy: Never&#xA;  rules:&#xA;  - apiGroups:&#xA;    - &#39;*&#39;&#xA;    apiVersions:&#xA;    - &#39;*&#39;&#xA;    operations:&#xA;    - CREATE&#xA;    - UPDATE&#xA;    resources:&#xA;    - secrets&#xA;    scope: &#39;*&#39;&#xA;  sideEffects: NoneOnDryRun&#xA;  timeoutSeconds: 10&#xA;- admissionReviewVersions:&#xA;  - v1beta1&#xA;  clientConfig:&#xA;    caBundle:&#xA;    service:&#xA;      name: vault-secrets-webhook&#xA;      namespace: vault-secrets-webhook&#xA;      path: /configmaps&#xA;      port: 443&#xA;  failurePolicy: Ignore&#xA;  matchPolicy: Equivalent&#xA;  name: configmaps.vault-secrets-webhook.admission.banzaicloud.com&#xA;  namespaceSelector:&#xA;    matchExpressions:&#xA;    - key: name&#xA;      operator: NotIn&#xA;      values:&#xA;      - kube-system&#xA;    - key: kubernetes.io/metadata.name&#xA;      operator: NotIn&#xA;      values:&#xA;      - kube-system&#xA;    - key: kubernetes.io/metadata.name&#xA;      operator: NotIn&#xA;      values:&#xA;      - vault-secrets-webhook&#xA;  objectSelector:&#xA;    matchExpressions:&#xA;    - key: owner&#xA;      operator: NotIn&#xA;      values:&#xA;      - helm&#xA;    - key: security.banzaicloud.io/mutate&#xA;      operator: NotIn&#xA;      values:&#xA;      - skip&#xA;  reinvocationPolicy: Never&#xA;  rules:&#xA;  - apiGroups:&#xA;    - &#39;*&#39;&#xA;    apiVersions:&#xA;    - &#39;*&#39;&#xA;    operations:&#xA;    - CREATE&#xA;    - UPDATE&#xA;    resources:&#xA;    - configmaps&#xA;    scope: &#39;*&#39;&#xA;  sideEffects: NoneOnDryRun&#xA;  timeoutSeconds: 10&#xA;&lt;/code&gt;&lt;/pre&gt;</description>
-    </item>
-    <item>
-      <title>Automation &amp; Configuration</title>
-      <link>https://canuxcheng.com/post/cncf_platform/</link>
-      <pubDate>Sat, 04 Jan 2020 20:03:39 +0800</pubDate>
-      <guid>https://canuxcheng.com/post/cncf_platform/</guid>
-      <description>&lt;h1 id=&#34;automation--configuration&#34;&gt;Automation &amp;amp; Configuration&lt;/h1&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Cloud Custodian&lt;/li&gt;&#xA;&lt;li&gt;kubeedge&lt;/li&gt;&#xA;&lt;li&gt;pulumi&lt;/li&gt;&#xA;&lt;li&gt;terraform&lt;/li&gt;&#xA;&lt;li&gt;opentofu&lt;/li&gt;&#xA;&lt;li&gt;kratix&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;platform orchestration.&lt;/p&gt;&#xA;&lt;h2 id=&#34;kratix&#34;&gt;kratix&lt;/h2&gt;</description>
-    </item>
-    <item>
-      <title>Dashboard</title>
-      <link>https://canuxcheng.com/post/k8s_dashboard/</link>
-      <pubDate>Sat, 04 Jan 2020 20:03:39 +0800</pubDate>
-      <guid>https://canuxcheng.com/post/k8s_dashboard/</guid>
-      <description>&lt;h1 id=&#34;dashboard-add-ons&#34;&gt;dashboard add-ons&lt;/h1&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;kubernetes-dashboard&lt;/li&gt;&#xA;&lt;li&gt;lens&lt;/li&gt;&#xA;&lt;li&gt;octant&lt;/li&gt;&#xA;&lt;li&gt;weave scope&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;kubernetes-dashboard&#34;&gt;kubernetes-dashboard&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/kubernetes/dashboard&#34;&gt;https://github.com/kubernetes/dashboard&lt;/a&gt;&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;// 部署dashboard&#xA;$ kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.2.0/aio/deploy/recommended.yaml&#xA;&#xA;// check&#xA;$ kubectl -n kubernetes-dashboard get pods --watch&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;1&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;// 删除已安装的dashboard&#xA;$ kubectl delete ns kubernetes-dashboard&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h3 id=&#34;dashboard-arguments&#34;&gt;dashboard arguments&lt;/h3&gt;&#xA;&lt;p&gt;使用basic auth:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;--enable-skip-login&#xA;--enable-insecure-login&#xA;--system-banner=&amp;quot;Welcome to Kubernetes&amp;quot;&#xA;--authentication-mode=&amp;quot;basic&amp;quot; // 默认是 token 登陆.&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h3 id=&#34;access-control&#34;&gt;access control&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;kubeconfig&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;authorization header&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;token&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;basic&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;username/password login&lt;/p&gt;&#xA;&lt;h3 id=&#34;access-dashboard&#34;&gt;access dashboard&lt;/h3&gt;&#xA;&lt;p&gt;本机访问&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ kubectl proxy&#xA;#&amp;gt; http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;远程访问&lt;/p&gt;&#xA;&lt;p&gt;port-forward:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ kubectl port-forward -n kubernetes-dashboard service/kubernetes-dashboard 8080:443 --address 0.0.0.0&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;nodePort:&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Key Management</title>
-      <link>https://canuxcheng.com/post/k8s_km/</link>
-      <pubDate>Sat, 04 Jan 2020 20:03:39 +0800</pubDate>
-      <guid>https://canuxcheng.com/post/k8s_km/</guid>
-      <description>&lt;h1 id=&#34;key-management&#34;&gt;Key Management&lt;/h1&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;spiffe&lt;/li&gt;&#xA;&lt;li&gt;spire&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
-    </item>
-    <item>
-      <title>Microservivce</title>
-      <link>https://canuxcheng.com/post/k8s_microservice/</link>
-      <pubDate>Sat, 04 Jan 2020 20:03:39 +0800</pubDate>
-      <guid>https://canuxcheng.com/post/k8s_microservice/</guid>
-      <description>&lt;h1 id=&#34;microservivce&#34;&gt;Microservivce&lt;/h1&gt;&#xA;&lt;p&gt;微服务是一种架构。&lt;/p&gt;&#xA;&lt;p&gt;常见的架构:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Monolithic application 单体应用.&lt;/li&gt;&#xA;&lt;li&gt;SOA(service-oriented architecture) 面向服务的体系结构.&lt;/li&gt;&#xA;&lt;li&gt;MicroServices 微服务.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;微服务架构的服务治理包括:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;service registry 服务注册&lt;/li&gt;&#xA;&lt;li&gt;service discovery 服务发现&lt;/li&gt;&#xA;&lt;li&gt;observability 可观测性(metrics,logging,trace)&lt;/li&gt;&#xA;&lt;li&gt;流量管理&lt;/li&gt;&#xA;&lt;li&gt;安全&lt;/li&gt;&#xA;&lt;li&gt;控制&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;微服务应用可以通过容器化(docker, k8s)部署，也可以通过serverless方式部署.&lt;/p&gt;&#xA;&lt;p&gt;不同的语言有不同的微服务框架.&#xA;java的dubbo, sprint boot.&#xA;golang的go-kit,  go-zero, kratos.&#xA;python的zappa, nameko.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;dapr&#34;&gt;Dapr&lt;/h2&gt;&#xA;&lt;p&gt;Dapr is a portable, event-driven, runtime for building distributed applications across cloud and edge.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Scheduling &amp; Orchestration</title>
-      <link>https://canuxcheng.com/post/cncf_orchestration/</link>
-      <pubDate>Sat, 04 Jan 2020 20:03:39 +0800</pubDate>
-      <guid>https://canuxcheng.com/post/cncf_orchestration/</guid>
-      <description>&lt;h1 id=&#34;scheduling--orchestration&#34;&gt;Scheduling &amp;amp; Orchestration&lt;/h1&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;docker swarm.&lt;/li&gt;&#xA;&lt;li&gt;KEDA&lt;/li&gt;&#xA;&lt;li&gt;Crossplane&lt;/li&gt;&#xA;&lt;li&gt;Knative&lt;/li&gt;&#xA;&lt;li&gt;Kubeflow&lt;/li&gt;&#xA;&lt;li&gt;Volcano&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;crossplane&#34;&gt;Crossplane&lt;/h2&gt;</description>
-    </item>
-    <item>
-      <title>Serverless</title>
-      <link>https://canuxcheng.com/post/k8s_serverless/</link>
-      <pubDate>Sat, 04 Jan 2020 20:03:39 +0800</pubDate>
-      <guid>https://canuxcheng.com/post/k8s_serverless/</guid>
-      <description>&lt;h1 id=&#34;serverless&#34;&gt;Serverless&lt;/h1&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;knative&#34;&gt;Knative&lt;/h2&gt;&#xA;&lt;p&gt;Knative is a developer-focused serverless application layer which is a great complement to the existing Kubernetes application constructs. Knative consists of three components: an HTTP-triggered autoscaling container runtime called “Knative Serving”, a CloudEvents-over-HTTP asynchronous routing layer called “Knative Eventing”, and a developer-focused function framework which leverages the Serving and Eventing components, called &amp;ldquo;Knative Functions&amp;rdquo;.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Service Mesh</title>
-      <link>https://canuxcheng.com/post/k8s_servicemesh/</link>
-      <pubDate>Sat, 04 Jan 2020 20:03:39 +0800</pubDate>
-      <guid>https://canuxcheng.com/post/k8s_servicemesh/</guid>
-      <description>&lt;h1 id=&#34;service-mesh&#34;&gt;Service Mesh&lt;/h1&gt;&#xA;&lt;p&gt;servivce mesh是cncf基于sidecar推出的下一代面向云原生的微服务架构，是微服务基础设施, 用于处理微服务通信、治理、控制、可观测、安全等问题，具备业务无侵入、多语言、热升级等诸多特性.&lt;/p&gt;&#xA;&lt;p&gt;sidecar: 边车模式，就是把业务无关的功能，日志记录、监控、流量控制、服务注册、服务发现、服务限流、服务熔断、鉴权、访问控制和服务调用可视化等独立出来。&lt;/p&gt;&#xA;&lt;p&gt;特点:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;应用程序通信的中间层&lt;/li&gt;&#xA;&lt;li&gt;轻量级网络代理&lt;/li&gt;&#xA;&lt;li&gt;应用程序无感知&lt;/li&gt;&#xA;&lt;li&gt;解耦应用程序的重试、超时、监控、追踪和服务发现.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;Service Mesh是建立在物理或者虚拟网络层之上的，基于策略的微服务的流量控制，与一般的网络协议不同的是它有以下几个特点：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;开发者驱动&lt;/li&gt;&#xA;&lt;li&gt;可配置策略&lt;/li&gt;&#xA;&lt;li&gt;服务优先的网络配置而不是协议&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;istio&#34;&gt;Istio&lt;/h2&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;linkerd&#34;&gt;Linkerd&lt;/h2&gt;&#xA;&lt;hr&gt;</description>
-    </item>
-    <item>
-      <title>Service Proxy</title>
-      <link>https://canuxcheng.com/post/k8s_proxy/</link>
-      <pubDate>Sat, 04 Jan 2020 20:03:39 +0800</pubDate>
-      <guid>https://canuxcheng.com/post/k8s_proxy/</guid>
-      <description>&lt;h1 id=&#34;service-proxy&#34;&gt;Service Proxy&lt;/h1&gt;&#xA;&lt;p&gt;ingress =&amp;gt; gateway api&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;envoy&lt;/li&gt;&#xA;&lt;li&gt;contour&lt;/li&gt;&#xA;&lt;li&gt;traefik proxy&lt;/li&gt;&#xA;&lt;li&gt;haproxy&lt;/li&gt;&#xA;&lt;li&gt;metaLB&lt;/li&gt;&#xA;&lt;li&gt;nginx&lt;/li&gt;&#xA;&lt;li&gt;openelb&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;ingress-controller&#34;&gt;ingress controller&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Ingress-nginx(nginx)&lt;/li&gt;&#xA;&lt;li&gt;aws-load-balancer-controller(alb)&lt;/li&gt;&#xA;&lt;li&gt;ingress-gce&lt;/li&gt;&#xA;&lt;li&gt;Traefik&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;The kubernetes.io/ingress.class annotation is deprecated from kubernetes v1.22+.通过IngressClasses来选择ingress controller。&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;ingressClassName: nginx&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;ingress 语法&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;apiVersion: networking.k8s.io/v1&#xA;kind: Ingress&#xA;metadata:&#xA;  name: minimal-ingress&#xA;  annotations:&#xA;    nginx.ingress.kubernetes.io/rewrite-target: /&#xA;spec:&#xA;  ingressClassName: nginx-example&#xA;  defaultBackend:&#xA;    resource:&#xA;      apiGroup: k8s.example.com&#xA;      kind: StorageBucket&#xA;      name: static-assets&#xA;  rules:&#xA;  - http:&#xA;      paths:&#xA;      - path: /testpath&#xA;        pathType: Prefix&#xA;        backend:&#xA;          service:&#xA;            name: test&#xA;            port:&#xA;              number: 80&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;ImplementationSpecific：对于这种路径类型，匹配方法取决于 IngressClass。 具体实现可以将其作为单独的 pathType 处理或者与 Prefix 或 Exact 类型作相同处理。&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Kubeadm</title>
-      <link>https://canuxcheng.com/post/k8s_kubeadm/</link>
-      <pubDate>Mon, 30 Dec 2019 21:47:17 +0800</pubDate>
-      <guid>https://canuxcheng.com/post/k8s_kubeadm/</guid>
-      <description>&lt;h1 id=&#34;kubeadm&#34;&gt;kubeadm&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/kubernetes/kubeadm&#34;&gt;https://github.com/kubernetes/kubeadm&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;kubeadm是k8s自带的部署集群的工具.&lt;/p&gt;&#xA;&lt;h1 id=&#34;install&#34;&gt;Install&lt;/h1&gt;&#xA;&lt;h2 id=&#34;准备工作&#34;&gt;准备工作&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://kubernetes.io/zh/docs/setup/production-environment/tools/kubeadm/install-kubeadm/&#34;&gt;https://kubernetes.io/zh/docs/setup/production-environment/tools/kubeadm/install-kubeadm/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;安装runtime&#34;&gt;安装runtime&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://kubernetes.io/zh/docs/setup/production-environment/container-runtimes/&#34;&gt;https://kubernetes.io/zh/docs/setup/production-environment/container-runtimes/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;默认的cgroup驱动时cgroupfs,如果系统是systemd，就会有两个cgroup driver，会出问题.&lt;/p&gt;&#xA;&lt;p&gt;如果修改cgroup driver需要同时修改CRI和kubelet.&lt;/p&gt;&#xA;&lt;p&gt;修改containerd的cgroup driver:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ sudo vim /etc/containerd/config.toml&#xA;#disabled_plugins = [&amp;quot;cri&amp;quot;]&#xA;[plugins.&amp;quot;io.containerd.grpc.v1.cri&amp;quot;.containerd.runtimes.runc.options]&#xA;  SystemdCgroup = true&#xA;&#xA;$ sudo systemctl restart containerd&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;修改kubelet的cgroup driver(kubeadm-config.yaml):&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;# kubeadm-config.yaml&#xA;kind: ClusterConfiguration&#xA;apiVersion: kubeadm.k8s.io/v1beta3&#xA;kubernetesVersion: v1.21.0    // kubelet --version&#xA;---&#xA;apiVersion: kubelet.config.k8s.io/v1beta1&#xA;kind: KubeletConfiguration&#xA;cgroupDriver: systemd&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;安装kubeadm-kubelet-kubectl&#34;&gt;安装kubeadm, kubelet, kubectl&lt;/h2&gt;&#xA;&lt;p&gt;在每台机器上安装 kubeadm, kubelet, kubectl:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ sudo apt-get update&#xA;$ sudo apt-get install -y apt-transport-https ca-certificates curl&#xA;$ sudo curl -fsSL https://mirrors.aliyun.com/kubernetes/apt/doc/apt-key.gpg | sudo apt-key add - &#xA;$ echo &amp;quot;deb https://mirrors.aliyun.com/kubernetes/apt/ kubernetes-xenial main&amp;quot; | sudo tee /etc/apt/sources.list.d/kubernetes.list&#xA;$ sudo apt-get update&#xA;$ sudo apt-get --yes --allow-unauthenticated install kubeadm kubelet kubectl&#xA;$ sudo apt-mark hold kubelet kubeadm kubectl&#xA;$ sudo systemctl enable kubelet&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;kubeadm-cli&#34;&gt;Kubeadm CLI&lt;/h1&gt;&#xA;&lt;p&gt;init:&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Minikube</title>
-      <link>https://canuxcheng.com/post/k8s_minikube/</link>
-      <pubDate>Mon, 30 Dec 2019 21:47:17 +0800</pubDate>
-      <guid>https://canuxcheng.com/post/k8s_minikube/</guid>
-      <description>&lt;h1 id=&#34;minikube&#34;&gt;minikube&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://kubernetes.io/zh/docs/setup/learning-environment/minikube/&#34;&gt;https://kubernetes.io/zh/docs/setup/learning-environment/minikube/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;minikube 能快速创建k8s的开发集群，支持在虚拟机上创建，也支持裸机创建.&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;// 在裸机上创建：&#xA;sudo minikube start --vm-driver=none&#xA;&lt;/code&gt;&lt;/pre&gt;</description>
-    </item>
-    <item>
-      <title>K8S CRI</title>
-      <link>https://canuxcheng.com/post/k8s_cri/</link>
-      <pubDate>Wed, 05 Jun 2019 22:02:31 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/k8s_cri/</guid>
-      <description>&lt;h1 id=&#34;cri&#34;&gt;CRI&lt;/h1&gt;&#xA;&lt;p&gt;CRI: Container Runtime Intarface&lt;/p&gt;&#xA;&lt;p&gt;定义了k8s和container runtime进行交互的接口.&lt;/p&gt;&#xA;&lt;p&gt;是k8s与container交互的标准.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://kubernetes.io/zh/docs/setup/production-environment/container-runtimes/&#34;&gt;https://kubernetes.io/zh/docs/setup/production-environment/container-runtimes/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;containerd&lt;/li&gt;&#xA;&lt;li&gt;cri-o&lt;/li&gt;&#xA;&lt;li&gt;rkt&lt;/li&gt;&#xA;&lt;li&gt;kata&lt;/li&gt;&#xA;&lt;li&gt;rancher&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;docker&#34;&gt;docker&lt;/h2&gt;&#xA;&lt;p&gt;k8s_1.20 开始警告不再支持docker.&lt;/p&gt;&#xA;&lt;p&gt;k8s_1.23 开始移除dockershim.&lt;/p&gt;&#xA;&lt;p&gt;/var/run/dockerhsim.sock&lt;/p&gt;&#xA;&lt;h2 id=&#34;containerd&#34;&gt;containerd&lt;/h2&gt;&#xA;&lt;p&gt;/run/container/containerd.sock&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/containerd/containerd&#34;&gt;https://github.com/containerd/containerd&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;安装配置:&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://kubernetes.io/zh/docs/setup/production-environment/container-runtimes/#containerd&#34;&gt;https://kubernetes.io/zh/docs/setup/production-environment/container-runtimes/#containerd&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;cri-o&#34;&gt;CRI-O&lt;/h2&gt;&#xA;&lt;p&gt;redhat.&lt;/p&gt;&#xA;&lt;p&gt;/var/run/crio/crio.sock&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/cri-o/cri-o&#34;&gt;https://github.com/cri-o/cri-o&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;kata&#34;&gt;kata&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/kata-containers/runtime&#34;&gt;https://github.com/kata-containers/runtime&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;rkt&#34;&gt;rkt&lt;/h2&gt;&#xA;&lt;p&gt;redhat(coreos)&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/rkt/rkt&#34;&gt;https://github.com/rkt/rkt&lt;/a&gt;&lt;/p&gt;&#xA;&lt;hr&gt;</description>
-    </item>
-    <item>
-      <title>Kubernetes</title>
-      <link>https://canuxcheng.com/post/kubernetes/</link>
-      <pubDate>Thu, 05 Apr 2018 22:02:31 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/kubernetes/</guid>
-      <description>&lt;h1 id=&#34;kubernetes&#34;&gt;Kubernetes&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/kubernetes/kubernetes&#34;&gt;https://github.com/kubernetes/kubernetes&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/kubernetes/kubeadm&#34;&gt;https://github.com/kubernetes/kubeadm&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/kubernetes/kops&#34;&gt;https://github.com/kubernetes/kops&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/kubernetes-sigs/kubespray&#34;&gt;https://github.com/kubernetes-sigs/kubespray&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;kubernetes简称k8s, 是开源的容器编排工具。&lt;/p&gt;&#xA;&lt;p&gt;安装单机版k8s:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;minikube&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;安装k8s集群:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;kubeadm (k8s内置的，类似于docker swarm mode, 没有HA)&lt;/li&gt;&#xA;&lt;li&gt;kops (目前主要支持aws等云平台, 国内不友好)&lt;/li&gt;&#xA;&lt;li&gt;kubespray (通过ansible部署, 国内不友好)&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;k8s发行版：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;openshift-okd(redhat)&lt;/li&gt;&#xA;&lt;li&gt;rancher&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h1 id=&#34;k8s集群组成&#34;&gt;k8s集群组成&lt;/h1&gt;&#xA;&lt;h2 id=&#34;master&#34;&gt;master&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;aip-server, 提供资源操作唯一入口&lt;/li&gt;&#xA;&lt;li&gt;scheduler, 负责资源调度&lt;/li&gt;&#xA;&lt;li&gt;controller-manager, 负责维护集群状态&lt;/li&gt;&#xA;&lt;li&gt;etcd(可以部署单独集群), 保存整个集群的状态&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;node&#34;&gt;node&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;kubelet, 负责维护容器生命周期, 还包括CNI CVI&lt;/li&gt;&#xA;&lt;li&gt;kube-proxy, 为service提供cluster内部的服务发现和负载均衡&lt;/li&gt;&#xA;&lt;li&gt;CRI(containerd), 创建pod&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;addons&#34;&gt;addons&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;coredns&lt;/li&gt;&#xA;&lt;li&gt;flannel/cilium/calico&lt;/li&gt;&#xA;&lt;li&gt;dashboard, web-gui&lt;/li&gt;&#xA;&lt;li&gt;metrics-server, 取代heapster，用于cpu/memory监控&lt;/li&gt;&#xA;&lt;li&gt;ingress-nginx, 为服务提供外网入口&lt;/li&gt;&#xA;&lt;li&gt;federation, 提供跨可用区的集群&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;概念&#34;&gt;概念&lt;/h1&gt;&#xA;&lt;p&gt;k8s包含的重要概念:&lt;/p&gt;&#xA;&lt;p&gt;-: nodes, 运行pod的物理机或虚拟机.&#xA;-: namespace, 对资源和对象的抽象集合．pods/deployments/services都属于某个ns.&#xA;-: pods,一组紧密关联的容器集合，共享pid,ipc,network,uts,namespace.&lt;/p&gt;&#xA;&lt;p&gt;k8s业务类型:&lt;/p&gt;&#xA;&lt;p&gt;-: long-running 长期伺服型 -&amp;gt; RC, RS, Deployment&#xA;-: batch 批处理型-&amp;gt; Job&#xA;-: node-daemon 节点后台支撑型-&amp;gt; DaemonSet&#xA;-: stateful application 有状态应用型-&amp;gt; StatefulSet&lt;/p&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>K8s on Morgoth</title>
+        <link>https://canuxcheng.com/tags/k8s/</link>
+        <description>Recent content in K8s on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Thu, 19 Oct 2023 20:03:39 +0800</lastBuildDate><atom:link href="https://canuxcheng.com/tags/k8s/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Security</title>
+        <link>https://canuxcheng.com/post/k8s_security/</link>
+        <pubDate>Thu, 19 Oct 2023 20:03:39 +0800</pubDate>
+        
+        <guid>https://canuxcheng.com/post/k8s_security/</guid>
+        <description>&lt;h1 id=&#34;k8s-security&#34;&gt;K8S Security&lt;/h1&gt;
+&lt;h2 id=&#34;tetragon&#34;&gt;Tetragon&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/cilium/tetragon&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/cilium/tetragon&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;falco&#34;&gt;Falco&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/falcosecurity/falco&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/falcosecurity/falco&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>API Gateway</title>
+        <link>https://canuxcheng.com/post/k8s_apigateway/</link>
+        <pubDate>Fri, 04 Aug 2023 20:03:39 +0800</pubDate>
+        
+        <guid>https://canuxcheng.com/post/k8s_apigateway/</guid>
+        <description>&lt;h1 id=&#34;api-gateway&#34;&gt;API Gateway&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/kubernetes-sigs/gateway-api&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/kubernetes-sigs/gateway-api&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;GatewayClass没有namespace&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;emissary ingress&lt;/li&gt;
+&lt;li&gt;kong&lt;/li&gt;
+&lt;li&gt;higress&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
+        <title>Application</title>
+        <link>https://canuxcheng.com/post/cncf_application/</link>
+        <pubDate>Sat, 04 Dec 2021 20:03:39 +0800</pubDate>
+        
+        <guid>https://canuxcheng.com/post/cncf_application/</guid>
+        <description>&lt;h1 id=&#34;application-definition--image-build&#34;&gt;Application Definition &amp;amp; Image Build&lt;/h1&gt;
+&lt;p&gt;application choreography.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;helm&lt;/li&gt;
+&lt;li&gt;backstage&lt;/li&gt;
+&lt;li&gt;buildpack.io&lt;/li&gt;
+&lt;li&gt;operatorframework&lt;/li&gt;
+&lt;li&gt;dapr&lt;/li&gt;
+&lt;li&gt;kubevela&lt;/li&gt;
+&lt;li&gt;kubevirt&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;backstage&#34;&gt;backstage&lt;/h2&gt;
+</description>
+        </item>
+        <item>
+        <title>KubeVirt</title>
+        <link>https://canuxcheng.com/post/k8s_kubevirt/</link>
+        <pubDate>Mon, 10 May 2021 20:55:52 +0800</pubDate>
+        
+        <guid>https://canuxcheng.com/post/k8s_kubevirt/</guid>
+        <description>&lt;h1 id=&#34;kubevirt&#34;&gt;KubeVirt&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://kubevirt.io/quickstart_cloud/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://kubevirt.io/quickstart_cloud/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://quay.io/organization/kubevirt&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://quay.io/organization/kubevirt&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.fedoraproject.org/en-US/quick-docs/using-nested-virtualization-in-kvm/index.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://docs.fedoraproject.org/en-US/quick-docs/using-nested-virtualization-in-kvm/index.html&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;virtctl&#34;&gt;virtctl&lt;/h2&gt;
+&lt;h2 id=&#34;vm&#34;&gt;VM&lt;/h2&gt;
+&lt;p&gt;创建vm&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+name: testvm
+spec:
+running: false
+template:
+    metadata:
+    labels:
+        kubevirt.io/size: small
+        kubevirt.io/domain: testvm
+    spec:
+    domain:
+        devices:
+        disks:
+            - name: containerdisk
+            disk:
+                bus: virtio
+            - name: cloudinitdisk
+            disk:
+                bus: virtio
+        interfaces:
+        - name: default
+            masquerade: {}
+        resources:
+        requests:
+            memory: 64M
+    networks:
+    - name: default
+        pod: {}
+    volumes:
+        - name: containerdisk
+        containerDisk:
+            image: quay.io/kubevirt/cirros-container-disk-demo
+        - name: cloudinitdisk
+        cloudInitNoCloud:
+            userDataBase64: SGkuXG4=
+    nodeSelector:
+        kubernetes.io/arch: arm64
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
+        <item>
+        <title>K8S CNI</title>
+        <link>https://canuxcheng.com/post/k8s_cni/</link>
+        <pubDate>Thu, 26 Mar 2020 20:55:52 +0800</pubDate>
+        
+        <guid>https://canuxcheng.com/post/k8s_cni/</guid>
+        <description>&lt;h1 id=&#34;network-add-ons&#34;&gt;Network add-ons&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/containernetworking&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/containernetworking&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;flannel&lt;/li&gt;
+&lt;li&gt;cilium&lt;/li&gt;
+&lt;li&gt;calico&lt;/li&gt;
+&lt;li&gt;vpc-cni (aws)&lt;/li&gt;
+&lt;li&gt;kube-router&lt;/li&gt;
+&lt;li&gt;weavenet&lt;/li&gt;
+&lt;li&gt;antrea&lt;/li&gt;
+&lt;li&gt;romana&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;cilium&#34;&gt;cilium&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/cilium/cilium&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/cilium/cilium&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;flannel&#34;&gt;Flannel&lt;/h2&gt;
+&lt;p&gt;flannel是k8s最常用的网络插件.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/coreos/flannel&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/coreos/flannel&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;在所有node上部署cni-plugin:&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/containernetworking/plugins/releases&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/containernetworking/plugins/releases&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo mkdir -p /opt/cni/bin
+// 下载并解压所有插件命令到该目录.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;network-addon(master上操作即可):&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ kubectl apply -f https://raw.githubusercontent.com/flannel-io/flannel/master/Documentation/kube-flannel.yml
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;veryfy:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ kubectl get nodes
+$ kubectl get pod --all-namespaces
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;删除插件:&lt;/p&gt;
+&lt;p&gt;删除插件会影响已经部署的pod.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 删除flannel 
+$ kubectl delete -f X.yml  
+$ sudo systemctl stop kubelet docker
+
+// 第二步，在node节点清理flannel网络留下的文件
+ifconfig cni0 down
+ip link delete cni0 
+ifconfig flannel.1 down
+ip link delete flannel.1 
+rm -rf /var/lib/cni /etc/cni /run/flannel
+$ sudo rm -rf /var/lib/kubelet /var/lib/etcd
+
+// 重启kubelet
+$ sudo systemctl start kubelet docker
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;修改配置:&lt;/p&gt;
+&lt;p&gt;/etc/kube-flannel/net-conf.json&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;{
+  &amp;quot;Network&amp;quot;: &amp;quot;10.244.0.0/16&amp;quot;,
+  &amp;quot;SubnetLen&amp;quot;: 24,
+  &amp;quot;SubnetMin&amp;quot;: &amp;quot;10.244.0.0&amp;quot;,
+  &amp;quot;SubnetMax&amp;quot;: &amp;quot;10.244.255.0&amp;quot;,
+  &amp;quot;Backend&amp;quot;: {
+    &amp;quot;Type&amp;quot;: &amp;quot;vxlan&amp;quot;
+  }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;使用kubeadm：&lt;/p&gt;
+&lt;p&gt;kubeadm init必须指定flannel的Network参数:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;--pod-network-cidr=10.244.0.0/16
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如果需要修改其它参数，同时需要修改kubeadm的配置&lt;/p&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        <item>
+        <title>K8S CSI</title>
+        <link>https://canuxcheng.com/post/k8s_csi/</link>
+        <pubDate>Wed, 25 Mar 2020 20:55:52 +0800</pubDate>
+        
+        <guid>https://canuxcheng.com/post/k8s_csi/</guid>
+        <description>&lt;h1 id=&#34;csi&#34;&gt;CSI&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/container-storage-interface/spec&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/container-storage-interface/spec&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;rook&lt;/li&gt;
+&lt;li&gt;cubefs&lt;/li&gt;
+&lt;li&gt;longhorn&lt;/li&gt;
+&lt;li&gt;ceph&lt;/li&gt;
+&lt;li&gt;minio&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;卷volume&#34;&gt;卷Volume&lt;/h2&gt;
+&lt;p&gt;和docker中的一样。&lt;/p&gt;
+&lt;p&gt;volume支持的卷类型有: awsEBS, azureDisk, azureFile, gcePD, secret, configMap, emptyDir, hostPath, local, nfs等.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;apiVersion: v1
+kind: Pod
+metadata:
+  name: test-ebs
+spec:
+  containers:
+  - image: k8s.gcr.io/test-webserver
+    name: test-container
+    volumeMounts:
+    - mountPath: /test-ebs
+      name: test-volume
+  volumes:
+  - name: test-volume
+    # 此 AWS EBS 卷必须已经存在
+    awsElasticBlockStore:
+      volumeID: &amp;quot;&amp;lt;volume-id&amp;gt;&amp;quot;
+      fsType: ext4
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;AWS的EBS和EFS需要安装驱动:&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/kubernetes-sigs/aws-ebs-csi-driver&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/kubernetes-sigs/aws-ebs-csi-driver&lt;/a&gt;
+&lt;a class=&#34;link&#34; href=&#34;https://github.com/kubernetes-sigs/aws-efs-csi-driver&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/kubernetes-sigs/aws-efs-csi-driver&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;存储类storageclass&#34;&gt;存储类StorageClass&lt;/h2&gt;
+&lt;p&gt;storageclass没有namespace.&lt;/p&gt;
+&lt;p&gt;每个存储类包含provisioner, parameters和reclaimPolicy.&lt;/p&gt;
+&lt;p&gt;内置provisioner的卷插件:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;awsEBS&lt;/li&gt;
+&lt;li&gt;azureFile&lt;/li&gt;
+&lt;li&gt;azureDisk&lt;/li&gt;
+&lt;li&gt;gcePD&lt;/li&gt;
+&lt;li&gt;openstack cinder&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;没有provisioner的卷类型可以使用外部插件或者自己开发.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/kubernetes-sigs/sig-storage-lib-external-provisioner&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/kubernetes-sigs/sig-storage-lib-external-provisioner&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;awsEBS:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: sourcegraph
+labels:
+  deploy: sourcegraph
+# provisioner: ebs.csi.aws.com
+provisioner: kubernetes.io/aws-ebs
+parameters:
+  type: gp2 # This configures SSDs (default).
+  fsType: ext4 # (default)
+reclaimPolicy: Retain
+volumeBindingMode: WaitForFirstConsumer
+allowVolumeExpansion: true
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;nfs:&lt;/p&gt;
+&lt;p&gt;kubernetes不包含nfs驱动，需要使用外部驱动创建nfs存储类.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: example-nfs
+provisioner: example.com/external-nfs
+parameters:
+  server: nfs-server.example.com
+  path: /share
+  readOnly: false
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;local:&lt;/p&gt;
+&lt;p&gt;本地卷不支持动态制备.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: local-storage
+provisioner: kubernetes.io/no-provisioner
+volumeBindingMode: WaitForFirstConsumer
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;持久卷pv&#34;&gt;持久卷PV&lt;/h2&gt;
+&lt;p&gt;persistentvolume没有namespace, 用来指定具体的存储资源。有静态和动态两种方式，最终需要绑定到pvc上。&lt;/p&gt;
+&lt;p&gt;pv的回收策略ReclaimPolicy:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Retained保留&lt;/li&gt;
+&lt;li&gt;Deleted删除&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;pv的卷绑定模式volumeBindingMode:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;WaitForFirstConsumer&lt;/li&gt;
+&lt;li&gt;Immediate&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;卷模式volumeMode:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Filesystem(默认)&lt;/li&gt;
+&lt;li&gt;Block&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;访问模式accessMode:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;RWO: ReadWriteOnce&lt;/li&gt;
+&lt;li&gt;ROX: ReadOnlyMany&lt;/li&gt;
+&lt;li&gt;RWX: ReadWriteMany&lt;/li&gt;
+&lt;li&gt;RWOP: ReadWriteOncePod&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;卷的阶段：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Avaliable&lt;/li&gt;
+&lt;li&gt;Bound&lt;/li&gt;
+&lt;li&gt;Released&lt;/li&gt;
+&lt;li&gt;Failed&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;static-volume-provisioning&#34;&gt;static volume provisioning&lt;/h3&gt;
+&lt;p&gt;静态pvc和pv的绑定通过storageClassName, accessMode和capacity来判断。&lt;/p&gt;
+&lt;p&gt;pv中的capacity必须大于等于pvc。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: nas-csi-pv
+  labels:
+    app: demo
+spec:
+  storageClassName: 
+  persistentVolumeReclaimPolicy: Retained/Recycled
+  accessModes:
+  - ReadWriteMany
+  capacity:
+    storage: 5Gi
+  hostPath:
+    path: &amp;quot;/home/path&amp;quot;
+  csi:
+    driver: ...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;dynamic-volume-provisioning&#34;&gt;dynamic volume provisioning&lt;/h3&gt;
+&lt;p&gt;动态pv需要storageclass, 由StorageClass动态的创建PV, 不需要手动创建pv，只需要在pvc中指定storageclass即可.&lt;/p&gt;
+&lt;p&gt;storageclass没有namespace&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: sourcegraph
+labels:
+  deploy: sourcegraph
+provisioner: kubernetes.io/aws-ebs
+parameters:
+  type: gp2 
+reclaimPolicy: Retain
+volumeBindingMode: WaitForFirstConsumer
+allowVolumeExpansion: true
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pgsql
+  labels:
+    deploy: sourcegraph
+    sourcegraph-resource-requires: no-cluster-admin
+    app.kubernetes.io/component: pgsql
+spec:
+  // 通过storageClassName自动给pvc创建pv
+  storageClassName: sourcegraph
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+    storage: 200Gi
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;pvc&#34;&gt;PVC&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: nsa-pvc
+  namespace: test
+labels:
+  app: demo
+spec:
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: 5Gi 
+  // 通过selector让PVC使用指定的PV。
+  selector:
+    app: demo
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;volumesnapshotclass&#34;&gt;VolumeSnapshotClass&lt;/h2&gt;
+&lt;h2 id=&#34;volumesnapshot&#34;&gt;VolumeSnapshot&lt;/h2&gt;
+&lt;p&gt;VS是对资源的请求.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;apiVersion: snapshot.storage.k8s.io/v1
+kind: VolumeSnapshot
+metadata:
+  name: new-snapshot-test
+spec:
+  volumeSnapshotClassName: csi-hostpath-snapclass
+  source:
+    persistentVolumeClaimName: pvc-test
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;volumesnapshotcontent&#34;&gt;VolumeSnapshotContent&lt;/h2&gt;
+&lt;p&gt;VSC实际中资源管理.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;apiVersion: snapshot.storage.k8s.io/v1
+kind: VolumeSnapshotContent
+metadata:
+  name: snapcontent-72d9a349-aacd-42d2-a240-d775650d2455
+spec:
+  deletionPolicy: Delete
+  driver: hostpath.csi.k8s.io
+  source:
+    volumeHandle: ee0cfb94-f8d4-11e9-b2d8-0242ac110002
+  volumeSnapshotClassName: csi-hostpath-snapclass
+  volumeSnapshotRef:
+    name: new-snapshot-test
+    namespace: default
+    uid: 72d9a349-aacd-42d2-a240-d775650d2455
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        <item>
+        <title>CI/CD</title>
+        <link>https://canuxcheng.com/post/k8s_cicd/</link>
+        <pubDate>Fri, 10 Jan 2020 20:55:52 +0800</pubDate>
+        
+        <guid>https://canuxcheng.com/post/k8s_cicd/</guid>
+        <description>&lt;h1 id=&#34;continuous-integration--delivery&#34;&gt;Continuous Integration &amp;amp; Delivery&lt;/h1&gt;
+&lt;h2 id=&#34;argo-cd&#34;&gt;argo-cd&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/argoproj/argo-cd&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/argoproj/argo-cd&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;flux-cd&#34;&gt;flux-cd&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/fluxcd/flux&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/fluxcd/flux&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>K8S API</title>
+        <link>https://canuxcheng.com/post/k8s_api/</link>
+        <pubDate>Fri, 10 Jan 2020 20:55:52 +0800</pubDate>
+        
+        <guid>https://canuxcheng.com/post/k8s_api/</guid>
+        <description>&lt;h1 id=&#34;api&#34;&gt;API&lt;/h1&gt;
+&lt;p&gt;api-server统一的操作入口.&lt;/p&gt;
+&lt;p&gt;kubectl, UI, 等都是通过api-server操作资源.&lt;/p&gt;
+&lt;p&gt;payload可以是json，也可以是yaml.&lt;/p&gt;
+&lt;p&gt;yaml文件中#表示行注释。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;yaml&#34;&gt;yaml&lt;/h1&gt;
+&lt;p&gt;部署k8s可以通过yaml文件来配置资源.&lt;/p&gt;
+&lt;p&gt;资源对象组成部分:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;apiVersion: 
+kind: 
+metadata: 元数据
+spec: 期望的状态
+status: 观测到的状态
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看apiVersion:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;kubectl api-versions
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看Kind:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;kubectl api-resources
+
+# In a namespace
+kubectl api-resources --namespaced=true
+
+# Not in a namespace
+kubectl api-resources --namespaced=false
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;metadata:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;metadata:
+
+  name:
+  namespace:
+
+  labels/标签: 用户筛选资源，唯一的资源组合方法, 可以使用selector来查询.
+
+  annotations/注解: 存储资源的非标识性信息，扩展资源的spec/status.
+
+  ownerReference/关系: 方便反向查找创建资源的对象，方便进行级联删除。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;spec:&lt;/p&gt;
+&lt;p&gt;status:&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;调度抢占驱逐&#34;&gt;调度，抢占，驱逐&lt;/h1&gt;
+&lt;p&gt;taints: 污点，使节点排斥特定pod。应用于node。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;taints:
+- effect: NoSchedule
+  key: kubernetes.io/arch
+  value: arm64
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;tolerations: 容忍度，使pod被吸引到特定节点。应用于pod。
+这个只能让pod能部署到加了污点的node，pod也能部署到其它没有加污点的node。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;tolerations:
+- key: &amp;quot;key1&amp;quot;
+  operator: &amp;quot;Equal&amp;quot;/&amp;quot;Exists&amp;quot;
+  value: &amp;quot;value1&amp;quot;
+  effect: &amp;quot;NoSchedule&amp;quot;/&amp;quot;NoExecute&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;affinity: 亲和力，affinity可以通过label指定pod部署到node。
+但是不能保证其它pod不部署到这个node。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;   affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: kubernetes.io/arch
+            operator: In
+            values:
+            - arm64
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;nodeSelector: 节点选择，&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; nodeSelector:
+   kubernetes.io/arch: arm64
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;pod&#34;&gt;Pod&lt;/h1&gt;
+&lt;p&gt;pod模板， 通常使用deployment, job和statefulset, daemonset来管理pod.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;apiVersion: v1
+kind: Pod
+metadata:
+  name: test
+  namespace: test
+  labels:
+      app: test
+spec:
+
+  //// containers
+  os:  // 操作系统模板
+    name:
+
+  imagePullSecrets:  // 私有镜像授权
+  - name: my-harbor
+
+  initContainers: //  initcontainer模板
+  - name: init
+    image: my-image
+    command: ...
+    args: ...
+
+  containers: // container 模板
+  - name: test
+    // image
+    image: image
+    imagePullPolicy: Always/IfNotPresent/Never
+
+    // entrypoint
+    command:
+    args:
+    workingDir:
+
+    // port
+    ports:
+
+    // resources
+    resources:
+      requests:  // 申明需要的资源
+        memory: &amp;quot;64Mi&amp;quot;  // byte
+        cpu: &amp;quot;250m&amp;quot;     // millicore (1 core = 1000 millicore)
+        ephemeral-storage: &amp;quot;2Gi&amp;quot; // byte
+      limits:
+        memory: &amp;quot;128Mi&amp;quot;
+        cpu: &amp;quot;500m&amp;quot;
+        ephemeral-storage: &amp;quot;4Gi&amp;quot;
+
+    // environment variables, 针对单个键值对.
+    env:
+    - name: key
+      value: value
+    - name: key
+      valueFrom: // 将cm-name中的值cm-key传给key
+        configMapKeyRef:
+          name: cm-name
+          key: cm-key
+          optional:
+    - name: key
+      valueFrom: // 挂载secret
+        secretKeyRef:
+          key:
+          name:
+          optional:
+        fieldRef:
+        resourceFieldRef:
+
+    // 环境变量，针对文件中所有键值对.
+    envFrom:
+    - configMapRef    // 将my-cm中的所有键值对变成环境变量.
+        name: my-cm
+        optional:
+    - secretRef
+        name: 
+        optional:
+     
+    // volumeMounts (去Volume找对应资源)
+    // 如果没有subpath，整个目录会被覆盖，目录下只有secret/configmap挂载的文件.
+    volumeMounts: // secret以文件形式挂载到/etc/foo
+    - name: my-secret
+      mountPath: &amp;quot;/etc/foo&amp;quot; // 挂载之后覆盖整个目录
+      readOnly: true
+    - name: my-configmap
+      mountPath: &amp;quot;/etc/bar&amp;quot; // 挂载之后覆盖整个目录
+      // 如果有subpath, secret/configmap里的data里的文件名需要与subpath和mountpath指定的文件名一致.
+    - name: config
+      mountPath: /etc/app/app.conf  // 是文件，文件名要和subpath一致。
+      subPath: app.conf // 挂载之后只覆盖目录中同名文件,其它文件不影响.
+
+    // lifecycle
+    livenessProbe:
+      initialDelaySeconds: 10
+      periodSeconds: 10
+      timeoutSeconds: 5
+      httpGet:
+        path: /admin
+        port: django
+        # httpHeaders:
+        # - name: Authorization
+          # value: Basic $LDAP_ACCOUNT
+    readinessProbe:
+      initialDelaySeconds: 10
+      periodSeconds: 10
+      timeoutSeconds: 5
+      httpGet:
+        path: /admin
+        port: django
+        # httpHeaders:
+        # - name: Authorization
+          # value: Basic $LDAP_ACCOUNT
+
+    // securityContext
+    securityContext:
+
+    // debugging
+    stdin: false
+    stdinOnce: false
+    tty: false
+
+  //// security context
+  securityContext: // pod级别security context定义
+    runAsuser: 1000
+    runAsGroup: 3000
+    fsGroup: 2000
+
+  //// volumes
+  volumes:
+  - name: my-secret // 指定要挂载的secret
+    secret:
+      secretName: mysecret
+  - name: my-configmap
+    configMap:
+      name: myconfigmap
+
+  //// lifecycle
+  restartPolicy:
+
+  //// scheduling
+  nodeName:
+  nodeSelector: // 将pod部署到指定node
+    key: value
+  affinity:
+  tolerations:
+
+  //// others
+  hostname:
+  hostNetwork:
+  serviceAccountName:
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;pod中的container共享存储(pod volume):&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;apiVersion: v1
+Kind: Pod
+medadata:
+spec:
+
+  # 两种pod volume
+  volumes:
+  # emptyDir： pod删除之后该目录也会被删除
+  - name: cache-volume
+    emptyDir: {}
+  # hostPath: pod删除之后该目录还在host上. 
+  - name: hostpath-volume
+    hostPath:
+      path: /path/on/host
+
+  containers:
+  - name: container1
+    image: test
+    volumeMounts:
+    - name: cache-volume
+      mountpath: /path/on/container
+      # subPath会在emptyDir或hostPath目录下创建子目录
+      subPath: cache1
+  - name: container2
+    image: test
+    volumeMounts:
+    - name: hostpath-volume
+      mountpath: /path/on/container
+      readOnly: true
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;deployment&#34;&gt;Deployment&lt;/h1&gt;
+&lt;p&gt;用于部署无状态服务。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app-deploy
+  namespace: my-ns
+  lables:
+    app: my-app
+spec:
+  replicas: 3
+  # 选择器
+  selector: 
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+      - name: my-app
+        image: image:latest
+        imagePullPolicy: IfNotPresent/Always
+        ports:
+        - containerPort: 443
+        volumeMounts:
+        - name: my-hostpath
+          mountPath: /path/on/cpod
+        - name: my-pvc
+          mountPath: /data 
+      volumes:
+      - name: my-hostpath
+        hostPath: 
+          path: /path/on/host
+      - name: my-pvc
+        persistentVolumeClaim:
+          claimName: nfs-pvc
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;daemonset&#34;&gt;DaemonSet&lt;/h1&gt;
+&lt;p&gt;每个node上部署一个pod，用于部署agent。&lt;/p&gt;
+&lt;p&gt;DaemonSet&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: my-ds
+  namespace: my-ns
+  labels:
+    k8s-app: my-app
+  spec:
+    selector:
+      matchLabels:
+        name: my-app
+    template:
+      metadata:
+        labels:
+          name: my-app
+      spec:
+        containers:
+        - name: my-container
+          image: my-img
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;statefulset&#34;&gt;StatefulSet&lt;/h1&gt;
+&lt;p&gt;用于部署有状态服务。&lt;/p&gt;
+&lt;p&gt;StatefulSet 中的 Pod 拥有一个唯一的顺序索引和稳定的网络身份标识。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: web
+  namespace: test
+  labels:
+    k8s-app: my-app
+spec:
+  serviceName: &amp;quot;nginx&amp;quot;
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: k8s.gcr.io/nginx-slim:0.8
+        ports:
+        - containerPort: 80
+          name: web
+        volumeMounts:
+        - name: www
+          mountPath: /usr/share/nginx/html
+  volumeClaimTemplates:
+  - metadata:
+      name: www
+    spec:
+      accessModes: [ &amp;quot;ReadWriteOnce&amp;quot; ]
+      resources:
+        requests:
+          storage: 1Gi
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;job&#34;&gt;Job&lt;/h1&gt;
+&lt;p&gt;Job&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;appVersion: batch/v1
+kind: Job
+metadata:
+  name: my-job
+spec:
+  # 代表本pod队列执行此次数(被执行8次)
+  completions: 8
+  # 代表并行执行个数(同时有两个在运行)
+  parallelism: 2
+  backoffLimit: 4
+  template:
+    spec:
+      containers:
+      - name: my-job
+        image: my-image
+        conmand: [&#39;test&#39;]
+      restartPolicy: Never
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;cronjob&#34;&gt;CronJob&lt;/h1&gt;
+&lt;p&gt;CronJob&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: my-cj
+spec:
+  schedule: &amp;quot;* * * * *&amp;quot;
+  startingDeadlineSeconds: None(default)/10
+  concurrencyPolicy: Allow(default)/Forbid/Replace
+  suspend: false(default)/true
+  successfulJobsHistoryLimit: 3(default)
+  failedJobsHistoryLimit: 1(default)
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          annotations: ...
+          labels: ...
+        spec:
+          nodeSelector:
+            ...
+          imagePullSecrets:
+            ...
+          restartPolicy: OnFailure
+          containers:
+          - name: image
+            image: image
+            args:
+            - /bin/sh
+            - -c
+            - date
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;configmap&#34;&gt;ConfigMap&lt;/h1&gt;
+&lt;p&gt;configmap只能在当前namespace使用.&lt;/p&gt;
+&lt;p&gt;configmap的配置在pod中无法修改绑定的文件.&lt;/p&gt;
+&lt;p&gt;data里面的文件名就是挂载之后的文件名。&lt;/p&gt;
+&lt;p&gt;ConfigMap&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;apiVersion: v1
+kind: ConfigMap
+metadata:
+  labels:
+    app: flanel
+    tier: node
+  name: flannel-cfg
+  namespace: kube-system
+data:
+  cni-conf.json: |
+    {
+      &amp;quot;name&amp;quot;: &amp;quot;n1&amp;quot;
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;创建配置文件的configmap&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ kubectl -n app create cm my-conf --from-file ./config.ini -o yaml &amp;gt; myconf-configmap.yaml
+$ kubectl -n influxdata create cm dashboard-docker --from-file Docker.json -o yaml &amp;gt; grafana-dashboard-docker-configmap.yaml
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;secret&#34;&gt;Secret&lt;/h1&gt;
+&lt;p&gt;secret只能在当前namespace使用.&lt;/p&gt;
+&lt;p&gt;data里的文件名就是挂载之后的文件名。&lt;/p&gt;
+&lt;p&gt;Opaque是用户自定义格式&lt;/p&gt;
+&lt;p&gt;generic secret&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;kubectl create secret generic empty-secret
+
+apiVersion: v1
+kind: Secret
+type: Opaque
+metadata:
+  name: mysecret
+  namespace: kube-system
+data:
+  username: name 
+  password: pw
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;创建tls secret账号:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;kubectl -n kubernetes-dashboard create secret tls \
+kubernetes-dashboard-tls --key ca.key --cert ca.crt 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;类型为 kubernetes.io/tls 的 Secret 中包含密钥和证书的 DER 数据，以 Base64 格式编码。 如果你熟悉私钥和证书的 PEM 格式，base64 与该格式相同，只是你需要略过 PEM 数据中所包含的第一行和最后一行。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;apiVersion: v1
+kind: Secret
+metadata:
+  name: secret-tls
+type: kubernetes.io/tls
+data:
+  tls.crt: |
+    MIIC2DCCAcCgAwIBAgIBATANBgkqh ...    
+  tls.key: |
+    MIIEpgIBAAKCAQEA7yn3bRHQ5FHMQ ...   
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;创建docker secret:&lt;/p&gt;
+&lt;p&gt;kubernetes.io/dockercfg	~/.dockercfg 文件的序列化形式&lt;/p&gt;
+&lt;p&gt;kubernetes.io/dockerconfigjson	~/.docker/config.json 文件的序列化形式&lt;/p&gt;
+&lt;p&gt;给一个private registry创建secret:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ kubectl -n ns create secret docker-registry &amp;lt;name&amp;gt; \
+--docker-server=https://harbor.domain.com --docker-username=user --docker-password=pw --docker-email=canuxcheng@gmail.com 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;根据本地的文件创建secret（如果需要多个registry，可以先在本地登陆）&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ kubectl -n ns create secret generic regcred \
+--from-file=.dockerconfigjson=$HOME/.docker/config.json \
+--type=kubernetes.io/dockerconfigjson
+
+apiVersion: v1
+kind: Secret
+metadata:
+  name: artifactory-cred
+  namespace: ...
+type: kubernetes.io/dockerconfigjson
+data:
+  .dockerconfigjson: ewoJImF1d......
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;service&#34;&gt;Service&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;apiVersion: v1
+kind: Service
+metadata:
+  name: grafana-service
+  namespace: influxdata
+spec:
+  type: NodePort
+  ports:
+  - name: https
+    port: 3000 // 集群内部访问的port.
+    targetPort: 3000 // pod指定的port.
+    nodePort: 32000 // 集群外部访问内部service的port.
+  selector:   // 匹配资源的metadata.labels
+    app: grafana
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;externalname-service&#34;&gt;ExternalName Service&lt;/h2&gt;
+&lt;p&gt;ExternalName Service 是 Service 的特例，它没有选择算符，但是使用 DNS 名称, 将服务映射到 DNS 名称，而不是selector.&lt;/p&gt;
+&lt;p&gt;访问其它namespace的service.&lt;/p&gt;
+&lt;p&gt;当查找主机 my-service.my-ns.svc.cluster.local 时，集群 DNS 服务返回 CNAME 记录， 其值为 out-service.out-ns.svc.cluster.local。
+访问 my-service 的方式与其他服务的方式相同，但主要区别在于重定向发生在 DNS 级别，而不是通过代理或转发&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;apiVersion: v1
+kind: Service
+metadata:
+  name: my-service
+  namespace: my-ns
+spec:
+  type: ExternalName
+  externalName: out-service.out-ns.svc.cluster.local // 指向其它namespace的service.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;endpoint&#34;&gt;Endpoint&lt;/h2&gt;
+&lt;p&gt;下面场景可以使用Endpoint.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;希望在生产环境中使用外部的数据库集群，但测试环境使用自己的数据库。&lt;/li&gt;
+&lt;li&gt;希望服务指向另一个 命名空间 中或其它集群中的服务。&lt;/li&gt;
+&lt;li&gt;您正在将工作负载迁移到 Kubernetes。 在评估该方法时，您仅在 Kubernetes 中运行一部分后端。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;先创建service:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;apiVersion: v1
+kind: Service
+metadata:
+  name: mysql-service
+  namespace: influxdata
+spec:
+  ports:
+    - protocol: TCP
+      port: 3306
+      targetPort: 3306
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;再创建endpoint：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;apiVersion: v1
+kind: Endpoints
+metadata:
+  name: mysql-service
+  namespace: influxdata
+subsets:
+  - addresses:
+      - ip: 10.103.X.X // 指向外部服务的IP
+    ports:
+      - port: 3306
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;hpc&#34;&gt;HPC&lt;/h1&gt;
+&lt;p&gt;Horizontal Pod Autoscaler&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;apiVersion: autoscaling/v2beta2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: 
+  labels: 
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: d-name
+  minReplicas: 2
+  maxReplicas: 20
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        targetAverageUtilization: 80
+    - type: Resource
+      resource:
+        name: memory
+        targetAverageUtilization: 80
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;authentication&#34;&gt;Authentication&lt;/h1&gt;
+&lt;p&gt;默认的ClusterRole和ClusterRoleBinding大部分是system:开头。&lt;/p&gt;
+&lt;h2 id=&#34;serviceaccont&#34;&gt;ServiceAccont&lt;/h2&gt;
+&lt;p&gt;服务账户是在具体名字空间的。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: default
+  namespace: default
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;1.22之前k8s会自动给SA创建token.&lt;/p&gt;
+&lt;p&gt;1.24之后使用TokenRequest获取有时间限制的token。&lt;/p&gt;
+&lt;p&gt;创建持久化token&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;apiVersion: v1
+kind: Secret
+type: kubernetes.io/service-account-token
+metadata:
+  name: mysecretname
+  annotations:
+    kubernetes.io/service-account.name: myserviceaccount
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;role&#34;&gt;Role&lt;/h2&gt;
+&lt;p&gt;通过role来给指定ns内的资源授权.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: default
+  name: pod-reader
+rules:
+- apiGroups: [&amp;quot;&amp;quot;] # &amp;quot;&amp;quot; 标明 core API 组
+  resources: [&amp;quot;pods&amp;quot;]
+  verbs: [&amp;quot;get&amp;quot;, &amp;quot;watch&amp;quot;, &amp;quot;list&amp;quot;]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;rolebinding&#34;&gt;RoleBinding&lt;/h2&gt;
+&lt;p&gt;将role或clusterrole权限赋予具体的角色.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;apiVersion: rbac.authorization.k8s.io/v1
+# 此角色绑定允许 &amp;quot;jane&amp;quot; 读取 &amp;quot;default&amp;quot; 名字空间中的 Pods
+kind: RoleBinding
+metadata:
+  name: read-pods
+  namespace: default
+subjects:
+# 你可以指定不止一个“subject（主体）”
+- kind: User
+  name: jane # &amp;quot;name&amp;quot; 是区分大小写的
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  # &amp;quot;roleRef&amp;quot; 指定与某 Role 或 ClusterRole 的绑定关系
+  kind: Role # 此字段必须是 Role 或 ClusterRole
+  name: pod-reader     # 此字段必须与你要绑定的 Role 或 ClusterRole 的名称匹配
+  apiGroup: rbac.authorization.k8s.io
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;clusterrole&#34;&gt;ClusterRole&lt;/h2&gt;
+&lt;p&gt;clusterrole给整个集群授权.不需要namespace.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  # &amp;quot;namespace&amp;quot; 被忽略，因为 ClusterRoles 不受名字空间限制
+  name: secret-reader
+rules:
+- apiGroups: [&amp;quot;&amp;quot;]
+  # 在 HTTP 层面，用来访问 Secret 对象的资源的名称为 &amp;quot;secrets&amp;quot;
+  resources: [&amp;quot;secrets&amp;quot;]
+  verbs: [&amp;quot;get&amp;quot;, &amp;quot;watch&amp;quot;, &amp;quot;list&amp;quot;]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;clusterrolebinding&#34;&gt;ClusterRoleBinding&lt;/h2&gt;
+&lt;p&gt;跨集群授权（也就是要访问不同ns的资源).不需要namespace.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;apiVersion: rbac.authorization.k8s.io/v1
+# 此集群角色绑定允许 “manager” 组中的任何人访问任何名字空间中的 secrets
+kind: ClusterRoleBinding
+metadata:
+  name: read-secrets-global
+subjects:
+- kind: Group
+  name: manager # &#39;name&#39; 是区分大小写的
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: ClusterRole
+  name: secret-reader
+  apiGroup: rbac.authorization.k8s.io
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
+        <item>
+        <title>Operator</title>
+        <link>https://canuxcheng.com/post/k8s_operator/</link>
+        <pubDate>Fri, 10 Jan 2020 20:55:52 +0800</pubDate>
+        
+        <guid>https://canuxcheng.com/post/k8s_operator/</guid>
+        <description>&lt;h1 id=&#34;operator&#34;&gt;Operator&lt;/h1&gt;
+&lt;p&gt;TPR(Third Party Resource) 在k8s 1.7 被集成，并命名为CRD(Custom Resource Definition).&lt;/p&gt;
+&lt;p&gt;通过CRD，K8S可以动态的添加和管理资源，controller跟踪这些资源。&lt;/p&gt;
+&lt;p&gt;CRD+custom Controller = decalartive API(声明式API),一般分为通用性controller和operator.&lt;/p&gt;
+&lt;p&gt;通用型controller一般用于平台需求，operator一般用于部署特定应用.&lt;/p&gt;
+&lt;p&gt;用于开发operator的工具有kubebuilder和operator-sdk, 他们都是基于controller-runtime开发.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/operator-framework/awesome-operators&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/operator-framework/awesome-operators&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://access.redhat.com/documentation/zh-cn/openshift_container_platform/4.2/html/operators/index&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://access.redhat.com/documentation/zh-cn/openshift_container_platform/4.2/html/operators/index&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://operatorhub.io/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://operatorhub.io/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;开发示例:&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/kubernetes/sample-controller&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/kubernetes/sample-controller&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;operator的build三种模式:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;go&lt;/li&gt;
+&lt;li&gt;ansible&lt;/li&gt;
+&lt;li&gt;helm&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;operator的run三种模式:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在集群外部本地运行（开发测试).&lt;/li&gt;
+&lt;li&gt;作为deployment在集群内部运行.&lt;/li&gt;
+&lt;li&gt;通过OLM部署.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;operator-sdk&#34;&gt;operator-sdk&lt;/h1&gt;
+&lt;p&gt;redhat的operator-sdk可以方便的开发opeartor.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/operator-framework/operator-sdk&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/operator-framework/operator-sdk&lt;/a&gt;
+&lt;a class=&#34;link&#34; href=&#34;https://sdk.operatorframework.io/docs/installation/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://sdk.operatorframework.io/docs/installation/&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;kubebuilder&#34;&gt;kubebuilder&lt;/h1&gt;
+&lt;p&gt;sig维护的kubebuilder也能方便的开发operator.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/kubernetes-sigs/kubebuilder&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/kubernetes-sigs/kubebuilder&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Service Discovery</title>
+        <link>https://canuxcheng.com/post/k8s_servicediscovery/</link>
+        <pubDate>Fri, 10 Jan 2020 20:55:52 +0800</pubDate>
+        
+        <guid>https://canuxcheng.com/post/k8s_servicediscovery/</guid>
+        <description>&lt;h1 id=&#34;coordination--service-discovery&#34;&gt;Coordination &amp;amp; Service Discovery&lt;/h1&gt;
+&lt;p&gt;微服务的服务注册和服务发现.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;coredns&lt;/li&gt;
+&lt;li&gt;etcd&lt;/li&gt;
+&lt;li&gt;zookeeper&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;etcd&#34;&gt;Etcd&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/etcd-io/etcd&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/etcd-io/etcd&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;类似的有consul和zoomkeeper.&lt;/p&gt;
+&lt;h3 id=&#34;etcdctl&#34;&gt;etcdctl&lt;/h3&gt;
+&lt;p&gt;使用证书访问:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ etcdctl \
+--cacert=/etc/kubernetes/pki/etcd/ca.crt \
+--cert=/etc/kubernetes/pki/etcd/server.crt  \
+--key=/etc/kubernetes/pki/etcd/server.key \
+--insecure-skip-tls-verify=true \
+&amp;lt;command&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看所有key&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ etcdctl get / --prefix --keys-only
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;zookeeper&#34;&gt;zookeeper&lt;/h2&gt;
+</description>
+        </item>
+        <item>
+        <title>API Access Control</title>
+        <link>https://canuxcheng.com/post/k8s_accesscontrol/</link>
+        <pubDate>Sat, 04 Jan 2020 20:03:39 +0800</pubDate>
+        
+        <guid>https://canuxcheng.com/post/k8s_accesscontrol/</guid>
+        <description>&lt;h1 id=&#34;api-access-control&#34;&gt;API Access Control&lt;/h1&gt;
+&lt;h2 id=&#34;admission-controllers&#34;&gt;Admission Controllers&lt;/h2&gt;
+&lt;h3 id=&#34;mutatingadmissionwebhook&#34;&gt;MutatingAdmissionWebhook&lt;/h3&gt;
+&lt;h3 id=&#34;validatingadmissionwebhook&#34;&gt;ValidatingAdmissionWebhook&lt;/h3&gt;
+&lt;h3 id=&#34;validatingwebhookconfiguration&#34;&gt;ValidatingWebhookConfiguration&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingWebhookConfiguration
+metadata:
+  annotations:
+    meta.helm.sh/release-name: ingress-nginx-internal
+    meta.helm.sh/release-namespace: ingress-nginx
+  labels:
+    app.kubernetes.io/component: admission-webhook
+    app.kubernetes.io/instance: ingress-nginx-internal
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: ingress-nginx
+    app.kubernetes.io/part-of: ingress-nginx
+    app.kubernetes.io/version: 1.9.1
+    helm.sh/chart: ingress-nginx-4.8.1
+  name: ingress-nginx-internal-admission
+webhooks:
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    caBundle: 
+    service:
+      name: ingress-nginx-internal-controller-admission
+      namespace: ingress-nginx
+      path: /networking/v1/ingresses
+      port: 443
+  failurePolicy: Fail
+  matchPolicy: Equivalent
+  name: validate.nginx.ingress.kubernetes.io
+  namespaceSelector: {}
+  objectSelector: {}
+  rules:
+  - apiGroups:
+    - networking.k8s.io
+    apiVersions:
+    - v1
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - ingresses
+    scope: &#39;*&#39;
+  sideEffects: None
+  timeoutSeconds: 10
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;mutatingwebhookconfiguration&#34;&gt;MutatingWebhookConfiguration&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;apiVersion: admissionregistration.k8s.io/v1
+kind: MutatingWebhookConfiguration
+metadata:
+  annotations:
+    meta.helm.sh/release-name: vault-secrets-webhook
+    meta.helm.sh/release-namespace: vault-secrets-webhook
+  labels:
+    app.kubernetes.io/managed-by: Helm
+  name: vault-secrets-webhook
+webhooks:
+- admissionReviewVersions:
+  - v1beta1
+  clientConfig:
+    caBundle:
+    service:
+      name: vault-secrets-webhook
+      namespace: vault-secrets-webhook
+      path: /pods
+      port: 443
+  failurePolicy: Ignore
+  matchPolicy: Equivalent
+  name: pods.vault-secrets-webhook.admission.banzaicloud.com
+  namespaceSelector:
+    matchExpressions:
+    - key: name
+      operator: NotIn
+      values:
+      - kube-system
+    - key: kubernetes.io/metadata.name
+      operator: NotIn
+      values:
+      - kube-system
+    - key: kubernetes.io/metadata.name
+      operator: NotIn
+      values:
+      - vault-secrets-webhook
+  objectSelector:
+    matchExpressions:
+    - key: security.banzaicloud.io/mutate
+      operator: NotIn
+      values:
+      - skip
+  reinvocationPolicy: Never
+  rules:
+  - apiGroups:
+    - &#39;*&#39;
+    apiVersions:
+    - &#39;*&#39;
+    operations:
+    - CREATE
+    resources:
+    - pods
+    scope: &#39;*&#39;
+  sideEffects: NoneOnDryRun
+  timeoutSeconds: 10
+- admissionReviewVersions:
+  - v1beta1
+  clientConfig:
+    caBundle:
+    service:
+      name: vault-secrets-webhook
+      namespace: vault-secrets-webhook
+      path: /secrets
+      port: 443
+  failurePolicy: Ignore
+  matchPolicy: Equivalent
+  name: secrets.vault-secrets-webhook.admission.banzaicloud.com
+  namespaceSelector:
+    matchExpressions:
+    - key: name
+      operator: NotIn
+      values:
+      - kube-system
+    - key: kubernetes.io/metadata.name
+      operator: NotIn
+      values:
+      - kube-system
+    - key: kubernetes.io/metadata.name
+      operator: NotIn
+      values:
+      - vault-secrets-webhook
+  objectSelector:
+    matchExpressions:
+    - key: owner
+      operator: NotIn
+      values:
+      - helm
+    - key: security.banzaicloud.io/mutate
+      operator: NotIn
+      values:
+      - skip
+  reinvocationPolicy: Never
+  rules:
+  - apiGroups:
+    - &#39;*&#39;
+    apiVersions:
+    - &#39;*&#39;
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - secrets
+    scope: &#39;*&#39;
+  sideEffects: NoneOnDryRun
+  timeoutSeconds: 10
+- admissionReviewVersions:
+  - v1beta1
+  clientConfig:
+    caBundle:
+    service:
+      name: vault-secrets-webhook
+      namespace: vault-secrets-webhook
+      path: /configmaps
+      port: 443
+  failurePolicy: Ignore
+  matchPolicy: Equivalent
+  name: configmaps.vault-secrets-webhook.admission.banzaicloud.com
+  namespaceSelector:
+    matchExpressions:
+    - key: name
+      operator: NotIn
+      values:
+      - kube-system
+    - key: kubernetes.io/metadata.name
+      operator: NotIn
+      values:
+      - kube-system
+    - key: kubernetes.io/metadata.name
+      operator: NotIn
+      values:
+      - vault-secrets-webhook
+  objectSelector:
+    matchExpressions:
+    - key: owner
+      operator: NotIn
+      values:
+      - helm
+    - key: security.banzaicloud.io/mutate
+      operator: NotIn
+      values:
+      - skip
+  reinvocationPolicy: Never
+  rules:
+  - apiGroups:
+    - &#39;*&#39;
+    apiVersions:
+    - &#39;*&#39;
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - configmaps
+    scope: &#39;*&#39;
+  sideEffects: NoneOnDryRun
+  timeoutSeconds: 10
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
+        <item>
+        <title>Automation &amp; Configuration</title>
+        <link>https://canuxcheng.com/post/cncf_platform/</link>
+        <pubDate>Sat, 04 Jan 2020 20:03:39 +0800</pubDate>
+        
+        <guid>https://canuxcheng.com/post/cncf_platform/</guid>
+        <description>&lt;h1 id=&#34;automation--configuration&#34;&gt;Automation &amp;amp; Configuration&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Cloud Custodian&lt;/li&gt;
+&lt;li&gt;kubeedge&lt;/li&gt;
+&lt;li&gt;pulumi&lt;/li&gt;
+&lt;li&gt;terraform&lt;/li&gt;
+&lt;li&gt;opentofu&lt;/li&gt;
+&lt;li&gt;kratix&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;platform orchestration.&lt;/p&gt;
+&lt;h2 id=&#34;kratix&#34;&gt;kratix&lt;/h2&gt;
+</description>
+        </item>
+        <item>
+        <title>Dashboard</title>
+        <link>https://canuxcheng.com/post/k8s_dashboard/</link>
+        <pubDate>Sat, 04 Jan 2020 20:03:39 +0800</pubDate>
+        
+        <guid>https://canuxcheng.com/post/k8s_dashboard/</guid>
+        <description>&lt;h1 id=&#34;dashboard-add-ons&#34;&gt;dashboard add-ons&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;kubernetes-dashboard&lt;/li&gt;
+&lt;li&gt;lens&lt;/li&gt;
+&lt;li&gt;octant&lt;/li&gt;
+&lt;li&gt;weave scope&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;kubernetes-dashboard&#34;&gt;kubernetes-dashboard&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/kubernetes/dashboard&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/kubernetes/dashboard&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 部署dashboard
+$ kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.2.0/aio/deploy/recommended.yaml
+
+// check
+$ kubectl -n kubernetes-dashboard get pods --watch
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;1&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 删除已安装的dashboard
+$ kubectl delete ns kubernetes-dashboard
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;dashboard-arguments&#34;&gt;dashboard arguments&lt;/h3&gt;
+&lt;p&gt;使用basic auth:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;--enable-skip-login
+--enable-insecure-login
+--system-banner=&amp;quot;Welcome to Kubernetes&amp;quot;
+--authentication-mode=&amp;quot;basic&amp;quot; // 默认是 token 登陆.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;access-control&#34;&gt;access control&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;kubeconfig&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;authorization header&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;token&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;basic&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;username/password login&lt;/p&gt;
+&lt;h3 id=&#34;access-dashboard&#34;&gt;access dashboard&lt;/h3&gt;
+&lt;p&gt;本机访问&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ kubectl proxy
+#&amp;gt; http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;远程访问&lt;/p&gt;
+&lt;p&gt;port-forward:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ kubectl port-forward -n kubernetes-dashboard service/kubernetes-dashboard 8080:443 --address 0.0.0.0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;nodePort:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;kind: Service
+apiVersion: v1
+metadata:
+  labels:
+    k8s-app: kubernetes-dashboard
+  name: kubernetes-dashboard
+  namespace: kubernetes-dashboard
+spec:
+  type: NodePort
+  ports:
+    - port: 443
+    targetPort: 8443
+    nodePort: 30001
+selector:
+  k8s-app: kubernetes-dashboard
+
+#&amp;gt; https://&amp;lt;node-ip&amp;gt;:30001
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;ingress:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;#&amp;gt; https://&amp;lt;ingress-host&amp;gt;:&amp;lt;ingress-port&amp;gt; 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;metrics-server&#34;&gt;metrics-server&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/kubernetes-sigs/metrics-server&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/kubernetes-sigs/metrics-server&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;参数:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;--kubelet-preferred-address-types
+--kubelet-insecure-tls
+--requestheader-client-ca-file
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;部署:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# deploy 0.3.6
+# 修改image为  registry.aliyuncs.com/google_containers/metrics-server-amd64:v0.3.6
+$ kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
+        <item>
+        <title>Key Management</title>
+        <link>https://canuxcheng.com/post/k8s_km/</link>
+        <pubDate>Sat, 04 Jan 2020 20:03:39 +0800</pubDate>
+        
+        <guid>https://canuxcheng.com/post/k8s_km/</guid>
+        <description>&lt;h1 id=&#34;key-management&#34;&gt;Key Management&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;spiffe&lt;/li&gt;
+&lt;li&gt;spire&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+        </item>
+        <item>
+        <title>Microservivce</title>
+        <link>https://canuxcheng.com/post/k8s_microservice/</link>
+        <pubDate>Sat, 04 Jan 2020 20:03:39 +0800</pubDate>
+        
+        <guid>https://canuxcheng.com/post/k8s_microservice/</guid>
+        <description>&lt;h1 id=&#34;microservivce&#34;&gt;Microservivce&lt;/h1&gt;
+&lt;p&gt;微服务是一种架构。&lt;/p&gt;
+&lt;p&gt;常见的架构:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Monolithic application 单体应用.&lt;/li&gt;
+&lt;li&gt;SOA(service-oriented architecture) 面向服务的体系结构.&lt;/li&gt;
+&lt;li&gt;MicroServices 微服务.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;微服务架构的服务治理包括:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;service registry 服务注册&lt;/li&gt;
+&lt;li&gt;service discovery 服务发现&lt;/li&gt;
+&lt;li&gt;observability 可观测性(metrics,logging,trace)&lt;/li&gt;
+&lt;li&gt;流量管理&lt;/li&gt;
+&lt;li&gt;安全&lt;/li&gt;
+&lt;li&gt;控制&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;微服务应用可以通过容器化(docker, k8s)部署，也可以通过serverless方式部署.&lt;/p&gt;
+&lt;p&gt;不同的语言有不同的微服务框架.
+java的dubbo, sprint boot.
+golang的go-kit,  go-zero, kratos.
+python的zappa, nameko.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;dapr&#34;&gt;Dapr&lt;/h2&gt;
+&lt;p&gt;Dapr is a portable, event-driven, runtime for building distributed applications across cloud and edge.&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Scheduling &amp; Orchestration</title>
+        <link>https://canuxcheng.com/post/cncf_orchestration/</link>
+        <pubDate>Sat, 04 Jan 2020 20:03:39 +0800</pubDate>
+        
+        <guid>https://canuxcheng.com/post/cncf_orchestration/</guid>
+        <description>&lt;h1 id=&#34;scheduling--orchestration&#34;&gt;Scheduling &amp;amp; Orchestration&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;docker swarm.&lt;/li&gt;
+&lt;li&gt;KEDA&lt;/li&gt;
+&lt;li&gt;Crossplane&lt;/li&gt;
+&lt;li&gt;Knative&lt;/li&gt;
+&lt;li&gt;Kubeflow&lt;/li&gt;
+&lt;li&gt;Volcano&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;crossplane&#34;&gt;Crossplane&lt;/h2&gt;
+</description>
+        </item>
+        <item>
+        <title>Serverless</title>
+        <link>https://canuxcheng.com/post/k8s_serverless/</link>
+        <pubDate>Sat, 04 Jan 2020 20:03:39 +0800</pubDate>
+        
+        <guid>https://canuxcheng.com/post/k8s_serverless/</guid>
+        <description>&lt;h1 id=&#34;serverless&#34;&gt;Serverless&lt;/h1&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;knative&#34;&gt;Knative&lt;/h2&gt;
+&lt;p&gt;Knative is a developer-focused serverless application layer which is a great complement to the existing Kubernetes application constructs. Knative consists of three components: an HTTP-triggered autoscaling container runtime called “Knative Serving”, a CloudEvents-over-HTTP asynchronous routing layer called “Knative Eventing”, and a developer-focused function framework which leverages the Serving and Eventing components, called &amp;ldquo;Knative Functions&amp;rdquo;.&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Service Mesh</title>
+        <link>https://canuxcheng.com/post/k8s_servicemesh/</link>
+        <pubDate>Sat, 04 Jan 2020 20:03:39 +0800</pubDate>
+        
+        <guid>https://canuxcheng.com/post/k8s_servicemesh/</guid>
+        <description>&lt;h1 id=&#34;service-mesh&#34;&gt;Service Mesh&lt;/h1&gt;
+&lt;p&gt;servivce mesh是cncf基于sidecar推出的下一代面向云原生的微服务架构，是微服务基础设施, 用于处理微服务通信、治理、控制、可观测、安全等问题，具备业务无侵入、多语言、热升级等诸多特性.&lt;/p&gt;
+&lt;p&gt;sidecar: 边车模式，就是把业务无关的功能，日志记录、监控、流量控制、服务注册、服务发现、服务限流、服务熔断、鉴权、访问控制和服务调用可视化等独立出来。&lt;/p&gt;
+&lt;p&gt;特点:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;应用程序通信的中间层&lt;/li&gt;
+&lt;li&gt;轻量级网络代理&lt;/li&gt;
+&lt;li&gt;应用程序无感知&lt;/li&gt;
+&lt;li&gt;解耦应用程序的重试、超时、监控、追踪和服务发现.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Service Mesh是建立在物理或者虚拟网络层之上的，基于策略的微服务的流量控制，与一般的网络协议不同的是它有以下几个特点：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;开发者驱动&lt;/li&gt;
+&lt;li&gt;可配置策略&lt;/li&gt;
+&lt;li&gt;服务优先的网络配置而不是协议&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;istio&#34;&gt;Istio&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;linkerd&#34;&gt;Linkerd&lt;/h2&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        <item>
+        <title>Service Proxy</title>
+        <link>https://canuxcheng.com/post/k8s_proxy/</link>
+        <pubDate>Sat, 04 Jan 2020 20:03:39 +0800</pubDate>
+        
+        <guid>https://canuxcheng.com/post/k8s_proxy/</guid>
+        <description>&lt;h1 id=&#34;service-proxy&#34;&gt;Service Proxy&lt;/h1&gt;
+&lt;p&gt;ingress =&amp;gt; gateway api&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;envoy&lt;/li&gt;
+&lt;li&gt;contour&lt;/li&gt;
+&lt;li&gt;traefik proxy&lt;/li&gt;
+&lt;li&gt;haproxy&lt;/li&gt;
+&lt;li&gt;metaLB&lt;/li&gt;
+&lt;li&gt;nginx&lt;/li&gt;
+&lt;li&gt;openelb&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;ingress-controller&#34;&gt;ingress controller&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;Ingress-nginx(nginx)&lt;/li&gt;
+&lt;li&gt;aws-load-balancer-controller(alb)&lt;/li&gt;
+&lt;li&gt;ingress-gce&lt;/li&gt;
+&lt;li&gt;Traefik&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The kubernetes.io/ingress.class annotation is deprecated from kubernetes v1.22+.通过IngressClasses来选择ingress controller。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ingressClassName: nginx
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;ingress 语法&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: minimal-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx-example
+  defaultBackend:
+    resource:
+      apiGroup: k8s.example.com
+      kind: StorageBucket
+      name: static-assets
+  rules:
+  - http:
+      paths:
+      - path: /testpath
+        pathType: Prefix
+        backend:
+          service:
+            name: test
+            port:
+              number: 80
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;ImplementationSpecific：对于这种路径类型，匹配方法取决于 IngressClass。 具体实现可以将其作为单独的 pathType 处理或者与 Prefix 或 Exact 类型作相同处理。&lt;/p&gt;
+&lt;p&gt;Exact：精确匹配 URL 路径，且区分大小写。&lt;/p&gt;
+&lt;p&gt;Prefix：基于以 / 分隔的 URL 路径前缀匹配。匹配区分大小写，并且对路径中的元素逐个完成。 路径元素指的是由 / 分隔符分隔的路径中的标签列表。 如果每个 p 都是请求路径 p 的元素前缀，则请求与路径 p 匹配。&lt;/p&gt;
+&lt;p&gt;ingressclass没有namespace。&lt;/p&gt;
+&lt;h2 id=&#34;gateway-api-controller&#34;&gt;gateway api controller&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;cilium&lt;/li&gt;
+&lt;li&gt;contour&lt;/li&gt;
+&lt;li&gt;GKE&lt;/li&gt;
+&lt;li&gt;EKS&lt;/li&gt;
+&lt;li&gt;kong&lt;/li&gt;
+&lt;li&gt;traefik&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;ingress-nginx&#34;&gt;ingress-nginx&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/kubernetes/ingress-nginx&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/kubernetes/ingress-nginx&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 部署
+ $ kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.34.1/deploy/static/provider/baremetal/deploy.yaml
+
+// 验证部署
+$ kubectl get pods --all-namespaces -l app.kubernetes.io/name=ingress-nginx --watch
+
+// Detect installed version
+POD_NAMESPACE=ingress-nginx
+POD_NAME=$(kubectl get pods -n $POD_NAMESPACE -l app.kubernetes.io/name=ingress-nginx -o jsonpath=&#39;{.items[0].metadata.name}&#39;)
+$ kubectl exec -it $POD_NAME -n $POD_NAMESPACE -- /nginx-ingress-controller --version
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;tls:&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://kubernetes.github.io/ingress-nginx/user-guide/tls/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://kubernetes.github.io/ingress-nginx/user-guide/tls/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://kubernetes.io/zh-cn/docs/concepts/services-networking/ingress/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://kubernetes.io/zh-cn/docs/concepts/services-networking/ingress/&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;traefik&#34;&gt;traefik&lt;/h2&gt;
+&lt;p&gt;traefik2.2+&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/traefik/traefik&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/traefik/traefik&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;install with helm:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;helm repo add traefik https://helm.traefik.io/traefik
+helm repo update
+helm install --create-namespace traefik -n traefik traefik traefik/traefik -f ./value.yaml
+
+# expose dashboard:
+kubectl port-forward -n traefik $(kubectl get pods -n traefik --selector &amp;quot;app.kubernetes.io/name=traefik&amp;quot; --output=name) 9000:9000 --address 0.0.0.0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;请求模型&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Client =&amp;gt; Traefik =&amp;gt; Backend
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;端口:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;9000: traefik管理页面端口
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;重要组件&#34;&gt;重要组件&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Providers: 自动发现平台上的服务.&lt;/li&gt;
+&lt;li&gt;Entrypoints: 监听传入的流量，定义接受请求的端口.&lt;/li&gt;
+&lt;li&gt;Routers: 分析请求，负责将传入请求连接到负责处理的服务上.&lt;/li&gt;
+&lt;li&gt;Middlewares: 在routers转给services之前修改请求.&lt;/li&gt;
+&lt;li&gt;Services/LB: 将请求转给应用, 负责配置处理请求的实际服务.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;配置&#34;&gt;配置&lt;/h3&gt;
+&lt;p&gt;两种配置类型&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;静态配置: 启动时的配置，通过配置文件(/etc/traefik/traefik.[toml|yaml]，环境变量或命令行参数配置 providers和entrypoints等.&lt;/li&gt;
+&lt;li&gt;动态配置: 动态的路由配置，定义系统如何处理请求,从providers获取动态配置.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;静态配置:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;entrypoints&lt;/li&gt;
+&lt;li&gt;providers&lt;/li&gt;
+&lt;li&gt;servertransport&lt;/li&gt;
+&lt;li&gt;certificatesresolvers&lt;/li&gt;
+&lt;li&gt;api&lt;/li&gt;
+&lt;li&gt;ping&lt;/li&gt;
+&lt;li&gt;experimental&lt;/li&gt;
+&lt;li&gt;hostresolver&lt;/li&gt;
+&lt;li&gt;accesslog&lt;/li&gt;
+&lt;li&gt;log&lt;/li&gt;
+&lt;li&gt;metrics(datadog, influxdb, prometheus,statsd)&lt;/li&gt;
+&lt;li&gt;tracing(datadog, elastic, haystack, instana, jaeger, zipkin)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;全局配置:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;--global.checknewversion
+--global.sendanonymoususagge
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;控制Traefik到Backend的连接的参数serversTransport:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;--serversTransport.insecureSkipVerify=true
+# self-signed TLS CA.
+--serversTransport.rootCAs=foo.crt,bar.crt
+--serversTransport.maxIdleConnsPerHost=7
+--serversTransport.forwardingTimeouts.dialTimeout=1s
+--serversTransport.forwardingTimeouts.responseHeaderTimeout=1s
+--serversTransport.forwardingTimeouts.idleConnTimeout=1s
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;kubernetes-provider&#34;&gt;kubernetes provider&lt;/h3&gt;
+&lt;p&gt;kubernetes provider有三种类型&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Ingress&lt;/li&gt;
+&lt;li&gt;IngressRoute&lt;/li&gt;
+&lt;li&gt;Gateway API&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;https--tls&#34;&gt;https &amp;amp; tls&lt;/h3&gt;
+&lt;p&gt;traefik的证书可以是手动创建证书，也可以通过let&amp;rsquo;s encrypt自动创建&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: name
+  namespace: ns
+spec:
+  tls:
+    secretName: my-tls
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;通过Let&amp;rsquo;s encrypt来自动创建证书有三种验证方式（tls, http, dns).&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;- &amp;quot;--certificatesresolvers.myresolver.acme.httpchallenge=true&amp;quot;
+- &amp;quot;--certificatesresolvers.myresolver.acme.httpchallenge.entrypoint=web&amp;quot;
+- &amp;quot;--certificatesresolvers.myresolver.acme.tlschallenge=true&amp;quot;
+- &amp;quot;--certificatesresolvers.myresolver.acme.tlschallenge.entrypoint=websecure&amp;quot;
+- &amp;quot;--certificatesresolvers.myresolver.acme.email=canux.cheng@arm.com&amp;quot;
+- &amp;quot;--certificatesresolvers.myresolver.acme.storage=acme.json&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        <item>
+        <title>Kubeadm</title>
+        <link>https://canuxcheng.com/post/k8s_kubeadm/</link>
+        <pubDate>Mon, 30 Dec 2019 21:47:17 +0800</pubDate>
+        
+        <guid>https://canuxcheng.com/post/k8s_kubeadm/</guid>
+        <description>&lt;h1 id=&#34;kubeadm&#34;&gt;kubeadm&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/kubernetes/kubeadm&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/kubernetes/kubeadm&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;kubeadm是k8s自带的部署集群的工具.&lt;/p&gt;
+&lt;h1 id=&#34;install&#34;&gt;Install&lt;/h1&gt;
+&lt;h2 id=&#34;准备工作&#34;&gt;准备工作&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://kubernetes.io/zh/docs/setup/production-environment/tools/kubeadm/install-kubeadm/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://kubernetes.io/zh/docs/setup/production-environment/tools/kubeadm/install-kubeadm/&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;安装runtime&#34;&gt;安装runtime&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://kubernetes.io/zh/docs/setup/production-environment/container-runtimes/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://kubernetes.io/zh/docs/setup/production-environment/container-runtimes/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;默认的cgroup驱动时cgroupfs,如果系统是systemd，就会有两个cgroup driver，会出问题.&lt;/p&gt;
+&lt;p&gt;如果修改cgroup driver需要同时修改CRI和kubelet.&lt;/p&gt;
+&lt;p&gt;修改containerd的cgroup driver:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo vim /etc/containerd/config.toml
+#disabled_plugins = [&amp;quot;cri&amp;quot;]
+[plugins.&amp;quot;io.containerd.grpc.v1.cri&amp;quot;.containerd.runtimes.runc.options]
+  SystemdCgroup = true
+
+$ sudo systemctl restart containerd
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;修改kubelet的cgroup driver(kubeadm-config.yaml):&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# kubeadm-config.yaml
+kind: ClusterConfiguration
+apiVersion: kubeadm.k8s.io/v1beta3
+kubernetesVersion: v1.21.0    // kubelet --version
+---
+apiVersion: kubelet.config.k8s.io/v1beta1
+kind: KubeletConfiguration
+cgroupDriver: systemd
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;安装kubeadm-kubelet-kubectl&#34;&gt;安装kubeadm, kubelet, kubectl&lt;/h2&gt;
+&lt;p&gt;在每台机器上安装 kubeadm, kubelet, kubectl:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo apt-get update
+$ sudo apt-get install -y apt-transport-https ca-certificates curl
+$ sudo curl -fsSL https://mirrors.aliyun.com/kubernetes/apt/doc/apt-key.gpg | sudo apt-key add - 
+$ echo &amp;quot;deb https://mirrors.aliyun.com/kubernetes/apt/ kubernetes-xenial main&amp;quot; | sudo tee /etc/apt/sources.list.d/kubernetes.list
+$ sudo apt-get update
+$ sudo apt-get --yes --allow-unauthenticated install kubeadm kubelet kubectl
+$ sudo apt-mark hold kubelet kubeadm kubectl
+$ sudo systemctl enable kubelet
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;kubeadm-cli&#34;&gt;Kubeadm CLI&lt;/h1&gt;
+&lt;p&gt;init:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ kubeadm init 
+--config kubeadm-config.yaml
+--kubernetes-version &amp;lt;version&amp;gt; // kubelet --version
+--apiserver-advertise-address &amp;lt;master&amp;gt; // 多网卡指定网卡IP
+--image-repository &amp;lt;registry&amp;gt; // default: k8s.gcr.io
+--pod-network-cidr &amp;lt;cidr&amp;gt; // 指定pod的cidr
+--service-cidr &amp;lt;cidr&amp;gt; // default: 10.96.0.0/12
+--service-dns-domain // default: cluster.local
+--cri-socket // 如果安装了多个cri需要指定.
+--ignore-preflight-errors
+--upload-certs
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;join:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ kubeadm join [apiserver-advertise-address] --token &amp;lt;token&amp;gt; --discovery-token-ca-cert-hash &amp;lt;hash&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;reset:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ kubeadm reset -f/--force
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;token:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ kubeadm token create/delete/generate/list
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;部署cluster&#34;&gt;部署Cluster&lt;/h1&gt;
+&lt;h2 id=&#34;部署master&#34;&gt;部署master&lt;/h2&gt;
+&lt;p&gt;关闭swap&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo swapoff -a
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;初始化&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo kubeadm init \
+--pod-network-cidr=10.244.0.0/16 \
+--apiserver-advertise-address=&amp;lt;IP&amp;gt; \
+--kubernetes-version=v1.17.0 \
+--image-repository=registry.aliyuncs.com/google_containers \
+--cri-socket=/run/containerd/containerd.sock \
+-v=6
+// --config 一般使用默认即可.
+// --pod-network-cidr=10.244.0.0/16 是固定用法，表示选择flannel为网络插件。
+// --image-repository 指定registry, 默认是gcr
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;配置当前帐号&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;mkdir -p $HOME/.kube
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;部署网络插件&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 在所有node上部署cni-plugin:
+// &amp;lt;https://github.com/containernetworking/plugins/releases&amp;gt;
+$ sudo mkdir -p /opt/cni/bin
+// 下载并解压所有插件命令到该目录. 默认CNI_PATH=/opt/cni/bin
+
+// &amp;lt;https://docs.cilium.io/en/stable/installation/k8s-install-kubeadm/&amp;gt;
+// cilium会自动下载plugins到/opt/cni/bin.
+
+// &amp;lt;https://github.com/flannel-io/flannel&amp;gt;
+$ kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;配置master是否部署pod&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# enable master deploy pod (默认不部署pod到master)
+kubectl taint nodes --all node-role.kubernetes.io/control-plane-
+
+# disable master deploy pod
+kubectl taint nodes &amp;lt;node&amp;gt; node-role.kubernetes.io/master=true:NoSchedule
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;部署node&#34;&gt;部署node&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo swapoff -a
+
+// 如果有vpn，kubeadm会自动下载安装
+// 在所有node上部署cni-plugin:
+// &amp;lt;https://github.com/containernetworking/plugins/releases&amp;gt;
+$ sudo mkdir -p /opt/cni/bin
+// 下载并解压所有插件命令到该目录.
+
+$ sudo kubeadm join 192.168.1.1:6443 \
+--token 8po0v5.m1qlbc7w0btq15of \
+--discovery-token-ca-cert-hash sha256:21d8365e336d5218637ddf26e2ec5d91c7dd2de518dbe47973e089837b13265b
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;验证&#34;&gt;验证&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;$ kubectl get pods -n kube-system
+$ kubectl get nodes
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;删除cluster&#34;&gt;删除cluster&lt;/h2&gt;
+&lt;p&gt;所有node运行:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo kubeadm reset -f
+// 自动停止kubelet并且删除下列文件和目录
+[/etc/kubernetes/manifests /etc/kubernetes/pki]
+[/etc/kubernetes/admin.conf /etc/kubernetes/kubelet.conf /etc/kubernetes/bootstrap-kubelet.conf /etc/kubernetes/controller-manager.conf /etc/kubernetes/scheduler.conf]
+[/var/lib/etcd /var/lib/kubelet /var/lib/dockershim /var/run/kubernetes /var/lib/cni]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;需要手动删除:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo rm -rf /etc/cni/net.d
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;所有node上删除flannel的网络配置&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo ifconfig cni0 down
+$ sudo ip link delete cni0
+$ sudo ifconfig flannel.1 down
+$ sudo ip link delete flannel.1
+$ sudo rm -rf /run/flannel
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;所有node清空iptables&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo iptables -F
+$ sudo iptables -X
+$ sudo iptables -t nat -F
+$ sudo iptables -t nat -X
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如果使用了IPVS:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ ipvsadm --clear
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;删除配置&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ rm -rf $HOME/.kube
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;部署ha-cluster&#34;&gt;部署HA Cluster&lt;/h1&gt;
+&lt;p&gt;ha需要在所有master节点安装haproxy和keepalived.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://kubernetes.io/zh/docs/setup/production-environment/tools/kubeadm/high-availability/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://kubernetes.io/zh/docs/setup/production-environment/tools/kubeadm/high-availability/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/kubernetes/kubeadm/blob/master/docs/ha-considerations.md#options-for-software-load-balancing&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/kubernetes/kubeadm/blob/master/docs/ha-considerations.md#options-for-software-load-balancing&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;在master1上初始化：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo kubeadm init --config ./kubeadm.yaml -v=6 --upload-certs
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;加入其它master:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo kubeadm join 192.168.1.200:8443 --token &amp;lt;token&amp;gt; --discovery-token-ca-cert-hash &amp;lt;hash&amp;gt; --control-plane --certificate-key &amp;lt;key&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;加入node:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo kubeadm join 192.168.1.200:8443 --token &amp;lt;token&amp;gt; --discovery-token-ca-cert-hash &amp;lt;hash&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;配置&#34;&gt;配置&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://kubernetes.io/zh/docs/setup/production-environment/tools/kubeadm/control-plane-flags/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://kubernetes.io/zh/docs/setup/production-environment/tools/kubeadm/control-plane-flags/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;使用自定义配置:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo kubeadm init --config ./config.yaml -v=6
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看默认配置:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ kubeadm config print init-defaults
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;配置kubeadm：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;apiVersion: kubeadm.k8s.io/v1beta2
+kind: InitConfiguration
+bootstrapTokens:
+- groups:
+  - system:bootstrappers:kubeadm:default-node-token
+  token: abcdef.0123456789abcdef
+  ttl: 24h0m0s
+  usages:
+  - signing
+  - authentication
+localAPIEndpoint:
+  advertiseAddress: 10.103.1.1 // master IP
+  bindPort: 6443
+nodeRegistration:
+  criSocket: /run/containerd/containerd.sock
+  name: debug // master hostname
+  taints:
+  - effect: NoSchedule
+    key: node-role.kubernetes.io/master
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;配置kubernetes:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 定制control plane
+&amp;lt;https://kubernetes.io/zh/docs/setup/production-environment/tools/kubeadm/control-plane-flags/&amp;gt;
+apiVersion: kubeadm.k8s.io/v1beta2
+kind: ClusterConfiguration
+certificatesDir: /etc/kubernetes/pki
+clusterName: kubernetes
+controlPlaneEndpoint: 10.58.203.200:8443 // HA中haproxy的VIP和port
+dns:
+  type: CoreDNS
+etcd:
+  local:
+    dataDir: /var/lib/etcd
+networking:
+  dnsDomain: cluster.local
+  serviceSubnet: 10.96.0.0/12
+  podSubnet: 10.244.0.0/16 // for flannel
+imageRepository: k8s.gcr.io
+kubernetesVersion: v1.18.6
+controllerManager:
+  ...
+  extraArgs:
+    &amp;lt;https://kubernetes.io/docs/reference/command-line-tools-reference/kube-controller-manager/&amp;gt;
+    allocate-node-cidrs: &#39;true&#39;
+    node-cidr-mask-size: &#39;16&#39; // flannel的SubNetLen
+    cluster-cidr: &#39;10.0.0.0/8&#39; // flannel的Network
+apiServer:
+  timeoutForControlPlane: 4m0s
+  &amp;lt;https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/&amp;gt;
+    extraArgs:
+      advertise-address: 192.168.0.103
+      ...
+scheduler:
+  ...
+  &amp;lt;https://kubernetes.io/docs/reference/command-line-tools-reference/kube-scheduler/&amp;gt;
+  extraArgs:
+    ...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;修改kubelet的cgroup driver:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;apiVersion: kubelet.config.k8s.io/v1beta1
+kind: KubeletConfiguration
+cgroupDriver: systemd
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
+        <item>
+        <title>Minikube</title>
+        <link>https://canuxcheng.com/post/k8s_minikube/</link>
+        <pubDate>Mon, 30 Dec 2019 21:47:17 +0800</pubDate>
+        
+        <guid>https://canuxcheng.com/post/k8s_minikube/</guid>
+        <description>&lt;h1 id=&#34;minikube&#34;&gt;minikube&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://kubernetes.io/zh/docs/setup/learning-environment/minikube/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://kubernetes.io/zh/docs/setup/learning-environment/minikube/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;minikube 能快速创建k8s的开发集群，支持在虚拟机上创建，也支持裸机创建.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 在裸机上创建：
+sudo minikube start --vm-driver=none
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
+        <item>
+        <title>K8S CRI</title>
+        <link>https://canuxcheng.com/post/k8s_cri/</link>
+        <pubDate>Wed, 05 Jun 2019 22:02:31 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/k8s_cri/</guid>
+        <description>&lt;h1 id=&#34;cri&#34;&gt;CRI&lt;/h1&gt;
+&lt;p&gt;CRI: Container Runtime Intarface&lt;/p&gt;
+&lt;p&gt;定义了k8s和container runtime进行交互的接口.&lt;/p&gt;
+&lt;p&gt;是k8s与container交互的标准.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://kubernetes.io/zh/docs/setup/production-environment/container-runtimes/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://kubernetes.io/zh/docs/setup/production-environment/container-runtimes/&lt;/a&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;containerd&lt;/li&gt;
+&lt;li&gt;cri-o&lt;/li&gt;
+&lt;li&gt;rkt&lt;/li&gt;
+&lt;li&gt;kata&lt;/li&gt;
+&lt;li&gt;rancher&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;docker&#34;&gt;docker&lt;/h2&gt;
+&lt;p&gt;k8s_1.20 开始警告不再支持docker.&lt;/p&gt;
+&lt;p&gt;k8s_1.23 开始移除dockershim.&lt;/p&gt;
+&lt;p&gt;/var/run/dockerhsim.sock&lt;/p&gt;
+&lt;h2 id=&#34;containerd&#34;&gt;containerd&lt;/h2&gt;
+&lt;p&gt;/run/container/containerd.sock&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/containerd/containerd&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/containerd/containerd&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;安装配置:&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://kubernetes.io/zh/docs/setup/production-environment/container-runtimes/#containerd&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://kubernetes.io/zh/docs/setup/production-environment/container-runtimes/#containerd&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;cri-o&#34;&gt;CRI-O&lt;/h2&gt;
+&lt;p&gt;redhat.&lt;/p&gt;
+&lt;p&gt;/var/run/crio/crio.sock&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/cri-o/cri-o&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/cri-o/cri-o&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;kata&#34;&gt;kata&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/kata-containers/runtime&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/kata-containers/runtime&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;rkt&#34;&gt;rkt&lt;/h2&gt;
+&lt;p&gt;redhat(coreos)&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/rkt/rkt&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/rkt/rkt&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        <item>
+        <title>Kubernetes</title>
+        <link>https://canuxcheng.com/post/kubernetes/</link>
+        <pubDate>Thu, 05 Apr 2018 22:02:31 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/kubernetes/</guid>
+        <description>&lt;h1 id=&#34;kubernetes&#34;&gt;Kubernetes&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/kubernetes/kubernetes&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/kubernetes/kubernetes&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/kubernetes/kubeadm&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/kubernetes/kubeadm&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/kubernetes/kops&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/kubernetes/kops&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/kubernetes-sigs/kubespray&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/kubernetes-sigs/kubespray&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;kubernetes简称k8s, 是开源的容器编排工具。&lt;/p&gt;
+&lt;p&gt;安装单机版k8s:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;minikube&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;安装k8s集群:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;kubeadm (k8s内置的，类似于docker swarm mode, 没有HA)&lt;/li&gt;
+&lt;li&gt;kops (目前主要支持aws等云平台, 国内不友好)&lt;/li&gt;
+&lt;li&gt;kubespray (通过ansible部署, 国内不友好)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;k8s发行版：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;openshift-okd(redhat)&lt;/li&gt;
+&lt;li&gt;rancher&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;k8s集群组成&#34;&gt;k8s集群组成&lt;/h1&gt;
+&lt;h2 id=&#34;master&#34;&gt;master&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;aip-server, 提供资源操作唯一入口&lt;/li&gt;
+&lt;li&gt;scheduler, 负责资源调度&lt;/li&gt;
+&lt;li&gt;controller-manager, 负责维护集群状态&lt;/li&gt;
+&lt;li&gt;etcd(可以部署单独集群), 保存整个集群的状态&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;node&#34;&gt;node&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;kubelet, 负责维护容器生命周期, 还包括CNI CVI&lt;/li&gt;
+&lt;li&gt;kube-proxy, 为service提供cluster内部的服务发现和负载均衡&lt;/li&gt;
+&lt;li&gt;CRI(containerd), 创建pod&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;addons&#34;&gt;addons&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;coredns&lt;/li&gt;
+&lt;li&gt;flannel/cilium/calico&lt;/li&gt;
+&lt;li&gt;dashboard, web-gui&lt;/li&gt;
+&lt;li&gt;metrics-server, 取代heapster，用于cpu/memory监控&lt;/li&gt;
+&lt;li&gt;ingress-nginx, 为服务提供外网入口&lt;/li&gt;
+&lt;li&gt;federation, 提供跨可用区的集群&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;概念&#34;&gt;概念&lt;/h1&gt;
+&lt;p&gt;k8s包含的重要概念:&lt;/p&gt;
+&lt;p&gt;-: nodes, 运行pod的物理机或虚拟机.
+-: namespace, 对资源和对象的抽象集合．pods/deployments/services都属于某个ns.
+-: pods,一组紧密关联的容器集合，共享pid,ipc,network,uts,namespace.&lt;/p&gt;
+&lt;p&gt;k8s业务类型:&lt;/p&gt;
+&lt;p&gt;-: long-running 长期伺服型 -&amp;gt; RC, RS, Deployment
+-: batch 批处理型-&amp;gt; Job
+-: node-daemon 节点后台支撑型-&amp;gt; DaemonSet
+-: stateful application 有状态应用型-&amp;gt; StatefulSet&lt;/p&gt;
+&lt;p&gt;api对象三大类属性:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;metadata 元数据(至少包含namespace, name, uid).&lt;/li&gt;
+&lt;li&gt;spec 规范&lt;/li&gt;
+&lt;li&gt;status 状态&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;kubernetes对外暴露服务的三种方式:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;NodePort: dev/qa. (30000-32767)&lt;/li&gt;
+&lt;li&gt;Ingress: production.&lt;/li&gt;
+&lt;li&gt;LoadBalance: cloud provider.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;clusterIP 是k8s内部默认服务，外部无法访问，可以通过proxy来访问。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;pod&#34;&gt;pod&lt;/h1&gt;
+&lt;p&gt;一个pod包含一个或多个容器，这些容器通过infra container共享同一个network namespace。&lt;/p&gt;
+&lt;p&gt;infra container: k8s.gcr.io/pause, 汇编写的，永远处于暂停状态。&lt;/p&gt;
+&lt;p&gt;pod共享网络:&lt;/p&gt;
+&lt;p&gt;同一个pod里面看到的网络跟infra容器看到的是一样的，一个pod只有一个ip,也就是这个Pod的network namespace对应的IP; 整个pod的生命周期跟infra容易是一样的。&lt;/p&gt;
+&lt;p&gt;pod共享存储:&lt;/p&gt;
+&lt;p&gt;通过pod volumes, 使pod中的container共享存储。&lt;/p&gt;
+&lt;p&gt;应用:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;一个pod中的某个容器异常退出，被kubelet拉起来之前保证之前的数据部丢失.&lt;/li&gt;
+&lt;li&gt;同一个pod的多个容器共享数据.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;pod volume类型:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;本地存储: emptydir/hostpath&amp;hellip;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;网络存储:&lt;/p&gt;
+&lt;p&gt;in-tree(ks8内置支持): awsElasticBlockStore/gcePresistentDisk/nfs&amp;hellip;&lt;/p&gt;
+&lt;p&gt;out-of-tree(插件): flexvolume/csi&amp;hellip;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;projected volume: secret/configmap/downwardAPI/serviceAccountToken&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;pod服务质量配置:&lt;/p&gt;
+&lt;p&gt;依据容器对cpu,memory资源的request/limit需求，pod服务质量分类:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Guaranteed&lt;/li&gt;
+&lt;li&gt;Burstable&lt;/li&gt;
+&lt;li&gt;BestEffort&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;initContainer:&lt;/p&gt;
+&lt;p&gt;initContainer用于普通Container启动前的初始化（如配置文件准备) 和 前置条件校验 (如网络)。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;initContainer会先于普通container启动执行，直到所有initcontainer执行成功后，普通container 才会执行。&lt;/li&gt;
+&lt;li&gt;pod中多个initcontainer之间是按次序依次启动执行，而pod中多个普通container是并行启动。&lt;/li&gt;
+&lt;li&gt;initcontainer 执行成功后就结束退出，而普通container会一直执行或重启。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;resources&#34;&gt;resources&lt;/h1&gt;
+&lt;p&gt;查看所有对象:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ kubectl api-resources
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.17/#statefulsetcondition-v1beta2-apps&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.17/#statefulsetcondition-v1beta2-apps&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;workloads&#34;&gt;Workloads&lt;/h2&gt;
+&lt;h3 id=&#34;replicasetsrs&#34;&gt;replicasets/rs&lt;/h3&gt;
+&lt;p&gt;控制无状态的pod数量,增删Pods.&lt;/p&gt;
+&lt;h3 id=&#34;deploymentsdeploy&#34;&gt;deployments/deploy&lt;/h3&gt;
+&lt;p&gt;定义pod的数目和版本，通过Controller自动恢复失败的pod，滚动升级，重新生成，回滚等。&lt;/p&gt;
+&lt;p&gt;DeploymentStatus: complete, processing, failed&lt;/p&gt;
+&lt;p&gt;Deployment只负责管理不同版本的ReplicaSet, 由ReplicaSet管理Pod副本个数; 每个版本的ReplicaSet对应了Deployment template的一个版本; 一个ReplicaSet下的Pod都是相同的版本.&lt;/p&gt;
+&lt;h3 id=&#34;daemonsetsds&#34;&gt;daemonsets/ds&lt;/h3&gt;
+&lt;p&gt;ds作用:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;保证集群内每个节点运行一组相同的pod&lt;/li&gt;
+&lt;li&gt;跟踪集群节点状态，保证新加入的节点自动创建对应的pod&lt;/li&gt;
+&lt;li&gt;跟踪集群节点状态，保证移除的节点删除对应的pod&lt;/li&gt;
+&lt;li&gt;跟踪pod状态，保证每个节点pod处于运行状态&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;jobs&#34;&gt;jobs&lt;/h3&gt;
+&lt;p&gt;job的作用:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;创建一个或多个pod确保指定数量的Pod可以成功运行和终止.&lt;/li&gt;
+&lt;li&gt;跟踪pod状态，根据配置及时重试失败的pod.&lt;/li&gt;
+&lt;li&gt;确定依赖关系，保证上一个任务运行完毕后再运行下一个任务.&lt;/li&gt;
+&lt;li&gt;控制任务并行度，并根据配置确保pod队列大小。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;cronjobscj&#34;&gt;cronJobs/cj&lt;/h3&gt;
+&lt;h3 id=&#34;statefulsetssts&#34;&gt;statefulsets/sts&lt;/h3&gt;
+&lt;p&gt;控制有状态的pod数量.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;service-discovery--load-balancing&#34;&gt;service discovery &amp;amp; load balancing&lt;/h2&gt;
+&lt;h3 id=&#34;servicessvc&#34;&gt;services/svc&lt;/h3&gt;
+&lt;p&gt;提供访问一个或多个pod的稳定的访问地址.支持ClusterIP, NodePort, LoadBalancer等访问方式.&lt;/p&gt;
+&lt;h3 id=&#34;ingresses&#34;&gt;ingresses&lt;/h3&gt;
+&lt;h3 id=&#34;endpointslices&#34;&gt;endpointslices&lt;/h3&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;config--storage&#34;&gt;Config &amp;amp; Storage&lt;/h2&gt;
+&lt;h3 id=&#34;secrets&#34;&gt;secrets&lt;/h3&gt;
+&lt;p&gt;secret用于在集群中存储密码，token等敏感信息用的资源对象.&lt;/p&gt;
+&lt;p&gt;其中敏感数据采用base-64编码保存.&lt;/p&gt;
+&lt;p&gt;四种类型:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Opaque&lt;/li&gt;
+&lt;li&gt;kubernetes.io/service-account-token&lt;/li&gt;
+&lt;li&gt;kubernetes.io/dockerconfigjson&lt;/li&gt;
+&lt;li&gt;bootstrap.kubernetes.io/token&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;secret主要被pod使用，一般通过volume挂载到指定容器目录，供容器中业务使用.&lt;/p&gt;
+&lt;p&gt;访问私有镜像仓库也可以通过secret实现.&lt;/p&gt;
+&lt;p&gt;secret大小限制1M; secret不适合机密信息，推荐用vault.&lt;/p&gt;
+&lt;h3 id=&#34;configmapscm&#34;&gt;configmaps/cm&lt;/h3&gt;
+&lt;p&gt;主要管理容器运行所需的配置文件，环境变量，命令行参数等可变配置。&lt;/p&gt;
+&lt;p&gt;可用于解耦容器镜像和可变配置，从而保障工作负载的可移植性.&lt;/p&gt;
+&lt;p&gt;主要被pod使用，一般用于挂载pod用的配置文件，环境变量，命令行参数.&lt;/p&gt;
+&lt;p&gt;ConigMap 大小不超过1M; pod只能引用相同namespace中的configmap, pod引用的configmap不存在时，pod无法创建;使用envFrom从ConfigMap配置环境变量时，如果ConfigMap中的某些key被认为无效，该环境变量不会注入容器，但是pod可以创建; 只有通过k8s api创建的pod才能使用ConfigMap, 其它方式创建的pod不能使用ConfigMap.&lt;/p&gt;
+&lt;h3 id=&#34;persistentvolumepv&#34;&gt;persistentvolume/pv&lt;/h3&gt;
+&lt;p&gt;static volume provisioning:&lt;/p&gt;
+&lt;p&gt;dynamic volume provisioning:&lt;/p&gt;
+&lt;h3 id=&#34;persistentvolumeclaimspvc&#34;&gt;persistentvolumeclaims/pvc&lt;/h3&gt;
+&lt;p&gt;pvc中只需要申明需要的存储size, access mode等业务需求.&lt;/p&gt;
+&lt;p&gt;pvc简化了用户对存储的需求，pv才是存储的实际信息载体，通过kube-controller-manager中的PersistentVolumeController将PVC与合适的PV 绑定.&lt;/p&gt;
+&lt;h3 id=&#34;csidrivers&#34;&gt;csidrivers&lt;/h3&gt;
+&lt;h3 id=&#34;csinodes&#34;&gt;csinodes&lt;/h3&gt;
+&lt;h3 id=&#34;storageclassessc&#34;&gt;storageclasses/sc&lt;/h3&gt;
+&lt;h3 id=&#34;volumeattachments&#34;&gt;volumeattachments&lt;/h3&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;metadata&#34;&gt;metadata&lt;/h2&gt;
+&lt;h3 id=&#34;events&#34;&gt;events&lt;/h3&gt;
+&lt;h3 id=&#34;horizontalpodautoscaler&#34;&gt;horizontalpodautoscaler&lt;/h3&gt;
+&lt;h3 id=&#34;podtemplate&#34;&gt;podtemplate&lt;/h3&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;cluster&#34;&gt;cluster&lt;/h2&gt;
+&lt;h3 id=&#34;componentstatusescs&#34;&gt;componentstatuses/cs&lt;/h3&gt;
+&lt;h3 id=&#34;namespacesns&#34;&gt;namespaces/ns&lt;/h3&gt;
+&lt;p&gt;一个集群内部的逻辑隔离机制，每个资源都属于一个namespace，同一个namespace中的资源命名唯一，不同namespace中的资源可重名.&lt;/p&gt;
+&lt;h3 id=&#34;nodesno&#34;&gt;nodes/no&lt;/h3&gt;
+&lt;h3 id=&#34;serviceaccountsa&#34;&gt;serviceaccount/sa&lt;/h3&gt;
+&lt;p&gt;解决pod在集群中的身份认证问题.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;tools&#34;&gt;Tools&lt;/h1&gt;
+&lt;p&gt;sonobuoy&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/vmware-tanzu/sonobuoy&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/vmware-tanzu/sonobuoy&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;kuard&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/kubernetes-up-and-running/kuard&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/kubernetes-up-and-running/kuard&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

@@ -1,19 +1,124 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Bom on Morgoth</title>
-    <link>https://canuxcheng.com/tags/bom/</link>
-    <description>Recent content in Bom on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Thu, 15 Mar 2018 09:36:32 +0000</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/bom/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>JS BOM</title>
-      <link>https://canuxcheng.com/post/js_bom/</link>
-      <pubDate>Thu, 15 Mar 2018 09:36:32 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/js_bom/</guid>
-      <description>&lt;h1 id=&#34;bom&#34;&gt;BOM&lt;/h1&gt;&#xA;&lt;p&gt;Browser Object Model&lt;/p&gt;&#xA;&lt;p&gt;介绍浏览器对象，不过缺乏规范.&lt;/p&gt;&#xA;&lt;h1 id=&#34;window&#34;&gt;window&lt;/h1&gt;&#xA;&lt;p&gt;window对象是最顶层对象，有6大属性,属性本身也是对象.&lt;/p&gt;&#xA;&lt;p&gt;window对象的document属性也是对象，document对象有5大属性.&lt;/p&gt;&#xA;&lt;p&gt;引用当前窗口时，可以省略window对象.&lt;/p&gt;&#xA;&lt;p&gt;eg:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;window.document&#xA;document&#xA;&#xA;window.alert()&#xA;alert()&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;对象集合:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;frames[]&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;attribution:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;document # DOM的Document对象&#xA;history # History对象&#xA;location # Location对象&#xA;Navigator # Navigator对象&#xA;Screen # Screen对象&#xA;window # 等价于self&#xA;&#xA;closed&#xA;defaultStatus&#xA;status&#xA;innerheight&#xA;innerwidth&#xA;outerheight&#xA;outerwidth&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;method:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;alert() // 弹出警告框&#xA;confirm() // 和alert差不多，带确定和取消按钮，确定返回true&#xA;prompt() // 输入提示框,返回输入内容&#xA;find() // 查找&#xA;&#xA;// 子窗口的opener属性反过来引用打开她的那个窗口(父窗口)&#xA;subwin = open() // 打开一个新窗口, _parent在当前窗口打开, 返回子窗口的window对象.&#xA;subwin.opener // 表示window&#xA;&#xA;moveTo()&#xA;moveBy()&#xA;resizeTo()&#xA;resizeBy()&#xA;&#xA;setTimeout()&#xA;clearTimeout()&#xA;&#xA;setInterval()&#xA;clearInterval()&#xA;&#xA;close()&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h1 id=&#34;location&#34;&gt;location&lt;/h1&gt;&#xA;&lt;p&gt;attribution:&lt;/p&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Bom on Morgoth</title>
+        <link>https://canuxcheng.com/tags/bom/</link>
+        <description>Recent content in Bom on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Thu, 15 Mar 2018 09:36:32 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/bom/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>JS BOM</title>
+        <link>https://canuxcheng.com/post/js_bom/</link>
+        <pubDate>Thu, 15 Mar 2018 09:36:32 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/js_bom/</guid>
+        <description>&lt;h1 id=&#34;bom&#34;&gt;BOM&lt;/h1&gt;
+&lt;p&gt;Browser Object Model&lt;/p&gt;
+&lt;p&gt;介绍浏览器对象，不过缺乏规范.&lt;/p&gt;
+&lt;h1 id=&#34;window&#34;&gt;window&lt;/h1&gt;
+&lt;p&gt;window对象是最顶层对象，有6大属性,属性本身也是对象.&lt;/p&gt;
+&lt;p&gt;window对象的document属性也是对象，document对象有5大属性.&lt;/p&gt;
+&lt;p&gt;引用当前窗口时，可以省略window对象.&lt;/p&gt;
+&lt;p&gt;eg:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;window.document
+document
+
+window.alert()
+alert()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;对象集合:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;frames[]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;attribution:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;document # DOM的Document对象
+history # History对象
+location # Location对象
+Navigator # Navigator对象
+Screen # Screen对象
+window # 等价于self
+
+closed
+defaultStatus
+status
+innerheight
+innerwidth
+outerheight
+outerwidth
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;method:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;alert() // 弹出警告框
+confirm() // 和alert差不多，带确定和取消按钮，确定返回true
+prompt() // 输入提示框,返回输入内容
+find() // 查找
+
+// 子窗口的opener属性反过来引用打开她的那个窗口(父窗口)
+subwin = open() // 打开一个新窗口, _parent在当前窗口打开, 返回子窗口的window对象.
+subwin.opener // 表示window
+
+moveTo()
+moveBy()
+resizeTo()
+resizeBy()
+
+setTimeout()
+clearTimeout()
+
+setInterval()
+clearInterval()
+
+close()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;location&#34;&gt;location&lt;/h1&gt;
+&lt;p&gt;attribution:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;hash
+host
+hostname
+href
+pathname
+port
+protocol
+search
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;methods:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;assign()
+reload()
+replace()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;history&#34;&gt;history&lt;/h1&gt;
+&lt;p&gt;attribution:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;lehgth
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;method:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;back()
+forward()
+go()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;navigator&#34;&gt;navigator&lt;/h1&gt;
+&lt;p&gt;对象集合:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;plugins[] # Plugin对象的数组
+navigator.plugins.length # 插件个数
+navigator.plugins[i].name # 第i个插件名字
+navigator.plugins[i].filename # 第i个插件文件名
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;attribution:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;appName # 浏览器名称
+appVersion # 浏览器版本
+userAgent # user-agent 头部信息
+platform # win32/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;method:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;javaEnabled()
+taintEnabled()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;screen&#34;&gt;screen&lt;/h1&gt;
+&lt;p&gt;attribution:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;width
+height
+availHeight
+availWidth
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

@@ -1,19 +1,115 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Firewall on Morgoth</title>
-    <link>https://canuxcheng.com/tags/firewall/</link>
-    <description>Recent content in Firewall on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Thu, 31 Mar 2016 21:48:59 +0000</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/firewall/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Firewall</title>
-      <link>https://canuxcheng.com/post/linux_firewall/</link>
-      <pubDate>Thu, 31 Mar 2016 21:48:59 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/linux_firewall/</guid>
-      <description>&lt;h1 id=&#34;firewall&#34;&gt;Firewall&lt;/h1&gt;&#xA;&lt;p&gt;UFW: linux防火墙配置工具，底层还是调用iptables.&lt;/p&gt;&#xA;&lt;p&gt;filewall: centos的防火墙命令, 底层还是调用iptables.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;selinux&#34;&gt;SELinux&lt;/h1&gt;&#xA;&lt;p&gt;Security-Enhanced-Linux&lt;/p&gt;&#xA;&lt;p&gt;本地安全&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;netfilter&#34;&gt;Netfilter&lt;/h1&gt;&#xA;&lt;p&gt;网络安全&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;iptables&#34;&gt;iptables&lt;/h1&gt;&#xA;&lt;p&gt;通过iptables操作Netfilter实现应用层安全.&lt;/p&gt;&#xA;&lt;p&gt;table:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;filter 默认表&#xA;nat&#xA;mangle&#xA;raw&#xA;security&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;filter&#34;&gt;filter&lt;/h2&gt;&#xA;&lt;p&gt;chain:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;INPUT&#xA;FORWARD&#xA;OUTPUT&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;nat&#34;&gt;nat&lt;/h2&gt;&#xA;&lt;p&gt;chain:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;INPUT&#xA;OUTPUT&#xA;PREROUTING&#xA;POSTROUTING&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;postrouting:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;snat: 内网主机访问外网经过路由时，源ip会发生变化。&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;prerouting:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;dnat:  外网访问内网经过路由时，目的ip会发生变化。&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;iptables命令&#34;&gt;iptables命令&lt;/h2&gt;&#xA;&lt;pre&gt;&lt;code&gt;-L/--list  [chain [ rulenum]]&#xA;-S/--list-rules [chain [rulenum]]&#xA;-Z/--zero [chain [rulenum]]&#xA;&#xA;-A/--append chain&#xA;-C/--check chain&#xA;-N/--new chain&#xA;&#xA;-F/--flush [chain] // 删除chain中的rules.&#xA;-X/--delete-chain [chain] // 删除自定义chain.&#xA;&#xA;-R/--replace chain rulenum&#xA;-D/--delete chain [rulenum]&#xA;-I/--insert chain [rulenum]&#xA;&#xA;-P/--policy chain target&#xA;&#xA;-E/--rename-chain old-chain new-chain&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;tables:&lt;/p&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Firewall on Morgoth</title>
+        <link>https://canuxcheng.com/tags/firewall/</link>
+        <description>Recent content in Firewall on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Thu, 31 Mar 2016 21:48:59 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/firewall/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Firewall</title>
+        <link>https://canuxcheng.com/post/linux_firewall/</link>
+        <pubDate>Thu, 31 Mar 2016 21:48:59 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/linux_firewall/</guid>
+        <description>&lt;h1 id=&#34;firewall&#34;&gt;Firewall&lt;/h1&gt;
+&lt;p&gt;UFW: linux防火墙配置工具，底层还是调用iptables.&lt;/p&gt;
+&lt;p&gt;filewall: centos的防火墙命令, 底层还是调用iptables.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;selinux&#34;&gt;SELinux&lt;/h1&gt;
+&lt;p&gt;Security-Enhanced-Linux&lt;/p&gt;
+&lt;p&gt;本地安全&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;netfilter&#34;&gt;Netfilter&lt;/h1&gt;
+&lt;p&gt;网络安全&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;iptables&#34;&gt;iptables&lt;/h1&gt;
+&lt;p&gt;通过iptables操作Netfilter实现应用层安全.&lt;/p&gt;
+&lt;p&gt;table:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;filter 默认表
+nat
+mangle
+raw
+security
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;filter&#34;&gt;filter&lt;/h2&gt;
+&lt;p&gt;chain:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;INPUT
+FORWARD
+OUTPUT
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;nat&#34;&gt;nat&lt;/h2&gt;
+&lt;p&gt;chain:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;INPUT
+OUTPUT
+PREROUTING
+POSTROUTING
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;postrouting:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;snat: 内网主机访问外网经过路由时，源ip会发生变化。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;prerouting:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;dnat:  外网访问内网经过路由时，目的ip会发生变化。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;iptables命令&#34;&gt;iptables命令&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;-L/--list  [chain [ rulenum]]
+-S/--list-rules [chain [rulenum]]
+-Z/--zero [chain [rulenum]]
+
+-A/--append chain
+-C/--check chain
+-N/--new chain
+
+-F/--flush [chain] // 删除chain中的rules.
+-X/--delete-chain [chain] // 删除自定义chain.
+
+-R/--replace chain rulenum
+-D/--delete chain [rulenum]
+-I/--insert chain [rulenum]
+
+-P/--policy chain target
+
+-E/--rename-chain old-chain new-chain
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;tables:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;-t/--table   filter/nat/mangle
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;options:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[!] -p/--protocol
+[!] -s/--source
+[!] -d/--destination
+[!] -o/--out-interface
+[!] -i/--in-interface
+[!] -f/--fragment
+--dport    destination-port
+--sport    source-port
+-m, --match
+-j, --jump
+-g, --goto
+-c, --set-counters
+
+--line-number  # 显示rulenum
+-v/--verbose
+-n/--numeric
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;others:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 保存规则
+iptables-save &amp;gt; firewall.txt
+# 加载规则
+iptables-restore firewall.txt
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;开机启动:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;iptables-save &amp;gt; /etc/iptables.rules
+vim /etc/network/if-pre-up.d/iptables
+#!/bin/bash
+iptables -F
+iptables -X
+iptables -t nat -F
+iptables -t nat -X
+iptables-restore /etc/iptables.rules
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

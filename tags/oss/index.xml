@@ -1,26 +1,223 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Oss on Morgoth</title>
-    <link>https://canuxcheng.com/tags/oss/</link>
-    <description>Recent content in Oss on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Fri, 10 Jan 2020 20:55:52 +0800</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/oss/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Contribution</title>
-      <link>https://canuxcheng.com/post/k8s_oss/</link>
-      <pubDate>Fri, 10 Jan 2020 20:55:52 +0800</pubDate>
-      <guid>https://canuxcheng.com/post/k8s_oss/</guid>
-      <description>&lt;h1 id=&#34;kubernetes-contribution&#34;&gt;Kubernetes Contribution&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/kubernetes/community/blob/master/contributors/guide/contributor-cheatsheet/README-zh.md&#34;&gt;https://github.com/kubernetes/community/blob/master/contributors/guide/contributor-cheatsheet/README-zh.md&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;创建google账号&#34;&gt;创建google账号&lt;/h2&gt;&#xA;&lt;p&gt;推荐申请一个google邮箱。&lt;/p&gt;&#xA;&lt;p&gt;在开发机配置git&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ git config --global user.email name@gmail.com   &#xA;$ git config user.email name@gmail.com            &#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;签cla并阅读coc&#34;&gt;签CLA并阅读CoC&lt;/h2&gt;&#xA;&lt;p&gt;个人开发者需要签署CLA, 选择individual contributors并用github账号登陆，然后去邮箱授权；之后重新进入，再去邮箱签字。&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://identity.linuxfoundation.org/projects/cncf&#34;&gt;https://identity.linuxfoundation.org/projects/cncf&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;读一下CoC和CV&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/cncf/foundation/blob/master/code-of-conduct-languages/zh.md&#34;&gt;https://github.com/cncf/foundation/blob/master/code-of-conduct-languages/zh.md&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/kubernetes/community/blob/master/values.md&#34;&gt;https://github.com/kubernetes/community/blob/master/values.md&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;配置开发环境&#34;&gt;配置开发环境&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/kubernetes/community/blob/master/contributors/devel/README.md#setting-up-your-dev-environment-coding-and-debugging&#34;&gt;https://github.com/kubernetes/community/blob/master/contributors/devel/README.md#setting-up-your-dev-environment-coding-and-debugging&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;可以在docker里面编译，也可以直接在操作系统上编译。&lt;/p&gt;&#xA;&lt;p&gt;在docker里面编译&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/kubernetes/kubernetes/blob/ae9ca48f01ddb03731e7903cfe91ef3db9ce8990/build/README.md&#34;&gt;https://github.com/kubernetes/kubernetes/blob/ae9ca48f01ddb03731e7903cfe91ef3db9ce8990/build/README.md&lt;/a&gt;&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;build/run.sh make 只编译linux平台&#xA;build/run.sh make cross 编译所有平台&#xA;build/run.sh make kubectl KUBE_BUILD_PLATFORMS=darwin/amd64 编译指定平台的指定组件&#xA;&#xA;build/run.sh make test 单元测试&#xA;build/run.sh make test-integration 集成测试&#xA;build/run.sh make test-cmd  命令行测试&#xA;&#xA;build/copy-output.sh 将编译的binary从_output/dockerized/bin拷贝到本地&#xA;&#xA;build/make-clean.sh 清空_output&#xA;&#xA;build.shell.sh 交互模式进入编译的container&#xA;&#xA;build/release.sh 编译，测试，打包，kubernetes.tar.gz&#xA;...&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;在操作系统上编译&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/kubernetes/community/blob/master/contributors/devel/development.md#building-kubernetes-on-a-local-osshell-environment&#34;&gt;https://github.com/kubernetes/community/blob/master/contributors/devel/development.md#building-kubernetes-on-a-local-osshell-environment&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;安装依赖&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;sudo apt-get update&#xA;sudo apt-get install build-essential&#xA;// apt: docker, rsync, jq, go, &#xA;// python: pyyaml,&#xA;&#xA;// 安装etcd用于集成测试&#xA;./hack/install-etcd.sh&#xA;export PATH=&amp;quot;$GOPATH/src/k8s.io/kubernetes/third_party/etcd:${PATH}&amp;quot;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;编译和测试&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Contribution</title>
-      <link>https://canuxcheng.com/post/go_oss/</link>
-      <pubDate>Mon, 01 Jan 2018 10:49:21 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/go_oss/</guid>
-      <description>&lt;h1 id=&#34;golang-contribution&#34;&gt;Golang Contribution&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://go.dev/doc/contribute&#34;&gt;https://go.dev/doc/contribute&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;创建google账号&#34;&gt;创建google账号&lt;/h2&gt;&#xA;&lt;p&gt;推荐申请一个google邮箱。&lt;/p&gt;&#xA;&lt;p&gt;在开发机配置git&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ git config --global user.email name@example.com   &#xA;$ git config user.email name@example.com            &#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;签cla&#34;&gt;签CLA&lt;/h2&gt;&#xA;&lt;p&gt;个人开发者需要签署CLA。&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://cla.developers.google.com/about/google-individual&#34;&gt;https://cla.developers.google.com/about/google-individual&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;配置git认证&#34;&gt;配置git认证&lt;/h2&gt;&#xA;&lt;p&gt;点击“Generate Password”， 用google邮箱登陆，根据提示配置git。&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://go.googlesource.com/&#34;&gt;https://go.googlesource.com/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;创建gerrit账号&#34;&gt;创建gerrit账号&lt;/h2&gt;&#xA;&lt;p&gt;用google邮箱登陆即可。&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://go-review.googlesource.com/dashboard/self&#34;&gt;https://go-review.googlesource.com/dashboard/self&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;安装git-codereview&#34;&gt;安装git-codereview&lt;/h2&gt;&#xA;&lt;p&gt;windows:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ go get golang.org/x/review/git-codereview@latest&#xA;$ git --exec-path&#xA;&#xA;&amp;gt; copy git-codereview.exe from GOBIN to Git\mingw64\libexec\git-core&#xA;&#xA;$ git codereview help&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;linux/mac:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ go install golang.org/x/review/git-codereview@latest&#xA;$ git codereview help&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;选取修改的cl&#34;&gt;选取修改的CL&lt;/h2&gt;&#xA;&lt;p&gt;从github选取一个还没有人提交CL(change log/list)的Issue进行修改。&lt;/p&gt;&#xA;&lt;p&gt;issue三种类型：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;NeedsInvestigation&lt;/li&gt;&#xA;&lt;li&gt;NeedsDecision&lt;/li&gt;&#xA;&lt;li&gt;NeedsFix    选这个里面还没有CL的做&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/golang/go/issues?q=is%3Aissue+is%3Aopen+label%3ANeedsFix+NOT+%22golang.org%2Fcl%22&#34;&gt;https://github.com/golang/go/issues?q=is%3Aissue+is%3Aopen+label%3ANeedsFix+NOT+%22golang.org%2Fcl%22&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;提交patch&#34;&gt;提交patch&lt;/h2&gt;&#xA;&lt;p&gt;支持github或者gerrit提交patch。&lt;/p&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Oss on Morgoth</title>
+        <link>https://canuxcheng.com/tags/oss/</link>
+        <description>Recent content in Oss on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Fri, 10 Jan 2020 20:55:52 +0800</lastBuildDate><atom:link href="https://canuxcheng.com/tags/oss/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Contribution</title>
+        <link>https://canuxcheng.com/post/k8s_oss/</link>
+        <pubDate>Fri, 10 Jan 2020 20:55:52 +0800</pubDate>
+        
+        <guid>https://canuxcheng.com/post/k8s_oss/</guid>
+        <description>&lt;h1 id=&#34;kubernetes-contribution&#34;&gt;Kubernetes Contribution&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/kubernetes/community/blob/master/contributors/guide/contributor-cheatsheet/README-zh.md&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/kubernetes/community/blob/master/contributors/guide/contributor-cheatsheet/README-zh.md&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;创建google账号&#34;&gt;创建google账号&lt;/h2&gt;
+&lt;p&gt;推荐申请一个google邮箱。&lt;/p&gt;
+&lt;p&gt;在开发机配置git&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ git config --global user.email name@gmail.com   
+$ git config user.email name@gmail.com            
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;签cla并阅读coc&#34;&gt;签CLA并阅读CoC&lt;/h2&gt;
+&lt;p&gt;个人开发者需要签署CLA, 选择individual contributors并用github账号登陆，然后去邮箱授权；之后重新进入，再去邮箱签字。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://identity.linuxfoundation.org/projects/cncf&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://identity.linuxfoundation.org/projects/cncf&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;读一下CoC和CV&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/cncf/foundation/blob/master/code-of-conduct-languages/zh.md&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/cncf/foundation/blob/master/code-of-conduct-languages/zh.md&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/kubernetes/community/blob/master/values.md&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/kubernetes/community/blob/master/values.md&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;配置开发环境&#34;&gt;配置开发环境&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/kubernetes/community/blob/master/contributors/devel/README.md#setting-up-your-dev-environment-coding-and-debugging&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/kubernetes/community/blob/master/contributors/devel/README.md#setting-up-your-dev-environment-coding-and-debugging&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;可以在docker里面编译，也可以直接在操作系统上编译。&lt;/p&gt;
+&lt;p&gt;在docker里面编译&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/kubernetes/kubernetes/blob/ae9ca48f01ddb03731e7903cfe91ef3db9ce8990/build/README.md&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/kubernetes/kubernetes/blob/ae9ca48f01ddb03731e7903cfe91ef3db9ce8990/build/README.md&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;build/run.sh make 只编译linux平台
+build/run.sh make cross 编译所有平台
+build/run.sh make kubectl KUBE_BUILD_PLATFORMS=darwin/amd64 编译指定平台的指定组件
+
+build/run.sh make test 单元测试
+build/run.sh make test-integration 集成测试
+build/run.sh make test-cmd  命令行测试
+
+build/copy-output.sh 将编译的binary从_output/dockerized/bin拷贝到本地
+
+build/make-clean.sh 清空_output
+
+build.shell.sh 交互模式进入编译的container
+
+build/release.sh 编译，测试，打包，kubernetes.tar.gz
+...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;在操作系统上编译&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/kubernetes/community/blob/master/contributors/devel/development.md#building-kubernetes-on-a-local-osshell-environment&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/kubernetes/community/blob/master/contributors/devel/development.md#building-kubernetes-on-a-local-osshell-environment&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;安装依赖&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo apt-get update
+sudo apt-get install build-essential
+// apt: docker, rsync, jq, go, 
+// python: pyyaml,
+
+// 安装etcd用于集成测试
+./hack/install-etcd.sh
+export PATH=&amp;quot;$GOPATH/src/k8s.io/kubernetes/third_party/etcd:${PATH}&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;编译和测试&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;make all  全部编译
+make WHAT=cmd/kubectl  指定编译组件
+make cross 编译所有平台
+make cross KUBE_BUILD_PLATFORMS=windows/amd64 编译指定平台
+
+make verify  presubmission verification测试
+make test  单元测试
+make test-integration  集成测试依赖etcd
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/kubernetes/test-infra&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/kubernetes/test-infra&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;了解社区&#34;&gt;了解社区&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/kubernetes/community&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/kubernetes/community&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;因为项目组件很多，所以通过特别兴趣小组来分类。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;SIG: Special Interest Groups&lt;/li&gt;
+&lt;li&gt;WG: Working Group&lt;/li&gt;
+&lt;li&gt;UG: User Group&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;KEP: Kubernetes Enhancement Proposal&lt;/p&gt;
+&lt;p&gt;对于功能和API的修改需要在KEP提交议案讨论。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/kubernetes/enhancements&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/kubernetes/enhancements&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://slack.k8s.io/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://slack.k8s.io/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://discuss.kubernetes.io/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://discuss.kubernetes.io/&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;选取修改的cl&#34;&gt;选取修改的CL&lt;/h2&gt;
+&lt;p&gt;从github选取一个Issue进行修改。&lt;/p&gt;
+&lt;p&gt;推荐新手从“good first issue&amp;quot; 开始。&lt;/p&gt;
+&lt;p&gt;也可以通过sig或者kind标签过滤。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/kubernetes/kubernetes/issues?q=is%3Aopen&amp;#43;is%3Aissue&amp;#43;label%3A%22good&amp;#43;first&amp;#43;issue%22&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/kubernetes/kubernetes/issues?q=is%3Aopen+is%3Aissue+label%3A%22good+first+issue%22&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;提交patch&#34;&gt;提交patch&lt;/h2&gt;
+&lt;p&gt;github用户直接fork到自己账号，clone下来即可。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git clone https://github.com/kubernetes/kubernetes.git
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;创建开发分支并修改代码&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git checkout -b canux_dev
+...
+git add -A
+git commit -m &amp;quot;...&amp;quot;
+git push ...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;code-review&#34;&gt;code review&lt;/h2&gt;
+&lt;p&gt;提交之后trybots会自动构建，可以通过build dashboard查看各个平台build结果:&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://build.golang.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://build.golang.org/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;查看自己的patch的review情况：&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://go-review.googlesource.com/dashboard/self&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://go-review.googlesource.com/dashboard/self&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;显示随时间变化的历史测试结果：&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://testgrid.k8s.io/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://testgrid.k8s.io/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;显示pow中的自动化测试情况：&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://prow.k8s.io/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://prow.k8s.io/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;查看所有PR:&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://gubernator.k8s.io/pr/all&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://gubernator.k8s.io/pr/all&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;把相似的失败聚合在一起以便排除故障:&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://storage.googleapis.com/k8s-triage/index.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://storage.googleapis.com/k8s-triage/index.html&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Contribution</title>
+        <link>https://canuxcheng.com/post/go_oss/</link>
+        <pubDate>Mon, 01 Jan 2018 10:49:21 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/go_oss/</guid>
+        <description>&lt;h1 id=&#34;golang-contribution&#34;&gt;Golang Contribution&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://go.dev/doc/contribute&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://go.dev/doc/contribute&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;创建google账号&#34;&gt;创建google账号&lt;/h2&gt;
+&lt;p&gt;推荐申请一个google邮箱。&lt;/p&gt;
+&lt;p&gt;在开发机配置git&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ git config --global user.email name@example.com   
+$ git config user.email name@example.com            
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;签cla&#34;&gt;签CLA&lt;/h2&gt;
+&lt;p&gt;个人开发者需要签署CLA。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://cla.developers.google.com/about/google-individual&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://cla.developers.google.com/about/google-individual&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;配置git认证&#34;&gt;配置git认证&lt;/h2&gt;
+&lt;p&gt;点击“Generate Password”， 用google邮箱登陆，根据提示配置git。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://go.googlesource.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://go.googlesource.com/&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;创建gerrit账号&#34;&gt;创建gerrit账号&lt;/h2&gt;
+&lt;p&gt;用google邮箱登陆即可。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://go-review.googlesource.com/dashboard/self&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://go-review.googlesource.com/dashboard/self&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;安装git-codereview&#34;&gt;安装git-codereview&lt;/h2&gt;
+&lt;p&gt;windows:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ go get golang.org/x/review/git-codereview@latest
+$ git --exec-path
+
+&amp;gt; copy git-codereview.exe from GOBIN to Git\mingw64\libexec\git-core
+
+$ git codereview help
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;linux/mac:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ go install golang.org/x/review/git-codereview@latest
+$ git codereview help
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;选取修改的cl&#34;&gt;选取修改的CL&lt;/h2&gt;
+&lt;p&gt;从github选取一个还没有人提交CL(change log/list)的Issue进行修改。&lt;/p&gt;
+&lt;p&gt;issue三种类型：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;NeedsInvestigation&lt;/li&gt;
+&lt;li&gt;NeedsDecision&lt;/li&gt;
+&lt;li&gt;NeedsFix    选这个里面还没有CL的做&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/golang/go/issues?q=is%3Aissue&amp;#43;is%3Aopen&amp;#43;label%3ANeedsFix&amp;#43;NOT&amp;#43;%22golang.org%2Fcl%22&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/golang/go/issues?q=is%3Aissue+is%3Aopen+label%3ANeedsFix+NOT+%22golang.org%2Fcl%22&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;提交patch&#34;&gt;提交patch&lt;/h2&gt;
+&lt;p&gt;支持github或者gerrit提交patch。&lt;/p&gt;
+&lt;p&gt;github用户直接fork到自己账号，clone下来即可。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git clone https://github.com/golang/go.git
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;gerrit用户&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git clone https://go.googlesource.com/go
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;创建开发分支并修改代码&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;git checkout -b canux_dev
+...
+git add -A
+git codereview change
+...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;本地测试修改&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;./all.bash
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;提交修改，github用户直接去github页面提交PR。&lt;/p&gt;
+&lt;p&gt;gerrit用户通过命令行提交：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ git codereview mail     # send changes to Gerrit
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;commit message格式有严格要求。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://golang.org/doc/contribute#commit_messages&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://golang.org/doc/contribute#commit_messages&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;code-review&#34;&gt;code review&lt;/h2&gt;
+&lt;p&gt;提交之后trybots会自动构建，可以通过build dashboard查看各个平台build结果:&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://build.golang.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://build.golang.org/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;查看自己的patch的review情况：&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://go-review.googlesource.com/dashboard/self&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://go-review.googlesource.com/dashboard/self&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

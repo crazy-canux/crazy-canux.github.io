@@ -1,19 +1,54 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Ftp on Morgoth</title>
-    <link>https://canuxcheng.com/tags/ftp/</link>
-    <description>Recent content in Ftp on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Thu, 28 Jul 2016 16:08:54 +0000</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/ftp/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Ftp</title>
-      <link>https://canuxcheng.com/post/ftp/</link>
-      <pubDate>Thu, 28 Jul 2016 16:08:54 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/ftp/</guid>
-      <description>&lt;h1 id=&#34;ftp&#34;&gt;FTP&lt;/h1&gt;&#xA;&lt;p&gt;ftp服务器有很多：&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;vsftpd&lt;/li&gt;&#xA;&lt;li&gt;proftpd&lt;/li&gt;&#xA;&lt;li&gt;pyftpdlib&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;vsftpd&#34;&gt;vsftpd&lt;/h1&gt;&#xA;&lt;p&gt;安装vsftpd:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ sudo apt-get install vsftpd&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;windows开启ftp服务和建立IIS站点即可。&lt;/p&gt;&#xA;&lt;p&gt;linux配置：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ vim /etc/vsftpd.conf&#xA;local_root=/home/canux/FTP&#xA;anon_root=/home/canux/FTP&#xA;local_enable=YES&#xA;anonymous_enable=YES&#xA;chroot_local_user=YES&#xA;$ sudo service vsftpd restart&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;ftp的网页浏览格式：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;ftp://host/path&#xA;ftp://username:password@host:port/path&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;ftp命令&#34;&gt;ftp命令&lt;/h1&gt;&#xA;&lt;h2 id=&#34;ftp-1&#34;&gt;ftp&lt;/h2&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ ftp [-46pinegvd] [host [port]]&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;python的ftp标准库&#34;&gt;python的FTP标准库&lt;/h1&gt;&#xA;&lt;h2 id=&#34;ftplib&#34;&gt;ftplib&lt;/h2&gt;&#xA;&lt;hr&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Ftp on Morgoth</title>
+        <link>https://canuxcheng.com/tags/ftp/</link>
+        <description>Recent content in Ftp on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Thu, 28 Jul 2016 16:08:54 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/ftp/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Ftp</title>
+        <link>https://canuxcheng.com/post/ftp/</link>
+        <pubDate>Thu, 28 Jul 2016 16:08:54 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/ftp/</guid>
+        <description>&lt;h1 id=&#34;ftp&#34;&gt;FTP&lt;/h1&gt;
+&lt;p&gt;ftp服务器有很多：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;vsftpd&lt;/li&gt;
+&lt;li&gt;proftpd&lt;/li&gt;
+&lt;li&gt;pyftpdlib&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;vsftpd&#34;&gt;vsftpd&lt;/h1&gt;
+&lt;p&gt;安装vsftpd:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo apt-get install vsftpd
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;windows开启ftp服务和建立IIS站点即可。&lt;/p&gt;
+&lt;p&gt;linux配置：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ vim /etc/vsftpd.conf
+local_root=/home/canux/FTP
+anon_root=/home/canux/FTP
+local_enable=YES
+anonymous_enable=YES
+chroot_local_user=YES
+$ sudo service vsftpd restart
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;ftp的网页浏览格式：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ftp://host/path
+ftp://username:password@host:port/path
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;ftp命令&#34;&gt;ftp命令&lt;/h1&gt;
+&lt;h2 id=&#34;ftp-1&#34;&gt;ftp&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;$ ftp [-46pinegvd] [host [port]]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;python的ftp标准库&#34;&gt;python的FTP标准库&lt;/h1&gt;
+&lt;h2 id=&#34;ftplib&#34;&gt;ftplib&lt;/h2&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

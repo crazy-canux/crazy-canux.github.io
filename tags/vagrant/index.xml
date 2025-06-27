@@ -1,19 +1,151 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Vagrant on Morgoth</title>
-    <link>https://canuxcheng.com/tags/vagrant/</link>
-    <description>Recent content in Vagrant on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Thu, 12 Jan 2017 21:00:01 +0000</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/vagrant/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Vagrant</title>
-      <link>https://canuxcheng.com/post/vagrant/</link>
-      <pubDate>Thu, 12 Jan 2017 21:00:01 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/vagrant/</guid>
-      <description>&lt;h1 id=&#34;vagrant&#34;&gt;Vagrant&lt;/h1&gt;&#xA;&lt;p&gt;构建在虚拟化技术之上的虚拟机运行环境管理工具．&lt;/p&gt;&#xA;&lt;p&gt;适合用来构建和分发开发环境．通过命令行可以批量自动化，不用一个一个安装配置图形界面的虚拟机．&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/mitchellh/vagrant&#34;&gt;https://github.com/mitchellh/vagrant&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;需要安装virtualbox或vmware等虚拟机.&lt;/p&gt;&#xA;&lt;p&gt;vagrant还支持其它的providers(docker, vmware, hyper-v, aws)&lt;/p&gt;&#xA;&lt;p&gt;可以在这里找到很多vagrant可用的box:&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://atlas.hashicorp.com/boxes/search&#34;&gt;https://atlas.hashicorp.com/boxes/search&lt;/a&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;初始化&#34;&gt;初始化&lt;/h1&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ mkdir -p /home/user/vagrant&#xA;$ cd /vagrant&#xA;&#xA;# 在当前目录生成一个Vagrantfile文件, 需手动添加vm.box&#xA;$ vagrant init &#xA;&#xA;# 相当于直接添加了vm.box到Vagrantfile.&#xA;$ vagrant init [box-name]&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h1 id=&#34;添加box&#34;&gt;添加box&lt;/h1&gt;&#xA;&lt;pre&gt;&lt;code&gt;# 默认从https://atlas.hashicorp.com/boxes/search下载该box.&#xA;$ vagrant box add [[--name ]box-name] hashicorp/precise64&#xA;&#xA;# 也可以使用下载到本地的box&#xA;$ vagrant box add [[--name ]box-name] /path/to/your.box&#xA;&#xA;# 也可以使用自己的服务器上的box&#xA;$ vagrant box add [[--name ]box-name] URL&#xA;&#xA;# 添加box之后修改Vagrantfile,添加vm.box:&#xA;Vagrant.configure(&amp;quot;2&amp;quot;) do |config|&#xA;  config.vm.box = &amp;quot;[box-name]&amp;quot;&#xA;end&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h1 id=&#34;使用box&#34;&gt;使用box&lt;/h1&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ vagrant up [box-name]&#xA;$ vagrant up --provider docker/aws/vmware/hyperv/... [box-name]&#xA;&#xA;$ vagrant ssh&#xA;# 会进入一个vagrant@precise64:~$的环境．&#xA;# /vagrant 是一个和/home/user/vagrant同步的路径．&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h1 id=&#34;结束使用&#34;&gt;结束使用&lt;/h1&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ vagrant status # 查看box状态&#xA;$ vagrant halt # 关闭box&#xA;$ vagrant reload # 重启box&#xA;$ vagrant suspend&#xA;$ vagrant resume&#xA;$ vagrant provision&#xA;&#xA;# 会销毁box占用的所有资源，但不删除box.&#xA;$ vagrant destroy&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h1 id=&#34;管理box&#34;&gt;管理box&lt;/h1&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ vagrant box list&#xA;$ vagrant box remove&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h1 id=&#34;其它&#34;&gt;其它&lt;/h1&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ vagrant global-status&#xA;$ vagrant global-status --prune&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;配置vagrantfile&#34;&gt;配置Vagrantfile&lt;/h1&gt;&#xA;&lt;pre&gt;&lt;code&gt;config.vm.box_version = &amp;quot;1.1.0&amp;quot;&#xA;cfg.vm.hostname = &amp;quot;ubuntu.labs&amp;quot;&#xA;&#xA;# 端口映射, 把主机的端口映射到vagrant的box&#xA;# 访问主机的该端口就是访问vagrant的box&#xA;cfg.vm.network :forward_port, guest: 80, host: 8080&#xA;&#xA;# 私有网络，只有主机可以访问vagrant的box.&#xA;# 如果多个vagrant的box设定在同一个网段也可以互相访问．&#xA;cfg.vm.network :private_network, ip: &amp;quot;192.168.50.10&amp;quot;&#xA;&#xA;# 公有网络，vagrant的box和主机使用一样的网络．&#xA;cfg.vm.network :public_network&#xA;cfg.vm.network :public_network, ip: &amp;quot;192.168.1.1&amp;quot;&#xA;&#xA;cfg.vm.synced_folder &amp;quot;/var/tmp/pkg-build&amp;quot;, &amp;quot;/var/tmp/pkg-build&amp;quot;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;打包&#34;&gt;打包&lt;/h1&gt;&#xA;&lt;p&gt;用户可以打包自己的开发环境，然后分发出去．&lt;/p&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Vagrant on Morgoth</title>
+        <link>https://canuxcheng.com/tags/vagrant/</link>
+        <description>Recent content in Vagrant on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Thu, 12 Jan 2017 21:00:01 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/vagrant/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Vagrant</title>
+        <link>https://canuxcheng.com/post/vagrant/</link>
+        <pubDate>Thu, 12 Jan 2017 21:00:01 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/vagrant/</guid>
+        <description>&lt;h1 id=&#34;vagrant&#34;&gt;Vagrant&lt;/h1&gt;
+&lt;p&gt;构建在虚拟化技术之上的虚拟机运行环境管理工具．&lt;/p&gt;
+&lt;p&gt;适合用来构建和分发开发环境．通过命令行可以批量自动化，不用一个一个安装配置图形界面的虚拟机．&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/mitchellh/vagrant&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/mitchellh/vagrant&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;需要安装virtualbox或vmware等虚拟机.&lt;/p&gt;
+&lt;p&gt;vagrant还支持其它的providers(docker, vmware, hyper-v, aws)&lt;/p&gt;
+&lt;p&gt;可以在这里找到很多vagrant可用的box:&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://atlas.hashicorp.com/boxes/search&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://atlas.hashicorp.com/boxes/search&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;初始化&#34;&gt;初始化&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;$ mkdir -p /home/user/vagrant
+$ cd /vagrant
+
+# 在当前目录生成一个Vagrantfile文件, 需手动添加vm.box
+$ vagrant init 
+
+# 相当于直接添加了vm.box到Vagrantfile.
+$ vagrant init [box-name]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;添加box&#34;&gt;添加box&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;# 默认从https://atlas.hashicorp.com/boxes/search下载该box.
+$ vagrant box add [[--name ]box-name] hashicorp/precise64
+
+# 也可以使用下载到本地的box
+$ vagrant box add [[--name ]box-name] /path/to/your.box
+
+# 也可以使用自己的服务器上的box
+$ vagrant box add [[--name ]box-name] URL
+
+# 添加box之后修改Vagrantfile,添加vm.box:
+Vagrant.configure(&amp;quot;2&amp;quot;) do |config|
+  config.vm.box = &amp;quot;[box-name]&amp;quot;
+end
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;使用box&#34;&gt;使用box&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;$ vagrant up [box-name]
+$ vagrant up --provider docker/aws/vmware/hyperv/... [box-name]
+
+$ vagrant ssh
+# 会进入一个vagrant@precise64:~$的环境．
+# /vagrant 是一个和/home/user/vagrant同步的路径．
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;结束使用&#34;&gt;结束使用&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;$ vagrant status # 查看box状态
+$ vagrant halt # 关闭box
+$ vagrant reload # 重启box
+$ vagrant suspend
+$ vagrant resume
+$ vagrant provision
+
+# 会销毁box占用的所有资源，但不删除box.
+$ vagrant destroy
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;管理box&#34;&gt;管理box&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;$ vagrant box list
+$ vagrant box remove
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;其它&#34;&gt;其它&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;$ vagrant global-status
+$ vagrant global-status --prune
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;配置vagrantfile&#34;&gt;配置Vagrantfile&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;config.vm.box_version = &amp;quot;1.1.0&amp;quot;
+cfg.vm.hostname = &amp;quot;ubuntu.labs&amp;quot;
+
+# 端口映射, 把主机的端口映射到vagrant的box
+# 访问主机的该端口就是访问vagrant的box
+cfg.vm.network :forward_port, guest: 80, host: 8080
+
+# 私有网络，只有主机可以访问vagrant的box.
+# 如果多个vagrant的box设定在同一个网段也可以互相访问．
+cfg.vm.network :private_network, ip: &amp;quot;192.168.50.10&amp;quot;
+
+# 公有网络，vagrant的box和主机使用一样的网络．
+cfg.vm.network :public_network
+cfg.vm.network :public_network, ip: &amp;quot;192.168.1.1&amp;quot;
+
+cfg.vm.synced_folder &amp;quot;/var/tmp/pkg-build&amp;quot;, &amp;quot;/var/tmp/pkg-build&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;打包&#34;&gt;打包&lt;/h1&gt;
+&lt;p&gt;用户可以打包自己的开发环境，然后分发出去．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ vagrant package [options] [name]
+$ vagrant package
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;windows&#34;&gt;windows&lt;/h1&gt;
+&lt;p&gt;在windows物理机安装virtualbox和vagrant.&lt;/p&gt;
+&lt;p&gt;windows不支持ssh,所以需要类似于putty这种客户端．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;host: 127.0.0.1
+port: 2222
+user: vagrant/root
+password: vagrant
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;linux&#34;&gt;linux&lt;/h1&gt;
+&lt;p&gt;只能在linux物理机安装virtualbox和vagrant使用．&lt;/p&gt;
+&lt;p&gt;如果想在windows物理机里面的virtualbox上安装的linux系统中使用vagrant会报错：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# default: Warning: Connection timeout. Retrying...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;因为需要在linux上在安装virtualxo，然后不能设置加速．&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://canuxcheng.com/images/vagrant.PNG&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Pic&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://canuxcheng.com/images/vagrant1.PNG&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;Pic1&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h1 id=&#34;qa&#34;&gt;Q&amp;amp;A&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;vagrant怎样打包ESXi上的虚拟机．&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;vagrant能否打包cluster(virtualbox或esxi)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

@@ -1,19 +1,301 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Rabbitmq on Morgoth</title>
-    <link>https://canuxcheng.com/tags/rabbitmq/</link>
-    <description>Recent content in Rabbitmq on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Mon, 25 Sep 2017 09:41:39 +0000</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/rabbitmq/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Rabbitmq</title>
-      <link>https://canuxcheng.com/post/rabbitmq/</link>
-      <pubDate>Mon, 25 Sep 2017 09:41:39 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/rabbitmq/</guid>
-      <description>&lt;h1 id=&#34;amqp&#34;&gt;AMQP&lt;/h1&gt;&#xA;&lt;p&gt;AMQP: Advanced Message Queuing Protocol,高级消息队列协议&lt;/p&gt;&#xA;&lt;p&gt;常用的开源AMQP框架：&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/rabbitmq&#34;&gt;https://github.com/rabbitmq&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/apache/kafka&#34;&gt;https://github.com/apache/kafka&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/apache/activemq&#34;&gt;https://github.com/apache/activemq&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;mqtt&#34;&gt;MQTT&lt;/h1&gt;&#xA;&lt;p&gt;MQTT: Message Queuing Telemetry Transport,消息队列遥测传输协议&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;rabbitmq&#34;&gt;Rabbitmq&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/rabbitmq&#34;&gt;https://github.com/rabbitmq&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;RabbitMQ是一个erlang开发的符合AMQP和MQTT的开源项目．&lt;/p&gt;&#xA;&lt;p&gt;rabbitmq-server也叫broker server&lt;/p&gt;&#xA;&lt;p&gt;rabbitmq的三个组件：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;exchange,　交换器，发送消息的实体&lt;/li&gt;&#xA;&lt;li&gt;binding, 绑定器，连接交换器和队列，并且封装消息的路由信息&lt;/li&gt;&#xA;&lt;li&gt;queue,　队列，接受消息的实体&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;workflow:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;producer(publish-message) =&amp;gt;&#xA;&#xA;rabbitmq-server =&amp;gt; exchange -&amp;gt; binding -&amp;gt; queue =&amp;gt;&#xA;&#xA;=&amp;gt; comsumer&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;producer: 生产message并且publish到rabbitmq-server.&lt;/p&gt;&#xA;&lt;p&gt;consumer: 连接到rabbitmq-server并且subscribe一些queue.&lt;/p&gt;&#xA;&lt;p&gt;connection: producer和consumer都是通过tcp连接到rabbitmq-server.&lt;/p&gt;&#xA;&lt;p&gt;channels: 建立在tcp连接中的虚拟连接，用于处理数据流动.&lt;/p&gt;&#xA;&lt;p&gt;queue:　生产者和消费者都应该创建queue.(只能通过exchange接收message)&lt;/p&gt;&#xA;&lt;p&gt;exchanges类型:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;fanout: 所有绑定到此exchange的queue都可以接收消息&lt;/li&gt;&#xA;&lt;li&gt;direct: 通过routingKey和exchange决定的那个唯一的queue可以接收消息&lt;/li&gt;&#xA;&lt;li&gt;topic：所有符合routingKey(此时可以是一个表达式)的routingKey所bind的queue可以接收消息&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;message类型:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;messages: 生产者产生的总消息数．&lt;/li&gt;&#xA;&lt;li&gt;messages_ready: 等待deliver给消费者的消息．&lt;/li&gt;&#xA;&lt;li&gt;messages_unack: 已经被consumer处理，但是没有被ack的消息．&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;virtual hosts: 本质就是一个rabbitmq server,拥有独立的exchange,queue.默认是/(%2F).&lt;/p&gt;&#xA;&lt;p&gt;round-robin dispatch: 循环分发，按顺序分发message到consumer,如果message被consumer正确接收，就会从queue中移除．&lt;/p&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Rabbitmq on Morgoth</title>
+        <link>https://canuxcheng.com/tags/rabbitmq/</link>
+        <description>Recent content in Rabbitmq on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Mon, 25 Sep 2017 09:41:39 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/rabbitmq/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Rabbitmq</title>
+        <link>https://canuxcheng.com/post/rabbitmq/</link>
+        <pubDate>Mon, 25 Sep 2017 09:41:39 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/rabbitmq/</guid>
+        <description>&lt;h1 id=&#34;amqp&#34;&gt;AMQP&lt;/h1&gt;
+&lt;p&gt;AMQP: Advanced Message Queuing Protocol,高级消息队列协议&lt;/p&gt;
+&lt;p&gt;常用的开源AMQP框架：&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/rabbitmq&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/rabbitmq&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/apache/kafka&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/apache/kafka&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/apache/activemq&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/apache/activemq&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;mqtt&#34;&gt;MQTT&lt;/h1&gt;
+&lt;p&gt;MQTT: Message Queuing Telemetry Transport,消息队列遥测传输协议&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;rabbitmq&#34;&gt;Rabbitmq&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/rabbitmq&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/rabbitmq&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;RabbitMQ是一个erlang开发的符合AMQP和MQTT的开源项目．&lt;/p&gt;
+&lt;p&gt;rabbitmq-server也叫broker server&lt;/p&gt;
+&lt;p&gt;rabbitmq的三个组件：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;exchange,　交换器，发送消息的实体&lt;/li&gt;
+&lt;li&gt;binding, 绑定器，连接交换器和队列，并且封装消息的路由信息&lt;/li&gt;
+&lt;li&gt;queue,　队列，接受消息的实体&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;workflow:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;producer(publish-message) =&amp;gt;
+
+rabbitmq-server =&amp;gt; exchange -&amp;gt; binding -&amp;gt; queue =&amp;gt;
+
+=&amp;gt; comsumer
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;producer: 生产message并且publish到rabbitmq-server.&lt;/p&gt;
+&lt;p&gt;consumer: 连接到rabbitmq-server并且subscribe一些queue.&lt;/p&gt;
+&lt;p&gt;connection: producer和consumer都是通过tcp连接到rabbitmq-server.&lt;/p&gt;
+&lt;p&gt;channels: 建立在tcp连接中的虚拟连接，用于处理数据流动.&lt;/p&gt;
+&lt;p&gt;queue:　生产者和消费者都应该创建queue.(只能通过exchange接收message)&lt;/p&gt;
+&lt;p&gt;exchanges类型:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;fanout: 所有绑定到此exchange的queue都可以接收消息&lt;/li&gt;
+&lt;li&gt;direct: 通过routingKey和exchange决定的那个唯一的queue可以接收消息&lt;/li&gt;
+&lt;li&gt;topic：所有符合routingKey(此时可以是一个表达式)的routingKey所bind的queue可以接收消息&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;message类型:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;messages: 生产者产生的总消息数．&lt;/li&gt;
+&lt;li&gt;messages_ready: 等待deliver给消费者的消息．&lt;/li&gt;
+&lt;li&gt;messages_unack: 已经被consumer处理，但是没有被ack的消息．&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;virtual hosts: 本质就是一个rabbitmq server,拥有独立的exchange,queue.默认是/(%2F).&lt;/p&gt;
+&lt;p&gt;round-robin dispatch: 循环分发，按顺序分发message到consumer,如果message被consumer正确接收，就会从queue中移除．&lt;/p&gt;
+&lt;p&gt;no-ack: 每次consumer接收数据后，不管是否处理完成，就标记为ack,然后从queue中删除．但是如果处理过程异常，数据就会丢失．&lt;/p&gt;
+&lt;p&gt;ack: ack方式就是数据处理完成后发送ack,保证数据被处理再从queue删除，如果异常，会dispatch到别的consumer.&lt;/p&gt;
+&lt;p&gt;durable: 消息持久化，如果rabbitmq-server异常退出或服务器重启，为了保证数据还在，需要做数据持久化.&lt;/p&gt;
+&lt;p&gt;消息的状态信息：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;deliver: 消息投递给消费着．
+redeliver:　消息重新投递给消费者．&lt;/li&gt;
+&lt;li&gt;publish/subscribe: 将同一个消息deliver到多个consumer叫publish或subscribe.&lt;/li&gt;
+&lt;li&gt;ack: 已经处理完成的消息&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;安装&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo apt-get install rabbitmq-server
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;配置&lt;/p&gt;
+&lt;p&gt;rabbitmq-3.7 开始配置文件格式为sysctl，同时也兼容旧的erlang格式。&lt;/p&gt;
+&lt;p&gt;erlang格式：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[
+    {rabbit,
+        [
+            {heartbeat, 8000}
+        ]
+    }
+].
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;sysctl格式:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;key = value
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;rabbitmqctl-命令&#34;&gt;rabbitmqctl 命令&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo rabbitmqctl [-n node] [-t timeout] [-q] &amp;lt;commands&amp;gt; [command options]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;添加用户并授权：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 默认的guest/guest只能用于localhost.
+$ add_user [username] [password]
+$ delete_user &amp;lt;username&amp;gt;
+$ change_password &amp;lt;username&amp;gt; &amp;lt;newpassword&amp;gt;
+$ clear_password &amp;lt;username&amp;gt;
+$ set_user_tags [username] administrator
+$ list_users
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;权限管理:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;add_vhost &amp;lt;vhostpath&amp;gt;
+delete_vhost &amp;lt;vhostpath&amp;gt;
+list_vhosts [&amp;lt;vhostinfoitem&amp;gt; ...]
+set_permissions [-p &amp;lt;vhostpath&amp;gt;] &amp;lt;user&amp;gt; &amp;lt;conf&amp;gt; &amp;lt;write&amp;gt; &amp;lt;read&amp;gt;
+clear_permissions [-p &amp;lt;vhostpath&amp;gt;] &amp;lt;username&amp;gt;
+list_permissions [-p &amp;lt;vhostpath&amp;gt;]
+list_user_permissions &amp;lt;username&amp;gt;
+
+list_queues [-p &amp;lt;vhostpath&amp;gt;] [&amp;lt;queueinfoitem&amp;gt; ...]
+list_exchanges [-p &amp;lt;vhostpath&amp;gt;] [&amp;lt;exchangeinfoitem&amp;gt; ...]
+list_bindings [-p &amp;lt;vhostpath&amp;gt;] [&amp;lt;bindinginfoitem&amp;gt; ...]
+list_connections [&amp;lt;connectioninfoitem&amp;gt; ...]
+list_channels [&amp;lt;channelinfoitem&amp;gt; ...]
+list_consumers [-p &amp;lt;vhostpath&amp;gt;]
+status
+environment
+report
+eval &amp;lt;expr&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;rabbitmq-plugins-插件管理&#34;&gt;rabbitmq-plugins 插件管理&lt;/h2&gt;
+&lt;p&gt;启动web-gui:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ rabbitmq-plugins enable rabbitmq_management
+# http://localhost:15672 guest/guest
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;haproxy&#34;&gt;HAProxy&lt;/h1&gt;
+&lt;p&gt;rabbitmq-cluster部署：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;在所有node上安装rabbitmq-server.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;修改所有node的/etc/hosts，配置ip和hostname.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;同步所有node的cookie(/var/lib/rabbitmq/.erlang.cookie).&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;启动所有node上的rabbitmq-server.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; # rabbitmq-server -detached
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;将所有slave node添加manager组成cluster.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; # rabbitmqctl stop_app
+ # rabbitmqctl reset
+ # rabbitmqctl join_cluster rabbit@manager
+ # rabbitmqctl start_app
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;检查cluster状态&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; # rabbitmqctl cluster_status
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;设置policy&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; # rabbitmqctl set_policy ha-all &amp;quot;&amp;quot; &#39;{&amp;quot;ha-mode&amp;quot;:&amp;quot;all&amp;quot;,&amp;quot;ha-sync-mode&amp;quot;:&amp;quot;automatic&amp;quot;}&#39;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;haproxy-server部署:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;在haproxy server安装haproxy&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;配置haproxy&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; # sudo vim /etc/haproxy/haproxy.cfg
+ global
+     log /dev/log    local0
+     log /dev/log    local1 notice
+     chroot /var/lib/haproxy
+     user haproxy
+     group haproxy
+     daemon
+ defaults
+     log     global
+     mode    tcp
+     maxconn 10000
+     timeout connect 3000
+     timeout client 1000s
+     timeout server 1000s
+ frontend rabbitmq_front
+     bind &amp;lt;haproxy-ip&amp;gt;:5672
+     reqadd X-Forwarded-Proto:\ amqp
+     default_backend rabbitmq_backend
+ backend rabbitmq_backend
+     balance roundrobin
+     server rabbitmq-master &amp;lt;master-ip&amp;gt;:5672 check
+     server rabbitmq-slave &amp;lt;slave-ip&amp;gt;:5672 check
+ bind 0.0.0.0:15672
+     server &amp;lt;master-hostname&amp;gt; &amp;lt;master-ip&amp;gt;:15672 check
+     server &amp;lt;slave-hostname&amp;gt; &amp;lt;slave-ip&amp;gt;:15672 check
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;重启haproxy service.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;celery&#34;&gt;Celery&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/celery&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/celery&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;可用配置，django需要加namespace作为前缀。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.celeryproject.org/en/stable/userguide/configuration.html#new-lowercase-settings&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://docs.celeryproject.org/en/stable/userguide/configuration.html#new-lowercase-settings&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;django中的celery配置&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;CELERY_BROKER_URL = &amp;quot;amqp://user:pw@amqp:5672&amp;quot;
+CELERY_ACCEPT_CONTENT = [&#39;json&#39;]
+CELERY_RESULT_SERIALIZER = &#39;json&#39;
+CELERY_EVENT_SERIALIZER = &#39;json&#39;
+CELERY_TIMEZONE = &#39;UTC&#39;
+CELERY_ENABLE_UTC = True
+CELERY_WORKER_PREFETCH_MULTIPLIER = 4
+CELERY_TASK_ACKS_LATE = False
+
+CELERY_TASK_SERIALIZER = &#39;json&#39;
+CELERY_TASK_QUEUES = (
+    Queue(&#39;queue1&#39;, Exchange(&#39;exchange1&#39;, type=&#39;direct&#39;), routing_key=&#39;default&#39;, queue_arguments={&#39;x-max-priority&#39;: 100}),
+    Queue(&#39;queue2&#39;, Exchange(&#39;exchange2&#39;, type=&#39;direct&#39;), routing_key=&#39;default&#39;, queue_arguments={&#39;x-max-priority&#39;: 100}),
+)
+CELERY_TASK_DEFAULT_QUEUE = &#39;default&#39;
+CELERY_TASK_DEFAULT_EXCHANGE = &#39;default&#39;
+CELERY_TASK_DEFAULT_EXCHANGE_TYPE = &#39;direct&#39;
+CELERY_TASK_DEFAULT_DELIVERY_MODE = &#39;persistent&#39;
+CELERY_TASK_DEFAULT_ROUTING_KEY = &#39;default&#39;
+CELERY_TASK_ROUTES = (
+    {
+        &amp;quot;proj.app1.tasks.task1&amp;quot;: {
+            &amp;quot;queue&amp;quot;: &amp;quot;queue1&amp;quot;,
+            &amp;quot;routing_key&amp;quot;: &amp;quot;default&amp;quot;
+        }
+    },
+    {
+        &amp;quot;proj.app2.tasks.task2&amp;quot;: {
+            &amp;quot;queue&amp;quot;: &amp;quot;queue2&amp;quot;,
+            &amp;quot;routing_key&amp;quot;: &amp;quot;default&amp;quot;
+        }
+    },
+)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;在project中创建celery的app:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import os
+from celery import Celery
+
+# set the default Django settings module for the &#39;celery&#39; program.
+os.environ.setdefault(&#39;DJANGO_SETTINGS_MODULE&#39;, &#39;site_main.settings&#39;)
+
+app = Celery(&#39;proj&#39;)
+
+// namespace就会去django的配置找前缀为celery的参数.
+app.config_from_object(&#39;django.conf:settings&#39;, namespace=&#39;CELERY&#39;)
+
+app.autodiscover_tasks()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;celery选项:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;celery [options] command [args]
+
+-A, --app &amp;lt;app&amp;gt;¶
+-b, --broker &amp;lt;broker&amp;gt;
+--result-backend &amp;lt;result_backend&amp;gt;
+--loader &amp;lt;loader&amp;gt;
+--config &amp;lt;config&amp;gt;
+--workdir &amp;lt;workdir&amp;gt;
+-C, --no-color
+-q, --quiet
+--version
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;worker选项:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;-n, --hostname
+-D, --detach
+-l, --loglevel
+-O default|fair
+// 默认的concurrency是cpu的个数，如果是container运行就是host的cpu个数，不是resourcelimit的cpu个数.
+-c, --concurrency
+// cpu密集型任务最好用prefork, IO密集最好用eventlet/gevent. 
+-P, --poo prefork(default)|eventlet|gevent|solo
+-E, --task-events, --events
+-Q, --queues
+-B, --beat
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;beat选项:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;--detach
+-s, --schedule
+-S, --scheduler
+-l, --loglevel
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;inspect选项:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;-t, --timeout
+-d, --destination
+-j, --json
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

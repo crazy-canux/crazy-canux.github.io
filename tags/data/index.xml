@@ -1,26 +1,410 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Data on Morgoth</title>
-    <link>https://canuxcheng.com/tags/data/</link>
-    <description>Recent content in Data on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Mon, 01 Jan 2018 10:49:21 +0000</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/data/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>GSL_data</title>
-      <link>https://canuxcheng.com/post/gsl_data/</link>
-      <pubDate>Mon, 01 Jan 2018 10:49:21 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/gsl_data/</guid>
-      <description>&lt;h1 id=&#34;time&#34;&gt;time&lt;/h1&gt;&#xA;&lt;h2 id=&#34;constants&#34;&gt;constants&lt;/h2&gt;&#xA;&lt;p&gt;const:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;const (&#xA;    ANSIC       = &amp;quot;Mon Jan _2 15:04:05 2006&amp;quot;&#xA;    Unixdate    = &amp;quot;Mon Jan _2 15:04:05 MST 2006&amp;quot;&#xA;    RFC3339     = &amp;quot;2006-01-02T15:04:05Z07:00&amp;quot;&#xA;    ...&#xA;)&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;functions&#34;&gt;functions&lt;/h2&gt;&#xA;&lt;pre&gt;&lt;code&gt;// 阻塞go程d代表的时间段&#xA;func Sleep(d Duration)&#xA;&#xA;func After(d Duration) &amp;lt;- chan Time&#xA;&#xA;func Tick(d Duration) &amp;lt;- chan Time&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;time-1&#34;&gt;Time&lt;/h2&gt;&#xA;&lt;p&gt;代表一个纳秒精度的时间点.&lt;/p&gt;&#xA;&lt;p&gt;零值是January 1, year 1, 00:00:00.000000000 UTC.&lt;/p&gt;&#xA;&lt;p&gt;struct:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;type  Time struct {}&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;functions:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;// 格式化一个时间, eg:　2009-11-10 15:00:00 -0800 PST&#xA;func date(year int, month Month, day, hour, min, sec, nsec int, loc *Location) Time&#xA;&#xA;// 返回当前本地时间, eg: 2018-03-18 12:16:55.842029 +0800 CST m=+0.001962301&#xA;func Now() Time&#xA;&#xA;func Parse(layout, value s tring) (Time, error)&#xA;&#xA;func ParseInLocation(layout, value string, loc *Location) (Time, error)&#xA;&#xA;func Unix(sec int64, nsec int64) Time&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;methods:&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>PSL_Data</title>
-      <link>https://canuxcheng.com/post/psl_data/</link>
-      <pubDate>Sun, 14 Aug 2016 20:57:36 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/psl_data/</guid>
-      <description>&lt;h1 id=&#34;data-types&#34;&gt;Data Types&lt;/h1&gt;&#xA;&lt;h2 id=&#34;datetime&#34;&gt;datetime&lt;/h2&gt;&#xA;&lt;pre&gt;&lt;code&gt;import datetime&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;classes:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;# datetime.date&#xA;date(year, month, day)&#xA;# methods:&#xA;ctime(...)&#xA;...&#xA;# data descriptors:&#xA;day&#xA;month&#xA;year&#xA;&#xA;# datetime.datetime(datetime.date)&#xA;datetime(year, month, day[, hour[, minute[, second[, microsecond[,tzinfo]]]]])&#xA;# methods:&#xA;datetime.datetime.strptime(string, format)&#xA;format_datetime = datetime.datetime.strptime(&#39;20160824161431&#39;, &#39;%Y%m%d%H%M%S&#39;) # return: datetime.datetime(2016, 8, 24, 16, 14, 31)&#xA;format_datetime = datetime.datetime.strptime(&#39;24 August 2016 16:14:31&#39;, &#39;%Y%m%d%H%M%S&#39;) # return: datetime.datetime(2016, 8, 24, 16, 14, 31)&#xA;&#xA;datetime.datetime.strftime(format[, tuple])&#xA;string_datetime = format_datetime.strftime(&amp;quot;%d %B %Y %H:%M:%S&amp;quot;) # return: &#39;24 August 2016 16:14:31&#39;&#xA;datetime.datetime.now().strftime(&#39;%Y-%m-%d %H:%M:%S&#39;) # return: &#39;2017-02-07 23:07:32&#39;&#xA;&#xA;str(datetime.datetime.now())&#xA;datetime.datetime.now().strftime(&#39;%Y%m%d%H%M%S&#39;) # 当前时间戳&#xA;&#xA;# datetime.time&#xA;&#xA;# datetime.timedelta&#xA;&#xA;# datetime.tzinfo&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;data:&lt;/p&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Data on Morgoth</title>
+        <link>https://canuxcheng.com/tags/data/</link>
+        <description>Recent content in Data on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Mon, 01 Jan 2018 10:49:21 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/data/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>GSL_data</title>
+        <link>https://canuxcheng.com/post/gsl_data/</link>
+        <pubDate>Mon, 01 Jan 2018 10:49:21 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/gsl_data/</guid>
+        <description>&lt;h1 id=&#34;time&#34;&gt;time&lt;/h1&gt;
+&lt;h2 id=&#34;constants&#34;&gt;constants&lt;/h2&gt;
+&lt;p&gt;const:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;const (
+    ANSIC       = &amp;quot;Mon Jan _2 15:04:05 2006&amp;quot;
+    Unixdate    = &amp;quot;Mon Jan _2 15:04:05 MST 2006&amp;quot;
+    RFC3339     = &amp;quot;2006-01-02T15:04:05Z07:00&amp;quot;
+    ...
+)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;functions&#34;&gt;functions&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;// 阻塞go程d代表的时间段
+func Sleep(d Duration)
+
+func After(d Duration) &amp;lt;- chan Time
+
+func Tick(d Duration) &amp;lt;- chan Time
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;time-1&#34;&gt;Time&lt;/h2&gt;
+&lt;p&gt;代表一个纳秒精度的时间点.&lt;/p&gt;
+&lt;p&gt;零值是January 1, year 1, 00:00:00.000000000 UTC.&lt;/p&gt;
+&lt;p&gt;struct:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type  Time struct {}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;functions:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 格式化一个时间, eg:　2009-11-10 15:00:00 -0800 PST
+func date(year int, month Month, day, hour, min, sec, nsec int, loc *Location) Time
+
+// 返回当前本地时间, eg: 2018-03-18 12:16:55.842029 +0800 CST m=+0.001962301
+func Now() Time
+
+func Parse(layout, value s tring) (Time, error)
+
+func ParseInLocation(layout, value string, loc *Location) (Time, error)
+
+func Unix(sec int64, nsec int64) Time
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;methods:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 返回T的地点和时区信息
+func (t Time) Location() *Location
+
+// 返回t的时区规范名和相对于UTC的偏移量
+func (t Time) Zone() (name string, offset int)
+
+func (t Time) IsZero() bool
+
+func (t Time) Local() Time
+
+func (t Time) UTC() Time
+
+func (t Time) In(loc *Location) Time
+
+func (t Time) Unix() int64
+
+func (t Time) UnixNano() int64
+
+// 比较两个时间
+func (t Time) Equal(u Time) bool
+
+// t &amp;gt; u 返回true
+func (t Time) Before(u Time) bool
+
+// t &amp;lt; u 返回true
+func (t Time) After(u Time) bool
+
+// 返回t的年月日.
+func (t Time) date() (year int, month Month, day int)
+
+// 返回t对应的时分秒
+func (t Time) Clock() (hour, min, sec int)
+
+// 返回t对应的年
+func (t Time) Year() int
+
+// 返回t对应的月
+func (t Time) Month() Month
+
+func (t Time) ISOWeek() (year, week int)
+
+// 返回t对应的当年的第几天
+func (t Time) YearDay() int
+
+// 返回t对应的当月的第几天
+func (t Time) Day() int
+
+// 返回t对应的星期几
+func (t Time) Weekday() Weekday
+
+// 返回t对应的第几小时
+func (t Time) Hour() int
+
+// 返回t对应的分钟
+func (t Time) Minute() int
+
+// 返回t对应的秒
+func (t Time) Second() int
+
+// 返回t对应的纳秒偏移量
+func (t Time) Nanosecond() int
+
+func (t Time) Add(d Duration) Time
+
+func (t Time) Adddate(years int, months int, days int) Time
+
+func (t Time) Sub(u Time) Duration
+
+func (t Time) Round(d duration) Time
+
+func (t Time) Truncate(d Duration) Time
+
+func (t Time) Format(layout string) string
+
+func (t Time) String(layout string) string
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;weekday&#34;&gt;Weekday&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;type Weekday int
+
+const (
+    Sunday Weekday = iota
+    Monday
+    Tuesday
+    Wednesday
+    Thursday
+    Friday
+    Saturday
+)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;methods:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 返回d对应的英文名
+func (d Weekday) String() string
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;month&#34;&gt;Month&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;type Month int
+
+const (
+    January Month = 1 + iota
+    February
+    March
+    April
+    May
+    June
+    July
+    August
+    September
+    October
+    November
+    December
+)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;methods:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 返回m对应的英文名
+func (m Month) String() string
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;location&#34;&gt;Location&lt;/h2&gt;
+&lt;p&gt;struct:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type Location struct {}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;functions:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 返回使用给定名字创建的Location
+// name == &amp;quot;&amp;quot; 或　name == &amp;quot;UTC&amp;quot;, 返回UTC
+// name == &amp;quot;Local&amp;quot;, fanhui1Local
+// 其它时间数据库的值
+func LoadLocation(name string) (*Location, error)
+
+// 使用给定的名称和偏移量创建一个Location
+func FixedZone(name string, offset int) *Location
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;methods:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 返回对时区信息的描述
+func (l *Location) String() string
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;duration&#34;&gt;Duration&lt;/h2&gt;
+&lt;h2 id=&#34;timer&#34;&gt;Timer&lt;/h2&gt;
+&lt;h2 id=&#34;ticker&#34;&gt;Ticker&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;containerheap&#34;&gt;container/heap&lt;/h1&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;containerlist&#34;&gt;container/list&lt;/h1&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;containerring&#34;&gt;container/ring&lt;/h1&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;compressbzip2&#34;&gt;compress/bzip2&lt;/h1&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;compressflate&#34;&gt;compress/flate&lt;/h1&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;compressgzip&#34;&gt;compress/gzip&lt;/h1&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;compresslzw&#34;&gt;compress/lzw&lt;/h1&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;compresszlib&#34;&gt;compress/zlib&lt;/h1&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;archive&#34;&gt;archive&lt;/h1&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        <item>
+        <title>PSL_Data</title>
+        <link>https://canuxcheng.com/post/psl_data/</link>
+        <pubDate>Sun, 14 Aug 2016 20:57:36 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/psl_data/</guid>
+        <description>&lt;h1 id=&#34;data-types&#34;&gt;Data Types&lt;/h1&gt;
+&lt;h2 id=&#34;datetime&#34;&gt;datetime&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;import datetime
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;classes:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# datetime.date
+date(year, month, day)
+# methods:
+ctime(...)
+...
+# data descriptors:
+day
+month
+year
+
+# datetime.datetime(datetime.date)
+datetime(year, month, day[, hour[, minute[, second[, microsecond[,tzinfo]]]]])
+# methods:
+datetime.datetime.strptime(string, format)
+format_datetime = datetime.datetime.strptime(&#39;20160824161431&#39;, &#39;%Y%m%d%H%M%S&#39;) # return: datetime.datetime(2016, 8, 24, 16, 14, 31)
+format_datetime = datetime.datetime.strptime(&#39;24 August 2016 16:14:31&#39;, &#39;%Y%m%d%H%M%S&#39;) # return: datetime.datetime(2016, 8, 24, 16, 14, 31)
+
+datetime.datetime.strftime(format[, tuple])
+string_datetime = format_datetime.strftime(&amp;quot;%d %B %Y %H:%M:%S&amp;quot;) # return: &#39;24 August 2016 16:14:31&#39;
+datetime.datetime.now().strftime(&#39;%Y-%m-%d %H:%M:%S&#39;) # return: &#39;2017-02-07 23:07:32&#39;
+
+str(datetime.datetime.now())
+datetime.datetime.now().strftime(&#39;%Y%m%d%H%M%S&#39;) # 当前时间戳
+
+# datetime.time
+
+# datetime.timedelta
+
+# datetime.tzinfo
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;data:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;MAXYEAR = 9999
+MINYEAR = 1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;calendar&#34;&gt;calendar&lt;/h2&gt;
+&lt;h2 id=&#34;collections&#34;&gt;collections&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;import collections
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;classes:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# collections.Callable
+
+# collections.Container
+
+# collections.Counter
+
+# collections.Hashable
+
+# collections.ItemsView
+
+# collections.Iterable
+
+# collections.Iterator
+
+# collections.deque
+# 返回一个deque类型的实例，也就是双端队列
+deque([iterable[, maxlen]])
+
+# collections.defaultdict
+# 返回一个defaultdict类型的实例，类似于dict.setdefault()
+defaultdict(default_factory[, ...])
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;functions:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;namedtuple(typename, field_names, verbose=False, rename=False)
+# 返回一个tuple的子类, 将只能通过index访问的tuple变为可以通过name来访问．
+NewTuple = namedtuple(&#39;NewTuple&#39;, [&#39;elm1&#39;, &#39;elm2&#39;, &#39;elm3&#39;])
+nt = NewTuple(1, 2, 3)
+nt.elm1 # 1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;data:&lt;/p&gt;
+&lt;h2 id=&#34;heapq&#34;&gt;heapq&lt;/h2&gt;
+&lt;h2 id=&#34;bisect&#34;&gt;bisect&lt;/h2&gt;
+&lt;h2 id=&#34;array&#34;&gt;array&lt;/h2&gt;
+&lt;h2 id=&#34;sched&#34;&gt;sched&lt;/h2&gt;
+&lt;h2 id=&#34;queue&#34;&gt;Queue&lt;/h2&gt;
+&lt;p&gt;队列数据结构．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import Queue
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;classes:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# Queue.Queue
+Queue(maxsize=0) # 创建一个大小为maxsize的queue对象
+# methods:
+empty(self) # 如果queue为空返回True
+full(self) # 如果queue达到maxsize返回True
+get(self, block=True, timeout=None) # 从队列中取出一个元素并返回,如果block=True,会一直阻塞,直到队列中有元素．
+get_nowait(self)
+join(self)
+put(self, item, block=True, timeout=None) # 把item放到队列中,如果block=true,会一直阻塞,直到队列有空间存放item.
+put_nowait(self, item)
+qsize(self) # 返回queue大小，近似值
+task_done(self)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;weakref&#34;&gt;weakref&lt;/h2&gt;
+&lt;h2 id=&#34;userdict&#34;&gt;UserDict&lt;/h2&gt;
+&lt;h2 id=&#34;userlist&#34;&gt;UserList&lt;/h2&gt;
+&lt;h2 id=&#34;userstring&#34;&gt;UserString&lt;/h2&gt;
+&lt;h2 id=&#34;types&#34;&gt;types&lt;/h2&gt;
+&lt;h2 id=&#34;copy&#34;&gt;copy&lt;/h2&gt;
+&lt;p&gt;copy和deepcopy都只拷贝对象的类型和数值，不拷贝对象的ID.也就是==运算为True, is(id())运算为False.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import copy
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;functions:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;copy.copy(x) # 浅复制, 只拷贝父对象，不拷贝内部的子对象.
+copy.deepcopy(x, memo=None, _nil=[]) # 深复制, 拷贝父对象和内部的子对象
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;pprint&#34;&gt;pprint&lt;/h2&gt;
+&lt;h2 id=&#34;repr&#34;&gt;repr&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;data-persistence&#34;&gt;Data Persistence&lt;/h1&gt;
+&lt;p&gt;pickle/cPickle/marshal提供对象的序列化操作．&lt;/p&gt;
+&lt;p&gt;gdb相关的模块anydbm/whichdb/dbm/gdbm/dumbdbm提供类似字典和文件的对象．&lt;/p&gt;
+&lt;p&gt;shelve集合了以上两者的功能．&lt;/p&gt;
+&lt;h2 id=&#34;pickle&#34;&gt;pickle&lt;/h2&gt;
+&lt;p&gt;pickle不支持unicode,只支持ascii.&lt;/p&gt;
+&lt;h2 id=&#34;cpickle&#34;&gt;cPickle&lt;/h2&gt;
+&lt;p&gt;python3将cPickle和pickle统一合并为pickle.&lt;/p&gt;
+&lt;p&gt;cPickle是c开发的，速度比pickle快，但是不支持被继承．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import cPickle
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;functions:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Pickler(file, protocol=0)
+Unpickler(file)
+dump(obj, file, protocol=0) # 写入到一个文件
+dumps(obj, protocol=0) # 写入到一个字符串
+load(file) # 从文件读取
+loads(string) # 从字符串读取
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;data:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;HIGHEST_PROTOCOL = 2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;marshal&#34;&gt;marshal&lt;/h2&gt;
+&lt;h2 id=&#34;shelve&#34;&gt;shelve&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;import shelve
+
+with shelve.open(f, flag=&#39;n&#39;, writeback=True) as f:
+r/w: 不存在报错
+c: read-write to new/existing，不存在创建
+n: read-write to new. 总是创建新的
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;anydbm&#34;&gt;anydbm&lt;/h2&gt;
+&lt;h2 id=&#34;whichdb&#34;&gt;whichdb&lt;/h2&gt;
+&lt;h2 id=&#34;dbm&#34;&gt;dbm&lt;/h2&gt;
+&lt;h2 id=&#34;gdbm&#34;&gt;gdbm&lt;/h2&gt;
+&lt;h2 id=&#34;dumbdbm&#34;&gt;dumbdbm&lt;/h2&gt;
+&lt;h2 id=&#34;cope_reg&#34;&gt;cope_reg&lt;/h2&gt;
+&lt;h2 id=&#34;pickletools&#34;&gt;pickletools&lt;/h2&gt;
+&lt;h2 id=&#34;sqlite&#34;&gt;sqlite&lt;/h2&gt;
+&lt;p&gt;python访问数据库两种方式：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;ORM&lt;/li&gt;
+&lt;li&gt;DB-API&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;ORM是对象-关系管理器，相关模块有SQLAlchemy, SQLObject.&lt;/p&gt;
+&lt;p&gt;DB-API参考PEP248/249定义了Database的API。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.python.org/dev/peps/pep-0249/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.python.org/dev/peps/pep-0249/&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import sqlite3
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;classes:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# sqlite3.Connection
+# methods:
+close(...)
+commit(...)
+cursor(...)
+execute(...)
+...
+
+# sqlite3.Cursor
+# methods:
+close(...)
+...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;functions:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;adapt(obj, protocol, alternate)
+connect(database[, timeout, isolation_level, detect_types, factory])
+...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;data:&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;data-compression-and-archiving&#34;&gt;Data Compression and Archiving&lt;/h1&gt;
+&lt;h2 id=&#34;gzip&#34;&gt;gzip&lt;/h2&gt;
+&lt;h2 id=&#34;bz2&#34;&gt;bz2&lt;/h2&gt;
+&lt;h2 id=&#34;zlib&#34;&gt;zlib&lt;/h2&gt;
+&lt;h2 id=&#34;zipfile&#34;&gt;zipfile&lt;/h2&gt;
+&lt;h2 id=&#34;tarfile&#34;&gt;tarfile&lt;/h2&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

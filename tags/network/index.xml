@@ -1,33 +1,688 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Network on Morgoth</title>
-    <link>https://canuxcheng.com/tags/network/</link>
-    <description>Recent content in Network on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Mon, 01 Jan 2018 10:49:21 +0000</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/network/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>GSL_network</title>
-      <link>https://canuxcheng.com/post/gsl_network/</link>
-      <pubDate>Mon, 01 Jan 2018 10:49:21 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/gsl_network/</guid>
-      <description>&lt;h1 id=&#34;net&#34;&gt;net&lt;/h1&gt;&#xA;&lt;p&gt;网络IO接口，包括TCP/IP, UDP, SOCKET, DNS&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;import &amp;quot;net&amp;quot;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;constants&#34;&gt;constants&lt;/h2&gt;&#xA;&lt;pre&gt;&lt;code&gt;const (&#xA;    IPv4len = 4&#xA;    IPv6len = 16&#xA;)&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;variables&#34;&gt;variables&lt;/h2&gt;&#xA;&lt;h2 id=&#34;functions&#34;&gt;functions&lt;/h2&gt;&#xA;&lt;h2 id=&#34;addr&#34;&gt;Addr&lt;/h2&gt;&#xA;&lt;p&gt;代表一个网络终端地址．&lt;/p&gt;&#xA;&lt;p&gt;TCPAddr, UDPAddr, IPAddr, UnixAddr 都实现了该接口&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;type Addr interface {&#xA;    Network() string&#xA;    String() string&#xA;}&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;tcpaddr&#34;&gt;TCPAddr&lt;/h2&gt;&#xA;&lt;p&gt;function:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;func ResolveTCPAddr(net, addr string) (*TCPAddr, error)&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;udpaddr&#34;&gt;UDPAddr&lt;/h2&gt;&#xA;&lt;p&gt;function:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;func ResolveUDPAddr(net, addr string) (*UDPAddr, error)&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;ipaddr&#34;&gt;IPAddr&lt;/h2&gt;&#xA;&lt;p&gt;function:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;func ResolveIPAddr(net, addr string) (*IPAddr, error)&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;unixaddr&#34;&gt;UnixAddr&lt;/h2&gt;&#xA;&lt;p&gt;function:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;func ResolveUnixAddr(net, addr string) (*UnixAddr, error)&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;conn&#34;&gt;Conn&lt;/h2&gt;&#xA;&lt;p&gt;该接口代表通用的面向流的网络连接．&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>PSL_Network</title>
-      <link>https://canuxcheng.com/post/psl_network/</link>
-      <pubDate>Fri, 12 Aug 2016 14:21:36 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/psl_network/</guid>
-      <description>&lt;h1 id=&#34;internet-protocols-and-support&#34;&gt;Internet Protocols and Support&lt;/h1&gt;&#xA;&lt;p&gt;socketserver/http/ftp参考&lt;a href=&#34;https://super-devops.readthedocs.io/en/latest/&#34;&gt;https://super-devops.readthedocs.io/en/latest/&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;p&gt;pop,imap/smtp参考&lt;a href=&#34;https://super-devops.readthedocs.io/en/latest/&#34;&gt;https://super-devops.readthedocs.io/en/latest/&lt;/a&gt;.&lt;/p&gt;&#xA;&lt;h2 id=&#34;urllib&#34;&gt;urllib&lt;/h2&gt;&#xA;&lt;p&gt;urllib.request&lt;/p&gt;&#xA;&lt;p&gt;urllib.respponse&lt;/p&gt;&#xA;&lt;p&gt;urllib.parse&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;from urllib.parse import urlparse&#xA;from urllib.parse import urljoin&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;urllib.error&lt;/p&gt;&#xA;&lt;p&gt;urllib.robotparser&lt;/p&gt;&#xA;&lt;h2 id=&#34;ipaddress&#34;&gt;ipaddress&lt;/h2&gt;&#xA;&lt;h2 id=&#34;webbrowser&#34;&gt;webbrowser&lt;/h2&gt;&#xA;&lt;h2 id=&#34;cgi&#34;&gt;cgi&lt;/h2&gt;&#xA;&lt;h2 id=&#34;cgitb&#34;&gt;cgitb&lt;/h2&gt;&#xA;&lt;h2 id=&#34;wsgiref&#34;&gt;wsgiref&lt;/h2&gt;&#xA;&lt;h2 id=&#34;xmlrpc&#34;&gt;xmlrpc&lt;/h2&gt;&#xA;&lt;h2 id=&#34;socketserver&#34;&gt;socketserver&lt;/h2&gt;&#xA;&lt;h2 id=&#34;nntplib&#34;&gt;nntplib&lt;/h2&gt;&#xA;&lt;p&gt;network news transfer protocol&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;import nntplib&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;telnet&#34;&gt;telnet&lt;/h2&gt;&#xA;&lt;pre&gt;&lt;code&gt;import telnetlib&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;structured-markup-processing-tools&#34;&gt;Structured Markup Processing Tools&lt;/h1&gt;&#xA;&lt;h2 id=&#34;html&#34;&gt;html&lt;/h2&gt;&#xA;&lt;h2 id=&#34;xml&#34;&gt;xml&lt;/h2&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;internet-data-handling&#34;&gt;Internet Data Handling&lt;/h1&gt;&#xA;&lt;h2 id=&#34;json&#34;&gt;json&lt;/h2&gt;&#xA;&lt;p&gt;http api(restful)一般使用json格式的数据．&lt;/p&gt;&#xA;&lt;p&gt;python和json数据类型对应关系参考WEB/JSON.&lt;/p&gt;&#xA;&lt;p&gt;complex和class/def不能被编码.&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;import json&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;classes:&lt;/p&gt;&#xA;&lt;p&gt;functions:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;# 将转换后的json格式写入文件&#xA;dump(obj, fp, skipkeys=False, ensure_ascii=True, check_circular=True, allow_nan=True, cls=None, indent=None, separators=None, encoding=&#39;utf-8&#39;, default=None, sort_keys=False, **kw)&#xA;with open(file, &#39;w&#39;) as f:&#xA;    json.dump(dict_data, f)&#xA;&#xA;# 将dict类型转换成json格式&#xA;dumps(obj, skipkeys=False, ensure_ascii=True, check_circular=True, allow_nan=True, cls=None, indent=None, separators=None, encoding=&#39;utf-8&#39;, default=None, sort_keys=False, **kw)&#xA;json_data = json.dumps(dict_data)&#xA;&#xA;indent=4 # 写入自动缩进４个空格&#xA;&#xA;# 将读出的文件(json格式)转换成dict&#xA;load(fp, encoding=None, cls=None, object_hook=None, parse_float=None, parse_int=None, parse_constant=None, object_pairs_hook=None, **kw)&#xA;with open(file, &#39;r&#39;) as f:&#xA;    dict_data = json.load(f)&#xA;&#xA;# json类型变成dict类型&#xA;loads(s, encoding=None, cls=None, object_hook=None, parse_float=None, parse_int=None, parse_constant=None, object_pairs_hook=None, **kw)&#xA;response_dict = json.loads(response.content) # 使用requests获取的json数据,转化为dict类型&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;base64&#34;&gt;base64&lt;/h2&gt;&#xA;&lt;h2 id=&#34;mailcap&#34;&gt;mailcap&lt;/h2&gt;&#xA;&lt;h2 id=&#34;mailbox&#34;&gt;mailbox&lt;/h2&gt;&#xA;&lt;h2 id=&#34;minetypes&#34;&gt;minetypes&lt;/h2&gt;&#xA;&lt;h2 id=&#34;binhex&#34;&gt;binhex&lt;/h2&gt;&#xA;&lt;h2 id=&#34;binascii&#34;&gt;binascii&lt;/h2&gt;&#xA;&lt;h2 id=&#34;quopri&#34;&gt;quopri&lt;/h2&gt;&#xA;&lt;h2 id=&#34;uu&#34;&gt;uu&lt;/h2&gt;</description>
-    </item>
-    <item>
-      <title>Network</title>
-      <link>https://canuxcheng.com/post/network/</link>
-      <pubDate>Sun, 03 Apr 2016 14:46:19 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/network/</guid>
-      <description>&lt;h1 id=&#34;网络基础&#34;&gt;网络基础&lt;/h1&gt;&#xA;&lt;p&gt;小端： 低字节在起始地址，高字节在高地址&lt;/p&gt;&#xA;&lt;p&gt;大端： 高字节在起始地址，低字节在高地址&lt;/p&gt;&#xA;&lt;p&gt;linux一般是小端，unix一般是大端&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.rfc-editor.org/&#34;&gt;https://www.rfc-editor.org/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;网络模型&#34;&gt;网络模型&lt;/h2&gt;&#xA;&lt;p&gt;OSI七层模型:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;应用层&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;表示层&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;会话层&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;传输层&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;网络层&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;链路层&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;物理层&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;TCP/IP四层模型：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;应用层&lt;/li&gt;&#xA;&lt;li&gt;传输层&lt;/li&gt;&#xA;&lt;li&gt;网络层&lt;/li&gt;&#xA;&lt;li&gt;链路层&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;应用层&#34;&gt;应用层&lt;/h3&gt;&#xA;&lt;p&gt;0-1024是系统保留端口, 1024-65535是可用自定义端口&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml&#34;&gt;https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;8443:  tcp/udp - https port&#xA;9443: tcp/udp tungsten-https&#xA;4443: tcp/udp pharos&lt;/p&gt;&#xA;&lt;p&gt;基于TCP的应用层&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;FTP: 21,&#xA;SSH: 22,&#xA;Telnet: 23,&#xA;SMTP: 25,&#xA;DNS: 53,&#xA;HTTP: 80,&#xA;HTTPS: 443,&#xA;POP3: 110,&#xA;POP3 SSL: 995&#xA;IMAP: 143,&#xA;IMAP SSL: 993,&#xA;NNTP: 119,&#xA;NNTP SSL: 563,&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;基于UDP的应用层&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;SMTP: 25,&#xA;DNS: 53,&#xA;DHCP: 67,&#xA;TFTP：69,简单文件传输协议。&#xA;NTP/SNTP: 123,&#xA;SNMP：161,简单网络管理协议。&#xA;SNMPtrap: 162,&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;查看端口&lt;/p&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Network on Morgoth</title>
+        <link>https://canuxcheng.com/tags/network/</link>
+        <description>Recent content in Network on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Mon, 01 Jan 2018 10:49:21 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/network/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>GSL_network</title>
+        <link>https://canuxcheng.com/post/gsl_network/</link>
+        <pubDate>Mon, 01 Jan 2018 10:49:21 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/gsl_network/</guid>
+        <description>&lt;h1 id=&#34;net&#34;&gt;net&lt;/h1&gt;
+&lt;p&gt;网络IO接口，包括TCP/IP, UDP, SOCKET, DNS&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import &amp;quot;net&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;constants&#34;&gt;constants&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;const (
+    IPv4len = 4
+    IPv6len = 16
+)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;variables&#34;&gt;variables&lt;/h2&gt;
+&lt;h2 id=&#34;functions&#34;&gt;functions&lt;/h2&gt;
+&lt;h2 id=&#34;addr&#34;&gt;Addr&lt;/h2&gt;
+&lt;p&gt;代表一个网络终端地址．&lt;/p&gt;
+&lt;p&gt;TCPAddr, UDPAddr, IPAddr, UnixAddr 都实现了该接口&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type Addr interface {
+    Network() string
+    String() string
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;tcpaddr&#34;&gt;TCPAddr&lt;/h2&gt;
+&lt;p&gt;function:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;func ResolveTCPAddr(net, addr string) (*TCPAddr, error)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;udpaddr&#34;&gt;UDPAddr&lt;/h2&gt;
+&lt;p&gt;function:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;func ResolveUDPAddr(net, addr string) (*UDPAddr, error)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;ipaddr&#34;&gt;IPAddr&lt;/h2&gt;
+&lt;p&gt;function:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;func ResolveIPAddr(net, addr string) (*IPAddr, error)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;unixaddr&#34;&gt;UnixAddr&lt;/h2&gt;
+&lt;p&gt;function:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;func ResolveUnixAddr(net, addr string) (*UnixAddr, error)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;conn&#34;&gt;Conn&lt;/h2&gt;
+&lt;p&gt;该接口代表通用的面向流的网络连接．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type Conn interface {
+    Read()
+    Write()
+    Close()
+    LocalAddr()
+    RemoteAddr()
+    SetDeadline()
+    SetReadDeadline()
+    setWriteDeadline()
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;function:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// tcp: &amp;quot;tcp&amp;quot;、&amp;quot;tcp4&amp;quot;、&amp;quot;tcp6&amp;quot;、
+// unix: &amp;quot;unix&amp;quot;, &amp;quot;unixpacket&amp;quot;
+// unix: &amp;quot;unixgramh&amp;quot;
+// udp: &amp;quot;udp&amp;quot;、&amp;quot;udp4&amp;quot;、&amp;quot;udp6&amp;quot;、
+// ip: &amp;quot;ip&amp;quot;、&amp;quot;ip4&amp;quot;、&amp;quot;ip6&amp;quot;、
+func Dail(network, address string) (Conn, error)
+
+func DialTimeout(network, address string, timeout time.Duration) (Conn, error)
+
+func Pipe() (Conn, Conn)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;packetconn&#34;&gt;PacketConn&lt;/h2&gt;
+&lt;p&gt;该接口代表通用的面向数据包的网络连接．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type PacketConn interface {
+    ReadDrom()
+    WriteTo()
+    Close()
+    LocalAddr()
+    SetDeadline()
+    SetReadDeadline()
+    SetWriteDeadline()
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;function:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// ip: &amp;quot;ip&amp;quot;、&amp;quot;ip4&amp;quot;、&amp;quot;ip6&amp;quot;、
+// udp: &amp;quot;udp&amp;quot;、&amp;quot;udp4&amp;quot;、&amp;quot;udp6&amp;quot;、
+// unix: &amp;quot;unixgram&amp;quot;
+func ListenPacket(net, laddr string) (PacketConn, error)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;listener&#34;&gt;Listener&lt;/h2&gt;
+&lt;p&gt;通用的面向流的网络协议的公用的网络监听接口．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type Listener interface {
+    Addr() addr
+    Accept() (c Conn, err error)
+    Close() error
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;function:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// tcp: &amp;quot;tcp&amp;quot;、&amp;quot;tcp4&amp;quot;、&amp;quot;tcp6&amp;quot;、
+// unix: &amp;quot;unix&amp;quot;, &amp;quot;unixpacket&amp;quot;
+func Listen(net, laddr string) (Listener, error)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;ipconn&#34;&gt;IPConn&lt;/h2&gt;
+&lt;p&gt;实现了Conn和PacketConn接口．&lt;/p&gt;
+&lt;p&gt;function:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;func DilIP(netProto string, laddr, raddr *IPAddr) (*IPConn, error)
+func ListenIP(netProto string, laddr *IPAddr) (*IPConn, error)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;method:&lt;/p&gt;
+&lt;h2 id=&#34;udpconn&#34;&gt;UDPConn&lt;/h2&gt;
+&lt;p&gt;实现了Conn和PacketConn接口.&lt;/p&gt;
+&lt;p&gt;function:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;func DialUDP(net string, laddr, raddr *UDPAddr) (*UDPConn, error)
+func ListenDUP(net string, laddr *UDPAddr) (*UDPConn, error)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;method:&lt;/p&gt;
+&lt;h2 id=&#34;tcpconn&#34;&gt;TCPConn&lt;/h2&gt;
+&lt;p&gt;实现了Conn接口.&lt;/p&gt;
+&lt;p&gt;function:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;func DialTCP(net string, laddr, raddr *TCPAddr) (*TCPConn, error)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;method:&lt;/p&gt;
+&lt;h2 id=&#34;tcplistener&#34;&gt;TCPListener&lt;/h2&gt;
+&lt;p&gt;function:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;func ListenTCP(net string, laddr *TCPAddr) (*TCPListener, error)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;method:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;func (l *TCPListener) Accept() (Conn, error)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;unixconn&#34;&gt;UnixConn&lt;/h2&gt;
+&lt;p&gt;实现了Conn和PacketConn接口.&lt;/p&gt;
+&lt;p&gt;function:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;func DialUnix(net string, laddr, raddr *UnixAddr) (*UnixConn, error)
+func ListenUnixgram(net string, laddr *UnixAddr) (*UnixConn, error)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;method:&lt;/p&gt;
+&lt;h2 id=&#34;unixlistener&#34;&gt;UnixListener&lt;/h2&gt;
+&lt;p&gt;function:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;func ListenUnix(net string, laddr *UnixAddr) (*UnixListener, error)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;method:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;func (l *UnixListener) Accept() (c Conn, err error)
+func (l *UnixListener) AcceptUnix() (*UnixConn, error)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;nethttp&#34;&gt;net/http&lt;/h1&gt;
+&lt;p&gt;http协议客户端和服务器的实现&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import &amp;quot;net/http&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;constants-1&#34;&gt;constants&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;const (
+    MethodGet = &amp;quot;GET&amp;quot;
+    MethodHead = &amp;quot;HEAD&amp;quot;
+    MethodPost = &amp;quot;POST&amp;quot;
+    MethodPut = &amp;quot;PUT&amp;quot;
+    MethodPatch = &amp;quot;PATCH&amp;quot;
+    MethodDelete = &amp;quot;DELETE&amp;quot;
+    MethodConnect = &amp;quot;CONNECT&amp;quot;
+    MethodOptions = &amp;quot;OPTIONS&amp;quot;
+    MethodTrace = &amp;quot;TRACE&amp;quot;
+)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;variables-1&#34;&gt;variables&lt;/h2&gt;
+&lt;h2 id=&#34;functions-1&#34;&gt;functions&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;// 在w的header中添加Set-Cookie头．
+func SetCookie(w ResponseWriter, cookie *Cookie)
+
+func Handle(pattern string, handler Handler)
+
+// 注册一个handler和对应的pattern 到DefaultServeMux.
+func HandlerFunc(pattern string, handler func(ResponseWriter, *Request))
+
+// 为监听器收到的每个连接创建一个新的goroutine．
+// goroutine 会读取请求并调用handler回复该请求．
+func Serve(l net.Listener, handler Handler) error
+
+// 监听tcp地址addr, 使用handler参数调用Serve函数处理连接．
+// handler = nil 相当于DefaultServeMux
+func ListenAndServe(addr string, handler Handler) error
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;file&#34;&gt;File&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;type File interface {
+    io.Closer
+    io.Reader
+    Readdir(count int) ([]os.FileInfo, error)
+    Seek(offset int64, whence int) (int64, error)
+    Stat() (os.FileInfo, error)
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;filesystem&#34;&gt;FileSystem&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;type FileSystem interface {
+    Open(name string) (File, error)
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;dir&#34;&gt;Dir&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;type Dir string
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;method:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;func (d Dir) Open(name string) (File, error)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;handler&#34;&gt;Handler&lt;/h2&gt;
+&lt;p&gt;实现Handler接口的对象可以被注册为http的服务函数&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type Handler interface {
+    ServeHTTP(ResponseWriter, *Request)
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;function:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 对每个请求回复&amp;quot;404 page not found&amp;quot;
+func NotFoundHandler() Handler
+
+// 对每个请求使用状态码code重定向到url.
+func RedirectHandler(url string, code int) Handler
+
+func TimeoutHandler(h Handler, dt time.Duration, msg string) Handler
+
+// 将请求的URL.Path中的前缀prefix去除后再给h.
+func StripPrefix(prefix string, h Handler) Handler
+
+func FileServer(root FileSystem) Handler
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;handlerfunc&#34;&gt;HandlerFunc&lt;/h2&gt;
+&lt;p&gt;将普通函数转换成http的服务函数&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type HandlerFunc func(ResponseWriter, *Request)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;method:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// ServeHTTP会调用f(w, r)
+func (f HandlerFunc) ServeHTTP(w ResponseWriter, r *Request)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;servemux&#34;&gt;ServeMux&lt;/h2&gt;
+&lt;p&gt;ServeMux是http请求的多路转接器．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type ServeMux struct {}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;function:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 创建并返回一个新的*ServeMux
+func NewServeMux() *ServeMux
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;method:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;//
+func (mux *ServeMux) Handle(pattern string, handler Handler)
+
+func (mux *ServeMux) HandleFunc(pattern string, handler func(ResponseWriter, *Request))
+
+func (mux *ServeMux) Handler(r *Request) (h Handler, pattern string)
+
+func (mux *ServeMux) ServeHTTP(w ResponseWriter, r *Request)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;server&#34;&gt;Server&lt;/h2&gt;
+&lt;p&gt;定义了运行http服务端的参数．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type Server struct {
+    Addr string
+    Handler Handler
+    ReadTimeout time.Duration
+    WriteTimeout time.Duration
+    MaxHeaderBytes int
+    TLSConfig *tls.Config
+    TLSNextProto map[string]func(*Server, *tls.Conn, Handler)
+    ConnState func(net.Conn, ConnState)
+    ErrorLog *log.Logger
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;method:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;func (s *Server) SetKeepAlivesEnabled(v bool)
+
+func (s *Server) Serve(l net.Listener) error
+
+func (s *Server) ListenAndServe() error
+
+func (s *Server) ListenAndServeTLS(certFile, keyFile string) error
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;client&#34;&gt;Client&lt;/h2&gt;
+&lt;p&gt;代表一个http客户端.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type Client struct {
+    Transport RoundTripper
+    CheckRedirect func(req *Request, via []*Request) error
+    Jar CookieJar
+    Timeout time.Duration
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;header&#34;&gt;Header&lt;/h2&gt;
+&lt;p&gt;代表http的头部.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type Header map[string][]string
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;method:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;func (h Header) Get(key string) string
+func (h Header) Set(key, value string)
+...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;cookie&#34;&gt;Cookie&lt;/h2&gt;
+&lt;p&gt;代表一个http回复的头部中SetCookie头的值，或http请求的头部里面的cookie值．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type Cookie struct {
+    Name string
+    Value string
+    Path string
+    Domain string
+    Expires time.Time
+    RawExpires string
+    MaxAge int
+    Secure bool
+    HttpOnly bool
+    Raw string
+    Unparsed []string
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;method:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 返回cookie序列化的结果
+func (c *Cookie) String() string
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;request&#34;&gt;Request&lt;/h2&gt;
+&lt;p&gt;代表一个服务端接收的或客户端发送的http请求.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type Request struct {
+    Method string
+    URL *url.URL
+    Proto string // &amp;quot;HTTP/1.0&amp;quot;
+    ProtoMajor int // 1
+    ProtoMinor int // 0
+    Header Header
+    Body io.ReadCloser
+    ContentLength int64
+    TransferEncoding []string
+    Close bool
+    Host string
+    Form url.Values
+    PostForm url.Values
+    MultipartForm *multipart.Form
+    Trailer Header
+    RemoteAddr string
+    RequestURI string
+    TSL *tls.ConnectionState
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;function:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;func NewRequest(method, urlStr string, body io.Reader) (*Request, error)
+
+func ReadRequest(b *bufio.Reader) (req *Request, err error)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;method:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 解析并返回该请求r的header设置的cookie
+func (r *Request) Cookies() []*Cookie
+
+// 返回请求r中命名为name的cookie,如果未找到返回nil, ErrNoCookie.
+func (r *Request) Cookie(name string) (*cookie, error)
+
+//解析r.URL中的查询字符串，并将解析结果更新到r.Form字段.
+// post和put的body会同时更新到r.PostForm和r.Form.
+func (r *Request) ParseForm() error
+
+// 将请求的主体作为multipart/form-data解析.
+func (r *Request) ParseMultipartForm(maxMemory int64) error
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;response&#34;&gt;Response&lt;/h2&gt;
+&lt;p&gt;代表一个http请求的回复r&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type Response struct {
+    Status string
+    StatusCode int
+    Proto string
+    ProtoMajor int
+    ProtoMinor int
+    Header Header
+    Body io.ReadCloser
+    ContentLength int64
+    TransferEncoding []string
+    Close bool
+    Trailer Header
+    Request *Request
+    TLS *tls.ConnectionState
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;functions:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;func ReadResponse(r *bufio.Reader, req *Request) (*Response, error)
+
+func Head(url string) (resp *Response, err error)
+func Get(url string) (resp *Response, err error)
+func Post(url string, bodyType string, boyd io.Reader) (resp *Response, err error)
+func PostForm(url string, data url.Values) (resp *Response, err error)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;methods:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;func (r *Response) ProtoAtLeast(major, minor int) bool
+
+// 获取相应中的Set-Cookie设置的cookie
+func (r *Response) Cookies() []*Cookie
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;responsewriter&#34;&gt;ResponseWriter&lt;/h2&gt;
+&lt;p&gt;用于构造http回复.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type ResponseWriter interface {
+    Header() Header
+    WriteHeader(int)
+    Write([]byte) (int, error)
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;netmail&#34;&gt;net/mail&lt;/h1&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;netsmtp&#34;&gt;net/smtp&lt;/h1&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;netrpc&#34;&gt;net/rpc&lt;/h1&gt;
+&lt;p&gt;function:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 在DefaultServer注册并公布rcvr方法.
+func Register(rcvr interface{}) error
+
+// 接收连接，将每个连接交给DefaultServer服务.会阻塞.
+func Accept(lis net.Listener)
+
+// 在单个连接执行DefaultServer,会阻塞.
+func ServceConn(conn io.ReadWriteCloser)
+
+func HandleHTTP()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;call&#34;&gt;Call&lt;/h2&gt;
+&lt;p&gt;代表一个执行中或执行完毕的会话．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type Call struct {
+    ServiceMethod string
+    Args interface{}
+    Reply interface{}
+    Error error
+    Done chan *Call
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;client-1&#34;&gt;Client&lt;/h2&gt;
+&lt;p&gt;rpc客户端&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type client struct {}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;function:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;func NewClient(conn io.ReadWriteCloser) *Client
+
+func Dial(network, address string) (*Client, error)
+
+func DialHTTP(network, address string) (*Client, error)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;method:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 调用指定的方法，等待返回，将结果写入reply.
+func (client *Client) Call(serviceMethod string, args interface{}, reply interface{}) error
+
+func (client *Client) Go(serviceMethod string, args interface{}, reply interface{}, done chan *Call) *Call
+
+func (client *Client) Close() error
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;nettextproto&#34;&gt;net/textproto&lt;/h1&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;neturl&#34;&gt;net/url&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;scheme://[userinfo@]host/path[?query][#fragment]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;url&#34;&gt;URL&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;type URL struct {
+    Scheme string
+    Opaque string
+    User *Userinfo
+    Host string // host or host:port
+    Path string
+    RawQuery string
+    Fragment string
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;function:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;func Parse(rawurl string) (url *URL, err error)
+func ParseRequestURI(rawurl string) (url *URL, err error)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;methods:&lt;/p&gt;
+&lt;h2 id=&#34;userinfo&#34;&gt;Userinfo&lt;/h2&gt;
+&lt;h2 id=&#34;values&#34;&gt;VAlues&lt;/h2&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        <item>
+        <title>PSL_Network</title>
+        <link>https://canuxcheng.com/post/psl_network/</link>
+        <pubDate>Fri, 12 Aug 2016 14:21:36 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/psl_network/</guid>
+        <description>&lt;h1 id=&#34;internet-protocols-and-support&#34;&gt;Internet Protocols and Support&lt;/h1&gt;
+&lt;p&gt;socketserver/http/ftp参考&lt;a class=&#34;link&#34; href=&#34;https://super-devops.readthedocs.io/en/latest/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://super-devops.readthedocs.io/en/latest/&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;pop,imap/smtp参考&lt;a class=&#34;link&#34; href=&#34;https://super-devops.readthedocs.io/en/latest/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://super-devops.readthedocs.io/en/latest/&lt;/a&gt;.&lt;/p&gt;
+&lt;h2 id=&#34;urllib&#34;&gt;urllib&lt;/h2&gt;
+&lt;p&gt;urllib.request&lt;/p&gt;
+&lt;p&gt;urllib.respponse&lt;/p&gt;
+&lt;p&gt;urllib.parse&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;from urllib.parse import urlparse
+from urllib.parse import urljoin
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;urllib.error&lt;/p&gt;
+&lt;p&gt;urllib.robotparser&lt;/p&gt;
+&lt;h2 id=&#34;ipaddress&#34;&gt;ipaddress&lt;/h2&gt;
+&lt;h2 id=&#34;webbrowser&#34;&gt;webbrowser&lt;/h2&gt;
+&lt;h2 id=&#34;cgi&#34;&gt;cgi&lt;/h2&gt;
+&lt;h2 id=&#34;cgitb&#34;&gt;cgitb&lt;/h2&gt;
+&lt;h2 id=&#34;wsgiref&#34;&gt;wsgiref&lt;/h2&gt;
+&lt;h2 id=&#34;xmlrpc&#34;&gt;xmlrpc&lt;/h2&gt;
+&lt;h2 id=&#34;socketserver&#34;&gt;socketserver&lt;/h2&gt;
+&lt;h2 id=&#34;nntplib&#34;&gt;nntplib&lt;/h2&gt;
+&lt;p&gt;network news transfer protocol&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import nntplib
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;telnet&#34;&gt;telnet&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;import telnetlib
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;structured-markup-processing-tools&#34;&gt;Structured Markup Processing Tools&lt;/h1&gt;
+&lt;h2 id=&#34;html&#34;&gt;html&lt;/h2&gt;
+&lt;h2 id=&#34;xml&#34;&gt;xml&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;internet-data-handling&#34;&gt;Internet Data Handling&lt;/h1&gt;
+&lt;h2 id=&#34;json&#34;&gt;json&lt;/h2&gt;
+&lt;p&gt;http api(restful)一般使用json格式的数据．&lt;/p&gt;
+&lt;p&gt;python和json数据类型对应关系参考WEB/JSON.&lt;/p&gt;
+&lt;p&gt;complex和class/def不能被编码.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import json
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;classes:&lt;/p&gt;
+&lt;p&gt;functions:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 将转换后的json格式写入文件
+dump(obj, fp, skipkeys=False, ensure_ascii=True, check_circular=True, allow_nan=True, cls=None, indent=None, separators=None, encoding=&#39;utf-8&#39;, default=None, sort_keys=False, **kw)
+with open(file, &#39;w&#39;) as f:
+    json.dump(dict_data, f)
+
+# 将dict类型转换成json格式
+dumps(obj, skipkeys=False, ensure_ascii=True, check_circular=True, allow_nan=True, cls=None, indent=None, separators=None, encoding=&#39;utf-8&#39;, default=None, sort_keys=False, **kw)
+json_data = json.dumps(dict_data)
+
+indent=4 # 写入自动缩进４个空格
+
+# 将读出的文件(json格式)转换成dict
+load(fp, encoding=None, cls=None, object_hook=None, parse_float=None, parse_int=None, parse_constant=None, object_pairs_hook=None, **kw)
+with open(file, &#39;r&#39;) as f:
+    dict_data = json.load(f)
+
+# json类型变成dict类型
+loads(s, encoding=None, cls=None, object_hook=None, parse_float=None, parse_int=None, parse_constant=None, object_pairs_hook=None, **kw)
+response_dict = json.loads(response.content) # 使用requests获取的json数据,转化为dict类型
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;base64&#34;&gt;base64&lt;/h2&gt;
+&lt;h2 id=&#34;mailcap&#34;&gt;mailcap&lt;/h2&gt;
+&lt;h2 id=&#34;mailbox&#34;&gt;mailbox&lt;/h2&gt;
+&lt;h2 id=&#34;minetypes&#34;&gt;minetypes&lt;/h2&gt;
+&lt;h2 id=&#34;binhex&#34;&gt;binhex&lt;/h2&gt;
+&lt;h2 id=&#34;binascii&#34;&gt;binascii&lt;/h2&gt;
+&lt;h2 id=&#34;quopri&#34;&gt;quopri&lt;/h2&gt;
+&lt;h2 id=&#34;uu&#34;&gt;uu&lt;/h2&gt;
+</description>
+        </item>
+        <item>
+        <title>Network</title>
+        <link>https://canuxcheng.com/post/network/</link>
+        <pubDate>Sun, 03 Apr 2016 14:46:19 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/network/</guid>
+        <description>&lt;h1 id=&#34;网络基础&#34;&gt;网络基础&lt;/h1&gt;
+&lt;p&gt;小端： 低字节在起始地址，高字节在高地址&lt;/p&gt;
+&lt;p&gt;大端： 高字节在起始地址，低字节在高地址&lt;/p&gt;
+&lt;p&gt;linux一般是小端，unix一般是大端&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.rfc-editor.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.rfc-editor.org/&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;网络模型&#34;&gt;网络模型&lt;/h2&gt;
+&lt;p&gt;OSI七层模型:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;应用层&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;表示层&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;会话层&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;传输层&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;网络层&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;链路层&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;物理层&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;TCP/IP四层模型：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;应用层&lt;/li&gt;
+&lt;li&gt;传输层&lt;/li&gt;
+&lt;li&gt;网络层&lt;/li&gt;
+&lt;li&gt;链路层&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;应用层&#34;&gt;应用层&lt;/h3&gt;
+&lt;p&gt;0-1024是系统保留端口, 1024-65535是可用自定义端口&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;8443:  tcp/udp - https port
+9443: tcp/udp tungsten-https
+4443: tcp/udp pharos&lt;/p&gt;
+&lt;p&gt;基于TCP的应用层&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;FTP: 21,
+SSH: 22,
+Telnet: 23,
+SMTP: 25,
+DNS: 53,
+HTTP: 80,
+HTTPS: 443,
+POP3: 110,
+POP3 SSL: 995
+IMAP: 143,
+IMAP SSL: 993,
+NNTP: 119,
+NNTP SSL: 563,
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;基于UDP的应用层&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;SMTP: 25,
+DNS: 53,
+DHCP: 67,
+TFTP：69,简单文件传输协议。
+NTP/SNTP: 123,
+SNMP：161,简单网络管理协议。
+SNMPtrap: 162,
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看端口&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;cat /etc/services
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;传输层&#34;&gt;传输层&lt;/h3&gt;
+&lt;p&gt;TCP：传输控制协议，提供可靠的、面向连接的字节流服务,建立连接需要三次握手．&lt;/p&gt;
+&lt;p&gt;UDP：数据报协议，提供不可靠的、无连接的面向数据报的服务。&lt;/p&gt;
+&lt;p&gt;SCTP：流控制传输协议。&lt;/p&gt;
+&lt;h3 id=&#34;网络层&#34;&gt;网络层&lt;/h3&gt;
+&lt;p&gt;也叫互联网层.&lt;/p&gt;
+&lt;p&gt;IP：网际协议，提供不可靠、无连接的数据报传送服务。&lt;/p&gt;
+&lt;p&gt;ICMP：Internet控制报文协议，传递差错报文和需要注意的信息，封装在IP数据报内部。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 基于ICMP的应用层：
+Ping:
+Traceroute:
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;IGMP：Internet组管理协议，用于支持主机和路由器进行多播，让一个物联网络上的所有系统知道主机当前所在的多播组，封装在IP数据报内部。&lt;/p&gt;
+&lt;h3 id=&#34;链路层&#34;&gt;链路层&lt;/h3&gt;
+&lt;p&gt;也叫数据链路层或网络接口层.&lt;/p&gt;
+&lt;p&gt;以太网帧结构：以太网首部+IP首部+TCP首部/UDP数据报+应用数据+以太网尾部。&lt;/p&gt;
+&lt;p&gt;ARP：地址解析协议，为IP地址到硬件地址之间提供动态映射。&lt;/p&gt;
+&lt;p&gt;RARP：没有磁盘驱动器的系统使用。&lt;/p&gt;
+&lt;p&gt;动态选路协议:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;RIP：选路信息协议&lt;/li&gt;
+&lt;li&gt;OSPF：开放最短路优先&lt;/li&gt;
+&lt;li&gt;IGP-EGP-BGP：边界网关协议&lt;/li&gt;
+&lt;li&gt;CIDR：无类型域间选路&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;ip-address&#34;&gt;IP address&lt;/h2&gt;
+&lt;p&gt;A: 0 + 7 * network number + 24 * host number, 0.0.0.0 - 127.255.255.255
+B: 10 + 14 * network number + 16 * host number; 128.0.0.0 - 191.255.255.255
+C: 110 + 21 * network number + 8 * host number; 192.0.0.0 - 223.255.255.255
+D: 1110 + 28 * multicast number; 224.0.0.0 - 239.255.255.255
+E: 11110 + 27 * reserved; 240.0.0.0 - 247.255.255.255&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;file&#34;&gt;File&lt;/h2&gt;
+&lt;p&gt;File协议是本地文件协议&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;file:///C:/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;远程桌面协议&#34;&gt;远程桌面协议&lt;/h2&gt;
+&lt;p&gt;RDP: remote desktop protocol， windows系统之间的远程桌面协议。&lt;/p&gt;
+&lt;p&gt;RFB(VNC): remote frame buffer, 跨平台的远程桌面协议，cs架构。&lt;/p&gt;
+&lt;p&gt;VNC: 跨平台的RFB（VNC）工具有realvnc, tightvnc, tigervnc.&lt;/p&gt;
+&lt;p&gt;remmina：基于gtk，支持RFB(VNC), RDP, SSH/SFTP协议。&lt;/p&gt;
+&lt;p&gt;krdc：基于kde，支持RFB(VNC), RDP协议。&lt;/p&gt;
+&lt;p&gt;mRemoteNG: RDP, VNC, SSH, Telnet, Http, Rlogin, RAW, ICA&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/mRemoteNG/mRemoteNG&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/mRemoteNG/mRemoteNG&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;FreeDRP: DRP&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/FreeRDP/FreeRDP&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/FreeRDP/FreeRDP&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;url&#34;&gt;URL&lt;/h2&gt;
+&lt;p&gt;url中的保留自字符需要编码。&lt;/p&gt;
+&lt;p&gt;The percent-encoded values for the special characters are as follows:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# → %23
+? → %3F
+&amp;amp; → %26
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;These encodings are used in URLs to ensure that these characters are treated as literal values rather than special symbols.&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

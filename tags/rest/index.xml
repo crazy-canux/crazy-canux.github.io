@@ -1,19 +1,121 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Rest on Morgoth</title>
-    <link>https://canuxcheng.com/tags/rest/</link>
-    <description>Recent content in Rest on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Mon, 08 Aug 2016 13:39:38 +0000</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/rest/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>ReStructuredText</title>
-      <link>https://canuxcheng.com/post/restructuredtext/</link>
-      <pubDate>Mon, 08 Aug 2016 13:39:38 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/restructuredtext/</guid>
-      <description>&lt;h1 id=&#34;restructuredtext&#34;&gt;reStructuredText&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://docutils.sourceforge.net/rst.html&#34;&gt;http://docutils.sourceforge.net/rst.html&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;reST是易读所见即所得的文本标记语言，格式类似markdown。&lt;/p&gt;&#xA;&lt;p&gt;python的reST参考pep12和pep287:&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.python.org/dev/peps/pep-0012/&#34;&gt;https://www.python.org/dev/peps/pep-0012/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.python.org/dev/peps/pep-0287/&#34;&gt;https://www.python.org/dev/peps/pep-0287/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;主标题：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;title&#xA;=====&#xA;&#xA;=====&#xA;title&#xA;=====&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;副标题：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;Subtitle&#xA;-----&#xA;&#xA;--------&#xA;Subtitle&#xA;--------&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;次级标题：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;Content&#xA;^^^^^^^&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;星号斜体强调：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;*text*&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;双星号加粗重点强调：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;**text**&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;四个或以上的-表示分割线：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;----&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;参考式链接：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;`hyperlink`_&#xA;&#xA;.. _hyperlink: http://hyperlink.org&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;行内式链接：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;`link &amp;lt;https://link.com&amp;gt;`_&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;图片：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;.. image:: https://path/image.png&#xA;    :alt: HTTPie compared to cURL&#xA;    :width: 679&#xA;    :heigh: 781&#xA;    :align: center&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;原样引用块：&lt;/p&gt;&#xA;&lt;p&gt;双冒号加四个空格&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;source code::&#xA;&#xA;    print(&amp;quot;source&amp;quot;)&#xA;    return 0&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;文档测试块：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; print doctest block.&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;无序列表：&lt;/p&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Rest on Morgoth</title>
+        <link>https://canuxcheng.com/tags/rest/</link>
+        <description>Recent content in Rest on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Mon, 08 Aug 2016 13:39:38 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/rest/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>ReStructuredText</title>
+        <link>https://canuxcheng.com/post/restructuredtext/</link>
+        <pubDate>Mon, 08 Aug 2016 13:39:38 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/restructuredtext/</guid>
+        <description>&lt;h1 id=&#34;restructuredtext&#34;&gt;reStructuredText&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://docutils.sourceforge.net/rst.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://docutils.sourceforge.net/rst.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;reST是易读所见即所得的文本标记语言，格式类似markdown。&lt;/p&gt;
+&lt;p&gt;python的reST参考pep12和pep287:&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.python.org/dev/peps/pep-0012/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.python.org/dev/peps/pep-0012/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.python.org/dev/peps/pep-0287/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.python.org/dev/peps/pep-0287/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;主标题：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;title
+=====
+
+=====
+title
+=====
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;副标题：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Subtitle
+-----
+
+--------
+Subtitle
+--------
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;次级标题：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Content
+^^^^^^^
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;星号斜体强调：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;*text*
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;双星号加粗重点强调：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;**text**
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;四个或以上的-表示分割线：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;----
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;参考式链接：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;`hyperlink`_
+
+.. _hyperlink: http://hyperlink.org
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;行内式链接：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;`link &amp;lt;https://link.com&amp;gt;`_
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;图片：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;.. image:: https://path/image.png
+    :alt: HTTPie compared to cURL
+    :width: 679
+    :heigh: 781
+    :align: center
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;原样引用块：&lt;/p&gt;
+&lt;p&gt;双冒号加四个空格&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;source code::
+
+    print(&amp;quot;source&amp;quot;)
+    return 0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;文档测试块：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;gt;&amp;gt;&amp;gt; print doctest block.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;无序列表：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;bullet lists:
+
+- This is item 1
+- This is item 2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;有序列表：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;enumerated lists:
+
+1. this is first item
+2. this is second item
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;定义列表：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;definition lists:
+
+what
+    Definition lists.
+
+how
+    The term is a one-line phrase.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;域列表：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;field lists:
+
+:Authors:
+    Canux
+
+:Version: 1.0.0
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;选项列表：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;option lists:
+
+-a    option &amp;quot;a&amp;quot;
+-b file    option for filename
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;评论：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;.. This is commnet.
+   As well.
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

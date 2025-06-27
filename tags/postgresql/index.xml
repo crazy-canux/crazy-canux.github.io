@@ -1,19 +1,109 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Postgresql on Morgoth</title>
-    <link>https://canuxcheng.com/tags/postgresql/</link>
-    <description>Recent content in Postgresql on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sun, 03 Apr 2016 14:46:14 +0000</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/postgresql/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Postgresql</title>
-      <link>https://canuxcheng.com/post/postgre/</link>
-      <pubDate>Sun, 03 Apr 2016 14:46:14 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/postgre/</guid>
-      <description>&lt;h1 id=&#34;postgresql&#34;&gt;PostgreSQL&lt;/h1&gt;&#xA;&lt;p&gt;安装postgresql：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ sudo apt-get install postgresql&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;安装第三方库：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ sudo apt-get install postgresql-contrib-9.3 libpg-dev postgresql-server-dev-9.3&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;GUI工具： pgAdminIII&lt;/p&gt;&#xA;&lt;p&gt;CLI工具： psql&lt;/p&gt;&#xA;&lt;p&gt;postgresql的端口是5432．&lt;/p&gt;&#xA;&lt;h1 id=&#34;postgresql命令&#34;&gt;postgresql命令&lt;/h1&gt;&#xA;&lt;p&gt;安装完成后默认的admin就是postgres, postgres里有默认数据库postgres.&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$passwd postgres # 修改默认管理员用户postgres的密码&#xA;$su - postgres # 切换到默认的postgres用户&#xA;&#xA;$ psql [OPTION]... [DBNAME [USERNAME]]&#xA;&#xA;$createuser &amp;lt;username&amp;gt; -P # 在命令行添加用户&#xA;$dropuser &amp;lt;username&amp;gt; # 在命令行删除用户&#xA;&#xA;$createdb &amp;lt;database&amp;gt; -O &amp;lt;username&amp;gt; # 在命令行添加数据库&#xA;$dropdb &amp;lt;database&amp;gt; # 在命令行删除数据库&#xA;&#xA;# 交互式:&#xA;$ psql -U [username] [database]&#xA;&#xA;# 非交互式：&#xA;$ PGPASSWORD=&#39;password&#39;;psql -h &amp;lt;host&amp;gt; -p &amp;lt;port&amp;gt; -U &amp;lt;username&amp;gt; -d [database] -c &amp;quot;[psql command]&amp;quot;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;导出数据：&lt;/p&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Postgresql on Morgoth</title>
+        <link>https://canuxcheng.com/tags/postgresql/</link>
+        <description>Recent content in Postgresql on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Sun, 03 Apr 2016 14:46:14 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/postgresql/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Postgresql</title>
+        <link>https://canuxcheng.com/post/postgre/</link>
+        <pubDate>Sun, 03 Apr 2016 14:46:14 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/postgre/</guid>
+        <description>&lt;h1 id=&#34;postgresql&#34;&gt;PostgreSQL&lt;/h1&gt;
+&lt;p&gt;安装postgresql：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo apt-get install postgresql
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;安装第三方库：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo apt-get install postgresql-contrib-9.3 libpg-dev postgresql-server-dev-9.3
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;GUI工具： pgAdminIII&lt;/p&gt;
+&lt;p&gt;CLI工具： psql&lt;/p&gt;
+&lt;p&gt;postgresql的端口是5432．&lt;/p&gt;
+&lt;h1 id=&#34;postgresql命令&#34;&gt;postgresql命令&lt;/h1&gt;
+&lt;p&gt;安装完成后默认的admin就是postgres, postgres里有默认数据库postgres.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$passwd postgres # 修改默认管理员用户postgres的密码
+$su - postgres # 切换到默认的postgres用户
+
+$ psql [OPTION]... [DBNAME [USERNAME]]
+
+$createuser &amp;lt;username&amp;gt; -P # 在命令行添加用户
+$dropuser &amp;lt;username&amp;gt; # 在命令行删除用户
+
+$createdb &amp;lt;database&amp;gt; -O &amp;lt;username&amp;gt; # 在命令行添加数据库
+$dropdb &amp;lt;database&amp;gt; # 在命令行删除数据库
+
+# 交互式:
+$ psql -U [username] [database]
+
+# 非交互式：
+$ PGPASSWORD=&#39;password&#39;;psql -h &amp;lt;host&amp;gt; -p &amp;lt;port&amp;gt; -U &amp;lt;username&amp;gt; -d [database] -c &amp;quot;[psql command]&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;导出数据：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ pg_dump dbname &amp;gt; out.sql
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;pgcli:&lt;/p&gt;
+&lt;p&gt;This is a postgres client that does auto-completion and syntax highlighting.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/dbcli/pgcli&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/dbcli/pgcli&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ pip install -U pgcli
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;cli&#34;&gt;CLI&lt;/h1&gt;
+&lt;p&gt;先用psql进入postgre的命令行.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;help # 查看所有信息
+\? # 查看psql命令
+\h # 查看sql命令
+\g # 执行sql语句
+\q # 退出psql
+
+\du # 查看所有用户信息
+\l # 查询当前用户的所有数据库
+\c &amp;lt;database&amp;gt; # 切换数据库
+\c &amp;lt;database&amp;gt; &amp;lt;username&amp;gt; # 登陆用户的数据库
+\dt 等效于show tables;
+\d # 查看表关系
+\d &amp;lt;table&amp;gt; # 查询表结构
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;数据类型&#34;&gt;数据类型&lt;/h1&gt;
+&lt;h1 id=&#34;函数&#34;&gt;函数&lt;/h1&gt;
+&lt;h1 id=&#34;sql&#34;&gt;SQL&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;ALTER USER/ROLE &amp;lt;username&amp;gt; WITH PASSWORD &amp;lt;password&amp;gt;; #更改用户密码
+SELECT username/* FROM pg_user; # 查看所有用户
+SELECT username/* FROM pg_shadow; # 查看所有用户密码
+
+CREATE GROUP &amp;lt;groupname&amp;gt;; # 添加用户组
+ALTER GROUP &amp;lt;groupname&amp;gt; ADD USER &amp;lt;username&amp;gt;,&amp;lt;username1&amp;gt;,...; # 添加用户到组
+ALTER GROUP &amp;lt;groupname&amp;gt; DROP USER &amp;lt;username&amp;gt;,&amp;lt;username1&amp;gt;,...; # 从组删除用户
+
+CREATE ROLE &amp;lt;username&amp;gt; PASSWORD &amp;lt;password&amp;gt;; # 创建用户和密码
+CREATE ROLE &amp;lt;username&amp;gt; LOGIN;
+CREATE ROLE &amp;lt;username&amp;gt; SUPERUSER;
+CREATE ROLE &amp;lt;username&amp;gt; CREATEDB;
+CREATE ROLE &amp;lt;username&amp;gt; CREATEROLE;
+CREATE ROLE &amp;lt;username&amp;gt; REPLICATION;
+DROP ROLE &amp;lt;username&amp;gt;; # 删除role
+
+SELECT datname/* FROM pg_database; # 查询当前用户的所有数据库
+CREATE DATABASE &amp;lt;database&amp;gt; OWNER=&amp;lt;username&amp;gt;; # 创建数据库
+DROP DATABASE &amp;lt;database&amp;gt;; # 删除数据库
+
+SELECT tablename/* FROM pg_tables; # 查看所有表
+CREATE TABLE tablename(
+&amp;lt;type&amp;gt; &amp;lt;name&amp;gt;,
+...
+); # 创建表
+DROP TABLE &amp;lt;table&amp;gt;; # 删除表
+
+SELECT version();
+SELECT current_date;
+SELECT current_time;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

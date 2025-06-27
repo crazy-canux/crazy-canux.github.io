@@ -1,19 +1,105 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Posix on Morgoth</title>
-    <link>https://canuxcheng.com/tags/posix/</link>
-    <description>Recent content in Posix on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sat, 02 Apr 2016 11:18:05 +0000</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/posix/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Posix</title>
-      <link>https://canuxcheng.com/post/c_posix/</link>
-      <pubDate>Sat, 02 Apr 2016 11:18:05 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/c_posix/</guid>
-      <description>&lt;h1 id=&#34;posix标准&#34;&gt;POSIX标准&lt;/h1&gt;&#xA;&lt;p&gt;Portable Operating System Interface&lt;/p&gt;&#xA;&lt;p&gt;可移植性操作系统接口, POSIX兼容ISO C。&lt;/p&gt;&#xA;&lt;p&gt;所有Unix都遵循，几乎所有Linux都遵循，Windows部分支持。&lt;/p&gt;&#xA;&lt;p&gt;POSIX.1/IEEE 1003.1-1990&lt;/p&gt;&#xA;&lt;p&gt;POSIX.2/IEEE Std 1003.2-1992/ISO IEC 9945-2:1993)&lt;/p&gt;&#xA;&lt;p&gt;POSIX.1.b/IEEE Std 1003.1b-1993/ISO IEC 9945-1:1996)&lt;/p&gt;&#xA;&lt;p&gt;POSIX.1.c/IEEE Std 1003.1c-1995&lt;/p&gt;&#xA;&lt;p&gt;POSIX.1.d/IEEE  Std  1003.1c-1999&lt;/p&gt;&#xA;&lt;p&gt;POSIX.1.g/IEEE Std 1003.1g-2000&lt;/p&gt;&#xA;&lt;p&gt;POSIX.1.j/IEEE  Std  1003.1j-2000&lt;/p&gt;&#xA;&lt;p&gt;POSIX.1-2001/SUSv3(包括了所有C99的API)&lt;/p&gt;&#xA;&lt;p&gt;POSIX.1-2008/SUSv4&lt;/p&gt;&#xA;&lt;p&gt;官方网站：&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://www.opengroup.org/austin/&#34;&gt;http://www.opengroup.org/austin/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;cygwin&#34;&gt;Cygwin&lt;/h1&gt;&#xA;&lt;p&gt;提供POSIX的API用于windows上开发Linux/Unix程序。&lt;/p&gt;&#xA;&lt;p&gt;源代码不能在windows运行。&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://cygwin.com/index.html&#34;&gt;https://cygwin.com/index.html&lt;/a&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;posix标准定义的必须头文件&#34;&gt;POSIX标准定义的必须头文件&lt;/h1&gt;&#xA;&lt;h2 id=&#34;direnth&#34;&gt;&amp;lt;dirent.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;fcntlh&#34;&gt;&amp;lt;fcntl.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;globh&#34;&gt;&amp;lt;glob.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;netdbh&#34;&gt;&amp;lt;netdb.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;pwdh&#34;&gt;&amp;lt;pwd.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;regexh&#34;&gt;&amp;lt;regex.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;tarh&#34;&gt;&amp;lt;tar.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;termiosh&#34;&gt;&amp;lt;termios.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;unistdh&#34;&gt;&amp;lt;unistd.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;utimeh&#34;&gt;&amp;lt;utime.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;utimeh-1&#34;&gt;&amp;lt;utime.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;wordexph&#34;&gt;&amp;lt;wordexp.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;arpaineth&#34;&gt;&amp;lt;arpa/inet.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;netifh&#34;&gt;&amp;lt;net/if.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;netinetinh&#34;&gt;&amp;lt;netinet/in.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;netinettcph&#34;&gt;&amp;lt;netinet/tcp.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;sysmmanh&#34;&gt;&amp;lt;sys/mman.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;sysselecth&#34;&gt;&amp;lt;sys/select.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;syssocketh&#34;&gt;&amp;lt;sys/socket.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;sysstath&#34;&gt;&amp;lt;sys/stat.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;systimesh&#34;&gt;&amp;lt;sys/times.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;systypesh&#34;&gt;&amp;lt;sys/types.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;sysunh&#34;&gt;&amp;lt;sys/un.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;sysutsnameh&#34;&gt;&amp;lt;sys/utsname.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;waith&#34;&gt;&amp;lt;wait.h&amp;gt;&lt;/h2&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;posix标准定义的可选头文件&#34;&gt;POSIX标准定义的可选头文件&lt;/h1&gt;&#xA;&lt;h2 id=&#34;aioh&#34;&gt;&amp;lt;aio.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;pthreadh&#34;&gt;&amp;lt;pthread.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;semaphoreh&#34;&gt;&amp;lt;semaphore.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;mqueueh&#34;&gt;&amp;lt;mqueue.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;schedh&#34;&gt;&amp;lt;sched.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;spawnh&#34;&gt;&amp;lt;spawn.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;stropsh&#34;&gt;&amp;lt;strops.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;traceh&#34;&gt;&amp;lt;trace.h&amp;gt;&lt;/h2&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;posix标准定义的xsi扩展头文件&#34;&gt;POSIX标准定义的XSI扩展头文件&lt;/h1&gt;&#xA;&lt;h2 id=&#34;sysipch&#34;&gt;&amp;lt;sys/ipc.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;sysmsgh&#34;&gt;&amp;lt;sys/msg.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;syssemh&#34;&gt;&amp;lt;sys/sem.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;sysshmh&#34;&gt;&amp;lt;sys/shm.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;cpioh&#34;&gt;&amp;lt;cpio.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;dlfcnh&#34;&gt;&amp;lt;dlfcn.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;fmtmsgh&#34;&gt;&amp;lt;fmtmsg.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;ftwh&#34;&gt;&amp;lt;ftw.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;iconvh&#34;&gt;&amp;lt;iconv.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;langinfoh&#34;&gt;&amp;lt;langinfo.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;libgenh&#34;&gt;&amp;lt;libgen.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;monetaryh&#34;&gt;&amp;lt;monetary.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;ndbmh&#34;&gt;&amp;lt;ndbm.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;nl_typesh&#34;&gt;&amp;lt;nl_types.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;pollh&#34;&gt;&amp;lt;poll.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;searchh&#34;&gt;&amp;lt;search.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;stringsh&#34;&gt;&amp;lt;strings.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;syslogh&#34;&gt;&amp;lt;syslog.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;ucontexth&#34;&gt;&amp;lt;ucontext.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;ulimith&#34;&gt;&amp;lt;ulimit.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;utmpxh&#34;&gt;&amp;lt;utmpx.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;sysresourceh&#34;&gt;&amp;lt;sys/resource.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;sysstatvfsh&#34;&gt;&amp;lt;sys/statvfs.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;systimeh&#34;&gt;&amp;lt;sys/time.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;systimebh&#34;&gt;&amp;lt;sys/timeb.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;sysuioh&#34;&gt;&amp;lt;sys/uio.h&amp;gt;&lt;/h2&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Posix on Morgoth</title>
+        <link>https://canuxcheng.com/tags/posix/</link>
+        <description>Recent content in Posix on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Sat, 02 Apr 2016 11:18:05 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/posix/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Posix</title>
+        <link>https://canuxcheng.com/post/c_posix/</link>
+        <pubDate>Sat, 02 Apr 2016 11:18:05 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/c_posix/</guid>
+        <description>&lt;h1 id=&#34;posix标准&#34;&gt;POSIX标准&lt;/h1&gt;
+&lt;p&gt;Portable Operating System Interface&lt;/p&gt;
+&lt;p&gt;可移植性操作系统接口, POSIX兼容ISO C。&lt;/p&gt;
+&lt;p&gt;所有Unix都遵循，几乎所有Linux都遵循，Windows部分支持。&lt;/p&gt;
+&lt;p&gt;POSIX.1/IEEE 1003.1-1990&lt;/p&gt;
+&lt;p&gt;POSIX.2/IEEE Std 1003.2-1992/ISO IEC 9945-2:1993)&lt;/p&gt;
+&lt;p&gt;POSIX.1.b/IEEE Std 1003.1b-1993/ISO IEC 9945-1:1996)&lt;/p&gt;
+&lt;p&gt;POSIX.1.c/IEEE Std 1003.1c-1995&lt;/p&gt;
+&lt;p&gt;POSIX.1.d/IEEE  Std  1003.1c-1999&lt;/p&gt;
+&lt;p&gt;POSIX.1.g/IEEE Std 1003.1g-2000&lt;/p&gt;
+&lt;p&gt;POSIX.1.j/IEEE  Std  1003.1j-2000&lt;/p&gt;
+&lt;p&gt;POSIX.1-2001/SUSv3(包括了所有C99的API)&lt;/p&gt;
+&lt;p&gt;POSIX.1-2008/SUSv4&lt;/p&gt;
+&lt;p&gt;官方网站：&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://www.opengroup.org/austin/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://www.opengroup.org/austin/&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;cygwin&#34;&gt;Cygwin&lt;/h1&gt;
+&lt;p&gt;提供POSIX的API用于windows上开发Linux/Unix程序。&lt;/p&gt;
+&lt;p&gt;源代码不能在windows运行。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://cygwin.com/index.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://cygwin.com/index.html&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;posix标准定义的必须头文件&#34;&gt;POSIX标准定义的必须头文件&lt;/h1&gt;
+&lt;h2 id=&#34;direnth&#34;&gt;&amp;lt;dirent.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;fcntlh&#34;&gt;&amp;lt;fcntl.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;globh&#34;&gt;&amp;lt;glob.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;netdbh&#34;&gt;&amp;lt;netdb.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;pwdh&#34;&gt;&amp;lt;pwd.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;regexh&#34;&gt;&amp;lt;regex.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;tarh&#34;&gt;&amp;lt;tar.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;termiosh&#34;&gt;&amp;lt;termios.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;unistdh&#34;&gt;&amp;lt;unistd.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;utimeh&#34;&gt;&amp;lt;utime.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;utimeh-1&#34;&gt;&amp;lt;utime.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;wordexph&#34;&gt;&amp;lt;wordexp.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;arpaineth&#34;&gt;&amp;lt;arpa/inet.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;netifh&#34;&gt;&amp;lt;net/if.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;netinetinh&#34;&gt;&amp;lt;netinet/in.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;netinettcph&#34;&gt;&amp;lt;netinet/tcp.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;sysmmanh&#34;&gt;&amp;lt;sys/mman.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;sysselecth&#34;&gt;&amp;lt;sys/select.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;syssocketh&#34;&gt;&amp;lt;sys/socket.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;sysstath&#34;&gt;&amp;lt;sys/stat.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;systimesh&#34;&gt;&amp;lt;sys/times.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;systypesh&#34;&gt;&amp;lt;sys/types.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;sysunh&#34;&gt;&amp;lt;sys/un.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;sysutsnameh&#34;&gt;&amp;lt;sys/utsname.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;waith&#34;&gt;&amp;lt;wait.h&amp;gt;&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;posix标准定义的可选头文件&#34;&gt;POSIX标准定义的可选头文件&lt;/h1&gt;
+&lt;h2 id=&#34;aioh&#34;&gt;&amp;lt;aio.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;pthreadh&#34;&gt;&amp;lt;pthread.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;semaphoreh&#34;&gt;&amp;lt;semaphore.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;mqueueh&#34;&gt;&amp;lt;mqueue.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;schedh&#34;&gt;&amp;lt;sched.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;spawnh&#34;&gt;&amp;lt;spawn.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;stropsh&#34;&gt;&amp;lt;strops.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;traceh&#34;&gt;&amp;lt;trace.h&amp;gt;&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;posix标准定义的xsi扩展头文件&#34;&gt;POSIX标准定义的XSI扩展头文件&lt;/h1&gt;
+&lt;h2 id=&#34;sysipch&#34;&gt;&amp;lt;sys/ipc.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;sysmsgh&#34;&gt;&amp;lt;sys/msg.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;syssemh&#34;&gt;&amp;lt;sys/sem.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;sysshmh&#34;&gt;&amp;lt;sys/shm.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;cpioh&#34;&gt;&amp;lt;cpio.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;dlfcnh&#34;&gt;&amp;lt;dlfcn.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;fmtmsgh&#34;&gt;&amp;lt;fmtmsg.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;ftwh&#34;&gt;&amp;lt;ftw.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;iconvh&#34;&gt;&amp;lt;iconv.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;langinfoh&#34;&gt;&amp;lt;langinfo.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;libgenh&#34;&gt;&amp;lt;libgen.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;monetaryh&#34;&gt;&amp;lt;monetary.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;ndbmh&#34;&gt;&amp;lt;ndbm.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;nl_typesh&#34;&gt;&amp;lt;nl_types.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;pollh&#34;&gt;&amp;lt;poll.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;searchh&#34;&gt;&amp;lt;search.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;stringsh&#34;&gt;&amp;lt;strings.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;syslogh&#34;&gt;&amp;lt;syslog.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;ucontexth&#34;&gt;&amp;lt;ucontext.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;ulimith&#34;&gt;&amp;lt;ulimit.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;utmpxh&#34;&gt;&amp;lt;utmpx.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;sysresourceh&#34;&gt;&amp;lt;sys/resource.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;sysstatvfsh&#34;&gt;&amp;lt;sys/statvfs.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;systimeh&#34;&gt;&amp;lt;sys/time.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;systimebh&#34;&gt;&amp;lt;sys/timeb.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;sysuioh&#34;&gt;&amp;lt;sys/uio.h&amp;gt;&lt;/h2&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

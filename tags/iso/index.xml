@@ -1,19 +1,77 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Iso on Morgoth</title>
-    <link>https://canuxcheng.com/tags/iso/</link>
-    <description>Recent content in Iso on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Fri, 01 Apr 2016 21:54:16 +0000</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/iso/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>ISO</title>
-      <link>https://canuxcheng.com/post/c_iso/</link>
-      <pubDate>Fri, 01 Apr 2016 21:54:16 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/c_iso/</guid>
-      <description>&lt;h1 id=&#34;c标准库&#34;&gt;C标准库&lt;/h1&gt;&#xA;&lt;p&gt;ISO C89(ANSI C89) -&amp;gt; ISO C95 -&amp;gt; ISO C99 -&amp;gt;&lt;/p&gt;&#xA;&lt;p&gt;-&amp;gt; ISO C11 -&amp;gt; ISO C17 -&amp;gt; ISO C23&lt;/p&gt;&#xA;&lt;p&gt;ANSI C 和 ISO C是对通用C语言的接口的定义。&lt;/p&gt;&#xA;&lt;p&gt;符合这种标准的实现为C语言标准库,也叫libc。&lt;/p&gt;&#xA;&lt;p&gt;官方网站：&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://www.open-std.org/jtc1/sc22/wg14/www/standards&#34;&gt;http://www.open-std.org/jtc1/sc22/wg14/www/standards&lt;/a&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;c89和c99支持的头文件和函数&#34;&gt;C89和C99支持的头文件和函数&lt;/h1&gt;&#xA;&lt;h2 id=&#34;asserth&#34;&gt;&amp;lt;assert.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;ctypeh&#34;&gt;&amp;lt;ctype.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;complexh&#34;&gt;&amp;lt;complex.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;errnoh&#34;&gt;&amp;lt;errno.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;floath&#34;&gt;&amp;lt;float.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;fenvh&#34;&gt;&amp;lt;fenv.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;inttypeh&#34;&gt;&amp;lt;inttype.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;iso646h&#34;&gt;&amp;lt;iso646.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;limitsh&#34;&gt;&amp;lt;limits.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;localeh&#34;&gt;&amp;lt;locale.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;mathh&#34;&gt;&amp;lt;math.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;setjmph&#34;&gt;&amp;lt;setjmp.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;signalh&#34;&gt;&amp;lt;signal.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;stdargh&#34;&gt;&amp;lt;stdarg.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;stddefh&#34;&gt;&amp;lt;stddef.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;stdioh&#34;&gt;&amp;lt;stdio.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;stdlibh&#34;&gt;&amp;lt;stdlib.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;stringh&#34;&gt;&amp;lt;string.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;stdboolh&#34;&gt;&amp;lt;stdbool.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;stdinth&#34;&gt;&amp;lt;stdint.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;timeh&#34;&gt;&amp;lt;time.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;tgmathh&#34;&gt;&amp;lt;tgmath.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;wcharh&#34;&gt;&amp;lt;wchar.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;wctypeh&#34;&gt;&amp;lt;wctype.h&amp;gt;&lt;/h2&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;c11支持的头文件和函数&#34;&gt;C11支持的头文件和函数&lt;/h1&gt;&#xA;&lt;h2 id=&#34;stdalignh&#34;&gt;&amp;lt;stdalign.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;stdatomich&#34;&gt;&amp;lt;stdatomic.h&amp;gt;&lt;/h2&gt;&#xA;&lt;h2 id=&#34;threadsh&#34;&gt;&amp;lt;threads.h&amp;gt;&lt;/h2&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;c标准&#34;&gt;C++标准&lt;/h1&gt;&#xA;&lt;p&gt;C++98, C++11, C++14, C++17, C++20, C++23&lt;/p&gt;&#xA;&lt;p&gt;c++ 头文件不带.h用来和C区分。&lt;/p&gt;&#xA;&lt;h2 id=&#34;核心功能&#34;&gt;核心功能&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://zh.cppreference.com/w/cpp/language&#34;&gt;https://zh.cppreference.com/w/cpp/language&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;标准库&#34;&gt;标准库&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://zh.cppreference.com/w/cpp/standard_library&#34;&gt;https://zh.cppreference.com/w/cpp/standard_library&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Iso on Morgoth</title>
+        <link>https://canuxcheng.com/tags/iso/</link>
+        <description>Recent content in Iso on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Fri, 01 Apr 2016 21:54:16 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/iso/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>ISO</title>
+        <link>https://canuxcheng.com/post/c_iso/</link>
+        <pubDate>Fri, 01 Apr 2016 21:54:16 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/c_iso/</guid>
+        <description>&lt;h1 id=&#34;c标准库&#34;&gt;C标准库&lt;/h1&gt;
+&lt;p&gt;ISO C89(ANSI C89) -&amp;gt; ISO C95 -&amp;gt; ISO C99 -&amp;gt;&lt;/p&gt;
+&lt;p&gt;-&amp;gt; ISO C11 -&amp;gt; ISO C17 -&amp;gt; ISO C23&lt;/p&gt;
+&lt;p&gt;ANSI C 和 ISO C是对通用C语言的接口的定义。&lt;/p&gt;
+&lt;p&gt;符合这种标准的实现为C语言标准库,也叫libc。&lt;/p&gt;
+&lt;p&gt;官方网站：&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://www.open-std.org/jtc1/sc22/wg14/www/standards&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://www.open-std.org/jtc1/sc22/wg14/www/standards&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;c89和c99支持的头文件和函数&#34;&gt;C89和C99支持的头文件和函数&lt;/h1&gt;
+&lt;h2 id=&#34;asserth&#34;&gt;&amp;lt;assert.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;ctypeh&#34;&gt;&amp;lt;ctype.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;complexh&#34;&gt;&amp;lt;complex.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;errnoh&#34;&gt;&amp;lt;errno.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;floath&#34;&gt;&amp;lt;float.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;fenvh&#34;&gt;&amp;lt;fenv.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;inttypeh&#34;&gt;&amp;lt;inttype.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;iso646h&#34;&gt;&amp;lt;iso646.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;limitsh&#34;&gt;&amp;lt;limits.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;localeh&#34;&gt;&amp;lt;locale.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;mathh&#34;&gt;&amp;lt;math.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;setjmph&#34;&gt;&amp;lt;setjmp.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;signalh&#34;&gt;&amp;lt;signal.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;stdargh&#34;&gt;&amp;lt;stdarg.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;stddefh&#34;&gt;&amp;lt;stddef.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;stdioh&#34;&gt;&amp;lt;stdio.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;stdlibh&#34;&gt;&amp;lt;stdlib.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;stringh&#34;&gt;&amp;lt;string.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;stdboolh&#34;&gt;&amp;lt;stdbool.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;stdinth&#34;&gt;&amp;lt;stdint.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;timeh&#34;&gt;&amp;lt;time.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;tgmathh&#34;&gt;&amp;lt;tgmath.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;wcharh&#34;&gt;&amp;lt;wchar.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;wctypeh&#34;&gt;&amp;lt;wctype.h&amp;gt;&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;c11支持的头文件和函数&#34;&gt;C11支持的头文件和函数&lt;/h1&gt;
+&lt;h2 id=&#34;stdalignh&#34;&gt;&amp;lt;stdalign.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;stdatomich&#34;&gt;&amp;lt;stdatomic.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id=&#34;threadsh&#34;&gt;&amp;lt;threads.h&amp;gt;&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;c标准&#34;&gt;C++标准&lt;/h1&gt;
+&lt;p&gt;C++98, C++11, C++14, C++17, C++20, C++23&lt;/p&gt;
+&lt;p&gt;c++ 头文件不带.h用来和C区分。&lt;/p&gt;
+&lt;h2 id=&#34;核心功能&#34;&gt;核心功能&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://zh.cppreference.com/w/cpp/language&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://zh.cppreference.com/w/cpp/language&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;标准库&#34;&gt;标准库&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://zh.cppreference.com/w/cpp/standard_library&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://zh.cppreference.com/w/cpp/standard_library&lt;/a&gt;&lt;/p&gt;
+&lt;iostream&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://cplusplus.com/reference/iostream/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://cplusplus.com/reference/iostream/&lt;/a&gt;&lt;/p&gt;
+&lt;string&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://cplusplus.com/reference/string/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://cplusplus.com/reference/string/&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;stl&#34;&gt;STL&lt;/h2&gt;
+&lt;h3 id=&#34;containers&#34;&gt;containers&lt;/h3&gt;
+&lt;h3&gt;&lt;/h3&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

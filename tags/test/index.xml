@@ -1,33 +1,395 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Test on Morgoth</title>
-    <link>https://canuxcheng.com/tags/test/</link>
-    <description>Recent content in Test on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Mon, 01 Jan 2018 10:49:21 +0000</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/test/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>GSL_test</title>
-      <link>https://canuxcheng.com/post/gsl_test/</link>
-      <pubDate>Mon, 01 Jan 2018 10:49:21 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/gsl_test/</guid>
-      <description>&lt;h1 id=&#34;testing&#34;&gt;testing&lt;/h1&gt;&#xA;&lt;p&gt;go的测试由go test命令和testing包组成．&lt;/p&gt;&#xA;&lt;p&gt;测试程序命名：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;XXX.go # 测试文件和源码放在一个包中&#xA;XXX_test.go&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;测试程序结构：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;import &amp;quot;testing&amp;quot;&#xA;&#xA;# 单元测试&#xA;# go test 会自动执行&#xA;func TestXXX(t *testing.T) {}&#xA;&#xA;# 性能测试&#xA;# go test XXX_test.go -test.bench=&amp;quot;.*&amp;quot;  压力测试需要指定才能执行&#xA;func BenchmarkXXX(b *testing.B) {}&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;constants&#34;&gt;constants&lt;/h2&gt;&#xA;&lt;h2 id=&#34;variables&#34;&gt;variables&lt;/h2&gt;&#xA;&lt;h2 id=&#34;functions&#34;&gt;functions&lt;/h2&gt;&#xA;&lt;h2 id=&#34;t&#34;&gt;T&lt;/h2&gt;&#xA;&lt;p&gt;管理测试状态并支持格式化测试的日志．&lt;/p&gt;&#xA;&lt;p&gt;struct:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;type T struct {}&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;methods:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;// 将当前测试标识为失败，但继续执行该文件剩下的测试&#xA;func (c *T) Fail()&#xA;&#xA;// 将当前测试标识为失败，并停止执行该测试, 继续执行下一个测试文件.&#xA;func (c *T) FailNow()&#xA;&#xA;// 用于报告测试函数是否失败&#xA;func (c *T) Failed() bool&#xA;&#xA;func (c *T) Log(args ...interface{})&#xA;func (c *T) Logf(format string, args ...interface{})&#xA;&#xA;# 相当于Log/Logf之后调用Fail.(当前case失败)&#xA;func (c *T) Error(args ...interface{})&#xA;func (c *T) Errorf(format string, args ...interface{})&#xA;&#xA;# 相当于Log/Logf之后调用FailNow.(当前测试文件失败)&#xA;func (c *T) Fatal(args ...interface{})&#xA;func (c *T) Fatalf(format string, args ...interface{})&#xA;&#xA;func (c *T) Skip(args ...interface{})&#xA;func (c *T) SkipNow()&#xA;func (c *T) Skipf(format string, args ...interface{})&#xA;func (c *T) Skipped() bool&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;b&#34;&gt;B&lt;/h2&gt;&#xA;&lt;p&gt;管理基准测试的计时行为，并指示应该迭代的运行测试多少次.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Test</title>
-      <link>https://canuxcheng.com/post/django_test/</link>
-      <pubDate>Tue, 04 Oct 2016 04:51:30 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/django_test/</guid>
-      <description>&lt;h1 id=&#34;testspy&#34;&gt;tests.py&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://docs.djangoproject.com/zh-hans/3.1/topics/testing/tools/&#34;&gt;https://docs.djangoproject.com/zh-hans/3.1/topics/testing/tools/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://docs.djangoproject.com/zh-hans/3.1/topics/testing/advanced/&#34;&gt;https://docs.djangoproject.com/zh-hans/3.1/topics/testing/advanced/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;单个测试文件&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;vim app/tests.py&#xA;from django.test import TestCase&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;多个测试文件&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;mkdir -p app/tests&#xA;vi test_case1.py&#xA;vi test_case2.py&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h1 id=&#34;配置和运行&#34;&gt;配置和运行&lt;/h1&gt;&#xA;&lt;p&gt;默认情况下运行 manage.py test 会创建测试数据库运行testcase，完成后自动销毁测试数据库.&lt;/p&gt;&#xA;&lt;p&gt;测试相关配置&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;vim project/settings.py&#xA;&#xA;DATABASES = {&#xA;    &#39;default&#39;: {&#xA;        &#39;NAME&#39;: &#39;mydb&#39;,&#xA;        &#39;TEST&#39;: {&#xA;            // 默认测试数据库是&#39;NAME&#39;前加&#39;test_&#39; (eg: &#39;test_mydb&#39;)&#xA;            // 可以通过TEST.NAME指定测试数据库&#xA;            &#39;NAME&#39;: &#39;mytestdb&#39;&#xA;        }&#xA;    }&#xA;}&#xA;&#xA;# 指定runner&#xA;## 默认 django.test.runner.DiscoverRunner&#xA;TEST_RUNNER = &#39;site_main.base_tests.TestRunner&#xA;&#xA;# 指定fixture文件路径&#xA;FIXTURE_DIRS = (os.path.join(BASE_DIR, &#39;app&#39;, &#39;fixtures&#39;), )&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;运行测试程序：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ python3 manage.py test // 查找test 开头的文件运行里面的 unittest.TestCase的子类.&#xA;$ python3 manage.py test &amp;lt;package&amp;gt; // 运行指️定应用内的测试&#xA;$ python3 manage.py test &amp;lt;module&amp;gt; // 运行指定模块内的测试&#xA;$ python3 manage.py test &amp;lt;module&amp;gt;.tests.MyTestCase // 运行一个指定的testcase&#xA;$ python3 manage.py test &amp;lt;module&amp;gt;.tests.MyTestCase.test_method // 运行一个指定的test method&#xA;&#xA;--keepdb // 保留测试数据库&#xA;--parallel // 并行运行测试。&#xA;-v/--verbosity 0/1/2/3  测试输出信息级别，默认为1， 0表示不输出。&#xA;-d/--debug-sql 输出测试执行的sql语句.&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;client&#34;&gt;Client&lt;/h1&gt;&#xA;&lt;p&gt;测试客户端是一个 Python 类，它充当一个虚拟的 Web 浏览器，&#xA;允许你测试视图并以编程方式与 Django 驱动的应用程序交互。&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>PSL_Test</title>
-      <link>https://canuxcheng.com/post/psl_test/</link>
-      <pubDate>Mon, 11 Apr 2016 22:58:13 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/psl_test/</guid>
-      <description>&lt;h1 id=&#34;development-tools&#34;&gt;Development Tools&lt;/h1&gt;&#xA;&lt;h2 id=&#34;typing&#34;&gt;typing&lt;/h2&gt;&#xA;&lt;h2 id=&#34;2to3&#34;&gt;2to3&lt;/h2&gt;&#xA;&lt;pre&gt;&lt;code&gt;$2to3&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;pydoc&#34;&gt;pydoc&lt;/h2&gt;&#xA;&lt;pre&gt;&lt;code&gt;import pydoc&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;test&#34;&gt;test&lt;/h2&gt;&#xA;&lt;pre&gt;&lt;code&gt;import test&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;doctest&#34;&gt;doctest&lt;/h2&gt;&#xA;&lt;p&gt;python内置的文档测试库．&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;import doctest&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;unittest&#34;&gt;unittest&lt;/h2&gt;&#xA;&lt;p&gt;python内置的单元测试库．&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;import unittest&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;tpl&#34;&gt;TPL&lt;/h1&gt;&#xA;&lt;p&gt;相关的第三方库&lt;/p&gt;&#xA;&lt;h2 id=&#34;unittest2&#34;&gt;unittest2&lt;/h2&gt;&#xA;&lt;p&gt;unittest2是unittest的升级版．&lt;/p&gt;&#xA;&lt;p&gt;python3集成了unittest2到unittest,像使用unittest一样使用即可．&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;# python2.7&#xA;$pip install unittest2&#xA;import unittest2&#xA;&#xA;# python3&#xA;import unittest&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;unittest也叫pyunit，类似于Junit(java)都是基于Kent Beck和Erich Gamma的XUnit框架．&lt;/p&gt;&#xA;&lt;p&gt;测试结果：&lt;/p&gt;&#xA;&lt;p&gt;OK 表示测试通过&lt;/p&gt;&#xA;&lt;p&gt;FAIL 表示测试没有通过，并引发一个AssertionError异常．&lt;/p&gt;&#xA;&lt;p&gt;ERROR 表示测试过程引发一个不是AssertionError的异常．&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;# Python2.7 此处用的是标准库的unittest.&#xA;import unittest&#xA;import MyClass&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;classes:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;unittest.TestCase: 每个实例就是一个test case. 使用TestCase.assert* 系列方法进行测试．&#xA;unittest.TestSuite: 每个实例就是一个test suite. 多个test case放在一起就是一个test suite.&#xA;unittest.TestLoader/unittest.defaultTestLoader: 用来加载TestCase到TestSuite.&#xA;unittest.TestResult: 用来保存测试的结果．&#xA;&#xA;unittest.TestProgram/unittest.main(): 搜索该模块下所有test开头的测试用例方法并执行．&#xA;fixtures对一个测试用例的环境的搭建和销毁，通过重载TestCase的setUp()和teaeDown()方法．&#xA;&#xA;unittest.TextTestRunner: 用来执行测试用例．&#xA;unittest.TextTestResult: 用来打印格式化的测试结果．&#xA;&#xA;# unittest.TestCase&#xA;# methods:&#xA;assertXXX　系列方法．&#xA;failXXX 系列方法&#xA;fail(self, msg=None) # test立即失败&#xA;addCleanup(self, function, *args, **kwargs)&#xA;addTypeEqualityFunc(self, typeobj, function)&#xA;countTestCases(self)&#xA;debug(self)&#xA;defaultTestResult() # return unittest.TestResult()&#xA;doCleanups(self)&#xA;id(self)&#xA;run(self, result=None) # 可以在子类覆盖该方法．&#xA;shortDescription(self)&#xA;skipTest(self, reason)&#xA;setUp(self) # 重写之后，每个case运行之前都会调用一次．&#xA;tearDown(self) # 同上&#xA;&#xA;# classmethods:&#xA;setUpClass(cls) # 通过@classmethod重写，这样所有的case运行之前只调用一次，而不是每个case运行之前都调用．&#xA;tearDownClass(cls) # 同上&#xA;&#xA;# data:&#xA;failureException = AssertionError&#xA;longMessage = False&#xA;maxDiff = 640&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;functions:&lt;/p&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Test on Morgoth</title>
+        <link>https://canuxcheng.com/tags/test/</link>
+        <description>Recent content in Test on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Mon, 01 Jan 2018 10:49:21 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/test/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>GSL_test</title>
+        <link>https://canuxcheng.com/post/gsl_test/</link>
+        <pubDate>Mon, 01 Jan 2018 10:49:21 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/gsl_test/</guid>
+        <description>&lt;h1 id=&#34;testing&#34;&gt;testing&lt;/h1&gt;
+&lt;p&gt;go的测试由go test命令和testing包组成．&lt;/p&gt;
+&lt;p&gt;测试程序命名：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;XXX.go # 测试文件和源码放在一个包中
+XXX_test.go
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;测试程序结构：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import &amp;quot;testing&amp;quot;
+
+# 单元测试
+# go test 会自动执行
+func TestXXX(t *testing.T) {}
+
+# 性能测试
+# go test XXX_test.go -test.bench=&amp;quot;.*&amp;quot;  压力测试需要指定才能执行
+func BenchmarkXXX(b *testing.B) {}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;constants&#34;&gt;constants&lt;/h2&gt;
+&lt;h2 id=&#34;variables&#34;&gt;variables&lt;/h2&gt;
+&lt;h2 id=&#34;functions&#34;&gt;functions&lt;/h2&gt;
+&lt;h2 id=&#34;t&#34;&gt;T&lt;/h2&gt;
+&lt;p&gt;管理测试状态并支持格式化测试的日志．&lt;/p&gt;
+&lt;p&gt;struct:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type T struct {}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;methods:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 将当前测试标识为失败，但继续执行该文件剩下的测试
+func (c *T) Fail()
+
+// 将当前测试标识为失败，并停止执行该测试, 继续执行下一个测试文件.
+func (c *T) FailNow()
+
+// 用于报告测试函数是否失败
+func (c *T) Failed() bool
+
+func (c *T) Log(args ...interface{})
+func (c *T) Logf(format string, args ...interface{})
+
+# 相当于Log/Logf之后调用Fail.(当前case失败)
+func (c *T) Error(args ...interface{})
+func (c *T) Errorf(format string, args ...interface{})
+
+# 相当于Log/Logf之后调用FailNow.(当前测试文件失败)
+func (c *T) Fatal(args ...interface{})
+func (c *T) Fatalf(format string, args ...interface{})
+
+func (c *T) Skip(args ...interface{})
+func (c *T) SkipNow()
+func (c *T) Skipf(format string, args ...interface{})
+func (c *T) Skipped() bool
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;b&#34;&gt;B&lt;/h2&gt;
+&lt;p&gt;管理基准测试的计时行为，并指示应该迭代的运行测试多少次.&lt;/p&gt;
+&lt;p&gt;struct:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type B struct {
+    N int
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;methods:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;func (c *B) Fail()
+func (c *B) FailNow()
+func (c *B) Failed() bool
+
+func (c *B) Error(args ...interface{})
+func (c *B) Errorf(format string, args ...interface{})
+
+func (c *B) Fatal(args ...interface{})
+func (c *B) Fatalf(format string, args ...interface{})
+
+func (c *B) Log(args ...interface{})
+func (c *B) Logf(format string, args ...interface{})
+
+func (c *B) Skip(args ...interface{})
+func (c *B) SkipNow()
+func (c *B) Skipf(format string, args ...interface{})
+func (c *B) Skipped() bool
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;testingiotest&#34;&gt;testing/iotest&lt;/h1&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;testingquick&#34;&gt;testing/quick&lt;/h1&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;gotests&#34;&gt;gotests&lt;/h1&gt;
+&lt;p&gt;通过源代码自动生成测试代码，可以用命令行，也可以用goland等的插件．&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/cweill/gotests&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/cweill/gotests&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;go get -u github.com/cweill/gotests/...
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
+        <item>
+        <title>Test</title>
+        <link>https://canuxcheng.com/post/django_test/</link>
+        <pubDate>Tue, 04 Oct 2016 04:51:30 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/django_test/</guid>
+        <description>&lt;h1 id=&#34;testspy&#34;&gt;tests.py&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.djangoproject.com/zh-hans/3.1/topics/testing/tools/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://docs.djangoproject.com/zh-hans/3.1/topics/testing/tools/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.djangoproject.com/zh-hans/3.1/topics/testing/advanced/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://docs.djangoproject.com/zh-hans/3.1/topics/testing/advanced/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;单个测试文件&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;vim app/tests.py
+from django.test import TestCase
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;多个测试文件&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;mkdir -p app/tests
+vi test_case1.py
+vi test_case2.py
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;配置和运行&#34;&gt;配置和运行&lt;/h1&gt;
+&lt;p&gt;默认情况下运行 manage.py test 会创建测试数据库运行testcase，完成后自动销毁测试数据库.&lt;/p&gt;
+&lt;p&gt;测试相关配置&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;vim project/settings.py
+
+DATABASES = {
+    &#39;default&#39;: {
+        &#39;NAME&#39;: &#39;mydb&#39;,
+        &#39;TEST&#39;: {
+            // 默认测试数据库是&#39;NAME&#39;前加&#39;test_&#39; (eg: &#39;test_mydb&#39;)
+            // 可以通过TEST.NAME指定测试数据库
+            &#39;NAME&#39;: &#39;mytestdb&#39;
+        }
+    }
+}
+
+# 指定runner
+## 默认 django.test.runner.DiscoverRunner
+TEST_RUNNER = &#39;site_main.base_tests.TestRunner
+
+# 指定fixture文件路径
+FIXTURE_DIRS = (os.path.join(BASE_DIR, &#39;app&#39;, &#39;fixtures&#39;), )
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;运行测试程序：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ python3 manage.py test // 查找test 开头的文件运行里面的 unittest.TestCase的子类.
+$ python3 manage.py test &amp;lt;package&amp;gt; // 运行指️定应用内的测试
+$ python3 manage.py test &amp;lt;module&amp;gt; // 运行指定模块内的测试
+$ python3 manage.py test &amp;lt;module&amp;gt;.tests.MyTestCase // 运行一个指定的testcase
+$ python3 manage.py test &amp;lt;module&amp;gt;.tests.MyTestCase.test_method // 运行一个指定的test method
+
+--keepdb // 保留测试数据库
+--parallel // 并行运行测试。
+-v/--verbosity 0/1/2/3  测试输出信息级别，默认为1， 0表示不输出。
+-d/--debug-sql 输出测试执行的sql语句.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;client&#34;&gt;Client&lt;/h1&gt;
+&lt;p&gt;测试客户端是一个 Python 类，它充当一个虚拟的 Web 浏览器，
+允许你测试视图并以编程方式与 Django 驱动的应用程序交互。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;from django.test import Client
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;测试class&#34;&gt;测试Class&lt;/h1&gt;
+&lt;h2 id=&#34;simpletestcase&#34;&gt;SimpleTestCase&lt;/h2&gt;
+&lt;p&gt;SimpleTestCase继承自unittest.TestCase.&lt;/p&gt;
+&lt;h2 id=&#34;transactiontestcase&#34;&gt;TransactionTestCase&lt;/h2&gt;
+&lt;p&gt;TransactionTestCase继承自SimpleTestCase.&lt;/p&gt;
+&lt;h2 id=&#34;liveservertestcase&#34;&gt;LiveServerTestCase&lt;/h2&gt;
+&lt;p&gt;LiveServerTestCase继承自TransactionTestCase.&lt;/p&gt;
+&lt;p&gt;LiveServerTestCase 和 TransactionTestCase` 的功能基本相同，
+但多了一个功能：它在设置时在后台启动一个实时的 Django 服务器，并在关闭时将其关闭。
+这就允许使用 Django 虚拟客户端 以外的自动化测试客户端，
+例如，Selenium 客户端，在浏览器内执行一系列功能测试，并模拟真实用户的操作。&lt;/p&gt;
+&lt;h2 id=&#34;testcase&#34;&gt;TestCase&lt;/h2&gt;
+&lt;p&gt;TestCase继承自TransactionTestCase.&lt;/p&gt;
+&lt;h2 id=&#34;fixtures&#34;&gt;fixtures&lt;/h2&gt;
+&lt;p&gt;fixtures是类属性, 可以通过模拟在数据库中插入数据进行测试.&lt;/p&gt;
+&lt;p&gt;在setUp的时候会插入fixtures指定的json文件中的数据。&lt;/p&gt;
+&lt;p&gt;在tearDown的时候会销毁数据。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 导出数据为json格式，用于单元测试
+$ python3 manage.py dumpdata &amp;gt; test_data.json
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;databases&#34;&gt;databases&lt;/h2&gt;
+&lt;p&gt;databases是类属性&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>PSL_Test</title>
+        <link>https://canuxcheng.com/post/psl_test/</link>
+        <pubDate>Mon, 11 Apr 2016 22:58:13 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/psl_test/</guid>
+        <description>&lt;h1 id=&#34;development-tools&#34;&gt;Development Tools&lt;/h1&gt;
+&lt;h2 id=&#34;typing&#34;&gt;typing&lt;/h2&gt;
+&lt;h2 id=&#34;2to3&#34;&gt;2to3&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;$2to3
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;pydoc&#34;&gt;pydoc&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;import pydoc
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;test&#34;&gt;test&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;import test
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;doctest&#34;&gt;doctest&lt;/h2&gt;
+&lt;p&gt;python内置的文档测试库．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import doctest
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;unittest&#34;&gt;unittest&lt;/h2&gt;
+&lt;p&gt;python内置的单元测试库．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import unittest
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;tpl&#34;&gt;TPL&lt;/h1&gt;
+&lt;p&gt;相关的第三方库&lt;/p&gt;
+&lt;h2 id=&#34;unittest2&#34;&gt;unittest2&lt;/h2&gt;
+&lt;p&gt;unittest2是unittest的升级版．&lt;/p&gt;
+&lt;p&gt;python3集成了unittest2到unittest,像使用unittest一样使用即可．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# python2.7
+$pip install unittest2
+import unittest2
+
+# python3
+import unittest
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;unittest也叫pyunit，类似于Junit(java)都是基于Kent Beck和Erich Gamma的XUnit框架．&lt;/p&gt;
+&lt;p&gt;测试结果：&lt;/p&gt;
+&lt;p&gt;OK 表示测试通过&lt;/p&gt;
+&lt;p&gt;FAIL 表示测试没有通过，并引发一个AssertionError异常．&lt;/p&gt;
+&lt;p&gt;ERROR 表示测试过程引发一个不是AssertionError的异常．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# Python2.7 此处用的是标准库的unittest.
+import unittest
+import MyClass
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;classes:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;unittest.TestCase: 每个实例就是一个test case. 使用TestCase.assert* 系列方法进行测试．
+unittest.TestSuite: 每个实例就是一个test suite. 多个test case放在一起就是一个test suite.
+unittest.TestLoader/unittest.defaultTestLoader: 用来加载TestCase到TestSuite.
+unittest.TestResult: 用来保存测试的结果．
+
+unittest.TestProgram/unittest.main(): 搜索该模块下所有test开头的测试用例方法并执行．
+fixtures对一个测试用例的环境的搭建和销毁，通过重载TestCase的setUp()和teaeDown()方法．
+
+unittest.TextTestRunner: 用来执行测试用例．
+unittest.TextTestResult: 用来打印格式化的测试结果．
+
+# unittest.TestCase
+# methods:
+assertXXX　系列方法．
+failXXX 系列方法
+fail(self, msg=None) # test立即失败
+addCleanup(self, function, *args, **kwargs)
+addTypeEqualityFunc(self, typeobj, function)
+countTestCases(self)
+debug(self)
+defaultTestResult() # return unittest.TestResult()
+doCleanups(self)
+id(self)
+run(self, result=None) # 可以在子类覆盖该方法．
+shortDescription(self)
+skipTest(self, reason)
+setUp(self) # 重写之后，每个case运行之前都会调用一次．
+tearDown(self) # 同上
+
+# classmethods:
+setUpClass(cls) # 通过@classmethod重写，这样所有的case运行之前只调用一次，而不是每个case运行之前都调用．
+tearDownClass(cls) # 同上
+
+# data:
+failureException = AssertionError
+longMessage = False
+maxDiff = 640
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;functions:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;findTestCases(module, prefix=&#39;test&#39;, sortUsing=&amp;lt;built-in function cmp&amp;gt;, suiteClass=&amp;lt;class &#39;unittest.suite.TestSuite&#39;&amp;gt;)
+getTestCaseNames(testCaseClass, prefix, sortUsing=&amp;lt;built-in function cmp&amp;gt;)
+installHandler()
+makeSuite(testCaseClass, prefix=&#39;test&#39;, sortUsing=&amp;lt;built-in function cmp&amp;gt;, suiteClass=&amp;lt;class &#39;unittest.suite.TestSuite&#39;&amp;gt;)
+registerResult(result)
+removeHandler(method=None)
+removeResult(result)
+
+# unittest.case实现了几个函数用来增强unittest.TestCase的方法, 一般当装饰器用．
+expectedFailure(func) # 如果这个case失败了，不计入失败的数目．
+# @unittest.expectedFailure
+skip(reason) # 无条件跳过一个test case.
+skipIf(condition, reason) # condition为true就跳过一个test case.
+skipUnless(condition, reason) # 和上面相反
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;examples:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;class MyClassTestCase(unittest.TestCase):
+
+    @classmethod
+    def setUpClass(cls):
+        print &#39;Just execute before the first test case start.&#39;
+
+    @classmethod
+    def tearDownClass(cls):
+        print &#39;Just execute after all test case end.&#39;
+
+    def setUp(self):
+        &amp;quot;&amp;quot;&amp;quot;重载setUp进行测试之前的初始化工作.运行每个test_func之前都会运行该方法&amp;quot;&amp;quot;&amp;quot;
+        print &amp;quot;start&amp;quot;
+
+    def tearDown(self):
+        &amp;quot;&amp;quot;&amp;quot;重载tearDown进行测试结束后的清理工作.结束运行每个test_func之后都会运行该方法&amp;quot;&amp;quot;&amp;quot;
+        print &amp;quot;end&amp;quot;
+
+    def test_func(self):
+        &amp;quot;&amp;quot;&amp;quot;具体的测试用例，需要用test开头,多个test_func会根据func名字中的数字或字母的顺序来执行，和位置无关.
+        不是用test开头的方法默认不会被执行&amp;quot;&amp;quot;&amp;quot;
+        self.assertEqual(MyClass.method(args), value, &amp;quot;message&amp;quot;)
+
+if __name__ == &amp;quot;__main__&amp;quot;:
+    unittest.main()
+
+# 自动发现和批量执行testcase/testsuite:
+def discover_test_case():
+    test_cases = []
+    _module = ...
+    tests.append(unittest.defaultTestLoader.loadTestsFromModule(_module))
+    unittest.defaultTestLoader.discover()
+    return tests
+
+def get_test_suite():
+    &amp;quot;&amp;quot;&amp;quot;打包一个testsuite.&amp;quot;&amp;quot;&amp;quot;
+    return unittest.TestSuite(discover_test_case())
+
+unittest.TextTestRunner
+if __name__ == &amp;quot;__main__&amp;quot;:
+    runner = unittest.TextTestRunner()
+    result = runner.run(get_test_suite())
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;mock&#34;&gt;mock&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/testing-cabal/mock&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/testing-cabal/mock&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;python3集成了mock到unittest模块，导入unittest.mock即可．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# Python2.7
+$pip install mock
+import mock
+
+# Python3
+import unittest.mock
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;mock就是在测试中对于不容易构造或获取的对象，用一个虚拟的对象来代替以便测试的方法．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# Python2.7 此处用的是第三方库mock
+from mock import Mock, patch, PropertyMock, MagicMock
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;nose2&#34;&gt;nose2&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/nose-devs/nose2&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/nose-devs/nose2&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;nose是unittest/unittest2的升级版．&lt;/p&gt;
+&lt;p&gt;nose2是nose的升级版．&lt;/p&gt;
+&lt;p&gt;nose2用于单元测试．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ pip install nose
+
+import nose
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;pytest&#34;&gt;pytest&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/pytest-dev/pytest/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/pytest-dev/pytest/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;pytest用于单元测试．推荐使用．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ pip install -U pytest
+
+import pytest
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;coverage&#34;&gt;coverage&lt;/h2&gt;
+&lt;p&gt;分析单元测试的代码覆盖率&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/nedbat/coveragepy&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/nedbat/coveragepy&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ pip install coverage
+
+# 通过命令进行测试，可以集成到其它工具．
+$ coverage run --source=&amp;lt;package-name&amp;gt; setup.py test
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;tox&#34;&gt;tox&lt;/h2&gt;
+&lt;p&gt;virtualenv management and test command line tool.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/tox-dev/tox&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/tox-dev/tox&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ pip install tox
+
+# 通过命令进行测试，可以集成unittest, nose2, pytest等工具．
+$ tox
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

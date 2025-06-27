@@ -1,124 +1,2037 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Monitoring on Morgoth</title>
-    <link>https://canuxcheng.com/tags/monitoring/</link>
-    <description>Recent content in Monitoring on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Thu, 05 Apr 2018 21:47:54 +0000</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/monitoring/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Monitoring</title>
-      <link>https://canuxcheng.com/post/storage_monitoring/</link>
-      <pubDate>Thu, 05 Apr 2018 21:47:54 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/storage_monitoring/</guid>
-      <description>&lt;h1 id=&#34;monitoring&#34;&gt;Monitoring&lt;/h1&gt;&#xA;&lt;h2 id=&#34;diskio&#34;&gt;diskio&lt;/h2&gt;&#xA;&lt;p&gt;IOPS: Input/Output Per Second. 每秒输入输出量，也叫TPS.&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;SELECT non_negative_derivative(mean(reads),1s) as &amp;quot;read&amp;quot; FROM &amp;quot;diskio&amp;quot;&#xA;SELECT non_negative_derivative(mean(writes),1s) as &amp;quot;write&amp;quot; FROM &amp;quot;diskio&amp;quot;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;throughput:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;SELECT non_negative_derivative(mean(read_bytes),1s) as &amp;quot;read&amp;quot; FROM &amp;quot;diskio&amp;quot;&#xA;SELECT non_negative_derivative(mean(write_bytes),1s) as &amp;quot;write&amp;quot; FROM &amp;quot;diskio&amp;quot;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;Utilization:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;SELECT non_negative_derivative(last(&amp;quot;io_time&amp;quot;),1ms)&#xA;FROM &amp;quot;diskio&amp;quot;&#xA;WHERE &amp;quot;name&amp;quot; =~ /^(v|s|)d(a|b|c|d)$/&#xA;GROUP BY &amp;quot;host&amp;quot;,&amp;quot;name&amp;quot;,time(_interval)&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;Queue length:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;SELECT non_negative_derivative(last(&amp;quot;weighted_io_time&amp;quot;,1ms))&#xA;FROM &amp;quot;diskio&amp;quot;&#xA;WHERE &amp;quot;name&amp;quot; =~ /^(v|s|)d(a|b|c|d)$/&#xA;GROUP BY &amp;quot;host&amp;quot;,&amp;quot;name&amp;quot;,time(_interval)&#xA;&lt;/code&gt;&lt;/pre&gt;</description>
-    </item>
-    <item>
-      <title>AlertManager</title>
-      <link>https://canuxcheng.com/post/metrics_alertmanager/</link>
-      <pubDate>Thu, 18 Jan 2018 19:23:25 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/metrics_alertmanager/</guid>
-      <description>&lt;h1 id=&#34;alert-manager&#34;&gt;alert-manager&lt;/h1&gt;&#xA;&lt;p&gt;在Prometheus中支持基于PromQL创建告警规则, prometheus通过push触发alertmanager.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/prometheus/alertmanager&#34;&gt;https://github.com/prometheus/alertmanager&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Exporter</title>
-      <link>https://canuxcheng.com/post/metrics_exporter/</link>
-      <pubDate>Thu, 18 Jan 2018 19:23:25 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/metrics_exporter/</guid>
-      <description>&lt;h1 id=&#34;exporter&#34;&gt;exporter&lt;/h1&gt;&#xA;&lt;p&gt;广义上讲所有可以向Prometheus提供监控样本数据的程序都可以被称为一个Exporter。而Exporter的一个实例称为target，如下所示，Prometheus通过轮询的方式定期从这些target中获取样本数据:&lt;/p&gt;&#xA;&lt;p&gt;prometheus通过pull从exporter拉取数据.&lt;/p&gt;&#xA;&lt;p&gt;直接采集:cAdvisor, kubernetes, etcd, gokit等直接内置了用于向prometheus暴露监控数据的端点.&lt;/p&gt;&#xA;&lt;p&gt;间接采集: 通过promethesu的client api编写exporter，例如mysql-exporter, consul-exporter.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;host&#34;&gt;host&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/prometheus/node_exporter&#34;&gt;https://github.com/prometheus/node_exporter&lt;/a&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;k8s&#34;&gt;k8s&lt;/h1&gt;&#xA;&lt;p&gt;k8s metrics api包括 resource metrics api 和 customer metrics api.&lt;/p&gt;&#xA;&lt;p&gt;cadvisor, metrics-server, kube-state-metrics 等实现了 核心api.&lt;/p&gt;&#xA;&lt;p&gt;一些adapter实现了自定义api.&lt;/p&gt;&#xA;&lt;p&gt;k8s-prometheus-adapter实现了metrics-server的核心api，同时实现了自定义api.&lt;/p&gt;&#xA;&lt;h2 id=&#34;metrics-server&#34;&gt;metrics-server &lt;/h2&gt;&#xA;&lt;p&gt;提供了整个集群的资源监控数据&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/kubernetes-sigs/metrics-server&#34;&gt;https://github.com/kubernetes-sigs/metrics-server&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;cadvisor&#34;&gt;cAdvisor&lt;/h2&gt;&#xA;&lt;p&gt;负责单节点内部的容器和节点资源使用统计，会自动收集本机容器 CPU、内存、网络和文件系统的资源占用情况&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/google/cadvisor&#34;&gt;https://github.com/google/cadvisor&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;kube-state-metrics&#34;&gt;kube-state-metrics &lt;/h2&gt;&#xA;&lt;p&gt;提供了 Kubernetes 资源对象（如 DaemonSet、Deployments 等）的度量。&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/kubernetes/kube-state-metrics&#34;&gt;https://github.com/kubernetes/kube-state-metrics&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;adapter&#34;&gt;adapter&lt;/h2&gt;&#xA;&lt;p&gt;同时支持核心api和自定义api.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/DirectXMan12/k8s-prometheus-adapter&#34;&gt;https://github.com/DirectXMan12/k8s-prometheus-adapter&lt;/a&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;blackbox&#34;&gt;blackbox&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/prometheus/blackbox_exporter&#34;&gt;https://github.com/prometheus/blackbox_exporter&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;wmi&#34;&gt;wmi&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/martinlindhe/wmi_exporter&#34;&gt;https://github.com/martinlindhe/wmi_exporter&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;snmp&#34;&gt;snmp&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/prometheus/snmp_exporter&#34;&gt;https://github.com/prometheus/snmp_exporter&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;mysql&#34;&gt;mysql&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/prometheus/mysqld_exporter&#34;&gt;https://github.com/prometheus/mysqld_exporter&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;rabbitmq&#34;&gt;rabbitmq&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/deadtrickster/prometheus_rabbitmq_exporter&#34;&gt;https://github.com/deadtrickster/prometheus_rabbitmq_exporter&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;mongo&#34;&gt;mongo&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/percona/mongodb_exporter&#34;&gt;https://github.com/percona/mongodb_exporter&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;redis&#34;&gt;redis&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/oliver006/redis_exporter&#34;&gt;https://github.com/oliver006/redis_exporter&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;haproxy&#34;&gt;haproxy&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/prometheus/haproxy_exporter&#34;&gt;https://github.com/prometheus/haproxy_exporter&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;consul&#34;&gt;consul&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/prometheus/consul_exporter&#34;&gt;https://github.com/prometheus/consul_exporter&lt;/a&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;pushgateway&#34;&gt;pushgateway&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/prometheus/pushgateway&#34;&gt;https://github.com/prometheus/pushgateway&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Influxdb</title>
-      <link>https://canuxcheng.com/post/metrics_influxdb/</link>
-      <pubDate>Thu, 18 Jan 2018 19:23:25 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/metrics_influxdb/</guid>
-      <description>&lt;h1 id=&#34;influxdb&#34;&gt;Influxdb&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/influxdata/influxdb&#34;&gt;https://github.com/influxdata/influxdb&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;Scalable datastore for metrics, events, and real-time analytics.&lt;/p&gt;&#xA;&lt;p&gt;支持从opentsdb, graphite, collectd等获取数据&lt;/p&gt;&#xA;&lt;p&gt;默认数据库_internal 用于存储内部运行数据&lt;/p&gt;&#xA;&lt;p&gt;安装配置参考官方文档&lt;/p&gt;&#xA;&lt;p&gt;log&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ sudo journalctl -u influxdb.service&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;config:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;# 开通kapacitor的subscription功能&#xA;[[subscriber]]&#xA;enable = true&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;数据结构&#34;&gt;数据结构&lt;/h1&gt;&#xA;&lt;p&gt;influxdb每条记录是一个point.&lt;/p&gt;&#xA;&lt;p&gt;points包括下面部分：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;measurement: a measurement, like cpu_load, 相当于表名&#xA;tags: zero or more tag, key=value, eg: host=ip&#xA;fields: zero or more field, key=value, eg: value=0.18&#xA;time: a timestamp&#xA;&#xA;&amp;lt;measurement&amp;gt;[,&amp;lt;tag-key&amp;gt;=&amp;lt;tag-value&amp;gt;...] &amp;lt;field-key&amp;gt;=&amp;lt;field-value&amp;gt;[,&amp;lt;field2-key&amp;gt;=&amp;lt;field2-value&amp;gt;...] [unix-nano-timestamp]&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;series: 在一个database中,相同的retention policy, measurement, tag set的数据集，叫一个序列．&lt;/p&gt;&#xA;&lt;p&gt;RP: retention policy, autogen是默认的存储策略, 用于设置数据保留时间.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Kapacitor</title>
-      <link>https://canuxcheng.com/post/metrics_kapacitor/</link>
-      <pubDate>Thu, 18 Jan 2018 19:23:25 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/metrics_kapacitor/</guid>
-      <description>&lt;h1 id=&#34;kapacitor&#34;&gt;Kapacitor&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/influxdata/Kapacitor&#34;&gt;https://github.com/influxdata/Kapacitor&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;Open source framework for processing, monitoring, and alerting on time series data&lt;/p&gt;&#xA;&lt;p&gt;可以通过chrongraf创建tickscript/task, 然后通过api/cli导入到kapacitor.&lt;/p&gt;&#xA;&lt;p&gt;配置:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;hostname = &amp;quot;kapcitor-service&amp;quot;&#xA;&#xA;# 如果从influxdb读取数据需要配置该选项．&#xA;[[influxdb]]&#xA;enabled = true&#xA;&#xA;# 如果从该路径加载tickscript&#xA;[[load]]&#xA;enabled = true&#xA;dir=&amp;quot;/etc/kapacitor/load&amp;quot;&#xA;# tasks, 放到/etc/kapacitor/load/tasks/*.tick,重启kapacitor会自动加载task,并默认enable.&#xA;## 要求，ID和tick文件同名，tickscript开头需要指定dbrp, tickscript里面需要指定batch/stream.&#xA;# templates...&#xA;# handlers...&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;cli&#34;&gt;CLI&lt;/h1&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ kapacitor help&#xA;&#xA;# 创建template(也就是变量可以单独赋值的tickscript)&#xA;$ kapacitor define-template &amp;lt;name&amp;gt; -tick /path/template.tick&#xA;$ kapacitor show-template &amp;lt;name&amp;gt;&#xA;&#xA;# 创建/更新 task, 创建的默认是disable状态.&#xA;# 从tickscript创建task&#xA;$ kapacitor define &amp;lt;name&amp;gt; -tick task.tick -type [stream|batch] -dbrp [database.retentionPolicy]&#xA;# 从template创建task(如果yaml/json中没有指定template需要用-template指定)&#xA;$ kapacitor define &amp;lt;name&amp;gt; -file task.yaml&#xA;$ kapacitor define &amp;lt;name&amp;gt; -file task.json&#xA;&#xA;# 删除task&#xA;$ kapacitor delete [task id/name]&#xA;&#xA;$ kapacitor list tasks/templates&#xA;$ kapacitor reload [task id/name] # 相当于disable &amp;amp; enable.&#xA;$ kapacitor enable [task id/name]&#xA;$ kapaciror disable [task id/name]&#xA;$ kapacitor show [id/name]&#xA;$ kapacitor watch [task id/name]&#xA;&#xA;$ kapacitor list topics&#xA;$ kapacitor delete topics [topic id]&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;http-api&#34;&gt;Http API&lt;/h1&gt;&#xA;&lt;pre&gt;&lt;code&gt;port = 9092&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;configuration&#34;&gt;configuration&lt;/h2&gt;&#xA;&lt;p&gt;获取所有可以overwrite的参数&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Prometheus</title>
-      <link>https://canuxcheng.com/post/metrics_prometheus/</link>
-      <pubDate>Thu, 18 Jan 2018 19:23:25 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/metrics_prometheus/</guid>
-      <description>&lt;h1 id=&#34;prometheus&#34;&gt;Prometheus&lt;/h1&gt;&#xA;&lt;p&gt;Prometheus Server是Prometheus组件中的核心部分，负责实现对监控数据的获取，存储以及查询&lt;/p&gt;&#xA;&lt;p&gt;swarm部署:&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/vegasbrianc/prometheus&#34;&gt;https://github.com/vegasbrianc/prometheus&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;k8s部署:&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/coreos/kube-prometheus&#34;&gt;https://github.com/coreos/kube-prometheus&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/coreos/prometheus-operator&#34;&gt;https://github.com/coreos/prometheus-operator&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/helm/charts/tree/master/stable/prometheus-operator&#34;&gt;https://github.com/helm/charts/tree/master/stable/prometheus-operator&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;高可用:&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/thanos-io/thanos&#34;&gt;https://github.com/thanos-io/thanos&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;prometheus grafana dashboard:&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/kubernetes-monitoring/kubernetes-mixin&#34;&gt;https://github.com/kubernetes-monitoring/kubernetes-mixin&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/grafana/kubernetes-app&#34;&gt;https://github.com/grafana/kubernetes-app&lt;/a&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;promql&#34;&gt;PromQL&lt;/h1&gt;&#xA;&lt;p&gt;metrics类型:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;counter计数器&lt;/li&gt;&#xA;&lt;li&gt;gauge仪表盘&lt;/li&gt;&#xA;&lt;li&gt;histogram直方图&lt;/li&gt;&#xA;&lt;li&gt;summary摘要&lt;/li&gt;&#xA;&lt;/ol&gt;</description>
-    </item>
-    <item>
-      <title>Telegraf</title>
-      <link>https://canuxcheng.com/post/metrics_telegraf/</link>
-      <pubDate>Thu, 18 Jan 2018 19:23:25 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/metrics_telegraf/</guid>
-      <description>&lt;h1 id=&#34;telegraf&#34;&gt;Telegraf&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/influxdata/telegraf&#34;&gt;https://github.com/influxdata/telegraf&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;The plugin-driven server agent for collecting &amp;amp; reporting metrics.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;configuartion&#34;&gt;Configuartion&lt;/h1&gt;&#xA;&lt;p&gt;agent configuration:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;interval    所有inputs的默认运行间隔&#xA;round_interval&#xA;collection_jitter&#xA;precision    ns/us/ms/s&#xA;flush_interval&#xA;flush_jitter&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;input configuration:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;interval&#xA;name_override # 默认measurements是插件名,修改默认measurements.&#xA;name_prefix&#xA;name_suffix&#xA;tags&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;go-api&#34;&gt;Go API&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://godoc.org/github.com/influxdata/telegraf#Input&#34;&gt;https://godoc.org/github.com/influxdata/telegraf#Input&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;测试插件：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;# 需要配置文件&#xA;$ telegraf --input-filter &amp;lt;plugin-name&amp;gt; --test&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;build&#34;&gt;Build&lt;/h1&gt;&#xA;&lt;p&gt;安装依赖：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;sudo apt-get install ruby-dev&#xA;sudo gem install fpm&#xA;sudo apt-get install rpm&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;编译telegraf:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;make telegraf&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;生成配置文件：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;./telegraf config &amp;gt; ./etc/telegraf.conf&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;构建deb:&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Grafana</title>
-      <link>https://canuxcheng.com/post/metrics_grafana/</link>
-      <pubDate>Thu, 12 Jan 2017 21:05:48 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/metrics_grafana/</guid>
-      <description>&lt;h1 id=&#34;grafana&#34;&gt;Grafana&lt;/h1&gt;&#xA;&lt;p&gt;The tool for beautiful monitoring and metric analytics &amp;amp; dashboards for Graphite, InfluxDB &amp;amp; Prometheus &amp;amp; More.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/grafana/grafana&#34;&gt;https://github.com/grafana/grafana&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;支持多种data source:&lt;/p&gt;&#xA;&lt;p&gt;graphite/influxdb/opentsdb/premetheus/elasticsearch/mysql/postgresql&lt;/p&gt;&#xA;&lt;p&gt;安装配置参考官方文档&lt;/p&gt;&#xA;&lt;p&gt;grafana配置文件是grafana.ini.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;http-api&#34;&gt;HTTP API&lt;/h1&gt;&#xA;&lt;pre&gt;&lt;code&gt;port = 3000&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;dashboard&#34;&gt;dashboard&lt;/h2&gt;&#xA;&lt;p&gt;create/update dashboard:&lt;/p&gt;&#xA;&lt;p&gt;将datasource设置成变量，然后导出的json文件就可以直接导入了．&lt;/p&gt;&#xA;&lt;p&gt;dashboard.id=null才能创建新dashboard.&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;post /api/dashboards/db&#xA;data = json.dumps({&#xA;    &amp;quot;dashboard&amp;quot;: {&#xA;        &amp;quot;id&amp;quot;: null,&#xA;        ...&#xA;    },&#xA;    &amp;quot;folderId&amp;quot;: 0,&#xA;    &amp;quot;overwrite&amp;quot;: True, # True for python, true for go.&#xA;    &amp;quot;message&amp;quot;: &amp;quot;commit message&amp;quot;&#xA;})&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;datasource&#34;&gt;datasource&lt;/h2&gt;&#xA;&lt;p&gt;create datasource:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;post /api/datasources&#xA;data = json.dumps({&#xA;    &amp;quot;name&amp;quot;:&#xA;    &amp;quot;type&amp;quot;:&#xA;    &amp;quot;url&amp;quot;:&#xA;    &amp;quot;database&amp;quot;:&#xA;    &amp;quot;access&amp;quot;: &amp;quot;proxy&amp;quot;&#xA;})&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;alert&#34;&gt;alert&lt;/h2&gt;&#xA;&lt;p&gt;create alert notification/channel:&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Metrics</title>
-      <link>https://canuxcheng.com/post/metrics/</link>
-      <pubDate>Wed, 08 Jun 2016 09:46:47 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/metrics/</guid>
-      <description>&lt;h1 id=&#34;monitoring&#34;&gt;Monitoring&lt;/h1&gt;&#xA;&lt;p&gt;Tranditional monitoring is for Datacenter, like nagios, zabbix.&lt;/p&gt;&#xA;&lt;p&gt;Modern monitoring is for Cloud and Container.&lt;/p&gt;&#xA;&lt;p&gt;Modern monitoring based on metrics, logs and tracing.&lt;/p&gt;&#xA;&lt;h1 id=&#34;tick-stack&#34;&gt;TICK stack&lt;/h1&gt;&#xA;&lt;p&gt;influxdb: tsdb.&lt;/p&gt;&#xA;&lt;p&gt;kapacitor: alerting.&lt;/p&gt;&#xA;&lt;p&gt;chronograf: GUI.&lt;/p&gt;&#xA;&lt;p&gt;telegraf(agent): metrics collector.&lt;/p&gt;&#xA;&lt;h1 id=&#34;prometheus&#34;&gt;Prometheus&lt;/h1&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;graphing&#34;&gt;Graphing&lt;/h1&gt;&#xA;&lt;p&gt;最流行的监控绘图软件是grafana, 支持influxdb,elasticsearch和prometheus.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Monitoring</title>
-      <link>https://canuxcheng.com/post/monitoring/</link>
-      <pubDate>Wed, 08 Jun 2016 09:46:47 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/monitoring/</guid>
-      <description>&lt;h1 id=&#34;monitoring&#34;&gt;Monitoring&lt;/h1&gt;&#xA;&lt;p&gt;Tranditional monitoring is for Datacenter, like nagios, zabbix.&lt;/p&gt;&#xA;&lt;p&gt;Modern monitoring is for Cloud and Container.&lt;/p&gt;&#xA;&lt;p&gt;Modern monitoring based on metrics, logs and tracing.&lt;/p&gt;&#xA;&lt;p&gt;现代的监控系统在DevOps的基础上，除了传统的metrics和logging的采集，还需要tracing应用。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;metrics&#34;&gt;metrics&lt;/h1&gt;&#xA;&lt;h2 id=&#34;tick-stack&#34;&gt;TICK stack&lt;/h2&gt;&#xA;&lt;p&gt;influxdb: tsdb.&lt;/p&gt;&#xA;&lt;p&gt;kapacitor: alerting.&lt;/p&gt;&#xA;&lt;p&gt;chronograf: GUI.&lt;/p&gt;&#xA;&lt;p&gt;telegraf(agent): metrics collector.&lt;/p&gt;&#xA;&lt;h2 id=&#34;prometheus&#34;&gt;Prometheus&lt;/h2&gt;&#xA;&lt;h2 id=&#34;graphing&#34;&gt;Graphing&lt;/h2&gt;&#xA;&lt;p&gt;最流行的监控绘图软件是grafana, 支持influxdb,elasticsearch和prometheus.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;logging&#34;&gt;Logging&lt;/h1&gt;&#xA;&lt;h2 id=&#34;elk&#34;&gt;ELK&lt;/h2&gt;&#xA;&lt;h2 id=&#34;lokigrafana&#34;&gt;Loki+Grafana&lt;/h2&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;tracing&#34;&gt;Tracing&lt;/h1&gt;&#xA;&lt;h2 id=&#34;jeager&#34;&gt;Jeager&lt;/h2&gt;</description>
-    </item>
-    <item>
-      <title>Tivoli</title>
-      <link>https://canuxcheng.com/post/metrics_tivoli/</link>
-      <pubDate>Wed, 20 Apr 2016 13:57:31 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/metrics_tivoli/</guid>
-      <description>&lt;h1 id=&#34;itm&#34;&gt;ITM&lt;/h1&gt;&#xA;&lt;p&gt;ITM: IBM Tivoli Monitoring&lt;/p&gt;&#xA;&lt;p&gt;是IBM的Cloud &amp;amp; Smart Infrastructure监控解决方案。&lt;/p&gt;&#xA;&lt;p&gt;Architecture Overview:&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://canuxcheng.com/images/tivoli.png&#34; alt=&#34;pic&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;ITM主要由管理组件和可选组件组成。&lt;/p&gt;&#xA;&lt;p&gt;Tivoli Management Services:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;TEMS&lt;/li&gt;&#xA;&lt;li&gt;TEPS&lt;/li&gt;&#xA;&lt;li&gt;TEP client&lt;/li&gt;&#xA;&lt;li&gt;Historical data collection(warehouse agent)&#xA;&lt;ul&gt;&#xA;&lt;li&gt;warehouse proxy&lt;/li&gt;&#xA;&lt;li&gt;summarization and pruning agent&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;OS agent&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;Optional components:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Dashboard Application Services Hub&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Tivoli Monitoring dashboards(Infrastructure Management Dashboards for Servers)&lt;/li&gt;&#xA;&lt;li&gt;Tivoli Common Reporting&lt;/li&gt;&#xA;&lt;li&gt;Tivoli Enterprise Monitoring Automation Server&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;Tivoli Event Synchronization component&lt;/li&gt;&#xA;&lt;li&gt;Authorization Policy Components(tivcmd)&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://www.ibm.com/support/knowledgecenter/SSTFXA_6.3.0/com.ibm.itm.doc_6.3/welcome_63.htm&#34;&gt;http://www.ibm.com/support/knowledgecenter/SSTFXA_6.3.0/com.ibm.itm.doc_6.3/welcome_63.htm&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;安装itm&#34;&gt;安装ITM&lt;/h2&gt;&#xA;&lt;p&gt;Windows: C:\IBM\ITM&lt;/p&gt;&#xA;&lt;p&gt;Linux/Unix: /opt/IBM/ITM&lt;/p&gt;&#xA;&lt;p&gt;分为本地安装和分布式安装。&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;需要先为TEPS和TDW安装DB(ODBC/JDBC)。&lt;/p&gt;&#xA;&lt;p&gt;DB2&lt;/p&gt;&#xA;&lt;p&gt;MSSQL&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Monitoring</title>
-      <link>https://canuxcheng.com/post/network_monitoring/</link>
-      <pubDate>Sun, 03 Apr 2016 14:46:19 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/network_monitoring/</guid>
-      <description>&lt;h1 id=&#34;monitoring&#34;&gt;Monitoring&lt;/h1&gt;&#xA;&lt;p&gt;network usage:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;bytes_sent(out)&#xA;bytes_recv(in)&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;packets:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;packets_sent(out)&#xA;packets_recv(in)&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;error_in/out:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;SELECT non_negative_derivative(mean(&amp;quot;err_in&amp;quot;), 1s) AS &amp;quot;recv&amp;quot;, non_negative_derivative(mean(&amp;quot;err_out&amp;quot;), 1s) AS &amp;quot;send&amp;quot;&#xA;FROM &amp;quot;net&amp;quot;&#xA;WHERE &amp;quot;interface&amp;quot; =~ /^(vlan|eth|ens|bond).*/ AND $timeFilter&#xA;GROUP BY time($__interval), &amp;quot;host&amp;quot;, &amp;quot;interface&amp;quot; fill(none)&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;drop_in/out:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;SELECT non_negative_derivative(mean(&amp;quot;drop_in&amp;quot;), 1s) AS &amp;quot;recv&amp;quot;, non_negative_derivative(mean(&amp;quot;drop_out&amp;quot;), 1s) AS &amp;quot;send&amp;quot;&#xA;FROM &amp;quot;net&amp;quot;&#xA;WHERE &amp;quot;interface&amp;quot; =~ /^(vlan|eth|ens|bond).*/ AND $timeFilter&#xA;GROUP BY time($__interval), &amp;quot;host&amp;quot;, &amp;quot;interface&amp;quot; fill(none)&#xA;&lt;/code&gt;&lt;/pre&gt;</description>
-    </item>
-    <item>
-      <title>Monitoring</title>
-      <link>https://canuxcheng.com/post/win_monitoring/</link>
-      <pubDate>Sun, 03 Apr 2016 14:15:40 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/win_monitoring/</guid>
-      <description>&lt;h1 id=&#34;windows的services和process&#34;&gt;windows的services和process&lt;/h1&gt;&#xA;&lt;p&gt;services是windows的服务，有Name(Display Name)，Service Name，Description等属性。&lt;/p&gt;&#xA;&lt;p&gt;process是以.exe为后缀的application，有Name(product name)、original filename(Image Name)、file description(description)等属性。&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Monitoring</title>
-      <link>https://canuxcheng.com/post/linux_monitoring/</link>
-      <pubDate>Thu, 31 Mar 2016 21:48:59 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/linux_monitoring/</guid>
-      <description>&lt;h1 id=&#34;inode&#34;&gt;inode&lt;/h1&gt;</description>
-    </item>
-    <item>
-      <title>Nagios</title>
-      <link>https://canuxcheng.com/post/metrics_nagios/</link>
-      <pubDate>Fri, 25 Mar 2016 11:15:48 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/metrics_nagios/</guid>
-      <description>&lt;h1 id=&#34;nagios&#34;&gt;Nagios&lt;/h1&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Nagios is the industry standard in IT infrastructure monitoring&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Nagios offers complete monitoring and alerting for servers, switches, applications, and services.&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;p&gt;Nagios官方宣称nagios是IT基础监控的工业标准。&lt;/p&gt;&#xA;&lt;p&gt;Nagios提供对服务器，交换机，应用和服务的完整的监控和警报。&lt;/p&gt;&#xA;&lt;p&gt;Nagios是无agent的，nagios的plugin通过协议远程获取信息。&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.nagios.org/&#34;&gt;https://www.nagios.org/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.nagios.com/&#34;&gt;https://www.nagios.com/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://exchange.nagios.org/&#34;&gt;https://exchange.nagios.org/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/NagiosEnterprises&#34;&gt;https://github.com/NagiosEnterprises&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/nagios-plugins&#34;&gt;https://github.com/nagios-plugins&lt;/a&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;nagios安装配置&#34;&gt;Nagios安装配置&lt;/h1&gt;&#xA;&lt;h2 id=&#34;nagios发展&#34;&gt;Nagios发展&lt;/h2&gt;&#xA;&lt;p&gt;Nagios core 1.0&lt;/p&gt;&#xA;&lt;p&gt;Nagios core 2.0&lt;/p&gt;&#xA;&lt;p&gt;Nagios core 3.0&lt;/p&gt;&#xA;&lt;p&gt;Nagios XI&lt;/p&gt;&#xA;&lt;p&gt;Nagios core 4.0&lt;/p&gt;&#xA;&lt;p&gt;目前nagios有两大阵营：&lt;/p&gt;&#xA;&lt;p&gt;开源解决方案： Nagios core&lt;/p&gt;&#xA;&lt;p&gt;商业解决方案： Nagios XI&lt;/p&gt;&#xA;&lt;h2 id=&#34;nagios安装配置-1&#34;&gt;Nagios安装配置&lt;/h2&gt;&#xA;&lt;p&gt;安装和配置nagios core,plugins,addons参考&lt;/p&gt;&#xA;&lt;p&gt;官方文档:&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://assets.nagios.com/downloads/nagioscore/docs/nagioscore/4/en/toc.html&#34;&gt;https://assets.nagios.com/downloads/nagioscore/docs/nagioscore/4/en/toc.html&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;中文文档：&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://nagios-cn.sourceforge.net/nagios-cn/index.html&#34;&gt;http://nagios-cn.sourceforge.net/nagios-cn/index.html&lt;/a&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;nagios开源解决方案&#34;&gt;Nagios开源解决方案&lt;/h1&gt;&#xA;&lt;h2 id=&#34;nagios-core&#34;&gt;Nagios core:&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Nagios Core is the monitoring and alerting engine that serves as the primary application around which hundreds of Nagios projects are built.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Zabbix</title>
-      <link>https://canuxcheng.com/post/metrics_zabbix/</link>
-      <pubDate>Fri, 25 Mar 2016 11:15:48 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/metrics_zabbix/</guid>
-      <description>&lt;h1 id=&#34;zabbix&#34;&gt;Zabbix&lt;/h1&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Monitoring on Morgoth</title>
+        <link>https://canuxcheng.com/tags/monitoring/</link>
+        <description>Recent content in Monitoring on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Thu, 05 Apr 2018 21:47:54 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/monitoring/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Monitoring</title>
+        <link>https://canuxcheng.com/post/storage_monitoring/</link>
+        <pubDate>Thu, 05 Apr 2018 21:47:54 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/storage_monitoring/</guid>
+        <description>&lt;h1 id=&#34;monitoring&#34;&gt;Monitoring&lt;/h1&gt;
+&lt;h2 id=&#34;diskio&#34;&gt;diskio&lt;/h2&gt;
+&lt;p&gt;IOPS: Input/Output Per Second. 每秒输入输出量，也叫TPS.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;SELECT non_negative_derivative(mean(reads),1s) as &amp;quot;read&amp;quot; FROM &amp;quot;diskio&amp;quot;
+SELECT non_negative_derivative(mean(writes),1s) as &amp;quot;write&amp;quot; FROM &amp;quot;diskio&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;throughput:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;SELECT non_negative_derivative(mean(read_bytes),1s) as &amp;quot;read&amp;quot; FROM &amp;quot;diskio&amp;quot;
+SELECT non_negative_derivative(mean(write_bytes),1s) as &amp;quot;write&amp;quot; FROM &amp;quot;diskio&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Utilization:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;SELECT non_negative_derivative(last(&amp;quot;io_time&amp;quot;),1ms)
+FROM &amp;quot;diskio&amp;quot;
+WHERE &amp;quot;name&amp;quot; =~ /^(v|s|)d(a|b|c|d)$/
+GROUP BY &amp;quot;host&amp;quot;,&amp;quot;name&amp;quot;,time(_interval)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Queue length:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;SELECT non_negative_derivative(last(&amp;quot;weighted_io_time&amp;quot;,1ms))
+FROM &amp;quot;diskio&amp;quot;
+WHERE &amp;quot;name&amp;quot; =~ /^(v|s|)d(a|b|c|d)$/
+GROUP BY &amp;quot;host&amp;quot;,&amp;quot;name&amp;quot;,time(_interval)
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
+        <item>
+        <title>AlertManager</title>
+        <link>https://canuxcheng.com/post/metrics_alertmanager/</link>
+        <pubDate>Thu, 18 Jan 2018 19:23:25 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/metrics_alertmanager/</guid>
+        <description>&lt;h1 id=&#34;alert-manager&#34;&gt;alert-manager&lt;/h1&gt;
+&lt;p&gt;在Prometheus中支持基于PromQL创建告警规则, prometheus通过push触发alertmanager.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/prometheus/alertmanager&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/prometheus/alertmanager&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Exporter</title>
+        <link>https://canuxcheng.com/post/metrics_exporter/</link>
+        <pubDate>Thu, 18 Jan 2018 19:23:25 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/metrics_exporter/</guid>
+        <description>&lt;h1 id=&#34;exporter&#34;&gt;exporter&lt;/h1&gt;
+&lt;p&gt;广义上讲所有可以向Prometheus提供监控样本数据的程序都可以被称为一个Exporter。而Exporter的一个实例称为target，如下所示，Prometheus通过轮询的方式定期从这些target中获取样本数据:&lt;/p&gt;
+&lt;p&gt;prometheus通过pull从exporter拉取数据.&lt;/p&gt;
+&lt;p&gt;直接采集:cAdvisor, kubernetes, etcd, gokit等直接内置了用于向prometheus暴露监控数据的端点.&lt;/p&gt;
+&lt;p&gt;间接采集: 通过promethesu的client api编写exporter，例如mysql-exporter, consul-exporter.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;host&#34;&gt;host&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/prometheus/node_exporter&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/prometheus/node_exporter&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;k8s&#34;&gt;k8s&lt;/h1&gt;
+&lt;p&gt;k8s metrics api包括 resource metrics api 和 customer metrics api.&lt;/p&gt;
+&lt;p&gt;cadvisor, metrics-server, kube-state-metrics 等实现了 核心api.&lt;/p&gt;
+&lt;p&gt;一些adapter实现了自定义api.&lt;/p&gt;
+&lt;p&gt;k8s-prometheus-adapter实现了metrics-server的核心api，同时实现了自定义api.&lt;/p&gt;
+&lt;h2 id=&#34;metrics-server&#34;&gt;metrics-server &lt;/h2&gt;
+&lt;p&gt;提供了整个集群的资源监控数据&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/kubernetes-sigs/metrics-server&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/kubernetes-sigs/metrics-server&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;cadvisor&#34;&gt;cAdvisor&lt;/h2&gt;
+&lt;p&gt;负责单节点内部的容器和节点资源使用统计，会自动收集本机容器 CPU、内存、网络和文件系统的资源占用情况&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/google/cadvisor&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/google/cadvisor&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;kube-state-metrics&#34;&gt;kube-state-metrics &lt;/h2&gt;
+&lt;p&gt;提供了 Kubernetes 资源对象（如 DaemonSet、Deployments 等）的度量。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/kubernetes/kube-state-metrics&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/kubernetes/kube-state-metrics&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;adapter&#34;&gt;adapter&lt;/h2&gt;
+&lt;p&gt;同时支持核心api和自定义api.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/DirectXMan12/k8s-prometheus-adapter&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/DirectXMan12/k8s-prometheus-adapter&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;blackbox&#34;&gt;blackbox&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/prometheus/blackbox_exporter&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/prometheus/blackbox_exporter&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;wmi&#34;&gt;wmi&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/martinlindhe/wmi_exporter&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/martinlindhe/wmi_exporter&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;snmp&#34;&gt;snmp&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/prometheus/snmp_exporter&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/prometheus/snmp_exporter&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;mysql&#34;&gt;mysql&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/prometheus/mysqld_exporter&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/prometheus/mysqld_exporter&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;rabbitmq&#34;&gt;rabbitmq&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/deadtrickster/prometheus_rabbitmq_exporter&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/deadtrickster/prometheus_rabbitmq_exporter&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;mongo&#34;&gt;mongo&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/percona/mongodb_exporter&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/percona/mongodb_exporter&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;redis&#34;&gt;redis&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/oliver006/redis_exporter&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/oliver006/redis_exporter&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;haproxy&#34;&gt;haproxy&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/prometheus/haproxy_exporter&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/prometheus/haproxy_exporter&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;consul&#34;&gt;consul&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/prometheus/consul_exporter&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/prometheus/consul_exporter&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;pushgateway&#34;&gt;pushgateway&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/prometheus/pushgateway&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/prometheus/pushgateway&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;由于Prometheus数据采集基于Pull模型进行设计，因此在网络环境的配置上必须要让Prometheus Server能够直接与Exporter进行通信。 当这种网络需求无法直接满足时，就可以利用PushGateway来进行中转。可以通过PushGateway将内部网络的监控数据主动Push到Gateway当中。而Prometheus Server则可以采用同样Pull的方式从PushGateway中获取到监控数据.&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Influxdb</title>
+        <link>https://canuxcheng.com/post/metrics_influxdb/</link>
+        <pubDate>Thu, 18 Jan 2018 19:23:25 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/metrics_influxdb/</guid>
+        <description>&lt;h1 id=&#34;influxdb&#34;&gt;Influxdb&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/influxdata/influxdb&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/influxdata/influxdb&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Scalable datastore for metrics, events, and real-time analytics.&lt;/p&gt;
+&lt;p&gt;支持从opentsdb, graphite, collectd等获取数据&lt;/p&gt;
+&lt;p&gt;默认数据库_internal 用于存储内部运行数据&lt;/p&gt;
+&lt;p&gt;安装配置参考官方文档&lt;/p&gt;
+&lt;p&gt;log&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo journalctl -u influxdb.service
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;config:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 开通kapacitor的subscription功能
+[[subscriber]]
+enable = true
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;数据结构&#34;&gt;数据结构&lt;/h1&gt;
+&lt;p&gt;influxdb每条记录是一个point.&lt;/p&gt;
+&lt;p&gt;points包括下面部分：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;measurement: a measurement, like cpu_load, 相当于表名
+tags: zero or more tag, key=value, eg: host=ip
+fields: zero or more field, key=value, eg: value=0.18
+time: a timestamp
+
+&amp;lt;measurement&amp;gt;[,&amp;lt;tag-key&amp;gt;=&amp;lt;tag-value&amp;gt;...] &amp;lt;field-key&amp;gt;=&amp;lt;field-value&amp;gt;[,&amp;lt;field2-key&amp;gt;=&amp;lt;field2-value&amp;gt;...] [unix-nano-timestamp]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;series: 在一个database中,相同的retention policy, measurement, tag set的数据集，叫一个序列．&lt;/p&gt;
+&lt;p&gt;RP: retention policy, autogen是默认的存储策略, 用于设置数据保留时间.&lt;/p&gt;
+&lt;p&gt;CQ: continuous query, 连续查询，自动定时启动一组语句，将结果放在指定数据表中．&lt;/p&gt;
+&lt;p&gt;IFQL: influx query language.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;cli&#34;&gt;CLI&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;$ influx --help
+$ influx -username &amp;lt;username&amp;gt; -p &amp;lt;password&amp;gt; -h &amp;lt;hostname&amp;gt;
+$ influx -precision rfc3339 # 显示可读的时间戳
+
+$ influx -database &#39;test&#39; -host &#39;127.0.0.1&#39;
+-execute &#39;select * from &amp;quot;test&amp;quot;.&amp;quot;test&amp;quot;.&amp;quot;test&amp;quot; where time &amp;gt; now() - 30d&#39;
+-format &#39;csv&#39; &amp;gt; test.csv
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;database&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ CREATE DATABASE test
+$ DROP DATABASE test
+$ SHOW DATABASES
+$ USE test
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;measurement(table)&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ DROP MEASUREMENT &amp;lt;measurement&amp;gt;
+$ SHOW MEASUREMENTS
+$ SHOW MEASUREMENTS WHERE &amp;lt;tagkey&amp;gt;=&amp;lt;tagvalue&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;tags&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ SHOW TAG KEYS
+$ SHOW TAG KEYS FROM &amp;lt;measurement&amp;gt;
+$ SHOW TAG VALUES FROM &amp;lt;measurement&amp;gt; WITH KEY=&amp;lt;tagkey&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;fileds&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ SHOW FIELD KEYS
+$ SHOW FIELD KEYS FROM &amp;lt;measurement&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;subscription&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ SHOW SUBSCRIPTIONS
+$ CREATE SUBSCIPTION &amp;lt;subs_name&amp;gt; ON &amp;lt;db&amp;gt;.&amp;lt;rp&amp;gt; DESTINATIONS (&amp;quot;ANY&amp;quot;|&amp;quot;ALL&amp;quot;) host{&amp;quot;,&amp;quot;, host}
+$ DROP SUBSCRIPTION &amp;lt;subs_name&amp;gt; ON &amp;lt;db&amp;gt;.&amp;lt;rp&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;series&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ SHOW SERIES
+$ DROP SERIES FROM &amp;lt;measurement&amp;gt; WHERE &amp;lt;tagkey&amp;gt;=&#39;&amp;lt;tagvalue&amp;gt;&#39;
+$ DROP SERIES WHERE &amp;lt;tagkey&amp;gt;=&#39;&amp;lt;tagvalue&amp;gt;&#39; # 从所有measurement删除指定节点的所有数据
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;shared&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ drop shard &amp;lt;shard_id&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;http-api&#34;&gt;HTTP API&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;port = 8086
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;write&#34;&gt;write&lt;/h2&gt;
+&lt;p&gt;create:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;curl -i -XPOST http://localhost:8086/query --data-urlencode &amp;quot;q=CREATE DATABASE mydb&amp;quot;
+post /query
+data = {
+    &amp;quot;q&amp;quot;: &amp;quot;create database &amp;lt;database&amp;gt;&amp;quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;query&#34;&gt;query&lt;/h2&gt;
+&lt;p&gt;show:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;curl -G &#39;http://localhost:8086/query&#39; --data-urlencode &amp;quot;q=show databases&amp;quot;
+get /query
+params = {
+    &amp;quot;pretty&amp;quot; : True,
+    &amp;quot;q&amp;quot;: &amp;quot;show databases&amp;quot;
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;influxql&#34;&gt;influxQL&lt;/h1&gt;
+&lt;p&gt;influxql语句按下列关键字顺序排列&lt;/p&gt;
+&lt;p&gt;tag_key, field_key, measurement都需要用双引号.&lt;/p&gt;
+&lt;p&gt;The SELECT clause specifies an InfluxQL function.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;select &amp;quot;&amp;lt;field_key/tag_key&amp;gt;&amp;quot; from &amp;quot;&amp;lt;measurement&amp;gt;&amp;quot;
+select &amp;quot;&amp;lt;field_key/tag_key&amp;gt;&amp;quot; as &amp;quot;alias&amp;quot; from &amp;quot;&amp;lt;measurement&amp;gt;&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The INTO clause writes query results to a user-specified measurement.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;select &amp;lt;&amp;gt; INTO &amp;quot;&amp;lt;measurement&amp;gt;&amp;quot; from &amp;lt;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The FROM clause specifies a single measurement.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;select &amp;lt;&amp;gt; from &amp;quot;&amp;lt;measurement&amp;gt;&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The WHERE clause specifies the time range for the query.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;select &amp;lt;&amp;gt; from &amp;lt;&amp;gt; where &amp;lt;condition1&amp;gt; OR/AND &amp;lt;condition2&amp;gt;
+
+# string类型的 value必须用单引号．
+select &amp;lt;&amp;gt; from &amp;lt;&amp;gt; where &amp;quot;&amp;lt;tag_key/field_key&amp;gt;&amp;quot; &amp;lt;operation&amp;gt; &#39;&amp;lt;tag_value/field_value&amp;gt;&#39;
+
+now() : time &amp;gt; now(() - 10m
+
+= != &amp;lt; &amp;gt;
+
+RE:
+=~ !~
+=~  : /.*ERROR.*|.*CRITICAL.*/  /ERROR|CRITICAL/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The GROUP BY clause groups results by all tags (*) and into 12-minute intervals.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;select &amp;lt;&amp;gt; from &amp;lt;&amp;gt; where &amp;lt;&amp;gt; group by &amp;quot;&amp;lt;tag_key&amp;gt;&amp;quot;
+
+fill()
+time()/time(1ns/u/ms/s/m/h/d/w)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The ORDER BY time DESC clause returns results in descending timestamp order.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;select &amp;lt;&amp;gt; from &amp;lt;&amp;gt; where &amp;lt;&amp;gt; group by &amp;lt;&amp;gt; order by &amp;lt;time/field_key&amp;gt;
+select &amp;lt;&amp;gt; from &amp;lt;&amp;gt; where &amp;lt;&amp;gt; group by &amp;lt;&amp;gt; order by &amp;lt;time/field_key&amp;gt; desc
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The LIMIT 2 clause limits the number of points returned to two.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;select &amp;lt;&amp;gt; from &amp;lt;&amp;gt; where &amp;lt;&amp;gt; group by &amp;lt;&amp;gt; order by &amp;lt;&amp;gt; limit &amp;lt;number&amp;gt;
+select &amp;lt;&amp;gt; from &amp;lt;&amp;gt; where &amp;lt;&amp;gt; group by &amp;lt;&amp;gt; order by &amp;lt;&amp;gt; desc limit &amp;lt;number&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The OFFSET 2 clause excludes the first two averages from the query results.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;select &amp;lt;&amp;gt; from &amp;lt;&amp;gt; where &amp;lt;&amp;gt; group by &amp;lt;&amp;gt; order by &amp;lt;&amp;gt; limit &amp;lt;number&amp;gt; offset &amp;lt;&amp;gt;
+select &amp;lt;&amp;gt; from &amp;lt;&amp;gt; where &amp;lt;&amp;gt; group by &amp;lt;&amp;gt; order by &amp;lt;&amp;gt; desc limit &amp;lt;number&amp;gt; offset &amp;lt;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The SLIMIT 1 clause limits the number of series returned to one.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;select &amp;lt;&amp;gt; from &amp;lt;&amp;gt; where &amp;lt;&amp;gt; group by &amp;lt;&amp;gt; order by &amp;lt;&amp;gt; limit &amp;lt;&amp;gt; offset &amp;lt;&amp;gt; slimit &amp;lt;&amp;gt;
+select &amp;lt;&amp;gt; from &amp;lt;&amp;gt; where &amp;lt;&amp;gt; group by &amp;lt;&amp;gt; order by &amp;lt;&amp;gt; desc limit &amp;lt;&amp;gt; offset &amp;lt;&amp;gt; slimit &amp;lt;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The SOFFSET 1 clause paginates the series returned.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;select &amp;lt;&amp;gt; from &amp;lt;&amp;gt; where &amp;lt;&amp;gt; group by &amp;lt;&amp;gt; order by &amp;lt;&amp;gt; limit &amp;lt;&amp;gt; offset &amp;lt;&amp;gt; slimit &amp;lt;&amp;gt; soffzet &amp;lt;&amp;gt;
+select &amp;lt;&amp;gt; from &amp;lt;&amp;gt; where &amp;lt;&amp;gt; group by &amp;lt;&amp;gt; order by &amp;lt;&amp;gt; desc limit &amp;lt;&amp;gt; offset &amp;lt;&amp;gt; slimit &amp;lt;&amp;gt; soffset&amp;lt;&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;The tz() clause returns the UTC offset for the specified timezone.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;select &amp;lt;&amp;gt; from &amp;lt;&amp;gt; where &amp;lt;&amp;gt; group by &amp;lt;&amp;gt; order by &amp;lt;&amp;gt; limit &amp;lt;&amp;gt; offset &amp;lt;&amp;gt; slimit &amp;lt;&amp;gt; soffzet &amp;lt;&amp;gt; tz(&amp;lt;time_zone&amp;gt;)
+select &amp;lt;&amp;gt; from &amp;lt;&amp;gt; where &amp;lt;&amp;gt; group by &amp;lt;&amp;gt; order by &amp;lt;&amp;gt; desc limit &amp;lt;&amp;gt; offset &amp;lt;&amp;gt; slimit &amp;lt;&amp;gt; soffset&amp;lt;&amp;gt; tz(&amp;lt;time_zone&amp;gt;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;flux&#34;&gt;flux&lt;/h1&gt;
+&lt;p&gt;influxql的升级版，支持多表查询.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;function&#34;&gt;function&lt;/h1&gt;
+&lt;h2 id=&#34;aggregations&#34;&gt;aggregations&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;count(&amp;lt;fieldkey&amp;gt;) # 统计fieldvalues行数
+distinct(&amp;lt;fieldkey&amp;gt;) # 返回fieldvalues不重复的值的列表
+integral(&amp;lt;fieldkey&amp;gt;) # 积分
+mean(&amp;lt;fieldkey&amp;gt;) # 返回fieldvalues的算数平均值
+median(&amp;lt;fieldkey&amp;gt;) # 返回fieldvalues的排序后的中间值
+mode(&amp;lt;fieldkey&amp;gt;) # 返回fieldvalues出现频率最高的值
+spread(&amp;lt;fieldkey&amp;gt;) # 返回fieldvalues最值之间的差异
+stddev(&amp;lt;fiekdkey&amp;gt;) # 返回fieldvalues的标准偏差
+sum(&amp;lt;fieldkey&amp;gt;) # 返回fieldvalues的和
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;selectors&#34;&gt;selectors&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;bottom(&amp;lt;fieldkey&amp;gt;, N) # 返回最小的N个fieldvalues
+first(&amp;lt;fieldkey&amp;gt;) # 返回timestamp最小的fieldvalue
+last(&amp;lt;fieldkey&amp;gt;) # 返回timestamp最大的fieldvalue
+max(&amp;lt;fieldkey&amp;gt;) # 返回最大的fieldvalue
+min(&amp;lt;fieldkey&amp;gt;) # 返回最小的fieldvalue
+percentile(&amp;lt;fieldkey&amp;gt;, N) # 百分数
+sample(&amp;lt;fieldkey&amp;gt;, N) # 返回N个fieldvalue的随即样本
+top(&amp;lt;fieldkey&amp;gt;, N) # 返回最大的N个fieldvalue
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;transformations&#34;&gt;transformations&lt;/h2&gt;
+&lt;p&gt;transformations函数的field_key可以是aggregations和selectors函数的返回值&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;cumulative_sum(&amp;lt;field_key&amp;gt;)
+derivative(&amp;lt;field_key&amp;gt;, [&amp;lt;unit&amp;gt;]) # 求单位时间的变化率, (cur-last)/(interval/unit)
+difference(&amp;lt;field_key&amp;gt;) # 返回连续时间值之间的差异 -&amp;gt; 值的差异
+elapsed(&amp;lt;field_key&amp;gt;) # 返回连续时间间隔的差异 -&amp;gt; 时间间隔差异
+moving_average()
+non_negative_derivative()
+non_negative_difference()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;predictors&#34;&gt;predictors&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;holt_winters(function(&amp;lt;field_key&amp;gt;), N, S)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;rp&#34;&gt;RP&lt;/h1&gt;
+&lt;p&gt;数据保存策略.&lt;/p&gt;
+&lt;p&gt;autogen是默认RP，duration=infinite&lt;/p&gt;
+&lt;p&gt;duration: 存储的数据时间间隔&lt;/p&gt;
+&lt;p&gt;replication: 存储的数据副本数量&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;show retention policies on &amp;quot;&amp;lt;database&amp;gt;&amp;quot;
+
+create retention policy &amp;quot;&amp;lt;rp_name&amp;gt;&amp;quot; on &amp;quot;&amp;lt;database&amp;gt;&amp;quot; duration 30d replication 1 default
+
+drop retention policy &amp;quot;&amp;lt;rp_name&amp;gt;&amp;quot; on &amp;quot;&amp;lt;database&amp;gt;&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;cq&#34;&gt;CQ&lt;/h1&gt;
+&lt;p&gt;对超过保存策略指定时间的数据，可以做统计采样.(类似于store procedure).&lt;/p&gt;
+&lt;p&gt;CQ不能更新，只能删除重建．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;show continuous queries
+
+create continuous query &amp;lt;CQ_name&amp;gt; on &amp;lt;database&amp;gt;
+begin
+    SELECT &amp;lt;function[s]&amp;gt; INTO &amp;lt;destination_measurement&amp;gt; FROM &amp;lt;measurement&amp;gt; [WHERE &amp;lt;stuff&amp;gt;] GROUP BY time(&amp;lt;interval&amp;gt;)[,&amp;lt;tag_key[s]&amp;gt;]
+end
+
+DROP CONTINUOUS QUERY &amp;lt;cq_name&amp;gt; ON &amp;lt;database_name&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;best-practice&#34;&gt;Best Practice&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;select 1-(mean(&amp;quot;part&amp;quot;) / mean(&amp;quot;all&amp;quot;)) as &amp;quot;rate&amp;quot;
+from (
+    select sum(&amp;quot;value&amp;quot;) as &amp;quot;smart&amp;quot; from &amp;quot;jobs_type&amp;quot; where &amp;quot;type&amp;quot;=&#39;smart&#39; and $timeFilter
+),(
+    select sum(&amp;quot;value&amp;quot;) as &amp;quot;all&amp;quot; from &amp;quot;jobs_type&amp;quot; where &amp;quot;type&amp;quot;=&#39;reversinglab&#39; and $timeFilter
+)
+group by time($__interval) fill(none)
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
+        <item>
+        <title>Kapacitor</title>
+        <link>https://canuxcheng.com/post/metrics_kapacitor/</link>
+        <pubDate>Thu, 18 Jan 2018 19:23:25 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/metrics_kapacitor/</guid>
+        <description>&lt;h1 id=&#34;kapacitor&#34;&gt;Kapacitor&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/influxdata/Kapacitor&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/influxdata/Kapacitor&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Open source framework for processing, monitoring, and alerting on time series data&lt;/p&gt;
+&lt;p&gt;可以通过chrongraf创建tickscript/task, 然后通过api/cli导入到kapacitor.&lt;/p&gt;
+&lt;p&gt;配置:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;hostname = &amp;quot;kapcitor-service&amp;quot;
+
+# 如果从influxdb读取数据需要配置该选项．
+[[influxdb]]
+enabled = true
+
+# 如果从该路径加载tickscript
+[[load]]
+enabled = true
+dir=&amp;quot;/etc/kapacitor/load&amp;quot;
+# tasks, 放到/etc/kapacitor/load/tasks/*.tick,重启kapacitor会自动加载task,并默认enable.
+## 要求，ID和tick文件同名，tickscript开头需要指定dbrp, tickscript里面需要指定batch/stream.
+# templates...
+# handlers...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;cli&#34;&gt;CLI&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;$ kapacitor help
+
+# 创建template(也就是变量可以单独赋值的tickscript)
+$ kapacitor define-template &amp;lt;name&amp;gt; -tick /path/template.tick
+$ kapacitor show-template &amp;lt;name&amp;gt;
+
+# 创建/更新 task, 创建的默认是disable状态.
+# 从tickscript创建task
+$ kapacitor define &amp;lt;name&amp;gt; -tick task.tick -type [stream|batch] -dbrp [database.retentionPolicy]
+# 从template创建task(如果yaml/json中没有指定template需要用-template指定)
+$ kapacitor define &amp;lt;name&amp;gt; -file task.yaml
+$ kapacitor define &amp;lt;name&amp;gt; -file task.json
+
+# 删除task
+$ kapacitor delete [task id/name]
+
+$ kapacitor list tasks/templates
+$ kapacitor reload [task id/name] # 相当于disable &amp;amp; enable.
+$ kapacitor enable [task id/name]
+$ kapaciror disable [task id/name]
+$ kapacitor show [id/name]
+$ kapacitor watch [task id/name]
+
+$ kapacitor list topics
+$ kapacitor delete topics [topic id]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;http-api&#34;&gt;Http API&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;port = 9092
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;configuration&#34;&gt;configuration&lt;/h2&gt;
+&lt;p&gt;获取所有可以overwrite的参数&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;GET /kapacitor/v1/config
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;获取section/option参数&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;GET /kapacitor/v1/config/smtp
+GET /kapacitor/v1/config/smtp/
+GET /kapacitor/v1/config/influxdb
+GET /kapacitor/v1/config/influxdb/localhost
+
+POST /kapacitor/v1/config/smtp/
+{
+    &amp;quot;set&amp;quot;:{
+        &amp;quot;enabled&amp;quot;: true
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;操作task:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 修改已存在的task的参数:
+$ curl -H &#39;content-type: application/json&#39; -X PATCH -d &#39;{&amp;quot;vars&amp;quot;: {&amp;quot;warn&amp;quot;:{&amp;quot;value&amp;quot;:90, &amp;quot;type&amp;quot;:&amp;quot;int&amp;quot;}}}&#39; http://kapacitor-service:9092/kapacitor/v1/tasks/cpu
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;操作alert:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 列出所有topic:
+$ curl -H &#39;content-type: application/json&#39; -X GET http://kapacitor-service:9092/kapacitor/v1/alerts/topics
+// 列出指定topic的所有events:
+$ curl -H &#39;content-type: application/json&#39; -X GET http://kapacitor-service:9092/kapacitor/v1/alerts/topics/&amp;lt;topic&amp;gt;/events
+// 列出指定events
+$ curl -H &#39;content-type: application/json&#39; -X GET http://kapacitor-service:9092/kapacitor/v1/alerts/topics/&amp;lt;topic&amp;gt;/events/&amp;lt;event&amp;gt;?min-level=CRITICAL
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;tickscript&#34;&gt;TICKscript&lt;/h1&gt;
+&lt;p&gt;注释:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// comment
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;tickscript字符串用单引号和三单引号表示.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var a = &#39;test&#39;
+var b = &#39;&#39;&#39;test1
+test2&#39;&#39;&#39;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Keywords:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;TRUE
+FALSE
+AND
+OR
+lambda
+var
+dbrp
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;operator:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;+ - * /    算数运算
+== != &amp;lt; &amp;lt;= &amp;gt; &amp;gt;=    比较运算
+=~ !~    正则表达式匹配和不匹配
+! AND OR    逻辑运算
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;chaining operators:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;|    chaining method (constructor)
+.    property method (property methods &amp;amp; event handlers)
+@    User Define Function
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;status:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;0 -&amp;gt; OK
+1 -&amp;gt; INFO
+2 -&amp;gt; WARN
+3 -&amp;gt; CRIT
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;node&#34;&gt;node&lt;/h1&gt;
+&lt;p&gt;node是tickscript中的复杂数据结构．&lt;/p&gt;
+&lt;p&gt;两个顶级node类型是stream和batch&lt;/p&gt;
+&lt;p&gt;batch是定时查询influxdb.&lt;/p&gt;
+&lt;p&gt;stream是通过订阅influxdb,写入到influxdb的数据也会写入kapacitor.&lt;/p&gt;
+&lt;p&gt;constructor调用相应的property methods.&lt;/p&gt;
+&lt;h2 id=&#34;stream&#34;&gt;stream&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;var data = stream
+    |from()...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;property methods:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;quiet()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;chaining methods:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Deadman
+From
+Stats
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;batch&#34;&gt;batch&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;var data = batch
+    |query()...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;property methods:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;quiet()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;chaining methods:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Deadman
+Query
+Stats
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;alert&#34;&gt;alert&lt;/h2&gt;
+&lt;p&gt;alert有三种类型: threshold, relative, deadman.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var alert = data
+    |eval()...
+    |alert()
+      .id(&#39;{{ index .Tags &amp;quot;&amp;lt;tag-key&amp;gt;&amp;quot; }}&#39;)
+      .message(&#39;{{ .ID }} {{ .Level }} {{ index .Fields &amp;quot;&amp;lt;field-key&amp;gt;&amp;quot; }} {{ .Time }}&#39;)
+      .details(...)
+      ...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;constructor:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;alert()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;property methods:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;id()    # 定义alert的ID
+message()    # 相当于email的subject.
+details()    # html格式的警告信息，相当于email的body.
+info()
+infoReset()
+warn()
+warnReset()
+crit()
+critReset()
+email()
+log()    # 将json格式的alert存放到文件．
+idTag
+idField
+levelTag()
+levelField()
+durationField()
+messageField()
+post()
+tcp()
+all()    # period里面所有值都满足条件才alert
+topic()
+flapping()
+history()
+inhibit(&amp;lt;category&amp;gt;, &amp;lt;tags&amp;gt;) // 忽略一类告警
+quiet()
+noRecoveries() # 不要发恢复(OK)的警告
+stateChangesOnly() # 状态改变才发警告,OK/INFO/WARNING/CRITICAL
+category()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;message/details event data:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 通过property methods定义一些变量
+ID -&amp;gt; {{ .ID }}
+Name -&amp;gt; measurement
+TaskName -&amp;gt; task name
+Group -&amp;gt; groupBy
+Tags -&amp;gt; {{.Tags}} {{index .Tags &amp;quot;&amp;lt;tag_key&amp;gt;&amp;quot;}}
+Fields -&amp;gt; {{.Fields}} {{index .Fields &amp;quot;&amp;lt;field_key&amp;gt;&amp;quot;}}
+Message
+Details
+Time -&amp;gt; {{ .Time }}
+Duration -&amp;gt; {{ .Duration }}
+Level -&amp;gt; {{ .Level }}
+Data
+Recoverable
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;query&#34;&gt;query&lt;/h2&gt;
+&lt;p&gt;constructor:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;query(q string)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;property methods:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;fill()
+align()
+alignGroup()
+groupBy()
+cron()
+every()
+period()
+quiet()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;from&#34;&gt;from&lt;/h2&gt;
+&lt;p&gt;constructor:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;from()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;property methods:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;database()
+retentionPolicy()
+measurement()
+where()
+groupBy()
+round()
+truncate()
+quiet()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;window&#34;&gt;window&lt;/h2&gt;
+&lt;p&gt;constructor:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;window()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;property methods:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;every()
+period()
+align()
+quiet()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;log&#34;&gt;Log&lt;/h2&gt;
+&lt;p&gt;constructor:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;log()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;property methods:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;level()
+prefix()
+quiet()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;influxdbout&#34;&gt;influxDBOut&lt;/h2&gt;
+&lt;p&gt;constructor:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;influxDBOut()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;property methods:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;create()
+...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;handler&#34;&gt;handler&lt;/h1&gt;
+&lt;p&gt;handler是用来处理alert的工具, 最常用的是email&lt;/p&gt;
+&lt;p&gt;handler可以调用相应的options.&lt;/p&gt;
+&lt;h2 id=&#34;email&#34;&gt;email&lt;/h2&gt;
+&lt;p&gt;options:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;to(&amp;quot;&amp;lt;email_address&amp;gt;&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;需要配置smtp&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[smtp]
+    enabled = true
+    host = &amp;quot;localhost&amp;quot;  # 一般postfix/mailutils和kapacitor安装到同一台server
+    port = 25
+
+    from = &amp;quot;canuxcheng@gmail.com&amp;quot;  # 必须配置
+    to = [&amp;quot;&amp;quot;]  # 可以在tickscript中指定, tickscript不指定，就用该配置.
+
+    global = true # 开启后,tickscript中不用指定handler,默认都是发邮件.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;log-1&#34;&gt;log&lt;/h2&gt;
+&lt;p&gt;options:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;path
+mode
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;写入到log.&lt;/p&gt;
+&lt;h2 id=&#34;slack&#34;&gt;slack&lt;/h2&gt;
+&lt;h2 id=&#34;post&#34;&gt;post&lt;/h2&gt;
+&lt;h2 id=&#34;tcp&#34;&gt;tcp&lt;/h2&gt;
+</description>
+        </item>
+        <item>
+        <title>Prometheus</title>
+        <link>https://canuxcheng.com/post/metrics_prometheus/</link>
+        <pubDate>Thu, 18 Jan 2018 19:23:25 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/metrics_prometheus/</guid>
+        <description>&lt;h1 id=&#34;prometheus&#34;&gt;Prometheus&lt;/h1&gt;
+&lt;p&gt;Prometheus Server是Prometheus组件中的核心部分，负责实现对监控数据的获取，存储以及查询&lt;/p&gt;
+&lt;p&gt;swarm部署:&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/vegasbrianc/prometheus&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/vegasbrianc/prometheus&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;k8s部署:&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/coreos/kube-prometheus&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/coreos/kube-prometheus&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/coreos/prometheus-operator&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/coreos/prometheus-operator&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/helm/charts/tree/master/stable/prometheus-operator&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/helm/charts/tree/master/stable/prometheus-operator&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;高可用:&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/thanos-io/thanos&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/thanos-io/thanos&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;prometheus grafana dashboard:&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/kubernetes-monitoring/kubernetes-mixin&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/kubernetes-monitoring/kubernetes-mixin&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/grafana/kubernetes-app&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/grafana/kubernetes-app&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;promql&#34;&gt;PromQL&lt;/h1&gt;
+&lt;p&gt;metrics类型:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;counter计数器&lt;/li&gt;
+&lt;li&gt;gauge仪表盘&lt;/li&gt;
+&lt;li&gt;histogram直方图&lt;/li&gt;
+&lt;li&gt;summary摘要&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+        </item>
+        <item>
+        <title>Telegraf</title>
+        <link>https://canuxcheng.com/post/metrics_telegraf/</link>
+        <pubDate>Thu, 18 Jan 2018 19:23:25 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/metrics_telegraf/</guid>
+        <description>&lt;h1 id=&#34;telegraf&#34;&gt;Telegraf&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/influxdata/telegraf&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/influxdata/telegraf&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The plugin-driven server agent for collecting &amp;amp; reporting metrics.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;configuartion&#34;&gt;Configuartion&lt;/h1&gt;
+&lt;p&gt;agent configuration:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;interval    所有inputs的默认运行间隔
+round_interval
+collection_jitter
+precision    ns/us/ms/s
+flush_interval
+flush_jitter
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;input configuration:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;interval
+name_override # 默认measurements是插件名,修改默认measurements.
+name_prefix
+name_suffix
+tags
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;go-api&#34;&gt;Go API&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://godoc.org/github.com/influxdata/telegraf#Input&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://godoc.org/github.com/influxdata/telegraf#Input&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;测试插件：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 需要配置文件
+$ telegraf --input-filter &amp;lt;plugin-name&amp;gt; --test
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;build&#34;&gt;Build&lt;/h1&gt;
+&lt;p&gt;安装依赖：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sudo apt-get install ruby-dev
+sudo gem install fpm
+sudo apt-get install rpm
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;编译telegraf:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;make telegraf
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;生成配置文件：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;./telegraf config &amp;gt; ./etc/telegraf.conf
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;构建deb:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;make package
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;development&#34;&gt;Development&lt;/h1&gt;
+&lt;p&gt;修改默认enable的plugin:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# plugin中相应的sampleConfig中的字段不要用#注释．
+internal/config/config.go -&amp;gt; 可以修改默认enable的plugin.
+inputDefaults
+outputDefaults
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;调试：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;./telegraf --config ./etc/telegraf.conf --input-filter process --test
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;添加debugxinxi&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import &amp;quot;log&amp;quot;
+log.Printf(&amp;quot;D! key: %v&amp;quot;, value)
+# &amp;quot;D!&amp;quot; 开头的信息当debug=true才会打印.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        <item>
+        <title>Grafana</title>
+        <link>https://canuxcheng.com/post/metrics_grafana/</link>
+        <pubDate>Thu, 12 Jan 2017 21:05:48 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/metrics_grafana/</guid>
+        <description>&lt;h1 id=&#34;grafana&#34;&gt;Grafana&lt;/h1&gt;
+&lt;p&gt;The tool for beautiful monitoring and metric analytics &amp;amp; dashboards for Graphite, InfluxDB &amp;amp; Prometheus &amp;amp; More.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/grafana/grafana&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/grafana/grafana&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;支持多种data source:&lt;/p&gt;
+&lt;p&gt;graphite/influxdb/opentsdb/premetheus/elasticsearch/mysql/postgresql&lt;/p&gt;
+&lt;p&gt;安装配置参考官方文档&lt;/p&gt;
+&lt;p&gt;grafana配置文件是grafana.ini.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;http-api&#34;&gt;HTTP API&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;port = 3000
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;dashboard&#34;&gt;dashboard&lt;/h2&gt;
+&lt;p&gt;create/update dashboard:&lt;/p&gt;
+&lt;p&gt;将datasource设置成变量，然后导出的json文件就可以直接导入了．&lt;/p&gt;
+&lt;p&gt;dashboard.id=null才能创建新dashboard.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;post /api/dashboards/db
+data = json.dumps({
+    &amp;quot;dashboard&amp;quot;: {
+        &amp;quot;id&amp;quot;: null,
+        ...
+    },
+    &amp;quot;folderId&amp;quot;: 0,
+    &amp;quot;overwrite&amp;quot;: True, # True for python, true for go.
+    &amp;quot;message&amp;quot;: &amp;quot;commit message&amp;quot;
+})
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;datasource&#34;&gt;datasource&lt;/h2&gt;
+&lt;p&gt;create datasource:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;post /api/datasources
+data = json.dumps({
+    &amp;quot;name&amp;quot;:
+    &amp;quot;type&amp;quot;:
+    &amp;quot;url&amp;quot;:
+    &amp;quot;database&amp;quot;:
+    &amp;quot;access&amp;quot;: &amp;quot;proxy&amp;quot;
+})
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;alert&#34;&gt;alert&lt;/h2&gt;
+&lt;p&gt;create alert notification/channel:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;post /api/alert-notifications
+data = json.dumps({
+    &amp;quot;name&amp;quot;:
+    &amp;quot;type&amp;quot;: &amp;quot;email&amp;quot;,
+    &amp;quot;isDefault&amp;quot;: true,
+    &amp;quot;settings&amp;quot;: {
+        &amp;quot;addresses&amp;quot;: &amp;quot;a.com; b.com&amp;quot;,
+        &amp;quot;uploadImage&amp;quot;: true
+    }
+})
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;dashboard-1&#34;&gt;Dashboard&lt;/h1&gt;
+&lt;p&gt;graph&lt;/p&gt;
+&lt;p&gt;singlestat&lt;/p&gt;
+&lt;p&gt;table&lt;/p&gt;
+&lt;p&gt;text&lt;/p&gt;
+&lt;p&gt;heatmap&lt;/p&gt;
+&lt;p&gt;alertlist&lt;/p&gt;
+&lt;h2 id=&#34;templating&#34;&gt;templating&lt;/h2&gt;
+&lt;p&gt;定义变量：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;show tag values with key=&#39;host&#39;
+# 设置在dashboard加载时更新
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;在templating中定义变量, query中使用的两种方式:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$varname
+select * from cpu where &#39;host&#39; =~ /^$host$/
+[[varname]]
+select * from cpu where &#39;host&#39; =~ /^[[host]]&amp;amp;/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;内置变量：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$_interval  # 相当于influxdb里面的$interval，表示group by的时间间隔
+$timeFilter/$_timeFilter    # time &amp;gt; now() - &amp;lt;time range&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;panel里的变量：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$col         给select出来的field取别名
+$tag_host
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;annotations&#34;&gt;Annotations&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;alerting&#34;&gt;Alerting&lt;/h1&gt;
+&lt;p&gt;email需要安装配置SMTP,推荐使用sendmail.&lt;/p&gt;
+&lt;p&gt;alert发出去的图片或连接打不开：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ vim /etc/grafana/grafana.ini
+  [server]
+  domain=
+  root_url=
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;grafana4.6.2只有graph panel支持alert, singlestat 和 table暂不支持．&lt;/p&gt;
+&lt;p&gt;conditions暂不支持template variables.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;plugins&#34;&gt;plugins&lt;/h1&gt;
+&lt;p&gt;默认安装路径：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/var/lib/grafana/plugins
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;命令：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 查看已经安装的plugin
+$ sudo grafana-cli plugins list-remote
+$ sudo grafana-cli plugins install &amp;lt;plugin-id&amp;gt; &amp;lt;version&amp;gt;
+
+# 查看安装的plugin
+$ sudo grafana-cli plugins ls
+
+# 删除plugin
+$ sudo grafana-cli plugins remove &amp;lt;plugin-id&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;enable-https&#34;&gt;enable https&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;$ vim /etc/grafana/grafana.ini
+protocol=https
+cert-file=file.crt
+key-file=file.key
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;provisioning&#34;&gt;Provisioning&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://grafana.com/docs/administration/provisioning/#provisioning-grafana&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://grafana.com/docs/administration/provisioning/#provisioning-grafana&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;datasource&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ vim /etc/grafana/provisioning/datasources/datasource.yaml
+- name: MAF
+    type: influxdb
+    access: proxy
+    url: http://influxdb-service:8086
+    database: sandbox
+    isDefault: true
+    editable: true
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;dashboard&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ vim /etc/grafana/provisioning/dashboards/dashboard.yaml
+apiVersion: 1
+providers:
+- name: &#39;default&#39;
+orgId: 1
+folder: &#39;&#39;
+type: file
+disableDeletion: false
+editable: true
+updateIntervalSeconds: 600
+options:
+    path: /etc/grafana/dashboards
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
+        <item>
+        <title>Metrics</title>
+        <link>https://canuxcheng.com/post/metrics/</link>
+        <pubDate>Wed, 08 Jun 2016 09:46:47 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/metrics/</guid>
+        <description>&lt;h1 id=&#34;monitoring&#34;&gt;Monitoring&lt;/h1&gt;
+&lt;p&gt;Tranditional monitoring is for Datacenter, like nagios, zabbix.&lt;/p&gt;
+&lt;p&gt;Modern monitoring is for Cloud and Container.&lt;/p&gt;
+&lt;p&gt;Modern monitoring based on metrics, logs and tracing.&lt;/p&gt;
+&lt;h1 id=&#34;tick-stack&#34;&gt;TICK stack&lt;/h1&gt;
+&lt;p&gt;influxdb: tsdb.&lt;/p&gt;
+&lt;p&gt;kapacitor: alerting.&lt;/p&gt;
+&lt;p&gt;chronograf: GUI.&lt;/p&gt;
+&lt;p&gt;telegraf(agent): metrics collector.&lt;/p&gt;
+&lt;h1 id=&#34;prometheus&#34;&gt;Prometheus&lt;/h1&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;graphing&#34;&gt;Graphing&lt;/h1&gt;
+&lt;p&gt;最流行的监控绘图软件是grafana, 支持influxdb,elasticsearch和prometheus.&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Monitoring</title>
+        <link>https://canuxcheng.com/post/monitoring/</link>
+        <pubDate>Wed, 08 Jun 2016 09:46:47 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/monitoring/</guid>
+        <description>&lt;h1 id=&#34;monitoring&#34;&gt;Monitoring&lt;/h1&gt;
+&lt;p&gt;Tranditional monitoring is for Datacenter, like nagios, zabbix.&lt;/p&gt;
+&lt;p&gt;Modern monitoring is for Cloud and Container.&lt;/p&gt;
+&lt;p&gt;Modern monitoring based on metrics, logs and tracing.&lt;/p&gt;
+&lt;p&gt;现代的监控系统在DevOps的基础上，除了传统的metrics和logging的采集，还需要tracing应用。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;metrics&#34;&gt;metrics&lt;/h1&gt;
+&lt;h2 id=&#34;tick-stack&#34;&gt;TICK stack&lt;/h2&gt;
+&lt;p&gt;influxdb: tsdb.&lt;/p&gt;
+&lt;p&gt;kapacitor: alerting.&lt;/p&gt;
+&lt;p&gt;chronograf: GUI.&lt;/p&gt;
+&lt;p&gt;telegraf(agent): metrics collector.&lt;/p&gt;
+&lt;h2 id=&#34;prometheus&#34;&gt;Prometheus&lt;/h2&gt;
+&lt;h2 id=&#34;graphing&#34;&gt;Graphing&lt;/h2&gt;
+&lt;p&gt;最流行的监控绘图软件是grafana, 支持influxdb,elasticsearch和prometheus.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;logging&#34;&gt;Logging&lt;/h1&gt;
+&lt;h2 id=&#34;elk&#34;&gt;ELK&lt;/h2&gt;
+&lt;h2 id=&#34;lokigrafana&#34;&gt;Loki+Grafana&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;tracing&#34;&gt;Tracing&lt;/h1&gt;
+&lt;h2 id=&#34;jeager&#34;&gt;Jeager&lt;/h2&gt;
+</description>
+        </item>
+        <item>
+        <title>Tivoli</title>
+        <link>https://canuxcheng.com/post/metrics_tivoli/</link>
+        <pubDate>Wed, 20 Apr 2016 13:57:31 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/metrics_tivoli/</guid>
+        <description>&lt;h1 id=&#34;itm&#34;&gt;ITM&lt;/h1&gt;
+&lt;p&gt;ITM: IBM Tivoli Monitoring&lt;/p&gt;
+&lt;p&gt;是IBM的Cloud &amp;amp; Smart Infrastructure监控解决方案。&lt;/p&gt;
+&lt;p&gt;Architecture Overview:&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://canuxcheng.com/images/tivoli.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;pic&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;p&gt;ITM主要由管理组件和可选组件组成。&lt;/p&gt;
+&lt;p&gt;Tivoli Management Services:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;TEMS&lt;/li&gt;
+&lt;li&gt;TEPS&lt;/li&gt;
+&lt;li&gt;TEP client&lt;/li&gt;
+&lt;li&gt;Historical data collection(warehouse agent)
+&lt;ul&gt;
+&lt;li&gt;warehouse proxy&lt;/li&gt;
+&lt;li&gt;summarization and pruning agent&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;OS agent&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Optional components:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Dashboard Application Services Hub
+&lt;ul&gt;
+&lt;li&gt;Tivoli Monitoring dashboards(Infrastructure Management Dashboards for Servers)&lt;/li&gt;
+&lt;li&gt;Tivoli Common Reporting&lt;/li&gt;
+&lt;li&gt;Tivoli Enterprise Monitoring Automation Server&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Tivoli Event Synchronization component&lt;/li&gt;
+&lt;li&gt;Authorization Policy Components(tivcmd)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://www.ibm.com/support/knowledgecenter/SSTFXA_6.3.0/com.ibm.itm.doc_6.3/welcome_63.htm&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://www.ibm.com/support/knowledgecenter/SSTFXA_6.3.0/com.ibm.itm.doc_6.3/welcome_63.htm&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;安装itm&#34;&gt;安装ITM&lt;/h2&gt;
+&lt;p&gt;Windows: C:\IBM\ITM&lt;/p&gt;
+&lt;p&gt;Linux/Unix: /opt/IBM/ITM&lt;/p&gt;
+&lt;p&gt;分为本地安装和分布式安装。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;需要先为TEPS和TDW安装DB(ODBC/JDBC)。&lt;/p&gt;
+&lt;p&gt;DB2&lt;/p&gt;
+&lt;p&gt;MSSQL&lt;/p&gt;
+&lt;p&gt;Oracle&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;在windows/linux/unix安装ITM framework&lt;/p&gt;
+&lt;p&gt;TEMA&lt;/p&gt;
+&lt;p&gt;Warehouse Proxy agent&lt;/p&gt;
+&lt;p&gt;Summarization and Pruning agent&lt;/p&gt;
+&lt;p&gt;Tivoli performance Analyzer&lt;/p&gt;
+&lt;p&gt;TEMS&lt;/p&gt;
+&lt;p&gt;TEPS&lt;/p&gt;
+&lt;p&gt;TEPD&lt;/p&gt;
+&lt;p&gt;TEMAS&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;安装agent&lt;/p&gt;
+&lt;p&gt;安装操作系统的agent：&lt;/p&gt;
+&lt;p&gt;monitoring agent for your OS。&lt;/p&gt;
+&lt;p&gt;安装数据库的agent：&lt;/p&gt;
+&lt;p&gt;TEMA/TEMS/TEPS同时勾选DB的agent。&lt;/p&gt;
+&lt;p&gt;安装agent builder的agent。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://www-933.ibm.com/support/fixcentral/swg/downloadFixes?parent=ibm%2FTivoli&amp;amp;product=ibm/Tivoli/IBM&amp;#43;Tivoli&amp;#43;Monitoring&amp;amp;release=All&amp;amp;platform=All&amp;amp;function=fixId&amp;amp;fixids=6.3.0-TIV-ITM-FP0005&amp;amp;includeRequisites=1&amp;amp;includeSupersedes=0&amp;amp;downloadMethod=http&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://www-933.ibm.com/support/fixcentral/swg/downloadFixes?parent=ibm%2FTivoli&amp;product=ibm/Tivoli/IBM+Tivoli+Monitoring&amp;release=All&amp;platform=All&amp;function=fixId&amp;fixids=6.3.0-TIV-ITM-FP0005&amp;includeRequisites=1&amp;includeSupersedes=0&amp;downloadMethod=http&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&amp;hellip;&lt;/p&gt;
+&lt;h1 id=&#34;tems&#34;&gt;TEMS&lt;/h1&gt;
+&lt;p&gt;TEMS:  Tivoli Enterprise Monitoing Server&lt;/p&gt;
+&lt;p&gt;TEMS分为remote和hub，remote最后都汇总到hub。&lt;/p&gt;
+&lt;p&gt;HTEMS: Hub Tivoli Enterprise Monitoring Server&lt;/p&gt;
+&lt;p&gt;RTEMS: Remote Tivoli Enterprise Monitoring Server&lt;/p&gt;
+&lt;p&gt;一个TEMS建议管理700个agent&lt;/p&gt;
+&lt;h1 id=&#34;tema&#34;&gt;TEMA&lt;/h1&gt;
+&lt;p&gt;TEMA: Tivoli Enterprise Monitoring Agent&lt;/p&gt;
+&lt;p&gt;安装agent之后通过GUI工具Tivoli Enterprise Monitoring Service来配置和启动agent。&lt;/p&gt;
+&lt;p&gt;也可以通过命令行来配置和启动agent。&lt;/p&gt;
+&lt;p&gt;agent配置需要指定HTEMS服务器。&lt;/p&gt;
+&lt;h2 id=&#34;agentless&#34;&gt;Agentless&lt;/h2&gt;
+&lt;p&gt;TEMS -&amp;gt; Agentless server -&amp;gt; servers&lt;/p&gt;
+&lt;p&gt;就是用一个中间服务器通过snmp等协议来监控不需要安装agent的被监控服务器。&lt;/p&gt;
+&lt;p&gt;一个agentless可以设置10个实例(操作系统)，一个实例可以监控100个节点(被监控服务器)。&lt;/p&gt;
+&lt;p&gt;Agentless OS agents:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Agentless Monitoring for AIX OS - SNMP&lt;/li&gt;
+&lt;li&gt;Agentless Monitoring for HP-UX OS - SNMP&lt;/li&gt;
+&lt;li&gt;Agentless Monitoring for Linux OS - SNMP&lt;/li&gt;
+&lt;li&gt;Agentless Monitoring for Solaris OS - SNMP,CIM-XML&lt;/li&gt;
+&lt;li&gt;Agentless Monitoring for Windows OS - SNMP,WMI&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;agent&#34;&gt;Agent&lt;/h2&gt;
+&lt;p&gt;TEMS -&amp;gt; servers(agent)&lt;/p&gt;
+&lt;p&gt;一个agent连2个TEMS,一个primary，一个backup。&lt;/p&gt;
+&lt;p&gt;agent分为：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Operating System agent&lt;/li&gt;
+&lt;li&gt;specialized agent&lt;/li&gt;
+&lt;li&gt;Application agent&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;OS agent：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Windows&lt;/li&gt;
+&lt;li&gt;Unix&lt;/li&gt;
+&lt;li&gt;Linux&lt;/li&gt;
+&lt;li&gt;IBM i5/OS&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;specialized agent：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;warehouse proxy agent&lt;/li&gt;
+&lt;li&gt;warehouse summarization and pruning agent&lt;/li&gt;
+&lt;li&gt;Log file agent&lt;/li&gt;
+&lt;li&gt;System p® agents (AIX Premium, CEC Base, HMC Base, VIOS Premium)&lt;/li&gt;
+&lt;li&gt;Systems Director base agent&lt;/li&gt;
+&lt;li&gt;Tivoli zEnterprise® Agent&lt;/li&gt;
+&lt;li&gt;Performance Analyzer&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;tepsdb&#34;&gt;TEPS+DB&lt;/h1&gt;
+&lt;p&gt;TEPS: Tivoli Enterprise Portal Server&lt;/p&gt;
+&lt;p&gt;使用MTEMS来配置TEPS,添加DB。&lt;/p&gt;
+&lt;h1 id=&#34;tepdtep-client&#34;&gt;TEPD(TEP client)&lt;/h1&gt;
+&lt;p&gt;TEP -&amp;gt; TEPS&lt;/p&gt;
+&lt;p&gt;TEP: Tivoli Enterprise Portal client&lt;/p&gt;
+&lt;p&gt;TEP是GUI界面，分为：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Desktop&lt;/li&gt;
+&lt;li&gt;Browser&lt;/li&gt;
+&lt;li&gt;JavaWS: java web start&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;需要安装IBM的java，在C:\Program Files\IBM\Java70。&lt;/p&gt;
+&lt;p&gt;使用TEP来查看监控结果。&lt;/p&gt;
+&lt;p&gt;默认用户是sysadmin, 需要为TEPD指定TEPS服务器。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Browser版本&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; http://&amp;lt;TEPS Server&amp;gt;:15200/cnp.html
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Desktop版本&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; http://&amp;lt;TEPS Server&amp;gt;:15200/tep.jnlp
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;安装ITM可以选择安装桌面版,也可以从Java Web Start获取桌面版。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Java Web Start版本&lt;/p&gt;
+&lt;p&gt;结合了desktop和browser的优点,从web下载，在桌面运行。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;TEP的结构：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Navigator view&lt;/p&gt;
+&lt;p&gt;Enterprise&lt;/p&gt;
+&lt;p&gt;Operating Platform(操作系统类型)&lt;/p&gt;
+&lt;p&gt;Node(一台服务器一个节点)&lt;/p&gt;
+&lt;p&gt;Agent(一个节点上的agent)&lt;/p&gt;
+&lt;p&gt;Situation(一个agent上的situation)&lt;/p&gt;
+&lt;p&gt;Event(一个situation有多个event)&lt;/p&gt;
+&lt;p&gt;Attribute group(相同的Situation是一个group)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Navigator workspace&lt;/p&gt;
+&lt;p&gt;每个view项目都有一个默认的workspace。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&amp;hellip;&lt;/p&gt;
+&lt;h1 id=&#34;history-data-collectiontdw&#34;&gt;History data collection(TDW)&lt;/h1&gt;
+&lt;p&gt;TDW: Tivoli Data Warehouse&lt;/p&gt;
+&lt;p&gt;存储历史数据。支持DB2，Oracle， MSSQL。&lt;/p&gt;
+&lt;p&gt;也就是将agent收集的数据存到数据库。&lt;/p&gt;
+&lt;h2 id=&#34;warehouse-proxy&#34;&gt;Warehouse Proxy&lt;/h2&gt;
+&lt;p&gt;TDW使用该agent从agents收集和加载数据。&lt;/p&gt;
+&lt;p&gt;使用MTEMS配置warehouse proxy。&lt;/p&gt;
+&lt;h2 id=&#34;summarization-and-pruning-agent&#34;&gt;Summarization and Pruning agent&lt;/h2&gt;
+&lt;p&gt;TDW使用该agent控制数据库大小。&lt;/p&gt;
+&lt;p&gt;使用MTEMS配置summarization and pruning agent。&lt;/p&gt;
+&lt;h1 id=&#34;jazz-for-service-managementvisualization&#34;&gt;Jazz for Service Management(Visualization)&lt;/h1&gt;
+&lt;h2 id=&#34;dashboard-application-services-hubdashvisualization-services&#34;&gt;Dashboard Application Services Hub(DASH)(visualization services)&lt;/h2&gt;
+&lt;h2 id=&#34;ibm-tivoli-common-reportingreporting-services&#34;&gt;IBM Tivoli Common Reporting(reporting services)&lt;/h2&gt;
+&lt;h2 id=&#34;registry-services&#34;&gt;Registry Services&lt;/h2&gt;
+&lt;h2 id=&#34;security-services&#34;&gt;Security Services&lt;/h2&gt;
+&lt;h2 id=&#34;administration-services&#34;&gt;Administration Services&lt;/h2&gt;
+&lt;h2 id=&#34;tivoli-directory-integrator&#34;&gt;Tivoli Directory Integrator&lt;/h2&gt;
+&lt;h2 id=&#34;ibm-http-server&#34;&gt;IBM HTTP Server&lt;/h2&gt;
+&lt;h2 id=&#34;ibm-websphere-application-server&#34;&gt;IBM WebSphere® Application Server&lt;/h2&gt;
+&lt;h2 id=&#34;web-server-plug-ins-for-ibm-websphere-application-server&#34;&gt;Web Server Plug-ins for IBM WebSphere Application Server&lt;/h2&gt;
+&lt;p&gt;&amp;hellip;&lt;/p&gt;
+&lt;h1 id=&#34;management&#34;&gt;Management&lt;/h1&gt;
+&lt;p&gt;管理所有组件一般使用GUI叫manage tivoli monitoring services&lt;/p&gt;
+&lt;p&gt;windows/linux/unix都可以用GUI。&lt;/p&gt;
+&lt;p&gt;也可以使用CLI（命令行）,见后文.&lt;/p&gt;
+&lt;p&gt;一般使用GUI来启动、停止和配置组件。&lt;/p&gt;
+&lt;h1 id=&#34;cli&#34;&gt;CLI&lt;/h1&gt;
+&lt;p&gt;Command Line Interface&lt;/p&gt;
+&lt;h2 id=&#34;tacmd&#34;&gt;tacmd&lt;/h2&gt;
+&lt;p&gt;支持windows/linux/unix。&lt;/p&gt;
+&lt;p&gt;/opt/IBM/ITM/bin/tacmd&lt;/p&gt;
+&lt;p&gt;C:\IBM\ITM\BIN\tacmd&lt;/p&gt;
+&lt;p&gt;查看tacmd手册：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;./tacmd help
+./tacmd ?
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;登陆和登出HTEMS:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;./tacmd login -s [PROTOCOL://]HOST[:PORT] -u [USERNAME] -p [PASSWORD] -t [TIMEOUT]
+./tacmd logout
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;登陆和登出TEPS：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;./tacmd tepsLogin -s [TEPS_HOSTNAME] -u [USERNAME] -p [TEPS_PASSWORD] -t [TIMEOUT] -i [IGNORE]
+./tacmd tepsLogout
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;管理agent：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;./tacmd startAgent/stopAgent/restartAgent/viewAgent/updateAgent ...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;刷新Netcool/OMNIbus：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;./tacmd refreshTECinfo {-t|--type} {eif|maps|attr|all}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;itmcmd&#34;&gt;itmcmd&lt;/h2&gt;
+&lt;p&gt;用于Linux/Unix系统的命令&lt;/p&gt;
+&lt;p&gt;/opt/IBM/ITM/bin/itmcmd&lt;/p&gt;
+&lt;p&gt;查看itmcmd手册：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;./itmcmd help
+./itmcmd ?
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;启动或停止TEMS:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;./itmcmd server [-options] {start|stop} tems_name
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;启动或停止agent：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;./itmcmd agent [-options] {start|stop} {pc ...|all}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;启动MTEMS:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;./itmcmd manage &amp;amp;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;tivcmd&#34;&gt;tivcmd&lt;/h2&gt;
+&lt;p&gt;&amp;hellip;&lt;/p&gt;
+&lt;h1 id=&#34;advanced-administration&#34;&gt;Advanced Administration&lt;/h1&gt;
+&lt;h2 id=&#34;queriesquery-editor&#34;&gt;Queries(query editor)&lt;/h2&gt;
+&lt;p&gt;DB agent -&amp;gt; normal way to get data source from database servers.&lt;/p&gt;
+&lt;p&gt;ODBC -&amp;gt; get data source from windows database&lt;/p&gt;
+&lt;p&gt;JDBC -&amp;gt; get data source from linux/unix database&lt;/p&gt;
+&lt;h2 id=&#34;advanced-link-topics&#34;&gt;Advanced link topics&lt;/h2&gt;
+&lt;p&gt;Simple link:&lt;/p&gt;
+&lt;p&gt;Just used to navigate portal workspaces without using the navigator.&lt;/p&gt;
+&lt;p&gt;Advanced link:&lt;/p&gt;
+&lt;p&gt;Can be used to manipulate data that is displayed in the target workspace.&lt;/p&gt;
+&lt;h2 id=&#34;advanced-situation-techniquessituation-editor&#34;&gt;Advanced situation techniques(situation editor)&lt;/h2&gt;
+&lt;h2 id=&#34;agent-autonomy&#34;&gt;Agent autonomy&lt;/h2&gt;
+&lt;h2 id=&#34;policyworkflow-editor&#34;&gt;Policy(workflow editor)&lt;/h2&gt;
+&lt;h2 id=&#34;agentless-monitoring&#34;&gt;Agentless monitoring&lt;/h2&gt;
+&lt;p&gt;TEPS -&amp;gt; Agentless Monitoring Serve -&amp;gt; Servers&lt;/p&gt;
+&lt;h2 id=&#34;agent-managent-servicesams&#34;&gt;Agent Managent Services(AMS)&lt;/h2&gt;
+&lt;hr&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;agent-builder&#34;&gt;Agent Builder&lt;/h1&gt;
+&lt;p&gt;IBM Agent Builder agents&lt;/p&gt;
+&lt;p&gt;windows:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;C:\Program Files(x86)\IBM\AgentBuilder
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;aix/linux:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/opt/ibm/AgentBuilder
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Data source:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;JDBC&lt;/li&gt;
+&lt;li&gt;HTTP&lt;/li&gt;
+&lt;li&gt;SOAP&lt;/li&gt;
+&lt;li&gt;Ping&lt;/li&gt;
+&lt;li&gt;Socket&lt;/li&gt;
+&lt;li&gt;Java API&lt;/li&gt;
+&lt;li&gt;WMI&lt;/li&gt;
+&lt;li&gt;Perfmon&lt;/li&gt;
+&lt;li&gt;CIM&lt;/li&gt;
+&lt;li&gt;SNMP&lt;/li&gt;
+&lt;li&gt;JMX&lt;/li&gt;
+&lt;li&gt;command return code&lt;/li&gt;
+&lt;li&gt;output from a script&lt;/li&gt;
+&lt;li&gt;A log file&lt;/li&gt;
+&lt;li&gt;AIX Binary Log&lt;/li&gt;
+&lt;li&gt;windows event log&lt;/li&gt;
+&lt;li&gt;A process&lt;/li&gt;
+&lt;li&gt;A Windows service&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;create-agent&#34;&gt;create agent&lt;/h1&gt;
+&lt;p&gt;Every agent have a unique produce code.&lt;/p&gt;
+&lt;p&gt;Like: k00-k99, k{0-9}{A-Z}.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Create the agent in the Agent Builder
+agent information
+data source
+runtime configuration&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Install and test the agent
+output and install the agent
+config and start agent in MTEMS.
+confirm agent data
+revise and retest as needed&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Add application support
+create in TEP, including queries, workspaces, situations, and take actions.
+Import application support into agent in Agent Builder.
+Retest the agent and application support&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Create an installation solution.
+Create solution install package from the agent.
+Create solution install package from the package.
+Run the image on the target location.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;install-agent&#34;&gt;install agent&lt;/h1&gt;
+&lt;p&gt;Three ways to instal the agent.&lt;/p&gt;
+&lt;p&gt;You must install the TEMS and TEPS support on TEMS(HTEMS) and TEPS server.&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;generate the agent files in an ITM installation on this machine&lt;/p&gt;
+&lt;p&gt;通过GUI快速安装，Agent Builder和ITM（TEMS和TEPS）安装在同一台机器上。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;generate a solution install package&lt;/p&gt;
+&lt;p&gt;创建安装镜像来安装，windows的.exe和linux/unix的.bin。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;create a compressed file so that the agent can be installed on another system&lt;/p&gt;
+&lt;p&gt;命令行安装。
+生成一个.zip和一个.tgz文件。
+包括windows的.bat和linux/unix的.sh安装文件&lt;/p&gt;
+&lt;p&gt;安装下面三个包(等效方法一）：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; InstallIra.bat/.sh itm_install_location [[-h Hub_TEMS_hostname] -u HUB_TEMS_username -p Hub_TEMS_password]
+ InstallIra.bat C:\IBM\ITM -h &amp;lt;HTEMS&amp;gt; -u &amp;lt;username&amp;gt; -p &amp;lt;password&amp;gt; # for windows
+ ./InstallIra.sh /opt/IBM/ITM -h &amp;lt;HTEMS&amp;gt; -u &amp;lt;username&amp;gt; -p &amp;lt;password&amp;gt; # for linux
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;在被监控机器安装agent:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; installIraAgent.bat/.sh itm_install_location
+ installIraAgent.bat C:\IBM\ITM # for windows
+ ./installIraAgent.sh /opt/IBM/ITM # for linux
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;在TEMS(HTEMS)服务器安装对agent的支持：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; installIraAgentTEMS.bat/.sh itm_install_location [[-h Hub_TEMS_hostname] -u HUB_TEMS_username -p Hub_TEMS_password]
+ installIraAgentTEMS.bat C:\IBM\ITM # for local HTEMS windows server.
+ ./installIraAgentTEMS.sh /opt/IBM/ITM # for local HTEMS linux server.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;在TEPS服务器安装对agent的支持：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; installIraAgentTEPS.bat/.sh itm_install_location [[-h TEPS_hostname] -u TEPS_username -p TEPS_password]
+ installIraAgentTEPS.bat C:\IBM\ITM # for local TEPS windows server.
+ ./installIraAgentTEPS.sh /opt/IBM/ITM # for local TEPS linux server.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;config-agent&#34;&gt;config agent&lt;/h1&gt;
+&lt;p&gt;需要为agent指定HTEMS服务器，并重启agent，然后重启TEPD。&lt;/p&gt;
+&lt;p&gt;可以通过Tivoli Enterprise Monitoring Service来配置和启动，也可以通过命令行。&lt;/p&gt;
+&lt;p&gt;查看所有agent信息：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/opt/IBM/ITM/bin/cinfo -i # check the productcode and platformCode.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;config agent:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;./itmcmd config -A productcode
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;start agent:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;./tacmd agent start productcode
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;uninstall-agent&#34;&gt;uninstall agent&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;uninstall from commandline.&lt;/p&gt;
+&lt;p&gt;windows:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; cd ITM_INSTALL/TMAITM6
+ cd C:\IBM\ITM\TMAITM6_x64
+ kxx_uninstall.vbs ITM_INSTALL
+ K&amp;lt;product code&amp;gt;_uninstall.vbs C:\IBM\ITM
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;linux/unix:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; /opt/IBM/ITM/bin/uninstall.sh [-f] [-i] [-h install_dir] productcode platformCode
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Remove from TEP client(clear offline entry)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;monitoring-windows-resources&#34;&gt;Monitoring windows resources&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Windows Management Instrumentation(WMI)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Windows Performance Monitor(Perfmon)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Windows Event Log&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;monitoring-process-and-command-return-codes&#34;&gt;Monitoring process and command return codes&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Monitoring process&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Monitoring command return code&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;monitoring-custom-data-sources&#34;&gt;Monitoring custom data sources&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Monitoring script output&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Monitoring log file&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;monitoring-remote-resources&#34;&gt;Monitoring remote resources&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Monitoring SNMP&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Monitoring CIM&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Moitoring JMX&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;netcoolomnibus&#34;&gt;Netcool/OMNIbus&lt;/h1&gt;
+&lt;p&gt;IBM Tivoli Netcool/OMNIbus&lt;/p&gt;
+&lt;p&gt;TEC: Tivoli Enterprise Console, 已经被Netcool/OMNIbus替代。&lt;/p&gt;
+&lt;p&gt;windows:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;C:\Program Files(x86)\IBM\NCOhome
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;linux/aix:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/opt/IBM/NCOhome
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Browser版本需要安装IBM的JRE，在C:\Program Files\IBM\Java70。&lt;/p&gt;
+&lt;h1 id=&#34;eif&#34;&gt;EIF&lt;/h1&gt;
+&lt;p&gt;EIF: Event Integration Facility&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Monitoring</title>
+        <link>https://canuxcheng.com/post/network_monitoring/</link>
+        <pubDate>Sun, 03 Apr 2016 14:46:19 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/network_monitoring/</guid>
+        <description>&lt;h1 id=&#34;monitoring&#34;&gt;Monitoring&lt;/h1&gt;
+&lt;p&gt;network usage:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;bytes_sent(out)
+bytes_recv(in)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;packets:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;packets_sent(out)
+packets_recv(in)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;error_in/out:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;SELECT non_negative_derivative(mean(&amp;quot;err_in&amp;quot;), 1s) AS &amp;quot;recv&amp;quot;, non_negative_derivative(mean(&amp;quot;err_out&amp;quot;), 1s) AS &amp;quot;send&amp;quot;
+FROM &amp;quot;net&amp;quot;
+WHERE &amp;quot;interface&amp;quot; =~ /^(vlan|eth|ens|bond).*/ AND $timeFilter
+GROUP BY time($__interval), &amp;quot;host&amp;quot;, &amp;quot;interface&amp;quot; fill(none)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;drop_in/out:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;SELECT non_negative_derivative(mean(&amp;quot;drop_in&amp;quot;), 1s) AS &amp;quot;recv&amp;quot;, non_negative_derivative(mean(&amp;quot;drop_out&amp;quot;), 1s) AS &amp;quot;send&amp;quot;
+FROM &amp;quot;net&amp;quot;
+WHERE &amp;quot;interface&amp;quot; =~ /^(vlan|eth|ens|bond).*/ AND $timeFilter
+GROUP BY time($__interval), &amp;quot;host&amp;quot;, &amp;quot;interface&amp;quot; fill(none)
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
+        <item>
+        <title>Monitoring</title>
+        <link>https://canuxcheng.com/post/win_monitoring/</link>
+        <pubDate>Sun, 03 Apr 2016 14:15:40 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/win_monitoring/</guid>
+        <description>&lt;h1 id=&#34;windows的services和process&#34;&gt;windows的services和process&lt;/h1&gt;
+&lt;p&gt;services是windows的服务，有Name(Display Name)，Service Name，Description等属性。&lt;/p&gt;
+&lt;p&gt;process是以.exe为后缀的application，有Name(product name)、original filename(Image Name)、file description(description)等属性。&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Monitoring</title>
+        <link>https://canuxcheng.com/post/linux_monitoring/</link>
+        <pubDate>Thu, 31 Mar 2016 21:48:59 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/linux_monitoring/</guid>
+        <description>&lt;h1 id=&#34;inode&#34;&gt;inode&lt;/h1&gt;
+</description>
+        </item>
+        <item>
+        <title>Nagios</title>
+        <link>https://canuxcheng.com/post/metrics_nagios/</link>
+        <pubDate>Fri, 25 Mar 2016 11:15:48 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/metrics_nagios/</guid>
+        <description>&lt;h1 id=&#34;nagios&#34;&gt;Nagios&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Nagios is the industry standard in IT infrastructure monitoring&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Nagios offers complete monitoring and alerting for servers, switches, applications, and services.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Nagios官方宣称nagios是IT基础监控的工业标准。&lt;/p&gt;
+&lt;p&gt;Nagios提供对服务器，交换机，应用和服务的完整的监控和警报。&lt;/p&gt;
+&lt;p&gt;Nagios是无agent的，nagios的plugin通过协议远程获取信息。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.nagios.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.nagios.org/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.nagios.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.nagios.com/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://exchange.nagios.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://exchange.nagios.org/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/NagiosEnterprises&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/NagiosEnterprises&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/nagios-plugins&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/nagios-plugins&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;nagios安装配置&#34;&gt;Nagios安装配置&lt;/h1&gt;
+&lt;h2 id=&#34;nagios发展&#34;&gt;Nagios发展&lt;/h2&gt;
+&lt;p&gt;Nagios core 1.0&lt;/p&gt;
+&lt;p&gt;Nagios core 2.0&lt;/p&gt;
+&lt;p&gt;Nagios core 3.0&lt;/p&gt;
+&lt;p&gt;Nagios XI&lt;/p&gt;
+&lt;p&gt;Nagios core 4.0&lt;/p&gt;
+&lt;p&gt;目前nagios有两大阵营：&lt;/p&gt;
+&lt;p&gt;开源解决方案： Nagios core&lt;/p&gt;
+&lt;p&gt;商业解决方案： Nagios XI&lt;/p&gt;
+&lt;h2 id=&#34;nagios安装配置-1&#34;&gt;Nagios安装配置&lt;/h2&gt;
+&lt;p&gt;安装和配置nagios core,plugins,addons参考&lt;/p&gt;
+&lt;p&gt;官方文档:&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://assets.nagios.com/downloads/nagioscore/docs/nagioscore/4/en/toc.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://assets.nagios.com/downloads/nagioscore/docs/nagioscore/4/en/toc.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;中文文档：&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://nagios-cn.sourceforge.net/nagios-cn/index.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://nagios-cn.sourceforge.net/nagios-cn/index.html&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;nagios开源解决方案&#34;&gt;Nagios开源解决方案&lt;/h1&gt;
+&lt;h2 id=&#34;nagios-core&#34;&gt;Nagios core:&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Nagios Core is the monitoring and alerting engine that serves as the primary application around which hundreds of Nagios projects are built.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Nagios core是监控和警报的主引擎，围绕它建立了成千上万的项目。
+技术栈是c，只能安装在linux/unix系统。
+Nagios core只是一个监控套件，本身没有监控功能，需要插件来完成监控。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.nagios.org/projects/nagios-core/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.nagios.org/projects/nagios-core/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/NagiosEnterprises/nagioscore&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/NagiosEnterprises/nagioscore&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;nagios-plugins&#34;&gt;Nagios plugins:&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Efficient, standalone extensions that provide low-level intelligence for monitoring anything and everything with Nagios Core.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Nagios core的监控插件,也就是官方插件,主要是c、shell和perl。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.nagios.org/projects/nagios-plugins/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.nagios.org/projects/nagios-plugins/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/nagios-plugins/nagios-plugins&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/nagios-plugins/nagios-plugins&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;nagios-frontends&#34;&gt;Nagios frontends:&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Web interfaces, themes, Windows and Linux interfaces, and mobile apps for Nagios. Change the look and style of Nagios to suite your needs.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Nagios frontends包括了 主题,web接口,移动设备接口。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.nagios.org/downloads/nagios-core-frontends/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.nagios.org/downloads/nagios-core-frontends/&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;nagios-config-toolsnagios-addons-projects&#34;&gt;Nagios config tools(Nagios addons projects):&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Tools and GUIs for simplifying Nagios Core configuration.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;nagios core的组件。&lt;/p&gt;
+&lt;p&gt;包括Lilac,NagiosQL,NConf,OneCMDB,ignoramus&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.nagios.org/projects/nagios-config-tools/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.nagios.org/projects/nagios-config-tools/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.nagios.org/downloads/nagios-core-addons/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.nagios.org/downloads/nagios-core-addons/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/NagiosEnterprises&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/NagiosEnterprises&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;nagios-exchange&#34;&gt;Nagios exchange:&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Nagios® Exchange is the central place where you&amp;rsquo;ll find all types of Nagios projects - plugins, addons, documentation, extensions, and more. This site is designed for the Nagios Community to share its Nagios creations.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Nagios exchange是nagios的开源宝库。&lt;/p&gt;
+&lt;p&gt;包括第三方plugins、addons和docs。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://exchange.nagios.org/https://exchange.nagios.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://exchange.nagios.org/https://exchange.nagios.org/&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;nagios商业解决方案&#34;&gt;Nagios商业解决方案&lt;/h1&gt;
+&lt;h2 id=&#34;nagios-xi&#34;&gt;Nagios XI:&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Our most powerful IT infrastructure monitoring and IT monitoring software alerting solution for today’s demanding organizational requirements.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Nagios XI 是现代化的商业监控解决套件。&lt;/p&gt;
+&lt;p&gt;Nagios XI 使用nagios core 4.0。&lt;/p&gt;
+&lt;p&gt;Nagios XI 架构：&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://canuxcheng.com/images/nagiosxi.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;pic&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;nagios-network-analyzer&#34;&gt;Nagios network analyzer&lt;/h2&gt;
+&lt;h2 id=&#34;nagios-log-server&#34;&gt;Nagios log server&lt;/h2&gt;
+&lt;h2 id=&#34;nagios-fusion&#34;&gt;Nagios fusion&lt;/h2&gt;
+&lt;h2 id=&#34;nagios-incident-manager&#34;&gt;Nagios incident manager&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;nagios命令&#34;&gt;Nagios命令&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;/usr/local/nagios/bin/nagios --help
+-v 验证配置文件
+-d daemon mode
+-W worker mode.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;nagios-集中监控&#34;&gt;Nagios 集中监控&lt;/h1&gt;
+&lt;h2 id=&#34;本地监控&#34;&gt;本地监控&lt;/h2&gt;
+&lt;p&gt;使用nagios core + plugins只能监控本地的linux/unix机器。&lt;/p&gt;
+&lt;h2 id=&#34;远程监控&#34;&gt;远程监控&lt;/h2&gt;
+&lt;p&gt;使用nagios core + plugins + addons可以监控远程的linux/unix/windows机器。&lt;/p&gt;
+&lt;p&gt;NRPE(for linux)/NRPE_NT(for windows)和check_nrpe, 运行远程机器上的插件, 支持windows/unix/linux:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;nagios core + check_nrpe &amp;lt;=&amp;gt; NRPE/NRPE_NT + plugins
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;NSCP和check_nt, 只能使用固定的几个命令查基本属性, 支持windows/linux/unix：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;nagios core + check_nt -H &amp;lt;NSCP IP&amp;gt; [-v &amp;lt;command&amp;gt;] &amp;lt;=&amp;gt; NSCP(NSClient++)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;NSCP和check_nrpe，可以传自己的命令或插件, 支持windows/linux/unix：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;nagios core + check_nrpe -H &amp;lt;NSCP IP&amp;gt; [-c &amp;lt;command/plugins&amp;gt;] [-a &amp;lt;argument list&amp;gt;] &amp;lt;=&amp;gt; NSCP(NSClient++) + plugins
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;NSCP和NSCA/NRDP,NSCP主动check,然后将结果发送给NSCA/NRDP:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;nagios core + NSCA &amp;lt;=&amp;gt; NSCP(NSClient++)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;NCPA是python写的跨平台代理, 支持linux/windows/unix：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;nagios core + check_ncpa.py &amp;lt;=&amp;gt; NCPA
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;nagios-分布式监控&#34;&gt;Nagios 分布式监控&lt;/h1&gt;
+&lt;h2 id=&#34;nrdpnscansca-ng&#34;&gt;NRDP/NSCA/NSCA-ng&lt;/h2&gt;
+&lt;p&gt;官方推荐，NRDP是NSCA的升级版,提供被动检测,这种方式效率低，稳定性差。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;nagios core &amp;lt;- plugins &amp;lt;- NSCA &amp;lt;= send_nsca &amp;lt;- ocsp &amp;lt;- Nagios core &amp;lt;=&amp;gt; Hosts
+                               ^
+                              ||
+                              send_nsca &amp;lt;- ocsp &amp;lt;- Nagios core &amp;lt;=&amp;gt; Hosts
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;nagios的组件&#34;&gt;Nagios的组件&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.nagios.org/downloads/nagios-core-addons/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.nagios.org/downloads/nagios-core-addons/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/NagiosEnterprises&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/NagiosEnterprises&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;ndoutilsndoidoutilsido&#34;&gt;NDOUtils(NDO)/IDOUtils(IDO)&lt;/h2&gt;
+&lt;p&gt;从nagios导出当前和历史数据到mysql数据库,需要安装数据库。&lt;/p&gt;
+&lt;p&gt;相似功能有mk livestatus。&lt;/p&gt;
+&lt;p&gt;N * (Nagios core + NDO module) -&amp;gt; TCP/Socket -&amp;gt; NDO2DB daemon -&amp;gt; DB&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/NagiosEnterprises/ndoutils&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/NagiosEnterprises/ndoutils&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;nsti&#34;&gt;NSTI&lt;/h2&gt;
+&lt;p&gt;Nagios SNMP Trap Interface.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/NagiosEnterprises/nsti&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/NagiosEnterprises/nsti&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;bpi&#34;&gt;BPI&lt;/h2&gt;
+&lt;p&gt;Nagios Business Process Intelligence.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/NagiosEnterprises/nagiosbpi&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/NagiosEnterprises/nagiosbpi&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;其它组件介绍&#34;&gt;其它组件介绍&lt;/h1&gt;
+&lt;h2 id=&#34;nconf&#34;&gt;NCONF&lt;/h2&gt;
+&lt;p&gt;nagios的基于web的配置工具。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://www.nconf.org/dokuwiki/doku.php&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://www.nconf.org/dokuwiki/doku.php&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/nconf/nconf&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/nconf/nconf&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;dnx&#34;&gt;DNX&lt;/h2&gt;
+&lt;p&gt;分布式组件。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://dnx.sourceforge.net/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://dnx.sourceforge.net/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://sourceforge.net/projects/dnx/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://sourceforge.net/projects/dnx/&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;nagiosgraph&#34;&gt;Nagiosgraph&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;nagiosgraph parses output and performance data from Nagios plugins and stores
+the data in RRD files. nagiosgraph creates graphs and generates HTML pages with
+graphic reports from the data.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;基于RRD，绘制nagios的性能图。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://nagiosgraph.sourceforge.net/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://nagiosgraph.sourceforge.net/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://sourceforge.net/projects/nagiosgraph/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://sourceforge.net/projects/nagiosgraph/&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;consol的分布式监控方案&#34;&gt;consol的分布式监控方案&lt;/h1&gt;
+&lt;p&gt;一家德国的咨询和解决方案软件公司。&lt;/p&gt;
+&lt;p&gt;可以通过 check_MK 的omd来安装。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.consol.de/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.consol.de/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://labs.consol.de/index.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://labs.consol.de/index.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/ConSol&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/ConSol&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;主要贡献组件：&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/sni&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/sni&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;主要贡献插件：&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/lausser&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/lausser&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;https://canuxcheng.com/images/nagios.png&#34;
+	
+	
+	
+	loading=&#34;lazy&#34;
+	
+		alt=&#34;pic&#34;
+	
+	
+&gt;&lt;/p&gt;
+&lt;h2 id=&#34;mod-gearman&#34;&gt;Mod gearman&lt;/h2&gt;
+&lt;p&gt;labs consol的分布式监控组件, gearman的worker。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://www.mod-gearman.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://www.mod-gearman.org/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/sni/mod_gearman&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/sni/mod_gearman&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;ndoutilslivestatus&#34;&gt;NDOUtils/livestatus&lt;/h2&gt;
+&lt;p&gt;Event broker.&lt;/p&gt;
+&lt;h2 id=&#34;thruk&#34;&gt;Thruk&lt;/h2&gt;
+&lt;p&gt;基于perl的web框架catalyst的dashbord。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://www.thruk.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://www.thruk.org/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/sni/Thruk&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/sni/Thruk&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;op5的分布式监控方案&#34;&gt;Op5的分布式监控方案&lt;/h1&gt;
+&lt;p&gt;一家瑞典的监控和解决方案公司。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.op5.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.op5.com/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://kb.op5.com/dashboard.action&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://kb.op5.com/dashboard.action&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/op5&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/op5&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;merlin&#34;&gt;merlin&lt;/h2&gt;
+&lt;p&gt;分布式组件。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://kb.op5.com/display/MERLIN/Distributed&amp;#43;%28Merlin%29&amp;#43;Home&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://kb.op5.com/display/MERLIN/Distributed+%28Merlin%29+Home&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/op5/merlin&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/op5/merlin&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;ndoutilsmk-livestatus&#34;&gt;NDOUtils/MK livestatus&lt;/h2&gt;
+&lt;p&gt;Eevent broker&lt;/p&gt;
+&lt;h2 id=&#34;ninja&#34;&gt;Ninja&lt;/h2&gt;
+&lt;p&gt;Dashboard.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://kb.op5.com/display/GUI/GUI&amp;#43;%28Ninja%29&amp;#43;Home&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://kb.op5.com/display/GUI/GUI+%28Ninja%29+Home&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/op5/ninja&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/op5/ninja&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;介绍Addons.&lt;/p&gt;
+&lt;h1 id=&#34;omd&#34;&gt;OMD&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;OMD implements a completely new concept of how to install, maintain and update a monitoring system built on Nagios.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://omdistro.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://omdistro.org/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://git.mathias-kettner.de/git/?p=omd.git;a=tree&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://git.mathias-kettner.de/git/?p=omd.git;a=tree&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;The Open Monitoring Distribution&lt;/p&gt;
+&lt;p&gt;用于快速部署基于nagios的分布式监控，包括：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Icinga/Shinken/check_MK&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Monitoring-Plugins和其它插件&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;mod-gearman/MK Livestatus/thruk/multisite&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;nsca/check_nrpe。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;NagVis/Pnp4nagios/rrdtool/dokuwiki&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;gearman&#34;&gt;Gearman&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Gearman provides a generic application framework to farm out work to other machines or processes that are better suited to do the work.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;Gearman用来做任务分发的.&lt;/p&gt;
+&lt;p&gt;一个C++实现的Gearman Job Server:&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://gearman.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://gearman.org/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/gearman/gearmand&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/gearman/gearmand&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;一个C实现的Gearman worker:&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://www.mod-gearman.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://www.mod-gearman.org/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/sni/mod_gearman&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/sni/mod_gearman&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;rrdtools&#34;&gt;rrdtools&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;RRDtool is a little program for easily maintaining a database of time-series data. It comes with a charting program for drawing pretty graphs based on the data stored.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;存储性能数据。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://oss.oetiker.ch/rrdtool/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://oss.oetiker.ch/rrdtool/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/oetiker/rrdtool-1.x&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/oetiker/rrdtool-1.x&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;pnp4nagios&#34;&gt;pnp4nagios&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;PNP is an addon to Nagios which analyzes performance data provided by plugins and stores them automatically into RRD-databases.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;基于RRD，绘制nagios的性能图。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://docs.pnp4nagios.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://docs.pnp4nagios.org/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/lingej/pnp4nagios&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/lingej/pnp4nagios&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;可以在nagios的service配置中添加“ostpl_enable-graph&amp;quot;启用图形。&lt;/p&gt;
+&lt;p&gt;templates.dist是自带模板&lt;/p&gt;
+&lt;p&gt;templates是用户自定义模板&lt;/p&gt;
+&lt;p&gt;XXX.php需要和nagios的service的command_name同名，默认查找这个同名的模板.&lt;/p&gt;
+&lt;p&gt;测试就是scp XXX.php nagios-server:/usr/share/pnp4nagios/html/templates/然后去nagios查看结果&lt;/p&gt;
+&lt;p&gt;pnp4nagios查找顺序：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;templates/check_XXX.php&lt;/li&gt;
+&lt;li&gt;templates.dist/check_XXX.php&lt;/li&gt;
+&lt;li&gt;templates/default.php&lt;/li&gt;
+&lt;li&gt;templates.dist/default.php&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;nagvis&#34;&gt;Nagvis&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;NagVis is a program for visualizing the data the monitoring core of your choice, for example Nagios, Naemon, Icinga or Shinken, in a human friendly way.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;绘制监控地图。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://www.nagvis.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://www.nagvis.org/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/NagVis/nagvis&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/NagVis/nagvis&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;dokuwiki&#34;&gt;dokuwiki&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;DokuWiki is a simple to use and highly versatile Open Source wiki software that doesn&amp;rsquo;t require a database.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;创建监控的procedure。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.dokuwiki.org/dokuwiki/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.dokuwiki.org/dokuwiki/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/splitbrain/dokuwiki&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/splitbrain/dokuwiki&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;graphite&#34;&gt;graphite&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/graphite-project&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/graphite-project&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://graphite.readthedocs.io/en/latest/index.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://graphite.readthedocs.io/en/latest/index.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Zabbix,Sensu,Ganglia,Nagios/Naemon/Icinga/Shinken都可以配合使用。&lt;/p&gt;
+&lt;p&gt;绘制性能图。&lt;/p&gt;
+&lt;p&gt;graphite-web&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;A highly scalable real-time graphing system&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;carbon&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Carbon is responsible for receiving metrics over the network, caching them in memory for &amp;ldquo;hot queries&amp;rdquo; from the Graphite-Web application, and persisting them to disk using the Whisper time-series library.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;whisper/ceres&lt;/p&gt;
+&lt;p&gt;ceres会替代whisper。&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Whisper is a fixed-size database, similar in design and purpose to RRD (round-robin-database). It provides fast, reliable storage of numeric data over time. Whisper allows for higher resolution (seconds per point) of recent data to degrade into lower resolutions for long-term retention of historical data.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h1 id=&#34;grafana&#34;&gt;grafana&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Grafana is an open source, feature rich metrics dashboard and graph editor for Graphite, Elasticsearch, OpenTSDB, Prometheus and InfluxDB.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;为graphite提供更好的可视化图形。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/grafana/grafana&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/grafana/grafana&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://grafana.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://grafana.org/&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;graphios&#34;&gt;graphios&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;A program to send nagios perf data to graphite(carbon)/statsd/librato/influxdb&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;发送nagios性能数据到Graphite。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/shawn-sterling/graphios&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/shawn-sterling/graphios&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;ledbetter&#34;&gt;Ledbetter&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;A simple script for gathering Nagios problem statistics and submitting them to Graphite. It focuses on summary (overall, servicegroup and hostgroup) statistics and writes them to the nagios.problems metrics namespace within Graphite.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;发送nagios性能数据到Graphite。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/github/ledbetter&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/github/ledbetter&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;nscp&#34;&gt;NSCP&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;NSClient is an agent designed originally to work with Nagios but has since evolved into a fully fledged monitoring agent which can be used with numerous monitoring tools (like Icinga, Naemon, OP5, NetEye Opsview etc).&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;又叫NSClient++,现在同时支持windows和linux,主要用来安装到windows服务器,用于监控windows系统.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://nsclient.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://nsclient.org/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/mickem/nscp&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/mickem/nscp&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;介绍Plugins&lt;/p&gt;
+&lt;h1 id=&#34;monitoring-plugins&#34;&gt;Monitoring Plugins&lt;/h1&gt;
+&lt;p&gt;Nagios/naemon/icinga/shinken/centreon/opsview/sensu&lt;/p&gt;
+&lt;p&gt;Office project:&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/monitoring-plugins&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/monitoring-plugins&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.monitoring-plugins.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.monitoring-plugins.org/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;My plugin project:&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/crazy-canux/pymonitoringplugins&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/crazy-canux/pymonitoringplugins&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Open source project:&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/crazy-canux/awesome-monitoring&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/crazy-canux/awesome-monitoring&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;monitoring-plugins-1&#34;&gt;monitoring-plugins&lt;/h1&gt;
+&lt;h2 id=&#34;negate&#34;&gt;negate&lt;/h2&gt;
+&lt;p&gt;设置相反状态&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;-o 设置ok对应状态
+-w
+-c
+-u
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;check_http&#34;&gt;check_http&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;[-f &amp;lt;ok|warning|critcal|follow|sticky|stickyport&amp;gt;] # 跳转
+-p PORT # http:80, https:443
+-a &amp;quot;USERNAME&amp;quot;:&amp;quot;PASSWORD&amp;quot;
+-u PATH
+--ssl=1/-S # https需要ssl
+-s SEARCH
+-e SEARCH,SEARCH...
+-l # 用在-r或-R前面,表示可以在多行进行正则匹配
+-r # 正则匹配
+-R # 大小写不敏感的正则匹配
+-C # 检查证书, 不检查URL
+-t # timeout.
+-w # warning response time
+-c # critical response time
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;windows-monitoring&#34;&gt;Windows monitoring&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;check_wmi_plus.pl&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;  IgnoreMyOutDatedPerlModuleVersions
+  -m checkfolderfileage -a &#39;C:&#39; -o &#39;/tmp&#39; -inc _FileAge=@0:1000 -c 10
+  -m check_file_count -a &#39;F:&#39; -o &#39;/folder&#39;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;check_snmp_win_services.pl&lt;/p&gt;
+&lt;p&gt;查windows的service&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;  -n &amp;lt;name&amp;gt;[,&amp;lt;name2&amp;gt;]... # 指定service名字，默认大小写不敏感,正则匹配，逗号分隔多个service，用display name。
+  -N=&amp;lt;n&amp;gt; # 匹配到service数量大于n就报错
+  -r # 精确匹配
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;check_smb_shares.pl&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;linuxunix-monitoring&#34;&gt;Linux/Unix monitoring&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;check_hpasm.pl&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;os-x-monitoring&#34;&gt;OS X monitoring&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;OSX-Monitoring-Tools&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;vitual-machine-monitoring&#34;&gt;Vitual Machine monitoring&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;check_wmware_api.pl&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;check_vmware_esx.pl&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;db-monitoring&#34;&gt;DB monitoring&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;check_mysql_health.pl&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;check_oracle_health.pl&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;check_db2_health.pl&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;check_mssql_health.pl&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;  --name database/sql
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;network-monitoring&#34;&gt;Network monitoring&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;check_nwc_health.pl&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;storage-monitoring&#34;&gt;Storage monitoring&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;check_snmp_storage.pl&lt;/p&gt;
+&lt;p&gt;返回用了多少空间。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;check_disk&lt;/p&gt;
+&lt;p&gt;返回剩余多少空间。&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;log-monitoring&#34;&gt;Log monitoring&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;check_logfiles.pl&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;check_events.pl&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;process-monitoring&#34;&gt;Process monitoring&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;check_snmp_process.pl&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;  -n &amp;lt;name&amp;gt; # process名字，大小写敏感，正则匹配，windows需要用processname.exe
+  -r # 精确匹配
+  -w minW, maxW
+  -c minC, maxC # minC &amp;lt;= minW &amp;lt; maxW &amp;lt; maxC
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;application-monitoring&#34;&gt;Application monitoring&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;check_sap_health.pl&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;check_mailbox_health.pl&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id=&#34;monitoring插件开发&#34;&gt;Monitoring插件开发&lt;/h1&gt;
+&lt;p&gt;Nagios Plugin API:&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://assets.nagios.com/downloads/nagioscore/docs/nagioscore/3/en/pluginapi.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://assets.nagios.com/downloads/nagioscore/docs/nagioscore/3/en/pluginapi.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Developing Plugins For Use With Embedded Perl:&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://assets.nagios.com/downloads/nagioscore/docs/nagioscore/3/en/epnplugins.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://assets.nagios.com/downloads/nagioscore/docs/nagioscore/3/en/epnplugins.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Nagios plugin development guidelines:&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://nagios-plugins.org/doc/guidelines.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://nagios-plugins.org/doc/guidelines.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Monitoring Plugin Development Guidelines:&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.monitoring-plugins.org/doc/guidelines.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.monitoring-plugins.org/doc/guidelines.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Nagios不是基于agent的，所以插件都是通过协议来获取监控信息。&lt;/p&gt;
+&lt;p&gt;plugin需要遵守下面规则：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;至少输出一行文本到STDOUT&lt;/li&gt;
+&lt;li&gt;事件状态由插件的返回码决定&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;输出：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;just support 4kb data
+shortoutput - $SERVICEOUTPUT$
+perfdata - $SERVICEPERFDATA$
+longoutput - $LONGSERVICEOUTPUT$
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;返回码：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;0： OK（绿色）
+1： Warning（黄色）
+2： Critical（红色）
+3： Unknown（深黄色）
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;阀值：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;10     | 0:10   | &amp;lt;0 or &amp;gt;10 alert
+10:    | 10:æ  | &amp;lt;10 alert
+~:10   | -æ:10 | &amp;gt;10 alert
+10:20  |        | &amp;lt;10 or &amp;gt;20 alert
+@10:20 |        | &amp;gt;=10 and &amp;lt;=20 alert
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        <item>
+        <title>Zabbix</title>
+        <link>https://canuxcheng.com/post/metrics_zabbix/</link>
+        <pubDate>Fri, 25 Mar 2016 11:15:48 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/metrics_zabbix/</guid>
+        <description>&lt;h1 id=&#34;zabbix&#34;&gt;Zabbix&lt;/h1&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

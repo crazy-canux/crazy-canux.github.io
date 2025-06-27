@@ -1,19 +1,844 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Hexo on Morgoth</title>
-    <link>https://canuxcheng.com/tags/hexo/</link>
-    <description>Recent content in Hexo on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Tue, 22 Mar 2016 12:59:10 +0000</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/hexo/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Hexo</title>
-      <link>https://canuxcheng.com/post/hexo/</link>
-      <pubDate>Tue, 22 Mar 2016 12:59:10 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/hexo/</guid>
-      <description>&lt;h1 id=&#34;hexo&#34;&gt;Hexo&lt;/h1&gt;&#xA;&lt;h2 id=&#34;什么是hexo&#34;&gt;什么是hexo&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Hexo是用nodejs开发的快速、简洁且高效的博客框架，&#xA;Hexo 使用Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;p&gt;hexo有大量的插件和主题。&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://hexo.io/plugins/&#34;&gt;plugins&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://hexo.io/themes/&#34;&gt;themes&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;安装hexo&#34;&gt;安装hexo&lt;/h2&gt;&#xA;&lt;p&gt;需要安装依赖nodejs(包括npm)和git。&lt;/p&gt;&#xA;&lt;p&gt;安装hexo命令行插件hexo-cli：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$sudo npm install hexo-cli -g&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;next&#34;&gt;Next&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Next是一种文雅的Hexo主题。&#xA;一个主题，三种外观，选您所好。&#xA;通过主题中的主题（亦称Scheme），您可以方便地改变您博客的外观，同时几乎所有配置同样适用。&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/iissnan/hexo-theme-next&#34;&gt;原生的Next&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/crazy-canux/hexo-theme-next&#34;&gt;作者的Next&lt;/a&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;快速使用&#34;&gt;快速使用&lt;/h1&gt;&#xA;&lt;h2 id=&#34;初始化&#34;&gt;初始化&lt;/h2&gt;&#xA;&lt;p&gt;初始化一个hexo的目录：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$hexo init &amp;lt;folder&amp;gt;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;安装依赖&#34;&gt;安装依赖&lt;/h2&gt;&#xA;&lt;p&gt;进入hexo目录安装依赖：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$cd &amp;lt;folder&amp;gt;&#xA;$sudo npm install &amp;lt;package-name&amp;gt;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;默认安装下列依赖：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;hexo&#xA;hexo-server&#xA;hexo-generator-index&#xA;hexo-generator-archive&#xA;hexo-generator-category&#xA;hexo-generator-tag&#xA;hexo-renderer-ejs&#xA;hexo-renderer-marked&#xA;hexo-renderer-stylus&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;查看文件和目录&#34;&gt;查看文件和目录&lt;/h2&gt;&#xA;&lt;p&gt;安装完成后有下列&lt;/p&gt;&#xA;&lt;p&gt;文件：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;_config.yml&#xA;db.json&#xA;package.json&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;目录：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;node_modules&#xA;scaffolds&#xA;source&#xA;themes&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;生成静态文件&#34;&gt;生成静态文件&lt;/h2&gt;&#xA;&lt;pre&gt;&lt;code&gt;$hexo g&#xA;$hexo generate&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;启动本地服务器&#34;&gt;启动本地服务器&lt;/h2&gt;&#xA;&lt;pre&gt;&lt;code&gt;$hexo s&#xA;$hexo server&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;用浏览器打开链接即可本地查看默认博客。&lt;/p&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Hexo on Morgoth</title>
+        <link>https://canuxcheng.com/tags/hexo/</link>
+        <description>Recent content in Hexo on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Tue, 22 Mar 2016 12:59:10 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/hexo/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Hexo</title>
+        <link>https://canuxcheng.com/post/hexo/</link>
+        <pubDate>Tue, 22 Mar 2016 12:59:10 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/hexo/</guid>
+        <description>&lt;h1 id=&#34;hexo&#34;&gt;Hexo&lt;/h1&gt;
+&lt;h2 id=&#34;什么是hexo&#34;&gt;什么是hexo&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Hexo是用nodejs开发的快速、简洁且高效的博客框架，
+Hexo 使用Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;hexo有大量的插件和主题。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://hexo.io/plugins/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;plugins&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://hexo.io/themes/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;themes&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;安装hexo&#34;&gt;安装hexo&lt;/h2&gt;
+&lt;p&gt;需要安装依赖nodejs(包括npm)和git。&lt;/p&gt;
+&lt;p&gt;安装hexo命令行插件hexo-cli：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$sudo npm install hexo-cli -g
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;next&#34;&gt;Next&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Next是一种文雅的Hexo主题。
+一个主题，三种外观，选您所好。
+通过主题中的主题（亦称Scheme），您可以方便地改变您博客的外观，同时几乎所有配置同样适用。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/iissnan/hexo-theme-next&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;原生的Next&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/crazy-canux/hexo-theme-next&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;作者的Next&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;快速使用&#34;&gt;快速使用&lt;/h1&gt;
+&lt;h2 id=&#34;初始化&#34;&gt;初始化&lt;/h2&gt;
+&lt;p&gt;初始化一个hexo的目录：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$hexo init &amp;lt;folder&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;安装依赖&#34;&gt;安装依赖&lt;/h2&gt;
+&lt;p&gt;进入hexo目录安装依赖：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$cd &amp;lt;folder&amp;gt;
+$sudo npm install &amp;lt;package-name&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;默认安装下列依赖：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;hexo
+hexo-server
+hexo-generator-index
+hexo-generator-archive
+hexo-generator-category
+hexo-generator-tag
+hexo-renderer-ejs
+hexo-renderer-marked
+hexo-renderer-stylus
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;查看文件和目录&#34;&gt;查看文件和目录&lt;/h2&gt;
+&lt;p&gt;安装完成后有下列&lt;/p&gt;
+&lt;p&gt;文件：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;_config.yml
+db.json
+package.json
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;目录：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;node_modules
+scaffolds
+source
+themes
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;生成静态文件&#34;&gt;生成静态文件&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;$hexo g
+$hexo generate
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;启动本地服务器&#34;&gt;启动本地服务器&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;$hexo s
+$hexo server
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;用浏览器打开链接即可本地查看默认博客。&lt;/p&gt;
+&lt;h2 id=&#34;写博文&#34;&gt;写博文&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;$hexo new post &amp;lt;article-name&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;编辑这篇文章。&lt;/p&gt;
+&lt;h2 id=&#34;清理生成文件和缓存&#34;&gt;清理生成文件和缓存&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;$hexo clean
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;再次运行hexo g和hexo s查看。&lt;/p&gt;
+&lt;h2 id=&#34;安装部署插件&#34;&gt;安装部署插件&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;$sudo npm install hexo-deployer-git --save
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;修改全局配置文件，参考插件的&lt;a class=&#34;link&#34; href=&#34;https://github.com/hexojs/hexo-deployer-git&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;github&lt;/a&gt;
+针对github需要新建一个名字为&amp;lt;your-github-name&amp;gt;.github.io的仓库。&lt;/p&gt;
+&lt;h2 id=&#34;部署到github&#34;&gt;部署到github&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;$hexo d
+$hexo deploy
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;在浏览器打开http://&amp;lt;your-github-name&amp;gt;.github.io/查看博客。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;配置&#34;&gt;配置&lt;/h1&gt;
+&lt;h2 id=&#34;全局配置&#34;&gt;全局配置&lt;/h2&gt;
+&lt;p&gt;全局配置文件是&amp;lt;folder&amp;gt;/_config.yml&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;# Hexo Configuration&lt;/p&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;## Docs: &lt;a class=&#34;link&#34; href=&#34;https://hexo.io/docs/configuration.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://hexo.io/docs/configuration.html&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;## Source: &lt;a class=&#34;link&#34; href=&#34;https://github.com/hexojs/hexo/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/hexojs/hexo/&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;# Site&lt;/p&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;   title:
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;   subtitle:
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;   description:
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;   author:
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;   language: zh-Hans
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;   timezone: Asia/Shanghai
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;# URL&lt;/p&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;## If your site is put in a subdirectory, set url as &amp;lsquo;&lt;a class=&#34;link&#34; href=&#34;http://yoursite.com/child%27&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://yoursite.com/child&#39;&lt;/a&gt; and root as &amp;lsquo;/child/&amp;rsquo;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;   url: http://&amp;lt;your-github-name&amp;gt;.github.io/
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;   root: /
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;   permalink: :year/:month/:day/:title/
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;   permalink_defaults:
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;# Directory&lt;/p&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;   source_dir: source
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;   public_dir: public
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;   tag_dir: tags
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;   archive_dir: archives
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;   category_dir: categories
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;   code_dir: downloads/code
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;   i18n_dir: :lang
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;   skip_render:
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;# Writing&lt;/p&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;   new_post_name: :title.md # File name of new posts
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;   default_layout: post # post | page | draft
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;   titlecase: false # Transform title into titlecase
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;   external_link: true # Open external links in new tab
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;   filename_case: 0
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;   render_drafts: false
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;   post_asset_folder: false
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;   relative_link: false
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;   future: true
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;   highlight:
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;   enable: true
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;   line_number: true
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;   auto_detect: true
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;   tab_replace: &#39;&#39;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;# Category &amp;amp; Tag&lt;/p&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;   default_category: uncategorized
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;   category_map:
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;   tag_map:
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;# Date / Time format&lt;/p&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;## Hexo uses Moment.js to parse and display date&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;## You can customize the date format as defined in&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;## &lt;a class=&#34;link&#34; href=&#34;http://momentjs.com/docs/#/displaying/format/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://momentjs.com/docs/#/displaying/format/&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;   date_format: YYYY-MM-DD
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;   time_format: HH:mm:ss
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;# Pagination&lt;/p&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;## Set per_page to 0 to disable pagination&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;   per_page: 10
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;   pagination_dir: page
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;# Extensions&lt;/p&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;## Plugins: &lt;a class=&#34;link&#34; href=&#34;https://hexo.io/plugins/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://hexo.io/plugins/&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;## Themes: &lt;a class=&#34;link&#34; href=&#34;https://hexo.io/themes/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://hexo.io/themes/&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;   theme: hexo-theme-canux
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;   Plugins:
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;   - hexo-deployer-git
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;# Extend plugins&lt;/p&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;## deploy&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;   deploy:
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;     type: git
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;     repo:
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;        github: https://github.com/crazy-canux/crazy-canux.github.io.git,master
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;        coding: https://git.coding.net/Canux/Canux.git,master
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;h2 id=&#34;主题配置&#34;&gt;主题配置&lt;/h2&gt;
+&lt;p&gt;hexo官方默认主题是&amp;lt;folder&amp;gt;/themes/landscape。&lt;/p&gt;
+&lt;p&gt;主题配置文件是&amp;lt;folder&amp;gt;/themes/landscape/_config.yml&lt;/p&gt;
+&lt;p&gt;现在将默认主题替换成自己喜欢的主题：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;cd &amp;lt;folder&amp;gt;/themes
+git clone &amp;lt;github-url-of-your-favourite-theme&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;然后将全局配置的 theme: landscape 改为 theme: &amp;lt;your-favourite-theme-name&amp;gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;部署&#34;&gt;部署&lt;/h1&gt;
+&lt;p&gt;部署到github和coding(gitcafe)：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$hexo clean
+$hexo g
+$hexo d
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;github访问http://&lt;your-github-name&gt;.github.io即可。&lt;/p&gt;
+&lt;p&gt;coding访问http://&lt;your-coding-name&gt;.coding.me/&lt;your-coding-name&gt;&lt;/p&gt;
+&lt;p&gt;绑定自己的域名：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;在域名供应商购买域名后添加解析，记录类型A或者CNAME，主机类型@或者www，记录值可以是http://&lt;your-github-name&gt;.github.io或者通过ping获取的ip地址。&lt;/li&gt;
+&lt;li&gt;在&lt;your-blog&gt;/source/新建文件CNAME，添加你购买的域名&lt;your-domain&gt;.com。&lt;/li&gt;
+&lt;li&gt;正常部署到github。&lt;/li&gt;
+&lt;li&gt;访问http://&lt;your-doamin&gt;.com即可。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;安装hexo插件&#34;&gt;安装hexo插件&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://hexo.io/plugins/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;plugins&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$sudo npm install &amp;lt;plugin-name&amp;gt; --save
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;配置hexo插件&#34;&gt;配置hexo插件&lt;/h1&gt;
+&lt;p&gt;全局配置文件是&amp;lt;folder&amp;gt;/_config.yml&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;# Extensions&lt;/p&gt;&lt;/blockquote&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;## Plugins: &lt;a class=&#34;link&#34; href=&#34;https://hexo.io/plugins/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://hexo.io/plugins/&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;## Themes: &lt;a class=&#34;link&#34; href=&#34;https://hexo.io/themes/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://hexo.io/themes/&lt;/a&gt;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;   theme: next
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;   Plugins:
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;   - hexo-deployer-git
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;# Extend plugins&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;## deploy&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;   deploy:
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;   type: git
+
+   repo: git@github.com:&amp;lt;your-github-name&amp;gt;/&amp;lt;your-github-name&amp;gt;.github.io.git
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;   branch: master
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;   message:
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;h1 id=&#34;站点地图&#34;&gt;站点地图&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;$npm install hexo-generator-sitemap --save
+&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;## sitemap&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;   sitemap:
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;       path: sitemap.xml
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/hexojs/hexo-generator-sitemap&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/hexojs/hexo-generator-sitemap&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;rss&#34;&gt;RSS&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;$npm install hexo-generator-feed --save
+&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;p&gt;## feed&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;   feed:
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;     type: atom
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;     path: atom.xml
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;     limit: 20
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;     hub:
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/hexojs/hexo-generator-feed&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/hexojs/hexo-generator-feed&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;seo优化&#34;&gt;SEO优化&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;$npm install hexo-generator-seo-friendly-sitemap --save
+&lt;/code&gt;&lt;/pre&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;   sitemap:
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;       path: sitemap.xml
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/ludoviclefevre/hexo-generator-seo-friendly-sitemap&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/ludoviclefevre/hexo-generator-seo-friendly-sitemap&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;next-1&#34;&gt;Next&lt;/h1&gt;
+&lt;p&gt;以hexo主题next为例&lt;/p&gt;
+&lt;p&gt;中文文档：&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://theme-next.iissnan.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://theme-next.iissnan.com/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;英文文档：&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/iissnan/hexo-theme-next/blob/master/README.en.md&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/iissnan/hexo-theme-next/blob/master/README.en.md&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;主题配置文件&#34;&gt;主题配置文件&lt;/h1&gt;
+&lt;p&gt;主题配置文件在：&lt;/p&gt;
+&lt;p&gt;&amp;lt;folder&amp;gt;/themes/next/_config.yml&lt;/p&gt;
+&lt;h1 id=&#34;主题配置-1&#34;&gt;主题配置&lt;/h1&gt;
+&lt;blockquote&gt;
+&lt;p&gt;# &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;# 站点信息设置&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;# &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;# 将制作好的favicon图标放到/source里面。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;favicon: /favicon.ico
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;# SEO优化的关键字。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;keywords: &amp;quot;Canux, CHENG, blog&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;# 指定站点的起始日期。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;since: 2013
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;# &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;# 菜单设置&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;# &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;# 顶部菜单栏&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;menu:
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;  home: /
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;  about: /about
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;  categories: /categories
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;  tags: /tags
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;  archives: /archives
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;  #commonweal: /404.html
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;# 菜单栏图标,使用fontawsome&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;menu_icons:
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;  enable: true
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;  home: home
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;  about: user
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;  categories: th
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;  tags: tags
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;  archives: archive
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;  #commonweal: heartbeat
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;# &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;# 主题方案设计: Must | Mist | Pisces&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;# &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;scheme: Muse
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;# &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;# 捐赠设置&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;# &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;reward_comment: 您的支持是我创作的动力!
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;wechatpay: /images/myimages/wechatpay.jpg
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;alipay: /images/myimages/alipay.jpg
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;# &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;# 侧边栏设置&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;# &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;# 社交信息&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;social:
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;  GitHub: https://github.com/crazy-canux
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;  Stackoverflow: http://stackoverflow.com/
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;  LinkedIn: http://www.linkedin.com/profile/preview?locale=zh_CN&amp;amp;trk=prof-0-sb-preview-primary-button
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;  E-mail: mailto:canuxcheng@gmail.com
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;# 社交信息图标，使用fontawsome。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;social_icons:
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;  enable: true
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;  GitHub: github
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;  LinkedIn: linkedin
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;  Stackoverflow: stack-overflow
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;  E-mail: envelope
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;# 友情链接&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;links_title: Links
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;links:
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;  CSDN: http://bbs.csdn.net/home
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;  51CTO: http://bbs.51cto.com/
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;  ChinaUnix: http://bbs.chinaunix.net/
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;  ITPUB: http://www.itpub.net/forum.php
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;# 侧边栏图像&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;avatar: /images/myimages/avatar.jpg
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;# TOC(table of contents)设置&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;toc:
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;  enable: true
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;  number: true
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;#  设置 4.0 International 许可证: by | by-nc | by-nc-nd | by-nc-sa | by-nd | by-sa | zero&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;creative_commons: zero
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;# 侧边栏位置: left | right&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;sidebar:
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;  position: left
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;# 侧边栏显示方式： post | always | hide | remove&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;display: post
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;# &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;# 其它设置&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;# &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;# 使用Custom Logo.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;custom_logo:
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;  enabled: false
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;  image:
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;# 代码高亮主题: normal | night | night eighties | night blue | night bright&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;highlight_theme: night eighties
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;# 自动滚动页面&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;scroll_to_more: true
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;# 自动摘录&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;auto_excerpt:
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;  enable: true
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;  length: 150
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;# 使用Lato font&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;use_font_lato: true
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;# &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;# 第三方插件: 一般都需要去插件的官网注册使用。&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;# &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;# MathJax Support&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;mathjax: true
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;# Google Analytics - US&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;#google_analytics:
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;# Facebook sdk Analytics - US&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;facebook_sdk:
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;  enable: false
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;  app_id: #&amp;lt;app_id&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;  fb_admin: #&amp;lt;user_id&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;  like_button: #true
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;  webmaster: #true
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;# CNZZ Analytics - CN&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;cnzz_siteid: ******
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;# leancloud Analytics - CN&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;leancloud_visitors:
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;  enable: false
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;  app_id: #&amp;lt;app_id&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;  app_key: #&amp;lt;app_key&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;# Baidu Analytics&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;#baidu_analytics: ******
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;# Tencent Analytics&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;#tencent_analytics: ******
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;# Disqus - US&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;#disqus_shortname: ******
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;# Duoshuo - CN&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;duoshuo_shortname: ******
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;# Make duoshuo show UA&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;duoshuo_info:
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;  ua_enable: true
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;  admin_enable: false
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;  user_id:
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;  #admin_nickname: ROOT
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;# Make duoshuo show hot artical&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;duoshuo_hotartical: true
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;# AddThis - US&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;#add_this_id:
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;# JiaThis - CN&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;jiathis: true
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;# Baidu Share&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;#baidushare: true
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;# Duoshuo Share&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;#duoshuo_share: true
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;# Swiftype - US&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;swiftype_key: ******
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;# Tinysou - CN&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;#tinysou_Key
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;#! &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;#! 谨慎编辑的主题信息&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;#! &amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&amp;mdash;&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;# 侧边栏移动插件 Motion&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;use_motion: true
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;# 图片弹出插件 Fancybox&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;fancybox: true
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;# Static files&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;vendors: vendors
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;css: css
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;js: js
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;images: images
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;# Theme version&lt;/p&gt;&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;pre&gt;&lt;code&gt;version: 0.5.0
+&lt;/code&gt;&lt;/pre&gt;&lt;/blockquote&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

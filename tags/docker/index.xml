@@ -1,33 +1,949 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Docker on Morgoth</title>
-    <link>https://canuxcheng.com/tags/docker/</link>
-    <description>Recent content in Docker on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sat, 04 Jan 2020 21:53:40 +0800</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/docker/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Compose</title>
-      <link>https://canuxcheng.com/post/cncf_compose/</link>
-      <pubDate>Sat, 04 Jan 2020 21:53:40 +0800</pubDate>
-      <guid>https://canuxcheng.com/post/cncf_compose/</guid>
-      <description>&lt;h1 id=&#34;docker-compose&#34;&gt;docker-compose&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/docker/compose&#34;&gt;https://github.com/docker/compose&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;通过一个yaml文件来管理容器中的服务，包括网络和存储。&lt;/p&gt;&#xA;&lt;p&gt;安装:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;https://docs.docker.com/compose/install/&#xA;$ sudo curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose&#xA;$ sudo chmod +x /usr/local/bin/docker-compose&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h1 id=&#34;docker-compose命令&#34;&gt;docker-compose命令&lt;/h1&gt;&#xA;&lt;pre&gt;&lt;code&gt;docker-compose [-f &amp;lt;arg&amp;gt;...] [options] [COMMAND] [ARGS...]&#xA;-f/--file&#xA;-p/--project-name # 默认目录名&#xA;-H/--host&#xA;&#xA;# 拉取compose文件中指定的镜像&#xA;$ docker-compose -f service.yml pull&#xA;&#xA;# 根据docker-compose.yml把stack打包成一个Distributed Application Bundles文件.&#xA;$ docker-compose bundle -o &amp;lt;project name&amp;gt;.dab&#xA;&#xA;$ docker-compose start [servoce...]&#xA;$ docker-compose stop [service...]&#xA;$ docker-compose restart [service...]&#xA;$ docker-compose up -d [service...]&#xA;$ docker-compose down -v&#xA;&#xA;$ docker-compose logs -f&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h1 id=&#34;docker-composeyml&#34;&gt;docker-compose.yml&lt;/h1&gt;&#xA;&lt;p&gt;compose中的变量：&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Image</title>
-      <link>https://canuxcheng.com/post/cncf_image/</link>
-      <pubDate>Tue, 03 Dec 2019 21:50:47 +0800</pubDate>
-      <guid>https://canuxcheng.com/post/cncf_image/</guid>
-      <description>&lt;h1 id=&#34;image&#34;&gt;image&lt;/h1&gt;&#xA;&lt;p&gt;容器镜像&lt;/p&gt;&#xA;&lt;p&gt;docker image driver: aufs, btrfs, devicemapper, overlay.&lt;/p&gt;&#xA;&lt;h2 id=&#34;multi-platform-images&#34;&gt;multi-platform images&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://docs.docker.com/build/building/multi-platform/&#34;&gt;https://docs.docker.com/build/building/multi-platform/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h3 id=&#34;qemu&#34;&gt;qemu&lt;/h3&gt;&#xA;&lt;p&gt;使用qume:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;// 安装bitfmt&#xA;docker run --privileged --rm tonistiigi/binfmt --install all&#xA;&#xA;// 查看支持的平台&#xA;ls -l /proc/sys/fs/binfmt_misc/qemu-*&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h3 id=&#34;multiple-native-nodes&#34;&gt;multiple native nodes&lt;/h3&gt;&#xA;&lt;p&gt;安装&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;// linux&#xA;sudo apt install docker-buildx-plugin&#xA;&#xA;// mac&#xA;brew install docker-buildx&#xA;mkdir -p ~/.docker/cli-plugins&#xA;ln -sfn $(which docker-buildx) ~/.docker/cli-plugins/docker-buildx&#xA;docker buildx install&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;查看版本&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;docker buildx version&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;管理builder instance&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;docker buildx create&#xA;--append 添加node到builder实例。&#xA;--leave 从builder实例删除node&#xA;--driver Driver to use(&amp;quot;docker&amp;quot;, &amp;quot;docker-container&amp;quot;, &amp;quot;kubernetes&amp;quot;)&#xA;--name&#xA;--use&#xA;--node&#xA;--platform &#xA;--bootstrap 启动实例（以容器的形式启动）&#xA;&#xA;// 以本地是amd64为例，创建一个实例.&#xA;docker buildx create --use --bootstrap --platform linux/amd64,linux/amd64/v2,linux/amd64/v3,linux/arm64,linux/arm/v7,linux/arm/v6 --name canux-builder&#xA;&#xA;// 如果没有qumu，可以把不同平台的远程机器加到builder实例.&#xA;docker buildx create \&#xA;--name local_remote_builder \&#xA;--append --node &amp;lt;my-arm-server&amp;gt; \&#xA;--platform linux/arm64,linux/riscv64,linux/ppc64le,linux/s390x,linux/mips64le,linux/mips64,linux/arm/v7,linux/arm/v6 \&#xA;ssh://user@&amp;lt;my-arm-server&amp;gt; &#xA;&#xA;docker buildx rm&#xA;&#xA;docker buildx stop&#xA;&#xA;docker buildx inspect&#xA;&#xA;docker buildx use&#xA;&#xA;// 查看当前可用的builders&#xA;docker buildx ls&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;构建多平台镜像&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Docker</title>
-      <link>https://canuxcheng.com/post/cncf_docker/</link>
-      <pubDate>Thu, 05 Apr 2018 22:02:31 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/cncf_docker/</guid>
-      <description>&lt;h1 id=&#34;docker&#34;&gt;Docker&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://store.docker.com/&#34;&gt;https://store.docker.com/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://hub.docker.com/&#34;&gt;https://hub.docker.com/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/docker&#34;&gt;https://github.com/docker&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/moby/moby&#34;&gt;https://github.com/moby/moby&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;Docker是一个容器引擎, 分为社区版CE, 和企业版EE, Docker不是虚拟机, 也不依赖虚拟化技术．&lt;/p&gt;&#xA;&lt;p&gt;docker-cli -&amp;gt; dockerd -&amp;gt; containerd -&amp;gt; shim -&amp;gt; runc&lt;/p&gt;&#xA;&lt;p&gt;containerd是容器运行时管理引擎.&lt;/p&gt;&#xA;&lt;p&gt;shim用于管理容器生命周期.&lt;/p&gt;&#xA;&lt;p&gt;Docker包括三个基本概念:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;仓库repository,集中存放镜像文件的场所,docker hub/store是最大的公开仓库．&lt;/li&gt;&#xA;&lt;li&gt;镜像image, 镜像是一个文件系统.&lt;/li&gt;&#xA;&lt;li&gt;容器container, 容器是镜像的运行的实例．&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;修改docker存储路径:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ service docker stop&#xA;$ mv /var/lib/docker /opt/ssd/docker&#xA;$ ln -s /opt/ssd/docker /var/lib/docker&#xA;$ service docker start&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;Install:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;windows:&#xA;&amp;lt;https://docs.docker.com/docker-for-windows/install/&amp;gt;&#xA;&#xA;linux:&#xA;&amp;lt;https://docs.docker.com/engine/install/ubuntu/&amp;gt;&#xA;&#xA;mac:&#xA;&amp;lt;https://github.com/abiosoft/colima/blob/main/docs/FAQ.md#docker&amp;gt;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;config&#34;&gt;config&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://docs.docker.com/engine/reference/commandline/dockerd/#daemon-configuration-file&#34;&gt;https://docs.docker.com/engine/reference/commandline/dockerd/#daemon-configuration-file&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;docker配置文件:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;/etc/docker/daemon.json&#xA;/lib/systemd/system/docker.service&#xA;&#xA;{&#xA;    // debug&#xA;    &amp;quot;debug&amp;quot;: true,&#xA;    &#xA;    &amp;quot;data-root&amp;quot;： &amp;quot;/var/lib/docker&amp;quot;,&#xA;    &#xA;    &amp;quot;features&amp;quot;: {&#xA;        &amp;quot;buildkit&amp;quot;: true&#xA;    },&#xA;&#xA;    //容器访问外网:&#xA;    ip-forward=true 会设置 net.ipv4.ip_forward=1, 才能访问外网&#xA;    // 容器之间访问:&#xA;    icc=true, &#xA;    iptables=true  会修改iptables的forward策略为accept,&#xA;&#xA;    // 修改默认docker0&#xA;    &amp;quot;bridge&amp;quot;:&#xA;    &amp;quot;bip&amp;quot;: &amp;quot;10.0.0.1/16&amp;quot;  // subnet + gateway&#xA;    &amp;quot;fixed-cidr&amp;quot;: &amp;quot;10.41.0.0/24&amp;quot; // iprange&#xA;    &amp;quot;fixed-cidr-v6&amp;quot;: &amp;quot;&amp;quot;,&#xA;    &amp;quot;mtu&amp;quot;: 1500&#xA;    &amp;quot;default-gateway&amp;quot;:&#xA;&#x9;&amp;quot;default-gateway-v6&amp;quot;: &amp;quot;&amp;quot;,&#xA;&#xA;    // 修改默认dns&#xA;    &amp;quot;dns&amp;quot; : [&#xA;        &amp;quot;114.114.114.114&amp;quot;,&#xA;        &amp;quot;8.8.8.8&amp;quot;&#xA;    ]&#xA;    &amp;quot;dns-opts&amp;quot;: [],&#xA;    &amp;quot;dns-search&amp;quot;: [],&#xA;&#xA;    // ipv6&#xA;    &amp;quot;ipv6&amp;quot;: true&#xA;&#xA;    // private registry&#xA;  &#x9;&amp;quot;insecure-registries&amp;quot;: [],&#xA;&#xA;    // 修改registry&#xA;    &amp;quot;registry-mirrors&amp;quot;: [&#xA;        &amp;quot;https://registry.docker-cn.com&amp;quot;,&#xA;        &amp;quot;https://z4yd270h.mirror.aliyuncs.com&amp;quot;,&#xA;        &amp;quot;http://f1361db2.m.daocloud.io&amp;quot;,&#xA;        &amp;quot;https://docker.mirrors.ustc.edu.cn&amp;quot;&#xA;    ]&#xA;&#xA;    &amp;quot;hosts&amp;quot;: [],&#xA;    &amp;quot;log-level&amp;quot;: &amp;quot;&amp;quot;,&#xA;    &amp;quot;tls&amp;quot;: true,&#xA;    &amp;quot;tlsverify&amp;quot;: true,&#xA;    &amp;quot;tlscacert&amp;quot;: &amp;quot;&amp;quot;,&#xA;    &amp;quot;tlscert&amp;quot;: &amp;quot;&amp;quot;,&#xA;    &amp;quot;tlskey&amp;quot;: &amp;quot;&amp;quot;,&#xA;}&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;proxy for pull image from google(gcr):&lt;/p&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Docker on Morgoth</title>
+        <link>https://canuxcheng.com/tags/docker/</link>
+        <description>Recent content in Docker on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Sat, 04 Jan 2020 21:53:40 +0800</lastBuildDate><atom:link href="https://canuxcheng.com/tags/docker/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Compose</title>
+        <link>https://canuxcheng.com/post/cncf_compose/</link>
+        <pubDate>Sat, 04 Jan 2020 21:53:40 +0800</pubDate>
+        
+        <guid>https://canuxcheng.com/post/cncf_compose/</guid>
+        <description>&lt;h1 id=&#34;docker-compose&#34;&gt;docker-compose&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/docker/compose&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/docker/compose&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;通过一个yaml文件来管理容器中的服务，包括网络和存储。&lt;/p&gt;
+&lt;p&gt;安装:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;https://docs.docker.com/compose/install/
+$ sudo curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
+$ sudo chmod +x /usr/local/bin/docker-compose
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;docker-compose命令&#34;&gt;docker-compose命令&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;docker-compose [-f &amp;lt;arg&amp;gt;...] [options] [COMMAND] [ARGS...]
+-f/--file
+-p/--project-name # 默认目录名
+-H/--host
+
+# 拉取compose文件中指定的镜像
+$ docker-compose -f service.yml pull
+
+# 根据docker-compose.yml把stack打包成一个Distributed Application Bundles文件.
+$ docker-compose bundle -o &amp;lt;project name&amp;gt;.dab
+
+$ docker-compose start [servoce...]
+$ docker-compose stop [service...]
+$ docker-compose restart [service...]
+$ docker-compose up -d [service...]
+$ docker-compose down -v
+
+$ docker-compose logs -f
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;docker-composeyml&#34;&gt;docker-compose.yml&lt;/h1&gt;
+&lt;p&gt;compose中的变量：&lt;/p&gt;
+&lt;p&gt;&amp;ldquo;x-&amp;ldquo;开头的会被compose忽略，但是会被yaml解析.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;x-var-name: &amp;amp;default-label
+  key1: val1
+  key2: val2
+  
+services:
+  mysql:
+    &amp;lt;&amp;lt;: *default-label
+    image: mysql
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;compose文件&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;version: &amp;quot;3.6&amp;quot;
+services:
+  mongo:
+    image: mongo:latest
+    hostname: hostname
+    init
+    dns
+    dns_search
+    expose
+    extra_hosts
+
+    healthcheck:
+      test: curl -f https://host/ping || exit 1
+      test: wget --no-verbose --tries=1 --spider https://host/ping || exit 1
+      interval:
+      timeout:
+      retries:
+      stat_period:
+
+    stop_grrace_period
+    isolation
+    pid
+    profiles
+    stop_signal
+    labels:
+      com.example.key: value
+
+    // start: 下列选项不能用于swarm stack部署.
+    sysctls(19.03+)
+    privileged: true
+    depends_on:
+      - service-name
+    build
+    cgroup_parent
+    container_name
+    devices:
+      - /dev/vboxdrv:/dev/vboxdrv
+    tmpfs
+    external_links
+    links
+    network_mode: bridge/host/none
+    restart: no(default)
+    security_opt
+    userns_mode
+    ulimits
+    cap_add
+    cap_drop
+    // end
+
+    networks:
+    - mynetwork
+    // 只有自定义网络可以指定静态IP
+    networks:
+      mynetwork:
+        ipv4_address: 172.19.0.100
+
+    volumes: // short syntax
+    - /container/dir // 自动创建volume
+    - myvolume:/container/dir 
+    - /host/dir:/container/dir
+    volumes: // long syntax
+    - type: valume/bind/tmpfs
+      source: 
+      target:
+      read_only:
+      bind:
+      volume:
+      tmpfs:
+      consistency:
+    volumes:
+    - &amp;quot;/path/to/file:/path/to/file 挂载文件
+    
+    configs:
+    - my-conf
+    configs:
+    - source: config-name
+      target: file-name
+     
+    secrets:
+    - my-sec
+    secrets:
+    - source: secret-name
+      target: file-name in /run/secrets/
+    
+    logging:
+      driver: syslog
+      options:
+        syslog-address: &amp;quot;tcp://192.168.0.42:123&amp;quot;
+
+    ports:  // long syntax
+    - target: 80
+      published: 8080
+      mode: host
+      protocol: tcp/udp
+    ports: // short syntax
+      - 80  // host上的port没有指定就是一个随机的port
+      - 80:80
+      - 1234:1234/udp
+
+    // 设置环境变量
+    environment:
+      RABBITMQ_DEFAULT_USER: sandbox
+      RABBITMQ_DEFAULT_PASS: password
+    environment:
+      - RABBITMQ_DEFAULT_USER=sandbox
+      - RABBITMQ_DEFAULT_PASS=password
+      - TZ=UTC   // 设置时区
+    &amp;lt;https://docs.docker.com/compose/compose-file/#env_file&amp;gt;
+    # When you set the same environment variable in multiple files, 
+    # here’s the priority used by Compose to choose which value to use:
+    # 1. Compose file (environment)
+    # 2. Shell environment variables(export key=value)
+    # 3. Environment file (env_file)
+    # 4. Dockerfile
+    # 5. Variable is not defined
+    env_file:
+
+    entrypoint:
+
+    command: [&amp;quot;./wait-for-it.sh&amp;quot;, &amp;quot;db:5432&amp;quot;, &amp;quot;--&amp;quot;, &amp;quot;python&amp;quot;, &amp;quot;app.py&amp;quot;]
+
+    // 块结构，和上面的[]等效.
+    command: 
+    - &amp;quot;./wait-for-it.sh&amp;quot;
+    - &amp;quot;:b:5432&amp;quot;
+    - &amp;quot;--&amp;quot;
+    - &amp;quot;python&amp;quot;
+    - &amp;quot;app.py&amp;quot;
+
+    // 解析为: &amp;quot;line1 line2\n&amp;quot;,  会自动加换行符.
+    command: &amp;gt;
+    line1
+    line2
+
+    // 解析为: &amp;quot;line1 line2&amp;quot;, 没有换行符.
+    command: &amp;gt;-
+    line1
+    line2
+
+    // start:  下面三个deploy下面的字段，也能用于非swarm模式.
+    // 在compose v3 中针对非swarm模式的container做资源限制等操作.
+    // --compatibility If set, Compose will attempt to convert keys in v3 files to their non-Swarm equivalent
+    $ docker-compose --compatibility up -d
+    // --compatibility 支持下面三种key:
+    replicas:
+    restart_policy:
+      condition: any(default)
+      max_attempts:
+    resources:
+      limits:
+        cpus: &#39;0.5&#39;
+        memory: 1G
+      reservations:
+        cpus: &#39;0.25&#39;
+        memory: 20M
+
+
+// start: 定义config/secret/volume/netework资源
+configs:
+  c-name:
+    // 根据文件创建
+    file: ./httpd.conf
+    // 使用已经创建好的
+    external: true
+
+secrets:
+  s-name:
+    // 根据文件创建
+    file: ./server.cert
+    // 使用已经创建好的
+    external: true
+
+volumes:
+  data-volume:
+
+// 以定义好的volume
+volumes:
+  data:
+    external: true
+
+// (推荐)使用已经创建好的网络
+// 通过命令行或者api 创建网络
+networks:
+  mynetwork:
+    external: true
+    name: lan0 // 通过docker network ls 查看名字
+
+// 创建bridge网络
+// 会在网络名字自动加namespace
+networks:
+  mynetwork:
+    driver: bridge
+    driver_opts:
+      com.docker.network.bridge.name: lan0
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.1.0/24
+
+// 创建overlay网络
+// 会在网络名字自动加namespace
+networks:
+  ol0:
+    driver: overlay
+    attachable: true
+    driver_opts:
+      com.docker.network.bridge.name: ol0
+    ipam:
+      driver: default
+      config:
+      - subnet: 172.12.0.0/16
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;compose文件中用到的变量&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;.Service.ID Service ID 
+.Service.Name Service name 
+.Service.Labels Service labels 
+.Node.ID Node ID 
+.Node.Hostname Node Hostname 
+.Task.ID Task ID 
+.Task.Name Task name 
+.Task.Slot Task slot 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;yaml变量：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;key: &amp;amp;varhash    value
+key1: *varhash
+
+# 定义变量
+list: 
+  &amp;amp;varlist
+  key1: value1
+  key2: value2
+# 将list的元素赋值给list1
+list1: 
+  &amp;lt;&amp;lt;: *varlist   
+  key3: value2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;kompose&#34;&gt;Kompose&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/kubernetes/kompose&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/kubernetes/kompose&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;install:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ curl -L https://github.com/kubernetes/kompose/releases/download/v1.19.0/kompose-linux-amd64 -o kompose
+
+$ chmod +x kompose
+$ sudo mv ./kompose /usr/local/bin/kompose
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
+        <item>
+        <title>Image</title>
+        <link>https://canuxcheng.com/post/cncf_image/</link>
+        <pubDate>Tue, 03 Dec 2019 21:50:47 +0800</pubDate>
+        
+        <guid>https://canuxcheng.com/post/cncf_image/</guid>
+        <description>&lt;h1 id=&#34;image&#34;&gt;image&lt;/h1&gt;
+&lt;p&gt;容器镜像&lt;/p&gt;
+&lt;p&gt;docker image driver: aufs, btrfs, devicemapper, overlay.&lt;/p&gt;
+&lt;h2 id=&#34;multi-platform-images&#34;&gt;multi-platform images&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.docker.com/build/building/multi-platform/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://docs.docker.com/build/building/multi-platform/&lt;/a&gt;&lt;/p&gt;
+&lt;h3 id=&#34;qemu&#34;&gt;qemu&lt;/h3&gt;
+&lt;p&gt;使用qume:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 安装bitfmt
+docker run --privileged --rm tonistiigi/binfmt --install all
+
+// 查看支持的平台
+ls -l /proc/sys/fs/binfmt_misc/qemu-*
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;multiple-native-nodes&#34;&gt;multiple native nodes&lt;/h3&gt;
+&lt;p&gt;安装&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// linux
+sudo apt install docker-buildx-plugin
+
+// mac
+brew install docker-buildx
+mkdir -p ~/.docker/cli-plugins
+ln -sfn $(which docker-buildx) ~/.docker/cli-plugins/docker-buildx
+docker buildx install
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看版本&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker buildx version
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;管理builder instance&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker buildx create
+--append 添加node到builder实例。
+--leave 从builder实例删除node
+--driver Driver to use(&amp;quot;docker&amp;quot;, &amp;quot;docker-container&amp;quot;, &amp;quot;kubernetes&amp;quot;)
+--name
+--use
+--node
+--platform 
+--bootstrap 启动实例（以容器的形式启动）
+
+// 以本地是amd64为例，创建一个实例.
+docker buildx create --use --bootstrap --platform linux/amd64,linux/amd64/v2,linux/amd64/v3,linux/arm64,linux/arm/v7,linux/arm/v6 --name canux-builder
+
+// 如果没有qumu，可以把不同平台的远程机器加到builder实例.
+docker buildx create \
+--name local_remote_builder \
+--append --node &amp;lt;my-arm-server&amp;gt; \
+--platform linux/arm64,linux/riscv64,linux/ppc64le,linux/s390x,linux/mips64le,linux/mips64,linux/arm/v7,linux/arm/v6 \
+ssh://user@&amp;lt;my-arm-server&amp;gt; 
+
+docker buildx rm
+
+docker buildx stop
+
+docker buildx inspect
+
+docker buildx use
+
+// 查看当前可用的builders
+docker buildx ls
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;构建多平台镜像&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker buildx build --platform &amp;lt;p1,p2&amp;gt; ...
+
+// 一次编译多个平台的镜像直接push到registry。
+docker buildx build --platform linux/amd64,linux/amd64/v2,linux/amd64/v3,linux/arm64,linux/arm/v7,linux/arm/v6 --push -t name/target:tag .
+
+// 编辑成不同的image 
+docker buildx build -o type=docker --platform linux/amd64 -t name:1.0.0 .
+docker buildx build -o type=docker --platform linux/arm64 -t name:1.0.0-linux-arm64 .
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;cross-compilation&#34;&gt;cross-compilation&lt;/h3&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;overlay&#34;&gt;Overlay&lt;/h2&gt;
+&lt;p&gt;最下层是一个 lower 层，也就是镜像层，它是一个只读层；&lt;/p&gt;
+&lt;p&gt;右上层是一个 upper 层，upper 是容器的读写层，upper 层采用了写实复制的机制，也就是说只有对某些文件需要进行修改的时候才会从 lower 层把这个文件拷贝上来，之后所有的修改操作都会对 upper 层的副本进行修改；&lt;/p&gt;
+&lt;p&gt;upper 并列的有一个 workdir，它的作用是充当一个中间层的作用。也就是说，当对 upper 层里面的副本进行修改时，会先放到 workdir，然后再从 workdir 移到 upper 里面去，这个是 overlay 的工作机制；&lt;/p&gt;
+&lt;p&gt;最上面的是 mergedir，是一个统一视图层。从 mergedir 里面可以看到 upper 和 lower 中所有数据的整合，然后我们 docker exec 到容器里面，看到一个文件系统其实就是 mergedir 统一视图层。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 挂载到overlay
+mount -t overlay -o lowerdir=/path/lower,upperdir=/path/upper,workdir=/path/work overlay /path/di
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;scratch&#34;&gt;scratch&lt;/h2&gt;
+&lt;p&gt;scratch是空白镜像，一般用于基础镜像构建.比如制作alpine/ubuntu/debian/busybox镜像.&lt;/p&gt;
+&lt;h2 id=&#34;ubuntudebian&#34;&gt;ubuntu/debian&lt;/h2&gt;
+&lt;p&gt;Hash Sum mismatch:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;RUN set -ex \
+&amp;amp;&amp;amp; apt-get clean \
+&amp;amp;&amp;amp; apt-get update -o Acquire::CompressionTypes::Order::=gz \
+&amp;amp;&amp;amp; apt-get update \
+&amp;amp;&amp;amp; apt-get install -y --allow-unauthenticated --no-install-recommends \
+build-essential \
+&amp;amp;&amp;amp; rm -rf /var/lib/apt/lists/*
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;centosfedora&#34;&gt;centos/fedora&lt;/h2&gt;
+&lt;h2 id=&#34;buildpack-deps&#34;&gt;buildpack-deps&lt;/h2&gt;
+&lt;p&gt;在ubuntu/debian基础上安装一些工具，比ubuntu/debian镜像更大.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/docker-library/buildpack-deps&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/docker-library/buildpack-deps&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;busybox&#34;&gt;busybox&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/docker-library/busybox&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/docker-library/busybox&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;alpine推荐&#34;&gt;alpine(推荐)&lt;/h2&gt;
+&lt;p&gt;很多语言的都是基于alpine: python-version:alpine-version, golang-version:alpine-version.&lt;/p&gt;
+&lt;p&gt;一个基于musl和busybox的linux发行版.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.alpinelinux.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.alpinelinux.org/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;alpine比distroless尺寸大，包含包管理和shell，方便调试.&lt;/p&gt;
+&lt;p&gt;alpine使用musl代替glibc会导致有的程序无法运行, 解决:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# mkdir /lib64
+# ln -s /lib/libc.musl-x86_64.so.1 /lib64/ld-linux-x86-64.so.2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;注意wget 部分参数不可用.&lt;/p&gt;
+&lt;h2 id=&#34;distroless&#34;&gt;distroless&lt;/h2&gt;
+&lt;p&gt;google提供的只包含运行时的精简镜像.&lt;/p&gt;
+&lt;p&gt;缺点是没有包管理和shell，不方便调试.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/GoogleContainerTools/distroless&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/GoogleContainerTools/distroless&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;slim&#34;&gt;slim&lt;/h2&gt;
+&lt;p&gt;减小image大小,适用于web程序.&lt;/p&gt;
+&lt;p&gt;&amp;lt;https://github.com/docker-slim/docker-slim&lt;/p&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        <item>
+        <title>Docker</title>
+        <link>https://canuxcheng.com/post/cncf_docker/</link>
+        <pubDate>Thu, 05 Apr 2018 22:02:31 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/cncf_docker/</guid>
+        <description>&lt;h1 id=&#34;docker&#34;&gt;Docker&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://store.docker.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://store.docker.com/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://hub.docker.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://hub.docker.com/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/docker&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/docker&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/moby/moby&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/moby/moby&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Docker是一个容器引擎, 分为社区版CE, 和企业版EE, Docker不是虚拟机, 也不依赖虚拟化技术．&lt;/p&gt;
+&lt;p&gt;docker-cli -&amp;gt; dockerd -&amp;gt; containerd -&amp;gt; shim -&amp;gt; runc&lt;/p&gt;
+&lt;p&gt;containerd是容器运行时管理引擎.&lt;/p&gt;
+&lt;p&gt;shim用于管理容器生命周期.&lt;/p&gt;
+&lt;p&gt;Docker包括三个基本概念:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;仓库repository,集中存放镜像文件的场所,docker hub/store是最大的公开仓库．&lt;/li&gt;
+&lt;li&gt;镜像image, 镜像是一个文件系统.&lt;/li&gt;
+&lt;li&gt;容器container, 容器是镜像的运行的实例．&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;修改docker存储路径:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ service docker stop
+$ mv /var/lib/docker /opt/ssd/docker
+$ ln -s /opt/ssd/docker /var/lib/docker
+$ service docker start
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Install:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;windows:
+&amp;lt;https://docs.docker.com/docker-for-windows/install/&amp;gt;
+
+linux:
+&amp;lt;https://docs.docker.com/engine/install/ubuntu/&amp;gt;
+
+mac:
+&amp;lt;https://github.com/abiosoft/colima/blob/main/docs/FAQ.md#docker&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;config&#34;&gt;config&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.docker.com/engine/reference/commandline/dockerd/#daemon-configuration-file&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://docs.docker.com/engine/reference/commandline/dockerd/#daemon-configuration-file&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;docker配置文件:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/etc/docker/daemon.json
+/lib/systemd/system/docker.service
+
+{
+    // debug
+    &amp;quot;debug&amp;quot;: true,
+    
+    &amp;quot;data-root&amp;quot;： &amp;quot;/var/lib/docker&amp;quot;,
+    
+    &amp;quot;features&amp;quot;: {
+        &amp;quot;buildkit&amp;quot;: true
+    },
+
+    //容器访问外网:
+    ip-forward=true 会设置 net.ipv4.ip_forward=1, 才能访问外网
+    // 容器之间访问:
+    icc=true, 
+    iptables=true  会修改iptables的forward策略为accept,
+
+    // 修改默认docker0
+    &amp;quot;bridge&amp;quot;:
+    &amp;quot;bip&amp;quot;: &amp;quot;10.0.0.1/16&amp;quot;  // subnet + gateway
+    &amp;quot;fixed-cidr&amp;quot;: &amp;quot;10.41.0.0/24&amp;quot; // iprange
+    &amp;quot;fixed-cidr-v6&amp;quot;: &amp;quot;&amp;quot;,
+    &amp;quot;mtu&amp;quot;: 1500
+    &amp;quot;default-gateway&amp;quot;:
+	&amp;quot;default-gateway-v6&amp;quot;: &amp;quot;&amp;quot;,
+
+    // 修改默认dns
+    &amp;quot;dns&amp;quot; : [
+        &amp;quot;114.114.114.114&amp;quot;,
+        &amp;quot;8.8.8.8&amp;quot;
+    ]
+    &amp;quot;dns-opts&amp;quot;: [],
+    &amp;quot;dns-search&amp;quot;: [],
+
+    // ipv6
+    &amp;quot;ipv6&amp;quot;: true
+
+    // private registry
+  	&amp;quot;insecure-registries&amp;quot;: [],
+
+    // 修改registry
+    &amp;quot;registry-mirrors&amp;quot;: [
+        &amp;quot;https://registry.docker-cn.com&amp;quot;,
+        &amp;quot;https://z4yd270h.mirror.aliyuncs.com&amp;quot;,
+        &amp;quot;http://f1361db2.m.daocloud.io&amp;quot;,
+        &amp;quot;https://docker.mirrors.ustc.edu.cn&amp;quot;
+    ]
+
+    &amp;quot;hosts&amp;quot;: [],
+    &amp;quot;log-level&amp;quot;: &amp;quot;&amp;quot;,
+    &amp;quot;tls&amp;quot;: true,
+    &amp;quot;tlsverify&amp;quot;: true,
+    &amp;quot;tlscacert&amp;quot;: &amp;quot;&amp;quot;,
+    &amp;quot;tlscert&amp;quot;: &amp;quot;&amp;quot;,
+    &amp;quot;tlskey&amp;quot;: &amp;quot;&amp;quot;,
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;proxy for pull image from google(gcr):&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.docker.com/config/daemon/systemd/#httphttps-proxy&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://docs.docker.com/config/daemon/systemd/#httphttps-proxy&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;docker命令&#34;&gt;docker命令&lt;/h2&gt;
+&lt;p&gt;system:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ docker system df	// Show docker disk usage
+$ docker system events	// Get real time events from the server
+$ docker system info	// Display system-wide information
+$ docker system prune	// Remove unused data
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;image管理:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ docker image COMMAND
+
+&amp;gt; 查看本地镜像:
+$ docker image ls
+$ docker image -a
+
+&amp;gt; 根据创建dockerfile，创建新的images
+$ docker image build
+
+&amp;gt; 创建tag
+$ docker image tag
+
+&amp;gt; 删除image
+$ docker image rm &amp;lt;IMAGE ID&amp;gt;
+$ docker rmi &amp;lt;IMAGE ID&amp;gt;
+&amp;gt; 删除所有image
+$ docker rmi $(docker images -a -q)
+
+&amp;gt; 清理所有临时images
+$ docker image prune
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;container管理&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$docker container COMMAND
+
+# 列出container:
+$ docker container ls
+$ docker ps -a  # 默认只显示running状态的
+
+# 运行image,产生一个container:
+$ docker container run &amp;lt;IMAGE ID&amp;gt;/&amp;lt;REPOSITORY&amp;gt; [COMMAND] [ARGS]
+
+# 在container中执行命令
+$ docker container exec [OPTIONS] &amp;lt;CONTAINER&amp;gt; COMMAND [ARG...]
+
+# 创建container但不启动
+$ docker container create --name &amp;lt;name&amp;gt; &amp;lt;CONTAINER&amp;gt;
+
+# 启动container:
+$ docker container start/restart &amp;lt;CONTAINER&amp;gt;
+
+# 停止container:
+$ docker container stop &amp;lt;CONTAINER&amp;gt;
+
+# 删除container：
+$ docker container rm &amp;lt;CONTAINER&amp;gt;
+$ docker rm &amp;lt;CONTAINER&amp;gt;
+# 删除所有容器
+$ docker rm $(docker ps -a -q) 
+
+# 清理停止的container
+$ docker container prune
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;制作镜像builder&lt;/p&gt;
+&lt;p&gt;build: deprecated.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 根据Dockerfile 构建image
+docker builder [OPTIONS] PATH | URL | -
+docker builder build .  // 默认就是当前目录的Dockerfile
+docker builder build -t &amp;lt;repo&amp;gt;/&amp;lt;name&amp;gt;:&amp;lt;tag&amp;gt; .  // 创建tag
+docker builder build -f /path/to/mydockerfile . // 也可以指定其它路径的其它文件
+docker builder build --target &amp;lt;stage&amp;gt; . // 指定阶段构建.
+docker builder build ... --network=host // 使用host网络构建.
+docker builder build --no-cache // 不使用缓存数据
+--cache-from // 使用本地或registry上的cache
+--cache-to // cache存到本地或registry
+--progress = auto/plain/tty,  // plain 显示更多log。 
+
+docker builder prune --all // 清理所有image 的缓存。
+
+# 把image导出到tar包
+# 既可以从image也可以从container导出。
+# 从container导出不包含运行后的修改，只导出原始镜像。
+$ docker save -o name.tgz &amp;lt;repo1&amp;gt;:&amp;lt;tag1&amp;gt; &amp;lt;repo2&amp;gt;:&amp;lt;tag2&amp;gt; ...
+
+# 从stdin或文件加载image
+docker load [OPTIONS]
+docker load &amp;lt; name.tar.gz
+docker load --input/-i name.tar
+
+# 把container导出到tar包，从container导出镜像。
+# 包括container启动后的修改。
+docker export -o name.tar [container]
+
+# 从container导出的包加载成镜像
+docker import name.tar [repo]:[tag]
+
+# 根据container的修改创建新的image
+docker commit [OPTIONS] CONTAINER [REPOSITORY[:TAG]]
+docker commit -a &amp;quot;author&amp;quot; -c &amp;quot;Dockerfile instruction&amp;quot; -m &amp;quot;commit message&amp;quot; CONTAINER [REPOSITORY[:TAG]]
+
+# 创建新的tag
+docker tag &amp;lt;old&amp;gt; &amp;lt;new&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;运行容器&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 创建一个新的container并运行命令
+docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
+docker run --name [NAME] IMAGE // 运行容器并命名
+docker run -d IMAGE // 后台运行
+docker run -it IMAGE /bin/bash // 交互模式启动容器
+docker run -P IMAGE // 默认将容器的8０端口映射到主机的随机端口
+docker run -p [host:port]:[containerPort] // 指定映射端口
+--add-host # 相当于修改容器的/etc/hosts,但是容器重启后不会消失
+-h/--hostname # 修改容器的/etc/hostname
+
+// cpu
+--cpus decimal                   Number of CPUs
+-c, --cpu-shares int             CPU shares (relative weight)
+--cpuset-cpus string             CPUs in which to allow execution (0-3, 0,1)
+--cpuset-mems string             MEMs in which to allow execution (0-3, 0,1)
+--cpu-period
+--cpu-quota
+
+// memory
+-m, --memory bytes               Memory limit
+--memory-reservation bytes       Memory soft limit
+--memory-swap bytes              Swap limit equal to memory plus swap: &#39;-1&#39; to enable unlimited swap
+--memory-swappiness int          Tune container memory swappiness (0 to 100) (default -1)
+--oom-kill-disable
+--oom-score-adj
+--kernel-memory
+
+// io
+--blkio-weight
+--blkio-weight-device
+--device-read-bps
+--device-write-bps
+--device-read-iops
+--device-write-iops
+
+// security
+// https://docs.docker.com/engine/security/apparmor/
+// https://docs.docker.com/engine/security/seccomp/
+// https://docs.docker.com/engine/security/userns-remap/
+// https://docs.docker.com/engine/security/rootless/
+privileged
+sysctl
+ulimit
+user
+userns
+security_ops
+cgroup_parent
+cap_add
+cap_drop
+
+# 在运行的container中执行命令
+docker exec [OPTIONS] CONTAINER COMMAND [ARG...]
+docker exec -d CONTAINER ... // 在后台运行
+docker exec -it CONTAINER /bin/bash ... // 进入命令行
+
+# metrics
+docker stats
+
+# resource
+docker top
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;log:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 查看log driver
+// 默认driver是 json-file, 不同的driver，option不同
+// driver是json-file, journald, 通过docker logs docker-compose logs 才能看到log
+$ docker inspect -f &#39;{{.HostConfig.LogConfig.Type}}&#39; &amp;lt;ID&amp;gt;
+
+docker run -it --log-driver &amp;lt;driver&amp;gt; --log-opt mode=blocking --log-opt max-buffer-size=4m alpine ash  
+// --log-driver json-file
+// --log-opt mode blocking/non-blocking
+// --log-opt max-buffer-size 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;其它命令&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 在container和host之前拷贝文件和目录
+docker cp [OPTIONS] CONTAINER:SRC_PATH DEST_PATH|-
+docker cp [OPTIONS] SRC_PATH|- CONTAINER:DEST_PATH
+
+# 查看容器的日志
+docker logs [OPTIONS] CONTAINER
+docker diff CONTAINER
+docker history [OPTIONS] IMAGE
+
+# 查看healthcheck的log
+docker inspect --format &amp;quot;{{json .State.Health }}&amp;quot; &amp;lt;container name&amp;gt; | jq
+
+docker system prune
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;register使用&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 登陆到docker hub 或其他register
+docker login
+docker login -u/--username &amp;lt;user&amp;gt; -p/--password &amp;lt;password&amp;gt;
+
+# 从docker hub/store查找images
+$ docker search [OPTIONS] TERM
+$ docker search
+
+# 从registry获取repository/images到/var/lib/docker：
+$ docker pull [OPTIONS] NAME[:TAG|@DIGEST]
+$ docker pull
+$ docker pull ubuntu # 默认下载所有tag
+$ docker pull ubuntu:14.04
+
+# 从中国站点下载
+$ docker pull registry.docker-cn.com/library/ubuntu:16.04
+
+# 推送到docker hub
+$ docker push
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;secret&lt;/p&gt;
+&lt;p&gt;secret以文件形式存在于/run/secrets/&lt;s-name&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 保存敏感数据
+$ docker secret
+
+docker secret ls
+docker secret inspect &amp;lt;ID/name&amp;gt;
+docker secret rm &amp;lt;id/name&amp;gt;
+
+// 根据文件创建
+docker secret create &amp;lt;s-name&amp;gt; &amp;lt;s-file&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;config&lt;/p&gt;
+&lt;p&gt;config以文件形式存在于/&lt;c-name&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 保存非敏感数据
+$ docker config
+
+docker config ls
+docker config inspect &amp;lt;id/name&amp;gt;
+docker config rm &amp;lt;id/name&amp;gt;
+
+docker config create &amp;lt;c-name&amp;gt; &amp;lt;c-file&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;plugin&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 安装plugin
+docker plugin install --grant-all-permissions name:tag key=value key=value
+// 修改plugin的参数
+docker plugin set name:tag key=value
+// 查看plugin的参数，settable里面的是改参数能修改的变量
+docker plugin inspect name:tag
+// 激活plugin
+docker plugin enable name:tag
+// 删除
+docker plugin rm name:tag
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;开发插件:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;docker plugin create name:tag ./plugin
+docker plugin push name:tag
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;dockerfile&#34;&gt;Dockerfile&lt;/h2&gt;
+&lt;p&gt;每个命令都会创建一个layer,尽可能合并相同的命令。&lt;/p&gt;
+&lt;p&gt;ADD&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# add可以是远程文件，不推荐使用
+ADD [--chown=&amp;lt;user&amp;gt;:&amp;lt;group&amp;gt;] &amp;lt;src&amp;gt;... &amp;lt;dest&amp;gt;
+ADD [--chown=&amp;lt;user&amp;gt;:&amp;lt;group&amp;gt;] [&amp;quot;&amp;lt;src&amp;gt;&amp;quot;,... &amp;quot;&amp;lt;dest&amp;gt;&amp;quot;]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;COPY&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 只能操作本地文件, 目标路径不需要创建，不存在会自动创建.
+COPY [--chown=&amp;lt;user&amp;gt;:&amp;lt;group&amp;gt;] &amp;lt;src&amp;gt;... &amp;lt;dest&amp;gt;
+COPY [--chown=&amp;lt;user&amp;gt;:&amp;lt;group&amp;gt;] [&amp;quot;&amp;lt;src&amp;gt;&amp;quot;,... &amp;quot;&amp;lt;dest&amp;gt;&amp;quot;]
+COPY file /path/to/file  相当于 COPY file /path
+# 不会创建目录
+COPY folder /path 相当于 COPY folder/* /path/
+# 需要手动指定
+COPY folder  /path/to/folder 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;ENV&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;env会被派生image继承。
+
+# 指定容器中的环境变量
+ENV &amp;lt;key&amp;gt; &amp;lt;value&amp;gt;
+ENV &amp;lt;key&amp;gt;=&amp;lt;value&amp;gt; ...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;EXPOSE&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;expose会被派生image继承.
+# 指定容器需要映射到主机的端口
+EXPOSE &amp;lt;port&amp;gt; [&amp;lt;port&amp;gt;/&amp;lt;protocol&amp;gt;...]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;FROM&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;FROM &amp;lt;image&amp;gt; [AS &amp;lt;name&amp;gt;]
+FROM &amp;lt;image&amp;gt;[:&amp;lt;tag&amp;gt;] [AS &amp;lt;name&amp;gt;]
+FROM &amp;lt;image&amp;gt;[@&amp;lt;digest&amp;gt;] [AS &amp;lt;name&amp;gt;]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;LABEL&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;label会被派生image继承.
+LABEL &amp;lt;key&amp;gt;=&amp;lt;value&amp;gt; &amp;lt;key&amp;gt;=&amp;lt;value&amp;gt; &amp;lt;key&amp;gt;=&amp;lt;value&amp;gt; ...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;STOPSIGNAL&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;STOPSIGNAL signal
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;USER&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;USER &amp;lt;user&amp;gt;[:&amp;lt;group&amp;gt;]
+USER &amp;lt;UID&amp;gt;[:&amp;lt;GID&amp;gt;]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;VOLUME&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 指定挂载点做数据持久化
+VOLUME [&amp;quot;/data&amp;quot;]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;WORKDIR&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;workdir会被派生image继承.
+# 指定后的操作都以该目录为当前目录，目录不存在会自动创建
+WORKDIR /path/to/workdir
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;RUN&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 在容器构建过程中运行
+RUN &amp;lt;command&amp;gt;  # shell 格式
+RUN [&amp;quot;executable&amp;quot;, &amp;quot;param1&amp;quot;, &amp;quot;param2&amp;quot;]   # exec 格式
+
+RUN set -ex \
+&amp;amp;&amp;amp; cmd1 \
+&amp;amp;&amp;amp; cmd2......
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;ENTRYPOINT&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;entrypoint会被派生image继承，除非你在派生image重新指定.
+# 和cmd类似,指定容器运行过程中的执行命令
+ENTRYPOINT [&amp;quot;executable&amp;quot;, &amp;quot;param1&amp;quot;, &amp;quot;param2&amp;quot;] (exec form, preferred)
+ENTRYPOINT command param1 param2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;CMD&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;cmd会被派生image继承，除非你在派生image重新指定了entrypoint.
+# 在容器运行过程中运行, 可以被覆盖
+CMD [&amp;quot;executable&amp;quot;, &amp;quot;param1&amp;quot;, &amp;quot;param2&amp;quot;]  # exec格式
+CMD command param1 param2   # shell 格式,通过/bin/bash 或 /bin/sh 执行.
+// 同时有cmd和entrypoint,cmd只是entrypoint的参数.
+CMD [&amp;quot;param2&amp;quot;, &amp;quot;param2&amp;quot;]   # entrypoint的参数
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;ARG&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 指定构建环境的变量
+ARG &amp;lt;name&amp;gt;[=&amp;lt;default value&amp;gt;]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;ONBUILD&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;onbuild会被派生image继承.
+ONBUILD ...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;stage:&lt;/p&gt;
+&lt;p&gt;多级构建，一般0级用来编译源代码，并且组织目录结构。
+下一级直接将编译好的或者组织好的目录结构copy到指定位置。
+这样最终的image不会含有源代码的overlay.
+也不会有临时目录结构的overlay.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 不指定stage name, 默认就是数字
+COPY --from=0 /path/folder /path/folder
+COPY --from=stage1 /path/folder /path/folder 
+docker build --target stage1 -t docker:latest . 
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;.dockerignore &lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# comment
+/path/folder
+path/folder
+*/tmp*
+*/*/tmp*
+tmp?
+*.md
+!README.md  
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;docker-machine&#34;&gt;docker-machine&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/docker/machine&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/docker/machine&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;在本地安装docker和docker-machine，然后就可以从本机安装或管理远程机器上的docker.&lt;/p&gt;
+&lt;p&gt;需要添加ssh的无密码登陆:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ssh-copy-id -i ~/.ssh/id_rsa.pub user@remote-ip
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;安装:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;https://docs.docker.com/machine/install-machine/$ base=https://github.com/docker/machine/releases/download/v0.16.0
+&amp;amp;&amp;amp; curl -L $base/docker-machine-$(uname -s)-$(uname -m) &amp;gt;/tmp/docker-machine
+&amp;amp;&amp;amp; sudo install /tmp/docker-machine /usr/local/bin/docker-machine
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;docker-machine命令&#34;&gt;docker-machine命令&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;docker-machine create -d generic \
+--generic-ip-address=remote-ip \
+--generic-ssh-user=user \
+--generic-ssh-key ~/.ssh/id_rsa \
+node1
+docker-machine ls
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;oom&#34;&gt;OOM&lt;/h2&gt;
+&lt;p&gt;kernel OOM 会导致kernel随机kill一些container释放内存。&lt;/p&gt;
+&lt;p&gt;防止kernel OOM的方法就是设置resource limit.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.docker.com/config/containers/resource_constraints/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://docs.docker.com/config/containers/resource_constraints/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/docker/compose/issues/4513&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/docker/compose/issues/4513&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;swarm mode:&lt;/p&gt;
+&lt;p&gt;swarm模式使用compose format 3来限制资源.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.docker.com/compose/compose-file/#resources&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://docs.docker.com/compose/compose-file/#resources&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;non swarm mode:&lt;/p&gt;
+&lt;p&gt;非swarm模式可以用compose format 2 来做资源限制.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.docker.com/compose/compose-file/compose-file-v2/#cpu-and-other-resources&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://docs.docker.com/compose/compose-file/compose-file-v2/#cpu-and-other-resources&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;colima&#34;&gt;colima&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/abiosoft/colima&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/abiosoft/colima&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;docker for mac&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;brew install colima
+colima start
+brew services restart colima
+
+sudo ln -sf /Users/canche01/.colima/default/docker.sock /var/run/docker.sock
+docker ps -a
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

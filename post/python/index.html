@@ -1,147 +1,551 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Python - Morgoth</title>
-    <meta name="description" content="">
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Python概述 https://docs.python.org/2.7/index.html
+http://python.usyiyi.cn/translate/python_278/index.html
+https://docs.python.org/3.5/index.html
+http://python.usyiyi.cn/translate/python_352/index.html
+python是一门优雅而健壮的语言.
+继承了编译语言(静态语言)的强大性和通用性.
+同时也借鉴了脚本语言(动态语言)的易用性．
+python特点：
+高级 面向对象 可升级 可扩展 可移植性 易学 易读 易维护 健壮性 高效的快速原型开发工具 内存管理器 解释性和编译性 python基本语法 python源程序叫xxx.py
+python中一切皆对象．
+python大小写敏感．
+python通过缩进和冒号:区分语法块，而不是大括号{}.
+python中的表达式(条件/循环表达式等)不需要用小括号()括起来．
+python标识符(变量，函数，参数，类等)由字母和下划线开头，还可以包含数字．不能是关键字．
+python不支持方法或函数重载．
+python不支持char和type类型．
+python没有switch语句．
+python支持多继承．
+python不支持&#43;&#43;/&ndash;自增和自减运算符．
+python支持连续比较，a&lt;b&lt;c.
+lexical analysis https://docs.python.org/2/reference/lexical_analysis.html
+Logical lines and physical lines：
+# python通过行尾的令牌NEWLINE表示逻辑行 expression # 以操作系统的换行符表示物理行． \n encoding declarations:
+# python脚本中的第一行或第二行的 coding[=:]\s*([-\w.]&#43;) # 注释与正则表达式匹配将被作为编码申明处理． [Deprecated] explicit line joining:
+# 多个物理行通过反斜线backslash续行进行显示换行 # 推荐用隐式换行． if a == b \ and c ==d: # 只有续行的最后一行可以有注释．反斜线的行不能注释. print(&#39;more than one physical line.&#39;) implicit line joining：
+'>
+<title>Python</title>
+
+<link rel='canonical' href='https://canuxcheng.com/post/python/'>
+
+<link rel="stylesheet" href="/scss/style.min.2d59822570c0be136f2ad87c952ef8788ac2a951067adda1c49b253bff7d0292.css"><meta property='og:title' content='Python'>
+<meta property='og:description' content='Python概述 https://docs.python.org/2.7/index.html
+http://python.usyiyi.cn/translate/python_278/index.html
+https://docs.python.org/3.5/index.html
+http://python.usyiyi.cn/translate/python_352/index.html
+python是一门优雅而健壮的语言.
+继承了编译语言(静态语言)的强大性和通用性.
+同时也借鉴了脚本语言(动态语言)的易用性．
+python特点：
+高级 面向对象 可升级 可扩展 可移植性 易学 易读 易维护 健壮性 高效的快速原型开发工具 内存管理器 解释性和编译性 python基本语法 python源程序叫xxx.py
+python中一切皆对象．
+python大小写敏感．
+python通过缩进和冒号:区分语法块，而不是大括号{}.
+python中的表达式(条件/循环表达式等)不需要用小括号()括起来．
+python标识符(变量，函数，参数，类等)由字母和下划线开头，还可以包含数字．不能是关键字．
+python不支持方法或函数重载．
+python不支持char和type类型．
+python没有switch语句．
+python支持多继承．
+python不支持&#43;&#43;/&ndash;自增和自减运算符．
+python支持连续比较，a&lt;b&lt;c.
+lexical analysis https://docs.python.org/2/reference/lexical_analysis.html
+Logical lines and physical lines：
+# python通过行尾的令牌NEWLINE表示逻辑行 expression # 以操作系统的换行符表示物理行． \n encoding declarations:
+# python脚本中的第一行或第二行的 coding[=:]\s*([-\w.]&#43;) # 注释与正则表达式匹配将被作为编码申明处理． [Deprecated] explicit line joining:
+# 多个物理行通过反斜线backslash续行进行显示换行 # 推荐用隐式换行． if a == b \ and c ==d: # 只有续行的最后一行可以有注释．反斜线的行不能注释. print(&#39;more than one physical line.&#39;) implicit line joining：
+'>
+<meta property='og:url' content='https://canuxcheng.com/post/python/'>
+<meta property='og:site_name' content='Morgoth'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='python' /><meta property='article:published_time' content='2016-06-21T21:18:09&#43;00:00'/><meta property='article:modified_time' content='2016-06-21T21:18:09&#43;00:00'/>
+<meta name="twitter:title" content="Python">
+<meta name="twitter:description" content="Python概述 https://docs.python.org/2.7/index.html
+http://python.usyiyi.cn/translate/python_278/index.html
+https://docs.python.org/3.5/index.html
+http://python.usyiyi.cn/translate/python_352/index.html
+python是一门优雅而健壮的语言.
+继承了编译语言(静态语言)的强大性和通用性.
+同时也借鉴了脚本语言(动态语言)的易用性．
+python特点：
+高级 面向对象 可升级 可扩展 可移植性 易学 易读 易维护 健壮性 高效的快速原型开发工具 内存管理器 解释性和编译性 python基本语法 python源程序叫xxx.py
+python中一切皆对象．
+python大小写敏感．
+python通过缩进和冒号:区分语法块，而不是大括号{}.
+python中的表达式(条件/循环表达式等)不需要用小括号()括起来．
+python标识符(变量，函数，参数，类等)由字母和下划线开头，还可以包含数字．不能是关键字．
+python不支持方法或函数重载．
+python不支持char和type类型．
+python没有switch语句．
+python支持多继承．
+python不支持&#43;&#43;/&ndash;自增和自减运算符．
+python支持连续比较，a&lt;b&lt;c.
+lexical analysis https://docs.python.org/2/reference/lexical_analysis.html
+Logical lines and physical lines：
+# python通过行尾的令牌NEWLINE表示逻辑行 expression # 以操作系统的换行符表示物理行． \n encoding declarations:
+# python脚本中的第一行或第二行的 coding[=:]\s*([-\w.]&#43;) # 注释与正则表达式匹配将被作为编码申明处理． [Deprecated] explicit line joining:
+# 多个物理行通过反斜线backslash续行进行显示换行 # 推荐用隐式换行． if a == b \ and c ==d: # 只有续行的最后一行可以有注释．反斜线的行不能注释. print(&#39;more than one physical line.&#39;) implicit line joining：
+">
+    <link rel="shortcut icon" href="favicon.ico" />
+<style>
+    :root {
+        --article-font-family: "Merriweather", var(--base-font-family);
+    }
+</style>
+
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap";
     
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
     
-    <link rel="icon" href="/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
-    
-    
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.6;
-            margin: 0;
-            padding: 0;
-            background-color: #f5f5f5;
-            color: #333;
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
         }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        header {
-            background: #fff;
-            padding: 1rem 0;
-            border-bottom: 1px solid #ddd;
-            margin-bottom: 2rem;
-        }
-        nav {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-        }
-        nav a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-        }
-        nav a:hover {
-            color: #007acc;
-        }
-        .site-title {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: #007acc;
-        }
-        main {
-            background: #fff;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        .post-meta {
-            color: #666;
-            font-size: 0.9rem;
-            margin-bottom: 1rem;
-        }
-        .post-content h1, .post-content h2, .post-content h3 {
-            margin-top: 2rem;
-            margin-bottom: 1rem;
-        }
-        .post-list {
-            list-style: none;
-            padding: 0;
-        }
-        .post-list li {
-            margin-bottom: 1.5rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid #eee;
-        }
-        .post-list h2 {
-            margin: 0 0 0.5rem 0;
-        }
-        .post-list h2 a {
-            text-decoration: none;
-            color: #333;
-        }
-        .post-list h2 a:hover {
-            color: #007acc;
-        }
-        footer {
-            text-align: center;
-            padding: 2rem 0;
-            color: #666;
-            border-top: 1px solid #ddd;
-            margin-top: 2rem;
-        }
-    </style>
-</head>
-<body>
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
     <header>
-        <div class="container">
-            <nav>
-                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
                 
-                    <a href="/">Home</a>
+                    
+                    
+                    
+                        
+                        <img src="/img/home_hu_ee27fe234e3b32c2.jpg" width="300"
+                            height="400" class="site-logo" loading="lazy" alt="Avatar">
+                    
                 
-                    <a href="/about/">About</a>
+                </a>
                 
-                    <a href="/categories/">Categories</a>
+                    <span class="emoji">🍥</span>
                 
-                    <a href="/tags/">Tags</a>
-                
-                    <a href="/rtfm/">RTFM</a>
-                
-                    <a href="/samuel/">Samuel</a>
-                
-            </nav>
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Morgoth</a></h1>
+            <h2 class="site-description">Hello World!</h2>
         </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='mailto:canuxcheng@163.com'
+                        target="_blank"
+                        title="E-mail"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-messages" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M21 14l-3 -3h-7a1 1 0 0 1 -1 -1v-6a1 1 0 0 1 1 -1h9a1 1 0 0 1 1 1v10" />
+  <path d="M14 15v2a1 1 0 0 1 -1 1h-7l-3 3v-10a1 1 0 0 1 1 -1h2" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/crazy-canux'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/categories/' target="_blank">
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                
+                <span>Categories</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tags/' target="_blank">
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+                
+                <span>Tags</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/rtfm/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                
+                <span>RTFM</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/samuel/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-infinity" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M9.828 9.172a4 4 0 1 0 0 5.656 a10 10 0 0 0 2.172 -2.828a10 10 0 0 1 2.172 -2.828 a4 4 0 1 1 0 5.656a10 10 0 0 1 -2.172 -2.828a10 10 0 0 0 -2.172 -2.828" />
+</svg>
+
+
+
+                
+                <span>Samuel</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https://canuxcheng.com/" selected></option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#lexical-analysis">lexical analysis</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#垃圾回收"><em>垃圾回收</em></a></li>
+    <li><a href="#变量和常量"><em>变量和常量</em></a></li>
+    <li><a href="#类型总结"><em>类型总结</em></a></li>
+    <li><a href="#数据拷贝">数据拷贝</a></li>
+    <li><a href="#sequences序列类型"><em>Sequences序列类型</em></a></li>
+    <li><a href="#数字类型"><em>数字类型</em></a></li>
+    <li><a href="#str"><em>str</em></a></li>
+    <li><a href="#tuple"><em>tuple</em></a></li>
+    <li><a href="#list"><em>list</em></a>
+      <ul>
+        <li><a href="#list-comprehensions列表解析"><em>list comprehensions列表解析</em></a></li>
+      </ul>
+    </li>
+    <li><a href="#range"><em>range</em></a></li>
+    <li><a href="#bytes"><em>bytes</em></a></li>
+    <li><a href="#bytearray"><em>bytearray</em></a></li>
+    <li><a href="#memoryview"><em>memoryview</em></a></li>
+    <li><a href="#dict"><em>dict</em></a></li>
+    <li><a href="#sets集合"><em>Sets集合</em></a>
+      <ul>
+        <li><a href="#frozenset">frozenset</a></li>
+        <li><a href="#set">set</a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#if条件语句"><em>if条件语句</em></a></li>
+    <li><a href="#while循环语句"><em>while循环语句</em></a></li>
+    <li><a href="#for循环语句"><em>for循环语句</em></a></li>
+    <li><a href="#iterator迭代器-类型"><em>iterator迭代器 类型</em></a></li>
+    <li><a href="#generator生成器类型"><em>generator生成器类型</em></a>
+      <ul>
+        <li><a href="#generator-expressions生成器表达式"><em>generator expressions生成器表达式</em></a></li>
+      </ul>
+    </li>
+  </ul>
+
+  <ul>
+    <li><a href="#raise触发异常"><em>raise触发异常</em></a></li>
+    <li><a href="#自定义异常和错误"><em>自定义异常和错误</em></a></li>
+    <li><a href="#assert断言"><em>assert断言</em></a></li>
+    <li><a href="#with上下文管理"><em>with上下文管理</em></a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#lambda匿名函数"><em>lambda匿名函数</em></a></li>
+    <li><a href="#functional-programming函数式编程"><em>Functional Programming函数式编程</em></a></li>
+    <li><a href="#内嵌函数"><em>内嵌函数</em></a></li>
+    <li><a href="#closure闭包"><em>closure闭包</em></a></li>
+    <li><a href="#decorator装饰器"><em>decorator装饰器</em></a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#module模块"><em>module模块</em></a></li>
+    <li><a href="#package"><em>package</em></a></li>
+    <li><a href="#import导入模块和包"><em>import导入模块和包</em></a></li>
+  </ul>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/python/" >
+                Python
+            </a>
+        
     </header>
     
-    <div class="container">
-        <main>
-            
-<div class="single-post">
-    <article>
-        <header>
-            <h1>Python</h1>
-            <div class="post-meta">
-                <time>June 21, 2016</time>
-                
-                    
-                        <span class="category">Python</span>
-                    
-                
-                
-                    
-                        <span class="tag">#python</span>
-                    
-                
-            </div>
-        </header>
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/python/">Python</a>
+        </h2>
+    
         
-        <div class="post-content">
-            <h1 id="python概述"><strong>Python概述</strong></h1>
-<p><a href="https://docs.python.org/2.7/index.html">https://docs.python.org/2.7/index.html</a></p>
-<p><a href="http://python.usyiyi.cn/translate/python_278/index.html">http://python.usyiyi.cn/translate/python_278/index.html</a></p>
-<p><a href="https://docs.python.org/3.5/index.html">https://docs.python.org/3.5/index.html</a></p>
-<p><a href="http://python.usyiyi.cn/translate/python_352/index.html">http://python.usyiyi.cn/translate/python_352/index.html</a></p>
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Jun 21, 2016</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    11 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="python概述"><strong>Python概述</strong></h1>
+<p><a class="link" href="https://docs.python.org/2.7/index.html"  target="_blank" rel="noopener"
+    >https://docs.python.org/2.7/index.html</a></p>
+<p><a class="link" href="http://python.usyiyi.cn/translate/python_278/index.html"  target="_blank" rel="noopener"
+    >http://python.usyiyi.cn/translate/python_278/index.html</a></p>
+<p><a class="link" href="https://docs.python.org/3.5/index.html"  target="_blank" rel="noopener"
+    >https://docs.python.org/3.5/index.html</a></p>
+<p><a class="link" href="http://python.usyiyi.cn/translate/python_352/index.html"  target="_blank" rel="noopener"
+    >http://python.usyiyi.cn/translate/python_352/index.html</a></p>
 <p>python是一门优雅而健壮的语言.</p>
 <p>继承了编译语言(静态语言)的强大性和通用性.</p>
 <p>同时也借鉴了脚本语言(动态语言)的易用性．</p>
@@ -175,7 +579,8 @@
 <p>python不支持++/&ndash;自增和自减运算符．</p>
 <p>python支持连续比较，a&lt;b&lt;c.</p>
 <h2 id="lexical-analysis">lexical analysis</h2>
-<p><a href="https://docs.python.org/2/reference/lexical_analysis.html">https://docs.python.org/2/reference/lexical_analysis.html</a></p>
+<p><a class="link" href="https://docs.python.org/2/reference/lexical_analysis.html"  target="_blank" rel="noopener"
+    >https://docs.python.org/2/reference/lexical_analysis.html</a></p>
 <p>Logical lines and physical lines：</p>
 <pre><code># python通过行尾的令牌NEWLINE表示逻辑行
 expression
@@ -1163,7 +1568,8 @@ foo(*args, **kwargs)
 foo.__doc__ # &quot;Docs for wrapper_name.&quot;, 并非foo的doc.
 # 可以通过import functools.wraps来修饰wrapper_name改变这一属性．
 </code></pre>
-<p><a href="https://github.com/crazy-canux/python/blob/master/python/psl/myfunctools.py">https://github.com/crazy-canux/python/blob/master/python/psl/myfunctools.py</a></p>
+<p><a class="link" href="https://github.com/crazy-canux/python/blob/master/python/psl/myfunctools.py"  target="_blank" rel="noopener"
+    >https://github.com/crazy-canux/python/blob/master/python/psl/myfunctools.py</a></p>
 <p>多层装饰器：</p>
 <pre><code>@foo
 @bar
@@ -1172,7 +1578,8 @@ def func(*args, **kwargs):
 
 func = foo(bar(func))
 </code></pre>
-<p><a href="https://github.com/crazy-canux/python/blob/master/python/decorator/function_decorator.py">https://github.com/crazy-canux/python/blob/master/python/decorator/function_decorator.py</a></p>
+<p><a class="link" href="https://github.com/crazy-canux/python/blob/master/python/decorator/function_decorator.py"  target="_blank" rel="noopener"
+    >https://github.com/crazy-canux/python/blob/master/python/decorator/function_decorator.py</a></p>
 <hr>
 <h1 id="python模块和包"><strong>python模块和包</strong></h1>
 <p>名称空间：</p>
@@ -1359,17 +1766,201 @@ Usage/Description
 </code></pre>
 <hr>
 
-        </div>
-    </article>
-</div>
+</section>
 
-        </main>
-    </div>
+
+    <footer class="article-footer">
     
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 Morgoth. Designed by Canux</p>
-        </div>
+    <section class="article-tags">
+        
+            <a href="/tags/python/">Python</a>
+        
+    </section>
+
+
     </footer>
-</body>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    <div id="gitalk-container"></div>
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.18.0/js/md5.min.js"></script>
+<script>
+    const gitalk = new Gitalk({
+        clientID: "3d41a2a237fabe050cc0",
+        clientSecret: "868aa81b294f1463ddb6edc007576ecfed7d2075",
+        repo: "crazy-canux.github.io",
+        owner: "crazy-canux",
+        admin: ["crazy-canux"],
+        distractionFreeMode: false, 
+        id: md5(location.pathname), 
+    });
+    (function () {
+        if (
+            ["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1
+        ) {
+            document.getElementById("gitalk-container").innerHTML =
+                "Gitalk comments not available by default when the website is previewed locally.";
+            return;
+        }
+        gitalk.render("gitalk-container");
+    })();
+</script>
+
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2013 - 
+        
+        2025 Morgoth
+    </section>
+    
+    <section class="powerby">
+        
+            Designed by Canux <br/>
+        
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
 </html>

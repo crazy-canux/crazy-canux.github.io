@@ -1,19 +1,26 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Yaml on Morgoth</title>
-    <link>https://canuxcheng.com/tags/yaml/</link>
-    <description>Recent content in Yaml on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Thu, 07 Jul 2016 16:43:15 +0000</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/yaml/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Yaml</title>
-      <link>https://canuxcheng.com/post/yaml/</link>
-      <pubDate>Thu, 07 Jul 2016 16:43:15 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/yaml/</guid>
-      <description>&lt;h1 id=&#34;yaml&#34;&gt;YAML&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://yaml.org&#34;&gt;https://yaml.org&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;Yaml Ain&amp;rsquo;t Markup Language.&lt;/p&gt;&#xA;&lt;h2 id=&#34;yamllint&#34;&gt;yamllint&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/adrienverge/yamllint&#34;&gt;https://github.com/adrienverge/yamllint&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Yaml on Morgoth</title>
+        <link>https://canuxcheng.com/tags/yaml/</link>
+        <description>Recent content in Yaml on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Thu, 07 Jul 2016 16:43:15 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/yaml/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Yaml</title>
+        <link>https://canuxcheng.com/post/yaml/</link>
+        <pubDate>Thu, 07 Jul 2016 16:43:15 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/yaml/</guid>
+        <description>&lt;h1 id=&#34;yaml&#34;&gt;YAML&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://yaml.org&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://yaml.org&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Yaml Ain&amp;rsquo;t Markup Language.&lt;/p&gt;
+&lt;h2 id=&#34;yamllint&#34;&gt;yamllint&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/adrienverge/yamllint&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/adrienverge/yamllint&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

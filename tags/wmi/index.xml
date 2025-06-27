@@ -1,19 +1,161 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Wmi on Morgoth</title>
-    <link>https://canuxcheng.com/tags/wmi/</link>
-    <description>Recent content in Wmi on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sun, 03 Apr 2016 14:15:47 +0000</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/wmi/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>WMI</title>
-      <link>https://canuxcheng.com/post/win_wmi/</link>
-      <pubDate>Sun, 03 Apr 2016 14:15:47 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/win_wmi/</guid>
-      <description>&lt;h1 id=&#34;wmicim&#34;&gt;WMI/CIM&lt;/h1&gt;&#xA;&lt;p&gt;WMI: windows management instrumentation.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://msdn.microsoft.com/en-us/library/aa394582(v=vs.85).aspx&#34;&gt;https://msdn.microsoft.com/en-us/library/aa394582(v=vs.85).aspx&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;CIM: common information model.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://msdn.microsoft.com/en-us/library/aa389234(v=vs.85).aspx&#34;&gt;https://msdn.microsoft.com/en-us/library/aa389234(v=vs.85).aspx&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;DCOM: distributed COM.&lt;/p&gt;&#xA;&lt;p&gt;wmi通过DCOM远程连接，但是DCOM不能绕过防火墙。&lt;/p&gt;&#xA;&lt;p&gt;命名空间:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;root\cimv2&#xA;root\microsoftdns&#xA;root\securitycenter&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;WMI工具：&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;windows自带wmi测试工具wbemtest.&lt;/li&gt;&#xA;&lt;li&gt;WMI Explorer用于查找wmi和cim的Class和Properties.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://www.ks-soft.net/hostmon.eng/wmi/index.htm#SysReq&#34;&gt;http://www.ks-soft.net/hostmon.eng/wmi/index.htm#SysReq&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;windows怎样设置wmi：&lt;/p&gt;&#xA;&lt;p&gt;135 (Microsoft RPC), 137-139 (NetBIOS) and 445 (Microsoft DS). These are TCP ports.&lt;/p&gt;&#xA;&lt;p&gt;设置的用户需要是管理员组。&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://technet.microsoft.com/en-us/library/cc771551(v=ws.11).aspx&#34;&gt;https://technet.microsoft.com/en-us/library/cc771551(v=ws.11).aspx&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;给wmi设置fix port(server in DMZ)：&lt;/p&gt;&#xA;&lt;p&gt;使用过程中不需要指定端口。&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://msdn.microsoft.com/zh-cn/library/bb219447(v=vs.85).aspx&#34;&gt;https://msdn.microsoft.com/zh-cn/library/bb219447(v=vs.85).aspx&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;wmic&#34;&gt;wmic&lt;/h1&gt;&#xA;&lt;p&gt;wmic是wmi的客户端命令。&lt;/p&gt;&#xA;&lt;p&gt;windows的wmic：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;&amp;gt;wmic # 进入wmi的交互模式&#xA;&amp;gt;wmic -? # 查看帮助&#xA;&amp;gt;wmic /? # 查看帮助&#xA;&amp;gt;wmic ... # 非交互模式运行命令&#xA;&amp;gt;wmic process call create shutdown.exe # 本地关机&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;linux的wmic：&lt;/p&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Wmi on Morgoth</title>
+        <link>https://canuxcheng.com/tags/wmi/</link>
+        <description>Recent content in Wmi on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Sun, 03 Apr 2016 14:15:47 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/wmi/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>WMI</title>
+        <link>https://canuxcheng.com/post/win_wmi/</link>
+        <pubDate>Sun, 03 Apr 2016 14:15:47 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/win_wmi/</guid>
+        <description>&lt;h1 id=&#34;wmicim&#34;&gt;WMI/CIM&lt;/h1&gt;
+&lt;p&gt;WMI: windows management instrumentation.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://msdn.microsoft.com/en-us/library/aa394582%28v=vs.85%29.aspx&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://msdn.microsoft.com/en-us/library/aa394582(v=vs.85).aspx&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;CIM: common information model.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://msdn.microsoft.com/en-us/library/aa389234%28v=vs.85%29.aspx&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://msdn.microsoft.com/en-us/library/aa389234(v=vs.85).aspx&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;DCOM: distributed COM.&lt;/p&gt;
+&lt;p&gt;wmi通过DCOM远程连接，但是DCOM不能绕过防火墙。&lt;/p&gt;
+&lt;p&gt;命名空间:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;root\cimv2
+root\microsoftdns
+root\securitycenter
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;WMI工具：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;windows自带wmi测试工具wbemtest.&lt;/li&gt;
+&lt;li&gt;WMI Explorer用于查找wmi和cim的Class和Properties.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://www.ks-soft.net/hostmon.eng/wmi/index.htm#SysReq&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://www.ks-soft.net/hostmon.eng/wmi/index.htm#SysReq&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;windows怎样设置wmi：&lt;/p&gt;
+&lt;p&gt;135 (Microsoft RPC), 137-139 (NetBIOS) and 445 (Microsoft DS). These are TCP ports.&lt;/p&gt;
+&lt;p&gt;设置的用户需要是管理员组。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://technet.microsoft.com/en-us/library/cc771551%28v=ws.11%29.aspx&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://technet.microsoft.com/en-us/library/cc771551(v=ws.11).aspx&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;给wmi设置fix port(server in DMZ)：&lt;/p&gt;
+&lt;p&gt;使用过程中不需要指定端口。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://msdn.microsoft.com/zh-cn/library/bb219447%28v=vs.85%29.aspx&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://msdn.microsoft.com/zh-cn/library/bb219447(v=vs.85).aspx&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;wmic&#34;&gt;wmic&lt;/h1&gt;
+&lt;p&gt;wmic是wmi的客户端命令。&lt;/p&gt;
+&lt;p&gt;windows的wmic：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;gt;wmic # 进入wmi的交互模式
+&amp;gt;wmic -? # 查看帮助
+&amp;gt;wmic /? # 查看帮助
+&amp;gt;wmic ... # 非交互模式运行命令
+&amp;gt;wmic process call create shutdown.exe # 本地关机
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;linux的wmic：&lt;/p&gt;
+&lt;p&gt;Linux需要自己创建wmic命令，可以通过samba获取，也可以安装openvas的安装包。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$man wmic
+$wmic -U [domain/]adminuser%password //host &amp;quot;select * from Win32_ComputerSystem&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://mikepalmer.net/debianubuntu-wmi-client-package-with-openvas-libwmiclient1-patches/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://mikepalmer.net/debianubuntu-wmi-client-package-with-openvas-libwmiclient1-patches/&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;wmi的class&#34;&gt;WMI的Class&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://msdn.microsoft.com/zh-cn/library/aa394554%28v=vs.85%29.aspx&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://msdn.microsoft.com/zh-cn/library/aa394554(v=vs.85).aspx&lt;/a&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;wmi system class&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://msdn.microsoft.com/zh-cn/library/aa394583%28v=vs.85%29.aspx&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://msdn.microsoft.com/zh-cn/library/aa394583(v=vs.85).aspx&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; __Win32Provider
+ ...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;MSFT class&lt;/p&gt;
+&lt;p&gt;policy provider classes&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; MSFT_Providers
+ MSFT_Rule
+ MSFT_SomFilter
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;WMI Troubleshooting classes&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; MSFT_WmiProvider_Counters
+ MSTF_WmiSelfEvent
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;CIM class&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://msdn.microsoft.com/zh-cn/library/aa386179%28v=vs.85%29.aspx&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://msdn.microsoft.com/zh-cn/library/aa386179(v=vs.85).aspx&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; CIM_Action
+ ...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Standard Consumer class&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; ActiveScriptEventConsumer
+ CommandLineEventConsumer
+ LogFileEventConsumer
+ NTEventLogEventConsumer
+ ScriptingStandardConsumerSetting
+ SMTPEventConsumer
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;wmi的provider&#34;&gt;WMI的Provider&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://msdn.microsoft.com/zh-cn/library/aa394570%28v=vs.85%29.aspx&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://msdn.microsoft.com/zh-cn/library/aa394570(v=vs.85).aspx&lt;/a&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Win32 Provider&lt;/p&gt;
+&lt;p&gt;Computer System Hardware Classes&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://msdn.microsoft.com/zh-cn/library/aa389273%28v=vs.85%29.aspx&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://msdn.microsoft.com/zh-cn/library/aa389273(v=vs.85).aspx&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; Win32_Fan
+ ...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Operating System Classes&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://msdn.microsoft.com/zh-cn/library/dn792258%28v=vs.85%29.aspx&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://msdn.microsoft.com/zh-cn/library/dn792258(v=vs.85).aspx&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; Win32_ClassicCOMApplicationClasses
+ ...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Performance Counter Classes&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://msdn.microsoft.com/zh-cn/library/aa392738%28v=vs.85%29.aspx&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://msdn.microsoft.com/zh-cn/library/aa392738(v=vs.85).aspx&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; Win32_Perf
+ Win32_PerfFormattedData
+ Win32_PerfRawData
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;WMI Service Management Classes&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://msdn.microsoft.com/zh-cn/library/dn792273%28v=vs.85%29.aspx&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://msdn.microsoft.com/zh-cn/library/dn792273(v=vs.85).aspx&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; Win32_MethodParameterClass
+ Win32_WMISetting
+ Wim32_WMIElementSetting
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h1 id=&#34;wql&#34;&gt;wql&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://msdn.microsoft.com/zh-cn/library/aa394606%28v=vs.85%29.aspx&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://msdn.microsoft.com/zh-cn/library/aa394606(v=vs.85).aspx&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;wql关键字：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;SELECT, FROM, WHERE, AND, OR, NOT, NULL, IS, TRUE, FALSE, WITHIN, LIKE, HAVING
+REFERENCES OF, KEYSONLY, ISA, ASSOCIATORS OF, __CLASS, GROUP Clause
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;常用WQL：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;select * from meta_class where __class like &#39;%win32%&#39; # 查询wmi的类
+select * from meta_class where __class like &#39;%cim%&#39; # 查询cim的类
+
+select * from cim_datafile where drive=&amp;quot;c:&amp;quot; and path=&amp;quot;\\path\\&amp;quot; and filename like &amp;quot;%%&amp;quot; and extension like &#39;%%&#39;
+select * from cim_directory where drive=&amp;quot;c:&amp;quot; and path=&amp;quot;\\path\\&amp;quot;
+select * from cim_logicaldisk
+select * from win32_operationsystem
+select * from win32_service
+select * from win32_process
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

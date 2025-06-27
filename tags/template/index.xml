@@ -1,19 +1,345 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Template on Morgoth</title>
-    <link>https://canuxcheng.com/tags/template/</link>
-    <description>Recent content in Template on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Tue, 04 Oct 2016 04:12:49 +0000</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/template/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Template</title>
-      <link>https://canuxcheng.com/post/django_template/</link>
-      <pubDate>Tue, 04 Oct 2016 04:12:49 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/django_template/</guid>
-      <description>&lt;h1 id=&#34;模板设置&#34;&gt;模板设置&lt;/h1&gt;&#xA;&lt;p&gt;模板引擎在settings.py设置, django有两套模板引擎：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;TEMPLATES = [&#xA;    # DjangoTemplates&#xA;    {&#xA;        &#39;BACKEND&#39;: &#39;django.template.backends.django.DjangoTemplates&#39;,&#xA;        # 定义项目的通用模板, mysite/templates&#xA;        &#39;DIRS&#39;: [os.path.join(BASE_DIR, &#39;templates&#39;)],&#xA;        # True 表示在所有安装应用的application/templates中查找。&#xA;        &#39;APP_DIRS&#39;: True,&#xA;        # 模板的选项：&#xA;        &#39;OPTIONS&#39;: {&#xA;            &#39;context_processors&#39;: [&#xA;                &#39;django.template.context_processors.debug&#39;,&#xA;                &#39;django.template.context_processors.request&#39;,&#xA;                &#39;django.contrib.auth.context_processors.auth&#39;,&#xA;                &#39;django.contrib.messages.context_processors.messages&#39;,&#xA;            ]&#xA;        },&#xA;    },&#xA;&#xA;    # Jinja2&#xA;    {&#xA;        &#39;BACKEND&#39;: &#39;django.template.backends.jinja2.Jinja2&#39;,&#xA;        # 定义项目的通用模板, mysite/templates&#xA;        &#39;DIRS&#39;: [os.path.join(BASE_DIR, &#39;templates&#39;)],&#xA;        # True表示在所有已安装应用的application/jinja2中查找。&#xA;        &#39;APP_DIRS&#39;: True,&#xA;        # 模板的选项：&#xA;        &#39;OPTIONS&#39;: {&#xA;            &#39;context_processors&#39;: [&#xA;                &#39;django.template.context_processors.debug&#39;,&#xA;                &#39;django.template.context_processors.request&#39;,&#xA;                &#39;django.contrib.auth.context_processors.auth&#39;,&#xA;                &#39;django.contrib.messages.context_processors.messages&#39;,&#xA;            ]&#xA;        },&#xA;    },&#xA;]&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;BACKEND定义模板引擎,django内置的模板引擎有两个django.template.backends.django.DjangoTemplates(默认)和django.template.backends.jinja2.Jinja2&lt;/p&gt;&#xA;&lt;p&gt;DIRS存放自定义的不在应用路径的模板，模板引擎按列表顺序搜索查找模板源文件,默认就是默认引擎的默认路径。&lt;/p&gt;&#xA;&lt;p&gt;APP_DIRS告诉模板引擎是否进入安装应用的templates(jinja2的目录是jinja2)查找模板。&lt;/p&gt;&#xA;&lt;p&gt;在视图中使用模板：&lt;/p&gt;&#xA;&lt;p&gt;默认django会在项目的所有应用的templates中查找模板，所以为了防止多个应用有同名的模板，需要在templates下新建application同名的目录来存放模板&lt;/p&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Template on Morgoth</title>
+        <link>https://canuxcheng.com/tags/template/</link>
+        <description>Recent content in Template on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Tue, 04 Oct 2016 04:12:49 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/template/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Template</title>
+        <link>https://canuxcheng.com/post/django_template/</link>
+        <pubDate>Tue, 04 Oct 2016 04:12:49 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/django_template/</guid>
+        <description>&lt;h1 id=&#34;模板设置&#34;&gt;模板设置&lt;/h1&gt;
+&lt;p&gt;模板引擎在settings.py设置, django有两套模板引擎：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;TEMPLATES = [
+    # DjangoTemplates
+    {
+        &#39;BACKEND&#39;: &#39;django.template.backends.django.DjangoTemplates&#39;,
+        # 定义项目的通用模板, mysite/templates
+        &#39;DIRS&#39;: [os.path.join(BASE_DIR, &#39;templates&#39;)],
+        # True 表示在所有安装应用的application/templates中查找。
+        &#39;APP_DIRS&#39;: True,
+        # 模板的选项：
+        &#39;OPTIONS&#39;: {
+            &#39;context_processors&#39;: [
+                &#39;django.template.context_processors.debug&#39;,
+                &#39;django.template.context_processors.request&#39;,
+                &#39;django.contrib.auth.context_processors.auth&#39;,
+                &#39;django.contrib.messages.context_processors.messages&#39;,
+            ]
+        },
+    },
+
+    # Jinja2
+    {
+        &#39;BACKEND&#39;: &#39;django.template.backends.jinja2.Jinja2&#39;,
+        # 定义项目的通用模板, mysite/templates
+        &#39;DIRS&#39;: [os.path.join(BASE_DIR, &#39;templates&#39;)],
+        # True表示在所有已安装应用的application/jinja2中查找。
+        &#39;APP_DIRS&#39;: True,
+        # 模板的选项：
+        &#39;OPTIONS&#39;: {
+            &#39;context_processors&#39;: [
+                &#39;django.template.context_processors.debug&#39;,
+                &#39;django.template.context_processors.request&#39;,
+                &#39;django.contrib.auth.context_processors.auth&#39;,
+                &#39;django.contrib.messages.context_processors.messages&#39;,
+            ]
+        },
+    },
+]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;BACKEND定义模板引擎,django内置的模板引擎有两个django.template.backends.django.DjangoTemplates(默认)和django.template.backends.jinja2.Jinja2&lt;/p&gt;
+&lt;p&gt;DIRS存放自定义的不在应用路径的模板，模板引擎按列表顺序搜索查找模板源文件,默认就是默认引擎的默认路径。&lt;/p&gt;
+&lt;p&gt;APP_DIRS告诉模板引擎是否进入安装应用的templates(jinja2的目录是jinja2)查找模板。&lt;/p&gt;
+&lt;p&gt;在视图中使用模板：&lt;/p&gt;
+&lt;p&gt;默认django会在项目的所有应用的templates中查找模板，所以为了防止多个应用有同名的模板，需要在templates下新建application同名的目录来存放模板&lt;/p&gt;
+&lt;p&gt;应用的模板文件需要在应用目录创建templates文件夹&lt;/p&gt;
+&lt;p&gt;默认模板放在polls/templates/polls/XXX.html&lt;/p&gt;
+&lt;p&gt;应用的静态文件需要在应用目录创建static文件夹&lt;/p&gt;
+&lt;p&gt;默认静态文件存放在polls/static/polls/XXX.css&lt;/p&gt;
+&lt;p&gt;静态文件夹用来集中存放和管理图片，js脚本和css样式表等静态文件。&lt;/p&gt;
+&lt;p&gt;django.template.loader定义了两个函数加载模板。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;get_template(template_name, dirs=&amp;lt;object object&amp;gt;, using=None)
+select_template(template_name_list, dirs=&amp;lt;object object&amp;gt;, using=None)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;模板语言&#34;&gt;模板语言&lt;/h1&gt;
+&lt;p&gt;django模板语言由四部分组成：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;变量&lt;/li&gt;
+&lt;li&gt;标签&lt;/li&gt;
+&lt;li&gt;过滤器&lt;/li&gt;
+&lt;li&gt;评论&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;变量&#34;&gt;变量&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;{{ var }}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;显示字符串：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;string = &amp;quot;test string&amp;quot;
+return render(request, &#39;index.html&#39;, {&#39;string&#39;: string})
+
+{{ string }}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;显示字典：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;dict = {&amp;quot;key1&amp;quot;: &amp;quot;value1&amp;quot;, &amp;quot;key2&amp;quot;: &amp;quot;value2&amp;quot;}
+return render(request, &#39;index.html&#39;, {&#39;dict&#39;: dict})
+
+{{ dict.name1 }}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;标签&#34;&gt;标签&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;{% tag %}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;参考内置标签：&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://python.usyiyi.cn/translate/django_182/ref/templates/builtins.html#ref-templates-builtins-tags&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://python.usyiyi.cn/translate/django_182/ref/templates/builtins.html#ref-templates-builtins-tags&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;for标签：&lt;/p&gt;
+&lt;p&gt;遍历列表：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;list = [&#39;val1&#39;, &#39;val2&#39;, &#39;val3&#39;]
+return render(request, &#39;index.html&#39;, {&#39;list&#39;: &#39;list&#39;})
+
+```html
+{% for i in list %}
+{{ i }}
+{% endfor %}
+```
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;遍历字典：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;```html
+{% for key, value in dict.items %}
+{{ key }}: {{ value }}
+{% endfor %}
+```
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;empty列表可能为空：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;```html
+{% for i in list %}
+...
+{% empty %}
+...
+{% endfor %}
+```
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;reversed反向循环：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;{% for i in list reversed %}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;for循环有用的变量：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;forloop.counter    # 1 - indexed
+forloop.counter0    # 0 - indexed
+forloop.revcounter    # 1 - indexed
+forloop.revcounter0    # 0 - indexed
+forloop.first
+forloop.last
+forloop.parentloop
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;if标签：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;```html
+{% if expression %}
+...
+{% else %}
+...
+{% endif %}
+```
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;if可用的布尔操作符：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;{% if expression1 and expression2 %}
+{% if not expression %}
+{% if expression1 or expression2 %}
+{% if not expression1 or expression2 %} # not优先级高于or
+{% if expression1 and not expression2 %} # not优先级高于and
+{% if expression1 and expression2 or expression3 %} # and优先级高于or
+{% if var == value %}
+{% if var != value %}
+{% if var &amp;lt; value %}
+{% if var &amp;gt; value %}
+{% if var &amp;lt;= value %}
+{% if var &amp;gt;= value %}
+{% if var in value %}
+{% if a &amp;gt; b and b &amp;gt; c %}
+{% if var|filter&amp;quot;arguments expression %} # if中使用过滤器
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;布尔操作符的优先级：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;or
+and
+not
+in
+==, !=, &amp;lt;, &amp;gt;, &amp;lt;=, &amp;gt;=
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;include标签：&lt;/p&gt;
+&lt;p&gt;加载模板并以标签内的参数渲染。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;{% include &#39;XXX.html&#39; %}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;load标签：&lt;/p&gt;
+&lt;p&gt;加载自定义模板标签集。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;{% load foo bar from somelibrary %}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;now标签：&lt;/p&gt;
+&lt;p&gt;显示最近的日期和事件。&lt;/p&gt;
+&lt;p&gt;spaceless标签：&lt;/p&gt;
+&lt;p&gt;删除html标签之间的空白格，包括制表符和换行。&lt;/p&gt;
+&lt;p&gt;url标签：&lt;/p&gt;
+&lt;p&gt;返回一个绝对路径的引用，该引用匹配一个给定的视图函数和一些可选的参数。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;{% &#39;some-url-name&#39; v1 v2 %}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;模板继承&#34;&gt;模板继承&lt;/h3&gt;
+&lt;p&gt;block标签：&lt;/p&gt;
+&lt;p&gt;在底层模板定义一些通用的内容，block标签可以被子模板覆盖。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;```html
+{% block XXX %}
+This is default content
+{% endblock %}}
+```
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;extends标签：&lt;/p&gt;
+&lt;p&gt;表示当前模板继承自父模板。&lt;/p&gt;
+&lt;p&gt;extends标签必须放在子模板第一行。&lt;/p&gt;
+&lt;p&gt;extends用来调用底层的模板，然后修改block标签内容。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;```html
+{% extends &amp;quot;XXX.html&amp;quot;/variable %}
+{% block XXX %}
+This is rewrite content
+{% endblock %}
+```
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;block.super:&lt;/p&gt;
+&lt;p&gt;如果需要获取父模板的block中的内容，可以用block.super。&lt;/p&gt;
+&lt;p&gt;可以在父模板的block中增加内容，而不是完全覆盖。&lt;/p&gt;
+&lt;h2 id=&#34;过滤器&#34;&gt;过滤器&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;{{ var|filter:arguments }}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;参考内置过滤器&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://python.usyiyi.cn/translate/django_182/ref/templates/builtins.html#ref-templates-builtins-filters&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://python.usyiyi.cn/translate/django_182/ref/templates/builtins.html#ref-templates-builtins-filters&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;add过滤器：&lt;/p&gt;
+&lt;p&gt;把add后的参数加给value。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;{{ value|add:&amp;quot;2&amp;quot; }} # value -&amp;gt; value+2
+{{ value|addslashes }} # &amp;quot;I&#39;m string&amp;quot; -&amp;gt; &amp;quot;I\&#39;m string&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;addslashed过滤器：&lt;/p&gt;
+&lt;p&gt;在引号前面加\&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;{{ value|addslashes }} # I&#39;m canux -&amp;gt; I\&#39;m canux
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;capfirst过滤器：&lt;/p&gt;
+&lt;p&gt;变量的第一个字母大写。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;{{ value|capfirst }}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;center过滤器：&lt;/p&gt;
+&lt;p&gt;使value在给定的宽度范围内居中。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;{{ value|center:&amp;quot;15&amp;quot; }}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;cut过滤器：&lt;/p&gt;
+&lt;p&gt;移除value中所有的与给出的变量相同的字符串。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;{{ value|cut:&amp;quot;cut&amp;quot; }} # 移除value中的字符串&amp;quot;cut&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;date过滤器：&lt;/p&gt;
+&lt;p&gt;根据给定格式对一个date变量格式化。&lt;/p&gt;
+&lt;p&gt;default过滤器：&lt;/p&gt;
+&lt;p&gt;给value设定默认值，如果value没有赋值，就用默认值。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;{{ value|default:&amp;quot;default-value&amp;quot; }}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;default_if_none过滤器：&lt;/p&gt;
+&lt;p&gt;仅当value是None使用默认值。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;{{ value:default_if_none:&amp;quot;nothing&amp;quot; }}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;dictsort过滤器：&lt;/p&gt;
+&lt;p&gt;dictsortreversed过滤器：&lt;/p&gt;
+&lt;p&gt;divisibleby过滤器：&lt;/p&gt;
+&lt;p&gt;如果value可以被给出的参数整除，返回True。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;{{ value|divisibleby:&amp;quot;3&amp;quot; }}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;escape过滤器：&lt;/p&gt;
+&lt;p&gt;escapejs过滤器：&lt;/p&gt;
+&lt;p&gt;filesizeformat过滤器：&lt;/p&gt;
+&lt;p&gt;格式化为人类可读的文件大小。&lt;/p&gt;
+&lt;p&gt;first过滤器：&lt;/p&gt;
+&lt;p&gt;返回迭代器的第一个元素。&lt;/p&gt;
+&lt;p&gt;floatformat过滤器：&lt;/p&gt;
+&lt;p&gt;force_escape过滤器：&lt;/p&gt;
+&lt;p&gt;get_digit过滤器：&lt;/p&gt;
+&lt;p&gt;iriencode过滤器：&lt;/p&gt;
+&lt;p&gt;join过滤器：&lt;/p&gt;
+&lt;p&gt;last过滤器：&lt;/p&gt;
+&lt;p&gt;length过滤器：&lt;/p&gt;
+&lt;p&gt;length_is过滤器：&lt;/p&gt;
+&lt;p&gt;linebreaks过滤器：&lt;/p&gt;
+&lt;p&gt;linebreaksbr过滤器：&lt;/p&gt;
+&lt;p&gt;linenumbers过滤器：&lt;/p&gt;
+&lt;p&gt;ljust过滤器：&lt;/p&gt;
+&lt;p&gt;lower过滤器：&lt;/p&gt;
+&lt;p&gt;把字符串转换成小写。&lt;/p&gt;
+&lt;p&gt;make_list过滤器：&lt;/p&gt;
+&lt;p&gt;phone2numeric过滤器：&lt;/p&gt;
+&lt;p&gt;pluralize过滤器：&lt;/p&gt;
+&lt;p&gt;pprint过滤器：&lt;/p&gt;
+&lt;p&gt;random过滤器：&lt;/p&gt;
+&lt;p&gt;romevetags过滤器：&lt;/p&gt;
+&lt;p&gt;rjust过滤器：&lt;/p&gt;
+&lt;p&gt;slice过滤器：&lt;/p&gt;
+&lt;p&gt;slugify过滤器：&lt;/p&gt;
+&lt;p&gt;stringformat过滤器：&lt;/p&gt;
+&lt;p&gt;striptags过滤器：&lt;/p&gt;
+&lt;p&gt;time过滤器：&lt;/p&gt;
+&lt;p&gt;timesince过滤器：&lt;/p&gt;
+&lt;p&gt;timeuntil过滤器：&lt;/p&gt;
+&lt;p&gt;title过滤器：&lt;/p&gt;
+&lt;p&gt;truncatechars过滤器：&lt;/p&gt;
+&lt;p&gt;truncatechars_html过滤器：&lt;/p&gt;
+&lt;p&gt;truncatewords过滤器：&lt;/p&gt;
+&lt;p&gt;truncatewords_html过滤器;&lt;/p&gt;
+&lt;p&gt;unordered_list过滤器：&lt;/p&gt;
+&lt;p&gt;upper过滤器：&lt;/p&gt;
+&lt;p&gt;将字符串转换成大写形式。&lt;/p&gt;
+&lt;p&gt;urlencode过滤器：&lt;/p&gt;
+&lt;p&gt;urlize过滤器：&lt;/p&gt;
+&lt;p&gt;urlizetrunc过滤器：&lt;/p&gt;
+&lt;p&gt;wordcount过滤器：&lt;/p&gt;
+&lt;p&gt;wordwrap过滤器：&lt;/p&gt;
+&lt;p&gt;yesno过滤器：&lt;/p&gt;
+&lt;p&gt;i18n过滤器：&lt;/p&gt;
+&lt;p&gt;l10n过滤器：&lt;/p&gt;
+&lt;p&gt;tz过滤器：&lt;/p&gt;
+&lt;h2 id=&#34;注释&#34;&gt;注释&lt;/h2&gt;
+&lt;p&gt;单行注释：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;```html
+{# this is single line comment #}
+```
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;多行注释：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;```html
+{% comment %}
+line1
+line2
+{% endcomment %}
+```
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;自动html转义&#34;&gt;自动html转义&lt;/h1&gt;
+&lt;p&gt;当从模板生成html时，值可能包含影响html最终呈现的字符。&lt;/p&gt;
+&lt;p&gt;django的自动转义,默认是打开的：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;lt; 转义成 &amp;amp;lt;
+&amp;gt; 转义成 &amp;amp;gt;
+&#39; 转义成 &amp;amp;#39
+&amp;quot; 转义成 &amp;amp;quot;
+$ 转义成 &amp;amp;amp;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;如果不需要自动转义可以关闭它&lt;/p&gt;
+&lt;p&gt;可以用safe过滤器关闭独立变量中的自动转义：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;data = &amp;lt;b&amp;gt;
+{{ data }} -&amp;gt; &amp;amp;lt;b&amp;amp;gt;
+{{ data|safe }} -&amp;gt; &amp;lt;b&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;可以用autoescape标签关闭模板代码中的自动转义：&lt;/p&gt;
+&lt;p&gt;autoescape标签有off和on两个参数，表示关闭和打开自动转义。&lt;/p&gt;
+&lt;p&gt;父模板中的autoescape可以被子模板继承，也可以被include标签包含的模板继承。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;```html
+{% autoescape off %}
+{{ name }}
+{% endautoescape %}
+```
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

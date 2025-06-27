@@ -1,33 +1,69 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Tracing on Morgoth</title>
-    <link>https://canuxcheng.com/tags/tracing/</link>
-    <description>Recent content in Tracing on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Wed, 08 Jun 2016 09:46:47 +0000</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/tracing/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>Jaeger</title>
-      <link>https://canuxcheng.com/post/tracing_jaeger/</link>
-      <pubDate>Wed, 08 Jun 2016 09:46:47 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/tracing_jaeger/</guid>
-      <description>&lt;h1 id=&#34;jaeger&#34;&gt;Jaeger&lt;/h1&gt;&#xA;&lt;p&gt;一款uber贡献给cncf的微服务tracing监控工具.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.jaegertracing.io/&#34;&gt;https://www.jaegertracing.io/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/jaegertracing/jaeger&#34;&gt;https://github.com/jaegertracing/jaeger&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;deploy-jaeger-on-k8s&#34;&gt;Deploy Jaeger on K8S&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/jaegertracing/jaeger-operator&#34;&gt;https://github.com/jaegertracing/jaeger-operator&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Sentry</title>
-      <link>https://canuxcheng.com/post/tracing_sentry/</link>
-      <pubDate>Wed, 08 Jun 2016 09:46:47 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/tracing_sentry/</guid>
-      <description>&lt;h1 id=&#34;sentry&#34;&gt;Sentry&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/getsentry/sentry&#34;&gt;https://github.com/getsentry/sentry&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;deploy-sentry-on-k8s&#34;&gt;Deploy Sentry on K8S&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/getsentry/onpremise&#34;&gt;https://github.com/getsentry/onpremise&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Tracing</title>
-      <link>https://canuxcheng.com/post/tracing/</link>
-      <pubDate>Wed, 08 Jun 2016 09:46:47 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/tracing/</guid>
-      <description>&lt;h1 id=&#34;tracing&#34;&gt;Tracing&lt;/h1&gt;&#xA;&lt;p&gt;APM 监控，也叫全链路监控。&lt;/p&gt;&#xA;&lt;h1 id=&#34;sentry&#34;&gt;sentry&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/getsentry/sentry&#34;&gt;https://github.com/getsentry/sentry&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;zipkin&#34;&gt;zipkin&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/openzipkin/zipkin&#34;&gt;https://github.com/openzipkin/zipkin&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;open-telemetry&#34;&gt;open-telemetry&lt;/h1&gt;&#xA;&lt;p&gt;opentracing和opencensus 合并成open-telemetry.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/opentracing&#34;&gt;https://github.com/opentracing&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/census-instrumentation&#34;&gt;https://github.com/census-instrumentation&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/open-telemetry&#34;&gt;https://github.com/open-telemetry&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;jaeger&#34;&gt;jaeger&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/jaegertracing/jaeger&#34;&gt;https://github.com/jaegertracing/jaeger&lt;/a&gt;&lt;/p&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Tracing on Morgoth</title>
+        <link>https://canuxcheng.com/tags/tracing/</link>
+        <description>Recent content in Tracing on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Wed, 08 Jun 2016 09:46:47 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/tracing/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Jaeger</title>
+        <link>https://canuxcheng.com/post/tracing_jaeger/</link>
+        <pubDate>Wed, 08 Jun 2016 09:46:47 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/tracing_jaeger/</guid>
+        <description>&lt;h1 id=&#34;jaeger&#34;&gt;Jaeger&lt;/h1&gt;
+&lt;p&gt;一款uber贡献给cncf的微服务tracing监控工具.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.jaegertracing.io/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.jaegertracing.io/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/jaegertracing/jaeger&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/jaegertracing/jaeger&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;deploy-jaeger-on-k8s&#34;&gt;Deploy Jaeger on K8S&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/jaegertracing/jaeger-operator&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/jaegertracing/jaeger-operator&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Sentry</title>
+        <link>https://canuxcheng.com/post/tracing_sentry/</link>
+        <pubDate>Wed, 08 Jun 2016 09:46:47 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/tracing_sentry/</guid>
+        <description>&lt;h1 id=&#34;sentry&#34;&gt;Sentry&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/getsentry/sentry&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/getsentry/sentry&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;deploy-sentry-on-k8s&#34;&gt;Deploy Sentry on K8S&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/getsentry/onpremise&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/getsentry/onpremise&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Tracing</title>
+        <link>https://canuxcheng.com/post/tracing/</link>
+        <pubDate>Wed, 08 Jun 2016 09:46:47 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/tracing/</guid>
+        <description>&lt;h1 id=&#34;tracing&#34;&gt;Tracing&lt;/h1&gt;
+&lt;p&gt;APM 监控，也叫全链路监控。&lt;/p&gt;
+&lt;h1 id=&#34;sentry&#34;&gt;sentry&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/getsentry/sentry&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/getsentry/sentry&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;zipkin&#34;&gt;zipkin&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/openzipkin/zipkin&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/openzipkin/zipkin&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;open-telemetry&#34;&gt;open-telemetry&lt;/h1&gt;
+&lt;p&gt;opentracing和opencensus 合并成open-telemetry.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/opentracing&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/opentracing&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/census-instrumentation&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/census-instrumentation&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/open-telemetry&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/open-telemetry&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;jaeger&#34;&gt;jaeger&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/jaegertracing/jaeger&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/jaegertracing/jaeger&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>

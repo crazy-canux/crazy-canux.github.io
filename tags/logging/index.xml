@@ -1,40 +1,147 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
-  <channel>
-    <title>Logging on Morgoth</title>
-    <link>https://canuxcheng.com/tags/logging/</link>
-    <description>Recent content in Logging on Morgoth</description>
-    <generator>Hugo</generator>
-    <language>en-us</language>
-    <lastBuildDate>Fri, 08 Jun 2018 09:46:47 +0000</lastBuildDate>
-    <atom:link href="https://canuxcheng.com/tags/logging/index.xml" rel="self" type="application/rss+xml" />
-    <item>
-      <title>ELK</title>
-      <link>https://canuxcheng.com/post/logging_elk/</link>
-      <pubDate>Fri, 08 Jun 2018 09:46:47 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/logging_elk/</guid>
-      <description>&lt;h1 id=&#34;elk&#34;&gt;ELK&lt;/h1&gt;&#xA;&lt;p&gt;kibana: 数据可视化&lt;/p&gt;&#xA;&lt;p&gt;elasticsearch: 搜索，分析，存储数据&lt;/p&gt;&#xA;&lt;p&gt;x-pack: 具有监控和报警功能的工具包.&lt;/p&gt;&#xA;&lt;p&gt;logstash: 动态数据收集管道，支持可扩展的插件．&lt;/p&gt;&#xA;&lt;p&gt;beats(agent): 轻量型数据采集平台，从边缘机器向logstash/elasticsearch发送数据．&lt;/p&gt;&#xA;&lt;hr&gt;</description>
-    </item>
-    <item>
-      <title>Grok</title>
-      <link>https://canuxcheng.com/post/logging_grok/</link>
-      <pubDate>Fri, 08 Jun 2018 09:46:47 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/logging_grok/</guid>
-      <description>&lt;h1 id=&#34;grok&#34;&gt;grok&lt;/h1&gt;&#xA;&lt;p&gt;logstash和telegraf都是用grok来解析log&lt;/p&gt;&#xA;&lt;p&gt;在线检测&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://grokdebug.herokuapp.com/&#34;&gt;http://grokdebug.herokuapp.com/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;grok的正则表达式&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/kkos/oniguruma/blob/master/doc/RE&#34;&gt;https://github.com/kkos/oniguruma/blob/master/doc/RE&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;可用的pattern(logstash &amp;amp; telegraf-logparser/tail)&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/logstash-plugins/logstash-patterns-core/blob/master/patterns/grok-patterns&#34;&gt;https://github.com/logstash-plugins/logstash-patterns-core/blob/master/patterns/grok-patterns&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/influxdata/telegraf/blob/master/plugins/inputs/logparser/grok/patterns/influx-patterns&#34;&gt;https://github.com/influxdata/telegraf/blob/master/plugins/inputs/logparser/grok/patterns/influx-patterns&lt;/a&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;elastic-stack&#34;&gt;Elastic stack&lt;/h1&gt;&#xA;&lt;p&gt;beats/filebeats: 通过filebeats agent获取log．&lt;/p&gt;&#xA;&lt;p&gt;logstash: 使用filebeats解析log并写入stash(elasticsearch).&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;tick-stack&#34;&gt;TICK stack&lt;/h1&gt;&#xA;&lt;p&gt;telegraf(agent): 通过logparser/tail插件解析log并写入influxdb.&lt;/p&gt;&#xA;&lt;p&gt;pattern:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;# 通过已经定义的变量来定义filter&#xA;patterns = [&#39;&#39;&#39;${&amp;lt;capture_syntax&amp;gt;[:&amp;lt;semantic_name&amp;gt;][:&amp;lt;modifier&amp;gt;]}&#39;&#39;&#39;]&#xA;patterns = [&#39;&#39;&#39;%{TIMESTAMP_ISO8601:asctime:string} \[%{DATA:name:string}\] %{LOGLEVEL:levelname:string}: %{GREEDYDATA:message:string}&#39;&#39;&#39;]&#xA;&#xA;capture_syntax是已经定义好的pattern.&#xA;semantic_name是field/tag的名字, 默认都是string类型的field&#xA;modifier 是string/int/float/tag/drop/ts-&amp;quot;CUSTOM&amp;quot;/...类型&#xA;&#xA;timestamp有特殊的modifier:&#xA;timestamp 有特殊的modifier：&#xA;Timestamp modifiers:ts (This will auto-learn the timestamp format)&#xA;ts-ansic (&amp;quot;Mon Jan _2 15:04:05 2006&amp;quot;)&#xA;ts-unix (&amp;quot;Mon Jan _2 15:04:05 MST 2006&amp;quot;)&#xA;ts-ruby (&amp;quot;Mon Jan 02 15:04:05 -0700 2006&amp;quot;)&#xA;ts-rfc822 (&amp;quot;02 Jan 06 15:04 MST&amp;quot;)&#xA;ts-rfc822z (&amp;quot;02 Jan 06 15:04 -0700&amp;quot;)&#xA;ts-rfc850 (&amp;quot;Monday, 02-Jan-06 15:04:05 MST&amp;quot;)&#xA;ts-rfc1123 (&amp;quot;Mon, 02 Jan 2006 15:04:05 MST&amp;quot;)&#xA;ts-rfc1123z (&amp;quot;Mon, 02 Jan 2006 15:04:05 -0700&amp;quot;)&#xA;ts-rfc3339 (&amp;quot;2006-01-02T15:04:05Z07:00&amp;quot;)&#xA;ts-rfc3339nano (&amp;quot;2006-01-02T15:04:05.999999999Z07:00&amp;quot;)&#xA;ts-httpd (&amp;quot;02/Jan/2006:15:04:05 -0700&amp;quot;)&#xA;ts-epoch (seconds since unix epoch, may contain decimal)&#xA;ts-epochnano (nanoseconds since unix epoch)&#xA;ts-syslog (&amp;quot;Jan 02 15:04:05&amp;quot;, parsed time is set to the current year)&#xA;ts-&amp;quot;CUSTOM&amp;quot;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;custom_patterns:&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Logging</title>
-      <link>https://canuxcheng.com/post/logging/</link>
-      <pubDate>Fri, 08 Jun 2018 09:46:47 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/logging/</guid>
-      <description>&lt;h1 id=&#34;logging&#34;&gt;Logging&lt;/h1&gt;&#xA;&lt;p&gt;日志采集，存储，可视化.&lt;/p&gt;&#xA;&lt;p&gt;主要有Elastic stack, splunk, loki.&lt;/p&gt;&#xA;&lt;hr&gt;</description>
-    </item>
-    <item>
-      <title>Loki</title>
-      <link>https://canuxcheng.com/post/logging_loki/</link>
-      <pubDate>Fri, 08 Jun 2018 09:46:47 +0000</pubDate>
-      <guid>https://canuxcheng.com/post/logging_loki/</guid>
-      <description>&lt;h1 id=&#34;elk&#34;&gt;ELK&lt;/h1&gt;&#xA;&lt;p&gt;kibana: 数据可视化&lt;/p&gt;&#xA;&lt;p&gt;elasticsearch: 搜索，分析，存储数据&lt;/p&gt;&#xA;&lt;p&gt;x-pack: 具有监控和报警功能的工具包.&lt;/p&gt;&#xA;&lt;p&gt;logstash: 动态数据收集管道，支持可扩展的插件．&lt;/p&gt;&#xA;&lt;p&gt;beats(agent): 轻量型数据采集平台，从边缘机器向logstash/elasticsearch发送数据．&lt;/p&gt;&#xA;&lt;hr&gt;</description>
-    </item>
-  </channel>
+    <channel>
+        <title>Logging on Morgoth</title>
+        <link>https://canuxcheng.com/tags/logging/</link>
+        <description>Recent content in Logging on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Fri, 08 Jun 2018 09:46:47 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/logging/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>ELK</title>
+        <link>https://canuxcheng.com/post/logging_elk/</link>
+        <pubDate>Fri, 08 Jun 2018 09:46:47 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/logging_elk/</guid>
+        <description>&lt;h1 id=&#34;elk&#34;&gt;ELK&lt;/h1&gt;
+&lt;p&gt;kibana: 数据可视化&lt;/p&gt;
+&lt;p&gt;elasticsearch: 搜索，分析，存储数据&lt;/p&gt;
+&lt;p&gt;x-pack: 具有监控和报警功能的工具包.&lt;/p&gt;
+&lt;p&gt;logstash: 动态数据收集管道，支持可扩展的插件．&lt;/p&gt;
+&lt;p&gt;beats(agent): 轻量型数据采集平台，从边缘机器向logstash/elasticsearch发送数据．&lt;/p&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        <item>
+        <title>Grok</title>
+        <link>https://canuxcheng.com/post/logging_grok/</link>
+        <pubDate>Fri, 08 Jun 2018 09:46:47 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/logging_grok/</guid>
+        <description>&lt;h1 id=&#34;grok&#34;&gt;grok&lt;/h1&gt;
+&lt;p&gt;logstash和telegraf都是用grok来解析log&lt;/p&gt;
+&lt;p&gt;在线检测&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://grokdebug.herokuapp.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://grokdebug.herokuapp.com/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;grok的正则表达式&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/kkos/oniguruma/blob/master/doc/RE&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/kkos/oniguruma/blob/master/doc/RE&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;可用的pattern(logstash &amp;amp; telegraf-logparser/tail)&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/logstash-plugins/logstash-patterns-core/blob/master/patterns/grok-patterns&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/logstash-plugins/logstash-patterns-core/blob/master/patterns/grok-patterns&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/influxdata/telegraf/blob/master/plugins/inputs/logparser/grok/patterns/influx-patterns&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/influxdata/telegraf/blob/master/plugins/inputs/logparser/grok/patterns/influx-patterns&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;elastic-stack&#34;&gt;Elastic stack&lt;/h1&gt;
+&lt;p&gt;beats/filebeats: 通过filebeats agent获取log．&lt;/p&gt;
+&lt;p&gt;logstash: 使用filebeats解析log并写入stash(elasticsearch).&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;tick-stack&#34;&gt;TICK stack&lt;/h1&gt;
+&lt;p&gt;telegraf(agent): 通过logparser/tail插件解析log并写入influxdb.&lt;/p&gt;
+&lt;p&gt;pattern:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 通过已经定义的变量来定义filter
+patterns = [&#39;&#39;&#39;${&amp;lt;capture_syntax&amp;gt;[:&amp;lt;semantic_name&amp;gt;][:&amp;lt;modifier&amp;gt;]}&#39;&#39;&#39;]
+patterns = [&#39;&#39;&#39;%{TIMESTAMP_ISO8601:asctime:string} \[%{DATA:name:string}\] %{LOGLEVEL:levelname:string}: %{GREEDYDATA:message:string}&#39;&#39;&#39;]
+
+capture_syntax是已经定义好的pattern.
+semantic_name是field/tag的名字, 默认都是string类型的field
+modifier 是string/int/float/tag/drop/ts-&amp;quot;CUSTOM&amp;quot;/...类型
+
+timestamp有特殊的modifier:
+timestamp 有特殊的modifier：
+Timestamp modifiers:ts (This will auto-learn the timestamp format)
+ts-ansic (&amp;quot;Mon Jan _2 15:04:05 2006&amp;quot;)
+ts-unix (&amp;quot;Mon Jan _2 15:04:05 MST 2006&amp;quot;)
+ts-ruby (&amp;quot;Mon Jan 02 15:04:05 -0700 2006&amp;quot;)
+ts-rfc822 (&amp;quot;02 Jan 06 15:04 MST&amp;quot;)
+ts-rfc822z (&amp;quot;02 Jan 06 15:04 -0700&amp;quot;)
+ts-rfc850 (&amp;quot;Monday, 02-Jan-06 15:04:05 MST&amp;quot;)
+ts-rfc1123 (&amp;quot;Mon, 02 Jan 2006 15:04:05 MST&amp;quot;)
+ts-rfc1123z (&amp;quot;Mon, 02 Jan 2006 15:04:05 -0700&amp;quot;)
+ts-rfc3339 (&amp;quot;2006-01-02T15:04:05Z07:00&amp;quot;)
+ts-rfc3339nano (&amp;quot;2006-01-02T15:04:05.999999999Z07:00&amp;quot;)
+ts-httpd (&amp;quot;02/Jan/2006:15:04:05 -0700&amp;quot;)
+ts-epoch (seconds since unix epoch, may contain decimal)
+ts-epochnano (nanoseconds since unix epoch)
+ts-syslog (&amp;quot;Jan 02 15:04:05&amp;quot;, parsed time is set to the current year)
+ts-&amp;quot;CUSTOM&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;custom_patterns:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 通过正则表达式或已经定义的变量来定义新的变量
+# 一行一个
+custom_patterns = &#39;&#39;&#39;
+    LOGLEVEL_PYTHON (?:WARNING|ERROR|CRITICAL)
+&#39;&#39;&#39;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;logparser:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[[inputs.logparser]]
+files = [&amp;quot;/opt/sandbox/logs/appliance.log&amp;quot;]
+from_beginning = false
+watch_method = &amp;quot;inotify&amp;quot;
+[inputs.logparser.grok]
+  patterns = [&#39;&#39;&#39;
+    %{TIMESTAMP_ISO8601:timestamp:ts-&amp;quot;2006-01-02 15:04:05.000&amp;quot;}
+    \[%{DATA:name:string}\]
+    %{LOGLEVEL_PYTHON:levelname:tag}:
+    %{GREEDYDATA:message:string}&#39;&#39;&#39;]
+  measurement = &amp;quot;log_test&amp;quot;
+  custom_pattern_files = []
+  custom_patterns = &#39;&#39;&#39;LOGLEVEL_PYTHON (?:WARNING|ERROR|CRITICAL)&#39;&#39;&#39;
+  timezone = &amp;quot;Local&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;tail:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[[inputs.tail]]
+files = [&amp;quot;/opt/sandbox/logs/appliance.log&amp;quot;]
+from_beginning = false
+pipe = false
+watch_method = &amp;quot;inotify&amp;quot;
+data_format = &amp;quot;grok&amp;quot;
+
+grok_patterns = [&#39;&#39;&#39;%{TIMESTAMP_ISO8601:timestamp:ts-&amp;quot;2006-01-02 15:04:05.000&amp;quot;}
+  \[%{DATA:name:string}\] %{LOGLEVEL_PYTHON:levelname:tag}:
+  %{GREEDYDATA:message:string}&#39;&#39;&#39;]
+grok_custom_patterns = &#39;&#39;LOGLEVEL_PYTHON (?:WARNING|ERROR|CRITICAL)&#39;&#39;&#39;
+grok_timezone = &amp;quot;Local&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        <item>
+        <title>Logging</title>
+        <link>https://canuxcheng.com/post/logging/</link>
+        <pubDate>Fri, 08 Jun 2018 09:46:47 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/logging/</guid>
+        <description>&lt;h1 id=&#34;logging&#34;&gt;Logging&lt;/h1&gt;
+&lt;p&gt;日志采集，存储，可视化.&lt;/p&gt;
+&lt;p&gt;主要有Elastic stack, splunk, loki.&lt;/p&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        <item>
+        <title>Loki</title>
+        <link>https://canuxcheng.com/post/logging_loki/</link>
+        <pubDate>Fri, 08 Jun 2018 09:46:47 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/logging_loki/</guid>
+        <description>&lt;h1 id=&#34;elk&#34;&gt;ELK&lt;/h1&gt;
+&lt;p&gt;kibana: 数据可视化&lt;/p&gt;
+&lt;p&gt;elasticsearch: 搜索，分析，存储数据&lt;/p&gt;
+&lt;p&gt;x-pack: 具有监控和报警功能的工具包.&lt;/p&gt;
+&lt;p&gt;logstash: 动态数据收集管道，支持可扩展的插件．&lt;/p&gt;
+&lt;p&gt;beats(agent): 轻量型数据采集平台，从边缘机器向logstash/elasticsearch发送数据．&lt;/p&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        
+    </channel>
 </rss>
