@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Pep on Morgoth</title>
+    <link>https://canuxcheng.com/tags/pep/</link>
+    <description>Recent content in Pep on Morgoth</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 06 Aug 2016 16:54:08 +0000</lastBuildDate>
+    <atom:link href="https://canuxcheng.com/tags/pep/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>PEP</title>
+      <link>https://canuxcheng.com/post/python_pep/</link>
+      <pubDate>Sat, 06 Aug 2016 16:54:08 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/python_pep/</guid>
+      <description>&lt;h1 id=&#34;pep-8--style-guide-for-python-code&#34;&gt;PEP 8 &amp;ndash; Style Guide for Python Code&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.python.org/dev/peps/pep-0008/&#34;&gt;https://www.python.org/dev/peps/pep-0008/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;pep-257--docstring-conventions&#34;&gt;PEP 257 &amp;ndash; Docstring Conventions&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.python.org/dev/peps/pep-0257/&#34;&gt;https://www.python.org/dev/peps/pep-0257/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;pep-20pep-20--the-zen-of-python&#34;&gt;PEP-20PEP 20 &amp;ndash; The Zen of Python&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.python.org/dev/peps/pep-0020/&#34;&gt;https://www.python.org/dev/peps/pep-0020/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;# 查看pep20&#xA;&amp;gt;import this&#xA;&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+  </channel>
+</rss>

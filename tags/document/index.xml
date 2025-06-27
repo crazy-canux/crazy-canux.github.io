@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Document on Morgoth</title>
+    <link>https://canuxcheng.com/tags/document/</link>
+    <description>Recent content in Document on Morgoth</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 01 Jan 2018 10:49:21 +0000</lastBuildDate>
+    <atom:link href="https://canuxcheng.com/tags/document/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Document</title>
+      <link>https://canuxcheng.com/post/go_document/</link>
+      <pubDate>Mon, 01 Jan 2018 10:49:21 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/go_document/</guid>
+      <description>&lt;h1 id=&#34;document&#34;&gt;Document&lt;/h1&gt;&#xA;&lt;p&gt;go文档相关&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://godoc.org/&#34;&gt;https://godoc.org/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;go文档的两种方式:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;go doc&lt;/li&gt;&#xA;&lt;li&gt;godoc&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h1 id=&#34;go-doc&#34;&gt;go doc&lt;/h1&gt;&#xA;&lt;p&gt;直接在命令行查看文档&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ go doc [package/symbol]&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h1 id=&#34;godoc&#34;&gt;godoc&lt;/h1&gt;&#xA;&lt;p&gt;go自带的文档命令行接口,在浏览器查看文档&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;godoc package [name ...]&#xA;godoc -http=:6060&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;通过github的项目文档在:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;https://godoc.org&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;godev&#34;&gt;go.dev&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://pkg.go.dev&#34;&gt;https://pkg.go.dev&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Document</title>
+      <link>https://canuxcheng.com/post/python_document/</link>
+      <pubDate>Wed, 03 Aug 2016 21:57:26 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/python_document/</guid>
+      <description>&lt;h1 id=&#34;document&#34;&gt;Document&lt;/h1&gt;&#xA;&lt;p&gt;python项目文档相关的工具．&lt;/p&gt;&#xA;&lt;h1 id=&#34;pydoc&#34;&gt;pydoc&lt;/h1&gt;&#xA;&lt;p&gt;python自带的文档命令行接口&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ pydoc --help&#xA;$ pydoc -p &amp;lt;port&amp;gt;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;tpl&#34;&gt;TPL&lt;/h1&gt;&#xA;&lt;h2 id=&#34;sphinx&#34;&gt;Sphinx&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/sphinx-doc/sphinx&#34;&gt;https://github.com/sphinx-doc/sphinx&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://zh-sphinx-doc.readthedocs.io/en/latest/contents.html&#34;&gt;https://zh-sphinx-doc.readthedocs.io/en/latest/contents.html&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;Sphinx就是python处理reStructuredText格式的工具。&lt;/p&gt;&#xA;&lt;p&gt;安装：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$pip install -U Sphinx&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;使用sphinx：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$cd your-project/docs&#xA;&#xA;$sphinx-quickstart&#xA;# 以下选项需要手动设定，其它都可以用默认值：&#xA;&amp;gt; Project name: pydeveloper&#xA;&amp;gt; Author name(s): Canux CHENG&#xA;&amp;gt; Project version: 1.0.0.0&#xA;&amp;gt; autodoc: automatically insert docstrings from modules (y/n) [n]: y&#xA;&amp;gt; doctest: automatically test code snippets in doctest blocks (y/n) [n]: y&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;配置文件conf.py包含刚才的所有配置，可以在这里手动修改。&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://www.sphinx-doc.org/en/1.4.8/config.html#confval-locale_dirs&#34;&gt;http://www.sphinx-doc.org/en/1.4.8/config.html#confval-locale_dirs&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;添加包的版本：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;sys.path.insert(0, os.path.abspath(&amp;quot;..&amp;quot;))&#xA;from &amp;lt;project&amp;gt; import __version__&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;修改自己的配置：&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Document</title>
+      <link>https://canuxcheng.com/post/c_document/</link>
+      <pubDate>Mon, 11 Apr 2016 22:57:37 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/c_document/</guid>
+      <description>&lt;h1 id=&#34;document&#34;&gt;Document&lt;/h1&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;doxygen&#34;&gt;Doxygen&lt;/h1&gt;</description>
+    </item>
+  </channel>
+</rss>

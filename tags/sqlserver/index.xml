@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sqlserver on Morgoth</title>
+    <link>https://canuxcheng.com/tags/sqlserver/</link>
+    <description>Recent content in Sqlserver on Morgoth</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 06 Apr 2016 15:33:42 +0000</lastBuildDate>
+    <atom:link href="https://canuxcheng.com/tags/sqlserver/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>MSSql</title>
+      <link>https://canuxcheng.com/post/mssql/</link>
+      <pubDate>Wed, 06 Apr 2016 15:33:42 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/mssql/</guid>
+      <description>&lt;h1 id=&#34;mssql&#34;&gt;MSSQL&lt;/h1&gt;&#xA;&lt;p&gt;商业版：&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;企业版&lt;/li&gt;&#xA;&lt;li&gt;商业智能版&lt;/li&gt;&#xA;&lt;li&gt;标准版&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;免费版：&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Express&lt;/li&gt;&#xA;&lt;li&gt;Developer&lt;/li&gt;&#xA;&lt;li&gt;Compact&lt;/li&gt;&#xA;&lt;li&gt;Web&lt;/li&gt;&#xA;&lt;li&gt;SQL Azure&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;system databases:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;master 主数据库&lt;/li&gt;&#xA;&lt;li&gt;model  模板数据库&lt;/li&gt;&#xA;&lt;li&gt;msdb   自动机数据库&lt;/li&gt;&#xA;&lt;li&gt;tempdb 零时交换数据库,不需要备份,挂载到独立的子系统。&lt;/li&gt;&#xA;&lt;li&gt;resource&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;default port：1433&lt;/p&gt;&#xA;&lt;p&gt;2008: max instance 16&lt;/p&gt;&#xA;&lt;p&gt;2012: max instance 256&lt;/p&gt;&#xA;&lt;p&gt;Client -&amp;gt; SNAC(OLE DB/ODBC) -&amp;gt; Network Libraries -&amp;gt; TDS &amp;lt;=&amp;gt; Server -&amp;gt; Endpoints -&amp;gt; SQL OS(relational engine/storage engine)&lt;/p&gt;&#xA;&lt;h2 id=&#34;gui&#34;&gt;GUI&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;SSMS&lt;/p&gt;&#xA;&lt;p&gt;SQL Server Management Studio是mssql的图形化管理界面。&lt;/p&gt;&#xA;&lt;p&gt;从模板中获取常用的SQL：&lt;/p&gt;&#xA;&lt;p&gt;view -&amp;gt; template explorer + query -&amp;gt; specify values for template parameters.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

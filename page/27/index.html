@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="generator" content="Hugo 0.147.9">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morgoth - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="home">
+    <h1>Morgoth</h1>
+    <p></p>
+    
+    <section class="recent-posts">
+        <h2>Recent Posts</h2>
+        <ul class="post-list">
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/hawq/">HAWQ</a></h2>
+                    <div class="post-meta">
+                        <time>April 24, 2017</time>
+                        
+                            
+                                <span class="category">BigData</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="hawq">HAWQ</h1>
+<p><a href="http://hawq.incubator.apache.org/">http://hawq.incubator.apache.org/</a></p>
+<p><a href="https://github.com/apache/incubator-hawq">https://github.com/apache/incubator-hawq</a></p>
+<p>HAWQ是在Pivotal Greenplum和PostgreSQL基础上开发而来．</p>
+<p>HAWQ也就是Pivotal HDB.</p>
+<p>HAWQ和Pivotal　HDB是一个项目．</p>
+<p>Hortonworks公司的HDP集成了HAWQ.</p>
+<p>HAWQ可以通过HDFS在本机快速，交互查询hadoop数据．</p>
+<p>hawq的交互式命令行接口, 类似于postgresql, 参考postgresql.</p>
+<p>hawq的client: psql (参考postgresql)</p>
+<hr>
+<h1 id="psql">psql</h1>
+<pre><code>$ psql
+$ PGPASSWORD='password';psql -h &lt;host&gt; -p &lt;port&gt; -U &lt;username&gt; -d [database] -c &quot;[psql command]&quot;
+$ psql -l # 查看所有database
+
+# jdbc
+$ jdbc:pivotal:greenplum://hdm1:5432;DatabaseName=getstartdb;User=hdbuser;Password=hdbpass
+</code></pre>
+<hr>
+<h1 id="sql">sql</h1>
+<p>AO(append only) table:</p>
+<pre><code>&gt; create table {table_name} (var type, var1 type1);
+</code></pre>
+<p>parquet table:</p>
+<pre><code>&gt; create table {table_name} (var type, var1 type2) WITH (appendonly=true, orientation=parquet);
+</code></pre>
+<p>AO table distributed by specified column and partitioned by range:</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/mongodb/">MongoDB</a></h2>
+                    <div class="post-meta">
+                        <time>April 16, 2017</time>
+                        
+                            
+                                <span class="category">Database</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="mongodb">MongoDB</h1>
+<p><a href="https://github.com/mongodb/mongo">https://github.com/mongodb/mongo</a></p>
+<p>mongodb是一种开源的文档数据库，高性能，高可用性，自动裁剪．</p>
+<p>mongodb的database和关系数据库中的database一样．</p>
+<p>mongodb将BSON(mongo的JSON)文档存储在集合(collections)中，集合相当于关系数据库中的表table．</p>
+<p>mongodb的collections中的域(field)，相当于关系数据库中的字段column.</p>
+<p>mongodb的collections中的文档(document)，相当于关系数据库中的记录行row.</p>
+<p>mongodb也支持index索引和primary key主键，但是不支持table joins表连接．</p>
+<p>ubuntu安装:</p>
+<pre><code>$ sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv0C49F3730359A14518585931BC711F9BA15703C6
+$ echo &quot;deb http://repo.mongodb.org/apt/ubuntu trusty/mongodb-org/3.4multiverse&quot; | sudo tee /etc/apt/sources.list.d/mongodb-org-3.4.list
+$ sudo apt-get update
+$ sudo apt-get install -y mongodb-org
+</code></pre>
+<p>ubuntu启动:</p>
+<pre><code>$ sudo service mongod start
+</code></pre>
+<p>安装完成默认的数据库是test.另外db, admin, local是保留的数据库名称．</p>
+<p>mongod的默认端口是27017.</p>
+<p>mongo web-gui:</p>
+<p><a href="https://github.com/Studio3T/robomongo">https://github.com/Studio3T/robomongo</a></p>
+<hr>
+<h1 id="mongo的命令">mongo的命令</h1>
+<pre><code>mongo [options] [db address] [file names (ending in .js)]
+</code></pre>
+<p>mongo shell进入到指定数据库:</p>
+<pre><code>$ mongo [db_name]
+</code></pre>
+<p>本地命令行执行sql语句：</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/xpath/">Xpath</a></h2>
+                    <div class="post-meta">
+                        <time>April 7, 2017</time>
+                        
+                            
+                                <span class="category">Web</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="xpath">XPath</h1>
+<p>XPath是一门在XML文档中查找信息的语言．</p>
+<p>xpath定位有绝对定位和相对定位，推荐使用相对定位．</p>
+<p>绝对的XPath定位包含了从HTML根节点起的所有元素，并且一些轻微的改变就会失效。</p>
+<p>相对的XPath用id或者name属性来找到一个靠近的元素(比较理想的是父元素)，这样你就可以依靠他们的相对关系来确定目标元素的位置。</p>
+<h1 id="firefox">firefox</h1>
+<p>firebug + firepath</p>
+<p>firefox通过两者结合来获取xpath</p>
+<h1 id="chrome">chrome</h1>
+<p>chrome的开发者工具(F12)可以直接copy xpath.</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/xml/">Xml</a></h2>
+                    <div class="post-meta">
+                        <time>April 7, 2017</time>
+                        
+                            
+                                <span class="category">Web</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="xml">XML</h1>
+<hr></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/libvirt/">Libvirt</a></h2>
+                    <div class="post-meta">
+                        <time>April 5, 2017</time>
+                        
+                            
+                                <span class="category">Virtualization</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="libvirt">Libvirt</h1>
+<p>支持多种虚拟化平台的库</p>
+<p><a href="https://libvirt.org/">https://libvirt.org/</a></p>
+<p>安装:</p>
+<pre><code>$ sudo apt-get install libvirt-bin (包含virsh命令和libvirtd daemon)
+// libvirtd在container中无法运行；在container中安装libvirt-bin可以获取virsh命令远程访问libvirt-bin server.
+</code></pre>
+<p>libvirt-bin拆分成了两个包：</p>
+<pre><code>libvirt-daemon-system
+libvirt-clients
+
+$ sudo apt-get install libvirt-dev # 库, python/go client依赖该库
+
+$ sudo apt-get install virt-manager # windows管理工具
+
+$ sudo apt-get install virt-view # ...
+
+$ sudo service libvirt-bin restart
+</code></pre>
+<h1 id="virsh">virsh</h1>
+<p>libvirt的命令行工具</p>
+<pre><code>$ virsh list --all    # 查看所有虚拟机
+$ virsh list --all --name # 只看domain name.
+
+$ virsh define /path/to/X.xml    # 从xml配置文件定义一个domain
+$ virsh start     # 启动虚拟机
+$ virsh reboot    # 重启虚拟机
+$ virsh shutdown   # 关闭虚拟机
+$ virsh destroy    # 强制关闭虚拟机
+$ virsh undefine   # 移除虚拟机
+$ virsh vncdisplay # 查看虚拟机的vnc信息，可以通过vnc访问.
+
+$ virsh net-list --all # 查看所有网络
+$ virsh net-define default.xml
+$ virsh net-autostart default
+$ virsh net-start default
+$ virsh net-undefine default
+$ virsh net-destroy default
+
+# 批量操作vm
+$ for vm in `virsh list --all --name`; do virsh undefine/destroy ${vm}; done
+</code></pre>
+<h1 id="qemu-img">qemu-img</h1>
+<p>创建虚拟机的镜像文件:</p></p>
+                    
+                </li>
+            
+        </ul>
+    </section>
+    
+    
+        <a href="/page/26/">← Previous</a>
+    
+    
+        <a href="/page/28/">Next →</a>
+    
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

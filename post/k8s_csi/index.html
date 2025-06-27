@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K8S CSI - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="single-post">
+    <article>
+        <header>
+            <h1>K8S CSI</h1>
+            <div class="post-meta">
+                <time>March 25, 2020</time>
+                
+                    
+                        <span class="category">CNCF</span>
+                    
+                        <span class="category">Storage</span>
+                    
+                
+                
+                    
+                        <span class="tag">#k8s</span>
+                    
+                
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <h1 id="csi">CSI</h1>
+<p><a href="https://github.com/container-storage-interface/spec">https://github.com/container-storage-interface/spec</a></p>
+<ul>
+<li>rook</li>
+<li>cubefs</li>
+<li>longhorn</li>
+<li>ceph</li>
+<li>minio</li>
+</ul>
+<hr>
+<h2 id="卷volume">卷Volume</h2>
+<p>和docker中的一样。</p>
+<p>volume支持的卷类型有: awsEBS, azureDisk, azureFile, gcePD, secret, configMap, emptyDir, hostPath, local, nfs等.</p>
+<pre><code>apiVersion: v1
+kind: Pod
+metadata:
+  name: test-ebs
+spec:
+  containers:
+  - image: k8s.gcr.io/test-webserver
+    name: test-container
+    volumeMounts:
+    - mountPath: /test-ebs
+      name: test-volume
+  volumes:
+  - name: test-volume
+    # 此 AWS EBS 卷必须已经存在
+    awsElasticBlockStore:
+      volumeID: &quot;&lt;volume-id&gt;&quot;
+      fsType: ext4
+</code></pre>
+<p>AWS的EBS和EFS需要安装驱动:</p>
+<p><a href="https://github.com/kubernetes-sigs/aws-ebs-csi-driver">https://github.com/kubernetes-sigs/aws-ebs-csi-driver</a>
+<a href="https://github.com/kubernetes-sigs/aws-efs-csi-driver">https://github.com/kubernetes-sigs/aws-efs-csi-driver</a></p>
+<hr>
+<h2 id="存储类storageclass">存储类StorageClass</h2>
+<p>storageclass没有namespace.</p>
+<p>每个存储类包含provisioner, parameters和reclaimPolicy.</p>
+<p>内置provisioner的卷插件:</p>
+<ul>
+<li>awsEBS</li>
+<li>azureFile</li>
+<li>azureDisk</li>
+<li>gcePD</li>
+<li>openstack cinder</li>
+</ul>
+<p>没有provisioner的卷类型可以使用外部插件或者自己开发.</p>
+<p><a href="https://github.com/kubernetes-sigs/sig-storage-lib-external-provisioner">https://github.com/kubernetes-sigs/sig-storage-lib-external-provisioner</a></p>
+<p>awsEBS:</p>
+<pre><code>kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: sourcegraph
+labels:
+  deploy: sourcegraph
+# provisioner: ebs.csi.aws.com
+provisioner: kubernetes.io/aws-ebs
+parameters:
+  type: gp2 # This configures SSDs (default).
+  fsType: ext4 # (default)
+reclaimPolicy: Retain
+volumeBindingMode: WaitForFirstConsumer
+allowVolumeExpansion: true
+</code></pre>
+<p>nfs:</p>
+<p>kubernetes不包含nfs驱动，需要使用外部驱动创建nfs存储类.</p>
+<pre><code>apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: example-nfs
+provisioner: example.com/external-nfs
+parameters:
+  server: nfs-server.example.com
+  path: /share
+  readOnly: false
+</code></pre>
+<p>local:</p>
+<p>本地卷不支持动态制备.</p>
+<pre><code>kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: local-storage
+provisioner: kubernetes.io/no-provisioner
+volumeBindingMode: WaitForFirstConsumer
+</code></pre>
+<h2 id="持久卷pv">持久卷PV</h2>
+<p>persistentvolume没有namespace, 用来指定具体的存储资源。有静态和动态两种方式，最终需要绑定到pvc上。</p>
+<p>pv的回收策略ReclaimPolicy:</p>
+<ul>
+<li>Retained保留</li>
+<li>Deleted删除</li>
+</ul>
+<p>pv的卷绑定模式volumeBindingMode:</p>
+<ul>
+<li>WaitForFirstConsumer</li>
+<li>Immediate</li>
+</ul>
+<p>卷模式volumeMode:</p>
+<ul>
+<li>Filesystem(默认)</li>
+<li>Block</li>
+</ul>
+<p>访问模式accessMode:</p>
+<ul>
+<li>RWO: ReadWriteOnce</li>
+<li>ROX: ReadOnlyMany</li>
+<li>RWX: ReadWriteMany</li>
+<li>RWOP: ReadWriteOncePod</li>
+</ul>
+<p>卷的阶段：</p>
+<ul>
+<li>Avaliable</li>
+<li>Bound</li>
+<li>Released</li>
+<li>Failed</li>
+</ul>
+<h3 id="static-volume-provisioning">static volume provisioning</h3>
+<p>静态pvc和pv的绑定通过storageClassName, accessMode和capacity来判断。</p>
+<p>pv中的capacity必须大于等于pvc。</p>
+<pre><code>apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: nas-csi-pv
+  labels:
+    app: demo
+spec:
+  storageClassName: 
+  persistentVolumeReclaimPolicy: Retained/Recycled
+  accessModes:
+  - ReadWriteMany
+  capacity:
+    storage: 5Gi
+  hostPath:
+    path: &quot;/home/path&quot;
+  csi:
+    driver: ...
+</code></pre>
+<h3 id="dynamic-volume-provisioning">dynamic volume provisioning</h3>
+<p>动态pv需要storageclass, 由StorageClass动态的创建PV, 不需要手动创建pv，只需要在pvc中指定storageclass即可.</p>
+<p>storageclass没有namespace</p>
+<pre><code>kind: StorageClass
+apiVersion: storage.k8s.io/v1
+metadata:
+  name: sourcegraph
+labels:
+  deploy: sourcegraph
+provisioner: kubernetes.io/aws-ebs
+parameters:
+  type: gp2 
+reclaimPolicy: Retain
+volumeBindingMode: WaitForFirstConsumer
+allowVolumeExpansion: true
+
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: pgsql
+  labels:
+    deploy: sourcegraph
+    sourcegraph-resource-requires: no-cluster-admin
+    app.kubernetes.io/component: pgsql
+spec:
+  // 通过storageClassName自动给pvc创建pv
+  storageClassName: sourcegraph
+  accessModes:
+  - ReadWriteOnce
+  resources:
+    requests:
+    storage: 200Gi
+</code></pre>
+<hr>
+<h2 id="pvc">PVC</h2>
+<pre><code>apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: nsa-pvc
+  namespace: test
+labels:
+  app: demo
+spec:
+  accessModes:
+  - ReadWriteMany
+  resources:
+    requests:
+      storage: 5Gi 
+  // 通过selector让PVC使用指定的PV。
+  selector:
+    app: demo
+</code></pre>
+<hr>
+<h2 id="volumesnapshotclass">VolumeSnapshotClass</h2>
+<h2 id="volumesnapshot">VolumeSnapshot</h2>
+<p>VS是对资源的请求.</p>
+<pre><code>apiVersion: snapshot.storage.k8s.io/v1
+kind: VolumeSnapshot
+metadata:
+  name: new-snapshot-test
+spec:
+  volumeSnapshotClassName: csi-hostpath-snapclass
+  source:
+    persistentVolumeClaimName: pvc-test
+</code></pre>
+<h2 id="volumesnapshotcontent">VolumeSnapshotContent</h2>
+<p>VSC实际中资源管理.</p>
+<pre><code>apiVersion: snapshot.storage.k8s.io/v1
+kind: VolumeSnapshotContent
+metadata:
+  name: snapcontent-72d9a349-aacd-42d2-a240-d775650d2455
+spec:
+  deletionPolicy: Delete
+  driver: hostpath.csi.k8s.io
+  source:
+    volumeHandle: ee0cfb94-f8d4-11e9-b2d8-0242ac110002
+  volumeSnapshotClassName: csi-hostpath-snapclass
+  volumeSnapshotRef:
+    name: new-snapshot-test
+    namespace: default
+    uid: 72d9a349-aacd-42d2-a240-d775650d2455
+</code></pre>
+<hr>
+
+        </div>
+    </article>
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

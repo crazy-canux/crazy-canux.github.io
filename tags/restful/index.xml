@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Restful on Morgoth</title>
+    <link>https://canuxcheng.com/tags/restful/</link>
+    <description>Recent content in Restful on Morgoth</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 07 Jul 2018 16:43:15 +0000</lastBuildDate>
+    <atom:link href="https://canuxcheng.com/tags/restful/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Restful</title>
+      <link>https://canuxcheng.com/post/rest/</link>
+      <pubDate>Sat, 07 Jul 2018 16:43:15 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/rest/</guid>
+      <description>&lt;h1 id=&#34;rest&#34;&gt;REST&lt;/h1&gt;&#xA;&lt;p&gt;REST: REpresentational State Transfer．&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;restclient&#34;&gt;restclient&lt;/h1&gt;&#xA;&lt;p&gt;一个是firefox的插件．&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/chao/RESTClient&#34;&gt;https://github.com/chao/RESTClient&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;另一个是java开发的application.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/wiztools/rest-client&#34;&gt;https://github.com/wiztools/rest-client&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;postman&#34;&gt;postman&lt;/h1&gt;&#xA;&lt;p&gt;postman是一个application,同时也可以从chrome启动.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/postmanlabs&#34;&gt;https://github.com/postmanlabs&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;soupui&#34;&gt;soupui&lt;/h1&gt;&#xA;&lt;p&gt;一个用于SOAP和REST的application.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/SmartBear/soapui&#34;&gt;https://github.com/SmartBear/soapui&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

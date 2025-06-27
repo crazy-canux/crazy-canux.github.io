@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WMI - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="single-post">
+    <article>
+        <header>
+            <h1>WMI</h1>
+            <div class="post-meta">
+                <time>April 3, 2016</time>
+                
+                    
+                        <span class="category">Windows</span>
+                    
+                
+                
+                    
+                        <span class="tag">#wmi</span>
+                    
+                
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <h1 id="wmicim">WMI/CIM</h1>
+<p>WMI: windows management instrumentation.</p>
+<p><a href="https://msdn.microsoft.com/en-us/library/aa394582(v=vs.85).aspx">https://msdn.microsoft.com/en-us/library/aa394582(v=vs.85).aspx</a></p>
+<p>CIM: common information model.</p>
+<p><a href="https://msdn.microsoft.com/en-us/library/aa389234(v=vs.85).aspx">https://msdn.microsoft.com/en-us/library/aa389234(v=vs.85).aspx</a></p>
+<p>DCOM: distributed COM.</p>
+<p>wmi通过DCOM远程连接，但是DCOM不能绕过防火墙。</p>
+<p>命名空间:</p>
+<pre><code>root\cimv2
+root\microsoftdns
+root\securitycenter
+</code></pre>
+<p>WMI工具：</p>
+<ol>
+<li>windows自带wmi测试工具wbemtest.</li>
+<li>WMI Explorer用于查找wmi和cim的Class和Properties.</li>
+</ol>
+<p><a href="http://www.ks-soft.net/hostmon.eng/wmi/index.htm#SysReq">http://www.ks-soft.net/hostmon.eng/wmi/index.htm#SysReq</a></p>
+<p>windows怎样设置wmi：</p>
+<p>135 (Microsoft RPC), 137-139 (NetBIOS) and 445 (Microsoft DS). These are TCP ports.</p>
+<p>设置的用户需要是管理员组。</p>
+<p><a href="https://technet.microsoft.com/en-us/library/cc771551(v=ws.11).aspx">https://technet.microsoft.com/en-us/library/cc771551(v=ws.11).aspx</a></p>
+<p>给wmi设置fix port(server in DMZ)：</p>
+<p>使用过程中不需要指定端口。</p>
+<p><a href="https://msdn.microsoft.com/zh-cn/library/bb219447(v=vs.85).aspx">https://msdn.microsoft.com/zh-cn/library/bb219447(v=vs.85).aspx</a></p>
+<h1 id="wmic">wmic</h1>
+<p>wmic是wmi的客户端命令。</p>
+<p>windows的wmic：</p>
+<pre><code>&gt;wmic # 进入wmi的交互模式
+&gt;wmic -? # 查看帮助
+&gt;wmic /? # 查看帮助
+&gt;wmic ... # 非交互模式运行命令
+&gt;wmic process call create shutdown.exe # 本地关机
+</code></pre>
+<p>linux的wmic：</p>
+<p>Linux需要自己创建wmic命令，可以通过samba获取，也可以安装openvas的安装包。</p>
+<pre><code>$man wmic
+$wmic -U [domain/]adminuser%password //host &quot;select * from Win32_ComputerSystem&quot;
+</code></pre>
+<p><a href="https://mikepalmer.net/debianubuntu-wmi-client-package-with-openvas-libwmiclient1-patches/">https://mikepalmer.net/debianubuntu-wmi-client-package-with-openvas-libwmiclient1-patches/</a></p>
+<h1 id="wmi的class">WMI的Class</h1>
+<p><a href="https://msdn.microsoft.com/zh-cn/library/aa394554(v=vs.85).aspx">https://msdn.microsoft.com/zh-cn/library/aa394554(v=vs.85).aspx</a></p>
+<ol>
+<li>
+<p>wmi system class</p>
+<p><a href="https://msdn.microsoft.com/zh-cn/library/aa394583(v=vs.85).aspx">https://msdn.microsoft.com/zh-cn/library/aa394583(v=vs.85).aspx</a></p>
+<pre><code> __Win32Provider
+ ...
+</code></pre>
+</li>
+<li>
+<p>MSFT class</p>
+<p>policy provider classes</p>
+<pre><code> MSFT_Providers
+ MSFT_Rule
+ MSFT_SomFilter
+</code></pre>
+<p>WMI Troubleshooting classes</p>
+<pre><code> MSFT_WmiProvider_Counters
+ MSTF_WmiSelfEvent
+</code></pre>
+</li>
+<li>
+<p>CIM class</p>
+<p><a href="https://msdn.microsoft.com/zh-cn/library/aa386179(v=vs.85).aspx">https://msdn.microsoft.com/zh-cn/library/aa386179(v=vs.85).aspx</a></p>
+<pre><code> CIM_Action
+ ...
+</code></pre>
+</li>
+<li>
+<p>Standard Consumer class</p>
+<pre><code> ActiveScriptEventConsumer
+ CommandLineEventConsumer
+ LogFileEventConsumer
+ NTEventLogEventConsumer
+ ScriptingStandardConsumerSetting
+ SMTPEventConsumer
+</code></pre>
+</li>
+</ol>
+<h1 id="wmi的provider">WMI的Provider</h1>
+<p><a href="https://msdn.microsoft.com/zh-cn/library/aa394570(v=vs.85).aspx">https://msdn.microsoft.com/zh-cn/library/aa394570(v=vs.85).aspx</a></p>
+<ol>
+<li>
+<p>Win32 Provider</p>
+<p>Computer System Hardware Classes</p>
+<p><a href="https://msdn.microsoft.com/zh-cn/library/aa389273(v=vs.85).aspx">https://msdn.microsoft.com/zh-cn/library/aa389273(v=vs.85).aspx</a></p>
+<pre><code> Win32_Fan
+ ...
+</code></pre>
+<p>Operating System Classes</p>
+<p><a href="https://msdn.microsoft.com/zh-cn/library/dn792258(v=vs.85).aspx">https://msdn.microsoft.com/zh-cn/library/dn792258(v=vs.85).aspx</a></p>
+<pre><code> Win32_ClassicCOMApplicationClasses
+ ...
+</code></pre>
+<p>Performance Counter Classes</p>
+<p><a href="https://msdn.microsoft.com/zh-cn/library/aa392738(v=vs.85).aspx">https://msdn.microsoft.com/zh-cn/library/aa392738(v=vs.85).aspx</a></p>
+<pre><code> Win32_Perf
+ Win32_PerfFormattedData
+ Win32_PerfRawData
+</code></pre>
+<p>WMI Service Management Classes</p>
+<p><a href="https://msdn.microsoft.com/zh-cn/library/dn792273(v=vs.85).aspx">https://msdn.microsoft.com/zh-cn/library/dn792273(v=vs.85).aspx</a></p>
+<pre><code> Win32_MethodParameterClass
+ Win32_WMISetting
+ Wim32_WMIElementSetting
+</code></pre>
+</li>
+</ol>
+<h1 id="wql">wql</h1>
+<p><a href="https://msdn.microsoft.com/zh-cn/library/aa394606(v=vs.85).aspx">https://msdn.microsoft.com/zh-cn/library/aa394606(v=vs.85).aspx</a></p>
+<p>wql关键字：</p>
+<pre><code>SELECT, FROM, WHERE, AND, OR, NOT, NULL, IS, TRUE, FALSE, WITHIN, LIKE, HAVING
+REFERENCES OF, KEYSONLY, ISA, ASSOCIATORS OF, __CLASS, GROUP Clause
+</code></pre>
+<p>常用WQL：</p>
+<pre><code>select * from meta_class where __class like '%win32%' # 查询wmi的类
+select * from meta_class where __class like '%cim%' # 查询cim的类
+
+select * from cim_datafile where drive=&quot;c:&quot; and path=&quot;\\path\\&quot; and filename like &quot;%%&quot; and extension like '%%'
+select * from cim_directory where drive=&quot;c:&quot; and path=&quot;\\path\\&quot;
+select * from cim_logicaldisk
+select * from win32_operationsystem
+select * from win32_service
+select * from win32_process
+</code></pre>
+<hr>
+
+        </div>
+    </article>
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

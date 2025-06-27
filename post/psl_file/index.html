@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PSL_File - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="single-post">
+    <article>
+        <header>
+            <h1>PSL_File</h1>
+            <div class="post-meta">
+                <time>August 14, 2016</time>
+                
+                    
+                        <span class="category">Python</span>
+                    
+                
+                
+                    
+                        <span class="tag">#file</span>
+                    
+                
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <h1 id="file-and-directory-access">File and Directory Access</h1>
+<h2 id="ospath">os.path</h2>
+<p>windows的路径要写成：</p>
+<pre><code>C:\\test\\sub\\
+
+import os
+</code></pre>
+<p>function:</p>
+<pre><code>os.path.expanduser(path) # 把path中~或~user扩展成绝对路径 expanduser(&quot;~/src&quot;) -&gt; /home/user/src
+os.path.expandvars(path) # 把path中的shell变量$var 或 ${var} 还原．
+os.path.dirname(filename) # 返回filename的路径 dirname(&quot;/home/user/file.py&quot;) -&gt; /home/user
+os.path.join(a, *p) # 拼结一个完整的路径　
+os.path.join(a, os.pardir) # 返回上级目录的路径
+os.path.realpath(filename) # 返回filename的真实路径+文件名 realpath('__file__')
+os.path.abspath(path) # 返回绝对路径, os.path.abspath('__file__')
+os.path.splitext(p) # 分解路径和扩展名返回组成的元组，/home/user/test.py -&gt; (&quot;/home/user/test&quot;, &quot;.py&quot;)
+os.path.basename(p) # 返回最后一个组件名，也就是文件名 /home/user/test.py -&gt; test.py
+os.path.getsize(filename) # 返回文件大小
+os.path.exists(path) # 判断path(文件或目录)是否存在
+os.path.isfile(path) # 判断path是否是常规文件
+</code></pre>
+<h2 id="pathlib">pathlib</h2>
+<p>new in python3.4</p>
+<pre><code>from pathlib import Path
+from pathlib import PurePosixPath
+from pathlib import PureWindowsPath
+</code></pre>
+<h2 id="stat">stat</h2>
+<h2 id="fileinput">fileinput</h2>
+<h2 id="filecmp">filecmp</h2>
+<h2 id="fnmatch">fnmatch</h2>
+<h2 id="linecache">linecache</h2>
+<h2 id="glob">glob</h2>
+<p>functions:</p>
+<pre><code>glob(pathname) # 返回匹配pathname路径下正则表达式的所有文件组成的列表
+iglob(pathname) # 同上，返回generator.
+</code></pre>
+<h2 id="shutil">shutil</h2>
+<p>Utility functions for copying and archiving files and directory trees.</p>
+<pre><code>import shutil
+</code></pre>
+<p>functions:</p>
+<pre><code>copy(src, dst)
+copy2(src, dst)
+...
+rmtree(path, ignore_errors=False, onerror=None) # 删除指定的目录,path不能是文件．
+unregister_archive_format(name)
+move(src, dst)
+...
+</code></pre>
+<h2 id="tempfile">tempfile</h2>
+<h2 id="macpath">macpath</h2>
+<h2 id="configparser">ConfigParser</h2>
+<p>一般用来处理*.ini文件，格式为：</p>
+<pre><code>[section]
+option-key = option-value
+</code></pre>
+<p>导入：</p>
+<pre><code>import ConfigParser
+</code></pre>
+<p>classes:</p>
+<pre><code>ConfigParser.ConfigParser(defaults=None)
+# methods:
+read(filenames) # 读取ini文件
+sections() # 获取所有section
+options(section) # 获取section的所有option
+get(section, option, raw=False, vars=None) # 返回字符串
+getint(section, options)
+getfloat(section, options)
+getboolean(section, options) # 大小写都可以:0/1, false/true, no/yes, off/on
+set(section, option, value)
+has_section(section)
+has_option(section, option)
+remove_section(section)
+remove_option(section, option)
+write(fp)
+</code></pre>
+<p>issue:</p>
+<pre><code>默认是全部小写写入.
+config = ConfigParser.ConfigParser(allow_no_value=True)
+config.optionxform =str # 原样写入
+
+from configparser import ConfigParser, ExtendedInterpolation
+</code></pre>
+<p>变量:</p>
+<pre><code>// 默认interpolation只支持section之间变量
+[section1]
+1var1 = /opt
+1var2 = %(1var1)s/test
+
+// 扩展interpolation支持section变量引用
+config = ConfigParser(interpolation=ExtendedInterpolation())
+
+[section1]
+1var1 = /opt
+[section2]
+2var1 = ${section1:1var1}/test
+</code></pre>
+<hr>
+<h1 id="file-formats">File Formats</h1>
+<h2 id="csv">csv</h2>
+<pre><code>import csv
+</code></pre>
+<p>classes:</p>
+<pre><code># csv.DictReader
+DictReader(self, f, fieldnames=None, restkey=None, restval=None, dialect='excel', *args, **kwds)
+# methods
+next()
+
+# csv.DictWriter
+DictWriter(self, f, fieldnames, restval='', extrasaction='raise', dialect='excel', *args, **kwargs)
+# mthods
+writeheader()
+writerow(rowdict)
+writerows(rowdicts)
+</code></pre>
+<p>functions:</p>
+<pre><code>// 返回DictReader对象
+reader(iterable, dialect='excel', **kwargs)
+
+// 返回DictWriter对象
+writer(fileobj, dialect='excel', **kwargs)
+</code></pre>
+<p>data:</p>
+<h2 id="robotparser">robotparser</h2>
+<h2 id="netrc">netrc</h2>
+<h2 id="xdrlib">xdrlib</h2>
+<h2 id="plistlib">plistlib</h2>
+<hr>
+
+        </div>
+    </article>
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

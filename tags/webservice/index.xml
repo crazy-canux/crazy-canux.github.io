@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Webservice on Morgoth</title>
+    <link>https://canuxcheng.com/tags/webservice/</link>
+    <description>Recent content in Webservice on Morgoth</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 07 Jul 2018 16:43:15 +0000</lastBuildDate>
+    <atom:link href="https://canuxcheng.com/tags/webservice/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>WebService</title>
+      <link>https://canuxcheng.com/post/webservice/</link>
+      <pubDate>Sat, 07 Jul 2018 16:43:15 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/webservice/</guid>
+      <description>&lt;h1 id=&#34;webservice&#34;&gt;webservice&lt;/h1&gt;&#xA;&lt;p&gt;webservice用于server和browser之间通讯．&lt;/p&gt;&#xA;&lt;p&gt;webservice是基于http的，无状态的．&lt;/p&gt;&#xA;&lt;p&gt;webservice一般分为soap webservice和http webservice.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;soap&#34;&gt;SOAP&lt;/h1&gt;&#xA;&lt;p&gt;Simple Object Access Protocol, 简单对象访问协议，是一个基于XML的协议．&lt;/p&gt;&#xA;&lt;p&gt;简单来说SOAP的思想就是通过http + XML来在server和browser之间交换信息．&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;soupui&#34;&gt;soupui&lt;/h1&gt;&#xA;&lt;p&gt;一个用于SOAP和REST的application.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/SmartBear/soapui&#34;&gt;https://github.com/SmartBear/soapui&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

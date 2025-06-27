@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ide on Morgoth</title>
+    <link>https://canuxcheng.com/tags/ide/</link>
+    <description>Recent content in Ide on Morgoth</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 02 Apr 2017 21:11:26 +0000</lastBuildDate>
+    <atom:link href="https://canuxcheng.com/tags/ide/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>IDE</title>
+      <link>https://canuxcheng.com/post/devops_ide/</link>
+      <pubDate>Sun, 02 Apr 2017 21:11:26 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/devops_ide/</guid>
+      <description>&lt;h1 id=&#34;jetbrains&#34;&gt;JetBrains&lt;/h1&gt;&#xA;&lt;p&gt;IntelliJ: Java的IDE, 安装Python的插件也支持python.&lt;/p&gt;&#xA;&lt;h2 id=&#34;pycharm&#34;&gt;PyCharm&lt;/h2&gt;&#xA;&lt;p&gt;PyCharm: Python的IDE.&lt;/p&gt;&#xA;&lt;h2 id=&#34;goland&#34;&gt;Goland&lt;/h2&gt;&#xA;&lt;p&gt;Goland: golang的IDE.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;vscode&#34;&gt;VSCode&lt;/h1&gt;&#xA;&lt;h2 id=&#34;intellisense--code-navigation&#34;&gt;IntelliSense &amp;amp; Code Navigation&lt;/h2&gt;&#xA;&lt;p&gt;Go to Definition: F12, 跳转到定义.&lt;/p&gt;&#xA;&lt;p&gt;Peek Definition: Alt + F12， 速览定义，不跳转.&lt;/p&gt;&#xA;&lt;p&gt;Go to references: Shift + F12, 转到引用.&lt;/p&gt;&#xA;&lt;h2 id=&#34;frontend&#34;&gt;frontend&lt;/h2&gt;&#xA;&lt;h3 id=&#34;vs-js-debug&#34;&gt;vs-js-debug&lt;/h3&gt;&#xA;&lt;p&gt;vscode内置了js/ts/node的debugger.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/microsoft/vscode-js-debug&#34;&gt;https://github.com/microsoft/vscode-js-debug&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h3 id=&#34;live-server&#34;&gt;live server&lt;/h3&gt;&#xA;&lt;p&gt;live preview(html, svg&amp;hellip;)&lt;/p&gt;&#xA;&lt;p&gt;如果用remote-ssh开启live server就是在远程机器上开启5500端口，webroot就是vscode打开的目录.&lt;/p&gt;&#xA;&lt;p&gt;如果是remote-ssh开发html，用这个preview很方便.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/ritwickdey/vscode-live-server&#34;&gt;https://github.com/ritwickdey/vscode-live-server&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h3 id=&#34;vscode-chrome-debug&#34;&gt;vscode-chrome-debug&lt;/h3&gt;&#xA;&lt;p&gt;打开的是安装vscode的机器上的chrome。&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/microsoft/vscode-chrome-debug&#34;&gt;https://github.com/microsoft/vscode-chrome-debug&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;通过live server监听remote-ssh机器上的5500，可以通过chrome远程调试静态站点。&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;{&#xA;    &amp;quot;version&amp;quot;: &amp;quot;0.2.0&amp;quot;,&#xA;    &amp;quot;configurations&amp;quot;: [&#xA;        {&#xA;            &amp;quot;name&amp;quot;: &amp;quot;angularjs&amp;quot;,&#xA;            &amp;quot;type&amp;quot;: &amp;quot;chrome&amp;quot;,&#xA;            &amp;quot;request&amp;quot;: &amp;quot;launch&amp;quot;,&#xA;            &amp;quot;url&amp;quot;: &amp;quot;http://remote-ssh-server:5500/path/to/index.html&amp;quot;,&#xA;            &amp;quot;webRoot&amp;quot;: &amp;quot;${workspaceFolder}/path/to/&amp;quot;,&#xA;        },&#xA;    ]&#xA;}&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;python&#34;&gt;python&lt;/h2&gt;&#xA;&lt;p&gt;debuging:&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registry - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="single-post">
+    <article>
+        <header>
+            <h1>Registry</h1>
+            <div class="post-meta">
+                <time>April 5, 2018</time>
+                
+                    
+                        <span class="category">CNCF</span>
+                    
+                
+                
+                    
+                        <span class="tag">#harbor</span>
+                    
+                        <span class="tag">#artifactory</span>
+                    
+                        <span class="tag">#dragonfly</span>
+                    
+                
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <h1 id="container-registry">Container Registry</h1>
+<ul>
+<li>Docker Hub Registry</li>
+<li>Google Container Registry (gcr.io)</li>
+<li>RedHat Quay Registry (quay.io)</li>
+<li>GitHub Docker Packages (docker.pkg.github.com)(Deprecated)</li>
+<li>GitHub Container Registry (ghcr.io)</li>
+<li>Kubernetes Registry(registry.k8s.io =&gt; k8s.gcr.io)</li>
+</ul>
+<h2 id="harbor">Harbor</h2>
+<p><a href="https://github.com/goharbor/harbor">https://github.com/goharbor/harbor</a></p>
+<p>Habor是由VMWare中国团队开源的容器镜像仓库, 用于存储和分发docker镜像的registry服务器.</p>
+<p>安装步骤:</p>
+<ol>
+<li>下载并解压安装包, <a href="https://github.com/goharbor/harbor/releases">https://github.com/goharbor/harbor/releases</a></li>
+<li>配置harbor.cfg;</li>
+</ol>
+<p>修改配置:</p>
+<pre><code>vim harbor.yml
+</code></pre>
+<p>运行安装程序:</p>
+<pre><code>./install.sh --with-notary --with-clair --with-chartmuseum
+</code></pre>
+<p>修改web的port:</p>
+<pre><code>$ vim /data/harbor/docker-compose.yml
+proxy:
+  ports:
+    - 8080:80 # 默认http是80
+    - 4433:443 # 默认https是443
+$ vim /data/harbor/harbor.yml
+hostname = ip
+</code></pre>
+<p>管理harbor:</p>
+<pre><code># cd /data/harbor
+# docker-compose down -v 　停止并删除container
+
+&gt; 更新配置
+# ./prepare --with-notary --with-clair --with-chartmuseum
+
+&gt; 启动
+# docker-compose up -d
+</code></pre>
+<h2 id="docker使用harbor">docker使用harbor</h2>
+<p>Deploy a plain HTTP registry:</p>
+<pre><code># vim /etc/docker/daemon.json
+{  &quot;insecure-registries&quot; : [&quot;myregistrydomain.com:5000&quot;]}
+</code></pre>
+<p>Use self-signed certificates:</p>
+<pre><code># cp your-ca /etc/docker/certs.d/harbor.domain.com/ca.crt
+# vim /lib/systemd/system/docker.service
+ExecStart=/usr/bin/dockerd --insecure-registry harbor.domain.com:port
+# systemctl daemon-reload
+# systemctl restart docker
+</code></pre>
+<p>update hosts on docker client:</p>
+<pre><code># vim /etc/hosts ip harbor.domain.com
+</code></pre>
+<p>create user account:</p>
+<pre><code>https://&lt;ip:port&gt;
+</code></pre>
+<p>push images to harbor:</p>
+<pre><code>$ docker login harbor.domain.com:port
+$ docker tag SOURCE_IMAGE[:TAG] harbor.domain.com:port/&lt;project&gt;/IMAGE[:TAG]
+$ docker push harbor.domain.com:port/&lt;project&gt;/IMAGE[:TAG]
+</code></pre>
+<p>pull images from harbor:</p>
+<pre><code>$ docker login harbor.domain.com:port
+$ docker pull harbor.domain.com:port/&lt;project&gt;/IMAGE[:TAG]
+</code></pre>
+<p>k8s使用harbor:</p>
+<p><a href="https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/">https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/</a></p>
+<h2 id="修改存储路径">修改存储路径</h2>
+<p>默认路径是/data/registry</p>
+<p>停服务:</p>
+<pre><code>$ docker-compose down -v
+</code></pre>
+<p>修改路径:</p>
+<pre><code>$ mv /data/* /new/path
+$ vim /new/path/harbor/harbor.yml
+data_volume: /new/path
+
+$ vim /new/path/harbor/docker-compose.yml
+/data =&gt; /new/path
+</code></pre>
+<p>启动服务:</p>
+<pre><code>$ cd /new/path
+$ docker-compose up -d
+</code></pre>
+<hr>
+<h2 id="artifactory">Artifactory</h2>
+
+        </div>
+    </article>
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

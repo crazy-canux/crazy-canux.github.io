@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="generator" content="Hugo 0.147.9">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morgoth - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="home">
+    <h1>Morgoth</h1>
+    <p></p>
+    
+    <section class="recent-posts">
+        <h2>Recent Posts</h2>
+        <ul class="post-list">
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/kvm/">Kvm</a></h2>
+                    <div class="post-meta">
+                        <time>April 5, 2017</time>
+                        
+                            
+                                <span class="category">Virtualization</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="kvm">KVM</h1>
+<p>Kernel-based Virtual Machine.</p>
+<hr>
+<h1 id="qemu">Qemu</h1>
+<p>安装:</p>
+<pre><code>$ sudo apt-get install qemu-system qemu-kvm
+</code></pre>
+<hr></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/devops_ide/">IDE</a></h2>
+                    <div class="post-meta">
+                        <time>April 2, 2017</time>
+                        
+                            
+                                <span class="category">DevOps</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="jetbrains">JetBrains</h1>
+<p>IntelliJ: Java的IDE, 安装Python的插件也支持python.</p>
+<h2 id="pycharm">PyCharm</h2>
+<p>PyCharm: Python的IDE.</p>
+<h2 id="goland">Goland</h2>
+<p>Goland: golang的IDE.</p>
+<hr>
+<h1 id="vscode">VSCode</h1>
+<h2 id="intellisense--code-navigation">IntelliSense &amp; Code Navigation</h2>
+<p>Go to Definition: F12, 跳转到定义.</p>
+<p>Peek Definition: Alt + F12， 速览定义，不跳转.</p>
+<p>Go to references: Shift + F12, 转到引用.</p>
+<h2 id="frontend">frontend</h2>
+<h3 id="vs-js-debug">vs-js-debug</h3>
+<p>vscode内置了js/ts/node的debugger.</p>
+<p><a href="https://github.com/microsoft/vscode-js-debug">https://github.com/microsoft/vscode-js-debug</a></p>
+<h3 id="live-server">live server</h3>
+<p>live preview(html, svg&hellip;)</p>
+<p>如果用remote-ssh开启live server就是在远程机器上开启5500端口，webroot就是vscode打开的目录.</p>
+<p>如果是remote-ssh开发html，用这个preview很方便.</p>
+<p><a href="https://github.com/ritwickdey/vscode-live-server">https://github.com/ritwickdey/vscode-live-server</a></p>
+<h3 id="vscode-chrome-debug">vscode-chrome-debug</h3>
+<p>打开的是安装vscode的机器上的chrome。</p>
+<p><a href="https://github.com/microsoft/vscode-chrome-debug">https://github.com/microsoft/vscode-chrome-debug</a></p>
+<p>通过live server监听remote-ssh机器上的5500，可以通过chrome远程调试静态站点。</p>
+<pre><code>{
+    &quot;version&quot;: &quot;0.2.0&quot;,
+    &quot;configurations&quot;: [
+        {
+            &quot;name&quot;: &quot;angularjs&quot;,
+            &quot;type&quot;: &quot;chrome&quot;,
+            &quot;request&quot;: &quot;launch&quot;,
+            &quot;url&quot;: &quot;http://remote-ssh-server:5500/path/to/index.html&quot;,
+            &quot;webRoot&quot;: &quot;${workspaceFolder}/path/to/&quot;,
+        },
+    ]
+}
+</code></pre>
+<hr>
+<h2 id="python">python</h2>
+<p>debuging:</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/sec_cryptographic/">Cryptographic</a></h2>
+                    <div class="post-meta">
+                        <time>March 27, 2017</time>
+                        
+                            
+                                <span class="category">Security</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="pgp">PGP</h1>
+<p>PGP: Pretty Good Privacy。</p>
+<p>用于签名和加密解密。</p>
+<h2 id="pgp-1">PGP</h2>
+<p><a href="https://en.wikipedia.org/wiki/Pretty_Good_Privacy">https://en.wikipedia.org/wiki/Pretty_Good_Privacy</a></p>
+<h2 id="openpgp">OpenPGP</h2>
+<p>OpenPGP是PGP的标准,也有很多实现。</p>
+<p><a href="http://openpgp.org/">http://openpgp.org/</a></p>
+<h2 id="gnupg">GnuPG</h2>
+<p>GunPG: Gun Privacy Guard, 是基于openPGP的实现。</p>
+<p><a href="https://gnupg.org/">https://gnupg.org/</a></p>
+<pre><code>$ gpg --help
+
+$ 快速生成签名密钥对
+gpg --quick-generate-key &quot;Canux&quot;
+// 查看公钥
+gpg --list-keys
+// 查看私钥
+gpg --list-secret-keys
+// 删除私钥
+gpg --delete-secret-keys &quot;Canux&quot;
+// 删除公钥
+gpg --delete-keys &quot;Canux&quot;
+</code></pre>
+<p>GPGME: GPG Made Easy, 是一个让应用程序使用GPG更容易的库．</p>
+<h1 id="openssl">OpenSSL</h1>
+<p>网络安全和密码工具。</p>
+<p><a href="https://www.openssl.org/">https://www.openssl.org/</a></p>
+<pre><code>$ openssl --help
+</code></pre>
+<hr>
+<h1 id="单向哈希加密">单向哈希加密</h1>
+<p>md5和shaX都是常用的存储密码的加密方法.</p>
+<p>rainbow table可以破解单向加密.</p>
+<p>salt方法可以防止rainbow table破解.</p>
+<p>scrypt是最难破解的加密方案.</p>
+<h2 id="md5">md5</h2>
+<h2 id="sha1">sha1</h2>
+<h2 id="sha256">sha256</h2>
+<h2 id="sha512">sha512</h2>
+<h2 id="hmac">hmac</h2>
+<hr>
+<h1 id="symmetric-cryptography">Symmetric Cryptography</h1>
+<p>对称加密就是加密和解密使用的密钥是相同的．</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/js_oop/">JS OOP</a></h2>
+                    <div class="post-meta">
+                        <time>March 15, 2017</time>
+                        
+                            
+                                <span class="category">Web</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="oop">OOP</h1>
+<p>javascript中一切都是对象.</p>
+<p>javacript内置了Bull/Number/String/Object/Function/Array/Date/RegExp类型.</p>
+<h1 id="object">Object</h1>
+<p>创建Object实例:</p>
+<pre><code>var obj = new Object();
+
+var obj = Object(); // new 可以省略
+
+var obj = ｛
+    name: &quot;value&quot;
+};
+
+var obj = {
+    &quot;name&quot;: &quot;value&quot;
+}
+</code></pre>
+<p>添加属性:</p>
+<pre><code>obj.attr = &quot;value&quot;
+</code></pre>
+<p>添加方法:</p>
+<pre><code>obj.method =  methodName;
+function methodName() {};
+
+obj.method = function() {};
+</code></pre>
+<p>删除属性:</p>
+<pre><code>delete obj.attr
+</code></pre>
+<p>访问对象属性:</p>
+<pre><code>obj.property
+</code></pre>
+<p>访问对象方法:</p>
+<pre><code>obj.method()
+</code></pre>
+<h1 id="boolean">Boolean</h1>
+<p>attribution:</p>
+<pre><code>constructor
+prototype
+</code></pre>
+<p>method:</p>
+<pre><code>toSource()
+valueOf()
+toString()
+</code></pre>
+<h1 id="number">Number</h1>
+<p>attribution:</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/js_dom/">JS DOM</a></h2>
+                    <div class="post-meta">
+                        <time>March 15, 2017</time>
+                        
+                            
+                                <span class="category">Web</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="dom">DOM</h1>
+<p>DOM: document object model.</p>
+<p>当网页被加载时，浏览器会创建页面的文档对象模型(DOM).</p>
+<p>DOM操作需要在html加载完成后进程.</p>
+<p>js可以通过DOM访问html文档的所有元素.</p>
+<ul>
+<li>JavaScript 能够改变页面中的所有 HTML 元素</li>
+<li>JavaScript 能够改变页面中的所有 HTML 属性</li>
+<li>JavaScript 能够改变页面中的所有 CSS 样式</li>
+<li>JavaScript 能够对页面中的所有事件做出反应</li>
+</ul>
+<h2 id="查找html元素">查找html元素</h2>
+<p>找到返回该元素的对象，没找到返回null.</p>
+<p>通过id:</p>
+<pre><code>document.getElementById(&quot;id&quot;);
+</code></pre>
+<p>通过标签名:</p>
+<pre><code>document.getElementsByTagName(&quot;tag&quot;);
+</code></pre>
+<p>通过类名:</p>
+<pre><code>document.getElementsByName(&quot;name&quot;)
+</code></pre>
+<h2 id="操作html元素或文本">操作html元素或文本</h2>
+<p>操作标签或标签内的文本.</p>
+<p>直接改变html内容:</p>
+<pre><code># 绝不要使用在文档加载之后使用 document.write()。这会覆盖该文档
+document.write(...);
+</code></pre>
+<p>改变元素的内容:</p>
+<pre><code>document.getElementById(id).innerHTML = &quot;new text&quot;;
+</code></pre>
+<h2 id="操作html属性">操作html属性</h2>
+<p>改变元素属性:</p>
+<pre><code>document.getElementById(id).attribute = &quot;new value&quot;;
+</code></pre>
+<h2 id="操作css">操作css</h2>
+<pre><code>document.getElementById(id).style.property = &quot;new style&quot;
+</code></pre>
+<h2 id="增删html元素">增删html元素</h2>
+<p>增加元素:</p>
+<pre><code>var para = document.createElement(&quot;p&quot;);
+var node = document.createTextNode(&quot;new para&quot;);
+para.appendChild(node);
+</code></pre>
+<p>删除元素:</p></p>
+                    
+                </li>
+            
+        </ul>
+    </section>
+    
+    
+        <a href="/page/27/">← Previous</a>
+    
+    
+        <a href="/page/29/">Next →</a>
+    
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="generator" content="Hugo 0.147.9">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morgoth - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="home">
+    <h1>Morgoth</h1>
+    <p></p>
+    
+    <section class="recent-posts">
+        <h2>Recent Posts</h2>
+        <ul class="post-list">
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/mysql/">Mysql</a></h2>
+                    <div class="post-meta">
+                        <time>May 25, 2016</time>
+                        
+                            
+                                <span class="category">Database</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="mysql">Mysql</h1>
+<p>安装mysql服务器</p>
+<pre><code>$ sudo apt-get install mysql-server
+$ sudo yum install mysql-community-server
+
+$ sudo vim /etc/mysql/mysql.conf.d/mysqld.cnf
+# 注意mysql的/etc/mysql/my.cnf和相关文件如果设置了bind-address = 127.0.0.1就无法远程访问，需要注释掉．
+</code></pre>
+<p>安装mysql客户端</p>
+<pre><code>$ sudo apt-get install mysql-client
+$ sudo yum install mysql-community-client
+</code></pre>
+<p>安装开发工具：</p>
+<pre><code>$ sudo apt-get install libmysqlclient-dev
+</code></pre>
+<p>CLI工具： mysql</p>
+<p>GUI工具： mysql workbench</p>
+<p>安装完成默认的数据库是 mysql。</p>
+<p>mysqld的默认端口是3306.</p>
+<hr>
+<h1 id="mysql命令">mysql命令</h1>
+<p>tips: 用户名密码有特殊字符用引号.</p>
+<pre><code>$ mysql [OPTIONS] [database]
+</code></pre>
+<p>初始化时需要用root用户进入mysql命令行</p>
+<pre><code>$ mysql -uroot -p
+$ mysql -h&lt;host&gt; -P&lt;port&gt; -uroot -p&lt;password&gt;
+</code></pre>
+<p>创建用户后用其它用户操作：</p>
+<pre><code>$ mysql -u&lt;user&gt; -p
+</code></pre>
+<p>本地执行sql语句或mysql客户端命令:</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/ps_builtins/">Builtins</a></h2>
+                    <div class="post-meta">
+                        <time>May 24, 2016</time>
+                        
+                            
+                                <span class="category">Windows</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="get-help和help">Get-Help和Help:</h1>
+<p>get-help查看帮助信息,help分页查看帮助信息，man是help的别名</p>
+<p>命令说明：</p>
+<pre><code>Get-Help
+Help
+</code></pre>
+<p>查看所有命令和概念：</p>
+<pre><code>Get-Help *
+Help *
+</code></pre>
+<p>模糊查找命令和概念：</p>
+<pre><code>Get-Help *&lt;name&gt;*
+Help *&lt;name&gt;*
+</code></pre>
+<p>查看具体命令帮助：</p>
+<pre><code>Get-Help {&lt;CmdletName&gt; | &lt;TopicName&gt;}
+Help {&lt;CmdletName&gt; | &lt;TopicName&gt;}
+&lt;CmdletName&gt; -?
+</code></pre>
+<p>get-help/help的选项:</p>
+<pre><code>get-help get-help
+-examples # 查看示例
+-full # 查看所有帮助
+-parameter # 查看选项的帮助
+-detailed # 查看详细信息
+-online # 打开文档中的link
+-showwindow # 用窗口打开
+</code></pre>
+<h1 id="helpfile">Helpfile</h1>
+<p>3.0/4.0 需要先下载帮助手册：</p>
+<pre><code>update-help
+</code></pre>
+<p>所有helpfile：</p>
+<pre><code>Get-Help/Help about_*
+</code></pre>
+<p>查看具体helpfile：</p>
+<pre><code>Get-Help/Help about_&lt;name&gt;
+</code></pre>
+<hr>
+<h1 id="cmdlets">Cmdlets</h1>
+<p>cmdlets是powershell的内置命令,类型是System.Management.Automation.CmdletInfo</p>
+<p>cmdlets的方法：</p>
+<pre><code>Equals
+GetHashCode
+GetType
+ToString
+</code></pre>
+<p>cmdlets的属性：</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/snmp/">Snmp</a></h2>
+                    <div class="post-meta">
+                        <time>April 26, 2016</time>
+                        
+                            
+                                <span class="category">Network</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="snmp">SNMP</h1>
+<p>Simple Network Management Protocol, 简单网络管理协议</p>
+<p>MIB</p>
+<p>SMI</p>
+<p>安装和配置snmp:</p>
+<pre><code>$sudo apt-get install snmp snmpd snmp-mibs-downloader
+</code></pre>
+<hr>
+<h1 id="snmp命令">snmp命令</h1>
+<hr></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/win_admin/">Admin</a></h2>
+                    <div class="post-meta">
+                        <time>April 26, 2016</time>
+                        
+                            
+                                <span class="category">Windows</span>
+                            
+                        
+                    </div>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/ps_utils/">Utils</a></h2>
+                    <div class="post-meta">
+                        <time>April 26, 2016</time>
+                        
+                            
+                                <span class="category">Windows</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="windows相关项目">windows相关项目：</h1>
+<h2 id="choco">choco</h2>
+<p><a href="https://github.com/chocolatey">https://github.com/chocolatey</a></p>
+<p>windows的apt/yum。</p>
+<p><a href="https://github.com/chocolatey/choco">choco</a> is replacement of <a href="https://github.com/chocolatey/chocolatey">chocolatey</a></p>
+<pre><code>choco install openssh
+</code></pre>
+<h2 id="cmder">cmder</h2>
+<p>cmd的升级版。</p>
+<p><a href="https://github.com/cmderdev/cmder">https://github.com/cmderdev/cmder</a></p>
+<h2 id="babun">babun</h2>
+<p>a linux-shell like on windows.</p>
+<p><a href="https://github.com/babun/babun">https://github.com/babun/babun</a></p>
+<h2 id="flinux">flinux</h2>
+<p>run unmodified linux applications inside windows</p>
+<p><a href="https://github.com/wishstudio/flinux">https://github.com/wishstudio/flinux</a></p></p>
+                    
+                </li>
+            
+        </ul>
+    </section>
+    
+    
+        <a href="/page/43/">← Previous</a>
+    
+    
+        <a href="/page/45/">Next →</a>
+    
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

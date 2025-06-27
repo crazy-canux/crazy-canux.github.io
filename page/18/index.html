@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="generator" content="Hugo 0.147.9">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morgoth - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="home">
+    <h1>Morgoth</h1>
+    <p></p>
+    
+    <section class="recent-posts">
+        <h2>Recent Posts</h2>
+        <ul class="post-list">
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/cncf_ns/">Namespace</a></h2>
+                    <div class="post-meta">
+                        <time>April 5, 2018</time>
+                        
+                            
+                                <span class="category">CNCF</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="ns">NS</h1>
+<p>namespace 是 Linux 内核用来隔离内核资源的方式</p>
+<p>Linux namespace资源：</p>
+<ul>
+<li>Mount: 挂载点</li>
+<li>Network: 网络设备/协议栈/端口</li>
+<li>IPC: 进程间通信</li>
+<li>USR: 用户和用户组</li>
+<li>PID: 进程</li>
+<li>UTS: 主机名和域名</li>
+<li>Cgroup: 控制组</li>
+<li>Time</li>
+</ul>
+<h1 id="cgroup">Cgroup</h1>
+<p>Cgroup: Control Groups.是linux下用于对一个或一组进程资源控制和监控的机制.可以管理cpu, memory,diskIO 等资源.不同资源的具体管理工作由相应的cgrouup子系统来实现.</p>
+<p>cgroup在不同的系统资源管理子系统中以层级树(Hierarchy)的方式来组织管理, 每个cgroup可以包含其它子cgroup.</p>
+<pre><code>ls -l /sys/fs/cgroup
+</code></pre>
+<p>cgroup子系统:</p>
+<ul>
+<li>cpu</li>
+<li>cpuacct</li>
+<li>cpuset</li>
+<li>memory</li>
+<li>blkio</li>
+<li>devices</li>
+<li>freezer</li>
+<li>ns</li>
+<li>pid</li>
+<li>net_cls</li>
+<li>net_prio</li>
+</ul>
+<hr>
+<h1 id="lsns">lsns</h1>
+<p>查看系统的namespace</p>
+<p>ns类型: mnt, net, ipc, user, pid, uts, cgroup</p>
+<pre><code>$lsns -l
+$lsns -t net
+</code></pre>
+<h1 id="unshare">unshare</h1>
+<p>使用非共享的NS运行程序</p>
+<pre><code>// 创建unshare 的 ns类型.
+$unshare -f -m/-n/-i/-U/-p/-u/-C ... 
+
+// 在net类型的namespace执行sleep命令
+$unshare -fn sleep 10
+</code></pre>
+<h1 id="nsenter">nsenter</h1>
+<p>ns enter: Namespace enter.</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/kubernetes/">Kubernetes</a></h2>
+                    <div class="post-meta">
+                        <time>April 5, 2018</time>
+                        
+                            
+                                <span class="category">CNCF</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="kubernetes">Kubernetes</h1>
+<p><a href="https://github.com/kubernetes/kubernetes">https://github.com/kubernetes/kubernetes</a></p>
+<p><a href="https://github.com/kubernetes/kubeadm">https://github.com/kubernetes/kubeadm</a></p>
+<p><a href="https://github.com/kubernetes/kops">https://github.com/kubernetes/kops</a></p>
+<p><a href="https://github.com/kubernetes-sigs/kubespray">https://github.com/kubernetes-sigs/kubespray</a></p>
+<p>kubernetes简称k8s, 是开源的容器编排工具。</p>
+<p>安装单机版k8s:</p>
+<ul>
+<li>minikube</li>
+</ul>
+<p>安装k8s集群:</p>
+<ul>
+<li>kubeadm (k8s内置的，类似于docker swarm mode, 没有HA)</li>
+<li>kops (目前主要支持aws等云平台, 国内不友好)</li>
+<li>kubespray (通过ansible部署, 国内不友好)</li>
+</ul>
+<p>k8s发行版：</p>
+<ul>
+<li>openshift-okd(redhat)</li>
+<li>rancher</li>
+</ul>
+<h1 id="k8s集群组成">k8s集群组成</h1>
+<h2 id="master">master</h2>
+<ul>
+<li>aip-server, 提供资源操作唯一入口</li>
+<li>scheduler, 负责资源调度</li>
+<li>controller-manager, 负责维护集群状态</li>
+<li>etcd(可以部署单独集群), 保存整个集群的状态</li>
+</ul>
+<h2 id="node">node</h2>
+<ul>
+<li>kubelet, 负责维护容器生命周期, 还包括CNI CVI</li>
+<li>kube-proxy, 为service提供cluster内部的服务发现和负载均衡</li>
+<li>CRI(containerd), 创建pod</li>
+</ul>
+<h2 id="addons">addons</h2>
+<ul>
+<li>coredns</li>
+<li>flannel/cilium/calico</li>
+<li>dashboard, web-gui</li>
+<li>metrics-server, 取代heapster，用于cpu/memory监控</li>
+<li>ingress-nginx, 为服务提供外网入口</li>
+<li>federation, 提供跨可用区的集群</li>
+</ul>
+<hr>
+<h1 id="概念">概念</h1>
+<p>k8s包含的重要概念:</p>
+<p>-: nodes, 运行pod的物理机或虚拟机.
+-: namespace, 对资源和对象的抽象集合．pods/deployments/services都属于某个ns.
+-: pods,一组紧密关联的容器集合，共享pid,ipc,network,uts,namespace.</p>
+<p>k8s业务类型:</p>
+<p>-: long-running 长期伺服型 -&gt; RC, RS, Deployment
+-: batch 批处理型-&gt; Job
+-: node-daemon 节点后台支撑型-&gt; DaemonSet
+-: stateful application 有状态应用型-&gt; StatefulSet</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/cncf_docker/">Docker</a></h2>
+                    <div class="post-meta">
+                        <time>April 5, 2018</time>
+                        
+                            
+                                <span class="category">CNCF</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="docker">Docker</h1>
+<p><a href="https://store.docker.com/">https://store.docker.com/</a></p>
+<p><a href="https://hub.docker.com/">https://hub.docker.com/</a></p>
+<p><a href="https://github.com/docker">https://github.com/docker</a></p>
+<p><a href="https://github.com/moby/moby">https://github.com/moby/moby</a></p>
+<p>Docker是一个容器引擎, 分为社区版CE, 和企业版EE, Docker不是虚拟机, 也不依赖虚拟化技术．</p>
+<p>docker-cli -&gt; dockerd -&gt; containerd -&gt; shim -&gt; runc</p>
+<p>containerd是容器运行时管理引擎.</p>
+<p>shim用于管理容器生命周期.</p>
+<p>Docker包括三个基本概念:</p>
+<ul>
+<li>仓库repository,集中存放镜像文件的场所,docker hub/store是最大的公开仓库．</li>
+<li>镜像image, 镜像是一个文件系统.</li>
+<li>容器container, 容器是镜像的运行的实例．</li>
+</ul>
+<p>修改docker存储路径:</p>
+<pre><code>$ service docker stop
+$ mv /var/lib/docker /opt/ssd/docker
+$ ln -s /opt/ssd/docker /var/lib/docker
+$ service docker start
+</code></pre>
+<p>Install:</p>
+<pre><code>windows:
+&lt;https://docs.docker.com/docker-for-windows/install/&gt;
+
+linux:
+&lt;https://docs.docker.com/engine/install/ubuntu/&gt;
+
+mac:
+&lt;https://github.com/abiosoft/colima/blob/main/docs/FAQ.md#docker&gt;
+</code></pre>
+<h2 id="config">config</h2>
+<p><a href="https://docs.docker.com/engine/reference/commandline/dockerd/#daemon-configuration-file">https://docs.docker.com/engine/reference/commandline/dockerd/#daemon-configuration-file</a></p>
+<p>docker配置文件:</p>
+<pre><code>/etc/docker/daemon.json
+/lib/systemd/system/docker.service
+
+{
+    // debug
+    &quot;debug&quot;: true,
+    
+    &quot;data-root&quot;： &quot;/var/lib/docker&quot;,
+    
+    &quot;features&quot;: {
+        &quot;buildkit&quot;: true
+    },
+
+    //容器访问外网:
+    ip-forward=true 会设置 net.ipv4.ip_forward=1, 才能访问外网
+    // 容器之间访问:
+    icc=true, 
+    iptables=true  会修改iptables的forward策略为accept,
+
+    // 修改默认docker0
+    &quot;bridge&quot;:
+    &quot;bip&quot;: &quot;10.0.0.1/16&quot;  // subnet + gateway
+    &quot;fixed-cidr&quot;: &quot;10.41.0.0/24&quot; // iprange
+    &quot;fixed-cidr-v6&quot;: &quot;&quot;,
+    &quot;mtu&quot;: 1500
+    &quot;default-gateway&quot;:
+	&quot;default-gateway-v6&quot;: &quot;&quot;,
+
+    // 修改默认dns
+    &quot;dns&quot; : [
+        &quot;114.114.114.114&quot;,
+        &quot;8.8.8.8&quot;
+    ]
+    &quot;dns-opts&quot;: [],
+    &quot;dns-search&quot;: [],
+
+    // ipv6
+    &quot;ipv6&quot;: true
+
+    // private registry
+  	&quot;insecure-registries&quot;: [],
+
+    // 修改registry
+    &quot;registry-mirrors&quot;: [
+        &quot;https://registry.docker-cn.com&quot;,
+        &quot;https://z4yd270h.mirror.aliyuncs.com&quot;,
+        &quot;http://f1361db2.m.daocloud.io&quot;,
+        &quot;https://docker.mirrors.ustc.edu.cn&quot;
+    ]
+
+    &quot;hosts&quot;: [],
+    &quot;log-level&quot;: &quot;&quot;,
+    &quot;tls&quot;: true,
+    &quot;tlsverify&quot;: true,
+    &quot;tlscacert&quot;: &quot;&quot;,
+    &quot;tlscert&quot;: &quot;&quot;,
+    &quot;tlskey&quot;: &quot;&quot;,
+}
+</code></pre>
+<p>proxy for pull image from google(gcr):</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/cncf_container/">Container</a></h2>
+                    <div class="post-meta">
+                        <time>April 5, 2018</time>
+                        
+                            
+                                <span class="category">CNCF</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="container">Container</h1>
+<p>OCI: Open Container Initiative.</p>
+<p>CRI: Container Runtime Interface.</p>
+<p>CNI: Container Network Interface.</p>
+<p>CSI: Container Storage Interface.</p>
+<h1 id="oci">OCI</h1>
+<p>Open Container Initiative，也就是常说的OCI，是由多家公司共同成立的项目，并由linux基金会进行管理，致力于container runtime的标准的制定和runc的开发等工作.</p>
+<p>是container的标准.</p>
+<p>目前主要有两个标准文档：容器运行时标准 （runtime spec）和 容器镜像标准（image spec）</p>
+<p><a href="https://www.opencontainers.org/">https://www.opencontainers.org/</a></p>
+<h2 id="runc">runc</h2>
+<p>docker(libcontainer)</p>
+<p>runc支持OCI.</p>
+<p><a href="https://github.com/opencontainers/runc">https://github.com/opencontainers/runc</a></p>
+<h2 id="rkt">rkt</h2>
+<p>redhat(coreos)</p>
+<p><a href="https://github.com/rkt/rkt">https://github.com/rkt/rkt</a></p>
+<hr>
+<h1 id="tools">tools</h1>
+<h2 id="dumb-init">dumb-init</h2>
+<p>管理pid=1的进程的子进程:</p>
+<p><a href="https://github.com/Yelp/dumb-init">https://github.com/Yelp/dumb-init</a></p>
+<h2 id="baseimage-docker">baseimage-docker</h2>
+<p>处理container中运行多个进程的问题:</p>
+<p><a href="https://github.com/phusion/baseimage-docker">https://github.com/phusion/baseimage-docker</a></p>
+<h2 id="watchtower">watchtower</h2>
+<p>根据registry中的更新自动更新 container:</p>
+<p><a href="https://github.com/containrrr/watchtower/">https://github.com/containrrr/watchtower/</a></p>
+<h2 id="hadolint">hadolint</h2>
+<p>dockerfile 语法检查:</p>
+<p><a href="https://github.com/hadolint/hadolint">https://github.com/hadolint/hadolint</a></p>
+<h2 id="gosu">gosu</h2>
+<p>权限管理</p>
+<p><a href="https://github.com/tianon/gosu">https://github.com/tianon/gosu</a></p>
+<h2 id="swarm-cronjob">swarm-cronjob</h2>
+<p><a href="https://github.com/crazy-max/swarm-cronjob">https://github.com/crazy-max/swarm-cronjob</a></p>
+<hr>
+<h1 id="misc">misc</h1>
+<p>get host ip(docker/docker_gwbridge) from container:</p>
+<pre><code>ip route | awk '/default/ { print $3 }'
+</code></pre></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/storage/">Storage</a></h2>
+                    <div class="post-meta">
+                        <time>April 5, 2018</time>
+                        
+                            
+                                <span class="category">Storage</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="storage">Storage</h1>
+<h1 id="raid">RAID</h1>
+<p>RAID: redundant array of independent disks, 独立磁盘冗余数组．</p>
+<h1 id="存储方式">存储方式</h1>
+<p>DAS: direct attached storage, 直连式存储，通过SCSI或FC连接服务器．</p>
+<p>NAS: network attached storage，网络接入存储，通过IP(NFS/CIFS/..).</p>
+<p>SAN: storage area network, 存储区域网络，有IP或FC两种方式．</p>
+<h1 id="存储接口">存储接口</h1>
+<p>SCSI</p>
+<p>iSCSI</p>
+<p>SAS</p>
+<p>SATA</p>
+<p>FC</p>
+<p>FCoE</p>
+<hr></p>
+                    
+                </li>
+            
+        </ul>
+    </section>
+    
+    
+        <a href="/page/17/">← Previous</a>
+    
+    
+        <a href="/page/19/">Next →</a>
+    
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

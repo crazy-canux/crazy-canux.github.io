@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Url on Morgoth</title>
+    <link>https://canuxcheng.com/tags/url/</link>
+    <description>Recent content in Url on Morgoth</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 04 Oct 2016 04:20:39 +0000</lastBuildDate>
+    <atom:link href="https://canuxcheng.com/tags/url/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>URL</title>
+      <link>https://canuxcheng.com/post/django_url/</link>
+      <pubDate>Tue, 04 Oct 2016 04:20:39 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/django_url/</guid>
+      <description>&lt;h1 id=&#34;urlspy&#34;&gt;urls.py&lt;/h1&gt;&#xA;&lt;pre&gt;&lt;code&gt;from django.urls import path, include&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;django请求站点的方法：&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;ROOT_URLCONF，在settings.py中设置。&lt;/li&gt;&#xA;&lt;li&gt;寻找urlpatterns，它是django.conf.urls.url()实例的一个python列表。&lt;/li&gt;&#xA;&lt;li&gt;dnango依次匹配每个URL模式，在第一个匹配停下。&lt;/li&gt;&#xA;&lt;li&gt;一旦一个正则表达式匹配，django就调用对应的视图，视图获得HttpRequest实例,如果是没有命名的组返回内容作为位置参数，如果是命名的组返回内容作为关键字参数。&lt;/li&gt;&#xA;&lt;li&gt;如果没有匹配到或者过程跑出异常，django调用合适的错误处理。&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h1 id=&#34;项目的url&#34;&gt;项目的URL&lt;/h1&gt;&#xA;&lt;p&gt;项目的URL主要用来包含应用的URL以及全局的URL:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;from django.contrib import admin&#xA;from django.urls import path, include&#xA;&#xA;urlpatterns = [&#xA;    # 默认的项目的admin的url&#xA;    path(&#39;admin/&#39;, admin.site.urls),&#xA;    &#xA;    # 在项目URL添加链接到应用URL：&#xA;    # 在下面添加你的所有应用的url,&#xA;    path(&#39;polls/&#39;, include(&#39;polls.urls&#39;)),&#xA;]&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h1 id=&#34;应用的url&#34;&gt;应用的URL&lt;/h1&gt;&#xA;&lt;p&gt;将应用的视图映射到URL,需要在应用目录新建urls.py文件,然后在项目的url中包含应用的url。&lt;/p&gt;&#xA;&lt;p&gt;urlpatterns是url()实例类型的python列表。&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;from django.urls import path&#xA;from . import views&#xA;&#xA;app_name = &#39;polls&#39;&#xA;&#xA;urlpatterns = [&#xA;    # 普通视图&#xA;    path(&#39;&#39;, views.index, name=&#39;index&#39;),&#xA;    # 类视图&#xA;    path(&#39;&#39;, views.IndexView.as_view(), name=&#39;index&#39;),&#xA;]&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;没有命名的组&#34;&gt;没有命名的组&lt;/h1&gt;&#xA;&lt;p&gt;视图函数只有request参数，匹配的正则表达式作为位置参数。&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;url(r&#39;^pattern1/pattern2/$&#39;, views.index, name=&#39;index&#39;),&#xA;&#xA;def index(request):&#xA;    ...&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h1 id=&#34;命名组&#34;&gt;命名组&lt;/h1&gt;&#xA;&lt;p&gt;视图函数除了request参数还有关键字参数，匹配的命名表达式组作为关键字参数,覆盖默认的关键字参数。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

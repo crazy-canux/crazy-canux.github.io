@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWS - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="single-post">
+    <article>
+        <header>
+            <h1>AWS</h1>
+            <div class="post-meta">
+                <time>April 23, 2021</time>
+                
+                    
+                        <span class="category">Cloud</span>
+                    
+                
+                
+                    
+                        <span class="tag">#aws</span>
+                    
+                
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <h1 id="aws">AWS</h1>
+<p><a href="https://github.com/donnemartin/awesome-aws">https://github.com/donnemartin/awesome-aws</a></p>
+<p>aws certification:</p>
+<ul>
+<li>Foundational: 6个月经验. Cloud Practitioner Foundational(CLF).</li>
+<li>Associate: 一年经验. Solutions Architect Associate(SAA); Developer, SysOps Administrator</li>
+<li>Professional: 两年经验. Solutions Architect Professional(SAP), Devops Engineer.</li>
+<li>Specialty: 特殊领域.</li>
+</ul>
+<hr>
+<h2 id="sdk">SDK</h2>
+<p>python</p>
+<p><a href="https://github.com/boto/boto3">https://github.com/boto/boto3</a></p>
+<p>golang</p>
+<p><a href="https://github.com/aws/aws-sdk-go">https://github.com/aws/aws-sdk-go</a></p>
+<hr>
+<h2 id="aws-management-console">AWS Management Console</h2>
+<p>通过webUI管理资源.
+kkkkjjkijijijkkjddkkkkjj</p>
+<hr>
+<h2 id="aws-command-line-interface">AWS Command Line Interface</h2>
+<p><a href="https://github.com/aws/aws-cli">https://github.com/aws/aws-cli</a></p>
+<p><a href="https://github.com/awslabs/aws-shell">https://github.com/awslabs/aws-shell</a></p>
+<p>推荐使用awscli-V2:</p>
+<p><a href="https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html">https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html</a></p>
+<p>使用:</p>
+<pre><code>aws [-h] [--profile PROFILE] [--debug]
+</code></pre>
+<p>option:</p>
+<pre><code>-h, --help
+--profile PROFILE
+--debug
+</code></pre>
+<p>comand option:</p>
+<pre><code>aws &lt;service&gt; &lt;subcommand&gt; help 
+</code></pre>
+<h3 id="cli-credentials">CLI credentials</h3>
+<p>优先级：</p>
+<ol>
+<li>命令行选项</li>
+<li>credentials文件</li>
+<li>config文件</li>
+<li>容器凭证</li>
+<li>实例配置文件凭证</li>
+</ol>
+<ul>
+<li>CLI</li>
+</ul>
+<p>配置default profile</p>
+<pre><code>$aws configure
+AWS Access Key ID [None]: AKIAIOSFODNN7EXAMPLE
+AWS Secret Access Key [None]: wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+Default region name [None]: us-west-2
+Default output format [None]: json/yaml/text/table/yaml-stream
+
+// 配置指定用户
+$aws configure --profile canux
+
+// 查看配置
+$aws configure  list
+$aws configure --profile canux list
+</code></pre>
+<p>命令行选项指定配置文件</p>
+<pre><code>$aws --profile canux ...
+</code></pre>
+<p>环境变量指定配置文件</p>
+<pre><code>export AWS_PROFILE=canux
+export AWS_DEFAULT_PROFILE=canux
+</code></pre>
+<ul>
+<li>Shared credentials file</li>
+</ul>
+<p>文件配置</p>
+<pre><code>// windows
+%USERPROFILE%\.aws\credentials
+
+// linux
+~/.aws/credentials 
+
+// 默认账号配置
+[default]
+aws_access_key_id=AKIAIOSFODNN7EXAMPLE
+aws_secret_access_key=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+
+// 指定用户配置
+[canux]
+aws_access_key_id=AKIAI44QH8DHBEXAMPLE
+aws_secret_access_key=je7MtGbClwBF/2Zp9Utk/h3yCo8nvbEXAMPLEKEY
+</code></pre>
+<p>通过环境变量配置</p>
+<pre><code>export AWS_ACCESS_KEY_ID=&quot;id&quot;
+export AWS_SECRET_ACCESS_KEY=&quot;key&quot;
+export AWS_SESSION_TOKEN=&quot;token&quot;
+</code></pre>
+<ul>
+<li>Config file</li>
+</ul>
+<p>配置文件</p>
+<pre><code>// linux
+~/.aws/config
+
+[default]
+region = eu-west-1
+output = yaml
+
+[profile pro]
+sso_start_url = https://lz.awsapps.com/start
+sso_region = eu-west-1
+sso_role_name = ProjAdmins
+sso_account_id = 123404000510
+region = us-west-2
+output = json
+
+// windows
+%USERPROFILE%\.aws\config
+</code></pre>
+<ul>
+<li>IAM role</li>
+</ul>
+<p>how to check:</p>
+<pre><code>$aws sts get-caller-identity --profile pro
+</code></pre>
+<h3 id="services">services</h3>
+<pre><code>iam
+ec2
+sts
+eks
+
+aws eks describe-addon-versions --addon-name aws-ebs-csi-driver
+</code></pre>
+<hr>
+
+        </div>
+    </article>
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

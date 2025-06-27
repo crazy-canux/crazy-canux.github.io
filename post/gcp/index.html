@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GCP - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="single-post">
+    <article>
+        <header>
+            <h1>GCP</h1>
+            <div class="post-meta">
+                <time>April 23, 2023</time>
+                
+                    
+                        <span class="category">Cloud</span>
+                    
+                
+                
+                    
+                        <span class="tag">#gcp</span>
+                    
+                
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <h1 id="gcp">GCP</h1>
+<p>gcp certification:</p>
+<ul>
+<li>Google Cloud Certified Cloud Digital Leader</li>
+<li>Google Cloud Certified Associate Cloud Engineer</li>
+<li>Google Cloud Certified DevOps Engineer</li>
+<li>Google Cloud Certified Machine Learning Engineer</li>
+<li>Google Cloud Certified Professional Cloud Architect</li>
+<li>Google Cloud Certified Professional Data Engineer</li>
+<li>Google Cloud Certified Professional Network Engineer</li>
+<li>Google Cloud Certified Professional Security Engineer</li>
+</ul>
+<hr>
+<h2 id="cloud-sdk">Cloud SDK</h2>
+<p><a href="https://cloud.google.com/sdk/docs/install">https://cloud.google.com/sdk/docs/install</a></p>
+<p>默认安装的组件:</p>
+<ul>
+<li>bq</li>
+<li>bundled-python3-unix</li>
+<li>gsutil</li>
+<li>core</li>
+<li>gcloud-crc32c</li>
+<li>alpha</li>
+<li>beta</li>
+</ul>
+<p>安装其它组件:</p>
+<pre><code>gcloud components install app-engine-go docker-credential-gcr kustomize log-streaming terraform-tools app-engine-python app-engine-python-extras gke-gcloud-auth-plugin kubectl kubectl-oidc 
+</code></pre>
+<p>卸载:</p>
+<pre><code>gcloud components remove &lt;component_id&gt;
+</code></pre>
+<p>升级</p>
+<pre><code>gcloud components update
+</code></pre>
+<h2 id="gcp-command-line-interface">GCP Command Line Interface</h2>
+<p>使用:</p>
+<pre><code>gcloud --help   
+</code></pre>
+<h3 id="cli-credentials">CLI credentials</h3>
+<p>初始化：</p>
+<pre><code>gcloud init
+gcloud init --no-launch-browser
+gcloud init --console-only
+</code></pre>
+<p>配置：</p>
+<p>配置存储位置:</p>
+<pre><code>linux/unix: ~/.config/gcloud
+windows: %APPDATA%\gcloud
+</code></pre>
+<p>配置管理:</p>
+<pre><code>// 创建配置
+gcloud config configurations create [name]
+
+// 列出配置
+gcloud config configurations list
+
+// 查看配置属性
+gcloud config configurations describe [name]
+
+// 激活配置
+gcloud config configurations activate [name]
+
+// 删除配置
+gcloud config configurations delete [name]
+</code></pre>
+<p>属性管理:</p>
+<pre><code>// 查看属性
+gcloud config list
+
+// 切换account
+gcloud config set account [account]
+// 切换project
+gcloud config set project [project]
+
+// 查看可用属性
+gcloud config set --help
+
+// 显示可用属性的列表
+gcloud topic configurations
+</code></pre>
+<p>登录:</p>
+<pre><code>// 默认打开浏览器授权
+gcloud auth login
+
+// 用于没有浏览器的机器
+// 复制gcloud auth login --remote-bootstrap=&quot;命令在另外一台安装了浏览器和gcloud cli的机器打开。
+// 将浏览器的输出帖回没有浏览器的机器。
+gcloud auth login --no-browser
+
+// 用于没有浏览器的机器，复制Https网址打开浏览器授权。
+gcloud auth login --no-launch-browser
+
+// 列出账号.
+gcloud auth list
+
+// 禁止通过cli登录
+gcloud auth revoke [account]
+
+// 查找凭据文件位置
+gcloud info
+</code></pre>
+<p>Application Default Credentials（ADC):</p>
+<pre><code>// 将用户凭据提供给ADC(用于sdk或者terraform等交互）。
+gcloud auth application-default login --no-launch-browser
+</code></pre>
+<p>交互式shell</p>
+<pre><code>gcloud beta interactive
+</code></pre>
+<hr>
+<h2 id="compute">compute</h2>
+<ul>
+<li>Kubernetes: GKE(EKS)</li>
+<li>Compute engine(EC2): compute engine</li>
+<li>Batch</li>
+<li>workload manager</li>
+</ul>
+<hr>
+<h2 id="serverless">ServerLess</h2>
+<ul>
+<li>cloud run</li>
+<li>cloud functions</li>
+<li>app engine</li>
+<li>api gateway</li>
+<li>endpoints</li>
+</ul>
+<hr>
+<h2 id="network">network</h2>
+<ul>
+<li>VPC</li>
+<li>cloud router</li>
+<li>cloud DNS(route53)</li>
+<li>cloud domains(route53)</li>
+<li>cloud firewall(DNS firewall, network firewall, SG, ACL)</li>
+<li>cloud interconnect(direct connect)</li>
+<li>cloud VPN</li>
+<li>cloud NAT</li>
+<li>cloud CDN</li>
+<li>cloud load balancing</li>
+</ul>
+<h3 id="cloud-load-balancer">Cloud Load balancer</h3>
+<p>Application LB(http/https):</p>
+<ul>
+<li>external LB(gce): external global lb(gke-l7-global-external-managed), external classic global lb(gke-l7-gxlb), external regional lb（gke-l7-regional-external-managed）.</li>
+<li>internal LB(gce-internal, gke-l7-rilb): internal regional lb.</li>
+</ul>
+<p>Proxy LB(TCP/SSL):</p>
+<ul>
+<li>external</li>
+<li>internal</li>
+</ul>
+<p>Passthrough LB(TCP/UDP):</p>
+<ul>
+<li>external</li>
+<li>internal</li>
+</ul>
+<hr>
+<h2 id="storage">storage</h2>
+<ul>
+<li>persistent disk(EBS): (balanced/extreme/ssd/standard) 创建vm的时候创建块存储。</li>
+<li>cloud storage(S3): (standard/nearline/coldline/archive) 可以在全球范围内随时存储和检索任意数量的数据</li>
+<li>cloud storage for filebase(S3): 专为需要存储和提供用户生成的内容（如照片或视频）的应用开发者而打造的</li>
+<li>filestore(EFS): file storage</li>
+</ul>
+<hr>
+<h2 id="database">Database</h2>
+<ul>
+<li>Cloud SQL(RDS, Aurora): RDBMA</li>
+<li>Cloud Spanner(Aurora): RDBMS</li>
+<li>Cloud Bigtable(dynamoDB): NoSQL: Key-value</li>
+<li>datastore(dynamoDB): NoSQL: Indexed</li>
+<li>memorystore(elastiCache): In-memory data store, memcached/redis</li>
+<li>BigQuery</li>
+</ul>
+<hr>
+<h2 id="security">Security</h2>
+<ul>
+<li>certificate authority service(ACM): Certificate management</li>
+<li>cloud identity(IAM):</li>
+<li>Identity and access management(IAM):</li>
+<li>Identity-Aware Proxy(IAM):</li>
+<li>cloud key management service(KMS):</li>
+</ul>
+<p>IAM members:</p>
+<ul>
+<li>google account</li>
+<li>google service account</li>
+<li>google groups</li>
+<li>cloud identity domain</li>
+<li>google workspace domain</li>
+</ul>
+<p>IAM basic roles:</p>
+<ul>
+<li>Owner</li>
+<li>Editor</li>
+<li>Viewer</li>
+<li>Billing Administrator</li>
+</ul>
+<p>Service account types:</p>
+<ul>
+<li>user created</li>
+<li>built-in (compute engine or gke default SA)</li>
+<li>Google APIs SA</li>
+</ul>
+<hr>
+<h2 id="operation">Operation</h2>
+<ul>
+<li>Monitoring</li>
+<li>Debugger</li>
+<li>Logging</li>
+<li>Error reporting</li>
+<li>Trace</li>
+<li>Profiler</li>
+</ul>
+<hr>
+<h2 id="analytics">Analytics</h2>
+<ul>
+<li>BigQuery</li>
+<li>Pub/Sub</li>
+</ul>
+<hr>
+<h2 id="cicd">CI/CD</h2>
+<ul>
+<li>cloud build</li>
+<li>cloud deploy</li>
+<li>container registry</li>
+<li>artifact registry</li>
+<li>source repositories</li>
+</ul>
+<hr>
+<h2 id="how-to-ssh-to-vm">how to ssh to vm</h2>
+<h3 id="metadata">Metadata</h3>
+<p>分为Project metadata和instance metadata。</p>
+<h4 id="ssh">ssh</h4>
+<p>Only for external IP (public IP).</p>
+<ul>
+<li>ssh key for vm: add ssh pub key to instance metadata.</li>
+<li>ssh key for project: add ssh pub key to project metadata.</li>
+</ul>
+<p>ssh to vm</p>
+<pre><code>ssh username_from_metadata@external_IP
+</code></pre>
+<h4 id="gcloud">gcloud</h4>
+<p>首次运行会创建ssh 密钥对，用户名是本地机器用户名,google_compute_engine.</p>
+<p>公钥会自动上传到project/instance metadata.</p>
+<pre><code>gcloud compute ssh public-instance \
+--project=PJ \
+--zone=RZ
+</code></pre>
+<h3 id="os-login">OS Login</h3>
+<p>设置 OS Login 元数据时，Compute Engine 会删除虚拟机的 authorized_keys 文件，并且不再接受来自项目或实例元数据中存储的 SSH 密钥的连接。</p>
+<p>用户名为canuxcheng@gmail.com =&gt; canuxcheng_gmail_com</p>
+<h4 id="ssh-1">ssh</h4>
+<p>使用ssh需要将公钥上传到OS Login配置(忽略密钥中的用户名）。</p>
+<pre><code>gcloud compute os-login ssh-keys add \
+--key-file=public_KEY_FILE_PATH \
+--project=PROJECT \
+--ttl=EXPIRE_TIME
+</code></pre>
+<p>ssh</p>
+<pre><code>ssh canuxcheng_gmail_com@IP
+</code></pre>
+<h4 id="gcloud-1">gcloud</h4>
+<p>首次运行会创建ssh 密钥对，公钥会自动上传到os login config.</p>
+<pre><code>gcloud compute ssh instance --internal-ip --project=PJ --zone=RZ
+</code></pre>
+<h3 id="iap">IAP</h3>
+<p>Identity-Aware Proxy</p>
+<p><a href="https://cloud.google.com/iap/docs/using-tcp-forwarding?_ga=2.127808461.-1134224509.1683858043&amp;hl=zh-cn#firewall">https://cloud.google.com/iap/docs/using-tcp-forwarding?_ga=2.127808461.-1134224509.1683858043&amp;hl=zh-cn#firewall</a></p>
+<p>use internal ip directly:</p>
+<pre><code>gcloud compute ssh private-instance --project=PJ --zone=europe-west4-a --internal-ip
+</code></pre>
+<p>use iap:</p>
+<pre><code>gcloud compute ssh private-instance \
+--project=PJ \
+--zone=RZ \
+--tunnel-through-iap 
+</code></pre>
+
+        </div>
+    </article>
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

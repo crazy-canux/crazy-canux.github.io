@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="generator" content="Hugo 0.147.9">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morgoth - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="home">
+    <h1>Morgoth</h1>
+    <p></p>
+    
+    <section class="recent-posts">
+        <h2>Recent Posts</h2>
+        <ul class="post-list">
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/psl_data/">PSL_Data</a></h2>
+                    <div class="post-meta">
+                        <time>August 14, 2016</time>
+                        
+                            
+                                <span class="category">Python</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="data-types">Data Types</h1>
+<h2 id="datetime">datetime</h2>
+<pre><code>import datetime
+</code></pre>
+<p>classes:</p>
+<pre><code># datetime.date
+date(year, month, day)
+# methods:
+ctime(...)
+...
+# data descriptors:
+day
+month
+year
+
+# datetime.datetime(datetime.date)
+datetime(year, month, day[, hour[, minute[, second[, microsecond[,tzinfo]]]]])
+# methods:
+datetime.datetime.strptime(string, format)
+format_datetime = datetime.datetime.strptime('20160824161431', '%Y%m%d%H%M%S') # return: datetime.datetime(2016, 8, 24, 16, 14, 31)
+format_datetime = datetime.datetime.strptime('24 August 2016 16:14:31', '%Y%m%d%H%M%S') # return: datetime.datetime(2016, 8, 24, 16, 14, 31)
+
+datetime.datetime.strftime(format[, tuple])
+string_datetime = format_datetime.strftime(&quot;%d %B %Y %H:%M:%S&quot;) # return: '24 August 2016 16:14:31'
+datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S') # return: '2017-02-07 23:07:32'
+
+str(datetime.datetime.now())
+datetime.datetime.now().strftime('%Y%m%d%H%M%S') # 当前时间戳
+
+# datetime.time
+
+# datetime.timedelta
+
+# datetime.tzinfo
+</code></pre>
+<p>data:</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/psl_file/">PSL_File</a></h2>
+                    <div class="post-meta">
+                        <time>August 14, 2016</time>
+                        
+                            
+                                <span class="category">Python</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="file-and-directory-access">File and Directory Access</h1>
+<h2 id="ospath">os.path</h2>
+<p>windows的路径要写成：</p>
+<pre><code>C:\\test\\sub\\
+
+import os
+</code></pre>
+<p>function:</p>
+<pre><code>os.path.expanduser(path) # 把path中~或~user扩展成绝对路径 expanduser(&quot;~/src&quot;) -&gt; /home/user/src
+os.path.expandvars(path) # 把path中的shell变量$var 或 ${var} 还原．
+os.path.dirname(filename) # 返回filename的路径 dirname(&quot;/home/user/file.py&quot;) -&gt; /home/user
+os.path.join(a, *p) # 拼结一个完整的路径　
+os.path.join(a, os.pardir) # 返回上级目录的路径
+os.path.realpath(filename) # 返回filename的真实路径+文件名 realpath('__file__')
+os.path.abspath(path) # 返回绝对路径, os.path.abspath('__file__')
+os.path.splitext(p) # 分解路径和扩展名返回组成的元组，/home/user/test.py -&gt; (&quot;/home/user/test&quot;, &quot;.py&quot;)
+os.path.basename(p) # 返回最后一个组件名，也就是文件名 /home/user/test.py -&gt; test.py
+os.path.getsize(filename) # 返回文件大小
+os.path.exists(path) # 判断path(文件或目录)是否存在
+os.path.isfile(path) # 判断path是否是常规文件
+</code></pre>
+<h2 id="pathlib">pathlib</h2>
+<p>new in python3.4</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/psl_math/">PSL_Math</a></h2>
+                    <div class="post-meta">
+                        <time>August 12, 2016</time>
+                        
+                            
+                                <span class="category">Python</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="numeric-and-mathematical-modules">Numeric and Mathematical Modules</h1>
+<h2 id="random">random</h2>
+<pre><code>import random
+</code></pre>
+<p>classes:</p>
+<pre><code># random.Random
+Random()
+# methods:
+seed([self,], a=None)
+randint(a, b) # 随机一个[a,b]中的整数．
+choice(self, seq) # 从seq中随机选择一个元素
+uniform(self, a, b)
+sample(self, population, k)
+randint(self, a, b)
+randrange(self, start, stop=None, step=1, _int=&lt;type 'int'&gt;, _maxwidth=9007199254740992L)
+
+# random.SystemRandom(Random)
+SystemRandom(Random)
+
+# random.WichmannHill(Random)
+WichmannHill(Random)
+</code></pre>
+<p>functions:</p>
+<pre><code>getrandbits(k)
+random(self) # 随机一个小于１的数．
+# 所有Random类的methods也可以直接使用．
+</code></pre>
+<h2 id="fractions">fractions</h2>
+<h2 id="functools">functools</h2>
+<p>函数式编程相关的模块</p>
+<pre><code>import functools
+</code></pre>
+<p>classes:</p>
+<pre><code># functools.partial
+partial(func, *args, **keywords) # 返回functools.partial类型的对象, partial是functools内置的偏函数类类型.
+RED = partial(lambda content, color: color + str(content) + Fore.RESET, color=Fore.RED)
+RED(&quot;show me red&quot;) == lambda content, color: Fore.RED + str(&quot;show me red&quot;) + Fore.RESET
+# 相当于通过partial传一个参数给func，然后剩下的参数通过返回的偏函数传入．这样可以固化一部分参数．
+</code></pre>
+<p>functions:</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/psl_string/">PSL_String</a></h2>
+                    <div class="post-meta">
+                        <time>August 12, 2016</time>
+                        
+                            
+                                <span class="category">Python</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="text-processing-services">Text Processing Services</h1>
+<h2 id="string">string</h2>
+<pre><code>import string
+</code></pre>
+<p>classes:</p>
+<p>functions:</p>
+<p>data:</p>
+<pre><code>ascii_letters
+ascii_lowercase
+ascii_uppercase
+digits
+...
+</code></pre>
+<h2 id="re">re</h2>
+<pre><code>import re
+</code></pre>
+<p>classes:</p>
+<p>functions:</p>
+<pre><code>compile(pattern, flags=0)
+escape(pattern)
+findall(pattern, string, flags=0)
+finditer(pattern, string, flags=0)
+match(pattern, string, flags=0) # if not match, return None, else return object.
+search(pattern, string, flags=0)
+purge()
+split(pattern, string, maxsplit=0, flags=0) # 根据pattern分割string,返回分割后的列表．
+sub(pattern, repl, string, count=0, flags=0)
+subn(pattern, repl, string, count=0, flags=0)
+template(pattern, flags=0)
+</code></pre>
+<p>data:</p>
+<pre><code># flags:
+IGNORECASE # 大小写不敏感
+LOCALE
+MULTILINE
+DOTALL
+VERBOSE
+UNICODE
+</code></pre>
+<p>modules:</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/psl_multimedia/">PSL_Multimedia</a></h2>
+                    <div class="post-meta">
+                        <time>August 12, 2016</time>
+                        
+                            
+                                <span class="category">Python</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="multimedia-services">Multimedia Services</h1>
+<h2 id="audioop">audioop</h2>
+<h2 id="aifc">aifc</h2>
+<h2 id="sunau">sunau</h2>
+<h2 id="wave">wave</h2>
+<h2 id="chunk">chunk</h2>
+<h2 id="colorsys">colorsys</h2>
+<h2 id="imghdr">imghdr</h2>
+<h2 id="sndhdr">sndhdr</h2>
+<h2 id="ossaudiodev">ossaudiodev</h2>
+<hr></p>
+                    
+                </li>
+            
+        </ul>
+    </section>
+    
+    
+        <a href="/page/36/">← Previous</a>
+    
+    
+        <a href="/page/38/">Next →</a>
+    
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

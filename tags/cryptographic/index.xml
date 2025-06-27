@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cryptographic on Morgoth</title>
+    <link>https://canuxcheng.com/tags/cryptographic/</link>
+    <description>Recent content in Cryptographic on Morgoth</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 01 Jan 2018 10:49:21 +0000</lastBuildDate>
+    <atom:link href="https://canuxcheng.com/tags/cryptographic/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GSL_cryptographic</title>
+      <link>https://canuxcheng.com/post/gsl_cryptographic/</link>
+      <pubDate>Mon, 01 Jan 2018 10:49:21 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/gsl_cryptographic/</guid>
+      <description>&lt;h1 id=&#34;crypto&#34;&gt;crypto&lt;/h1&gt;&#xA;&lt;p&gt;收集了常用的密码常量&lt;/p&gt;&#xA;&lt;h2 id=&#34;functions&#34;&gt;functions&lt;/h2&gt;&#xA;&lt;pre&gt;&lt;code&gt;RegisterHash(h Hash, f func() hash.Hash)&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;publickey&#34;&gt;PublicKey&lt;/h2&gt;&#xA;&lt;p&gt;interface:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;type PublicKey interface{}&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;privatekey&#34;&gt;PrivateKey&lt;/h2&gt;&#xA;&lt;p&gt;interface:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;type PrivateKey interface{}&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;hash&#34;&gt;Hash&lt;/h2&gt;&#xA;&lt;pre&gt;&lt;code&gt;type Hash uint&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;method:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;func (h Hash) Avaliable() bool&#xA;func (h Hash) Size() int&#xA;func (h Hash) New() hash.Hash&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;cryptocipher&#34;&gt;crypto/cipher&lt;/h1&gt;&#xA;&lt;p&gt;用于包装底层块加密算法的实现.&lt;/p&gt;&#xA;&lt;h2 id=&#34;block&#34;&gt;Block&lt;/h2&gt;&#xA;&lt;p&gt;代表一个使用特定密钥的底层　加／解密器．&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;type Block interface {&#xA;    BlockSize() int&#xA;    Encrypt(dst, src []byte)&#xA;    Decrypt(dst, src []byte)&#xA;}&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;blockmode&#34;&gt;BlockMode&lt;/h2&gt;&#xA;&lt;p&gt;代表一个工作在块模式(CBC, ECB等)的加／解密器&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;type BlockMode interface {&#xA;    BlockSize() int&#xA;    CryptBlocks(dst, src []byte)&#xA;}&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;function:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>PSL_Cryptographic</title>
+      <link>https://canuxcheng.com/post/psl_cryptographic/</link>
+      <pubDate>Sun, 14 Aug 2016 21:15:14 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/psl_cryptographic/</guid>
+      <description>&lt;h1 id=&#34;cryptographic-services&#34;&gt;Cryptographic Services&lt;/h1&gt;&#xA;&lt;h2 id=&#34;hashlib&#34;&gt;hashlib&lt;/h2&gt;&#xA;&lt;p&gt;哈希算法和摘要算法标准库，就是把任意长度的数据转换为一个长度固定的数据串．&lt;/p&gt;&#xA;&lt;p&gt;MD5: Message Digest Algorithm 5.&lt;/p&gt;&#xA;&lt;p&gt;SHA1: Secure Hash Algorithm.&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;import hashlib&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;classes:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;# methods:&#xA;# 哈希对象有下列方法：&#xA;update(arg) # 更新字符串&#xA;md5.update(&#39;string or read from a file&#39;) # 放入需要转换的内容&#xA;&#xA;digest() # 字符串&#xA;hexdigest() # 十六进制字符串&#xA;md5.hexdigest() # 获取md5十六进制字符串&#xA;&#xA;copy() # 复制哈希对象&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;functions:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;# 下类函数都返回哈希对象&#xA;new(name, string=&#39;&#39;)&#xA;md5()&#xA;md5 = hashlib.md5() # 创建一个md5的hash对象&#xA;sha1()&#xA;sha224()&#xA;sha256()&#xA;sha384()&#xA;sha512()&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;hmac&#34;&gt;hmac&lt;/h2&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;tpl&#34;&gt;TPL&lt;/h1&gt;&#xA;&lt;p&gt;相关的第三方库&lt;/p&gt;&#xA;&lt;h2 id=&#34;pycrypto&#34;&gt;pycrypto&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/dlitz/pycrypto&#34;&gt;https://github.com/dlitz/pycrypto&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;windows需要MS Visual C++ compiler for python2.7.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

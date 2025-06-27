@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hexo on Morgoth</title>
+    <link>https://canuxcheng.com/tags/hexo/</link>
+    <description>Recent content in Hexo on Morgoth</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 22 Mar 2016 12:59:10 +0000</lastBuildDate>
+    <atom:link href="https://canuxcheng.com/tags/hexo/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hexo</title>
+      <link>https://canuxcheng.com/post/hexo/</link>
+      <pubDate>Tue, 22 Mar 2016 12:59:10 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/hexo/</guid>
+      <description>&lt;h1 id=&#34;hexo&#34;&gt;Hexo&lt;/h1&gt;&#xA;&lt;h2 id=&#34;什么是hexo&#34;&gt;什么是hexo&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Hexo是用nodejs开发的快速、简洁且高效的博客框架，&#xA;Hexo 使用Markdown（或其他渲染引擎）解析文章，在几秒内，即可利用靓丽的主题生成静态网页。&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;p&gt;hexo有大量的插件和主题。&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://hexo.io/plugins/&#34;&gt;plugins&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://hexo.io/themes/&#34;&gt;themes&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;安装hexo&#34;&gt;安装hexo&lt;/h2&gt;&#xA;&lt;p&gt;需要安装依赖nodejs(包括npm)和git。&lt;/p&gt;&#xA;&lt;p&gt;安装hexo命令行插件hexo-cli：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$sudo npm install hexo-cli -g&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;next&#34;&gt;Next&lt;/h2&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;Next是一种文雅的Hexo主题。&#xA;一个主题，三种外观，选您所好。&#xA;通过主题中的主题（亦称Scheme），您可以方便地改变您博客的外观，同时几乎所有配置同样适用。&lt;/p&gt;&lt;/blockquote&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/iissnan/hexo-theme-next&#34;&gt;原生的Next&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/crazy-canux/hexo-theme-next&#34;&gt;作者的Next&lt;/a&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;快速使用&#34;&gt;快速使用&lt;/h1&gt;&#xA;&lt;h2 id=&#34;初始化&#34;&gt;初始化&lt;/h2&gt;&#xA;&lt;p&gt;初始化一个hexo的目录：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$hexo init &amp;lt;folder&amp;gt;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;安装依赖&#34;&gt;安装依赖&lt;/h2&gt;&#xA;&lt;p&gt;进入hexo目录安装依赖：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$cd &amp;lt;folder&amp;gt;&#xA;$sudo npm install &amp;lt;package-name&amp;gt;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;默认安装下列依赖：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;hexo&#xA;hexo-server&#xA;hexo-generator-index&#xA;hexo-generator-archive&#xA;hexo-generator-category&#xA;hexo-generator-tag&#xA;hexo-renderer-ejs&#xA;hexo-renderer-marked&#xA;hexo-renderer-stylus&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;查看文件和目录&#34;&gt;查看文件和目录&lt;/h2&gt;&#xA;&lt;p&gt;安装完成后有下列&lt;/p&gt;&#xA;&lt;p&gt;文件：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;_config.yml&#xA;db.json&#xA;package.json&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;目录：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;node_modules&#xA;scaffolds&#xA;source&#xA;themes&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;生成静态文件&#34;&gt;生成静态文件&lt;/h2&gt;&#xA;&lt;pre&gt;&lt;code&gt;$hexo g&#xA;$hexo generate&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;启动本地服务器&#34;&gt;启动本地服务器&lt;/h2&gt;&#xA;&lt;pre&gt;&lt;code&gt;$hexo s&#xA;$hexo server&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;用浏览器打开链接即可本地查看默认博客。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

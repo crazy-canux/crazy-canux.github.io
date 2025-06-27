@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>System on Morgoth</title>
+    <link>https://canuxcheng.com/tags/system/</link>
+    <description>Recent content in System on Morgoth</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 01 Jan 2018 10:49:21 +0000</lastBuildDate>
+    <atom:link href="https://canuxcheng.com/tags/system/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GSL_system</title>
+      <link>https://canuxcheng.com/post/gsl_system/</link>
+      <pubDate>Mon, 01 Jan 2018 10:49:21 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/gsl_system/</guid>
+      <description>&lt;h1 id=&#34;os&#34;&gt;os&lt;/h1&gt;&#xA;&lt;p&gt;提供了操作系统的不依赖平台的接口&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;import &amp;quot;os&amp;quot;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;constants&#34;&gt;constants&lt;/h2&gt;&#xA;&lt;pre&gt;&lt;code&gt;# flag 参数&#xA;const (&#xA;    O_RDONLY int = syscall.O_RDONLY&#xA;    O_WRONLY int = syscall.O_WRONLY&#xA;    O_RDWR int = syscall.O_RDWR&#xA;    O_CREATE int = syscall.O_CREATE # 不存在就创建&#xA;    O_APPEND int = syscall.O_APPEND # 追加写入&#xA;    O_TRUNC int = syscall.O_TRUNC # 打开时清空文件&#xA;    O_EXCL int = syscall.O_EXCL&#xA;    O_SYNC int = syscall.O_SYNC&#xA;)&#xA;&#xA;const (&#xA;    SEEK_SET int = 0&#xA;    SEEK_CUR int = 1&#xA;    SEEK_END int = 2&#xA;)&#xA;&#xA;const (&#xA;    // 操作系统指定的路径分隔符&#xA;    PathSeperator = &#39;/&#39;&#xA;    // 操作系统指定的表分隔符&#xA;    PathListSeparator = &#39;:&#39;&#xA;)&#xA;&#xA;// 操作系统空设备的名字&#xA;const DevNull = &amp;quot;/dev/null&amp;quot;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;variables&#34;&gt;variables&lt;/h2&gt;&#xA;&lt;pre&gt;&lt;code&gt;var (&#xA;    ErrInvalid = errors.New(&amp;quot;invalid argument&amp;quot;)&#xA;    ...&#xA;)&#xA;&#xA;// 指向标准输入／输出／错误的文件描述符&#xA;var (&#xA;    Stdin = NewFile(uintptr(syscall.Stdin), &amp;quot;/dev/stdin&amp;quot;)&#xA;    Stdout = NewFile(uintptr(syscall.Stdout), &amp;quot;/dev/stdout&amp;quot;)&#xA;    Stderr = NewFile(uintptr(syscall.Stderr), &amp;quot;/dev/stderr&amp;quot;)&#xA;)&#xA;&#xA;// 保存了命令行参数，第一个是程序名&#xA;var Args []string&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;functions&#34;&gt;functions&lt;/h2&gt;&#xA;&lt;pre&gt;&lt;code&gt;// 返回内核提供的主机名&#xA;func Hostname() (name string, err error)&#xA;&#xA;// 当前程序以给出的状态码马上退出，defer不会执行&#xA;func Exit(code int)&#xA;&#xA;// 返回key=value格式的环境变量的字符串的切片拷贝&#xA;func Environ() []string&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;文件相关的操作&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>PSL_System</title>
+      <link>https://canuxcheng.com/post/psl_system/</link>
+      <pubDate>Mon, 15 Aug 2016 11:04:12 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/psl_system/</guid>
+      <description>&lt;h1 id=&#34;generic-operating-system-services&#34;&gt;Generic Operating System Services&lt;/h1&gt;&#xA;&lt;h2 id=&#34;os&#34;&gt;os&lt;/h2&gt;&#xA;&lt;pre&gt;&lt;code&gt;import os&#xA;&#xA;os.path # 参考PSL_File&#xA;os.name&#xA;os.curdir&#xA;os.pardir # 表示上一级路径.., 需要用abspath解析&#xA;# os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), os.pardir))&#xA;os.sep&#xA;os.extsep&#xA;os.altsep&#xA;os.pathsep&#xA;os.linesep&#xA;os.defpath&#xA;os.devnull&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;classes:&lt;/p&gt;&#xA;&lt;p&gt;functions:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;WCOREDUMP(...)&#xA;...&#xA;&#xA;abort(...)&#xA;fork() # 创建一个子进程，返回0给子进程，返回子进程pid给父进程．&#xA;exec*&#xA;wait() # 等待子进程结束，返回(pid, status).&#xA;waitpid(pid, options) # 等待指定子进程结束.&#xA;listdir(path) # 列出目录下的文件和目录&#xA;makedirs(path [, mode=0o777], exist_ok=False)&#xA;mkdir(path [, mode=0777])&#xA;walk(top, topdown=True, onerror=None, followlinks=False) # 返回 (dirpath, dirnames, filenames) 类型的迭代器&#xA;remove(path) # 删除文件&#xA;rmdir(path) # 删除目录&#xA;removedirs(path)&#xA;symlink(src, dst)&#xA;chown(path, uid, gid)&#xA;chmod(path, mode=0o777)&#xA;...&#xA;&#xA;# 使用subprocess模块代替下列函数：&#xA;system(command) # 在subshell执行命令，返回退出码(windows系统始终为0),而非命令执行结果．&#xA;spawn*&#xA;popen*(command [, mode=&#39;r&#39; [, bufsize]]) # 执行命令，返回命令执行结果的文件句柄(file对象)&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;data:&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

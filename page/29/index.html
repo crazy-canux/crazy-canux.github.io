@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="generator" content="Hugo 0.147.9">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morgoth - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="home">
+    <h1>Morgoth</h1>
+    <p></p>
+    
+    <section class="recent-posts">
+        <h2>Recent Posts</h2>
+        <ul class="post-list">
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/js_test/">JS Test</a></h2>
+                    <div class="post-meta">
+                        <time>March 13, 2017</time>
+                        
+                            
+                                <span class="category">Web</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1></h1>
+<hr>
+<h2 id="jest">Jest</h2>
+<p>for javascript.</p>
+<p><a href="https://github.com/jestjs/jest">https://github.com/jestjs/jest</a></p>
+<h2 id="ts-jest">TS Jest</h2>
+<p>for typescript.</p>
+<p><a href="https://github.com/kulshekhar/ts-jest">https://github.com/kulshekhar/ts-jest</a></p>
+<hr>
+<h2 id="jasmine">jasmine</h2>
+<p>A JavaScript Testing Framework</p>
+<p><a href="https://github.com/jasmine/jasmine">https://github.com/jasmine/jasmine</a></p>
+<p>install jasmine to devDependencies</p>
+<pre><code>$ npm install --save-dev jasmineinit 
+</code></pre>
+<p>jasmine in project</p>
+<pre><code>$ npx jasmine init
+</code></pre>
+<p>set jasmine as test script in package.json</p>
+<pre><code>&gt; &quot;scripts&quot;: { &quot;test&quot;: &quot;jasmine&quot; } 
+</code></pre>
+<p>run test</p>
+<pre><code>$ npm test
+</code></pre></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/js/">JavaScript</a></h2>
+                    <div class="post-meta">
+                        <time>March 13, 2017</time>
+                        
+                            
+                                <span class="category">Web</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="javascript概述">JavaScript概述</h1>
+<p>Javascript包括三部分:</p>
+<ol>
+<li>ECMAScript核心,提供核心语言功能．</li>
+<li>DOM文档对象模型, 提供访问和操作网页内容的方法和接口．</li>
+<li>BOM浏览器对象模型, 提供与浏览器交互的方法和接口．</li>
+</ol>
+<p>ES5.0 (2009)
+ES5.1 (2011, ISO/IEC)
+ES6.0 (2015)</p>
+<hr>
+<h1 id="javascript基本语法">javascript基本语法</h1>
+<p>javascript源程序叫xxx.js.</p>
+<p>javascript大小写敏感．</p>
+<p>javascript使用驼峰命名法．</p>
+<p>javascript的标识符以字母，下划线或美元符号开头，还可以包含数字．不能是关键字．</p>
+<p>JvaScript代码块以大括号{}包围,开括号写在第一行结尾处，前面空格，闭括号单独一行。</p>
+<p>javascript中所有事物都是对象，都有属性和方法.</p>
+<p>JavaScript使用分号;表示一个语句结束, 一般一行写多个语句才需要显示添加分号．</p>
+<p>javascript中运算符周围要有空格。</p>
+<p>javascript中使用四个空格来缩进。</p>
+<p>javascript不支持goto。</p>
+<hr>
+<h1 id="注释">注释</h1>
+<p>单行注释：</p>
+<pre><code>// comment
+</code></pre>
+<p>多行注释：</p>
+<pre><code>/*
+ * comment1
+ * comment2
+ */
+</code></pre>
+<hr>
+<h1 id="关键字">关键字</h1>
+<pre><code># 数据类型
+var function return typeof new delete
+
+# 流程控制
+if else for in do while switch case default with break continue
+
+# 修饰符
+void
+
+# 动作相关
+instanceof this
+
+# 异常处理
+try catch throw
+
+# 调试
+debugger
+
+# ECMAScript2015
+let const
+</code></pre>
+<hr>
+<h1 id="运算符和优先级">运算符和优先级</h1>
+<h2 id="算数运算符">算数运算符</h2>
+<pre><code>+
+-
+* 
+**
+/
+%
+++
+--
+</code></pre>
+<h2 id="赋值运算符">赋值运算符</h2>
+<pre><code>=
++=
+-=
+*=
+/=
+%=
+&lt;&lt;=
+&gt;&gt;=
+&gt;&gt;&gt;=
+&amp;=
+^=
+|=
+**=
+</code></pre>
+<h2 id="比较运算符">比较运算符</h2>
+<pre><code>// 在比较值钱进行类型转换.
+==
+
+// 强制对值和类型进行比较.
+===
+
+!=
+
+!==
+
+&gt;
+&lt;
+&gt;=
+&lt;=
+
+// 三元运算符
+?
+</code></pre>
+<h2 id="逻辑运算符">逻辑运算符</h2>
+<pre><code>// 逻辑与
+&amp;&amp;
+
+// 逻辑或
+||
+
+// 逻辑非
+!
+</code></pre>
+<h2 id="类型运算符">类型运算符</h2>
+<pre><code>typeof
+
+instanceof
+</code></pre>
+<h2 id="位运算符">位运算符</h2>
+<pre><code>&amp;
+|
+~
+^
+&lt;&lt;
+&gt;&gt;
+&gt;&gt;&gt;
+</code></pre>
+<hr>
+<h1 id="数据类型">数据类型</h1>
+<h2 id="var申明变量">var申明变量</h2>
+<p>通过var申明的变量没有块作用域，在块之外也能访问.</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/js_devops/">DevOps</a></h2>
+                    <div class="post-meta">
+                        <time>March 13, 2017</time>
+                        
+                            
+                                <span class="category">Web</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="js--ts">JS &amp; TS</h1>
+<p>vscode</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;version&#34;</span>: <span style="color:#e6db74">&#34;0.2.0&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;configurations&#34;</span>: [
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Next.js: debug server-side&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;node-terminal&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;request&#34;</span>: <span style="color:#e6db74">&#34;launch&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;command&#34;</span>: <span style="color:#e6db74">&#34;npm run dev&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Next.js: debug client-side&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;chrome&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;request&#34;</span>: <span style="color:#e6db74">&#34;launch&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;url&#34;</span>: <span style="color:#e6db74">&#34;http://localhost:3000&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Next.js: debug client-side (Firefox)&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;firefox&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;request&#34;</span>: <span style="color:#e6db74">&#34;launch&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;url&#34;</span>: <span style="color:#e6db74">&#34;http://localhost:3000&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;reAttach&#34;</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;pathMappings&#34;</span>: [
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&#34;url&#34;</span>: <span style="color:#e6db74">&#34;webpack://_N_E&#34;</span>,
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&#34;path&#34;</span>: <span style="color:#e6db74">&#34;${workspaceFolder}&#34;</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>      ]
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Next.js: debug full stack&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;node&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;request&#34;</span>: <span style="color:#e6db74">&#34;launch&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;program&#34;</span>: <span style="color:#e6db74">&#34;${workspaceFolder}/node_modules/next/dist/bin/next&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;runtimeArgs&#34;</span>: [<span style="color:#e6db74">&#34;--inspect&#34;</span>],
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;skipFiles&#34;</span>: [<span style="color:#e6db74">&#34;&lt;node_internals&gt;/**&#34;</span>],
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;serverReadyAction&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;action&#34;</span>: <span style="color:#e6db74">&#34;debugWithEdge&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;killOnServerStop&#34;</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;pattern&#34;</span>: <span style="color:#e6db74">&#34;- Local:.+(https?://.+)&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;uriFormat&#34;</span>: <span style="color:#e6db74">&#34;%s&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;webRoot&#34;</span>: <span style="color:#e6db74">&#34;${workspaceFolder}&#34;</span>
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  ]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>SPA: Single page application, 单页应用，like react, vue and angular.
+SSR: server side rendering. 服务端渲染, like next.js, nuxt.js</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/js_angular/">Angular</a></h2>
+                    <div class="post-meta">
+                        <time>March 13, 2017</time>
+                        
+                            
+                                <span class="category">Web</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="angularjs">angularjs</h1>
+<p>angularjs 1.*</p>
+<p><a href="https://github.com/angular/angular.js">https://github.com/angular/angular.js</a></p>
+<p><a href="https://angularjs.org/">https://angularjs.org/</a></p>
+<p><a href="https://github.com/rev087/ng-inspector">https://github.com/rev087/ng-inspector</a></p>
+<hr>
+<h1 id="angular">Angular</h1>
+<p>Angular 是一个用 HTML 和 TypeScript 构建客户端应用的平台与框架。</p>
+<p>angular.js 的升级版</p>
+<p><a href="https://github.com/angular/angular">https://github.com/angular/angular</a></p>
+<p><a href="https://github.com/angular/angular-cli">https://github.com/angular/angular-cli</a></p>
+<p><a href="https://angular.io">https://angular.io</a></p>
+<p><a href="https://angular.cn">https://angular.cn</a></p>
+<p>安装 angular-cli:</p>
+<pre><code>$ npm install -g @angular/cli
+</code></pre>
+<p>查看版本:</p>
+<pre><code>$ ng v
+</code></pre>
+<p>新建项目:</p>
+<pre><code>$ cd &lt;project&gt;
+$ ng new &lt;application&gt;
+
+# 严格模式
+$ ng new &lt;application&gt; --strict
+
+$ ng generate &lt;schematic&gt; [options]
+appShell
+application
+class
+component
+directive
+enum
+guard
+interceptor
+interface
+library
+module
+pipe
+resolver
+service
+serviceWorker
+webWorker
+</code></pre>
+<p>测试项目:</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/testing/">Testing</a></h2>
+                    <div class="post-meta">
+                        <time>March 1, 2017</time>
+                        
+                            
+                                <span class="category">DevOps</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="qa">QA</h1>
+<p>Quality Assurance</p>
+<p>QA主要就是进行软件测试相关的工作.</p>
+<p>软件测试就是使用人工或自动的手段来运行或测量软件系统的过程，以检验软件系统是否满足规定的要求，并找出与预期结果之间的差异．</p>
+<p>软件测试五个要素：</p>
+<ul>
+<li>质量</li>
+<li>人员</li>
+<li>技术</li>
+<li>流程</li>
+<li>资源</li>
+</ul>
+<p>软件测试两个目标：</p>
+<ul>
+<li>测试覆盖率</li>
+<li>测试效率</li>
+</ul>
+<p>软件测试阶段：</p>
+<ul>
+<li>单元测试(Unit Testing)</li>
+<li>集成测试(Integration Testing)</li>
+<li>系统测试(System Testing)</li>
+<li>验收测试(Acceptance Testing)</li>
+</ul>
+<p>软件测试的手段：</p>
+<ul>
+<li>手动测试/自动化测试</li>
+<li>静态测试/动态测试</li>
+<li>黑盒测试/白盒测试</li>
+</ul>
+<p>软件测试的类型：</p>
+<ul>
+<li>性能测试</li>
+<li>稳定性测试</li>
+<li>安全测试</li>
+<li>可用性测试</li>
+<li>兼容性测试</li>
+<li>文档测试</li>
+<li>本地化测试</li>
+<li>冒烟测试</li>
+<li>功能测试Functional Testing</li>
+<li>回归测试Regression Testing</li>
+<li>用户界面测试UI Testing</li>
+<li>端到端测试End-To-End Testing</li>
+</ul>
+<p>软件测试的模型：</p>
+<ul>
+<li>传统的瀑布模型</li>
+<li>V模型</li>
+<li>W模型</li>
+<li>X模型</li>
+<li>H模型</li>
+<li>敏捷测试模型(金字塔模式)</li>
+</ul>
+<p>软件测试的模式：</p>
+<ul>
+<li>金字塔模式Ideal Test Automation Pyramid</li>
+<li>蛋筒冰激凌模式Ice Cream Cone</li>
+<li>双金字塔模式Dual Test Pyramid</li>
+<li>纸杯蛋糕模式Cupcake</li>
+</ul>
+<h1 id="test-automation-pyramid">Test Automation Pyramid</h1>
+<p>Mike Cohn的测试金字塔</p>
+<p><a href="https://martinfowler.com/bliki/TestPyramid.html">https://martinfowler.com/bliki/TestPyramid.html</a></p>
+<ul>
+<li>Automated GUI Tests(10%)</li>
+<li>Automated Service Tests(Component/Integration/API)(20%)</li>
+<li>Automated Unit Tests(70%)</li>
+</ul>
+<hr>
+<h1 id="unit-test单元测试">Unit Test/单元测试</h1>
+<p>单元测试是开发者编写的测试一个单元（函数／类）的功能是否符合预期．</p></p>
+                    
+                </li>
+            
+        </ul>
+    </section>
+    
+    
+        <a href="/page/28/">← Previous</a>
+    
+    
+        <a href="/page/30/">Next →</a>
+    
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

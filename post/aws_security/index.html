@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWS Security - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="single-post">
+    <article>
+        <header>
+            <h1>AWS Security</h1>
+            <div class="post-meta">
+                <time>April 23, 2021</time>
+                
+                    
+                        <span class="category">Cloud</span>
+                    
+                        <span class="category">Security</span>
+                    
+                
+                
+                    
+                        <span class="tag">#aws</span>
+                    
+                
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <h1 id="security">Security</h1>
+<p>Acceptable Use Policy.</p>
+<h2 id="iam">IAM</h2>
+<p>IAM: Identity and Access Management.</p>
+<p>STS: Security Token Service.</p>
+<p>ACL: Access control list.</p>
+<p>SG: Security Group.</p>
+<p><a href="https://aws.amazon.com/cn/iam/">https://aws.amazon.com/cn/iam/</a></p>
+<pre><code>$aws iam list-users
+</code></pre>
+<p>IAM的三种身份类型:</p>
+<ul>
+<li>Users</li>
+<li>Groups</li>
+<li>Roles</li>
+</ul>
+<p>IAM通过Policy(json)分配权限。</p>
+<hr>
+<h2 id="sso">SSO</h2>
+<p>sso登陆:</p>
+<pre><code>aws configure sso
+aws sso login --no-browser 
+aws sso logout
+</code></pre>
+<hr>
+<h2 id="secrets-manager">Secrets Manager</h2>
+<hr>
+<h2 id="acm">ACM</h2>
+<p>AWS Certificate Manager.</p>
+<p>在route 53创建托管区(hosted zones)之后，可以在ACM申请证书。</p>
+<p>申请好了证书，需要在route 53创建记录.</p>
+<pre><code>aws acm list-certificates --region eu-west-1
+</code></pre>
+<p>aws-load-balancer-controller可以自动关联ACM的证书和ingress.</p>
+<hr>
+<h2 id="artifact">Artifact</h2>
+<p>自助的合规报告。</p>
+<hr>
+<h2 id="waf">WAF</h2>
+<h2 id="shield">Shield</h2>
+<hr>
+<h2 id="kms">KMS</h2>
+<p>Key Management Service.</p>
+<h2 id="inspector">Inspector</h2>
+<h2 id="guardduty">GuardDuty</h2>
+<h2 id="cognito">Cognito</h2>
+<p>支持google/amazon/MS-AD/SAML 登陆。</p>
+<h2 id="audit-manager">Audit Manager</h2>
+<h2 id="cloudhsm">CloudHSM</h2>
+<h2 id="detective">Detective</h2>
+<h2 id="directory-service">Directory Service</h2>
+<h2 id="firewall-manager">Firewall Manager</h2>
+<h2 id="macie">Macie</h2>
+<h2 id="network-firewall">Network Firewall</h2>
+<h2 id="ram">RAM</h2>
+<p>Resource Access Manager</p>
+<h2 id="security-hub">Security Hub</h2>
+<h2 id="sts">STS</h2>
+<p>Security Token Service</p>
+
+        </div>
+    </article>
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

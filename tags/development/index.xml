@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Development on Morgoth</title>
+    <link>https://canuxcheng.com/tags/development/</link>
+    <description>Recent content in Development on Morgoth</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 15 Apr 2016 09:41:39 +0000</lastBuildDate>
+    <atom:link href="https://canuxcheng.com/tags/development/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Development</title>
+      <link>https://canuxcheng.com/post/devops_dev/</link>
+      <pubDate>Fri, 15 Apr 2016 09:41:39 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/devops_dev/</guid>
+      <description>&lt;h1 id=&#34;development&#34;&gt;Development&lt;/h1&gt;&#xA;&lt;p&gt;开发相关的工具&lt;/p&gt;&#xA;&lt;p&gt;传统的软件开发采用的是瀑布式开发流程．&lt;/p&gt;&#xA;&lt;p&gt;现代的软件开发采用的是敏捷开发流程(Agile development).&lt;/p&gt;&#xA;&lt;p&gt;Alpha: inner test version.&lt;/p&gt;&#xA;&lt;p&gt;Beta: outer test version.&lt;/p&gt;&#xA;&lt;p&gt;RC: release candidate. 最终版本之前的最后一个版本．也叫gamma.&lt;/p&gt;&#xA;&lt;p&gt;RTM: release to manufacture, 最终版&lt;/p&gt;&#xA;&lt;p&gt;GA: generally avaliable. stable/production.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;怎样选择licenses&#34;&gt;怎样选择Licenses&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://choosealicense.com/licenses/&#34;&gt;http://choosealicense.com/licenses/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://choosealicense.com/&#34;&gt;https://choosealicense.com/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://canuxcheng.com/images/license.jpeg&#34; alt=&#34;pic&#34;&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;semver&#34;&gt;semver&lt;/h1&gt;&#xA;&lt;p&gt;语义化版本．&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://semver.org/lang/zh-CN/&#34;&gt;http://semver.org/lang/zh-CN/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/mojombo/semver&#34;&gt;https://github.com/mojombo/semver&lt;/a&gt;&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;主版本号.次版本号.修订号&#xA;Major.Minor.Patch&#xA;&#xA;Major: 做了不兼容的API修改&#xA;Minor: 做了向下兼容的功能性新增&#xA;Patch: 做了向下兼容的问题修正&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;文档阅读工具&#34;&gt;文档阅读工具&lt;/h1&gt;&#xA;&lt;h2 id=&#34;zeal&#34;&gt;zeal&lt;/h2&gt;&#xA;&lt;h2 id=&#34;dash&#34;&gt;dash&lt;/h2&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;cookiecutter&#34;&gt;cookiecutter&lt;/h1&gt;&#xA;&lt;p&gt;一个快速建立工程模板的命令行工具．&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/audreyr/cookiecutter&#34;&gt;https://github.com/audreyr/cookiecutter&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/audreyr/cookiecutter-pypackage&#34;&gt;https://github.com/audreyr/cookiecutter-pypackage&lt;/a&gt;&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$sudo -E pip install cookiecutter&#xA;# 创建python项目&#xA;$cookiecutter https://github.com/audreyr/cookiecutter-pypackage.git&#xA;# 创建django格式的python项目&#xA;$cookiecutter https://github.com/pydanny/cookiecutter-django&#xA;# 创建openstack格式的python项目&#xA;$cookiecutter https://git.openstack.org/openstack-dev/cookiecutter.git&#xA;$cookiecutter https://github.com/openstack-dev/cookiecutter.git&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;bumpversion&#34;&gt;bumpversion&lt;/h1&gt;&#xA;&lt;p&gt;版本管理工具&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

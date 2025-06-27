@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Dom on Morgoth</title>
+    <link>https://canuxcheng.com/tags/dom/</link>
+    <description>Recent content in Dom on Morgoth</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 15 Mar 2017 09:36:32 +0000</lastBuildDate>
+    <atom:link href="https://canuxcheng.com/tags/dom/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>JS DOM</title>
+      <link>https://canuxcheng.com/post/js_dom/</link>
+      <pubDate>Wed, 15 Mar 2017 09:36:32 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/js_dom/</guid>
+      <description>&lt;h1 id=&#34;dom&#34;&gt;DOM&lt;/h1&gt;&#xA;&lt;p&gt;DOM: document object model.&lt;/p&gt;&#xA;&lt;p&gt;当网页被加载时，浏览器会创建页面的文档对象模型(DOM).&lt;/p&gt;&#xA;&lt;p&gt;DOM操作需要在html加载完成后进程.&lt;/p&gt;&#xA;&lt;p&gt;js可以通过DOM访问html文档的所有元素.&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;JavaScript 能够改变页面中的所有 HTML 元素&lt;/li&gt;&#xA;&lt;li&gt;JavaScript 能够改变页面中的所有 HTML 属性&lt;/li&gt;&#xA;&lt;li&gt;JavaScript 能够改变页面中的所有 CSS 样式&lt;/li&gt;&#xA;&lt;li&gt;JavaScript 能够对页面中的所有事件做出反应&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;查找html元素&#34;&gt;查找html元素&lt;/h2&gt;&#xA;&lt;p&gt;找到返回该元素的对象，没找到返回null.&lt;/p&gt;&#xA;&lt;p&gt;通过id:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;document.getElementById(&amp;quot;id&amp;quot;);&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;通过标签名:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;document.getElementsByTagName(&amp;quot;tag&amp;quot;);&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;通过类名:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;document.getElementsByName(&amp;quot;name&amp;quot;)&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;操作html元素或文本&#34;&gt;操作html元素或文本&lt;/h2&gt;&#xA;&lt;p&gt;操作标签或标签内的文本.&lt;/p&gt;&#xA;&lt;p&gt;直接改变html内容:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;# 绝不要使用在文档加载之后使用 document.write()。这会覆盖该文档&#xA;document.write(...);&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;改变元素的内容:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;document.getElementById(id).innerHTML = &amp;quot;new text&amp;quot;;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;操作html属性&#34;&gt;操作html属性&lt;/h2&gt;&#xA;&lt;p&gt;改变元素属性:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;document.getElementById(id).attribute = &amp;quot;new value&amp;quot;;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;操作css&#34;&gt;操作css&lt;/h2&gt;&#xA;&lt;pre&gt;&lt;code&gt;document.getElementById(id).style.property = &amp;quot;new style&amp;quot;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;增删html元素&#34;&gt;增删html元素&lt;/h2&gt;&#xA;&lt;p&gt;增加元素:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;var para = document.createElement(&amp;quot;p&amp;quot;);&#xA;var node = document.createTextNode(&amp;quot;new para&amp;quot;);&#xA;para.appendChild(node);&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;删除元素:&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Redis on Morgoth</title>
+    <link>https://canuxcheng.com/tags/redis/</link>
+    <description>Recent content in Redis on Morgoth</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 03 May 2017 14:46:14 +0000</lastBuildDate>
+    <atom:link href="https://canuxcheng.com/tags/redis/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Redis</title>
+      <link>https://canuxcheng.com/post/redis/</link>
+      <pubDate>Wed, 03 May 2017 14:46:14 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/redis/</guid>
+      <description>&lt;h1 id=&#34;redis&#34;&gt;Redis&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://redisdoc.com/&#34;&gt;http://redisdoc.com/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;redis在key-value存储上性能比memcached更好．&lt;/p&gt;&#xA;&lt;p&gt;安装：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;# redis-cli, redis-sentinel, redis-server&#xA;$ sudo apt-get install redis-server&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;只安装redis-cli:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ sudo apt-get install redis-tools&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;redis-server监听端口6379.&lt;/p&gt;&#xA;&lt;p&gt;redis-sentinel端口26379.&lt;/p&gt;&#xA;&lt;p&gt;redis gui:&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/qishibo/AnotherRedisDesktopManager&#34;&gt;https://github.com/qishibo/AnotherRedisDesktopManager&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/luin/medis&#34;&gt;https://github.com/luin/medis&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;redis HA:&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/CodisLabs/codis&#34;&gt;https://github.com/CodisLabs/codis&lt;/a&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;redis的命令&#34;&gt;redis的命令&lt;/h1&gt;&#xA;&lt;p&gt;server:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;redis-server&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;client:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;redis-client&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;test:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;redis-benchmark&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;sentinel:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;redis-sentinel&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;cli&#34;&gt;CLI&lt;/h1&gt;&#xA;&lt;p&gt;redis-cli 进入命令行模式&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;&amp;gt; command    # 查看所有可用命令&#xA;&#xA;&amp;gt; info    # 查看redis服务器信息&#xA;&#xA;&amp;gt; monitor&#xA;&#xA;&amp;gt; select 1 # 选中数据库1&#xA;&amp;gt; keys *  # 显示所有key&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;数据类型&#34;&gt;数据类型&lt;/h1&gt;&#xA;&lt;p&gt;string&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;&amp;gt; set &amp;lt;key&amp;gt; &amp;lt;value&amp;gt;&#xA;&amp;gt; get &amp;lt;key&amp;gt;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;list&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

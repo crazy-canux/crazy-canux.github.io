@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GSL_concurrency - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="single-post">
+    <article>
+        <header>
+            <h1>GSL_concurrency</h1>
+            <div class="post-meta">
+                <time>January 1, 2018</time>
+                
+                    
+                        <span class="category">Golang</span>
+                    
+                
+                
+                    
+                        <span class="tag">#concurrency</span>
+                    
+                
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <h1 id="sync">sync</h1>
+<p>sync用于goroutine同步.</p>
+<pre><code>import &quot;sync&quot;
+</code></pre>
+<h2 id="constants">constants</h2>
+<h2 id="variables">variables</h2>
+<h2 id="functions">functions</h2>
+<h2 id="locker">Locker</h2>
+<p>一个可以加锁和解锁的接口</p>
+<pre><code>type Locker interface {
+    Lock()
+    Unlock()
+}
+</code></pre>
+<h2 id="pool">Pool</h2>
+<p>Pool是一个可以分别存取的临时对象的集合。</p>
+<h2 id="once">Once</h2>
+<p>只执行一次动作的对象(单例模式)</p>
+<pre><code>type Once struct {}
+</code></pre>
+<p>method:</p>
+<pre><code>// 只有第一次调用才执行
+func (o *Once) Do(f func())
+</code></pre>
+<h2 id="mutex">Mutex</h2>
+<p>互斥锁,锁和线程无关，可以由不同的线程加锁和解锁.</p>
+<p>Mutex的初始值为未锁的状态，并且Mutex通常作为结构体的匿名成员存在。</p>
+<p>同一时刻只能有一个线程进入临界区.</p>
+<pre><code>type Mutex struct {}
+
+Mutex
+</code></pre>
+<p>method:</p>
+<pre><code>// 加锁，如果已经加锁，阻塞至m解锁．
+func (m *Mutex) Lock()
+
+// 解锁，如果没有加锁，导致panic
+func (m *Mutex) Unlock()
+</code></pre>
+<h2 id="rwmutex">RWMutex</h2>
+<p>读写互斥锁,可以由不同的线程加锁和解锁.</p>
+<pre><code>type RWMutex struct {}
+</code></pre>
+<p>method:</p>
+<pre><code>// 锁定为写入状态，禁止其它线程读写，一次只能有一个线程持有。
+func (rw *RWMutex) Lock()
+
+// 解除写入锁定，如果没有加锁，导致panic
+func (rw *RWMutex) Unlock()
+
+// 锁定为读取状态，禁止其他线程写入，多个线程可以同时持有读锁。
+func (rw *RWMutex) RLock()
+
+// 解除读取锁，如果没有加锁，导致panic.
+func (rw *RWMutex) RUnlock()
+</code></pre>
+<h2 id="cond">Cond</h2>
+<p>条件变量.</p>
+<pre><code>type Cond struct {
+    L Locker
+}
+</code></pre>
+<p>function:</p>
+<pre><code>func NewCond(l Locker) *Cond
+</code></pre>
+<p>method:</p>
+<pre><code>func (c *Cond) Broadcase()
+
+func (c *Cond) Signal()
+
+func (c *Cond) Wait()
+</code></pre>
+<h2 id="waitgroup">WaitGroup</h2>
+<p>用于等待一组线程结束，父线程用Add方法来设定应等待的线程数量;
+每个被等待的线程在结束时应调用Done方法;
+同时，主线程应调用Wait方法阻塞至所有线程结束．</p>
+<p>struct:</p>
+<pre><code>type WaitGroup sttruct {}
+</code></pre>
+<p>functions:</p>
+<p>methods:</p>
+<pre><code># 增加计数
+func (*WaitGroup) Add(delta int)
+
+# 减少计数
+func (*WaitGroup) Done()
+
+# 阻塞直到计数器为0
+func (*WaitGroup) Wait()
+</code></pre>
+<hr>
+<h1 id="syncatomic">sync/atomic</h1>
+<p>提供底层的原子级内存操作，主要用于goroutine同步.</p>
+<p>int32, int64, uint32, uint64, uintptr, pointer.</p>
+<h2 id="function">function</h2>
+<pre><code>func AddInt64(addr *int64, delta int64) (new int64)
+func AddUint64(addr *uint64, delta uint64) (new uint64)
+func LoadInt64(addr *int64) (val int64)
+func LoadUint64(addr *uint64) (val uint64)
+func StoreInt64(addr *int64, val int64)
+func StoreUint64(addr *uint64, val uint64)
+func SwapInt64(addr *int64, new int64) (old int64)
+func SwapUint64(addr *uint64, new uint64) (old uint64)
+func CompareAndSwapInt64(addr *int64, old, new int64) (swapped bool)
+func CompareAndSwapUint64(addr *uint64, old, new uint64) (swapped bool)
+</code></pre>
+
+        </div>
+    </article>
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

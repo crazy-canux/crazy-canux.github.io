@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RobotFramework - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="single-post">
+    <article>
+        <header>
+            <h1>RobotFramework</h1>
+            <div class="post-meta">
+                <time>February 25, 2017</time>
+                
+                    
+                        <span class="category">DevOps</span>
+                    
+                
+                
+                    
+                        <span class="tag">#testing</span>
+                    
+                
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <h1 id="robot-framework">Robot Framework</h1>
+<p><a href="https://github.com/robotframework/robotframework">https://github.com/robotframework/robotframework</a></p>
+<p><a href="https://github.com/robotframework/QuickStartGuide">https://github.com/robotframework/QuickStartGuide</a></p>
+<p>支持python和java的API.</p>
+<p>Robot Framework is a generic test automation framework for acceptance testing and acceptance test-driven development (ATDD).</p>
+<p>Install:</p>
+<pre><code>$ pip install robotframework
+</code></pre>
+<p>Modular:</p>
+<ul>
+<li>Test Data</li>
+<li>Robot Framework(test data syntax)</li>
+<li>Test Libraries(test library API) + Test Tools</li>
+<li>System under Test(system interface)</li>
+</ul>
+<p>Use:</p>
+<pre><code>$ robot --version
+$ robot [options] data_sources
+</code></pre>
+<p>会生成三个文件：</p>
+<ul>
+<li>output.xml</li>
+<li>log.html</li>
+<li>report.html</li>
+</ul>
+<hr>
+<h1 id="setting-table">setting table</h1>
+<pre><code>*** Settings ***
+# 前三个是加载外部文件
+Library    Selenium2Library # 需要在sys.path路径里面
+Resource    ${RESOURCES}/common.tsv
+Variables    ${RESOURCES}/common.py
+Documentation    Docs
+Metadata    Version    2.0
+Suite Setup
+Suite Teardown
+Force Tags
+Default Tags
+Test Setup
+Test Teardown
+Test Template
+Test Timeout
+</code></pre>
+<h1 id="test-case-table">Test Case table</h1>
+<p><a href="https://github.com/robotframework/HowToWriteGoodTestCases">https://github.com/robotframework/HowToWriteGoodTestCases</a></p>
+<p>test case:data_sources就是test cases files.robotframework测试用例可以使用带参数的简单表格语法，也可以是不带参数的关键字表格,也可以是数据驱动测试用例.</p>
+<p>Test Cases由keywords和可能的arguments组成．</p>
+<pre><code>*** Test Cases ***
+Test Case Name
+    [Documentation]    Docs
+    [Tags]
+    [Setup]
+    [Teardown]
+    [Template]
+    [Timeout]
+    ...
+</code></pre>
+<p>Test Case分类：</p>
+<ul>
+<li>Workflow tests</li>
+<li>higher-level tests</li>
+<li>Data-driven tests</li>
+</ul>
+<h1 id="keywords-table">Keywords table</h1>
+<p>key word:测试用例使用关键词创建,关键词的2个来源是库关键字和用户关键字．</p>
+<pre><code>*** Keywords ***
+Keyword name
+    [Documentation]    docs
+    [Tags]
+    [Arguments]
+    [Return]
+    [Teardown]
+    [Timeout]
+</code></pre>
+<p>Keywords分类：</p>
+<ul>
+<li>Library keywords</li>
+<li>User keywords</li>
+</ul>
+<h1 id="variables">Variables</h1>
+<p>variables:测试用例中可能变化的数据定义成变量．</p>
+<pre><code>*** Variables ***
+${ScalarVar}    first one    second one
+@{ListVar}     one    two
+&amp;{DictVar}     key=value    key1=value1
+</code></pre>
+<p>变量类型：</p>
+<ul>
+<li>scalar variables标量</li>
+<li>list variables列表</li>
+<li>dictionary variables字典</li>
+</ul>
+<h1 id="organizing-test-cases">Organizing test cases</h1>
+<p>test suites:测试用例的集合叫测试套件．每个包含测试用例的输入文件组成一个测试套件．</p>
+<p>test setup/suit setup: 在测试之前执行某些关键词．</p>
+<p>test teardown/suit teardown: 在测试之后执行某些关键词．</p>
+<pre><code>*** Settings ***
+Suite Setup    Action/Keyword
+Test Setup
+Suite Teardown    Action/Keyword
+Test Teardown
+</code></pre>
+<p>tags:给测试用例设置标签，以便给他们自由的元数据．</p>
+<p>给测试套件加标签：</p>
+<pre><code>*** Settings ***
+Force Tags    quickstart # 这个是case的强制的tag.
+Default Tags    example smoke # 这个是case的默认的tag.
+</code></pre>
+<p>自定义标签注意多个标签之间用四个空格区分．</p>
+<p>给单个case加标签：</p>
+<pre><code># 自定义的tag名字多个单词最好用-连接，不要用空格．
+[Tags]    Your-tags1    tag2 # 这个是自定义的tag.
+</code></pre>
+<hr>
+<h1 id="libraries">Libraries</h1>
+<p>内置标准库和第三方库，自定义库都可以作为keywords.</p>
+<p>robotframework的强大之处在于可以根据自己的需要开发自己的库．</p>
+<h2 id="standardbuild-in-libraries">standard(build-in libraries)</h2>
+<ul>
+<li>
+<p>BuiltIn</p>
+<p>内置标准库，默认唯一自动加载的库．其它的库都需要手动加载．</p>
+<pre><code>  # Comment关键字用来注释．
+  Comment    this is comment
+  # Evaluate关键字用来调用python程序．
+  ${var}    Evaluate    random.randint(1000, 999)    random
+  # Import Library关键字用来导入python模块．
+  Import Library    mytest.py
+</code></pre>
+</li>
+<li>
+<p>Collections</p>
+</li>
+<li>
+<p>DateTime</p>
+</li>
+<li>
+<p>Dialogs</p>
+</li>
+<li>
+<p>Easter</p>
+</li>
+<li>
+<p>OperatingSystem</p>
+</li>
+<li>
+<p>Process</p>
+</li>
+<li>
+<p>Remote</p>
+</li>
+<li>
+<p>Screenshot</p>
+<p>用于测试过程中的截屏．</p>
+<pre><code>  # Take Screenshot关键字用来截屏
+  Take Screenshot
+</code></pre>
+</li>
+<li>
+<p>String</p>
+</li>
+<li>
+<p>Telnet</p>
+</li>
+<li>
+<p>XML</p>
+</li>
+</ul>
+<h2 id="external">External</h2>
+<ul>
+<li>
+<p>selenium2library</p>
+<p>用于web自动化测试．提供了丰富的定位器，包括id,name, xpath, css.</p>
+<p><a href="https://github.com/robotframework/Selenium2Library">https://github.com/robotframework/Selenium2Library</a></p>
+<p>Install:</p>
+<pre><code>  $ pip install robotframework-selenium2library
+</code></pre>
+</li>
+</ul>
+<h2 id="other">other</h2>
+<hr>
+<h1 id="tools">Tools</h1>
+<p>robot framework相关的工具．</p>
+<h2 id="build-in-tools">build-in tools</h2>
+<ul>
+<li>
+<p>Rebot</p>
+</li>
+<li>
+<p>Testdoc</p>
+</li>
+<li>
+<p>Libdoc</p>
+</li>
+<li>
+<p>Tidy</p>
+</li>
+</ul>
+<h2 id="editors">editors</h2>
+<ul>
+<li>
+<p>RIDE</p>
+<p>robot framework的IDE.</p>
+<p><a href="https://github.com/robotframework/RIDE">https://github.com/robotframework/RIDE</a></p>
+<p>Install:</p>
+<pre><code>  # Only wxPython 2.8.12.1 with Unicode support is officially supported
+  $ pip install robotframework-ride
+</code></pre>
+<p>Usage:</p>
+<pre><code>  # 添加windows的桌面：
+  # C:\Python27\python.exe -c &quot;from robotide import main; main()&quot;
+  # C:\Python27\Lib\site-packages\robotide\widgets\robot.ico
+  &gt; ride.py
+  $ ride.py
+  # F5搜索关键字
+</code></pre>
+</li>
+</ul>
+<h2 id="build">build</h2>
+<h2 id="other-1">other</h2>
+<hr>
+<h1 id="robot-command">robot command</h1>
+<pre><code>$ robot tests.robot
+$ robot -t/--test [test cases] tests.robot
+$ robot -t My*test*case* tests.robot # 例如case叫My test case just for test.
+$ robot -s/--suite [test suites] tests.robot
+$ robot -i/--include [tags] tests.robot
+$ robot -i My-test-tag tests.robot # 例如tag叫My-test-tag.
+$ robot -e/--exclude [tags] tests.robot
+-d --outputdir dir # 存放output, log, report文件的路径.
+-o --output file
+-l --log file
+-r --report file
+-W --consolewidth chars
+-C --consolecolors auto|on|ansi|off
+-K --consolemarkers auto|on|off
+-L --loglevel level    # 格式LOGLEVEL:DEFAULT, 可选TRACE, DEBUG, INFO (default), WARN, NONE
+# DEFAULT是log file中默认显示的日志级别
+-b --debugfile # 存放debug log的文件．
+-T --timestampoutputs # 表示所有在outputdir里面的文件都自动加时间戳．
+-P --pythonpath path * # 指定PYTHONPATH, 可以指定正在开发的库用来测试，而不需要安装到site-packages.
+</code></pre>
+<hr>
+<h1 id="library">Library</h1>
+<p>robotframework的灵活就在于可以自己开发第三方库，实现和自己业务相关的关键字．</p>
+<p>在robot中导入的这个库必须在sys.path路径里面．</p>
+<p>库API的三种类型： 静态库, 动态库, 混合库.</p>
+<p>以Selenium2Library为例：</p>
+<pre><code>Selenium2Library
+|-- docs
+|-- tests
+|-- Selenium2Library
+    |-- __init__.py
+    |-- keywords/*.py
+    |-- ...
+|-- setup.py
+|-- ...
+
+$ pip install robotframework-selenium2library
+# C:\Python27\Lib\site-packages\Selenium2Library
+# /usr/local/lib/python2.7/dist-packages/Selenium2Library
+# 通过ride导入该库后，可以用F5查看关键字的帮助.
+
+# __init__.py
+# 一个类继承所有关键字所在的类．rf通过导入这个类导入所有关键字．
+from .keywords import *
+from .utils import LibraryListener
+...
+
+__version__ =  1.0.0
+
+class Selenium2Library(keywords):
+    &quot;&quot;&quot;docs.&quot;&quot;&quot;
+
+    ROBOT_LIBRARY_SCOPE = 'GLOBAL'
+    ROBOT_LIBRARY_VERSION = __version__
+
+    def __init__(self, ...):
+       &quot;&quot;&quot;docs&quot;&quot;&quot;
+       self.ROBOT_LIBRARY_LISTENER = LibraryListener()
+       ...
+</code></pre>
+<h1 id="static-librarty-api">Static librarty API</h1>
+<p>使用一个模块或一个类，方法直接映射到关键字名称．静态API是最基本最常用的．</p>
+<p>robotframework在类和模块中寻找关键字对应的方法，会忽略单下划线或双下划线开头的方法．</p>
+<p>robotframework在类中寻找关键字对应的方法，不区分大小写，会自动忽略空格和下划线．</p>
+<p>robotframework测试库实现为类时，基类中的方法也被识别为关键字．</p>
+<p>robotframework测试库实现为模块时，导入的模块的命名空间的可能函数也被识别为关键字．此时要防止导入的库中的方法成为关键字．</p>
+<p>关键字跑出异常，该关键字状态就是failed,否则就是pass.</p>
+<h1 id="dylamic-library-api">dylamic library API</h1>
+<p>可以在运行时动态确定要实现的关键字的名称以及执行方法．</p>
+<h1 id="hybird-library-api">hybird library API</h1>
+<p>静态和动态都有的方式．</p>
+<h1 id="测试库范围">测试库范围</h1>
+<p>要确保一个测试用例对状态的更改不会影响其它用例．</p>
+<p>测试库可以控制何时使用类属性创建新库．</p>
+<pre><code>ROBOT_LIBRARY_SCOPE
+# Global: 只有一个instance创建，并且所有test cases共享．
+# TEST CASE: 为每个test case创建一个instance.
+# TEST SUITE: 为每个test suite创建一个instance.
+</code></pre>
+<h1 id="测试库版本">测试库版本</h1>
+<pre><code>ROBOT_LIBRARY_VERSION
+</code></pre>
+<h1 id="指定文档格式">指定文档格式</h1>
+<pre><code>ROBOT_LIBRARY_DOC_FORMAT
+# reST: 需要安装docutils模块
+# ROBOT: 默认的html格式
+# TEXT:　纯文本格式
+</code></pre>
+<hr>
+<h1 id="listener">Listener</h1>
+<p>Listener监听器接口允许外部监听器获取关于测试执行的通知．</p>
+<p>同名的默认方法会先调用，然后调用自定义的方法．</p>
+<p>可以实现的方法有：</p>
+<pre><code>start_suite(name, attribute)/end_suite(name, attribute) # test suite开始/结束的时候调用
+start_test(name, attribute)/end_test(name, attribute) # test case开始/结束的时候调用
+start_keyword(name, attributes)/end_keyword(name, attribute) # keyword开始/结束的时候调用
+close() # 相当于teardown.
+log_message(message) # 当执行的keyword写log的时候调用
+message(message) # 当framework写system log的时候调用
+...
+</code></pre>
+<p><a href="http://robotframework.org/robotframework/latest/RobotFrameworkUserGuide.html#listener-interface-methods">http://robotframework.org/robotframework/latest/RobotFrameworkUserGuide.html#listener-interface-methods</a></p>
+<pre><code># librarylistener.py
+# rf的外部监听程序
+
+from robot.api import logger
+...
+
+class LibraryListener(object):
+    &quot;&quot;&quot;docs&quot;&quot;&quot;
+    # version 2 for rf&gt;=2.1
+    # version 3 for rf&gt;=3.0
+    ROBOT_LISTENER_API_VERSION = 2
+</code></pre>
+
+        </div>
+    </article>
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

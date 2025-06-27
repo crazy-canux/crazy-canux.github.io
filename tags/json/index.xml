@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Json on Morgoth</title>
+    <link>https://canuxcheng.com/tags/json/</link>
+    <description>Recent content in Json on Morgoth</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 07 Jul 2016 16:43:15 +0000</lastBuildDate>
+    <atom:link href="https://canuxcheng.com/tags/json/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Json</title>
+      <link>https://canuxcheng.com/post/json/</link>
+      <pubDate>Thu, 07 Jul 2016 16:43:15 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/json/</guid>
+      <description>&lt;h1 id=&#34;json&#34;&gt;JSON&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://www.json.org/&#34;&gt;http://www.json.org/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;JSON: JavaScript Object Notation.&lt;/p&gt;&#xA;&lt;p&gt;json有两种数据结构.&lt;/p&gt;&#xA;&lt;h1 id=&#34;key-value键值对&#34;&gt;key-value/键值对&lt;/h1&gt;&#xA;&lt;pre&gt;&lt;code&gt;{&#xA;    key: value,&#xA;    key1: value1,&#xA;    ...&#xA;}&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h1 id=&#34;列表数组&#34;&gt;列表/数组&lt;/h1&gt;&#xA;&lt;pre&gt;&lt;code&gt;[value, value1, ...]&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h1 id=&#34;数据类型&#34;&gt;数据类型&lt;/h1&gt;&#xA;&lt;p&gt;bool:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;python -&amp;gt; True/False&#xA;go -&amp;gt; true/false&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;string:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;&amp;gt; 只能用双引号.&#xA;&#xA;python -&amp;gt; str&#xA;go -&amp;gt; string&#xA;go -&amp;gt; []byte -&amp;gt; base64编码字符串&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;number:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;python -&amp;gt; int/float&#xA;go -&amp;gt; int64/float64&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;null:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;python -&amp;gt; None&#xA;go -&amp;gt; nil&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;array&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;python -&amp;gt; tuple/list&#xA;go -&amp;gt; array/slice&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;object&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

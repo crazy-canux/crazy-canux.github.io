@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Bootstrap on Morgoth</title>
+    <link>https://canuxcheng.com/tags/bootstrap/</link>
+    <description>Recent content in Bootstrap on Morgoth</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 27 Oct 2016 22:19:20 +0800</lastBuildDate>
+    <atom:link href="https://canuxcheng.com/tags/bootstrap/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Bootstrap</title>
+      <link>https://canuxcheng.com/post/js_bootstrap/</link>
+      <pubDate>Thu, 27 Oct 2016 22:19:20 +0800</pubDate>
+      <guid>https://canuxcheng.com/post/js_bootstrap/</guid>
+      <description>&lt;h1 id=&#34;bootstrap&#34;&gt;Bootstrap&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/twbs/bootstrap&#34;&gt;https://github.com/twbs/bootstrap&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.bootcss.com/&#34;&gt;https://www.bootcss.com/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;install:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ npm install bootstrap@next&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;HTML,CSS,JavaScript的支持响应式和移动设备的WEB框架.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

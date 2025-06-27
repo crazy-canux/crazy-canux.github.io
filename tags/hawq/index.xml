@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hawq on Morgoth</title>
+    <link>https://canuxcheng.com/tags/hawq/</link>
+    <description>Recent content in Hawq on Morgoth</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 24 Apr 2017 22:57:37 +0000</lastBuildDate>
+    <atom:link href="https://canuxcheng.com/tags/hawq/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>HAWQ</title>
+      <link>https://canuxcheng.com/post/hawq/</link>
+      <pubDate>Mon, 24 Apr 2017 22:57:37 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/hawq/</guid>
+      <description>&lt;h1 id=&#34;hawq&#34;&gt;HAWQ&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://hawq.incubator.apache.org/&#34;&gt;http://hawq.incubator.apache.org/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/apache/incubator-hawq&#34;&gt;https://github.com/apache/incubator-hawq&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;HAWQ是在Pivotal Greenplum和PostgreSQL基础上开发而来．&lt;/p&gt;&#xA;&lt;p&gt;HAWQ也就是Pivotal HDB.&lt;/p&gt;&#xA;&lt;p&gt;HAWQ和Pivotal　HDB是一个项目．&lt;/p&gt;&#xA;&lt;p&gt;Hortonworks公司的HDP集成了HAWQ.&lt;/p&gt;&#xA;&lt;p&gt;HAWQ可以通过HDFS在本机快速，交互查询hadoop数据．&lt;/p&gt;&#xA;&lt;p&gt;hawq的交互式命令行接口, 类似于postgresql, 参考postgresql.&lt;/p&gt;&#xA;&lt;p&gt;hawq的client: psql (参考postgresql)&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;psql&#34;&gt;psql&lt;/h1&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ psql&#xA;$ PGPASSWORD=&#39;password&#39;;psql -h &amp;lt;host&amp;gt; -p &amp;lt;port&amp;gt; -U &amp;lt;username&amp;gt; -d [database] -c &amp;quot;[psql command]&amp;quot;&#xA;$ psql -l # 查看所有database&#xA;&#xA;# jdbc&#xA;$ jdbc:pivotal:greenplum://hdm1:5432;DatabaseName=getstartdb;User=hdbuser;Password=hdbpass&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;sql&#34;&gt;sql&lt;/h1&gt;&#xA;&lt;p&gt;AO(append only) table:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;&amp;gt; create table {table_name} (var type, var1 type1);&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;parquet table:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;&amp;gt; create table {table_name} (var type, var1 type2) WITH (appendonly=true, orientation=parquet);&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;AO table distributed by specified column and partitioned by range:&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

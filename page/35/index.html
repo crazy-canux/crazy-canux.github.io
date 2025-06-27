@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="generator" content="Hugo 0.147.9">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morgoth - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="home">
+    <h1>Morgoth</h1>
+    <p></p>
+    
+    <section class="recent-posts">
+        <h2>Recent Posts</h2>
+        <ul class="post-list">
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/apache/">Apache</a></h2>
+                    <div class="post-meta">
+                        <time>September 27, 2016</time>
+                        
+                            
+                                <span class="category">Network</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="apache">Apache</h1>
+<p><a href="https://github.com/apache/httpd">https://github.com/apache/httpd</a></p>
+<p><a href="http://httpd.apache.org/">http://httpd.apache.org/</a></p>
+<p>ubuntu/debian：</p>
+<pre><code>sudo aptitude install apache2
+</code></pre>
+<p>redhat/centos/fedora:</p>
+<pre><code>$ sudo yum install httpd2
+</code></pre>
+<p>启动服务器：</p>
+<pre><code>service apache2 start
+</code></pre>
+<p>启动浏览器查看：</p>
+<pre><code>http://localhost:80
+</code></pre>
+<hr>
+<h1 id="apache命令">apache命令</h1>
+<p>apache2ctl:</p>
+<pre><code>// 检查配置
+$ apache2ctl configtest
+</code></pre>
+<p>a2ensite</p>
+<pre><code>// 启用一个站点
+$ sudo a2ensite &lt;site&gt;
+</code></pre>
+<p>a2dissite</p>
+<pre><code>$ sudo a2dissite &lt;site&gt;
+</code></pre>
+<p>a2enmod</p>
+<pre><code>// 启用一个模块
+$ sudo a2enmod &lt;mod&gt;
+</code></pre>
+<p>a2dismod</p>
+<pre><code>$ sudo a2dismod &lt;mod&gt;
+</code></pre>
+<h1 id="配置">配置</h1>
+<p>配置站点site-enable/site.conf:</p>
+<pre><code>&lt;VirtualHost *:8080&gt;
+    ServerAdmin webmaster@localhost
+    DocumentRoot /opt
+
+    # 适合多目录
+    Alias /qa /opt/qa
+    Alias /dev /opt/dev
+
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+&lt;/VirtualHost&gt;
+</code></pre>
+<p>修改权限apache2.conf:</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/django/">Django</a></h2>
+                    <div class="post-meta">
+                        <time>September 20, 2016</time>
+                        
+                            
+                                <span class="category">Django</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="django">Django</h1>
+<p>django是python的web框架。</p>
+<p><a href="https://github.com/django/django">https://github.com/django/django</a></p>
+<p><a href="https://www.djangoproject.com/">https://www.djangoproject.com/</a></p>
+<p><a href="https://docs.djangoproject.com/zh-hans/3.1/contents/">https://docs.djangoproject.com/zh-hans/3.1/contents/</a></p>
+<p>django遵守MVC设计模式，采用MTV框架。</p>
+<p>M: model,数据存取</p>
+<p>T: template，如何展现数据</p>
+<p>V: view，展现哪些数据</p>
+<h1 id="安装">安装</h1>
+<p><a href="https://docs.djangoproject.com/zh-hans/3.1/faq/install/#faq-python-version-support">https://docs.djangoproject.com/zh-hans/3.1/faq/install/#faq-python-version-support</a></p>
+<p>django1.11是最后一个支持python2.7的长期支持版(2017.4).</p>
+<p>django2.0开始只支持python3(2018).</p>
+<p>本文以django3.1为例创建名为next的project.</p>
+<p>virtualenv中安装：</p>
+<pre><code>$mkdir next
+$cd next
+$virtualenv .venv
+
+# mac/linux
+$source .venv/bin/activate
+
+# windows
+&gt;cd .venv/Scripts
+&gt;activate
+
+$pip install django
+</code></pre>
+<p>验证安装：</p>
+<pre><code>$python
+&gt;&gt;&gt;import django
+&gt;&gt;&gt;django.VERSION
+&gt;&gt;&gt;django.get_version()
+</code></pre>
+<p>安装使用的数据库引擎的库：</p>
+<pre><code>$ sudo udo apt-get install libmysqlclient-dev
+$ pip install mysqlclient
+
+$pip install psycopg2
+
+$pip install cx_Oracle
+</code></pre>
+<p>django默认是mysqlclient，可以使用pymysql替代：</p>
+<pre><code># vim settings.py
+import pymysql
+pymysql.version_info = (1, 4, 13, &quot;final&quot;, 0)
+pymysql.install_as_MySQLdb()
+</code></pre>
+<hr>
+<h1 id="project">project</h1>
+<p>创建一个名为next的项目</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/http/">Http</a></h2>
+                    <div class="post-meta">
+                        <time>September 13, 2016</time>
+                        
+                            
+                                <span class="category">Network</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="httphttps">HTTP/HTTPS</h1>
+<p>http port: 80</p>
+<p>https port: 443</p>
+<p>http/https的请求方式：</p>
+<pre><code>get # 从服务器取出资源
+post # 在服务器新建资源
+put # 在服务器更新资源，客户端提供改变后的完整资源
+delete # 从服务器删除资源
+patch # 在服务器更新资源，客户端提供改变的属性
+head # 获取资源的源数据
+options # 获取资源的哪些信息是客户端可以改变的信息
+</code></pre>
+<p>URL: Uniform Resource Locator</p>
+<p>URI: Universal Resource Identifier</p>
+<pre><code>&lt;scheme&gt;://&lt;netloc&gt;/&lt;path&gt;;&lt;params&gt;?&lt;query&gt;#&lt;fragment&gt;
+scheme: http/https/ftp/file
+netloc: username:password@host:port
+path: /path/to/path
+params: options arguments
+query: connector&amp;key-value
+fragment:
+</code></pre>
+<hr>
+<h1 id="http命令">http命令</h1>
+<h2 id="curl">curl</h2>
+<pre><code>$ curl [options] [URL...]
+</code></pre>
+<h2 id="httpie">httpie</h2>
+<p>python开发的类似于curl的命令行工具，同时还有wget的功能．</p>
+<p><a href="https://github.com/jakubroztocil/httpie">https://github.com/jakubroztocil/httpie</a></p>
+<pre><code>$ sudo yum/apt-get install httpie
+
+$ http -a 'username:password' GET http://google.com
+</code></pre>
+<hr>
+<h1 id="python的http标准库">python的http标准库</h1>
+<p>python2的http标准库</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/psl_builtins/">PSL_builtins</a></h2>
+                    <div class="post-meta">
+                        <time>August 15, 2016</time>
+                        
+                            
+                                <span class="category">Python</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="_builtins_">_<em>builtins</em>_</h1>
+<p>python的内置模块，所有python的内置功能都在这个模块中，不需要import导入就可以使用。</p>
+<p>包括内置类类型以及所属的内置方法，和内置函数.</p>
+<blockquote>
+<blockquote>
+<p><strong>builtin</strong> - 包括内置类类型以及所属的内置方法，和内置函数.解释器不会自动导入．</p></blockquote></blockquote>
+<blockquote>
+<blockquote>
+<p><strong>builtins</strong> - 仅仅是__builtin__的一个引用．解释器自动导入的．</p></blockquote></blockquote>
+<p>内置常量</p>
+<p>内置函数(BIF)</p>
+<p>内置类型(BIT)</p>
+<p>工厂函数：python内置的类型都有对应的类的实现，同名的类的方法就是工厂函数．</p>
+<p>内置类型的内置方法(BIM)</p>
+<p>内置异常</p>
+<p>该模块是通过C/C++实现的．</p>
+<hr>
+<h1 id="内置函数">内置函数</h1>
+<p>python2和python3共同的内置函数：</p>
+<pre><code>__import__(name, globals={}, locals={}, fromlist=[], level=-1) # import关键字实际调用该函数
+
+compile(source, filename, mode[, flags[, dont_inherit]])
+# 编译source返回一个code对象(代码对象)．
+# mode: exec, 用于模块 python2可以用exec关键字执行,python3改成exec()函数;
+module = &quot;for i in xrange(10): print(i)&quot;
+code = compile(module, '', 'exec')
+type(code) # code
+exec code
+# mode: single, 用于单行语句, 也是用exec执行;
+code = compile(&quot;print 'test'&quot;, '', single)
+type(code) # code
+exec code
+# mode: eval, 用于表达式 可以用eval()函数执行． eg:
+expression = &quot;3 * 4&quot;
+code = compile(expression, '', 'eval')
+type(code) # code
+eval(code)
+
+eval(source[, globals[, locals]])
+# 返回python表达式的结果，source可以是compile()返回的代码对象，也可以是一个表达式．
+
+format(value[, format_spec]) # 返回格式化后的字符串形式．
+
+## 环境变量相关
+globals() # 返回当前作用域的全局名称空间的字典．
+locals() # 返回当前作用域的局部名称空间的字典．
+
+## 数字类型的数学运算
+abs(number) # 返回int/long的绝对值
+divmod(x, y) # 返回x/y 的　(商，余数) 组成的元组
+pow(x, y[, z]) # 返回x**y或(x**y) % z
+round(number[, ndigits]) # 返回number四舍五入后的结果，ndigits表示小数点后的位数，默认是0.
+chr(i) # 返回整数ｉ对应的ASCII字符的字符串形式，0 &lt;= i &lt; 256.
+ord(c) # 返回字符ASCII字符c对应的整数.
+bin(number) # 返回int/long的二进制的字符串形式
+oct(number) # 返回int/long的八进制的字符串形式．
+hex(number) # 返回int/long的十六进制的字符串形式.
+
+## 对象相关的操作
+id(object) # 返回一个对象的ID, 用内存地址作为ID来表示唯一性. 也就是对象的身份．等价is关键字.
+repr(object) # 返回object的标准字符串形式，可以通过eval()重新得到该对象．eval(repr(object)) == object.
+callable(object) # 如果object是可调用的返回True, 需要实现魔法方法__call__()
+hash(object) # 返回一个对象的散列/哈希(hash)值，有相同值的对象hash值相同.可用做字典的键.
+len(object) # 返回序列（str, tuple, list)或映射（dict)的长度
+dir([object]) # 查看对象的信息
+getattr(object, name[, default]) # 如果object.name存在,返回name的值，否则如果default存在，返回default,否则抛出异常AttributeError, 和super的查找顺序一样．
+hasattr(object, name) # 和getattr一样，但是捕获了异常，object.name存在返回True,否则返回False.
+setattr(object, name, value) # 给对象的属性赋值，相当于object.name = value
+delattr(object, name) # 删除对象object的属性name
+isinstance(object, class-or-type-or-tuple) # 如果object是class-or-type中指定的类或类型的实例或子类的实例，返回True,否则返回False.
+issubclass(C, B-or-(B,A)) # 如果C是B或(B,A,...)中的类的子类，返回True,否则返回False. 不严格子类也允许，例如一个类可以看作是自身的子类．
+vars([object]) # 没有参数等于locals()，有参数等于object.__dict__.
+
+## related to iterable
+min(iterable[, key=func]) # 返回可迭代对象iterable中的最小元素
+min(a, b, c, ...[, key=func])  # 返回a,b,c...中的最小元素
+max(iterable[, key=func]) # 和min相反
+max(a, b, c, ...[, key=func]) # 和min相反
+all(iterable) # 如果可迭代的参数iterable中所有的元素都不是0,False,''则返回True,iterable为空也返回True,否则返回False
+any(iterable) # 如果可迭代的参数iterable中所有的元素都是0,False,''则返回False,　否则返回True
+sum(sequence[, start]) # 返回数字序列sequence的所有元素加上start的和，start默认是０．
+
+## related to iterator
+iter(collection) # 将可迭代对象（str, tuple, list, dict的键,集合,文件的行等）转换成迭代器,返回迭代器对象.
+iter(callable, sentinel) # 第一个参数需要是callable的，每次迭代到sentinel停止．
+next(iterator[, default]) # 返回迭代器iterator中的下一个元素，如果没有元素了，default指定内容返回该内容，否则抛出StopIteration异常．
+
+## related to input
+input([prompt]) # 等于eval(raw_input(prompt))
+# 根据prompt提示输入内容，返回输入的内容,如果是表达式会先求值再返回.
+
+## related to file
+open(name[, mode[, buffering]]) # 打开一个文件，返回一个file类类型的对象．
+</code></pre>
+<p>[New]python3新增的内置函数：</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/psl_system/">PSL_System</a></h2>
+                    <div class="post-meta">
+                        <time>August 15, 2016</time>
+                        
+                            
+                                <span class="category">Python</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="generic-operating-system-services">Generic Operating System Services</h1>
+<h2 id="os">os</h2>
+<pre><code>import os
+
+os.path # 参考PSL_File
+os.name
+os.curdir
+os.pardir # 表示上一级路径.., 需要用abspath解析
+# os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), os.pardir))
+os.sep
+os.extsep
+os.altsep
+os.pathsep
+os.linesep
+os.defpath
+os.devnull
+</code></pre>
+<p>classes:</p>
+<p>functions:</p>
+<pre><code>WCOREDUMP(...)
+...
+
+abort(...)
+fork() # 创建一个子进程，返回0给子进程，返回子进程pid给父进程．
+exec*
+wait() # 等待子进程结束，返回(pid, status).
+waitpid(pid, options) # 等待指定子进程结束.
+listdir(path) # 列出目录下的文件和目录
+makedirs(path [, mode=0o777], exist_ok=False)
+mkdir(path [, mode=0777])
+walk(top, topdown=True, onerror=None, followlinks=False) # 返回 (dirpath, dirnames, filenames) 类型的迭代器
+remove(path) # 删除文件
+rmdir(path) # 删除目录
+removedirs(path)
+symlink(src, dst)
+chown(path, uid, gid)
+chmod(path, mode=0o777)
+...
+
+# 使用subprocess模块代替下列函数：
+system(command) # 在subshell执行命令，返回退出码(windows系统始终为0),而非命令执行结果．
+spawn*
+popen*(command [, mode='r' [, bufsize]]) # 执行命令，返回命令执行结果的文件句柄(file对象)
+</code></pre>
+<p>data:</p></p>
+                    
+                </li>
+            
+        </ul>
+    </section>
+    
+    
+        <a href="/page/34/">← Previous</a>
+    
+    
+        <a href="/page/36/">Next →</a>
+    
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

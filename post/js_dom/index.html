@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS DOM - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="single-post">
+    <article>
+        <header>
+            <h1>JS DOM</h1>
+            <div class="post-meta">
+                <time>March 15, 2017</time>
+                
+                    
+                        <span class="category">Web</span>
+                    
+                
+                
+                    
+                        <span class="tag">#dom</span>
+                    
+                
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <h1 id="dom">DOM</h1>
+<p>DOM: document object model.</p>
+<p>当网页被加载时，浏览器会创建页面的文档对象模型(DOM).</p>
+<p>DOM操作需要在html加载完成后进程.</p>
+<p>js可以通过DOM访问html文档的所有元素.</p>
+<ul>
+<li>JavaScript 能够改变页面中的所有 HTML 元素</li>
+<li>JavaScript 能够改变页面中的所有 HTML 属性</li>
+<li>JavaScript 能够改变页面中的所有 CSS 样式</li>
+<li>JavaScript 能够对页面中的所有事件做出反应</li>
+</ul>
+<h2 id="查找html元素">查找html元素</h2>
+<p>找到返回该元素的对象，没找到返回null.</p>
+<p>通过id:</p>
+<pre><code>document.getElementById(&quot;id&quot;);
+</code></pre>
+<p>通过标签名:</p>
+<pre><code>document.getElementsByTagName(&quot;tag&quot;);
+</code></pre>
+<p>通过类名:</p>
+<pre><code>document.getElementsByName(&quot;name&quot;)
+</code></pre>
+<h2 id="操作html元素或文本">操作html元素或文本</h2>
+<p>操作标签或标签内的文本.</p>
+<p>直接改变html内容:</p>
+<pre><code># 绝不要使用在文档加载之后使用 document.write()。这会覆盖该文档
+document.write(...);
+</code></pre>
+<p>改变元素的内容:</p>
+<pre><code>document.getElementById(id).innerHTML = &quot;new text&quot;;
+</code></pre>
+<h2 id="操作html属性">操作html属性</h2>
+<p>改变元素属性:</p>
+<pre><code>document.getElementById(id).attribute = &quot;new value&quot;;
+</code></pre>
+<h2 id="操作css">操作css</h2>
+<pre><code>document.getElementById(id).style.property = &quot;new style&quot;
+</code></pre>
+<h2 id="增删html元素">增删html元素</h2>
+<p>增加元素:</p>
+<pre><code>var para = document.createElement(&quot;p&quot;);
+var node = document.createTextNode(&quot;new para&quot;);
+para.appendChild(node);
+</code></pre>
+<p>删除元素:</p>
+<pre><code>var parent = document.getElementById(&quot;id&quot;);
+var child = document.getElementById(&quot;cid&quot;);
+parent.removeChild(child);
+</code></pre>
+<h2 id="对事件做出反应">对事件做出反应</h2>
+<pre><code>function changetext(id) {
+    id.innerHTML = &quot;new text&quot;
+}
+&lt;h1 onclick=&quot;changetext(this)&quot;&gt;&lt;/h1&gt;
+
+document.getElementById(id).onclick=function(){...};
+</code></pre>
+<hr>
+<h1 id="document">Document</h1>
+<p>集合:</p>
+<pre><code>all[]
+anchors[]
+applets
+forms[]
+images[]
+links[]
+</code></pre>
+<p>attribution:</p>
+<pre><code>body
+cookie
+domain
+lastModified
+referrer
+title
+URL
+readyState // loading/interfactive/complete
+</code></pre>
+<p>method:</p>
+<pre><code>open()
+close()
+getElementById() # 返回id对应的第一个对象
+getElementsByName() # 返回对应的所有对象的集合
+getElementsByTagName() # 同上
+write()
+writeln()
+createElement()
+createTextNode()
+</code></pre>
+<hr>
+<h1 id="element">Element</h1>
+<p>element表示html元素,拥有元素，文本和注释的子节点.</p>
+<p>attribution:</p>
+<pre><code>tagName // tag名字
+innerHTML // 元素里面的文本内容
+id
+title
+style
+className
+length
+nodeName // 和tagName相同
+nodeType // 节点类型: 1= 元素节点，2= 属性节点, 3= 文本节点, 8= 注释
+nodeValue // 文本节点的值
+parentNode // 父节点
+childNodes // 子节点
+firstChild
+lastChild
+nextSibling
+previousSibling
+ownerDocument // 返回当前根节点文档对象
+accesKey
+attributes
+contentEditable
+dir
+lang
+namespaceURI
+tabIndex
+textContent
+clientHeight
+clientWidth
+offsetHeight
+offsetWidth
+offsetLeft
+offsetParent
+offsetTop
+scrollHeight
+scrollLeft
+scrollTop
+scrollWidth
+</code></pre>
+<p>method:</p>
+<pre><code>appendChild(node) // 在元素后追加node
+InsertBefore() // 在元素前插入node
+removeChild()
+replaceChild()
+cloneNode()
+
+compareDocumentPosition()
+getAttribute()
+getAttributeNode()
+getElementsByTagName()
+getFeature()
+getUserData()
+hasAttribute()
+hasAttributes()
+hasChildNodes()
+isDefaultNamespace()
+isEqualNode()
+isSameNode()
+isSupported()
+normalize()
+removeAttribute()
+removeAttributeNode()
+setArrbitute()
+setArrtibuteNode()
+setIdAttribute()
+setIdArrtibuteNode()
+setUserData()
+toString()
+item() #
+</code></pre>
+<hr>
+<h1 id="attribute">Attribute</h1>
+<p>Attribute表示html属性</p>
+<p>attribution:</p>
+<pre><code>isId
+name
+value
+specified
+length
+</code></pre>
+<p>methods:</p>
+<pre><code>gtNamedItem()
+item()
+removeNameItem()
+setNamedItem()
+</code></pre>
+<hr>
+<h1 id="event">Event</h1>
+<p>window事件:</p>
+<pre><code># 等待html加载完成
+onload
+window.onload = function(){};
+
+onunload
+</code></pre>
+<p>鼠标事件:</p>
+<pre><code>onclick
+ondblclick
+onmousedown
+onmousemove
+onmouseout
+onmouseover
+onmouseup
+</code></pre>
+<p>键盘事件:</p>
+<pre><code>onkeypress
+onkeydown
+onkeyup
+</code></pre>
+<p>表单事件:</p>
+<pre><code>onsubmit
+</code></pre>
+<p>媒体事件:</p>
+<pre><code>onabort
+onerror
+</code></pre>
+<hr>
+
+        </div>
+    </article>
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Package - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="single-post">
+    <article>
+        <header>
+            <h1>Package</h1>
+            <div class="post-meta">
+                <time>June 7, 2016</time>
+                
+                    
+                        <span class="category">Linux</span>
+                    
+                
+                
+                    
+                        <span class="tag">#package</span>
+                    
+                
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <h1 id="dpkg">DPKG</h1>
+<p>debian的包管理机制。</p>
+<hr>
+<h2 id="dpkg-1">dpkg</h2>
+<p>dpkg的本地前端工具。</p>
+<h3 id="deb---debian-binary-package-format">deb - Debian binary package format</h3>
+<h3 id="dpkg---package-manager-for-debian">dpkg - package manager for Debian</h3>
+<pre><code>dpkg
+dpkg -X  ./xxx.deb  xxx  # 将deb包解压到xxx目录
+dpkg -e  ./xxx.deb  xxx/DEBIAN # 将control信息解压
+dpkg -l | grep pkg # 查看安装的包
+</code></pre>
+<h3 id="dpkg-reconfigure---reconfigure-an-already-installed-package">dpkg-reconfigure - reconfigure an already installed package</h3>
+<pre><code>dpkg-reconfigure
+</code></pre>
+<h3 id="dpkg-deb---debian-package-archive-deb-manipulation-tool">dpkg-deb - Debian package archive (.deb) manipulation tool</h3>
+<p>目录结构, DEBIAN/control是必需的</p>
+<pre><code>|- debian_root
+   |- DEBIAN
+      |- control
+      |- preinst/preinstallation # 解压deb包之前执行
+      |- prerm/preremove
+      |- postinst/postinstallation # 解压完成之后执行，通常用来配置
+      |- postrm/postremove
+      |- copyright
+      |- changelog
+      |- conffiles
+   |- etc
+      |- init.d/systemd
+         |- &lt;service&gt;
+      |- logrotate.d
+         |- &lt;service&gt;
+   |- user/local/...
+   |- opt/...
+</code></pre>
+<p>control:</p>
+<pre><code>Package
+Version
+Description
+Maintain:
+Section: utils/net/mail/text/x11/...
+Priority: required/standard/optional/extra/...
+Essential: yes/no
+Architecture: i386/amd64/...
+Source:
+Depends:    # 运行该process需要的依萊, 只能安装之前安装好，或者用gdebi安装
+Pre-Depends:
+Recommends:
+Suggests:
+...
+</code></pre>
+<p>postrm:</p>
+<pre><code>case &quot;$1&quot; in
+    remove)
+        remove
+        echo &quot;Remove complete&quot;
+    ;;
+
+    purge)
+        purge
+        echo &quot;Purge complete&quot;
+    ;;
+
+    upgrade|failed-upgrade|disappear)
+        echo &quot;Do nothing&quot;
+    ;;
+
+    abort-install|abort-upgrade)
+        echo &quot;Do nothing&quot;
+    ;;
+
+    *)
+        echo &quot;$0 called with unknown argument \`$1'&quot; 1&gt;&amp;2
+        exit 1
+    ;;
+esac
+</code></pre>
+<p>创建debian包</p>
+<pre><code>$ dpkg-deb -b|--build &lt;directory&gt; [&lt;deb&gt;]
+</code></pre>
+<p>查看包信息</p>
+<pre><code>$ dpkg-deb -I XXX.deb
+</code></pre>
+<h3 id="dpkg-query---a-tool-to-query-the-dpkg-database">dpkg-query - a tool to query the dpkg database</h3>
+<pre><code>dpkg-query
+</code></pre>
+<hr>
+<h2 id="gdebi---simple-tool-to-install-deb-files">gdebi - Simple tool to install deb files</h2>
+<p>dpkg的本地前端工具。</p>
+<p>使用gdebi安装deb包会自动解决依赖问题:</p>
+<p>安装gdebi:</p>
+<pre><code>$ sudo apt-get install gdebi-core
+$ sudo apt-get install gdebi-gtk
+$ sudo aptitude install gdebi-core # install gdebi itself
+$ sudo aptitude install gdebi-gtk # install gdebi GUI
+</code></pre>
+<p>使用gdebi:</p>
+<pre><code>sudo gdebi XXX.deb # install package
+</code></pre>
+<hr>
+<h2 id="apt---command-line-interface">apt - command-line interface</h2>
+<p>dpkg的远程前端工具。</p>
+<p>apt - command-line interface</p>
+<pre><code>$ apt install package
+</code></pre>
+<p>apt-get - APT package handling utility &ndash; command-line interface</p>
+<pre><code>$ sudo apt-get option command package
+
+# command:
+install
+remove
+purge
+download
+source
+update
+
+# install
+# 可以通过apt-cache madison查看version
+apt-get install &lt;package&gt;=&lt;version&gt;
+
+# option:
+-d, --download-only
+--print-uris
+-y,--yes,--assume-yes    # 交互时确认
+-f,--force-yes
+--reinstall
+--allow-unauthenticated
+--allow-downgrades (&gt;= ubuntu1604)
+
+# 打印在当前环境安装该包需要的所有以来的下载连接信息
+apt-get --print-uris install package
+</code></pre>
+<p>aptitude - high-level interface to the package manager</p>
+<pre><code>$ sudo aptitude install package
+</code></pre>
+<p>apt-cache - query the APT cache</p>
+<pre><code>$ apt-cache showpkg &lt;pkg&gt;
+$ apt-cache showsrc &lt;pkg&gt;
+$ apt-cache search &lt;pkg&gt;
+$ apt-cache madison &lt;pkg&gt; # 查看当前源可以安装的版本
+$ apt-cache policy &lt;pkg&gt;
+
+# 查看哪些包依赖该包
+$ apt-cache rdepends &lt;pkg&gt;
+# 查看该包依赖哪些包
+$ apt-cache depends &lt;pkg&gt;
+# 查看依赖，　以及依赖的依赖
+$ apt-cache --recurse depends &lt;pkg&gt;
+</code></pre>
+<hr>
+<h1 id="rpm">RPM</h1>
+<p>redhat的包管理机制。</p>
+<h2 id="rpm-1">rpm</h2>
+<p>rpm的本地前端工具。</p>
+<p>rpm - RPM Package Manager</p>
+<h2 id="yum">yum</h2>
+<p>rpm的远程前端工具。</p>
+<p>yum - redirecting to DNF Command Reference</p>
+<hr>
+<h1 id="zypper">zypper</h1>
+<p>suse的包管理机制。</p>
+<hr>
+<h1 id="alien">Alien</h1>
+<blockquote>
+<p>alien is a program that converts between Red Hat rpm, Debian deb, Stampede slp, Slackware tgz, and Solaris pkg file formats.</p></blockquote>
+<h1 id="gbp">gbp</h1>
+<p>通过git来管理deb或rpm包．</p>
+<p><a href="https://github.com/agx/git-buildpackage">https://github.com/agx/git-buildpackage</a></p>
+<pre><code>$sudo -E pip install gbp
+</code></pre>
+<h1 id="fpm">fpm</h1>
+<p>通过fpm来创建deb/rpm包</p>
+<p><a href="https://github.com/jordansissel/fpm">https://github.com/jordansissel/fpm</a></p>
+<hr>
+<h1 id="patch">patch</h1>
+
+        </div>
+    </article>
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

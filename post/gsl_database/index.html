@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GSL_database - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="single-post">
+    <article>
+        <header>
+            <h1>GSL_database</h1>
+            <div class="post-meta">
+                <time>January 1, 2018</time>
+                
+                    
+                        <span class="category">Golang</span>
+                    
+                
+                
+                    
+                        <span class="tag">#database</span>
+                    
+                
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <h1 id="databasesql">database/sql</h1>
+<p>使用该包，必须提供一个数据库驱动</p>
+<p><a href="https://github.com/golang/go/wiki/SQLDrivers">https://github.com/golang/go/wiki/SQLDrivers</a></p>
+<p>mssql driver:</p>
+<p><a href="https://github.com/denisenkom/go-mssqldb">https://github.com/denisenkom/go-mssqldb</a></p>
+<p>mysql driver:</p>
+<p><a href="https://github.com/go-sql-driver/mysql">https://github.com/go-sql-driver/mysql</a></p>
+<p>postgresql driver:</p>
+<p><a href="https://github.com/lib/pq">https://github.com/lib/pq</a></p>
+<p><a href="https://github.com/jackc/pgx">https://github.com/jackc/pgx</a></p>
+<h2 id="variables">variables</h2>
+<pre><code>// QueryRow 没有返回row时，调用返回值的Scan方法会返回该变量
+var ErrNoRows = errors.New(&quot;sql: no rows in result set&quot;)
+</code></pre>
+<h2 id="functions">functions</h2>
+<pre><code>// 注册并命名一个数据库，在Open中使用该命名启用该驱动
+// 如果注册同一名称两次或者driver参数为nil, 会导致panic.
+Register(name string, driver driver.Driver)
+</code></pre>
+<h2 id="db">DB</h2>
+<p>DB是一个数据库句柄，代表一个具有零到多个底层连接的连接池．</p>
+<p>可以安全的被多个go程同时使用．</p>
+<p>struct:</p>
+<pre><code>type DB struct {}
+</code></pre>
+<p>functions:</p>
+<pre><code>// 验证数据库驱动和参数,并不创建和数据库的连接．
+// driverName: mssql, mysql, postgres
+// mssql dataSourceName: &quot;server=%s;port=%d;database=%s;user id=%s;password=%s&quot;
+// mysql dataSourceName: &quot;user:password@tcp(server:port)/database&quot;
+Open(driverName, dataSourceName string) (*DB, error)
+</code></pre>
+<p>methods:</p>
+<pre><code>// 返回数据库下层驱动
+func (db *DB) Driver() driver.Driver
+
+// 创建和数据库的连接,检查连接是否有效
+func (db *DB) Ping() error
+
+// 关闭数据库，释放资源
+func (db *DB) Close() error
+
+// 设置与数据库建立连接的最大数目, 默认０表示无限制.
+func (db *DB) SetMaxOpenConns(n int)
+
+// 设置连接池中的最大闲置连接数
+func (db *DB) SetMaxIdleConns(n int)
+
+// 执行命令但是不返回执行结果,一般用于(insert/update/delete)
+func (db *DB) Exec(query string, args ...interface{}) (Result, error)
+
+// 执行命令返回多行结果（一般用于select)
+func (db *DB) Query(query string, args ...interface{}) (*Rows, error)
+
+// 执行命令最多返回一行结果
+// 总是返回非nil值，直到返回值的Scan方法被调用，才会返回被延迟的错误.
+func (db *DB) QueryRow(query string, args ...interface{}) *Row
+
+// 创建一个准备好的状态用于之后的命令
+func (db *DB) Prepare(query string) (*Stmt, error)
+
+// 开始一个事务
+func (db *DB) Begin() (*Tx, error)
+</code></pre>
+<h2 id="stmt">Stmt</h2>
+<p>stmt是准备好的状态，可以安全的被多个go程同时使用．</p>
+<p>struct:</p>
+<pre><code>type Stmt struct {}
+</code></pre>
+<p>methods:</p>
+<pre><code>func (s *Stmt) Exec(args ...interface{}) (Result, error)
+
+func (s *Stmt) Query(args ...interface{}) (*Rows, error)
+
+func (s *Stmt) QueryRow(args ...interface{}) *Row
+
+func (s *Stmt) Close() error
+</code></pre>
+<h2 id="tx">Tx</h2>
+<p>Tx表示一个进行中的数据库事务．</p>
+<p>一次事务必须以对Commit或Rollback的调用结束．</p>
+<p>事务结束后，所有的操作都会失败并返回ErrTxDone.</p>
+<p>struct:</p>
+<pre><code>type Tx struct {}
+</code></pre>
+<p>methods:</p>
+<pre><code>func (tx *Tx) Exec(query string, args ...interface{}) (Result, error)
+
+func (tx *Tx) Query(query string, args ...interface{}) (*Rows, error)
+
+func (tx *Tx) QueryRow(query string, args ...interface{}) *Row
+
+func (tx *Tx) Prepare(query string) (*Stmt, error)
+
+// 使用已存在的状态生成一个特定的状态．
+func (tx *Tx) Stmt(stmt *Stmt) *Stmt
+
+// 提交事务
+func (tx *Tx) Commit() error
+
+// 回滚事务
+func (tx *Tx) Rollback() error
+</code></pre>
+<h2 id="scanner">Scanner</h2>
+<p>interface:</p>
+<pre><code>type Scanner interface {
+    Scan(src interface{}) error
+}
+</code></pre>
+<h2 id="result">Result</h2>
+<p>Exec方法返回Result.</p>
+<pre><code>type Result interface {
+    LastInsertId() (int64, error)
+    RowsAffected() (int64, error)
+}
+</code></pre>
+<h2 id="row">Row</h2>
+<p>QueryRow方法返回Row, 表示单行查询结果．</p>
+<p>struct:</p>
+<pre><code>type Row struct {}
+</code></pre>
+<p>methods:</p>
+<pre><code>// 将该行查询结果各列分别保存进dest参数指定的值中．
+// 如果匹配多行，只取第一行，如果没有匹配行，返回ErrNoRows.
+func (r *Row) Scan(dest ...interface{}) error
+</code></pre>
+<h2 id="rows">Rows</h2>
+<p>Query方法返回Rows, 表示查询的结果集，它的游标指向第０行，使用Next方法遍历该结果集．</p>
+<p>struct:</p>
+<pre><code>type Rows struct {}
+</code></pre>
+<p>methods:</p>
+<pre><code>// 返回列名
+func (rs *Rows) Columns() ([]string, error)
+
+// 将当前行的各列结果填充进dest
+func (rs *Rows) Scan(dest ...interface{}) error
+
+// 准备用于Scan的下一行结果，每次调用Scan都要先调用Next
+func (rs *Rows) Next() bool
+
+func (rs *Rows) Close() error
+
+func (rs *Rows) Err() error
+</code></pre>
+<hr>
+<h1 id="databasesqldriver">database/sql/driver</h1>
+
+        </div>
+    </article>
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Filesystem on Morgoth</title>
+    <link>https://canuxcheng.com/tags/filesystem/</link>
+    <description>Recent content in Filesystem on Morgoth</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 03 Apr 2016 14:15:40 +0000</lastBuildDate>
+    <atom:link href="https://canuxcheng.com/tags/filesystem/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>FileSystem</title>
+      <link>https://canuxcheng.com/post/win_filesystem/</link>
+      <pubDate>Sun, 03 Apr 2016 14:15:40 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/win_filesystem/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>FileSystem</title>
+      <link>https://canuxcheng.com/post/linux_filesystem/</link>
+      <pubDate>Thu, 31 Mar 2016 21:48:59 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/linux_filesystem/</guid>
+      <description>&lt;h1 id=&#34;vfs&#34;&gt;VFS&lt;/h1&gt;&#xA;&lt;p&gt;Linux采用虚拟文件系统，支持多个文件系统协议．&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;extext2ext3ext4&#34;&gt;ext/ext2/ext3/ext4&lt;/h1&gt;&#xA;&lt;h1 id=&#34;jfs2&#34;&gt;JFS2&lt;/h1&gt;&#xA;&lt;h1 id=&#34;ramfs&#34;&gt;ramfs&lt;/h1&gt;&#xA;&lt;p&gt;linux的VM(虚拟内存)包括ramfs和swap.&lt;/p&gt;&#xA;&lt;p&gt;对内存的支持&lt;/p&gt;&#xA;&lt;h1 id=&#34;swap&#34;&gt;swap&lt;/h1&gt;&#xA;&lt;p&gt;交换分区，当内存不足，会把内存上暂时不运行的程序保存到swap，获取部分内存空间运行．&lt;/p&gt;&#xA;&lt;h1 id=&#34;tmpfs&#34;&gt;tmpfs&lt;/h1&gt;&#xA;&lt;p&gt;临时文件系统, 优先使用ramfs,　其次使用swap.&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;# 挂载tmpfs&#xA;mount -t tmpfs -o size=1024m tmpfs /path/to/mount&#xA;# /etc/fstab　&#xA;tmpfs /dev/shm tmpfs,defaults,size=512m 0 0&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h1 id=&#34;vfatfatntfs&#34;&gt;vfat/fat/ntfs&lt;/h1&gt;&#xA;&lt;p&gt;windows文件系统&lt;/p&gt;&#xA;&lt;h1 id=&#34;cifssmbfs&#34;&gt;cifs/smbfs&lt;/h1&gt;&#xA;&lt;h1 id=&#34;nfs&#34;&gt;nfs&lt;/h1&gt;</description>
+    </item>
+  </channel>
+</rss>

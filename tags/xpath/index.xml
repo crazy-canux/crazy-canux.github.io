@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Xpath on Morgoth</title>
+    <link>https://canuxcheng.com/tags/xpath/</link>
+    <description>Recent content in Xpath on Morgoth</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 07 Apr 2017 16:43:15 +0000</lastBuildDate>
+    <atom:link href="https://canuxcheng.com/tags/xpath/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Xpath</title>
+      <link>https://canuxcheng.com/post/xpath/</link>
+      <pubDate>Fri, 07 Apr 2017 16:43:15 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/xpath/</guid>
+      <description>&lt;h1 id=&#34;xpath&#34;&gt;XPath&lt;/h1&gt;&#xA;&lt;p&gt;XPath是一门在XML文档中查找信息的语言．&lt;/p&gt;&#xA;&lt;p&gt;xpath定位有绝对定位和相对定位，推荐使用相对定位．&lt;/p&gt;&#xA;&lt;p&gt;绝对的XPath定位包含了从HTML根节点起的所有元素，并且一些轻微的改变就会失效。&lt;/p&gt;&#xA;&lt;p&gt;相对的XPath用id或者name属性来找到一个靠近的元素(比较理想的是父元素)，这样你就可以依靠他们的相对关系来确定目标元素的位置。&lt;/p&gt;&#xA;&lt;h1 id=&#34;firefox&#34;&gt;firefox&lt;/h1&gt;&#xA;&lt;p&gt;firebug + firepath&lt;/p&gt;&#xA;&lt;p&gt;firefox通过两者结合来获取xpath&lt;/p&gt;&#xA;&lt;h1 id=&#34;chrome&#34;&gt;chrome&lt;/h1&gt;&#xA;&lt;p&gt;chrome的开发者工具(F12)可以直接copy xpath.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K8S CNI - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="single-post">
+    <article>
+        <header>
+            <h1>K8S CNI</h1>
+            <div class="post-meta">
+                <time>March 26, 2020</time>
+                
+                    
+                        <span class="category">CNCF</span>
+                    
+                        <span class="category">Network</span>
+                    
+                
+                
+                    
+                        <span class="tag">#k8s</span>
+                    
+                
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <h1 id="network-add-ons">Network add-ons</h1>
+<p><a href="https://github.com/containernetworking">https://github.com/containernetworking</a></p>
+<ul>
+<li>flannel</li>
+<li>cilium</li>
+<li>calico</li>
+<li>vpc-cni (aws)</li>
+<li>kube-router</li>
+<li>weavenet</li>
+<li>antrea</li>
+<li>romana</li>
+</ul>
+<hr>
+<h2 id="cilium">cilium</h2>
+<p><a href="https://github.com/cilium/cilium">https://github.com/cilium/cilium</a></p>
+<hr>
+<h2 id="flannel">Flannel</h2>
+<p>flannel是k8s最常用的网络插件.</p>
+<p><a href="https://github.com/coreos/flannel">https://github.com/coreos/flannel</a></p>
+<p>在所有node上部署cni-plugin:</p>
+<p><a href="https://github.com/containernetworking/plugins/releases">https://github.com/containernetworking/plugins/releases</a></p>
+<pre><code>$ sudo mkdir -p /opt/cni/bin
+// 下载并解压所有插件命令到该目录.
+</code></pre>
+<p>network-addon(master上操作即可):</p>
+<pre><code>$ kubectl apply -f https://raw.githubusercontent.com/flannel-io/flannel/master/Documentation/kube-flannel.yml
+</code></pre>
+<p>veryfy:</p>
+<pre><code>$ kubectl get nodes
+$ kubectl get pod --all-namespaces
+</code></pre>
+<p>删除插件:</p>
+<p>删除插件会影响已经部署的pod.</p>
+<pre><code>// 删除flannel 
+$ kubectl delete -f X.yml  
+$ sudo systemctl stop kubelet docker
+
+// 第二步，在node节点清理flannel网络留下的文件
+ifconfig cni0 down
+ip link delete cni0 
+ifconfig flannel.1 down
+ip link delete flannel.1 
+rm -rf /var/lib/cni /etc/cni /run/flannel
+$ sudo rm -rf /var/lib/kubelet /var/lib/etcd
+
+// 重启kubelet
+$ sudo systemctl start kubelet docker
+</code></pre>
+<p>修改配置:</p>
+<p>/etc/kube-flannel/net-conf.json</p>
+<pre><code>{
+  &quot;Network&quot;: &quot;10.244.0.0/16&quot;,
+  &quot;SubnetLen&quot;: 24,
+  &quot;SubnetMin&quot;: &quot;10.244.0.0&quot;,
+  &quot;SubnetMax&quot;: &quot;10.244.255.0&quot;,
+  &quot;Backend&quot;: {
+    &quot;Type&quot;: &quot;vxlan&quot;
+  }
+}
+</code></pre>
+<p>使用kubeadm：</p>
+<p>kubeadm init必须指定flannel的Network参数:</p>
+<pre><code>--pod-network-cidr=10.244.0.0/16
+</code></pre>
+<p>如果需要修改其它参数，同时需要修改kubeadm的配置</p>
+<hr>
+
+        </div>
+    </article>
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

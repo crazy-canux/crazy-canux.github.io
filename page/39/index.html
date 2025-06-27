@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="generator" content="Hugo 0.147.9">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morgoth - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="home">
+    <h1>Morgoth</h1>
+    <p></p>
+    
+    <section class="recent-posts">
+        <h2>Recent Posts</h2>
+        <ul class="post-list">
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/ntp/">Ntp</a></h2>
+                    <div class="post-meta">
+                        <time>July 28, 2016</time>
+                        
+                            
+                                <span class="category">Network</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="ntp">NTP</h1>
+<p>NFS: Network Time Protocol</p>
+<p>UTC: Coordinated Universal Time, 世界统一时间</p>
+<p>GMT: Greenwich Mean Time, 格林尼治标准时间, = UTC</p>
+<p>CET: Central European Time, 欧洲中部时间, = UTC+1, 下令时=UTC+2</p>
+<p>CST: Chinese Standard Time, 中国标准时间, = UTC+8</p>
+<hr>
+<h1 id="时区管理">时区管理</h1>
+<pre><code>$ timedatectl list-timezones # 查看所有时区
+$ sudo timedatectl set-timezone Asia/Shanghai # 设置时区
+$ sudo timedatectl set-timezone Etc/UTC
+$ ls -l /etc/localtime # 应该是一个链接
+</code></pre>
+<hr>
+<h1 id="ntp-1">ntp</h1>
+<p>安装:</p>
+<pre><code>$ sudo apt-get install ntp
+</code></pre>
+<h2 id="ntpdate">ntpdate</h2>
+<p>从目标服务器同步.</p>
+<pre><code>ntpdate -u ip
+</code></pre>
+<h2 id="ntpstat">ntpstat</h2>
+<pre><code>$ sudo apt-get install ntpstat
+</code></pre>
+<hr>
+<h1 id="chrony">chrony</h1>
+<p>ntp的升级版.</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/nfs/">Nfs</a></h2>
+                    <div class="post-meta">
+                        <time>July 28, 2016</time>
+                        
+                            
+                                <span class="category">Network</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="nfs">NFS</h1>
+<p>NFS: Network File System</p>
+<p>安装：</p>
+<pre><code># 在nfs服务器安装nfs服务
+$ sudo apt-get install nfs-kernel-server
+# 添加共享目录并授权
+$ sudo vim /etc/exports
+/home/user/share *(rw,no_root_squash)
+$ sudo service nfs-kernel-server restart
+
+# 在nfs客户端安装nfs客户端
+$ sudo apt-get install nfs-common
+# 自动挂载
+$ sudo vim /etc/fstab
+nfs-server-ip:/home/user/share /home/user1/share nfs auto 0 0
+$ sudo mount -a
+# 手动挂载
+$ sudo mount -t nfs nfs-server-ip:/home/user/share /home/user1/share
+</code></pre>
+<hr>
+<h1 id="nfs-server">nfs-server</h1>
+<p>配置/etc/exports</p>
+<pre><code>/etc/exports  文件格式
+&lt;输出目录&gt; [客户端1 选项（访问权限,用户映射,其他）] [客户端2 选项（访问权限,用户映射,其他）]
+</code></pre>
+<h1 id="nfs-client">nfs-client</h1>
+<p>配置/etc/fstab</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/ldap/">Ldap</a></h2>
+                    <div class="post-meta">
+                        <time>July 28, 2016</time>
+                        
+                            
+                                <span class="category">Network</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="ldap">LDAP</h1>
+<p>LDAP占用tcp和udp的389端口。</p>
+<p>使用SSL的LDAP占用tcp和udp的636端口。</p>
+<p>Lightweight Directory Access Protocol.</p>
+<p><a href="http://www.openldap.org/">http://www.openldap.org/</a></p>
+<p>LDAP的windows工具：LDAPSoft LDAP Browser</p>
+<hr></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/ftp/">Ftp</a></h2>
+                    <div class="post-meta">
+                        <time>July 28, 2016</time>
+                        
+                            
+                                <span class="category">Network</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="ftp">FTP</h1>
+<p>ftp服务器有很多：</p>
+<ol>
+<li>vsftpd</li>
+<li>proftpd</li>
+<li>pyftpdlib</li>
+</ol>
+<hr>
+<h1 id="vsftpd">vsftpd</h1>
+<p>安装vsftpd:</p>
+<pre><code>$ sudo apt-get install vsftpd
+</code></pre>
+<p>windows开启ftp服务和建立IIS站点即可。</p>
+<p>linux配置：</p>
+<pre><code>$ vim /etc/vsftpd.conf
+local_root=/home/canux/FTP
+anon_root=/home/canux/FTP
+local_enable=YES
+anonymous_enable=YES
+chroot_local_user=YES
+$ sudo service vsftpd restart
+</code></pre>
+<p>ftp的网页浏览格式：</p>
+<pre><code>ftp://host/path
+ftp://username:password@host:port/path
+</code></pre>
+<hr>
+<h1 id="ftp命令">ftp命令</h1>
+<h2 id="ftp-1">ftp</h2>
+<pre><code>$ ftp [-46pinegvd] [host [port]]
+</code></pre>
+<hr>
+<h1 id="python的ftp标准库">python的FTP标准库</h1>
+<h2 id="ftplib">ftplib</h2>
+<hr></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/ssh/">Ssh</a></h2>
+                    <div class="post-meta">
+                        <time>July 28, 2016</time>
+                        
+                            
+                                <span class="category">Network</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="openssh">OpenSSH</h1>
+<p><a href="http://www.openssh.com/">http://www.openssh.com/</a></p>
+<p>windows上支持ssh协议的客户端：</p>
+<ul>
+<li>putty</li>
+<li>xshell</li>
+<li>MobaXterm</li>
+<li>secureCRT</li>
+</ul>
+<p>安装：</p>
+<pre><code>$ sudo apt-get install openssh-server
+$ sudo apt-get install openssh-client
+</code></pre>
+<hr>
+<h1 id="ssh命令">SSH命令</h1>
+<p>ssh是openssh协议的客户端．</p>
+<p>远程操作的命令包括ssh, scp, sftp.</p>
+<p>ssh</p>
+<pre><code>$ ssh
+# 远程执行命令需要用双引号，不能用单引号
+$ ssh username@host &quot;command/script&quot;
+</code></pre>
+<p>scp</p>
+<pre><code>$ scp
+</code></pre>
+<p>sftp</p>
+<pre><code>$ sftp
+</code></pre>
+<p>常用选项：</p>
+<pre><code>-C   compression
+# 不需要输入yes来交互, 或者修改/etc/ssh/ssh_config
+-o StrictHostKeyChecking=no
+-o UserKnownHostsFile /dev/null
+</code></pre>
+<p>ssh也包括一些密钥管理的命令.</p>
+<p>ssh-keygen</p>
+<pre><code>$ ssh-keygen -t rsa -C 'canuxcheng@gmail.com'
+
+# 通过将本机的公钥拷贝到远程机器实现无密码访问．
+# 将本机的public-key拷贝到远程机器的authorized_keys.
+$ ssh-copy-id -i ~/.ssh/id_rsa.pub user@remote
+# 另外的拷贝方法
+$ ssh user@host &quot;cat &gt;&gt; ~/.ssh/authorized_keys&quot; &lt; ~/.ssh/id_rsa.pub
+$ sudo service ssh restart # 需要重启ssh服务
+
+非交互式通过命令行传密码的命令：
+$ sshpass -p [password]
+</code></pre>
+<p>ssh-add</p></p>
+                    
+                </li>
+            
+        </ul>
+    </section>
+    
+    
+        <a href="/page/38/">← Previous</a>
+    
+    
+        <a href="/page/40/">Next →</a>
+    
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

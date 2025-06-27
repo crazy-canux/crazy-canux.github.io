@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="generator" content="Hugo 0.147.9">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morgoth - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="home">
+    <h1>Morgoth</h1>
+    <p></p>
+    
+    <section class="recent-posts">
+        <h2>Recent Posts</h2>
+        <ul class="post-list">
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/go_oss/">Contribution</a></h2>
+                    <div class="post-meta">
+                        <time>January 1, 2018</time>
+                        
+                            
+                                <span class="category">Golang</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="golang-contribution">Golang Contribution</h1>
+<p><a href="https://go.dev/doc/contribute">https://go.dev/doc/contribute</a></p>
+<h2 id="创建google账号">创建google账号</h2>
+<p>推荐申请一个google邮箱。</p>
+<p>在开发机配置git</p>
+<pre><code>$ git config --global user.email name@example.com   
+$ git config user.email name@example.com            
+</code></pre>
+<h2 id="签cla">签CLA</h2>
+<p>个人开发者需要签署CLA。</p>
+<p><a href="https://cla.developers.google.com/about/google-individual">https://cla.developers.google.com/about/google-individual</a></p>
+<h2 id="配置git认证">配置git认证</h2>
+<p>点击“Generate Password”， 用google邮箱登陆，根据提示配置git。</p>
+<p><a href="https://go.googlesource.com/">https://go.googlesource.com/</a></p>
+<h2 id="创建gerrit账号">创建gerrit账号</h2>
+<p>用google邮箱登陆即可。</p>
+<p><a href="https://go-review.googlesource.com/dashboard/self">https://go-review.googlesource.com/dashboard/self</a></p>
+<h2 id="安装git-codereview">安装git-codereview</h2>
+<p>windows:</p>
+<pre><code>$ go get golang.org/x/review/git-codereview@latest
+$ git --exec-path
+
+&gt; copy git-codereview.exe from GOBIN to Git\mingw64\libexec\git-core
+
+$ git codereview help
+</code></pre>
+<p>linux/mac:</p>
+<pre><code>$ go install golang.org/x/review/git-codereview@latest
+$ git codereview help
+</code></pre>
+<h2 id="选取修改的cl">选取修改的CL</h2>
+<p>从github选取一个还没有人提交CL(change log/list)的Issue进行修改。</p>
+<p>issue三种类型：</p>
+<ul>
+<li>NeedsInvestigation</li>
+<li>NeedsDecision</li>
+<li>NeedsFix    选这个里面还没有CL的做</li>
+</ul>
+<p><a href="https://github.com/golang/go/issues?q=is%3Aissue+is%3Aopen+label%3ANeedsFix+NOT+%22golang.org%2Fcl%22">https://github.com/golang/go/issues?q=is%3Aissue+is%3Aopen+label%3ANeedsFix+NOT+%22golang.org%2Fcl%22</a></p>
+<h2 id="提交patch">提交patch</h2>
+<p>支持github或者gerrit提交patch。</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/rabbitmq/">Rabbitmq</a></h2>
+                    <div class="post-meta">
+                        <time>September 25, 2017</time>
+                        
+                            
+                                <span class="category">Network</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="amqp">AMQP</h1>
+<p>AMQP: Advanced Message Queuing Protocol,高级消息队列协议</p>
+<p>常用的开源AMQP框架：</p>
+<p><a href="https://github.com/rabbitmq">https://github.com/rabbitmq</a></p>
+<p><a href="https://github.com/apache/kafka">https://github.com/apache/kafka</a></p>
+<p><a href="https://github.com/apache/activemq">https://github.com/apache/activemq</a></p>
+<h1 id="mqtt">MQTT</h1>
+<p>MQTT: Message Queuing Telemetry Transport,消息队列遥测传输协议</p>
+<hr>
+<h1 id="rabbitmq">Rabbitmq</h1>
+<p><a href="https://github.com/rabbitmq">https://github.com/rabbitmq</a></p>
+<p>RabbitMQ是一个erlang开发的符合AMQP和MQTT的开源项目．</p>
+<p>rabbitmq-server也叫broker server</p>
+<p>rabbitmq的三个组件：</p>
+<ul>
+<li>exchange,　交换器，发送消息的实体</li>
+<li>binding, 绑定器，连接交换器和队列，并且封装消息的路由信息</li>
+<li>queue,　队列，接受消息的实体</li>
+</ul>
+<p>workflow:</p>
+<pre><code>producer(publish-message) =&gt;
+
+rabbitmq-server =&gt; exchange -&gt; binding -&gt; queue =&gt;
+
+=&gt; comsumer
+</code></pre>
+<p>producer: 生产message并且publish到rabbitmq-server.</p>
+<p>consumer: 连接到rabbitmq-server并且subscribe一些queue.</p>
+<p>connection: producer和consumer都是通过tcp连接到rabbitmq-server.</p>
+<p>channels: 建立在tcp连接中的虚拟连接，用于处理数据流动.</p>
+<p>queue:　生产者和消费者都应该创建queue.(只能通过exchange接收message)</p>
+<p>exchanges类型:</p>
+<ul>
+<li>fanout: 所有绑定到此exchange的queue都可以接收消息</li>
+<li>direct: 通过routingKey和exchange决定的那个唯一的queue可以接收消息</li>
+<li>topic：所有符合routingKey(此时可以是一个表达式)的routingKey所bind的queue可以接收消息</li>
+</ul>
+<p>message类型:</p>
+<ul>
+<li>messages: 生产者产生的总消息数．</li>
+<li>messages_ready: 等待deliver给消费者的消息．</li>
+<li>messages_unack: 已经被consumer处理，但是没有被ack的消息．</li>
+</ul>
+<p>virtual hosts: 本质就是一个rabbitmq server,拥有独立的exchange,queue.默认是/(%2F).</p>
+<p>round-robin dispatch: 循环分发，按顺序分发message到consumer,如果message被consumer正确接收，就会从queue中移除．</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/rpc/">Rpc</a></h2>
+                    <div class="post-meta">
+                        <time>September 3, 2017</time>
+                        
+                            
+                                <span class="category">Network</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="rpc">RPC</h1>
+<p>Remote Procedure Call Protocol: 远程过程调用.</p>
+<p>google的rpc框架，支持多语言:</p>
+<p><a href="https://github.com/grpc/grpc">https://github.com/grpc/grpc</a></p>
+<p>facebook的rpc框架，贡献给了apache, 支持多语言:</p>
+<p><a href="https://github.com/apache/thrift">https://github.com/apache/thrift</a></p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/travel_germany/">Germany</a></h2>
+                    <div class="post-meta">
+                        <time>May 8, 2017</time>
+                        
+                            
+                                <span class="category">Misc</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="德国之旅">德国之旅</h1>
+<p>看照片：</p>
+<p><a href="http://user.qzone.qq.com/1085694641/4">http://user.qzone.qq.com/1085694641/4</a></p>
+<p>德国是汽车之都。</p>
+<p>德国有16个州。</p>
+<h1 id="城市州">城市州</h1>
+<p>德国16个州中的三个城市州</p>
+<h2 id="柏林">柏林</h2>
+<p>德国首都。</p>
+<p>德国第一大城市。</p>
+<h2 id="汉堡">汉堡</h2>
+<p>德国第二大城市。</p>
+<h2 id="不来梅">不来梅</h2>
+<h1 id="巴伐利亚州拜仁洲">巴伐利亚州(拜仁洲)</h1>
+<p>慕尼黑是首府。</p>
+<h2 id="慕尼黑">慕尼黑</h2>
+<p>慕尼黑的奥特莱斯位于Ingolstadt Village。</p>
+<p>奥迪的总部位于慕尼黑的Ingolstadt。</p>
+<p>宝马总部位于慕尼黑。</p>
+<p>德国第三大城市。</p>
+<h2 id="纽伦堡">纽伦堡</h2>
+<h2 id="奥格斯堡">奥格斯堡</h2>
+<h2 id="非森">非森</h2>
+<p>天鹅堡的所在地Fussen。</p>
+<h1 id="巴登符腾堡州">巴登符腾堡州</h1>
+<p>斯图加特是首府。</p>
+<h2 id="斯图加特">斯图加特</h2>
+<p>斯图加特的奥特莱斯位于Metzingen Village。</p>
+<p>保时捷的总部。</p>
+<p>奔驰的总部。</p>
+<h1 id="黑森州">黑森州</h1>
+<p>威斯巴登是首府。</p>
+<h2 id="威斯巴登">威斯巴登</h2>
+<h2 id="法兰克福">法兰克福</h2>
+<p>该州最大城市,法国第五大城市。</p>
+<p>法兰克福的奥特莱斯位于Wertheim Village。</p>
+<h1 id="北莱茵-威斯特法伦州">北莱茵-威斯特法伦州</h1>
+<p>杜塞尔多夫是首府。</p>
+<h2 id="杜塞尔多夫">杜塞尔多夫</h2>
+<h2 id="科隆">科隆</h2>
+<p>该州最大城市，德国第四大城市。</p>
+<h1 id="下萨克森州">下萨克森州</h1>
+<p>汉诺威是首府。</p>
+<h2 id="汉诺威">汉诺威</h2>
+<h2 id="沃尔夫斯堡">沃尔夫斯堡</h2>
+<p>大众总部。</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/hadoop_mapreduce/">Hadoop MapReduce</a></h2>
+                    <div class="post-meta">
+                        <time>May 3, 2017</time>
+                        
+                            
+                                <span class="category">BigData</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="map-reduce">Map-Reduce</h1>
+<p>一种基于YARN的大型数据并行处理系统．主要处理离线数据．</p>
+<hr>
+<h1 id="mapreduce-commands">mapreduce commands</h1>
+<pre><code>mapred [SHELL_OPTIONS] COMMAND [GENERIC_OPTIONS] [COMMAND_OPTIONS]
+</code></pre>
+<p>user commands:</p>
+<pre><code>$ mapred archive
+...
+</code></pre>
+<p>admin commands:</p>
+<pre><code>$ mapred historyserver
+
+$ mapred hsadmin
+</code></pre>
+<hr></p>
+                    
+                </li>
+            
+        </ul>
+    </section>
+    
+    
+        <a href="/page/24/">← Previous</a>
+    
+    
+        <a href="/page/26/">Next →</a>
+    
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Namespace - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="single-post">
+    <article>
+        <header>
+            <h1>Namespace</h1>
+            <div class="post-meta">
+                <time>April 5, 2018</time>
+                
+                    
+                        <span class="category">CNCF</span>
+                    
+                
+                
+                    
+                        <span class="tag">#container</span>
+                    
+                
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <h1 id="ns">NS</h1>
+<p>namespace 是 Linux 内核用来隔离内核资源的方式</p>
+<p>Linux namespace资源：</p>
+<ul>
+<li>Mount: 挂载点</li>
+<li>Network: 网络设备/协议栈/端口</li>
+<li>IPC: 进程间通信</li>
+<li>USR: 用户和用户组</li>
+<li>PID: 进程</li>
+<li>UTS: 主机名和域名</li>
+<li>Cgroup: 控制组</li>
+<li>Time</li>
+</ul>
+<h1 id="cgroup">Cgroup</h1>
+<p>Cgroup: Control Groups.是linux下用于对一个或一组进程资源控制和监控的机制.可以管理cpu, memory,diskIO 等资源.不同资源的具体管理工作由相应的cgrouup子系统来实现.</p>
+<p>cgroup在不同的系统资源管理子系统中以层级树(Hierarchy)的方式来组织管理, 每个cgroup可以包含其它子cgroup.</p>
+<pre><code>ls -l /sys/fs/cgroup
+</code></pre>
+<p>cgroup子系统:</p>
+<ul>
+<li>cpu</li>
+<li>cpuacct</li>
+<li>cpuset</li>
+<li>memory</li>
+<li>blkio</li>
+<li>devices</li>
+<li>freezer</li>
+<li>ns</li>
+<li>pid</li>
+<li>net_cls</li>
+<li>net_prio</li>
+</ul>
+<hr>
+<h1 id="lsns">lsns</h1>
+<p>查看系统的namespace</p>
+<p>ns类型: mnt, net, ipc, user, pid, uts, cgroup</p>
+<pre><code>$lsns -l
+$lsns -t net
+</code></pre>
+<h1 id="unshare">unshare</h1>
+<p>使用非共享的NS运行程序</p>
+<pre><code>// 创建unshare 的 ns类型.
+$unshare -f -m/-n/-i/-U/-p/-u/-C ... 
+
+// 在net类型的namespace执行sleep命令
+$unshare -fn sleep 10
+</code></pre>
+<h1 id="nsenter">nsenter</h1>
+<p>ns enter: Namespace enter.</p>
+<p>nsenter - run program with namespaces of other processes</p>
+<pre><code>$ nsenter [options] [program [arguments]]
+
+// 指定ns的目标进程，可以通过nsls查看.
+$ nsenter -t/--target  
+
+// 进入所有类型的ns.
+$ nsenter -a --all ...
+// 进入指定类型的ns
+$ nsenter -m/-u/-i/-n/-p/-C/-U ...
+
+// 进入指定ns的指定进程
+$ nsenter -t &lt;pid&gt; -n ip a
+
+$ nsenter -S/-G/-r/-w ...
+
+$ nsenter -F/--no-fork ...
+
+$ nsenter -Z/--follow-context ...
+</code></pre>
+
+        </div>
+    </article>
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

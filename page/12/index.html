@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="generator" content="Hugo 0.147.9">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morgoth - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="home">
+    <h1>Morgoth</h1>
+    <p></p>
+    
+    <section class="recent-posts">
+        <h2>Recent Posts</h2>
+        <ul class="post-list">
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/cncf_image/">Image</a></h2>
+                    <div class="post-meta">
+                        <time>December 3, 2019</time>
+                        
+                            
+                                <span class="category">CNCF</span>
+                            
+                                <span class="category">Storage</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="image">image</h1>
+<p>容器镜像</p>
+<p>docker image driver: aufs, btrfs, devicemapper, overlay.</p>
+<h2 id="multi-platform-images">multi-platform images</h2>
+<p><a href="https://docs.docker.com/build/building/multi-platform/">https://docs.docker.com/build/building/multi-platform/</a></p>
+<h3 id="qemu">qemu</h3>
+<p>使用qume:</p>
+<pre><code>// 安装bitfmt
+docker run --privileged --rm tonistiigi/binfmt --install all
+
+// 查看支持的平台
+ls -l /proc/sys/fs/binfmt_misc/qemu-*
+</code></pre>
+<h3 id="multiple-native-nodes">multiple native nodes</h3>
+<p>安装</p>
+<pre><code>// linux
+sudo apt install docker-buildx-plugin
+
+// mac
+brew install docker-buildx
+mkdir -p ~/.docker/cli-plugins
+ln -sfn $(which docker-buildx) ~/.docker/cli-plugins/docker-buildx
+docker buildx install
+</code></pre>
+<p>查看版本</p>
+<pre><code>docker buildx version
+</code></pre>
+<p>管理builder instance</p>
+<pre><code>docker buildx create
+--append 添加node到builder实例。
+--leave 从builder实例删除node
+--driver Driver to use(&quot;docker&quot;, &quot;docker-container&quot;, &quot;kubernetes&quot;)
+--name
+--use
+--node
+--platform 
+--bootstrap 启动实例（以容器的形式启动）
+
+// 以本地是amd64为例，创建一个实例.
+docker buildx create --use --bootstrap --platform linux/amd64,linux/amd64/v2,linux/amd64/v3,linux/arm64,linux/arm/v7,linux/arm/v6 --name canux-builder
+
+// 如果没有qumu，可以把不同平台的远程机器加到builder实例.
+docker buildx create \
+--name local_remote_builder \
+--append --node &lt;my-arm-server&gt; \
+--platform linux/arm64,linux/riscv64,linux/ppc64le,linux/s390x,linux/mips64le,linux/mips64,linux/arm/v7,linux/arm/v6 \
+ssh://user@&lt;my-arm-server&gt; 
+
+docker buildx rm
+
+docker buildx stop
+
+docker buildx inspect
+
+docker buildx use
+
+// 查看当前可用的builders
+docker buildx ls
+</code></pre>
+<p>构建多平台镜像</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/k8s_helm/">Helm</a></h2>
+                    <div class="post-meta">
+                        <time>September 5, 2019</time>
+                        
+                            
+                                <span class="category">CNCF</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="helm">Helm</h1>
+<p><a href="https://github.com/helm/helm">https://github.com/helm/helm</a></p>
+<p>helm2有两个组件:</p>
+<ul>
+<li>helm: 客户端</li>
+<li>tiller: 服务端(helm3被移除)</li>
+</ul>
+<p>概念:</p>
+<ul>
+<li>chart: helm包，包含运行一个应用所需的镜像，依赖和资源.</li>
+<li>repository: 用于发布和存储chart的仓库.</li>
+<li>release: 在k8s集群上运行的一个chart实例.</li>
+</ul>
+<p>repository有哪些:</p>
+<ul>
+<li>charts: OSS, public, 已经被artifacthub取代, <a href="https://github.com/helm/charts">https://github.com/helm/charts</a></li>
+<li>artifacthub: OSS, public,  <a href="https://artifacthub.io/">https://artifacthub.io/</a></li>
+<li>chartmuseum: OSS, private, self-host, <a href="https://github.com/helm/chartmuseum">https://github.com/helm/chartmuseum</a></li>
+<li>harbor: OSS, private, self-host.</li>
+<li>artifactory(jfrog): enterprise, private, self-host.</li>
+</ul>
+<h2 id="安装">安装</h2>
+<p>helm和kubectl一样，访问指定配置的k8s集群。</p>
+<p>helm2需要安装tiller并且执行helm init初始化,helm不需要tiller.</p>
+<p>本地二进制安装helm3+:</p>
+<pre><code>curl https://baltocdn.com/helm/signing.asc | sudo apt-key add -
+sudo apt-get install apt-transport-https --yes
+echo &quot;deb https://baltocdn.com/helm/stable/debian/ all main&quot; | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
+sudo apt-get update
+sudo apt-get install helm
+</code></pre>
+<h2 id="命令">命令</h2>
+<h3 id="repo管理">repo管理</h3>
+<p>查看有哪些repo,默认没有repo</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/k8s_cri/">K8S CRI</a></h2>
+                    <div class="post-meta">
+                        <time>June 5, 2019</time>
+                        
+                            
+                                <span class="category">CNCF</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="cri">CRI</h1>
+<p>CRI: Container Runtime Intarface</p>
+<p>定义了k8s和container runtime进行交互的接口.</p>
+<p>是k8s与container交互的标准.</p>
+<p><a href="https://kubernetes.io/zh/docs/setup/production-environment/container-runtimes/">https://kubernetes.io/zh/docs/setup/production-environment/container-runtimes/</a></p>
+<ul>
+<li>containerd</li>
+<li>cri-o</li>
+<li>rkt</li>
+<li>kata</li>
+<li>rancher</li>
+</ul>
+<hr>
+<h2 id="docker">docker</h2>
+<p>k8s_1.20 开始警告不再支持docker.</p>
+<p>k8s_1.23 开始移除dockershim.</p>
+<p>/var/run/dockerhsim.sock</p>
+<h2 id="containerd">containerd</h2>
+<p>/run/container/containerd.sock</p>
+<p><a href="https://github.com/containerd/containerd">https://github.com/containerd/containerd</a></p>
+<p>安装配置:</p>
+<p><a href="https://kubernetes.io/zh/docs/setup/production-environment/container-runtimes/#containerd">https://kubernetes.io/zh/docs/setup/production-environment/container-runtimes/#containerd</a></p>
+<h2 id="cri-o">CRI-O</h2>
+<p>redhat.</p>
+<p>/var/run/crio/crio.sock</p>
+<p><a href="https://github.com/cri-o/cri-o">https://github.com/cri-o/cri-o</a></p>
+<h2 id="kata">kata</h2>
+<p><a href="https://github.com/kata-containers/runtime">https://github.com/kata-containers/runtime</a></p>
+<h2 id="rkt">rkt</h2>
+<p>redhat(coreos)</p>
+<p><a href="https://github.com/rkt/rkt">https://github.com/rkt/rkt</a></p>
+<hr></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/virtualbox/">Virtualbox</a></h2>
+                    <div class="post-meta">
+                        <time>June 3, 2019</time>
+                        
+                            
+                                <span class="category">Virtualization</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="virtualbox">Virtualbox</h1>
+<p>虚拟化工具virtualbox.</p>
+<h1 id="vboxmanage">vboxmanage</h1>
+<p>vm</p>
+<pre><code>// 导入ova
+$ vboxmanage import win7.ova 
+
+// 添加host网络
+$ vboxmanage modifyvm &quot;win764&quot; --nic1 hostonly --hostonlyadapter1 vboxnet0
+// 添加bridge网络
+$ vboxmanage modifyvm &quot;Win732&quot; --nic2 bridged --bridgeadapter2 docker_gwbridge
+// 重命名vm
+$ vboxmanage modifyvm &lt;vm&gt; --name &lt;new-name&gt; 
+// 修改参数
+$ vboxmanage modifyvm &lt;vm&gt; --memory 4096 --cpus 4 --hwvirtex on --ioapic on
+
+// 启动虚拟机
+$ vboxmanage startvm &quot;Win732&quot;
+$ vboxmanage startvm &lt;vm&gt; --type headless 
+$ VBoxHeadless --startvm &lt;uuid|name&gt; --vrde on
+
+// 控制虚拟机
+$ vboxmanage controlvm &lt;vm&gt; pause/resume/reset/poweroff/savestate
+
+// 查看所有/运行虚拟机
+$ vboxmanage list vms/runningvms 
+
+// 删除vm
+$ vboxmanage unregistervm &lt;vm&gt; --delete
+
+// linux上执行命令
+$ vboxmanage guestcontrol {} --username {} --password {} run --exe /bin/bash -- -l -c 'pwd'
+
+// windows上执行命令
+$ vboxmanage guestcontrol {} --username 'Administrator' run --exe 'C:\\Program Files\\Oracle\\VirtualBox Guest Additions\\uninst.exe' -- uninst.exe /S
+</code></pre>
+<p>media</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/go_package/">Package</a></h2>
+                    <div class="post-meta">
+                        <time>April 23, 2019</time>
+                        
+                            
+                                <span class="category">Golang</span>
+                            
+                        
+                    </div>
+                    
+                </li>
+            
+        </ul>
+    </section>
+    
+    
+        <a href="/page/11/">← Previous</a>
+    
+    
+        <a href="/page/13/">Next →</a>
+    
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

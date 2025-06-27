@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rabbitmq - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="single-post">
+    <article>
+        <header>
+            <h1>Rabbitmq</h1>
+            <div class="post-meta">
+                <time>September 25, 2017</time>
+                
+                    
+                        <span class="category">Network</span>
+                    
+                
+                
+                    
+                        <span class="tag">#rabbitmq</span>
+                    
+                
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <h1 id="amqp">AMQP</h1>
+<p>AMQP: Advanced Message Queuing Protocol,高级消息队列协议</p>
+<p>常用的开源AMQP框架：</p>
+<p><a href="https://github.com/rabbitmq">https://github.com/rabbitmq</a></p>
+<p><a href="https://github.com/apache/kafka">https://github.com/apache/kafka</a></p>
+<p><a href="https://github.com/apache/activemq">https://github.com/apache/activemq</a></p>
+<h1 id="mqtt">MQTT</h1>
+<p>MQTT: Message Queuing Telemetry Transport,消息队列遥测传输协议</p>
+<hr>
+<h1 id="rabbitmq">Rabbitmq</h1>
+<p><a href="https://github.com/rabbitmq">https://github.com/rabbitmq</a></p>
+<p>RabbitMQ是一个erlang开发的符合AMQP和MQTT的开源项目．</p>
+<p>rabbitmq-server也叫broker server</p>
+<p>rabbitmq的三个组件：</p>
+<ul>
+<li>exchange,　交换器，发送消息的实体</li>
+<li>binding, 绑定器，连接交换器和队列，并且封装消息的路由信息</li>
+<li>queue,　队列，接受消息的实体</li>
+</ul>
+<p>workflow:</p>
+<pre><code>producer(publish-message) =&gt;
+
+rabbitmq-server =&gt; exchange -&gt; binding -&gt; queue =&gt;
+
+=&gt; comsumer
+</code></pre>
+<p>producer: 生产message并且publish到rabbitmq-server.</p>
+<p>consumer: 连接到rabbitmq-server并且subscribe一些queue.</p>
+<p>connection: producer和consumer都是通过tcp连接到rabbitmq-server.</p>
+<p>channels: 建立在tcp连接中的虚拟连接，用于处理数据流动.</p>
+<p>queue:　生产者和消费者都应该创建queue.(只能通过exchange接收message)</p>
+<p>exchanges类型:</p>
+<ul>
+<li>fanout: 所有绑定到此exchange的queue都可以接收消息</li>
+<li>direct: 通过routingKey和exchange决定的那个唯一的queue可以接收消息</li>
+<li>topic：所有符合routingKey(此时可以是一个表达式)的routingKey所bind的queue可以接收消息</li>
+</ul>
+<p>message类型:</p>
+<ul>
+<li>messages: 生产者产生的总消息数．</li>
+<li>messages_ready: 等待deliver给消费者的消息．</li>
+<li>messages_unack: 已经被consumer处理，但是没有被ack的消息．</li>
+</ul>
+<p>virtual hosts: 本质就是一个rabbitmq server,拥有独立的exchange,queue.默认是/(%2F).</p>
+<p>round-robin dispatch: 循环分发，按顺序分发message到consumer,如果message被consumer正确接收，就会从queue中移除．</p>
+<p>no-ack: 每次consumer接收数据后，不管是否处理完成，就标记为ack,然后从queue中删除．但是如果处理过程异常，数据就会丢失．</p>
+<p>ack: ack方式就是数据处理完成后发送ack,保证数据被处理再从queue删除，如果异常，会dispatch到别的consumer.</p>
+<p>durable: 消息持久化，如果rabbitmq-server异常退出或服务器重启，为了保证数据还在，需要做数据持久化.</p>
+<p>消息的状态信息：</p>
+<ul>
+<li>deliver: 消息投递给消费着．
+redeliver:　消息重新投递给消费者．</li>
+<li>publish/subscribe: 将同一个消息deliver到多个consumer叫publish或subscribe.</li>
+<li>ack: 已经处理完成的消息</li>
+</ul>
+<p>安装</p>
+<pre><code>$ sudo apt-get install rabbitmq-server
+</code></pre>
+<p>配置</p>
+<p>rabbitmq-3.7 开始配置文件格式为sysctl，同时也兼容旧的erlang格式。</p>
+<p>erlang格式：</p>
+<pre><code>[
+    {rabbit,
+        [
+            {heartbeat, 8000}
+        ]
+    }
+].
+</code></pre>
+<p>sysctl格式:</p>
+<pre><code>key = value
+</code></pre>
+<h2 id="rabbitmqctl-命令">rabbitmqctl 命令</h2>
+<pre><code>$ sudo rabbitmqctl [-n node] [-t timeout] [-q] &lt;commands&gt; [command options]
+</code></pre>
+<p>添加用户并授权：</p>
+<pre><code># 默认的guest/guest只能用于localhost.
+$ add_user [username] [password]
+$ delete_user &lt;username&gt;
+$ change_password &lt;username&gt; &lt;newpassword&gt;
+$ clear_password &lt;username&gt;
+$ set_user_tags [username] administrator
+$ list_users
+</code></pre>
+<p>权限管理:</p>
+<pre><code>add_vhost &lt;vhostpath&gt;
+delete_vhost &lt;vhostpath&gt;
+list_vhosts [&lt;vhostinfoitem&gt; ...]
+set_permissions [-p &lt;vhostpath&gt;] &lt;user&gt; &lt;conf&gt; &lt;write&gt; &lt;read&gt;
+clear_permissions [-p &lt;vhostpath&gt;] &lt;username&gt;
+list_permissions [-p &lt;vhostpath&gt;]
+list_user_permissions &lt;username&gt;
+
+list_queues [-p &lt;vhostpath&gt;] [&lt;queueinfoitem&gt; ...]
+list_exchanges [-p &lt;vhostpath&gt;] [&lt;exchangeinfoitem&gt; ...]
+list_bindings [-p &lt;vhostpath&gt;] [&lt;bindinginfoitem&gt; ...]
+list_connections [&lt;connectioninfoitem&gt; ...]
+list_channels [&lt;channelinfoitem&gt; ...]
+list_consumers [-p &lt;vhostpath&gt;]
+status
+environment
+report
+eval &lt;expr&gt;
+</code></pre>
+<h2 id="rabbitmq-plugins-插件管理">rabbitmq-plugins 插件管理</h2>
+<p>启动web-gui:</p>
+<pre><code>$ rabbitmq-plugins enable rabbitmq_management
+# http://localhost:15672 guest/guest
+</code></pre>
+<hr>
+<h1 id="haproxy">HAProxy</h1>
+<p>rabbitmq-cluster部署：</p>
+<ol>
+<li>
+<p>在所有node上安装rabbitmq-server.</p>
+</li>
+<li>
+<p>修改所有node的/etc/hosts，配置ip和hostname.</p>
+</li>
+<li>
+<p>同步所有node的cookie(/var/lib/rabbitmq/.erlang.cookie).</p>
+</li>
+<li>
+<p>启动所有node上的rabbitmq-server.</p>
+<pre><code> # rabbitmq-server -detached
+</code></pre>
+</li>
+<li>
+<p>将所有slave node添加manager组成cluster.</p>
+<pre><code> # rabbitmqctl stop_app
+ # rabbitmqctl reset
+ # rabbitmqctl join_cluster rabbit@manager
+ # rabbitmqctl start_app
+</code></pre>
+</li>
+<li>
+<p>检查cluster状态</p>
+<pre><code> # rabbitmqctl cluster_status
+</code></pre>
+</li>
+<li>
+<p>设置policy</p>
+<pre><code> # rabbitmqctl set_policy ha-all &quot;&quot; '{&quot;ha-mode&quot;:&quot;all&quot;,&quot;ha-sync-mode&quot;:&quot;automatic&quot;}'
+</code></pre>
+</li>
+</ol>
+<p>haproxy-server部署:</p>
+<ol>
+<li>
+<p>在haproxy server安装haproxy</p>
+</li>
+<li>
+<p>配置haproxy</p>
+<pre><code> # sudo vim /etc/haproxy/haproxy.cfg
+ global
+     log /dev/log    local0
+     log /dev/log    local1 notice
+     chroot /var/lib/haproxy
+     user haproxy
+     group haproxy
+     daemon
+ defaults
+     log     global
+     mode    tcp
+     maxconn 10000
+     timeout connect 3000
+     timeout client 1000s
+     timeout server 1000s
+ frontend rabbitmq_front
+     bind &lt;haproxy-ip&gt;:5672
+     reqadd X-Forwarded-Proto:\ amqp
+     default_backend rabbitmq_backend
+ backend rabbitmq_backend
+     balance roundrobin
+     server rabbitmq-master &lt;master-ip&gt;:5672 check
+     server rabbitmq-slave &lt;slave-ip&gt;:5672 check
+ bind 0.0.0.0:15672
+     server &lt;master-hostname&gt; &lt;master-ip&gt;:15672 check
+     server &lt;slave-hostname&gt; &lt;slave-ip&gt;:15672 check
+</code></pre>
+</li>
+<li>
+<p>重启haproxy service.</p>
+</li>
+</ol>
+<hr>
+<h1 id="celery">Celery</h1>
+<p><a href="https://github.com/celery">https://github.com/celery</a></p>
+<p>可用配置，django需要加namespace作为前缀。</p>
+<p><a href="https://docs.celeryproject.org/en/stable/userguide/configuration.html#new-lowercase-settings">https://docs.celeryproject.org/en/stable/userguide/configuration.html#new-lowercase-settings</a></p>
+<p>django中的celery配置</p>
+<pre><code>CELERY_BROKER_URL = &quot;amqp://user:pw@amqp:5672&quot;
+CELERY_ACCEPT_CONTENT = ['json']
+CELERY_RESULT_SERIALIZER = 'json'
+CELERY_EVENT_SERIALIZER = 'json'
+CELERY_TIMEZONE = 'UTC'
+CELERY_ENABLE_UTC = True
+CELERY_WORKER_PREFETCH_MULTIPLIER = 4
+CELERY_TASK_ACKS_LATE = False
+
+CELERY_TASK_SERIALIZER = 'json'
+CELERY_TASK_QUEUES = (
+    Queue('queue1', Exchange('exchange1', type='direct'), routing_key='default', queue_arguments={'x-max-priority': 100}),
+    Queue('queue2', Exchange('exchange2', type='direct'), routing_key='default', queue_arguments={'x-max-priority': 100}),
+)
+CELERY_TASK_DEFAULT_QUEUE = 'default'
+CELERY_TASK_DEFAULT_EXCHANGE = 'default'
+CELERY_TASK_DEFAULT_EXCHANGE_TYPE = 'direct'
+CELERY_TASK_DEFAULT_DELIVERY_MODE = 'persistent'
+CELERY_TASK_DEFAULT_ROUTING_KEY = 'default'
+CELERY_TASK_ROUTES = (
+    {
+        &quot;proj.app1.tasks.task1&quot;: {
+            &quot;queue&quot;: &quot;queue1&quot;,
+            &quot;routing_key&quot;: &quot;default&quot;
+        }
+    },
+    {
+        &quot;proj.app2.tasks.task2&quot;: {
+            &quot;queue&quot;: &quot;queue2&quot;,
+            &quot;routing_key&quot;: &quot;default&quot;
+        }
+    },
+)
+</code></pre>
+<p>在project中创建celery的app:</p>
+<pre><code>import os
+from celery import Celery
+
+# set the default Django settings module for the 'celery' program.
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'site_main.settings')
+
+app = Celery('proj')
+
+// namespace就会去django的配置找前缀为celery的参数.
+app.config_from_object('django.conf:settings', namespace='CELERY')
+
+app.autodiscover_tasks()
+</code></pre>
+<p>celery选项:</p>
+<pre><code>celery [options] command [args]
+
+-A, --app &lt;app&gt;¶
+-b, --broker &lt;broker&gt;
+--result-backend &lt;result_backend&gt;
+--loader &lt;loader&gt;
+--config &lt;config&gt;
+--workdir &lt;workdir&gt;
+-C, --no-color
+-q, --quiet
+--version
+</code></pre>
+<p>worker选项:</p>
+<pre><code>-n, --hostname
+-D, --detach
+-l, --loglevel
+-O default|fair
+// 默认的concurrency是cpu的个数，如果是container运行就是host的cpu个数，不是resourcelimit的cpu个数.
+-c, --concurrency
+// cpu密集型任务最好用prefork, IO密集最好用eventlet/gevent. 
+-P, --poo prefork(default)|eventlet|gevent|solo
+-E, --task-events, --events
+-Q, --queues
+-B, --beat
+</code></pre>
+<p>beat选项:</p>
+<pre><code>--detach
+-s, --schedule
+-S, --scheduler
+-l, --loglevel
+</code></pre>
+<p>inspect选项:</p>
+<pre><code>-t, --timeout
+-d, --destination
+-j, --json
+</code></pre>
+
+        </div>
+    </article>
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

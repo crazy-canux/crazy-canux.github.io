@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GSL_oop - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="single-post">
+    <article>
+        <header>
+            <h1>GSL_oop</h1>
+            <div class="post-meta">
+                <time>January 1, 2018</time>
+                
+                    
+                        <span class="category">Golang</span>
+                    
+                
+                
+                    
+                        <span class="tag">#oop</span>
+                    
+                
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <h1 id="reflect">reflect</h1>
+<h2 id="constants">constants</h2>
+<p>const:</p>
+<pre><code>const (
+    SelectSend
+    SelectRecv
+    SelectDefault
+)
+</code></pre>
+<h2 id="functions">functions</h2>
+<pre><code>// 将src拷贝到dst, 直到src被耗尽或dst被装满.
+func Copy(dst, src Value) int
+
+// 判断两个值是否深度一致
+func DeepEqual(a1, a2 interface{}) bool
+</code></pre>
+<h2 id="kind">Kind</h2>
+<p>表示Type类型值表示的具体分类.</p>
+<pre><code>type Kind uint
+
+const (
+    Invalid Kind = iota
+    Bool
+    Int
+    ...
+    Uint
+    ...
+    Float...
+    Complex...
+    Array
+    Chan
+    Func
+    Interface
+    Map
+    Ptr
+    Slice
+    String
+    Struct
+    UnsafePointer
+)
+</code></pre>
+<p>method:</p>
+<pre><code>func (k Kind) String() string
+</code></pre>
+<h2 id="stringheader">StringHeader</h2>
+<h2 id="sliceheader">SliceHeader</h2>
+<h2 id="structfield">StructField</h2>
+<h2 id="structtag">StructTag</h2>
+<h2 id="chandir">ChanDir</h2>
+<h2 id="selectdir">SelectDir</h2>
+<h2 id="selectcase">SelectCase</h2>
+<h2 id="method">Method</h2>
+<h2 id="type">Type</h2>
+<p>用来表示一个go类型.</p>
+<p>interface:</p>
+<pre><code>type Type interface {
+    Kind() Kind
+    Name() string
+    PkgPath() string
+    String() string
+    Size() uintptr
+    ...
+}
+</code></pre>
+<p>functions:</p>
+<pre><code>// 返回接口中保存的值的类型
+func TypeOf(i interface{}) Type
+
+// 返回类型t的指针的类型
+func PtrTo(t Type) Type
+
+// 返回类型t的slice的类型
+func SliceOf(t Type) Type
+
+// 返回一个键类型为key, 值类型为elem的map类型
+func MapOf(key, elem Type) Type
+
+// 返回元素类型为t, 方向为dir的chan类型
+func ChanOf(dir ChanDir, t Type) Type
+</code></pre>
+<h2 id="value">Value</h2>
+<p>为go值提供反射接口.</p>
+<p>struct:</p>
+<pre><code>type Value struct {}
+</code></pre>
+<p>functions:</p>
+<pre><code>// 返回一个接口i保存的具体值的Value
+func ValueOf(i interface{}) Value
+
+// 返回一个类型typ的零值的Value
+func Zero(typ Type) Value
+
+...
+</code></pre>
+<p>methods:</p>
+<pre><code>// 如果v是否持有值，如果v是Value零值，返回false.
+func (v Value) IsValid() bool
+
+func (v Value) IsNil() bool
+
+// 返回v持有值的分类，如果v是Value零值，返回Invalid
+func (v Value) Kind() Kind
+
+// 返回v持有的值的类型Type.
+func (v Value) Type() Type
+
+...
+</code></pre>
+<hr>
+
+        </div>
+    </article>
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

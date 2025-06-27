@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deploy - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="single-post">
+    <article>
+        <header>
+            <h1>Deploy</h1>
+            <div class="post-meta">
+                <time>September 27, 2016</time>
+                
+                    
+                        <span class="category">Django</span>
+                    
+                
+                
+                    
+                        <span class="tag">#deploy</span>
+                    
+                
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <h1 id="发布django项目">发布django项目</h1>
+<p>django内置一个轻量级web开发服务器。</p>
+<p>如果要发布django项目需要另外的操作。</p>
+<p>也可以发布到其它的云平台。</p>
+<p>一般通过wsgi或者asgi来部署.</p>
+<h2 id="deploy时django的设置">deploy时django的设置</h2>
+<p>settings.py中的设置：</p>
+<pre><code>ALLOWED_HOSTS = ['*']
+DEBUG = False
+</code></pre>
+<hr>
+<h1 id="wsgi-部署">WSGI 部署</h1>
+<h2 id="apache2--mod_wsgi">apache2 + mod_wsgi</h2>
+<p><a href="https://github.com/GrahamDumpleton/mod_wsgi">https://github.com/GrahamDumpleton/mod_wsgi</a></p>
+<p>mod_wsgi是C写的apache的模块，实现了兼容WSGI接口，用来部署python的web应用。</p>
+<p>作为apache2的模块安装</p>
+<pre><code># ubuntu/debian
+sudo aptitude install apache2 # 安装apache2
+sudo aptitude install libapache2-mod-wsgi # for python2
+sudo aptitude install libapache2-mod-wsgi-py3 # for python3
+
+# redhat/centos/fedora
+sudo yum install httpd2
+sudo yum install httpd-devel
+sudo yum install mod_wsgi
+</code></pre>
+<p>Ubuntu创建网站的配置文件/etc/apache2/sites-available/mysite.conf:</p>
+<p>Fedora创建网站的配置文件/etc/httpd/conf.d/mysite.conf:</p>
+<p>一般部署到web服务器，/home/user/修改为/var/www/<project-name>/</p>
+<pre><code># Include the project dir, can not inside VirtualHost section.
+WSGIPythonPath /home/user/mysite
+# If use virtualenv and named .venv
+# WSGIPythonPath /home/user/mysite:/home/user/mysite/.venv/lib/python2.7/site-packages
+
+&lt;VirtualHost *:80&gt;
+    ServerName localhost
+    # ServerName yoursite.domain
+    ServerAdmin canuxcheng@gmail.com
+
+    Alias /robots.txt /home/user/mysite/static/robots.txt
+    Alias /favicon.ico /home/user/mysite/static/favicon.ico
+
+    Alias /media/ /home/user/mysite/media/
+    Alias /static/ /home/user/mysite/static/
+
+    &lt;Directory /home/user/mysite/media&gt;
+    Required all granted
+    &lt;/Directory&gt;
+
+    &lt;Directory /home/user/mysite/static&gt;
+    Required all granted
+    &lt;/Directory&gt;
+
+    # If use daemon mode to run WSGI process.
+    WSGIDaemonProcess mysite python-path=/home/user/mysite
+    # If use virtualenv and named .venv
+    # WSGIDaemonProcess mysite python-path=/home/user/mysite:/home/user/mysite/.venv/lib/python2.7/site-packages
+    # WSGIProcessGroup mysite
+
+    WSGIScriptAlias / /home/user/mysite/mysite/wsgi.py
+
+    &lt;Directory /home/user/mysite/mysite&gt;
+    &lt;Files wsgi.py&gt;
+    Required all granted
+    &lt;/Files&gt;
+    &lt;/Directory&gt;
+
+    # check the log in /var/log/apache2/error_mysite.log or access_mysite.log
+    ErrorLog ${APACHE_LOG_DIR}/error_mysite.log
+    CustomLog ${APACHE_LOG_DIR}/access_mysite.log combined
+&lt;/VirtualHost&gt;
+</code></pre>
+<p>修改项目的wsgi.py:</p>
+<p>因为环境变量是进程范围的，在同一个进程运行多个站点会出问题，所以推荐多站点使用mod_wsgi的守护进程模式,也可以在单进程中覆盖DJANGO_SETTINGS_MODULE这个变量。</p>
+<pre><code>import os
+
+from django.core.wsgi import get_wsgi_application
+
+# If you have more than 1 django project you need to change this.
+# Or you can use daemon mode for WSGI process.
+# os.environ.setdefault(&quot;DJANGO_SETTINGS_MODULE&quot;, &quot;mysite.settings&quot;)
+os.environ[&quot;DIANGO_SETTINGS_MODULE&quot;] = &quot;mysite.settings&quot;
+application = get_wsgi_application()
+</code></pre>
+<p>修改项目的settings.py:</p>
+<p>ROOT表示存放位置，URL表示对应网址。</p>
+<pre><code>DEBUG = False
+
+ALLOWED_HOSTS = ['*']
+
+# Static files (CSS, JavaScript, Images)
+STATIC_URL = '/static/'
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+
+# Media files (upload files)
+MEDIA_URL = '/media/'
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+</code></pre>
+<p>收集静态文件和迁移：</p>
+<pre><code>$python manage.py makemigration
+$python mamage.py migrate
+$python manage.py collectstatic
+</code></pre>
+<p>设置权限：</p>
+<p>Ubuntu默认用户和组是www-data,Fedora默认用户和组是apache。</p>
+<pre><code>$cd /home/user
+$sudo chgrp www-data mysite
+$sudo chmod g+w mysite
+$sudo chgrp www-data mysite/db.sqlite3
+$sudo chmod g+w mysite/db.sqlite3
+$sudo chgrp -R www-data mysite/media/uploads
+$sudo chmod -R g+w mysite/media/uploads
+</code></pre>
+<p>Ubuntu激活网站：</p>
+<pre><code>$sudo a2ensite &lt;newsite&gt;
+$sudo service apache2 restart
+</code></pre>
+<p>Fedora激活网站：</p>
+<pre><code>$sudo systemctl restart  httpd
+</code></pre>
+<h2 id="uwsgi">uWSGI</h2>
+<p><a href="https://github.com/unbit/uwsgi">https://github.com/unbit/uwsgi</a></p>
+<p>C写的wsgi应用服务器。</p>
+<pre><code>$ python3 -m pip install uwsgi
+$ uwsgi --http :8000 --chdir /path/to/project --module mysite.wsgi
+</code></pre>
+<h2 id="gunicorn">Gunicorn</h2>
+<p><a href="https://github.com/benoitc/gunicorn">https://github.com/benoitc/gunicorn</a></p>
+<p>纯python写的WSGI服务器。</p>
+<pre><code>$ python3 -m pip install gunicorn
+$ gunicorn mysite.wsgi
+</code></pre>
+<hr>
+<h1 id="asgi">ASGI</h1>
+<h2 id="uvicorn">Uvicorn</h2>
+<pre><code>$ python -m pip install uvicorn gunicorn
+$ gunicorn myproject.asgi:application -k uvicorn.workers.UvicornWorker
+</code></pre>
+<h2 id="hypercorn">Hypercorn</h2>
+<pre><code>$ python -m pip install hypercorn
+$ hypercorn myproject.asgi:application
+</code></pre>
+<h2 id="daphne">Daphne</h2>
+<pre><code>$ python -m pip install daphne
+$ daphne myproject.asgi:application
+</code></pre>
+
+        </div>
+    </article>
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

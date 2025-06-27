@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cloud on Morgoth</title>
+    <link>https://canuxcheng.com/tags/cloud/</link>
+    <description>Recent content in Cloud on Morgoth</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 05 Apr 2016 22:02:31 +0000</lastBuildDate>
+    <atom:link href="https://canuxcheng.com/tags/cloud/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CloudComputing</title>
+      <link>https://canuxcheng.com/post/cloud_computing/</link>
+      <pubDate>Tue, 05 Apr 2016 22:02:31 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/cloud_computing/</guid>
+      <description>&lt;h1 id=&#34;cloudcomputing&#34;&gt;CloudComputing&lt;/h1&gt;&#xA;&lt;p&gt;IAAS: Infrastructure as a service&lt;/p&gt;&#xA;&lt;p&gt;PAAS: Platform as a service&lt;/p&gt;&#xA;&lt;p&gt;SAAS: Software as a service&lt;/p&gt;&#xA;&lt;h1 id=&#34;serverless&#34;&gt;Serverless&lt;/h1&gt;&#xA;&lt;p&gt;Faas: Function as a service.&lt;/p&gt;&#xA;&lt;p&gt;Baas: Backend as a service.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

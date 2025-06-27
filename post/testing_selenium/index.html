@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Selenium - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="single-post">
+    <article>
+        <header>
+            <h1>Selenium</h1>
+            <div class="post-meta">
+                <time>February 25, 2017</time>
+                
+                    
+                        <span class="category">DevOps</span>
+                    
+                
+                
+                    
+                        <span class="tag">#testing</span>
+                    
+                
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <h1 id="selenium">Selenium</h1>
+<p><a href="https://github.com/SeleniumHQ/selenium">https://github.com/SeleniumHQ/selenium</a></p>
+<p>用于基于浏览器的web应用的自动化测试工具集．</p>
+<pre><code>selenium1: deprecated.
+selenium2: 默认支持firefox&lt;=46. 支持python2.6+, python3.2+
+selenium3: 支持firefox47+, 所有浏览器都需要安装webdriver.支持python2.6+, python3.3+, 必须重启OS.
+</code></pre>
+<p>支持python, java, javascript等API.</p>
+<p>默认安装selenium3:</p>
+<pre><code>$ pip install selenium
+</code></pre>
+<p>selenium3需要安装相应浏览器的driver, 然后重启OS:</p>
+<p>selenium, driver, browser三个版本都需要兼容才能工作．</p>
+<pre><code>winfows放在C:\Python\Scripts\
+linux放在/usr/local/bin/
+</code></pre>
+<p><a href="https://sites.google.com/a/chromium.org/chromedriver/downloads">https://sites.google.com/a/chromium.org/chromedriver/downloads</a></p>
+<p><a href="https://github.com/mozilla/geckodriver/releases">https://github.com/mozilla/geckodriver/releases</a></p>
+<p>[Deprecated] Remote Control: 也就是selenium1.selenium2依然保留了selenium1的API.但是selenium3会彻底删除RC的API.</p>
+<p>[Deprecated] IDE: selenium IDE是一个firefox的插件，用于记录浏览器上的测试步骤，能用于生成测试代码，并且转换成编程语言．但是已经被WebDriver取代．</p>
+<hr>
+<h1 id="webdriver">WebDriver</h1>
+<p>也就是selenium2.已经取代了selenium RC和selenium IDE.</p>
+<p>python的API参考python博客．</p>
+<hr>
+<h1 id="grid">Grid</h1>
+<p>Selenium Grid用于分布式测试</p>
+<hr>
+<h1 id="定位元素">定位元素</h1>
+<p>对应的python的API参考python博文．</p>
+<p>selenium提供８种定位web页面中元素的方法：</p>
+<ul>
+<li>id</li>
+<li>name</li>
+<li>class</li>
+<li>tag</li>
+<li>link</li>
+<li>partial_link</li>
+<li>通过xpath</li>
+<li>通过css</li>
+</ul>
+<p>在浏览器通过F12快捷键进入调试模式获取．</p>
+
+        </div>
+    </article>
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Apache - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="single-post">
+    <article>
+        <header>
+            <h1>Apache</h1>
+            <div class="post-meta">
+                <time>September 27, 2016</time>
+                
+                    
+                        <span class="category">Network</span>
+                    
+                
+                
+                    
+                        <span class="tag">#apache</span>
+                    
+                
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <h1 id="apache">Apache</h1>
+<p><a href="https://github.com/apache/httpd">https://github.com/apache/httpd</a></p>
+<p><a href="http://httpd.apache.org/">http://httpd.apache.org/</a></p>
+<p>ubuntu/debian：</p>
+<pre><code>sudo aptitude install apache2
+</code></pre>
+<p>redhat/centos/fedora:</p>
+<pre><code>$ sudo yum install httpd2
+</code></pre>
+<p>启动服务器：</p>
+<pre><code>service apache2 start
+</code></pre>
+<p>启动浏览器查看：</p>
+<pre><code>http://localhost:80
+</code></pre>
+<hr>
+<h1 id="apache命令">apache命令</h1>
+<p>apache2ctl:</p>
+<pre><code>// 检查配置
+$ apache2ctl configtest
+</code></pre>
+<p>a2ensite</p>
+<pre><code>// 启用一个站点
+$ sudo a2ensite &lt;site&gt;
+</code></pre>
+<p>a2dissite</p>
+<pre><code>$ sudo a2dissite &lt;site&gt;
+</code></pre>
+<p>a2enmod</p>
+<pre><code>// 启用一个模块
+$ sudo a2enmod &lt;mod&gt;
+</code></pre>
+<p>a2dismod</p>
+<pre><code>$ sudo a2dismod &lt;mod&gt;
+</code></pre>
+<h1 id="配置">配置</h1>
+<p>配置站点site-enable/site.conf:</p>
+<pre><code>&lt;VirtualHost *:8080&gt;
+    ServerAdmin webmaster@localhost
+    DocumentRoot /opt
+
+    # 适合多目录
+    Alias /qa /opt/qa
+    Alias /dev /opt/dev
+
+    ErrorLog ${APACHE_LOG_DIR}/error.log
+    CustomLog ${APACHE_LOG_DIR}/access.log combined
+&lt;/VirtualHost&gt;
+</code></pre>
+<p>修改权限apache2.conf:</p>
+<pre><code>&lt;Directory /opt/qa&gt;
+    Options Indexes FollowSymLinks
+    AllowOverride None
+    Require all granted
+&lt;/Directory&gt;
+
+&lt;Directory /opt/dev&gt;
+    Options Indexes FollowSymLinks
+    AllowOverride None
+    Require all granted
+&lt;/Directory&gt;
+</code></pre>
+<p>修改端口ports.conf:</p>
+<pre><code>Listen 8080
+&lt;IfModule ssl_module&gt;
+        Listen 4433
+&lt;/IfModule&gt;
+&lt;IfModule mod_gnutls.c&gt;
+        Listen 4433
+&lt;/IfModule&gt;
+</code></pre>
+<p>配置ssl和basic auth</p>
+<pre><code># 安装创建账号的工具
+sudo apt-get install apache2-utils
+
+创建账号
+sudo htpasswd -c /etc/apache2/.htpasswd user
+sudo htpasswd /etc/apache2/.htpasswd another_user
+</code></pre>
+<p>启用依赖的模块:</p>
+<pre><code>cd /etc/apache2/mods-enabled
+ln -sf ../mods-available/rewrite.load rewrite.load
+ln -sf ../mods-available/ssl.conf ssl.conf
+ln -sf ../mods-available/ssl.load ssl.load
+#ln -sf ../mods-available/slotmem_shm.load slotmem_shm.load
+#ln -sf ../mods-available/socache_shmcb.load socache_shmcb.load
+</code></pre>
+<p>修改site-avaliable/site.conf</p>
+<pre><code>&lt;VirtualHost *:80&gt;
+    ServerAdmin webmaster@localhost
+    DocumentRoot /var/www
+
+    // 将http重定向到https, 如果注释掉，http和https都可以访问.
+    RewriteEngine on
+    RewriteCond %{SERVER_PORT} !^443$
+    RewriteRule ^/(.*) https://%{HTTP_HOST}/$1 [NC,R=301,L]
+
+    LogLevel warn
+    ErrorLog /var/log/apache2/error.log
+    CustomLog /var/log/apache2/access.log combined
+&lt;/VirtualHost&gt;
+
+&lt;VirtualHost *:443&gt;
+    ServerAdmin webmaster@localhost
+    DocumentRoot /var/www
+
+    // 开启ssl
+    SSLEngine on
+    SSLCertificateFile &quot;/etc/apache2/user.domain.com.crt&quot;
+    SSLCertificateKeyFile &quot;/etc/apache2/user.domain.com.key&quot;
+    BrowserMatch &quot;MSIE [2-6]&quot; nokeepalive ssl-unclean-shutdown downgrade-1.0 force-response-1.0
+    BrowserMatch &quot;MSIE [17-9]&quot; ssl-unclean-shutdown
+
+    // 开启basic auth.
+    &lt;Directory &quot;/var/www&quot;&gt;
+        AuthType Basic
+        AuthName &quot;Restricted Content&quot;
+        AuthUserFile /etc/apache2/.htpasswd
+        Require valid-user
+    &lt;/Directory&gt;
+
+    LogLevel warn
+    ErrorLog /var/log/apache2/error.log
+    CustomLog /var/log/apache2/access.log combined
+&lt;/VirtualHost&gt;
+</code></pre>
+
+        </div>
+    </article>
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

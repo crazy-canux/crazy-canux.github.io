@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>View on Morgoth</title>
+    <link>https://canuxcheng.com/tags/view/</link>
+    <description>Recent content in View on Morgoth</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 04 Oct 2016 04:20:39 +0000</lastBuildDate>
+    <atom:link href="https://canuxcheng.com/tags/view/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>View</title>
+      <link>https://canuxcheng.com/post/django_view/</link>
+      <pubDate>Tue, 04 Oct 2016 04:20:39 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/django_view/</guid>
+      <description>&lt;h1 id=&#34;viewspy&#34;&gt;views.py&lt;/h1&gt;&#xA;&lt;pre&gt;&lt;code&gt;from django.shortcuts import render&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;定义自己的视图函数：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;from django.http import HttpResponse&#xA;from django.template import RequestContext, loader&#xA;&#xA;# 导入模板中的类&#xA;from .models import Question&#xA;&#xA;def index(request):&#xA;    ...&#xA;    t = loader.get_template(&#39;application/index.html&#39;)&#xA;    c = RequestContext(request, {&#39;foo&#39;: &#39;bar&#39;})&#xA;    return HttpResponse(t.render(c), content_type=&amp;quot;text/html&amp;quot;)&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;当请求一个页面时django会建立一个包含请求元数据的HttpRequest对象，当django加载对应视图时，这个对象作为视图第一个参数。&lt;/p&gt;&#xA;&lt;p&gt;每个视图会返回一个HttpResponse对象。&lt;/p&gt;&#xA;&lt;p&gt;每个视图函数都用HttpRequest对象（通常用request）作为第一个参数。&lt;/p&gt;&#xA;&lt;p&gt;每个视图函数都返回一个HttpResponse对象，包含生成的响应。&lt;/p&gt;&#xA;&lt;p&gt;HttpRquest和HttpResponse在django.http包中，参考：&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://python.usyiyi.cn/documents/django_182/ref/request-response.html&#34;&gt;http://python.usyiyi.cn/documents/django_182/ref/request-response.html&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;HttpRequest对象属性：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;request.scheme # http/https&#xA;request.body&#xA;request.path&#xA;request.path_info&#xA;request.method # GET/POST&#xA;request.encoding&#xA;request.user&#xA;request.session&#xA;request.urlconf&#xA;request.GET&#xA;request.POST&#xA;request.REQUEST&#xA;request.COOKIES&#xA;request.FILES&#xA;request.META&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;HttpRequest对象方法：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;request.get_host()&#xA;...&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;HttpResponse对象属性：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;response.content&#xA;response.charset&#xA;response.status_code&#xA;response.reason_phrase&#xA;response.streaming&#xA;response.closed&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;HttpResponse对象的方法：&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

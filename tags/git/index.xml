@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Git on Morgoth</title>
+    <link>https://canuxcheng.com/tags/git/</link>
+    <description>Recent content in Git on Morgoth</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 02 Apr 2016 21:11:33 +0000</lastBuildDate>
+    <atom:link href="https://canuxcheng.com/tags/git/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Git</title>
+      <link>https://canuxcheng.com/post/devops_git/</link>
+      <pubDate>Sat, 02 Apr 2016 21:11:33 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/devops_git/</guid>
+      <description>&lt;h1 id=&#34;git&#34;&gt;Git&lt;/h1&gt;&#xA;&lt;p&gt;GIT: 分布式版本控制系统。&lt;/p&gt;&#xA;&lt;p&gt;SVN: subversion并发式版本控制系统。&lt;/p&gt;&#xA;&lt;p&gt;Mercurial: hg分布式版本控制。&lt;/p&gt;&#xA;&lt;p&gt;和git相关的产品：&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;github&lt;/li&gt;&#xA;&lt;li&gt;bitbucket&lt;/li&gt;&#xA;&lt;li&gt;sourceForge&lt;/li&gt;&#xA;&lt;li&gt;gitlab&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;Git安装：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ sudo apt-get install git&#xA;$ yum install git&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h1 id=&#34;git-config-git配置&#34;&gt;git config (Git配置)&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://git-scm.com/book/zh/v2&#34;&gt;https://git-scm.com/book/zh/v2&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;git配置文件：&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;/etc/gitconfig 系统级的配置文件，通过git config &amp;ndash;system设置&lt;/li&gt;&#xA;&lt;li&gt;~/.gitconfig 用户级的配置文件，通过git config &amp;ndash;global设置&lt;/li&gt;&#xA;&lt;li&gt;.git/config 仓库级的配置文件，通过git config &amp;ndash;local设置&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;git配置：&lt;/p&gt;&#xA;&lt;p&gt;使用git config &amp;ndash;global命令配置,或者直接修改~/.gitconfig文件。&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;# 查看帮助&#xA;git help config&#xA;man git-config&#xA;git config --help&#xA;git config -l/--list # 查看所有配置&#xA;git config --system&#xA;git config --global&#xA;git config --local&#xA;git config --global user.name &amp;quot;your_name&amp;quot;&#xA;git config --global user.email &amp;quot;your_email&amp;quot;&#xA;git config --global core.editor vim&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;多配置文件：&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

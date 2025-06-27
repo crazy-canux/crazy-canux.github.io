@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grafana - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="single-post">
+    <article>
+        <header>
+            <h1>Grafana</h1>
+            <div class="post-meta">
+                <time>January 12, 2017</time>
+                
+                    
+                        <span class="category">DevOps</span>
+                    
+                
+                
+                    
+                        <span class="tag">#monitoring</span>
+                    
+                
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <h1 id="grafana">Grafana</h1>
+<p>The tool for beautiful monitoring and metric analytics &amp; dashboards for Graphite, InfluxDB &amp; Prometheus &amp; More.</p>
+<p><a href="https://github.com/grafana/grafana">https://github.com/grafana/grafana</a></p>
+<p>支持多种data source:</p>
+<p>graphite/influxdb/opentsdb/premetheus/elasticsearch/mysql/postgresql</p>
+<p>安装配置参考官方文档</p>
+<p>grafana配置文件是grafana.ini.</p>
+<hr>
+<h1 id="http-api">HTTP API</h1>
+<pre><code>port = 3000
+</code></pre>
+<h2 id="dashboard">dashboard</h2>
+<p>create/update dashboard:</p>
+<p>将datasource设置成变量，然后导出的json文件就可以直接导入了．</p>
+<p>dashboard.id=null才能创建新dashboard.</p>
+<pre><code>post /api/dashboards/db
+data = json.dumps({
+    &quot;dashboard&quot;: {
+        &quot;id&quot;: null,
+        ...
+    },
+    &quot;folderId&quot;: 0,
+    &quot;overwrite&quot;: True, # True for python, true for go.
+    &quot;message&quot;: &quot;commit message&quot;
+})
+</code></pre>
+<h2 id="datasource">datasource</h2>
+<p>create datasource:</p>
+<pre><code>post /api/datasources
+data = json.dumps({
+    &quot;name&quot;:
+    &quot;type&quot;:
+    &quot;url&quot;:
+    &quot;database&quot;:
+    &quot;access&quot;: &quot;proxy&quot;
+})
+</code></pre>
+<h2 id="alert">alert</h2>
+<p>create alert notification/channel:</p>
+<pre><code>post /api/alert-notifications
+data = json.dumps({
+    &quot;name&quot;:
+    &quot;type&quot;: &quot;email&quot;,
+    &quot;isDefault&quot;: true,
+    &quot;settings&quot;: {
+        &quot;addresses&quot;: &quot;a.com; b.com&quot;,
+        &quot;uploadImage&quot;: true
+    }
+})
+</code></pre>
+<hr>
+<h1 id="dashboard-1">Dashboard</h1>
+<p>graph</p>
+<p>singlestat</p>
+<p>table</p>
+<p>text</p>
+<p>heatmap</p>
+<p>alertlist</p>
+<h2 id="templating">templating</h2>
+<p>定义变量：</p>
+<pre><code>show tag values with key='host'
+# 设置在dashboard加载时更新
+</code></pre>
+<p>在templating中定义变量, query中使用的两种方式:</p>
+<pre><code>$varname
+select * from cpu where 'host' =~ /^$host$/
+[[varname]]
+select * from cpu where 'host' =~ /^[[host]]&amp;/
+</code></pre>
+<p>内置变量：</p>
+<pre><code>$_interval  # 相当于influxdb里面的$interval，表示group by的时间间隔
+$timeFilter/$_timeFilter    # time &gt; now() - &lt;time range&gt;
+</code></pre>
+<p>panel里的变量：</p>
+<pre><code>$col         给select出来的field取别名
+$tag_host
+</code></pre>
+<h2 id="annotations">Annotations</h2>
+<hr>
+<h1 id="alerting">Alerting</h1>
+<p>email需要安装配置SMTP,推荐使用sendmail.</p>
+<p>alert发出去的图片或连接打不开：</p>
+<pre><code>$ vim /etc/grafana/grafana.ini
+  [server]
+  domain=
+  root_url=
+</code></pre>
+<p>grafana4.6.2只有graph panel支持alert, singlestat 和 table暂不支持．</p>
+<p>conditions暂不支持template variables.</p>
+<hr>
+<h1 id="plugins">plugins</h1>
+<p>默认安装路径：</p>
+<pre><code>/var/lib/grafana/plugins
+</code></pre>
+<p>命令：</p>
+<pre><code># 查看已经安装的plugin
+$ sudo grafana-cli plugins list-remote
+$ sudo grafana-cli plugins install &lt;plugin-id&gt; &lt;version&gt;
+
+# 查看安装的plugin
+$ sudo grafana-cli plugins ls
+
+# 删除plugin
+$ sudo grafana-cli plugins remove &lt;plugin-id&gt;
+</code></pre>
+<hr>
+<h1 id="enable-https">enable https</h1>
+<pre><code>$ vim /etc/grafana/grafana.ini
+protocol=https
+cert-file=file.crt
+key-file=file.key
+</code></pre>
+<h1 id="provisioning">Provisioning</h1>
+<p><a href="https://grafana.com/docs/administration/provisioning/#provisioning-grafana">https://grafana.com/docs/administration/provisioning/#provisioning-grafana</a></p>
+<p>datasource</p>
+<pre><code>$ vim /etc/grafana/provisioning/datasources/datasource.yaml
+- name: MAF
+    type: influxdb
+    access: proxy
+    url: http://influxdb-service:8086
+    database: sandbox
+    isDefault: true
+    editable: true
+</code></pre>
+<p>dashboard</p>
+<pre><code>$ vim /etc/grafana/provisioning/dashboards/dashboard.yaml
+apiVersion: 1
+providers:
+- name: 'default'
+orgId: 1
+folder: ''
+type: file
+disableDeletion: false
+editable: true
+updateIntervalSeconds: 600
+options:
+    path: /etc/grafana/dashboards
+</code></pre>
+
+        </div>
+    </article>
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

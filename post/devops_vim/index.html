@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vim - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="single-post">
+    <article>
+        <header>
+            <h1>Vim</h1>
+            <div class="post-meta">
+                <time>April 2, 2016</time>
+                
+                    
+                        <span class="category">DevOps</span>
+                    
+                
+                
+                    
+                        <span class="tag">#vim</span>
+                    
+                
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <h1 id="vim">vim</h1>
+<p><a href="http://www.vim.org">http://www.vim.org</a></p>
+<p><a href="https://github.com/vim/vim">https://github.com/vim/vim</a></p>
+<p>类似编辑器:</p>
+<ul>
+<li>emacs</li>
+<li>Atom(github的开源跨平台编辑器，支持插件。)</li>
+<li>VSCode(微软的开源跨平台的编辑器，支持插件。)</li>
+</ul>
+<h1 id="vim安装和配置">Vim安装和配置</h1>
+<p>查看vim版本和编译信息：</p>
+<pre><code>vim --version
+</code></pre>
+<p>安装vim：</p>
+<pre><code>$ sudo apt-get install vim
+$ yum install vim
+</code></pre>
+<p>源码安装vim：</p>
+<pre><code>$ sudo apt-get build-dep vim
+$ cd vim/src
+
+$ ./configure \
+--with-features=huge \
+--with-compiledby=&quot;Canux&quot; \
+--enable-multibyte \
+--enable-gui=gtk2 \
+--enable-gpm \
+--prefix=/usr \
+--enable-cscope \
+--enable-fontset \
+--enable-xim \
+--enable-fail-if-missing \
+--enable-mzschemeinterp \
+--enable-perlinterp \
+--enable-luainterp \
+--enable-tclinterp\
+--enable-rubyinterp \
+--enable-pythoninterp \
+--with-python-config-dir=/usr/lib/python2.7/config-x86_64-linux-gnu \
+--enable-python3interp \
+--with-python3-config-dir=/usr/lib/python3.4/config-3.4m-x86_64-linux-gnu
+
+$ make VIMRUNTIMEDIR=/usr/share/vim/vim74
+$ sudo make install
+</code></pre>
+<hr>
+<h1 id="vim相关项目">Vim相关项目</h1>
+<h2 id="neovim">neovim</h2>
+<p><a href="https://github.com/neovim/neovim">https://github.com/neovim/neovim</a></p>
+<p>vim的升级版，修复了vim的bug，同时集成了许多插件。</p>
+<h2 id="spacevim">spacevim</h2>
+<p><a href="https://github.com/SpaceVim/SpaceVim">https://github.com/SpaceVim/SpaceVim</a></p>
+<p>更高效的vim.</p>
+<h2 id="sp13">sp13</h2>
+<p>分布式vim。</p>
+<p><a href="https://github.com/spf13/spf13-vim">https://github.com/spf13/spf13-vim</a></p>
+<h2 id="vim-galore">vim-galore</h2>
+<p><a href="https://github.com/mhinz/vim-galore">https://github.com/mhinz/vim-galore</a></p>
+<p>vim的知识库．</p>
+<h2 id="vimrc">vimrc</h2>
+<p>vim的终极配置．</p>
+<p><a href="https://github.com/amix/vimrc">https://github.com/amix/vimrc</a></p>
+<hr>
+<h1 id="vim常见用法和特殊用法">vim常见用法和特殊用法</h1>
+<p>vim的三种模式：</p>
+<pre><code>v    # 视觉模式
+i    # 插入模式
+esc  # 普通模式
+</code></pre>
+<p>常用命令:</p>
+<pre><code>:    # 进入命令行
+:help # 查看帮助
+:q
+:q!
+:qa
+:w
+:n1, n2 w
+:wq
+:x
+
+# 常用设置
+:set mouse=a # enable mouse
+:set list    # 查看tab键
+:set nolist
+:set nu
+:set nonu
+:! [shell-command]   # 可以运行外部命令
+
+# 替换
+:s/old/new    # 替换第一个
+:ns/old/new/g    # 替换行n
+:n1,n2s/old/new/g    # 替换n1-n2之间的全部
+:%s/old/new/g    # 替换整个文件
+:%s/old/new/gc    # 替换整个文件，弹出提示
+:%/^/inseart/g    # 行首插入
+:%/$/inseart/g    # 行尾插入
+
+# 删除
+:g/pattern/d    # 删除匹配的行
+:n1,n2g/pattern/d    # 删除n1-n2中匹配的行
+:v/pattern/d    # 删除不匹配的行
+:n1,n2d    # 删除n1-n2行
+:%s/^\s\+//g    # 删除行首空格
+:%s/\s\+$//g    # 删除行尾空格
+:1,$d    # 删除所有行，包括行号
+:%s/^.*$//g    # 清空内容，保留行号
+</code></pre>
+<p>常用快捷键：</p>
+<pre><code># 左右跳转快捷键
+n h    # left
+n l    # right
+0      # 跳转到一行的首字母
+^      # 跳转到一行的非空首字母
+n $    # 跳转一行的结尾
+
+# 上下跳转快捷键
+n k    # up
+n j    # down
+n G  # 跳转到行号n, 默认最后一行
+n gg # 同上，默认第一行
+
+# 文本移动(向前就是向右，向后就是向左)
+n w     # 向前移动n个单词
+n W     # 向前移动n个空格分割的单词
+n e     # 跳转到最后第n个单词
+n E     # 跳转到以空格分割的最后地n个单词
+n b     # 向后n个单词
+n B     # 向后n个单词，以空格分割
+
+# 模式匹配
+N  /{pattern}[/[offset]]&lt;CR&gt; # 向后查找N个匹配
+N  ?{pattern}[?[offset]]&lt;CR&gt; # 向前查找N个匹配
+N n # 向后查看
+N N # 向前查看
+
+# 大小写转换
+~    # 单个字符相互转换
+U    # 转换成大些
+u    # 转换成小写
+g~~    # 转换当前行大小写
+:%s/./\U&amp;/g    # 全文改成大些
+</code></pre>
+<p>特殊字符处理：</p>
+<pre><code># 查看特殊字符，字符编码和二合字母
+:digraphs
+:h digraph-table
+# 直接使用字符编码,插入模式下输入
+&lt;ctrl-v&gt; + &lt;dec&gt;
+# 使用二合字母，插入模式下输入
+&lt;ctrl-k&gt; + &lt;digraph&gt;
+</code></pre>
+<hr>
+<h1 id="vim-plugins-manager">vim-plugins-manager</h1>
+<p>vim的插件管理器</p>
+<h2 id="pathogen">pathogen</h2>
+<p><a href="https://github.com/tpope/vim-pathogen">https://github.com/tpope/vim-pathogen</a></p>
+<p>vim的本地管理插件。</p>
+<h2 id="vundle">vundle</h2>
+<p><a href="https://github.com/VundleVim/Vundle.vim">https://github.com/VundleVim/Vundle.vim</a></p>
+<p>vim的在线管理插件。</p>
+<h2 id="vim-plug">vim-plug</h2>
+<p><a href="https://github.com/junegunn/vim-plug">https://github.com/junegunn/vim-plug</a></p>
+<p>vundle的迷你版。</p>
+<h2 id="dein">dein</h2>
+<p>dein已经取代neobundle, 可以用于vim和neovim。</p>
+<p>旧版本：</p>
+<p><a href="https://github.com/Shougo/neobundle.vim">https://github.com/Shougo/neobundle.vim</a></p>
+<p>新版本：</p>
+<p><a href="https://github.com/Shougo/dein.vim">https://github.com/Shougo/dein.vim</a></p>
+<hr>
+<h1 id="vim-plugins">vim-plugins</h1>
+<p>vim常用的插件</p>
+<h2 id="ycm">YCM</h2>
+<h2 id="syntastic">syntastic</h2>
+<hr>
+<h1 id="常用情景">常用情景</h1>
+<p>vim内部使用sudo保存:</p>
+<pre><code>:w !sudo tee %
+</code></pre>
+
+        </div>
+    </article>
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Pelican on Morgoth</title>
+    <link>https://canuxcheng.com/tags/pelican/</link>
+    <description>Recent content in Pelican on Morgoth</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 01 Apr 2013 12:49:49 +0000</lastBuildDate>
+    <atom:link href="https://canuxcheng.com/tags/pelican/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Pelican</title>
+      <link>https://canuxcheng.com/post/pelican/</link>
+      <pubDate>Mon, 01 Apr 2013 12:49:49 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/pelican/</guid>
+      <description>&lt;h1 id=&#34;pelican&#34;&gt;Pelican&lt;/h1&gt;&#xA;&lt;p&gt;python开发的静态站点生成器.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://blog.getpelican.com/&#34;&gt;http://blog.getpelican.com/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/getpelican/pelican&#34;&gt;https://github.com/getpelican/pelican&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://pelican-docs-zh-cn.readthedocs.io/en/latest/getting_started.html&#34;&gt;http://pelican-docs-zh-cn.readthedocs.io/en/latest/getting_started.html&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://pelican-zh.readthedocs.io/en/latest/zh-cn/&#34;&gt;http://pelican-zh.readthedocs.io/en/latest/zh-cn/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;搭建博客&#34;&gt;搭建博客&lt;/h1&gt;&#xA;&lt;p&gt;创建环境:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$mkdir blog_pelican&#xA;$cd blog_pelican&#xA;$virtualenv .venv&#xA;$source .venv/bin/activate&#xA;$pip install pelican&#xA;$pip install markdown&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;创建pelican项目:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$pelican-quickstart&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;生成下列文件和目录:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;publishconf.py # 主配置文件&#xA;pelicanconf.py # 发布的配置文件&#xA;fabfile.py # fabric配置文件&#xA;Makefile   # make配置文件&#xA;develop_server.sh # 用于开启测试服务器&#xA;content # 用于存放所有文章&#xA;output # 静态生成文件&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h1 id=&#34;发布站点&#34;&gt;发布站点&lt;/h1&gt;&#xA;&lt;p&gt;pelican部署博客:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;# 将rst或md格式转换成html,默认导入到output.&#xA;$pelican content&#xA;$pelican content -s pelicanconf.py&#xA;&#xA;# 启动web服务器预览&#xA;$cd output&#xA;$python -m pelican.server&#xA;$python2.7 -m SimpleHTTPServer&#xA;$python3 -m http.server&#xA;$firefox http://localhost:8000/&#xA;&#xA;# 部署站点&#xA;# 一般publishconf.py导入pelicanconf.py即可，配置一样．&#xA;$pelican content -s publishconf.py&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;fabric部署博客:&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

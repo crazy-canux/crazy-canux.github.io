@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Powershell on Morgoth</title>
+    <link>https://canuxcheng.com/tags/powershell/</link>
+    <description>Recent content in Powershell on Morgoth</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 26 Apr 2016 09:52:02 +0000</lastBuildDate>
+    <atom:link href="https://canuxcheng.com/tags/powershell/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>PowerShell</title>
+      <link>https://canuxcheng.com/post/ps/</link>
+      <pubDate>Tue, 26 Apr 2016 09:52:02 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/ps/</guid>
+      <description>&lt;h1 id=&#34;powershell&#34;&gt;PowerShell&lt;/h1&gt;&#xA;&lt;p&gt;Console: command line interface&lt;/p&gt;&#xA;&lt;p&gt;ISE: script editor and console combination&lt;/p&gt;&#xA;&lt;p&gt;Version:&lt;/p&gt;&#xA;&lt;p&gt;2.0,3.0,4.0,5.0&lt;/p&gt;&#xA;&lt;p&gt;C:\Windows\System32\powershell 存放64位powershell&lt;/p&gt;&#xA;&lt;p&gt;C:\Windows\SysWOW64\powershell 存放32位powershell&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;&amp;gt;$PSVersionTable&#xA;&amp;gt;$HOST&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;Install/Update:&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.microsoft.com/zh-CN/download/details.aspx?id=40855&#34;&gt;https://www.microsoft.com/zh-CN/download/details.aspx?id=40855&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;安装Windows Management Framework4.0即可。&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;&amp;gt;$PSHOME&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;多版本时切换版本:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;&amp;gt;powershell -version 2&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;powershell相关项目&#34;&gt;powershell相关项目&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/Microsoft&#34;&gt;https://github.com/Microsoft&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/PowerShell&#34;&gt;https://github.com/PowerShell&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/PowerShellOrg&#34;&gt;https://github.com/PowerShellOrg&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;win32-openssh&#34;&gt;win32-openssh&lt;/h2&gt;&#xA;&lt;p&gt;windows的SSH。&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/PowerShell/Win32-OpenSSH&#34;&gt;https://github.com/PowerShell/Win32-OpenSSH&lt;/a&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;powershell命令&#34;&gt;powershell命令&lt;/h1&gt;&#xA;&lt;pre&gt;&lt;code&gt;&amp;gt;powershell -?&#xA;&amp;gt;powershell /?&#xA;&amp;gt;powershell -help&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;powershell-script&#34;&gt;powershell script&lt;/h1&gt;&#xA;&lt;p&gt;powershell是默认大小写不敏感的。&lt;/p&gt;&#xA;&lt;p&gt;同一行多个命令需要用分号;隔开。&lt;/p&gt;&#xA;&lt;p&gt;powershell的安全策略：&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;restricted(default)&lt;/li&gt;&#xA;&lt;li&gt;allsigned&lt;/li&gt;&#xA;&lt;li&gt;remotesigned&lt;/li&gt;&#xA;&lt;li&gt;unrestricted&lt;/li&gt;&#xA;&lt;li&gt;bypass&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h1 id=&#34;注释&#34;&gt;注释&lt;/h1&gt;&#xA;&lt;p&gt;单行注释：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;# comment&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;多行注释(文档注释)：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;&amp;lt;#&#xA;comment1&#xA;comment2&#xA;...&#xA;#&amp;gt;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;帮助文档:&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

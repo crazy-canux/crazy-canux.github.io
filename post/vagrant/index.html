@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vagrant - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="single-post">
+    <article>
+        <header>
+            <h1>Vagrant</h1>
+            <div class="post-meta">
+                <time>January 12, 2017</time>
+                
+                    
+                        <span class="category">Virtualization</span>
+                    
+                
+                
+                    
+                        <span class="tag">#vagrant</span>
+                    
+                
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <h1 id="vagrant">Vagrant</h1>
+<p>构建在虚拟化技术之上的虚拟机运行环境管理工具．</p>
+<p>适合用来构建和分发开发环境．通过命令行可以批量自动化，不用一个一个安装配置图形界面的虚拟机．</p>
+<p><a href="https://github.com/mitchellh/vagrant">https://github.com/mitchellh/vagrant</a></p>
+<p>需要安装virtualbox或vmware等虚拟机.</p>
+<p>vagrant还支持其它的providers(docker, vmware, hyper-v, aws)</p>
+<p>可以在这里找到很多vagrant可用的box:</p>
+<p><a href="https://atlas.hashicorp.com/boxes/search">https://atlas.hashicorp.com/boxes/search</a></p>
+<hr>
+<h1 id="初始化">初始化</h1>
+<pre><code>$ mkdir -p /home/user/vagrant
+$ cd /vagrant
+
+# 在当前目录生成一个Vagrantfile文件, 需手动添加vm.box
+$ vagrant init 
+
+# 相当于直接添加了vm.box到Vagrantfile.
+$ vagrant init [box-name]
+</code></pre>
+<h1 id="添加box">添加box</h1>
+<pre><code># 默认从https://atlas.hashicorp.com/boxes/search下载该box.
+$ vagrant box add [[--name ]box-name] hashicorp/precise64
+
+# 也可以使用下载到本地的box
+$ vagrant box add [[--name ]box-name] /path/to/your.box
+
+# 也可以使用自己的服务器上的box
+$ vagrant box add [[--name ]box-name] URL
+
+# 添加box之后修改Vagrantfile,添加vm.box:
+Vagrant.configure(&quot;2&quot;) do |config|
+  config.vm.box = &quot;[box-name]&quot;
+end
+</code></pre>
+<h1 id="使用box">使用box</h1>
+<pre><code>$ vagrant up [box-name]
+$ vagrant up --provider docker/aws/vmware/hyperv/... [box-name]
+
+$ vagrant ssh
+# 会进入一个vagrant@precise64:~$的环境．
+# /vagrant 是一个和/home/user/vagrant同步的路径．
+</code></pre>
+<h1 id="结束使用">结束使用</h1>
+<pre><code>$ vagrant status # 查看box状态
+$ vagrant halt # 关闭box
+$ vagrant reload # 重启box
+$ vagrant suspend
+$ vagrant resume
+$ vagrant provision
+
+# 会销毁box占用的所有资源，但不删除box.
+$ vagrant destroy
+</code></pre>
+<h1 id="管理box">管理box</h1>
+<pre><code>$ vagrant box list
+$ vagrant box remove
+</code></pre>
+<h1 id="其它">其它</h1>
+<pre><code>$ vagrant global-status
+$ vagrant global-status --prune
+</code></pre>
+<hr>
+<h1 id="配置vagrantfile">配置Vagrantfile</h1>
+<pre><code>config.vm.box_version = &quot;1.1.0&quot;
+cfg.vm.hostname = &quot;ubuntu.labs&quot;
+
+# 端口映射, 把主机的端口映射到vagrant的box
+# 访问主机的该端口就是访问vagrant的box
+cfg.vm.network :forward_port, guest: 80, host: 8080
+
+# 私有网络，只有主机可以访问vagrant的box.
+# 如果多个vagrant的box设定在同一个网段也可以互相访问．
+cfg.vm.network :private_network, ip: &quot;192.168.50.10&quot;
+
+# 公有网络，vagrant的box和主机使用一样的网络．
+cfg.vm.network :public_network
+cfg.vm.network :public_network, ip: &quot;192.168.1.1&quot;
+
+cfg.vm.synced_folder &quot;/var/tmp/pkg-build&quot;, &quot;/var/tmp/pkg-build&quot;
+</code></pre>
+<hr>
+<h1 id="打包">打包</h1>
+<p>用户可以打包自己的开发环境，然后分发出去．</p>
+<pre><code>$ vagrant package [options] [name]
+$ vagrant package
+</code></pre>
+<hr>
+<h1 id="windows">windows</h1>
+<p>在windows物理机安装virtualbox和vagrant.</p>
+<p>windows不支持ssh,所以需要类似于putty这种客户端．</p>
+<pre><code>host: 127.0.0.1
+port: 2222
+user: vagrant/root
+password: vagrant
+</code></pre>
+<h1 id="linux">linux</h1>
+<p>只能在linux物理机安装virtualbox和vagrant使用．</p>
+<p>如果想在windows物理机里面的virtualbox上安装的linux系统中使用vagrant会报错：</p>
+<pre><code># default: Warning: Connection timeout. Retrying...
+</code></pre>
+<p>因为需要在linux上在安装virtualxo，然后不能设置加速．</p>
+<p><img src="/images/vagrant.PNG" alt="Pic"></p>
+<p><img src="/images/vagrant1.PNG" alt="Pic1"></p>
+<h1 id="qa">Q&amp;A</h1>
+<ol>
+<li>
+<p>vagrant怎样打包ESXi上的虚拟机．</p>
+</li>
+<li>
+<p>vagrant能否打包cluster(virtualbox或esxi)</p>
+</li>
+</ol>
+
+        </div>
+    </article>
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

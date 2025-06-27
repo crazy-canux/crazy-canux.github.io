@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Postgresql - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="single-post">
+    <article>
+        <header>
+            <h1>Postgresql</h1>
+            <div class="post-meta">
+                <time>April 3, 2016</time>
+                
+                    
+                        <span class="category">Database</span>
+                    
+                
+                
+                    
+                        <span class="tag">#postgresql</span>
+                    
+                
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <h1 id="postgresql">PostgreSQL</h1>
+<p>安装postgresql：</p>
+<pre><code>$ sudo apt-get install postgresql
+</code></pre>
+<p>安装第三方库：</p>
+<pre><code>$ sudo apt-get install postgresql-contrib-9.3 libpg-dev postgresql-server-dev-9.3
+</code></pre>
+<p>GUI工具： pgAdminIII</p>
+<p>CLI工具： psql</p>
+<p>postgresql的端口是5432．</p>
+<h1 id="postgresql命令">postgresql命令</h1>
+<p>安装完成后默认的admin就是postgres, postgres里有默认数据库postgres.</p>
+<pre><code>$passwd postgres # 修改默认管理员用户postgres的密码
+$su - postgres # 切换到默认的postgres用户
+
+$ psql [OPTION]... [DBNAME [USERNAME]]
+
+$createuser &lt;username&gt; -P # 在命令行添加用户
+$dropuser &lt;username&gt; # 在命令行删除用户
+
+$createdb &lt;database&gt; -O &lt;username&gt; # 在命令行添加数据库
+$dropdb &lt;database&gt; # 在命令行删除数据库
+
+# 交互式:
+$ psql -U [username] [database]
+
+# 非交互式：
+$ PGPASSWORD='password';psql -h &lt;host&gt; -p &lt;port&gt; -U &lt;username&gt; -d [database] -c &quot;[psql command]&quot;
+</code></pre>
+<p>导出数据：</p>
+<pre><code>$ pg_dump dbname &gt; out.sql
+</code></pre>
+<p>pgcli:</p>
+<p>This is a postgres client that does auto-completion and syntax highlighting.</p>
+<p><a href="https://github.com/dbcli/pgcli">https://github.com/dbcli/pgcli</a></p>
+<pre><code>$ pip install -U pgcli
+</code></pre>
+<h1 id="cli">CLI</h1>
+<p>先用psql进入postgre的命令行.</p>
+<pre><code>help # 查看所有信息
+\? # 查看psql命令
+\h # 查看sql命令
+\g # 执行sql语句
+\q # 退出psql
+
+\du # 查看所有用户信息
+\l # 查询当前用户的所有数据库
+\c &lt;database&gt; # 切换数据库
+\c &lt;database&gt; &lt;username&gt; # 登陆用户的数据库
+\dt 等效于show tables;
+\d # 查看表关系
+\d &lt;table&gt; # 查询表结构
+</code></pre>
+<hr>
+<h1 id="数据类型">数据类型</h1>
+<h1 id="函数">函数</h1>
+<h1 id="sql">SQL</h1>
+<pre><code>ALTER USER/ROLE &lt;username&gt; WITH PASSWORD &lt;password&gt;; #更改用户密码
+SELECT username/* FROM pg_user; # 查看所有用户
+SELECT username/* FROM pg_shadow; # 查看所有用户密码
+
+CREATE GROUP &lt;groupname&gt;; # 添加用户组
+ALTER GROUP &lt;groupname&gt; ADD USER &lt;username&gt;,&lt;username1&gt;,...; # 添加用户到组
+ALTER GROUP &lt;groupname&gt; DROP USER &lt;username&gt;,&lt;username1&gt;,...; # 从组删除用户
+
+CREATE ROLE &lt;username&gt; PASSWORD &lt;password&gt;; # 创建用户和密码
+CREATE ROLE &lt;username&gt; LOGIN;
+CREATE ROLE &lt;username&gt; SUPERUSER;
+CREATE ROLE &lt;username&gt; CREATEDB;
+CREATE ROLE &lt;username&gt; CREATEROLE;
+CREATE ROLE &lt;username&gt; REPLICATION;
+DROP ROLE &lt;username&gt;; # 删除role
+
+SELECT datname/* FROM pg_database; # 查询当前用户的所有数据库
+CREATE DATABASE &lt;database&gt; OWNER=&lt;username&gt;; # 创建数据库
+DROP DATABASE &lt;database&gt;; # 删除数据库
+
+SELECT tablename/* FROM pg_tables; # 查看所有表
+CREATE TABLE tablename(
+&lt;type&gt; &lt;name&gt;,
+...
+); # 创建表
+DROP TABLE &lt;table&gt;; # 删除表
+
+SELECT version();
+SELECT current_date;
+SELECT current_time;
+</code></pre>
+<hr>
+
+        </div>
+    </article>
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

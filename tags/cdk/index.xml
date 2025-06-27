@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Cdk on Morgoth</title>
+    <link>https://canuxcheng.com/tags/cdk/</link>
+    <description>Recent content in Cdk on Morgoth</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 23 Apr 2021 22:02:31 +0000</lastBuildDate>
+    <atom:link href="https://canuxcheng.com/tags/cdk/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CDK</title>
+      <link>https://canuxcheng.com/post/cloud_cdk/</link>
+      <pubDate>Fri, 23 Apr 2021 22:02:31 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/cloud_cdk/</guid>
+      <description>&lt;h1 id=&#34;cdk&#34;&gt;CDK&lt;/h1&gt;&#xA;&lt;p&gt;Cloud Development Kit&lt;/p&gt;&#xA;&lt;p&gt;SDK一般是和service交互的。&#xA;CDK用来和基础设施交互的。&lt;/p&gt;&#xA;&lt;h2 id=&#34;aws-cdk&#34;&gt;AWS CDK&lt;/h2&gt;&#xA;&lt;p&gt;The AWS Cloud Development Kit (AWS CDK) is an open-source software development framework to define cloud infrastructure in code and provision it through AWS CloudFormation.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/aws/aws-cdk&#34;&gt;https://github.com/aws/aws-cdk&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;cdk8s&#34;&gt;CDK8S&lt;/h2&gt;&#xA;&lt;p&gt;cdk8s is an open-source software development framework for defining Kubernetes applications and reusable abstractions using familiar programming languages and rich object-oriented APIs. cdk8s apps synthesize into standard Kubernetes manifests which can be applied to any Kubernetes cluster.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

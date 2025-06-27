@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hugo on Morgoth</title>
+    <link>https://canuxcheng.com/tags/hugo/</link>
+    <description>Recent content in Hugo on Morgoth</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 01 Apr 2013 12:49:49 +0000</lastBuildDate>
+    <atom:link href="https://canuxcheng.com/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hugo</title>
+      <link>https://canuxcheng.com/post/hugo/</link>
+      <pubDate>Mon, 01 Apr 2013 12:49:49 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/hugo/</guid>
+      <description>&lt;h1 id=&#34;hugo&#34;&gt;Hugo&lt;/h1&gt;&#xA;&lt;p&gt;go开发的静态站点生成器.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/gohugoio/hugo&#34;&gt;https://github.com/gohugoio/hugo&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://gohugo.io/&#34;&gt;https://gohugo.io/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;搭建博客&#34;&gt;搭建博客&lt;/h1&gt;&#xA;&lt;p&gt;创建环境:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;# linux, ubuntu18.04默认是非extended, 19.04 默认extended。&#xA;$ sudo apt-get install hugo&#xA;&#xA;# extended支持Sass/scss&#xA;$ sudo snap install hugo --channel=extended&#xA;&#xA;# windows&#xA;PATH:   C:\Hugo\bin\hugo.exe&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;测试安装:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ hugo help&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;创建hugo项目:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ cd /home/canux/sites&#xA;&amp;gt; cd C:\hugo\sites&#xA;$ hugo new site canuxcheng.com&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;生成下列文件和目录:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;config.toml&#xA;archetypes&#xA;content    # md 文件&#xA;data&#xA;layouts&#xA;static&#xA;themes&#xA;bytes&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;theme&#34;&gt;Theme&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/gohugoio/hugoThemes&#34;&gt;https://github.com/gohugoio/hugoThemes&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;下载所有主题:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;cd blog&#xA;git clone --depth 1 --recursive https://github.com/gohugoio/hugoThemes.git themes&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;下载单个主题：&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

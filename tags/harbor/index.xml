@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Harbor on Morgoth</title>
+    <link>https://canuxcheng.com/tags/harbor/</link>
+    <description>Recent content in Harbor on Morgoth</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 05 Apr 2018 22:02:31 +0000</lastBuildDate>
+    <atom:link href="https://canuxcheng.com/tags/harbor/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Registry</title>
+      <link>https://canuxcheng.com/post/cncf_registry/</link>
+      <pubDate>Thu, 05 Apr 2018 22:02:31 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/cncf_registry/</guid>
+      <description>&lt;h1 id=&#34;container-registry&#34;&gt;Container Registry&lt;/h1&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Docker Hub Registry&lt;/li&gt;&#xA;&lt;li&gt;Google Container Registry (gcr.io)&lt;/li&gt;&#xA;&lt;li&gt;RedHat Quay Registry (quay.io)&lt;/li&gt;&#xA;&lt;li&gt;GitHub Docker Packages (docker.pkg.github.com)(Deprecated)&lt;/li&gt;&#xA;&lt;li&gt;GitHub Container Registry (ghcr.io)&lt;/li&gt;&#xA;&lt;li&gt;Kubernetes Registry(registry.k8s.io =&amp;gt; k8s.gcr.io)&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;harbor&#34;&gt;Harbor&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/goharbor/harbor&#34;&gt;https://github.com/goharbor/harbor&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;Habor是由VMWare中国团队开源的容器镜像仓库, 用于存储和分发docker镜像的registry服务器.&lt;/p&gt;&#xA;&lt;p&gt;安装步骤:&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;下载并解压安装包, &lt;a href=&#34;https://github.com/goharbor/harbor/releases&#34;&gt;https://github.com/goharbor/harbor/releases&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;配置harbor.cfg;&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;修改配置:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;vim harbor.yml&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;运行安装程序:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;./install.sh --with-notary --with-clair --with-chartmuseum&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;修改web的port:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ vim /data/harbor/docker-compose.yml&#xA;proxy:&#xA;  ports:&#xA;    - 8080:80 # 默认http是80&#xA;    - 4433:443 # 默认https是443&#xA;$ vim /data/harbor/harbor.yml&#xA;hostname = ip&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;管理harbor:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;# cd /data/harbor&#xA;# docker-compose down -v 　停止并删除container&#xA;&#xA;&amp;gt; 更新配置&#xA;# ./prepare --with-notary --with-clair --with-chartmuseum&#xA;&#xA;&amp;gt; 启动&#xA;# docker-compose up -d&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;docker使用harbor&#34;&gt;docker使用harbor&lt;/h2&gt;&#xA;&lt;p&gt;Deploy a plain HTTP registry:&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

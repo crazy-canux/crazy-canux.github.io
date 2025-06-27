@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="single-post">
+    <article>
+        <header>
+            <h1>URL</h1>
+            <div class="post-meta">
+                <time>October 4, 2016</time>
+                
+                    
+                        <span class="category">Django</span>
+                    
+                
+                
+                    
+                        <span class="tag">#url</span>
+                    
+                
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <h1 id="urlspy">urls.py</h1>
+<pre><code>from django.urls import path, include
+</code></pre>
+<p>django请求站点的方法：</p>
+<ol>
+<li>ROOT_URLCONF，在settings.py中设置。</li>
+<li>寻找urlpatterns，它是django.conf.urls.url()实例的一个python列表。</li>
+<li>dnango依次匹配每个URL模式，在第一个匹配停下。</li>
+<li>一旦一个正则表达式匹配，django就调用对应的视图，视图获得HttpRequest实例,如果是没有命名的组返回内容作为位置参数，如果是命名的组返回内容作为关键字参数。</li>
+<li>如果没有匹配到或者过程跑出异常，django调用合适的错误处理。</li>
+</ol>
+<h1 id="项目的url">项目的URL</h1>
+<p>项目的URL主要用来包含应用的URL以及全局的URL:</p>
+<pre><code>from django.contrib import admin
+from django.urls import path, include
+
+urlpatterns = [
+    # 默认的项目的admin的url
+    path('admin/', admin.site.urls),
+    
+    # 在项目URL添加链接到应用URL：
+    # 在下面添加你的所有应用的url,
+    path('polls/', include('polls.urls')),
+]
+</code></pre>
+<h1 id="应用的url">应用的URL</h1>
+<p>将应用的视图映射到URL,需要在应用目录新建urls.py文件,然后在项目的url中包含应用的url。</p>
+<p>urlpatterns是url()实例类型的python列表。</p>
+<pre><code>from django.urls import path
+from . import views
+
+app_name = 'polls'
+
+urlpatterns = [
+    # 普通视图
+    path('', views.index, name='index'),
+    # 类视图
+    path('', views.IndexView.as_view(), name='index'),
+]
+</code></pre>
+<hr>
+<h1 id="没有命名的组">没有命名的组</h1>
+<p>视图函数只有request参数，匹配的正则表达式作为位置参数。</p>
+<pre><code>url(r'^pattern1/pattern2/$', views.index, name='index'),
+
+def index(request):
+    ...
+</code></pre>
+<h1 id="命名组">命名组</h1>
+<p>视图函数除了request参数还有关键字参数，匹配的命名表达式组作为关键字参数,覆盖默认的关键字参数。</p>
+<p>使用命名的正则表达式组： (?P<name>pattern)</p>
+<p>name就是关键字参数。</p>
+<pre><code>url(r'^pattern1/(?P&lt;name&gt;pattern)/pattern2/$), views.index, name='index),
+
+def index(request, name):
+    ...
+</code></pre>
+<h1 id="错误处理">错误处理</h1>
+<p>django会调用一个错误处理视图处理异常。</p>
+<ol>
+<li>handler404 页面没找到</li>
+<li>handler500 服务器错误</li>
+<li>handler403 权限被拒绝</li>
+<li>handler400 无效的请求</li>
+</ol>
+<p>你也可以在项目的urls.py中重新定义这些默认视图：</p>
+<pre><code>handler404 = 'mysite.views.your_custom_page_not_found_view'
+handler500 = 'mysite.views.your_custom_error_view'
+handler403 = 'mysite.views.your_custom_permission_denied_view'
+handler400 = 'mysite.views.your_custom_bad_request_view'
+</code></pre>
+
+        </div>
+    </article>
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

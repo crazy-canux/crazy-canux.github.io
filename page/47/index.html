@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="generator" content="Hugo 0.147.9">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morgoth - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="home">
+    <h1>Morgoth</h1>
+    <p></p>
+    
+    <section class="recent-posts">
+        <h2>Recent Posts</h2>
+        <ul class="post-list">
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/cloud_terraform/">Terraform</a></h2>
+                    <div class="post-meta">
+                        <time>April 15, 2016</time>
+                        
+                            
+                                <span class="category">Cloud</span>
+                            
+                                <span class="category">DevOps</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="terraform">Terraform</h1>
+<p>install:</p>
+<p><a href="https://learn.hashicorp.com/tutorials/terraform/install-cli">https://learn.hashicorp.com/tutorials/terraform/install-cli</a></p>
+<hr>
+<h2 id="cli">CLI</h2>
+<p>操作工作目录</p>
+<pre><code>// 初始化目录，会根据配置下载和安装provider.
+terraform init
+
+terraform get
+</code></pre>
+<p>操作tf文件</p>
+<pre><code>// 格式化文件
+terraform fmt -recursive
+
+// 验证文件
+terraform validate 
+
+// 可以通过终端验证函数.
+terraform console
+</code></pre>
+<p>操作基础设施:</p>
+<pre><code>terraform plan
+terraform plan -out test.tfplan
+
+terraform apply -auto-approve
+terraform apply test.tfplan
+
+terraform destroy
+</code></pre>
+<p>检查基础设施:</p>
+<pre><code>terraform show
+terraform graph
+terraform output
+terraform state list/show
+</code></pre>
+<p>认证:</p>
+<pre><code>terraform login
+terraform logout
+</code></pre>
+<hr>
+<h2 id="tf">TF</h2>
+<p><a href="https://www.terraform.io/language">https://www.terraform.io/language</a></p>
+<p>注释:</p>
+<pre><code># comment 
+// comment
+/* comment */
+</code></pre>
+<h3 id="backend-and-state">backend and state</h3>
+<p><a href="https://www.terraform.io/language/settings/backends">https://www.terraform.io/language/settings/backends</a></p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/devops_ansible/">Ansible</a></h2>
+                    <div class="post-meta">
+                        <time>April 15, 2016</time>
+                        
+                            
+                                <span class="category">DevOps</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="ansible">Ansible</h1>
+<p><a href="https://github.com/ansible/ansible">https://github.com/ansible/ansible</a></p>
+<p><a href="http://www.ansible.com.cn/index.html">http://www.ansible.com.cn/index.html</a></p>
+<p>ansible通过SSH来远程管理Linux/Unix机器．</p>
+<p>ansible通过winrm+powershell来远程管理Windows机器．</p>
+<p>安装:</p>
+<pre><code>$ sudo pip install ansible
+$ sudo apt-get install ansible
+$ sudo yum install ansible
+</code></pre>
+<p>配置：</p>
+<p>参考Network-SSH实现从controller到所有node的无密码登陆</p>
+<p>配置文件执行顺序:</p>
+<pre><code>ANSIBLE_CONFIG
+ansible.cfg
+.ansible.cfg
+/etc/ansible/ansible.cfg
+</code></pre>
+<p>手动配置:</p>
+<pre><code>$ sudo vim /etc/ansible/ansible.cfg
+[defaults]
+ask_pass = False
+host_key_checking = False
+</code></pre>
+<h1 id="ansible命令">ansible命令</h1>
+<p>ansible运行命令的两种方式：</p>
+<ol>
+<li>Ad-hoc相当于直接运行shell命令</li>
+<li>playbooks相当于运行shell脚本</li>
+</ol>
+<p>ansible:</p>
+<pre><code>$ ansible -i inventory group1:group1:group3/all ...
+
+$ansible --help
+-m MODULE_NAME, --module-name=MODULE_NAME # 执行模块，默认是command
+-M MODULE_PATH, --module-path=MODULE_PATH # 指定模块的路径
+-a MODULE_ARGS, --args=MODULE_ARGS # 模块的参数
+-i INVENTORY, --inventory INVENTORY # 默认/etc/ansible/hosts, 需要指定hosts分组
+-f FORKS, --forks=FORKS # 指定并发进程的数量
+-C, --check
+-D, --diff
+-l SUBSET, --limit=SUBSET
+--syntax-check
+--list-hosts
+-v, --verbose # -v, -vvv, -vvvv
+
+# 提权选项
+-b, --become
+--become-method=BECOME_METHOD # sudo(default)/su/pbrun/pfexec/runas/doas
+--become-user=BECOME_USER # root(default)
+-K, --ask-become-pass
+
+# 连接选项
+-u REMOTE_USER
+--ssh-common-args
+--ssh-extra-args
+-T TIMEOUT # default 10s
+-K, --ask-pass
+</code></pre>
+<hr>
+<h1 id="inventory">inventory</h1>
+<p>inventory包括主机和分组,以及主机变量和分组变量.</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/devops_agile/">Agile</a></h2>
+                    <div class="post-meta">
+                        <time>April 15, 2016</time>
+                        
+                            
+                                <span class="category">DevOps</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="agile-methodologies">Agile methodologies</h1>
+<p>Agile的具体方法有Scrum, XP和kanban.</p>
+<p>ThoughtWorks公司的Martin Fowler提出的敏捷方法．</p>
+<hr>
+<h1 id="scrum">Scrum</h1>
+<p>Scrum方法由Ken Schwaber和Jeff Sutherland 提出.</p>
+<p>scrum是一个用于开发和维护复杂产品的框架，是一个增量的，迭代的开发过程．</p>
+<p>sprint: 一个短的迭代周期．一般２到４周．</p>
+<p>backlog: 按商业价值排序的需求列表．</p>
+<h2 id="scrum框架的三个角色">scrum框架的三个角色</h2>
+<p>product owner: 产品负责人</p>
+<p>scrum master: 敏捷教练和领导者</p>
+<p>scrum team：developer</p>
+<h2 id="scrum框架的三个工件">scrum框架的三个工件</h2>
+<p>Product backlog: 整个产品待开发需求列表</p>
+<p>sprint backlog: 一次迭代的待开发需求列表</p>
+<p>increment: 产品增量</p>
+<h2 id="scrum框架的五个事件">scrum框架的五个事件</h2>
+<p>sprint planning meeting: sprint计划会议</p>
+<p>Daily Scrum Meeting/DSM: 每日站立会议</p>
+<p>sprint review meeting: sprint评审会议</p>
+<p>sprint retrospective meeting: sprint回顾会议</p>
+<p>product backlog refinement: 产品backlog梳理会议</p>
+<h2 id="scrum框架的五个价值观">scrum框架的五个价值观</h2>
+<p>承诺</p>
+<p>专注</p>
+<p>开放</p>
+<p>尊重</p>
+<p>勇气</p>
+<h2 id="scrum框架的四大支柱">scrum框架的四大支柱</h2>
+<p>迭代开发</p>
+<p>增量交付</p>
+<p>自组织团队</p>
+<p>高优先级的需求驱动</p>
+<hr>
+<h1 id="xp">XP</h1>
+<p>Extreme Programming</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/linux_admin/">Admin</a></h2>
+                    <div class="post-meta">
+                        <time>April 15, 2016</time>
+                        
+                            
+                                <span class="category">Linux</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="linux-admin">Linux Admin</h1>
+<p>dpkg: ubuntu, debian.</p>
+<p>rpm: fedora, centos, redhat.</p>
+<p>zypper: suse.</p>
+<hr>
+<h1 id="linux系统常用的安装和配置">Linux系统常用的安装和配置</h1>
+<h2 id="terminalizer">terminalizer</h2>
+<p>终端录制工具</p>
+<p><a href="https://github.com/faressoft/terminalizer">https://github.com/faressoft/terminalizer</a></p>
+<h2 id="virtualbox">virtualbox</h2>
+<p>开机自动挂载共享文件夹</p>
+<pre><code># 手动挂在命令, 需要安装增强功能
+$ mount -t vboxsf FolderNameOnWindows /path/on/linux
+
+# 实现开机自动挂载
+$ sudo vim /etc/rc.local
+mount.vboxsf -w ShareFolderNameOnWindows MountPointOnLinux
+</code></pre>
+<h2 id="xrdp">xrdp</h2>
+<p>从windows的RDP远程连接linux.</p>
+<p>use RDP on windows to connect to ubuntu16.04.</p>
+<pre><code>sudo dpkg -i tigervncserver_1.6...deb # download and install tigervncserver first.
+sudo apt-get install -f
+sudo apt-get instal xrdp -y
+echo unity &gt; ~/.xsession
+</code></pre>
+<p>use RDP on windows to connect to ubuntu14.04.</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/psl_test/">PSL_Test</a></h2>
+                    <div class="post-meta">
+                        <time>April 11, 2016</time>
+                        
+                            
+                                <span class="category">Python</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="development-tools">Development Tools</h1>
+<h2 id="typing">typing</h2>
+<h2 id="2to3">2to3</h2>
+<pre><code>$2to3
+</code></pre>
+<h2 id="pydoc">pydoc</h2>
+<pre><code>import pydoc
+</code></pre>
+<h2 id="test">test</h2>
+<pre><code>import test
+</code></pre>
+<h2 id="doctest">doctest</h2>
+<p>python内置的文档测试库．</p>
+<pre><code>import doctest
+</code></pre>
+<h2 id="unittest">unittest</h2>
+<p>python内置的单元测试库．</p>
+<pre><code>import unittest
+</code></pre>
+<hr>
+<h1 id="tpl">TPL</h1>
+<p>相关的第三方库</p>
+<h2 id="unittest2">unittest2</h2>
+<p>unittest2是unittest的升级版．</p>
+<p>python3集成了unittest2到unittest,像使用unittest一样使用即可．</p>
+<pre><code># python2.7
+$pip install unittest2
+import unittest2
+
+# python3
+import unittest
+</code></pre>
+<p>unittest也叫pyunit，类似于Junit(java)都是基于Kent Beck和Erich Gamma的XUnit框架．</p>
+<p>测试结果：</p>
+<p>OK 表示测试通过</p>
+<p>FAIL 表示测试没有通过，并引发一个AssertionError异常．</p>
+<p>ERROR 表示测试过程引发一个不是AssertionError的异常．</p>
+<pre><code># Python2.7 此处用的是标准库的unittest.
+import unittest
+import MyClass
+</code></pre>
+<p>classes:</p>
+<pre><code>unittest.TestCase: 每个实例就是一个test case. 使用TestCase.assert* 系列方法进行测试．
+unittest.TestSuite: 每个实例就是一个test suite. 多个test case放在一起就是一个test suite.
+unittest.TestLoader/unittest.defaultTestLoader: 用来加载TestCase到TestSuite.
+unittest.TestResult: 用来保存测试的结果．
+
+unittest.TestProgram/unittest.main(): 搜索该模块下所有test开头的测试用例方法并执行．
+fixtures对一个测试用例的环境的搭建和销毁，通过重载TestCase的setUp()和teaeDown()方法．
+
+unittest.TextTestRunner: 用来执行测试用例．
+unittest.TextTestResult: 用来打印格式化的测试结果．
+
+# unittest.TestCase
+# methods:
+assertXXX　系列方法．
+failXXX 系列方法
+fail(self, msg=None) # test立即失败
+addCleanup(self, function, *args, **kwargs)
+addTypeEqualityFunc(self, typeobj, function)
+countTestCases(self)
+debug(self)
+defaultTestResult() # return unittest.TestResult()
+doCleanups(self)
+id(self)
+run(self, result=None) # 可以在子类覆盖该方法．
+shortDescription(self)
+skipTest(self, reason)
+setUp(self) # 重写之后，每个case运行之前都会调用一次．
+tearDown(self) # 同上
+
+# classmethods:
+setUpClass(cls) # 通过@classmethod重写，这样所有的case运行之前只调用一次，而不是每个case运行之前都调用．
+tearDownClass(cls) # 同上
+
+# data:
+failureException = AssertionError
+longMessage = False
+maxDiff = 640
+</code></pre>
+<p>functions:</p></p>
+                    
+                </li>
+            
+        </ul>
+    </section>
+    
+    
+        <a href="/page/46/">← Previous</a>
+    
+    
+        <a href="/page/48/">Next →</a>
+    
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

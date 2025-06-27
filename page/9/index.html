@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="generator" content="Hugo 0.147.9">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morgoth - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="home">
+    <h1>Morgoth</h1>
+    <p></p>
+    
+    <section class="recent-posts">
+        <h2>Recent Posts</h2>
+        <ul class="post-list">
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/k8s_api/">K8S API</a></h2>
+                    <div class="post-meta">
+                        <time>January 10, 2020</time>
+                        
+                            
+                                <span class="category">CNCF</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="api">API</h1>
+<p>api-server统一的操作入口.</p>
+<p>kubectl, UI, 等都是通过api-server操作资源.</p>
+<p>payload可以是json，也可以是yaml.</p>
+<p>yaml文件中#表示行注释。</p>
+<hr>
+<h1 id="yaml">yaml</h1>
+<p>部署k8s可以通过yaml文件来配置资源.</p>
+<p>资源对象组成部分:</p>
+<pre><code>apiVersion: 
+kind: 
+metadata: 元数据
+spec: 期望的状态
+status: 观测到的状态
+</code></pre>
+<p>查看apiVersion:</p>
+<pre><code>kubectl api-versions
+</code></pre>
+<p>查看Kind:</p>
+<pre><code>kubectl api-resources
+
+# In a namespace
+kubectl api-resources --namespaced=true
+
+# Not in a namespace
+kubectl api-resources --namespaced=false
+</code></pre>
+<p>metadata:</p>
+<pre><code>metadata:
+
+  name:
+  namespace:
+
+  labels/标签: 用户筛选资源，唯一的资源组合方法, 可以使用selector来查询.
+
+  annotations/注解: 存储资源的非标识性信息，扩展资源的spec/status.
+
+  ownerReference/关系: 方便反向查找创建资源的对象，方便进行级联删除。
+</code></pre>
+<p>spec:</p>
+<p>status:</p>
+<hr>
+<h1 id="调度抢占驱逐">调度，抢占，驱逐</h1>
+<p>taints: 污点，使节点排斥特定pod。应用于node。</p>
+<pre><code>taints:
+- effect: NoSchedule
+  key: kubernetes.io/arch
+  value: arm64
+</code></pre>
+<p>tolerations: 容忍度，使pod被吸引到特定节点。应用于pod。
+这个只能让pod能部署到加了污点的node，pod也能部署到其它没有加污点的node。</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/k8s_oss/">Contribution</a></h2>
+                    <div class="post-meta">
+                        <time>January 10, 2020</time>
+                        
+                            
+                                <span class="category">CNCF</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="kubernetes-contribution">Kubernetes Contribution</h1>
+<p><a href="https://github.com/kubernetes/community/blob/master/contributors/guide/contributor-cheatsheet/README-zh.md">https://github.com/kubernetes/community/blob/master/contributors/guide/contributor-cheatsheet/README-zh.md</a></p>
+<h2 id="创建google账号">创建google账号</h2>
+<p>推荐申请一个google邮箱。</p>
+<p>在开发机配置git</p>
+<pre><code>$ git config --global user.email name@gmail.com   
+$ git config user.email name@gmail.com            
+</code></pre>
+<h2 id="签cla并阅读coc">签CLA并阅读CoC</h2>
+<p>个人开发者需要签署CLA, 选择individual contributors并用github账号登陆，然后去邮箱授权；之后重新进入，再去邮箱签字。</p>
+<p><a href="https://identity.linuxfoundation.org/projects/cncf">https://identity.linuxfoundation.org/projects/cncf</a></p>
+<p>读一下CoC和CV</p>
+<p><a href="https://github.com/cncf/foundation/blob/master/code-of-conduct-languages/zh.md">https://github.com/cncf/foundation/blob/master/code-of-conduct-languages/zh.md</a></p>
+<p><a href="https://github.com/kubernetes/community/blob/master/values.md">https://github.com/kubernetes/community/blob/master/values.md</a></p>
+<h2 id="配置开发环境">配置开发环境</h2>
+<p><a href="https://github.com/kubernetes/community/blob/master/contributors/devel/README.md#setting-up-your-dev-environment-coding-and-debugging">https://github.com/kubernetes/community/blob/master/contributors/devel/README.md#setting-up-your-dev-environment-coding-and-debugging</a></p>
+<p>可以在docker里面编译，也可以直接在操作系统上编译。</p>
+<p>在docker里面编译</p>
+<p><a href="https://github.com/kubernetes/kubernetes/blob/ae9ca48f01ddb03731e7903cfe91ef3db9ce8990/build/README.md">https://github.com/kubernetes/kubernetes/blob/ae9ca48f01ddb03731e7903cfe91ef3db9ce8990/build/README.md</a></p>
+<pre><code>build/run.sh make 只编译linux平台
+build/run.sh make cross 编译所有平台
+build/run.sh make kubectl KUBE_BUILD_PLATFORMS=darwin/amd64 编译指定平台的指定组件
+
+build/run.sh make test 单元测试
+build/run.sh make test-integration 集成测试
+build/run.sh make test-cmd  命令行测试
+
+build/copy-output.sh 将编译的binary从_output/dockerized/bin拷贝到本地
+
+build/make-clean.sh 清空_output
+
+build.shell.sh 交互模式进入编译的container
+
+build/release.sh 编译，测试，打包，kubernetes.tar.gz
+...
+</code></pre>
+<p>在操作系统上编译</p>
+<p><a href="https://github.com/kubernetes/community/blob/master/contributors/devel/development.md#building-kubernetes-on-a-local-osshell-environment">https://github.com/kubernetes/community/blob/master/contributors/devel/development.md#building-kubernetes-on-a-local-osshell-environment</a></p>
+<p>安装依赖</p>
+<pre><code>sudo apt-get update
+sudo apt-get install build-essential
+// apt: docker, rsync, jq, go, 
+// python: pyyaml,
+
+// 安装etcd用于集成测试
+./hack/install-etcd.sh
+export PATH=&quot;$GOPATH/src/k8s.io/kubernetes/third_party/etcd:${PATH}&quot;
+</code></pre>
+<p>编译和测试</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/k8s_cicd/">CI/CD</a></h2>
+                    <div class="post-meta">
+                        <time>January 10, 2020</time>
+                        
+                            
+                                <span class="category">CNCF</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="continuous-integration--delivery">Continuous Integration &amp; Delivery</h1>
+<h2 id="argo-cd">argo-cd</h2>
+<p><a href="https://github.com/argoproj/argo-cd">https://github.com/argoproj/argo-cd</a></p>
+<h2 id="flux-cd">flux-cd</h2>
+<p><a href="https://github.com/fluxcd/flux">https://github.com/fluxcd/flux</a></p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/cncf_compose/">Compose</a></h2>
+                    <div class="post-meta">
+                        <time>January 4, 2020</time>
+                        
+                            
+                                <span class="category">CNCF</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="docker-compose">docker-compose</h1>
+<p><a href="https://github.com/docker/compose">https://github.com/docker/compose</a></p>
+<p>通过一个yaml文件来管理容器中的服务，包括网络和存储。</p>
+<p>安装:</p>
+<pre><code>https://docs.docker.com/compose/install/
+$ sudo curl -L https://github.com/docker/compose/releases/download/1.21.2/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
+$ sudo chmod +x /usr/local/bin/docker-compose
+</code></pre>
+<h1 id="docker-compose命令">docker-compose命令</h1>
+<pre><code>docker-compose [-f &lt;arg&gt;...] [options] [COMMAND] [ARGS...]
+-f/--file
+-p/--project-name # 默认目录名
+-H/--host
+
+# 拉取compose文件中指定的镜像
+$ docker-compose -f service.yml pull
+
+# 根据docker-compose.yml把stack打包成一个Distributed Application Bundles文件.
+$ docker-compose bundle -o &lt;project name&gt;.dab
+
+$ docker-compose start [servoce...]
+$ docker-compose stop [service...]
+$ docker-compose restart [service...]
+$ docker-compose up -d [service...]
+$ docker-compose down -v
+
+$ docker-compose logs -f
+</code></pre>
+<h1 id="docker-composeyml">docker-compose.yml</h1>
+<p>compose中的变量：</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/k8s_proxy/">Service Proxy</a></h2>
+                    <div class="post-meta">
+                        <time>January 4, 2020</time>
+                        
+                            
+                                <span class="category">CNCF</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="service-proxy">Service Proxy</h1>
+<p>ingress =&gt; gateway api</p>
+<ul>
+<li>envoy</li>
+<li>contour</li>
+<li>traefik proxy</li>
+<li>haproxy</li>
+<li>metaLB</li>
+<li>nginx</li>
+<li>openelb</li>
+</ul>
+<hr>
+<h2 id="ingress-controller">ingress controller</h2>
+<ul>
+<li>Ingress-nginx(nginx)</li>
+<li>aws-load-balancer-controller(alb)</li>
+<li>ingress-gce</li>
+<li>Traefik</li>
+</ul>
+<p>The kubernetes.io/ingress.class annotation is deprecated from kubernetes v1.22+.通过IngressClasses来选择ingress controller。</p>
+<pre><code>ingressClassName: nginx
+</code></pre>
+<p>ingress 语法</p>
+<pre><code>apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: minimal-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx-example
+  defaultBackend:
+    resource:
+      apiGroup: k8s.example.com
+      kind: StorageBucket
+      name: static-assets
+  rules:
+  - http:
+      paths:
+      - path: /testpath
+        pathType: Prefix
+        backend:
+          service:
+            name: test
+            port:
+              number: 80
+</code></pre>
+<p>ImplementationSpecific：对于这种路径类型，匹配方法取决于 IngressClass。 具体实现可以将其作为单独的 pathType 处理或者与 Prefix 或 Exact 类型作相同处理。</p></p>
+                    
+                </li>
+            
+        </ul>
+    </section>
+    
+    
+        <a href="/page/8/">← Previous</a>
+    
+    
+        <a href="/page/10/">Next →</a>
+    
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

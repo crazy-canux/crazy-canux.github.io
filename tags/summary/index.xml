@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Summary on Morgoth</title>
+    <link>https://canuxcheng.com/tags/summary/</link>
+    <description>Recent content in Summary on Morgoth</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 21 Jun 2016 21:18:20 +0000</lastBuildDate>
+    <atom:link href="https://canuxcheng.com/tags/summary/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Summary</title>
+      <link>https://canuxcheng.com/post/python_summary/</link>
+      <pubDate>Tue, 21 Jun 2016 21:18:20 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/python_summary/</guid>
+      <description>&lt;h1 id=&#34;python难点总结&#34;&gt;python难点总结&lt;/h1&gt;&#xA;&lt;h1 id=&#34;多线程&#34;&gt;多线程&lt;/h1&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;GIL&lt;/p&gt;&#xA;&lt;p&gt;GIL: Global Interpretror Lock. 全局解释器锁．&lt;/p&gt;&#xA;&lt;p&gt;python不建议使用多线程，用多进程代替．&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;协程&#34;&gt;协程&lt;/h1&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;coroutine&lt;/p&gt;&#xA;&lt;p&gt;协程就是同时开启两个任务，但一次只顺序执行一个．&#xA;如果执行的任务阻塞，就切换到下一个继续执行．节省时间．&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;</description>
+    </item>
+    <item>
+      <title>Summary</title>
+      <link>https://canuxcheng.com/post/c_summary/</link>
+      <pubDate>Sat, 02 Apr 2016 16:06:14 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/c_summary/</guid>
+      <description>&lt;h1 id=&#34;c标准&#34;&gt;C标准&lt;/h1&gt;&#xA;&lt;p&gt;ISO C89(ANSI C89) -&amp;gt; ISO C99 -&amp;gt; ISO C11&lt;/p&gt;&#xA;&lt;p&gt;ANSI C 和 ISO C是对通用C语言的接口的定义。&lt;/p&gt;&#xA;&lt;p&gt;符合这种标准的实现为C语言标准库,也叫libc。&lt;/p&gt;&#xA;&lt;p&gt;Unix/Linux的POSIX包含libc。&lt;/p&gt;&#xA;&lt;p&gt;Linux的glibc包含libc及其扩展.&lt;/p&gt;&#xA;&lt;p&gt;Windows的msvcrt包含libc及其扩展.&lt;/p&gt;&#xA;&lt;p&gt;其它和C相关的标准：&lt;/p&gt;&#xA;&lt;p&gt;BSD&lt;/p&gt;&#xA;&lt;p&gt;System V&lt;/p&gt;&#xA;&lt;p&gt;XPG&lt;/p&gt;&#xA;&lt;p&gt;SUS&lt;/p&gt;&#xA;&lt;h1 id=&#34;glibc&#34;&gt;glibc&lt;/h1&gt;&#xA;&lt;p&gt;Linux的标准C库glibc&lt;/p&gt;&#xA;&lt;p&gt;遵循ISO C11 和 POSIX.1-2008, 还包括一些其它标准。&lt;/p&gt;&#xA;&lt;p&gt;关于ISO C 和 POSIX参考另外两篇博文。&lt;/p&gt;&#xA;&lt;h1 id=&#34;msvcrt&#34;&gt;msvcrt&lt;/h1&gt;&#xA;&lt;p&gt;windows的标准c库msvcrt.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;c注释&#34;&gt;C注释&lt;/h1&gt;&#xA;&lt;p&gt;单行注释：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;// comment&#xA;&#xA;/* comment */&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;多行注释：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;/*&#xA; * comment1&#xA; * commenet2&#xA; */&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h1 id=&#34;文档&#34;&gt;文档&lt;/h1&gt;&#xA;&lt;p&gt;C程序可以用doxygen从程序中提取文档。&lt;/p&gt;&#xA;&lt;p&gt;文档注释：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;/**&#xA; * @file&#xA; * @brief&#xA; * @author&#xA; * @date&#xA; * @version&#xA; * @copyright&#xA; */&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h1 id=&#34;编译和链接&#34;&gt;编译和链接&lt;/h1&gt;&#xA;&lt;p&gt;编译只检查语法错误和函数以及变量是否申明．将*.c源文件编译成*.o目标文件．&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

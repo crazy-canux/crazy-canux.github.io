@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="single-post">
+    <article>
+        <header>
+            <h1>View</h1>
+            <div class="post-meta">
+                <time>October 4, 2016</time>
+                
+                    
+                        <span class="category">Django</span>
+                    
+                
+                
+                    
+                        <span class="tag">#view</span>
+                    
+                
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <h1 id="viewspy">views.py</h1>
+<pre><code>from django.shortcuts import render
+</code></pre>
+<p>定义自己的视图函数：</p>
+<pre><code>from django.http import HttpResponse
+from django.template import RequestContext, loader
+
+# 导入模板中的类
+from .models import Question
+
+def index(request):
+    ...
+    t = loader.get_template('application/index.html')
+    c = RequestContext(request, {'foo': 'bar'})
+    return HttpResponse(t.render(c), content_type=&quot;text/html&quot;)
+</code></pre>
+<p>当请求一个页面时django会建立一个包含请求元数据的HttpRequest对象，当django加载对应视图时，这个对象作为视图第一个参数。</p>
+<p>每个视图会返回一个HttpResponse对象。</p>
+<p>每个视图函数都用HttpRequest对象（通常用request）作为第一个参数。</p>
+<p>每个视图函数都返回一个HttpResponse对象，包含生成的响应。</p>
+<p>HttpRquest和HttpResponse在django.http包中，参考：</p>
+<p><a href="http://python.usyiyi.cn/documents/django_182/ref/request-response.html">http://python.usyiyi.cn/documents/django_182/ref/request-response.html</a></p>
+<p>HttpRequest对象属性：</p>
+<pre><code>request.scheme # http/https
+request.body
+request.path
+request.path_info
+request.method # GET/POST
+request.encoding
+request.user
+request.session
+request.urlconf
+request.GET
+request.POST
+request.REQUEST
+request.COOKIES
+request.FILES
+request.META
+</code></pre>
+<p>HttpRequest对象方法：</p>
+<pre><code>request.get_host()
+...
+</code></pre>
+<p>HttpResponse对象属性：</p>
+<pre><code>response.content
+response.charset
+response.status_code
+response.reason_phrase
+response.streaming
+response.closed
+</code></pre>
+<p>HttpResponse对象的方法：</p>
+<pre><code>response.getvalue()
+...
+</code></pre>
+<p>返回错误：</p>
+<p>HttpResponse的子类提供了对不同类型HTTP响应。</p>
+<pre><code>from django.http import HttpResponseBadRequest, HttpResponseNotFound, HttpResponseForbidden, HttpResponseServerError,
+return HttpResponseNotFound(&quot;&lt;h1&gt;Page not found&lt;/h1&gt;&quot;)
+</code></pre>
+<p>http404异常：</p>
+<p>在应用的模板目录顶层定义一个404.html模板文件，当跑出Http404异常就会调用这个模板文件展示。</p>
+<pre><code>from django.http import Http404
+
+def index(request):
+    try:
+        ...
+    except Application.DoesNotExist:
+        raise Http404(&quot;Application does not exist&quot;)
+    return HttpResponse(...)
+</code></pre>
+<p>自定义错误视图：</p>
+<p>参考urls中的内容。</p>
+<h1 id="快捷函数">快捷函数</h1>
+<p>django.shortcuts中定义了多个快捷函数。</p>
+<pre><code>from django.shortcuts import render
+render(request, template_name, context=None, context_instance=&lt;object object&gt;, content_type=None, status=None, current_app=&lt;object object&gt;, dirs=&lt;object object&gt;, dictionary=&lt;object object&gt;, using=None)
+# render第一个参数是request，根据给定模板和上下文字典，返回一个渲染后的HttpResponse对象。
+return render(request, 'application/index.html', {'foo': 'bar'}, content_type=&quot;text/html&quot;)
+
+from django.shortcuts import get_object_or_404
+get_object_or_404(klass, *args, **kwargs)
+# 在给定的模型管理器调用get()，如果不存在引发Http404异常。
+</code></pre>
+<h1 id="基于类的视图">基于类的视图</h1>
+<p>基于类的视图的基类在django.views.generic中</p>
+<pre><code>from django.views.generic import View
+def MyView(View):
+    def get(self, request):
+        return HttpResponse(...)
+</code></pre>
+<h1 id="templateresponse和simpletemplateresponse">TemplateResponse和SimpleTemplateResponse</h1>
+<pre><code>from django.template.response import TemplateResponse, SimpleTemplateResponse
+</code></pre>
+<h1 id="视图装饰器">视图装饰器</h1>
+<p>django.views.decorators包中定义了视图的装饰器。</p>
+<pre><code>from django.views.decorators import *
+</code></pre>
+<h1 id="内建的视图">内建的视图</h1>
+<p>django.views.static.serve定义了开发环境的文件服务器视图，仅用于开发。</p>
+<pre><code>from django.views.static import serve
+</code></pre>
+<p>django.views.defaults定义了内建的错误处理的视图</p>
+<pre><code>from django.views.defaults import *
+</code></pre>
+
+        </div>
+    </article>
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

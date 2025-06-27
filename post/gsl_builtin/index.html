@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GSL_builtin - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="single-post">
+    <article>
+        <header>
+            <h1>GSL_builtin</h1>
+            <div class="post-meta">
+                <time>January 1, 2018</time>
+                
+                    
+                        <span class="category">Golang</span>
+                    
+                
+                
+                    
+                        <span class="tag">#builtin</span>
+                    
+                
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <h1 id="builtin">builtin</h1>
+<p><a href="https://golang.org/pkg/builtin/">https://golang.org/pkg/builtin/</a></p>
+<p>go的builtin package.</p>
+<h2 id="constants">constants</h2>
+<pre><code>true
+false
+iota
+</code></pre>
+<h2 id="variables">variables</h2>
+<p>pointer, slice, map, channel, func, interface的零值：</p>
+<pre><code>nil
+</code></pre>
+<h2 id="functions">functions</h2>
+<pre><code># 分配并初始化各种类型的对象, 返回一个指针．
+new(Type) *Type
+
+# 分配并初始化一个Slice/Map/Channel的对象,返回相同类型的对象.
+make(t Type, size ...IntegerType) Type
+
+# 返回容量，　Array/ArrayPointer/Slice/Channel
+cap(v Type) int
+
+# 返回长度，　String/Array/ArrayPointer/Slice/Map/Channel
+len(v Type) int
+
+print(args ...Type)
+
+println(args ...Type)
+</code></pre>
+<p>complex:</p>
+<pre><code># 把两个浮点数构造成一个复数
+complex(r, i FloatType) ComplexType
+
+# 返回复数c的实部
+real(c ComplexType) FloatType
+
+# 返回复数c的虚部
+imag(c ComplexType) FloatType
+</code></pre>
+<p>slice:</p>
+<pre><code># 向切片末尾追加元素，返回新的切片．切片长度增加.
+# 如果长度超过底层数组长度，就创建了一个新的底层数组. 否则底层数组不变．
+# 在元素不超过1000的情况下，自动创建的底层数组容量翻倍.
+append(slice []Type, elems ...Type) []Type
+
+# 复制一个切片, 返回复制的元素的个数
+copy(dst, src []Type) int
+</code></pre>
+<p>map:</p>
+<pre><code># 从映射删除一个键值对
+delete(m map[Type]1, key Type)
+</code></pre>
+<p>chan:</p>
+<pre><code># 由发送者关闭一个双向或只发送的信道
+close(c chan&lt;- Type)
+</code></pre>
+<p>error:</p>
+<pre><code># 停止当前go程的正常执行(断言函数)
+panic(v interface{})
+
+# 管理panic过程中的go程
+recover() interface{}
+</code></pre>
+<h2 id="types">types</h2>
+<pre><code>bool
+
+uint
+uintptr
+uint8/byte (0 - 255)
+uint16
+uint32
+uint64
+
+int
+int8 (-128 - 127)
+int16
+int32/rune
+int64
+
+float32
+float64
+
+complex64
+complex128
+
+string
+</code></pre>
+<p>文档类型:</p>
+<pre><code>Type
+Type1
+IntegerType
+FloatType
+ComplexType
+</code></pre>
+<p>错误处理:</p>
+<pre><code>error
+
+// go使用error值来表示错误状态，nil表示成功，非nil表示失败．
+type error interface {
+    ERROR() string
+}
+</code></pre>
+<hr>
+
+        </div>
+    </article>
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

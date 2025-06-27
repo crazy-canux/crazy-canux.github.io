@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="single-post">
+    <article>
+        <header>
+            <h1>Image</h1>
+            <div class="post-meta">
+                <time>December 3, 2019</time>
+                
+                    
+                        <span class="category">CNCF</span>
+                    
+                        <span class="category">Storage</span>
+                    
+                
+                
+                    
+                        <span class="tag">#docker</span>
+                    
+                
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <h1 id="image">image</h1>
+<p>容器镜像</p>
+<p>docker image driver: aufs, btrfs, devicemapper, overlay.</p>
+<h2 id="multi-platform-images">multi-platform images</h2>
+<p><a href="https://docs.docker.com/build/building/multi-platform/">https://docs.docker.com/build/building/multi-platform/</a></p>
+<h3 id="qemu">qemu</h3>
+<p>使用qume:</p>
+<pre><code>// 安装bitfmt
+docker run --privileged --rm tonistiigi/binfmt --install all
+
+// 查看支持的平台
+ls -l /proc/sys/fs/binfmt_misc/qemu-*
+</code></pre>
+<h3 id="multiple-native-nodes">multiple native nodes</h3>
+<p>安装</p>
+<pre><code>// linux
+sudo apt install docker-buildx-plugin
+
+// mac
+brew install docker-buildx
+mkdir -p ~/.docker/cli-plugins
+ln -sfn $(which docker-buildx) ~/.docker/cli-plugins/docker-buildx
+docker buildx install
+</code></pre>
+<p>查看版本</p>
+<pre><code>docker buildx version
+</code></pre>
+<p>管理builder instance</p>
+<pre><code>docker buildx create
+--append 添加node到builder实例。
+--leave 从builder实例删除node
+--driver Driver to use(&quot;docker&quot;, &quot;docker-container&quot;, &quot;kubernetes&quot;)
+--name
+--use
+--node
+--platform 
+--bootstrap 启动实例（以容器的形式启动）
+
+// 以本地是amd64为例，创建一个实例.
+docker buildx create --use --bootstrap --platform linux/amd64,linux/amd64/v2,linux/amd64/v3,linux/arm64,linux/arm/v7,linux/arm/v6 --name canux-builder
+
+// 如果没有qumu，可以把不同平台的远程机器加到builder实例.
+docker buildx create \
+--name local_remote_builder \
+--append --node &lt;my-arm-server&gt; \
+--platform linux/arm64,linux/riscv64,linux/ppc64le,linux/s390x,linux/mips64le,linux/mips64,linux/arm/v7,linux/arm/v6 \
+ssh://user@&lt;my-arm-server&gt; 
+
+docker buildx rm
+
+docker buildx stop
+
+docker buildx inspect
+
+docker buildx use
+
+// 查看当前可用的builders
+docker buildx ls
+</code></pre>
+<p>构建多平台镜像</p>
+<pre><code>docker buildx build --platform &lt;p1,p2&gt; ...
+
+// 一次编译多个平台的镜像直接push到registry。
+docker buildx build --platform linux/amd64,linux/amd64/v2,linux/amd64/v3,linux/arm64,linux/arm/v7,linux/arm/v6 --push -t name/target:tag .
+
+// 编辑成不同的image 
+docker buildx build -o type=docker --platform linux/amd64 -t name:1.0.0 .
+docker buildx build -o type=docker --platform linux/arm64 -t name:1.0.0-linux-arm64 .
+</code></pre>
+<h3 id="cross-compilation">cross-compilation</h3>
+<hr>
+<h2 id="overlay">Overlay</h2>
+<p>最下层是一个 lower 层，也就是镜像层，它是一个只读层；</p>
+<p>右上层是一个 upper 层，upper 是容器的读写层，upper 层采用了写实复制的机制，也就是说只有对某些文件需要进行修改的时候才会从 lower 层把这个文件拷贝上来，之后所有的修改操作都会对 upper 层的副本进行修改；</p>
+<p>upper 并列的有一个 workdir，它的作用是充当一个中间层的作用。也就是说，当对 upper 层里面的副本进行修改时，会先放到 workdir，然后再从 workdir 移到 upper 里面去，这个是 overlay 的工作机制；</p>
+<p>最上面的是 mergedir，是一个统一视图层。从 mergedir 里面可以看到 upper 和 lower 中所有数据的整合，然后我们 docker exec 到容器里面，看到一个文件系统其实就是 mergedir 统一视图层。</p>
+<pre><code># 挂载到overlay
+mount -t overlay -o lowerdir=/path/lower,upperdir=/path/upper,workdir=/path/work overlay /path/di
+</code></pre>
+<hr>
+<h2 id="scratch">scratch</h2>
+<p>scratch是空白镜像，一般用于基础镜像构建.比如制作alpine/ubuntu/debian/busybox镜像.</p>
+<h2 id="ubuntudebian">ubuntu/debian</h2>
+<p>Hash Sum mismatch:</p>
+<pre><code>RUN set -ex \
+&amp;&amp; apt-get clean \
+&amp;&amp; apt-get update -o Acquire::CompressionTypes::Order::=gz \
+&amp;&amp; apt-get update \
+&amp;&amp; apt-get install -y --allow-unauthenticated --no-install-recommends \
+build-essential \
+&amp;&amp; rm -rf /var/lib/apt/lists/*
+</code></pre>
+<h2 id="centosfedora">centos/fedora</h2>
+<h2 id="buildpack-deps">buildpack-deps</h2>
+<p>在ubuntu/debian基础上安装一些工具，比ubuntu/debian镜像更大.</p>
+<p><a href="https://github.com/docker-library/buildpack-deps">https://github.com/docker-library/buildpack-deps</a></p>
+<h2 id="busybox">busybox</h2>
+<p><a href="https://github.com/docker-library/busybox">https://github.com/docker-library/busybox</a></p>
+<h2 id="alpine推荐">alpine(推荐)</h2>
+<p>很多语言的都是基于alpine: python-version:alpine-version, golang-version:alpine-version.</p>
+<p>一个基于musl和busybox的linux发行版.</p>
+<p><a href="https://www.alpinelinux.org/">https://www.alpinelinux.org/</a></p>
+<p>alpine比distroless尺寸大，包含包管理和shell，方便调试.</p>
+<p>alpine使用musl代替glibc会导致有的程序无法运行, 解决:</p>
+<pre><code># mkdir /lib64
+# ln -s /lib/libc.musl-x86_64.so.1 /lib64/ld-linux-x86-64.so.2
+</code></pre>
+<p>注意wget 部分参数不可用.</p>
+<h2 id="distroless">distroless</h2>
+<p>google提供的只包含运行时的精简镜像.</p>
+<p>缺点是没有包管理和shell，不方便调试.</p>
+<p><a href="https://github.com/GoogleContainerTools/distroless">https://github.com/GoogleContainerTools/distroless</a></p>
+<h2 id="slim">slim</h2>
+<p>减小image大小,适用于web程序.</p>
+<p>&lt;https://github.com/docker-slim/docker-slim</p>
+<hr>
+
+        </div>
+    </article>
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

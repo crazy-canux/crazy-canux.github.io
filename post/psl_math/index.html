@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PSL_Math - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="single-post">
+    <article>
+        <header>
+            <h1>PSL_Math</h1>
+            <div class="post-meta">
+                <time>August 12, 2016</time>
+                
+                    
+                        <span class="category">Python</span>
+                    
+                
+                
+                    
+                        <span class="tag">#math</span>
+                    
+                
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <h1 id="numeric-and-mathematical-modules">Numeric and Mathematical Modules</h1>
+<h2 id="random">random</h2>
+<pre><code>import random
+</code></pre>
+<p>classes:</p>
+<pre><code># random.Random
+Random()
+# methods:
+seed([self,], a=None)
+randint(a, b) # 随机一个[a,b]中的整数．
+choice(self, seq) # 从seq中随机选择一个元素
+uniform(self, a, b)
+sample(self, population, k)
+randint(self, a, b)
+randrange(self, start, stop=None, step=1, _int=&lt;type 'int'&gt;, _maxwidth=9007199254740992L)
+
+# random.SystemRandom(Random)
+SystemRandom(Random)
+
+# random.WichmannHill(Random)
+WichmannHill(Random)
+</code></pre>
+<p>functions:</p>
+<pre><code>getrandbits(k)
+random(self) # 随机一个小于１的数．
+# 所有Random类的methods也可以直接使用．
+</code></pre>
+<h2 id="fractions">fractions</h2>
+<h2 id="functools">functools</h2>
+<p>函数式编程相关的模块</p>
+<pre><code>import functools
+</code></pre>
+<p>classes:</p>
+<pre><code># functools.partial
+partial(func, *args, **keywords) # 返回functools.partial类型的对象, partial是functools内置的偏函数类类型.
+RED = partial(lambda content, color: color + str(content) + Fore.RESET, color=Fore.RED)
+RED(&quot;show me red&quot;) == lambda content, color: Fore.RED + str(&quot;show me red&quot;) + Fore.RESET
+# 相当于通过partial传一个参数给func，然后剩下的参数通过返回的偏函数传入．这样可以固化一部分参数．
+</code></pre>
+<p>functions:</p>
+<pre><code>reduce(function, sequence[, initial]) # 如果initial存在，就把initial作为function的第一个参数，如果function有两个参数，就再从sequence取第一个元素作为function的第二个参数，然后调用function，返回的结果作为function的第一个参数，再继续从sequence获取元素作为参数，继续调用function, 直到sequence为空．
+reduce(lambda x,y: x+y, range(5))
+
+cmp_to_key(mycmp)
+total_ordering(cls)
+update_wrapper(wrapper, wrapped, assigned=('__module__', '__name__', '__doc__'), updated=('__dict__',))
+
+wraps(wrapped, assigned=('__module__', '__name__', '__doc__'), updated=('__dict__',))
+# example:
+def deco(func):
+    @wraps(func):
+    def wrapper(*args, **kwargs):
+        &quot;&quot;&quot;Docs for wrapper.&quot;&quot;&quot;
+        pass
+
+@deco
+def foo()
+    &quot;&quot;&quot;Docs for new function.&quot;&quot;&quot;
+    pass
+
+# 不用wraps被装饰的函数foo的属性其实是原来函数的属性，也就是wrapper的属性
+# 用了wraps被装饰的函数foo的属性就是foo自己的属性．
+print foo.__name__
+print foo.__doc__
+</code></pre>
+<h2 id="operator">operator</h2>
+<p>操作符相关的模块</p>
+<pre><code>import operator
+</code></pre>
+<h2 id="decimal">decimal</h2>
+<h2 id="itertools">itertools</h2>
+<pre><code>import itertools
+</code></pre>
+<h2 id="cmath">cmath</h2>
+<h2 id="math">math</h2>
+<h2 id="numbers">numbers</h2>
+<hr>
+
+        </div>
+    </article>
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

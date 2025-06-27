@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="generator" content="Hugo 0.147.9">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morgoth - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="home">
+    <h1>Morgoth</h1>
+    <p></p>
+    
+    <section class="recent-posts">
+        <h2>Recent Posts</h2>
+        <ul class="post-list">
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/psl_network/">PSL_Network</a></h2>
+                    <div class="post-meta">
+                        <time>August 12, 2016</time>
+                        
+                            
+                                <span class="category">Python</span>
+                            
+                                <span class="category">Network</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="internet-protocols-and-support">Internet Protocols and Support</h1>
+<p>socketserver/http/ftp参考<a href="https://super-devops.readthedocs.io/en/latest/">https://super-devops.readthedocs.io/en/latest/</a>.</p>
+<p>pop,imap/smtp参考<a href="https://super-devops.readthedocs.io/en/latest/">https://super-devops.readthedocs.io/en/latest/</a>.</p>
+<h2 id="urllib">urllib</h2>
+<p>urllib.request</p>
+<p>urllib.respponse</p>
+<p>urllib.parse</p>
+<pre><code>from urllib.parse import urlparse
+from urllib.parse import urljoin
+</code></pre>
+<p>urllib.error</p>
+<p>urllib.robotparser</p>
+<h2 id="ipaddress">ipaddress</h2>
+<h2 id="webbrowser">webbrowser</h2>
+<h2 id="cgi">cgi</h2>
+<h2 id="cgitb">cgitb</h2>
+<h2 id="wsgiref">wsgiref</h2>
+<h2 id="xmlrpc">xmlrpc</h2>
+<h2 id="socketserver">socketserver</h2>
+<h2 id="nntplib">nntplib</h2>
+<p>network news transfer protocol</p>
+<pre><code>import nntplib
+</code></pre>
+<h2 id="telnet">telnet</h2>
+<pre><code>import telnetlib
+</code></pre>
+<hr>
+<h1 id="structured-markup-processing-tools">Structured Markup Processing Tools</h1>
+<h2 id="html">html</h2>
+<h2 id="xml">xml</h2>
+<hr>
+<h1 id="internet-data-handling">Internet Data Handling</h1>
+<h2 id="json">json</h2>
+<p>http api(restful)一般使用json格式的数据．</p>
+<p>python和json数据类型对应关系参考WEB/JSON.</p>
+<p>complex和class/def不能被编码.</p>
+<pre><code>import json
+</code></pre>
+<p>classes:</p>
+<p>functions:</p>
+<pre><code># 将转换后的json格式写入文件
+dump(obj, fp, skipkeys=False, ensure_ascii=True, check_circular=True, allow_nan=True, cls=None, indent=None, separators=None, encoding='utf-8', default=None, sort_keys=False, **kw)
+with open(file, 'w') as f:
+    json.dump(dict_data, f)
+
+# 将dict类型转换成json格式
+dumps(obj, skipkeys=False, ensure_ascii=True, check_circular=True, allow_nan=True, cls=None, indent=None, separators=None, encoding='utf-8', default=None, sort_keys=False, **kw)
+json_data = json.dumps(dict_data)
+
+indent=4 # 写入自动缩进４个空格
+
+# 将读出的文件(json格式)转换成dict
+load(fp, encoding=None, cls=None, object_hook=None, parse_float=None, parse_int=None, parse_constant=None, object_pairs_hook=None, **kw)
+with open(file, 'r') as f:
+    dict_data = json.load(f)
+
+# json类型变成dict类型
+loads(s, encoding=None, cls=None, object_hook=None, parse_float=None, parse_int=None, parse_constant=None, object_pairs_hook=None, **kw)
+response_dict = json.loads(response.content) # 使用requests获取的json数据,转化为dict类型
+</code></pre>
+<h2 id="base64">base64</h2>
+<h2 id="mailcap">mailcap</h2>
+<h2 id="mailbox">mailbox</h2>
+<h2 id="minetypes">minetypes</h2>
+<h2 id="binhex">binhex</h2>
+<h2 id="binascii">binascii</h2>
+<h2 id="quopri">quopri</h2>
+<h2 id="uu">uu</h2></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/restructuredtext/">ReStructuredText</a></h2>
+                    <div class="post-meta">
+                        <time>August 8, 2016</time>
+                        
+                            
+                                <span class="category">Web</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="restructuredtext">reStructuredText</h1>
+<p><a href="http://docutils.sourceforge.net/rst.html">http://docutils.sourceforge.net/rst.html</a></p>
+<p>reST是易读所见即所得的文本标记语言，格式类似markdown。</p>
+<p>python的reST参考pep12和pep287:</p>
+<p><a href="https://www.python.org/dev/peps/pep-0012/">https://www.python.org/dev/peps/pep-0012/</a></p>
+<p><a href="https://www.python.org/dev/peps/pep-0287/">https://www.python.org/dev/peps/pep-0287/</a></p>
+<p>主标题：</p>
+<pre><code>title
+=====
+
+=====
+title
+=====
+</code></pre>
+<p>副标题：</p>
+<pre><code>Subtitle
+-----
+
+--------
+Subtitle
+--------
+</code></pre>
+<p>次级标题：</p>
+<pre><code>Content
+^^^^^^^
+</code></pre>
+<p>星号斜体强调：</p>
+<pre><code>*text*
+</code></pre>
+<p>双星号加粗重点强调：</p>
+<pre><code>**text**
+</code></pre>
+<p>四个或以上的-表示分割线：</p>
+<pre><code>----
+</code></pre>
+<p>参考式链接：</p>
+<pre><code>`hyperlink`_
+
+.. _hyperlink: http://hyperlink.org
+</code></pre>
+<p>行内式链接：</p>
+<pre><code>`link &lt;https://link.com&gt;`_
+</code></pre>
+<p>图片：</p>
+<pre><code>.. image:: https://path/image.png
+    :alt: HTTPie compared to cURL
+    :width: 679
+    :heigh: 781
+    :align: center
+</code></pre>
+<p>原样引用块：</p>
+<p>双冒号加四个空格</p>
+<pre><code>source code::
+
+    print(&quot;source&quot;)
+    return 0
+</code></pre>
+<p>文档测试块：</p>
+<pre><code>&gt;&gt;&gt; print doctest block.
+</code></pre>
+<p>无序列表：</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/python_pep/">PEP</a></h2>
+                    <div class="post-meta">
+                        <time>August 6, 2016</time>
+                        
+                            
+                                <span class="category">Python</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="pep-8--style-guide-for-python-code">PEP 8 &ndash; Style Guide for Python Code</h1>
+<p><a href="https://www.python.org/dev/peps/pep-0008/">https://www.python.org/dev/peps/pep-0008/</a></p>
+<h1 id="pep-257--docstring-conventions">PEP 257 &ndash; Docstring Conventions</h1>
+<p><a href="https://www.python.org/dev/peps/pep-0257/">https://www.python.org/dev/peps/pep-0257/</a></p>
+<h1 id="pep-20pep-20--the-zen-of-python">PEP-20PEP 20 &ndash; The Zen of Python</h1>
+<p><a href="https://www.python.org/dev/peps/pep-0020/">https://www.python.org/dev/peps/pep-0020/</a></p>
+<pre><code># 查看pep20
+&gt;import this
+</code></pre></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/python_debug/">Debug</a></h2>
+                    <div class="post-meta">
+                        <time>August 6, 2016</time>
+                        
+                            
+                                <span class="category">Python</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="ide">IDE</h1>
+<p>pycharm可以通过breakpoint和step调试.</p>
+<hr>
+<h1 id="debug">debug</h1>
+<h2 id="bdb">bdb</h2>
+<h2 id="pdb">pdb</h2>
+<h2 id="hotshot">hotshot</h2>
+<h2 id="timeit">timeit</h2>
+<h2 id="trace">trace</h2>
+<h2 id="cprofile">cProfile</h2>
+<h2 id="profile">profile</h2>
+<hr></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/python_document/">Document</a></h2>
+                    <div class="post-meta">
+                        <time>August 3, 2016</time>
+                        
+                            
+                                <span class="category">Python</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="document">Document</h1>
+<p>python项目文档相关的工具．</p>
+<h1 id="pydoc">pydoc</h1>
+<p>python自带的文档命令行接口</p>
+<pre><code>$ pydoc --help
+$ pydoc -p &lt;port&gt;
+</code></pre>
+<hr>
+<h1 id="tpl">TPL</h1>
+<h2 id="sphinx">Sphinx</h2>
+<p><a href="https://github.com/sphinx-doc/sphinx">https://github.com/sphinx-doc/sphinx</a></p>
+<p><a href="https://zh-sphinx-doc.readthedocs.io/en/latest/contents.html">https://zh-sphinx-doc.readthedocs.io/en/latest/contents.html</a></p>
+<p>Sphinx就是python处理reStructuredText格式的工具。</p>
+<p>安装：</p>
+<pre><code>$pip install -U Sphinx
+</code></pre>
+<p>使用sphinx：</p>
+<pre><code>$cd your-project/docs
+
+$sphinx-quickstart
+# 以下选项需要手动设定，其它都可以用默认值：
+&gt; Project name: pydeveloper
+&gt; Author name(s): Canux CHENG
+&gt; Project version: 1.0.0.0
+&gt; autodoc: automatically insert docstrings from modules (y/n) [n]: y
+&gt; doctest: automatically test code snippets in doctest blocks (y/n) [n]: y
+</code></pre>
+<p>配置文件conf.py包含刚才的所有配置，可以在这里手动修改。</p>
+<p><a href="http://www.sphinx-doc.org/en/1.4.8/config.html#confval-locale_dirs">http://www.sphinx-doc.org/en/1.4.8/config.html#confval-locale_dirs</a></p>
+<p>添加包的版本：</p>
+<pre><code>sys.path.insert(0, os.path.abspath(&quot;..&quot;))
+from &lt;project&gt; import __version__
+</code></pre>
+<p>修改自己的配置：</p></p>
+                    
+                </li>
+            
+        </ul>
+    </section>
+    
+    
+        <a href="/page/37/">← Previous</a>
+    
+    
+        <a href="/page/39/">Next →</a>
+    
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

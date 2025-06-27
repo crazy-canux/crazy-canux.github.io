@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="generator" content="Hugo 0.147.9">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morgoth - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="home">
+    <h1>Morgoth</h1>
+    <p></p>
+    
+    <section class="recent-posts">
+        <h2>Recent Posts</h2>
+        <ul class="post-list">
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/gsl_network/">GSL_network</a></h2>
+                    <div class="post-meta">
+                        <time>January 1, 2018</time>
+                        
+                            
+                                <span class="category">Golang</span>
+                            
+                                <span class="category">Network</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="net">net</h1>
+<p>网络IO接口，包括TCP/IP, UDP, SOCKET, DNS</p>
+<pre><code>import &quot;net&quot;
+</code></pre>
+<h2 id="constants">constants</h2>
+<pre><code>const (
+    IPv4len = 4
+    IPv6len = 16
+)
+</code></pre>
+<h2 id="variables">variables</h2>
+<h2 id="functions">functions</h2>
+<h2 id="addr">Addr</h2>
+<p>代表一个网络终端地址．</p>
+<p>TCPAddr, UDPAddr, IPAddr, UnixAddr 都实现了该接口</p>
+<pre><code>type Addr interface {
+    Network() string
+    String() string
+}
+</code></pre>
+<h2 id="tcpaddr">TCPAddr</h2>
+<p>function:</p>
+<pre><code>func ResolveTCPAddr(net, addr string) (*TCPAddr, error)
+</code></pre>
+<h2 id="udpaddr">UDPAddr</h2>
+<p>function:</p>
+<pre><code>func ResolveUDPAddr(net, addr string) (*UDPAddr, error)
+</code></pre>
+<h2 id="ipaddr">IPAddr</h2>
+<p>function:</p>
+<pre><code>func ResolveIPAddr(net, addr string) (*IPAddr, error)
+</code></pre>
+<h2 id="unixaddr">UnixAddr</h2>
+<p>function:</p>
+<pre><code>func ResolveUnixAddr(net, addr string) (*UnixAddr, error)
+</code></pre>
+<h2 id="conn">Conn</h2>
+<p>该接口代表通用的面向流的网络连接．</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/gsl_multimedia/">GSL_multimedia</a></h2>
+                    <div class="post-meta">
+                        <time>January 1, 2018</time>
+                        
+                            
+                                <span class="category">Golang</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="image">image</h1>
+<hr>
+<h1 id="mime">mime</h1></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/gsl_math/">GSL_math</a></h2>
+                    <div class="post-meta">
+                        <time>January 1, 2018</time>
+                        
+                            
+                                <span class="category">Golang</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="math">math</h1>
+<h2 id="constants">constants</h2>
+<h2 id="variables">variables</h2>
+<h2 id="functions">functions</h2>
+<hr>
+<h1 id="mathbig">math/big</h1>
+<hr>
+<h1 id="mathcmplx">math/cmplx</h1>
+<hr>
+<h1 id="mathrand">math/rand</h1>
+<hr>
+<h1 id="sort">sort</h1>
+<h2 id="functions-1">functions</h2>
+<pre><code>func Ints(a []int)
+func IntAreSorted(a []int) bool
+func SearchInts(a []int, x int) int
+
+func Float64s(a []float64)
+func Float64sArerSorted(a []float64) bool
+func SearchFloat64s(a []float64, x float64) int
+
+func Strings(a []string)
+func StringsAreSorted(a []string) bool
+func SearchStrings(a []string, x string) int
+
+func Sort(data Interface)
+func Stable(data Interface)
+func IsSorted(data Interface) bool
+func Reverse(data Interface) Interface
+// 二分查找
+func Search(n int, f func(int) bool) int
+</code></pre>
+<h2 id="interface">Interface</h2>
+<pre><code>type Interface interface {
+    Len() int
+    Less(i, j int) bool
+    Swap(i, j int)
+}
+</code></pre>
+<h2 id="initslice">InitSlice</h2>
+<pre><code>type InitSlice []int
+</code></pre>
+<h2 id="float64slice">Float64Slice</h2>
+<pre><code>type Float64Slice []float64
+</code></pre>
+<h2 id="stringslice">StringSlice</h2>
+<pre><code>type StringSlice []string
+</code></pre>
+<hr></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/gsl_golang/">GSL_golang</a></h2>
+                    <div class="post-meta">
+                        <time>January 1, 2018</time>
+                        
+                            
+                                <span class="category">Golang</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="runtime">runtime</h1>
+<h2 id="constants">constants</h2>
+<pre><code>// 指定编译器
+const Compiler = &quot;gc&quot;/&quot;gccgo&quot;
+
+// 处理器架构: 386/amd64/arm
+const GOARCH string = theGoarch
+
+// 操作系统: linux/freebsd/darwin/win
+const GOOS string = theGoos
+</code></pre>
+<h2 id="variables">variables</h2>
+<pre><code>var MemProfileRate int = 512 * 1024
+</code></pre>
+<h2 id="functions">functions</h2>
+<pre><code>func GOROOT() string
+func Version() string
+
+// 返回本地机器的逻辑cpu个数
+func NumCPU() int
+
+//更改调度器可以使用的逻辑cpu数量, 默认只用一个cpu.
+func GOMAXPROCS(n int) int
+
+// 使当前goroutine让出绑定的cpu,其它goroutine可以继续执行.
+// 当前goroutine放回队列等待继续执行.
+func Gosched()
+
+// 终止当前goroutine,终止前执行所有defer.
+func Goexit()
+</code></pre>
+<hr>
+<h1 id="runtimedebug">runtime/debug</h1>
+<h2 id="function">function</h2>
+<pre><code>// 设置最大线程数，默认1000.
+func SetMaxThreads(threads int) int
+</code></pre>
+<hr>
+<h1 id="runtimecgo">runtime/cgo</h1>
+<hr>
+<h1 id="runtimepprof">runtime/pprof</h1>
+<hr>
+<h1 id="runtimerace">runtime/race</h1>
+<hr>
+<h1 id="runtimetrace">runtime/trace</h1>
+<hr>
+<h1 id="go">go</h1>
+<hr>
+<h1 id="expvar">expvar</h1>
+<hr>
+<h1 id="context">context</h1>
+<hr>
+<h1 id="unsafe">unsafe</h1>
+<hr>
+<h1 id="errors">errors</h1>
+<h2 id="function-1">function</h2>
+<pre><code>// 使用字符串创建一个错误, 返回一个error
+func New(text string) error
+</code></pre></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/gsl_file/">GSL_file</a></h2>
+                    <div class="post-meta">
+                        <time>January 1, 2018</time>
+                        
+                            
+                                <span class="category">Golang</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="path">path</h1>
+<h2 id="function">function</h2>
+<pre><code>func IsAbs(path string) bool
+func Join(elem ...string) string
+func Split(path string) (dir, file string)
+func Join(elem ...string) string
+func Dir(path string) string
+func Base(path string) string
+func Ext(path string) string 
+...
+</code></pre>
+<hr>
+<h1 id="pathfilepath">path/filepath</h1>
+<h2 id="constants">Constants</h2>
+<pre><code>const (
+    Separator = os.PathSeparator
+    ListSeparator = os.PathListSeparator
+)
+</code></pre>
+<h2 id="variable">Variable</h2>
+<pre><code>var ErrBadPattern = errors.New(&quot;Syntax error in pattern&quot;)
+
+var SkipDir = errors.New(&quot;skip this diractory&quot;)
+</code></pre>
+<h2 id="function-1">function</h2>
+<pre><code>func IsAbs(path string) bool
+func Abs(path string) (string, error)
+
+// 返回 targpath 相对于 basepath 的 路径 （相当于返回 targpath - basepath), 实际就是文件名.
+func Rel(basepath, targpath string) (string, error)
+
+func Split(path string) (dir, file string)
+func Join(elem ...string) string
+func Dir(path string) string
+func Base(path string) string
+func Ext(path string) string) // 包括小数点
+func Walk(root string, walkFn WalkFunc) error
+</code></pre>
+<h2 id="walkfunc">WalkFunc</h2>
+<p>调用Walk时会对每个目录和文件调用该函数.</p></p>
+                    
+                </li>
+            
+        </ul>
+    </section>
+    
+    
+        <a href="/page/21/">← Previous</a>
+    
+    
+        <a href="/page/23/">Next →</a>
+    
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

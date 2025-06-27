@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K8S CRI - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="single-post">
+    <article>
+        <header>
+            <h1>K8S CRI</h1>
+            <div class="post-meta">
+                <time>June 5, 2019</time>
+                
+                    
+                        <span class="category">CNCF</span>
+                    
+                
+                
+                    
+                        <span class="tag">#k8s</span>
+                    
+                
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <h1 id="cri">CRI</h1>
+<p>CRI: Container Runtime Intarface</p>
+<p>定义了k8s和container runtime进行交互的接口.</p>
+<p>是k8s与container交互的标准.</p>
+<p><a href="https://kubernetes.io/zh/docs/setup/production-environment/container-runtimes/">https://kubernetes.io/zh/docs/setup/production-environment/container-runtimes/</a></p>
+<ul>
+<li>containerd</li>
+<li>cri-o</li>
+<li>rkt</li>
+<li>kata</li>
+<li>rancher</li>
+</ul>
+<hr>
+<h2 id="docker">docker</h2>
+<p>k8s_1.20 开始警告不再支持docker.</p>
+<p>k8s_1.23 开始移除dockershim.</p>
+<p>/var/run/dockerhsim.sock</p>
+<h2 id="containerd">containerd</h2>
+<p>/run/container/containerd.sock</p>
+<p><a href="https://github.com/containerd/containerd">https://github.com/containerd/containerd</a></p>
+<p>安装配置:</p>
+<p><a href="https://kubernetes.io/zh/docs/setup/production-environment/container-runtimes/#containerd">https://kubernetes.io/zh/docs/setup/production-environment/container-runtimes/#containerd</a></p>
+<h2 id="cri-o">CRI-O</h2>
+<p>redhat.</p>
+<p>/var/run/crio/crio.sock</p>
+<p><a href="https://github.com/cri-o/cri-o">https://github.com/cri-o/cri-o</a></p>
+<h2 id="kata">kata</h2>
+<p><a href="https://github.com/kata-containers/runtime">https://github.com/kata-containers/runtime</a></p>
+<h2 id="rkt">rkt</h2>
+<p>redhat(coreos)</p>
+<p><a href="https://github.com/rkt/rkt">https://github.com/rkt/rkt</a></p>
+<hr>
+
+        </div>
+    </article>
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

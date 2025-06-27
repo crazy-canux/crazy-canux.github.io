@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exporter - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="single-post">
+    <article>
+        <header>
+            <h1>Exporter</h1>
+            <div class="post-meta">
+                <time>January 18, 2018</time>
+                
+                    
+                        <span class="category">DevOps</span>
+                    
+                
+                
+                    
+                        <span class="tag">#monitoring</span>
+                    
+                
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <h1 id="exporter">exporter</h1>
+<p>广义上讲所有可以向Prometheus提供监控样本数据的程序都可以被称为一个Exporter。而Exporter的一个实例称为target，如下所示，Prometheus通过轮询的方式定期从这些target中获取样本数据:</p>
+<p>prometheus通过pull从exporter拉取数据.</p>
+<p>直接采集:cAdvisor, kubernetes, etcd, gokit等直接内置了用于向prometheus暴露监控数据的端点.</p>
+<p>间接采集: 通过promethesu的client api编写exporter，例如mysql-exporter, consul-exporter.</p>
+<hr>
+<h1 id="host">host</h1>
+<p><a href="https://github.com/prometheus/node_exporter">https://github.com/prometheus/node_exporter</a></p>
+<hr>
+<h1 id="k8s">k8s</h1>
+<p>k8s metrics api包括 resource metrics api 和 customer metrics api.</p>
+<p>cadvisor, metrics-server, kube-state-metrics 等实现了 核心api.</p>
+<p>一些adapter实现了自定义api.</p>
+<p>k8s-prometheus-adapter实现了metrics-server的核心api，同时实现了自定义api.</p>
+<h2 id="metrics-server">metrics-server </h2>
+<p>提供了整个集群的资源监控数据</p>
+<p><a href="https://github.com/kubernetes-sigs/metrics-server">https://github.com/kubernetes-sigs/metrics-server</a></p>
+<h2 id="cadvisor">cAdvisor</h2>
+<p>负责单节点内部的容器和节点资源使用统计，会自动收集本机容器 CPU、内存、网络和文件系统的资源占用情况</p>
+<p><a href="https://github.com/google/cadvisor">https://github.com/google/cadvisor</a></p>
+<h2 id="kube-state-metrics">kube-state-metrics </h2>
+<p>提供了 Kubernetes 资源对象（如 DaemonSet、Deployments 等）的度量。</p>
+<p><a href="https://github.com/kubernetes/kube-state-metrics">https://github.com/kubernetes/kube-state-metrics</a></p>
+<h2 id="adapter">adapter</h2>
+<p>同时支持核心api和自定义api.</p>
+<p><a href="https://github.com/DirectXMan12/k8s-prometheus-adapter">https://github.com/DirectXMan12/k8s-prometheus-adapter</a></p>
+<hr>
+<h1 id="blackbox">blackbox</h1>
+<p><a href="https://github.com/prometheus/blackbox_exporter">https://github.com/prometheus/blackbox_exporter</a></p>
+<h1 id="wmi">wmi</h1>
+<p><a href="https://github.com/martinlindhe/wmi_exporter">https://github.com/martinlindhe/wmi_exporter</a></p>
+<h1 id="snmp">snmp</h1>
+<p><a href="https://github.com/prometheus/snmp_exporter">https://github.com/prometheus/snmp_exporter</a></p>
+<h1 id="mysql">mysql</h1>
+<p><a href="https://github.com/prometheus/mysqld_exporter">https://github.com/prometheus/mysqld_exporter</a></p>
+<h1 id="rabbitmq">rabbitmq</h1>
+<p><a href="https://github.com/deadtrickster/prometheus_rabbitmq_exporter">https://github.com/deadtrickster/prometheus_rabbitmq_exporter</a></p>
+<h1 id="mongo">mongo</h1>
+<p><a href="https://github.com/percona/mongodb_exporter">https://github.com/percona/mongodb_exporter</a></p>
+<h1 id="redis">redis</h1>
+<p><a href="https://github.com/oliver006/redis_exporter">https://github.com/oliver006/redis_exporter</a></p>
+<h1 id="haproxy">haproxy</h1>
+<p><a href="https://github.com/prometheus/haproxy_exporter">https://github.com/prometheus/haproxy_exporter</a></p>
+<h1 id="consul">consul</h1>
+<p><a href="https://github.com/prometheus/consul_exporter">https://github.com/prometheus/consul_exporter</a></p>
+<hr>
+<h1 id="pushgateway">pushgateway</h1>
+<p><a href="https://github.com/prometheus/pushgateway">https://github.com/prometheus/pushgateway</a></p>
+<p>由于Prometheus数据采集基于Pull模型进行设计，因此在网络环境的配置上必须要让Prometheus Server能够直接与Exporter进行通信。 当这种网络需求无法直接满足时，就可以利用PushGateway来进行中转。可以通过PushGateway将内部网络的监控数据主动Push到Gateway当中。而Prometheus Server则可以采用同样Pull的方式从PushGateway中获取到监控数据.</p>
+
+        </div>
+    </article>
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

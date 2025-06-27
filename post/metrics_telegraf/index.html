@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Telegraf - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="single-post">
+    <article>
+        <header>
+            <h1>Telegraf</h1>
+            <div class="post-meta">
+                <time>January 18, 2018</time>
+                
+                    
+                        <span class="category">DevOps</span>
+                    
+                
+                
+                    
+                        <span class="tag">#monitoring</span>
+                    
+                
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <h1 id="telegraf">Telegraf</h1>
+<p><a href="https://github.com/influxdata/telegraf">https://github.com/influxdata/telegraf</a></p>
+<p>The plugin-driven server agent for collecting &amp; reporting metrics.</p>
+<hr>
+<h1 id="configuartion">Configuartion</h1>
+<p>agent configuration:</p>
+<pre><code>interval    所有inputs的默认运行间隔
+round_interval
+collection_jitter
+precision    ns/us/ms/s
+flush_interval
+flush_jitter
+</code></pre>
+<p>input configuration:</p>
+<pre><code>interval
+name_override # 默认measurements是插件名,修改默认measurements.
+name_prefix
+name_suffix
+tags
+</code></pre>
+<hr>
+<h1 id="go-api">Go API</h1>
+<p><a href="https://godoc.org/github.com/influxdata/telegraf#Input">https://godoc.org/github.com/influxdata/telegraf#Input</a></p>
+<p>测试插件：</p>
+<pre><code># 需要配置文件
+$ telegraf --input-filter &lt;plugin-name&gt; --test
+</code></pre>
+<hr>
+<h1 id="build">Build</h1>
+<p>安装依赖：</p>
+<pre><code>sudo apt-get install ruby-dev
+sudo gem install fpm
+sudo apt-get install rpm
+</code></pre>
+<p>编译telegraf:</p>
+<pre><code>make telegraf
+</code></pre>
+<p>生成配置文件：</p>
+<pre><code>./telegraf config &gt; ./etc/telegraf.conf
+</code></pre>
+<p>构建deb:</p>
+<pre><code>make package
+</code></pre>
+<hr>
+<h1 id="development">Development</h1>
+<p>修改默认enable的plugin:</p>
+<pre><code># plugin中相应的sampleConfig中的字段不要用#注释．
+internal/config/config.go -&gt; 可以修改默认enable的plugin.
+inputDefaults
+outputDefaults
+</code></pre>
+<p>调试：</p>
+<pre><code>./telegraf --config ./etc/telegraf.conf --input-filter process --test
+</code></pre>
+<p>添加debugxinxi</p>
+<pre><code>import &quot;log&quot;
+log.Printf(&quot;D! key: %v&quot;, value)
+# &quot;D!&quot; 开头的信息当debug=true才会打印.
+</code></pre>
+<hr>
+
+        </div>
+    </article>
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

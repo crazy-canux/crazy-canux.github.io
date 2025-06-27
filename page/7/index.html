@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="generator" content="Hugo 0.147.9">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morgoth - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="home">
+    <h1>Morgoth</h1>
+    <p></p>
+    
+    <section class="recent-posts">
+        <h2>Recent Posts</h2>
+        <ul class="post-list">
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/aws/">AWS</a></h2>
+                    <div class="post-meta">
+                        <time>April 23, 2021</time>
+                        
+                            
+                                <span class="category">Cloud</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="aws">AWS</h1>
+<p><a href="https://github.com/donnemartin/awesome-aws">https://github.com/donnemartin/awesome-aws</a></p>
+<p>aws certification:</p>
+<ul>
+<li>Foundational: 6个月经验. Cloud Practitioner Foundational(CLF).</li>
+<li>Associate: 一年经验. Solutions Architect Associate(SAA); Developer, SysOps Administrator</li>
+<li>Professional: 两年经验. Solutions Architect Professional(SAP), Devops Engineer.</li>
+<li>Specialty: 特殊领域.</li>
+</ul>
+<hr>
+<h2 id="sdk">SDK</h2>
+<p>python</p>
+<p><a href="https://github.com/boto/boto3">https://github.com/boto/boto3</a></p>
+<p>golang</p>
+<p><a href="https://github.com/aws/aws-sdk-go">https://github.com/aws/aws-sdk-go</a></p>
+<hr>
+<h2 id="aws-management-console">AWS Management Console</h2>
+<p>通过webUI管理资源.
+kkkkjjkijijijkkjddkkkkjj</p>
+<hr>
+<h2 id="aws-command-line-interface">AWS Command Line Interface</h2>
+<p><a href="https://github.com/aws/aws-cli">https://github.com/aws/aws-cli</a></p>
+<p><a href="https://github.com/awslabs/aws-shell">https://github.com/awslabs/aws-shell</a></p>
+<p>推荐使用awscli-V2:</p>
+<p><a href="https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html">https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2.html</a></p>
+<p>使用:</p>
+<pre><code>aws [-h] [--profile PROFILE] [--debug]
+</code></pre>
+<p>option:</p>
+<pre><code>-h, --help
+--profile PROFILE
+--debug
+</code></pre>
+<p>comand option:</p>
+<pre><code>aws &lt;service&gt; &lt;subcommand&gt; help 
+</code></pre>
+<h3 id="cli-credentials">CLI credentials</h3>
+<p>优先级：</p>
+<ol>
+<li>命令行选项</li>
+<li>credentials文件</li>
+<li>config文件</li>
+<li>容器凭证</li>
+<li>实例配置文件凭证</li>
+</ol>
+<ul>
+<li>CLI</li>
+</ul>
+<p>配置default profile</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/js_ts/">TypeScript</a></h2>
+                    <div class="post-meta">
+                        <time>March 5, 2021</time>
+                        
+                            
+                                <span class="category">Web</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="typescript">TypeScript</h1>
+<p><a href="https://github.com/microsoft/TypeScript">https://github.com/microsoft/TypeScript</a></p>
+<p><a href="https://www.typescriptlang.org/zh/">https://www.typescriptlang.org/zh/</a></p>
+<p><a href="https://github.com/microsoft/tsdoc">https://github.com/microsoft/tsdoc</a></p>
+<hr>
+<h2 id="tsx">TSX</h2>
+<p>&ldquo;*.tsx&rdquo; 是js的扩展，允许使用xml语法。</p>
+<p>typescript支持interface。</p>
+<hr>
+<h2 id="jsc">jsc</h2>
+<p>将TS编译成JS, tsconfig.json是配置文件。</p>
+<hr></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/linux_bitbake/">BitBake</a></h2>
+                    <div class="post-meta">
+                        <time>July 12, 2020</time>
+                        
+                            
+                                <span class="category">Linux</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="bitbake">BitBake</h1>
+<p>bitbake是类似于make的构建工具，主要用于OpenEmbedded和yocto构建linux发行版.</p>
+<p><a href="https://github.com/openembedded/bitbake">https://github.com/openembedded/bitbake</a></p>
+<p>bitbake:</p>
+<pre><code>$ bitbake python -c devshell/devpyshell
+$ bitbake python -c clean/cleanall/cleanstate
+$ bitbake python -c compile
+$ bitbake python -c fetch/fetchall
+
+# 查找下载地址
+$ bitbake -e python | grep ^SRC_URI
+
+# 根据文件查找包名
+bitbake&gt; oe-pkgdata-util find-path /usr/bin/python3
+
+# 包名查找recipe
+bitbake&gt; oe-pkgdata-util lookup-recipe python3-core
+</code></pre>
+<h1 id="openembedded">openembedded</h1>
+<p><a href="https://github.com/openembedded/openembedded-core">https://github.com/openembedded/openembedded-core</a></p>
+<h1 id="yoctopoky">yocto(poky)</h1>
+<p>poky是一个开源的最小构建示例，内置bitbake，可直接编译.</p>
+<p><a href="http://git.yoctoproject.org/cgit/cgit.cgi/poky/log/">http://git.yoctoproject.org/cgit/cgit.cgi/poky/log/</a></p>
+<p><a href="http://git.yoctoproject.org/cgit/cgit.cgi/meta-virtualization/tree/recipes-containers">http://git.yoctoproject.org/cgit/cgit.cgi/meta-virtualization/tree/recipes-containers</a></p>
+<p><a href="https://github.com/crazy-canux/poky">https://github.com/crazy-canux/poky</a></p>
+<h1 id="toaster">toaster</h1></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/linux_kernel/">kernel</a></h2>
+                    <div class="post-meta">
+                        <time>May 27, 2020</time>
+                        
+                            
+                                <span class="category">Linux</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="kernel">Kernel</h1>
+<h1 id="command">command</h1>
+<pre><code>lsmod 查看已加载的模块    # /proc/modules
+rmmod &lt;name&gt; 删除模块
+
+modprobe -c 查看已编译可加载的内核模块
+modprobe &lt;name&gt; 加载模块 # /etc/modules
+modprobe -r &lt;name&gt; 删除模块
+
+// modprobe 重启就没了
+echo &quot;ipmi_devintf&quot; &gt;&gt; /etc/modules
+</code></pre></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/linux_security/">Linux Security</a></h2>
+                    <div class="post-meta">
+                        <time>May 24, 2020</time>
+                        
+                            
+                                <span class="category">Linux</span>
+                            
+                                <span class="category">Security</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="selinux">SeLinux</h1>
+<p>Security-Enhanced Linux</p>
+<h1 id="seccomp">SecComp</h1>
+<p>Secure computing mode (seccomp) is a Linux kernel feature.</p>
+<h1 id="apparmor">AppArmor</h1>
+<p>AppArmor (Application Armor) is a Linux security module that protects an operating system and its applications from security threats.</p></p>
+                    
+                </li>
+            
+        </ul>
+    </section>
+    
+    
+        <a href="/page/6/">← Previous</a>
+    
+    
+        <a href="/page/8/">Next →</a>
+    
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

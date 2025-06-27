@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Virtualbox on Morgoth</title>
+    <link>https://canuxcheng.com/tags/virtualbox/</link>
+    <description>Recent content in Virtualbox on Morgoth</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 03 Jun 2019 22:53:23 +0800</lastBuildDate>
+    <atom:link href="https://canuxcheng.com/tags/virtualbox/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Virtualbox</title>
+      <link>https://canuxcheng.com/post/virtualbox/</link>
+      <pubDate>Mon, 03 Jun 2019 22:53:23 +0800</pubDate>
+      <guid>https://canuxcheng.com/post/virtualbox/</guid>
+      <description>&lt;h1 id=&#34;virtualbox&#34;&gt;Virtualbox&lt;/h1&gt;&#xA;&lt;p&gt;虚拟化工具virtualbox.&lt;/p&gt;&#xA;&lt;h1 id=&#34;vboxmanage&#34;&gt;vboxmanage&lt;/h1&gt;&#xA;&lt;p&gt;vm&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;// 导入ova&#xA;$ vboxmanage import win7.ova &#xA;&#xA;// 添加host网络&#xA;$ vboxmanage modifyvm &amp;quot;win764&amp;quot; --nic1 hostonly --hostonlyadapter1 vboxnet0&#xA;// 添加bridge网络&#xA;$ vboxmanage modifyvm &amp;quot;Win732&amp;quot; --nic2 bridged --bridgeadapter2 docker_gwbridge&#xA;// 重命名vm&#xA;$ vboxmanage modifyvm &amp;lt;vm&amp;gt; --name &amp;lt;new-name&amp;gt; &#xA;// 修改参数&#xA;$ vboxmanage modifyvm &amp;lt;vm&amp;gt; --memory 4096 --cpus 4 --hwvirtex on --ioapic on&#xA;&#xA;// 启动虚拟机&#xA;$ vboxmanage startvm &amp;quot;Win732&amp;quot;&#xA;$ vboxmanage startvm &amp;lt;vm&amp;gt; --type headless &#xA;$ VBoxHeadless --startvm &amp;lt;uuid|name&amp;gt; --vrde on&#xA;&#xA;// 控制虚拟机&#xA;$ vboxmanage controlvm &amp;lt;vm&amp;gt; pause/resume/reset/poweroff/savestate&#xA;&#xA;// 查看所有/运行虚拟机&#xA;$ vboxmanage list vms/runningvms &#xA;&#xA;// 删除vm&#xA;$ vboxmanage unregistervm &amp;lt;vm&amp;gt; --delete&#xA;&#xA;// linux上执行命令&#xA;$ vboxmanage guestcontrol {} --username {} --password {} run --exe /bin/bash -- -l -c &#39;pwd&#39;&#xA;&#xA;// windows上执行命令&#xA;$ vboxmanage guestcontrol {} --username &#39;Administrator&#39; run --exe &#39;C:\\Program Files\\Oracle\\VirtualBox Guest Additions\\uninst.exe&#39; -- uninst.exe /S&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;media&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

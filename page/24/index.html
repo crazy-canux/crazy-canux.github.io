@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="generator" content="Hugo 0.147.9">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morgoth - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="home">
+    <h1>Morgoth</h1>
+    <p></p>
+    
+    <section class="recent-posts">
+        <h2>Recent Posts</h2>
+        <ul class="post-list">
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/go_concurrency/">Go_Concurrency</a></h2>
+                    <div class="post-meta">
+                        <time>January 1, 2018</time>
+                        
+                            
+                                <span class="category">Golang</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="并发concurrency">并发/concurrency</h1>
+<p>CSP: communicating sequential processes, 通信顺序进程。</p>
+<p>go的并发同步模型来自CSP泛型。CSP是一种消息传递模型，用于在goroutine之间同步和传递数据的类型是channel.</p>
+<p>concurrency:并发,同时管理很多事情，可以执行到一半就暂停去做其他事情.有同时执行的能力，但不一定要同时执行.并发属于代码。</p>
+<p>所以如果是单个cpu，每次只能运行一个goroutine,如果是多cpu,就是并行,每个cpu都可以跑goroutine.</p>
+<p>parallelism: 并行,让不同的代码在不同的物理处理器上同时执行. 并行属于运行中的程序。并行是时间或者上下文的概念。</p>
+<p>process: 进程, 是系统资源和调度的基本单位，包括内存，句柄，线程等。</p>
+<p>thread: 线程,是cpu调度和分配的基本单位,每个进程至少包含一个线程，初始线程就是主线程，每个线程绑定到一个逻辑cpu上运行。</p>
+<p>co-routine: 协程，大量线程会消耗内存和cpu调度，将线程分为内核态线程和用户态线程，每个用户态线程绑定到内核态线程，但是cpu不知道用户态线程的存在，我们把用户态线程叫协程。</p>
+<p>goroutine: go语言的协程，是并行的，通过channel来通信.</p>
+<p>GMP: goroutine的实现模型。</p>
+<p>G: goroutine。</p>
+<p>M: thread，代表一个内核态线程，golang默认10000个，SetMaxThreads可以设置，P创建M，一个P可以创建多个M如果之前的阻塞了。</p>
+<p>P: processor, 包含了可运行的协程队列，由GOMAXPROCS确定个数，然后创建对应个数的P。</p>
+<p>不要通过共享内存通信，通过通信来共享内存。</p>
+<h2 id="goroutines">goroutines</h2>
+<p>go关键字会启动一个新的goroutine并执行.</p>
+<p>每个goroutine会绑定到一个逻辑处理器上运行，每个逻辑处理器会绑定到单个操作系统线程。</p>
+<p>当goroutine阻塞，就会把goroutine和线程从逻辑处理器上分离，然后创建一个新的线程绑定到该逻辑处理器，并继续运行队列中的其它goroutine.</p>
+<p>当阻塞的goroutine恢复，会再次进入队列，和该goroutine绑定的线程也会保存下来.</p>
+<pre><code>go FuncName(...)
+</code></pre>
+<p>主进程main结束了，goroutine也结束．</p>
+<h2 id="竟态">竟态</h2>
+<p>race condition: 竞争状态，多个goroutine同时操作同一资源.</p>
+<pre><code># 检测竞争状态
+$ go build -race
+</code></pre>
+<p>所以要解决goroutine间的消息传递和同步的问题.</p>
+<p>通过通信共享内存，而不是通过共享内存而通信,说明解决并发问题优先使用chan，而不是sync包。</p>
+<p>channel还是mutex,选择的依据是他们的能力/特性.</p>
+<p>channel的能力是让数据流动起来，擅长的是数据流动的场景:</p>
+<ul>
+<li>传递数据的所有权，即把某个数据发送给其他协程</li>
+<li>分发任务，每个任务都是一个数据</li>
+<li>交流异步结果，结果是一个数据</li>
+</ul>
+<p>sync的能力是数据不动，某段时间只给一个协程访问数据的权限擅长数据位置固定的场景:</p>
+<ul>
+<li>缓存</li>
+<li>状态</li>
+</ul>
+<hr>
+<h2 id="channel">channel</h2>
+<p>goroutine通过channel来传递消息.</p>
+<p>channels是引用类型,chan是线程安全的，并且不会有数据冲突。</p>
+<p>channel可以共享内置类型，命名类型，结构类型，引用类型的值或指针.</p>
+<p>chan通过make来创建，通过close来关闭．</p>
+<p>chan是先进先出的.</p>
+<p>如果chan指定了容量(有缓存), 就是异步，非阻塞模式．</p>
+<p>默认是无缓存的，同步的,　阻塞模式.</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/go/">Go</a></h2>
+                    <div class="post-meta">
+                        <time>January 1, 2018</time>
+                        
+                            
+                                <span class="category">Golang</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="go概述">Go概述</h1>
+<p><a href="https://golang.org/ref/spec">https://golang.org/ref/spec</a></p>
+<p>go语言表达能力强，简洁，清晰，高效．</p>
+<p>go是一个快速的，静态的，强类型的，编译型语言．</p>
+<p>go具有高并发和垃圾回收功能.</p>
+<hr>
+<h1 id="go基本语法">Go基本语法</h1>
+<p>go源程序叫*.go</p>
+<p>go大小写敏感</p>
+<p>go程序都是由包组成，程序的入口是main包中的main函数，每个程序有且只有一个．</p>
+<p>go中只有首字母大写的名称才能从包中导出．</p>
+<p>go的类型在变量名后面．</p>
+<p>go函数外的每个语句都必须以关键字开始.</p>
+<p>go标识符(函数名／变量名／常量名／类型名／语句标号／包名)以字母或下划线开头，后面还可以包含数字,不能用关键字.</p>
+<p>go使用大括号{}表示一个代码块.</p>
+<p>go使用分号;表示一个语句结束, 一般一行写多个语句才需要显示添加分号．</p>
+<p>go的包名一般是小写的单个单词(文件所在的最后一层目录名).</p>
+<p>go一般使用驼峰命名法.</p>
+<p>go没有逗号操作符.</p>
+<p>go中++/&ndash;是语句不是表达式．</p>
+<p>go中大写字母开头的变量或函数是公有的，小写字母开头的是包私有的.</p>
+<hr>
+<h1 id="go注释">Go注释</h1>
+<p>单行注释：</p>
+<pre><code>// comment
+</code></pre>
+<p>多行注释：</p>
+<pre><code>/* comment */
+</code></pre>
+<hr>
+<h1 id="go关键字">Go关键字</h1>
+<pre><code>var const 
+break continue for if else switch case default goto fallthrough
+func return defer
+package import
+range type struct map
+interface
+select go chan
+</code></pre>
+<hr>
+<h1 id="go运算符和优先级">Go运算符和优先级</h1>
+<p>go中的运算都是从左到右结合．</p>
+<pre><code>^    #
+!    # 逻辑非
+
+*
+/    # 结果取整数
+%
+&lt;&lt;   # 位运算，左移
+&gt;&gt;   # 位运算，右移
+&amp;    # 位运算，　按位与
+&amp;^   #
+
++
+-
+|    # 位运算,按位或
+^    # 位运算,按位异或
+
+==
+!=
+&lt;
+&lt;=
+&gt;
+&gt;=
+
+&lt;- # chan运算符
+
+&amp;&amp;   # 逻辑与
+||   # 逻辑或
+</code></pre>
+<hr>
+<h1 id="go数据类型">Go数据类型</h1>
+<h2 id="变量">变量</h2>
+<p>定义/申明变量:</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/go_document/">Document</a></h2>
+                    <div class="post-meta">
+                        <time>January 1, 2018</time>
+                        
+                            
+                                <span class="category">Golang</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="document">Document</h1>
+<p>go文档相关</p>
+<p><a href="https://godoc.org/">https://godoc.org/</a></p>
+<p>go文档的两种方式:</p>
+<ul>
+<li>go doc</li>
+<li>godoc</li>
+</ul>
+<h1 id="go-doc">go doc</h1>
+<p>直接在命令行查看文档</p>
+<pre><code>$ go doc [package/symbol]
+</code></pre>
+<h1 id="godoc">godoc</h1>
+<p>go自带的文档命令行接口,在浏览器查看文档</p>
+<pre><code>godoc package [name ...]
+godoc -http=:6060
+</code></pre>
+<p>通过github的项目文档在:</p>
+<pre><code>https://godoc.org
+</code></pre>
+<hr>
+<h1 id="godev">go.dev</h1>
+<p><a href="https://pkg.go.dev">https://pkg.go.dev</a></p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/go_devops/">Devops</a></h2>
+                    <div class="post-meta">
+                        <time>January 1, 2018</time>
+                        
+                            
+                                <span class="category">Golang</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="go">Go</h1>
+<p>go有三种安装方式：</p>
+<ol>
+<li>源码安装</li>
+<li>标准包安装</li>
+<li>第三方工具安装</li>
+</ol>
+<p>GOROOT:</p>
+<pre><code>GOROOT 就是go的安装目录
+</code></pre>
+<p>windows标准包安装go:</p>
+<pre><code>msi指定安装路径，自动添加%GOROOT%/bin到环境变量
+</code></pre>
+<p>linux标准包安装go:</p>
+<pre><code>下载.tar.gz包解压到/usr/local/go
+GOROOT=/usr/local/go
+export PATH=$PATH:/usr/local/go/bin
+</code></pre>
+<p>验证安装：</p>
+<pre><code>$ go --help
+$ go version
+</code></pre>
+<p>第三方工具gvm安装go:</p>
+<p><a href="http://github.com/moovweb/gvm">http://github.com/moovweb/gvm</a></p>
+<pre><code>$ gvm install go1.9.2
+$ gvm use go1.9.2
+</code></pre>
+<hr>
+<h1 id="gopath">GOPATH</h1>
+<p>gopath用来存放go源码，go的可运行文件，以及相应的编译之后的包文件．</p>
+<p>GOPATH 从go1.1到1.7都需要设置，而且不能是go的安装目录, go1.8开始有默认值:</p>
+<pre><code>GOPATH=$USERPROFILE%go
+GOPATH=$HOME/go
+</code></pre>
+<p>gopath结构：</p>
+<pre><code>src    存放源码
+pkg    编译后的库文件
+bin    编译后生成的可执行文件
+</code></pre>
+<p>gopath有多个值时用冒号分开即可.</p>
+<h1 id="gobin">GOBIN</h1>
+<p>默认值</p>
+<pre><code>GOBIN=$HOME/go/bin
+export PATH=$PATH:$HOME/go/bin
+</code></pre>
+<p>go get 和 go install 安装的二进制到GOBIN。</p>
+<hr>
+<h1 id="go命令">go命令</h1>
+<pre><code>$ go help [command]
+</code></pre>
+<p>get</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/go_debug/">Debug</a></h2>
+                    <div class="post-meta">
+                        <time>January 1, 2018</time>
+                        
+                            
+                                <span class="category">Golang</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="gdb">gdb</h1>
+<h1 id="delve">delve</h1>
+<p><a href="https://github.com/derekparker/delve">https://github.com/derekparker/delve</a></p>
+<hr>
+<h1 id="debug">debug</h1></p>
+                    
+                </li>
+            
+        </ul>
+    </section>
+    
+    
+        <a href="/page/23/">← Previous</a>
+    
+    
+        <a href="/page/25/">Next →</a>
+    
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

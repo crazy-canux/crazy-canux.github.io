@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="generator" content="Hugo 0.147.9">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morgoth - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="home">
+    <h1>Morgoth</h1>
+    <p></p>
+    
+    <section class="recent-posts">
+        <h2>Recent Posts</h2>
+        <ul class="post-list">
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/python_oop/">OOP</a></h2>
+                    <div class="post-meta">
+                        <time>June 21, 2016</time>
+                        
+                            
+                                <span class="category">Python</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="面向对象oop">面向对象/OOP</h1>
+<p>OOD: Object Oriented Design.</p>
+<p>面向过程的设计支持任何语言，但是如果语言本身内置面向过程的结构，就会更容易编程．</p>
+<p>OOP: Object Oriented Programming.</p>
+<p>python内置OOP的结构，但是不必一定要使用类和OOP.</p>
+<p>面向对象的两个主题就是类和类实例．</p>
+<p>创建实例的过程叫实例化．</p>
+<p>属性就是属于另一个对象的数据或函数元素．属性分为数据属性和函数属性．</p>
+<hr>
+<h1 id="类class">类/Class</h1>
+<p>类是现实世界的抽象的实体以编程的形式出现，实例是这些对象的具体化．</p>
+<p>类是一种数据结构的定义，实例是申明了一个这种类型的变量．</p>
+<p>类的定义：</p>
+<p>Python 3 所有类默认继承自 object，即使不写 (object) 也是新式类。建议保留 (object) 以兼容性和可读性。</p>
+<pre><code>class ClassName(object):
+    &quot;&quot;&quot;Doc string.&quot;&quot;&quot;
+    class_suite
+</code></pre>
+<p>类的初始化方法init(相当于构造器):</p>
+<p>如果定义了__init__方法在实例化的时候会首先调用该方法，进行一些初始化的工作。</p>
+<p>init方法的第一个参数必须是实例self，而且不能有return语句。</p>
+<p>init方法一般用来设置实例属性(也就是数据属性)。</p>
+<pre><code>class ClassName(object):
+    def __init__(self, *args, **kwargs):
+        pass
+</code></pre>
+<p>特殊方法new:</p>
+<p>如果定义了__new__方法，会在init方法之前运行，并且返回一个实例，也就是__init__的self。</p>
+<p>new方法的第一个参数必须是类cls。并且需要返回一个实例。</p>
+<p>new方法在object中被定义为staticmethod。</p>
+<p>相当于析构器的特殊方法del:</p>
+<p>__del__特殊方法要在实例对象的所有引用都被清除后才会执行。</p>
+<p>不要在del中做与实例没有关系的事情，一般不建议实现该方法。</p>
+<pre><code>class ClassName(object):
+
+    def __new__(cls, *args, **kwargs):
+        ...
+        return ...
+
+    def __del__(self):
+        ...
+</code></pre>
+<h2 id="类属性">类属性</h2>
+<p>类属性分为数据属性和方法属性。</p>
+<p>类的数据属性仅仅是定义的类的变量。</p>
+<p>数据属性通常是静态变量, 也就是和类对象绑定, 与类的实例无关。</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/devops_tmux/">Tmux</a></h2>
+                    <div class="post-meta">
+                        <time>June 19, 2016</time>
+                        
+                            
+                                <span class="category">DevOps</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="tmux">tmux</h1>
+<p>tmux是终端复用工具，类似于gnu screen。</p>
+<p>tmux三个基本概念：</p>
+<ol>
+<li>
+<p>会话（session）</p>
+</li>
+<li>
+<p>窗口（window）</p>
+</li>
+<li>
+<p>面板（pane）</p>
+</li>
+</ol>
+<p>tmux使用c/s架构，tmux命令启动tmux服务器，一个tmux服务有多个session，
+每个session就是tmux管理下的伪终端集合，一个session有多个window与之关联，
+每个window就是一个伪终端，占据整个屏幕，一个window可以被分割成多个pane。</p>
+<hr>
+<h1 id="tmux安装和配置">tmux安装和配置</h1>
+<p>tmux依赖libevent和ncurses库。</p>
+<p><a href="http://libevent.org/">http://libevent.org/</a></p>
+<pre><code>$ sudo yum install libevent-devel
+</code></pre>
+<p><a href="http://invisible-island.net/ncurses/">http://invisible-island.net/ncurses/</a></p>
+<pre><code>$ sudo yum install ncurese-devel
+</code></pre>
+<p><a href="http://tmux.github.io/">http://tmux.github.io/</a></p>
+<pre><code>sudo apt-get install tmux
+sudo yum install tmux
+</code></pre>
+<p>用户配置文件： ~/.tmux.conf</p>
+<p>系统配置文件： /etc/tmux.conf</p>
+<hr>
+<h1 id="tmux相关项目">tmux相关项目</h1>
+<h2 id="tpm">TPM</h2>
+<p>Tmux Plugins Manager.</p>
+<p><a href="https://github.com/tmux-plugins/tpm">https://github.com/tmux-plugins/tpm</a></p>
+<hr>
+<h1 id="tmux用法">tmux用法</h1>
+<pre><code>man tmux
+</code></pre>
+<p>开启tmux：</p>
+<pre><code>tmux
+</code></pre>
+<p>退出tmux：</p>
+<pre><code>exit
+ctrl + d
+</code></pre>
+<p>列出tmux会话：</p>
+<pre><code>tmux ls
+</code></pre>
+<h2 id="tmux快捷键">tmux快捷键</h2>
+<p>tmux的prefix是ctrl-b</p>
+<p>按下ctrl-b然后松开，通知tmux下面的按键是快捷键。</p>
+<p>查看所有快捷键：</p>
+<pre><code>ctrl-b + ?
+</code></pre>
+<p>显示时间：</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/tracing/">Tracing</a></h2>
+                    <div class="post-meta">
+                        <time>June 8, 2016</time>
+                        
+                            
+                                <span class="category">DevOps</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="tracing">Tracing</h1>
+<p>APM 监控，也叫全链路监控。</p>
+<h1 id="sentry">sentry</h1>
+<p><a href="https://github.com/getsentry/sentry">https://github.com/getsentry/sentry</a></p>
+<h1 id="zipkin">zipkin</h1>
+<p><a href="https://github.com/openzipkin/zipkin">https://github.com/openzipkin/zipkin</a></p>
+<h1 id="open-telemetry">open-telemetry</h1>
+<p>opentracing和opencensus 合并成open-telemetry.</p>
+<p><a href="https://github.com/opentracing">https://github.com/opentracing</a></p>
+<p><a href="https://github.com/census-instrumentation">https://github.com/census-instrumentation</a></p>
+<p><a href="https://github.com/open-telemetry">https://github.com/open-telemetry</a></p>
+<h1 id="jaeger">jaeger</h1>
+<p><a href="https://github.com/jaegertracing/jaeger">https://github.com/jaegertracing/jaeger</a></p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/tracing_sentry/">Sentry</a></h2>
+                    <div class="post-meta">
+                        <time>June 8, 2016</time>
+                        
+                            
+                                <span class="category">DevOps</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="sentry">Sentry</h1>
+<p><a href="https://github.com/getsentry/sentry">https://github.com/getsentry/sentry</a></p>
+<h1 id="deploy-sentry-on-k8s">Deploy Sentry on K8S</h1>
+<p><a href="https://github.com/getsentry/onpremise">https://github.com/getsentry/onpremise</a></p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/monitoring/">Monitoring</a></h2>
+                    <div class="post-meta">
+                        <time>June 8, 2016</time>
+                        
+                            
+                                <span class="category">DevOps</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="monitoring">Monitoring</h1>
+<p>Tranditional monitoring is for Datacenter, like nagios, zabbix.</p>
+<p>Modern monitoring is for Cloud and Container.</p>
+<p>Modern monitoring based on metrics, logs and tracing.</p>
+<p>现代的监控系统在DevOps的基础上，除了传统的metrics和logging的采集，还需要tracing应用。</p>
+<hr>
+<h1 id="metrics">metrics</h1>
+<h2 id="tick-stack">TICK stack</h2>
+<p>influxdb: tsdb.</p>
+<p>kapacitor: alerting.</p>
+<p>chronograf: GUI.</p>
+<p>telegraf(agent): metrics collector.</p>
+<h2 id="prometheus">Prometheus</h2>
+<h2 id="graphing">Graphing</h2>
+<p>最流行的监控绘图软件是grafana, 支持influxdb,elasticsearch和prometheus.</p>
+<hr>
+<h1 id="logging">Logging</h1>
+<h2 id="elk">ELK</h2>
+<h2 id="lokigrafana">Loki+Grafana</h2>
+<hr>
+<h1 id="tracing">Tracing</h1>
+<h2 id="jeager">Jeager</h2></p>
+                    
+                </li>
+            
+        </ul>
+    </section>
+    
+    
+        <a href="/page/41/">← Previous</a>
+    
+    
+        <a href="/page/43/">Next →</a>
+    
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

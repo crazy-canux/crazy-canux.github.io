@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terraform - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="single-post">
+    <article>
+        <header>
+            <h1>Terraform</h1>
+            <div class="post-meta">
+                <time>April 15, 2016</time>
+                
+                    
+                        <span class="category">Cloud</span>
+                    
+                        <span class="category">DevOps</span>
+                    
+                
+                
+                    
+                        <span class="tag">#terraform</span>
+                    
+                
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <h1 id="terraform">Terraform</h1>
+<p>install:</p>
+<p><a href="https://learn.hashicorp.com/tutorials/terraform/install-cli">https://learn.hashicorp.com/tutorials/terraform/install-cli</a></p>
+<hr>
+<h2 id="cli">CLI</h2>
+<p>操作工作目录</p>
+<pre><code>// 初始化目录，会根据配置下载和安装provider.
+terraform init
+
+terraform get
+</code></pre>
+<p>操作tf文件</p>
+<pre><code>// 格式化文件
+terraform fmt -recursive
+
+// 验证文件
+terraform validate 
+
+// 可以通过终端验证函数.
+terraform console
+</code></pre>
+<p>操作基础设施:</p>
+<pre><code>terraform plan
+terraform plan -out test.tfplan
+
+terraform apply -auto-approve
+terraform apply test.tfplan
+
+terraform destroy
+</code></pre>
+<p>检查基础设施:</p>
+<pre><code>terraform show
+terraform graph
+terraform output
+terraform state list/show
+</code></pre>
+<p>认证:</p>
+<pre><code>terraform login
+terraform logout
+</code></pre>
+<hr>
+<h2 id="tf">TF</h2>
+<p><a href="https://www.terraform.io/language">https://www.terraform.io/language</a></p>
+<p>注释:</p>
+<pre><code># comment 
+// comment
+/* comment */
+</code></pre>
+<h3 id="backend-and-state">backend and state</h3>
+<p><a href="https://www.terraform.io/language/settings/backends">https://www.terraform.io/language/settings/backends</a></p>
+<p><a href="https://www.terraform.io/language/state">https://www.terraform.io/language/state</a></p>
+<hr>
+<h3 id="provider">provider</h3>
+<hr>
+<h3 id="data-sources">data sources</h3>
+<p>data source: 获取服务的参数</p>
+<hr>
+<h3 id="module">module</h3>
+<p>管理provider上的模块/服务.定义了input, resource/data source, output的就可以认为是module.</p>
+<h4 id="meta-arguments">meta-arguments</h4>
+<ul>
+<li>providers</li>
+<li>depends_on</li>
+<li>count</li>
+<li>for_each</li>
+</ul>
+<hr>
+<h3 id="resources">resources</h3>
+<p>resources: 创建服务的参数</p>
+<h4 id="meta-arguments-1">meta-arguments</h4>
+<ul>
+<li>depends_on</li>
+<li>count</li>
+<li>for_each</li>
+<li>provider</li>
+<li>lifecycle</li>
+</ul>
+<h4 id="provisioner">provisioner</h4>
+<p>特殊的resource，可以在本地或远程机器做一些准备工作。</p>
+<hr>
+<h3 id="variable">Variable</h3>
+<p><a href="https://www.terraform.io/language/values/variables">https://www.terraform.io/language/values/variables</a></p>
+<p>input variable: 输入变量</p>
+<p>local variable: 本地变量</p>
+<p>output variable: 输出参数</p>
+<p>子模块无法引用父模块的local变量， resource属性，input变量。但是可以通过output参数引用。</p>
+<p>父模块无法引用子模块的local变量，resource属性。但是可以通过output参数引用，而且父模块可以通过input变量传值给子模块。</p>
+<h3 id="表达式">表达式</h3>
+<h3 id="函数">函数</h3>
+<h3 id="workspace">workspace</h3>
+<p>多环境构建（development, UAT, production).</p>
+<pre><code>terraform workspace new dev
+terraform workspace list
+terraform select &lt;name&gt;
+</code></pre>
+<p>使用terraform.workspace作为参数.</p>
+<hr>
+
+        </div>
+    </article>
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

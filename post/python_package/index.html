@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Package - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="single-post">
+    <article>
+        <header>
+            <h1>Package</h1>
+            <div class="post-meta">
+                <time>June 22, 2016</time>
+                
+                    
+                        <span class="category">Python</span>
+                    
+                
+                
+                    
+                        <span class="tag">#package</span>
+                    
+                
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <h1 id="package">Package</h1>
+<p>PEP426是python最新的打包标准，定义了wheel为最新的python包。</p>
+<p><a href="https://www.python.org/dev/peps/pep-0426/">https://www.python.org/dev/peps/pep-0426/</a></p>
+<h2 id="ensurepip">ensurepip</h2>
+<p>内置模块.提供使用pip从pypi安装模块。</p>
+<h2 id="distutils">distutils</h2>
+<p>内置的模块.处理简单的包安装,一般使用setuptools代替该模块。</p>
+<h2 id="venv">venv</h2>
+<p>python3新增了虚拟环境的包．python2中使用virtualenv.</p>
+<h2 id="zipapp">zipapp</h2>
+<p>python3新增管理可执行的python的zip包．</p>
+<hr>
+<h1 id="tpl">TPL</h1>
+<p>相关的第三方库</p>
+<h2 id="virtualenv">virtualenv</h2>
+<p>python3.5开始并入了虚拟化标准库venv.</p>
+<p>分离的虚拟的python环境,自动安装setuptools和pip和wheel</p>
+<p><a href="https://github.com/pypa/virtualenv">https://github.com/pypa/virtualenv</a></p>
+<pre><code>$cd project
+
+# 默认python2.7
+$virtualenv .env
+# 指定python3, 会安装pip/setuptools/wheel到当前环境.
+$$virtualenv -p `which python3.6` --pip 21.0.1 --setuptools 51.1.2 --wheel 0.36.2 .env
+
+# 激活虚拟环境
+$source .env/bin/activate
+
+# 先升级pip和setuptools
+$pip install pip
+$pip install setuptools
+$pip install wheel
+
+# 导出项目用的所有依赖库．
+$pip freeze &gt; requirements.txt
+# 在其它环境需要安装依赖：
+$pip install -r requirements.txt
+</code></pre>
+<p>virtualenvwrapper</p>
+<p><a href="https://bitbucket.org/virtualenvwrapper/virtualenvwrapper">https://bitbucket.org/virtualenvwrapper/virtualenvwrapper</a></p>
+<p>封装了virtualenv的工具:</p>
+<pre><code>$ pip install virtualenvwrapper
+
+# 创建主目录
+$ mkdir -p $WORKON_HOME
+
+# 最好写入到.bashrc/.zshrc:
+$ export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python
+$ export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv
+$ export WORKON_HOME=~/.virtualenvs
+$ source /usr/local/bin/virtualenvwrapper.sh
+
+# 为每个项目创建独立python环境：
+$ mkvirtualenv -r requirementx.txt [project-name]
+# 不安装setuotools/wheel/pip
+$ mkvirtualenv --no-setuptools --no-wheel --no-pip [name]
+# 指定查找pip/setuptools的路径
+--extra-search-dir=/usr/local/lib/python2.7/dist-packages
+--extra-search-dir=/usr/lib/python2.7/dist-packages
+$ workon [project-name] # 切换到针对该项目的virtualenv
+(pro)$ /path/to/pip install [package] # 安装第三方包
+(pro)$ ~/.virtualenvs/[project-name]/bin/python setupt.py install # 源码安装
+(pro)$ lssitepackages # 查看安装的第三方包
+$ deactivate # 退出virtualenv
+$ rmvirtualenv [project-name] # 删除环境
+</code></pre>
+<p>pipenv</p>
+<p><a href="https://github.com/pypa/pipenv">https://github.com/pypa/pipenv</a></p>
+<p>封装了virtualenv的工具，用于取代virtualenvwrapper.</p>
+<h2 id="setuptools">setuptools</h2>
+<p><a href="https://github.com/pypa/setuptools">https://github.com/pypa/setuptools</a></p>
+<p><a href="https://github.com/pypa/wheel">https://github.com/pypa/wheel</a></p>
+<p>python2.7.9和python3.4以及virtualenv自带setuptools．</p>
+<p>支持sdist打包成tar.gz包,和wheel打包成whl包．</p>
+<pre><code>$pip install -U pip
+$pip install -U setuotools
+$pip install -U wheel
+</code></pre>
+<p>创建setup.py文件：</p>
+<p><a href="https://pypi.python.org/pypi?%3Aaction=list_classifiers">https://pypi.python.org/pypi?%3Aaction=list_classifiers</a></p>
+<pre><code>import os
+
+from setuptools import setup, find_packages
+
+import project
+
+def read(readme):
+    extend = os.path.splitext(readme)[1]
+    # pypi只识别reST格式
+    if (extend == &quot;.rst&quot;):
+        import codecs
+        return codecs.open(readme, 'r', 'utf-8').read()
+    # pypandoc可以将markdown格式转换成reST格式
+    elif (extend == &quot;.md&quot;):
+        import pypandoc
+        return pypandoc.convert(readme, 'rst')
+
+setup(
+    # metadata:
+    name=project,
+    version=project.__version__,
+    url='',
+    download_url='',
+    author='',
+    author_email='',
+    maintainer='',
+    maintainer_email='',
+    description=''
+    long_description=read('README.XXX'),
+    license='',
+    platforms='any',
+    keywords='',
+    classifiers=[
+        'Development Status :: 5 - Production/Stable',
+        ...
+    ],
+
+    # options
+
+    # 指定源码的位置
+    packages=find_packages(),
+    package_dir={},
+
+    # 需要和源码一起安装的非代码文件,写入MANIFEST.in
+    # 比如文档和测试文件
+    package_data={}, # 将指定的文件放入安装路径
+    include_package_data=None, # True表示
+    exclude_package_data=None,
+
+    # 不需要和源码一起安装的非代码文件.
+    # 比如配置文件
+    data_files=[(dest, source),()],
+
+    # 通过pip安装requirement
+    install_requires=['a==1.0.0', 'b&gt;=1.0.0'],
+    # python版本的要求
+    python_requires='&gt;=3',
+    setup_requires=[],
+    extras_require=None,
+    test_require=[]
+
+    zip_safe=True,
+
+    # 安装一个命令
+    scripts=[],    # 会被添加到环境变量用于命令.
+
+    entry_points={}
+
+    # preinst/postinst
+    cmdclass={
+        &quot;develop&quot;: PostInstDevelop,
+        &quot;install&quot;: PostInstInstall
+    }
+)
+</code></pre>
+<p>怎样实现postinst功能：</p>
+<pre><code>from setuptools.command.develop import develop
+from setuptools.command.install import install
+
+class InstDevelop(develop):
+    def run(self):
+        # your preinst code here for develop.
+        develop.run(self)
+        # your postinst code here for develop.
+
+class InstInstall(install):
+    def run(self):
+        # your preinst code here for install.
+        install.run(self)
+        # your postinst code here for install.
+</code></pre>
+<p>创建setup.cfg文件：</p>
+<pre><code>[wheel]
+universal = 1
+</code></pre>
+<p>创建README.rst文件：</p>
+<p>可以是rst格式也可是是md格式。</p>
+<p>如果是md格式不要使用类似于***的分割线。</p>
+<pre><code>参考rst和md的文档
+</code></pre>
+<p>创建MAINFEST.in文件：</p>
+<p>默认只有python模块和包会被打包，如果需要其它文件需要添加到这个文件中。</p>
+<pre><code>include LICENSE README.rst AUTHORS.rst CONTRIBUTING.rst
+recursive-include docs *
+graft examples
+graft tests
+global-exclude *.py[co]
+prune docs/_build
+prune docs/_themes
+</code></pre>
+<p>创建__init__.py文件：</p>
+<p>位于project/project/__init__.py，安装后用import导入，help(project)看到的信息。</p>
+<pre><code>NAME: 自动获取的项目名字 - 该文件注释的总结部分
+FILE: /install_path/project/project/__init__.py
+DESCRIPTION: 该文件的注释，除总结部分
+PACKAGE CONTENTS: 在project/project/自动获取的py文件名
+DATA: __开头和结尾的变量
+VERSION: __version__变量的值
+AUTHOR: __author__变量的值
+
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+&quot;&quot;&quot;
+SUMMARY
+
+Descriptions
+&quot;&quot;&quot;
+
+__version__ = ''
+__author__ = ''
+
+...
+</code></pre>
+<p>发布到pypi主服务器pypi：</p>
+<p>去pypi注册帐号</p>
+<p><a href="https://pypi.python.org/pypi">https://pypi.python.org/pypi</a></p>
+<p>创建~/.pypirc文件</p>
+<pre><code>[distutils]
+index-servers = pypi
+
+[pypi]
+username = &lt;username&gt;
+password = &lt;password&gt;
+</code></pre>
+<p>在索引中注册项目(不再支持，直接upload)：</p>
+<pre><code>[Deprecated] $ python setup.py register -r pypi
+</code></pre>
+<p>先打包, 在dist目录生成包:</p>
+<pre><code>$ python setup.py sdist # 生成tarball
+$ python setup.py bdist_wheel # 安装wheel后，可以用setuptools生成wheel包
+</code></pre>
+<p>再上传到pypi(推荐):</p>
+<pre><code>$ pip install twine
+$ twine upload dist/*
+</code></pre>
+<p>打包并上传到pypi：</p>
+<pre><code>$python setup.py sdist upload -r pypi
+$python setup.py bdist_wheel upload -r pypi
+</code></pre>
+<h2 id="cython">cython</h2>
+<p>编译成.so文件</p>
+<p>安装:</p>
+<pre><code>$ sudo pip install cython
+</code></pre>
+<p>在setup.py中引用:</p>
+<pre><code>from Cython.Build import cythonize
+from Cython.Distutils import build_ext
+
+def add_extensions(modules):
+    extensions = []
+    for module in modules:
+        level = module
+        for depth in range(10):
+            source_dir = level + &quot;.py&quot;
+            if glob.glob(source_dir):
+                extensions.append(Extension(module, [source_dir], include_dirs=[&quot;.&quot;], extra_compile_args=['-O3']),)
+            level = os.path.join(level, &quot;*&quot;)
+    print(extensions)
+    return extensions
+
+INCLUDE_PACKAGES = []
+EXCLUDE_PACKAGES = []    
+
+setup(
+    ext_modules=cythonize(
+        add_extensions(INCLUDE_PACKAGES),
+        build_dir=&quot;build&quot;,
+        # 指定 .py =&gt; .c 使用8个线程编译.
+        nthreads=8,
+        compiler_directives=dict(
+            always_allow_keywords=True,
+            language_level=3),
+        exclude=EXCLUDE_PACKAGES),
+    cmdclass={
+        &quot;install&quot;: InstInstall,
+        &quot;build_ext&quot;: build_ext
+    },
+)
+
+// -j 8 指定.c =&gt; .so 使用8个线程编译.
+$ python3 setup.py build_ext --inplace -j 8 
+// 删除符号信息
+$ find sandbox/ -name &quot;*.so&quot; -exec strip {} \; 
+</code></pre>
+<h2 id="pbr">pbr</h2>
+<p><a href="https://github.com/openstack-dev/pbr">https://github.com/openstack-dev/pbr</a></p>
+<h2 id="扩展点entry-points">扩展点（Entry Points）</h2>
+<ul>
+<li>
+<p>pkg_resources</p>
+</li>
+<li>
+<p>entry_point_inspector</p>
+</li>
+</ul>
+<p><a href="https://github.com/dhellmann/entry_point_inspector">https://github.com/dhellmann/entry_point_inspector</a></p>
+<ul>
+<li>stevedore</li>
+</ul>
+<p><a href="http://docs.openstack.org/developer/stevedore/">http://docs.openstack.org/developer/stevedore/</a></p>
+
+        </div>
+    </article>
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

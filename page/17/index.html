@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="generator" content="Hugo 0.147.9">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morgoth - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="home">
+    <h1>Morgoth</h1>
+    <p></p>
+    
+    <section class="recent-posts">
+        <h2>Recent Posts</h2>
+        <ul class="post-list">
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/dns/">Dns</a></h2>
+                    <div class="post-meta">
+                        <time>May 3, 2018</time>
+                        
+                            
+                                <span class="category">Network</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="dns">DNS</h1>
+<p>Domain Name System: 域名系统</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/swarm_csi/">Swarm CSI</a></h2>
+                    <div class="post-meta">
+                        <time>April 5, 2018</time>
+                        
+                            
+                                <span class="category">CNCF</span>
+                            
+                                <span class="category">Storage</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="csi">CSI</h1>
+<p>CSI: Container Storage Interface</p>
+<p>CSI提供容器的数据持久化服务.</p>
+<p>容器管理数据的两种方式：</p>
+<p>数据卷(Volumes)</p>
+<p>挂载主机目录(bind mounts)</p>
+<p>临时文件系统(tmpfs)</p>
+<h2 id="数据存储原理">数据存储原理</h2>
+<p>如果container上目录不存在，docker会自动创建</p>
+<p>如果container目录存在且有内容，会被host上的目录覆盖掉，但不会被删除.</p>
+<h2 id="volumes">Volumes</h2>
+<p>如果host上目录不存在，docker会自动创建</p>
+<p>volumes是被设计用来持久化数据的，它的生命周期独立于容器.数据卷通过docker volume命令管理的，位于/var/lib/docker/volumes/下面.</p>
+<p>Docker不会在容器被删除后自动删除 数据卷，并且也不存在垃圾回收这样的机制来处理没有任何容器引用的 数据卷。</p>
+<p>创建:</p>
+<pre><code>$ docker volume create &lt;volume-name&gt;
+$ docker volume rm &lt;volume-name&gt;
+</code></pre>
+<p>使用：</p>
+<pre><code>$ docker run -v/--volume myvolume:/var/lib/app ...
+$ docker run --mount source=myvolume,target=/var/lib/app ...
+</code></pre>
+<h2 id="bind-mount">Bind mount</h2>
+<p>如果host上目录不存在会报错，需要提前创建.</p>
+<p>bind mount就是直接将host路径挂在到docker．</p>
+<p>source和target都是文件，即可挂载单个文件.</p>
+<p>使用:</p>
+<pre><code>$ docker run -v/--volume /opt/app:/var/lib/app:ro ...
+$ docker run --mount type=bind,source=/opt/app,target=/var/lib/app,readonly ...
+</code></pre>
+<h2 id="tmpfs">tmpfs</h2>
+<p>tmpfs是临时文件系统，也叫内存文件系统，就是将数据存在内存上。</p>
+<p>tmpfs只能用于linux, 多个容器也不能共享，容器停止数据就销毁。</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/swarm_cni/">Swarm CNI</a></h2>
+                    <div class="post-meta">
+                        <time>April 5, 2018</time>
+                        
+                            
+                                <span class="category">CNCF</span>
+                            
+                                <span class="category">Network</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="cni">CNI</h1>
+<p>CNI: Container Network Intarface</p>
+<h2 id="单台host上的container通信">单台host上的container通信</h2>
+<ul>
+<li>none</li>
+<li>host</li>
+<li>bridge</li>
+</ul>
+<h2 id="多台host之间的container通信">多台host之间的container通信</h2>
+<ul>
+<li>overlay</li>
+<li>macvlan</li>
+</ul>
+<h3 id="提供overlaymacvlan的网络服务">提供overlay/macvlan的网络服务</h3>
+<p>vxlan encapsulated:</p>
+<ul>
+<li>canal</li>
+<li>flannel</li>
+<li>weave</li>
+</ul>
+<p>bgp unencapsulated:</p>
+<ul>
+<li>calico</li>
+<li>romana</li>
+<li>cilium</li>
+<li>kube-router</li>
+</ul>
+<hr>
+<h1 id="docker网络管理">Docker网络管理</h1>
+<p>查看:</p>
+<pre><code>$ docker network ls # 查看所有网络
+</code></pre>
+<p>默认支持的三种模式:</p>
+<pre><code># 默认启动的容器都是桥接(docker0)，重启后容器的ip就变了。
+docker run --network bridge  ...
+docker run --network host ... # 容器和主机使用相同的ip
+docker run --network none ... # 容器不会分配局域网的ip
+</code></pre>
+<p>创建:</p>
+<pre><code>docker network create -d &lt;driver&gt; ... [name]
+-d/--driver # 默认是bridge, 可选overlay/macvlan
+--subnet  # CIDR格式
+--gateway
+--ip-range
+</code></pre>
+<p>使用:</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/swarm/">Swarm</a></h2>
+                    <div class="post-meta">
+                        <time>April 5, 2018</time>
+                        
+                            
+                                <span class="category">CNCF</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="swarm">Swarm</h1>
+<p>docker swarm 是 docker内置的容器编排工具。</p>
+<p>从docker1.12开始swarm内置于docker engine.</p>
+<p>swarm mode具有内置kv存储，服务发现，负载均衡，路由网格，动态伸缩，滚动更新，安全传输等功能。</p>
+<p>swarm: 老版本的swarm, 需要kv store, 可以作为独立的container运行, 已废弃, 已经被docker swarm mode 代替.</p>
+<p><a href="https://github.com/docker/swarm">https://github.com/docker/swarm</a></p>
+<p>swarmkit:</p>
+<p><a href="https://github.com/docker/swarmkit">https://github.com/docker/swarmkit</a></p>
+<h1 id="swarm命令">swarm命令</h1>
+<p>创建集群</p>
+<pre><code>docker swarm init
+--advertise-addr &lt;ip&gt; 多网卡情况下指定manager的ip
+
+docker swarm join --token &lt;token&gt; &lt;host:port&gt;
+
+# 查看token
+docker swarm join-token manager   获取添加manager命令
+docker swarm join-token worker   获取添加worker命令
+docker swarm join-token -q worker
+
+docker swarm leave -f/--force
+
+docker swarm update
+</code></pre>
+<p>管理节点</p>
+<pre><code>docker node ls
+docker node ls --format &quot;{{.Hostname}}&quot;
+​
+docker node rm
+​
+docker node inspect
+​
+# 查看node上运行的tasks/container
+docker node ps -f/--filter NODE
+​
+# 添加label, node.labels.role=api
+docker node update --label-add role=api node1
+# 删除label
+docker node update --label-rm role node1
+​
+# 活跃节点
+docker node update --availability active node1
+# 指定该节点满载,不再分派任务,关闭已有任务并重新分派.
+docker node update --availability drain node1
+# 已有任务继续运行,不分配新任务.
+docker node update --availability pause node1
+
+# 查看所有node和label
+docker node ls -q | xargs docker node inspect -f '{{ .ID }} [{{ .Description.Hostname }}]: {{ .Spec.Labels }}'
+</code></pre>
+<p>service</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/cncf_registry/">Registry</a></h2>
+                    <div class="post-meta">
+                        <time>April 5, 2018</time>
+                        
+                            
+                                <span class="category">CNCF</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="container-registry">Container Registry</h1>
+<ul>
+<li>Docker Hub Registry</li>
+<li>Google Container Registry (gcr.io)</li>
+<li>RedHat Quay Registry (quay.io)</li>
+<li>GitHub Docker Packages (docker.pkg.github.com)(Deprecated)</li>
+<li>GitHub Container Registry (ghcr.io)</li>
+<li>Kubernetes Registry(registry.k8s.io =&gt; k8s.gcr.io)</li>
+</ul>
+<h2 id="harbor">Harbor</h2>
+<p><a href="https://github.com/goharbor/harbor">https://github.com/goharbor/harbor</a></p>
+<p>Habor是由VMWare中国团队开源的容器镜像仓库, 用于存储和分发docker镜像的registry服务器.</p>
+<p>安装步骤:</p>
+<ol>
+<li>下载并解压安装包, <a href="https://github.com/goharbor/harbor/releases">https://github.com/goharbor/harbor/releases</a></li>
+<li>配置harbor.cfg;</li>
+</ol>
+<p>修改配置:</p>
+<pre><code>vim harbor.yml
+</code></pre>
+<p>运行安装程序:</p>
+<pre><code>./install.sh --with-notary --with-clair --with-chartmuseum
+</code></pre>
+<p>修改web的port:</p>
+<pre><code>$ vim /data/harbor/docker-compose.yml
+proxy:
+  ports:
+    - 8080:80 # 默认http是80
+    - 4433:443 # 默认https是443
+$ vim /data/harbor/harbor.yml
+hostname = ip
+</code></pre>
+<p>管理harbor:</p>
+<pre><code># cd /data/harbor
+# docker-compose down -v 　停止并删除container
+
+&gt; 更新配置
+# ./prepare --with-notary --with-clair --with-chartmuseum
+
+&gt; 启动
+# docker-compose up -d
+</code></pre>
+<h2 id="docker使用harbor">docker使用harbor</h2>
+<p>Deploy a plain HTTP registry:</p></p>
+                    
+                </li>
+            
+        </ul>
+    </section>
+    
+    
+        <a href="/page/16/">← Previous</a>
+    
+    
+        <a href="/page/18/">Next →</a>
+    
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Helm - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="single-post">
+    <article>
+        <header>
+            <h1>Helm</h1>
+            <div class="post-meta">
+                <time>September 5, 2019</time>
+                
+                    
+                        <span class="category">CNCF</span>
+                    
+                
+                
+                    
+                        <span class="tag">#helm</span>
+                    
+                
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <h1 id="helm">Helm</h1>
+<p><a href="https://github.com/helm/helm">https://github.com/helm/helm</a></p>
+<p>helm2有两个组件:</p>
+<ul>
+<li>helm: 客户端</li>
+<li>tiller: 服务端(helm3被移除)</li>
+</ul>
+<p>概念:</p>
+<ul>
+<li>chart: helm包，包含运行一个应用所需的镜像，依赖和资源.</li>
+<li>repository: 用于发布和存储chart的仓库.</li>
+<li>release: 在k8s集群上运行的一个chart实例.</li>
+</ul>
+<p>repository有哪些:</p>
+<ul>
+<li>charts: OSS, public, 已经被artifacthub取代, <a href="https://github.com/helm/charts">https://github.com/helm/charts</a></li>
+<li>artifacthub: OSS, public,  <a href="https://artifacthub.io/">https://artifacthub.io/</a></li>
+<li>chartmuseum: OSS, private, self-host, <a href="https://github.com/helm/chartmuseum">https://github.com/helm/chartmuseum</a></li>
+<li>harbor: OSS, private, self-host.</li>
+<li>artifactory(jfrog): enterprise, private, self-host.</li>
+</ul>
+<h2 id="安装">安装</h2>
+<p>helm和kubectl一样，访问指定配置的k8s集群。</p>
+<p>helm2需要安装tiller并且执行helm init初始化,helm不需要tiller.</p>
+<p>本地二进制安装helm3+:</p>
+<pre><code>curl https://baltocdn.com/helm/signing.asc | sudo apt-key add -
+sudo apt-get install apt-transport-https --yes
+echo &quot;deb https://baltocdn.com/helm/stable/debian/ all main&quot; | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list
+sudo apt-get update
+sudo apt-get install helm
+</code></pre>
+<h2 id="命令">命令</h2>
+<h3 id="repo管理">repo管理</h3>
+<p>查看有哪些repo,默认没有repo</p>
+<pre><code>$ helm repo list 
+</code></pre>
+<p>添加repo并命名</p>
+<pre><code>$ helm repo add [NAME] [URL] [flags]
+
+// 添加charts/artifactoryhub stable命名为stable
+$ helm repo add stable https://charts.helm.sh/stable
+</code></pre>
+<p>更新repo:</p>
+<pre><code>$ helm repo update
+</code></pre>
+<h3 id="chart管理">chart管理</h3>
+<p>从repo中查找chart:</p>
+<pre><code>$ helm search hub [KEYWORD] [flags]
+</code></pre>
+<p>从repo里面的chart里面搜索关键字:</p>
+<pre><code>$ helm search repo [keyword] [flags]
+
+//查看repo里面所有chart
+$ helm search repo
+
+// 查看repo里面所有treafik chart
+$ helm search repo traefik
+</code></pre>
+<p>查看chart信息:</p>
+<pre><code>helm show chart traefik/traefik
+helm show values traefik/traefik &gt; value.yaml
+</code></pre>
+<p>下载chart:</p>
+<pre><code>helm pull chart-name
+</code></pre>
+<h3 id="release管理">release管理</h3>
+<p>install/upgrade/uninstall/rollback</p>
+<p>status/list/get/history</p>
+<p>安装chart:</p>
+<pre><code>helm install [name] [chart] [flags]
+
+// 验证签名
+helm install --verify ...
+
+helm install traefik traefik/traefik
+
+// 需提前创建namespace, 修改value
+helm install kubernetes-dashboard kubernetes-dashboard/kubernetes-dashboard -f value.yaml -n kubernetes-dashboard
+</code></pre>
+<p>查看release(每个install都是一个release):</p>
+<pre><code>helm list
+-a, --all                  show all releases without any filter applied.
+-A, --all-namespaces       list releases across all namespaces.
+</code></pre>
+<p>卸载release:</p>
+<pre><code>helm uninstall kubernetes-dashboard -n kubernetes-dashboard
+</code></pre>
+<p>查看状态:</p>
+<pre><code>helm status mysql
+</code></pre>
+<p>获取release信息:</p>
+<pre><code>helm get manifest [name]
+</code></pre>
+<h3 id="misc">misc</h3>
+<pre><code>helm plugin
+helm env
+</code></pre>
+<hr>
+<h2 id="chart开发">chart开发</h2>
+<p>创建chart:</p>
+<pre><code>helm create my-chart
+</code></pre>
+<p>debug chart：</p>
+<pre><code>// 检查语法
+helm lint my-chart
+
+// 模拟安装
+helm install my-chart ./my-chart --dry-run --debug
+</code></pre>
+<p>模板管理:</p>
+<pre><code>helm template [name] [chart]
+
+// 在本地渲染模板
+helm template my-chart ./my-chart
+</code></pre>
+<p>依赖chart管理:</p>
+<pre><code>helm dependency
+
+// 将依赖的chart下载到chart目录.
+helm dep up &lt;chart-name&gt;
+</code></pre>
+<p>测试chart:</p>
+<pre><code>helm test
+</code></pre>
+<p>打包chart:</p>
+<p><a href="https://helm.sh/zh/docs/topics/provenance/">https://helm.sh/zh/docs/topics/provenance/</a></p>
+<pre><code>helm package my-chart
+
+// 会另外生成一个.prov文件
+helm package --sign --key &quot;Canux&quot; --keyring ~/.gnupg/secring.gpg my-chart
+</code></pre>
+<p>验证打包的chart:</p>
+<pre><code>helm verify my-chart.tgz
+</code></pre>
+<p>生成index文件:</p>
+<pre><code>helm repo index my-chart-folder --url &lt;repo-url&gt;
+</code></pre>
+<p>上传chart到registry：</p>
+<p>有的registry支持ui上直接upload，或者CLI上传，也可以通过helm push上传.</p>
+<pre><code>helm registry login
+helm push my-chart.tgz oci://registry/helm-charts
+helm registry logout 
+</code></pre>
+<p>如果是OCI registry目前只支持以下命令：</p>
+<pre><code>helm registry login/logout
+helm push
+helm pull
+helm show
+helm template
+helm install
+helm upgrade
+</code></pre>
+<p>chart 目录:</p>
+<pre><code>values.yaml
+Chart.yaml
+charts/
+templates/
+templates/tests/
+</code></pre>
+<p>Chart.yaml语法:</p>
+<p><a href="https://helm.sh/zh/docs/topics/charts/#chartyaml-%E6%96%87%E4%BB%B6">https://helm.sh/zh/docs/topics/charts/#chartyaml-%E6%96%87%E4%BB%B6</a></p>
+<p>template的流控制:</p>
+<p><a href="https://helm.sh/zh/docs/chart_template_guide/control_structures/">https://helm.sh/zh/docs/chart_template_guide/control_structures/</a></p>
+<pre><code>// 用$代替. 来获取上一级的变量
+{{- range .Values.worker }}
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include &quot;app.fullname&quot; $ }}-worker-{{ .name }}
+labels:
+    {{- include &quot;worker.labels&quot; $ | nindent 4 }}
+spec:
+  {{- if not .autoscaling.enabled }}
+  replicas: {{ $.Values.replicaCount }}
+  {{- end }}
+  ......
+---
+{{- end }}
+</code></pre>
+<p>template的函数:</p>
+<p><a href="https://helm.sh/zh/docs/chart_template_guide/function_list/">https://helm.sh/zh/docs/chart_template_guide/function_list/</a></p>
+<p>hooks:</p>
+<p>helm uninstall 不会删除有hook的资源。</p>
+<p><a href="https://helm.sh/zh/docs/topics/charts_hooks/">https://helm.sh/zh/docs/topics/charts_hooks/</a></p>
+<pre><code>  annotations:
+    # This is what defines this resource as a hook. Without this line, the
+    # job is considered part of the release.
+    &quot;helm.sh/hook&quot;: post-install, pre-install, ...
+    &quot;helm.sh/hook-weight&quot;: &quot;-5&quot;
+    &quot;helm.sh/hook-delete-policy&quot;: hook-succeeded, hook-failed, ...
+</code></pre>
+
+        </div>
+    </article>
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

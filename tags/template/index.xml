@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Template on Morgoth</title>
+    <link>https://canuxcheng.com/tags/template/</link>
+    <description>Recent content in Template on Morgoth</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 04 Oct 2016 04:12:49 +0000</lastBuildDate>
+    <atom:link href="https://canuxcheng.com/tags/template/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Template</title>
+      <link>https://canuxcheng.com/post/django_template/</link>
+      <pubDate>Tue, 04 Oct 2016 04:12:49 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/django_template/</guid>
+      <description>&lt;h1 id=&#34;模板设置&#34;&gt;模板设置&lt;/h1&gt;&#xA;&lt;p&gt;模板引擎在settings.py设置, django有两套模板引擎：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;TEMPLATES = [&#xA;    # DjangoTemplates&#xA;    {&#xA;        &#39;BACKEND&#39;: &#39;django.template.backends.django.DjangoTemplates&#39;,&#xA;        # 定义项目的通用模板, mysite/templates&#xA;        &#39;DIRS&#39;: [os.path.join(BASE_DIR, &#39;templates&#39;)],&#xA;        # True 表示在所有安装应用的application/templates中查找。&#xA;        &#39;APP_DIRS&#39;: True,&#xA;        # 模板的选项：&#xA;        &#39;OPTIONS&#39;: {&#xA;            &#39;context_processors&#39;: [&#xA;                &#39;django.template.context_processors.debug&#39;,&#xA;                &#39;django.template.context_processors.request&#39;,&#xA;                &#39;django.contrib.auth.context_processors.auth&#39;,&#xA;                &#39;django.contrib.messages.context_processors.messages&#39;,&#xA;            ]&#xA;        },&#xA;    },&#xA;&#xA;    # Jinja2&#xA;    {&#xA;        &#39;BACKEND&#39;: &#39;django.template.backends.jinja2.Jinja2&#39;,&#xA;        # 定义项目的通用模板, mysite/templates&#xA;        &#39;DIRS&#39;: [os.path.join(BASE_DIR, &#39;templates&#39;)],&#xA;        # True表示在所有已安装应用的application/jinja2中查找。&#xA;        &#39;APP_DIRS&#39;: True,&#xA;        # 模板的选项：&#xA;        &#39;OPTIONS&#39;: {&#xA;            &#39;context_processors&#39;: [&#xA;                &#39;django.template.context_processors.debug&#39;,&#xA;                &#39;django.template.context_processors.request&#39;,&#xA;                &#39;django.contrib.auth.context_processors.auth&#39;,&#xA;                &#39;django.contrib.messages.context_processors.messages&#39;,&#xA;            ]&#xA;        },&#xA;    },&#xA;]&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;BACKEND定义模板引擎,django内置的模板引擎有两个django.template.backends.django.DjangoTemplates(默认)和django.template.backends.jinja2.Jinja2&lt;/p&gt;&#xA;&lt;p&gt;DIRS存放自定义的不在应用路径的模板，模板引擎按列表顺序搜索查找模板源文件,默认就是默认引擎的默认路径。&lt;/p&gt;&#xA;&lt;p&gt;APP_DIRS告诉模板引擎是否进入安装应用的templates(jinja2的目录是jinja2)查找模板。&lt;/p&gt;&#xA;&lt;p&gt;在视图中使用模板：&lt;/p&gt;&#xA;&lt;p&gt;默认django会在项目的所有应用的templates中查找模板，所以为了防止多个应用有同名的模板，需要在templates下新建application同名的目录来存放模板&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

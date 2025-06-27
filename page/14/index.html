@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="generator" content="Hugo 0.147.9">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morgoth - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="home">
+    <h1>Morgoth</h1>
+    <p></p>
+    
+    <section class="recent-posts">
+        <h2>Recent Posts</h2>
+        <ul class="post-list">
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/sec_sqlinjection/">Sql Injection</a></h2>
+                    <div class="post-meta">
+                        <time>July 28, 2018</time>
+                        
+                            
+                                <span class="category">Security</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="sql-injection">SQL Injection</h1>
+<p>什么是sql injection:从数据库获取敏感信息,或者利用数据库的特性执行添加用户,导出文件等一系列恶意操作,甚至有可能获取数据库乃至系统用户最高权限。</p>
+<p>原因:造成SQL注入的原因是因为程序没有有效过滤用户的输入.</p>
+<p>预防：</p>
+<ul>
+<li>严格限制数据库的操作权限</li>
+<li>检查输入的数据格式是否符合要求</li>
+<li>对进入数据库的特殊字符进行转义</li>
+<li>数据库查询语句使用数据库提供的参数化查询接口</li>
+<li>在发布之前使用专业的sql注入检测工具进行检测</li>
+<li>避免网站打印sql错误信息</li>
+</ul>
+<p>通过表单注入：</p>
+<pre><code>username =&gt; myuser' or 'foo' = 'foo' --
+SELECT * FROM user WHERE username='myuser' or 'foo' = 'foo' --'' AND password='xxx'
+</code></pre>
+<p>mssql的sql语句可以执行dos命令:</p>
+<pre><code>exec xp_cmdshell 'net user username 2546 /add' # 新建系统用户
+exec xp_cmdshell 'net localgroup administrator username /add' # 授权
+</code></pre></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/ha/">HA</a></h2>
+                    <div class="post-meta">
+                        <time>July 28, 2018</time>
+                        
+                            
+                                <span class="category">Network</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="haproxy">HAProxy</h1>
+<p><a href="https://www.haproxy.com/">https://www.haproxy.com/</a></p>
+<p>安装:</p>
+<pre><code>$ sudo apt-get install haproxy
+</code></pre>
+<p>配置:</p>
+<pre><code>$ sudo vim /etc/haproxy/haproxy.cfg
+</code></pre>
+<p>global:</p>
+<pre><code>    log /dev/log    local0
+    log /dev/log    local1 notice
+    chroot /var/lib/haproxy
+    stats socket /run/haproxy/admin.sock mode 660 level admin expose-fd listeners
+    stats timeout 30s
+    user haproxy
+    group haproxy
+    daemon
+
+    # Default SSL material locations
+    ca-base /etc/ssl/certs
+    crt-base /etc/ssl/private
+
+    # Default ciphers to use on SSL-enabled listening sockets.
+    # For more information, see ciphers(1SSL). This list is from:
+    #  https://hynek.me/articles/hardening-your-web-servers-ssl-ciphers/
+    # An alternative list with additional directives can be obtained from
+    #  https://mozilla.github.io/server-side-tls/ssl-config-generator/?server=haproxy
+    ssl-default-bind-ciphers ECDH+AESGCM:DH+AESGCM:ECDH+AES256:DH+AES256:ECDH+AES128:DH+AES:RSA+AESGCM:RSA+AES:!aNULL:!MD5:!DSS
+    ssl-default-bind-options no-sslv3
+</code></pre>
+<p>defaults:</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/sec_csrf/">Csrf</a></h2>
+                    <div class="post-meta">
+                        <time>July 28, 2018</time>
+                        
+                            
+                                <span class="category">Security</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="csrf">CSRF</h1>
+<p>Cross-site request forgery, 跨站请求伪造．</p>
+<p>发生条件：</p>
+<ul>
+<li>登陆受信任网站A, 并在本地生成cookie</li>
+<li>在不退出A的情况下，访问危险网站B</li>
+</ul>
+<p>预防方法:</p>
+<ul>
+<li>正确使用get,post和cookie</li>
+<li>在非get请求中增加伪随机数</li>
+</ul></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/sec_capture/">Capture</a></h2>
+                    <div class="post-meta">
+                        <time>July 28, 2018</time>
+                        
+                            
+                                <span class="category">Security</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="packet-capture">Packet Capture</h1>
+<p>网络抓包</p>
+<h1 id="fiddler">Fiddler</h1>
+<p><a href="http://www.telerik.com/fiddler">http://www.telerik.com/fiddler</a></p>
+<h1 id="wireshark">Wireshark</h1>
+<p><a href="https://www.wireshark.org/">https://www.wireshark.org/</a></p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/sec_ca/">CA</a></h2>
+                    <div class="post-meta">
+                        <time>July 28, 2018</time>
+                        
+                            
+                                <span class="category">Security</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="ca">CA</h1>
+<p>SSL: secure sockets layer</p>
+<p>TLS: transport layer security</p>
+<p>CA: Certificate Authority.</p>
+<p>SNI: server name indication</p>
+<p>证书类型</p>
+<ul>
+<li>x509: 只有公钥没有私钥匙</li>
+</ul>
+<p>编码方式</p>
+<ul>
+<li>pem: base64编码</li>
+<li>der: 二进制</li>
+</ul>
+<p>证书文件:</p>
+<ul>
+<li>crt: 证书文件（可以是pem或der编码）</li>
+<li>cer: 证书文件（可以是pem或der编码）</li>
+<li>csr: 申请签名的文件</li>
+<li>key: 私钥文件</li>
+</ul>
+<hr>
+<h1 id="创建自签名证书">创建自签名证书</h1>
+<p>创建x509证书:</p>
+<pre><code>$ openssl genrsa -out server.key 2048   // 创建key
+$ openssl req -new -key server.key -sha256 -out server.csr // 创建csr
+$ openssl x509 -req -days 365 -in server.csr -signkey server.key -sha256 -out server.crt // 创建证书
+</code></pre>
+<p>查看证书信息:</p></p>
+                    
+                </li>
+            
+        </ul>
+    </section>
+    
+    
+        <a href="/page/13/">← Previous</a>
+    
+    
+        <a href="/page/15/">Next →</a>
+    
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

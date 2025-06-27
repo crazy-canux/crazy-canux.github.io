@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Remote on Morgoth</title>
+    <link>https://canuxcheng.com/tags/remote/</link>
+    <description>Recent content in Remote on Morgoth</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 18 Jul 2016 14:54:39 +0000</lastBuildDate>
+    <atom:link href="https://canuxcheng.com/tags/remote/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Remote Management</title>
+      <link>https://canuxcheng.com/post/ps_remote/</link>
+      <pubDate>Mon, 18 Jul 2016 14:54:39 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/ps_remote/</guid>
+      <description>&lt;h1 id=&#34;windows远程管理&#34;&gt;Windows远程管理&lt;/h1&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;WinRM, 远程处理,在远程机器上执行命令&lt;/li&gt;&#xA;&lt;li&gt;WMI/CIM&lt;/li&gt;&#xA;&lt;li&gt;RPC, 远程连接,在发起远程连接的机器上执行命令&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;winrm&#34;&gt;WinRM&lt;/h1&gt;&#xA;&lt;p&gt;一对一远程处理:&lt;/p&gt;&#xA;&lt;p&gt;类似于linux的ssh。&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;Enter-PSSession -ComputerName name&#xA;...&#xA;Exit-PSSession&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;一对多远程处理:&lt;/p&gt;&#xA;&lt;p&gt;同时远程到多台机器执行命令或脚本。&lt;/p&gt;&#xA;&lt;p&gt;Invoke-Command一次创建一个连接对象，返回PSComputerName属性，执行完后就关闭连接。&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;Invoke-Command -ComputerName name1,name2 -ScriptBlock {command1;command2}&#xA;&#xA;Invoke-Command -ComputerName name1,name2 -FilePath filepath&#xA;&#xA;Invoke-Command -ComputerName (Get-Content hosts.txt) ...&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;通过argumentlist把本地的参数传给远程的命令:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$lvar1=&amp;quot;value1&amp;quot;&#xA;$lvar2=&amp;quot;value2&amp;quot;&#xA;Invoke-Command -ComputerName name&#xA;-ScriptBlock {&#xA;Param($var1, $var2)&#xA;...&#xA;}&#xA;-ArgumentList $lvar1, $lvar2&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;通过$using:传本地参数到远程机器：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$var1=&amp;quot;value1&amp;quot;&#xA;Invoke-Command -ComputerName name&#xA;-ScriptBlock {&#xA;... $using:var1&#xA;}&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;创建持久的远程处理：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$session1=New-PSSession -ComputerName server1&#xA;Enter-PSSession -Session $session1 ...&#xA;Invoke-Command -Session $session1 ...&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;wmi&#34;&gt;WMI&lt;/h1&gt;&#xA;&lt;pre&gt;&lt;code&gt;Get-WmiObject&#xA;Remove-WmiObject&#xA;Invoke-WmiMethod&#xA;Register-WmiEvent&#xA;Set-WmiInstance&#xA;&#xA;# 用powershell跑一个wql。&#xA;Get-WmiObject -Query &amp;quot;select * from win32_service where name=&#39;winRM&#39;&amp;quot; | Format-List -Property Name,status&#xA;&#xA;# 远程管理&#xA;Get-WMIObject -ComputerName ...&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h1 id=&#34;cim&#34;&gt;CIM&lt;/h1&gt;&#xA;&lt;pre&gt;&lt;code&gt;Get-CimClass&#xA;Get-CimInstance&#xA;Get-CimSession&#xA;Get-CimAssociatedInstance&#xA;Invoke-CimMethod&#xA;New-CimInstance&#xA;New-CimSession&#xA;New-CimSessionOption&#xA;Register-CimIndicationEvent&#xA;Remove-CimInstance&#xA;Remove-CimSession&#xA;Set-CimInstance&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;rpc&#34;&gt;RPC&lt;/h1&gt;&#xA;&lt;pre&gt;&lt;code&gt;# 远程连接&#xA;Get-Service -ComputerName ...&#xA;&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+  </channel>
+</rss>

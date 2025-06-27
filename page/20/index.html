@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="generator" content="Hugo 0.147.9">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morgoth - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="home">
+    <h1>Morgoth</h1>
+    <p></p>
+    
+    <section class="recent-posts">
+        <h2>Recent Posts</h2>
+        <ul class="post-list">
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/metrics_prometheus/">Prometheus</a></h2>
+                    <div class="post-meta">
+                        <time>January 18, 2018</time>
+                        
+                            
+                                <span class="category">DevOps</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="prometheus">Prometheus</h1>
+<p>Prometheus Server是Prometheus组件中的核心部分，负责实现对监控数据的获取，存储以及查询</p>
+<p>swarm部署:</p>
+<p><a href="https://github.com/vegasbrianc/prometheus">https://github.com/vegasbrianc/prometheus</a></p>
+<p>k8s部署:</p>
+<p><a href="https://github.com/coreos/kube-prometheus">https://github.com/coreos/kube-prometheus</a></p>
+<p><a href="https://github.com/coreos/prometheus-operator">https://github.com/coreos/prometheus-operator</a></p>
+<p><a href="https://github.com/helm/charts/tree/master/stable/prometheus-operator">https://github.com/helm/charts/tree/master/stable/prometheus-operator</a></p>
+<p>高可用:</p>
+<p><a href="https://github.com/thanos-io/thanos">https://github.com/thanos-io/thanos</a></p>
+<p>prometheus grafana dashboard:</p>
+<p><a href="https://github.com/kubernetes-monitoring/kubernetes-mixin">https://github.com/kubernetes-monitoring/kubernetes-mixin</a></p>
+<p><a href="https://github.com/grafana/kubernetes-app">https://github.com/grafana/kubernetes-app</a></p>
+<hr>
+<h1 id="promql">PromQL</h1>
+<p>metrics类型:</p>
+<ol>
+<li>counter计数器</li>
+<li>gauge仪表盘</li>
+<li>histogram直方图</li>
+<li>summary摘要</li>
+</ol></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/metrics_kapacitor/">Kapacitor</a></h2>
+                    <div class="post-meta">
+                        <time>January 18, 2018</time>
+                        
+                            
+                                <span class="category">DevOps</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="kapacitor">Kapacitor</h1>
+<p><a href="https://github.com/influxdata/Kapacitor">https://github.com/influxdata/Kapacitor</a></p>
+<p>Open source framework for processing, monitoring, and alerting on time series data</p>
+<p>可以通过chrongraf创建tickscript/task, 然后通过api/cli导入到kapacitor.</p>
+<p>配置:</p>
+<pre><code>hostname = &quot;kapcitor-service&quot;
+
+# 如果从influxdb读取数据需要配置该选项．
+[[influxdb]]
+enabled = true
+
+# 如果从该路径加载tickscript
+[[load]]
+enabled = true
+dir=&quot;/etc/kapacitor/load&quot;
+# tasks, 放到/etc/kapacitor/load/tasks/*.tick,重启kapacitor会自动加载task,并默认enable.
+## 要求，ID和tick文件同名，tickscript开头需要指定dbrp, tickscript里面需要指定batch/stream.
+# templates...
+# handlers...
+</code></pre>
+<hr>
+<h1 id="cli">CLI</h1>
+<pre><code>$ kapacitor help
+
+# 创建template(也就是变量可以单独赋值的tickscript)
+$ kapacitor define-template &lt;name&gt; -tick /path/template.tick
+$ kapacitor show-template &lt;name&gt;
+
+# 创建/更新 task, 创建的默认是disable状态.
+# 从tickscript创建task
+$ kapacitor define &lt;name&gt; -tick task.tick -type [stream|batch] -dbrp [database.retentionPolicy]
+# 从template创建task(如果yaml/json中没有指定template需要用-template指定)
+$ kapacitor define &lt;name&gt; -file task.yaml
+$ kapacitor define &lt;name&gt; -file task.json
+
+# 删除task
+$ kapacitor delete [task id/name]
+
+$ kapacitor list tasks/templates
+$ kapacitor reload [task id/name] # 相当于disable &amp; enable.
+$ kapacitor enable [task id/name]
+$ kapaciror disable [task id/name]
+$ kapacitor show [id/name]
+$ kapacitor watch [task id/name]
+
+$ kapacitor list topics
+$ kapacitor delete topics [topic id]
+</code></pre>
+<hr>
+<h1 id="http-api">Http API</h1>
+<pre><code>port = 9092
+</code></pre>
+<h2 id="configuration">configuration</h2>
+<p>获取所有可以overwrite的参数</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/metrics_influxdb/">Influxdb</a></h2>
+                    <div class="post-meta">
+                        <time>January 18, 2018</time>
+                        
+                            
+                                <span class="category">DevOps</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="influxdb">Influxdb</h1>
+<p><a href="https://github.com/influxdata/influxdb">https://github.com/influxdata/influxdb</a></p>
+<p>Scalable datastore for metrics, events, and real-time analytics.</p>
+<p>支持从opentsdb, graphite, collectd等获取数据</p>
+<p>默认数据库_internal 用于存储内部运行数据</p>
+<p>安装配置参考官方文档</p>
+<p>log</p>
+<pre><code>$ sudo journalctl -u influxdb.service
+</code></pre>
+<p>config:</p>
+<pre><code># 开通kapacitor的subscription功能
+[[subscriber]]
+enable = true
+</code></pre>
+<hr>
+<h1 id="数据结构">数据结构</h1>
+<p>influxdb每条记录是一个point.</p>
+<p>points包括下面部分：</p>
+<pre><code>measurement: a measurement, like cpu_load, 相当于表名
+tags: zero or more tag, key=value, eg: host=ip
+fields: zero or more field, key=value, eg: value=0.18
+time: a timestamp
+
+&lt;measurement&gt;[,&lt;tag-key&gt;=&lt;tag-value&gt;...] &lt;field-key&gt;=&lt;field-value&gt;[,&lt;field2-key&gt;=&lt;field2-value&gt;...] [unix-nano-timestamp]
+</code></pre>
+<p>series: 在一个database中,相同的retention policy, measurement, tag set的数据集，叫一个序列．</p>
+<p>RP: retention policy, autogen是默认的存储策略, 用于设置数据保留时间.</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/metrics_exporter/">Exporter</a></h2>
+                    <div class="post-meta">
+                        <time>January 18, 2018</time>
+                        
+                            
+                                <span class="category">DevOps</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="exporter">exporter</h1>
+<p>广义上讲所有可以向Prometheus提供监控样本数据的程序都可以被称为一个Exporter。而Exporter的一个实例称为target，如下所示，Prometheus通过轮询的方式定期从这些target中获取样本数据:</p>
+<p>prometheus通过pull从exporter拉取数据.</p>
+<p>直接采集:cAdvisor, kubernetes, etcd, gokit等直接内置了用于向prometheus暴露监控数据的端点.</p>
+<p>间接采集: 通过promethesu的client api编写exporter，例如mysql-exporter, consul-exporter.</p>
+<hr>
+<h1 id="host">host</h1>
+<p><a href="https://github.com/prometheus/node_exporter">https://github.com/prometheus/node_exporter</a></p>
+<hr>
+<h1 id="k8s">k8s</h1>
+<p>k8s metrics api包括 resource metrics api 和 customer metrics api.</p>
+<p>cadvisor, metrics-server, kube-state-metrics 等实现了 核心api.</p>
+<p>一些adapter实现了自定义api.</p>
+<p>k8s-prometheus-adapter实现了metrics-server的核心api，同时实现了自定义api.</p>
+<h2 id="metrics-server">metrics-server </h2>
+<p>提供了整个集群的资源监控数据</p>
+<p><a href="https://github.com/kubernetes-sigs/metrics-server">https://github.com/kubernetes-sigs/metrics-server</a></p>
+<h2 id="cadvisor">cAdvisor</h2>
+<p>负责单节点内部的容器和节点资源使用统计，会自动收集本机容器 CPU、内存、网络和文件系统的资源占用情况</p>
+<p><a href="https://github.com/google/cadvisor">https://github.com/google/cadvisor</a></p>
+<h2 id="kube-state-metrics">kube-state-metrics </h2>
+<p>提供了 Kubernetes 资源对象（如 DaemonSet、Deployments 等）的度量。</p>
+<p><a href="https://github.com/kubernetes/kube-state-metrics">https://github.com/kubernetes/kube-state-metrics</a></p>
+<h2 id="adapter">adapter</h2>
+<p>同时支持核心api和自定义api.</p>
+<p><a href="https://github.com/DirectXMan12/k8s-prometheus-adapter">https://github.com/DirectXMan12/k8s-prometheus-adapter</a></p>
+<hr>
+<h1 id="blackbox">blackbox</h1>
+<p><a href="https://github.com/prometheus/blackbox_exporter">https://github.com/prometheus/blackbox_exporter</a></p>
+<h1 id="wmi">wmi</h1>
+<p><a href="https://github.com/martinlindhe/wmi_exporter">https://github.com/martinlindhe/wmi_exporter</a></p>
+<h1 id="snmp">snmp</h1>
+<p><a href="https://github.com/prometheus/snmp_exporter">https://github.com/prometheus/snmp_exporter</a></p>
+<h1 id="mysql">mysql</h1>
+<p><a href="https://github.com/prometheus/mysqld_exporter">https://github.com/prometheus/mysqld_exporter</a></p>
+<h1 id="rabbitmq">rabbitmq</h1>
+<p><a href="https://github.com/deadtrickster/prometheus_rabbitmq_exporter">https://github.com/deadtrickster/prometheus_rabbitmq_exporter</a></p>
+<h1 id="mongo">mongo</h1>
+<p><a href="https://github.com/percona/mongodb_exporter">https://github.com/percona/mongodb_exporter</a></p>
+<h1 id="redis">redis</h1>
+<p><a href="https://github.com/oliver006/redis_exporter">https://github.com/oliver006/redis_exporter</a></p>
+<h1 id="haproxy">haproxy</h1>
+<p><a href="https://github.com/prometheus/haproxy_exporter">https://github.com/prometheus/haproxy_exporter</a></p>
+<h1 id="consul">consul</h1>
+<p><a href="https://github.com/prometheus/consul_exporter">https://github.com/prometheus/consul_exporter</a></p>
+<hr>
+<h1 id="pushgateway">pushgateway</h1>
+<p><a href="https://github.com/prometheus/pushgateway">https://github.com/prometheus/pushgateway</a></p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/metrics_alertmanager/">AlertManager</a></h2>
+                    <div class="post-meta">
+                        <time>January 18, 2018</time>
+                        
+                            
+                                <span class="category">DevOps</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="alert-manager">alert-manager</h1>
+<p>在Prometheus中支持基于PromQL创建告警规则, prometheus通过push触发alertmanager.</p>
+<p><a href="https://github.com/prometheus/alertmanager">https://github.com/prometheus/alertmanager</a></p></p>
+                    
+                </li>
+            
+        </ul>
+    </section>
+    
+    
+        <a href="/page/19/">← Previous</a>
+    
+    
+        <a href="/page/21/">Next →</a>
+    
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

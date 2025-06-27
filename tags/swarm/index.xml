@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Swarm on Morgoth</title>
+    <link>https://canuxcheng.com/tags/swarm/</link>
+    <description>Recent content in Swarm on Morgoth</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 05 Apr 2018 22:02:31 +0000</lastBuildDate>
+    <atom:link href="https://canuxcheng.com/tags/swarm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Swarm</title>
+      <link>https://canuxcheng.com/post/swarm/</link>
+      <pubDate>Thu, 05 Apr 2018 22:02:31 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/swarm/</guid>
+      <description>&lt;h1 id=&#34;swarm&#34;&gt;Swarm&lt;/h1&gt;&#xA;&lt;p&gt;docker swarm 是 docker内置的容器编排工具。&lt;/p&gt;&#xA;&lt;p&gt;从docker1.12开始swarm内置于docker engine.&lt;/p&gt;&#xA;&lt;p&gt;swarm mode具有内置kv存储，服务发现，负载均衡，路由网格，动态伸缩，滚动更新，安全传输等功能。&lt;/p&gt;&#xA;&lt;p&gt;swarm: 老版本的swarm, 需要kv store, 可以作为独立的container运行, 已废弃, 已经被docker swarm mode 代替.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/docker/swarm&#34;&gt;https://github.com/docker/swarm&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;swarmkit:&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/docker/swarmkit&#34;&gt;https://github.com/docker/swarmkit&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;swarm命令&#34;&gt;swarm命令&lt;/h1&gt;&#xA;&lt;p&gt;创建集群&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;docker swarm init&#xA;--advertise-addr &amp;lt;ip&amp;gt; 多网卡情况下指定manager的ip&#xA;&#xA;docker swarm join --token &amp;lt;token&amp;gt; &amp;lt;host:port&amp;gt;&#xA;&#xA;# 查看token&#xA;docker swarm join-token manager   获取添加manager命令&#xA;docker swarm join-token worker   获取添加worker命令&#xA;docker swarm join-token -q worker&#xA;&#xA;docker swarm leave -f/--force&#xA;&#xA;docker swarm update&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;管理节点&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;docker node ls&#xA;docker node ls --format &amp;quot;{{.Hostname}}&amp;quot;&#xA;​&#xA;docker node rm&#xA;​&#xA;docker node inspect&#xA;​&#xA;# 查看node上运行的tasks/container&#xA;docker node ps -f/--filter NODE&#xA;​&#xA;# 添加label, node.labels.role=api&#xA;docker node update --label-add role=api node1&#xA;# 删除label&#xA;docker node update --label-rm role node1&#xA;​&#xA;# 活跃节点&#xA;docker node update --availability active node1&#xA;# 指定该节点满载,不再分派任务,关闭已有任务并重新分派.&#xA;docker node update --availability drain node1&#xA;# 已有任务继续运行,不分配新任务.&#xA;docker node update --availability pause node1&#xA;&#xA;# 查看所有node和label&#xA;docker node ls -q | xargs docker node inspect -f &#39;{{ .ID }} [{{ .Description.Hostname }}]: {{ .Spec.Labels }}&#39;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;service&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Swarm CNI</title>
+      <link>https://canuxcheng.com/post/swarm_cni/</link>
+      <pubDate>Thu, 05 Apr 2018 22:02:31 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/swarm_cni/</guid>
+      <description>&lt;h1 id=&#34;cni&#34;&gt;CNI&lt;/h1&gt;&#xA;&lt;p&gt;CNI: Container Network Intarface&lt;/p&gt;&#xA;&lt;h2 id=&#34;单台host上的container通信&#34;&gt;单台host上的container通信&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;none&lt;/li&gt;&#xA;&lt;li&gt;host&lt;/li&gt;&#xA;&lt;li&gt;bridge&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;多台host之间的container通信&#34;&gt;多台host之间的container通信&lt;/h2&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;overlay&lt;/li&gt;&#xA;&lt;li&gt;macvlan&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;提供overlaymacvlan的网络服务&#34;&gt;提供overlay/macvlan的网络服务&lt;/h3&gt;&#xA;&lt;p&gt;vxlan encapsulated:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;canal&lt;/li&gt;&#xA;&lt;li&gt;flannel&lt;/li&gt;&#xA;&lt;li&gt;weave&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;bgp unencapsulated:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;calico&lt;/li&gt;&#xA;&lt;li&gt;romana&lt;/li&gt;&#xA;&lt;li&gt;cilium&lt;/li&gt;&#xA;&lt;li&gt;kube-router&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;docker网络管理&#34;&gt;Docker网络管理&lt;/h1&gt;&#xA;&lt;p&gt;查看:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ docker network ls # 查看所有网络&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;默认支持的三种模式:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;# 默认启动的容器都是桥接(docker0)，重启后容器的ip就变了。&#xA;docker run --network bridge  ...&#xA;docker run --network host ... # 容器和主机使用相同的ip&#xA;docker run --network none ... # 容器不会分配局域网的ip&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;创建:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;docker network create -d &amp;lt;driver&amp;gt; ... [name]&#xA;-d/--driver # 默认是bridge, 可选overlay/macvlan&#xA;--subnet  # CIDR格式&#xA;--gateway&#xA;--ip-range&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;使用:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Swarm CSI</title>
+      <link>https://canuxcheng.com/post/swarm_csi/</link>
+      <pubDate>Thu, 05 Apr 2018 22:02:31 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/swarm_csi/</guid>
+      <description>&lt;h1 id=&#34;csi&#34;&gt;CSI&lt;/h1&gt;&#xA;&lt;p&gt;CSI: Container Storage Interface&lt;/p&gt;&#xA;&lt;p&gt;CSI提供容器的数据持久化服务.&lt;/p&gt;&#xA;&lt;p&gt;容器管理数据的两种方式：&lt;/p&gt;&#xA;&lt;p&gt;数据卷(Volumes)&lt;/p&gt;&#xA;&lt;p&gt;挂载主机目录(bind mounts)&lt;/p&gt;&#xA;&lt;p&gt;临时文件系统(tmpfs)&lt;/p&gt;&#xA;&lt;h2 id=&#34;数据存储原理&#34;&gt;数据存储原理&lt;/h2&gt;&#xA;&lt;p&gt;如果container上目录不存在，docker会自动创建&lt;/p&gt;&#xA;&lt;p&gt;如果container目录存在且有内容，会被host上的目录覆盖掉，但不会被删除.&lt;/p&gt;&#xA;&lt;h2 id=&#34;volumes&#34;&gt;Volumes&lt;/h2&gt;&#xA;&lt;p&gt;如果host上目录不存在，docker会自动创建&lt;/p&gt;&#xA;&lt;p&gt;volumes是被设计用来持久化数据的，它的生命周期独立于容器.数据卷通过docker volume命令管理的，位于/var/lib/docker/volumes/下面.&lt;/p&gt;&#xA;&lt;p&gt;Docker不会在容器被删除后自动删除 数据卷，并且也不存在垃圾回收这样的机制来处理没有任何容器引用的 数据卷。&lt;/p&gt;&#xA;&lt;p&gt;创建:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ docker volume create &amp;lt;volume-name&amp;gt;&#xA;$ docker volume rm &amp;lt;volume-name&amp;gt;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;使用：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ docker run -v/--volume myvolume:/var/lib/app ...&#xA;$ docker run --mount source=myvolume,target=/var/lib/app ...&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;bind-mount&#34;&gt;Bind mount&lt;/h2&gt;&#xA;&lt;p&gt;如果host上目录不存在会报错，需要提前创建.&lt;/p&gt;&#xA;&lt;p&gt;bind mount就是直接将host路径挂在到docker．&lt;/p&gt;&#xA;&lt;p&gt;source和target都是文件，即可挂载单个文件.&lt;/p&gt;&#xA;&lt;p&gt;使用:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ docker run -v/--volume /opt/app:/var/lib/app:ro ...&#xA;$ docker run --mount type=bind,source=/opt/app,target=/var/lib/app,readonly ...&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;tmpfs&#34;&gt;tmpfs&lt;/h2&gt;&#xA;&lt;p&gt;tmpfs是临时文件系统，也叫内存文件系统，就是将数据存在内存上。&lt;/p&gt;&#xA;&lt;p&gt;tmpfs只能用于linux, 多个容器也不能共享，容器停止数据就销毁。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Npm on Morgoth</title>
+    <link>https://canuxcheng.com/tags/npm/</link>
+    <description>Recent content in Npm on Morgoth</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 27 Sep 2016 03:31:25 +0000</lastBuildDate>
+    <atom:link href="https://canuxcheng.com/tags/npm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>NPM</title>
+      <link>https://canuxcheng.com/post/js_npm/</link>
+      <pubDate>Tue, 27 Sep 2016 03:31:25 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/js_npm/</guid>
+      <description>&lt;h1 id=&#34;npm&#34;&gt;NPM&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.npmjs.cn/&#34;&gt;https://www.npmjs.cn/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;npm: node package manager.&lt;/p&gt;&#xA;&lt;p&gt;npm 由三部分组成：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;website &lt;a href=&#34;https://www.npmjs.com&#34;&gt;https://www.npmjs.com&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;CLI&lt;/li&gt;&#xA;&lt;li&gt;registry &lt;a href=&#34;https://registry.npmjs.org&#34;&gt;https://registry.npmjs.org&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;config:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;// 修改registry&#xA;$ npm config set registry https://registry.npm.taobao.org&#xA;$ npm config get registry&#xA;&#xA;// 修改默认全局安装路径&#xA;mkdir /path/npm_global&#xA;npm config set prefix /path/npm_global&#xA;echo &#39;export PATH=/path/npm_global/bin:$PATH&#39; &amp;gt;&amp;gt; ~/.profile&#xA;source ~/.profile&#xA;&#xA;// 查看配置&#xA;$ npm config ls -l&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;install:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;// 根据当前目录package.json安装到当前目录node_modules&#xA;$ npm install&#xA;&#xA;// 安装pkg到当前目录的 node_modules&#xA;$ npm install &amp;lt;pkg&amp;gt;&#xA;&#xA;// 安装到全局的node_modules&#xA;$ npm install -g &amp;lt;name&amp;gt;&#xA;&#xA;--save-dev // 安装并自动更新到package.json的devDependencies.&#xA;--no-save // 不保存到package.json 和 package-lock.json.&#xA;--no-package-lock // 不生成package-lock.json&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;list:&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

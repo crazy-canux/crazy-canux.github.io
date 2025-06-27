@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Django on Morgoth</title>
+    <link>https://canuxcheng.com/tags/django/</link>
+    <description>Recent content in Django on Morgoth</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 20 Sep 2016 23:14:07 +0000</lastBuildDate>
+    <atom:link href="https://canuxcheng.com/tags/django/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Django</title>
+      <link>https://canuxcheng.com/post/django/</link>
+      <pubDate>Tue, 20 Sep 2016 23:14:07 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/django/</guid>
+      <description>&lt;h1 id=&#34;django&#34;&gt;Django&lt;/h1&gt;&#xA;&lt;p&gt;django是python的web框架。&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/django/django&#34;&gt;https://github.com/django/django&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.djangoproject.com/&#34;&gt;https://www.djangoproject.com/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://docs.djangoproject.com/zh-hans/3.1/contents/&#34;&gt;https://docs.djangoproject.com/zh-hans/3.1/contents/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;django遵守MVC设计模式，采用MTV框架。&lt;/p&gt;&#xA;&lt;p&gt;M: model,数据存取&lt;/p&gt;&#xA;&lt;p&gt;T: template，如何展现数据&lt;/p&gt;&#xA;&lt;p&gt;V: view，展现哪些数据&lt;/p&gt;&#xA;&lt;h1 id=&#34;安装&#34;&gt;安装&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://docs.djangoproject.com/zh-hans/3.1/faq/install/#faq-python-version-support&#34;&gt;https://docs.djangoproject.com/zh-hans/3.1/faq/install/#faq-python-version-support&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;django1.11是最后一个支持python2.7的长期支持版(2017.4).&lt;/p&gt;&#xA;&lt;p&gt;django2.0开始只支持python3(2018).&lt;/p&gt;&#xA;&lt;p&gt;本文以django3.1为例创建名为next的project.&lt;/p&gt;&#xA;&lt;p&gt;virtualenv中安装：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$mkdir next&#xA;$cd next&#xA;$virtualenv .venv&#xA;&#xA;# mac/linux&#xA;$source .venv/bin/activate&#xA;&#xA;# windows&#xA;&amp;gt;cd .venv/Scripts&#xA;&amp;gt;activate&#xA;&#xA;$pip install django&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;验证安装：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$python&#xA;&amp;gt;&amp;gt;&amp;gt;import django&#xA;&amp;gt;&amp;gt;&amp;gt;django.VERSION&#xA;&amp;gt;&amp;gt;&amp;gt;django.get_version()&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;安装使用的数据库引擎的库：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ sudo udo apt-get install libmysqlclient-dev&#xA;$ pip install mysqlclient&#xA;&#xA;$pip install psycopg2&#xA;&#xA;$pip install cx_Oracle&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;django默认是mysqlclient，可以使用pymysql替代：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;# vim settings.py&#xA;import pymysql&#xA;pymysql.version_info = (1, 4, 13, &amp;quot;final&amp;quot;, 0)&#xA;pymysql.install_as_MySQLdb()&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;project&#34;&gt;project&lt;/h1&gt;&#xA;&lt;p&gt;创建一个名为next的项目&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

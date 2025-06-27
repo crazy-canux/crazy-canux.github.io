@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="generator" content="Hugo 0.147.9">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morgoth - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="home">
+    <h1>Morgoth</h1>
+    <p></p>
+    
+    <section class="recent-posts">
+        <h2>Recent Posts</h2>
+        <ul class="post-list">
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/ps_remote/">Remote Management</a></h2>
+                    <div class="post-meta">
+                        <time>July 18, 2016</time>
+                        
+                            
+                                <span class="category">Windows</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="windows远程管理">Windows远程管理</h1>
+<ol>
+<li>WinRM, 远程处理,在远程机器上执行命令</li>
+<li>WMI/CIM</li>
+<li>RPC, 远程连接,在发起远程连接的机器上执行命令</li>
+</ol>
+<hr>
+<h1 id="winrm">WinRM</h1>
+<p>一对一远程处理:</p>
+<p>类似于linux的ssh。</p>
+<pre><code>Enter-PSSession -ComputerName name
+...
+Exit-PSSession
+</code></pre>
+<p>一对多远程处理:</p>
+<p>同时远程到多台机器执行命令或脚本。</p>
+<p>Invoke-Command一次创建一个连接对象，返回PSComputerName属性，执行完后就关闭连接。</p>
+<pre><code>Invoke-Command -ComputerName name1,name2 -ScriptBlock {command1;command2}
+
+Invoke-Command -ComputerName name1,name2 -FilePath filepath
+
+Invoke-Command -ComputerName (Get-Content hosts.txt) ...
+</code></pre>
+<p>通过argumentlist把本地的参数传给远程的命令:</p>
+<pre><code>$lvar1=&quot;value1&quot;
+$lvar2=&quot;value2&quot;
+Invoke-Command -ComputerName name
+-ScriptBlock {
+Param($var1, $var2)
+...
+}
+-ArgumentList $lvar1, $lvar2
+</code></pre>
+<p>通过$using:传本地参数到远程机器：</p>
+<pre><code>$var1=&quot;value1&quot;
+Invoke-Command -ComputerName name
+-ScriptBlock {
+... $using:var1
+}
+</code></pre>
+<p>创建持久的远程处理：</p>
+<pre><code>$session1=New-PSSession -ComputerName server1
+Enter-PSSession -Session $session1 ...
+Invoke-Command -Session $session1 ...
+</code></pre>
+<hr>
+<h1 id="wmi">WMI</h1>
+<pre><code>Get-WmiObject
+Remove-WmiObject
+Invoke-WmiMethod
+Register-WmiEvent
+Set-WmiInstance
+
+# 用powershell跑一个wql。
+Get-WmiObject -Query &quot;select * from win32_service where name='winRM'&quot; | Format-List -Property Name,status
+
+# 远程管理
+Get-WMIObject -ComputerName ...
+</code></pre>
+<h1 id="cim">CIM</h1>
+<pre><code>Get-CimClass
+Get-CimInstance
+Get-CimSession
+Get-CimAssociatedInstance
+Invoke-CimMethod
+New-CimInstance
+New-CimSession
+New-CimSessionOption
+Register-CimIndicationEvent
+Remove-CimInstance
+Remove-CimSession
+Set-CimInstance
+</code></pre>
+<hr>
+<h1 id="rpc">RPC</h1>
+<pre><code># 远程连接
+Get-Service -ComputerName ...
+</code></pre></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/win_winrm/">WinRM</a></h2>
+                    <div class="post-meta">
+                        <time>July 17, 2016</time>
+                        
+                            
+                                <span class="category">Windows</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="winrm">WinRM</h1>
+<p>Windows Remote Management</p>
+<p>WinRM是WSMAN(WS-Management Protocol)的增强版。</p>
+<p>WinRM是基于SOAP的防火墙友好的远程协议。</p>
+<p><a href="https://msdn.microsoft.com/en-us/library/aa384426(v=vs.85).aspx">https://msdn.microsoft.com/en-us/library/aa384426(v=vs.85).aspx</a></p>
+<p>WinRM设置:</p>
+<p><a href="https://msdn.microsoft.com/en-us/library/aa384372(v=vs.85).aspx">https://msdn.microsoft.com/en-us/library/aa384372(v=vs.85).aspx</a></p>
+<p>检查winrm所有配置：</p>
+<pre><code>cmd&gt; winrm get winrm/config
+</code></pre>
+<p>快速设置winrm：</p>
+<pre><code>cmd&gt; winrm quickconfig
+cmd&gt; winrm quickconfig -transport:https
+</code></pre>
+<p>查看listener配置：</p>
+<pre><code>cmd&gt; winrm enumerate winrm/config/listener
+</code></pre>
+<p>WinRM配置包括监听设置,协议设置,Client,Service和Winrs四部分.</p>
+<p>windows的三种网络安全协议。</p>
+<p>Basic是基本的明文协议, NTLM是早期的安全协议,Kerberos是最新的安全协议.</p>
+<h1 id="service权限管理">service权限管理</h1>
+<p>查看service的auth配置：</p>
+<pre><code>cmd&gt; winrm get winrm/config/service/auth
+</code></pre>
+<p>service只有Negotiate和Kerberos是默认开启的:</p>
+<pre><code>Basic = false
+Kerberos = true
+Negotiate = true
+Certificate = false
+CredSSP = false
+</code></pre>
+<p>Negotiate对domain用户选择kerberos,对local用户选择NTLM.</p>
+<p>设置service的Basic和Certificate和CredSSP(默认关闭)：</p>
+<pre><code>#cmd&gt; winrm set winrm/config/service/auth @{Basic=&quot;true&quot;}
+#cmd&gt; winrm set winrm/config/service/auth @{Certificate=&quot;true&quot;}
+#cmd&gt; winrm set winrm/config/service/auth @{CredSSP=&quot;true&quot;}
+</code></pre>
+<p>设置是否允许不加密：</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/ps_coreutils/">Coreutils</a></h2>
+                    <div class="post-meta">
+                        <time>July 12, 2016</time>
+                        
+                            
+                                <span class="category">Windows</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="外部命令">外部命令</h1>
+<p>powershell可以执行外部命令.</p>
+<pre><code>C:\Windows\System32\*.exe
+</code></pre>
+<h1 id="cmd">cmd</h1>
+<h1 id="ping">ping</h1>
+<h1 id="netstat">netstat</h1>
+<h1 id="ipconfig">ipconfig</h1>
+<h1 id="route">route</h1>
+<h1 id="arp">arp</h1>
+<h1 id="nslookup">nslookup</h1>
+<h1 id="ftp">ftp</h1>
+<h1 id="mstsc">mstsc</h1>
+<p>RDP client.</p>
+<h1 id="taskmgr">taskmgr</h1>
+<p>任务管理器．</p>
+<h1 id="tskill">tskill</h1>
+<h1 id="tree">tree</h1>
+<h1 id="whoami">whoami</h1>
+<hr>
+<p>需要下载，然后放入环境变量的第三方命令.</p>
+<h1 id="windump">WinDump</h1>
+<p>Windows版本的tcpdump, 依赖WinPcap包．</p>
+<p>通过windump导出的*.pcap文件可以通过wireshark打开．</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/yaml/">Yaml</a></h2>
+                    <div class="post-meta">
+                        <time>July 7, 2016</time>
+                        
+                            
+                                <span class="category">Web</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="yaml">YAML</h1>
+<p><a href="https://yaml.org">https://yaml.org</a></p>
+<p>Yaml Ain&rsquo;t Markup Language.</p>
+<h2 id="yamllint">yamllint</h2>
+<p><a href="https://github.com/adrienverge/yamllint">https://github.com/adrienverge/yamllint</a></p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/json/">Json</a></h2>
+                    <div class="post-meta">
+                        <time>July 7, 2016</time>
+                        
+                            
+                                <span class="category">Web</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="json">JSON</h1>
+<p><a href="http://www.json.org/">http://www.json.org/</a></p>
+<p>JSON: JavaScript Object Notation.</p>
+<p>json有两种数据结构.</p>
+<h1 id="key-value键值对">key-value/键值对</h1>
+<pre><code>{
+    key: value,
+    key1: value1,
+    ...
+}
+</code></pre>
+<h1 id="列表数组">列表/数组</h1>
+<pre><code>[value, value1, ...]
+</code></pre>
+<h1 id="数据类型">数据类型</h1>
+<p>bool:</p>
+<pre><code>python -&gt; True/False
+go -&gt; true/false
+</code></pre>
+<p>string:</p>
+<pre><code>&gt; 只能用双引号.
+
+python -&gt; str
+go -&gt; string
+go -&gt; []byte -&gt; base64编码字符串
+</code></pre>
+<p>number:</p>
+<pre><code>python -&gt; int/float
+go -&gt; int64/float64
+</code></pre>
+<p>null:</p>
+<pre><code>python -&gt; None
+go -&gt; nil
+</code></pre>
+<p>array</p>
+<pre><code>python -&gt; tuple/list
+go -&gt; array/slice
+</code></pre>
+<p>object</p></p>
+                    
+                </li>
+            
+        </ul>
+    </section>
+    
+    
+        <a href="/page/39/">← Previous</a>
+    
+    
+        <a href="/page/41/">Next →</a>
+    
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

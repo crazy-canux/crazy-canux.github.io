@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grep - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="single-post">
+    <article>
+        <header>
+            <h1>Grep</h1>
+            <div class="post-meta">
+                <time>April 20, 2016</time>
+                
+                    
+                        <span class="category">Linux</span>
+                    
+                
+                
+                    
+                        <span class="tag">#shell</span>
+                    
+                
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <h1 id="grep">grep</h1>
+<p>grep相关的命令：</p>
+<pre><code>grep
+egrep == grep -E
+fgrep == grep -F
+rgrep == grep -r
+</code></pre>
+<p>grep:</p>
+<pre><code>grep [OPTIONS] PATTERN [FILE/DIR...]
+grep [OPTIONS] [-e PATTERN | -f FILE] [FILE/DIR...]
+</code></pre>
+<p>options:</p>
+<pre><code># Matcher Selection
+-G, --basic-regexp grep默认只支持BRE, 只能使用基本的RE
+-E, --extended-regexp 选择ERE, 可以使用扩展的RE
+# grep -E &quot;pattern1|pattern2&quot; 比如支持或运算
+-F, --fixed-strings
+-P, --perl-regexp perl RE
+
+# Matching Control
+-e PATTERN, --regexp=PATTERN    可以指定多个pattern
+# grep -e pattern1 -e pattern2 filename 相当于或运算，满足一个就被过滤出来
+-f FILE, --file=FILE    文件的每一行就是一个pattern.
+-i, --ignore-case    忽略大小写
+-v, --invert-match   忽略含有pattern的行
+-w, --word-regexp    精确匹配一个单词
+-x, --line-regexp    精确匹配一行
+-y
+
+# General Output Control
+-c, --count    统计匹配到的行数
+--color[=WHEN], --colour[=WHEN]    输出匹配的pattern高亮
+-L, --files-without-match    列出没有匹配到的文件名
+-l, --files-with-matches    列出匹配到的文件的文件名
+# grep -rl pattern1 | xargs grep -r pattern2    相当于与运算，过滤同时满足两个pattern
+-m NUM, --max-count=NUM
+-o, --only-matching    只输出匹配的部分
+# grep -o pattern filename | wc -l 统计匹配的行数
+-q, --quiet, --silent    不打印查找的结果
+-s, --no-messages
+
+# Output Line Prefix Control
+-b, --byte-offset    打印匹配的字符数或偏移量
+-H, --with-filename
+-h, --no-filename
+--label=LABEL
+-n, --line-number    打印匹配的行的行号
+-T, --initial-tab
+-u, --unix-byte-offsets
+-Z, --null
+
+# Context Line Control
+-A NUM, --after-context=NUM    打印匹配到的行的后NUM行
+-B NUM, --before-context=NUM    打印匹配到的行的前NUM行j
+-C NUM, -NUM, --context=NUM    打印匹配到的行的前NUM行和后NUM行
+
+# File and Directory Selection
+-a, --text
+--binary-files=TYPE
+-D ACTION, --devices=ACTION
+-d ACTION, --directories=ACTION
+--exclude=GLOB    排除查找指定的文件
+--exclude-from=FILE
+--exclude-dir=DIR   排除查找指定的目录
+-I
+--include=GLOB     指定查找的文件
+-r, --recursive    递归查找
+-R, --dereference-recursive    递归查找
+# grep -nR/-nr pattern filename    阅读源码可以递归查找并打印行号
+
+# Other Options
+--line-buffered
+--mmap
+-U, --binary
+-z, --null-data
+</code></pre>
+<h1 id="ack">ack</h1>
+<p>ack/ack2是grep的升级版</p>
+<p>ack:</p>
+<p><a href="https://github.com/beyondgrep/ack">https://github.com/beyondgrep/ack</a></p>
+<p>ack2(ack-grep):</p>
+<p><a href="https://github.com/beyondgrep/ack2">https://github.com/beyondgrep/ack2</a></p>
+<h1 id="ag">ag</h1>
+<p>ack/ack2的升级版</p>
+<p><a href="https://github.com/ggreer/the_silver_searcher">https://github.com/ggreer/the_silver_searcher</a></p>
+<p>安装：</p>
+<pre><code>$sudo apt-get install silversearcher-ag
+$sudo yum install the_silver_searcher
+</code></pre>
+<p>使用：</p>
+<pre><code>$man ag
+</code></pre>
+
+        </div>
+    </article>
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

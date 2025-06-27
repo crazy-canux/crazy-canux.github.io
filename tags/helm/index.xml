@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Helm on Morgoth</title>
+    <link>https://canuxcheng.com/tags/helm/</link>
+    <description>Recent content in Helm on Morgoth</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 05 Sep 2019 22:02:31 +0000</lastBuildDate>
+    <atom:link href="https://canuxcheng.com/tags/helm/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Helm</title>
+      <link>https://canuxcheng.com/post/k8s_helm/</link>
+      <pubDate>Thu, 05 Sep 2019 22:02:31 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/k8s_helm/</guid>
+      <description>&lt;h1 id=&#34;helm&#34;&gt;Helm&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/helm/helm&#34;&gt;https://github.com/helm/helm&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;helm2有两个组件:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;helm: 客户端&lt;/li&gt;&#xA;&lt;li&gt;tiller: 服务端(helm3被移除)&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;概念:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;chart: helm包，包含运行一个应用所需的镜像，依赖和资源.&lt;/li&gt;&#xA;&lt;li&gt;repository: 用于发布和存储chart的仓库.&lt;/li&gt;&#xA;&lt;li&gt;release: 在k8s集群上运行的一个chart实例.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;repository有哪些:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;charts: OSS, public, 已经被artifacthub取代, &lt;a href=&#34;https://github.com/helm/charts&#34;&gt;https://github.com/helm/charts&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;artifacthub: OSS, public,  &lt;a href=&#34;https://artifacthub.io/&#34;&gt;https://artifacthub.io/&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;chartmuseum: OSS, private, self-host, &lt;a href=&#34;https://github.com/helm/chartmuseum&#34;&gt;https://github.com/helm/chartmuseum&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;harbor: OSS, private, self-host.&lt;/li&gt;&#xA;&lt;li&gt;artifactory(jfrog): enterprise, private, self-host.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h2 id=&#34;安装&#34;&gt;安装&lt;/h2&gt;&#xA;&lt;p&gt;helm和kubectl一样，访问指定配置的k8s集群。&lt;/p&gt;&#xA;&lt;p&gt;helm2需要安装tiller并且执行helm init初始化,helm不需要tiller.&lt;/p&gt;&#xA;&lt;p&gt;本地二进制安装helm3+:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;curl https://baltocdn.com/helm/signing.asc | sudo apt-key add -&#xA;sudo apt-get install apt-transport-https --yes&#xA;echo &amp;quot;deb https://baltocdn.com/helm/stable/debian/ all main&amp;quot; | sudo tee /etc/apt/sources.list.d/helm-stable-debian.list&#xA;sudo apt-get update&#xA;sudo apt-get install helm&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;命令&#34;&gt;命令&lt;/h2&gt;&#xA;&lt;h3 id=&#34;repo管理&#34;&gt;repo管理&lt;/h3&gt;&#xA;&lt;p&gt;查看有哪些repo,默认没有repo&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

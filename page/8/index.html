@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="generator" content="Hugo 0.147.9">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morgoth - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="home">
+    <h1>Morgoth</h1>
+    <p></p>
+    
+    <section class="recent-posts">
+        <h2>Recent Posts</h2>
+        <ul class="post-list">
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/k8s_cni/">K8S CNI</a></h2>
+                    <div class="post-meta">
+                        <time>March 26, 2020</time>
+                        
+                            
+                                <span class="category">CNCF</span>
+                            
+                                <span class="category">Network</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="network-add-ons">Network add-ons</h1>
+<p><a href="https://github.com/containernetworking">https://github.com/containernetworking</a></p>
+<ul>
+<li>flannel</li>
+<li>cilium</li>
+<li>calico</li>
+<li>vpc-cni (aws)</li>
+<li>kube-router</li>
+<li>weavenet</li>
+<li>antrea</li>
+<li>romana</li>
+</ul>
+<hr>
+<h2 id="cilium">cilium</h2>
+<p><a href="https://github.com/cilium/cilium">https://github.com/cilium/cilium</a></p>
+<hr>
+<h2 id="flannel">Flannel</h2>
+<p>flannel是k8s最常用的网络插件.</p>
+<p><a href="https://github.com/coreos/flannel">https://github.com/coreos/flannel</a></p>
+<p>在所有node上部署cni-plugin:</p>
+<p><a href="https://github.com/containernetworking/plugins/releases">https://github.com/containernetworking/plugins/releases</a></p>
+<pre><code>$ sudo mkdir -p /opt/cni/bin
+// 下载并解压所有插件命令到该目录.
+</code></pre>
+<p>network-addon(master上操作即可):</p>
+<pre><code>$ kubectl apply -f https://raw.githubusercontent.com/flannel-io/flannel/master/Documentation/kube-flannel.yml
+</code></pre>
+<p>veryfy:</p>
+<pre><code>$ kubectl get nodes
+$ kubectl get pod --all-namespaces
+</code></pre>
+<p>删除插件:</p>
+<p>删除插件会影响已经部署的pod.</p>
+<pre><code>// 删除flannel 
+$ kubectl delete -f X.yml  
+$ sudo systemctl stop kubelet docker
+
+// 第二步，在node节点清理flannel网络留下的文件
+ifconfig cni0 down
+ip link delete cni0 
+ifconfig flannel.1 down
+ip link delete flannel.1 
+rm -rf /var/lib/cni /etc/cni /run/flannel
+$ sudo rm -rf /var/lib/kubelet /var/lib/etcd
+
+// 重启kubelet
+$ sudo systemctl start kubelet docker
+</code></pre>
+<p>修改配置:</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/k8s_csi/">K8S CSI</a></h2>
+                    <div class="post-meta">
+                        <time>March 25, 2020</time>
+                        
+                            
+                                <span class="category">CNCF</span>
+                            
+                                <span class="category">Storage</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="csi">CSI</h1>
+<p><a href="https://github.com/container-storage-interface/spec">https://github.com/container-storage-interface/spec</a></p>
+<ul>
+<li>rook</li>
+<li>cubefs</li>
+<li>longhorn</li>
+<li>ceph</li>
+<li>minio</li>
+</ul>
+<hr>
+<h2 id="卷volume">卷Volume</h2>
+<p>和docker中的一样。</p>
+<p>volume支持的卷类型有: awsEBS, azureDisk, azureFile, gcePD, secret, configMap, emptyDir, hostPath, local, nfs等.</p>
+<pre><code>apiVersion: v1
+kind: Pod
+metadata:
+  name: test-ebs
+spec:
+  containers:
+  - image: k8s.gcr.io/test-webserver
+    name: test-container
+    volumeMounts:
+    - mountPath: /test-ebs
+      name: test-volume
+  volumes:
+  - name: test-volume
+    # 此 AWS EBS 卷必须已经存在
+    awsElasticBlockStore:
+      volumeID: &quot;&lt;volume-id&gt;&quot;
+      fsType: ext4
+</code></pre>
+<p>AWS的EBS和EFS需要安装驱动:</p>
+<p><a href="https://github.com/kubernetes-sigs/aws-ebs-csi-driver">https://github.com/kubernetes-sigs/aws-ebs-csi-driver</a>
+<a href="https://github.com/kubernetes-sigs/aws-efs-csi-driver">https://github.com/kubernetes-sigs/aws-efs-csi-driver</a></p>
+<hr>
+<h2 id="存储类storageclass">存储类StorageClass</h2>
+<p>storageclass没有namespace.</p>
+<p>每个存储类包含provisioner, parameters和reclaimPolicy.</p>
+<p>内置provisioner的卷插件:</p>
+<ul>
+<li>awsEBS</li>
+<li>azureFile</li>
+<li>azureDisk</li>
+<li>gcePD</li>
+<li>openstack cinder</li>
+</ul>
+<p>没有provisioner的卷类型可以使用外部插件或者自己开发.</p>
+<p><a href="https://github.com/kubernetes-sigs/sig-storage-lib-external-provisioner">https://github.com/kubernetes-sigs/sig-storage-lib-external-provisioner</a></p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/k8s_kubectl/">Kubectl</a></h2>
+                    <div class="post-meta">
+                        <time>January 10, 2020</time>
+                        
+                            
+                                <span class="category">CNCF</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="kubectl">kubectl</h1>
+<p>kubectl是kubernetes的管理工具.</p>
+<p><a href="https://kubernetes.io/docs/tasks/tools/#kubectl">https://kubernetes.io/docs/tasks/tools/#kubectl</a></p>
+<p><a href="https://github.com/cloudnativelabs/kube-shell">https://github.com/cloudnativelabs/kube-shell</a></p>
+<p><a href="https://github.com/jonmosco/kube-ps1">https://github.com/jonmosco/kube-ps1</a></p>
+<p><a href="https://github.com/ahmetb/kubectx">https://github.com/ahmetb/kubectx</a></p>
+<p>在master上通过kubectl命令管理集群.</p>
+<p>kubectl 版本和集群版本之间的差异必须在一个小版本号内。 例如：v1.24 版本的客户端能与 v1.23、 v1.24 和 v1.25 版本的控制面通信。 用最新兼容版的 kubectl 有助于避免不可预见的问题。</p>
+<h2 id="options">Options</h2>
+<pre><code>kubectl options # 查看所有命令可用选项
+
+--kubeconfig
+kubectl --kubeconfig=$HOME/.kube.config (default)
+
+-n/--namespace
+</code></pre>
+<h2 id="basic-command">basic command</h2>
+<p>create:</p>
+<pre><code># 通过yaml或json文件创建资源
+$ kubectl create -f FILENAME [options]
+
+options:
+-f/--filename
+
+kubectl create secret tls kubernetes-dashboard-tls --key ca.key --cert ca.crt -n kubernetes-dashboard
+
+// 输出一个资源的yaml格式.
+kubectl create deployment &lt;name&gt; --image=&lt;img-name&gt; --dry-run=client --output=yaml
+</code></pre>
+<p>delete:</p>
+<pre><code>// 删除资源
+$ kubectl delete (-f FILENAME | -k DICT | TYPE [(NAME|-l label|--all)]) [optiions]
+
+options:
+-f/--filename
+--all  
+--all-namespaces
+--force
+
+$ kubectl delete pods --all
+$ kubectl delete pod &lt;name&gt;
+// 删除指定ns下所有资源.
+$ kubectl delete all --all -n {namespace}
+</code></pre>
+<p>删除带有finalizers字段的对象，对象实际被更新了，没有真的被删除。可以通过patch来删除。</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/k8s_servicediscovery/">Service Discovery</a></h2>
+                    <div class="post-meta">
+                        <time>January 10, 2020</time>
+                        
+                            
+                                <span class="category">CNCF</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="coordination--service-discovery">Coordination &amp; Service Discovery</h1>
+<p>微服务的服务注册和服务发现.</p>
+<ul>
+<li>coredns</li>
+<li>etcd</li>
+<li>zookeeper</li>
+</ul>
+<hr>
+<h2 id="etcd">Etcd</h2>
+<p><a href="https://github.com/etcd-io/etcd">https://github.com/etcd-io/etcd</a></p>
+<p>类似的有consul和zoomkeeper.</p>
+<h3 id="etcdctl">etcdctl</h3>
+<p>使用证书访问:</p>
+<pre><code>$ etcdctl \
+--cacert=/etc/kubernetes/pki/etcd/ca.crt \
+--cert=/etc/kubernetes/pki/etcd/server.crt  \
+--key=/etc/kubernetes/pki/etcd/server.key \
+--insecure-skip-tls-verify=true \
+&lt;command&gt;
+</code></pre>
+<p>查看所有key</p>
+<pre><code>$ etcdctl get / --prefix --keys-only
+</code></pre>
+<hr>
+<h2 id="zookeeper">zookeeper</h2></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/k8s_operator/">Operator</a></h2>
+                    <div class="post-meta">
+                        <time>January 10, 2020</time>
+                        
+                            
+                                <span class="category">CNCF</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="operator">Operator</h1>
+<p>TPR(Third Party Resource) 在k8s 1.7 被集成，并命名为CRD(Custom Resource Definition).</p>
+<p>通过CRD，K8S可以动态的添加和管理资源，controller跟踪这些资源。</p>
+<p>CRD+custom Controller = decalartive API(声明式API),一般分为通用性controller和operator.</p>
+<p>通用型controller一般用于平台需求，operator一般用于部署特定应用.</p>
+<p>用于开发operator的工具有kubebuilder和operator-sdk, 他们都是基于controller-runtime开发.</p>
+<p><a href="https://github.com/operator-framework/awesome-operators">https://github.com/operator-framework/awesome-operators</a></p>
+<p><a href="https://access.redhat.com/documentation/zh-cn/openshift_container_platform/4.2/html/operators/index">https://access.redhat.com/documentation/zh-cn/openshift_container_platform/4.2/html/operators/index</a></p>
+<p><a href="https://operatorhub.io/">https://operatorhub.io/</a></p>
+<p>开发示例:</p>
+<p><a href="https://github.com/kubernetes/sample-controller">https://github.com/kubernetes/sample-controller</a></p>
+<p>operator的build三种模式:</p>
+<ul>
+<li>go</li>
+<li>ansible</li>
+<li>helm</li>
+</ul>
+<p>operator的run三种模式:</p>
+<ul>
+<li>在集群外部本地运行（开发测试).</li>
+<li>作为deployment在集群内部运行.</li>
+<li>通过OLM部署.</li>
+</ul>
+<hr>
+<h1 id="operator-sdk">operator-sdk</h1>
+<p>redhat的operator-sdk可以方便的开发opeartor.</p>
+<p><a href="https://github.com/operator-framework/operator-sdk">https://github.com/operator-framework/operator-sdk</a>
+<a href="https://sdk.operatorframework.io/docs/installation/">https://sdk.operatorframework.io/docs/installation/</a></p>
+<hr>
+<h1 id="kubebuilder">kubebuilder</h1>
+<p>sig维护的kubebuilder也能方便的开发operator.</p>
+<p><a href="https://github.com/kubernetes-sigs/kubebuilder">https://github.com/kubernetes-sigs/kubebuilder</a></p></p>
+                    
+                </li>
+            
+        </ul>
+    </section>
+    
+    
+        <a href="/page/7/">← Previous</a>
+    
+    
+        <a href="/page/9/">Next →</a>
+    
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

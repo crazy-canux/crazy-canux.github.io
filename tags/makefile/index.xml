@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Makefile on Morgoth</title>
+    <link>https://canuxcheng.com/tags/makefile/</link>
+    <description>Recent content in Makefile on Morgoth</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 12 Jan 2017 21:18:33 +0000</lastBuildDate>
+    <atom:link href="https://canuxcheng.com/tags/makefile/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Makefile</title>
+      <link>https://canuxcheng.com/post/linux_makefile/</link>
+      <pubDate>Thu, 12 Jan 2017 21:18:33 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/linux_makefile/</guid>
+      <description>&lt;h1 id=&#34;make&#34;&gt;Make&lt;/h1&gt;&#xA;&lt;p&gt;make的作用：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;控制源代码的编译&lt;/li&gt;&#xA;&lt;li&gt;手册页的编写&lt;/li&gt;&#xA;&lt;li&gt;将应用程序安装到目标目录&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;make的使用规则：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;如果工程没有编译过，需要编译所有源文件和链接所有目标文件．&lt;/li&gt;&#xA;&lt;li&gt;如果工程里某几个目标文件被修改，只需要编译修改的源文件，并链接所有目标文件．&lt;/li&gt;&#xA;&lt;li&gt;如果头文件被修改，只需要编译引用了被修改的头文件的源文件，并链接所有目标文件．&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;makefile文件查找顺序：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;当前目录找makefile&lt;/li&gt;&#xA;&lt;li&gt;当前目录找Makefile&lt;/li&gt;&#xA;&lt;li&gt;当前目录找GNUmakefile&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h1 id=&#34;make命令&#34;&gt;make命令&lt;/h1&gt;&#xA;&lt;p&gt;make命令会执行当前目录的makefile/Makefile/GNUmakefile文件．&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;make [options] [target] ...&#xA;-f FILE, --file=FILE, --makefile=FILE    # 指定makefile文件&#xA;-n, --just-print, --dry-run, --recon # 只打印，不执行&#xA;-k, --keep-going　# 忽略错误继续执行&#xA;&#xA;make&#xA;make all&#xA;make install&#xA;make clean&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;make的工作顺序：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;读入所有makefile文件&lt;/li&gt;&#xA;&lt;li&gt;读入include的其它makefile文件&lt;/li&gt;&#xA;&lt;li&gt;初始化变量&lt;/li&gt;&#xA;&lt;li&gt;推导隐晦规则，分析所有规则&lt;/li&gt;&#xA;&lt;li&gt;为所有目标文件创建依赖关系链&lt;/li&gt;&#xA;&lt;li&gt;根据依赖关系决定哪些目标需要重新生成&lt;/li&gt;&#xA;&lt;li&gt;执行生成的命令&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h1 id=&#34;makefile语法&#34;&gt;makefile语法&lt;/h1&gt;&#xA;&lt;p&gt;make命令执行makefile文件时，会比较target和prerequisites的时间戳，如果后者比前者新，或者前者不存在，就会执行command,否则会跳过command.&lt;/p&gt;&#xA;&lt;p&gt;其中#表示注释，\表示续行．@表示该命令的执行不会打印到stdout,-表示忽略错误继续执行．&lt;/p&gt;&#xA;&lt;p&gt;makefile中的command必须以tab开头，target和prerequisites有多个时用空格分开．&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;# comment&#xA;target...: prerequisites...&#xA;    command&#xA;    command1 too \&#xA;    long&#xA;    @command2&#xA;    -command3&#xA;    ...&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;makefile变量赋值:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;var=val&#xA;var := val  覆盖之前的值&#xA;var ?= val  如果没有被赋值过，就赋值&#xA;var += val  添加一个值&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;通过命令定义变量：&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

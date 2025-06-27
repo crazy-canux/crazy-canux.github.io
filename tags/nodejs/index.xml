@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Nodejs on Morgoth</title>
+    <link>https://canuxcheng.com/tags/nodejs/</link>
+    <description>Recent content in Nodejs on Morgoth</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 27 Sep 2016 03:31:25 +0000</lastBuildDate>
+    <atom:link href="https://canuxcheng.com/tags/nodejs/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Nodejs</title>
+      <link>https://canuxcheng.com/post/js_node/</link>
+      <pubDate>Tue, 27 Sep 2016 03:31:25 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/js_node/</guid>
+      <description>&lt;h1 id=&#34;nodejs&#34;&gt;Nodejs&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/nodejs/node&#34;&gt;https://github.com/nodejs/node&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;Node.js 是一个基于 Chrome V8 引擎的 JavaScript 运行环境。&lt;/p&gt;&#xA;&lt;p&gt;Node.js 使用了一个事件驱动、非阻塞式 I/O 的模型，使其轻量又高效。&lt;/p&gt;&#xA;&lt;p&gt;Node.js 的包管理器npm，是全球最大的开源库生态系统.&lt;/p&gt;&#xA;&lt;p&gt;常说的javascript是前端语言，nodejs就是后端版本的javascript。&lt;/p&gt;&#xA;&lt;p&gt;安装nodejs(npm):&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ sudo apt-get install nodejs&#xA;$ brew install nodejs&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;查看&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ node --version&#xA;$ npm --version&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;nvm&#34;&gt;nvm&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/nvm-sh/nvm&#34;&gt;https://github.com/nvm-sh/nvm&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;nodejs版本管理器.&lt;/p&gt;&#xA;&lt;p&gt;install:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.37.2/install.sh | bash&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;verify:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;command -v nvm&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;usage:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;// 查看所有可安装版本&#xA;nvm ls-remote&#xA;&#xA;// 安装指定版本&#xA;nvm install v14.15.5&#xA;&#xA;// 查看已安装版本&#xA;nvm ls&#xA;&#xA;// 指定默认版本&#xA;nvm alias default v16.14.0&#xA;&#xA;// 指定版本&#xA;nvm use v14.15.5&#xA;nvm use default&#xA;&#xA;// 查看版本&#xA;nvm run node --version&#xA;&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+  </channel>
+</rss>

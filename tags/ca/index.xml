@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>CA on Morgoth</title>
+    <link>https://canuxcheng.com/tags/ca/</link>
+    <description>Recent content in CA on Morgoth</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 28 Jul 2024 16:08:54 +0000</lastBuildDate>
+    <atom:link href="https://canuxcheng.com/tags/ca/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Secret</title>
+      <link>https://canuxcheng.com/post/sec_secret/</link>
+      <pubDate>Sun, 28 Jul 2024 16:08:54 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/sec_secret/</guid>
+      <description>&lt;h1 id=&#34;secret&#34;&gt;Secret&lt;/h1&gt;&#xA;&lt;p&gt;secret scan tools&lt;/p&gt;&#xA;&lt;h2 id=&#34;trufflehog&#34;&gt;trufflehog&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/trufflesecurity/trufflehog&#34;&gt;https://github.com/trufflesecurity/trufflehog&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Let&#39;s Encrypt</title>
+      <link>https://canuxcheng.com/post/sec_letsencrypt/</link>
+      <pubDate>Wed, 28 Jul 2021 16:08:54 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/sec_letsencrypt/</guid>
+      <description>&lt;h1 id=&#34;lets-encrypt&#34;&gt;Let&amp;rsquo;s Encrypt&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://letsencrypt.org/&#34;&gt;https://letsencrypt.org/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/letsencrypt&#34;&gt;https://github.com/letsencrypt&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;是非盈利组织ISRG提供的免费的证书颁发机构。&lt;/p&gt;&#xA;&lt;p&gt;let&amp;rsquo;s encrypt生成证书的工具很多certbot, acme.sh等.&lt;/p&gt;&#xA;&lt;h1 id=&#34;certbot&#34;&gt;certbot&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/certbot/certbot&#34;&gt;https://github.com/certbot/certbot&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;acmesh&#34;&gt;acme.sh&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/acmesh-official/acme.sh&#34;&gt;https://github.com/acmesh-official/acme.sh&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>AST</title>
+      <link>https://canuxcheng.com/post/sec_ast/</link>
+      <pubDate>Sat, 28 Jul 2018 16:08:54 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/sec_ast/</guid>
+      <description>&lt;h1 id=&#34;ast&#34;&gt;AST&lt;/h1&gt;&#xA;&lt;p&gt;AST: Application Security Testing, 静态应用程序安全测试, 对应用程序源代码执行直接的白盒分析.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;sast&#34;&gt;SAST&lt;/h2&gt;&#xA;&lt;p&gt;SAST: Static Application Security Testing&lt;/p&gt;&#xA;&lt;p&gt;Tools: SonarQube, Trivy, Coverity.&lt;/p&gt;&#xA;&lt;p&gt;gitlab SAST report.&#xA;gitlab secret detection report.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/aquasecurity/trivy&#34;&gt;https://github.com/aquasecurity/trivy&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://scan.coverity.com/&#34;&gt;https://scan.coverity.com/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;dast&#34;&gt;DAST&lt;/h2&gt;&#xA;&lt;p&gt;DAST: Dynamic Application Security Testing，动态应用程序安全测试, 对应用程序进行黑盒分析.&lt;/p&gt;&#xA;&lt;p&gt;Tools:&lt;/p&gt;&#xA;&lt;p&gt;ZAP Scan(OWASP ZAP)&lt;/p&gt;&#xA;&lt;p&gt;synopsys WhiteHat Sentinel.&lt;/p&gt;&#xA;&lt;p&gt;gitlab DAST report.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;iast&#34;&gt;IAST&lt;/h2&gt;&#xA;&lt;p&gt;IAST: Interactive Application Security Testing，交互式应用程序安全测试, 结合了SAST和DAST的优点.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;sca&#34;&gt;SCA&lt;/h2&gt;&#xA;&lt;p&gt;SCA: Software Composition Analysis.&lt;/p&gt;&#xA;&lt;p&gt;SBOM (software Bill of Materials),开源组件安全扫描&lt;/p&gt;&#xA;&lt;p&gt;Tools： BlackDuck, Jfrog Xray.&lt;/p&gt;&#xA;&lt;p&gt;gitlab dependency scanning report.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>CA</title>
+      <link>https://canuxcheng.com/post/sec_ca/</link>
+      <pubDate>Sat, 28 Jul 2018 16:08:54 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/sec_ca/</guid>
+      <description>&lt;h1 id=&#34;ca&#34;&gt;CA&lt;/h1&gt;&#xA;&lt;p&gt;SSL: secure sockets layer&lt;/p&gt;&#xA;&lt;p&gt;TLS: transport layer security&lt;/p&gt;&#xA;&lt;p&gt;CA: Certificate Authority.&lt;/p&gt;&#xA;&lt;p&gt;SNI: server name indication&lt;/p&gt;&#xA;&lt;p&gt;证书类型&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;x509: 只有公钥没有私钥匙&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;编码方式&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;pem: base64编码&lt;/li&gt;&#xA;&lt;li&gt;der: 二进制&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;证书文件:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;crt: 证书文件（可以是pem或der编码）&lt;/li&gt;&#xA;&lt;li&gt;cer: 证书文件（可以是pem或der编码）&lt;/li&gt;&#xA;&lt;li&gt;csr: 申请签名的文件&lt;/li&gt;&#xA;&lt;li&gt;key: 私钥文件&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;创建自签名证书&#34;&gt;创建自签名证书&lt;/h1&gt;&#xA;&lt;p&gt;创建x509证书:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ openssl genrsa -out server.key 2048   // 创建key&#xA;$ openssl req -new -key server.key -sha256 -out server.csr // 创建csr&#xA;$ openssl x509 -req -days 365 -in server.csr -signkey server.key -sha256 -out server.crt // 创建证书&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;查看证书信息:&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

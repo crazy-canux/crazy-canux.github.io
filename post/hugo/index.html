@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hugo - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="single-post">
+    <article>
+        <header>
+            <h1>Hugo</h1>
+            <div class="post-meta">
+                <time>April 1, 2013</time>
+                
+                    
+                        <span class="category">Web</span>
+                    
+                
+                
+                    
+                        <span class="tag">#hugo</span>
+                    
+                
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <h1 id="hugo">Hugo</h1>
+<p>go开发的静态站点生成器.</p>
+<p><a href="https://github.com/gohugoio/hugo">https://github.com/gohugoio/hugo</a></p>
+<p><a href="https://gohugo.io/">https://gohugo.io/</a></p>
+<h1 id="搭建博客">搭建博客</h1>
+<p>创建环境:</p>
+<pre><code># linux, ubuntu18.04默认是非extended, 19.04 默认extended。
+$ sudo apt-get install hugo
+
+# extended支持Sass/scss
+$ sudo snap install hugo --channel=extended
+
+# windows
+PATH:   C:\Hugo\bin\hugo.exe
+</code></pre>
+<p>测试安装:</p>
+<pre><code>$ hugo help
+</code></pre>
+<p>创建hugo项目:</p>
+<pre><code>$ cd /home/canux/sites
+&gt; cd C:\hugo\sites
+$ hugo new site canuxcheng.com
+</code></pre>
+<p>生成下列文件和目录:</p>
+<pre><code>config.toml
+archetypes
+content    # md 文件
+data
+layouts
+static
+themes
+bytes
+</code></pre>
+<hr>
+<h1 id="theme">Theme</h1>
+<p><a href="https://github.com/gohugoio/hugoThemes">https://github.com/gohugoio/hugoThemes</a></p>
+<p>下载所有主题:</p>
+<pre><code>cd blog
+git clone --depth 1 --recursive https://github.com/gohugoio/hugoThemes.git themes
+</code></pre>
+<p>下载单个主题：</p>
+<pre><code>cd themes
+git clone url
+</code></pre>
+<p>在config.toml添加主题：</p>
+<pre><code>theme = 'name'
+themesDir = &quot;/path/to/themes&quot;
+</code></pre>
+<p>创建主题:</p>
+<pre><code>$ hugo new theme [name]
+</code></pre>
+<p>添加自己的主题:</p>
+<pre><code>$ git submodule add https://github.com/crazy-canux/hugo-theme-canux.git
+</code></pre>
+<p>克隆主题：</p>
+<pre><code>$ git submodule init
+$ git submodule update
+</code></pre>
+<hr>
+<h1 id="创建页面">创建页面</h1>
+<pre><code>## content/about.md
+$ hugo new about.md
+</code></pre>
+<h1 id="创建文章">创建文章</h1>
+<pre><code>## content/post/page.md
+$ hugo new post/Shell.md
+</code></pre>
+<hr>
+<h1 id="本地测试">本地测试</h1>
+<pre><code> $ hugo server --theme=hyde --buildDrafts
+ $ firefox http://localhost:1313
+</code></pre>
+<hr>
+<h1 id="部署到github">部署到github</h1>
+<p>先在github创建repo.</p>
+<pre><code>$ hugo --theme=&lt;theme&gt; --baseUrl=&quot;https://&lt;user&gt;.github.io/&quot;
+</code></pre>
+<p>push到github:</p>
+<pre><code>$ cd public
+$ git init
+$ git remote add origin https://github.com/&lt;user&gt;/&lt;user&gt;.github.io.git
+$ git add -A
+$ git commit -m &quot;first push.&quot;
+$ git push -u origin master
+</code></pre>
+
+        </div>
+    </article>
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Golang on Morgoth</title>
+    <link>https://canuxcheng.com/tags/golang/</link>
+    <description>Recent content in Golang on Morgoth</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 20 Jul 2018 23:14:07 +0800</lastBuildDate>
+    <atom:link href="https://canuxcheng.com/tags/golang/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Gin</title>
+      <link>https://canuxcheng.com/post/gin/</link>
+      <pubDate>Fri, 20 Jul 2018 23:14:07 +0800</pubDate>
+      <guid>https://canuxcheng.com/post/gin/</guid>
+      <description>&lt;h1 id=&#34;gin&#34;&gt;Gin&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/gin-gonic/gin&#34;&gt;https://github.com/gin-gonic/gin&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;install&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ go get -u github.com/gin-gonic/gin&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;import&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;import &amp;quot;github.com/gin-gonic/gin&amp;quot;&#xA;&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+    <item>
+      <title>Go</title>
+      <link>https://canuxcheng.com/post/go/</link>
+      <pubDate>Mon, 01 Jan 2018 10:49:21 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/go/</guid>
+      <description>&lt;h1 id=&#34;go概述&#34;&gt;Go概述&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://golang.org/ref/spec&#34;&gt;https://golang.org/ref/spec&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;go语言表达能力强，简洁，清晰，高效．&lt;/p&gt;&#xA;&lt;p&gt;go是一个快速的，静态的，强类型的，编译型语言．&lt;/p&gt;&#xA;&lt;p&gt;go具有高并发和垃圾回收功能.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;go基本语法&#34;&gt;Go基本语法&lt;/h1&gt;&#xA;&lt;p&gt;go源程序叫*.go&lt;/p&gt;&#xA;&lt;p&gt;go大小写敏感&lt;/p&gt;&#xA;&lt;p&gt;go程序都是由包组成，程序的入口是main包中的main函数，每个程序有且只有一个．&lt;/p&gt;&#xA;&lt;p&gt;go中只有首字母大写的名称才能从包中导出．&lt;/p&gt;&#xA;&lt;p&gt;go的类型在变量名后面．&lt;/p&gt;&#xA;&lt;p&gt;go函数外的每个语句都必须以关键字开始.&lt;/p&gt;&#xA;&lt;p&gt;go标识符(函数名／变量名／常量名／类型名／语句标号／包名)以字母或下划线开头，后面还可以包含数字,不能用关键字.&lt;/p&gt;&#xA;&lt;p&gt;go使用大括号{}表示一个代码块.&lt;/p&gt;&#xA;&lt;p&gt;go使用分号;表示一个语句结束, 一般一行写多个语句才需要显示添加分号．&lt;/p&gt;&#xA;&lt;p&gt;go的包名一般是小写的单个单词(文件所在的最后一层目录名).&lt;/p&gt;&#xA;&lt;p&gt;go一般使用驼峰命名法.&lt;/p&gt;&#xA;&lt;p&gt;go没有逗号操作符.&lt;/p&gt;&#xA;&lt;p&gt;go中++/&amp;ndash;是语句不是表达式．&lt;/p&gt;&#xA;&lt;p&gt;go中大写字母开头的变量或函数是公有的，小写字母开头的是包私有的.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;go注释&#34;&gt;Go注释&lt;/h1&gt;&#xA;&lt;p&gt;单行注释：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;// comment&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;多行注释：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;/* comment */&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;go关键字&#34;&gt;Go关键字&lt;/h1&gt;&#xA;&lt;pre&gt;&lt;code&gt;var const &#xA;break continue for if else switch case default goto fallthrough&#xA;func return defer&#xA;package import&#xA;range type struct map&#xA;interface&#xA;select go chan&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;go运算符和优先级&#34;&gt;Go运算符和优先级&lt;/h1&gt;&#xA;&lt;p&gt;go中的运算都是从左到右结合．&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;^    #&#xA;!    # 逻辑非&#xA;&#xA;*&#xA;/    # 结果取整数&#xA;%&#xA;&amp;lt;&amp;lt;   # 位运算，左移&#xA;&amp;gt;&amp;gt;   # 位运算，右移&#xA;&amp;amp;    # 位运算，　按位与&#xA;&amp;amp;^   #&#xA;&#xA;+&#xA;-&#xA;|    # 位运算,按位或&#xA;^    # 位运算,按位异或&#xA;&#xA;==&#xA;!=&#xA;&amp;lt;&#xA;&amp;lt;=&#xA;&amp;gt;&#xA;&amp;gt;=&#xA;&#xA;&amp;lt;- # chan运算符&#xA;&#xA;&amp;amp;&amp;amp;   # 逻辑与&#xA;||   # 逻辑或&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;go数据类型&#34;&gt;Go数据类型&lt;/h1&gt;&#xA;&lt;h2 id=&#34;变量&#34;&gt;变量&lt;/h2&gt;&#xA;&lt;p&gt;定义/申明变量:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>GSL_golang</title>
+      <link>https://canuxcheng.com/post/gsl_golang/</link>
+      <pubDate>Mon, 01 Jan 2018 10:49:21 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/gsl_golang/</guid>
+      <description>&lt;h1 id=&#34;runtime&#34;&gt;runtime&lt;/h1&gt;&#xA;&lt;h2 id=&#34;constants&#34;&gt;constants&lt;/h2&gt;&#xA;&lt;pre&gt;&lt;code&gt;// 指定编译器&#xA;const Compiler = &amp;quot;gc&amp;quot;/&amp;quot;gccgo&amp;quot;&#xA;&#xA;// 处理器架构: 386/amd64/arm&#xA;const GOARCH string = theGoarch&#xA;&#xA;// 操作系统: linux/freebsd/darwin/win&#xA;const GOOS string = theGoos&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;variables&#34;&gt;variables&lt;/h2&gt;&#xA;&lt;pre&gt;&lt;code&gt;var MemProfileRate int = 512 * 1024&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;functions&#34;&gt;functions&lt;/h2&gt;&#xA;&lt;pre&gt;&lt;code&gt;func GOROOT() string&#xA;func Version() string&#xA;&#xA;// 返回本地机器的逻辑cpu个数&#xA;func NumCPU() int&#xA;&#xA;//更改调度器可以使用的逻辑cpu数量, 默认只用一个cpu.&#xA;func GOMAXPROCS(n int) int&#xA;&#xA;// 使当前goroutine让出绑定的cpu,其它goroutine可以继续执行.&#xA;// 当前goroutine放回队列等待继续执行.&#xA;func Gosched()&#xA;&#xA;// 终止当前goroutine,终止前执行所有defer.&#xA;func Goexit()&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;runtimedebug&#34;&gt;runtime/debug&lt;/h1&gt;&#xA;&lt;h2 id=&#34;function&#34;&gt;function&lt;/h2&gt;&#xA;&lt;pre&gt;&lt;code&gt;// 设置最大线程数，默认1000.&#xA;func SetMaxThreads(threads int) int&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;runtimecgo&#34;&gt;runtime/cgo&lt;/h1&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;runtimepprof&#34;&gt;runtime/pprof&lt;/h1&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;runtimerace&#34;&gt;runtime/race&lt;/h1&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;runtimetrace&#34;&gt;runtime/trace&lt;/h1&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;go&#34;&gt;go&lt;/h1&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;expvar&#34;&gt;expvar&lt;/h1&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;context&#34;&gt;context&lt;/h1&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;unsafe&#34;&gt;unsafe&lt;/h1&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;errors&#34;&gt;errors&lt;/h1&gt;&#xA;&lt;h2 id=&#34;function-1&#34;&gt;function&lt;/h2&gt;&#xA;&lt;pre&gt;&lt;code&gt;// 使用字符串创建一个错误, 返回一个error&#xA;func New(text string) error&#xA;&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+  </channel>
+</rss>

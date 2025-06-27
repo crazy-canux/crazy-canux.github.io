@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Gui on Morgoth</title>
+    <link>https://canuxcheng.com/tags/gui/</link>
+    <description>Recent content in Gui on Morgoth</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 15 Aug 2016 10:28:54 +0000</lastBuildDate>
+    <atom:link href="https://canuxcheng.com/tags/gui/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>PSL_GUI</title>
+      <link>https://canuxcheng.com/post/psl_gui/</link>
+      <pubDate>Mon, 15 Aug 2016 10:28:54 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/psl_gui/</guid>
+      <description>&lt;h1 id=&#34;gui&#34;&gt;GUI&lt;/h1&gt;&#xA;&lt;h2 id=&#34;tkinter&#34;&gt;Tkinter&lt;/h2&gt;&#xA;&lt;h2 id=&#34;ttk&#34;&gt;ttk&lt;/h2&gt;&#xA;&lt;h2 id=&#34;tix&#34;&gt;Tix&lt;/h2&gt;&#xA;&lt;h2 id=&#34;scrolledtext&#34;&gt;ScrolledText&lt;/h2&gt;&#xA;&lt;h2 id=&#34;turtle&#34;&gt;turtle&lt;/h2&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;tpl&#34;&gt;TPL&lt;/h1&gt;&#xA;&lt;p&gt;相关的第三方库&lt;/p&gt;&#xA;&lt;h2 id=&#34;wxwidgets&#34;&gt;wxWidgets&lt;/h2&gt;&#xA;&lt;p&gt;python2的库叫wxPython.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.wxpython.org/&#34;&gt;https://www.wxpython.org/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;# Windows下载安装包安装即可．&#xA;$ sudo apt-get install python-wxgtk2.8&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;python３启用新的项目phoneix.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/wxWidgets/Phoenix&#34;&gt;https://github.com/wxWidgets/Phoenix&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;gtk&#34;&gt;gtk&lt;/h2&gt;&#xA;&lt;pre&gt;&lt;code&gt;PyGTK&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;qt&#34;&gt;qt&lt;/h2&gt;&#xA;&lt;pre&gt;&lt;code&gt;PyQt&#xA;&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+  </channel>
+</rss>

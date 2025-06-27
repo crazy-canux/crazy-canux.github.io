@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Angular on Morgoth</title>
+    <link>https://canuxcheng.com/tags/angular/</link>
+    <description>Recent content in Angular on Morgoth</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 13 Mar 2017 09:36:32 +0000</lastBuildDate>
+    <atom:link href="https://canuxcheng.com/tags/angular/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Angular</title>
+      <link>https://canuxcheng.com/post/js_angular/</link>
+      <pubDate>Mon, 13 Mar 2017 09:36:32 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/js_angular/</guid>
+      <description>&lt;h1 id=&#34;angularjs&#34;&gt;angularjs&lt;/h1&gt;&#xA;&lt;p&gt;angularjs 1.*&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/angular/angular.js&#34;&gt;https://github.com/angular/angular.js&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://angularjs.org/&#34;&gt;https://angularjs.org/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/rev087/ng-inspector&#34;&gt;https://github.com/rev087/ng-inspector&lt;/a&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;angular&#34;&gt;Angular&lt;/h1&gt;&#xA;&lt;p&gt;Angular 是一个用 HTML 和 TypeScript 构建客户端应用的平台与框架。&lt;/p&gt;&#xA;&lt;p&gt;angular.js 的升级版&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/angular/angular&#34;&gt;https://github.com/angular/angular&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/angular/angular-cli&#34;&gt;https://github.com/angular/angular-cli&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://angular.io&#34;&gt;https://angular.io&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://angular.cn&#34;&gt;https://angular.cn&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;安装 angular-cli:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ npm install -g @angular/cli&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;查看版本:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ ng v&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;新建项目:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ cd &amp;lt;project&amp;gt;&#xA;$ ng new &amp;lt;application&amp;gt;&#xA;&#xA;# 严格模式&#xA;$ ng new &amp;lt;application&amp;gt; --strict&#xA;&#xA;$ ng generate &amp;lt;schematic&amp;gt; [options]&#xA;appShell&#xA;application&#xA;class&#xA;component&#xA;directive&#xA;enum&#xA;guard&#xA;interceptor&#xA;interface&#xA;library&#xA;module&#xA;pipe&#xA;resolver&#xA;service&#xA;serviceWorker&#xA;webWorker&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;测试项目:&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

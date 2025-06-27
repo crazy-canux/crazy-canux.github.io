@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Operations on Morgoth</title>
+    <link>https://canuxcheng.com/tags/operations/</link>
+    <description>Recent content in Operations on Morgoth</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 15 Apr 2016 09:41:39 +0000</lastBuildDate>
+    <atom:link href="https://canuxcheng.com/tags/operations/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Operations</title>
+      <link>https://canuxcheng.com/post/devops_ops/</link>
+      <pubDate>Fri, 15 Apr 2016 09:41:39 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/devops_ops/</guid>
+      <description>&lt;h1 id=&#34;operations&#34;&gt;Operations&lt;/h1&gt;&#xA;&lt;p&gt;运维相关的工具．&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;批量配置管理&#34;&gt;批量配置管理&lt;/h1&gt;&#xA;&lt;h2 id=&#34;puppet&#34;&gt;puppet&lt;/h2&gt;&#xA;&lt;h2 id=&#34;chef&#34;&gt;chef&lt;/h2&gt;&#xA;&lt;h2 id=&#34;salt&#34;&gt;salt&lt;/h2&gt;&#xA;&lt;h2 id=&#34;ansible&#34;&gt;ansible&lt;/h2&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;密码管理工具&#34;&gt;密码管理工具&lt;/h1&gt;&#xA;&lt;h2 id=&#34;keepass&#34;&gt;keepass&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://keepass.info/&#34;&gt;http://keepass.info/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;keepassx&#34;&gt;KeePassX&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.keepassx.org/&#34;&gt;https://www.keepassx.org/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/keepassx/keepassx&#34;&gt;https://github.com/keepassx/keepassx&lt;/a&gt;&lt;/p&gt;&#xA;&lt;hr&gt;</description>
+    </item>
+  </channel>
+</rss>

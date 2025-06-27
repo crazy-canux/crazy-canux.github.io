@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="generator" content="Hugo 0.147.9">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morgoth - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="home">
+    <h1>Morgoth</h1>
+    <p></p>
+    
+    <section class="recent-posts">
+        <h2>Recent Posts</h2>
+        <ul class="post-list">
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/virtualization/">Virtualization</a></h2>
+                    <div class="post-meta">
+                        <time>April 5, 2016</time>
+                        
+                            
+                                <span class="category">Virtualization</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="virtualization">Virtualization</h1>
+<p>虚拟化技术的发展：</p>
+<ol>
+<li>
+<p>DataCenter, 最原始的数据中心</p>
+</li>
+<li>
+<p>Virtualization, 虚拟化技术，包括Kvm, Xen(Citrix), HyperV(MicroSoft), ESXi(VMware)等</p>
+</li>
+</ol>
+<hr></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/esxi/">Esxi</a></h2>
+                    <div class="post-meta">
+                        <time>April 5, 2016</time>
+                        
+                            
+                                <span class="category">Virtualization</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="vmware">VMware</h1>
+<p>vSphere是vmware的虚拟化平台,包括ESXi和vSphere Client.</p>
+<p>vSphere Hypervisor(也叫ESXi)是vSphere的免费裸机hypervisor. 把物理机虚拟出多个虚拟机．</p>
+<p>vSphere client是vSphere的简单管理工具．只能管理一台ESXi物理机和上面的虚拟机．</p>
+<p>vCenter Server是vSphere的高级管理系统．需单独购买．</p>
+<hr>
+<h1 id="配置管理">配置管理</h1>
+<p>开启虚拟机copy/paste功能：</p>
+<pre><code># 通过vsphere client
+edit properties -&gt; Options -&gt; Advanced -&gt; General -&gt; configuration Parameters
+# isolation.tools.copy.disable    false
+# isolation.tools.paste.disable    false
+</code></pre>
+<p>开启虚拟机的虚拟化功能：</p>
+<pre><code># 通过ssh到esxi服务器
+$ vim /vmfs/volumes/datastore1/Ubuntu1604/Ubuntu1604.vmx
+vhv.enable = &quot;TRUE&quot; # 添加到最后一行
+</code></pre>
+<p>创建的vm命名不能带小数点.</p>
+<hr>
+<h1 id="命令">命令</h1>
+<p>vim-cmd:</p>
+<pre><code>vim-cmd vmsvc/getallvms # 获取所有虚拟机
+vim-cmd vmsvc/reload
+vim-cmd vmsvc/power.on vmid
+vim-cmd vmsvc/power.shutdown vimid
+vim-cmd vmsvc/power.off vimid
+vim-cmd vmsvc/power.reboot vimid
+
+# power on all vms
+for vm in `vim-cmd vmsvc/getallvms | awk '{if (NR&gt;1) {print $1}}'`;
+do
+    echo &quot;power on ${vm}...&quot;;
+    vim-cmd vmsvc/power.on ${vm}
+done
+</code></pre>
+<p>esxcli:</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/samba/">Samba</a></h2>
+                    <div class="post-meta">
+                        <time>April 3, 2016</time>
+                        
+                            
+                                <span class="category">Network</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="smbcifs">SMB/CIFS</h1>
+<p>SMB/CIFS占用TCP和UDP的139和445端口。</p>
+<p>SMB: server message block.</p>
+<p>CIFS: common internet file system, 是SMB的升级版本。</p>
+<h1 id="samba">Samba</h1>
+<p>Samba: Linux/Unix上的SBM/CIFS,用于跨平台的共享。</p>
+<p>安装:</p>
+<pre><code>$ sudo apt-get insall samba
+</code></pre>
+<p>配置：</p>
+<pre><code>$ vim /etc/samba/smb.conf
+[shared]
+comment = share this folder
+path = /home/canux/Share
+public = yes
+guest ok = yes
+browsable = yes
+writable = no
+read only = yes
+</code></pre>
+<p>重启：</p>
+<pre><code>$ sudo service smbd restart
+</code></pre>
+<p>windows访问：</p>
+<pre><code>\\ip\folder
+</code></pre>
+<p>linux访问：</p>
+<pre><code>connect to server -&gt; smb://ip/folder
+</code></pre></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/network/">Network</a></h2>
+                    <div class="post-meta">
+                        <time>April 3, 2016</time>
+                        
+                            
+                                <span class="category">Network</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="网络基础">网络基础</h1>
+<p>小端： 低字节在起始地址，高字节在高地址</p>
+<p>大端： 高字节在起始地址，低字节在高地址</p>
+<p>linux一般是小端，unix一般是大端</p>
+<p><a href="https://www.rfc-editor.org/">https://www.rfc-editor.org/</a></p>
+<hr>
+<h2 id="网络模型">网络模型</h2>
+<p>OSI七层模型:</p>
+<ul>
+<li>
+<p>应用层</p>
+</li>
+<li>
+<p>表示层</p>
+</li>
+<li>
+<p>会话层</p>
+</li>
+<li>
+<p>传输层</p>
+</li>
+<li>
+<p>网络层</p>
+</li>
+<li>
+<p>链路层</p>
+</li>
+<li>
+<p>物理层</p>
+</li>
+</ul>
+<p>TCP/IP四层模型：</p>
+<ul>
+<li>应用层</li>
+<li>传输层</li>
+<li>网络层</li>
+<li>链路层</li>
+</ul>
+<h3 id="应用层">应用层</h3>
+<p>0-1024是系统保留端口, 1024-65535是可用自定义端口</p>
+<p><a href="https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml">https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml</a></p>
+<p>8443:  tcp/udp - https port
+9443: tcp/udp tungsten-https
+4443: tcp/udp pharos</p>
+<p>基于TCP的应用层</p>
+<pre><code>FTP: 21,
+SSH: 22,
+Telnet: 23,
+SMTP: 25,
+DNS: 53,
+HTTP: 80,
+HTTPS: 443,
+POP3: 110,
+POP3 SSL: 995
+IMAP: 143,
+IMAP SSL: 993,
+NNTP: 119,
+NNTP SSL: 563,
+</code></pre>
+<p>基于UDP的应用层</p>
+<pre><code>SMTP: 25,
+DNS: 53,
+DHCP: 67,
+TFTP：69,简单文件传输协议。
+NTP/SNTP: 123,
+SNMP：161,简单网络管理协议。
+SNMPtrap: 162,
+</code></pre>
+<p>查看端口</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/network_monitoring/">Monitoring</a></h2>
+                    <div class="post-meta">
+                        <time>April 3, 2016</time>
+                        
+                            
+                                <span class="category">Network</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="monitoring">Monitoring</h1>
+<p>network usage:</p>
+<pre><code>bytes_sent(out)
+bytes_recv(in)
+</code></pre>
+<p>packets:</p>
+<pre><code>packets_sent(out)
+packets_recv(in)
+</code></pre>
+<p>error_in/out:</p>
+<pre><code>SELECT non_negative_derivative(mean(&quot;err_in&quot;), 1s) AS &quot;recv&quot;, non_negative_derivative(mean(&quot;err_out&quot;), 1s) AS &quot;send&quot;
+FROM &quot;net&quot;
+WHERE &quot;interface&quot; =~ /^(vlan|eth|ens|bond).*/ AND $timeFilter
+GROUP BY time($__interval), &quot;host&quot;, &quot;interface&quot; fill(none)
+</code></pre>
+<p>drop_in/out:</p>
+<pre><code>SELECT non_negative_derivative(mean(&quot;drop_in&quot;), 1s) AS &quot;recv&quot;, non_negative_derivative(mean(&quot;drop_out&quot;), 1s) AS &quot;send&quot;
+FROM &quot;net&quot;
+WHERE &quot;interface&quot; =~ /^(vlan|eth|ens|bond).*/ AND $timeFilter
+GROUP BY time($__interval), &quot;host&quot;, &quot;interface&quot; fill(none)
+</code></pre></p>
+                    
+                </li>
+            
+        </ul>
+    </section>
+    
+    
+        <a href="/page/49/">← Previous</a>
+    
+    
+        <a href="/page/51/">Next →</a>
+    
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

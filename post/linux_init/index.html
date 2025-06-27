@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Init - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="single-post">
+    <article>
+        <header>
+            <h1>Init</h1>
+            <div class="post-meta">
+                <time>February 3, 2019</time>
+                
+                    
+                        <span class="category">Linux</span>
+                    
+                
+                
+                    
+                        <span class="tag">#init</span>
+                    
+                
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <h1 id="linux-init">Linux Init</h1>
+<p>linux系统启动的第一个进程,pid=1的进程.</p>
+<pre><code>$ ls -l /sbin/init
+$ sudo readlink /sbin/init
+/sbin/init -&gt; upstart
+/sbin/init -&gt; /lib/systemd/systemd
+
+/etc/init.d
+The directory containing System V init scripts.
+通过service命令操作
+
+/etc/init
+The directory containing upstart jobs.
+通过initctl命令操作
+</code></pre>
+<hr>
+<h1 id="systemd">systemd</h1>
+<p>sytemd是upstart的替代版本．通过查看/sbin/init指向systemd还是upstart.</p>
+<p>service文件位置:</p>
+<pre><code>/etc/systemd/system/***.service
+/lib/systemd/system/*.service
+/usr/lib/systemd/system/*.service
+</code></pre>
+<p>service文件编写:</p>
+<p><a href="https://www.freedesktop.org/software/systemd/man/systemd.unit.html#">https://www.freedesktop.org/software/systemd/man/systemd.unit.html#</a></p>
+<pre><code>[Unit]
+Description=details
+After=containerd.service # 之前启动
+Before= # 之后运行
+Bindsto= #
+Wants=containerd.service # 弱依赖
+Requires= # 强依赖
+StartLimitInterval=10s
+StartLimitBurst=5
+</code></pre>
+<p><a href="https://www.freedesktop.org/software/systemd/man/systemd.service.html#">https://www.freedesktop.org/software/systemd/man/systemd.service.html#</a></p>
+<pre><code>[Service]
+Type=simple/notify/dbus/forking/idle/oneshot
+ExecStartPre=
+ExecStart=
+ExecStartPost=
+ExecStop=
+ExecStopPost=
+ExecReload=
+KillMode=node/mixed/process/control-group
+Restart=no/on-success/on-failure/on-abnormal/on-abort/on-watchdog/always # always总是开机启动，即使systemctl enable.
+RestartSec=3s # 重启之前等待的时间.
+TimeoutSec=  # TimeoutStartSec+TimeoutStopSec
+LimitNOFILE=49152 # 限制单个service的fd
+
+[Install]
+WantedBy=multi-user.target
+</code></pre>
+<p>systemctl命令:</p>
+<pre><code># 修改后需要重新加载.service文件
+$ systemctl daemon-reload
+
+$ systemctl start/stop/status ***
+$ systemctl list-unit-files
+$ systemctl show docker
+
+# 设置开机自动启动
+//在/etc/systemd/system/multi-user.target.wants下创建链接
+$ systemctl enable ***
+$ systemctl disable ***
+$ systemctl is-enabled ***
+</code></pre>
+<p>日志管理:</p>
+<pre><code>$ sudo journalctl -fu docker.service
+</code></pre>
+<hr>
+<h1 id="upstart">upstart</h1>
+<pre><code>/etc/init.d/***
+/etc/init/***.conf
+
+$ sudo service docker start/stop/status/reload/restart
+$ sudo initctl start/stop/status/reload/restart docker
+$ sudo initctl list
+
+# 设置开机自动启动
+$ update-rc.d *** defaults
+# 取消开机启动
+$ update-rc.d *** remove
+</code></pre>
+<p>日志管理:</p>
+<pre><code>$ tail -f /var/log/upstart/docker.log
+</code></pre>
+<p>Stanzas功能:</p>
+<p><a href="http://upstart.ubuntu.com/wiki/Stanzas?highlight=%28%28CategoryDoc%29%29#pid">http://upstart.ubuntu.com/wiki/Stanzas?highlight=%28%28CategoryDoc%29%29#pid</a></p>
+<pre><code># 添加服务
+$ sudo vim /etc/init/docker.conf
+
+# docker - container daemon
+description  &quot;docker&quot;
+
+start on runlevel [2345]
+stop on runlevel [!2345]
+
+respawn
+# give up if restart occurs 10 times in 100 seconds.
+respawn limit 10 100
+
+pre-start script
+    # do something before start
+end script
+
+script
+    echo &quot;ERROR: `date`: docker started by init.&quot;
+    exec docker
+end script
+
+post-start script
+    # do something after start
+end script
+
+# 检查语法错误
+$ sudo init-checkconf /etc/init/docker.conf
+
+# 注册服务
+$ sudo initctl reload-configuration
+</code></pre>
+<hr>
+
+        </div>
+    </article>
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

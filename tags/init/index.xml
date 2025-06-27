@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Init on Morgoth</title>
+    <link>https://canuxcheng.com/tags/init/</link>
+    <description>Recent content in Init on Morgoth</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 03 Feb 2019 14:04:05 +0000</lastBuildDate>
+    <atom:link href="https://canuxcheng.com/tags/init/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Init</title>
+      <link>https://canuxcheng.com/post/linux_init/</link>
+      <pubDate>Sun, 03 Feb 2019 14:04:05 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/linux_init/</guid>
+      <description>&lt;h1 id=&#34;linux-init&#34;&gt;Linux Init&lt;/h1&gt;&#xA;&lt;p&gt;linux系统启动的第一个进程,pid=1的进程.&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ ls -l /sbin/init&#xA;$ sudo readlink /sbin/init&#xA;/sbin/init -&amp;gt; upstart&#xA;/sbin/init -&amp;gt; /lib/systemd/systemd&#xA;&#xA;/etc/init.d&#xA;The directory containing System V init scripts.&#xA;通过service命令操作&#xA;&#xA;/etc/init&#xA;The directory containing upstart jobs.&#xA;通过initctl命令操作&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;systemd&#34;&gt;systemd&lt;/h1&gt;&#xA;&lt;p&gt;sytemd是upstart的替代版本．通过查看/sbin/init指向systemd还是upstart.&lt;/p&gt;&#xA;&lt;p&gt;service文件位置:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;/etc/systemd/system/***.service&#xA;/lib/systemd/system/*.service&#xA;/usr/lib/systemd/system/*.service&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;service文件编写:&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.freedesktop.org/software/systemd/man/systemd.unit.html#&#34;&gt;https://www.freedesktop.org/software/systemd/man/systemd.unit.html#&lt;/a&gt;&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;[Unit]&#xA;Description=details&#xA;After=containerd.service # 之前启动&#xA;Before= # 之后运行&#xA;Bindsto= #&#xA;Wants=containerd.service # 弱依赖&#xA;Requires= # 强依赖&#xA;StartLimitInterval=10s&#xA;StartLimitBurst=5&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.freedesktop.org/software/systemd/man/systemd.service.html#&#34;&gt;https://www.freedesktop.org/software/systemd/man/systemd.service.html#&lt;/a&gt;&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;[Service]&#xA;Type=simple/notify/dbus/forking/idle/oneshot&#xA;ExecStartPre=&#xA;ExecStart=&#xA;ExecStartPost=&#xA;ExecStop=&#xA;ExecStopPost=&#xA;ExecReload=&#xA;KillMode=node/mixed/process/control-group&#xA;Restart=no/on-success/on-failure/on-abnormal/on-abort/on-watchdog/always # always总是开机启动，即使systemctl enable.&#xA;RestartSec=3s # 重启之前等待的时间.&#xA;TimeoutSec=  # TimeoutStartSec+TimeoutStopSec&#xA;LimitNOFILE=49152 # 限制单个service的fd&#xA;&#xA;[Install]&#xA;WantedBy=multi-user.target&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;systemctl命令:&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

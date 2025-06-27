@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Multimedia on Morgoth</title>
+    <link>https://canuxcheng.com/tags/multimedia/</link>
+    <description>Recent content in Multimedia on Morgoth</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 01 Jan 2018 10:49:21 +0000</lastBuildDate>
+    <atom:link href="https://canuxcheng.com/tags/multimedia/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GSL_multimedia</title>
+      <link>https://canuxcheng.com/post/gsl_multimedia/</link>
+      <pubDate>Mon, 01 Jan 2018 10:49:21 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/gsl_multimedia/</guid>
+      <description>&lt;h1 id=&#34;image&#34;&gt;image&lt;/h1&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;mime&#34;&gt;mime&lt;/h1&gt;</description>
+    </item>
+    <item>
+      <title>PSL_Multimedia</title>
+      <link>https://canuxcheng.com/post/psl_multimedia/</link>
+      <pubDate>Fri, 12 Aug 2016 15:51:56 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/psl_multimedia/</guid>
+      <description>&lt;h1 id=&#34;multimedia-services&#34;&gt;Multimedia Services&lt;/h1&gt;&#xA;&lt;h2 id=&#34;audioop&#34;&gt;audioop&lt;/h2&gt;&#xA;&lt;h2 id=&#34;aifc&#34;&gt;aifc&lt;/h2&gt;&#xA;&lt;h2 id=&#34;sunau&#34;&gt;sunau&lt;/h2&gt;&#xA;&lt;h2 id=&#34;wave&#34;&gt;wave&lt;/h2&gt;&#xA;&lt;h2 id=&#34;chunk&#34;&gt;chunk&lt;/h2&gt;&#xA;&lt;h2 id=&#34;colorsys&#34;&gt;colorsys&lt;/h2&gt;&#xA;&lt;h2 id=&#34;imghdr&#34;&gt;imghdr&lt;/h2&gt;&#xA;&lt;h2 id=&#34;sndhdr&#34;&gt;sndhdr&lt;/h2&gt;&#xA;&lt;h2 id=&#34;ossaudiodev&#34;&gt;ossaudiodev&lt;/h2&gt;&#xA;&lt;hr&gt;</description>
+    </item>
+  </channel>
+</rss>

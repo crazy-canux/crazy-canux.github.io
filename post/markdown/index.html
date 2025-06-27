@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Markdown - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="single-post">
+    <article>
+        <header>
+            <h1>Markdown</h1>
+            <div class="post-meta">
+                <time>March 28, 2016</time>
+                
+                    
+                        <span class="category">Web</span>
+                    
+                
+                
+                    
+                        <span class="tag">#markdown</span>
+                    
+                
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <h1 id="markdown">Markdown</h1>
+<h2 id="markdown简介">Markdown简介</h2>
+<p>Markdown是一种轻量级文本标记语言, Markdown的目标是实现易读易写。
+Markdown和html有很大区别，html是一种发布格式，markdown是一种书写格式。</p>
+<p>Markdown 中文手册：</p>
+<p><a href="http://wowubuntu.com/markdown/index.html">http://wowubuntu.com/markdown/index.html</a></p>
+<p>Markdown 英文手册：</p>
+<p><a href="http://daringfireball.net/projects/markdown/syntax">http://daringfireball.net/projects/markdown/syntax</a></p>
+<p>Markdown文件的扩展名是md。</p>
+<h2 id="两个需要特殊处理的字符">两个需要特殊处理的字符</h2>
+<p>&lt; 的表示方法：</p>
+<blockquote>
+<p>&amp; l t ;</p></blockquote>
+<p>&amp; 的表示方法：</p>
+<blockquote>
+<p>&amp; a m p ;</p></blockquote>
+<hr>
+<h1 id="区块元素">区块元素</h1>
+<h2 id="段落和换行">段落和换行</h2>
+<p>段落前后要有一个或以上的空行（空格或制表符都可以）。</p>
+<h2 id="标题">标题</h2>
+<p>markdown支持两个语法格式的标题</p>
+<h3 id="setext格式">setext格式</h3>
+<p>任意个数下等号=表示大标题:</p>
+<pre><code>Title
+======
+</code></pre>
+<p>任意个数下减号表示副标题：</p>
+<pre><code>Subtitle
+--------
+</code></pre>
+<h3 id="atx格式">atx格式</h3>
+<p>一到六个#表示一到六阶标题,#后面有空格</p>
+<pre><code># 一阶标题
+
+## 二阶标题
+
+### 三阶标题
+
+#### 四阶标题
+
+##### 五阶标题
+
+###### 六阶标题
+</code></pre>
+<h2 id="区块引用">区块引用</h2>
+<p>使用&gt;表示单层区块引用：</p>
+<p>&gt; block</p>
+<blockquote>
+<p>block</p></blockquote>
+<p>使用多个&gt;嵌套使用：</p>
+<p>&gt;&gt; block</p>
+<blockquote>
+<blockquote>
+<p>block</p></blockquote></blockquote>
+<p>区块内也可以用标题，列表和代码区块等。</p>
+<h2 id="列表">列表</h2>
+<h3 id="无序列表">无序列表</h3>
+<p>无序列表使用星号、加号或是减号作为列表标记,符号和字符之间有空格：</p>
+<p>* shopping list</p>
+<blockquote>
+<ul>
+<li>shopping list</li>
+</ul></blockquote>
+<p>+ shoppint list</p>
+<blockquote>
+<ul>
+<li>shopping list</li>
+</ul></blockquote>
+<p>- shopping list</p>
+<blockquote>
+<ul>
+<li>shopping list</li>
+</ul></blockquote>
+<h3 id="有序列表">有序列表</h3>
+<p>有序列表使用数字和一个英文句点,符号和字符之间有空格：</p>
+<ol>
+<li>numbered list</li>
+</ol>
+<blockquote>
+<ol>
+<li>numbered list</li>
+</ol></blockquote>
+<h2 id="代码区块">代码区块</h2>
+<p>简单地缩进 4 个空格或是 1 个制表符,一个代码区块会一直持续到没有缩进的那一行或是文件结尾。</p>
+<p>这是一个普通段落：</p>
+<pre><code>这是一个代码区块。
+    缩进
+代码区块结束。
+</code></pre>
+<h2 id="分割线">分割线</h2>
+<p>三个以上的*-_都可以产生分割线:</p>
+<p>***</p>
+<blockquote>
+<hr></blockquote>
+<p>---</p>
+<blockquote>
+<hr></blockquote>
+<p>___</p>
+<blockquote>
+<hr></blockquote>
+<hr>
+<h1 id="区段元素">区段元素</h1>
+<h2 id="链接">链接</h2>
+<h3 id="行内式链接">行内式链接</h3>
+<p>[Link](<a href="https://github.com/crazy-canux">https://github.com/crazy-canux</a>)</p>
+<blockquote>
+<p><a href="https://github.com/crazy-canux">Link</a></p></blockquote>
+<h3 id="参考式链接">参考式链接</h3>
+<p>[Link][id]</p>
+<p>[id]:https://github.com/crazy-canux</p>
+<h3 id="自动链接">自动链接</h3>
+<p>网址:</p>
+<p>&lt;https://github.com/crazy-canux&gt;</p>
+<blockquote>
+<p><a href="https://github.com/crazy-canux">https://github.com/crazy-canux</a></p></blockquote>
+<p>邮箱：</p>
+<p>&lt;canuxcheng@gmail.com&gt;</p>
+<blockquote>
+<p><a href="mailto:canuxcheng@gmail.com">canuxcheng@gmail.com</a></p></blockquote>
+<h2 id="强调">强调</h2>
+<p>用一个*或_表示强调，符号和字符中间没有空格</p>
+<p>斜体：*italic*</p>
+<blockquote>
+<p><em>italic</em></p></blockquote>
+<p>斜体： _italic_</p>
+<blockquote>
+<p><em>italic</em></p></blockquote>
+<p>粗体： **bold**</p>
+<blockquote>
+<p><strong>bold</strong></p></blockquote>
+<p>粗体： __bold__</p>
+<blockquote>
+<p><strong>bold</strong></p></blockquote>
+<h2 id="代码">代码</h2>
+<p>用反引号标记一小段代码：</p>
+<p>`monospace`</p>
+<blockquote>
+<p><code>monospace</code></p></blockquote>
+<h2 id="图片">图片</h2>
+<h3 id="行内式图片">行内式图片</h3>
+<p>![pic](/path/to/img.jpg)</p>
+<blockquote>
+<p><img src="/path/to/img.jpg" alt="Pic"></p></blockquote>
+<h3 id="参考式图片">参考式图片</h3>
+<p>![pic][id]</p>
+<p>[id]: /path/to/img.jpg</p>
+<hr>
+<h1 id="反斜线">反斜线</h1>
+<p>用反斜线\来转移字符</p>
+<p>\   反斜线</p>
+<p>`   反引号</p>
+<p>*   星号</p>
+<p>_   底线</p>
+<p>{}  花括号</p>
+<p>[]  方括号</p>
+<p>()  括弧</p>
+<p>#   井字号</p>
+<p>+   加号</p>
+<p>-   减号</p>
+<p>.   英文句点</p>
+<p>!   惊叹号</p>
+
+        </div>
+    </article>
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

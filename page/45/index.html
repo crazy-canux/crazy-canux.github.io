@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="generator" content="Hugo 0.147.9">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morgoth - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="home">
+    <h1>Morgoth</h1>
+    <p></p>
+    
+    <section class="recent-posts">
+        <h2>Recent Posts</h2>
+        <ul class="post-list">
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/ps/">PowerShell</a></h2>
+                    <div class="post-meta">
+                        <time>April 26, 2016</time>
+                        
+                            
+                                <span class="category">Windows</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="powershell">PowerShell</h1>
+<p>Console: command line interface</p>
+<p>ISE: script editor and console combination</p>
+<p>Version:</p>
+<p>2.0,3.0,4.0,5.0</p>
+<p>C:\Windows\System32\powershell 存放64位powershell</p>
+<p>C:\Windows\SysWOW64\powershell 存放32位powershell</p>
+<pre><code>&gt;$PSVersionTable
+&gt;$HOST
+</code></pre>
+<p>Install/Update:</p>
+<p><a href="https://www.microsoft.com/zh-CN/download/details.aspx?id=40855">https://www.microsoft.com/zh-CN/download/details.aspx?id=40855</a></p>
+<p>安装Windows Management Framework4.0即可。</p>
+<pre><code>&gt;$PSHOME
+</code></pre>
+<p>多版本时切换版本:</p>
+<pre><code>&gt;powershell -version 2
+</code></pre>
+<hr>
+<h1 id="powershell相关项目">powershell相关项目</h1>
+<p><a href="https://github.com/Microsoft">https://github.com/Microsoft</a></p>
+<p><a href="https://github.com/PowerShell">https://github.com/PowerShell</a></p>
+<p><a href="https://github.com/PowerShellOrg">https://github.com/PowerShellOrg</a></p>
+<h2 id="win32-openssh">win32-openssh</h2>
+<p>windows的SSH。</p>
+<p><a href="https://github.com/PowerShell/Win32-OpenSSH">https://github.com/PowerShell/Win32-OpenSSH</a></p>
+<hr>
+<h1 id="powershell命令">powershell命令</h1>
+<pre><code>&gt;powershell -?
+&gt;powershell /?
+&gt;powershell -help
+</code></pre>
+<hr>
+<h1 id="powershell-script">powershell script</h1>
+<p>powershell是默认大小写不敏感的。</p>
+<p>同一行多个命令需要用分号;隔开。</p>
+<p>powershell的安全策略：</p>
+<ol>
+<li>restricted(default)</li>
+<li>allsigned</li>
+<li>remotesigned</li>
+<li>unrestricted</li>
+<li>bypass</li>
+</ol>
+<h1 id="注释">注释</h1>
+<p>单行注释：</p>
+<pre><code># comment
+</code></pre>
+<p>多行注释(文档注释)：</p>
+<pre><code>&lt;#
+comment1
+comment2
+...
+#&gt;
+</code></pre>
+<p>帮助文档:</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/metrics_tivoli/">Tivoli</a></h2>
+                    <div class="post-meta">
+                        <time>April 20, 2016</time>
+                        
+                            
+                                <span class="category">DevOps</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="itm">ITM</h1>
+<p>ITM: IBM Tivoli Monitoring</p>
+<p>是IBM的Cloud &amp; Smart Infrastructure监控解决方案。</p>
+<p>Architecture Overview:</p>
+<p><img src="/images/tivoli.png" alt="pic"></p>
+<p>ITM主要由管理组件和可选组件组成。</p>
+<p>Tivoli Management Services:</p>
+<ol>
+<li>TEMS</li>
+<li>TEPS</li>
+<li>TEP client</li>
+<li>Historical data collection(warehouse agent)
+<ul>
+<li>warehouse proxy</li>
+<li>summarization and pruning agent</li>
+</ul>
+</li>
+<li>OS agent</li>
+</ol>
+<p>Optional components:</p>
+<ol>
+<li>Dashboard Application Services Hub
+<ul>
+<li>Tivoli Monitoring dashboards(Infrastructure Management Dashboards for Servers)</li>
+<li>Tivoli Common Reporting</li>
+<li>Tivoli Enterprise Monitoring Automation Server</li>
+</ul>
+</li>
+<li>Tivoli Event Synchronization component</li>
+<li>Authorization Policy Components(tivcmd)</li>
+</ol>
+<p><a href="http://www.ibm.com/support/knowledgecenter/SSTFXA_6.3.0/com.ibm.itm.doc_6.3/welcome_63.htm">http://www.ibm.com/support/knowledgecenter/SSTFXA_6.3.0/com.ibm.itm.doc_6.3/welcome_63.htm</a></p>
+<h2 id="安装itm">安装ITM</h2>
+<p>Windows: C:\IBM\ITM</p>
+<p>Linux/Unix: /opt/IBM/ITM</p>
+<p>分为本地安装和分布式安装。</p>
+<ol>
+<li>
+<p>需要先为TEPS和TDW安装DB(ODBC/JDBC)。</p>
+<p>DB2</p>
+<p>MSSQL</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/shell_grep/">Grep</a></h2>
+                    <div class="post-meta">
+                        <time>April 20, 2016</time>
+                        
+                            
+                                <span class="category">Linux</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="grep">grep</h1>
+<p>grep相关的命令：</p>
+<pre><code>grep
+egrep == grep -E
+fgrep == grep -F
+rgrep == grep -r
+</code></pre>
+<p>grep:</p>
+<pre><code>grep [OPTIONS] PATTERN [FILE/DIR...]
+grep [OPTIONS] [-e PATTERN | -f FILE] [FILE/DIR...]
+</code></pre>
+<p>options:</p>
+<pre><code># Matcher Selection
+-G, --basic-regexp grep默认只支持BRE, 只能使用基本的RE
+-E, --extended-regexp 选择ERE, 可以使用扩展的RE
+# grep -E &quot;pattern1|pattern2&quot; 比如支持或运算
+-F, --fixed-strings
+-P, --perl-regexp perl RE
+
+# Matching Control
+-e PATTERN, --regexp=PATTERN    可以指定多个pattern
+# grep -e pattern1 -e pattern2 filename 相当于或运算，满足一个就被过滤出来
+-f FILE, --file=FILE    文件的每一行就是一个pattern.
+-i, --ignore-case    忽略大小写
+-v, --invert-match   忽略含有pattern的行
+-w, --word-regexp    精确匹配一个单词
+-x, --line-regexp    精确匹配一行
+-y
+
+# General Output Control
+-c, --count    统计匹配到的行数
+--color[=WHEN], --colour[=WHEN]    输出匹配的pattern高亮
+-L, --files-without-match    列出没有匹配到的文件名
+-l, --files-with-matches    列出匹配到的文件的文件名
+# grep -rl pattern1 | xargs grep -r pattern2    相当于与运算，过滤同时满足两个pattern
+-m NUM, --max-count=NUM
+-o, --only-matching    只输出匹配的部分
+# grep -o pattern filename | wc -l 统计匹配的行数
+-q, --quiet, --silent    不打印查找的结果
+-s, --no-messages
+
+# Output Line Prefix Control
+-b, --byte-offset    打印匹配的字符数或偏移量
+-H, --with-filename
+-h, --no-filename
+--label=LABEL
+-n, --line-number    打印匹配的行的行号
+-T, --initial-tab
+-u, --unix-byte-offsets
+-Z, --null
+
+# Context Line Control
+-A NUM, --after-context=NUM    打印匹配到的行的后NUM行
+-B NUM, --before-context=NUM    打印匹配到的行的前NUM行j
+-C NUM, -NUM, --context=NUM    打印匹配到的行的前NUM行和后NUM行
+
+# File and Directory Selection
+-a, --text
+--binary-files=TYPE
+-D ACTION, --devices=ACTION
+-d ACTION, --directories=ACTION
+--exclude=GLOB    排除查找指定的文件
+--exclude-from=FILE
+--exclude-dir=DIR   排除查找指定的目录
+-I
+--include=GLOB     指定查找的文件
+-r, --recursive    递归查找
+-R, --dereference-recursive    递归查找
+# grep -nR/-nr pattern filename    阅读源码可以递归查找并打印行号
+
+# Other Options
+--line-buffered
+--mmap
+-U, --binary
+-z, --null-data
+</code></pre>
+<h1 id="ack">ack</h1>
+<p>ack/ack2是grep的升级版</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/shell_find/">Find</a></h2>
+                    <div class="post-meta">
+                        <time>April 20, 2016</time>
+                        
+                            
+                                <span class="category">Linux</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="find">find</h1>
+<p>Find     查找，用于在目录中查找。
+find  path  options  tests  actions
+path 路径
+options 选项
+tests 测试
+actions 动作</p>
+<p>optioins选项:
+-follow
+-depth
+-maxdepth
+-mindepth
+find   dir  -mindepth  n     指定最小的目录深度，至少从dir往下n级目录开始往下搜索，dir和n级之间的忽略。
+find   dir   -maxdepth  n      指定最大目录深度，不搜索n级之后的目录。</p>
+<p>test选项很多：
+-newer   pattern   比pattern文件要新
+-user    pattern      文件属主是pattern
+-name   pattern    查找和type匹配的
+-iname  pattern    查找和type匹配的，会忽略大小写
+-iwholename
+-path   pattern     按照文件路径匹配
+-type   c           c是文件类型，按照文件类型匹配文件
+-size   +/-    nk/c/w/k/b/M/G    匹配大于或小于n  kb/..  的文件
+-perm   XXX       基于文件权限的匹配
+find dir  –atime/mtime/ctime    +/-n    根据时间累匹配，atime表示访问时间，mtime表示修改时间，ctime表示变化时间，+表示大于，-表示小于，单位是天。
+-a/-and   pattern
+-o/-or     pattern
+！/-not    pattern
+find  dir  !  test   pattern   列出所有没有按照-options  pattern模式的项
+(&hellip;)    使用括号需要用引号来引用。</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/devops_ops/">Operations</a></h2>
+                    <div class="post-meta">
+                        <time>April 15, 2016</time>
+                        
+                            
+                                <span class="category">DevOps</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="operations">Operations</h1>
+<p>运维相关的工具．</p>
+<hr>
+<h1 id="批量配置管理">批量配置管理</h1>
+<h2 id="puppet">puppet</h2>
+<h2 id="chef">chef</h2>
+<h2 id="salt">salt</h2>
+<h2 id="ansible">ansible</h2>
+<hr>
+<h1 id="密码管理工具">密码管理工具</h1>
+<h2 id="keepass">keepass</h2>
+<p><a href="http://keepass.info/">http://keepass.info/</a></p>
+<h2 id="keepassx">KeePassX</h2>
+<p><a href="https://www.keepassx.org/">https://www.keepassx.org/</a></p>
+<p><a href="https://github.com/keepassx/keepassx">https://github.com/keepassx/keepassx</a></p>
+<hr></p>
+                    
+                </li>
+            
+        </ul>
+    </section>
+    
+    
+        <a href="/page/44/">← Previous</a>
+    
+    
+        <a href="/page/46/">Next →</a>
+    
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

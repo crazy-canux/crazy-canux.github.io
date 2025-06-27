@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Wmi on Morgoth</title>
+    <link>https://canuxcheng.com/tags/wmi/</link>
+    <description>Recent content in Wmi on Morgoth</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 03 Apr 2016 14:15:47 +0000</lastBuildDate>
+    <atom:link href="https://canuxcheng.com/tags/wmi/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>WMI</title>
+      <link>https://canuxcheng.com/post/win_wmi/</link>
+      <pubDate>Sun, 03 Apr 2016 14:15:47 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/win_wmi/</guid>
+      <description>&lt;h1 id=&#34;wmicim&#34;&gt;WMI/CIM&lt;/h1&gt;&#xA;&lt;p&gt;WMI: windows management instrumentation.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://msdn.microsoft.com/en-us/library/aa394582(v=vs.85).aspx&#34;&gt;https://msdn.microsoft.com/en-us/library/aa394582(v=vs.85).aspx&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;CIM: common information model.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://msdn.microsoft.com/en-us/library/aa389234(v=vs.85).aspx&#34;&gt;https://msdn.microsoft.com/en-us/library/aa389234(v=vs.85).aspx&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;DCOM: distributed COM.&lt;/p&gt;&#xA;&lt;p&gt;wmi通过DCOM远程连接，但是DCOM不能绕过防火墙。&lt;/p&gt;&#xA;&lt;p&gt;命名空间:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;root\cimv2&#xA;root\microsoftdns&#xA;root\securitycenter&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;WMI工具：&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;windows自带wmi测试工具wbemtest.&lt;/li&gt;&#xA;&lt;li&gt;WMI Explorer用于查找wmi和cim的Class和Properties.&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://www.ks-soft.net/hostmon.eng/wmi/index.htm#SysReq&#34;&gt;http://www.ks-soft.net/hostmon.eng/wmi/index.htm#SysReq&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;windows怎样设置wmi：&lt;/p&gt;&#xA;&lt;p&gt;135 (Microsoft RPC), 137-139 (NetBIOS) and 445 (Microsoft DS). These are TCP ports.&lt;/p&gt;&#xA;&lt;p&gt;设置的用户需要是管理员组。&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://technet.microsoft.com/en-us/library/cc771551(v=ws.11).aspx&#34;&gt;https://technet.microsoft.com/en-us/library/cc771551(v=ws.11).aspx&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;给wmi设置fix port(server in DMZ)：&lt;/p&gt;&#xA;&lt;p&gt;使用过程中不需要指定端口。&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://msdn.microsoft.com/zh-cn/library/bb219447(v=vs.85).aspx&#34;&gt;https://msdn.microsoft.com/zh-cn/library/bb219447(v=vs.85).aspx&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;wmic&#34;&gt;wmic&lt;/h1&gt;&#xA;&lt;p&gt;wmic是wmi的客户端命令。&lt;/p&gt;&#xA;&lt;p&gt;windows的wmic：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;&amp;gt;wmic # 进入wmi的交互模式&#xA;&amp;gt;wmic -? # 查看帮助&#xA;&amp;gt;wmic /? # 查看帮助&#xA;&amp;gt;wmic ... # 非交互模式运行命令&#xA;&amp;gt;wmic process call create shutdown.exe # 本地关机&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;linux的wmic：&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

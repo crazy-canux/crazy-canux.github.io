@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Hadoop on Morgoth</title>
+    <link>https://canuxcheng.com/tags/hadoop/</link>
+    <description>Recent content in Hadoop on Morgoth</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 03 May 2017 22:57:37 +0000</lastBuildDate>
+    <atom:link href="https://canuxcheng.com/tags/hadoop/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Hadoop MapReduce</title>
+      <link>https://canuxcheng.com/post/hadoop_mapreduce/</link>
+      <pubDate>Wed, 03 May 2017 22:57:37 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/hadoop_mapreduce/</guid>
+      <description>&lt;h1 id=&#34;map-reduce&#34;&gt;Map-Reduce&lt;/h1&gt;&#xA;&lt;p&gt;一种基于YARN的大型数据并行处理系统．主要处理离线数据．&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;mapreduce-commands&#34;&gt;mapreduce commands&lt;/h1&gt;&#xA;&lt;pre&gt;&lt;code&gt;mapred [SHELL_OPTIONS] COMMAND [GENERIC_OPTIONS] [COMMAND_OPTIONS]&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;user commands:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ mapred archive&#xA;...&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;admin commands:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ mapred historyserver&#xA;&#xA;$ mapred hsadmin&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;</description>
+    </item>
+    <item>
+      <title>Hadoop</title>
+      <link>https://canuxcheng.com/post/hadoop/</link>
+      <pubDate>Mon, 11 Apr 2016 22:57:37 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/hadoop/</guid>
+      <description>&lt;h1 id=&#34;hadoop&#34;&gt;Hadoop&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/apache/hadoop&#34;&gt;https://github.com/apache/hadoop&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;apache hadoop是一个框架，允许使用简单的编程模型在大量计算机上对大型数据集进行分布式处理．&lt;/p&gt;&#xA;&lt;p&gt;hadoop1只有HDFS和MapReduce两个模块，hadoop2开始分为HDFS, YARN, MapReduce三个模块．&lt;/p&gt;&#xA;&lt;p&gt;hadoop的版本:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;apache hadoop&lt;/li&gt;&#xA;&lt;li&gt;hortonworks hadoop (HDP)&lt;/li&gt;&#xA;&lt;li&gt;cloudera hadoop (CDH)&lt;/li&gt;&#xA;&lt;li&gt;mapr&lt;/li&gt;&#xA;&lt;li&gt;transwarp&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h1 id=&#34;安装hadoop&#34;&gt;安装hadoop&lt;/h1&gt;&#xA;&lt;p&gt;hadoop有三种安装模式：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;单节点模式&lt;/li&gt;&#xA;&lt;li&gt;伪分布式模式&lt;/li&gt;&#xA;&lt;li&gt;分布式模式&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;参考Linux Admin和Network SSH如何安装多台centos，并且配置局域网，让本地多台机器相互访问．&lt;/p&gt;&#xA;&lt;p&gt;下载hadoop的二进制安装包，然后放到/home/hadoop/目录下并解压．&lt;/p&gt;&#xA;&lt;p&gt;推荐的cluster node:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;NameNode(hdfs)&#xA;Secondary NameNode(hdfs)&#xA;DataNode(hdfs)&#xA;ResourceManager server(yarn)&#xA;NodeManager server(yarn)&#xA;WebAppProxy server(yarn)&#xA;MapReduceJobHistory server(mapreduce)&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;设置环境变量：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ vim ~/.bash_profile&#xA;export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-.../jre&#xA;export HADOOP_HOME=/home/hadoop/hadoop-3.0.0-alpha2&#xA;export PATH=$JAVA_HOME/bin:$HADOOP_HOME/bin:$PATH&#xA;$ source ~/.bash_profile&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;修改hadoop的环境变量：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ cd hadoop-3.0.0-alpha2/etc/hadoop&#xA;$ vim hadoop-env.sh&#xA;export JAVA_HOME=&#39;/usr/lib/jvm/java-1.8.0-openjdk-.../jre&#xA;&#xA;# 测试java和hadoop的环境是否可用：&#xA;$ hadoop&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;分布式环境搭建：&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Hadoop HDFS</title>
+      <link>https://canuxcheng.com/post/hadoop_hdfs/</link>
+      <pubDate>Mon, 11 Apr 2016 22:57:37 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/hadoop_hdfs/</guid>
+      <description>&lt;h1 id=&#34;hdfs&#34;&gt;HDFS&lt;/h1&gt;&#xA;&lt;p&gt;Hadoop Distributed File System: hadoop分布式文件系统&lt;/p&gt;&#xA;&lt;p&gt;hadoop hdfs分为三部分:&lt;/p&gt;&#xA;&lt;p&gt;NameNode -&amp;gt; JobTracker&lt;/p&gt;&#xA;&lt;p&gt;secondary NameNode&lt;/p&gt;&#xA;&lt;p&gt;DataNode -&amp;gt; TaskTracker&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;hdfs-commands&#34;&gt;hdfs commands&lt;/h1&gt;&#xA;&lt;pre&gt;&lt;code&gt;hdfs [SHELL_OPTIONS] COMMAND [GENERIC_OPTIONS] [COMMAND_OPTIONS]&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;user commands:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ hdfs classpath&#xA;&#xA;$ hdfs dfs # 参考 hadoop fs命令&#xA;...&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;admin commands:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ hdfs balancer&#xA;...&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;debug commands:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ hdfs verify&#xA;&#xA;$ hdfs recoverLease&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;</description>
+    </item>
+    <item>
+      <title>Hadoop YARN</title>
+      <link>https://canuxcheng.com/post/hadoop_yarn/</link>
+      <pubDate>Mon, 11 Apr 2016 22:57:37 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/hadoop_yarn/</guid>
+      <description>&lt;h1 id=&#34;yarn&#34;&gt;YARN&lt;/h1&gt;&#xA;&lt;p&gt;作业调度和集群资源管理的框架．&lt;/p&gt;&#xA;&lt;p&gt;yarn的两个组件：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;resourcemanager&lt;/li&gt;&#xA;&lt;li&gt;nodemanager&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;yarn-commands&#34;&gt;yarn commands&lt;/h1&gt;&#xA;&lt;pre&gt;&lt;code&gt;yarn [--config confdir] COMMAND [--loglevel loglevel] [GENERIC_OPTIONS] [COMMAND_OPTIONS]&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;user commands:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ yarn application&#xA;...&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;admin commands:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ yarn daemonlog&#xA;...&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;resource-manager&#34;&gt;resource manager&lt;/h1&gt;&#xA;&lt;p&gt;resource manager由两部分组成：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;scheduler&lt;/li&gt;&#xA;&lt;li&gt;applicationmanager&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;ResourceManager功能：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;处理客户请求&lt;/li&gt;&#xA;&lt;li&gt;启动／监控applicationmaster&lt;/li&gt;&#xA;&lt;li&gt;监控nodemanager&lt;/li&gt;&#xA;&lt;li&gt;资源分配与调度&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;ApplicationMaster功能：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;数据切分&lt;/li&gt;&#xA;&lt;li&gt;为应用申请资源, 并分配给内部任务&lt;/li&gt;&#xA;&lt;li&gt;任务监控与容错&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;node-manager&#34;&gt;node manager&lt;/h1&gt;&#xA;&lt;p&gt;node manager功能：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;单个节点的资源管理&lt;/li&gt;&#xA;&lt;li&gt;处理来自resourcemanager的命令&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;</description>
+    </item>
+  </channel>
+</rss>

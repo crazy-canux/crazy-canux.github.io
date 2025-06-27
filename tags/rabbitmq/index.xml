@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Rabbitmq on Morgoth</title>
+    <link>https://canuxcheng.com/tags/rabbitmq/</link>
+    <description>Recent content in Rabbitmq on Morgoth</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 25 Sep 2017 09:41:39 +0000</lastBuildDate>
+    <atom:link href="https://canuxcheng.com/tags/rabbitmq/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Rabbitmq</title>
+      <link>https://canuxcheng.com/post/rabbitmq/</link>
+      <pubDate>Mon, 25 Sep 2017 09:41:39 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/rabbitmq/</guid>
+      <description>&lt;h1 id=&#34;amqp&#34;&gt;AMQP&lt;/h1&gt;&#xA;&lt;p&gt;AMQP: Advanced Message Queuing Protocol,高级消息队列协议&lt;/p&gt;&#xA;&lt;p&gt;常用的开源AMQP框架：&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/rabbitmq&#34;&gt;https://github.com/rabbitmq&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/apache/kafka&#34;&gt;https://github.com/apache/kafka&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/apache/activemq&#34;&gt;https://github.com/apache/activemq&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;mqtt&#34;&gt;MQTT&lt;/h1&gt;&#xA;&lt;p&gt;MQTT: Message Queuing Telemetry Transport,消息队列遥测传输协议&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;rabbitmq&#34;&gt;Rabbitmq&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/rabbitmq&#34;&gt;https://github.com/rabbitmq&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;RabbitMQ是一个erlang开发的符合AMQP和MQTT的开源项目．&lt;/p&gt;&#xA;&lt;p&gt;rabbitmq-server也叫broker server&lt;/p&gt;&#xA;&lt;p&gt;rabbitmq的三个组件：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;exchange,　交换器，发送消息的实体&lt;/li&gt;&#xA;&lt;li&gt;binding, 绑定器，连接交换器和队列，并且封装消息的路由信息&lt;/li&gt;&#xA;&lt;li&gt;queue,　队列，接受消息的实体&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;workflow:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;producer(publish-message) =&amp;gt;&#xA;&#xA;rabbitmq-server =&amp;gt; exchange -&amp;gt; binding -&amp;gt; queue =&amp;gt;&#xA;&#xA;=&amp;gt; comsumer&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;producer: 生产message并且publish到rabbitmq-server.&lt;/p&gt;&#xA;&lt;p&gt;consumer: 连接到rabbitmq-server并且subscribe一些queue.&lt;/p&gt;&#xA;&lt;p&gt;connection: producer和consumer都是通过tcp连接到rabbitmq-server.&lt;/p&gt;&#xA;&lt;p&gt;channels: 建立在tcp连接中的虚拟连接，用于处理数据流动.&lt;/p&gt;&#xA;&lt;p&gt;queue:　生产者和消费者都应该创建queue.(只能通过exchange接收message)&lt;/p&gt;&#xA;&lt;p&gt;exchanges类型:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;fanout: 所有绑定到此exchange的queue都可以接收消息&lt;/li&gt;&#xA;&lt;li&gt;direct: 通过routingKey和exchange决定的那个唯一的queue可以接收消息&lt;/li&gt;&#xA;&lt;li&gt;topic：所有符合routingKey(此时可以是一个表达式)的routingKey所bind的queue可以接收消息&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;message类型:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;messages: 生产者产生的总消息数．&lt;/li&gt;&#xA;&lt;li&gt;messages_ready: 等待deliver给消费者的消息．&lt;/li&gt;&#xA;&lt;li&gt;messages_unack: 已经被consumer处理，但是没有被ack的消息．&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;virtual hosts: 本质就是一个rabbitmq server,拥有独立的exchange,queue.默认是/(%2F).&lt;/p&gt;&#xA;&lt;p&gt;round-robin dispatch: 循环分发，按顺序分发message到consumer,如果message被consumer正确接收，就会从queue中移除．&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

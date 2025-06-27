@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Oop on Morgoth</title>
+    <link>https://canuxcheng.com/tags/oop/</link>
+    <description>Recent content in Oop on Morgoth</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 01 Jan 2018 10:49:21 +0000</lastBuildDate>
+    <atom:link href="https://canuxcheng.com/tags/oop/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GSL_oop</title>
+      <link>https://canuxcheng.com/post/gsl_oop/</link>
+      <pubDate>Mon, 01 Jan 2018 10:49:21 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/gsl_oop/</guid>
+      <description>&lt;h1 id=&#34;reflect&#34;&gt;reflect&lt;/h1&gt;&#xA;&lt;h2 id=&#34;constants&#34;&gt;constants&lt;/h2&gt;&#xA;&lt;p&gt;const:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;const (&#xA;    SelectSend&#xA;    SelectRecv&#xA;    SelectDefault&#xA;)&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;functions&#34;&gt;functions&lt;/h2&gt;&#xA;&lt;pre&gt;&lt;code&gt;// 将src拷贝到dst, 直到src被耗尽或dst被装满.&#xA;func Copy(dst, src Value) int&#xA;&#xA;// 判断两个值是否深度一致&#xA;func DeepEqual(a1, a2 interface{}) bool&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;kind&#34;&gt;Kind&lt;/h2&gt;&#xA;&lt;p&gt;表示Type类型值表示的具体分类.&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;type Kind uint&#xA;&#xA;const (&#xA;    Invalid Kind = iota&#xA;    Bool&#xA;    Int&#xA;    ...&#xA;    Uint&#xA;    ...&#xA;    Float...&#xA;    Complex...&#xA;    Array&#xA;    Chan&#xA;    Func&#xA;    Interface&#xA;    Map&#xA;    Ptr&#xA;    Slice&#xA;    String&#xA;    Struct&#xA;    UnsafePointer&#xA;)&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;method:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;func (k Kind) String() string&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;stringheader&#34;&gt;StringHeader&lt;/h2&gt;&#xA;&lt;h2 id=&#34;sliceheader&#34;&gt;SliceHeader&lt;/h2&gt;&#xA;&lt;h2 id=&#34;structfield&#34;&gt;StructField&lt;/h2&gt;&#xA;&lt;h2 id=&#34;structtag&#34;&gt;StructTag&lt;/h2&gt;&#xA;&lt;h2 id=&#34;chandir&#34;&gt;ChanDir&lt;/h2&gt;&#xA;&lt;h2 id=&#34;selectdir&#34;&gt;SelectDir&lt;/h2&gt;&#xA;&lt;h2 id=&#34;selectcase&#34;&gt;SelectCase&lt;/h2&gt;&#xA;&lt;h2 id=&#34;method&#34;&gt;Method&lt;/h2&gt;&#xA;&lt;h2 id=&#34;type&#34;&gt;Type&lt;/h2&gt;&#xA;&lt;p&gt;用来表示一个go类型.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OOP</title>
+      <link>https://canuxcheng.com/post/go_oop/</link>
+      <pubDate>Mon, 01 Jan 2018 10:49:21 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/go_oop/</guid>
+      <description>&lt;h1 id=&#34;go面向对象&#34;&gt;Go面向对象&lt;/h1&gt;&#xA;&lt;p&gt;golang通过方法和接口实现面向对象.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;方法method&#34;&gt;方法/method&lt;/h1&gt;&#xA;&lt;p&gt;go中没有类，但是可以为结构体定义方法．&lt;/p&gt;&#xA;&lt;p&gt;方法就是一类带有特殊的　接收者参数　的函数．&lt;/p&gt;&#xA;&lt;p&gt;只能为同一包内定义的类型的接收者申明方法，不能为其它包内定义的类型的接收者申明方法．&lt;/p&gt;&#xA;&lt;p&gt;除了结构体还可以为非结构体申明方法，但是不能为内建类型申明方法．&lt;/p&gt;&#xA;&lt;p&gt;方法有两种接收者,值接收者和指针接收者.&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;type Vertex struct {&#xA;    ...&#xA;}&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;值接收者:&lt;/p&gt;&#xA;&lt;p&gt;值接收者操作的是值的副本.&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;func (v Vertex) MethodName() rType {&#xA;    ...&#xA;}&#xA;&#xA;var v Vertex&#xA;v.MethodName() // 操作值的副本&#xA;&#xA;# 使用指针接收者来调用值接收者的方法，编译器会自动做类型转换&#xA;vp := new(Vertex)&#xA;vp.MethodName() // 指针被解引用为值,(*vp).MethodName(),操作的是指针指向的值的副本.&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;指针接收者：&lt;/p&gt;&#xA;&lt;p&gt;指针接收者，调用方法的时候操作的是该指针指向的值.&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;# 指针接收者的方法可以修改接收者指向的值&#xA;func (v *Vertex) MethodName() rType {&#xA;    ...&#xA;}&#xA;&#xA;vp := new(Vertex)&#xA;vp.MethodName() // 操作实际的值&#xA;&#xA;# 使用值接收者来调用指针接收者的方法，编译器会自动做类型转换.&#xA;var v Vertex&#xA;v.MethodName() // (&amp;amp;v).MethodName() , 操作的是实际的值&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;接口interface&#34;&gt;接口/Interface&lt;/h1&gt;&#xA;&lt;p&gt;接口是引用类型.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>JS OOP</title>
+      <link>https://canuxcheng.com/post/js_oop/</link>
+      <pubDate>Wed, 15 Mar 2017 09:36:32 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/js_oop/</guid>
+      <description>&lt;h1 id=&#34;oop&#34;&gt;OOP&lt;/h1&gt;&#xA;&lt;p&gt;javascript中一切都是对象.&lt;/p&gt;&#xA;&lt;p&gt;javacript内置了Bull/Number/String/Object/Function/Array/Date/RegExp类型.&lt;/p&gt;&#xA;&lt;h1 id=&#34;object&#34;&gt;Object&lt;/h1&gt;&#xA;&lt;p&gt;创建Object实例:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;var obj = new Object();&#xA;&#xA;var obj = Object(); // new 可以省略&#xA;&#xA;var obj = ｛&#xA;    name: &amp;quot;value&amp;quot;&#xA;};&#xA;&#xA;var obj = {&#xA;    &amp;quot;name&amp;quot;: &amp;quot;value&amp;quot;&#xA;}&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;添加属性:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;obj.attr = &amp;quot;value&amp;quot;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;添加方法:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;obj.method =  methodName;&#xA;function methodName() {};&#xA;&#xA;obj.method = function() {};&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;删除属性:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;delete obj.attr&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;访问对象属性:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;obj.property&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;访问对象方法:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;obj.method()&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h1 id=&#34;boolean&#34;&gt;Boolean&lt;/h1&gt;&#xA;&lt;p&gt;attribution:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;constructor&#xA;prototype&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;method:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;toSource()&#xA;valueOf()&#xA;toString()&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h1 id=&#34;number&#34;&gt;Number&lt;/h1&gt;&#xA;&lt;p&gt;attribution:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>OOP</title>
+      <link>https://canuxcheng.com/post/python_oop/</link>
+      <pubDate>Tue, 21 Jun 2016 21:18:09 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/python_oop/</guid>
+      <description>&lt;h1 id=&#34;面向对象oop&#34;&gt;面向对象/OOP&lt;/h1&gt;&#xA;&lt;p&gt;OOD: Object Oriented Design.&lt;/p&gt;&#xA;&lt;p&gt;面向过程的设计支持任何语言，但是如果语言本身内置面向过程的结构，就会更容易编程．&lt;/p&gt;&#xA;&lt;p&gt;OOP: Object Oriented Programming.&lt;/p&gt;&#xA;&lt;p&gt;python内置OOP的结构，但是不必一定要使用类和OOP.&lt;/p&gt;&#xA;&lt;p&gt;面向对象的两个主题就是类和类实例．&lt;/p&gt;&#xA;&lt;p&gt;创建实例的过程叫实例化．&lt;/p&gt;&#xA;&lt;p&gt;属性就是属于另一个对象的数据或函数元素．属性分为数据属性和函数属性．&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;类class&#34;&gt;类/Class&lt;/h1&gt;&#xA;&lt;p&gt;类是现实世界的抽象的实体以编程的形式出现，实例是这些对象的具体化．&lt;/p&gt;&#xA;&lt;p&gt;类是一种数据结构的定义，实例是申明了一个这种类型的变量．&lt;/p&gt;&#xA;&lt;p&gt;类的定义：&lt;/p&gt;&#xA;&lt;p&gt;Python 3 所有类默认继承自 object，即使不写 (object) 也是新式类。建议保留 (object) 以兼容性和可读性。&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;class ClassName(object):&#xA;    &amp;quot;&amp;quot;&amp;quot;Doc string.&amp;quot;&amp;quot;&amp;quot;&#xA;    class_suite&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;类的初始化方法init(相当于构造器):&lt;/p&gt;&#xA;&lt;p&gt;如果定义了__init__方法在实例化的时候会首先调用该方法，进行一些初始化的工作。&lt;/p&gt;&#xA;&lt;p&gt;init方法的第一个参数必须是实例self，而且不能有return语句。&lt;/p&gt;&#xA;&lt;p&gt;init方法一般用来设置实例属性(也就是数据属性)。&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;class ClassName(object):&#xA;    def __init__(self, *args, **kwargs):&#xA;        pass&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;特殊方法new:&lt;/p&gt;&#xA;&lt;p&gt;如果定义了__new__方法，会在init方法之前运行，并且返回一个实例，也就是__init__的self。&lt;/p&gt;&#xA;&lt;p&gt;new方法的第一个参数必须是类cls。并且需要返回一个实例。&lt;/p&gt;&#xA;&lt;p&gt;new方法在object中被定义为staticmethod。&lt;/p&gt;&#xA;&lt;p&gt;相当于析构器的特殊方法del:&lt;/p&gt;&#xA;&lt;p&gt;__del__特殊方法要在实例对象的所有引用都被清除后才会执行。&lt;/p&gt;&#xA;&lt;p&gt;不要在del中做与实例没有关系的事情，一般不建议实现该方法。&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;class ClassName(object):&#xA;&#xA;    def __new__(cls, *args, **kwargs):&#xA;        ...&#xA;        return ...&#xA;&#xA;    def __del__(self):&#xA;        ...&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;类属性&#34;&gt;类属性&lt;/h2&gt;&#xA;&lt;p&gt;类属性分为数据属性和方法属性。&lt;/p&gt;&#xA;&lt;p&gt;类的数据属性仅仅是定义的类的变量。&lt;/p&gt;&#xA;&lt;p&gt;数据属性通常是静态变量, 也就是和类对象绑定, 与类的实例无关。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

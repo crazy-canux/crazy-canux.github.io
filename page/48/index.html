@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="generator" content="Hugo 0.147.9">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morgoth - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="home">
+    <h1>Morgoth</h1>
+    <p></p>
+    
+    <section class="recent-posts">
+        <h2>Recent Posts</h2>
+        <ul class="post-list">
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/c_package/">Package</a></h2>
+                    <div class="post-meta">
+                        <time>April 11, 2016</time>
+                        
+                            
+                                <span class="category">C</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="package">Package</h1></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/hadoop_yarn/">Hadoop YARN</a></h2>
+                    <div class="post-meta">
+                        <time>April 11, 2016</time>
+                        
+                            
+                                <span class="category">BigData</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="yarn">YARN</h1>
+<p>作业调度和集群资源管理的框架．</p>
+<p>yarn的两个组件：</p>
+<ul>
+<li>resourcemanager</li>
+<li>nodemanager</li>
+</ul>
+<hr>
+<h1 id="yarn-commands">yarn commands</h1>
+<pre><code>yarn [--config confdir] COMMAND [--loglevel loglevel] [GENERIC_OPTIONS] [COMMAND_OPTIONS]
+</code></pre>
+<p>user commands:</p>
+<pre><code>$ yarn application
+...
+</code></pre>
+<p>admin commands:</p>
+<pre><code>$ yarn daemonlog
+...
+</code></pre>
+<hr>
+<h1 id="resource-manager">resource manager</h1>
+<p>resource manager由两部分组成：</p>
+<ul>
+<li>scheduler</li>
+<li>applicationmanager</li>
+</ul>
+<p>ResourceManager功能：</p>
+<ul>
+<li>处理客户请求</li>
+<li>启动／监控applicationmaster</li>
+<li>监控nodemanager</li>
+<li>资源分配与调度</li>
+</ul>
+<p>ApplicationMaster功能：</p>
+<ul>
+<li>数据切分</li>
+<li>为应用申请资源, 并分配给内部任务</li>
+<li>任务监控与容错</li>
+</ul>
+<hr>
+<h1 id="node-manager">node manager</h1>
+<p>node manager功能：</p>
+<ul>
+<li>单个节点的资源管理</li>
+<li>处理来自resourcemanager的命令</li>
+</ul>
+<hr></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/hadoop_hdfs/">Hadoop HDFS</a></h2>
+                    <div class="post-meta">
+                        <time>April 11, 2016</time>
+                        
+                            
+                                <span class="category">BigData</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="hdfs">HDFS</h1>
+<p>Hadoop Distributed File System: hadoop分布式文件系统</p>
+<p>hadoop hdfs分为三部分:</p>
+<p>NameNode -&gt; JobTracker</p>
+<p>secondary NameNode</p>
+<p>DataNode -&gt; TaskTracker</p>
+<hr>
+<h1 id="hdfs-commands">hdfs commands</h1>
+<pre><code>hdfs [SHELL_OPTIONS] COMMAND [GENERIC_OPTIONS] [COMMAND_OPTIONS]
+</code></pre>
+<p>user commands:</p>
+<pre><code>$ hdfs classpath
+
+$ hdfs dfs # 参考 hadoop fs命令
+...
+</code></pre>
+<p>admin commands:</p>
+<pre><code>$ hdfs balancer
+...
+</code></pre>
+<p>debug commands:</p>
+<pre><code>$ hdfs verify
+
+$ hdfs recoverLease
+</code></pre>
+<hr></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/hadoop/">Hadoop</a></h2>
+                    <div class="post-meta">
+                        <time>April 11, 2016</time>
+                        
+                            
+                                <span class="category">BigData</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="hadoop">Hadoop</h1>
+<p><a href="https://github.com/apache/hadoop">https://github.com/apache/hadoop</a></p>
+<p>apache hadoop是一个框架，允许使用简单的编程模型在大量计算机上对大型数据集进行分布式处理．</p>
+<p>hadoop1只有HDFS和MapReduce两个模块，hadoop2开始分为HDFS, YARN, MapReduce三个模块．</p>
+<p>hadoop的版本:</p>
+<ul>
+<li>apache hadoop</li>
+<li>hortonworks hadoop (HDP)</li>
+<li>cloudera hadoop (CDH)</li>
+<li>mapr</li>
+<li>transwarp</li>
+</ul>
+<h1 id="安装hadoop">安装hadoop</h1>
+<p>hadoop有三种安装模式：</p>
+<ul>
+<li>单节点模式</li>
+<li>伪分布式模式</li>
+<li>分布式模式</li>
+</ul>
+<p>参考Linux Admin和Network SSH如何安装多台centos，并且配置局域网，让本地多台机器相互访问．</p>
+<p>下载hadoop的二进制安装包，然后放到/home/hadoop/目录下并解压．</p>
+<p>推荐的cluster node:</p>
+<pre><code>NameNode(hdfs)
+Secondary NameNode(hdfs)
+DataNode(hdfs)
+ResourceManager server(yarn)
+NodeManager server(yarn)
+WebAppProxy server(yarn)
+MapReduceJobHistory server(mapreduce)
+</code></pre>
+<p>设置环境变量：</p>
+<pre><code>$ vim ~/.bash_profile
+export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk-.../jre
+export HADOOP_HOME=/home/hadoop/hadoop-3.0.0-alpha2
+export PATH=$JAVA_HOME/bin:$HADOOP_HOME/bin:$PATH
+$ source ~/.bash_profile
+</code></pre>
+<p>修改hadoop的环境变量：</p>
+<pre><code>$ cd hadoop-3.0.0-alpha2/etc/hadoop
+$ vim hadoop-env.sh
+export JAVA_HOME='/usr/lib/jvm/java-1.8.0-openjdk-.../jre
+
+# 测试java和hadoop的环境是否可用：
+$ hadoop
+</code></pre>
+<p>分布式环境搭建：</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/c_document/">Document</a></h2>
+                    <div class="post-meta">
+                        <time>April 11, 2016</time>
+                        
+                            
+                                <span class="category">C</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="document">Document</h1>
+<hr>
+<h1 id="doxygen">Doxygen</h1></p>
+                    
+                </li>
+            
+        </ul>
+    </section>
+    
+    
+        <a href="/page/47/">← Previous</a>
+    
+    
+        <a href="/page/49/">Next →</a>
+    
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

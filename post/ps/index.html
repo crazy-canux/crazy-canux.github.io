@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PowerShell - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="single-post">
+    <article>
+        <header>
+            <h1>PowerShell</h1>
+            <div class="post-meta">
+                <time>April 26, 2016</time>
+                
+                    
+                        <span class="category">Windows</span>
+                    
+                
+                
+                    
+                        <span class="tag">#powershell</span>
+                    
+                
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <h1 id="powershell">PowerShell</h1>
+<p>Console: command line interface</p>
+<p>ISE: script editor and console combination</p>
+<p>Version:</p>
+<p>2.0,3.0,4.0,5.0</p>
+<p>C:\Windows\System32\powershell 存放64位powershell</p>
+<p>C:\Windows\SysWOW64\powershell 存放32位powershell</p>
+<pre><code>&gt;$PSVersionTable
+&gt;$HOST
+</code></pre>
+<p>Install/Update:</p>
+<p><a href="https://www.microsoft.com/zh-CN/download/details.aspx?id=40855">https://www.microsoft.com/zh-CN/download/details.aspx?id=40855</a></p>
+<p>安装Windows Management Framework4.0即可。</p>
+<pre><code>&gt;$PSHOME
+</code></pre>
+<p>多版本时切换版本:</p>
+<pre><code>&gt;powershell -version 2
+</code></pre>
+<hr>
+<h1 id="powershell相关项目">powershell相关项目</h1>
+<p><a href="https://github.com/Microsoft">https://github.com/Microsoft</a></p>
+<p><a href="https://github.com/PowerShell">https://github.com/PowerShell</a></p>
+<p><a href="https://github.com/PowerShellOrg">https://github.com/PowerShellOrg</a></p>
+<h2 id="win32-openssh">win32-openssh</h2>
+<p>windows的SSH。</p>
+<p><a href="https://github.com/PowerShell/Win32-OpenSSH">https://github.com/PowerShell/Win32-OpenSSH</a></p>
+<hr>
+<h1 id="powershell命令">powershell命令</h1>
+<pre><code>&gt;powershell -?
+&gt;powershell /?
+&gt;powershell -help
+</code></pre>
+<hr>
+<h1 id="powershell-script">powershell script</h1>
+<p>powershell是默认大小写不敏感的。</p>
+<p>同一行多个命令需要用分号;隔开。</p>
+<p>powershell的安全策略：</p>
+<ol>
+<li>restricted(default)</li>
+<li>allsigned</li>
+<li>remotesigned</li>
+<li>unrestricted</li>
+<li>bypass</li>
+</ol>
+<h1 id="注释">注释</h1>
+<p>单行注释：</p>
+<pre><code># comment
+</code></pre>
+<p>多行注释(文档注释)：</p>
+<pre><code>&lt;#
+comment1
+comment2
+...
+#&gt;
+</code></pre>
+<p>帮助文档:</p>
+<p>在脚本开头的注释中用下面关键字插入文档。</p>
+<pre><code>&lt;#
+.SYNOPSIS
+Write your synopsis here.
+
+.DESCRIPTION
+Write your description here.
+
+.PARAMETER param1
+Write your param1 information here.
+
+.EXAMPLE
+Write your example1 here.
+
+.NOTES
+Write your notes here.
+
+.LINK
+http://test.com
+#&gt;
+</code></pre>
+<h1 id="数据类型">数据类型</h1>
+<h2 id="变量">变量</h2>
+<p>所有的变量都存储在Variable驱动器中,可以用Variable驱动器对变量操作。</p>
+<pre><code>ls Variable: # 查看所有变量
+</code></pre>
+<p>系统变量：</p>
+<pre><code>$_    # 表示管道中的当前对象
+?    # True表示上一个命令成功执行,False失败
+</code></pre>
+<p>自定义变量：</p>
+<p>变量以$开头定义,但是$不是变量名的一部分。</p>
+<p>变量包含数字，字母和小划线。</p>
+<pre><code>$var1=&quot;test&quot;
+$var1
+
+# 交换两个变量的值
+$var1,$var2=$var2,$var1
+</code></pre>
+<p>变量类型：</p>
+<p>可以不用指定变量类型。</p>
+<pre><code>[string]$str=&quot;123&quot;
+[int]$num=123
+[boolean]bool=&quot;True&quot;
+</code></pre>
+<p>判断变量类型：</p>
+<pre><code>$str -is [string]
+$num -as [int]
+</code></pre>
+<h2 id="数组">数组</h2>
+<p>包含多个变量就是一个数组。</p>
+<pre><code>$var2=1,2,3
+$var2[index]
+$var2[0] # 数组第一个元素
+$var2[-1] # 数组最后一个元素
+</code></pre>
+<h2 id="字典">字典：</h2>
+<p>hash类型。</p>
+<pre><code>@{L=&lt;key&gt;;
+E={$_.&lt;value&gt;};
+formatstring=&lt;format&gt;}
+
+@{N=&lt;key&gt;;E={$_.&lt;value&gt;}}
+@{Label=&lt;key&gt;;E={$_.&lt;value&gt;}}
+@{Name=&lt;key&gt;;E={$_.&lt;value&gt;}}
+</code></pre>
+<h1 id="运算符">运算符</h1>
+<p>基本运算符：</p>
+<pre><code>= # 赋值运算符，可以把任何数据类型包括对象赋值给变量
++ # 加法和字符串拼接
+- # 减法
+* # 乘法
+/ # 除法
+() # 优先运算符
+</code></pre>
+<p>特殊运算符：</p>
+<pre><code>$($procs[0].name) # 子变量
+'$var' # 单引号中的变量原样输出
+&quot;$var&quot; # 双引号中的变量被替换
+&quot;`$var&quot; # `重音符可以用在双引号中转义
+`t    # 制表符
+`n    # 换行符
+kb/mb/gt/tb/pb # 单位可以运算
+</code></pre>
+<p>比较运算符：</p>
+<pre><code>-eq
+-ne
+-gt
+-ge
+-lt
+-le
+-contains 包含
+-notcontains
+</code></pre>
+<p>布尔运算符：</p>
+<pre><code>-not 求反
+-and
+-or
+-xor
+</code></pre>
+<hr>
+<h1 id="控制流">控制流</h1>
+<p>powershell支持foreach循环。</p>
+<p>if条件语句：</p>
+<pre><code>if ($this -eq $that) {
+    expression
+} elseif ($those -gt $these) {
+    expression2
+} else {
+    expression3
+}
+</code></pre>
+<p>switch条件语句：</p>
+<pre><code>switch ($condition) {
+    val1 {
+        expression
+        break
+    }
+    val2 {
+        expression2; break
+    }
+    default {
+        default_expression
+    }
+}
+</code></pre>
+<p>foreach循环语句：</p>
+<pre><code>foreach ($name in $names) {
+    expression
+}
+</code></pre>
+<p>for循环语句：</p>
+<pre><code>for ($loop=1; condition; $loop++)
+{
+    expression
+}
+</code></pre>
+<p>while循环语句:</p>
+<pre><code>while (condition)
+{
+    expression
+}
+</code></pre>
+<p>do-while循环语句：</p>
+<pre><code>do {
+    expression
+} while (condition)
+</code></pre>
+<p>break语句：</p>
+<p>break用于循环和switch语句。</p>
+<p>continue语句：</p>
+<p>continue用于循环语句。</p>
+<hr>
+<h1 id="函数">函数</h1>
+<p>函数：</p>
+<pre><code>function name {
+    ...
+}
+</code></pre>
+<p>调用函数:</p>
+<pre><code>.\file.ps1
+name
+</code></pre>
+<p>选项：</p>
+<pre><code>[CmdletBinding()]
+Param(
+    [Parameter(Mandatory=$True)]
+    [String]$ComputerName, # ComputerName强制为通过命令行输入参数
+
+    [int]$EventID=1234, # EventID有默认参数
+
+    [Parameter(Mandatory=$True)][ValidateRange(0,23)]
+    [int]$Number # 给出参数的范围
+)
+
+[CmdletBinding(SupportsShouldProcess$True)] # 支持-whatif和-confirm
+[ValidateSet(1,3,8)] # 给出参数的可选值
+[alias(&quot;id&quot;, &quot;nunber&quot;)] # 给参数指定别名
+</code></pre>
+<hr>
+<h1 id="模块">模块</h1>
+<p>系统模块路径：</p>
+<pre><code>c:\Windows\System32\WindowsPowershell\v1.0\Modules\
+</code></pre>
+<p>函数可以打包成模块放在系统模块路径或用户自己的模块路径。</p>
+<p>模块放到同名的目录mytools下，取名mytools.psm1</p>
+<p>导入用户自己路径下的模块：</p>
+<pre><code>Import-Module -name C:\Modules\mytools
+</code></pre>
+<hr>
+<h1 id="异常和错误处理">异常和错误处理</h1>
+<p>调试语句：</p>
+<pre><code>Write-Verbose &quot;print verbose information.&quot; # 打印调试信息
+
+Write-Debug &quot;print debug information.&quot; # 使用-Debug进入debug模式，exit退出。
+</code></pre>
+<p>调试相关系统变量：</p>
+<pre><code>$ErrorActionPreference='Continue' # 调试的系统变量，默认报错继续执行
+
+$DebugPreference='SilentlyContinue'
+
+$ErrorView='NormalView'
+
+$Error 存储整个shell的错误。
+</code></pre>
+<p>异常捕获：</p>
+<pre><code>Try {
+    expressions
+}
+Catch {
+    &quot;execute when catch the error.&quot;
+}
+Finally {
+    &quot;execute anyway.&quot;
+}
+</code></pre>
+<p>断点调试：</p>
+<pre><code>$Condition = {if ($a -is [int] -and $a -gt 100) {Write-Host &quot;`$a was modified&quot;}}
+$Breakpoint = Set-PSBreakpoint -Variable a -Mode Write -Script $psise.CurrentFile.FullPath -Action $Condition
+</code></pre>
+
+        </div>
+    </article>
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

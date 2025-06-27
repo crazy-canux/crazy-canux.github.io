@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="generator" content="Hugo 0.147.9">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morgoth - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="home">
+    <h1>Morgoth</h1>
+    <p></p>
+    
+    <section class="recent-posts">
+        <h2>Recent Posts</h2>
+        <ul class="post-list">
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/testing_selenium/">Selenium</a></h2>
+                    <div class="post-meta">
+                        <time>February 25, 2017</time>
+                        
+                            
+                                <span class="category">DevOps</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="selenium">Selenium</h1>
+<p><a href="https://github.com/SeleniumHQ/selenium">https://github.com/SeleniumHQ/selenium</a></p>
+<p>用于基于浏览器的web应用的自动化测试工具集．</p>
+<pre><code>selenium1: deprecated.
+selenium2: 默认支持firefox&lt;=46. 支持python2.6+, python3.2+
+selenium3: 支持firefox47+, 所有浏览器都需要安装webdriver.支持python2.6+, python3.3+, 必须重启OS.
+</code></pre>
+<p>支持python, java, javascript等API.</p>
+<p>默认安装selenium3:</p>
+<pre><code>$ pip install selenium
+</code></pre>
+<p>selenium3需要安装相应浏览器的driver, 然后重启OS:</p>
+<p>selenium, driver, browser三个版本都需要兼容才能工作．</p>
+<pre><code>winfows放在C:\Python\Scripts\
+linux放在/usr/local/bin/
+</code></pre>
+<p><a href="https://sites.google.com/a/chromium.org/chromedriver/downloads">https://sites.google.com/a/chromium.org/chromedriver/downloads</a></p>
+<p><a href="https://github.com/mozilla/geckodriver/releases">https://github.com/mozilla/geckodriver/releases</a></p>
+<p>[Deprecated] Remote Control: 也就是selenium1.selenium2依然保留了selenium1的API.但是selenium3会彻底删除RC的API.</p>
+<p>[Deprecated] IDE: selenium IDE是一个firefox的插件，用于记录浏览器上的测试步骤，能用于生成测试代码，并且转换成编程语言．但是已经被WebDriver取代．</p>
+<hr>
+<h1 id="webdriver">WebDriver</h1>
+<p>也就是selenium2.已经取代了selenium RC和selenium IDE.</p>
+<p>python的API参考python博客．</p>
+<hr>
+<h1 id="grid">Grid</h1>
+<p>Selenium Grid用于分布式测试</p>
+<hr>
+<h1 id="定位元素">定位元素</h1>
+<p>对应的python的API参考python博文．</p>
+<p>selenium提供８种定位web页面中元素的方法：</p>
+<ul>
+<li>id</li>
+<li>name</li>
+<li>class</li>
+<li>tag</li>
+<li>link</li>
+<li>partial_link</li>
+<li>通过xpath</li>
+<li>通过css</li>
+</ul>
+<p>在浏览器通过F12快捷键进入调试模式获取．</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/testing_robotframework/">RobotFramework</a></h2>
+                    <div class="post-meta">
+                        <time>February 25, 2017</time>
+                        
+                            
+                                <span class="category">DevOps</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="robot-framework">Robot Framework</h1>
+<p><a href="https://github.com/robotframework/robotframework">https://github.com/robotframework/robotframework</a></p>
+<p><a href="https://github.com/robotframework/QuickStartGuide">https://github.com/robotframework/QuickStartGuide</a></p>
+<p>支持python和java的API.</p>
+<p>Robot Framework is a generic test automation framework for acceptance testing and acceptance test-driven development (ATDD).</p>
+<p>Install:</p>
+<pre><code>$ pip install robotframework
+</code></pre>
+<p>Modular:</p>
+<ul>
+<li>Test Data</li>
+<li>Robot Framework(test data syntax)</li>
+<li>Test Libraries(test library API) + Test Tools</li>
+<li>System under Test(system interface)</li>
+</ul>
+<p>Use:</p>
+<pre><code>$ robot --version
+$ robot [options] data_sources
+</code></pre>
+<p>会生成三个文件：</p>
+<ul>
+<li>output.xml</li>
+<li>log.html</li>
+<li>report.html</li>
+</ul>
+<hr>
+<h1 id="setting-table">setting table</h1>
+<pre><code>*** Settings ***
+# 前三个是加载外部文件
+Library    Selenium2Library # 需要在sys.path路径里面
+Resource    ${RESOURCES}/common.tsv
+Variables    ${RESOURCES}/common.py
+Documentation    Docs
+Metadata    Version    2.0
+Suite Setup
+Suite Teardown
+Force Tags
+Default Tags
+Test Setup
+Test Teardown
+Test Template
+Test Timeout
+</code></pre>
+<h1 id="test-case-table">Test Case table</h1>
+<p><a href="https://github.com/robotframework/HowToWriteGoodTestCases">https://github.com/robotframework/HowToWriteGoodTestCases</a></p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/cloud_openstack/">OpenStack</a></h2>
+                    <div class="post-meta">
+                        <time>February 23, 2017</time>
+                        
+                            
+                                <span class="category">Cloud</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="openstack">OpenStack</h1>
+<p><a href="https://github.com/openstack">https://github.com/openstack</a></p>
+<p><a href="https://github.com/openstack-dev">https://github.com/openstack-dev</a></p>
+<p>openstack是一个云操作系统，通过数据中心可控制大型的计算，存储，网络等资源池．</p>
+<p>所有的管理通过前端的界面管理员就可以完成，同样也可以通过web接口让最终的用户部署资源．</p>
+<p>openstack的设计原则：</p>
+<p><a href="https://wiki.openstack.org/wiki/BasicDesignTenets">https://wiki.openstack.org/wiki/BasicDesignTenets</a></p>
+<hr>
+<h1 id="horizon---openstack-dashboard">horizon - OpenStack Dashboard</h1>
+<p>控制面板</p>
+<p><a href="https://github.com/openstack/horizon">https://github.com/openstack/horizon</a></p>
+<hr>
+<h1 id="keystone---openstack-identity">keystone - OpenStack Identity</h1>
+<p>认证服务</p>
+<p><a href="https://github.com/openstack/keystone">https://github.com/openstack/keystone</a></p>
+<hr>
+<h1 id="nova---openstack-compute">nova - OpenStack Compute</h1>
+<p>计算服务</p>
+<p><a href="https://github.com/openstack/nova">https://github.com/openstack/nova</a></p>
+<hr>
+<h1 id="swift---openstack-storage">swift - OpenStack Storage</h1>
+<p>存储服务</p>
+<p><a href="https://github.com/openstack/swift">https://github.com/openstack/swift</a></p>
+<hr>
+<h1 id="neutron---openstack-networking">neutron - OpenStack Networking</h1>
+<p>网络服务(原名quantum)</p>
+<p><a href="https://github.com/openstack/neutron">https://github.com/openstack/neutron</a></p>
+<hr>
+<h1 id="glance---openstack-image-management">glance - OpenStack Image Management</h1>
+<p>镜像管理</p>
+<p><a href="https://github.com/openstack/glance">https://github.com/openstack/glance</a></p>
+<hr>
+<h1 id="cinder---openstack-block-storage">cinder - OpenStack Block Storage</h1>
+<p>块存储服务</p>
+<p><a href="https://github.com/openstack/cinder">https://github.com/openstack/cinder</a></p>
+<hr></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/linux_makefile/">Makefile</a></h2>
+                    <div class="post-meta">
+                        <time>January 12, 2017</time>
+                        
+                            
+                                <span class="category">Linux</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="make">Make</h1>
+<p>make的作用：</p>
+<ul>
+<li>控制源代码的编译</li>
+<li>手册页的编写</li>
+<li>将应用程序安装到目标目录</li>
+</ul>
+<p>make的使用规则：</p>
+<ul>
+<li>如果工程没有编译过，需要编译所有源文件和链接所有目标文件．</li>
+<li>如果工程里某几个目标文件被修改，只需要编译修改的源文件，并链接所有目标文件．</li>
+<li>如果头文件被修改，只需要编译引用了被修改的头文件的源文件，并链接所有目标文件．</li>
+</ul>
+<p>makefile文件查找顺序：</p>
+<ul>
+<li>当前目录找makefile</li>
+<li>当前目录找Makefile</li>
+<li>当前目录找GNUmakefile</li>
+</ul>
+<h1 id="make命令">make命令</h1>
+<p>make命令会执行当前目录的makefile/Makefile/GNUmakefile文件．</p>
+<pre><code>make [options] [target] ...
+-f FILE, --file=FILE, --makefile=FILE    # 指定makefile文件
+-n, --just-print, --dry-run, --recon # 只打印，不执行
+-k, --keep-going　# 忽略错误继续执行
+
+make
+make all
+make install
+make clean
+</code></pre>
+<p>make的工作顺序：</p>
+<ul>
+<li>读入所有makefile文件</li>
+<li>读入include的其它makefile文件</li>
+<li>初始化变量</li>
+<li>推导隐晦规则，分析所有规则</li>
+<li>为所有目标文件创建依赖关系链</li>
+<li>根据依赖关系决定哪些目标需要重新生成</li>
+<li>执行生成的命令</li>
+</ul>
+<h1 id="makefile语法">makefile语法</h1>
+<p>make命令执行makefile文件时，会比较target和prerequisites的时间戳，如果后者比前者新，或者前者不存在，就会执行command,否则会跳过command.</p>
+<p>其中#表示注释，\表示续行．@表示该命令的执行不会打印到stdout,-表示忽略错误继续执行．</p>
+<p>makefile中的command必须以tab开头，target和prerequisites有多个时用空格分开．</p>
+<pre><code># comment
+target...: prerequisites...
+    command
+    command1 too \
+    long
+    @command2
+    -command3
+    ...
+</code></pre>
+<p>makefile变量赋值:</p>
+<pre><code>var=val
+var := val  覆盖之前的值
+var ?= val  如果没有被赋值过，就赋值
+var += val  添加一个值
+</code></pre>
+<p>通过命令定义变量：</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/metrics_grafana/">Grafana</a></h2>
+                    <div class="post-meta">
+                        <time>January 12, 2017</time>
+                        
+                            
+                                <span class="category">DevOps</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="grafana">Grafana</h1>
+<p>The tool for beautiful monitoring and metric analytics &amp; dashboards for Graphite, InfluxDB &amp; Prometheus &amp; More.</p>
+<p><a href="https://github.com/grafana/grafana">https://github.com/grafana/grafana</a></p>
+<p>支持多种data source:</p>
+<p>graphite/influxdb/opentsdb/premetheus/elasticsearch/mysql/postgresql</p>
+<p>安装配置参考官方文档</p>
+<p>grafana配置文件是grafana.ini.</p>
+<hr>
+<h1 id="http-api">HTTP API</h1>
+<pre><code>port = 3000
+</code></pre>
+<h2 id="dashboard">dashboard</h2>
+<p>create/update dashboard:</p>
+<p>将datasource设置成变量，然后导出的json文件就可以直接导入了．</p>
+<p>dashboard.id=null才能创建新dashboard.</p>
+<pre><code>post /api/dashboards/db
+data = json.dumps({
+    &quot;dashboard&quot;: {
+        &quot;id&quot;: null,
+        ...
+    },
+    &quot;folderId&quot;: 0,
+    &quot;overwrite&quot;: True, # True for python, true for go.
+    &quot;message&quot;: &quot;commit message&quot;
+})
+</code></pre>
+<h2 id="datasource">datasource</h2>
+<p>create datasource:</p>
+<pre><code>post /api/datasources
+data = json.dumps({
+    &quot;name&quot;:
+    &quot;type&quot;:
+    &quot;url&quot;:
+    &quot;database&quot;:
+    &quot;access&quot;: &quot;proxy&quot;
+})
+</code></pre>
+<h2 id="alert">alert</h2>
+<p>create alert notification/channel:</p></p>
+                    
+                </li>
+            
+        </ul>
+    </section>
+    
+    
+        <a href="/page/29/">← Previous</a>
+    
+    
+        <a href="/page/31/">Next →</a>
+    
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

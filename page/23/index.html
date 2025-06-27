@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="generator" content="Hugo 0.147.9">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morgoth - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="home">
+    <h1>Morgoth</h1>
+    <p></p>
+    
+    <section class="recent-posts">
+        <h2>Recent Posts</h2>
+        <ul class="post-list">
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/gsl_database/">GSL_database</a></h2>
+                    <div class="post-meta">
+                        <time>January 1, 2018</time>
+                        
+                            
+                                <span class="category">Golang</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="databasesql">database/sql</h1>
+<p>使用该包，必须提供一个数据库驱动</p>
+<p><a href="https://github.com/golang/go/wiki/SQLDrivers">https://github.com/golang/go/wiki/SQLDrivers</a></p>
+<p>mssql driver:</p>
+<p><a href="https://github.com/denisenkom/go-mssqldb">https://github.com/denisenkom/go-mssqldb</a></p>
+<p>mysql driver:</p>
+<p><a href="https://github.com/go-sql-driver/mysql">https://github.com/go-sql-driver/mysql</a></p>
+<p>postgresql driver:</p>
+<p><a href="https://github.com/lib/pq">https://github.com/lib/pq</a></p>
+<p><a href="https://github.com/jackc/pgx">https://github.com/jackc/pgx</a></p>
+<h2 id="variables">variables</h2>
+<pre><code>// QueryRow 没有返回row时，调用返回值的Scan方法会返回该变量
+var ErrNoRows = errors.New(&quot;sql: no rows in result set&quot;)
+</code></pre>
+<h2 id="functions">functions</h2>
+<pre><code>// 注册并命名一个数据库，在Open中使用该命名启用该驱动
+// 如果注册同一名称两次或者driver参数为nil, 会导致panic.
+Register(name string, driver driver.Driver)
+</code></pre>
+<h2 id="db">DB</h2>
+<p>DB是一个数据库句柄，代表一个具有零到多个底层连接的连接池．</p>
+<p>可以安全的被多个go程同时使用．</p>
+<p>struct:</p>
+<pre><code>type DB struct {}
+</code></pre>
+<p>functions:</p>
+<pre><code>// 验证数据库驱动和参数,并不创建和数据库的连接．
+// driverName: mssql, mysql, postgres
+// mssql dataSourceName: &quot;server=%s;port=%d;database=%s;user id=%s;password=%s&quot;
+// mysql dataSourceName: &quot;user:password@tcp(server:port)/database&quot;
+Open(driverName, dataSourceName string) (*DB, error)
+</code></pre>
+<p>methods:</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/gsl_data/">GSL_data</a></h2>
+                    <div class="post-meta">
+                        <time>January 1, 2018</time>
+                        
+                            
+                                <span class="category">Golang</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="time">time</h1>
+<h2 id="constants">constants</h2>
+<p>const:</p>
+<pre><code>const (
+    ANSIC       = &quot;Mon Jan _2 15:04:05 2006&quot;
+    Unixdate    = &quot;Mon Jan _2 15:04:05 MST 2006&quot;
+    RFC3339     = &quot;2006-01-02T15:04:05Z07:00&quot;
+    ...
+)
+</code></pre>
+<h2 id="functions">functions</h2>
+<pre><code>// 阻塞go程d代表的时间段
+func Sleep(d Duration)
+
+func After(d Duration) &lt;- chan Time
+
+func Tick(d Duration) &lt;- chan Time
+</code></pre>
+<h2 id="time-1">Time</h2>
+<p>代表一个纳秒精度的时间点.</p>
+<p>零值是January 1, year 1, 00:00:00.000000000 UTC.</p>
+<p>struct:</p>
+<pre><code>type  Time struct {}
+</code></pre>
+<p>functions:</p>
+<pre><code>// 格式化一个时间, eg:　2009-11-10 15:00:00 -0800 PST
+func date(year int, month Month, day, hour, min, sec, nsec int, loc *Location) Time
+
+// 返回当前本地时间, eg: 2018-03-18 12:16:55.842029 +0800 CST m=+0.001962301
+func Now() Time
+
+func Parse(layout, value s tring) (Time, error)
+
+func ParseInLocation(layout, value string, loc *Location) (Time, error)
+
+func Unix(sec int64, nsec int64) Time
+</code></pre>
+<p>methods:</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/gsl_cryptographic/">GSL_cryptographic</a></h2>
+                    <div class="post-meta">
+                        <time>January 1, 2018</time>
+                        
+                            
+                                <span class="category">Golang</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="crypto">crypto</h1>
+<p>收集了常用的密码常量</p>
+<h2 id="functions">functions</h2>
+<pre><code>RegisterHash(h Hash, f func() hash.Hash)
+</code></pre>
+<h2 id="publickey">PublicKey</h2>
+<p>interface:</p>
+<pre><code>type PublicKey interface{}
+</code></pre>
+<h2 id="privatekey">PrivateKey</h2>
+<p>interface:</p>
+<pre><code>type PrivateKey interface{}
+</code></pre>
+<h2 id="hash">Hash</h2>
+<pre><code>type Hash uint
+</code></pre>
+<p>method:</p>
+<pre><code>func (h Hash) Avaliable() bool
+func (h Hash) Size() int
+func (h Hash) New() hash.Hash
+</code></pre>
+<hr>
+<h1 id="cryptocipher">crypto/cipher</h1>
+<p>用于包装底层块加密算法的实现.</p>
+<h2 id="block">Block</h2>
+<p>代表一个使用特定密钥的底层　加／解密器．</p>
+<pre><code>type Block interface {
+    BlockSize() int
+    Encrypt(dst, src []byte)
+    Decrypt(dst, src []byte)
+}
+</code></pre>
+<h2 id="blockmode">BlockMode</h2>
+<p>代表一个工作在块模式(CBC, ECB等)的加／解密器</p>
+<pre><code>type BlockMode interface {
+    BlockSize() int
+    CryptBlocks(dst, src []byte)
+}
+</code></pre>
+<p>function:</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/gsl_concurrency/">GSL_concurrency</a></h2>
+                    <div class="post-meta">
+                        <time>January 1, 2018</time>
+                        
+                            
+                                <span class="category">Golang</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="sync">sync</h1>
+<p>sync用于goroutine同步.</p>
+<pre><code>import &quot;sync&quot;
+</code></pre>
+<h2 id="constants">constants</h2>
+<h2 id="variables">variables</h2>
+<h2 id="functions">functions</h2>
+<h2 id="locker">Locker</h2>
+<p>一个可以加锁和解锁的接口</p>
+<pre><code>type Locker interface {
+    Lock()
+    Unlock()
+}
+</code></pre>
+<h2 id="pool">Pool</h2>
+<p>Pool是一个可以分别存取的临时对象的集合。</p>
+<h2 id="once">Once</h2>
+<p>只执行一次动作的对象(单例模式)</p>
+<pre><code>type Once struct {}
+</code></pre>
+<p>method:</p>
+<pre><code>// 只有第一次调用才执行
+func (o *Once) Do(f func())
+</code></pre>
+<h2 id="mutex">Mutex</h2>
+<p>互斥锁,锁和线程无关，可以由不同的线程加锁和解锁.</p>
+<p>Mutex的初始值为未锁的状态，并且Mutex通常作为结构体的匿名成员存在。</p>
+<p>同一时刻只能有一个线程进入临界区.</p>
+<pre><code>type Mutex struct {}
+
+Mutex
+</code></pre>
+<p>method:</p>
+<pre><code>// 加锁，如果已经加锁，阻塞至m解锁．
+func (m *Mutex) Lock()
+
+// 解锁，如果没有加锁，导致panic
+func (m *Mutex) Unlock()
+</code></pre>
+<h2 id="rwmutex">RWMutex</h2>
+<p>读写互斥锁,可以由不同的线程加锁和解锁.</p>
+<pre><code>type RWMutex struct {}
+</code></pre>
+<p>method:</p>
+<pre><code>// 锁定为写入状态，禁止其它线程读写，一次只能有一个线程持有。
+func (rw *RWMutex) Lock()
+
+// 解除写入锁定，如果没有加锁，导致panic
+func (rw *RWMutex) Unlock()
+
+// 锁定为读取状态，禁止其他线程写入，多个线程可以同时持有读锁。
+func (rw *RWMutex) RLock()
+
+// 解除读取锁，如果没有加锁，导致panic.
+func (rw *RWMutex) RUnlock()
+</code></pre>
+<h2 id="cond">Cond</h2>
+<p>条件变量.</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/gsl_builtin/">GSL_builtin</a></h2>
+                    <div class="post-meta">
+                        <time>January 1, 2018</time>
+                        
+                            
+                                <span class="category">Golang</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="builtin">builtin</h1>
+<p><a href="https://golang.org/pkg/builtin/">https://golang.org/pkg/builtin/</a></p>
+<p>go的builtin package.</p>
+<h2 id="constants">constants</h2>
+<pre><code>true
+false
+iota
+</code></pre>
+<h2 id="variables">variables</h2>
+<p>pointer, slice, map, channel, func, interface的零值：</p>
+<pre><code>nil
+</code></pre>
+<h2 id="functions">functions</h2>
+<pre><code># 分配并初始化各种类型的对象, 返回一个指针．
+new(Type) *Type
+
+# 分配并初始化一个Slice/Map/Channel的对象,返回相同类型的对象.
+make(t Type, size ...IntegerType) Type
+
+# 返回容量，　Array/ArrayPointer/Slice/Channel
+cap(v Type) int
+
+# 返回长度，　String/Array/ArrayPointer/Slice/Map/Channel
+len(v Type) int
+
+print(args ...Type)
+
+println(args ...Type)
+</code></pre>
+<p>complex:</p>
+<pre><code># 把两个浮点数构造成一个复数
+complex(r, i FloatType) ComplexType
+
+# 返回复数c的实部
+real(c ComplexType) FloatType
+
+# 返回复数c的虚部
+imag(c ComplexType) FloatType
+</code></pre>
+<p>slice:</p>
+<pre><code># 向切片末尾追加元素，返回新的切片．切片长度增加.
+# 如果长度超过底层数组长度，就创建了一个新的底层数组. 否则底层数组不变．
+# 在元素不超过1000的情况下，自动创建的底层数组容量翻倍.
+append(slice []Type, elems ...Type) []Type
+
+# 复制一个切片, 返回复制的元素的个数
+copy(dst, src []Type) int
+</code></pre>
+<p>map:</p></p>
+                    
+                </li>
+            
+        </ul>
+    </section>
+    
+    
+        <a href="/page/22/">← Previous</a>
+    
+    
+        <a href="/page/24/">Next →</a>
+    
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

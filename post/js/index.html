@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="single-post">
+    <article>
+        <header>
+            <h1>JavaScript</h1>
+            <div class="post-meta">
+                <time>March 13, 2017</time>
+                
+                    
+                        <span class="category">Web</span>
+                    
+                
+                
+                    
+                        <span class="tag">#javascript</span>
+                    
+                
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <h1 id="javascript概述">JavaScript概述</h1>
+<p>Javascript包括三部分:</p>
+<ol>
+<li>ECMAScript核心,提供核心语言功能．</li>
+<li>DOM文档对象模型, 提供访问和操作网页内容的方法和接口．</li>
+<li>BOM浏览器对象模型, 提供与浏览器交互的方法和接口．</li>
+</ol>
+<p>ES5.0 (2009)
+ES5.1 (2011, ISO/IEC)
+ES6.0 (2015)</p>
+<hr>
+<h1 id="javascript基本语法">javascript基本语法</h1>
+<p>javascript源程序叫xxx.js.</p>
+<p>javascript大小写敏感．</p>
+<p>javascript使用驼峰命名法．</p>
+<p>javascript的标识符以字母，下划线或美元符号开头，还可以包含数字．不能是关键字．</p>
+<p>JvaScript代码块以大括号{}包围,开括号写在第一行结尾处，前面空格，闭括号单独一行。</p>
+<p>javascript中所有事物都是对象，都有属性和方法.</p>
+<p>JavaScript使用分号;表示一个语句结束, 一般一行写多个语句才需要显示添加分号．</p>
+<p>javascript中运算符周围要有空格。</p>
+<p>javascript中使用四个空格来缩进。</p>
+<p>javascript不支持goto。</p>
+<hr>
+<h1 id="注释">注释</h1>
+<p>单行注释：</p>
+<pre><code>// comment
+</code></pre>
+<p>多行注释：</p>
+<pre><code>/*
+ * comment1
+ * comment2
+ */
+</code></pre>
+<hr>
+<h1 id="关键字">关键字</h1>
+<pre><code># 数据类型
+var function return typeof new delete
+
+# 流程控制
+if else for in do while switch case default with break continue
+
+# 修饰符
+void
+
+# 动作相关
+instanceof this
+
+# 异常处理
+try catch throw
+
+# 调试
+debugger
+
+# ECMAScript2015
+let const
+</code></pre>
+<hr>
+<h1 id="运算符和优先级">运算符和优先级</h1>
+<h2 id="算数运算符">算数运算符</h2>
+<pre><code>+
+-
+* 
+**
+/
+%
+++
+--
+</code></pre>
+<h2 id="赋值运算符">赋值运算符</h2>
+<pre><code>=
++=
+-=
+*=
+/=
+%=
+&lt;&lt;=
+&gt;&gt;=
+&gt;&gt;&gt;=
+&amp;=
+^=
+|=
+**=
+</code></pre>
+<h2 id="比较运算符">比较运算符</h2>
+<pre><code>// 在比较值钱进行类型转换.
+==
+
+// 强制对值和类型进行比较.
+===
+
+!=
+
+!==
+
+&gt;
+&lt;
+&gt;=
+&lt;=
+
+// 三元运算符
+?
+</code></pre>
+<h2 id="逻辑运算符">逻辑运算符</h2>
+<pre><code>// 逻辑与
+&amp;&amp;
+
+// 逻辑或
+||
+
+// 逻辑非
+!
+</code></pre>
+<h2 id="类型运算符">类型运算符</h2>
+<pre><code>typeof
+
+instanceof
+</code></pre>
+<h2 id="位运算符">位运算符</h2>
+<pre><code>&amp;
+|
+~
+^
+&lt;&lt;
+&gt;&gt;
+&gt;&gt;&gt;
+</code></pre>
+<hr>
+<h1 id="数据类型">数据类型</h1>
+<h2 id="var申明变量">var申明变量</h2>
+<p>通过var申明的变量没有块作用域，在块之外也能访问.</p>
+<p>申明变量:</p>
+<p>重复申明同名变量不会改变变量的值．</p>
+<pre><code>var varName;
+// 一次申明多个变量
+var varName1, varName2, ...;
+</code></pre>
+<p>赋值:</p>
+<pre><code>varName = varValue;
+</code></pre>
+<p>申明并赋值:</p>
+<p>动态类型语言，变量可以赋予不同类型值.</p>
+<pre><code>var varName = varValue;
+// 一次定义多个变量
+var varName1 = varValue1, varName2=varValue2, ...;
+</code></pre>
+<p>申明变量类型:</p>
+<pre><code>var varName = new Boolean/Number/String/Array/Object;
+</code></pre>
+<h2 id="let申明变量">let申明变量</h2>
+<p>通过let申明有块作用域的变量.</p>
+<pre><code>{
+    let varName = varValue;
+}
+</code></pre>
+<p>let不能多次申明同一个变量。</p>
+<h2 id="const申明常量">const申明常量</h2>
+<p>const定义的变量与let相似， 但不能重新赋值.</p>
+<p>它没有定义常量值。它定义了对值的常量引用。</p>
+<pre><code>{
+    const varName = varValue;
+}
+</code></pre>
+<p>常量对象的属性可以修改：</p>
+<pre><code>const car = {type:&quot;porsche&quot;, model:&quot;911&quot;, color:&quot;black&quot;};
+car.color = &quot;white&quot;;
+</code></pre>
+<p>常量数组元素可以修改：</p>
+<pre><code>const cars = [&quot;audi&quot;, &quot;bmw&quot;];
+cars[0] = &quot;honda&quot;;
+</code></pre>
+<h2 id="布尔boolean">布尔/Boolean</h2>
+<p>布尔类型只有true和false两个值．</p>
+<pre><code>var x = true
+var y = false
+</code></pre>
+<h2 id="数字number">数字/Number</h2>
+<pre><code>var name = 1.3
+</code></pre>
+<h2 id="字符串string">字符串/String</h2>
+<p>字符串可以用单引号或双引号表示.</p>
+<pre><code>var name = &quot;string&quot;
+</code></pre>
+<h2 id="null">Null</h2>
+<p>Null类型只有一个特殊值null.表示一个空对象指针.</p>
+<p>通过null清空变量的值．</p>
+<pre><code>varName = null
+</code></pre>
+<h2 id="undefined">Undefined</h2>
+<p>没有赋值的变量值为undefined.</p>
+<p>Undefined类型只有一个特殊值undefined.</p>
+<h2 id="对象object">对象/Object</h2>
+<p>对象由大括号包围的键值对表示，中间用逗号隔开.</p>
+<p>定义对象：</p>
+<pre><code>var obj = new Object;
+
+var obj = {key: &quot;val&quot;, key1: &quot;val1&quot;};
+
+var obj = {
+    firstName: &quot;bill&quot;, // 冒号后空格.
+    lastName: &quot;gates&quot; // 最后一个不要都好.
+};  
+</code></pre>
+<p>访问对象属性:</p>
+<pre><code>val = obj.key
+val = obj[&quot;key&quot;]
+</code></pre>
+<p>访问对象方法:</p>
+<pre><code>obj.method()
+</code></pre>
+<h2 id="typeof">typeof</h2>
+<p>该操作符可以返回数据类型:</p>
+<pre><code>undefined
+boolean
+number
+string
+object
+function
+</code></pre>
+<hr>
+<h1 id="控制流">控制流</h1>
+<h2 id="if">if</h2>
+<pre><code>if (condition) {
+    expression;
+}
+
+if (condition) {
+    expression;
+} else {
+    expression;
+}
+
+if (condition) {
+    expression;
+} else if (condition) {
+    expression;
+} else {
+    expression;
+}
+</code></pre>
+<h2 id="switch">switch</h2>
+<pre><code>switch(expression) {
+    case value:
+        statement;
+        break;
+    case value:
+        statement;
+        break;
+    ...
+    default:
+        statement;
+}
+</code></pre>
+<h2 id="for">for</h2>
+<p>for:</p>
+<pre><code>for (initialization; expression; post-loop-expression) {
+    statement;
+}
+</code></pre>
+<p>for-in:</p>
+<p>循环遍历对象的属性</p>
+<pre><code>for (property in object) {
+    statement;
+}
+</code></pre>
+<h2 id="while">while</h2>
+<p>do-while:</p>
+<pre><code>do {
+    statement;
+} while (condition);
+</code></pre>
+<p>while:</p>
+<pre><code>while (condition) {
+    statement;
+}
+</code></pre>
+<h2 id="with">with</h2>
+<p>将代码作用于设定到一个特定对象.</p>
+<pre><code>with (expression) {
+    statement;
+}
+</code></pre>
+<h2 id="break和continue">break和continue</h2>
+<p>label:</p>
+<p>break和continue都可以和label配合使用.</p>
+<pre><code>labelName: statement
+</code></pre>
+<p>break:</p>
+<p>跳出循环(for, while).</p>
+<pre><code>labelName:
+for () {
+    for () {
+        if () {
+            break labelName; # 跳出最外层循环
+        }
+    }
+}
+</code></pre>
+<p>continue:</p>
+<p>继续下一次循环.</p>
+<pre><code>labelName:
+for () {
+    for () {
+        if () {
+            continue labelName; # 从外层循环继续循环
+        }
+    }
+}
+</code></pre>
+<hr>
+<h1 id="文件和输入输出">文件和输入输出</h1>
+<h2 id="输出">输出</h2>
+<p>alert写入警告框：</p>
+<pre><code>window.alert(10);
+</code></pre>
+<p>write写入html：</p>
+<pre><code>document.write(10);
+</code></pre>
+<p>innerHTML写入html:</p>
+<pre><code>document.getElementById(&quot;demo&quot;).innerHTML = 10;
+</code></pre>
+<p>console.log写入浏览器控制台:</p>
+<pre><code>// 可以在js代码或调试窗口打印变量值：
+console.log(10);
+</code></pre>
+<h2 id="输入">输入</h2>
+<p>prompt</p>
+<p>alert和prompt会跳过渲染先被执行。</p>
+<hr>
+<h1 id="函数">函数</h1>
+<p>定义函数：</p>
+<pre><code>// 没参数
+function funcName() {
+}
+
+// 带参数
+function funcName(args) {
+}
+
+// 使用变量
+var name = function(args) {};
+
+// 使用构造方法
+var name = new Function(args, return value);
+</code></pre>
+<p>函数返回值:</p>
+<pre><code>function funcName() {
+    return ...
+}
+
+// 函数返回值赋值给变量
+var value = funcName()
+</code></pre>
+<p>js的函数形式参数和实际参数可以是任意个数和任意类型．</p>
+<p>函数内部定义的变量是局部变量,局部变量在函数运行后被删除．</p>
+<p>如果把值赋给未申明的变量，该变量被自动作为全局变量．</p>
+<pre><code>name = &quot;value&quot; 相当于全局变量
+</code></pre>
+<p>函数内部属性:</p>
+<p>函数内部两个特殊对象arguments和this.</p>
+<pre><code>arguments // 用来存储该函数的所有参数
+arguments.callee // 指针，指向该函数本身.
+
+this // 表示函数调用语句所处的作用域
+window // 当在全局调用this，引用的就是window对象.
+
+// 调用函数
+apply()
+call()
+</code></pre>
+<hr>
+<h1 id="错误和异常">错误和异常</h1>
+<p>try-catch:</p>
+<pre><code>try {
+    statement;
+} catch(err) {
+    statement;
+}
+</code></pre>
+<p>throw:</p>
+<pre><code>throw exception
+</code></pre>
+<h2 id="严格模式">严格模式</h2>
+<p>通过在脚本或函数开头添加严格模式：</p>
+<p>严格模式在不声明变量的情况下使用变量，是不允许的</p>
+<pre><code>&quot;use strict&quot;;
+......
+</code></pre>
+<h2 id="debugger调试">debugger调试</h2>
+<p>debugger关键字会停止js的执行，如果有调试函数就调用。</p>
+<p>如果调试器打开，会在debugger停止执行，如果没有打开调试器，会继续运行。</p>
+<pre><code>var x = 10;
+debugger;
+document.getElementbyId(&quot;demo&quot;).innerHTML = x;
+</code></pre>
+<hr>
+<h1 id="模块和包">模块和包</h1>
+<h3 id="commonjs">commonjs</h3>
+<p>for old nodejs projects.</p>
+<pre><code>// import
+require()
+// export
+module.exports
+</code></pre>
+<p>支持单个对象，可以是默认对象</p>
+<p>extention: &ldquo;*.js&rdquo;</p>
+<h3 id="es">ES</h3>
+<p>for new nodejs projects.</p>
+<pre><code>// import
+import * from *
+// export
+export &lt;function&gt;
+</code></pre>
+<p>默认导出和命名导出都可以。</p>
+<p>extention: *.mjs&quot;</p>
+<hr>
+<h1 id="文档">文档</h1>
+<hr>
+<h1 id="jsx">JSX</h1>
+<p>JSX 是 JavaScript 语法扩展，可以让你在 JavaScript 文件中书写类似 HTML 的标签。虽然还有其它方式可以编写组件，但大部分 React 开发者更喜欢 JSX 的简洁性，并且在大部分代码库中使用它。</p>
+
+        </div>
+    </article>
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

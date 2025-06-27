@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esxi - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="single-post">
+    <article>
+        <header>
+            <h1>Esxi</h1>
+            <div class="post-meta">
+                <time>April 5, 2016</time>
+                
+                    
+                        <span class="category">Virtualization</span>
+                    
+                
+                
+                    
+                        <span class="tag">#esxi</span>
+                    
+                
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <h1 id="vmware">VMware</h1>
+<p>vSphere是vmware的虚拟化平台,包括ESXi和vSphere Client.</p>
+<p>vSphere Hypervisor(也叫ESXi)是vSphere的免费裸机hypervisor. 把物理机虚拟出多个虚拟机．</p>
+<p>vSphere client是vSphere的简单管理工具．只能管理一台ESXi物理机和上面的虚拟机．</p>
+<p>vCenter Server是vSphere的高级管理系统．需单独购买．</p>
+<hr>
+<h1 id="配置管理">配置管理</h1>
+<p>开启虚拟机copy/paste功能：</p>
+<pre><code># 通过vsphere client
+edit properties -&gt; Options -&gt; Advanced -&gt; General -&gt; configuration Parameters
+# isolation.tools.copy.disable    false
+# isolation.tools.paste.disable    false
+</code></pre>
+<p>开启虚拟机的虚拟化功能：</p>
+<pre><code># 通过ssh到esxi服务器
+$ vim /vmfs/volumes/datastore1/Ubuntu1604/Ubuntu1604.vmx
+vhv.enable = &quot;TRUE&quot; # 添加到最后一行
+</code></pre>
+<p>创建的vm命名不能带小数点.</p>
+<hr>
+<h1 id="命令">命令</h1>
+<p>vim-cmd:</p>
+<pre><code>vim-cmd vmsvc/getallvms # 获取所有虚拟机
+vim-cmd vmsvc/reload
+vim-cmd vmsvc/power.on vmid
+vim-cmd vmsvc/power.shutdown vimid
+vim-cmd vmsvc/power.off vimid
+vim-cmd vmsvc/power.reboot vimid
+
+# power on all vms
+for vm in `vim-cmd vmsvc/getallvms | awk '{if (NR&gt;1) {print $1}}'`;
+do
+    echo &quot;power on ${vm}...&quot;;
+    vim-cmd vmsvc/power.on ${vm}
+done
+</code></pre>
+<p>esxcli:</p>
+<pre><code>esxcli vm process list # 查看所有运行的vm
+esxcli vm process kill --type=[force/soft/hard] --world-id=&lt;world-id&gt; # 关机
+</code></pre>
+<p>esxtop:</p>
+<pre><code># 类似于linux的top命令
+esxtop
+</code></pre>
+<p>vscsiStats:</p>
+<pre><code>vscsiStats -l
+</code></pre>
+<hr>
+<h1 id="python">python</h1>
+<p>pyVmomi is the Python SDK for the VMware vSphere API that allows you to manage ESX, ESXi, and vCenter.</p>
+<p><a href="https://github.com/vmware/pyvmomi">https://github.com/vmware/pyvmomi</a></p>
+<pre><code>pip install pyvmomi
+
+from pyVmomi import vim
+from pyVim import connect
+si = connect.SmartConnect(host='hostname', user='username', pwd='password', port='port')
+
+def find_vm(si, name):
+    ct = si.content
+    ov = ct.viewManager.CreatecontainerView(ct.rootFolder, [vim.VirtualMachine], true)
+    vm_list = ov.view
+    for vm in vm_list:
+        if vm.name == &quot;vmname&quot;:
+            return vm
+    return None
+</code></pre>
+<hr>
+
+        </div>
+    </article>
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

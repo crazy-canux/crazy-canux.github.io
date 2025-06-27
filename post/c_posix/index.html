@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Posix - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="single-post">
+    <article>
+        <header>
+            <h1>Posix</h1>
+            <div class="post-meta">
+                <time>April 2, 2016</time>
+                
+                    
+                        <span class="category">C</span>
+                    
+                
+                
+                    
+                        <span class="tag">#posix</span>
+                    
+                
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <h1 id="posix标准">POSIX标准</h1>
+<p>Portable Operating System Interface</p>
+<p>可移植性操作系统接口, POSIX兼容ISO C。</p>
+<p>所有Unix都遵循，几乎所有Linux都遵循，Windows部分支持。</p>
+<p>POSIX.1/IEEE 1003.1-1990</p>
+<p>POSIX.2/IEEE Std 1003.2-1992/ISO IEC 9945-2:1993)</p>
+<p>POSIX.1.b/IEEE Std 1003.1b-1993/ISO IEC 9945-1:1996)</p>
+<p>POSIX.1.c/IEEE Std 1003.1c-1995</p>
+<p>POSIX.1.d/IEEE  Std  1003.1c-1999</p>
+<p>POSIX.1.g/IEEE Std 1003.1g-2000</p>
+<p>POSIX.1.j/IEEE  Std  1003.1j-2000</p>
+<p>POSIX.1-2001/SUSv3(包括了所有C99的API)</p>
+<p>POSIX.1-2008/SUSv4</p>
+<p>官方网站：</p>
+<p><a href="http://www.opengroup.org/austin/">http://www.opengroup.org/austin/</a></p>
+<h1 id="cygwin">Cygwin</h1>
+<p>提供POSIX的API用于windows上开发Linux/Unix程序。</p>
+<p>源代码不能在windows运行。</p>
+<p><a href="https://cygwin.com/index.html">https://cygwin.com/index.html</a></p>
+<hr>
+<h1 id="posix标准定义的必须头文件">POSIX标准定义的必须头文件</h1>
+<h2 id="direnth">&lt;dirent.h&gt;</h2>
+<h2 id="fcntlh">&lt;fcntl.h&gt;</h2>
+<h2 id="globh">&lt;glob.h&gt;</h2>
+<h2 id="netdbh">&lt;netdb.h&gt;</h2>
+<h2 id="pwdh">&lt;pwd.h&gt;</h2>
+<h2 id="regexh">&lt;regex.h&gt;</h2>
+<h2 id="tarh">&lt;tar.h&gt;</h2>
+<h2 id="termiosh">&lt;termios.h&gt;</h2>
+<h2 id="unistdh">&lt;unistd.h&gt;</h2>
+<h2 id="utimeh">&lt;utime.h&gt;</h2>
+<h2 id="utimeh-1">&lt;utime.h&gt;</h2>
+<h2 id="wordexph">&lt;wordexp.h&gt;</h2>
+<h2 id="arpaineth">&lt;arpa/inet.h&gt;</h2>
+<h2 id="netifh">&lt;net/if.h&gt;</h2>
+<h2 id="netinetinh">&lt;netinet/in.h&gt;</h2>
+<h2 id="netinettcph">&lt;netinet/tcp.h&gt;</h2>
+<h2 id="sysmmanh">&lt;sys/mman.h&gt;</h2>
+<h2 id="sysselecth">&lt;sys/select.h&gt;</h2>
+<h2 id="syssocketh">&lt;sys/socket.h&gt;</h2>
+<h2 id="sysstath">&lt;sys/stat.h&gt;</h2>
+<h2 id="systimesh">&lt;sys/times.h&gt;</h2>
+<h2 id="systypesh">&lt;sys/types.h&gt;</h2>
+<h2 id="sysunh">&lt;sys/un.h&gt;</h2>
+<h2 id="sysutsnameh">&lt;sys/utsname.h&gt;</h2>
+<h2 id="waith">&lt;wait.h&gt;</h2>
+<hr>
+<h1 id="posix标准定义的可选头文件">POSIX标准定义的可选头文件</h1>
+<h2 id="aioh">&lt;aio.h&gt;</h2>
+<h2 id="pthreadh">&lt;pthread.h&gt;</h2>
+<h2 id="semaphoreh">&lt;semaphore.h&gt;</h2>
+<h2 id="mqueueh">&lt;mqueue.h&gt;</h2>
+<h2 id="schedh">&lt;sched.h&gt;</h2>
+<h2 id="spawnh">&lt;spawn.h&gt;</h2>
+<h2 id="stropsh">&lt;strops.h&gt;</h2>
+<h2 id="traceh">&lt;trace.h&gt;</h2>
+<hr>
+<h1 id="posix标准定义的xsi扩展头文件">POSIX标准定义的XSI扩展头文件</h1>
+<h2 id="sysipch">&lt;sys/ipc.h&gt;</h2>
+<h2 id="sysmsgh">&lt;sys/msg.h&gt;</h2>
+<h2 id="syssemh">&lt;sys/sem.h&gt;</h2>
+<h2 id="sysshmh">&lt;sys/shm.h&gt;</h2>
+<h2 id="cpioh">&lt;cpio.h&gt;</h2>
+<h2 id="dlfcnh">&lt;dlfcn.h&gt;</h2>
+<h2 id="fmtmsgh">&lt;fmtmsg.h&gt;</h2>
+<h2 id="ftwh">&lt;ftw.h&gt;</h2>
+<h2 id="iconvh">&lt;iconv.h&gt;</h2>
+<h2 id="langinfoh">&lt;langinfo.h&gt;</h2>
+<h2 id="libgenh">&lt;libgen.h&gt;</h2>
+<h2 id="monetaryh">&lt;monetary.h&gt;</h2>
+<h2 id="ndbmh">&lt;ndbm.h&gt;</h2>
+<h2 id="nl_typesh">&lt;nl_types.h&gt;</h2>
+<h2 id="pollh">&lt;poll.h&gt;</h2>
+<h2 id="searchh">&lt;search.h&gt;</h2>
+<h2 id="stringsh">&lt;strings.h&gt;</h2>
+<h2 id="syslogh">&lt;syslog.h&gt;</h2>
+<h2 id="ucontexth">&lt;ucontext.h&gt;</h2>
+<h2 id="ulimith">&lt;ulimit.h&gt;</h2>
+<h2 id="utmpxh">&lt;utmpx.h&gt;</h2>
+<h2 id="sysresourceh">&lt;sys/resource.h&gt;</h2>
+<h2 id="sysstatvfsh">&lt;sys/statvfs.h&gt;</h2>
+<h2 id="systimeh">&lt;sys/time.h&gt;</h2>
+<h2 id="systimebh">&lt;sys/timeb.h&gt;</h2>
+<h2 id="sysuioh">&lt;sys/uio.h&gt;</h2>
+
+        </div>
+    </article>
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

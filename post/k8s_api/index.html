@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>K8S API - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="single-post">
+    <article>
+        <header>
+            <h1>K8S API</h1>
+            <div class="post-meta">
+                <time>January 10, 2020</time>
+                
+                    
+                        <span class="category">CNCF</span>
+                    
+                
+                
+                    
+                        <span class="tag">#k8s</span>
+                    
+                
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <h1 id="api">API</h1>
+<p>api-server统一的操作入口.</p>
+<p>kubectl, UI, 等都是通过api-server操作资源.</p>
+<p>payload可以是json，也可以是yaml.</p>
+<p>yaml文件中#表示行注释。</p>
+<hr>
+<h1 id="yaml">yaml</h1>
+<p>部署k8s可以通过yaml文件来配置资源.</p>
+<p>资源对象组成部分:</p>
+<pre><code>apiVersion: 
+kind: 
+metadata: 元数据
+spec: 期望的状态
+status: 观测到的状态
+</code></pre>
+<p>查看apiVersion:</p>
+<pre><code>kubectl api-versions
+</code></pre>
+<p>查看Kind:</p>
+<pre><code>kubectl api-resources
+
+# In a namespace
+kubectl api-resources --namespaced=true
+
+# Not in a namespace
+kubectl api-resources --namespaced=false
+</code></pre>
+<p>metadata:</p>
+<pre><code>metadata:
+
+  name:
+  namespace:
+
+  labels/标签: 用户筛选资源，唯一的资源组合方法, 可以使用selector来查询.
+
+  annotations/注解: 存储资源的非标识性信息，扩展资源的spec/status.
+
+  ownerReference/关系: 方便反向查找创建资源的对象，方便进行级联删除。
+</code></pre>
+<p>spec:</p>
+<p>status:</p>
+<hr>
+<h1 id="调度抢占驱逐">调度，抢占，驱逐</h1>
+<p>taints: 污点，使节点排斥特定pod。应用于node。</p>
+<pre><code>taints:
+- effect: NoSchedule
+  key: kubernetes.io/arch
+  value: arm64
+</code></pre>
+<p>tolerations: 容忍度，使pod被吸引到特定节点。应用于pod。
+这个只能让pod能部署到加了污点的node，pod也能部署到其它没有加污点的node。</p>
+<pre><code>tolerations:
+- key: &quot;key1&quot;
+  operator: &quot;Equal&quot;/&quot;Exists&quot;
+  value: &quot;value1&quot;
+  effect: &quot;NoSchedule&quot;/&quot;NoExecute&quot;
+</code></pre>
+<p>affinity: 亲和力，affinity可以通过label指定pod部署到node。
+但是不能保证其它pod不部署到这个node。</p>
+<pre><code>   affinity:
+    nodeAffinity:
+      requiredDuringSchedulingIgnoredDuringExecution:
+        nodeSelectorTerms:
+        - matchExpressions:
+          - key: kubernetes.io/arch
+            operator: In
+            values:
+            - arm64
+</code></pre>
+<p>nodeSelector: 节点选择，</p>
+<pre><code> nodeSelector:
+   kubernetes.io/arch: arm64
+</code></pre>
+<hr>
+<h1 id="pod">Pod</h1>
+<p>pod模板， 通常使用deployment, job和statefulset, daemonset来管理pod.</p>
+<pre><code>apiVersion: v1
+kind: Pod
+metadata:
+  name: test
+  namespace: test
+  labels:
+      app: test
+spec:
+
+  //// containers
+  os:  // 操作系统模板
+    name:
+
+  imagePullSecrets:  // 私有镜像授权
+  - name: my-harbor
+
+  initContainers: //  initcontainer模板
+  - name: init
+    image: my-image
+    command: ...
+    args: ...
+
+  containers: // container 模板
+  - name: test
+    // image
+    image: image
+    imagePullPolicy: Always/IfNotPresent/Never
+
+    // entrypoint
+    command:
+    args:
+    workingDir:
+
+    // port
+    ports:
+
+    // resources
+    resources:
+      requests:  // 申明需要的资源
+        memory: &quot;64Mi&quot;  // byte
+        cpu: &quot;250m&quot;     // millicore (1 core = 1000 millicore)
+        ephemeral-storage: &quot;2Gi&quot; // byte
+      limits:
+        memory: &quot;128Mi&quot;
+        cpu: &quot;500m&quot;
+        ephemeral-storage: &quot;4Gi&quot;
+
+    // environment variables, 针对单个键值对.
+    env:
+    - name: key
+      value: value
+    - name: key
+      valueFrom: // 将cm-name中的值cm-key传给key
+        configMapKeyRef:
+          name: cm-name
+          key: cm-key
+          optional:
+    - name: key
+      valueFrom: // 挂载secret
+        secretKeyRef:
+          key:
+          name:
+          optional:
+        fieldRef:
+        resourceFieldRef:
+
+    // 环境变量，针对文件中所有键值对.
+    envFrom:
+    - configMapRef    // 将my-cm中的所有键值对变成环境变量.
+        name: my-cm
+        optional:
+    - secretRef
+        name: 
+        optional:
+     
+    // volumeMounts (去Volume找对应资源)
+    // 如果没有subpath，整个目录会被覆盖，目录下只有secret/configmap挂载的文件.
+    volumeMounts: // secret以文件形式挂载到/etc/foo
+    - name: my-secret
+      mountPath: &quot;/etc/foo&quot; // 挂载之后覆盖整个目录
+      readOnly: true
+    - name: my-configmap
+      mountPath: &quot;/etc/bar&quot; // 挂载之后覆盖整个目录
+      // 如果有subpath, secret/configmap里的data里的文件名需要与subpath和mountpath指定的文件名一致.
+    - name: config
+      mountPath: /etc/app/app.conf  // 是文件，文件名要和subpath一致。
+      subPath: app.conf // 挂载之后只覆盖目录中同名文件,其它文件不影响.
+
+    // lifecycle
+    livenessProbe:
+      initialDelaySeconds: 10
+      periodSeconds: 10
+      timeoutSeconds: 5
+      httpGet:
+        path: /admin
+        port: django
+        # httpHeaders:
+        # - name: Authorization
+          # value: Basic $LDAP_ACCOUNT
+    readinessProbe:
+      initialDelaySeconds: 10
+      periodSeconds: 10
+      timeoutSeconds: 5
+      httpGet:
+        path: /admin
+        port: django
+        # httpHeaders:
+        # - name: Authorization
+          # value: Basic $LDAP_ACCOUNT
+
+    // securityContext
+    securityContext:
+
+    // debugging
+    stdin: false
+    stdinOnce: false
+    tty: false
+
+  //// security context
+  securityContext: // pod级别security context定义
+    runAsuser: 1000
+    runAsGroup: 3000
+    fsGroup: 2000
+
+  //// volumes
+  volumes:
+  - name: my-secret // 指定要挂载的secret
+    secret:
+      secretName: mysecret
+  - name: my-configmap
+    configMap:
+      name: myconfigmap
+
+  //// lifecycle
+  restartPolicy:
+
+  //// scheduling
+  nodeName:
+  nodeSelector: // 将pod部署到指定node
+    key: value
+  affinity:
+  tolerations:
+
+  //// others
+  hostname:
+  hostNetwork:
+  serviceAccountName:
+</code></pre>
+<p>pod中的container共享存储(pod volume):</p>
+<pre><code>apiVersion: v1
+Kind: Pod
+medadata:
+spec:
+
+  # 两种pod volume
+  volumes:
+  # emptyDir： pod删除之后该目录也会被删除
+  - name: cache-volume
+    emptyDir: {}
+  # hostPath: pod删除之后该目录还在host上. 
+  - name: hostpath-volume
+    hostPath:
+      path: /path/on/host
+
+  containers:
+  - name: container1
+    image: test
+    volumeMounts:
+    - name: cache-volume
+      mountpath: /path/on/container
+      # subPath会在emptyDir或hostPath目录下创建子目录
+      subPath: cache1
+  - name: container2
+    image: test
+    volumeMounts:
+    - name: hostpath-volume
+      mountpath: /path/on/container
+      readOnly: true
+</code></pre>
+<hr>
+<h1 id="deployment">Deployment</h1>
+<p>用于部署无状态服务。</p>
+<pre><code>apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app-deploy
+  namespace: my-ns
+  lables:
+    app: my-app
+spec:
+  replicas: 3
+  # 选择器
+  selector: 
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      containers:
+      - name: my-app
+        image: image:latest
+        imagePullPolicy: IfNotPresent/Always
+        ports:
+        - containerPort: 443
+        volumeMounts:
+        - name: my-hostpath
+          mountPath: /path/on/cpod
+        - name: my-pvc
+          mountPath: /data 
+      volumes:
+      - name: my-hostpath
+        hostPath: 
+          path: /path/on/host
+      - name: my-pvc
+        persistentVolumeClaim:
+          claimName: nfs-pvc
+</code></pre>
+<hr>
+<h1 id="daemonset">DaemonSet</h1>
+<p>每个node上部署一个pod，用于部署agent。</p>
+<p>DaemonSet</p>
+<pre><code>apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: my-ds
+  namespace: my-ns
+  labels:
+    k8s-app: my-app
+  spec:
+    selector:
+      matchLabels:
+        name: my-app
+    template:
+      metadata:
+        labels:
+          name: my-app
+      spec:
+        containers:
+        - name: my-container
+          image: my-img
+</code></pre>
+<hr>
+<h1 id="statefulset">StatefulSet</h1>
+<p>用于部署有状态服务。</p>
+<p>StatefulSet 中的 Pod 拥有一个唯一的顺序索引和稳定的网络身份标识。</p>
+<pre><code>apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: web
+  namespace: test
+  labels:
+    k8s-app: my-app
+spec:
+  serviceName: &quot;nginx&quot;
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: k8s.gcr.io/nginx-slim:0.8
+        ports:
+        - containerPort: 80
+          name: web
+        volumeMounts:
+        - name: www
+          mountPath: /usr/share/nginx/html
+  volumeClaimTemplates:
+  - metadata:
+      name: www
+    spec:
+      accessModes: [ &quot;ReadWriteOnce&quot; ]
+      resources:
+        requests:
+          storage: 1Gi
+</code></pre>
+<hr>
+<h1 id="job">Job</h1>
+<p>Job</p>
+<pre><code>appVersion: batch/v1
+kind: Job
+metadata:
+  name: my-job
+spec:
+  # 代表本pod队列执行此次数(被执行8次)
+  completions: 8
+  # 代表并行执行个数(同时有两个在运行)
+  parallelism: 2
+  backoffLimit: 4
+  template:
+    spec:
+      containers:
+      - name: my-job
+        image: my-image
+        conmand: ['test']
+      restartPolicy: Never
+</code></pre>
+<hr>
+<h1 id="cronjob">CronJob</h1>
+<p>CronJob</p>
+<pre><code>apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: my-cj
+spec:
+  schedule: &quot;* * * * *&quot;
+  startingDeadlineSeconds: None(default)/10
+  concurrencyPolicy: Allow(default)/Forbid/Replace
+  suspend: false(default)/true
+  successfulJobsHistoryLimit: 3(default)
+  failedJobsHistoryLimit: 1(default)
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          annotations: ...
+          labels: ...
+        spec:
+          nodeSelector:
+            ...
+          imagePullSecrets:
+            ...
+          restartPolicy: OnFailure
+          containers:
+          - name: image
+            image: image
+            args:
+            - /bin/sh
+            - -c
+            - date
+</code></pre>
+<hr>
+<h1 id="configmap">ConfigMap</h1>
+<p>configmap只能在当前namespace使用.</p>
+<p>configmap的配置在pod中无法修改绑定的文件.</p>
+<p>data里面的文件名就是挂载之后的文件名。</p>
+<p>ConfigMap</p>
+<pre><code>apiVersion: v1
+kind: ConfigMap
+metadata:
+  labels:
+    app: flanel
+    tier: node
+  name: flannel-cfg
+  namespace: kube-system
+data:
+  cni-conf.json: |
+    {
+      &quot;name&quot;: &quot;n1&quot;
+    }
+</code></pre>
+<p>创建配置文件的configmap</p>
+<pre><code>$ kubectl -n app create cm my-conf --from-file ./config.ini -o yaml &gt; myconf-configmap.yaml
+$ kubectl -n influxdata create cm dashboard-docker --from-file Docker.json -o yaml &gt; grafana-dashboard-docker-configmap.yaml
+</code></pre>
+<hr>
+<h1 id="secret">Secret</h1>
+<p>secret只能在当前namespace使用.</p>
+<p>data里的文件名就是挂载之后的文件名。</p>
+<p>Opaque是用户自定义格式</p>
+<p>generic secret</p>
+<pre><code>kubectl create secret generic empty-secret
+
+apiVersion: v1
+kind: Secret
+type: Opaque
+metadata:
+  name: mysecret
+  namespace: kube-system
+data:
+  username: name 
+  password: pw
+</code></pre>
+<p>创建tls secret账号:</p>
+<pre><code>kubectl -n kubernetes-dashboard create secret tls \
+kubernetes-dashboard-tls --key ca.key --cert ca.crt 
+</code></pre>
+<p>类型为 kubernetes.io/tls 的 Secret 中包含密钥和证书的 DER 数据，以 Base64 格式编码。 如果你熟悉私钥和证书的 PEM 格式，base64 与该格式相同，只是你需要略过 PEM 数据中所包含的第一行和最后一行。</p>
+<pre><code>apiVersion: v1
+kind: Secret
+metadata:
+  name: secret-tls
+type: kubernetes.io/tls
+data:
+  tls.crt: |
+    MIIC2DCCAcCgAwIBAgIBATANBgkqh ...    
+  tls.key: |
+    MIIEpgIBAAKCAQEA7yn3bRHQ5FHMQ ...   
+</code></pre>
+<p>创建docker secret:</p>
+<p>kubernetes.io/dockercfg	~/.dockercfg 文件的序列化形式</p>
+<p>kubernetes.io/dockerconfigjson	~/.docker/config.json 文件的序列化形式</p>
+<p>给一个private registry创建secret:</p>
+<pre><code>$ kubectl -n ns create secret docker-registry &lt;name&gt; \
+--docker-server=https://harbor.domain.com --docker-username=user --docker-password=pw --docker-email=canuxcheng@gmail.com 
+</code></pre>
+<p>根据本地的文件创建secret（如果需要多个registry，可以先在本地登陆）</p>
+<pre><code>$ kubectl -n ns create secret generic regcred \
+--from-file=.dockerconfigjson=$HOME/.docker/config.json \
+--type=kubernetes.io/dockerconfigjson
+
+apiVersion: v1
+kind: Secret
+metadata:
+  name: artifactory-cred
+  namespace: ...
+type: kubernetes.io/dockerconfigjson
+data:
+  .dockerconfigjson: ewoJImF1d......
+</code></pre>
+<hr>
+<h1 id="service">Service</h1>
+<pre><code>apiVersion: v1
+kind: Service
+metadata:
+  name: grafana-service
+  namespace: influxdata
+spec:
+  type: NodePort
+  ports:
+  - name: https
+    port: 3000 // 集群内部访问的port.
+    targetPort: 3000 // pod指定的port.
+    nodePort: 32000 // 集群外部访问内部service的port.
+  selector:   // 匹配资源的metadata.labels
+    app: grafana
+</code></pre>
+<h2 id="externalname-service">ExternalName Service</h2>
+<p>ExternalName Service 是 Service 的特例，它没有选择算符，但是使用 DNS 名称, 将服务映射到 DNS 名称，而不是selector.</p>
+<p>访问其它namespace的service.</p>
+<p>当查找主机 my-service.my-ns.svc.cluster.local 时，集群 DNS 服务返回 CNAME 记录， 其值为 out-service.out-ns.svc.cluster.local。
+访问 my-service 的方式与其他服务的方式相同，但主要区别在于重定向发生在 DNS 级别，而不是通过代理或转发</p>
+<pre><code>apiVersion: v1
+kind: Service
+metadata:
+  name: my-service
+  namespace: my-ns
+spec:
+  type: ExternalName
+  externalName: out-service.out-ns.svc.cluster.local // 指向其它namespace的service.
+</code></pre>
+<h2 id="endpoint">Endpoint</h2>
+<p>下面场景可以使用Endpoint.</p>
+<ol>
+<li>希望在生产环境中使用外部的数据库集群，但测试环境使用自己的数据库。</li>
+<li>希望服务指向另一个 命名空间 中或其它集群中的服务。</li>
+<li>您正在将工作负载迁移到 Kubernetes。 在评估该方法时，您仅在 Kubernetes 中运行一部分后端。</li>
+</ol>
+<p>先创建service:</p>
+<pre><code>apiVersion: v1
+kind: Service
+metadata:
+  name: mysql-service
+  namespace: influxdata
+spec:
+  ports:
+    - protocol: TCP
+      port: 3306
+      targetPort: 3306
+</code></pre>
+<p>再创建endpoint：</p>
+<pre><code>apiVersion: v1
+kind: Endpoints
+metadata:
+  name: mysql-service
+  namespace: influxdata
+subsets:
+  - addresses:
+      - ip: 10.103.X.X // 指向外部服务的IP
+    ports:
+      - port: 3306
+</code></pre>
+<hr>
+<h1 id="hpc">HPC</h1>
+<p>Horizontal Pod Autoscaler</p>
+<pre><code>apiVersion: autoscaling/v2beta2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: 
+  labels: 
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: d-name
+  minReplicas: 2
+  maxReplicas: 20
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        targetAverageUtilization: 80
+    - type: Resource
+      resource:
+        name: memory
+        targetAverageUtilization: 80
+</code></pre>
+<hr>
+<h1 id="authentication">Authentication</h1>
+<p>默认的ClusterRole和ClusterRoleBinding大部分是system:开头。</p>
+<h2 id="serviceaccont">ServiceAccont</h2>
+<p>服务账户是在具体名字空间的。</p>
+<pre><code>apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: default
+  namespace: default
+</code></pre>
+<p>1.22之前k8s会自动给SA创建token.</p>
+<p>1.24之后使用TokenRequest获取有时间限制的token。</p>
+<p>创建持久化token</p>
+<pre><code>apiVersion: v1
+kind: Secret
+type: kubernetes.io/service-account-token
+metadata:
+  name: mysecretname
+  annotations:
+    kubernetes.io/service-account.name: myserviceaccount
+</code></pre>
+<h2 id="role">Role</h2>
+<p>通过role来给指定ns内的资源授权.</p>
+<pre><code>apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  namespace: default
+  name: pod-reader
+rules:
+- apiGroups: [&quot;&quot;] # &quot;&quot; 标明 core API 组
+  resources: [&quot;pods&quot;]
+  verbs: [&quot;get&quot;, &quot;watch&quot;, &quot;list&quot;]
+</code></pre>
+<h2 id="rolebinding">RoleBinding</h2>
+<p>将role或clusterrole权限赋予具体的角色.</p>
+<pre><code>apiVersion: rbac.authorization.k8s.io/v1
+# 此角色绑定允许 &quot;jane&quot; 读取 &quot;default&quot; 名字空间中的 Pods
+kind: RoleBinding
+metadata:
+  name: read-pods
+  namespace: default
+subjects:
+# 你可以指定不止一个“subject（主体）”
+- kind: User
+  name: jane # &quot;name&quot; 是区分大小写的
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  # &quot;roleRef&quot; 指定与某 Role 或 ClusterRole 的绑定关系
+  kind: Role # 此字段必须是 Role 或 ClusterRole
+  name: pod-reader     # 此字段必须与你要绑定的 Role 或 ClusterRole 的名称匹配
+  apiGroup: rbac.authorization.k8s.io
+</code></pre>
+<h2 id="clusterrole">ClusterRole</h2>
+<p>clusterrole给整个集群授权.不需要namespace.</p>
+<pre><code>apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  # &quot;namespace&quot; 被忽略，因为 ClusterRoles 不受名字空间限制
+  name: secret-reader
+rules:
+- apiGroups: [&quot;&quot;]
+  # 在 HTTP 层面，用来访问 Secret 对象的资源的名称为 &quot;secrets&quot;
+  resources: [&quot;secrets&quot;]
+  verbs: [&quot;get&quot;, &quot;watch&quot;, &quot;list&quot;]
+</code></pre>
+<h2 id="clusterrolebinding">ClusterRoleBinding</h2>
+<p>跨集群授权（也就是要访问不同ns的资源).不需要namespace.</p>
+<pre><code>apiVersion: rbac.authorization.k8s.io/v1
+# 此集群角色绑定允许 “manager” 组中的任何人访问任何名字空间中的 secrets
+kind: ClusterRoleBinding
+metadata:
+  name: read-secrets-global
+subjects:
+- kind: Group
+  name: manager # 'name' 是区分大小写的
+  apiGroup: rbac.authorization.k8s.io
+roleRef:
+  kind: ClusterRole
+  name: secret-reader
+  apiGroup: rbac.authorization.k8s.io
+</code></pre>
+
+        </div>
+    </article>
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

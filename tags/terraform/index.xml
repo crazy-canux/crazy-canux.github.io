@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Terraform on Morgoth</title>
+    <link>https://canuxcheng.com/tags/terraform/</link>
+    <description>Recent content in Terraform on Morgoth</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 15 Apr 2016 09:41:39 +0800</lastBuildDate>
+    <atom:link href="https://canuxcheng.com/tags/terraform/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Terraform</title>
+      <link>https://canuxcheng.com/post/cloud_terraform/</link>
+      <pubDate>Fri, 15 Apr 2016 09:41:39 +0800</pubDate>
+      <guid>https://canuxcheng.com/post/cloud_terraform/</guid>
+      <description>&lt;h1 id=&#34;terraform&#34;&gt;Terraform&lt;/h1&gt;&#xA;&lt;p&gt;install:&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://learn.hashicorp.com/tutorials/terraform/install-cli&#34;&gt;https://learn.hashicorp.com/tutorials/terraform/install-cli&lt;/a&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;cli&#34;&gt;CLI&lt;/h2&gt;&#xA;&lt;p&gt;操作工作目录&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;// 初始化目录，会根据配置下载和安装provider.&#xA;terraform init&#xA;&#xA;terraform get&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;操作tf文件&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;// 格式化文件&#xA;terraform fmt -recursive&#xA;&#xA;// 验证文件&#xA;terraform validate &#xA;&#xA;// 可以通过终端验证函数.&#xA;terraform console&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;操作基础设施:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;terraform plan&#xA;terraform plan -out test.tfplan&#xA;&#xA;terraform apply -auto-approve&#xA;terraform apply test.tfplan&#xA;&#xA;terraform destroy&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;检查基础设施:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;terraform show&#xA;terraform graph&#xA;terraform output&#xA;terraform state list/show&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;认证:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;terraform login&#xA;terraform logout&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;tf&#34;&gt;TF&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.terraform.io/language&#34;&gt;https://www.terraform.io/language&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;注释:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;# comment &#xA;// comment&#xA;/* comment */&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h3 id=&#34;backend-and-state&#34;&gt;backend and state&lt;/h3&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.terraform.io/language/settings/backends&#34;&gt;https://www.terraform.io/language/settings/backends&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

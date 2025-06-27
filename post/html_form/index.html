@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Html Form - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="single-post">
+    <article>
+        <header>
+            <h1>Html Form</h1>
+            <div class="post-meta">
+                <time>October 31, 2016</time>
+                
+                    
+                        <span class="category">Web</span>
+                    
+                
+                
+                    
+                        <span class="tag">#html</span>
+                    
+                
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <h1 id="html表单">html表单</h1>
+<p>html表单用于搜集不同类型的用户输入。</p>
+<hr>
+<h1 id="form"><strong>form</strong></h1>
+<p>form元素定义html表单。支持全局属性和事件属性。</p>
+<pre><code>&lt;form action=&quot;action_page.py&quot;&gt;
+&lt;fieldset&gt;
+&lt;legend&gt;Form information:&lt;/legend&gt;
+First name:&lt;br&gt;
+&lt;input type=&quot;text&quot; name=&quot;firstname&quot;&gt;
+&lt;br&gt;
+Last name:&lt;br&gt;
+&lt;input type=&quot;text&quot; name=&quot;lastname&quot;&gt;
+&lt;/fieldset&gt;
+&lt;/form&gt;
+
+# accept-charset属性规定服务器可处理的表单数据字符集。
+
+# action属性规定当提交表单时向何处发送表单数据。
+&lt;form action=&quot;action_page.py&quot;&gt;
+
+# autocomplete属性规定是否启用表单的自动完成功能
+on/off
+
+# enctype属性规定在发送表单数据之前如何编码
+application/x-www-form-urlencoded, 默认值，表示在发送前编码所有值．
+multipart/form-data, 不编码，在使用包含文件上传控件的表单必须使用．
+text/plain, 空格转换为&quot;+&quot;加号，不对特殊字符编码．
+
+# method属性规定用于发送form-data的http方法
+get/post
+
+# name属性规定表单名称
+# novalidate属性规定提交表单时不验证
+
+# target属性规定在何处打开URL。
+_blank/_self/_parent/_top
+</code></pre>
+<hr>
+<h1 id="input"><strong>input</strong></h1>
+<p>input元素是最重要的表单元素。支持全局属性和事件属性。</p>
+<pre><code># type属性规定输入元素类型
+button
+checkbox
+file
+hidden
+image
+password
+radio
+reset
+submit
+text
+
+# name属性定义input元素名称
+# value属性定义input元素默认值
+readonly
+disabled
+size
+maxlength
+alt
+accept
+checked
+src
+
+autocomplete
+autofocus
+form
+formaction
+formenctype
+formmethod
+formnovalidate
+formtarget
+height
+width
+list
+max
+min
+multiple
+pattern
+placeholder
+required
+step
+</code></pre>
+<hr>
+<h1 id="fieldset"><strong>fieldset</strong></h1>
+<p>fieldset元素组合表单中的相关数据，支持全局属性和事件属性</p>
+<pre><code># disable属性规定应该禁用fieldset
+# form属性规定fieldset所属的一个或多个表单。
+# name属性规定fieldset名称。
+</code></pre>
+<hr>
+<h1 id="legend"><strong>legend</strong></h1>
+<p>legend元素为fieldset元素定义标题，支持全局属性和事件属性,支持样式。</p>
+<hr>
+<h1 id="select"><strong>select</strong></h1>
+<p>定义下拉列表。支持全局属性和事件属性。</p>
+<pre><code>&lt;form action=&quot;action_page.py&quot;&gt;
+&lt;select name=&quot;cars&quot;&gt;
+&lt;option value=&quot;volvo&quot;&gt;volvo&lt;/option&gt;
+&lt;option value=&quot;audi&quot;&gt;audi&lt;/option&gt;
+&lt;/select&gt;
+&lt;/form&gt;
+
+# autofocus属性规定在页面加载后文本区域自动获得焦点
+# disable
+# form
+# multiple
+# name
+# required
+# size
+</code></pre>
+<hr>
+<h1 id="optgroup"><strong>optgroup</strong></h1>
+<hr>
+<h1 id="option"><strong>option</strong></h1>
+<p>定义选项。支持全局属性和事件属性。</p>
+<pre><code># disabled
+# label
+# selected
+# value
+</code></pre>
+<hr>
+<h1 id="label"><strong>label</strong></h1>
+<hr>
+<h1 id="button"><strong>button</strong></h1>
+<p>定义可点击的按钮，支持全局属性和事件属性。</p>
+<pre><code>&lt;button type=&quot;button&quot; onclick=&quot;alert(&quot;hello world&quot;)&quot;&gt;Click Me&lt;/button&gt;
+
+# name属性规定按钮名称
+# type属性规定按钮类型
+# value属性规定按钮初始值
+# autofocus
+# disabled
+# form
+# formaction
+# formenctype
+# formmethod
+# formnovalidate
+# formtarget
+</code></pre>
+<hr>
+<h1 id="textarea"><strong>textarea</strong></h1>
+<hr>
+<h1 id="datalist"><strong>datalist</strong></h1>
+<hr>
+<h1 id="keygen"><strong>keygen</strong></h1>
+<hr>
+<h1 id="output"><strong>output</strong></h1>
+
+        </div>
+    </article>
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

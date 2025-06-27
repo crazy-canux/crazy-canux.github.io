@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Kernel on Morgoth</title>
+    <link>https://canuxcheng.com/tags/kernel/</link>
+    <description>Recent content in Kernel on Morgoth</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 27 May 2020 22:29:00 +0800</lastBuildDate>
+    <atom:link href="https://canuxcheng.com/tags/kernel/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>kernel</title>
+      <link>https://canuxcheng.com/post/linux_kernel/</link>
+      <pubDate>Wed, 27 May 2020 22:29:00 +0800</pubDate>
+      <guid>https://canuxcheng.com/post/linux_kernel/</guid>
+      <description>&lt;h1 id=&#34;kernel&#34;&gt;Kernel&lt;/h1&gt;&#xA;&lt;h1 id=&#34;command&#34;&gt;command&lt;/h1&gt;&#xA;&lt;pre&gt;&lt;code&gt;lsmod 查看已加载的模块    # /proc/modules&#xA;rmmod &amp;lt;name&amp;gt; 删除模块&#xA;&#xA;modprobe -c 查看已编译可加载的内核模块&#xA;modprobe &amp;lt;name&amp;gt; 加载模块 # /etc/modules&#xA;modprobe -r &amp;lt;name&amp;gt; 删除模块&#xA;&#xA;// modprobe 重启就没了&#xA;echo &amp;quot;ipmi_devintf&amp;quot; &amp;gt;&amp;gt; /etc/modules&#xA;&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+  </channel>
+</rss>

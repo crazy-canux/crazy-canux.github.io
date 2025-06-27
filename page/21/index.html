@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="generator" content="Hugo 0.147.9">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morgoth - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="home">
+    <h1>Morgoth</h1>
+    <p></p>
+    
+    <section class="recent-posts">
+        <h2>Recent Posts</h2>
+        <ul class="post-list">
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/go_oop/">OOP</a></h2>
+                    <div class="post-meta">
+                        <time>January 1, 2018</time>
+                        
+                            
+                                <span class="category">Golang</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="go面向对象">Go面向对象</h1>
+<p>golang通过方法和接口实现面向对象.</p>
+<hr>
+<h1 id="方法method">方法/method</h1>
+<p>go中没有类，但是可以为结构体定义方法．</p>
+<p>方法就是一类带有特殊的　接收者参数　的函数．</p>
+<p>只能为同一包内定义的类型的接收者申明方法，不能为其它包内定义的类型的接收者申明方法．</p>
+<p>除了结构体还可以为非结构体申明方法，但是不能为内建类型申明方法．</p>
+<p>方法有两种接收者,值接收者和指针接收者.</p>
+<pre><code>type Vertex struct {
+    ...
+}
+</code></pre>
+<p>值接收者:</p>
+<p>值接收者操作的是值的副本.</p>
+<pre><code>func (v Vertex) MethodName() rType {
+    ...
+}
+
+var v Vertex
+v.MethodName() // 操作值的副本
+
+# 使用指针接收者来调用值接收者的方法，编译器会自动做类型转换
+vp := new(Vertex)
+vp.MethodName() // 指针被解引用为值,(*vp).MethodName(),操作的是指针指向的值的副本.
+</code></pre>
+<p>指针接收者：</p>
+<p>指针接收者，调用方法的时候操作的是该指针指向的值.</p>
+<pre><code># 指针接收者的方法可以修改接收者指向的值
+func (v *Vertex) MethodName() rType {
+    ...
+}
+
+vp := new(Vertex)
+vp.MethodName() // 操作实际的值
+
+# 使用值接收者来调用指针接收者的方法，编译器会自动做类型转换.
+var v Vertex
+v.MethodName() // (&amp;v).MethodName() , 操作的是实际的值
+</code></pre>
+<hr>
+<h1 id="接口interface">接口/Interface</h1>
+<p>接口是引用类型.</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/gsl_test/">GSL_test</a></h2>
+                    <div class="post-meta">
+                        <time>January 1, 2018</time>
+                        
+                            
+                                <span class="category">Golang</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="testing">testing</h1>
+<p>go的测试由go test命令和testing包组成．</p>
+<p>测试程序命名：</p>
+<pre><code>XXX.go # 测试文件和源码放在一个包中
+XXX_test.go
+</code></pre>
+<p>测试程序结构：</p>
+<pre><code>import &quot;testing&quot;
+
+# 单元测试
+# go test 会自动执行
+func TestXXX(t *testing.T) {}
+
+# 性能测试
+# go test XXX_test.go -test.bench=&quot;.*&quot;  压力测试需要指定才能执行
+func BenchmarkXXX(b *testing.B) {}
+</code></pre>
+<h2 id="constants">constants</h2>
+<h2 id="variables">variables</h2>
+<h2 id="functions">functions</h2>
+<h2 id="t">T</h2>
+<p>管理测试状态并支持格式化测试的日志．</p>
+<p>struct:</p>
+<pre><code>type T struct {}
+</code></pre>
+<p>methods:</p>
+<pre><code>// 将当前测试标识为失败，但继续执行该文件剩下的测试
+func (c *T) Fail()
+
+// 将当前测试标识为失败，并停止执行该测试, 继续执行下一个测试文件.
+func (c *T) FailNow()
+
+// 用于报告测试函数是否失败
+func (c *T) Failed() bool
+
+func (c *T) Log(args ...interface{})
+func (c *T) Logf(format string, args ...interface{})
+
+# 相当于Log/Logf之后调用Fail.(当前case失败)
+func (c *T) Error(args ...interface{})
+func (c *T) Errorf(format string, args ...interface{})
+
+# 相当于Log/Logf之后调用FailNow.(当前测试文件失败)
+func (c *T) Fatal(args ...interface{})
+func (c *T) Fatalf(format string, args ...interface{})
+
+func (c *T) Skip(args ...interface{})
+func (c *T) SkipNow()
+func (c *T) Skipf(format string, args ...interface{})
+func (c *T) Skipped() bool
+</code></pre>
+<h2 id="b">B</h2>
+<p>管理基准测试的计时行为，并指示应该迭代的运行测试多少次.</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/gsl_system/">GSL_system</a></h2>
+                    <div class="post-meta">
+                        <time>January 1, 2018</time>
+                        
+                            
+                                <span class="category">Golang</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="os">os</h1>
+<p>提供了操作系统的不依赖平台的接口</p>
+<pre><code>import &quot;os&quot;
+</code></pre>
+<h2 id="constants">constants</h2>
+<pre><code># flag 参数
+const (
+    O_RDONLY int = syscall.O_RDONLY
+    O_WRONLY int = syscall.O_WRONLY
+    O_RDWR int = syscall.O_RDWR
+    O_CREATE int = syscall.O_CREATE # 不存在就创建
+    O_APPEND int = syscall.O_APPEND # 追加写入
+    O_TRUNC int = syscall.O_TRUNC # 打开时清空文件
+    O_EXCL int = syscall.O_EXCL
+    O_SYNC int = syscall.O_SYNC
+)
+
+const (
+    SEEK_SET int = 0
+    SEEK_CUR int = 1
+    SEEK_END int = 2
+)
+
+const (
+    // 操作系统指定的路径分隔符
+    PathSeperator = '/'
+    // 操作系统指定的表分隔符
+    PathListSeparator = ':'
+)
+
+// 操作系统空设备的名字
+const DevNull = &quot;/dev/null&quot;
+</code></pre>
+<h2 id="variables">variables</h2>
+<pre><code>var (
+    ErrInvalid = errors.New(&quot;invalid argument&quot;)
+    ...
+)
+
+// 指向标准输入／输出／错误的文件描述符
+var (
+    Stdin = NewFile(uintptr(syscall.Stdin), &quot;/dev/stdin&quot;)
+    Stdout = NewFile(uintptr(syscall.Stdout), &quot;/dev/stdout&quot;)
+    Stderr = NewFile(uintptr(syscall.Stderr), &quot;/dev/stderr&quot;)
+)
+
+// 保存了命令行参数，第一个是程序名
+var Args []string
+</code></pre>
+<h2 id="functions">functions</h2>
+<pre><code>// 返回内核提供的主机名
+func Hostname() (name string, err error)
+
+// 当前程序以给出的状态码马上退出，defer不会执行
+func Exit(code int)
+
+// 返回key=value格式的环境变量的字符串的切片拷贝
+func Environ() []string
+</code></pre>
+<p>文件相关的操作</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/gsl_string/">GSL_string</a></h2>
+                    <div class="post-meta">
+                        <time>January 1, 2018</time>
+                        
+                            
+                                <span class="category">Golang</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="strings">strings</h1>
+<p>实现了用于操作字符的函数.</p>
+<h2 id="functions">functions</h2>
+<pre><code>func EqualFold(s, t string) bool
+
+func HasPrefix(s, prefix string) bool
+func HasSuffix(s, suffix string) bool
+
+func Count(s, sep string) int
+
+func Contains(s, substr string) bool
+...
+
+func Index(s, sep string) int
+...
+
+func LastIndex(s, sep string) int
+...
+
+func title(s string) string
+
+func ToLower(s string) string
+...
+
+// 返回count个string
+func Repeat(s string, count int) string
+
+func Replace(s, old, new string, n int) string
+
+func Map(mapping func(rune) rune, s string) string
+
+func Trim(s string, cutset string) string
+...
+
+// 返回将字符串按照空白分割的多个字符串
+func Fields(s string) []string
+// 按照f作为分隔符来分割字符串，返回切片
+func FieldsFunc(s string, f func(rune) bool) []string
+
+func Split(s, sep string) []string
+...
+
+// 将一系列字符串连接为一个字符串，之间用sep来分割.
+func Join(a []string, sep string) string
+</code></pre>
+<h2 id="reader">Reader</h2>
+<h2 id="replacer">Replacer</h2>
+<hr>
+<h1 id="bytes">bytes</h1>
+<p>实现了操作[]bytes的常用函数.</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/gsl_oop/">GSL_oop</a></h2>
+                    <div class="post-meta">
+                        <time>January 1, 2018</time>
+                        
+                            
+                                <span class="category">Golang</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="reflect">reflect</h1>
+<h2 id="constants">constants</h2>
+<p>const:</p>
+<pre><code>const (
+    SelectSend
+    SelectRecv
+    SelectDefault
+)
+</code></pre>
+<h2 id="functions">functions</h2>
+<pre><code>// 将src拷贝到dst, 直到src被耗尽或dst被装满.
+func Copy(dst, src Value) int
+
+// 判断两个值是否深度一致
+func DeepEqual(a1, a2 interface{}) bool
+</code></pre>
+<h2 id="kind">Kind</h2>
+<p>表示Type类型值表示的具体分类.</p>
+<pre><code>type Kind uint
+
+const (
+    Invalid Kind = iota
+    Bool
+    Int
+    ...
+    Uint
+    ...
+    Float...
+    Complex...
+    Array
+    Chan
+    Func
+    Interface
+    Map
+    Ptr
+    Slice
+    String
+    Struct
+    UnsafePointer
+)
+</code></pre>
+<p>method:</p>
+<pre><code>func (k Kind) String() string
+</code></pre>
+<h2 id="stringheader">StringHeader</h2>
+<h2 id="sliceheader">SliceHeader</h2>
+<h2 id="structfield">StructField</h2>
+<h2 id="structtag">StructTag</h2>
+<h2 id="chandir">ChanDir</h2>
+<h2 id="selectdir">SelectDir</h2>
+<h2 id="selectcase">SelectCase</h2>
+<h2 id="method">Method</h2>
+<h2 id="type">Type</h2>
+<p>用来表示一个go类型.</p></p>
+                    
+                </li>
+            
+        </ul>
+    </section>
+    
+    
+        <a href="/page/20/">← Previous</a>
+    
+    
+        <a href="/page/22/">Next →</a>
+    
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

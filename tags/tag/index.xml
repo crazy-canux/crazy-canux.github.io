@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tag on Morgoth</title>
+    <link>https://canuxcheng.com/tags/tag/</link>
+    <description>Recent content in Tag on Morgoth</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 10 Jan 2020 20:58:01 +0800</lastBuildDate>
+    <atom:link href="https://canuxcheng.com/tags/tag/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Kubectl</title>
+      <link>https://canuxcheng.com/post/k8s_kubectl/</link>
+      <pubDate>Fri, 10 Jan 2020 20:58:01 +0800</pubDate>
+      <guid>https://canuxcheng.com/post/k8s_kubectl/</guid>
+      <description>&lt;h1 id=&#34;kubectl&#34;&gt;kubectl&lt;/h1&gt;&#xA;&lt;p&gt;kubectl是kubernetes的管理工具.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://kubernetes.io/docs/tasks/tools/#kubectl&#34;&gt;https://kubernetes.io/docs/tasks/tools/#kubectl&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/cloudnativelabs/kube-shell&#34;&gt;https://github.com/cloudnativelabs/kube-shell&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/jonmosco/kube-ps1&#34;&gt;https://github.com/jonmosco/kube-ps1&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/ahmetb/kubectx&#34;&gt;https://github.com/ahmetb/kubectx&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;在master上通过kubectl命令管理集群.&lt;/p&gt;&#xA;&lt;p&gt;kubectl 版本和集群版本之间的差异必须在一个小版本号内。 例如：v1.24 版本的客户端能与 v1.23、 v1.24 和 v1.25 版本的控制面通信。 用最新兼容版的 kubectl 有助于避免不可预见的问题。&lt;/p&gt;&#xA;&lt;h2 id=&#34;options&#34;&gt;Options&lt;/h2&gt;&#xA;&lt;pre&gt;&lt;code&gt;kubectl options # 查看所有命令可用选项&#xA;&#xA;--kubeconfig&#xA;kubectl --kubeconfig=$HOME/.kube.config (default)&#xA;&#xA;-n/--namespace&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;basic-command&#34;&gt;basic command&lt;/h2&gt;&#xA;&lt;p&gt;create:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;# 通过yaml或json文件创建资源&#xA;$ kubectl create -f FILENAME [options]&#xA;&#xA;options:&#xA;-f/--filename&#xA;&#xA;kubectl create secret tls kubernetes-dashboard-tls --key ca.key --cert ca.crt -n kubernetes-dashboard&#xA;&#xA;// 输出一个资源的yaml格式.&#xA;kubectl create deployment &amp;lt;name&amp;gt; --image=&amp;lt;img-name&amp;gt; --dry-run=client --output=yaml&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;delete:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;// 删除资源&#xA;$ kubectl delete (-f FILENAME | -k DICT | TYPE [(NAME|-l label|--all)]) [optiions]&#xA;&#xA;options:&#xA;-f/--filename&#xA;--all  &#xA;--all-namespaces&#xA;--force&#xA;&#xA;$ kubectl delete pods --all&#xA;$ kubectl delete pod &amp;lt;name&amp;gt;&#xA;// 删除指定ns下所有资源.&#xA;$ kubectl delete all --all -n {namespace}&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;删除带有finalizers字段的对象，对象实际被更新了，没有真的被删除。可以通过patch来删除。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

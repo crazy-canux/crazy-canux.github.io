@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sql on Morgoth</title>
+    <link>https://canuxcheng.com/tags/sql/</link>
+    <description>Recent content in Sql on Morgoth</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 25 May 2016 22:06:13 +0000</lastBuildDate>
+    <atom:link href="https://canuxcheng.com/tags/sql/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>SQL</title>
+      <link>https://canuxcheng.com/post/sql/</link>
+      <pubDate>Wed, 25 May 2016 22:06:13 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/sql/</guid>
+      <description>&lt;h1 id=&#34;sql&#34;&gt;SQL&lt;/h1&gt;&#xA;&lt;p&gt;sql是结构化查询语言。&lt;/p&gt;&#xA;&lt;p&gt;sql是一种标准，几乎所有关系型数据库都遵守。&lt;/p&gt;&#xA;&lt;p&gt;但是不同的数据库又有自己的扩展。&lt;/p&gt;&#xA;&lt;p&gt;SQL分为两部分，DML和DDL。&lt;/p&gt;&#xA;&lt;p&gt;SQL大小写敏感，文本使用单引号，数值不需要引号。&lt;/p&gt;&#xA;&lt;h1 id=&#34;sql语法&#34;&gt;sql语法&lt;/h1&gt;&#xA;&lt;p&gt;sql注释:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;# 多行注释&#xA;/*&#xA;comment multi lines&#xA;in a sql file.&#xA;*/&#xA;&#xA;# 单行注释&#xA;/* comment single line */&#xA;&#xA;# 单行注释还可以直接用 -- 表示&#xA;select * from table -- where condition;&#xA;-- select * from table where condition;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;ddl&#34;&gt;DDL&lt;/h1&gt;&#xA;&lt;p&gt;DDL: 数据定义语言&lt;/p&gt;&#xA;&lt;h2 id=&#34;create&#34;&gt;create&lt;/h2&gt;&#xA;&lt;p&gt;创建数据库：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;CREATE DATABASE database_name;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;建表：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;CREATE TABLE table(&#xA;    column1 type1,&#xA;    column2 type2,&#xA;    ...&#xA;);&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;create也可以用来创建索引和视图．&lt;/p&gt;&#xA;&lt;h2 id=&#34;drop&#34;&gt;drop&lt;/h2&gt;&#xA;&lt;p&gt;删除数据库：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;DROP DATABASE database_name;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;删表：&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Builtins on Morgoth</title>
+    <link>https://canuxcheng.com/tags/builtins/</link>
+    <description>Recent content in Builtins on Morgoth</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 24 May 2016 10:44:44 +0000</lastBuildDate>
+    <atom:link href="https://canuxcheng.com/tags/builtins/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Builtins</title>
+      <link>https://canuxcheng.com/post/ps_builtins/</link>
+      <pubDate>Tue, 24 May 2016 10:44:44 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/ps_builtins/</guid>
+      <description>&lt;h1 id=&#34;get-help和help&#34;&gt;Get-Help和Help:&lt;/h1&gt;&#xA;&lt;p&gt;get-help查看帮助信息,help分页查看帮助信息，man是help的别名&lt;/p&gt;&#xA;&lt;p&gt;命令说明：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;Get-Help&#xA;Help&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;查看所有命令和概念：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;Get-Help *&#xA;Help *&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;模糊查找命令和概念：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;Get-Help *&amp;lt;name&amp;gt;*&#xA;Help *&amp;lt;name&amp;gt;*&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;查看具体命令帮助：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;Get-Help {&amp;lt;CmdletName&amp;gt; | &amp;lt;TopicName&amp;gt;}&#xA;Help {&amp;lt;CmdletName&amp;gt; | &amp;lt;TopicName&amp;gt;}&#xA;&amp;lt;CmdletName&amp;gt; -?&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;get-help/help的选项:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;get-help get-help&#xA;-examples # 查看示例&#xA;-full # 查看所有帮助&#xA;-parameter # 查看选项的帮助&#xA;-detailed # 查看详细信息&#xA;-online # 打开文档中的link&#xA;-showwindow # 用窗口打开&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h1 id=&#34;helpfile&#34;&gt;Helpfile&lt;/h1&gt;&#xA;&lt;p&gt;3.0/4.0 需要先下载帮助手册：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;update-help&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;所有helpfile：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;Get-Help/Help about_*&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;查看具体helpfile：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;Get-Help/Help about_&amp;lt;name&amp;gt;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;cmdlets&#34;&gt;Cmdlets&lt;/h1&gt;&#xA;&lt;p&gt;cmdlets是powershell的内置命令,类型是System.Management.Automation.CmdletInfo&lt;/p&gt;&#xA;&lt;p&gt;cmdlets的方法：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;Equals&#xA;GetHashCode&#xA;GetType&#xA;ToString&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;cmdlets的属性：&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

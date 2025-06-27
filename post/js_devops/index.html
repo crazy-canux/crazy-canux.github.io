@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevOps - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="single-post">
+    <article>
+        <header>
+            <h1>DevOps</h1>
+            <div class="post-meta">
+                <time>March 13, 2017</time>
+                
+                    
+                        <span class="category">Web</span>
+                    
+                
+                
+                    
+                        <span class="tag">#tslint</span>
+                    
+                
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <h1 id="js--ts">JS &amp; TS</h1>
+<p>vscode</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-json" data-lang="json"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;version&#34;</span>: <span style="color:#e6db74">&#34;0.2.0&#34;</span>,
+</span></span><span style="display:flex;"><span>  <span style="color:#f92672">&#34;configurations&#34;</span>: [
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Next.js: debug server-side&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;node-terminal&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;request&#34;</span>: <span style="color:#e6db74">&#34;launch&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;command&#34;</span>: <span style="color:#e6db74">&#34;npm run dev&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Next.js: debug client-side&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;chrome&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;request&#34;</span>: <span style="color:#e6db74">&#34;launch&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;url&#34;</span>: <span style="color:#e6db74">&#34;http://localhost:3000&#34;</span>
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Next.js: debug client-side (Firefox)&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;firefox&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;request&#34;</span>: <span style="color:#e6db74">&#34;launch&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;url&#34;</span>: <span style="color:#e6db74">&#34;http://localhost:3000&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;reAttach&#34;</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;pathMappings&#34;</span>: [
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&#34;url&#34;</span>: <span style="color:#e6db74">&#34;webpack://_N_E&#34;</span>,
+</span></span><span style="display:flex;"><span>          <span style="color:#f92672">&#34;path&#34;</span>: <span style="color:#e6db74">&#34;${workspaceFolder}&#34;</span>
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>      ]
+</span></span><span style="display:flex;"><span>    },
+</span></span><span style="display:flex;"><span>    {
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Next.js: debug full stack&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;node&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;request&#34;</span>: <span style="color:#e6db74">&#34;launch&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;program&#34;</span>: <span style="color:#e6db74">&#34;${workspaceFolder}/node_modules/next/dist/bin/next&#34;</span>,
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;runtimeArgs&#34;</span>: [<span style="color:#e6db74">&#34;--inspect&#34;</span>],
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;skipFiles&#34;</span>: [<span style="color:#e6db74">&#34;&lt;node_internals&gt;/**&#34;</span>],
+</span></span><span style="display:flex;"><span>      <span style="color:#f92672">&#34;serverReadyAction&#34;</span>: {
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;action&#34;</span>: <span style="color:#e6db74">&#34;debugWithEdge&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;killOnServerStop&#34;</span>: <span style="color:#66d9ef">true</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;pattern&#34;</span>: <span style="color:#e6db74">&#34;- Local:.+(https?://.+)&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;uriFormat&#34;</span>: <span style="color:#e6db74">&#34;%s&#34;</span>,
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">&#34;webRoot&#34;</span>: <span style="color:#e6db74">&#34;${workspaceFolder}&#34;</span>
+</span></span><span style="display:flex;"><span>      }
+</span></span><span style="display:flex;"><span>    }
+</span></span><span style="display:flex;"><span>  ]
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>SPA: Single page application, 单页应用，like react, vue and angular.
+SSR: server side rendering. 服务端渲染, like next.js, nuxt.js</p>
+<hr>
+<h2 id="yalc">yalc</h2>
+<p><a href="https://github.com/wclr/yalc">https://github.com/wclr/yalc</a></p>
+<p>install:</p>
+<pre><code>npm i yalc -g
+</code></pre>
+<p>usage:</p>
+<pre><code>yalc publish
+yalc add ...
+yalc remove ...
+yalc publish 
+yalc push
+</code></pre>
+<p>yalc publish需要exports dist，而不是src。</p>
+<pre><code>&quot;exports&quot;: {
+    &quot;.&quot;: &quot;./dist/index.cjs.js&quot;,
+    &quot;./alpha&quot;: &quot;./dist/alpha.cjs.js&quot;,
+    &quot;./package.json&quot;: &quot;./package.json&quot;
+}
+</code></pre>
+<hr>
+<h2 id="eslint">ESLint</h2>
+<p><a href="https://github.com/typescript-eslint/typescript-eslint">https://github.com/typescript-eslint/typescript-eslint</a></p>
+<p>linting.</p>
+<hr>
+<h2 id="vite">vite</h2>
+<p><a href="https://github.com/vitejs/vite">https://github.com/vitejs/vite</a></p>
+<hr>
+<h2 id="webpack">Webpack</h2>
+<p>bundler</p>
+<p><a href="https://github.com/webpack/webpack">https://github.com/webpack/webpack</a></p>
+<hr>
+<h2 id="rollup">Rollup</h2>
+<p>bundler</p>
+<p><a href="https://github.com/rollup/rollup">https://github.com/rollup/rollup</a></p>
+<hr>
+<h2 id="gulp">gulp</h2>
+<p>Automation - gulp is a toolkit that helps you automate painful or time-consuming tasks in your development workflow.</p>
+<p><a href="https://github.com/gulpjs/gulp">https://github.com/gulpjs/gulp</a></p>
+<p>gulp command line</p>
+<pre><code>$ npm install --global gulp-cli
+</code></pre>
+<p>gulp for devDependencies</p>
+<pre><code>$ npm install --save-dev gulp
+</code></pre>
+<p>create gulpfile.js and test it.</p>
+<pre><code>$ vim gulpfile.js
+$ gulp
+</code></pre>
+<h2 id="karma">karma</h2>
+<p>A simple tool that allows you to execute JavaScript code in multiple real browsers.</p>
+<p>angularjs 的 test runner.</p>
+<p>The main purpose of Karma is to make your test-driven development easy, fast, and fun.</p>
+<p><a href="https://github.com/karma-runner/karma">https://github.com/karma-runner/karma</a></p>
+<p>karma command line:</p>
+<pre><code>$ npm install -g karma-cli
+</code></pre>
+<p>karma for devDependencies</p>
+<pre><code>$ npm install --save-dev karma
+$ npm install karma-jasmine karma-chrome-launcher jasmine-core --save-dev
+</code></pre>
+<p>run karma</p>
+<pre><code>$ karma start
+</code></pre>
+
+        </div>
+    </article>
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

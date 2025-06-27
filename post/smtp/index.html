@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smtp - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="single-post">
+    <article>
+        <header>
+            <h1>Smtp</h1>
+            <div class="post-meta">
+                <time>April 26, 2017</time>
+                
+                    
+                        <span class="category">Network</span>
+                    
+                
+                
+                    
+                        <span class="tag">#smtp</span>
+                    
+                
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <h1 id="email">Email</h1>
+<p>MTA: Mail Transfer Agent</p>
+<p>MUA: Mail User Agent</p>
+<p>python邮件服务器MTA：smtp协议</p>
+<p>python客户端MUA：本地协议pop3, 远程协议imap</p>
+<h2 id="mailutils">mailutils:</h2>
+<p>mailutils默认安装postfix,如果已经安装其它MTA就使用已经安装的．</p>
+<pre><code>$ sudo apt-get install mailutils
+</code></pre>
+<p>非交互安装mailutils:</p>
+<pre><code># 这里不用配置任何参数．
+$ sudo debconf-set-selections &lt;&lt;&lt; &quot;postfix postfix/mailname string &quot;
+$ sudo debconf-set-selections &lt;&lt;&lt; &quot;postfix postfix/main_mailer_type string 'Internet Site'&quot;
+$ sudo apt-get install -y mailutils
+</code></pre>
+<p>测试：</p>
+<pre><code>$ echo &quot;test mail body&quot; | mail -s &quot;test mail title&quot; canuxcheng@gmail.com
+</code></pre>
+<hr>
+<h1 id="sendmail">sendmail</h1>
+<p>开源的smtp服务器．</p>
+<p>安装sendmail:</p>
+<pre><code>$ sudo apt-get install sendmail
+$ sudo apt-get install sendmail-cf
+</code></pre>
+<p>配置：</p>
+<pre><code>$ sudo vim /etc/hosts
+  127.0.0.1 localhost.localdomain    localhost    hostname
+
+$ sudo vim /etc/mail/sendmail.mc
+  modify 127.0.0.1 to 0.0.0.0, 才能发送给其它机器，否则只能发给本机．
+  DAEMON_OPTIONS('..., Port=smtp, Addr=127.0.0.1')dnl
+# mv sendmail.cf sendmail.cf.old
+# m4 sendmail.mc &gt; sendmail.cf
+</code></pre>
+<hr>
+<h1 id="postfix">postfix</h1>
+<p>比sendmail更友好的smtp服务器．</p>
+<p>安装：</p>
+<pre><code>$ sudo apt-get install postfix
+# general type of mail configuration -&gt; Internet site
+# system mail name -&gt; 空着
+</code></pre>
+<p>配置：</p>
+<pre><code># 使用默认值即可.
+$ sudo vim /etc/postfix/main.cf
+inet_interfaces = all
+mydestination = localhost, $hostname, localhost.localdomain, localhost
+</code></pre>
+<hr>
+<h1 id="python的email标准库">Python的email标准库</h1>
+<p>服务端：</p>
+<ol>
+<li>smtpd</li>
+</ol>
+<p>客户端：</p>
+<ol>
+<li>smtplib</li>
+<li>poplib</li>
+<li>imaplib</li>
+</ol>
+
+        </div>
+    </article>
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

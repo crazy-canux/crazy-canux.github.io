@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWS Containers - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="single-post">
+    <article>
+        <header>
+            <h1>AWS Containers</h1>
+            <div class="post-meta">
+                <time>April 23, 2021</time>
+                
+                    
+                        <span class="category">Cloud</span>
+                    
+                        <span class="category">CNCF</span>
+                    
+                
+                
+                    
+                        <span class="tag">#aws</span>
+                    
+                
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <h1 id="aws-containers">AWS Containers</h1>
+<h2 id="ecr">ECR</h2>
+<p>Elastic Container Registry.</p>
+<h2 id="ecs-anywhere">ECS Anywhere</h2>
+<h2 id="ecs">ECS</h2>
+<p>Elastic Container Service.</p>
+<h2 id="eks-distro">EKS Distro</h2>
+<h2 id="eks-anywhere">EKS Anywhere</h2>
+<h2 id="eks">EKS</h2>
+<p>Elastic Kubernetes Service.</p>
+<h3 id="通过aws-cli创建eks">通过AWS CLI创建EKS</h3>
+<p>通过MC创建的资源都可以通过CLI(aws)创建.</p>
+<p>创建具有公有和私有子网且符合 Amazon EKS 要求的 Amazon VPC</p>
+<pre><code>$ aws cloudformation create-stack \
+--stack-name my-eks-vpc-stack \
+--region region-code \
+--template-url https://amazon-eks.s3.us-west-2.amazonaws.com/cloudformation/2020-10-29/amazon-eks-vpc-private-subnets.yaml 
+</code></pre>
+<p>创建集群 IAM 角色并向其附加所需的 Amazon EKS IAM 托管策略</p>
+<pre><code>// 创建EKS IAM role
+aws iam create-role \
+--role-name my-EKSClusterRole \
+--assume-role-policy-document file://cluster-role-trust-policy.json&quot; \
+--permissions-boundary arn:aws:iam::&lt;Your AWS ID&gt;:policy/ProjAdminsPermBoundaryv2
+
+{
+    &quot;Version&quot;: &quot;2012-10-17&quot;,
+    &quot;Statement&quot;: [
+        {
+            &quot;Effect&quot;: &quot;Allow&quot;,
+            &quot;Principal&quot;: {
+                &quot;Service&quot;: &quot;eks.amazonaws.com&quot;
+            },
+            &quot;Action&quot;: &quot;sts:AssumeRole&quot;,
+            &quot;Condition&quot;: {}
+        }
+    ]
+}
+
+// 绑定role和eks策略
+aws iam attach-role-policy \
+--policy-arn arn:aws:iam::aws:policy/AmazonEKSClusterPolicy \
+--role-name my-EKSClusterRole
+</code></pre>
+<p>创建EKS cluster:</p>
+<pre><code>aws eks create-cluster --name my-cluster \
+--role-arn arn:aws:iam::&lt;ID&gt;:role/my-EKSClusterRole \
+--resources-vpc-config vpc.json / --resources-vpc-config subnetIds=subnet-6782e71e,subnet-e7e761ac,securityGroupIds=sg-6979fe18 \
+--kubernetes-network-config eks.json / --kubernetes-network-config serviceIpv4Cidr=string,ipFamily=string \
+--kubernetes-version &lt;version&gt; --tags &lt;tags&gt; --logging &lt;logging&gt; 
+</code></pre>
+<p>给集群创建节点</p>
+<pre><code>// 创建节点IAM role
+aws iam create-role \
+--role-name my-EKSNodeRole \
+--assume-role-policy-document file://node-role-trust-policy.json&quot; \
+--permissions-boundary arn:aws:iam::&lt;ID&gt;:policy/ProjAdminsPermBoundaryv2
+
+{
+    &quot;Version&quot;: &quot;2012-10-17&quot;,
+    &quot;Statement&quot;: [
+        {
+            &quot;Effect&quot;: &quot;Allow&quot;,
+            &quot;Principal&quot;: {
+                &quot;Service&quot;: &quot;ec2.amazonaws.com&quot;
+            },
+            &quot;Action&quot;: &quot;sts:AssumeRole&quot;,
+            &quot;Condition&quot;: {}
+        }
+    ]
+}
+
+// 绑定role和node策略
+aws iam attach-role-policy \
+--policy-arn arn:aws:iam::aws:policy/AmazonEKSWorkerNodePolicy \
+--role-name my-EKSNodeRole 
+
+aws iam attach-role-policy \
+--policy-arn arn:aws:iam::aws:policy/AmazonEC2ContainerRegistryReadOnly \
+--role-name my-EKSNodeRole 
+
+aws iam attach-role-policy \
+--policy-arn arn:aws:iam::aws:policy/AmazonEKS_CNI_Policy \
+--role-name my-EKSNodeRole 
+</code></pre>
+<p>创建managed node group:</p>
+<pre><code>aws eks create-nodegroup \
+--cluster-name my-cluster --nodegroup-name my-mng  --subnets &lt;value&gt; --node-role &lt;value&gt; \
+--scaling-config minSize=integer,maxSize=integer,desiredSize=integer \
+--instance-types &lt;value&gt; --ami-type &lt;value&gt; --remote-access &lt;value&gt; --disk-size &lt;value&gt; 
+</code></pre>
+<p>将计算机配置为与您的集群通信</p>
+<pre><code>aws eks describe-cluster --name my-cluster
+// 通过aws eks自动更新kube.config文件.
+// 需要该role具有可以操作eks cluster的policy.
+$ aws eks update-kubeconfig --name my-cluster --role-arn &lt;role&gt; --region eu-west-1 --verbose
+
+$ kubectl get svc
+</code></pre>
+<p>删除集群和节点:</p>
+<pre><code>aws eks delete-nodegroup --nodegroup-name my-mng --cluster-name my-cluster
+aws eks delete-cluster --name my-cluster
+aws cloudformation delete-stack --stack-name my-stack
+</code></pre>
+<h3 id="通过eksctl创建eks">通过eksctl创建EKS</h3>
+<p><a href="https://github.com/weaveworks/eksctl">https://github.com/weaveworks/eksctl</a></p>
+<p><a href="https://eksctl.io/usage/schema/">https://eksctl.io/usage/schema/</a></p>
+<p>创建集群和节点：</p>
+<pre><code>$ eksctl create cluster -f/--config-file ./cluster.yaml
+$ eksctl create nodegroup -f/--config-file ./nodegroup.yaml
+</code></pre>
+<p>删除集群和节点</p>
+<pre><code>$ eksctl delete cluster --name my-cluster --region us-west-2
+$ eksctl delete nodegroup --cluster my-cluster --region us-west-2 --name my-ng
+</code></pre>
+<h3 id="通过terraform创建eks">通过Terraform创建EKS</h3>
+
+        </div>
+    </article>
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

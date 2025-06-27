@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Admin on Morgoth</title>
+    <link>https://canuxcheng.com/tags/admin/</link>
+    <description>Recent content in Admin on Morgoth</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 04 Oct 2016 04:29:37 +0000</lastBuildDate>
+    <atom:link href="https://canuxcheng.com/tags/admin/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Admin</title>
+      <link>https://canuxcheng.com/post/django_admin/</link>
+      <pubDate>Tue, 04 Oct 2016 04:29:37 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/django_admin/</guid>
+      <description>&lt;h1 id=&#34;adminpy&#34;&gt;admin.py&lt;/h1&gt;&#xA;&lt;pre&gt;&lt;code&gt;from django.contrib import admin&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;创建一个管理员用户：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ python manage.py createsuperuser&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;管理员登陆界面：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;http://localhost:8000/admin/&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;在admin.py中注册模型，然后就可以在登陆界面管理模型了&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;from .models import Question&#xA;admin.site.register(Question)&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;自定义管理表单：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;from .models import Question&#xA;class QuestionAdmin(admin.ModelAdmin):&#xA;    fileds = [&#39;pub_date&#39;, &#39;question_date&#39;]&#xA;admin.site.register(Question, QuestionAdmin)&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;把表单分割成字段集：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;from .models import Question&#xA;class QuestionAdmin(admin.ModelAdmin):&#xA;    fieldsets = [&#xA;        (None,               {&#39;fields&#39;: [&#39;question_text&#39;]}),&#xA;        (&#39;Date information&#39;, {&#39;fields&#39;: [&#39;pub_date&#39;]}),&#xA;    ]&#xA;admin.site.register(Question, QuestionAdmin)&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h1 id=&#34;后台&#34;&gt;后台&lt;/h1&gt;&#xA;&lt;p&gt;django的后台管理程序。&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Admin</title>
+      <link>https://canuxcheng.com/post/win_admin/</link>
+      <pubDate>Tue, 26 Apr 2016 09:54:45 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/win_admin/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Admin</title>
+      <link>https://canuxcheng.com/post/linux_admin/</link>
+      <pubDate>Fri, 15 Apr 2016 09:41:39 +0800</pubDate>
+      <guid>https://canuxcheng.com/post/linux_admin/</guid>
+      <description>&lt;h1 id=&#34;linux-admin&#34;&gt;Linux Admin&lt;/h1&gt;&#xA;&lt;p&gt;dpkg: ubuntu, debian.&lt;/p&gt;&#xA;&lt;p&gt;rpm: fedora, centos, redhat.&lt;/p&gt;&#xA;&lt;p&gt;zypper: suse.&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;linux系统常用的安装和配置&#34;&gt;Linux系统常用的安装和配置&lt;/h1&gt;&#xA;&lt;h2 id=&#34;terminalizer&#34;&gt;terminalizer&lt;/h2&gt;&#xA;&lt;p&gt;终端录制工具&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/faressoft/terminalizer&#34;&gt;https://github.com/faressoft/terminalizer&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;virtualbox&#34;&gt;virtualbox&lt;/h2&gt;&#xA;&lt;p&gt;开机自动挂载共享文件夹&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;# 手动挂在命令, 需要安装增强功能&#xA;$ mount -t vboxsf FolderNameOnWindows /path/on/linux&#xA;&#xA;# 实现开机自动挂载&#xA;$ sudo vim /etc/rc.local&#xA;mount.vboxsf -w ShareFolderNameOnWindows MountPointOnLinux&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;xrdp&#34;&gt;xrdp&lt;/h2&gt;&#xA;&lt;p&gt;从windows的RDP远程连接linux.&lt;/p&gt;&#xA;&lt;p&gt;use RDP on windows to connect to ubuntu16.04.&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;sudo dpkg -i tigervncserver_1.6...deb # download and install tigervncserver first.&#xA;sudo apt-get install -f&#xA;sudo apt-get instal xrdp -y&#xA;echo unity &amp;gt; ~/.xsession&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;use RDP on windows to connect to ubuntu14.04.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Oracle on Morgoth</title>
+    <link>https://canuxcheng.com/tags/oracle/</link>
+    <description>Recent content in Oracle on Morgoth</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 01 Jun 2016 22:40:22 +0000</lastBuildDate>
+    <atom:link href="https://canuxcheng.com/tags/oracle/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Oracle</title>
+      <link>https://canuxcheng.com/post/oracle/</link>
+      <pubDate>Wed, 01 Jun 2016 22:40:22 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/oracle/</guid>
+      <description>&lt;h1 id=&#34;oracle&#34;&gt;Oracle&lt;/h1&gt;&#xA;&lt;p&gt;oracle的GUI：&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;oracle sql developer(officer)&lt;/li&gt;&#xA;&lt;li&gt;pl/sql&lt;/li&gt;&#xA;&lt;li&gt;toad&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;oracle的CLI：&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;sqlplus&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;h1 id=&#34;oracle命令&#34;&gt;Oracle命令&lt;/h1&gt;&#xA;&lt;p&gt;sys是oracle默认管理员权限&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ sqlplus / as sysdba&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;system是oracle的默认最高权限，默认密码是manager，需要sys授权才能登陆&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ sqlplus / as sysdba&#xA;&amp;gt; alter user system account unlock;&#xA;&amp;gt; alter user system identified by manager;&#xA;&amp;gt; conn system/manager&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;scott是oracle的默热你的普通用户，默认密码是tiger，需要sys授权才能登陆&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ sqlplus / as sysdba&#xA;&amp;gt; alter user scott account unlock;&#xA;&amp;gt; alter user scott identified by tiger;&#xA;&amp;gt; conn scott/tiger&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;本地命令行执行sql语句：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ &amp;lt;sql query&amp;gt; | &amp;lt;sqlplus&amp;gt; &amp;lt;db user&amp;gt;/&amp;lt;db password&amp;gt;@&amp;lt;db sid&amp;gt; | sudo ORACLE_HOME=&amp;lt;oracle home&amp;gt; -i -u &amp;lt;oracle user&amp;gt;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;dbsnmp是oracle的用户智能代理用户，用来监控和管理数据库相关性能。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

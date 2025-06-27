@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Security on Morgoth</title>
+    <link>https://canuxcheng.com/tags/security/</link>
+    <description>Recent content in Security on Morgoth</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 24 May 2020 15:30:42 +0800</lastBuildDate>
+    <atom:link href="https://canuxcheng.com/tags/security/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Linux Security</title>
+      <link>https://canuxcheng.com/post/linux_security/</link>
+      <pubDate>Sun, 24 May 2020 15:30:42 +0800</pubDate>
+      <guid>https://canuxcheng.com/post/linux_security/</guid>
+      <description>&lt;h1 id=&#34;selinux&#34;&gt;SeLinux&lt;/h1&gt;&#xA;&lt;p&gt;Security-Enhanced Linux&lt;/p&gt;&#xA;&lt;h1 id=&#34;seccomp&#34;&gt;SecComp&lt;/h1&gt;&#xA;&lt;p&gt;Secure computing mode (seccomp) is a Linux kernel feature.&lt;/p&gt;&#xA;&lt;h1 id=&#34;apparmor&#34;&gt;AppArmor&lt;/h1&gt;&#xA;&lt;p&gt;AppArmor (Application Armor) is a Linux security module that protects an operating system and its applications from security threats.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Command - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="single-post">
+    <article>
+        <header>
+            <h1>Command</h1>
+            <div class="post-meta">
+                <time>March 31, 2019</time>
+                
+                    
+                        <span class="category">Network</span>
+                    
+                
+                
+                    
+                        <span class="tag">#command</span>
+                    
+                
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <h1 id="network-command">network command</h1>
+<p>network related command</p>
+<hr>
+<h2 id="net-tools">net-tools</h2>
+<p><a href="https://github.com/ecki/net-tools">https://github.com/ecki/net-tools</a></p>
+<pre><code>$ sudo apt-get install net-tools
+</code></pre>
+<h3 id="ifconfig">ifconfig</h3>
+<pre><code>ifconfig # 查看up的interface
+ifconfig -a  # 查看所有的interface
+ifconfig &lt;bridge&gt;/&lt;interface&gt; up/down
+</code></pre>
+<h3 id="netstat">netstat</h3>
+<pre><code>netstat
+-a, --all, --listening # 显示所有socket, 默认只显示connected
+-l, --listening  # 显示listening
+-n, --numeric
+-p, --programs # 显示pid或程序名称
+# socket选项:
+-t, --tcp
+-u, --udp
+-w, --raw
+-x, --unix
+--ax25
+--ipx
+--netrom
+
+# 常用
+netstat -anp    # 查看哪些端口是打开的．
+sudo netstat -anp | grep port # 查看端口是否被使用
+sudo netstat -tulnp # 查看tcp&amp;udp端口是否被监听
+</code></pre>
+<h3 id="arp">arp</h3>
+<pre><code>arp # 用于确定IP地址的网卡物理地址
+</code></pre>
+<h3 id="rarp">rarp</h3>
+<h3 id="hostname">hostname</h3>
+<h3 id="domainname">domainname</h3>
+<h3 id="dnsdomainname">dnsdomainname</h3>
+<h3 id="route">route</h3>
+<p>Flags:</p>
+<ul>
+<li>U: route is up</li>
+<li>H: target is a host</li>
+<li>G: use gateway</li>
+<li>!: reject route</li>
+</ul>
+<p>Genmask: netmask for destination net.</p>
+<p>Metric: 到target距离, hops.</p>
+<p>Ref: 该路由引用次数</p>
+<p>Use: 查找路由的次数</p>
+<pre><code>route -n
+</code></pre>
+<hr>
+<h2 id="iputils">iputils</h2>
+<p><a href="https://github.com/iputils/iputils">https://github.com/iputils/iputils</a></p>
+<pre><code>$ sudo apt-get install iputils-ping
+</code></pre>
+<h3 id="ping">ping</h3>
+<pre><code>ping # 用于确定网络的连通性
+</code></pre>
+<h3 id="arping">arping</h3>
+<h3 id="tracepath">tracepath</h3>
+<h3 id="clockdiff">clockdiff</h3>
+<hr>
+<h2 id="traceroute">traceroute</h2>
+<pre><code>sudo apt install traceroute
+</code></pre>
+<hr>
+<h2 id="tcpdump">tcpdump</h2>
+<pre><code>sudo apt-get install tcpdump
+
+tcpdump
+
+tcpdump udp port &lt;port&gt; 抓udp 在port端口的包
+tcpdump -i &lt;interface&gt; host &lt;ip&gt;
+</code></pre>
+<hr>
+<h2 id="ncnetcat">nc/netcat</h2>
+<pre><code>// 有的系统默认安装netcat-traditional
+$ sudo apt-get install netcat-traditional 
+// 安装netcat-openbsd
+$ sudo apt-get install netcat-openbsd
+// 设置默认值
+$ sudo update-alternatives --config nc
+$ sudo update-alternatives --set nc /bin/nc.openbsd
+
+nc -z IP PORT # 查看指定tcp://ip:port是否监听
+nc -zu IP PORT # 查看udp://ip:port是否监听
+
+// 通过nc监听端口
+nc -l PORT
+
+// 通过nc发送请求.
+echo -e '{&quot;method&quot;:&quot;test&quot;,&quot;params&quot;:[&quot;test&quot;],&quot;id&quot;:1}' | nc IP PORT
+</code></pre>
+<hr>
+<h2 id="brctl">brctl</h2>
+<pre><code>$ sudo apt-get install bridge-utils
+
+brctl show
+brctl addbr &lt;bridge&gt; # 添加bridge
+brctl delbr &lt;bridge&gt; # 删除bridge
+brctl addif &lt;bridge&gt; &lt;interface&gt; # 绑定interface到bridge
+brctl delif &lt;bridge&gt; &lt;interface&gt; # 删除bridge上的interface
+</code></pre>
+<hr>
+<h2 id="iproute2">iproute2</h2>
+<p><a href="https://github.com/shemminger/iproute2">https://github.com/shemminger/iproute2</a></p>
+<pre><code>$ sudo apt-get install iproute2
+</code></pre>
+<h3 id="ip">ip</h3>
+<pre><code>ip link show
+
+# 创建vlan
+ip link add link eth1 name eth1.10 type vlan id 10
+# 添加ip
+ip addr add 192.168.100.1/24 brd 192.168.100.255 dev eth1.10
+# 启动vlan
+ip link set dev eth1.10 up
+# 关闭vlan
+ip link set dev eth1.10 down
+# 删除vlan
+ip link delete eth1.10
+</code></pre>
+<p>addr/address</p>
+<pre><code>ip addr show
+</code></pre>
+<p>route</p>
+<pre><code>ip route show
+</code></pre>
+<p>rule</p>
+<pre><code>ip rule show
+</code></pre>
+<h3 id="devlink">devlink</h3>
+<h3 id="ifstat">ifstat</h3>
+<h3 id="bridge">bridge</h3>
+<hr>
+<h2 id="dnsutils">dnsutils</h2>
+<pre><code>sudo apt-get install dnsutils
+</code></pre>
+<h3 id="nslookup">nslookup</h3>
+<pre><code>nslookup # 查询IP地址和对应的域名
+</code></pre>
+<h3 id="dig">dig</h3>
+<h3 id="nsupdate">nsupdate</h3>
+<h3 id="delv">delv</h3>
+<hr>
+<h2 id="ethtool">ethtool</h2>
+<pre><code>sudo apt-get install ethtool
+
+ethtool # 查询网络设备信息
+</code></pre>
+<hr>
+<h2 id="iftop">iftop</h2>
+<p><a href="http://www.ex-parrot.com/~pdw/iftop/">http://www.ex-parrot.com/~pdw/iftop/</a></p>
+<pre><code>$ sudo apt-get install iftop
+
+sudo iftop
+</code></pre>
+<hr>
+<h2 id="wget">wget</h2>
+<pre><code>wget [option] [URL]
+
+-a, --append-output=FILE 输出重定向到日志
+-o, --output-file=FILE
+-q, --quiet    不输出
+-b, --background
+-nv, --no-verbose
+--header &quot;authorization:c2FuZGJveDpTMG5pY3dhbGwK&quot;
+
+-t, --tries=NUMBER    超时重连次数, 0表示不限制, 默认20
+-nc, --no-clobber    不覆盖原有文件
+-N, --timestamping   只下载比本地新的文件
+-c, --continue    断点续传,会覆盖-N
+-T, --timeout=SECONDS    超时时间, 默认900s
+-w, --wait=SECONDS    重连之间的等待时间
+-O, --output-document=FILE, 重命名下载文件
+
+-nH, --no-host-directories 不创建站点的根目录
+-x, --force-directories    创建和服务器一样的结构下载
+-P, --directory-prefix=PREFIX  指定下载的目录
+
+-R,  --reject=LIST 排除下载的文件
+-r, --recursive  迭代下载
+-np, --no-parent 不下载父目录的内容
+
+# 同步目录
+wget -Nc -r -np -nH --cut-dirs=3 -R &quot;index.*, *.js, *.css, *.html, *.jpg, *.png, *.gif&quot; -P /path/to/source/ http://host/path/to/dest/
+
+# ssl + basic auth
+wget --no-check-certificate --user &lt;user&gt; --password &lt;pw&gt; -nv -N -P &lt;dest-folder&gt; &lt;src-url&gt;
+
+$ wget -q -N -P /folder url
+$ wget -q -c -O /path/to/file.ext url
+</code></pre>
+<h2 id="curl">curl</h2>
+<pre><code>curl
+-X/--request post/patch/delte/get/...
+-H/--header 'content-type: application/json'
+-d/--data '{&quot;key&quot;: &quot;value&quot;}'
+--data-raw DATA  HTTP POST data, '@' allowed (H)
+--data-ascii DATA  HTTP POST ASCII data (H)
+--data-binary DATA  HTTP POST binary data (H)
+--data-urlencode DATA  HTTP POST data url encoded (H)
+-G, --get           Send the -d data with a HTTP GET (H)
+-k/--insecure    ignore ssl check.
+-u/--user &lt;user:password&gt;
+-s/--silent        Silent mode
+</code></pre>
+
+        </div>
+    </article>
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

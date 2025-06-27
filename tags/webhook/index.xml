@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Webhook on Morgoth</title>
+    <link>https://canuxcheng.com/tags/webhook/</link>
+    <description>Recent content in Webhook on Morgoth</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 07 Jul 2018 16:43:15 +0000</lastBuildDate>
+    <atom:link href="https://canuxcheng.com/tags/webhook/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Webhook</title>
+      <link>https://canuxcheng.com/post/webhook/</link>
+      <pubDate>Sat, 07 Jul 2018 16:43:15 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/webhook/</guid>
+      <description>&lt;h1 id=&#34;webhook&#34;&gt;WebHook&lt;/h1&gt;&#xA;&lt;p&gt;用于server和server之间通讯．&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ssh on Morgoth</title>
+    <link>https://canuxcheng.com/tags/ssh/</link>
+    <description>Recent content in Ssh on Morgoth</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 28 Jul 2016 15:53:34 +0000</lastBuildDate>
+    <atom:link href="https://canuxcheng.com/tags/ssh/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ssh</title>
+      <link>https://canuxcheng.com/post/ssh/</link>
+      <pubDate>Thu, 28 Jul 2016 15:53:34 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/ssh/</guid>
+      <description>&lt;h1 id=&#34;openssh&#34;&gt;OpenSSH&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://www.openssh.com/&#34;&gt;http://www.openssh.com/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;windows上支持ssh协议的客户端：&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;putty&lt;/li&gt;&#xA;&lt;li&gt;xshell&lt;/li&gt;&#xA;&lt;li&gt;MobaXterm&lt;/li&gt;&#xA;&lt;li&gt;secureCRT&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;安装：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ sudo apt-get install openssh-server&#xA;$ sudo apt-get install openssh-client&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;ssh命令&#34;&gt;SSH命令&lt;/h1&gt;&#xA;&lt;p&gt;ssh是openssh协议的客户端．&lt;/p&gt;&#xA;&lt;p&gt;远程操作的命令包括ssh, scp, sftp.&lt;/p&gt;&#xA;&lt;p&gt;ssh&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ ssh&#xA;# 远程执行命令需要用双引号，不能用单引号&#xA;$ ssh username@host &amp;quot;command/script&amp;quot;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;scp&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ scp&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;sftp&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ sftp&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;常用选项：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;-C   compression&#xA;# 不需要输入yes来交互, 或者修改/etc/ssh/ssh_config&#xA;-o StrictHostKeyChecking=no&#xA;-o UserKnownHostsFile /dev/null&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;ssh也包括一些密钥管理的命令.&lt;/p&gt;&#xA;&lt;p&gt;ssh-keygen&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ ssh-keygen -t rsa -C &#39;canuxcheng@gmail.com&#39;&#xA;&#xA;# 通过将本机的公钥拷贝到远程机器实现无密码访问．&#xA;# 将本机的public-key拷贝到远程机器的authorized_keys.&#xA;$ ssh-copy-id -i ~/.ssh/id_rsa.pub user@remote&#xA;# 另外的拷贝方法&#xA;$ ssh user@host &amp;quot;cat &amp;gt;&amp;gt; ~/.ssh/authorized_keys&amp;quot; &amp;lt; ~/.ssh/id_rsa.pub&#xA;$ sudo service ssh restart # 需要重启ssh服务&#xA;&#xA;非交互式通过命令行传密码的命令：&#xA;$ sshpass -p [password]&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;ssh-add&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

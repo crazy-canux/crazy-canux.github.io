@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GSL_string - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="single-post">
+    <article>
+        <header>
+            <h1>GSL_string</h1>
+            <div class="post-meta">
+                <time>January 1, 2018</time>
+                
+                    
+                        <span class="category">Golang</span>
+                    
+                
+                
+                    
+                        <span class="tag">#string</span>
+                    
+                
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <h1 id="strings">strings</h1>
+<p>实现了用于操作字符的函数.</p>
+<h2 id="functions">functions</h2>
+<pre><code>func EqualFold(s, t string) bool
+
+func HasPrefix(s, prefix string) bool
+func HasSuffix(s, suffix string) bool
+
+func Count(s, sep string) int
+
+func Contains(s, substr string) bool
+...
+
+func Index(s, sep string) int
+...
+
+func LastIndex(s, sep string) int
+...
+
+func title(s string) string
+
+func ToLower(s string) string
+...
+
+// 返回count个string
+func Repeat(s string, count int) string
+
+func Replace(s, old, new string, n int) string
+
+func Map(mapping func(rune) rune, s string) string
+
+func Trim(s string, cutset string) string
+...
+
+// 返回将字符串按照空白分割的多个字符串
+func Fields(s string) []string
+// 按照f作为分隔符来分割字符串，返回切片
+func FieldsFunc(s string, f func(rune) bool) []string
+
+func Split(s, sep string) []string
+...
+
+// 将一系列字符串连接为一个字符串，之间用sep来分割.
+func Join(a []string, sep string) string
+</code></pre>
+<h2 id="reader">Reader</h2>
+<h2 id="replacer">Replacer</h2>
+<hr>
+<h1 id="bytes">bytes</h1>
+<p>实现了操作[]bytes的常用函数.</p>
+<h2 id="constants">constants</h2>
+<h2 id="variables">variables</h2>
+<h2 id="functions-1">functions</h2>
+<h2 id="reader-1">Reader</h2>
+<h2 id="buffer">Buffer</h2>
+<p>Buffer是一个实现了读写方法的可变大小的字节缓冲.</p>
+<p>零值是一个空的可用于读写的缓冲.</p>
+<p>struct:</p>
+<pre><code>type Buffer struct {}
+</code></pre>
+<p>functions:</p>
+<pre><code>func NewBuffer(buf []byte) *Buffer
+func NewBufferString(s string) *Buffer
+</code></pre>
+<p>methods:</p>
+<pre><code>func (b *Buffer) String() string
+
+func (b *Buffer) Read(p []byte) (n int, err error)
+func (b *Buffer) Write(p []byte) (n int, err error)
+</code></pre>
+<hr>
+<h1 id="strconv">strconv</h1>
+<p>实现了基本数据类型和字符串的相互转换.</p>
+<h2 id="constants-1">constants</h2>
+<pre><code>const InitSize = intSize
+</code></pre>
+<h2 id="variables-1">Variables</h2>
+<pre><code>var ErrRange = errors.New(&quot;value out of range&quot;)
+var ErrSyntax = errors.New(&quot;invalid syntax&quot;)
+</code></pre>
+<h2 id="functions-2">functions</h2>
+<pre><code>// 返回一个字符是否是可打印的
+func IsPrint(r rune) bool
+
+// 返回字符串s是否可以不被修改的表示为一个反引号字符串
+func CanBackquote(s string) bool
+
+func Quote(s string) string
+...
+
+func Unquote(s string) (t string, err error)
+...
+
+func AppendInt(dst []byte, i int64, base int) []byte
+...
+
+// 字符串转换成其他类型
+func ParseInt(s string, base int, bitSize int) (i int64, err error)
+...
+
+// 其他类型转换为字符串
+func FormatInt(i int64, base int) string
+...
+
+// ParseInt(s, 10, 0)的简写, string -&gt; int
+func Atoi(s string) (i int, err error)
+// FormatInt(i, 10)的简写, int -&gt; string
+func Itoa(i int) string
+</code></pre>
+<h2 id="numerror">NumError</h2>
+<p>表示一次失败的转换</p>
+<p>struct:</p>
+<pre><code>type NumError struct {
+    Func string
+    Num string
+    Err error
+}
+</code></pre>
+<p>methods:</p>
+<pre><code>func (e *NumError) Error() string
+</code></pre>
+<hr>
+<h1 id="unicode">unicode</h1>
+<hr>
+<h1 id="regexp">regexp</h1>
+<p>实现了正则表达式搜索</p>
+<h2 id="functions-3">functions</h2>
+<h2 id="regexp-1">Regexp</h2>
+<p>Regexp代表一个编译好的正则表达式．</p>
+<pre><code>type Regexp struct {}
+</code></pre>
+<p>functions:</p>
+<pre><code>func Compile(expr string) (*Regexp, error)
+
+func CompilePOSIX(expr string) (*Regexp, error)
+
+func MustCompile(str string) *Regexp
+
+func MustCompilePOSIX(str string) *Regexp
+</code></pre>
+<p>methods:</p>
+<hr>
+<h1 id="regexpsyntax">regexp/syntax</h1>
+<hr>
+<h1 id="indexsuffixarray">index/suffixarray</h1>
+
+        </div>
+    </article>
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

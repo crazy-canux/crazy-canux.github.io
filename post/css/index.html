@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="single-post">
+    <article>
+        <header>
+            <h1>CSS</h1>
+            <div class="post-meta">
+                <time>June 23, 2016</time>
+                
+                    
+                        <span class="category">Web</span>
+                    
+                
+                
+                    
+                        <span class="tag">#css</span>
+                    
+                
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <h1 id="css"><strong>CSS</strong></h1>
+<p>CSS是叠层样式表</p>
+<h1 id="css3">CSS3</h1>
+<p>CSS3是最新的CSS标准</p>
+<h1 id="css创建">CSS创建</h1>
+<p>优先级从上往下。</p>
+<ol>
+<li>内联样式， 在html中通过style属性定义，仅用于一个html元素。</li>
+<li>内部样式表，在html中通过style标签在头部定义,针对单个页面。</li>
+<li>外部样式表，在html中通过link标签在文档头部定义，方便将样式用于多个页面。</li>
+<li>浏览器的默认值。</li>
+</ol>
+<hr>
+<h1 id="css基本语法"><strong>CSS基本语法</strong></h1>
+<p>CSS由两部分组成，选择器和声明，选择器是html元素，声明由属性和值组成。</p>
+<pre><code>selector {
+  property1: value1;
+  property2: value2;
+  ...;
+}
+</code></pre>
+<p>多个声明用分号隔开，属性的值有空格要用引号。</p>
+<p>CSS对大小写不敏感。</p>
+<p>CSS注释:</p>
+<pre><code>/* comment */
+</code></pre>
+<hr>
+<h1 id="css选择器"><strong>CSS选择器</strong></h1>
+<p>最常见的选择器是元素选择器,html元素是最基本的选择器。</p>
+<h2 id="元素选择器">元素选择器</h2>
+<p>html {color:black;}</p>
+<h2 id="id选择器">id选择器</h2>
+<p>id选择器可以为标有特定id的html元素指定特定样式。</p>
+<p>id选择器用#开头定义。</p>
+<pre><code>#red {color: red;}
+#green {color: green;}
+
+&lt;p id=&quot;red&quot;&gt;This is red.&lt;/p&gt;
+</code></pre>
+<p>id选择器常常用来建立派生选择器：</p>
+<pre><code>#sidebar p {
+  font-style: italic;
+  text-align: right;
+  margin-top: 0.5em;
+}
+
+&lt;div id=&quot;sidebar&quot;&gt;...&lt;/div&gt;
+</code></pre>
+<h2 id="class选择器">class选择器</h2>
+<p>和id选择器功能类似，类选择器以.开头。</p>
+<pre><code>.center {text-align: center}
+
+&lt;h1 class=&quot;center&quot;&gt;...&lt;/h1&gt;
+</code></pre>
+<p>类选择器用于建立派生选择器：</p>
+<pre><code>.fancy td {
+  color: #f60;
+  background: #666;
+}
+
+&lt;td class=&quot;fancy&quot;&gt;
+</code></pre>
+<p>也可以用：</p>
+<pre><code>td.fancy {
+  color: #f60;
+  background: #666;
+}
+
+&lt;td class=&quot;fancy&quot;&gt;
+</code></pre>
+<h2 id="属性选择器">属性选择器</h2>
+<p>为拥有指定属性的html元素设置样式。</p>
+<pre><code>[title]
+{
+  color: red;
+}
+
+&lt;a title=&quot;title is red&quot;&gt;...&lt;/a&gt;
+</code></pre>
+<p>属性和值选择器：</p>
+<pre><code>[title=w3c]
+{
+  border: 5px solid blue;
+}
+
+&lt;img title=&quot;w3c&quot; src=&quot;/images/w3c.gif&quot;&gt;
+
+# 属性和值选择器的操作符：
+=
+~=
+|=
+^=
+$=
+*=
+</code></pre>
+<h2 id="后代选择器descendant">后代选择器/descendant</h2>
+<h2 id="子元素选择器child">子元素选择器/child</h2>
+<h2 id="相邻兄弟选择器adjacent-sibling">相邻兄弟选择器/adjacent sibling</h2>
+<hr>
+<h1 id="css样式"><strong>CSS样式</strong></h1>
+<p>内联样式：</p>
+<pre><code>&lt;p style=&quot;background: #ff0000 url(/i/eg_bg_03.gif) no-repeat fixed center&quot;&gt;...&lt;/h1&gt;
+</code></pre>
+<p>样式表：</p>
+<pre><code>p {
+  background: #ff0000 url(/i/eg_bg_03.gif) no-repeat fixed center;
+}
+</code></pre>
+<h2 id="background样式">background样式</h2>
+<pre><code>background: # 可以定义所有背景的值
+background-color: gray # 背景颜色
+background-image: url(/images/test.gif) # 背景图片,默认水平和垂直都平铺
+background-repeat: repeat-x # 水平方向平铺
+background-repeat: repeat-y # 垂直方向平铺
+background-repeat: no-repeat # 不平铺
+background-position: center/top/buttom/left/right # 图像在背景中的位置
+background-attachment: fixed # 图像相对于可视区是固定的
+background-size
+background-origin
+background-clip
+</code></pre>
+<h2 id="文本样式">文本样式</h2>
+<pre><code>color: red # 设置文本颜色
+line-height # 设置行高
+letter-spacing # 设置字符间距
+word-spacing # 设置字间距
+text-indent # 缩进元素中文本首行
+direction: ltr/rtl # 设置文本方向
+text-align: left/right/center/justify # 对齐元素中的文本
+text-decoration: none/underline/overline/line-through/blink # 向文本添加修饰
+text-transform: none/capitalize/uppercase/lowercase # 控制元素的字母
+white-space: normal/pre/nowrap/pre-wrap/pre-line # 设置元素中空白的处理方式
+</code></pre>
+<h2 id="字体样式">字体样式</h2>
+<pre><code>font: # 定义所有和字体有关的属性
+font-family: # 设置字体系列
+font-size:  # 设置字体尺寸
+font-style: normal/italic/oblique # 设置字体风格
+font-variant: normal/small-caps # 设置字体变体
+font-weight: normal/bold/bolder/lighter/... # 设置字体粗细
+</code></pre>
+<h2 id="链接样式">链接样式</h2>
+<p>链接可以设置background，color，font等样式。</p>
+<pre><code>a:link {background: red} # 普通的未被访问的链接
+a:visited {color: blue} # 用户已访问的链接
+a:hover {font: } # 鼠标指针位于链接的上方
+a:active {font: } # 链接被点击的时刻
+</code></pre>
+<h2 id="列表样式">列表样式</h2>
+<pre><code>list-style: # 定义所有和列表相关的属性
+list-style-image: # 把图像设置为列表项标志
+list-style-position: inside/outside # 设置列表项标志的位置
+list-style-type: # 设置列表项标志的位置
+</code></pre>
+<h2 id="表格样式">表格样式</h2>
+<pre><code>border-collapse: separate/collapse # 设置是否把表格边框合并为单一的边框
+border-spacing: # 设置分割单元边框距离
+caption-side: top/bottom # 规定表格标题设置方式
+empty-cells: hide/show # 设置是否现实表格中的空单元格
+table-layout: automatic/fixed # 设置现实单元，行和列的算法
+</code></pre>
+<h2 id="轮廓样式">轮廓样式</h2>
+<pre><code>outline: # 设置所有和轮廓相关的属性
+outline-color: # 设置轮廓颜色
+outline-style: none/dotted/dashed/solid/double/groove/ridge/inset/outset # 设置轮廓风格
+outline-width: # 设置轮廓宽度
+</code></pre>
+<h2 id="尺寸属性">尺寸属性</h2>
+<pre><code>height
+width
+max-height
+max-width
+min-height
+min-width
+</code></pre>
+<hr>
+<h1 id="css模型框"><strong>CSS模型框</strong></h1>
+<h2 id="内边距属性">内边距属性</h2>
+<pre><code>padding
+padding-top
+padding-rigit
+padding-bottom
+padding-left
+</code></pre>
+<h2 id="边框属性">边框属性</h2>
+<pre><code>border
+border-style
+border-width
+border-color
+border-buttom
+border-buttom-color/style/width
+border-left
+border-left-color/style/width
+border-right
+border-right-color/style/width
+border-top
+border-top-color/style/width
+</code></pre>
+<h2 id="外边距属性">外边距属性</h2>
+<pre><code>margin # 依次为上，右，下，左．
+margin-right
+margin-top
+margin-bottom
+margin-left
+</code></pre>
+<hr>
+<h1 id="css定位"><strong>CSS定位</strong></h1>
+<pre><code>position # 规定元素的定位
+top
+right
+bottom
+left
+overflow # 内容益处元素框时，visible/hidden/scroll/auto/inderit
+clip
+vertical-align
+z-index
+display # 规定元素应该生成的框的类型, inline/none/block/...
+float # none/left/right/inderit, 规定框是否应该浮动
+</code></pre>
+<hr>
+<h2 id="color">color</h2>
+<p>16进制 和 rgb表示</p>
+<pre><code>rgb(255,255,255) == #FFFFFF == white
+rgb(0,0,0) == #000000 == black
+rgb(255,0,0) == red
+rgb(0,255,0) == green
+rgb(0,0,255) == blue
+rgb(255,255,0) == yellow
+</code></pre>
+
+        </div>
+    </article>
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

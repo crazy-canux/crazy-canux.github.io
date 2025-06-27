@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="generator" content="Hugo 0.147.9">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morgoth - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="home">
+    <h1>Morgoth</h1>
+    <p></p>
+    
+    <section class="recent-posts">
+        <h2>Recent Posts</h2>
+        <ul class="post-list">
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/metrics/">Metrics</a></h2>
+                    <div class="post-meta">
+                        <time>June 8, 2016</time>
+                        
+                            
+                                <span class="category">DevOps</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="monitoring">Monitoring</h1>
+<p>Tranditional monitoring is for Datacenter, like nagios, zabbix.</p>
+<p>Modern monitoring is for Cloud and Container.</p>
+<p>Modern monitoring based on metrics, logs and tracing.</p>
+<h1 id="tick-stack">TICK stack</h1>
+<p>influxdb: tsdb.</p>
+<p>kapacitor: alerting.</p>
+<p>chronograf: GUI.</p>
+<p>telegraf(agent): metrics collector.</p>
+<h1 id="prometheus">Prometheus</h1>
+<hr>
+<h1 id="graphing">Graphing</h1>
+<p>最流行的监控绘图软件是grafana, 支持influxdb,elasticsearch和prometheus.</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/tracing_jaeger/">Jaeger</a></h2>
+                    <div class="post-meta">
+                        <time>June 8, 2016</time>
+                        
+                            
+                                <span class="category">DevOps</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="jaeger">Jaeger</h1>
+<p>一款uber贡献给cncf的微服务tracing监控工具.</p>
+<p><a href="https://www.jaegertracing.io/">https://www.jaegertracing.io/</a></p>
+<p><a href="https://github.com/jaegertracing/jaeger">https://github.com/jaegertracing/jaeger</a></p>
+<h1 id="deploy-jaeger-on-k8s">Deploy Jaeger on K8S</h1>
+<p><a href="https://github.com/jaegertracing/jaeger-operator">https://github.com/jaegertracing/jaeger-operator</a></p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/linux_package/">Package</a></h2>
+                    <div class="post-meta">
+                        <time>June 7, 2016</time>
+                        
+                            
+                                <span class="category">Linux</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="dpkg">DPKG</h1>
+<p>debian的包管理机制。</p>
+<hr>
+<h2 id="dpkg-1">dpkg</h2>
+<p>dpkg的本地前端工具。</p>
+<h3 id="deb---debian-binary-package-format">deb - Debian binary package format</h3>
+<h3 id="dpkg---package-manager-for-debian">dpkg - package manager for Debian</h3>
+<pre><code>dpkg
+dpkg -X  ./xxx.deb  xxx  # 将deb包解压到xxx目录
+dpkg -e  ./xxx.deb  xxx/DEBIAN # 将control信息解压
+dpkg -l | grep pkg # 查看安装的包
+</code></pre>
+<h3 id="dpkg-reconfigure---reconfigure-an-already-installed-package">dpkg-reconfigure - reconfigure an already installed package</h3>
+<pre><code>dpkg-reconfigure
+</code></pre>
+<h3 id="dpkg-deb---debian-package-archive-deb-manipulation-tool">dpkg-deb - Debian package archive (.deb) manipulation tool</h3>
+<p>目录结构, DEBIAN/control是必需的</p>
+<pre><code>|- debian_root
+   |- DEBIAN
+      |- control
+      |- preinst/preinstallation # 解压deb包之前执行
+      |- prerm/preremove
+      |- postinst/postinstallation # 解压完成之后执行，通常用来配置
+      |- postrm/postremove
+      |- copyright
+      |- changelog
+      |- conffiles
+   |- etc
+      |- init.d/systemd
+         |- &lt;service&gt;
+      |- logrotate.d
+         |- &lt;service&gt;
+   |- user/local/...
+   |- opt/...
+</code></pre>
+<p>control:</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/oracle/">Oracle</a></h2>
+                    <div class="post-meta">
+                        <time>June 1, 2016</time>
+                        
+                            
+                                <span class="category">Database</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="oracle">Oracle</h1>
+<p>oracle的GUI：</p>
+<ol>
+<li>oracle sql developer(officer)</li>
+<li>pl/sql</li>
+<li>toad</li>
+</ol>
+<p>oracle的CLI：</p>
+<ol>
+<li>sqlplus</li>
+</ol>
+<h1 id="oracle命令">Oracle命令</h1>
+<p>sys是oracle默认管理员权限</p>
+<pre><code>$ sqlplus / as sysdba
+</code></pre>
+<p>system是oracle的默认最高权限，默认密码是manager，需要sys授权才能登陆</p>
+<pre><code>$ sqlplus / as sysdba
+&gt; alter user system account unlock;
+&gt; alter user system identified by manager;
+&gt; conn system/manager
+</code></pre>
+<p>scott是oracle的默热你的普通用户，默认密码是tiger，需要sys授权才能登陆</p>
+<pre><code>$ sqlplus / as sysdba
+&gt; alter user scott account unlock;
+&gt; alter user scott identified by tiger;
+&gt; conn scott/tiger
+</code></pre>
+<p>本地命令行执行sql语句：</p>
+<pre><code>$ &lt;sql query&gt; | &lt;sqlplus&gt; &lt;db user&gt;/&lt;db password&gt;@&lt;db sid&gt; | sudo ORACLE_HOME=&lt;oracle home&gt; -i -u &lt;oracle user&gt;
+</code></pre>
+<p>dbsnmp是oracle的用户智能代理用户，用来监控和管理数据库相关性能。</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/sql/">SQL</a></h2>
+                    <div class="post-meta">
+                        <time>May 25, 2016</time>
+                        
+                            
+                                <span class="category">Database</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="sql">SQL</h1>
+<p>sql是结构化查询语言。</p>
+<p>sql是一种标准，几乎所有关系型数据库都遵守。</p>
+<p>但是不同的数据库又有自己的扩展。</p>
+<p>SQL分为两部分，DML和DDL。</p>
+<p>SQL大小写敏感，文本使用单引号，数值不需要引号。</p>
+<h1 id="sql语法">sql语法</h1>
+<p>sql注释:</p>
+<pre><code># 多行注释
+/*
+comment multi lines
+in a sql file.
+*/
+
+# 单行注释
+/* comment single line */
+
+# 单行注释还可以直接用 -- 表示
+select * from table -- where condition;
+-- select * from table where condition;
+</code></pre>
+<hr>
+<h1 id="ddl">DDL</h1>
+<p>DDL: 数据定义语言</p>
+<h2 id="create">create</h2>
+<p>创建数据库：</p>
+<pre><code>CREATE DATABASE database_name;
+</code></pre>
+<p>建表：</p>
+<pre><code>CREATE TABLE table(
+    column1 type1,
+    column2 type2,
+    ...
+);
+</code></pre>
+<p>create也可以用来创建索引和视图．</p>
+<h2 id="drop">drop</h2>
+<p>删除数据库：</p>
+<pre><code>DROP DATABASE database_name;
+</code></pre>
+<p>删表：</p></p>
+                    
+                </li>
+            
+        </ul>
+    </section>
+    
+    
+        <a href="/page/42/">← Previous</a>
+    
+    
+        <a href="/page/44/">Next →</a>
+    
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

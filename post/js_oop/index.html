@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS OOP - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="single-post">
+    <article>
+        <header>
+            <h1>JS OOP</h1>
+            <div class="post-meta">
+                <time>March 15, 2017</time>
+                
+                    
+                        <span class="category">Web</span>
+                    
+                
+                
+                    
+                        <span class="tag">#oop</span>
+                    
+                
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <h1 id="oop">OOP</h1>
+<p>javascript中一切都是对象.</p>
+<p>javacript内置了Bull/Number/String/Object/Function/Array/Date/RegExp类型.</p>
+<h1 id="object">Object</h1>
+<p>创建Object实例:</p>
+<pre><code>var obj = new Object();
+
+var obj = Object(); // new 可以省略
+
+var obj = ｛
+    name: &quot;value&quot;
+};
+
+var obj = {
+    &quot;name&quot;: &quot;value&quot;
+}
+</code></pre>
+<p>添加属性:</p>
+<pre><code>obj.attr = &quot;value&quot;
+</code></pre>
+<p>添加方法:</p>
+<pre><code>obj.method =  methodName;
+function methodName() {};
+
+obj.method = function() {};
+</code></pre>
+<p>删除属性:</p>
+<pre><code>delete obj.attr
+</code></pre>
+<p>访问对象属性:</p>
+<pre><code>obj.property
+</code></pre>
+<p>访问对象方法:</p>
+<pre><code>obj.method()
+</code></pre>
+<h1 id="boolean">Boolean</h1>
+<p>attribution:</p>
+<pre><code>constructor
+prototype
+</code></pre>
+<p>method:</p>
+<pre><code>toSource()
+valueOf()
+toString()
+</code></pre>
+<h1 id="number">Number</h1>
+<p>attribution:</p>
+<pre><code>constructor
+prototype
+
+MAX_VALUE
+MIN_VALUE
+NaN
+NEGATIVE_INFINITY
+POSITIVE_INFINITY
+</code></pre>
+<p>method:</p>
+<pre><code>valueOf()
+toString()
+
+toLocaleString()
+toFixed()
+toExponential()
+toPrecision()
+</code></pre>
+<h1 id="string">String</h1>
+<p>attribution:</p>
+<pre><code>constructor
+prototype
+
+length
+</code></pre>
+<p>method:</p>
+<pre><code>toSource()
+toString()
+valueOf()
+
+anchor()
+big()
+indexOf()
+replace()
+match()
+search()
+toLowerCase()
+toUpperCase()
+...
+</code></pre>
+<h1 id="function">Function</h1>
+<p>attribution:</p>
+<pre><code>Infinity
+java
+NaN
+Packages
+undefined
+</code></pre>
+<p>method：</p>
+<pre><code>decodeURI()
+decodeURIComponent()
+encodeURI()
+encodeURIComponent()
+escape()
+eval()
+getClass()
+isFinite()
+isNaN()
+parseFloat()
+parseInt()
+String()
+unescape()
+</code></pre>
+<h1 id="array">Array</h1>
+<p>创建对象:</p>
+<p>new都可以省略.</p>
+<pre><code>var arr = new Array();
+
+var arr = new Array(size);
+
+var arr = new Array(element0, element1, ...);
+
+var arr = [];
+var arr = [1,2, &quot;test&quot;];
+</code></pre>
+<p>赋值:</p>
+<pre><code>arr[index] = &quot;value&quot;;
+
+// 字符串下标，不能直接通过数组对象访问，只能通过对象方法访问.
+arr[&quot;key&quot;] = &quot;value&quot;;
+</code></pre>
+<p>attribution:</p>
+<pre><code>constructor
+prototype
+
+length // set或get数组中元素个数.
+</code></pre>
+<p>method:</p>
+<pre><code>toSource()
+toString()
+valueOf()
+
+toLocaleString()
+
+join(separator) // 返回按照分隔符分隔的字符串
+concat() // 拼接
+
+push() // 往数组末尾添加元素,返回最新长度.
+pop() // 移除数组末尾元素,并返回
+
+unshift() // 在数组开头添加元素，返回最新长度.
+shift() //　移除数组开头元素并返回
+
+reverse() // 对数组逆序排序操作．
+sort(sortby) // 对数组顺序排序操作
+
+slice(start, end) // 取下标为start和end之间的元素，不包括start和end.
+
+splice(index, howmany, item1, ...) // 删除，插入，替换功能.
+splice(index, howmany) // 从index开始，获取howmany个元素
+splice(index, 0, item) // 从index插入item
+splice(index, 1, item) // 用item替换index的元素
+</code></pre>
+<h1 id="date">Date</h1>
+<p>创建对象:</p>
+<pre><code>var date = new Date();
+</code></pre>
+<p>attribution:</p>
+<pre><code>constructor
+prototype
+</code></pre>
+<p>method:</p>
+<pre><code>toString()
+toSource()
+valueOf()
+
+Date()
+UTC()
+parse(datestring) // 返回datestring的epoch毫秒数
+
+toLocalString()
+toLocalTimeString()
+toLocalDateString(0)
+toUTCString()
+toGMTString()
+toDateString()
+toTimeString()
+
+get...
+
+set...
+</code></pre>
+<h1 id="regexp">RegExp</h1>
+<h1 id="math">Math</h1>
+<h1 id="events">Events</h1>
+
+        </div>
+    </article>
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

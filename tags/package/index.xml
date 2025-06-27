@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Package on Morgoth</title>
+    <link>https://canuxcheng.com/tags/package/</link>
+    <description>Recent content in Package on Morgoth</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 23 Apr 2019 21:42:07 +0800</lastBuildDate>
+    <atom:link href="https://canuxcheng.com/tags/package/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Package</title>
+      <link>https://canuxcheng.com/post/go_package/</link>
+      <pubDate>Tue, 23 Apr 2019 21:42:07 +0800</pubDate>
+      <guid>https://canuxcheng.com/post/go_package/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Package</title>
+      <link>https://canuxcheng.com/post/python_package/</link>
+      <pubDate>Wed, 22 Jun 2016 05:17:19 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/python_package/</guid>
+      <description>&lt;h1 id=&#34;package&#34;&gt;Package&lt;/h1&gt;&#xA;&lt;p&gt;PEP426是python最新的打包标准，定义了wheel为最新的python包。&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.python.org/dev/peps/pep-0426/&#34;&gt;https://www.python.org/dev/peps/pep-0426/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;ensurepip&#34;&gt;ensurepip&lt;/h2&gt;&#xA;&lt;p&gt;内置模块.提供使用pip从pypi安装模块。&lt;/p&gt;&#xA;&lt;h2 id=&#34;distutils&#34;&gt;distutils&lt;/h2&gt;&#xA;&lt;p&gt;内置的模块.处理简单的包安装,一般使用setuptools代替该模块。&lt;/p&gt;&#xA;&lt;h2 id=&#34;venv&#34;&gt;venv&lt;/h2&gt;&#xA;&lt;p&gt;python3新增了虚拟环境的包．python2中使用virtualenv.&lt;/p&gt;&#xA;&lt;h2 id=&#34;zipapp&#34;&gt;zipapp&lt;/h2&gt;&#xA;&lt;p&gt;python3新增管理可执行的python的zip包．&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;tpl&#34;&gt;TPL&lt;/h1&gt;&#xA;&lt;p&gt;相关的第三方库&lt;/p&gt;&#xA;&lt;h2 id=&#34;virtualenv&#34;&gt;virtualenv&lt;/h2&gt;&#xA;&lt;p&gt;python3.5开始并入了虚拟化标准库venv.&lt;/p&gt;&#xA;&lt;p&gt;分离的虚拟的python环境,自动安装setuptools和pip和wheel&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/pypa/virtualenv&#34;&gt;https://github.com/pypa/virtualenv&lt;/a&gt;&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$cd project&#xA;&#xA;# 默认python2.7&#xA;$virtualenv .env&#xA;# 指定python3, 会安装pip/setuptools/wheel到当前环境.&#xA;$$virtualenv -p `which python3.6` --pip 21.0.1 --setuptools 51.1.2 --wheel 0.36.2 .env&#xA;&#xA;# 激活虚拟环境&#xA;$source .env/bin/activate&#xA;&#xA;# 先升级pip和setuptools&#xA;$pip install pip&#xA;$pip install setuptools&#xA;$pip install wheel&#xA;&#xA;# 导出项目用的所有依赖库．&#xA;$pip freeze &amp;gt; requirements.txt&#xA;# 在其它环境需要安装依赖：&#xA;$pip install -r requirements.txt&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;virtualenvwrapper&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://bitbucket.org/virtualenvwrapper/virtualenvwrapper&#34;&gt;https://bitbucket.org/virtualenvwrapper/virtualenvwrapper&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;封装了virtualenv的工具:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ pip install virtualenvwrapper&#xA;&#xA;# 创建主目录&#xA;$ mkdir -p $WORKON_HOME&#xA;&#xA;# 最好写入到.bashrc/.zshrc:&#xA;$ export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python&#xA;$ export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv&#xA;$ export WORKON_HOME=~/.virtualenvs&#xA;$ source /usr/local/bin/virtualenvwrapper.sh&#xA;&#xA;# 为每个项目创建独立python环境：&#xA;$ mkvirtualenv -r requirementx.txt [project-name]&#xA;# 不安装setuotools/wheel/pip&#xA;$ mkvirtualenv --no-setuptools --no-wheel --no-pip [name]&#xA;# 指定查找pip/setuptools的路径&#xA;--extra-search-dir=/usr/local/lib/python2.7/dist-packages&#xA;--extra-search-dir=/usr/lib/python2.7/dist-packages&#xA;$ workon [project-name] # 切换到针对该项目的virtualenv&#xA;(pro)$ /path/to/pip install [package] # 安装第三方包&#xA;(pro)$ ~/.virtualenvs/[project-name]/bin/python setupt.py install # 源码安装&#xA;(pro)$ lssitepackages # 查看安装的第三方包&#xA;$ deactivate # 退出virtualenv&#xA;$ rmvirtualenv [project-name] # 删除环境&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;pipenv&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Package</title>
+      <link>https://canuxcheng.com/post/linux_package/</link>
+      <pubDate>Tue, 07 Jun 2016 16:57:45 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/linux_package/</guid>
+      <description>&lt;h1 id=&#34;dpkg&#34;&gt;DPKG&lt;/h1&gt;&#xA;&lt;p&gt;debian的包管理机制。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;dpkg-1&#34;&gt;dpkg&lt;/h2&gt;&#xA;&lt;p&gt;dpkg的本地前端工具。&lt;/p&gt;&#xA;&lt;h3 id=&#34;deb---debian-binary-package-format&#34;&gt;deb - Debian binary package format&lt;/h3&gt;&#xA;&lt;h3 id=&#34;dpkg---package-manager-for-debian&#34;&gt;dpkg - package manager for Debian&lt;/h3&gt;&#xA;&lt;pre&gt;&lt;code&gt;dpkg&#xA;dpkg -X  ./xxx.deb  xxx  # 将deb包解压到xxx目录&#xA;dpkg -e  ./xxx.deb  xxx/DEBIAN # 将control信息解压&#xA;dpkg -l | grep pkg # 查看安装的包&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h3 id=&#34;dpkg-reconfigure---reconfigure-an-already-installed-package&#34;&gt;dpkg-reconfigure - reconfigure an already installed package&lt;/h3&gt;&#xA;&lt;pre&gt;&lt;code&gt;dpkg-reconfigure&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h3 id=&#34;dpkg-deb---debian-package-archive-deb-manipulation-tool&#34;&gt;dpkg-deb - Debian package archive (.deb) manipulation tool&lt;/h3&gt;&#xA;&lt;p&gt;目录结构, DEBIAN/control是必需的&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;|- debian_root&#xA;   |- DEBIAN&#xA;      |- control&#xA;      |- preinst/preinstallation # 解压deb包之前执行&#xA;      |- prerm/preremove&#xA;      |- postinst/postinstallation # 解压完成之后执行，通常用来配置&#xA;      |- postrm/postremove&#xA;      |- copyright&#xA;      |- changelog&#xA;      |- conffiles&#xA;   |- etc&#xA;      |- init.d/systemd&#xA;         |- &amp;lt;service&amp;gt;&#xA;      |- logrotate.d&#xA;         |- &amp;lt;service&amp;gt;&#xA;   |- user/local/...&#xA;   |- opt/...&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;control:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Package</title>
+      <link>https://canuxcheng.com/post/c_package/</link>
+      <pubDate>Mon, 11 Apr 2016 22:57:37 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/c_package/</guid>
+      <description>&lt;h1 id=&#34;package&#34;&gt;Package&lt;/h1&gt;</description>
+    </item>
+  </channel>
+</rss>

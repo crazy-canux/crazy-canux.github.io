@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swarm CSI - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="single-post">
+    <article>
+        <header>
+            <h1>Swarm CSI</h1>
+            <div class="post-meta">
+                <time>April 5, 2018</time>
+                
+                    
+                        <span class="category">CNCF</span>
+                    
+                        <span class="category">Storage</span>
+                    
+                
+                
+                    
+                        <span class="tag">#swarm</span>
+                    
+                
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <h1 id="csi">CSI</h1>
+<p>CSI: Container Storage Interface</p>
+<p>CSI提供容器的数据持久化服务.</p>
+<p>容器管理数据的两种方式：</p>
+<p>数据卷(Volumes)</p>
+<p>挂载主机目录(bind mounts)</p>
+<p>临时文件系统(tmpfs)</p>
+<h2 id="数据存储原理">数据存储原理</h2>
+<p>如果container上目录不存在，docker会自动创建</p>
+<p>如果container目录存在且有内容，会被host上的目录覆盖掉，但不会被删除.</p>
+<h2 id="volumes">Volumes</h2>
+<p>如果host上目录不存在，docker会自动创建</p>
+<p>volumes是被设计用来持久化数据的，它的生命周期独立于容器.数据卷通过docker volume命令管理的，位于/var/lib/docker/volumes/下面.</p>
+<p>Docker不会在容器被删除后自动删除 数据卷，并且也不存在垃圾回收这样的机制来处理没有任何容器引用的 数据卷。</p>
+<p>创建:</p>
+<pre><code>$ docker volume create &lt;volume-name&gt;
+$ docker volume rm &lt;volume-name&gt;
+</code></pre>
+<p>使用：</p>
+<pre><code>$ docker run -v/--volume myvolume:/var/lib/app ...
+$ docker run --mount source=myvolume,target=/var/lib/app ...
+</code></pre>
+<h2 id="bind-mount">Bind mount</h2>
+<p>如果host上目录不存在会报错，需要提前创建.</p>
+<p>bind mount就是直接将host路径挂在到docker．</p>
+<p>source和target都是文件，即可挂载单个文件.</p>
+<p>使用:</p>
+<pre><code>$ docker run -v/--volume /opt/app:/var/lib/app:ro ...
+$ docker run --mount type=bind,source=/opt/app,target=/var/lib/app,readonly ...
+</code></pre>
+<h2 id="tmpfs">tmpfs</h2>
+<p>tmpfs是临时文件系统，也叫内存文件系统，就是将数据存在内存上。</p>
+<p>tmpfs只能用于linux, 多个容器也不能共享，容器停止数据就销毁。</p>
+<p>使用&ndash;mount可以指定参数，使用&ndash;tmpfs不能指定参数。</p>
+<p>使用:</p>
+<pre><code>$ docker run --mount type=tmpfs,destination=/tmp/app,tmpfs_size=10G tmpfs_mode=1777 ...
+$ docker run --tmpfs  ...
+</code></pre>
+<hr>
+<h1 id="docker管理volume">Docker管理volume</h1>
+<p>查看:</p>
+<pre><code>docker volume ls # 查看所有卷
+</code></pre>
+<p>创建volume:</p>
+<pre><code>docker volume create my-volume 
+# mountpoint: /var/lib/docker/volumes/my-volume/_data.
+docker run -v/--volume my-volume:/container/path 
+# src=/var/lib/docker/volumes/my-volume/_data, dest=/container/path
+</code></pre>
+<p>指定路径作为volume：</p>
+<pre><code>docker run -v /host/path:/container/path ...
+# src=/host/path, dest=/container/path
+</code></pre>
+<p>默认随机路径，数据不能持久化：</p>
+<pre><code># src=/var/lib/docker/volumes/... /_data (on host)
+docker run -v /path ....
+docker run --mount ...
+</code></pre>
+
+        </div>
+    </article>
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

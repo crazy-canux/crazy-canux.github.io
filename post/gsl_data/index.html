@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GSL_data - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="single-post">
+    <article>
+        <header>
+            <h1>GSL_data</h1>
+            <div class="post-meta">
+                <time>January 1, 2018</time>
+                
+                    
+                        <span class="category">Golang</span>
+                    
+                
+                
+                    
+                        <span class="tag">#data</span>
+                    
+                
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <h1 id="time">time</h1>
+<h2 id="constants">constants</h2>
+<p>const:</p>
+<pre><code>const (
+    ANSIC       = &quot;Mon Jan _2 15:04:05 2006&quot;
+    Unixdate    = &quot;Mon Jan _2 15:04:05 MST 2006&quot;
+    RFC3339     = &quot;2006-01-02T15:04:05Z07:00&quot;
+    ...
+)
+</code></pre>
+<h2 id="functions">functions</h2>
+<pre><code>// 阻塞go程d代表的时间段
+func Sleep(d Duration)
+
+func After(d Duration) &lt;- chan Time
+
+func Tick(d Duration) &lt;- chan Time
+</code></pre>
+<h2 id="time-1">Time</h2>
+<p>代表一个纳秒精度的时间点.</p>
+<p>零值是January 1, year 1, 00:00:00.000000000 UTC.</p>
+<p>struct:</p>
+<pre><code>type  Time struct {}
+</code></pre>
+<p>functions:</p>
+<pre><code>// 格式化一个时间, eg:　2009-11-10 15:00:00 -0800 PST
+func date(year int, month Month, day, hour, min, sec, nsec int, loc *Location) Time
+
+// 返回当前本地时间, eg: 2018-03-18 12:16:55.842029 +0800 CST m=+0.001962301
+func Now() Time
+
+func Parse(layout, value s tring) (Time, error)
+
+func ParseInLocation(layout, value string, loc *Location) (Time, error)
+
+func Unix(sec int64, nsec int64) Time
+</code></pre>
+<p>methods:</p>
+<pre><code>// 返回T的地点和时区信息
+func (t Time) Location() *Location
+
+// 返回t的时区规范名和相对于UTC的偏移量
+func (t Time) Zone() (name string, offset int)
+
+func (t Time) IsZero() bool
+
+func (t Time) Local() Time
+
+func (t Time) UTC() Time
+
+func (t Time) In(loc *Location) Time
+
+func (t Time) Unix() int64
+
+func (t Time) UnixNano() int64
+
+// 比较两个时间
+func (t Time) Equal(u Time) bool
+
+// t &gt; u 返回true
+func (t Time) Before(u Time) bool
+
+// t &lt; u 返回true
+func (t Time) After(u Time) bool
+
+// 返回t的年月日.
+func (t Time) date() (year int, month Month, day int)
+
+// 返回t对应的时分秒
+func (t Time) Clock() (hour, min, sec int)
+
+// 返回t对应的年
+func (t Time) Year() int
+
+// 返回t对应的月
+func (t Time) Month() Month
+
+func (t Time) ISOWeek() (year, week int)
+
+// 返回t对应的当年的第几天
+func (t Time) YearDay() int
+
+// 返回t对应的当月的第几天
+func (t Time) Day() int
+
+// 返回t对应的星期几
+func (t Time) Weekday() Weekday
+
+// 返回t对应的第几小时
+func (t Time) Hour() int
+
+// 返回t对应的分钟
+func (t Time) Minute() int
+
+// 返回t对应的秒
+func (t Time) Second() int
+
+// 返回t对应的纳秒偏移量
+func (t Time) Nanosecond() int
+
+func (t Time) Add(d Duration) Time
+
+func (t Time) Adddate(years int, months int, days int) Time
+
+func (t Time) Sub(u Time) Duration
+
+func (t Time) Round(d duration) Time
+
+func (t Time) Truncate(d Duration) Time
+
+func (t Time) Format(layout string) string
+
+func (t Time) String(layout string) string
+</code></pre>
+<h2 id="weekday">Weekday</h2>
+<pre><code>type Weekday int
+
+const (
+    Sunday Weekday = iota
+    Monday
+    Tuesday
+    Wednesday
+    Thursday
+    Friday
+    Saturday
+)
+</code></pre>
+<p>methods:</p>
+<pre><code>// 返回d对应的英文名
+func (d Weekday) String() string
+</code></pre>
+<h2 id="month">Month</h2>
+<pre><code>type Month int
+
+const (
+    January Month = 1 + iota
+    February
+    March
+    April
+    May
+    June
+    July
+    August
+    September
+    October
+    November
+    December
+)
+</code></pre>
+<p>methods:</p>
+<pre><code>// 返回m对应的英文名
+func (m Month) String() string
+</code></pre>
+<h2 id="location">Location</h2>
+<p>struct:</p>
+<pre><code>type Location struct {}
+</code></pre>
+<p>functions:</p>
+<pre><code>// 返回使用给定名字创建的Location
+// name == &quot;&quot; 或　name == &quot;UTC&quot;, 返回UTC
+// name == &quot;Local&quot;, fanhui1Local
+// 其它时间数据库的值
+func LoadLocation(name string) (*Location, error)
+
+// 使用给定的名称和偏移量创建一个Location
+func FixedZone(name string, offset int) *Location
+</code></pre>
+<p>methods:</p>
+<pre><code>// 返回对时区信息的描述
+func (l *Location) String() string
+</code></pre>
+<h2 id="duration">Duration</h2>
+<h2 id="timer">Timer</h2>
+<h2 id="ticker">Ticker</h2>
+<hr>
+<h1 id="containerheap">container/heap</h1>
+<hr>
+<h1 id="containerlist">container/list</h1>
+<hr>
+<h1 id="containerring">container/ring</h1>
+<hr>
+<h1 id="compressbzip2">compress/bzip2</h1>
+<hr>
+<h1 id="compressflate">compress/flate</h1>
+<hr>
+<h1 id="compressgzip">compress/gzip</h1>
+<hr>
+<h1 id="compresslzw">compress/lzw</h1>
+<hr>
+<h1 id="compresszlib">compress/zlib</h1>
+<hr>
+<h1 id="archive">archive</h1>
+<hr>
+
+        </div>
+    </article>
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

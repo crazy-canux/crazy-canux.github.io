@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Livirt on Morgoth</title>
+    <link>https://canuxcheng.com/tags/livirt/</link>
+    <description>Recent content in Livirt on Morgoth</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 10 May 2021 20:55:52 +0800</lastBuildDate>
+    <atom:link href="https://canuxcheng.com/tags/livirt/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>KubeVirt</title>
+      <link>https://canuxcheng.com/post/k8s_kubevirt/</link>
+      <pubDate>Mon, 10 May 2021 20:55:52 +0800</pubDate>
+      <guid>https://canuxcheng.com/post/k8s_kubevirt/</guid>
+      <description>&lt;h1 id=&#34;kubevirt&#34;&gt;KubeVirt&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://kubevirt.io/quickstart_cloud/&#34;&gt;https://kubevirt.io/quickstart_cloud/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://quay.io/organization/kubevirt&#34;&gt;https://quay.io/organization/kubevirt&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://docs.fedoraproject.org/en-US/quick-docs/using-nested-virtualization-in-kvm/index.html&#34;&gt;https://docs.fedoraproject.org/en-US/quick-docs/using-nested-virtualization-in-kvm/index.html&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;virtctl&#34;&gt;virtctl&lt;/h2&gt;&#xA;&lt;h2 id=&#34;vm&#34;&gt;VM&lt;/h2&gt;&#xA;&lt;p&gt;创建vm&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;apiVersion: kubevirt.io/v1&#xA;kind: VirtualMachine&#xA;metadata:&#xA;name: testvm&#xA;spec:&#xA;running: false&#xA;template:&#xA;    metadata:&#xA;    labels:&#xA;        kubevirt.io/size: small&#xA;        kubevirt.io/domain: testvm&#xA;    spec:&#xA;    domain:&#xA;        devices:&#xA;        disks:&#xA;            - name: containerdisk&#xA;            disk:&#xA;                bus: virtio&#xA;            - name: cloudinitdisk&#xA;            disk:&#xA;                bus: virtio&#xA;        interfaces:&#xA;        - name: default&#xA;            masquerade: {}&#xA;        resources:&#xA;        requests:&#xA;            memory: 64M&#xA;    networks:&#xA;    - name: default&#xA;        pod: {}&#xA;    volumes:&#xA;        - name: containerdisk&#xA;        containerDisk:&#xA;            image: quay.io/kubevirt/cirros-container-disk-demo&#xA;        - name: cloudinitdisk&#xA;        cloudInitNoCloud:&#xA;            userDataBase64: SGkuXG4=&#xA;    nodeSelector:&#xA;        kubernetes.io/arch: arm64&#xA;&lt;/code&gt;&lt;/pre&gt;</description>
+    </item>
+  </channel>
+</rss>

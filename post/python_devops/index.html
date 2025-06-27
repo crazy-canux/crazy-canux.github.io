@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevOps - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="single-post">
+    <article>
+        <header>
+            <h1>DevOps</h1>
+            <div class="post-meta">
+                <time>April 3, 2016</time>
+                
+                    
+                        <span class="category">Python</span>
+                    
+                
+                
+                    
+                        <span class="tag">#devops</span>
+                    
+                
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <h1 id="python">Python</h1>
+<p>python2的最后一个版本是python2.7, 2020年停止更新.</p>
+<p>Windows安装：</p>
+<pre><code>Python2.7.9之后的版本直接下载msi安装即可．
+选择自动设置PATH，默认安装pip和setuptools.
+可以使用IDLE或python命令行或cmd执行python命令
+</code></pre>
+<p>Linux安装：</p>
+<pre><code>$sudo apt-get install python
+$sudo yum install python
+
+$sudo apt-get install python-dev
+$sudo apt-get install python3-dev
+$sudo yum install python-devel
+</code></pre>
+<p>标准库的路径：</p>
+<pre><code>C:\Python*\Lib
+/usr/lib/python*/
+</code></pre>
+<p>python的IDE：</p>
+<ol>
+<li>Windows: IDLE</li>
+<li>Linux: Vim</li>
+<li>Pycharm/VS</li>
+</ol>
+<hr>
+<h1 id="python命令">python命令</h1>
+<pre><code>$ python/ipython     # 进入python解释器
+&gt;&gt;&gt;exit()/Ctrl+d     # 退出python解释器
+&gt;&gt;&gt;help()            # 进入help工具
+help&gt;quit            # 退出help工具
+$ pydoc --help        # 文档工具
+
+# -c　cmd, __name__ != '__main__'
+$ python -c 'import module/package; expressions'
+# -m mod, __name__ == '__main__'
+$ python -m 'module/package'
+</code></pre>
+<hr>
+<h1 id="python的可用接口">python的可用接口</h1>
+<ol>
+<li>
+<p>python内置常量，函数，类和异常．</p>
+<p>C/C++实现的，不需要导入就可以使用的。</p>
+</li>
+<li>
+<p>python标准库</p>
+<p>python实现的，需要导入才能使用的。</p>
+</li>
+<li>
+<p>python外部库</p>
+<p>需要安装和导入才能使用的。外部库是对python代码的补充。</p>
+</li>
+<li>
+<p>python框架</p>
+<p>需要安装和导入才能使用的。python代码是对外部库的补充。</p>
+</li>
+</ol>
+<hr>
+<h1 id="python的其它解释器">python的其它解释器</h1>
+<h2 id="cpython">cpython</h2>
+<p>python的默认解释器，安装python即可获得。</p>
+<p><a href="https://github.com/python/cpython">https://github.com/python/cpython</a></p>
+<h2 id="stackless">stackless</h2>
+<p>cpython的增强版，支持多线程。</p>
+<p><a href="https://bitbucket.org/stackless-dev/stackless">https://bitbucket.org/stackless-dev/stackless</a></p>
+<h2 id="pypy">pypy</h2>
+<p>用python写的python解释器。</p>
+<p>比cpython更快的python。</p>
+<p><a href="https://bitbucket.org/pypy/pypy">https://bitbucket.org/pypy/pypy</a></p>
+<h2 id="jpython">jpython</h2>
+<p>java开发的可以运行在JVM平台的python解释器。</p>
+<h2 id="ironpython">ironpython</h2>
+<p>C#开发的可以运行在.net/mono平台的python解释器。</p>
+<hr>
+<h1 id="python开发相关的工具">python开发相关的工具</h1>
+<h2 id="ipython">ipython</h2>
+<p>python写的交互式解释器。</p>
+<p><a href="https://github.com/ipython/ipython">https://github.com/ipython/ipython</a></p>
+<pre><code>$pip install ipython
+</code></pre>
+<h2 id="pyenv">pyenv</h2>
+<p>python的版本管理工具,　用于管理多个pyton版本.</p>
+<p><a href="https://github.com/yyuu/pyenv">https://github.com/yyuu/pyenv</a></p>
+<hr>
+<h1 id="安装第三方库">安装第三方库</h1>
+<p><a href="https://pypi.python.org/pypi">https://pypi.python.org/pypi</a></p>
+<p>第三方库路径：</p>
+<pre><code>C:\Python*\Lib\site-packages
+~/.local/lib/python*/site-packages
+/usr/local/lib/python*/dist-packages
+/usr/local/lib/python*/site-packages
+/usr/lib/python*/dist-packages
+/usr/lib/python*/site-packages
+</code></pre>
+<p>二进制安装：</p>
+<pre><code>$sudo apt-get install python-&lt;packagename&gt;
+</code></pre>
+<p>源码安装第三方库：</p>
+<pre><code>$ cd package
+$ python setup.py install
+
+# 安装到　~/.local/lib/python*/site-packages
+$ python setup.py install --user
+</code></pre>
+<p>easy_install(setuptools)安装：</p>
+<pre><code>&lt;https://github.com/pypa/setuptools&gt;
+easy_install安装egg包,不推荐使用．
+setuptools带的工具,从pypi的egg归档格式中安装。
+python2.7.9, python3.4, virtualenv自带setuptools.
+缺点是不支持卸载。
+
+$sudo apt-get install python-setuptools
+$sudo yum install python-setuptools
+
+$ sudo apt-get install python3-setuptools
+
+$ pip install -U setuptools
+
+$sudo -E easy_install packagename[=version] # 安装
+$sudo -E easy_install -U packagename[=version] # 升级
+</code></pre>
+<p>pip安装：</p>
+<pre><code>&lt;https://github.com/pypa/pip&gt;
+直接从pypi安装wheel格式和sdist格式(也就是tarball)。
+
+$sudo apt-get install python-pip
+$sudo apt-get install python-wheel
+$sudo yum install python-pip
+$sudo yum install python-wheel
+
+$ sudo apt-get install python3-pip
+$ sudo apt-get install python3-wheel
+
+$pip install -U pip
+$pip install -U wheel
+$pip install -U setuptools
+
+$ pip install packagename[==version] # 安装
+$ pip install -U packagename[==version] # 升级
+$ pip uninstall packagename # 卸载
+$ pip install XXX.whl # 安装wheel包
+
+$ pip3 install/uninstall &lt;packagename&gt;
+</code></pre>
+<p>pip命令:</p>
+<pre><code>$pip list
+$pip search packagename
+$pip freeze &gt; requirements.txt
+$pip install -r requirements.txt
+
+$ pip install [options] &lt;requirement specifier&gt; [package-index-options]
+
+$ pip install --target &lt;dir&gt; # 通过target指定安装的具体site-packages路径,不包括scripts/data
+$ pip install --prefix &lt;dir&gt; # 通过prefix指定安装的bin, lib等路径，会安装scripts/data等
+$ pip install --root &lt;dir&gt; # 会自动创建&lt;dir&gt;/usr/local/bin,&lt;dir&gt;/usr/local/lib来安装
+$ pip install --user # 安装到/home/$USER/.local/lib
+
+# 下面是通过源码安装，不能通过whl等二进制安装
+$ pip install --install-option=&quot;--&lt;options&gt;&quot; # 通过源码安装，传递参数给python setup.py install
+$ pip install --global-option=...
+
+# 一般指定了其它安装路径都需要用-I, 因为如果系统路径已经安装，就不会再安装
+$ pip install -I/--ignore-installed # 重新安装, 配合--prefix使用.
+
+# General options:
+--log &lt;path&gt;
+--timeout &lt;sec&gt;
+--trusted-host &lt;hostname&gt;
+--cache-dir &lt;dir&gt;
+--no-cache-dir
+--disable-pip-version-check
+
+# Package index options
+-i, --index-url &lt;url&gt;
+--extra-index-url &lt;url&gt;
+--no-index
+-f, --find-links &lt;url&gt;
+--process-dependency-links
+
+# 手动修改pip的源
+$ sudo vim /etc/pip.conf
+
+[global]
+timeout=120
+no-cache-dir = false
+trusted-host = pypi.douban.com
+index-url = http://pypi.douban.com/simple
+# index-url = https://&lt;user&gt;:&lt;password&gt;@ip:port/simple
+
+[freeze]
+timeout = 10
+
+[install]
+ignore-installed = true
+no-dependencies = yes
+no-compile = no
+</code></pre>
+<p>pip-tools</p>
+<p>根据项目中的import导出依赖。</p>
+<p><a href="https://github.com/jazzband/pip-tools">https://github.com/jazzband/pip-tools</a></p>
+<p>pipreqs</p>
+<p><a href="https://github.com/bndr/pipreqs">https://github.com/bndr/pipreqs</a></p>
+<hr>
+<h1 id="python代码检查">python代码检查</h1>
+<h2 id="flake8">flake8</h2>
+<p><a href="https://github.com/PyCQA/flake8">https://github.com/PyCQA/flake8</a></p>
+<p>Include: pyflakes, pep8/pycodestyle, McCabe</p>
+<h2 id="pylama">pylama</h2>
+<p><a href="https://github.com/klen/pylama">https://github.com/klen/pylama</a></p>
+<p>Include: pyflakes, pylint, pep8/pycodestyle, pep257/pydocstyle, mccabe, radon, ghslint(for js)</p>
+<h2 id="pep8pycodestyle">pep8/pycodestyle</h2>
+<p>Simple Python style checker in one Python file.</p>
+<p><a href="https://github.com/PyCQA/pycodestyle">https://github.com/PyCQA/pycodestyle</a></p>
+<h2 id="pep257pydocstyle">pep257/pydocstyle</h2>
+<p>docstring style checker</p>
+<p><a href="https://github.com/PyCQA/pydocstyle">https://github.com/PyCQA/pydocstyle</a></p>
+<h2 id="jedi">jedi</h2>
+<p>Awesome autocompletion and static analysis library for python.</p>
+<p><a href="https://github.com/davidhalter/jedi">https://github.com/davidhalter/jedi</a></p>
+<h2 id="mccabe">mccabe</h2>
+<p>McCabe complexity checker for Python</p>
+<p><a href="https://github.com/PyCQA/mccabe">https://github.com/PyCQA/mccabe</a></p>
+<h2 id="pyflakes">pyflakes</h2>
+<p>A simple program which checks Python source files for errors.</p>
+<p>Faster than pylint.</p>
+<p><a href="https://github.com/PyCQA/pyflakes">https://github.com/PyCQA/pyflakes</a></p>
+<h2 id="pylint">pylint</h2>
+<p>A Python source code analyzer which looks for programming errors, helps enforcing a coding standard and sniffs for some code smells</p>
+<p><a href="https://github.com/PyCQA/pylint">https://github.com/PyCQA/pylint</a></p>
+<pre><code>$pylint --list-msgs
+$pylint --help-msg=C6409
+</code></pre>
+<h2 id="rope">rope</h2>
+<p>A python refactoring library</p>
+<p><a href="https://github.com/python-rope/rope">https://github.com/python-rope/rope</a></p>
+<hr>
+<h1 id="python项目结构">python项目结构</h1>
+<pre><code>.
+|-- README.rst
+|-- LICENSE
+|-- AUTHORS.rst
+|-- CONTRIBUTING.rst
+
+|-- project    项目源代码目录
+    |-- __init__.py 包文件
+    |-- &lt;module&gt;.py // 模块名不要和已知的包重名
+    ...
+|-- docs       用来存放文档
+    |-- conf.py
+    |-- index.rst
+    ...
+
+|-- tests 用来存放测试相关的文件(不能有__init__.py)
+|-- examples 用来存放使用本包相关的例子(不能有__init__.py)
+
+|-- bin 用来存放将被setup.py安装的二进制脚本
+|-- data 用来存放其它类型文件
+|-- etc 用来存放配置文件
+|-- tools 用来存放与工具相关shell脚本
+|-- scripts 用来存放安装相关的脚本
+
+|-- setup.py 标准安装脚本
+|-- setup.cfg
+|-- MANIFEST.in
+
+|-- .gitignore
+|-- .gitattributes
+|-- requirements.txt 依赖的环境
+|-- Makefile
+|-- fabfile.py
+</code></pre>
+<hr>
+<h1 id="cicd">CICD</h1>
+<h2 id="buildbot">buildbot</h2>
+<p>Python-based continuous integration testing framework</p>
+<p><a href="https://github.com/buildbot/buildbot">https://github.com/buildbot/buildbot</a></p>
+<h2 id="pybuilder">pybuilder</h2>
+<p>Continuous build tool for Python.</p>
+<p><a href="https://github.com/pybuilder/pybuilder">https://github.com/pybuilder/pybuilder</a></p>
+<hr>
+<h1 id="pypi">pypi</h1>
+<p>创建私有的pypi服务器</p>
+<h2 id="pypiserver">pypiserver</h2>
+
+        </div>
+    </article>
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

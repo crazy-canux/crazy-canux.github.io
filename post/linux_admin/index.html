@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="single-post">
+    <article>
+        <header>
+            <h1>Admin</h1>
+            <div class="post-meta">
+                <time>April 15, 2016</time>
+                
+                    
+                        <span class="category">Linux</span>
+                    
+                
+                
+                    
+                        <span class="tag">#admin</span>
+                    
+                
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <h1 id="linux-admin">Linux Admin</h1>
+<p>dpkg: ubuntu, debian.</p>
+<p>rpm: fedora, centos, redhat.</p>
+<p>zypper: suse.</p>
+<hr>
+<h1 id="linux系统常用的安装和配置">Linux系统常用的安装和配置</h1>
+<h2 id="terminalizer">terminalizer</h2>
+<p>终端录制工具</p>
+<p><a href="https://github.com/faressoft/terminalizer">https://github.com/faressoft/terminalizer</a></p>
+<h2 id="virtualbox">virtualbox</h2>
+<p>开机自动挂载共享文件夹</p>
+<pre><code># 手动挂在命令, 需要安装增强功能
+$ mount -t vboxsf FolderNameOnWindows /path/on/linux
+
+# 实现开机自动挂载
+$ sudo vim /etc/rc.local
+mount.vboxsf -w ShareFolderNameOnWindows MountPointOnLinux
+</code></pre>
+<h2 id="xrdp">xrdp</h2>
+<p>从windows的RDP远程连接linux.</p>
+<p>use RDP on windows to connect to ubuntu16.04.</p>
+<pre><code>sudo dpkg -i tigervncserver_1.6...deb # download and install tigervncserver first.
+sudo apt-get install -f
+sudo apt-get instal xrdp -y
+echo unity &gt; ~/.xsession
+</code></pre>
+<p>use RDP on windows to connect to ubuntu14.04.</p>
+<pre><code>sudo apt-get install xrdp
+sudo apt-get install xfce4
+echo xfce4-session &gt; ~/.xsession
+sudo vim /etc/xrdp/startwm.sh
+# add 'startxfce4' to last line.
+sudo service xrdp restart
+</code></pre>
+<h2 id="清理内存的buffcache">清理内存的buff/cache</h2>
+<pre><code>echo 3 &gt; /proc/sys/vm/drop_caches
+# reboot才能改回默认的0
+</code></pre>
+<h2 id="终端现实超大艺术字">终端现实超大艺术字</h2>
+<pre><code>$ sudo apt-get install figlet
+$ figlet &lt;text&gt;
+</code></pre>
+<hr>
+<h1 id="ubuntudebian安装后的基本配置">Ubuntu/Debian安装后的基本配置</h1>
+<pre><code>sudo apt-get install build-essential make libssl-dev
+</code></pre>
+<h2 id="apt-mirror">apt mirror</h2>
+<pre><code>vim /etc/apt/sources.list
+# deb http://ip:port/path   ubuntu16/
+# deb [trusted=yes] https://&lt;user&gt;:&lt;pw&gt;@ip:port/path   ubuntu16/
+deb [trusted=yes] https://user:pw@mirror.com/mirror ubuntu16/
+
+vim /etc/apt/apt.conf
+Acquire::https::mirror.com::Verify-Peer &quot;false&quot;;
+Acqhire::https::mirror.com::Verify-Host &quot;false&quot;;
+</code></pre>
+<h2 id="中文输入法">中文输入法</h2>
+<p>安装一个中文输入法框架fcitx(IBus, SCIM, UIM)：</p>
+<pre><code>$ sudo apt-get install fcitx
+</code></pre>
+<p>安装一种输入法引擎：</p>
+<pre><code>sudo apt-get install fcitx-googlepinyin
+sudo apt-get install fcitx-sunpinyin
+sudo apt-get install fcitx-libpinyin
+sudo apt-get install fcitx-sougoupinyin
+sudo apt-get install fcitx-cloudpinyin
+</code></pre>
+<p>配置程序：</p>
+<pre><code>kcm-fcitx - for qt - &lt;https://github.com/fcitx/kcm-fcitx&gt;
+fcitx-configtool - for gtk - &lt;https://github.com/fcitx/fcitx-configtool&gt;
+</code></pre>
+<p>在键盘输入方式系统从ibus改为fcitx，然后重启。</p>
+<h2 id="dconf修改配置">dconf修改配置</h2>
+<p>也可以通过系统自带的dconf命令修改．</p>
+<pre><code>$ sudo apt-get install dconf-editor
+</code></pre>
+<p>gedit打开txt文件乱码</p>
+<pre><code># org-&gt;gnome-&gt;gedit-&gt;preferences-&gt;encodings-&gt;auto-detected 添加'GB2312','GBK',...
+</code></pre>
+<p>开启远程桌面无密码登陆</p>
+<pre><code>$ dconf write /org/gnome/desktop/remote-access/require-encryption false
+or
+# org-&gt;gnome-&gt;desktop-&gt;remote-access-&gt;require-encryption false
+</code></pre>
+<h2 id="挂载u盘失败">挂载U盘失败</h2>
+<p>移动硬盘或者u盘不能挂载，删掉/etc/fstab的关于sdb的行，保存后重新插拔。</p>
+<h2 id="创建桌面图标比如eclipse">创建桌面图标（比如eclipse）</h2>
+<pre><code>cd /usr/share/applications
+sudo vi XXX.desktop
+</code></pre>
+<p>添加必要属性后拖到桌面或启动栏即可。</p>
+<h2 id="安装qq">安装QQ</h2>
+<pre><code>sudo apt-get install libgtk2.0-0:i386
+sudo apt-get install lib32ncurses5
+sudo apt-get install -f
+sudo dpkg -i fonts-wqy-microhei_0.2.0-beta-2_all.deb
+sudo dpkg -i ttf-wqy-microhei_0.2.0-beta-2_all.deb
+sudo dpkg -i wine-qqintl_0.1.3-2_i386.deb
+</code></pre>
+<h2 id="安装文档的包">安装文档的包</h2>
+<p>手册位于/usr/share/man</p>
+<pre><code>sudo apt-get install glibc-doc manpages-dev manpages-posix-dev manpages-zh
+</code></pre>
+<h2 id="记录终端操作">记录终端操作</h2>
+<p>安装相关工具:</p>
+<pre><code>$sudo apt-get install ttyrec
+$sudo apt-get install imagemagick
+$hg clone https://bitbucket.org/antocuni/tty2gif
+</code></pre>
+<p>开始记录:</p>
+<pre><code>$ttyrec
+</code></pre>
+<p>在终端播放记录文件ttyrecord:</p>
+<pre><code>$ttyplay ttyrecord
+</code></pre>
+<p>将ttyrecord文件转化成gif文件:</p>
+<pre><code>$tty2gif.py typing ttyrecord
+</code></pre>
+<p>将多个gif文件合并成一个文件:</p>
+<pre><code>$convert -limit memory 2mb -limit map 2mb -delay 2 -loop 0 *.gif example.gif
+</code></pre>
+<h2 id="添加用户为管理员">添加用户为管理员</h2>
+<pre><code>$ vim /etc/sudoers
+user     ALL = (ALL:ALL) ALL
+</code></pre>
+<h2 id="ubuntu网络设置">Ubuntu网络设置</h2>
+<p>查看dns：</p>
+<pre><code>$ systemd-resolve --status
+</code></pre>
+<p>ubuntu修改hostname:</p>
+<pre><code>$ sudo vim /etc/hostname
+new-hostname
+$ sudo vim /etc/hosts
+ip-address hostname
+$ sudo reboot
+</code></pre>
+<p>设置系统代理:</p>
+<pre><code>$ vim /etc/profile.d/sys_proxy.sh
+http_proxy=&quot;http://proxy-server:port&quot;
+https_proxy=&quot;http://proxy-server:port&quot;
+ftp_proxy=&quot;http://proxy-server:port&quot;
+no_proxy=localhost,127.0.0.1,...
+export http_proxy ftp_proxy https_proxy no_proxy
+</code></pre>
+<p>设置静态IP:</p>
+<pre><code>$ ifconfig
+# 查看网卡，ubuntu14.04 eth0, ubuntu16.04 ens160
+$ vim /etc/network/interfaces
+auto eth0
+iface eth0 inet static
+    address 192.168.0.1
+    netmask 255.255.255.0
+    gateway 192.168.0.0
+    dns-nameservers 8.8.8.8
+$ sudo service networking restart
+</code></pre>
+<p>ubuntu18:</p>
+<pre><code>netplan:
+$ sudo vim /etc/netplan/*.yaml
+
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    ens160:
+      dhcp4: no
+      addresses: [192.168.1.0/23]
+      gateway4: 193.168.0.1
+      nameservers:
+        addresses: [8.8.8.8]
+
+$ sudo netplan apply
+</code></pre>
+<h2 id="ubuntu-vlan">ubuntu vlan</h2>
+<p>vlan需要内核模块8021q</p>
+<pre><code>$ echo &quot;8021q&quot; &gt;&gt; /etc/modules
+
+auto vlan1023
+iface vlan1023 inet static
+    address 18.28.4.123
+    netmask 255.255.255.0
+    gateway 18.28.4.1
+    vlan-raw-device eth0
+</code></pre>
+<p>创建vlan</p>
+<pre><code>// 创建vlan(eth0.10), attach到interface(eth0)
+auto eth0.10
+iface eth0.10 inet manual
+    vlan-raw-device eth0
+</code></pre>
+<h2 id="ubuntu-bridge">ubuntu bridge</h2>
+<pre><code># 需要绑定到interface才需要配置interface.
+auto eth0
+iface eth0 inet manual
+
+auto br0
+iface br0 inet dhcp
+# For static configuration delete or comment out the above line and uncomment the following:
+# iface br0 inet static
+#  address 192.168.1.10
+#  netmask 255.255.255.0
+#  gateway 192.168.1.1
+#  dns-nameservers 192.168.1.5
+#  dns-search example.com
+bridge_ports eth0
+# 不绑定到interface就是none
+# bridge_ports none 
+bridge_stp off
+bridge_fd 0
+bridge_maxwait 0
+</code></pre>
+<p>创建bridge</p>
+<pre><code>// 创建bridge，attach到vlan.
+auto br0
+iface br0 inet static
+    address 172.16.0.4
+    netmask 255.255.240.0
+    bridge_ports eth0.10
+    bridge_stp off
+    bridge_fd 0
+    bridge_vlan_aware yes
+</code></pre>
+<h2 id="e-sub-process-usrbindpkg-returned-an-error-code-1">E: Sub-process /usr/bin/dpkg returned an error code (1)</h2>
+<p>method1:</p>
+<pre><code>$ sudo mkdir -p /var/lib/dpkg/info/package
+$ sudo mv /var/lib/dpkg/info/package.* /var/lib/dpkg/info/package
+</code></pre>
+<p>method2:</p>
+<pre><code>$ sudo apt-get purge package
+$ sudo apt-get install package
+</code></pre>
+<h2 id="ubuntu安装配置python37">ubuntu安装配置python3.7</h2>
+<p>ubuntu16.04自带python3.5, ubuntu18.04自带python3.6.</p>
+<p>测试: ubuntu16.04/18.04安装python3.7</p>
+<pre><code>$ sudo apt-get install software-properties-common
+$ sudo add-apt-repository ppa:deadsnakes/ppa
+$ sudo apt-get update
+$ sudo apt-get install python3.7 python3.7-gdbm python3.7-dev
+
+$ sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.7 1
+$ sudo update-alternatives --install /usr/bin/python python /usr/bin/python3.7  1
+$ sudo update-alternatives --config python
+$ sudo update-alternatives --config python3
+
+$ sudo apt-get purge python-pip python3-pip
+$ sudo rm -rf /usr/bin/pip* /usr/local/bin/pip* /usr/lib/python3*/dist-packages/pip /usr/local/lib/python3.*/dist-packages/pip
+
+$ sudo apt-get install python3-pip
+$ sudo pip3 install -U pip
+
+// ubuntu16.04通过apt-get安装的c-binding包默认还是到python3.5.
+// ubuntu18.04 是到python3.6.
+#!/usr/bin/env bash
+for PKG in `find /usr/lib/python3/dist-packages -name &quot;*.so&quot;`
+do
+    DIR=`dirname ${PKG}`
+    OLD=`basename ${PKG}`
+    NEW=`echo ${OLD} | sed 's/35m/37m/g'`
+    cp -f ${PKG} ${DIR}/${NEW}
+done
+</code></pre>
+<hr>
+<h1 id="centosfedoraredhat安装后的基本配置">Centos/Fedora/Redhat安装后的基本配置</h1>
+<pre><code>$ sudo yum -y install epel-release kernel-devel gcc gcc-c++
+</code></pre>
+<h2 id="centos网络配置">Centos网络配置</h2>
+<p>安装mini版本之后配置网络：</p>
+<pre><code>$ vi /etc/sysconfig/network-scripts/ifcfg-enxxx
+ONBOOT=no -&gt; yes
+# service network restart
+$ sudo yum install net-tools
+$ ifconfig
+</code></pre>
+<p>设置静态IP:</p>
+<pre><code>$ vim /etc/sysconfig/network-scripts/ifcfg-enxxx
+ONBOOT=yes
+BOOTPROTO=static # dhcp(自动获取), static(固定IP), node(手动设置)
+PREFIX=&quot;21&quot;
+IPADDR=&quot;192.168.0.1&quot;
+NETMASK=&quot;255.255.255.0&quot;
+GATEWAY=&quot;192.168.0.0&quot;
+DNS1=&quot;192.168.0.0&quot;
+$ sudo nmcli c reload
+</code></pre>
+<p>设置可以同时访问外网和本地连接的方法：</p>
+<pre><code># 网卡１用于外网连接
+# settings -&gt; network -&gt; network card1 -&gt; NAT
+$ cat /etc/sysconfig/network-scripts/ifcfg-en01
+BOOTPROTO=dhcp # 自动获取ip
+ONBOOT=yes
+UUID # 通过$ nmcli con show 命令查看
+HWADDR # 通过 $ ip addr 命令查看, 这个可以不设置
+
+# 网卡２用于本地局域网
+setting -&gt; network-&gt; network card2 -&gt; host-only
+# cp /etc/sysconfig/network-scripts/ifcfg-en01 /etc/sysconfig/network-scripts/ifcfg-en02
+$ vim /etc/sysconfig/network-scripts/ifcfg-en02
+NAME
+DEVICE
+BOOTPROTO=static
+ONBOOT=yes
+UUID
+HWADDR
+IPADDR=192.168.56.102
+
+$ sudo service network restart
+</code></pre>
+<p>修改hostname,局域网可以根据hostname相互访问：</p>
+<pre><code>$ sudo vim /etc/sysconfig/network
+NETWORKING=yes
+HOSTNAME=new-hostname
+
+$ sudo vim /etc/hostname
+new-hostname
+$ sudo vim /etc/hosts
+ip-address hostname
+
+$ sudo reboot
+</code></pre>
+<h2 id="centos安装增强功能">centos安装增强功能</h2>
+<pre><code>$ sudo mkdir -p /media/cdrom
+$ sudo mount /dev/cdrom /media/cdrom
+$ cd /media/cdrom
+$ sudo ./VBoxLinuxAdditions.run --nox11
+</code></pre>
+
+        </div>
+    </article>
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

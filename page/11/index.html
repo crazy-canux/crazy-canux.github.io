@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="generator" content="Hugo 0.147.9">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morgoth - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="home">
+    <h1>Morgoth</h1>
+    <p></p>
+    
+    <section class="recent-posts">
+        <h2>Recent Posts</h2>
+        <ul class="post-list">
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/k8s_dashboard/">Dashboard</a></h2>
+                    <div class="post-meta">
+                        <time>January 4, 2020</time>
+                        
+                            
+                                <span class="category">CNCF</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="dashboard-add-ons">dashboard add-ons</h1>
+<ul>
+<li>kubernetes-dashboard</li>
+<li>lens</li>
+<li>octant</li>
+<li>weave scope</li>
+</ul>
+<hr>
+<h2 id="kubernetes-dashboard">kubernetes-dashboard</h2>
+<p><a href="https://github.com/kubernetes/dashboard">https://github.com/kubernetes/dashboard</a></p>
+<pre><code>// 部署dashboard
+$ kubectl apply -f https://raw.githubusercontent.com/kubernetes/dashboard/v2.2.0/aio/deploy/recommended.yaml
+
+// check
+$ kubectl -n kubernetes-dashboard get pods --watch
+</code></pre>
+<p>1</p>
+<pre><code>// 删除已安装的dashboard
+$ kubectl delete ns kubernetes-dashboard
+</code></pre>
+<h3 id="dashboard-arguments">dashboard arguments</h3>
+<p>使用basic auth:</p>
+<pre><code>--enable-skip-login
+--enable-insecure-login
+--system-banner=&quot;Welcome to Kubernetes&quot;
+--authentication-mode=&quot;basic&quot; // 默认是 token 登陆.
+</code></pre>
+<h3 id="access-control">access control</h3>
+<ul>
+<li>
+<p>kubeconfig</p>
+</li>
+<li>
+<p>authorization header</p>
+</li>
+<li>
+<p>token</p>
+</li>
+<li>
+<p>basic</p>
+</li>
+</ul>
+<p>username/password login</p>
+<h3 id="access-dashboard">access dashboard</h3>
+<p>本机访问</p>
+<pre><code>$ kubectl proxy
+#&gt; http://localhost:8001/api/v1/namespaces/kubernetes-dashboard/services/https:kubernetes-dashboard:/proxy/
+</code></pre>
+<p>远程访问</p>
+<p>port-forward:</p>
+<pre><code>$ kubectl port-forward -n kubernetes-dashboard service/kubernetes-dashboard 8080:443 --address 0.0.0.0
+</code></pre>
+<p>nodePort:</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/cncf_platform/">Automation &amp; Configuration</a></h2>
+                    <div class="post-meta">
+                        <time>January 4, 2020</time>
+                        
+                            
+                                <span class="category">CNCF</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="automation--configuration">Automation &amp; Configuration</h1>
+<ul>
+<li>Cloud Custodian</li>
+<li>kubeedge</li>
+<li>pulumi</li>
+<li>terraform</li>
+<li>opentofu</li>
+<li>kratix</li>
+</ul>
+<p>platform orchestration.</p>
+<h2 id="kratix">kratix</h2></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/k8s_accesscontrol/">API Access Control</a></h2>
+                    <div class="post-meta">
+                        <time>January 4, 2020</time>
+                        
+                            
+                                <span class="category">CNCF</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="api-access-control">API Access Control</h1>
+<h2 id="admission-controllers">Admission Controllers</h2>
+<h3 id="mutatingadmissionwebhook">MutatingAdmissionWebhook</h3>
+<h3 id="validatingadmissionwebhook">ValidatingAdmissionWebhook</h3>
+<h3 id="validatingwebhookconfiguration">ValidatingWebhookConfiguration</h3>
+<pre><code>apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingWebhookConfiguration
+metadata:
+  annotations:
+    meta.helm.sh/release-name: ingress-nginx-internal
+    meta.helm.sh/release-namespace: ingress-nginx
+  labels:
+    app.kubernetes.io/component: admission-webhook
+    app.kubernetes.io/instance: ingress-nginx-internal
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: ingress-nginx
+    app.kubernetes.io/part-of: ingress-nginx
+    app.kubernetes.io/version: 1.9.1
+    helm.sh/chart: ingress-nginx-4.8.1
+  name: ingress-nginx-internal-admission
+webhooks:
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    caBundle: 
+    service:
+      name: ingress-nginx-internal-controller-admission
+      namespace: ingress-nginx
+      path: /networking/v1/ingresses
+      port: 443
+  failurePolicy: Fail
+  matchPolicy: Equivalent
+  name: validate.nginx.ingress.kubernetes.io
+  namespaceSelector: {}
+  objectSelector: {}
+  rules:
+  - apiGroups:
+    - networking.k8s.io
+    apiVersions:
+    - v1
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - ingresses
+    scope: '*'
+  sideEffects: None
+  timeoutSeconds: 10
+</code></pre>
+<h3 id="mutatingwebhookconfiguration">MutatingWebhookConfiguration</h3>
+<pre><code>apiVersion: admissionregistration.k8s.io/v1
+kind: MutatingWebhookConfiguration
+metadata:
+  annotations:
+    meta.helm.sh/release-name: vault-secrets-webhook
+    meta.helm.sh/release-namespace: vault-secrets-webhook
+  labels:
+    app.kubernetes.io/managed-by: Helm
+  name: vault-secrets-webhook
+webhooks:
+- admissionReviewVersions:
+  - v1beta1
+  clientConfig:
+    caBundle:
+    service:
+      name: vault-secrets-webhook
+      namespace: vault-secrets-webhook
+      path: /pods
+      port: 443
+  failurePolicy: Ignore
+  matchPolicy: Equivalent
+  name: pods.vault-secrets-webhook.admission.banzaicloud.com
+  namespaceSelector:
+    matchExpressions:
+    - key: name
+      operator: NotIn
+      values:
+      - kube-system
+    - key: kubernetes.io/metadata.name
+      operator: NotIn
+      values:
+      - kube-system
+    - key: kubernetes.io/metadata.name
+      operator: NotIn
+      values:
+      - vault-secrets-webhook
+  objectSelector:
+    matchExpressions:
+    - key: security.banzaicloud.io/mutate
+      operator: NotIn
+      values:
+      - skip
+  reinvocationPolicy: Never
+  rules:
+  - apiGroups:
+    - '*'
+    apiVersions:
+    - '*'
+    operations:
+    - CREATE
+    resources:
+    - pods
+    scope: '*'
+  sideEffects: NoneOnDryRun
+  timeoutSeconds: 10
+- admissionReviewVersions:
+  - v1beta1
+  clientConfig:
+    caBundle:
+    service:
+      name: vault-secrets-webhook
+      namespace: vault-secrets-webhook
+      path: /secrets
+      port: 443
+  failurePolicy: Ignore
+  matchPolicy: Equivalent
+  name: secrets.vault-secrets-webhook.admission.banzaicloud.com
+  namespaceSelector:
+    matchExpressions:
+    - key: name
+      operator: NotIn
+      values:
+      - kube-system
+    - key: kubernetes.io/metadata.name
+      operator: NotIn
+      values:
+      - kube-system
+    - key: kubernetes.io/metadata.name
+      operator: NotIn
+      values:
+      - vault-secrets-webhook
+  objectSelector:
+    matchExpressions:
+    - key: owner
+      operator: NotIn
+      values:
+      - helm
+    - key: security.banzaicloud.io/mutate
+      operator: NotIn
+      values:
+      - skip
+  reinvocationPolicy: Never
+  rules:
+  - apiGroups:
+    - '*'
+    apiVersions:
+    - '*'
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - secrets
+    scope: '*'
+  sideEffects: NoneOnDryRun
+  timeoutSeconds: 10
+- admissionReviewVersions:
+  - v1beta1
+  clientConfig:
+    caBundle:
+    service:
+      name: vault-secrets-webhook
+      namespace: vault-secrets-webhook
+      path: /configmaps
+      port: 443
+  failurePolicy: Ignore
+  matchPolicy: Equivalent
+  name: configmaps.vault-secrets-webhook.admission.banzaicloud.com
+  namespaceSelector:
+    matchExpressions:
+    - key: name
+      operator: NotIn
+      values:
+      - kube-system
+    - key: kubernetes.io/metadata.name
+      operator: NotIn
+      values:
+      - kube-system
+    - key: kubernetes.io/metadata.name
+      operator: NotIn
+      values:
+      - vault-secrets-webhook
+  objectSelector:
+    matchExpressions:
+    - key: owner
+      operator: NotIn
+      values:
+      - helm
+    - key: security.banzaicloud.io/mutate
+      operator: NotIn
+      values:
+      - skip
+  reinvocationPolicy: Never
+  rules:
+  - apiGroups:
+    - '*'
+    apiVersions:
+    - '*'
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - configmaps
+    scope: '*'
+  sideEffects: NoneOnDryRun
+  timeoutSeconds: 10
+</code></pre></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/k8s_minikube/">Minikube</a></h2>
+                    <div class="post-meta">
+                        <time>December 30, 2019</time>
+                        
+                            
+                                <span class="category">CNCF</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="minikube">minikube</h1>
+<p><a href="https://kubernetes.io/zh/docs/setup/learning-environment/minikube/">https://kubernetes.io/zh/docs/setup/learning-environment/minikube/</a></p>
+<p>minikube 能快速创建k8s的开发集群，支持在虚拟机上创建，也支持裸机创建.</p>
+<pre><code>// 在裸机上创建：
+sudo minikube start --vm-driver=none
+</code></pre></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/k8s_kubeadm/">Kubeadm</a></h2>
+                    <div class="post-meta">
+                        <time>December 30, 2019</time>
+                        
+                            
+                                <span class="category">CNCF</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="kubeadm">kubeadm</h1>
+<p><a href="https://github.com/kubernetes/kubeadm">https://github.com/kubernetes/kubeadm</a></p>
+<p>kubeadm是k8s自带的部署集群的工具.</p>
+<h1 id="install">Install</h1>
+<h2 id="准备工作">准备工作</h2>
+<p><a href="https://kubernetes.io/zh/docs/setup/production-environment/tools/kubeadm/install-kubeadm/">https://kubernetes.io/zh/docs/setup/production-environment/tools/kubeadm/install-kubeadm/</a></p>
+<h2 id="安装runtime">安装runtime</h2>
+<p><a href="https://kubernetes.io/zh/docs/setup/production-environment/container-runtimes/">https://kubernetes.io/zh/docs/setup/production-environment/container-runtimes/</a></p>
+<p>默认的cgroup驱动时cgroupfs,如果系统是systemd，就会有两个cgroup driver，会出问题.</p>
+<p>如果修改cgroup driver需要同时修改CRI和kubelet.</p>
+<p>修改containerd的cgroup driver:</p>
+<pre><code>$ sudo vim /etc/containerd/config.toml
+#disabled_plugins = [&quot;cri&quot;]
+[plugins.&quot;io.containerd.grpc.v1.cri&quot;.containerd.runtimes.runc.options]
+  SystemdCgroup = true
+
+$ sudo systemctl restart containerd
+</code></pre>
+<p>修改kubelet的cgroup driver(kubeadm-config.yaml):</p>
+<pre><code># kubeadm-config.yaml
+kind: ClusterConfiguration
+apiVersion: kubeadm.k8s.io/v1beta3
+kubernetesVersion: v1.21.0    // kubelet --version
+---
+apiVersion: kubelet.config.k8s.io/v1beta1
+kind: KubeletConfiguration
+cgroupDriver: systemd
+</code></pre>
+<h2 id="安装kubeadm-kubelet-kubectl">安装kubeadm, kubelet, kubectl</h2>
+<p>在每台机器上安装 kubeadm, kubelet, kubectl:</p>
+<pre><code>$ sudo apt-get update
+$ sudo apt-get install -y apt-transport-https ca-certificates curl
+$ sudo curl -fsSL https://mirrors.aliyun.com/kubernetes/apt/doc/apt-key.gpg | sudo apt-key add - 
+$ echo &quot;deb https://mirrors.aliyun.com/kubernetes/apt/ kubernetes-xenial main&quot; | sudo tee /etc/apt/sources.list.d/kubernetes.list
+$ sudo apt-get update
+$ sudo apt-get --yes --allow-unauthenticated install kubeadm kubelet kubectl
+$ sudo apt-mark hold kubelet kubeadm kubectl
+$ sudo systemctl enable kubelet
+</code></pre>
+<hr>
+<h1 id="kubeadm-cli">Kubeadm CLI</h1>
+<p>init:</p></p>
+                    
+                </li>
+            
+        </ul>
+    </section>
+    
+    
+        <a href="/page/10/">← Previous</a>
+    
+    
+        <a href="/page/12/">Next →</a>
+    
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

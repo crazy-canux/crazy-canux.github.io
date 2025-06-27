@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Snmp on Morgoth</title>
+    <link>https://canuxcheng.com/tags/snmp/</link>
+    <description>Recent content in Snmp on Morgoth</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 26 Apr 2016 09:56:04 +0000</lastBuildDate>
+    <atom:link href="https://canuxcheng.com/tags/snmp/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Snmp</title>
+      <link>https://canuxcheng.com/post/snmp/</link>
+      <pubDate>Tue, 26 Apr 2016 09:56:04 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/snmp/</guid>
+      <description>&lt;h1 id=&#34;snmp&#34;&gt;SNMP&lt;/h1&gt;&#xA;&lt;p&gt;Simple Network Management Protocol, 简单网络管理协议&lt;/p&gt;&#xA;&lt;p&gt;MIB&lt;/p&gt;&#xA;&lt;p&gt;SMI&lt;/p&gt;&#xA;&lt;p&gt;安装和配置snmp:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$sudo apt-get install snmp snmpd snmp-mibs-downloader&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;snmp命令&#34;&gt;snmp命令&lt;/h1&gt;&#xA;&lt;hr&gt;</description>
+    </item>
+  </channel>
+</rss>

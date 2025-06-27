@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWS Compute Services - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="single-post">
+    <article>
+        <header>
+            <h1>AWS Compute Services</h1>
+            <div class="post-meta">
+                <time>April 23, 2021</time>
+                
+                    
+                        <span class="category">Cloud</span>
+                    
+                
+                
+                    
+                        <span class="tag">#aws</span>
+                    
+                
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <h1 id="aws-compute-service">AWS Compute Service</h1>
+<h2 id="ec2">EC2</h2>
+<p>Elastic Compute.</p>
+<p>AMI: Amazon Machine Image.</p>
+<p>EC2实例类型:</p>
+<ul>
+<li>通用型实例</li>
+<li>计算优化型实例</li>
+<li>内存优化型实例</li>
+<li>加速计算型实例</li>
+<li>存储优化型实例</li>
+</ul>
+<p>EC2付费类型:</p>
+<ul>
+<li>按需(on-demand)</li>
+<li>预留实例(reserved)</li>
+<li>储蓄计划(savings plans)</li>
+<li>Spot实例</li>
+<li>专用主机(dedicated)</li>
+</ul>
+<h2 id="elastic-beanstalk">Elastic Beanstalk</h2>
+<p>features:</p>
+<ul>
+<li>monitoring</li>
+<li>deployment</li>
+<li>scaling</li>
+<li>EC2 customization</li>
+</ul>
+<h2 id="lambda">Lambda</h2>
+<h2 id="lightsail">Lightsail</h2>
+<h2 id="batch">Batch</h2>
+<h2 id="app-runner">App Runner</h2>
+<h2 id="auto-scaling">Auto Scaling</h2>
+<h2 id="fargate">Fargate</h2>
+<h2 id="outposts">Outposts</h2>
+<h2 id="wavelength">Wavelength</h2>
+<hr>
+<h1 id="app-integration">App Integration</h1>
+<h2 id="appflow">AppFlow</h2>
+<h2 id="appsync">AppSync</h2>
+<h2 id="eventbridge">EventBridge</h2>
+<h2 id="step-functions">Step Functions</h2>
+<p>无服务架构.</p>
+<h2 id="sns">SNS</h2>
+<p>Simple Notification Service是消息发布订阅服务.</p>
+<h2 id="sqs">SQS</h2>
+<p>Simple Queue Service是消息队列服务.</p>
+<p>支持256KB的payload.</p>
+<p>提供两种类型的queues:</p>
+<ul>
+<li>standard queue</li>
+<li>FIFO queue</li>
+</ul>
+<h2 id="mq">MQ</h2>
+<p>activeMQ 和 rabbitmq 托管服务。</p>
+<hr>
+<h1 id="business-app-integration">Business app integration</h1>
+<h2 id="simple-email-service">Simple Email Service</h2>
+<p>SES</p>
+<h2 id="alexa-for-business">Alexa for Business</h2>
+<hr>
+<h1 id="终端用户计算">终端用户计算</h1>
+<h2 id="appstream">AppStream</h2>
+<h2 id="workspaces">WorkSpaces</h2>
+
+        </div>
+    </article>
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

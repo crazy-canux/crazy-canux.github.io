@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tmux - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="single-post">
+    <article>
+        <header>
+            <h1>Tmux</h1>
+            <div class="post-meta">
+                <time>June 19, 2016</time>
+                
+                    
+                        <span class="category">DevOps</span>
+                    
+                
+                
+                    
+                        <span class="tag">#tmux</span>
+                    
+                
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <h1 id="tmux">tmux</h1>
+<p>tmux是终端复用工具，类似于gnu screen。</p>
+<p>tmux三个基本概念：</p>
+<ol>
+<li>
+<p>会话（session）</p>
+</li>
+<li>
+<p>窗口（window）</p>
+</li>
+<li>
+<p>面板（pane）</p>
+</li>
+</ol>
+<p>tmux使用c/s架构，tmux命令启动tmux服务器，一个tmux服务有多个session，
+每个session就是tmux管理下的伪终端集合，一个session有多个window与之关联，
+每个window就是一个伪终端，占据整个屏幕，一个window可以被分割成多个pane。</p>
+<hr>
+<h1 id="tmux安装和配置">tmux安装和配置</h1>
+<p>tmux依赖libevent和ncurses库。</p>
+<p><a href="http://libevent.org/">http://libevent.org/</a></p>
+<pre><code>$ sudo yum install libevent-devel
+</code></pre>
+<p><a href="http://invisible-island.net/ncurses/">http://invisible-island.net/ncurses/</a></p>
+<pre><code>$ sudo yum install ncurese-devel
+</code></pre>
+<p><a href="http://tmux.github.io/">http://tmux.github.io/</a></p>
+<pre><code>sudo apt-get install tmux
+sudo yum install tmux
+</code></pre>
+<p>用户配置文件： ~/.tmux.conf</p>
+<p>系统配置文件： /etc/tmux.conf</p>
+<hr>
+<h1 id="tmux相关项目">tmux相关项目</h1>
+<h2 id="tpm">TPM</h2>
+<p>Tmux Plugins Manager.</p>
+<p><a href="https://github.com/tmux-plugins/tpm">https://github.com/tmux-plugins/tpm</a></p>
+<hr>
+<h1 id="tmux用法">tmux用法</h1>
+<pre><code>man tmux
+</code></pre>
+<p>开启tmux：</p>
+<pre><code>tmux
+</code></pre>
+<p>退出tmux：</p>
+<pre><code>exit
+ctrl + d
+</code></pre>
+<p>列出tmux会话：</p>
+<pre><code>tmux ls
+</code></pre>
+<h2 id="tmux快捷键">tmux快捷键</h2>
+<p>tmux的prefix是ctrl-b</p>
+<p>按下ctrl-b然后松开，通知tmux下面的按键是快捷键。</p>
+<p>查看所有快捷键：</p>
+<pre><code>ctrl-b + ?
+</code></pre>
+<p>显示时间：</p>
+<pre><code>ctrl-b + t
+</code></pre>
+<h2 id="session操作">session操作</h2>
+<p>交互式选择一个session:</p>
+<pre><code>ctrl-b + s
+</code></pre>
+<p>选择一个session来detach：</p>
+<pre><code>ctrl-b + D
+</code></pre>
+<p>detach当前session:</p>
+<pre><code>ctrl-b + d
+</code></pre>
+<p>重命名当前的session：</p>
+<pre><code>ctrl-b + $
+</code></pre>
+<h2 id="window操作">window操作</h2>
+<p>交互式选择一个window:</p>
+<pre><code>ctrl-b + w
+</code></pre>
+<p>创建一个新window:</p>
+<pre><code>ctrl-b + c
+</code></pre>
+<p>关闭当前window:</p>
+<pre><code>ctrl-b + &amp;
+</code></pre>
+<p>切换到上一个window:</p>
+<pre><code>ctrl-b + p
+</code></pre>
+<p>切换到下一个window:</p>
+<pre><code>ctrl-b + n
+</code></pre>
+<p>移到之前选中的window：</p>
+<pre><code>ctrl-b + l
+</code></pre>
+<p>使用window号切换window:</p>
+<pre><code>ctrl-b + [number]
+</code></pre>
+<p>重命名window:</p>
+<pre><code>ctrl-b + ,
+</code></pre>
+<h2 id="pane操作">pane操作</h2>
+<p>横向分屏:</p>
+<pre><code>ctrl-b + %
+</code></pre>
+<p>纵向分屏:</p>
+<pre><code>ctrl-b + &quot;
+</code></pre>
+<p>选择pane:</p>
+<pre><code>ctrl-b + [方向键]
+</code></pre>
+<p>关闭当前pane:</p>
+<pre><code>ctrl-b + x
+</code></pre>
+<p>显示pane号:</p>
+<pre><code>ctrl-b + q
+</code></pre>
+<p>把当前的pane变成一个window：</p>
+<pre><code>ctrl-b + !
+</code></pre>
+<p>移动到之前的活跃的pane：</p>
+<pre><code>ctrl-b + ;
+</code></pre>
+<p>选择当前window的下一个pane：</p>
+<pre><code>ctrl-b + o
+</code></pre>
+<h2 id="tmux使用鼠标和粘贴复制">tmux使用鼠标和粘贴复制</h2>
+<p>复制：</p>
+<pre><code>shift-鼠标左键
+</code></pre>
+<p>粘贴：</p>
+<pre><code>shift-鼠标右键
+</code></pre>
+<p>列出所有粘贴缓冲区：</p>
+<pre><code>ctrl-b + #
+</code></pre>
+<p>交互式选择一个缓冲区的内容粘贴：</p>
+<pre><code>ctrl-b + =
+</code></pre>
+<p>使用复制模式：</p>
+<pre><code>ctrl-b + [
+</code></pre>
+<p>使用粘贴模式：</p>
+<pre><code>ctrl-b + ]
+</code></pre>
+
+        </div>
+    </article>
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

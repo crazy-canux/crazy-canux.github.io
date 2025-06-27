@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="generator" content="Hugo 0.147.9">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morgoth - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="home">
+    <h1>Morgoth</h1>
+    <p></p>
+    
+    <section class="recent-posts">
+        <h2>Recent Posts</h2>
+        <ul class="post-list">
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/postgre/">Postgresql</a></h2>
+                    <div class="post-meta">
+                        <time>April 3, 2016</time>
+                        
+                            
+                                <span class="category">Database</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="postgresql">PostgreSQL</h1>
+<p>安装postgresql：</p>
+<pre><code>$ sudo apt-get install postgresql
+</code></pre>
+<p>安装第三方库：</p>
+<pre><code>$ sudo apt-get install postgresql-contrib-9.3 libpg-dev postgresql-server-dev-9.3
+</code></pre>
+<p>GUI工具： pgAdminIII</p>
+<p>CLI工具： psql</p>
+<p>postgresql的端口是5432．</p>
+<h1 id="postgresql命令">postgresql命令</h1>
+<p>安装完成后默认的admin就是postgres, postgres里有默认数据库postgres.</p>
+<pre><code>$passwd postgres # 修改默认管理员用户postgres的密码
+$su - postgres # 切换到默认的postgres用户
+
+$ psql [OPTION]... [DBNAME [USERNAME]]
+
+$createuser &lt;username&gt; -P # 在命令行添加用户
+$dropuser &lt;username&gt; # 在命令行删除用户
+
+$createdb &lt;database&gt; -O &lt;username&gt; # 在命令行添加数据库
+$dropdb &lt;database&gt; # 在命令行删除数据库
+
+# 交互式:
+$ psql -U [username] [database]
+
+# 非交互式：
+$ PGPASSWORD='password';psql -h &lt;host&gt; -p &lt;port&gt; -U &lt;username&gt; -d [database] -c &quot;[psql command]&quot;
+</code></pre>
+<p>导出数据：</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/win_wmi/">WMI</a></h2>
+                    <div class="post-meta">
+                        <time>April 3, 2016</time>
+                        
+                            
+                                <span class="category">Windows</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="wmicim">WMI/CIM</h1>
+<p>WMI: windows management instrumentation.</p>
+<p><a href="https://msdn.microsoft.com/en-us/library/aa394582(v=vs.85).aspx">https://msdn.microsoft.com/en-us/library/aa394582(v=vs.85).aspx</a></p>
+<p>CIM: common information model.</p>
+<p><a href="https://msdn.microsoft.com/en-us/library/aa389234(v=vs.85).aspx">https://msdn.microsoft.com/en-us/library/aa389234(v=vs.85).aspx</a></p>
+<p>DCOM: distributed COM.</p>
+<p>wmi通过DCOM远程连接，但是DCOM不能绕过防火墙。</p>
+<p>命名空间:</p>
+<pre><code>root\cimv2
+root\microsoftdns
+root\securitycenter
+</code></pre>
+<p>WMI工具：</p>
+<ol>
+<li>windows自带wmi测试工具wbemtest.</li>
+<li>WMI Explorer用于查找wmi和cim的Class和Properties.</li>
+</ol>
+<p><a href="http://www.ks-soft.net/hostmon.eng/wmi/index.htm#SysReq">http://www.ks-soft.net/hostmon.eng/wmi/index.htm#SysReq</a></p>
+<p>windows怎样设置wmi：</p>
+<p>135 (Microsoft RPC), 137-139 (NetBIOS) and 445 (Microsoft DS). These are TCP ports.</p>
+<p>设置的用户需要是管理员组。</p>
+<p><a href="https://technet.microsoft.com/en-us/library/cc771551(v=ws.11).aspx">https://technet.microsoft.com/en-us/library/cc771551(v=ws.11).aspx</a></p>
+<p>给wmi设置fix port(server in DMZ)：</p>
+<p>使用过程中不需要指定端口。</p>
+<p><a href="https://msdn.microsoft.com/zh-cn/library/bb219447(v=vs.85).aspx">https://msdn.microsoft.com/zh-cn/library/bb219447(v=vs.85).aspx</a></p>
+<h1 id="wmic">wmic</h1>
+<p>wmic是wmi的客户端命令。</p>
+<p>windows的wmic：</p>
+<pre><code>&gt;wmic # 进入wmi的交互模式
+&gt;wmic -? # 查看帮助
+&gt;wmic /? # 查看帮助
+&gt;wmic ... # 非交互模式运行命令
+&gt;wmic process call create shutdown.exe # 本地关机
+</code></pre>
+<p>linux的wmic：</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/win/">Windows</a></h2>
+                    <div class="post-meta">
+                        <time>April 3, 2016</time>
+                        
+                            
+                                <span class="category">Windows</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="windows的ide">windows的IDE</h1>
+<p>VS Enterprise: 收费企业版
+VS Professional: 收费个人版
+VS Community: 免费社区版</p>
+<p>windows的引导程序是ntloader。</p>
+<p>DOS和NT是windows系统的内核。</p>
+<p>BIOS和MBR基本输入输出系统和主引导记录。</p>
+<p>UEFI和GPT是统一的可扩展接口和GUID分区表。</p>
+<p>FAT是msdos的文件系统</p>
+<p>NTFS是msnt的文件系统</p>
+<hr>
+<h1 id="ad">AD</h1>
+<p>AD: Active Directory</p>
+<p>管理工具：LDAPSoft AD Browser</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/win_monitoring/">Monitoring</a></h2>
+                    <div class="post-meta">
+                        <time>April 3, 2016</time>
+                        
+                            
+                                <span class="category">Windows</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="windows的services和process">windows的services和process</h1>
+<p>services是windows的服务，有Name(Display Name)，Service Name，Description等属性。</p>
+<p>process是以.exe为后缀的application，有Name(product name)、original filename(Image Name)、file description(description)等属性。</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/win_filesystem/">FileSystem</a></h2>
+                    <div class="post-meta">
+                        <time>April 3, 2016</time>
+                        
+                            
+                                <span class="category">Windows</span>
+                            
+                        
+                    </div>
+                    
+                </li>
+            
+        </ul>
+    </section>
+    
+    
+        <a href="/page/50/">← Previous</a>
+    
+    
+        <a href="/page/52/">Next →</a>
+    
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

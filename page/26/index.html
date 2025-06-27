@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="generator" content="Hugo 0.147.9">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morgoth - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="home">
+    <h1>Morgoth</h1>
+    <p></p>
+    
+    <section class="recent-posts">
+        <h2>Recent Posts</h2>
+        <ul class="post-list">
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/redis/">Redis</a></h2>
+                    <div class="post-meta">
+                        <time>May 3, 2017</time>
+                        
+                            
+                                <span class="category">Database</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="redis">Redis</h1>
+<p><a href="http://redisdoc.com/">http://redisdoc.com/</a></p>
+<p>redis在key-value存储上性能比memcached更好．</p>
+<p>安装：</p>
+<pre><code># redis-cli, redis-sentinel, redis-server
+$ sudo apt-get install redis-server
+</code></pre>
+<p>只安装redis-cli:</p>
+<pre><code>$ sudo apt-get install redis-tools
+</code></pre>
+<p>redis-server监听端口6379.</p>
+<p>redis-sentinel端口26379.</p>
+<p>redis gui:</p>
+<p><a href="https://github.com/qishibo/AnotherRedisDesktopManager">https://github.com/qishibo/AnotherRedisDesktopManager</a></p>
+<p><a href="https://github.com/luin/medis">https://github.com/luin/medis</a></p>
+<p>redis HA:</p>
+<p><a href="https://github.com/CodisLabs/codis">https://github.com/CodisLabs/codis</a></p>
+<hr>
+<h1 id="redis的命令">redis的命令</h1>
+<p>server:</p>
+<pre><code>redis-server
+</code></pre>
+<p>client:</p>
+<pre><code>redis-client
+</code></pre>
+<p>test:</p>
+<pre><code>redis-benchmark
+</code></pre>
+<p>sentinel:</p>
+<pre><code>redis-sentinel
+</code></pre>
+<hr>
+<h1 id="cli">CLI</h1>
+<p>redis-cli 进入命令行模式</p>
+<pre><code>&gt; command    # 查看所有可用命令
+
+&gt; info    # 查看redis服务器信息
+
+&gt; monitor
+
+&gt; select 1 # 选中数据库1
+&gt; keys *  # 显示所有key
+</code></pre>
+<hr>
+<h1 id="数据类型">数据类型</h1>
+<p>string</p>
+<pre><code>&gt; set &lt;key&gt; &lt;value&gt;
+&gt; get &lt;key&gt;
+</code></pre>
+<p>list</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/smtp/">Smtp</a></h2>
+                    <div class="post-meta">
+                        <time>April 26, 2017</time>
+                        
+                            
+                                <span class="category">Network</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="email">Email</h1>
+<p>MTA: Mail Transfer Agent</p>
+<p>MUA: Mail User Agent</p>
+<p>python邮件服务器MTA：smtp协议</p>
+<p>python客户端MUA：本地协议pop3, 远程协议imap</p>
+<h2 id="mailutils">mailutils:</h2>
+<p>mailutils默认安装postfix,如果已经安装其它MTA就使用已经安装的．</p>
+<pre><code>$ sudo apt-get install mailutils
+</code></pre>
+<p>非交互安装mailutils:</p>
+<pre><code># 这里不用配置任何参数．
+$ sudo debconf-set-selections &lt;&lt;&lt; &quot;postfix postfix/mailname string &quot;
+$ sudo debconf-set-selections &lt;&lt;&lt; &quot;postfix postfix/main_mailer_type string 'Internet Site'&quot;
+$ sudo apt-get install -y mailutils
+</code></pre>
+<p>测试：</p>
+<pre><code>$ echo &quot;test mail body&quot; | mail -s &quot;test mail title&quot; canuxcheng@gmail.com
+</code></pre>
+<hr>
+<h1 id="sendmail">sendmail</h1>
+<p>开源的smtp服务器．</p>
+<p>安装sendmail:</p>
+<pre><code>$ sudo apt-get install sendmail
+$ sudo apt-get install sendmail-cf
+</code></pre>
+<p>配置：</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/presto/">Presto</a></h2>
+                    <div class="post-meta">
+                        <time>April 24, 2017</time>
+                        
+                            
+                                <span class="category">BigData</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="presto">Presto</h1>
+<p><a href="https://github.com/prestodb">https://github.com/prestodb</a></p>
+<p><a href="https://prestodb.io/">https://prestodb.io/</a></p>
+<p>presto的client: presto-cli(rename to presto)</p>
+<hr>
+<h1 id="presto-cli">presto-cli</h1>
+<pre><code>$ presto --server localhost:8080 --catalog hive --schema default
+
+# jdbc for presto
+$ jdbc:presto://host:port/catalog/schema
+</code></pre></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/impala/">Impala</a></h2>
+                    <div class="post-meta">
+                        <time>April 24, 2017</time>
+                        
+                            
+                                <span class="category">BigData</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="impala">Impala</h1>
+<p><a href="https://github.com/apache/incubator-impala">https://github.com/apache/incubator-impala</a></p>
+<p><a href="https://impala.apache.org/">https://impala.apache.org/</a></p>
+<p>impala的client: impala-shell</p>
+<p>Cloudera公司的CDH集成了Impala.</p>
+<hr>
+<h1 id="impala-shellbeeline">impala-shell/beeline</h1>
+<p>impala-shell</p>
+<pre><code>$ impala-shell
+</code></pre>
+<p>beeline</p>
+<pre><code>$ beeline --silent=true
+beeline&gt; !connect jdbc:hive2://[ip]:21050[/database];auth=noSasl [username] [password]
+
+$ beeline -u &quot;jdbc:hive2://[ip]:21050[/database];auth=noSasl&quot; -n [username] -p [password] -e &quot;USE [database]; ...&quot;
+</code></pre>
+<hr>
+<h1 id="sql">sql</h1>
+<p>normal table:</p>
+<pre><code>&gt; create table {table_name} (var type, var1 type1);
+</code></pre>
+<p>parquet table:</p>
+<pre><code>&gt; crate table {table_name} (var type, var1 type1) STORED AS PARQUET;
+</code></pre>
+<p>partition table:</p>
+<pre><code>&gt; create table {table_name} (var type, var1 type1) PARTITIONED BY (var2 type2);
+&gt; insert into {table_name} PARTITION (var2 = val2) values (val, val1)
+</code></pre>
+<p>parquet partition table:</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/hive/">Hive</a></h2>
+                    <div class="post-meta">
+                        <time>April 24, 2017</time>
+                        
+                            
+                                <span class="category">BigData</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="hive">Hive</h1>
+<p><a href="https://github.com/apache/hive">https://github.com/apache/hive</a></p>
+<p><a href="http://hive.apache.org/">http://hive.apache.org/</a></p>
+<p>Hive2数据仓库用于读取，写入和管理使用SQL的大型分布式数据集．</p>
+<p>hive2的client: beeline(hive命令的升级版)</p>
+<hr>
+<h1 id="hivebeeline">hive/beeline</h1>
+<p>hive</p>
+<pre><code>$ hive --help
+</code></pre>
+<p>beeline</p>
+<pre><code>$ beeline --silent=true
+beeline&gt; !connect jdbc:hive2://[ip]:[port]/[database] [username] [password]
+
+$ beeline -u &quot;jdbc:hive2://[ip]:10000[/database]&quot; -n [username] -p [password] -e &quot;USE [database]; ...&quot;
+</code></pre>
+<hr>
+<h1 id="sql">sql</h1>
+<p>normal table:</p>
+<pre><code>&gt; create table tablename (var type, var1 type1);
+</code></pre>
+<p>parquet table:</p>
+<pre><code>&gt; create table {table_name} (var type, var1 type1) STORED AS PARQUET;
+</code></pre>
+<p>partition table:</p>
+<pre><code>&gt; create table {table_name} (var type, var1 type1) PARTITION BY (var2 type2);
+&gt; insert into {table_name} PARTITION (var2 = {pid}) VALUES {values};
+</code></pre>
+<p>parquet partition table:</p></p>
+                    
+                </li>
+            
+        </ul>
+    </section>
+    
+    
+        <a href="/page/25/">← Previous</a>
+    
+    
+        <a href="/page/27/">Next →</a>
+    
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

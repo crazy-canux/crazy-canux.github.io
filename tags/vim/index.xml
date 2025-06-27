@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Vim on Morgoth</title>
+    <link>https://canuxcheng.com/tags/vim/</link>
+    <description>Recent content in Vim on Morgoth</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 02 Apr 2016 21:11:26 +0000</lastBuildDate>
+    <atom:link href="https://canuxcheng.com/tags/vim/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Vim</title>
+      <link>https://canuxcheng.com/post/devops_vim/</link>
+      <pubDate>Sat, 02 Apr 2016 21:11:26 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/devops_vim/</guid>
+      <description>&lt;h1 id=&#34;vim&#34;&gt;vim&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://www.vim.org&#34;&gt;http://www.vim.org&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/vim/vim&#34;&gt;https://github.com/vim/vim&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;类似编辑器:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;emacs&lt;/li&gt;&#xA;&lt;li&gt;Atom(github的开源跨平台编辑器，支持插件。)&lt;/li&gt;&#xA;&lt;li&gt;VSCode(微软的开源跨平台的编辑器，支持插件。)&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h1 id=&#34;vim安装和配置&#34;&gt;Vim安装和配置&lt;/h1&gt;&#xA;&lt;p&gt;查看vim版本和编译信息：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;vim --version&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;安装vim：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ sudo apt-get install vim&#xA;$ yum install vim&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;源码安装vim：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ sudo apt-get build-dep vim&#xA;$ cd vim/src&#xA;&#xA;$ ./configure \&#xA;--with-features=huge \&#xA;--with-compiledby=&amp;quot;Canux&amp;quot; \&#xA;--enable-multibyte \&#xA;--enable-gui=gtk2 \&#xA;--enable-gpm \&#xA;--prefix=/usr \&#xA;--enable-cscope \&#xA;--enable-fontset \&#xA;--enable-xim \&#xA;--enable-fail-if-missing \&#xA;--enable-mzschemeinterp \&#xA;--enable-perlinterp \&#xA;--enable-luainterp \&#xA;--enable-tclinterp\&#xA;--enable-rubyinterp \&#xA;--enable-pythoninterp \&#xA;--with-python-config-dir=/usr/lib/python2.7/config-x86_64-linux-gnu \&#xA;--enable-python3interp \&#xA;--with-python3-config-dir=/usr/lib/python3.4/config-3.4m-x86_64-linux-gnu&#xA;&#xA;$ make VIMRUNTIMEDIR=/usr/share/vim/vim74&#xA;$ sudo make install&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;vim相关项目&#34;&gt;Vim相关项目&lt;/h1&gt;&#xA;&lt;h2 id=&#34;neovim&#34;&gt;neovim&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/neovim/neovim&#34;&gt;https://github.com/neovim/neovim&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

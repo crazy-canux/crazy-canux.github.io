@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="generator" content="Hugo 0.147.9">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morgoth - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="home">
+    <h1>Morgoth</h1>
+    <p></p>
+    
+    <section class="recent-posts">
+        <h2>Recent Posts</h2>
+        <ul class="post-list">
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/k8s_kubevirt/">KubeVirt</a></h2>
+                    <div class="post-meta">
+                        <time>May 10, 2021</time>
+                        
+                            
+                                <span class="category">CNCF</span>
+                            
+                                <span class="category">Virtualization</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="kubevirt">KubeVirt</h1>
+<p><a href="https://kubevirt.io/quickstart_cloud/">https://kubevirt.io/quickstart_cloud/</a></p>
+<p><a href="https://quay.io/organization/kubevirt">https://quay.io/organization/kubevirt</a></p>
+<p><a href="https://docs.fedoraproject.org/en-US/quick-docs/using-nested-virtualization-in-kvm/index.html">https://docs.fedoraproject.org/en-US/quick-docs/using-nested-virtualization-in-kvm/index.html</a></p>
+<h2 id="virtctl">virtctl</h2>
+<h2 id="vm">VM</h2>
+<p>创建vm</p>
+<pre><code>apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+name: testvm
+spec:
+running: false
+template:
+    metadata:
+    labels:
+        kubevirt.io/size: small
+        kubevirt.io/domain: testvm
+    spec:
+    domain:
+        devices:
+        disks:
+            - name: containerdisk
+            disk:
+                bus: virtio
+            - name: cloudinitdisk
+            disk:
+                bus: virtio
+        interfaces:
+        - name: default
+            masquerade: {}
+        resources:
+        requests:
+            memory: 64M
+    networks:
+    - name: default
+        pod: {}
+    volumes:
+        - name: containerdisk
+        containerDisk:
+            image: quay.io/kubevirt/cirros-container-disk-demo
+        - name: cloudinitdisk
+        cloudInitNoCloud:
+            userDataBase64: SGkuXG4=
+    nodeSelector:
+        kubernetes.io/arch: arm64
+</code></pre></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/django_cache/">Cache</a></h2>
+                    <div class="post-meta">
+                        <time>May 4, 2021</time>
+                        
+                            
+                                <span class="category">Django</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="cache">cache</h1>
+<p>缓存的backend可以是django内置的，也可以是第三方的。</p>
+<ul>
+<li>
+<p>缓存整个站点</p>
+<p>MIDDLEWARE = [
+&lsquo;django.middleware.cache.UpdateCacheMiddleware&rsquo;,
+&lsquo;django.middleware.common.CommonMiddleware&rsquo;,
+&lsquo;django.middleware.cache.FetchFromCacheMiddleware&rsquo;,
+]</p>
+</li>
+<li>
+<p>视图缓存</p>
+<p>from django.views.decorators.cache import cache_page</p>
+<p>@cache_page(60 * 2)
+def my_view(request):
+&hellip;</p>
+<p>或者在URLconf中指定
+urlpatterns = [
+path(&lsquo;foo/<a href="int:code">int:code</a>/&rsquo;, cache_page(60 * 2)(my_view)),
+]</p>
+</li>
+<li>
+<p>模板片段缓存</p>
+<p>{% load cache %}
+{% cache &hellip; %}
+&hellip;
+{% endcache %}</p>
+</li>
+</ul>
+<hr>
+<h2 id="redis">redis</h2>
+<pre><code>CACHES = {
+    &quot;default&quot;: {
+        &quot;BACKEND&quot;: &quot;django_redis.cache.RedisCache&quot;,
+        &quot;LOCATION&quot;: os.environ.get(&quot;REDIS_URL&quot;, ''),
+        &quot;OPTIONS&quot;: {
+            &quot;CLIENT_CLASS&quot;: &quot;django_redis.client.DefaultClient&quot;,
+        },
+        &quot;TIMEOUT&quot;: 60,
+    }
+}
+</code></pre>
+<h2 id="memcached">memcached</h2>
+<pre><code>CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+        'LOCATION': '127.0.0.1:11211',
+    }
+}
+</code></pre>
+<h2 id="database">database</h2>
+<pre><code>CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+        'LOCATION': 'my_cache_table',
+    }
+}
+</code></pre></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/cloud_cdk/">CDK</a></h2>
+                    <div class="post-meta">
+                        <time>April 23, 2021</time>
+                        
+                            
+                                <span class="category">Cloud</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="cdk">CDK</h1>
+<p>Cloud Development Kit</p>
+<p>SDK一般是和service交互的。
+CDK用来和基础设施交互的。</p>
+<h2 id="aws-cdk">AWS CDK</h2>
+<p>The AWS Cloud Development Kit (AWS CDK) is an open-source software development framework to define cloud infrastructure in code and provision it through AWS CloudFormation.</p>
+<p><a href="https://github.com/aws/aws-cdk">https://github.com/aws/aws-cdk</a></p>
+<h2 id="cdk8s">CDK8S</h2>
+<p>cdk8s is an open-source software development framework for defining Kubernetes applications and reusable abstractions using familiar programming languages and rich object-oriented APIs. cdk8s apps synthesize into standard Kubernetes manifests which can be applied to any Kubernetes cluster.</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/aws_storage/">AWS Storage</a></h2>
+                    <div class="post-meta">
+                        <time>April 23, 2021</time>
+                        
+                            
+                                <span class="category">Cloud</span>
+                            
+                                <span class="category">Storage</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="aws-storage">AWS Storage</h1>
+<h2 id="s3">S3</h2>
+<p>Simple Storage Service.</p>
+<p>S3分类：</p>
+<ul>
+<li>S3标准</li>
+<li>S3标准-IA</li>
+<li>S3单区-IA</li>
+<li>S3智能分层</li>
+<li>S3 Glacier</li>
+<li>S3 Glacire Deep Archive</li>
+</ul>
+<p>特点:</p>
+<ul>
+<li>无限存储</li>
+<li>单个对象达到5Tb</li>
+<li>一次写入，多次读取</li>
+<li>99%持久性</li>
+</ul>
+<h2 id="s3-glacier">S3 Glacier</h2>
+<p>用于存放归档文件，按照访问量收费。</p>
+<h2 id="ebs">EBS</h2>
+<p>Elastic Block Store.</p>
+<p><a href="https://github.com/kubernetes-sigs/aws-ebs-csi-driver">https://github.com/kubernetes-sigs/aws-ebs-csi-driver</a></p>
+<p>EBS可以连接到EC2实例，可用区级资源，需要位于同一可用区中才能连接到EC2实例，卷不会自动扩展。</p>
+<p>EBS只能被单个EC2实例访问。</p>
+<p>特点:</p>
+<ul>
+<li>大小高达16Tb</li>
+<li>EC2实例终止后仍然存在</li>
+<li>默认情况下为固态(SSD)</li>
+<li>提供IOPS SSD和HDD选项</li>
+</ul>
+<h2 id="efs">EFS</h2>
+<p><a href="https://github.com/kubernetes-sigs/aws-efs-csi-driver">https://github.com/kubernetes-sigs/aws-efs-csi-driver</a></p>
+<p>Elastic File System 是linux的NFS服务.</p>
+<p>EFS是区域性服务，将数据存储在多个可用区中。可以被上千个EC2实例同时访问。</p>
+<ul>
+<li>完全托管的NFS文件系统</li>
+<li>为linux负载而设计</li>
+<li>支持PB级别数据</li>
+<li>可以跨多个区域存储数据</li>
+</ul>
+<p>EFS提供两种存储类型(StorageClass): Standard, Infrequent access.</p>
+<h2 id="fsx">FSx</h2>
+<p>FSx是windows File Server服务.</p>
+<h2 id="storage-gateway">Storage Gateway</h2>
+<p>支持三种类型:</p>
+<ul>
+<li>Tape gateway</li>
+<li>Volume gateway</li>
+<li>File Gateway</li>
+</ul>
+<h2 id="aws-backup">AWS Backup</h2>
+<h2 id="aws-edr">AWS EDR</h2>
+<p>Elastic Disaster Recovery.</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/aws_security/">AWS Security</a></h2>
+                    <div class="post-meta">
+                        <time>April 23, 2021</time>
+                        
+                            
+                                <span class="category">Cloud</span>
+                            
+                                <span class="category">Security</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="security">Security</h1>
+<p>Acceptable Use Policy.</p>
+<h2 id="iam">IAM</h2>
+<p>IAM: Identity and Access Management.</p>
+<p>STS: Security Token Service.</p>
+<p>ACL: Access control list.</p>
+<p>SG: Security Group.</p>
+<p><a href="https://aws.amazon.com/cn/iam/">https://aws.amazon.com/cn/iam/</a></p>
+<pre><code>$aws iam list-users
+</code></pre>
+<p>IAM的三种身份类型:</p>
+<ul>
+<li>Users</li>
+<li>Groups</li>
+<li>Roles</li>
+</ul>
+<p>IAM通过Policy(json)分配权限。</p>
+<hr>
+<h2 id="sso">SSO</h2>
+<p>sso登陆:</p>
+<pre><code>aws configure sso
+aws sso login --no-browser 
+aws sso logout
+</code></pre>
+<hr>
+<h2 id="secrets-manager">Secrets Manager</h2>
+<hr>
+<h2 id="acm">ACM</h2>
+<p>AWS Certificate Manager.</p>
+<p>在route 53创建托管区(hosted zones)之后，可以在ACM申请证书。</p>
+<p>申请好了证书，需要在route 53创建记录.</p>
+<pre><code>aws acm list-certificates --region eu-west-1
+</code></pre>
+<p>aws-load-balancer-controller可以自动关联ACM的证书和ingress.</p>
+<hr>
+<h2 id="artifact">Artifact</h2>
+<p>自助的合规报告。</p>
+<hr>
+<h2 id="waf">WAF</h2>
+<h2 id="shield">Shield</h2>
+<hr>
+<h2 id="kms">KMS</h2>
+<p>Key Management Service.</p></p>
+                    
+                </li>
+            
+        </ul>
+    </section>
+    
+    
+        <a href="/page/4/">← Previous</a>
+    
+    
+        <a href="/page/6/">Next →</a>
+    
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GSL_file - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="single-post">
+    <article>
+        <header>
+            <h1>GSL_file</h1>
+            <div class="post-meta">
+                <time>January 1, 2018</time>
+                
+                    
+                        <span class="category">Golang</span>
+                    
+                
+                
+                    
+                        <span class="tag">#file</span>
+                    
+                
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <h1 id="path">path</h1>
+<h2 id="function">function</h2>
+<pre><code>func IsAbs(path string) bool
+func Join(elem ...string) string
+func Split(path string) (dir, file string)
+func Join(elem ...string) string
+func Dir(path string) string
+func Base(path string) string
+func Ext(path string) string 
+...
+</code></pre>
+<hr>
+<h1 id="pathfilepath">path/filepath</h1>
+<h2 id="constants">Constants</h2>
+<pre><code>const (
+    Separator = os.PathSeparator
+    ListSeparator = os.PathListSeparator
+)
+</code></pre>
+<h2 id="variable">Variable</h2>
+<pre><code>var ErrBadPattern = errors.New(&quot;Syntax error in pattern&quot;)
+
+var SkipDir = errors.New(&quot;skip this diractory&quot;)
+</code></pre>
+<h2 id="function-1">function</h2>
+<pre><code>func IsAbs(path string) bool
+func Abs(path string) (string, error)
+
+// 返回 targpath 相对于 basepath 的 路径 （相当于返回 targpath - basepath), 实际就是文件名.
+func Rel(basepath, targpath string) (string, error)
+
+func Split(path string) (dir, file string)
+func Join(elem ...string) string
+func Dir(path string) string
+func Base(path string) string
+func Ext(path string) string) // 包括小数点
+func Walk(root string, walkFn WalkFunc) error
+</code></pre>
+<h2 id="walkfunc">WalkFunc</h2>
+<p>调用Walk时会对每个目录和文件调用该函数.</p>
+<p>如果该函数返回错误，Walk函数会中止.</p>
+<p>如果该函数返回SkipDir, Walk会掉过处理该目录，继续处理其它内容.</p>
+<pre><code>type WalkFunc func(path string, info os.FileInfo, err error) error
+</code></pre>
+<hr>
+<h1 id="encoding">encoding</h1>
+<p>定义了供其它包使用的在字节和文本之间转换数据的接口.</p>
+<pre><code>import &quot;encoding&quot;
+</code></pre>
+<hr>
+<h1 id="encodingjson">encoding/json</h1>
+<p>go和json数据类型对应关系，参考WEB/JSON.</p>
+<p>在线获取json的go数据结构:</p>
+<p><a href="https://github.com/mholt/json-to-go">https://github.com/mholt/json-to-go</a></p>
+<p><a href="https://mholt.github.io/json-to-go">https://mholt.github.io/json-to-go</a></p>
+<p>chan/complex/func类型不能编码为json.</p>
+<pre><code>import &quot;encoding/json&quot;
+</code></pre>
+<h2 id="constants-1">constants</h2>
+<h2 id="variables">variables</h2>
+<h2 id="functions">functions</h2>
+<pre><code># 返回golang对象v的json编码(将go的对象转换为json对象), 可以打tag.
+&gt; &quot;-&quot; 该字段不会输出到json
+&gt; myName 在json中的名字
+&gt; omitempty 允许json中没有该字段
+&gt; Type 如果指定类型，会转换成指定的类型出现在json
+json.Marshal(v interface{}) ([]byte, error)
+
+# 具有缩进功能
+json.MarshalIndent(v interface{}, prefix, indent string) ([]byte, error)
+
+# 将json对象data转换成go对象，存入v
+# 只有可导出字段才会在json中找到.
+&gt; Bool                   对应JSON布尔类型
+&gt; float64                对应JSON数字类型
+&gt; string                 对应JSON字符串类型
+&gt; []interface{}          对应JSON数组
+&gt; map[string]interface{} 对应JSON对象
+&gt; nil                    对应JSON的null
+json.Unmarshal(data []byte, v interface{}) error
+
+// 将json格式的src中的无用的空白字符剔除后写入dst.
+func Compact(dst *bytes.Buffer, src []byte) error
+
+// 格式化json，以便json编码能安全的嵌入html的&lt;script&gt;标签
+func HTMLEscape(dst *bytes.Buffer, src []byte)
+
+//
+func Indent(dst *bytes.Buffer, src []byte, prefix, indent string) error
+</code></pre>
+<h2 id="marshaler">Marshaler</h2>
+<p>interface:</p>
+<pre><code>type Marshaler interface {
+    MarshalJSON() ([]byte, error)
+}
+</code></pre>
+<h2 id="unmarshaler">Unmarshaler</h2>
+<p>interface:</p>
+<pre><code>type Unmarshaler interface {
+    UnmarshalJSON([] byte) error
+}
+</code></pre>
+<h2 id="decoder">Decoder</h2>
+<p>从输入流解码json对象</p>
+<p>struct:</p>
+<pre><code>type Decoder struct {}
+</code></pre>
+<p>function:</p>
+<pre><code>func NewDecoder(r io.Reader) *Decoder
+</code></pre>
+<p>method:</p>
+<pre><code>// 从dec读取下一个对象存入v.
+func (dec *Decoder) Decode(v interface{}) error
+</code></pre>
+<h2 id="encoder">Encoder</h2>
+<hr>
+<h1 id="encodingcsv">encoding/csv</h1>
+<hr>
+<h1 id="encodinggob">encoding/gob</h1>
+<p>go binary, go的数据持久化包，用于编码器和解码器之间交换二进制数据.</p>
+<h2 id="functions-1">functions</h2>
+<pre><code>func Register(value interface{})
+
+func RegisterName(name string, value interface{})
+</code></pre>
+<h2 id="gobdecoder">GobDecoder</h2>
+<h2 id="gobencoder">GobEncoder</h2>
+<h2 id="decoder-1">Decoder</h2>
+<p>管理从远端读取数据的类型和信息的解码操作.</p>
+<p>struct:</p>
+<pre><code>type Decoder struct {}
+</code></pre>
+<p>functions:</p>
+<pre><code>// 返回一个从r读取数据的Decoder
+func NewDecoder(r io.Reader) *Decoder
+</code></pre>
+<p>methods:</p>
+<pre><code># 从dec读取下一个值并存入e
+func (dec *Decoder) Decode(e interface{}) error
+
+func (dec *Decoder) DecodeValue(v reflect.Value) error
+</code></pre>
+<h2 id="encoder-1">Encoder</h2>
+<p>管理数据类型和信息编码后发送到远端的操作.</p>
+<p>struct:</p>
+<pre><code>type Encoder struct {}
+</code></pre>
+<p>functions:</p>
+<pre><code>// 返回一个将编码后数据写入w的Encoder
+func NewEncoder(w io.Writer) *Encoder
+</code></pre>
+<p>methods:</p>
+<pre><code>// 将e编码后发送到enc
+func (enc *Encoder) Encode(e interface{}) error
+
+func (enc *Encoder) EncodeValue(value reflect.Value) error
+</code></pre>
+<h2 id="commontype">CommonType</h2>
+<pre><code>type CommonType struct {
+    Name string
+    Id typeId
+}
+</code></pre>
+<hr>
+<h1 id="texttemplate">text/template</h1>
+<hr>
+<h1 id="texttemplateparse">text/template/parse</h1>
+<hr>
+<h1 id="textscanner">text/scanner</h1>
+<hr>
+<h1 id="texttabwriter">text/tabwriter</h1>
+<hr>
+<h1 id="html">html</h1>
+<p>提供了用于转义和解转义html文本的函数．</p>
+<pre><code>import &quot;net&quot;
+</code></pre>
+<h2 id="functions-2">functions</h2>
+<pre><code>// 将　&lt;, &gt;, &amp;, ', &quot; 转义为字符实体 &amp;lt, &amp;gt, &amp;#39,
+ func EscapeString(s string) string
+
+ func UnescapeString(s string) string
+</code></pre>
+<hr>
+<h1 id="htmltemplate">html/template</h1>
+<p>实现了数据驱动模板，用于生成可对抗代码注入的安全html输出．</p>
+<h2 id="functions-3">functions</h2>
+<pre><code>// 将b转义后写入w．
+func HTMLEscape(w io.Writer, b []byte)
+
+// 转义s之后,返回结果字符串.
+func HTMLEscapeString(s string) string
+
+// 转义多个字符串，返回结果字符串.
+func HTMLEscaper(args ...interface{}) string
+</code></pre>
+<h2 id="funcmap">FuncMap</h2>
+<p>定义函数名字符串到函数的映射，每个函数必须要1到2个返回值．</p>
+<pre><code>type FuncMap map[string]interface{}
+</code></pre>
+<h2 id="template">Template</h2>
+<pre><code>type Template struct {
+    Tree *parse.Tree
+}
+</code></pre>
+<p>function:</p>
+<pre><code>// 创建名为name的模板
+func New(name string) *Template
+
+// 在err非nil时panic, 检测模板是否正确．
+// 通过template.New().Parse() 返回值作为参数.
+func Must(t *Template, err error) *Template
+
+// 创建一个模板，并解析filenames作为模板内容
+// 第一个文件名为模板名字(不包括扩展名)
+func ParseFiles(filenames ...string) (*Template, error)
+
+// 创建一个模板，并解析匹配pattern的文件．
+// 匹配的第一个文件名为模板名字(不包括扩展名)
+func ParseGlob(pattern string) (*Template, error)
+</code></pre>
+<p>methods:</p>
+<pre><code>// 将字符串str解析为模板
+func (t *Template) Parse(str string) (*Template, error)
+
+// 将文件解析为模板
+func (t *Template) ParseFiles(filenames ...string) (*Template, error)
+
+//
+func (t *Template) ParseGlob(pattern string) (*Template, error)
+
+// 将解析好的模板应用到data上，并将输出写入wr.
+func (t *Template) Execute(wr io.Writer, data interface{}) (err error)
+
+// 使用和t关联的名为name的模板
+func (t *Template) ExecuteTemplate(wr io.Writer, name string, data interface{}) error
+
+// 注册函数到模板t, funcMap的key是模板中调用的函数名，value是实际的函数
+func (t *Template) Funcs(funcMap FuncMap) *Template
+</code></pre>
+<hr>
+<h1 id="yaml">yaml</h1>
+<p><a href="https://github.com/go-yaml/yaml">https://github.com/go-yaml/yaml</a></p>
+<hr>
+<h1 id="toml">toml</h1>
+<p><a href="https://github.com/toml-lang/toml">https://github.com/toml-lang/toml</a></p>
+<p><a href="https://github.com/BurntSushi/toml">https://github.com/BurntSushi/toml</a></p>
+
+        </div>
+    </article>
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

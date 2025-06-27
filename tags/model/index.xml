@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Model on Morgoth</title>
+    <link>https://canuxcheng.com/tags/model/</link>
+    <description>Recent content in Model on Morgoth</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 04 Oct 2016 04:20:31 +0000</lastBuildDate>
+    <atom:link href="https://canuxcheng.com/tags/model/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Model</title>
+      <link>https://canuxcheng.com/post/django_model/</link>
+      <pubDate>Tue, 04 Oct 2016 04:20:31 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/django_model/</guid>
+      <description>&lt;h1 id=&#34;modelspy&#34;&gt;models.py&lt;/h1&gt;&#xA;&lt;pre&gt;&lt;code&gt;from django.db import models&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;django模型是和数据库关联的，代码放在models.py，数据库信息在settings.py中统一配置即可。&lt;/p&gt;&#xA;&lt;p&gt;每个模型对应数据库唯一的一张表，是django.db.models.Model的子类。&lt;/p&gt;&#xA;&lt;p&gt;每个模型实例代表数据库中的一条特定记录.&lt;/p&gt;&#xA;&lt;p&gt;模型的每个属性都表示为数据库中的一个字段。&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;在项目的settings.py中激活应用，并设置数据库相关参数。&lt;/p&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;&#xA;&lt;p&gt;让django包含你的应用：&lt;/p&gt;&#xA;&lt;p&gt;告诉django你对模型做了更改，并且将这些更改存储为迁移文件polls/migrations/0001_initial.py:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;  $python manage.py makemigrations polls&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;可以查看迁移文件执行了哪些sql语句,并不真的在数据库执行：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;  $python manage.py sqlmigrate polls 0001&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;可以检查项目中的模型是否存在问题：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;  $python manage.py check&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;在数据库中创建模型,查找还没有被应用的迁移文件然后和数据库同步：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;  $python manage.py migrate&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;模型的字段类型和字段选项&#34;&gt;模型的字段类型和字段选项&lt;/h1&gt;&#xA;&lt;p&gt;模型的每个属性都表示为数据库的一个字段,是Field子类的某个实例。&lt;/p&gt;&#xA;&lt;p&gt;模型的字段还有一些选项。&lt;/p&gt;&#xA;&lt;p&gt;字段命名规则：&lt;/p&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;不能是python的保留关键字。&lt;/li&gt;&#xA;&lt;li&gt;字段名中连续的下划线不能超过一个。&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;p&gt;访问其它应用的模型,导入即可：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;from &amp;lt;other-aplication&amp;gt;.models import &amp;lt;module-name&amp;gt;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;模型字段类型和选项参考：&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://python.usyiyi.cn/documents/django_182/ref/models/fields.html#common-model-field-options&#34;&gt;http://python.usyiyi.cn/documents/django_182/ref/models/fields.html#common-model-field-options&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h2 id=&#34;模型字段类型&#34;&gt;模型字段类型&lt;/h2&gt;&#xA;&lt;p&gt;字段的类型都是Field类的子类：&lt;/p&gt;&#xA;&lt;p&gt;每个字段都接受一个可选的位置参数(一般是第一个），叫字段的自述名,如果不指定就默认是字段名字（下划线换成空格）。&lt;/p&gt;&#xA;&lt;p&gt;自增字段:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;AutoField&#xA;# 默认django会每个模型添加一个自增主键字段,如果你显示设置一个自增主键字段就不会默认再添加,每个模型只能有一个主键字段。&#xA;# id = models.AutoField(primary_key=True)&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;普通字段:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;BigIntegerField&#xA;BinaryField&#xA;BooleanField&#xA;CharField&#xA;CommaSeparatedIntegerField&#xA;DateField&#xA;DateTimeField&#xA;DecimalField&#xA;DurationField&#xA;EmailField&#xA;FileField&#xA;FilePathField&#xA;FloatField&#xA;GenericIPAddressField&#xA;IPAddressField&#xA;ImageField&#xA;IntegerField&#xA;NullBooleanField&#xA;PositiveIntegerField&#xA;PositiveSmallIntegerField&#xA;SlugField&#xA;SmallIntegerField&#xA;TextField&#xA;TimeField&#xA;URLField&#xA;UUIDField&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;关系字段:&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

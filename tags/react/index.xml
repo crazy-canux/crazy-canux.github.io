@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>React on Morgoth</title>
+    <link>https://canuxcheng.com/tags/react/</link>
+    <description>Recent content in React on Morgoth</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 27 Jan 2024 22:19:20 +0000</lastBuildDate>
+    <atom:link href="https://canuxcheng.com/tags/react/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>React</title>
+      <link>https://canuxcheng.com/post/js_react/</link>
+      <pubDate>Sat, 27 Jan 2024 22:19:20 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/js_react/</guid>
+      <description>&lt;h1 id=&#34;react&#34;&gt;React&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://react.dev/&#34;&gt;https://react.dev/&lt;/a&gt;&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

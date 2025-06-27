@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redis - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="single-post">
+    <article>
+        <header>
+            <h1>Redis</h1>
+            <div class="post-meta">
+                <time>May 3, 2017</time>
+                
+                    
+                        <span class="category">Database</span>
+                    
+                
+                
+                    
+                        <span class="tag">#redis</span>
+                    
+                
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <h1 id="redis">Redis</h1>
+<p><a href="http://redisdoc.com/">http://redisdoc.com/</a></p>
+<p>redis在key-value存储上性能比memcached更好．</p>
+<p>安装：</p>
+<pre><code># redis-cli, redis-sentinel, redis-server
+$ sudo apt-get install redis-server
+</code></pre>
+<p>只安装redis-cli:</p>
+<pre><code>$ sudo apt-get install redis-tools
+</code></pre>
+<p>redis-server监听端口6379.</p>
+<p>redis-sentinel端口26379.</p>
+<p>redis gui:</p>
+<p><a href="https://github.com/qishibo/AnotherRedisDesktopManager">https://github.com/qishibo/AnotherRedisDesktopManager</a></p>
+<p><a href="https://github.com/luin/medis">https://github.com/luin/medis</a></p>
+<p>redis HA:</p>
+<p><a href="https://github.com/CodisLabs/codis">https://github.com/CodisLabs/codis</a></p>
+<hr>
+<h1 id="redis的命令">redis的命令</h1>
+<p>server:</p>
+<pre><code>redis-server
+</code></pre>
+<p>client:</p>
+<pre><code>redis-client
+</code></pre>
+<p>test:</p>
+<pre><code>redis-benchmark
+</code></pre>
+<p>sentinel:</p>
+<pre><code>redis-sentinel
+</code></pre>
+<hr>
+<h1 id="cli">CLI</h1>
+<p>redis-cli 进入命令行模式</p>
+<pre><code>&gt; command    # 查看所有可用命令
+
+&gt; info    # 查看redis服务器信息
+
+&gt; monitor
+
+&gt; select 1 # 选中数据库1
+&gt; keys *  # 显示所有key
+</code></pre>
+<hr>
+<h1 id="数据类型">数据类型</h1>
+<p>string</p>
+<pre><code>&gt; set &lt;key&gt; &lt;value&gt;
+&gt; get &lt;key&gt;
+</code></pre>
+<p>list</p>
+<pre><code>&gt; lset &lt;key&gt; &lt;index&gt; &lt;value&gt;
+&gt; lindex &lt;key&gt; &lt;index&gt;
+&gt; rpop
+&gt; lpop &lt;key&gt;
+&gt; rpush
+&gt; lpush
+</code></pre>
+<p>hash</p>
+<pre><code>&gt; hset &lt;key&gt; &lt;field&gt; &lt;value&gt;
+&gt; hget &lt;key&gt; &lt;field&gt;
+</code></pre>
+<p>set</p>
+<pre><code>&gt; sadd &lt;key&gt; &lt;member&gt;
+&gt; spop &lt;key&gt;
+&gt; srem &lt;key&gt; &lt;memeber&gt;
+</code></pre>
+<p>sorted set</p>
+<pre><code>&gt; zadd &lt;key&gt; &lt;score&gt; &lt;member&gt;
+&gt; zrem &lt;key&gt; &lt;member&gt;
+</code></pre>
+<hr>
+<h1 id="monitoring">Monitoring</h1>
+<p>通过redis-cli&gt; info查看</p>
+<pre><code>其它指标参考grafana dashboard.
+
+Redis_mode: cluster/standalone
+
+&gt;&gt;&gt; replication (master/slave)
+Connected_slaves:    连接的slave实例个数
+
+&gt;&gt;&gt; persistence  （rdb和aof的持久化信息）
+</code></pre>
+
+        </div>
+    </article>
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

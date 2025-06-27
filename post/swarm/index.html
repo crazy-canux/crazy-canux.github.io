@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swarm - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="single-post">
+    <article>
+        <header>
+            <h1>Swarm</h1>
+            <div class="post-meta">
+                <time>April 5, 2018</time>
+                
+                    
+                        <span class="category">CNCF</span>
+                    
+                
+                
+                    
+                        <span class="tag">#swarm</span>
+                    
+                
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <h1 id="swarm">Swarm</h1>
+<p>docker swarm 是 docker内置的容器编排工具。</p>
+<p>从docker1.12开始swarm内置于docker engine.</p>
+<p>swarm mode具有内置kv存储，服务发现，负载均衡，路由网格，动态伸缩，滚动更新，安全传输等功能。</p>
+<p>swarm: 老版本的swarm, 需要kv store, 可以作为独立的container运行, 已废弃, 已经被docker swarm mode 代替.</p>
+<p><a href="https://github.com/docker/swarm">https://github.com/docker/swarm</a></p>
+<p>swarmkit:</p>
+<p><a href="https://github.com/docker/swarmkit">https://github.com/docker/swarmkit</a></p>
+<h1 id="swarm命令">swarm命令</h1>
+<p>创建集群</p>
+<pre><code>docker swarm init
+--advertise-addr &lt;ip&gt; 多网卡情况下指定manager的ip
+
+docker swarm join --token &lt;token&gt; &lt;host:port&gt;
+
+# 查看token
+docker swarm join-token manager   获取添加manager命令
+docker swarm join-token worker   获取添加worker命令
+docker swarm join-token -q worker
+
+docker swarm leave -f/--force
+
+docker swarm update
+</code></pre>
+<p>管理节点</p>
+<pre><code>docker node ls
+docker node ls --format &quot;{{.Hostname}}&quot;
+​
+docker node rm
+​
+docker node inspect
+​
+# 查看node上运行的tasks/container
+docker node ps -f/--filter NODE
+​
+# 添加label, node.labels.role=api
+docker node update --label-add role=api node1
+# 删除label
+docker node update --label-rm role node1
+​
+# 活跃节点
+docker node update --availability active node1
+# 指定该节点满载,不再分派任务,关闭已有任务并重新分派.
+docker node update --availability drain node1
+# 已有任务继续运行,不分配新任务.
+docker node update --availability pause node1
+
+# 查看所有node和label
+docker node ls -q | xargs docker node inspect -f '{{ .ID }} [{{ .Description.Hostname }}]: {{ .Spec.Labels }}'
+</code></pre>
+<p>service</p>
+<pre><code># 相当于docker-compose.yml里面的service.
+docker service ls # 列出所有service
+​
+docker service rm SERVICE
+​
+docker service inspect SERVICE
+​
+# 查看service的log
+docker service logs -f SERVICE
+​
+# 查看service的状态,在哪些node上运行,运行状态等
+docker service ps SERVICE
+​
+docker service update
+docker service update --image &lt;url:tag&gt; # 根据镜像更新服务
+​
+docker service scale
+​
+docker service rollback
+​
+docker service create
+--constraint node.id/node.hostname/node.role/node.labels/engine.labels
+--env/-e
+--label
+--limit-cpu
+--limit-memory
+--replicas
+--restart-condition
+--user/--group
+--mode global/replicated
+--endpoint-mode vip/dnsrr
+</code></pre>
+<p>stack</p>
+<pre><code># stack = n*service
+# service = n*task(container)
+docker stack ls # 列出所有stack
+
+# 查看stack的service
+docker stack services &lt;stack&gt;
+
+# 查看stack的task/container
+docker stack ps &lt;stack&gt;
+
+docker stack rm STACK
+
+# 根据docker-compose.yml部署应用
+docker stack deploy -c/--compose-file &lt;docker-compose.yml&gt; STACK
+docker stack deploy --bundle-file &lt;DAB&gt; STACK
+
+# 默认所有node从docker hub pull, 如果是私有镜像，需要加参数
+# 需要在manager上docker login private-registry
+docker stack deploy --with-registry-auth -c test.yml test
+
+docker stack deploy --resolve-image (always|changed|never) ...
+
+docker stack deploy --orchestrator (swarm|kubernetes|all) ...
+</code></pre>
+<hr>
+<h1 id="swarm-compose">swarm compose</h1>
+<p>其它字段参考Compose， 这里只分析deploy下的字段.</p>
+<p>通过compose文件部署服务.</p>
+<pre><code>deploy:
+  endpoint_mode:
+
+  // 给service打标签(不作用于container) 
+  labels:
+    com.examples.key: value
+
+  // 默认mode=replicated, replicas=1.
+  mode: replicated
+  max_replicas_per_node:
+  replicas: 1
+
+  // 部署到匹配的全部node.
+  mode: global 
+​
+  # global和replicated都可以用placement.
+  placement:
+    preferences: // 只支持spreed.
+      - spreed: node.labels.datacenter
+    constraints:
+      # 多个约束是and关系
+      - node.id==...
+      - node.hostname==...
+      - node.role==...
+      - node.role==manager/worker
+      - node.platform.os!=windows
+      - node.platform.arch==x86
+      - engine.labels.&lt;key&gt;==&lt;value&gt;
+      # 用户自定义标签
+      - node.labels.&lt;key&gt;==&lt;value&gt;
+​
+  resources:
+    limits:
+      cpus: '0.5'
+      memory: 1G
+    reservations:
+      cpus: '0.25'
+      memory: 20M
+​
+  restart_policy:
+    condition: any(default)/on-failure/none
+    delay: 0(default)/5s
+    max_attempts: never give up(default)/3
+    window: decide immediately(default)/10s
+​
+  update_config/rollback_config:
+    parallelism: 0 (default 0 means all)
+    delay: 10s (容器升级间隔时间)
+    failure_action: pause(default)/continue/rollback
+    monitor: 0s (更新完成后确认成功的时间)
+    max_failure_ratio: 更新期间允许的失败率
+    order: stop-first(default)/start-first
+
+// 默认endpoint_mode=vip, 支持route mesh, 自动负载均衡和服务发现.
+deploy:
+  endpoint_mode: vip
+ports:
+- target: 80
+  published: 8080
+  // 默认mode=ingress, 也可以改为host.
+  mode: ingress
+  protocol: tcp/udp
+- 8080:80/tcp
+
+// dnsrr 模式
+deploy:
+  endpoint_mode: dnsrr
+  update_config:
+    // 如果expose端口，不能start-first, 否则报错no suitable node (host-mode port already in use on 1 node
+    order: stop-first 
+// 设置iptables规则，外部访问8080通过prerouting做dnat指定目的ip，通过forward转发给container的80.
+// iptables-&gt;nat-&gt;prerouting: 
+// DNAT tcp -- !docker_gwbridge * 0.0.0.0/0 0.0.0.0/0 tcp dpt:8080 to:172.18.0.16:80
+// iptables-&gt;filter-&gt;forward:
+// ACCEPT tcp -- enp5s0 * 0.0.0.0/0 0.0.0.0/0 multiport dports 80
+ports:
+- target: 80
+  published: 8080
+  // dnsrr只能用port-&gt;mode=host.
+  mode: host
+  protocol: tcp/udp
+</code></pre>
+<hr>
+<h1 id="swarm-network">swarm network</h1>
+<p>global模式container:</p>
+<pre><code>eth0: overlay(user define overlay)
+eth1: ingress(swarm define ingress)
+eth2: docker_gwbridge(swarm define bridge)
+</code></pre>
+<p>replicate模式container:</p>
+<pre><code>eth0: overlay(user define overlay)
+eth1: docker_gwbridge(swarm define bridge)
+</code></pre>
+<p>overlay: 通过4789/udp跨主机访问其他container, host不能访问overlay的ip，只有container之间通过container-servicename或者container-overlay的ip相互访问.</p>
+<p>overlay 问题: 通过overlay连接，默认15分钟timeout, 所以数据库建议用dnsrr模式; 如果用vip模式，需要修改内核网络参数:</p>
+<pre><code>$ sudo sysctl -w net.ipv4.tcp_keepalive_time=600 net.ipv4.tcp_keepalive_intvl=60 net.ipv4.tcp_keepalive_probes=3
+</code></pre>
+<p>vip模式就是访问的虚拟ip,replicated的service如果有多个container,通过servicename访问的就是同一个vip,通过vip解析到背后container的真实overlay-ip(自动负载均衡).</p>
+<p>dnsrr模式就是直接解析container的overlay-ip来访问,如果是replicated的service有多个container,每次访问的就是从dns列表中根据负载均衡算法拿到其中一个overlay-ip.</p>
+<p>ingress network: 是一个特殊的 overlay 网络，用于服务节点间的负载均衡。当任何 Swarm 节点在发布的端口上接收到请求时，它将该请求交给一个名为 IPVS 的模块。IPVS 跟踪参与该服务的所有IP地址，选择其中的一个，并通过 ingress 网络将请求路由到它。</p>
+<p>docker_gwbridge: host和container之间通过ip访问, container能访问host的物理网卡的ip和docker_gwbridge的ip, host也能访问container的docker_gwbridge的ip, 但是container之间不能访问bridge的ip.</p>
+<p>修改默认的docker_gwbridge:</p>
+<pre><code>// 对于已存在的，要先删除
+$ service docker stop
+$ sudo ip link set docker_gwbridge down
+$ sudo ip link del dev docker_gwbridge
+// 创建swarm之前创建好网络
+$ docker network create --subnet &quot;172.18.0.0/16&quot;  --ip-range “172.18.1.0/16” \
+--opt com.docker.network.bridge.name=docker_gwbridge \
+--opt com.docker.network.bridge.enable_icc=false \
+--opt com.docker.network.bridge.enable_ip_masquerade=true \
+docker_gwbridge
+// 创建swarm
+$ docker swarm init
+</code></pre>
+<p>endpoint_mode:</p>
+<ul>
+<li>vip: 通过vip这个虚拟ip对外访问，提供负载均衡，不暴露具体的container的ip.</li>
+<li>dnssr: DNS round-robin, 为每个服务设置dns,连接到其中一个具体的contaier的ip.</li>
+</ul>
+<hr>
+<h1 id="swarm-scheduler">swarm scheduler</h1>
+<p>filter过滤器可以实现特定的容器运行在特定的node上, swarm支持３种策略和6个过滤器.</p>
+<p>swarm strategy:</p>
+<ul>
+<li>spread： 默认策略,配置相同的情况下选择容器数量最少的node</li>
+<li>binpack： 尽可能将容器放到一台node上运行。</li>
+<li>random： 直接随机分配</li>
+</ul>
+<p>swarm node filters:</p>
+<ul>
+<li>constraint</li>
+<li>health</li>
+<li>containerslots</li>
+</ul>
+<p>swarm container-configuration filters:</p>
+<ul>
+<li>affinity</li>
+<li>dependency</li>
+<li>port</li>
+</ul>
+
+        </div>
+    </article>
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

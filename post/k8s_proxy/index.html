@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Proxy - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="single-post">
+    <article>
+        <header>
+            <h1>Service Proxy</h1>
+            <div class="post-meta">
+                <time>January 4, 2020</time>
+                
+                    
+                        <span class="category">CNCF</span>
+                    
+                
+                
+                    
+                        <span class="tag">#k8s</span>
+                    
+                
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <h1 id="service-proxy">Service Proxy</h1>
+<p>ingress =&gt; gateway api</p>
+<ul>
+<li>envoy</li>
+<li>contour</li>
+<li>traefik proxy</li>
+<li>haproxy</li>
+<li>metaLB</li>
+<li>nginx</li>
+<li>openelb</li>
+</ul>
+<hr>
+<h2 id="ingress-controller">ingress controller</h2>
+<ul>
+<li>Ingress-nginx(nginx)</li>
+<li>aws-load-balancer-controller(alb)</li>
+<li>ingress-gce</li>
+<li>Traefik</li>
+</ul>
+<p>The kubernetes.io/ingress.class annotation is deprecated from kubernetes v1.22+.通过IngressClasses来选择ingress controller。</p>
+<pre><code>ingressClassName: nginx
+</code></pre>
+<p>ingress 语法</p>
+<pre><code>apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: minimal-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx-example
+  defaultBackend:
+    resource:
+      apiGroup: k8s.example.com
+      kind: StorageBucket
+      name: static-assets
+  rules:
+  - http:
+      paths:
+      - path: /testpath
+        pathType: Prefix
+        backend:
+          service:
+            name: test
+            port:
+              number: 80
+</code></pre>
+<p>ImplementationSpecific：对于这种路径类型，匹配方法取决于 IngressClass。 具体实现可以将其作为单独的 pathType 处理或者与 Prefix 或 Exact 类型作相同处理。</p>
+<p>Exact：精确匹配 URL 路径，且区分大小写。</p>
+<p>Prefix：基于以 / 分隔的 URL 路径前缀匹配。匹配区分大小写，并且对路径中的元素逐个完成。 路径元素指的是由 / 分隔符分隔的路径中的标签列表。 如果每个 p 都是请求路径 p 的元素前缀，则请求与路径 p 匹配。</p>
+<p>ingressclass没有namespace。</p>
+<h2 id="gateway-api-controller">gateway api controller</h2>
+<ul>
+<li>cilium</li>
+<li>contour</li>
+<li>GKE</li>
+<li>EKS</li>
+<li>kong</li>
+<li>traefik</li>
+</ul>
+<hr>
+<h2 id="ingress-nginx">ingress-nginx</h2>
+<p><a href="https://github.com/kubernetes/ingress-nginx">https://github.com/kubernetes/ingress-nginx</a></p>
+<pre><code>// 部署
+ $ kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v0.34.1/deploy/static/provider/baremetal/deploy.yaml
+
+// 验证部署
+$ kubectl get pods --all-namespaces -l app.kubernetes.io/name=ingress-nginx --watch
+
+// Detect installed version
+POD_NAMESPACE=ingress-nginx
+POD_NAME=$(kubectl get pods -n $POD_NAMESPACE -l app.kubernetes.io/name=ingress-nginx -o jsonpath='{.items[0].metadata.name}')
+$ kubectl exec -it $POD_NAME -n $POD_NAMESPACE -- /nginx-ingress-controller --version
+</code></pre>
+<p>tls:</p>
+<p><a href="https://kubernetes.github.io/ingress-nginx/user-guide/tls/">https://kubernetes.github.io/ingress-nginx/user-guide/tls/</a></p>
+<p><a href="https://kubernetes.io/zh-cn/docs/concepts/services-networking/ingress/">https://kubernetes.io/zh-cn/docs/concepts/services-networking/ingress/</a></p>
+<hr>
+<h2 id="traefik">traefik</h2>
+<p>traefik2.2+</p>
+<p><a href="https://github.com/traefik/traefik">https://github.com/traefik/traefik</a></p>
+<p>install with helm:</p>
+<pre><code>helm repo add traefik https://helm.traefik.io/traefik
+helm repo update
+helm install --create-namespace traefik -n traefik traefik traefik/traefik -f ./value.yaml
+
+# expose dashboard:
+kubectl port-forward -n traefik $(kubectl get pods -n traefik --selector &quot;app.kubernetes.io/name=traefik&quot; --output=name) 9000:9000 --address 0.0.0.0
+</code></pre>
+<p>请求模型</p>
+<pre><code>Client =&gt; Traefik =&gt; Backend
+</code></pre>
+<p>端口:</p>
+<pre><code>9000: traefik管理页面端口
+</code></pre>
+<h3 id="重要组件">重要组件</h3>
+<ul>
+<li>Providers: 自动发现平台上的服务.</li>
+<li>Entrypoints: 监听传入的流量，定义接受请求的端口.</li>
+<li>Routers: 分析请求，负责将传入请求连接到负责处理的服务上.</li>
+<li>Middlewares: 在routers转给services之前修改请求.</li>
+<li>Services/LB: 将请求转给应用, 负责配置处理请求的实际服务.</li>
+</ul>
+<h3 id="配置">配置</h3>
+<p>两种配置类型</p>
+<ul>
+<li>静态配置: 启动时的配置，通过配置文件(/etc/traefik/traefik.[toml|yaml]，环境变量或命令行参数配置 providers和entrypoints等.</li>
+<li>动态配置: 动态的路由配置，定义系统如何处理请求,从providers获取动态配置.</li>
+</ul>
+<p>静态配置:</p>
+<ul>
+<li>entrypoints</li>
+<li>providers</li>
+<li>servertransport</li>
+<li>certificatesresolvers</li>
+<li>api</li>
+<li>ping</li>
+<li>experimental</li>
+<li>hostresolver</li>
+<li>accesslog</li>
+<li>log</li>
+<li>metrics(datadog, influxdb, prometheus,statsd)</li>
+<li>tracing(datadog, elastic, haystack, instana, jaeger, zipkin)</li>
+</ul>
+<p>全局配置:</p>
+<pre><code>--global.checknewversion
+--global.sendanonymoususagge
+</code></pre>
+<p>控制Traefik到Backend的连接的参数serversTransport:</p>
+<pre><code>--serversTransport.insecureSkipVerify=true
+# self-signed TLS CA.
+--serversTransport.rootCAs=foo.crt,bar.crt
+--serversTransport.maxIdleConnsPerHost=7
+--serversTransport.forwardingTimeouts.dialTimeout=1s
+--serversTransport.forwardingTimeouts.responseHeaderTimeout=1s
+--serversTransport.forwardingTimeouts.idleConnTimeout=1s
+</code></pre>
+<h3 id="kubernetes-provider">kubernetes provider</h3>
+<p>kubernetes provider有三种类型</p>
+<ul>
+<li>Ingress</li>
+<li>IngressRoute</li>
+<li>Gateway API</li>
+</ul>
+<h3 id="https--tls">https &amp; tls</h3>
+<p>traefik的证书可以是手动创建证书，也可以通过let&rsquo;s encrypt自动创建</p>
+<pre><code>---
+apiVersion: traefik.containo.us/v1alpha1
+kind: IngressRoute
+metadata:
+  name: name
+  namespace: ns
+spec:
+  tls:
+    secretName: my-tls
+</code></pre>
+<p>通过Let&rsquo;s encrypt来自动创建证书有三种验证方式（tls, http, dns).</p>
+<pre><code>- &quot;--certificatesresolvers.myresolver.acme.httpchallenge=true&quot;
+- &quot;--certificatesresolvers.myresolver.acme.httpchallenge.entrypoint=web&quot;
+- &quot;--certificatesresolvers.myresolver.acme.tlschallenge=true&quot;
+- &quot;--certificatesresolvers.myresolver.acme.tlschallenge.entrypoint=websecure&quot;
+- &quot;--certificatesresolvers.myresolver.acme.email=canux.cheng@arm.com&quot;
+- &quot;--certificatesresolvers.myresolver.acme.storage=acme.json&quot;
+</code></pre>
+<hr>
+
+        </div>
+    </article>
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

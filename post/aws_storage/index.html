@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWS Storage - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="single-post">
+    <article>
+        <header>
+            <h1>AWS Storage</h1>
+            <div class="post-meta">
+                <time>April 23, 2021</time>
+                
+                    
+                        <span class="category">Cloud</span>
+                    
+                        <span class="category">Storage</span>
+                    
+                
+                
+                    
+                        <span class="tag">#aws</span>
+                    
+                
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <h1 id="aws-storage">AWS Storage</h1>
+<h2 id="s3">S3</h2>
+<p>Simple Storage Service.</p>
+<p>S3分类：</p>
+<ul>
+<li>S3标准</li>
+<li>S3标准-IA</li>
+<li>S3单区-IA</li>
+<li>S3智能分层</li>
+<li>S3 Glacier</li>
+<li>S3 Glacire Deep Archive</li>
+</ul>
+<p>特点:</p>
+<ul>
+<li>无限存储</li>
+<li>单个对象达到5Tb</li>
+<li>一次写入，多次读取</li>
+<li>99%持久性</li>
+</ul>
+<h2 id="s3-glacier">S3 Glacier</h2>
+<p>用于存放归档文件，按照访问量收费。</p>
+<h2 id="ebs">EBS</h2>
+<p>Elastic Block Store.</p>
+<p><a href="https://github.com/kubernetes-sigs/aws-ebs-csi-driver">https://github.com/kubernetes-sigs/aws-ebs-csi-driver</a></p>
+<p>EBS可以连接到EC2实例，可用区级资源，需要位于同一可用区中才能连接到EC2实例，卷不会自动扩展。</p>
+<p>EBS只能被单个EC2实例访问。</p>
+<p>特点:</p>
+<ul>
+<li>大小高达16Tb</li>
+<li>EC2实例终止后仍然存在</li>
+<li>默认情况下为固态(SSD)</li>
+<li>提供IOPS SSD和HDD选项</li>
+</ul>
+<h2 id="efs">EFS</h2>
+<p><a href="https://github.com/kubernetes-sigs/aws-efs-csi-driver">https://github.com/kubernetes-sigs/aws-efs-csi-driver</a></p>
+<p>Elastic File System 是linux的NFS服务.</p>
+<p>EFS是区域性服务，将数据存储在多个可用区中。可以被上千个EC2实例同时访问。</p>
+<ul>
+<li>完全托管的NFS文件系统</li>
+<li>为linux负载而设计</li>
+<li>支持PB级别数据</li>
+<li>可以跨多个区域存储数据</li>
+</ul>
+<p>EFS提供两种存储类型(StorageClass): Standard, Infrequent access.</p>
+<h2 id="fsx">FSx</h2>
+<p>FSx是windows File Server服务.</p>
+<h2 id="storage-gateway">Storage Gateway</h2>
+<p>支持三种类型:</p>
+<ul>
+<li>Tape gateway</li>
+<li>Volume gateway</li>
+<li>File Gateway</li>
+</ul>
+<h2 id="aws-backup">AWS Backup</h2>
+<h2 id="aws-edr">AWS EDR</h2>
+<p>Elastic Disaster Recovery.</p>
+<hr>
+<h1 id="snow-family">Snow Family</h1>
+<h2 id="snowcone">Snowcone</h2>
+<h2 id="snowball">Snowball</h2>
+<ul>
+<li>针对large-scale 数据传输</li>
+<li>支持PB级别数据</li>
+<li>通过物理设备上传数据到S3</li>
+</ul>
+<h2 id="snowmobile">Snowmobile</h2>
+<ul>
+<li>针对large-scale数据传输</li>
+<li>支持EB级别数据</li>
+<li>通过工作站上传数据到S3</li>
+</ul>
+<hr>
+<h1 id="transfer-family">Transfer family</h1>
+<p>SFTP, FTPS, FTP.</p>
+<hr>
+<h1 id="aws-migration-and-transfer">AWS Migration and Transfer</h1>
+<h2 id="ads">ADS</h2>
+<p>Application Discovery Service.</p>
+<h2 id="ams">AMS</h2>
+<p>Application Migration Service.</p>
+<h2 id="dms">DMS</h2>
+<p>Database Migration Service.</p>
+<p>让您能够迁移关系数据库、非关系数据库和其他类型的数据存储。</p>
+<h2 id="sct">SCT</h2>
+<p>Schema Conversion Tool</p>
+<h2 id="datasync">DataSync</h2>
+<h2 id="migration-hub">Migration Hub</h2>
+
+        </div>
+    </article>
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

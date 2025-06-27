@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TPL - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="single-post">
+    <article>
+        <header>
+            <h1>TPL</h1>
+            <div class="post-meta">
+                <time>September 27, 2016</time>
+                
+                    
+                        <span class="category">Django</span>
+                    
+                
+                
+                    
+                        <span class="tag">#tpl</span>
+                    
+                
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <h1 id="django-third-party-library">Django Third Party Library.</h1>
+<p><a href="https://github.com/rosarior/awesome-django">https://github.com/rosarior/awesome-django</a></p>
+<p>Add this application to your django project in settings.py.</p>
+<pre><code>INSTALLED_APPS = (
+    'south',
+    'debug_toolbar',
+    'crispy_forms',
+    ...
+)
+</code></pre>
+<h1 id="django-rest-framework">django-rest-framework</h1>
+<p>django的RESTful API的application。</p>
+<p><a href="https://github.com/tomchristie/django-rest-framework/tree/master">https://github.com/tomchristie/django-rest-framework/tree/master</a></p>
+<p><a href="https://github.com/django-json-api/django-rest-framework-json-api">https://github.com/django-json-api/django-rest-framework-json-api</a></p>
+<p><a href="https://github.com/SimpleJWT/django-rest-framework-simplejwt">https://github.com/SimpleJWT/django-rest-framework-simplejwt</a></p>
+<hr>
+<h1 id="admin-interface">admin interface</h1>
+<p><a href="https://github.com/geex-arts/django-jet">https://github.com/geex-arts/django-jet</a></p>
+<p><a href="https://github.com/sehmaschine/django-grappelli">https://github.com/sehmaschine/django-grappelli</a></p>
+<p><a href="https://github.com/darklow/django-suit">https://github.com/darklow/django-suit</a></p>
+<p><a href="https://github.com/sshwsfc/xadmin">https://github.com/sshwsfc/xadmin</a></p>
+<h1 id="authentication">authentication</h1>
+<p><a href="https://github.com/etianen/django-python3-ldap">https://github.com/etianen/django-python3-ldap</a></p>
+<p><a href="https://github.com/pennersr/django-allauth/">https://github.com/pennersr/django-allauth/</a></p>
+<p><a href="https://github.com/django-guardian/django-guardian">https://github.com/django-guardian/django-guardian</a></p>
+<h1 id="database">database</h1>
+<p><a href="https://github.com/django-dbbackup/django-dbbackup">https://github.com/django-dbbackup/django-dbbackup</a></p>
+<h1 id="debug">debug</h1>
+<p><a href="https://github.com/jazzband/django-debug-toolbar">https://github.com/jazzband/django-debug-toolbar</a></p>
+<p><a href="https://github.com/django-extensions/django-extensions/">https://github.com/django-extensions/django-extensions/</a></p>
+<h1 id="form">form</h1>
+<p><a href="https://github.com/django-crispy-forms/django-crispy-forms">https://github.com/django-crispy-forms/django-crispy-forms</a></p>
+<h1 id="search">search</h1>
+<p><a href="https://github.com/carltongibson/django-filter">https://github.com/carltongibson/django-filter</a></p>
+<p><a href="https://github.com/django-haystack/django-haystack">https://github.com/django-haystack/django-haystack</a></p>
+<h1 id="security">security</h1>
+<p><a href="https://github.com/adamchainz/django-cors-headers">https://github.com/adamchainz/django-cors-headers</a></p>
+<hr>
+<h1 id="cms-project">CMS Project</h1>
+<h2 id="django-cms">django-cms</h2>
+<p><a href="https://github.com/divio/django-cms/">https://github.com/divio/django-cms/</a></p>
+<h2 id="wagtail">wagtail</h2>
+<p><a href="https://github.com/wagtail/wagtail">https://github.com/wagtail/wagtail</a></p>
+<h2 id="mezzanine">mezzanine</h2>
+<p><a href="https://github.com/stephenmcd/mezzanine/">https://github.com/stephenmcd/mezzanine/</a></p>
+<hr>
+<h1 id="e-commerce-project">e-Commerce Project</h1>
+<h2 id="django-oscar">django-oscar</h2>
+<p><a href="https://github.com/django-oscar/django-oscar">https://github.com/django-oscar/django-oscar</a></p>
+<h2 id="django-shop">django-shop</h2>
+<p><a href="https://github.com/awesto/django-shop">https://github.com/awesto/django-shop</a></p>
+<hr>
+<h1 id="pm-project">PM Project</h1>
+<h2 id="taiga">taiga</h2>
+<p><a href="https://github.com/taigaio">https://github.com/taigaio</a></p>
+
+        </div>
+    </article>
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

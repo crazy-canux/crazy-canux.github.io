@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="generator" content="Hugo 0.147.9">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morgoth - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="home">
+    <h1>Morgoth</h1>
+    <p></p>
+    
+    <section class="recent-posts">
+        <h2>Recent Posts</h2>
+        <ul class="post-list">
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/linux_firewall/">Firewall</a></h2>
+                    <div class="post-meta">
+                        <time>March 31, 2016</time>
+                        
+                            
+                                <span class="category">Linux</span>
+                            
+                                <span class="category">Security</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="firewall">Firewall</h1>
+<p>UFW: linux防火墙配置工具，底层还是调用iptables.</p>
+<p>filewall: centos的防火墙命令, 底层还是调用iptables.</p>
+<hr>
+<h1 id="selinux">SELinux</h1>
+<p>Security-Enhanced-Linux</p>
+<p>本地安全</p>
+<hr>
+<h1 id="netfilter">Netfilter</h1>
+<p>网络安全</p>
+<hr>
+<h1 id="iptables">iptables</h1>
+<p>通过iptables操作Netfilter实现应用层安全.</p>
+<p>table:</p>
+<pre><code>filter 默认表
+nat
+mangle
+raw
+security
+</code></pre>
+<h2 id="filter">filter</h2>
+<p>chain:</p>
+<pre><code>INPUT
+FORWARD
+OUTPUT
+</code></pre>
+<h2 id="nat">nat</h2>
+<p>chain:</p>
+<pre><code>INPUT
+OUTPUT
+PREROUTING
+POSTROUTING
+</code></pre>
+<p>postrouting:</p>
+<pre><code>snat: 内网主机访问外网经过路由时，源ip会发生变化。
+</code></pre>
+<p>prerouting:</p>
+<pre><code>dnat:  外网访问内网经过路由时，目的ip会发生变化。
+</code></pre>
+<h2 id="iptables命令">iptables命令</h2>
+<pre><code>-L/--list  [chain [ rulenum]]
+-S/--list-rules [chain [rulenum]]
+-Z/--zero [chain [rulenum]]
+
+-A/--append chain
+-C/--check chain
+-N/--new chain
+
+-F/--flush [chain] // 删除chain中的rules.
+-X/--delete-chain [chain] // 删除自定义chain.
+
+-R/--replace chain rulenum
+-D/--delete chain [rulenum]
+-I/--insert chain [rulenum]
+
+-P/--policy chain target
+
+-E/--rename-chain old-chain new-chain
+</code></pre>
+<p>tables:</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/linux_filesystem/">FileSystem</a></h2>
+                    <div class="post-meta">
+                        <time>March 31, 2016</time>
+                        
+                            
+                                <span class="category">Linux</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="vfs">VFS</h1>
+<p>Linux采用虚拟文件系统，支持多个文件系统协议．</p>
+<hr>
+<h1 id="extext2ext3ext4">ext/ext2/ext3/ext4</h1>
+<h1 id="jfs2">JFS2</h1>
+<h1 id="ramfs">ramfs</h1>
+<p>linux的VM(虚拟内存)包括ramfs和swap.</p>
+<p>对内存的支持</p>
+<h1 id="swap">swap</h1>
+<p>交换分区，当内存不足，会把内存上暂时不运行的程序保存到swap，获取部分内存空间运行．</p>
+<h1 id="tmpfs">tmpfs</h1>
+<p>临时文件系统, 优先使用ramfs,　其次使用swap.</p>
+<pre><code># 挂载tmpfs
+mount -t tmpfs -o size=1024m tmpfs /path/to/mount
+# /etc/fstab　
+tmpfs /dev/shm tmpfs,defaults,size=512m 0 0
+</code></pre>
+<h1 id="vfatfatntfs">vfat/fat/ntfs</h1>
+<p>windows文件系统</p>
+<h1 id="cifssmbfs">cifs/smbfs</h1>
+<h1 id="nfs">nfs</h1></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/markdown/">Markdown</a></h2>
+                    <div class="post-meta">
+                        <time>March 28, 2016</time>
+                        
+                            
+                                <span class="category">Web</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="markdown">Markdown</h1>
+<h2 id="markdown简介">Markdown简介</h2>
+<p>Markdown是一种轻量级文本标记语言, Markdown的目标是实现易读易写。
+Markdown和html有很大区别，html是一种发布格式，markdown是一种书写格式。</p>
+<p>Markdown 中文手册：</p>
+<p><a href="http://wowubuntu.com/markdown/index.html">http://wowubuntu.com/markdown/index.html</a></p>
+<p>Markdown 英文手册：</p>
+<p><a href="http://daringfireball.net/projects/markdown/syntax">http://daringfireball.net/projects/markdown/syntax</a></p>
+<p>Markdown文件的扩展名是md。</p>
+<h2 id="两个需要特殊处理的字符">两个需要特殊处理的字符</h2>
+<p>&lt; 的表示方法：</p>
+<blockquote>
+<p>&amp; l t ;</p></blockquote>
+<p>&amp; 的表示方法：</p>
+<blockquote>
+<p>&amp; a m p ;</p></blockquote>
+<hr>
+<h1 id="区块元素">区块元素</h1>
+<h2 id="段落和换行">段落和换行</h2>
+<p>段落前后要有一个或以上的空行（空格或制表符都可以）。</p>
+<h2 id="标题">标题</h2>
+<p>markdown支持两个语法格式的标题</p>
+<h3 id="setext格式">setext格式</h3>
+<p>任意个数下等号=表示大标题:</p>
+<pre><code>Title
+======
+</code></pre>
+<p>任意个数下减号表示副标题：</p>
+<pre><code>Subtitle
+--------
+</code></pre>
+<h3 id="atx格式">atx格式</h3>
+<p>一到六个#表示一到六阶标题,#后面有空格</p>
+<pre><code># 一阶标题
+
+## 二阶标题
+
+### 三阶标题
+
+#### 四阶标题
+
+##### 五阶标题
+
+###### 六阶标题
+</code></pre>
+<h2 id="区块引用">区块引用</h2>
+<p>使用&gt;表示单层区块引用：</p>
+<p>&gt; block</p>
+<blockquote>
+<p>block</p></blockquote>
+<p>使用多个&gt;嵌套使用：</p>
+<p>&gt;&gt; block</p>
+<blockquote>
+<blockquote>
+<p>block</p></blockquote></blockquote>
+<p>区块内也可以用标题，列表和代码区块等。</p>
+<h2 id="列表">列表</h2>
+<h3 id="无序列表">无序列表</h3>
+<p>无序列表使用星号、加号或是减号作为列表标记,符号和字符之间有空格：</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/metrics_zabbix/">Zabbix</a></h2>
+                    <div class="post-meta">
+                        <time>March 25, 2016</time>
+                        
+                            
+                                <span class="category">DevOps</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="zabbix">Zabbix</h1></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/metrics_nagios/">Nagios</a></h2>
+                    <div class="post-meta">
+                        <time>March 25, 2016</time>
+                        
+                            
+                                <span class="category">DevOps</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="nagios">Nagios</h1>
+<blockquote>
+<p>Nagios is the industry standard in IT infrastructure monitoring</p></blockquote>
+<blockquote>
+<p>Nagios offers complete monitoring and alerting for servers, switches, applications, and services.</p></blockquote>
+<p>Nagios官方宣称nagios是IT基础监控的工业标准。</p>
+<p>Nagios提供对服务器，交换机，应用和服务的完整的监控和警报。</p>
+<p>Nagios是无agent的，nagios的plugin通过协议远程获取信息。</p>
+<p><a href="https://www.nagios.org/">https://www.nagios.org/</a></p>
+<p><a href="https://www.nagios.com/">https://www.nagios.com/</a></p>
+<p><a href="https://exchange.nagios.org/">https://exchange.nagios.org/</a></p>
+<p><a href="https://github.com/NagiosEnterprises">https://github.com/NagiosEnterprises</a></p>
+<p><a href="https://github.com/nagios-plugins">https://github.com/nagios-plugins</a></p>
+<hr>
+<h1 id="nagios安装配置">Nagios安装配置</h1>
+<h2 id="nagios发展">Nagios发展</h2>
+<p>Nagios core 1.0</p>
+<p>Nagios core 2.0</p>
+<p>Nagios core 3.0</p>
+<p>Nagios XI</p>
+<p>Nagios core 4.0</p>
+<p>目前nagios有两大阵营：</p>
+<p>开源解决方案： Nagios core</p>
+<p>商业解决方案： Nagios XI</p>
+<h2 id="nagios安装配置-1">Nagios安装配置</h2>
+<p>安装和配置nagios core,plugins,addons参考</p>
+<p>官方文档:</p>
+<p><a href="https://assets.nagios.com/downloads/nagioscore/docs/nagioscore/4/en/toc.html">https://assets.nagios.com/downloads/nagioscore/docs/nagioscore/4/en/toc.html</a></p>
+<p>中文文档：</p>
+<p><a href="http://nagios-cn.sourceforge.net/nagios-cn/index.html">http://nagios-cn.sourceforge.net/nagios-cn/index.html</a></p>
+<hr>
+<h1 id="nagios开源解决方案">Nagios开源解决方案</h1>
+<h2 id="nagios-core">Nagios core:</h2>
+<blockquote>
+<p>Nagios Core is the monitoring and alerting engine that serves as the primary application around which hundreds of Nagios projects are built.</p></p>
+                    
+                </li>
+            
+        </ul>
+    </section>
+    
+    
+        <a href="/page/54/">← Previous</a>
+    
+    
+        <a href="/page/56/">Next →</a>
+    
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

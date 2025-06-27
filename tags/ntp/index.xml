@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Ntp on Morgoth</title>
+    <link>https://canuxcheng.com/tags/ntp/</link>
+    <description>Recent content in Ntp on Morgoth</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 28 Jul 2016 16:08:54 +0000</lastBuildDate>
+    <atom:link href="https://canuxcheng.com/tags/ntp/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Ntp</title>
+      <link>https://canuxcheng.com/post/ntp/</link>
+      <pubDate>Thu, 28 Jul 2016 16:08:54 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/ntp/</guid>
+      <description>&lt;h1 id=&#34;ntp&#34;&gt;NTP&lt;/h1&gt;&#xA;&lt;p&gt;NFS: Network Time Protocol&lt;/p&gt;&#xA;&lt;p&gt;UTC: Coordinated Universal Time, 世界统一时间&lt;/p&gt;&#xA;&lt;p&gt;GMT: Greenwich Mean Time, 格林尼治标准时间, = UTC&lt;/p&gt;&#xA;&lt;p&gt;CET: Central European Time, 欧洲中部时间, = UTC+1, 下令时=UTC+2&lt;/p&gt;&#xA;&lt;p&gt;CST: Chinese Standard Time, 中国标准时间, = UTC+8&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;时区管理&#34;&gt;时区管理&lt;/h1&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ timedatectl list-timezones # 查看所有时区&#xA;$ sudo timedatectl set-timezone Asia/Shanghai # 设置时区&#xA;$ sudo timedatectl set-timezone Etc/UTC&#xA;$ ls -l /etc/localtime # 应该是一个链接&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;ntp-1&#34;&gt;ntp&lt;/h1&gt;&#xA;&lt;p&gt;安装:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ sudo apt-get install ntp&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;ntpdate&#34;&gt;ntpdate&lt;/h2&gt;&#xA;&lt;p&gt;从目标服务器同步.&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;ntpdate -u ip&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;ntpstat&#34;&gt;ntpstat&lt;/h2&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ sudo apt-get install ntpstat&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;chrony&#34;&gt;chrony&lt;/h1&gt;&#xA;&lt;p&gt;ntp的升级版.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Container - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="single-post">
+    <article>
+        <header>
+            <h1>Container</h1>
+            <div class="post-meta">
+                <time>April 5, 2018</time>
+                
+                    
+                        <span class="category">CNCF</span>
+                    
+                
+                
+                    
+                        <span class="tag">#container</span>
+                    
+                
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <h1 id="container">Container</h1>
+<p>OCI: Open Container Initiative.</p>
+<p>CRI: Container Runtime Interface.</p>
+<p>CNI: Container Network Interface.</p>
+<p>CSI: Container Storage Interface.</p>
+<h1 id="oci">OCI</h1>
+<p>Open Container Initiative，也就是常说的OCI，是由多家公司共同成立的项目，并由linux基金会进行管理，致力于container runtime的标准的制定和runc的开发等工作.</p>
+<p>是container的标准.</p>
+<p>目前主要有两个标准文档：容器运行时标准 （runtime spec）和 容器镜像标准（image spec）</p>
+<p><a href="https://www.opencontainers.org/">https://www.opencontainers.org/</a></p>
+<h2 id="runc">runc</h2>
+<p>docker(libcontainer)</p>
+<p>runc支持OCI.</p>
+<p><a href="https://github.com/opencontainers/runc">https://github.com/opencontainers/runc</a></p>
+<h2 id="rkt">rkt</h2>
+<p>redhat(coreos)</p>
+<p><a href="https://github.com/rkt/rkt">https://github.com/rkt/rkt</a></p>
+<hr>
+<h1 id="tools">tools</h1>
+<h2 id="dumb-init">dumb-init</h2>
+<p>管理pid=1的进程的子进程:</p>
+<p><a href="https://github.com/Yelp/dumb-init">https://github.com/Yelp/dumb-init</a></p>
+<h2 id="baseimage-docker">baseimage-docker</h2>
+<p>处理container中运行多个进程的问题:</p>
+<p><a href="https://github.com/phusion/baseimage-docker">https://github.com/phusion/baseimage-docker</a></p>
+<h2 id="watchtower">watchtower</h2>
+<p>根据registry中的更新自动更新 container:</p>
+<p><a href="https://github.com/containrrr/watchtower/">https://github.com/containrrr/watchtower/</a></p>
+<h2 id="hadolint">hadolint</h2>
+<p>dockerfile 语法检查:</p>
+<p><a href="https://github.com/hadolint/hadolint">https://github.com/hadolint/hadolint</a></p>
+<h2 id="gosu">gosu</h2>
+<p>权限管理</p>
+<p><a href="https://github.com/tianon/gosu">https://github.com/tianon/gosu</a></p>
+<h2 id="swarm-cronjob">swarm-cronjob</h2>
+<p><a href="https://github.com/crazy-max/swarm-cronjob">https://github.com/crazy-max/swarm-cronjob</a></p>
+<hr>
+<h1 id="misc">misc</h1>
+<p>get host ip(docker/docker_gwbridge) from container:</p>
+<pre><code>ip route | awk '/default/ { print $3 }'
+</code></pre>
+
+        </div>
+    </article>
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

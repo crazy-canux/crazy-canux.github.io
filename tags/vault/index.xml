@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Vault on Morgoth</title>
+    <link>https://canuxcheng.com/tags/vault/</link>
+    <description>Recent content in Vault on Morgoth</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 15 Apr 2016 09:41:39 +0800</lastBuildDate>
+    <atom:link href="https://canuxcheng.com/tags/vault/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Vault</title>
+      <link>https://canuxcheng.com/post/devops_vault/</link>
+      <pubDate>Fri, 15 Apr 2016 09:41:39 +0800</pubDate>
+      <guid>https://canuxcheng.com/post/devops_vault/</guid>
+      <description>&lt;h1 id=&#34;vault&#34;&gt;Vault&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/hashicorp/vault&#34;&gt;https://github.com/hashicorp/vault&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;Install:&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://learn.hashicorp.com/tutorials/vault/getting-started-install&#34;&gt;https://learn.hashicorp.com/tutorials/vault/getting-started-install&lt;/a&gt;&lt;/p&gt;&#xA;&lt;h1 id=&#34;cli&#34;&gt;CLI&lt;/h1&gt;&#xA;&lt;p&gt;可以通过环境变量或者命令行参数指定server:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;-address VAULT_ADDR&#xA;-namespace VAULT_NAMESPACE&#xA;vault [subcommand] -address=&amp;quot;https://server:8200&amp;quot;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;server:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;// 启动vault&#xA;$ vault server -config=/etc/vault/config.hcl&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;agent:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ vault agent&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;login:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;// 跟据token登陆.&#xA;$ vault login&#xA;&#xA;$vault login -token-only -method=oidc&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;operator:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;// init生成keys和token.&#xA;$ vault operator init&#xA;&#xA;// 通过keys  unseal&#xA;$ vault operator unseal&#xA;&#xA;// 通过token seal&#xA;$ vault operator seal&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;auth:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;// 查看auth&#xA;$ vault auth list&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;secrets&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;// 查看secrets engine&#xA;$ vault secrets list&#xA;&#xA;// enable kv&#xA;$ vault secrets enable -path=&amp;lt;ns&amp;gt;/&amp;lt;name&amp;gt; kv&#xA;$ vault secrets enable kv&#xA;&#xA;// disable kv&#xA;$ vault secrets disable kv&#xA;&#xA;// 创建一个database engine&#xA;vault secrets enable -path &amp;lt;ns&amp;gt;/mysql database&#xA;// 创建rabbitmq engine&#xA;vault secrets enable -path &amp;lt;ns&amp;gt;/rabbitmq rabbitmq&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;policy&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

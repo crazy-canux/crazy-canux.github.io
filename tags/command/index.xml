@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Command on Morgoth</title>
+    <link>https://canuxcheng.com/tags/command/</link>
+    <description>Recent content in Command on Morgoth</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 31 Mar 2019 21:51:25 +0000</lastBuildDate>
+    <atom:link href="https://canuxcheng.com/tags/command/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Command</title>
+      <link>https://canuxcheng.com/post/network_command/</link>
+      <pubDate>Sun, 31 Mar 2019 21:51:25 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/network_command/</guid>
+      <description>&lt;h1 id=&#34;network-command&#34;&gt;network command&lt;/h1&gt;&#xA;&lt;p&gt;network related command&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;net-tools&#34;&gt;net-tools&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/ecki/net-tools&#34;&gt;https://github.com/ecki/net-tools&lt;/a&gt;&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ sudo apt-get install net-tools&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h3 id=&#34;ifconfig&#34;&gt;ifconfig&lt;/h3&gt;&#xA;&lt;pre&gt;&lt;code&gt;ifconfig # 查看up的interface&#xA;ifconfig -a  # 查看所有的interface&#xA;ifconfig &amp;lt;bridge&amp;gt;/&amp;lt;interface&amp;gt; up/down&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h3 id=&#34;netstat&#34;&gt;netstat&lt;/h3&gt;&#xA;&lt;pre&gt;&lt;code&gt;netstat&#xA;-a, --all, --listening # 显示所有socket, 默认只显示connected&#xA;-l, --listening  # 显示listening&#xA;-n, --numeric&#xA;-p, --programs # 显示pid或程序名称&#xA;# socket选项:&#xA;-t, --tcp&#xA;-u, --udp&#xA;-w, --raw&#xA;-x, --unix&#xA;--ax25&#xA;--ipx&#xA;--netrom&#xA;&#xA;# 常用&#xA;netstat -anp    # 查看哪些端口是打开的．&#xA;sudo netstat -anp | grep port # 查看端口是否被使用&#xA;sudo netstat -tulnp # 查看tcp&amp;amp;udp端口是否被监听&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h3 id=&#34;arp&#34;&gt;arp&lt;/h3&gt;&#xA;&lt;pre&gt;&lt;code&gt;arp # 用于确定IP地址的网卡物理地址&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h3 id=&#34;rarp&#34;&gt;rarp&lt;/h3&gt;&#xA;&lt;h3 id=&#34;hostname&#34;&gt;hostname&lt;/h3&gt;&#xA;&lt;h3 id=&#34;domainname&#34;&gt;domainname&lt;/h3&gt;&#xA;&lt;h3 id=&#34;dnsdomainname&#34;&gt;dnsdomainname&lt;/h3&gt;&#xA;&lt;h3 id=&#34;route&#34;&gt;route&lt;/h3&gt;&#xA;&lt;p&gt;Flags:&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Command</title>
+      <link>https://canuxcheng.com/post/storage_command/</link>
+      <pubDate>Sun, 31 Mar 2019 21:51:25 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/storage_command/</guid>
+      <description>&lt;h1 id=&#34;sysstat&#34;&gt;sysstat:&lt;/h1&gt;&#xA;&lt;pre&gt;&lt;code&gt;# &amp;lt;https://github.com/sysstat/sysstat&amp;gt;&#xA;$ sudo apt-get install sysstat&#xA;# 包括 iostat/mpstat/pidstat/tapestat/cifsiostat&#xA;&#xA;iostat -d -x -k 1 10&#xA;&#xA;pidstat -d -p pid&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h1 id=&#34;iotop&#34;&gt;iotop&lt;/h1&gt;&#xA;&lt;pre&gt;&lt;code&gt;# 查看进程的diskio&#xA;$ sudo apt-get install iotop&#xA;$ sudo iotop&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h1 id=&#34;df&#34;&gt;df&lt;/h1&gt;&#xA;&lt;p&gt;df计算文件系统磁盘空间使用:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;df&#xA;$ df -h&#xA;&#xA;# 查看目录信息(读写哪个设备)&#xA;$ df /path/folder&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h1 id=&#34;dd&#34;&gt;dd&lt;/h1&gt;&#xA;&lt;p&gt;dd转化并拷贝文件:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;dd&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h1 id=&#34;fsck&#34;&gt;fsck&lt;/h1&gt;&#xA;&lt;p&gt;fsck检查并修复文件系统:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;fsck&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h1 id=&#34;fdisk&#34;&gt;fdisk&lt;/h1&gt;&#xA;&lt;p&gt;支持msdos，支持2T以下的磁盘.&lt;/p&gt;&#xA;&lt;p&gt;fdisk管理磁盘分区表:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;fdisk&#xA;fdisk -l&#xA;&#xA;fdisk /dev/sda # 可以创建新的磁盘分区&#xA;&amp;gt; n ...    创建新的分区&#xA;&amp;gt; t (8e表示linux LVM), 修改分区类型&#xA;&amp;gt; w 保存修改&#xA;partprobe /dev/sda # 在不重启的情况下保存分区&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h1 id=&#34;parted&#34;&gt;parted&lt;/h1&gt;&#xA;&lt;p&gt;支持gpt分区表，支持2T以上的大磁盘.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

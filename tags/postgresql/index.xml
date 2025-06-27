@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Postgresql on Morgoth</title>
+    <link>https://canuxcheng.com/tags/postgresql/</link>
+    <description>Recent content in Postgresql on Morgoth</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 03 Apr 2016 14:46:14 +0000</lastBuildDate>
+    <atom:link href="https://canuxcheng.com/tags/postgresql/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Postgresql</title>
+      <link>https://canuxcheng.com/post/postgre/</link>
+      <pubDate>Sun, 03 Apr 2016 14:46:14 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/postgre/</guid>
+      <description>&lt;h1 id=&#34;postgresql&#34;&gt;PostgreSQL&lt;/h1&gt;&#xA;&lt;p&gt;安装postgresql：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ sudo apt-get install postgresql&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;安装第三方库：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ sudo apt-get install postgresql-contrib-9.3 libpg-dev postgresql-server-dev-9.3&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;GUI工具： pgAdminIII&lt;/p&gt;&#xA;&lt;p&gt;CLI工具： psql&lt;/p&gt;&#xA;&lt;p&gt;postgresql的端口是5432．&lt;/p&gt;&#xA;&lt;h1 id=&#34;postgresql命令&#34;&gt;postgresql命令&lt;/h1&gt;&#xA;&lt;p&gt;安装完成后默认的admin就是postgres, postgres里有默认数据库postgres.&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$passwd postgres # 修改默认管理员用户postgres的密码&#xA;$su - postgres # 切换到默认的postgres用户&#xA;&#xA;$ psql [OPTION]... [DBNAME [USERNAME]]&#xA;&#xA;$createuser &amp;lt;username&amp;gt; -P # 在命令行添加用户&#xA;$dropuser &amp;lt;username&amp;gt; # 在命令行删除用户&#xA;&#xA;$createdb &amp;lt;database&amp;gt; -O &amp;lt;username&amp;gt; # 在命令行添加数据库&#xA;$dropdb &amp;lt;database&amp;gt; # 在命令行删除数据库&#xA;&#xA;# 交互式:&#xA;$ psql -U [username] [database]&#xA;&#xA;# 非交互式：&#xA;$ PGPASSWORD=&#39;password&#39;;psql -h &amp;lt;host&amp;gt; -p &amp;lt;port&amp;gt; -U &amp;lt;username&amp;gt; -d [database] -c &amp;quot;[psql command]&amp;quot;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;导出数据：&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

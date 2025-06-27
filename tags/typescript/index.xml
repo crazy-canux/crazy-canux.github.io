@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Typescript on Morgoth</title>
+    <link>https://canuxcheng.com/tags/typescript/</link>
+    <description>Recent content in Typescript on Morgoth</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 05 Mar 2021 09:36:32 +0000</lastBuildDate>
+    <atom:link href="https://canuxcheng.com/tags/typescript/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>TypeScript</title>
+      <link>https://canuxcheng.com/post/js_ts/</link>
+      <pubDate>Fri, 05 Mar 2021 09:36:32 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/js_ts/</guid>
+      <description>&lt;h1 id=&#34;typescript&#34;&gt;TypeScript&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/microsoft/TypeScript&#34;&gt;https://github.com/microsoft/TypeScript&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.typescriptlang.org/zh/&#34;&gt;https://www.typescriptlang.org/zh/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/microsoft/tsdoc&#34;&gt;https://github.com/microsoft/tsdoc&lt;/a&gt;&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;tsx&#34;&gt;TSX&lt;/h2&gt;&#xA;&lt;p&gt;&amp;ldquo;*.tsx&amp;rdquo; 是js的扩展，允许使用xml语法。&lt;/p&gt;&#xA;&lt;p&gt;typescript支持interface。&lt;/p&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;jsc&#34;&gt;jsc&lt;/h2&gt;&#xA;&lt;p&gt;将TS编译成JS, tsconfig.json是配置文件。&lt;/p&gt;&#xA;&lt;hr&gt;</description>
+    </item>
+  </channel>
+</rss>

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS BOM - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="single-post">
+    <article>
+        <header>
+            <h1>JS BOM</h1>
+            <div class="post-meta">
+                <time>March 15, 2018</time>
+                
+                    
+                        <span class="category">Web</span>
+                    
+                
+                
+                    
+                        <span class="tag">#bom</span>
+                    
+                
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <h1 id="bom">BOM</h1>
+<p>Browser Object Model</p>
+<p>介绍浏览器对象，不过缺乏规范.</p>
+<h1 id="window">window</h1>
+<p>window对象是最顶层对象，有6大属性,属性本身也是对象.</p>
+<p>window对象的document属性也是对象，document对象有5大属性.</p>
+<p>引用当前窗口时，可以省略window对象.</p>
+<p>eg:</p>
+<pre><code>window.document
+document
+
+window.alert()
+alert()
+</code></pre>
+<p>对象集合:</p>
+<pre><code>frames[]
+</code></pre>
+<p>attribution:</p>
+<pre><code>document # DOM的Document对象
+history # History对象
+location # Location对象
+Navigator # Navigator对象
+Screen # Screen对象
+window # 等价于self
+
+closed
+defaultStatus
+status
+innerheight
+innerwidth
+outerheight
+outerwidth
+</code></pre>
+<p>method:</p>
+<pre><code>alert() // 弹出警告框
+confirm() // 和alert差不多，带确定和取消按钮，确定返回true
+prompt() // 输入提示框,返回输入内容
+find() // 查找
+
+// 子窗口的opener属性反过来引用打开她的那个窗口(父窗口)
+subwin = open() // 打开一个新窗口, _parent在当前窗口打开, 返回子窗口的window对象.
+subwin.opener // 表示window
+
+moveTo()
+moveBy()
+resizeTo()
+resizeBy()
+
+setTimeout()
+clearTimeout()
+
+setInterval()
+clearInterval()
+
+close()
+</code></pre>
+<h1 id="location">location</h1>
+<p>attribution:</p>
+<pre><code>hash
+host
+hostname
+href
+pathname
+port
+protocol
+search
+</code></pre>
+<p>methods:</p>
+<pre><code>assign()
+reload()
+replace()
+</code></pre>
+<h1 id="history">history</h1>
+<p>attribution:</p>
+<pre><code>lehgth
+</code></pre>
+<p>method:</p>
+<pre><code>back()
+forward()
+go()
+</code></pre>
+<h1 id="navigator">navigator</h1>
+<p>对象集合:</p>
+<pre><code>plugins[] # Plugin对象的数组
+navigator.plugins.length # 插件个数
+navigator.plugins[i].name # 第i个插件名字
+navigator.plugins[i].filename # 第i个插件文件名
+</code></pre>
+<p>attribution:</p>
+<pre><code>appName # 浏览器名称
+appVersion # 浏览器版本
+userAgent # user-agent 头部信息
+platform # win32/
+</code></pre>
+<p>method:</p>
+<pre><code>javaEnabled()
+taintEnabled()
+</code></pre>
+<h1 id="screen">screen</h1>
+<p>attribution:</p>
+<pre><code>width
+height
+availHeight
+availWidth
+</code></pre>
+
+        </div>
+    </article>
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

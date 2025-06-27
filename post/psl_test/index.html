@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PSL_Test - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="single-post">
+    <article>
+        <header>
+            <h1>PSL_Test</h1>
+            <div class="post-meta">
+                <time>April 11, 2016</time>
+                
+                    
+                        <span class="category">Python</span>
+                    
+                
+                
+                    
+                        <span class="tag">#test</span>
+                    
+                
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <h1 id="development-tools">Development Tools</h1>
+<h2 id="typing">typing</h2>
+<h2 id="2to3">2to3</h2>
+<pre><code>$2to3
+</code></pre>
+<h2 id="pydoc">pydoc</h2>
+<pre><code>import pydoc
+</code></pre>
+<h2 id="test">test</h2>
+<pre><code>import test
+</code></pre>
+<h2 id="doctest">doctest</h2>
+<p>python内置的文档测试库．</p>
+<pre><code>import doctest
+</code></pre>
+<h2 id="unittest">unittest</h2>
+<p>python内置的单元测试库．</p>
+<pre><code>import unittest
+</code></pre>
+<hr>
+<h1 id="tpl">TPL</h1>
+<p>相关的第三方库</p>
+<h2 id="unittest2">unittest2</h2>
+<p>unittest2是unittest的升级版．</p>
+<p>python3集成了unittest2到unittest,像使用unittest一样使用即可．</p>
+<pre><code># python2.7
+$pip install unittest2
+import unittest2
+
+# python3
+import unittest
+</code></pre>
+<p>unittest也叫pyunit，类似于Junit(java)都是基于Kent Beck和Erich Gamma的XUnit框架．</p>
+<p>测试结果：</p>
+<p>OK 表示测试通过</p>
+<p>FAIL 表示测试没有通过，并引发一个AssertionError异常．</p>
+<p>ERROR 表示测试过程引发一个不是AssertionError的异常．</p>
+<pre><code># Python2.7 此处用的是标准库的unittest.
+import unittest
+import MyClass
+</code></pre>
+<p>classes:</p>
+<pre><code>unittest.TestCase: 每个实例就是一个test case. 使用TestCase.assert* 系列方法进行测试．
+unittest.TestSuite: 每个实例就是一个test suite. 多个test case放在一起就是一个test suite.
+unittest.TestLoader/unittest.defaultTestLoader: 用来加载TestCase到TestSuite.
+unittest.TestResult: 用来保存测试的结果．
+
+unittest.TestProgram/unittest.main(): 搜索该模块下所有test开头的测试用例方法并执行．
+fixtures对一个测试用例的环境的搭建和销毁，通过重载TestCase的setUp()和teaeDown()方法．
+
+unittest.TextTestRunner: 用来执行测试用例．
+unittest.TextTestResult: 用来打印格式化的测试结果．
+
+# unittest.TestCase
+# methods:
+assertXXX　系列方法．
+failXXX 系列方法
+fail(self, msg=None) # test立即失败
+addCleanup(self, function, *args, **kwargs)
+addTypeEqualityFunc(self, typeobj, function)
+countTestCases(self)
+debug(self)
+defaultTestResult() # return unittest.TestResult()
+doCleanups(self)
+id(self)
+run(self, result=None) # 可以在子类覆盖该方法．
+shortDescription(self)
+skipTest(self, reason)
+setUp(self) # 重写之后，每个case运行之前都会调用一次．
+tearDown(self) # 同上
+
+# classmethods:
+setUpClass(cls) # 通过@classmethod重写，这样所有的case运行之前只调用一次，而不是每个case运行之前都调用．
+tearDownClass(cls) # 同上
+
+# data:
+failureException = AssertionError
+longMessage = False
+maxDiff = 640
+</code></pre>
+<p>functions:</p>
+<pre><code>findTestCases(module, prefix='test', sortUsing=&lt;built-in function cmp&gt;, suiteClass=&lt;class 'unittest.suite.TestSuite'&gt;)
+getTestCaseNames(testCaseClass, prefix, sortUsing=&lt;built-in function cmp&gt;)
+installHandler()
+makeSuite(testCaseClass, prefix='test', sortUsing=&lt;built-in function cmp&gt;, suiteClass=&lt;class 'unittest.suite.TestSuite'&gt;)
+registerResult(result)
+removeHandler(method=None)
+removeResult(result)
+
+# unittest.case实现了几个函数用来增强unittest.TestCase的方法, 一般当装饰器用．
+expectedFailure(func) # 如果这个case失败了，不计入失败的数目．
+# @unittest.expectedFailure
+skip(reason) # 无条件跳过一个test case.
+skipIf(condition, reason) # condition为true就跳过一个test case.
+skipUnless(condition, reason) # 和上面相反
+</code></pre>
+<p>examples:</p>
+<pre><code>class MyClassTestCase(unittest.TestCase):
+
+    @classmethod
+    def setUpClass(cls):
+        print 'Just execute before the first test case start.'
+
+    @classmethod
+    def tearDownClass(cls):
+        print 'Just execute after all test case end.'
+
+    def setUp(self):
+        &quot;&quot;&quot;重载setUp进行测试之前的初始化工作.运行每个test_func之前都会运行该方法&quot;&quot;&quot;
+        print &quot;start&quot;
+
+    def tearDown(self):
+        &quot;&quot;&quot;重载tearDown进行测试结束后的清理工作.结束运行每个test_func之后都会运行该方法&quot;&quot;&quot;
+        print &quot;end&quot;
+
+    def test_func(self):
+        &quot;&quot;&quot;具体的测试用例，需要用test开头,多个test_func会根据func名字中的数字或字母的顺序来执行，和位置无关.
+        不是用test开头的方法默认不会被执行&quot;&quot;&quot;
+        self.assertEqual(MyClass.method(args), value, &quot;message&quot;)
+
+if __name__ == &quot;__main__&quot;:
+    unittest.main()
+
+# 自动发现和批量执行testcase/testsuite:
+def discover_test_case():
+    test_cases = []
+    _module = ...
+    tests.append(unittest.defaultTestLoader.loadTestsFromModule(_module))
+    unittest.defaultTestLoader.discover()
+    return tests
+
+def get_test_suite():
+    &quot;&quot;&quot;打包一个testsuite.&quot;&quot;&quot;
+    return unittest.TestSuite(discover_test_case())
+
+unittest.TextTestRunner
+if __name__ == &quot;__main__&quot;:
+    runner = unittest.TextTestRunner()
+    result = runner.run(get_test_suite())
+</code></pre>
+<h2 id="mock">mock</h2>
+<p><a href="https://github.com/testing-cabal/mock">https://github.com/testing-cabal/mock</a></p>
+<p>python3集成了mock到unittest模块，导入unittest.mock即可．</p>
+<pre><code># Python2.7
+$pip install mock
+import mock
+
+# Python3
+import unittest.mock
+</code></pre>
+<p>mock就是在测试中对于不容易构造或获取的对象，用一个虚拟的对象来代替以便测试的方法．</p>
+<pre><code># Python2.7 此处用的是第三方库mock
+from mock import Mock, patch, PropertyMock, MagicMock
+</code></pre>
+<h2 id="nose2">nose2</h2>
+<p><a href="https://github.com/nose-devs/nose2">https://github.com/nose-devs/nose2</a></p>
+<p>nose是unittest/unittest2的升级版．</p>
+<p>nose2是nose的升级版．</p>
+<p>nose2用于单元测试．</p>
+<pre><code>$ pip install nose
+
+import nose
+</code></pre>
+<h2 id="pytest">pytest</h2>
+<p><a href="https://github.com/pytest-dev/pytest/">https://github.com/pytest-dev/pytest/</a></p>
+<p>pytest用于单元测试．推荐使用．</p>
+<pre><code>$ pip install -U pytest
+
+import pytest
+</code></pre>
+<hr>
+<h2 id="coverage">coverage</h2>
+<p>分析单元测试的代码覆盖率</p>
+<p><a href="https://github.com/nedbat/coveragepy">https://github.com/nedbat/coveragepy</a></p>
+<pre><code>$ pip install coverage
+
+# 通过命令进行测试，可以集成到其它工具．
+$ coverage run --source=&lt;package-name&gt; setup.py test
+</code></pre>
+<hr>
+<h2 id="tox">tox</h2>
+<p>virtualenv management and test command line tool.</p>
+<p><a href="https://github.com/tox-dev/tox">https://github.com/tox-dev/tox</a></p>
+<pre><code>$ pip install tox
+
+# 通过命令进行测试，可以集成unittest, nose2, pytest等工具．
+$ tox
+</code></pre>
+<hr>
+
+        </div>
+    </article>
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GSL_test - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="single-post">
+    <article>
+        <header>
+            <h1>GSL_test</h1>
+            <div class="post-meta">
+                <time>January 1, 2018</time>
+                
+                    
+                        <span class="category">Golang</span>
+                    
+                
+                
+                    
+                        <span class="tag">#test</span>
+                    
+                
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <h1 id="testing">testing</h1>
+<p>go的测试由go test命令和testing包组成．</p>
+<p>测试程序命名：</p>
+<pre><code>XXX.go # 测试文件和源码放在一个包中
+XXX_test.go
+</code></pre>
+<p>测试程序结构：</p>
+<pre><code>import &quot;testing&quot;
+
+# 单元测试
+# go test 会自动执行
+func TestXXX(t *testing.T) {}
+
+# 性能测试
+# go test XXX_test.go -test.bench=&quot;.*&quot;  压力测试需要指定才能执行
+func BenchmarkXXX(b *testing.B) {}
+</code></pre>
+<h2 id="constants">constants</h2>
+<h2 id="variables">variables</h2>
+<h2 id="functions">functions</h2>
+<h2 id="t">T</h2>
+<p>管理测试状态并支持格式化测试的日志．</p>
+<p>struct:</p>
+<pre><code>type T struct {}
+</code></pre>
+<p>methods:</p>
+<pre><code>// 将当前测试标识为失败，但继续执行该文件剩下的测试
+func (c *T) Fail()
+
+// 将当前测试标识为失败，并停止执行该测试, 继续执行下一个测试文件.
+func (c *T) FailNow()
+
+// 用于报告测试函数是否失败
+func (c *T) Failed() bool
+
+func (c *T) Log(args ...interface{})
+func (c *T) Logf(format string, args ...interface{})
+
+# 相当于Log/Logf之后调用Fail.(当前case失败)
+func (c *T) Error(args ...interface{})
+func (c *T) Errorf(format string, args ...interface{})
+
+# 相当于Log/Logf之后调用FailNow.(当前测试文件失败)
+func (c *T) Fatal(args ...interface{})
+func (c *T) Fatalf(format string, args ...interface{})
+
+func (c *T) Skip(args ...interface{})
+func (c *T) SkipNow()
+func (c *T) Skipf(format string, args ...interface{})
+func (c *T) Skipped() bool
+</code></pre>
+<h2 id="b">B</h2>
+<p>管理基准测试的计时行为，并指示应该迭代的运行测试多少次.</p>
+<p>struct:</p>
+<pre><code>type B struct {
+    N int
+}
+</code></pre>
+<p>methods:</p>
+<pre><code>func (c *B) Fail()
+func (c *B) FailNow()
+func (c *B) Failed() bool
+
+func (c *B) Error(args ...interface{})
+func (c *B) Errorf(format string, args ...interface{})
+
+func (c *B) Fatal(args ...interface{})
+func (c *B) Fatalf(format string, args ...interface{})
+
+func (c *B) Log(args ...interface{})
+func (c *B) Logf(format string, args ...interface{})
+
+func (c *B) Skip(args ...interface{})
+func (c *B) SkipNow()
+func (c *B) Skipf(format string, args ...interface{})
+func (c *B) Skipped() bool
+</code></pre>
+<hr>
+<h1 id="testingiotest">testing/iotest</h1>
+<hr>
+<h1 id="testingquick">testing/quick</h1>
+<hr>
+<h1 id="gotests">gotests</h1>
+<p>通过源代码自动生成测试代码，可以用命令行，也可以用goland等的插件．</p>
+<p><a href="https://github.com/cweill/gotests">https://github.com/cweill/gotests</a></p>
+<pre><code>go get -u github.com/cweill/gotests/...
+</code></pre>
+
+        </div>
+    </article>
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

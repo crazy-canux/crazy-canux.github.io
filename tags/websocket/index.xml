@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Websocket on Morgoth</title>
+    <link>https://canuxcheng.com/tags/websocket/</link>
+    <description>Recent content in Websocket on Morgoth</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 03 Apr 2018 14:46:19 +0000</lastBuildDate>
+    <atom:link href="https://canuxcheng.com/tags/websocket/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Websocket</title>
+      <link>https://canuxcheng.com/post/websocket/</link>
+      <pubDate>Tue, 03 Apr 2018 14:46:19 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/websocket/</guid>
+      <description>&lt;h1 id=&#34;websocket&#34;&gt;WebSocket&lt;/h1&gt;&#xA;&lt;p&gt;websocket用于server和browser之间通讯．&lt;/p&gt;&#xA;&lt;p&gt;websocket采用特殊报头，使得浏览器和服务器只需要做一个握手的动作．&lt;/p&gt;&#xA;&lt;p&gt;通讯数据以\x00开头，以\xFF结尾．&lt;/p&gt;&#xA;&lt;p&gt;url:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;ws://&#xA;wss://&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;一个客户端只建立一个tcp连接&lt;/p&gt;&#xA;&lt;p&gt;服务端可以推送/push数据到web客户端&lt;/p&gt;&#xA;&lt;p&gt;有更加亲量级的头，减少数据传送．&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

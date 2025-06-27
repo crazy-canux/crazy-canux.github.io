@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>File on Morgoth</title>
+    <link>https://canuxcheng.com/tags/file/</link>
+    <description>Recent content in File on Morgoth</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 01 Jan 2018 10:49:21 +0000</lastBuildDate>
+    <atom:link href="https://canuxcheng.com/tags/file/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GSL_file</title>
+      <link>https://canuxcheng.com/post/gsl_file/</link>
+      <pubDate>Mon, 01 Jan 2018 10:49:21 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/gsl_file/</guid>
+      <description>&lt;h1 id=&#34;path&#34;&gt;path&lt;/h1&gt;&#xA;&lt;h2 id=&#34;function&#34;&gt;function&lt;/h2&gt;&#xA;&lt;pre&gt;&lt;code&gt;func IsAbs(path string) bool&#xA;func Join(elem ...string) string&#xA;func Split(path string) (dir, file string)&#xA;func Join(elem ...string) string&#xA;func Dir(path string) string&#xA;func Base(path string) string&#xA;func Ext(path string) string &#xA;...&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;pathfilepath&#34;&gt;path/filepath&lt;/h1&gt;&#xA;&lt;h2 id=&#34;constants&#34;&gt;Constants&lt;/h2&gt;&#xA;&lt;pre&gt;&lt;code&gt;const (&#xA;    Separator = os.PathSeparator&#xA;    ListSeparator = os.PathListSeparator&#xA;)&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;variable&#34;&gt;Variable&lt;/h2&gt;&#xA;&lt;pre&gt;&lt;code&gt;var ErrBadPattern = errors.New(&amp;quot;Syntax error in pattern&amp;quot;)&#xA;&#xA;var SkipDir = errors.New(&amp;quot;skip this diractory&amp;quot;)&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;function-1&#34;&gt;function&lt;/h2&gt;&#xA;&lt;pre&gt;&lt;code&gt;func IsAbs(path string) bool&#xA;func Abs(path string) (string, error)&#xA;&#xA;// 返回 targpath 相对于 basepath 的 路径 （相当于返回 targpath - basepath), 实际就是文件名.&#xA;func Rel(basepath, targpath string) (string, error)&#xA;&#xA;func Split(path string) (dir, file string)&#xA;func Join(elem ...string) string&#xA;func Dir(path string) string&#xA;func Base(path string) string&#xA;func Ext(path string) string) // 包括小数点&#xA;func Walk(root string, walkFn WalkFunc) error&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;walkfunc&#34;&gt;WalkFunc&lt;/h2&gt;&#xA;&lt;p&gt;调用Walk时会对每个目录和文件调用该函数.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>PSL_File</title>
+      <link>https://canuxcheng.com/post/psl_file/</link>
+      <pubDate>Sun, 14 Aug 2016 20:51:28 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/psl_file/</guid>
+      <description>&lt;h1 id=&#34;file-and-directory-access&#34;&gt;File and Directory Access&lt;/h1&gt;&#xA;&lt;h2 id=&#34;ospath&#34;&gt;os.path&lt;/h2&gt;&#xA;&lt;p&gt;windows的路径要写成：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;C:\\test\\sub\\&#xA;&#xA;import os&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;function:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;os.path.expanduser(path) # 把path中~或~user扩展成绝对路径 expanduser(&amp;quot;~/src&amp;quot;) -&amp;gt; /home/user/src&#xA;os.path.expandvars(path) # 把path中的shell变量$var 或 ${var} 还原．&#xA;os.path.dirname(filename) # 返回filename的路径 dirname(&amp;quot;/home/user/file.py&amp;quot;) -&amp;gt; /home/user&#xA;os.path.join(a, *p) # 拼结一个完整的路径　&#xA;os.path.join(a, os.pardir) # 返回上级目录的路径&#xA;os.path.realpath(filename) # 返回filename的真实路径+文件名 realpath(&#39;__file__&#39;)&#xA;os.path.abspath(path) # 返回绝对路径, os.path.abspath(&#39;__file__&#39;)&#xA;os.path.splitext(p) # 分解路径和扩展名返回组成的元组，/home/user/test.py -&amp;gt; (&amp;quot;/home/user/test&amp;quot;, &amp;quot;.py&amp;quot;)&#xA;os.path.basename(p) # 返回最后一个组件名，也就是文件名 /home/user/test.py -&amp;gt; test.py&#xA;os.path.getsize(filename) # 返回文件大小&#xA;os.path.exists(path) # 判断path(文件或目录)是否存在&#xA;os.path.isfile(path) # 判断path是否是常规文件&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h2 id=&#34;pathlib&#34;&gt;pathlib&lt;/h2&gt;&#xA;&lt;p&gt;new in python3.4&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

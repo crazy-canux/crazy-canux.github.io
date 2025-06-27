@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="generator" content="Hugo 0.147.9">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morgoth - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="home">
+    <h1>Morgoth</h1>
+    <p></p>
+    
+    <section class="recent-posts">
+        <h2>Recent Posts</h2>
+        <ul class="post-list">
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/regularexpression/">Regular Expression</a></h2>
+                    <div class="post-meta">
+                        <time>April 2, 2016</time>
+                        
+                            
+                                <span class="category">Linux</span>
+                            
+                                <span class="category">Windows</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="re">RE</h1>
+<p>在线检测：</p>
+<p><a href="https://www.regexpal.com/">https://www.regexpal.com/</a></p>
+<p>RE分为BRE(basic RE), ERE(extended RE), SRE(simpla RE).</p>
+<p>在BRE中+?(){}|没有特殊含义，除非用\转义．</p>
+<p>在ERE中+?(){}被保留有特殊含义，除非用\转义才表示普通字符．</p>
+<p>命令find, grep, sed, awk等都可以使用正则表达式．</p>
+<p>特殊字符含义：</p>
+<pre><code>()      对正则表达式分组, ERE
+\n      再匹配前面的分组n次
+
+.       匹配任意单个字符, 换行符除外
+^tux    匹配以tux开始的行
+tux$    匹配以tux结束的行
+
+*+?{}特殊字符是贪婪匹配模式,也就是尽可能多的匹配
+*           匹配前面一个字符0次或多次，包括前面这个字符本身
++           匹配前面一个字符1次或多次，包括前面这个字符, ERE
+?           匹配前面一个字符0次或1次，包括前面这个字符, ERE
+{n}         匹配前面一个字符n次，包括前面这个字符, ERE
+{min,}      匹配前面一个字符至少min次，包括前面这个字符, ERE
+{min,max}   匹配前面一个字符至少min次，最多max次，包括前面这个字符, ERE
+
+下面是非贪婪匹配模式
+*?    匹配0个或多个
++?    匹配1个或多个
+??    匹配０个或１个
+{n}?        只匹配n个
+{min,}?     至少min个
+{min,max}?  至少min个，最多max个
+
+[abc]   匹配包含在[]中的任意一个字符，除了\, ^, -三个特殊字符
+[^abc]  匹配不包含在[]中的任意一个字符(和上面相反)
+[a-z]   匹配[]中指定范围内的任意一个字符
+[abc\?] 用＼转义[]中的特殊字符
+
+|       表示逻辑或, ERE
+
+\       转义字符，将特殊字符转义成普通字符
+
+小括号表示分组
+(...)
+(?...)
+(?iLmsux)
+(?:...)
+(?P&lt;name&gt;...)
+(?P=name)
+(?#...)
+(?=...)
+(?!...)
+(?&lt;=...)
+(?&lt;!...)
+(?(id/name)yes-pattern|no-pattern)
+</code></pre>
+<p>匹配前面一个字符０次，包括前面这个字符，也就是说０次表示不匹配前面这个字符．</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/shell_sed/">Sed</a></h2>
+                    <div class="post-meta">
+                        <time>April 2, 2016</time>
+                        
+                            
+                                <span class="category">Linux</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="sed">sed</h1>
+<p>sed：stream editor  流编辑器 ，主要用于文本处理。</p>
+<p>sed命令格式：</p>
+<pre><code>sed   -options   ’expression1;expression2’     file           执行多个命令
+sed   -options   [-e ‘expression1’] [-e ‘expression2’]  file  执行多个命令
+sed   -options   [-f   scriptfile]   file                     通过脚本执行命令
+sed   -options   [-f   scriptfile]   file  &gt;  newfile  #sed修改后重定向到新文件。
+</code></pre>
+<p>sed指令需要用单引号包围。使用双引号“”可以传递变量。
+Sed默认并没有修改文件file中的数据。
+sed默认在stdout输出文件的所有行。
+Sed地址需要使用/address/来包围。
+sed使用正则表达式可以用\BRE\包围，如果模式包含/，那么可以使用除了换行符之外的所有字符包围。</p>
+<p>options：</p>
+<pre><code>-e：指定多个命令或脚本
+-f：指定执行命令的脚本
+-n：阻止自动输出，p可以打印匹配的行。
+-i: 直接修改读入的文件的内容.
+</code></pre>
+<p>experssion：</p>
+<pre><code>expression：指令由模式和过程组成。
+[address]/[line-address][!]command[arguments]
+[address]表示地址，一般用模式进行寻址，address缺省表示整个文件寻址，两个地址用，隔开。
+[line-address]表示只能是一个地址。
+[!] 表示不匹配该地址的所有行
+</code></pre>
+<p>Command:</p>
+<p>sed有25个命令。</p>
+<p>使用大括号{}在一个地址中做嵌套操作：例如：</p>
+<pre><code>/address1/,/address2/{
+    /^$/d
+    s/string1/string2/
+    …
+}             // 单独一行，后面不能有空格
+</code></pre>
+<p>s命令：替换，替换模式空间中的行。</p>
+<pre><code>sed '[address]s/oldpattern/newpattern/[flag]' filename
+</code></pre>
+<p>flag:</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/c_iso/">ISO</a></h2>
+                    <div class="post-meta">
+                        <time>April 1, 2016</time>
+                        
+                            
+                                <span class="category">C</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="c标准库">C标准库</h1>
+<p>ISO C89(ANSI C89) -&gt; ISO C95 -&gt; ISO C99 -&gt;</p>
+<p>-&gt; ISO C11 -&gt; ISO C17 -&gt; ISO C23</p>
+<p>ANSI C 和 ISO C是对通用C语言的接口的定义。</p>
+<p>符合这种标准的实现为C语言标准库,也叫libc。</p>
+<p>官方网站：</p>
+<p><a href="http://www.open-std.org/jtc1/sc22/wg14/www/standards">http://www.open-std.org/jtc1/sc22/wg14/www/standards</a></p>
+<hr>
+<h1 id="c89和c99支持的头文件和函数">C89和C99支持的头文件和函数</h1>
+<h2 id="asserth">&lt;assert.h&gt;</h2>
+<h2 id="ctypeh">&lt;ctype.h&gt;</h2>
+<h2 id="complexh">&lt;complex.h&gt;</h2>
+<h2 id="errnoh">&lt;errno.h&gt;</h2>
+<h2 id="floath">&lt;float.h&gt;</h2>
+<h2 id="fenvh">&lt;fenv.h&gt;</h2>
+<h2 id="inttypeh">&lt;inttype.h&gt;</h2>
+<h2 id="iso646h">&lt;iso646.h&gt;</h2>
+<h2 id="limitsh">&lt;limits.h&gt;</h2>
+<h2 id="localeh">&lt;locale.h&gt;</h2>
+<h2 id="mathh">&lt;math.h&gt;</h2>
+<h2 id="setjmph">&lt;setjmp.h&gt;</h2>
+<h2 id="signalh">&lt;signal.h&gt;</h2>
+<h2 id="stdargh">&lt;stdarg.h&gt;</h2>
+<h2 id="stddefh">&lt;stddef.h&gt;</h2>
+<h2 id="stdioh">&lt;stdio.h&gt;</h2>
+<h2 id="stdlibh">&lt;stdlib.h&gt;</h2>
+<h2 id="stringh">&lt;string.h&gt;</h2>
+<h2 id="stdboolh">&lt;stdbool.h&gt;</h2>
+<h2 id="stdinth">&lt;stdint.h&gt;</h2>
+<h2 id="timeh">&lt;time.h&gt;</h2>
+<h2 id="tgmathh">&lt;tgmath.h&gt;</h2>
+<h2 id="wcharh">&lt;wchar.h&gt;</h2>
+<h2 id="wctypeh">&lt;wctype.h&gt;</h2>
+<hr>
+<h1 id="c11支持的头文件和函数">C11支持的头文件和函数</h1>
+<h2 id="stdalignh">&lt;stdalign.h&gt;</h2>
+<h2 id="stdatomich">&lt;stdatomic.h&gt;</h2>
+<h2 id="threadsh">&lt;threads.h&gt;</h2>
+<hr>
+<h1 id="c标准">C++标准</h1>
+<p>C++98, C++11, C++14, C++17, C++20, C++23</p>
+<p>c++ 头文件不带.h用来和C区分。</p>
+<h2 id="核心功能">核心功能</h2>
+<p><a href="https://zh.cppreference.com/w/cpp/language">https://zh.cppreference.com/w/cpp/language</a></p>
+<h2 id="标准库">标准库</h2>
+<p><a href="https://zh.cppreference.com/w/cpp/standard_library">https://zh.cppreference.com/w/cpp/standard_library</a></p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/shell/">Shell</a></h2>
+                    <div class="post-meta">
+                        <time>April 1, 2016</time>
+                        
+                            
+                                <span class="category">Linux</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="shell">Shell</h1>
+<p>Linux的shell有很多种,大多数linux发行版的默认登录shell是BASH。</p>
+<p>查看当前使用的shell：</p>
+<pre><code>echo $SHELL
+echo $0
+</code></pre>
+<p>查看安装了哪些shell：</p>
+<pre><code>cat /etc/shells
+</code></pre>
+<p>设置登陆shell:</p>
+<pre><code>$chsh -s $(which shellname)
+</code></pre>
+<p>shell分为登陆shell和交互式shell:</p>
+<pre><code># 输出有i的就是交互shell
+$echo $-
+</code></pre>
+<p>非交互登陆shell:</p>
+<ul>
+<li>先运行系统配置文件/etc/profile(调用/etc/bash.bashrc和/etc/profile.d/*.sh)</li>
+<li>然后运行用户配置文件~/.profile(调用~/.bashrc和~/bin)</li>
+<li>最后退出用户登陆~/.bash_logout</li>
+</ul>
+<p>交互非登陆shell:</p>
+<ul>
+<li>先运行/etc/bash.bashrc(调用/etc/bash_completion(调用/etc/bash_completion.d/*.sh))</li>
+<li>然后运行~/.bashrc(调用~/.bash_aliases和~/bash.d和~/bin)</li>
+</ul>
+<hr>
+<h1 id="shell相关项目">shell相关项目</h1>
+<h2 id="bash-it">bash-it</h2>
+<p>大部分发行版默认使用bash,无需额外安装。</p>
+<p>bash的优化项目bash-it：</p>
+<p><a href="https://github.com/Bash-it/bash-it">https://github.com/Bash-it/bash-it</a></p>
+<h2 id="zsh">zsh</h2>
+<p><a href="http://www.zsh.org/">http://www.zsh.org/</a></p>
+<h2 id="oh-my-zsh">oh-my-zsh</h2>
+<p><a href="https://github.com/robbyrussell/oh-my-zsh">https://github.com/robbyrussell/oh-my-zsh</a></p>
+<h2 id="fish-shell">fish-shell</h2>
+<p><a href="https://github.com/fish-shell/fish-shell">https://github.com/fish-shell/fish-shell</a></p>
+<h2 id="oh-my-fish">oh-my-fish</h2>
+<p><a href="https://github.com/oh-my-fish/oh-my-fish">https://github.com/oh-my-fish/oh-my-fish</a></p>
+<h2 id="thefuck">thefuck</h2>
+<p>一个纠正shell命令输错的命令</p>
+<p><a href="https://github.com/nvbn/thefuck">https://github.com/nvbn/thefuck</a></p>
+<h2 id="shellcheck">shellcheck</h2>
+<p>一个debug脚本的工具．</p>
+<p><a href="https://github.com/koalaman/shellcheck">https://github.com/koalaman/shellcheck</a></p>
+<hr>
+<h1 id="shell-script">shell script</h1>
+<p>基本语法</p>
+<pre><code>#!/usr/bin/env bash
+
+command1 &amp;&amp; command2    # 当command1执行成功（返回0)才会执行command2
+command1 || command2    # 当command1执行失败（返回非0)才会执行command2
+</code></pre>
+<h2 id="shell注释">shell注释</h2>
+<p>单行注释：</p>
+<pre><code># comment
+</code></pre>
+<p>多行注释：</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/shell_utils/">Utils</a></h2>
+                    <div class="post-meta">
+                        <time>March 31, 2016</time>
+                        
+                            
+                                <span class="category">Linux</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="linux的第三方命令">Linux的第三方命令</h1>
+<p>Linux外部命令的项目是coreutils.</p>
+<p>外部命令在coreutils目录中.</p>
+<p>第三方命令(相当于外部命令)．</p>
+<hr>
+<h1 id="文件和目录管理">文件和目录管理</h1>
+<p>autojump:</p>
+<p><a href="https://github.com/wting/autojump">https://github.com/wting/autojump</a></p>
+<p>fasd:</p>
+<p><a href="https://github.com/clvv/fasd">https://github.com/clvv/fasd</a></p>
+<p>fzf:</p>
+<p><a href="https://github.com/junegunn/fzf">https://github.com/junegunn/fzf</a></p>
+<h1 id="压缩备份">压缩备份</h1>
+<h1 id="磁盘管理">磁盘管理</h1>
+<h1 id="设备管理">设备管理</h1>
+<hr></p>
+                    
+                </li>
+            
+        </ul>
+    </section>
+    
+    
+        <a href="/page/52/">← Previous</a>
+    
+    
+        <a href="/page/54/">Next →</a>
+    
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

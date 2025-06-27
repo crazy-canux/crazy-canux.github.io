@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AWS Network - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="single-post">
+    <article>
+        <header>
+            <h1>AWS Network</h1>
+            <div class="post-meta">
+                <time>April 23, 2021</time>
+                
+                    
+                        <span class="category">Cloud</span>
+                    
+                        <span class="category">Network</span>
+                    
+                
+                
+                    
+                        <span class="tag">#aws</span>
+                    
+                
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <h1 id="aws-network">AWS Network</h1>
+<h2 id="vpc">VPC</h2>
+<p>Virtual Private Cloud.</p>
+<p>EC2的私有内部网络.</p>
+<ul>
+<li>subnets</li>
+<li>route tables</li>
+<li>internet gateways</li>
+<li>nat gateways</li>
+</ul>
+<p>ENI: Elastic network interfaces.</p>
+<p><a href="/images/vpc.png">pic</a></p>
+<h2 id="elb">ELB</h2>
+<p>ELB: Elastic Load Balancing</p>
+<p>弹性负载均衡，可以和EC2,ECS和lambda集成.</p>
+<p><a href="https://aws.amazon.com/cn/elasticloadbalancing/features/">https://aws.amazon.com/cn/elasticloadbalancing/features/</a></p>
+<p>支持四种负载均衡器：</p>
+<ul>
+<li>Classic Load Balancer(默认)</li>
+<li>Gateway Load Balancer</li>
+<li>Application Load Balancer(ALB)</li>
+<li>Network Load Balancer(NLB)</li>
+</ul>
+<p><a href="https://docs.aws.amazon.com/zh_cn/eks/latest/userguide/aws-load-balancer-controller.html">https://docs.aws.amazon.com/zh_cn/eks/latest/userguide/aws-load-balancer-controller.html</a></p>
+<p>可以使用aws默认自带的NLB controller.也可以通过安装aws-load-balancer-controller。推荐后者。</p>
+<p><a href="https://github.com/kubernetes-sigs/aws-load-balancer-controller">https://github.com/kubernetes-sigs/aws-load-balancer-controller</a></p>
+<p>需要给vpc上的node的subnet打tag:</p>
+<pre><code>kubernetes.io/role/elb: 1
+kubernetes.io/role/internal-elb: 1
+kubernetes.io/cluster/${cluster-name}: owned/shared
+</code></pre>
+<h2 id="route-53">Route 53</h2>
+<p>DNS服务.</p>
+<p>在route 53创建托管区(hosted zones)之后，可以在ACM申请证书。</p>
+<p>申请好了证书，需要在route 53创建记录.</p>
+<p>可以通过external-DNS 自动同步eks上的service和ingress到dns。</p>
+<pre><code>aws route53 list-hosted-zones
+</code></pre>
+<h2 id="cloudfront">CloudFront</h2>
+<p>CDN服务.</p>
+<hr>
+<h2 id="direct-connect">Direct Connect</h2>
+<p>提供数据中心和AWS直连。</p>
+<h2 id="global-accelerator">Global Accelerator</h2>
+<h2 id="privatelink">PrivateLink</h2>
+<h2 id="transit-gateway">Transit Gateway</h2>
+<h2 id="vpn">VPN</h2>
+
+        </div>
+    </article>
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="generator" content="Hugo 0.147.9">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morgoth - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="home">
+    <h1>Morgoth</h1>
+    <p></p>
+    
+    <section class="recent-posts">
+        <h2>Recent Posts</h2>
+        <ul class="post-list">
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/k8s_servicemesh/">Service Mesh</a></h2>
+                    <div class="post-meta">
+                        <time>January 4, 2020</time>
+                        
+                            
+                                <span class="category">CNCF</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="service-mesh">Service Mesh</h1>
+<p>servivce mesh是cncf基于sidecar推出的下一代面向云原生的微服务架构，是微服务基础设施, 用于处理微服务通信、治理、控制、可观测、安全等问题，具备业务无侵入、多语言、热升级等诸多特性.</p>
+<p>sidecar: 边车模式，就是把业务无关的功能，日志记录、监控、流量控制、服务注册、服务发现、服务限流、服务熔断、鉴权、访问控制和服务调用可视化等独立出来。</p>
+<p>特点:</p>
+<ul>
+<li>应用程序通信的中间层</li>
+<li>轻量级网络代理</li>
+<li>应用程序无感知</li>
+<li>解耦应用程序的重试、超时、监控、追踪和服务发现.</li>
+</ul>
+<p>Service Mesh是建立在物理或者虚拟网络层之上的，基于策略的微服务的流量控制，与一般的网络协议不同的是它有以下几个特点：</p>
+<ul>
+<li>开发者驱动</li>
+<li>可配置策略</li>
+<li>服务优先的网络配置而不是协议</li>
+</ul>
+<hr>
+<h2 id="istio">Istio</h2>
+<hr>
+<h2 id="linkerd">Linkerd</h2>
+<hr></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/k8s_serverless/">Serverless</a></h2>
+                    <div class="post-meta">
+                        <time>January 4, 2020</time>
+                        
+                            
+                                <span class="category">CNCF</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="serverless">Serverless</h1>
+<hr>
+<h2 id="knative">Knative</h2>
+<p>Knative is a developer-focused serverless application layer which is a great complement to the existing Kubernetes application constructs. Knative consists of three components: an HTTP-triggered autoscaling container runtime called “Knative Serving”, a CloudEvents-over-HTTP asynchronous routing layer called “Knative Eventing”, and a developer-focused function framework which leverages the Serving and Eventing components, called &ldquo;Knative Functions&rdquo;.</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/cncf_orchestration/">Scheduling &amp; Orchestration</a></h2>
+                    <div class="post-meta">
+                        <time>January 4, 2020</time>
+                        
+                            
+                                <span class="category">CNCF</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="scheduling--orchestration">Scheduling &amp; Orchestration</h1>
+<ul>
+<li>docker swarm.</li>
+<li>KEDA</li>
+<li>Crossplane</li>
+<li>Knative</li>
+<li>Kubeflow</li>
+<li>Volcano</li>
+</ul>
+<h2 id="crossplane">Crossplane</h2></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/k8s_microservice/">Microservivce</a></h2>
+                    <div class="post-meta">
+                        <time>January 4, 2020</time>
+                        
+                            
+                                <span class="category">CNCF</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="microservivce">Microservivce</h1>
+<p>微服务是一种架构。</p>
+<p>常见的架构:</p>
+<ul>
+<li>Monolithic application 单体应用.</li>
+<li>SOA(service-oriented architecture) 面向服务的体系结构.</li>
+<li>MicroServices 微服务.</li>
+</ul>
+<p>微服务架构的服务治理包括:</p>
+<ul>
+<li>service registry 服务注册</li>
+<li>service discovery 服务发现</li>
+<li>observability 可观测性(metrics,logging,trace)</li>
+<li>流量管理</li>
+<li>安全</li>
+<li>控制</li>
+</ul>
+<p>微服务应用可以通过容器化(docker, k8s)部署，也可以通过serverless方式部署.</p>
+<p>不同的语言有不同的微服务框架.
+java的dubbo, sprint boot.
+golang的go-kit,  go-zero, kratos.
+python的zappa, nameko.</p>
+<hr>
+<h2 id="dapr">Dapr</h2>
+<p>Dapr is a portable, event-driven, runtime for building distributed applications across cloud and edge.</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/k8s_km/">Key Management</a></h2>
+                    <div class="post-meta">
+                        <time>January 4, 2020</time>
+                        
+                            
+                                <span class="category">CNCF</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="key-management">Key Management</h1>
+<ul>
+<li>spiffe</li>
+<li>spire</li>
+</ul></p>
+                    
+                </li>
+            
+        </ul>
+    </section>
+    
+    
+        <a href="/page/9/">← Previous</a>
+    
+    
+        <a href="/page/11/">Next →</a>
+    
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

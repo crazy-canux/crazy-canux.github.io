@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="generator" content="Hugo 0.147.9">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Morgoth - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="home">
+    <h1>Morgoth</h1>
+    <p></p>
+    
+    <section class="recent-posts">
+        <h2>Recent Posts</h2>
+        <ul class="post-list">
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/aws_network/">AWS Network</a></h2>
+                    <div class="post-meta">
+                        <time>April 23, 2021</time>
+                        
+                            
+                                <span class="category">Cloud</span>
+                            
+                                <span class="category">Network</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="aws-network">AWS Network</h1>
+<h2 id="vpc">VPC</h2>
+<p>Virtual Private Cloud.</p>
+<p>EC2的私有内部网络.</p>
+<ul>
+<li>subnets</li>
+<li>route tables</li>
+<li>internet gateways</li>
+<li>nat gateways</li>
+</ul>
+<p>ENI: Elastic network interfaces.</p>
+<p><a href="/images/vpc.png">pic</a></p>
+<h2 id="elb">ELB</h2>
+<p>ELB: Elastic Load Balancing</p>
+<p>弹性负载均衡，可以和EC2,ECS和lambda集成.</p>
+<p><a href="https://aws.amazon.com/cn/elasticloadbalancing/features/">https://aws.amazon.com/cn/elasticloadbalancing/features/</a></p>
+<p>支持四种负载均衡器：</p>
+<ul>
+<li>Classic Load Balancer(默认)</li>
+<li>Gateway Load Balancer</li>
+<li>Application Load Balancer(ALB)</li>
+<li>Network Load Balancer(NLB)</li>
+</ul>
+<p><a href="https://docs.aws.amazon.com/zh_cn/eks/latest/userguide/aws-load-balancer-controller.html">https://docs.aws.amazon.com/zh_cn/eks/latest/userguide/aws-load-balancer-controller.html</a></p>
+<p>可以使用aws默认自带的NLB controller.也可以通过安装aws-load-balancer-controller。推荐后者。</p>
+<p><a href="https://github.com/kubernetes-sigs/aws-load-balancer-controller">https://github.com/kubernetes-sigs/aws-load-balancer-controller</a></p>
+<p>需要给vpc上的node的subnet打tag:</p>
+<pre><code>kubernetes.io/role/elb: 1
+kubernetes.io/role/internal-elb: 1
+kubernetes.io/cluster/${cluster-name}: owned/shared
+</code></pre>
+<h2 id="route-53">Route 53</h2>
+<p>DNS服务.</p>
+<p>在route 53创建托管区(hosted zones)之后，可以在ACM申请证书。</p>
+<p>申请好了证书，需要在route 53创建记录.</p>
+<p>可以通过external-DNS 自动同步eks上的service和ingress到dns。</p>
+<pre><code>aws route53 list-hosted-zones
+</code></pre>
+<h2 id="cloudfront">CloudFront</h2>
+<p>CDN服务.</p>
+<hr>
+<h2 id="direct-connect">Direct Connect</h2>
+<p>提供数据中心和AWS直连。</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/aws_database/">AWS Database</a></h2>
+                    <div class="post-meta">
+                        <time>April 23, 2021</time>
+                        
+                            
+                                <span class="category">Cloud</span>
+                            
+                                <span class="category">Database</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="aws-database">AWS Database</h1>
+<h2 id="rds">RDS</h2>
+<p>Relational Database Service， 关系型数据库服务.</p>
+<p>支持的数据库引擎：</p>
+<ul>
+<li>Amazon Aurora</li>
+<li>PostgreSQL</li>
+<li>MySQL</li>
+<li>MariaDB</li>
+<li>Oracle Database</li>
+<li>Microsoft SQL Server</li>
+</ul>
+<h2 id="aurora-serverless">Aurora Serverless</h2>
+<h2 id="aurora">Aurora</h2>
+<p>兼容mysql和postgresql.</p>
+<h2 id="dynamodb">DynamoDB</h2>
+<p>非关系数据库(NoSQL).</p>
+<p>DynamoDB是一项键值数据库服务. 无服务器，自动扩展。</p>
+<p>具有Key-Value数据库和Document数据库的功能。</p>
+<h2 id="documentdb">DocumentDB</h2>
+<p>兼容MongoDB.</p>
+<h2 id="elasticcache">ElasticCache</h2>
+<p>内存数据库(in-memory). 兼容redis和memcached.</p>
+<h2 id="keyspaces">Keyspaces</h2>
+<p>兼容cassandra的无服务器数据库。</p>
+<h2 id="redshift">Redshift</h2>
+<p>Amazon Redshift 是一项数据仓库服务，可用于进行大数据分析。</p>
+<h2 id="neptune">Neptune</h2>
+<p>图形数据库</p>
+<h2 id="timesteam">Timesteam</h2></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/aws_data/">AWS Data</a></h2>
+                    <div class="post-meta">
+                        <time>April 23, 2021</time>
+                        
+                            
+                                <span class="category">Cloud</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="data-processing">Data Processing</h1>
+<h2 id="athena">Athena</h2>
+<p>serverless交互式分析</p>
+<h2 id="data-exchange">Data Exchange</h2>
+<h2 id="glue">Glue</h2>
+<p>AWS上的ETL(extract, transform and load)服务，提供数据的提取，转换，加载服务。</p>
+<h2 id="data-pipeline">Data pipeline</h2>
+<p>也是ETL服务。</p>
+<h2 id="emr">EMR</h2>
+<p>EMR: Elastic MapReduce.</p>
+<p>AWS的大数据平台。支持spark, hive, hbase, flink, hudi 和presto.</p>
+<h2 id="kinesis">Kinesis</h2>
+<ul>
+<li>Data Analytics</li>
+<li>Data Firehose</li>
+<li>Data Streams</li>
+</ul>
+<h2 id="lake-formation">Lake Formation</h2>
+<h2 id="quicksight">QuickSight</h2>
+<h2 id="opensearch">OpenSearch</h2>
+<h2 id="msk">MSK</h2>
+<hr>
+<h1 id="data-analysis">Data Analysis</h1>
+<h2 id="athena-1">Athena</h2>
+<p>serverless服务</p>
+<h2 id="quicksight-1">Quicksight</h2>
+<h2 id="aws-cloudsearch">AWS CloudSearch</h2>
+<hr></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/aws_containers/">AWS Containers</a></h2>
+                    <div class="post-meta">
+                        <time>April 23, 2021</time>
+                        
+                            
+                                <span class="category">Cloud</span>
+                            
+                                <span class="category">CNCF</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="aws-containers">AWS Containers</h1>
+<h2 id="ecr">ECR</h2>
+<p>Elastic Container Registry.</p>
+<h2 id="ecs-anywhere">ECS Anywhere</h2>
+<h2 id="ecs">ECS</h2>
+<p>Elastic Container Service.</p>
+<h2 id="eks-distro">EKS Distro</h2>
+<h2 id="eks-anywhere">EKS Anywhere</h2>
+<h2 id="eks">EKS</h2>
+<p>Elastic Kubernetes Service.</p>
+<h3 id="通过aws-cli创建eks">通过AWS CLI创建EKS</h3>
+<p>通过MC创建的资源都可以通过CLI(aws)创建.</p>
+<p>创建具有公有和私有子网且符合 Amazon EKS 要求的 Amazon VPC</p>
+<pre><code>$ aws cloudformation create-stack \
+--stack-name my-eks-vpc-stack \
+--region region-code \
+--template-url https://amazon-eks.s3.us-west-2.amazonaws.com/cloudformation/2020-10-29/amazon-eks-vpc-private-subnets.yaml 
+</code></pre>
+<p>创建集群 IAM 角色并向其附加所需的 Amazon EKS IAM 托管策略</p>
+<pre><code>// 创建EKS IAM role
+aws iam create-role \
+--role-name my-EKSClusterRole \
+--assume-role-policy-document file://cluster-role-trust-policy.json&quot; \
+--permissions-boundary arn:aws:iam::&lt;Your AWS ID&gt;:policy/ProjAdminsPermBoundaryv2
+
+{
+    &quot;Version&quot;: &quot;2012-10-17&quot;,
+    &quot;Statement&quot;: [
+        {
+            &quot;Effect&quot;: &quot;Allow&quot;,
+            &quot;Principal&quot;: {
+                &quot;Service&quot;: &quot;eks.amazonaws.com&quot;
+            },
+            &quot;Action&quot;: &quot;sts:AssumeRole&quot;,
+            &quot;Condition&quot;: {}
+        }
+    ]
+}
+
+// 绑定role和eks策略
+aws iam attach-role-policy \
+--policy-arn arn:aws:iam::aws:policy/AmazonEKSClusterPolicy \
+--role-name my-EKSClusterRole
+</code></pre>
+<p>创建EKS cluster:</p></p>
+                    
+                </li>
+            
+                <li>
+                    <h2><a href="https://canuxcheng.com/post/aws_cs/">AWS Compute Services</a></h2>
+                    <div class="post-meta">
+                        <time>April 23, 2021</time>
+                        
+                            
+                                <span class="category">Cloud</span>
+                            
+                        
+                    </div>
+                    
+                        <p><h1 id="aws-compute-service">AWS Compute Service</h1>
+<h2 id="ec2">EC2</h2>
+<p>Elastic Compute.</p>
+<p>AMI: Amazon Machine Image.</p>
+<p>EC2实例类型:</p>
+<ul>
+<li>通用型实例</li>
+<li>计算优化型实例</li>
+<li>内存优化型实例</li>
+<li>加速计算型实例</li>
+<li>存储优化型实例</li>
+</ul>
+<p>EC2付费类型:</p>
+<ul>
+<li>按需(on-demand)</li>
+<li>预留实例(reserved)</li>
+<li>储蓄计划(savings plans)</li>
+<li>Spot实例</li>
+<li>专用主机(dedicated)</li>
+</ul>
+<h2 id="elastic-beanstalk">Elastic Beanstalk</h2>
+<p>features:</p>
+<ul>
+<li>monitoring</li>
+<li>deployment</li>
+<li>scaling</li>
+<li>EC2 customization</li>
+</ul>
+<h2 id="lambda">Lambda</h2>
+<h2 id="lightsail">Lightsail</h2>
+<h2 id="batch">Batch</h2>
+<h2 id="app-runner">App Runner</h2>
+<h2 id="auto-scaling">Auto Scaling</h2>
+<h2 id="fargate">Fargate</h2>
+<h2 id="outposts">Outposts</h2>
+<h2 id="wavelength">Wavelength</h2>
+<hr>
+<h1 id="app-integration">App Integration</h1>
+<h2 id="appflow">AppFlow</h2>
+<h2 id="appsync">AppSync</h2>
+<h2 id="eventbridge">EventBridge</h2>
+<h2 id="step-functions">Step Functions</h2>
+<p>无服务架构.</p>
+<h2 id="sns">SNS</h2>
+<p>Simple Notification Service是消息发布订阅服务.</p>
+<h2 id="sqs">SQS</h2>
+<p>Simple Queue Service是消息队列服务.</p>
+<p>支持256KB的payload.</p>
+<p>提供两种类型的queues:</p>
+<ul>
+<li>standard queue</li>
+<li>FIFO queue</li>
+</ul>
+<h2 id="mq">MQ</h2>
+<p>activeMQ 和 rabbitmq 托管服务。</p>
+<hr>
+<h1 id="business-app-integration">Business app integration</h1>
+<h2 id="simple-email-service">Simple Email Service</h2>
+<p>SES</p></p>
+                    
+                </li>
+            
+        </ul>
+    </section>
+    
+    
+        <a href="/page/5/">← Previous</a>
+    
+    
+        <a href="/page/7/">Next →</a>
+    
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>

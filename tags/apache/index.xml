@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Apache on Morgoth</title>
+    <link>https://canuxcheng.com/tags/apache/</link>
+    <description>Recent content in Apache on Morgoth</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 27 Sep 2016 03:25:26 +0800</lastBuildDate>
+    <atom:link href="https://canuxcheng.com/tags/apache/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Apache</title>
+      <link>https://canuxcheng.com/post/apache/</link>
+      <pubDate>Tue, 27 Sep 2016 03:25:26 +0800</pubDate>
+      <guid>https://canuxcheng.com/post/apache/</guid>
+      <description>&lt;h1 id=&#34;apache&#34;&gt;Apache&lt;/h1&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/apache/httpd&#34;&gt;https://github.com/apache/httpd&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;http://httpd.apache.org/&#34;&gt;http://httpd.apache.org/&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;ubuntu/debian：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;sudo aptitude install apache2&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;redhat/centos/fedora:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ sudo yum install httpd2&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;启动服务器：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;service apache2 start&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;启动浏览器查看：&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;http://localhost:80&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;hr&gt;&#xA;&lt;h1 id=&#34;apache命令&#34;&gt;apache命令&lt;/h1&gt;&#xA;&lt;p&gt;apache2ctl:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;// 检查配置&#xA;$ apache2ctl configtest&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;a2ensite&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;// 启用一个站点&#xA;$ sudo a2ensite &amp;lt;site&amp;gt;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;a2dissite&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ sudo a2dissite &amp;lt;site&amp;gt;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;a2enmod&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;// 启用一个模块&#xA;$ sudo a2enmod &amp;lt;mod&amp;gt;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;a2dismod&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;$ sudo a2dismod &amp;lt;mod&amp;gt;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;h1 id=&#34;配置&#34;&gt;配置&lt;/h1&gt;&#xA;&lt;p&gt;配置站点site-enable/site.conf:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;&amp;lt;VirtualHost *:8080&amp;gt;&#xA;    ServerAdmin webmaster@localhost&#xA;    DocumentRoot /opt&#xA;&#xA;    # 适合多目录&#xA;    Alias /qa /opt/qa&#xA;    Alias /dev /opt/dev&#xA;&#xA;    ErrorLog ${APACHE_LOG_DIR}/error.log&#xA;    CustomLog ${APACHE_LOG_DIR}/access.log combined&#xA;&amp;lt;/VirtualHost&amp;gt;&#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;修改权限apache2.conf:&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

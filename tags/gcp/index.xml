@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Gcp on Morgoth</title>
+    <link>https://canuxcheng.com/tags/gcp/</link>
+    <description>Recent content in Gcp on Morgoth</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 23 Apr 2023 22:02:31 +0000</lastBuildDate>
+    <atom:link href="https://canuxcheng.com/tags/gcp/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>GCP</title>
+      <link>https://canuxcheng.com/post/gcp/</link>
+      <pubDate>Sun, 23 Apr 2023 22:02:31 +0000</pubDate>
+      <guid>https://canuxcheng.com/post/gcp/</guid>
+      <description>&lt;h1 id=&#34;gcp&#34;&gt;GCP&lt;/h1&gt;&#xA;&lt;p&gt;gcp certification:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Google Cloud Certified Cloud Digital Leader&lt;/li&gt;&#xA;&lt;li&gt;Google Cloud Certified Associate Cloud Engineer&lt;/li&gt;&#xA;&lt;li&gt;Google Cloud Certified DevOps Engineer&lt;/li&gt;&#xA;&lt;li&gt;Google Cloud Certified Machine Learning Engineer&lt;/li&gt;&#xA;&lt;li&gt;Google Cloud Certified Professional Cloud Architect&lt;/li&gt;&#xA;&lt;li&gt;Google Cloud Certified Professional Data Engineer&lt;/li&gt;&#xA;&lt;li&gt;Google Cloud Certified Professional Network Engineer&lt;/li&gt;&#xA;&lt;li&gt;Google Cloud Certified Professional Security Engineer&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;hr&gt;&#xA;&lt;h2 id=&#34;cloud-sdk&#34;&gt;Cloud SDK&lt;/h2&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://cloud.google.com/sdk/docs/install&#34;&gt;https://cloud.google.com/sdk/docs/install&lt;/a&gt;&lt;/p&gt;&#xA;&lt;p&gt;默认安装的组件:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;bq&lt;/li&gt;&#xA;&lt;li&gt;bundled-python3-unix&lt;/li&gt;&#xA;&lt;li&gt;gsutil&lt;/li&gt;&#xA;&lt;li&gt;core&lt;/li&gt;&#xA;&lt;li&gt;gcloud-crc32c&lt;/li&gt;&#xA;&lt;li&gt;alpha&lt;/li&gt;&#xA;&lt;li&gt;beta&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;p&gt;安装其它组件:&lt;/p&gt;&#xA;&lt;pre&gt;&lt;code&gt;gcloud components install app-engine-go docker-credential-gcr kustomize log-streaming terraform-tools app-engine-python app-engine-python-extras gke-gcloud-auth-plugin kubectl kubectl-oidc &#xA;&lt;/code&gt;&lt;/pre&gt;&#xA;&lt;p&gt;卸载:&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

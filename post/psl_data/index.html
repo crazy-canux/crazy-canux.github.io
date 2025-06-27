@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PSL_Data - Morgoth</title>
+    <meta name="description" content="">
+    
+    
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    
+    
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        header {
+            background: #fff;
+            padding: 1rem 0;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 2rem;
+        }
+        nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+        }
+        nav a:hover {
+            color: #007acc;
+        }
+        .site-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #007acc;
+        }
+        main {
+            background: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .post-meta {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .post-content h1, .post-content h2, .post-content h3 {
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+        .post-list {
+            list-style: none;
+            padding: 0;
+        }
+        .post-list li {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+        .post-list h2 {
+            margin: 0 0 0.5rem 0;
+        }
+        .post-list h2 a {
+            text-decoration: none;
+            color: #333;
+        }
+        .post-list h2 a:hover {
+            color: #007acc;
+        }
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            color: #666;
+            border-top: 1px solid #ddd;
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="https://canuxcheng.com/" class="site-title">Morgoth</a>
+                
+                    <a href="/">Home</a>
+                
+                    <a href="/about/">About</a>
+                
+                    <a href="/categories/">Categories</a>
+                
+                    <a href="/tags/">Tags</a>
+                
+                    <a href="/rtfm/">RTFM</a>
+                
+                    <a href="/samuel/">Samuel</a>
+                
+            </nav>
+        </div>
+    </header>
+    
+    <div class="container">
+        <main>
+            
+<div class="single-post">
+    <article>
+        <header>
+            <h1>PSL_Data</h1>
+            <div class="post-meta">
+                <time>August 14, 2016</time>
+                
+                    
+                        <span class="category">Python</span>
+                    
+                
+                
+                    
+                        <span class="tag">#data</span>
+                    
+                
+            </div>
+        </header>
+        
+        <div class="post-content">
+            <h1 id="data-types">Data Types</h1>
+<h2 id="datetime">datetime</h2>
+<pre><code>import datetime
+</code></pre>
+<p>classes:</p>
+<pre><code># datetime.date
+date(year, month, day)
+# methods:
+ctime(...)
+...
+# data descriptors:
+day
+month
+year
+
+# datetime.datetime(datetime.date)
+datetime(year, month, day[, hour[, minute[, second[, microsecond[,tzinfo]]]]])
+# methods:
+datetime.datetime.strptime(string, format)
+format_datetime = datetime.datetime.strptime('20160824161431', '%Y%m%d%H%M%S') # return: datetime.datetime(2016, 8, 24, 16, 14, 31)
+format_datetime = datetime.datetime.strptime('24 August 2016 16:14:31', '%Y%m%d%H%M%S') # return: datetime.datetime(2016, 8, 24, 16, 14, 31)
+
+datetime.datetime.strftime(format[, tuple])
+string_datetime = format_datetime.strftime(&quot;%d %B %Y %H:%M:%S&quot;) # return: '24 August 2016 16:14:31'
+datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S') # return: '2017-02-07 23:07:32'
+
+str(datetime.datetime.now())
+datetime.datetime.now().strftime('%Y%m%d%H%M%S') # 当前时间戳
+
+# datetime.time
+
+# datetime.timedelta
+
+# datetime.tzinfo
+</code></pre>
+<p>data:</p>
+<pre><code>MAXYEAR = 9999
+MINYEAR = 1
+</code></pre>
+<h2 id="calendar">calendar</h2>
+<h2 id="collections">collections</h2>
+<pre><code>import collections
+</code></pre>
+<p>classes:</p>
+<pre><code># collections.Callable
+
+# collections.Container
+
+# collections.Counter
+
+# collections.Hashable
+
+# collections.ItemsView
+
+# collections.Iterable
+
+# collections.Iterator
+
+# collections.deque
+# 返回一个deque类型的实例，也就是双端队列
+deque([iterable[, maxlen]])
+
+# collections.defaultdict
+# 返回一个defaultdict类型的实例，类似于dict.setdefault()
+defaultdict(default_factory[, ...])
+</code></pre>
+<p>functions:</p>
+<pre><code>namedtuple(typename, field_names, verbose=False, rename=False)
+# 返回一个tuple的子类, 将只能通过index访问的tuple变为可以通过name来访问．
+NewTuple = namedtuple('NewTuple', ['elm1', 'elm2', 'elm3'])
+nt = NewTuple(1, 2, 3)
+nt.elm1 # 1
+</code></pre>
+<p>data:</p>
+<h2 id="heapq">heapq</h2>
+<h2 id="bisect">bisect</h2>
+<h2 id="array">array</h2>
+<h2 id="sched">sched</h2>
+<h2 id="queue">Queue</h2>
+<p>队列数据结构．</p>
+<pre><code>import Queue
+</code></pre>
+<p>classes:</p>
+<pre><code># Queue.Queue
+Queue(maxsize=0) # 创建一个大小为maxsize的queue对象
+# methods:
+empty(self) # 如果queue为空返回True
+full(self) # 如果queue达到maxsize返回True
+get(self, block=True, timeout=None) # 从队列中取出一个元素并返回,如果block=True,会一直阻塞,直到队列中有元素．
+get_nowait(self)
+join(self)
+put(self, item, block=True, timeout=None) # 把item放到队列中,如果block=true,会一直阻塞,直到队列有空间存放item.
+put_nowait(self, item)
+qsize(self) # 返回queue大小，近似值
+task_done(self)
+</code></pre>
+<h2 id="weakref">weakref</h2>
+<h2 id="userdict">UserDict</h2>
+<h2 id="userlist">UserList</h2>
+<h2 id="userstring">UserString</h2>
+<h2 id="types">types</h2>
+<h2 id="copy">copy</h2>
+<p>copy和deepcopy都只拷贝对象的类型和数值，不拷贝对象的ID.也就是==运算为True, is(id())运算为False.</p>
+<pre><code>import copy
+</code></pre>
+<p>functions:</p>
+<pre><code>copy.copy(x) # 浅复制, 只拷贝父对象，不拷贝内部的子对象.
+copy.deepcopy(x, memo=None, _nil=[]) # 深复制, 拷贝父对象和内部的子对象
+</code></pre>
+<h2 id="pprint">pprint</h2>
+<h2 id="repr">repr</h2>
+<hr>
+<h1 id="data-persistence">Data Persistence</h1>
+<p>pickle/cPickle/marshal提供对象的序列化操作．</p>
+<p>gdb相关的模块anydbm/whichdb/dbm/gdbm/dumbdbm提供类似字典和文件的对象．</p>
+<p>shelve集合了以上两者的功能．</p>
+<h2 id="pickle">pickle</h2>
+<p>pickle不支持unicode,只支持ascii.</p>
+<h2 id="cpickle">cPickle</h2>
+<p>python3将cPickle和pickle统一合并为pickle.</p>
+<p>cPickle是c开发的，速度比pickle快，但是不支持被继承．</p>
+<pre><code>import cPickle
+</code></pre>
+<p>functions:</p>
+<pre><code>Pickler(file, protocol=0)
+Unpickler(file)
+dump(obj, file, protocol=0) # 写入到一个文件
+dumps(obj, protocol=0) # 写入到一个字符串
+load(file) # 从文件读取
+loads(string) # 从字符串读取
+</code></pre>
+<p>data:</p>
+<pre><code>HIGHEST_PROTOCOL = 2
+</code></pre>
+<h2 id="marshal">marshal</h2>
+<h2 id="shelve">shelve</h2>
+<pre><code>import shelve
+
+with shelve.open(f, flag='n', writeback=True) as f:
+r/w: 不存在报错
+c: read-write to new/existing，不存在创建
+n: read-write to new. 总是创建新的
+</code></pre>
+<h2 id="anydbm">anydbm</h2>
+<h2 id="whichdb">whichdb</h2>
+<h2 id="dbm">dbm</h2>
+<h2 id="gdbm">gdbm</h2>
+<h2 id="dumbdbm">dumbdbm</h2>
+<h2 id="cope_reg">cope_reg</h2>
+<h2 id="pickletools">pickletools</h2>
+<h2 id="sqlite">sqlite</h2>
+<p>python访问数据库两种方式：</p>
+<ol>
+<li>ORM</li>
+<li>DB-API</li>
+</ol>
+<p>ORM是对象-关系管理器，相关模块有SQLAlchemy, SQLObject.</p>
+<p>DB-API参考PEP248/249定义了Database的API。</p>
+<p><a href="https://www.python.org/dev/peps/pep-0249/">https://www.python.org/dev/peps/pep-0249/</a></p>
+<pre><code>import sqlite3
+</code></pre>
+<p>classes:</p>
+<pre><code># sqlite3.Connection
+# methods:
+close(...)
+commit(...)
+cursor(...)
+execute(...)
+...
+
+# sqlite3.Cursor
+# methods:
+close(...)
+...
+</code></pre>
+<p>functions:</p>
+<pre><code>adapt(obj, protocol, alternate)
+connect(database[, timeout, isolation_level, detect_types, factory])
+...
+</code></pre>
+<p>data:</p>
+<hr>
+<h1 id="data-compression-and-archiving">Data Compression and Archiving</h1>
+<h2 id="gzip">gzip</h2>
+<h2 id="bz2">bz2</h2>
+<h2 id="zlib">zlib</h2>
+<h2 id="zipfile">zipfile</h2>
+<h2 id="tarfile">tarfile</h2>
+<hr>
+
+        </div>
+    </article>
+</div>
+
+        </main>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Morgoth. Designed by Canux</p>
+        </div>
+    </footer>
+</body>
+</html>
