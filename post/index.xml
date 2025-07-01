@@ -6341,7 +6341,7 @@ $ docker pull registry.docker-cn.com/library/ubuntu:16.04
 $ docker push
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;secret&lt;/p&gt;
-&lt;p&gt;secret以文件形式存在于/run/secrets/&lt;s-name&gt;&lt;/p&gt;
+&lt;p&gt;secret以文件形式存在于/run/secrets/&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;// 保存敏感数据
 $ docker secret
 
@@ -6353,7 +6353,7 @@ docker secret rm &amp;lt;id/name&amp;gt;
 docker secret create &amp;lt;s-name&amp;gt; &amp;lt;s-file&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;config&lt;/p&gt;
-&lt;p&gt;config以文件形式存在于/&lt;c-name&gt;&lt;/p&gt;
+&lt;p&gt;config以文件形式存在于/&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;// 保存非敏感数据
 $ docker config
 
@@ -9108,11 +9108,6 @@ for _, value := range m {...}
 
 floatA := float64(uint64Var)
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;others&#34;&gt;others&lt;/h2&gt;
-&lt;p&gt;any&lt;/p&gt;
-&lt;p&gt;comparable&lt;/p&gt;
-&lt;p&gt;byte&lt;/p&gt;
-&lt;p&gt;error&lt;/p&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;go控制流&#34;&gt;Go控制流&lt;/h1&gt;
 &lt;p&gt;go控制流的左大括号不能另起一行．&lt;/p&gt;
@@ -9675,16 +9670,16 @@ do default thing.
         
         <guid>https://canuxcheng.com/post/gsl_builtin/</guid>
         <description>&lt;h1 id=&#34;builtin&#34;&gt;builtin&lt;/h1&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://golang.org/pkg/builtin/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://golang.org/pkg/builtin/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://pkg.go.dev/builtin&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://pkg.go.dev/builtin&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;go的builtin package.&lt;/p&gt;
 &lt;h2 id=&#34;constants&#34;&gt;constants&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;true
 false
-iota
+iota // Untyped int.
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;variables&#34;&gt;variables&lt;/h2&gt;
-&lt;p&gt;pointer, slice, map, channel, func, interface的零值：&lt;/p&gt;
+&lt;p&gt;pointer, channel, func, interface, map, or slice type的zero value：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;nil
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;functions&#34;&gt;functions&lt;/h2&gt;
@@ -9703,6 +9698,10 @@ len(v Type) int
 print(args ...Type)
 
 println(args ...Type)
+
+func max[T cmp.Ordered](x T, y ...T) T
+func min[T cmp.Ordered](x T, y ...T) T
+func clear[T ~[]Type | ~map[Type]Type1](t T)
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;complex:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;# 把两个浮点数构造成一个复数
@@ -9776,6 +9775,12 @@ ComplexType
 type error interface {
     ERROR() string
 }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;any:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type any = interface{}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;comparable&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type comparable interface{ comparable }
 &lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
 </description>
@@ -12072,7 +12077,6 @@ func (s *Scanner) Err() error
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;通用占位符:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;%v    相应值的默认格式
-%+v   同时打印结构体的字段名
 %#v   相应值的go语法表示
 %T    相应值的类型的go语法表示
 %%    字面上的百分号
@@ -17015,7 +17019,7 @@ def index(request):
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h1 id=&#34;命名组&#34;&gt;命名组&lt;/h1&gt;
 &lt;p&gt;视图函数除了request参数还有关键字参数，匹配的命名表达式组作为关键字参数,覆盖默认的关键字参数。&lt;/p&gt;
-&lt;p&gt;使用命名的正则表达式组： (?P&lt;name&gt;pattern)&lt;/p&gt;
+&lt;p&gt;使用命名的正则表达式组： (?P&lt;!-- raw HTML omitted --&gt;pattern)&lt;/p&gt;
 &lt;p&gt;name就是关键字参数。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;url(r&#39;^pattern1/(?P&amp;lt;name&amp;gt;pattern)/pattern2/$), views.index, name=&#39;index),
 
@@ -17772,7 +17776,7 @@ sudo yum install mod_wsgi
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Ubuntu创建网站的配置文件/etc/apache2/sites-available/mysite.conf:&lt;/p&gt;
 &lt;p&gt;Fedora创建网站的配置文件/etc/httpd/conf.d/mysite.conf:&lt;/p&gt;
-&lt;p&gt;一般部署到web服务器，/home/user/修改为/var/www/&lt;project-name&gt;/&lt;/p&gt;
+&lt;p&gt;一般部署到web服务器，/home/user/修改为/var/www/&lt;!-- raw HTML omitted --&gt;/&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;# Include the project dir, can not inside VirtualHost section.
 WSGIPythonPath /home/user/mysite
 # If use virtualenv and named .venv
@@ -31528,10 +31532,10 @@ string里面有空格用\开头。
 &lt;h2 id=&#34;标准库&#34;&gt;标准库&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://zh.cppreference.com/w/cpp/standard_library&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://zh.cppreference.com/w/cpp/standard_library&lt;/a&gt;&lt;/p&gt;
-&lt;iostream&gt;
+&lt;!-- raw HTML omitted --&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://cplusplus.com/reference/iostream/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://cplusplus.com/reference/iostream/&lt;/a&gt;&lt;/p&gt;
-&lt;string&gt;
+&lt;!-- raw HTML omitted --&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://cplusplus.com/reference/string/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://cplusplus.com/reference/string/&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;stl&#34;&gt;STL&lt;/h2&gt;
@@ -33756,14 +33760,14 @@ git clone &amp;lt;github-url-of-your-favourite-theme&amp;gt;
 $hexo g
 $hexo d
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;github访问http://&lt;your-github-name&gt;.github.io即可。&lt;/p&gt;
-&lt;p&gt;coding访问http://&lt;your-coding-name&gt;.coding.me/&lt;your-coding-name&gt;&lt;/p&gt;
+&lt;p&gt;github访问http://&lt;!-- raw HTML omitted --&gt;.github.io即可。&lt;/p&gt;
+&lt;p&gt;coding访问http://&lt;!-- raw HTML omitted --&gt;.coding.me/&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
 &lt;p&gt;绑定自己的域名：&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;在域名供应商购买域名后添加解析，记录类型A或者CNAME，主机类型@或者www，记录值可以是http://&lt;your-github-name&gt;.github.io或者通过ping获取的ip地址。&lt;/li&gt;
-&lt;li&gt;在&lt;your-blog&gt;/source/新建文件CNAME，添加你购买的域名&lt;your-domain&gt;.com。&lt;/li&gt;
+&lt;li&gt;在域名供应商购买域名后添加解析，记录类型A或者CNAME，主机类型@或者www，记录值可以是http://&lt;!-- raw HTML omitted --&gt;.github.io或者通过ping获取的ip地址。&lt;/li&gt;
+&lt;li&gt;在&lt;!-- raw HTML omitted --&gt;/source/新建文件CNAME，添加你购买的域名&lt;!-- raw HTML omitted --&gt;.com。&lt;/li&gt;
 &lt;li&gt;正常部署到github。&lt;/li&gt;
-&lt;li&gt;访问http://&lt;your-doamin&gt;.com即可。&lt;/li&gt;
+&lt;li&gt;访问http://&lt;!-- raw HTML omitted --&gt;.com即可。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;安装hexo插件&#34;&gt;安装hexo插件&lt;/h1&gt;

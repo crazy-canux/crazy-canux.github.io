@@ -311,10 +311,10 @@ gcc -g -Wall -o libdynamic.so helloworld.o -L/dynamic/lib/path -ldynamic -Wl, -r
 &lt;h2 id=&#34;标准库&#34;&gt;标准库&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://zh.cppreference.com/w/cpp/standard_library&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://zh.cppreference.com/w/cpp/standard_library&lt;/a&gt;&lt;/p&gt;
-&lt;iostream&gt;
+&lt;!-- raw HTML omitted --&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://cplusplus.com/reference/iostream/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://cplusplus.com/reference/iostream/&lt;/a&gt;&lt;/p&gt;
-&lt;string&gt;
+&lt;!-- raw HTML omitted --&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://cplusplus.com/reference/string/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://cplusplus.com/reference/string/&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;stl&#34;&gt;STL&lt;/h2&gt;

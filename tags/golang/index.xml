@@ -442,11 +442,6 @@ for _, value := range m {...}
 
 floatA := float64(uint64Var)
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;others&#34;&gt;others&lt;/h2&gt;
-&lt;p&gt;any&lt;/p&gt;
-&lt;p&gt;comparable&lt;/p&gt;
-&lt;p&gt;byte&lt;/p&gt;
-&lt;p&gt;error&lt;/p&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;go控制流&#34;&gt;Go控制流&lt;/h1&gt;
 &lt;p&gt;go控制流的左大括号不能另起一行．&lt;/p&gt;

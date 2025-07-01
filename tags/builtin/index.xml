@@ -13,16 +13,16 @@
         
         <guid>https://canuxcheng.com/post/gsl_builtin/</guid>
         <description>&lt;h1 id=&#34;builtin&#34;&gt;builtin&lt;/h1&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://golang.org/pkg/builtin/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://golang.org/pkg/builtin/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://pkg.go.dev/builtin&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://pkg.go.dev/builtin&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;go的builtin package.&lt;/p&gt;
 &lt;h2 id=&#34;constants&#34;&gt;constants&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;true
 false
-iota
+iota // Untyped int.
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;variables&#34;&gt;variables&lt;/h2&gt;
-&lt;p&gt;pointer, slice, map, channel, func, interface的零值：&lt;/p&gt;
+&lt;p&gt;pointer, channel, func, interface, map, or slice type的zero value：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;nil
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;functions&#34;&gt;functions&lt;/h2&gt;
@@ -41,6 +41,10 @@ len(v Type) int
 print(args ...Type)
 
 println(args ...Type)
+
+func max[T cmp.Ordered](x T, y ...T) T
+func min[T cmp.Ordered](x T, y ...T) T
+func clear[T ~[]Type | ~map[Type]Type1](t T)
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;complex:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;# 把两个浮点数构造成一个复数
@@ -114,6 +118,12 @@ ComplexType
 type error interface {
     ERROR() string
 }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;any:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type any = interface{}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;comparable&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type comparable interface{ comparable }
 &lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
 </description>

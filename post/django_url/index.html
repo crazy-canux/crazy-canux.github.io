@@ -439,7 +439,7 @@ def index(request):
 </code></pre>
 <h1 id="命名组">命名组</h1>
 <p>视图函数除了request参数还有关键字参数，匹配的命名表达式组作为关键字参数,覆盖默认的关键字参数。</p>
-<p>使用命名的正则表达式组： (?P<name>pattern)</p>
+<p>使用命名的正则表达式组： (?P<!-- raw HTML omitted -->pattern)</p>
 <p>name就是关键字参数。</p>
 <pre><code>url(r'^pattern1/(?P&lt;name&gt;pattern)/pattern2/$), views.index, name='index),
 

@@ -41,7 +41,7 @@ sudo yum install mod_wsgi
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Ubuntu创建网站的配置文件/etc/apache2/sites-available/mysite.conf:&lt;/p&gt;
 &lt;p&gt;Fedora创建网站的配置文件/etc/httpd/conf.d/mysite.conf:&lt;/p&gt;
-&lt;p&gt;一般部署到web服务器，/home/user/修改为/var/www/&lt;project-name&gt;/&lt;/p&gt;
+&lt;p&gt;一般部署到web服务器，/home/user/修改为/var/www/&lt;!-- raw HTML omitted --&gt;/&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;# Include the project dir, can not inside VirtualHost section.
 WSGIPythonPath /home/user/mysite
 # If use virtualenv and named .venv

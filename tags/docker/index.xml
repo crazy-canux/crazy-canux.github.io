@@ -749,7 +749,7 @@ $ docker pull registry.docker-cn.com/library/ubuntu:16.04
 $ docker push
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;secret&lt;/p&gt;
-&lt;p&gt;secret以文件形式存在于/run/secrets/&lt;s-name&gt;&lt;/p&gt;
+&lt;p&gt;secret以文件形式存在于/run/secrets/&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;// 保存敏感数据
 $ docker secret
 
@@ -761,7 +761,7 @@ docker secret rm &amp;lt;id/name&amp;gt;
 docker secret create &amp;lt;s-name&amp;gt; &amp;lt;s-file&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;config&lt;/p&gt;
-&lt;p&gt;config以文件形式存在于/&lt;c-name&gt;&lt;/p&gt;
+&lt;p&gt;config以文件形式存在于/&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;// 保存非敏感数据
 $ docker config
 

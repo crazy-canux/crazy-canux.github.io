@@ -315,14 +315,14 @@ git clone &amp;lt;github-url-of-your-favourite-theme&amp;gt;
 $hexo g
 $hexo d
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;github访问http://&lt;your-github-name&gt;.github.io即可。&lt;/p&gt;
-&lt;p&gt;coding访问http://&lt;your-coding-name&gt;.coding.me/&lt;your-coding-name&gt;&lt;/p&gt;
+&lt;p&gt;github访问http://&lt;!-- raw HTML omitted --&gt;.github.io即可。&lt;/p&gt;
+&lt;p&gt;coding访问http://&lt;!-- raw HTML omitted --&gt;.coding.me/&lt;!-- raw HTML omitted --&gt;&lt;/p&gt;
 &lt;p&gt;绑定自己的域名：&lt;/p&gt;
 &lt;ol&gt;
-&lt;li&gt;在域名供应商购买域名后添加解析，记录类型A或者CNAME，主机类型@或者www，记录值可以是http://&lt;your-github-name&gt;.github.io或者通过ping获取的ip地址。&lt;/li&gt;
-&lt;li&gt;在&lt;your-blog&gt;/source/新建文件CNAME，添加你购买的域名&lt;your-domain&gt;.com。&lt;/li&gt;
+&lt;li&gt;在域名供应商购买域名后添加解析，记录类型A或者CNAME，主机类型@或者www，记录值可以是http://&lt;!-- raw HTML omitted --&gt;.github.io或者通过ping获取的ip地址。&lt;/li&gt;
+&lt;li&gt;在&lt;!-- raw HTML omitted --&gt;/source/新建文件CNAME，添加你购买的域名&lt;!-- raw HTML omitted --&gt;.com。&lt;/li&gt;
 &lt;li&gt;正常部署到github。&lt;/li&gt;
-&lt;li&gt;访问http://&lt;your-doamin&gt;.com即可。&lt;/li&gt;
+&lt;li&gt;访问http://&lt;!-- raw HTML omitted --&gt;.com即可。&lt;/li&gt;
 &lt;/ol&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;安装hexo插件&#34;&gt;安装hexo插件&lt;/h1&gt;

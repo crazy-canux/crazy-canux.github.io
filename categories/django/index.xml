@@ -353,7 +353,7 @@ def index(request):
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h1 id=&#34;命名组&#34;&gt;命名组&lt;/h1&gt;
 &lt;p&gt;视图函数除了request参数还有关键字参数，匹配的命名表达式组作为关键字参数,覆盖默认的关键字参数。&lt;/p&gt;
-&lt;p&gt;使用命名的正则表达式组： (?P&lt;name&gt;pattern)&lt;/p&gt;
+&lt;p&gt;使用命名的正则表达式组： (?P&lt;!-- raw HTML omitted --&gt;pattern)&lt;/p&gt;
 &lt;p&gt;name就是关键字参数。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;url(r&#39;^pattern1/(?P&amp;lt;name&amp;gt;pattern)/pattern2/$), views.index, name=&#39;index),
 
@@ -1110,7 +1110,7 @@ sudo yum install mod_wsgi
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Ubuntu创建网站的配置文件/etc/apache2/sites-available/mysite.conf:&lt;/p&gt;
 &lt;p&gt;Fedora创建网站的配置文件/etc/httpd/conf.d/mysite.conf:&lt;/p&gt;
-&lt;p&gt;一般部署到web服务器，/home/user/修改为/var/www/&lt;project-name&gt;/&lt;/p&gt;
+&lt;p&gt;一般部署到web服务器，/home/user/修改为/var/www/&lt;!-- raw HTML omitted --&gt;/&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;# Include the project dir, can not inside VirtualHost section.
 WSGIPythonPath /home/user/mysite
 # If use virtualenv and named .venv

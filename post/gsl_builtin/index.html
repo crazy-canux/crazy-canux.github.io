@@ -1,35 +1,29 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='builtin https://golang.org/pkg/builtin/
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='builtin https://pkg.go.dev/builtin
 go的builtin package.
-constants true false iota variables pointer, slice, map, channel, func, interface的零值：
-nil functions # 分配并初始化各种类型的对象, 返回一个指针． new(Type) *Type # 分配并初始化一个Slice/Map/Channel的对象,返回相同类型的对象. make(t Type, size ...IntegerType) Type # 返回容量，　Array/ArrayPointer/Slice/Channel cap(v Type) int # 返回长度，　String/Array/ArrayPointer/Slice/Map/Channel len(v Type) int print(args ...Type) println(args ...Type) complex:
-# 把两个浮点数构造成一个复数 complex(r, i FloatType) ComplexType # 返回复数c的实部 real(c ComplexType) FloatType # 返回复数c的虚部 imag(c ComplexType) FloatType slice:
-# 向切片末尾追加元素，返回新的切片．切片长度增加. # 如果长度超过底层数组长度，就创建了一个新的底层数组. 否则底层数组不变． # 在元素不超过1000的情况下，自动创建的底层数组容量翻倍. append(slice []Type, elems ...Type) []Type # 复制一个切片, 返回复制的元素的个数 copy(dst, src []Type) int map:
+constants true false iota // Untyped int. variables pointer, channel, func, interface, map, or slice type的zero value：
+nil functions # 分配并初始化各种类型的对象, 返回一个指针． new(Type) *Type # 分配并初始化一个Slice/Map/Channel的对象,返回相同类型的对象. make(t Type, size ...IntegerType) Type # 返回容量，　Array/ArrayPointer/Slice/Channel cap(v Type) int # 返回长度，　String/Array/ArrayPointer/Slice/Map/Channel len(v Type) int print(args ...Type) println(args ...Type) func max[T cmp.Ordered](x T, y ...T) T func min[T cmp.Ordered](x T, y ...T) T func clear[T ~[]Type | ~map[Type]Type1](t T) complex:
 '>
 <title>GSL_builtin</title>
 
 <link rel='canonical' href='https://canuxcheng.com/post/gsl_builtin/'>
 
 <link rel="stylesheet" href="/scss/style.min.2d59822570c0be136f2ad87c952ef8788ac2a951067adda1c49b253bff7d0292.css"><meta property='og:title' content='GSL_builtin'>
-<meta property='og:description' content='builtin https://golang.org/pkg/builtin/
+<meta property='og:description' content='builtin https://pkg.go.dev/builtin
 go的builtin package.
-constants true false iota variables pointer, slice, map, channel, func, interface的零值：
-nil functions # 分配并初始化各种类型的对象, 返回一个指针． new(Type) *Type # 分配并初始化一个Slice/Map/Channel的对象,返回相同类型的对象. make(t Type, size ...IntegerType) Type # 返回容量，　Array/ArrayPointer/Slice/Channel cap(v Type) int # 返回长度，　String/Array/ArrayPointer/Slice/Map/Channel len(v Type) int print(args ...Type) println(args ...Type) complex:
-# 把两个浮点数构造成一个复数 complex(r, i FloatType) ComplexType # 返回复数c的实部 real(c ComplexType) FloatType # 返回复数c的虚部 imag(c ComplexType) FloatType slice:
-# 向切片末尾追加元素，返回新的切片．切片长度增加. # 如果长度超过底层数组长度，就创建了一个新的底层数组. 否则底层数组不变． # 在元素不超过1000的情况下，自动创建的底层数组容量翻倍. append(slice []Type, elems ...Type) []Type # 复制一个切片, 返回复制的元素的个数 copy(dst, src []Type) int map:
+constants true false iota // Untyped int. variables pointer, channel, func, interface, map, or slice type的zero value：
+nil functions # 分配并初始化各种类型的对象, 返回一个指针． new(Type) *Type # 分配并初始化一个Slice/Map/Channel的对象,返回相同类型的对象. make(t Type, size ...IntegerType) Type # 返回容量，　Array/ArrayPointer/Slice/Channel cap(v Type) int # 返回长度，　String/Array/ArrayPointer/Slice/Map/Channel len(v Type) int print(args ...Type) println(args ...Type) func max[T cmp.Ordered](x T, y ...T) T func min[T cmp.Ordered](x T, y ...T) T func clear[T ~[]Type | ~map[Type]Type1](t T) complex:
 '>
 <meta property='og:url' content='https://canuxcheng.com/post/gsl_builtin/'>
 <meta property='og:site_name' content='Morgoth'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='builtin' /><meta property='article:published_time' content='2018-01-01T10:49:21&#43;00:00'/><meta property='article:modified_time' content='2018-01-01T10:49:21&#43;00:00'/>
 <meta name="twitter:title" content="GSL_builtin">
-<meta name="twitter:description" content="builtin https://golang.org/pkg/builtin/
+<meta name="twitter:description" content="builtin https://pkg.go.dev/builtin
 go的builtin package.
-constants true false iota variables pointer, slice, map, channel, func, interface的零值：
-nil functions # 分配并初始化各种类型的对象, 返回一个指针． new(Type) *Type # 分配并初始化一个Slice/Map/Channel的对象,返回相同类型的对象. make(t Type, size ...IntegerType) Type # 返回容量，　Array/ArrayPointer/Slice/Channel cap(v Type) int # 返回长度，　String/Array/ArrayPointer/Slice/Map/Channel len(v Type) int print(args ...Type) println(args ...Type) complex:
-# 把两个浮点数构造成一个复数 complex(r, i FloatType) ComplexType # 返回复数c的实部 real(c ComplexType) FloatType # 返回复数c的虚部 imag(c ComplexType) FloatType slice:
-# 向切片末尾追加元素，返回新的切片．切片长度增加. # 如果长度超过底层数组长度，就创建了一个新的底层数组. 否则底层数组不变． # 在元素不超过1000的情况下，自动创建的底层数组容量翻倍. append(slice []Type, elems ...Type) []Type # 复制一个切片, 返回复制的元素的个数 copy(dst, src []Type) int map:
+constants true false iota // Untyped int. variables pointer, channel, func, interface, map, or slice type的zero value：
+nil functions # 分配并初始化各种类型的对象, 返回一个指针． new(Type) *Type # 分配并初始化一个Slice/Map/Channel的对象,返回相同类型的对象. make(t Type, size ...IntegerType) Type # 返回容量，　Array/ArrayPointer/Slice/Channel cap(v Type) int # 返回长度，　String/Array/ArrayPointer/Slice/Map/Channel len(v Type) int print(args ...Type) println(args ...Type) func max[T cmp.Ordered](x T, y ...T) T func min[T cmp.Ordered](x T, y ...T) T func clear[T ~[]Type | ~map[Type]Type1](t T) complex:
 ">
     <link rel="shortcut icon" href="favicon.ico" />
 <style>
@@ -424,16 +418,16 @@ nil functions # 分配并初始化各种类型的对象, 返回一个指针． n
     
     
     <h1 id="builtin">builtin</h1>
-<p><a class="link" href="https://golang.org/pkg/builtin/"  target="_blank" rel="noopener"
-    >https://golang.org/pkg/builtin/</a></p>
+<p><a class="link" href="https://pkg.go.dev/builtin"  target="_blank" rel="noopener"
+    >https://pkg.go.dev/builtin</a></p>
 <p>go的builtin package.</p>
 <h2 id="constants">constants</h2>
 <pre><code>true
 false
-iota
+iota // Untyped int.
 </code></pre>
 <h2 id="variables">variables</h2>
-<p>pointer, slice, map, channel, func, interface的零值：</p>
+<p>pointer, channel, func, interface, map, or slice type的zero value：</p>
 <pre><code>nil
 </code></pre>
 <h2 id="functions">functions</h2>
@@ -452,6 +446,10 @@ len(v Type) int
 print(args ...Type)
 
 println(args ...Type)
+
+func max[T cmp.Ordered](x T, y ...T) T
+func min[T cmp.Ordered](x T, y ...T) T
+func clear[T ~[]Type | ~map[Type]Type1](t T)
 </code></pre>
 <p>complex:</p>
 <pre><code># 把两个浮点数构造成一个复数
@@ -525,6 +523,12 @@ ComplexType
 type error interface {
     ERROR() string
 }
+</code></pre>
+<p>any:</p>
+<pre><code>type any = interface{}
+</code></pre>
+<p>comparable</p>
+<pre><code>type comparable interface{ comparable }
 </code></pre>
 <hr>
 

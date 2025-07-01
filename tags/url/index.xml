@@ -62,7 +62,7 @@ def index(request):
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h1 id=&#34;命名组&#34;&gt;命名组&lt;/h1&gt;
 &lt;p&gt;视图函数除了request参数还有关键字参数，匹配的命名表达式组作为关键字参数,覆盖默认的关键字参数。&lt;/p&gt;
-&lt;p&gt;使用命名的正则表达式组： (?P&lt;name&gt;pattern)&lt;/p&gt;
+&lt;p&gt;使用命名的正则表达式组： (?P&lt;!-- raw HTML omitted --&gt;pattern)&lt;/p&gt;
 &lt;p&gt;name就是关键字参数。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;url(r&#39;^pattern1/(?P&amp;lt;name&amp;gt;pattern)/pattern2/$), views.index, name=&#39;index),
 
