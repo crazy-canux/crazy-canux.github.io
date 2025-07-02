@@ -104,12 +104,14 @@ git codereview change
         <pubDate>Mon, 01 Jan 2018 10:49:21 +0000</pubDate>
         
         <guid>https://canuxcheng.com/post/go_debug/</guid>
-        <description>&lt;h1 id=&#34;gdb&#34;&gt;gdb&lt;/h1&gt;
+        <description>&lt;h1 id=&#34;go&#34;&gt;go&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;go vet
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;gdb&#34;&gt;gdb&lt;/h1&gt;
 &lt;h1 id=&#34;delve&#34;&gt;delve&lt;/h1&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/derekparker/delve&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/derekparker/delve&lt;/a&gt;&lt;/p&gt;
 &lt;hr&gt;
-&lt;h1 id=&#34;debug&#34;&gt;debug&lt;/h1&gt;
 </description>
         </item>
         <item>
@@ -819,6 +821,17 @@ for _, value := range m {...}
 
 floatA := float64(uint64Var)
 &lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;总结&#34;&gt;总结&lt;/h2&gt;
+&lt;p&gt;值传递pass by value：bool, number, string, struct, array, interface&lt;/p&gt;
+&lt;p&gt;引用传递pass by reference： slice, map, function, channel&lt;/p&gt;
+&lt;p&gt;zero value:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;struct, array 取决于元素类型&lt;/li&gt;
+&lt;li&gt;pointer, slice, map, channel, function, interface: nil&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&amp;amp;:  address of operator,  used to get memory address. 地址操作。
+*:  dereference or pointer type. 解引用 或 指针类型。&lt;/p&gt;
+&lt;p&gt;explicit(显式) is better than implicit（隐式）。&lt;/p&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;go控制流&#34;&gt;Go控制流&lt;/h1&gt;
 &lt;p&gt;go控制流的左大括号不能另起一行．&lt;/p&gt;
@@ -1084,44 +1097,6 @@ outputWriter.Write*(&amp;quot;string&amp;quot;)
 outputWriter.Flush()
 &lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
-&lt;h1 id=&#34;go错误和异常&#34;&gt;Go错误和异常&lt;/h1&gt;
-&lt;p&gt;go的标准库errors实现了用于错误处理的函数.&lt;/p&gt;
-&lt;p&gt;内置函数panic是断言函数，会触发一个异常，用于终止当前的线程(会在defer执行完之后终止线程)&lt;/p&gt;
-&lt;p&gt;内置接口定义了error接口类型, error类型都有一个Error方法.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;type error interface {
-    Error() string
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;定义错误:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;var errName error = errors.New(&amp;quot;error message.&amp;quot;)
-
-err := errors.New(&amp;quot;error message.&amp;quot;)
-
-err := fmt.Errorf(format string, a ...interface{})
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;panic:&lt;/p&gt;
-&lt;p&gt;相当于抛出一个异常，在运行完defer之后,返回到调用者继续运行defer，直到最外层的defer执行完毕，终止程序.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;panic(v interface{})
-panic(&amp;quot;ERROR: command not found&amp;quot;)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;recover:&lt;/p&gt;
-&lt;p&gt;只能用于defer修饰的函数，用于接收panic调用中传递过来的错误值,没有panic返回nil.&lt;/p&gt;
-&lt;p&gt;当前函数的后面不会被执行，recover捕获异常之后会返回到调用者继续执行.&lt;/p&gt;
-&lt;p&gt;相当于catch一个异常.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;recover() interface{}
-defer func() {
-    if err := recover(); err != nil {
-        fmt.Println(e)
-        // &amp;quot;ERROR: command not found&amp;quot;
-    }
-}()
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;总结：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;在包内部，总是应该从panic中recover．&lt;/li&gt;
-&lt;li&gt;总是向包的调用者返回错误值，而不是panic.&lt;/li&gt;
-&lt;/ol&gt;
-&lt;hr&gt;
 &lt;h1 id=&#34;go包&#34;&gt;Go包&lt;/h1&gt;
 &lt;p&gt;创建包：&lt;/p&gt;
 &lt;p&gt;包名一般和所在路径的最后一层目录一致．一般是小写的单个单词.&lt;/p&gt;
@@ -1160,6 +1135,20 @@ import (
 &lt;pre&gt;&lt;code&gt;$GOROOT/src/... # 安装golang的路径里面的标准库
 $GOPATH
 &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;开发时候推荐的书写顺序:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;标准库&lt;/li&gt;
+&lt;li&gt;第三方包&lt;/li&gt;
+&lt;li&gt;本地包&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;go包的编译器导入顺序：按照依赖关系拓扑排序topological sort.&lt;/p&gt;
+&lt;p&gt;编译器导入规则：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;优先加载被依赖的包&lt;/li&gt;
+&lt;li&gt;避免重复加载&lt;/li&gt;
+&lt;li&gt;包之间有依赖关系的，根据依赖图顺序加载&lt;/li&gt;
+&lt;li&gt;所有包在init()调用前完成初始化&lt;/li&gt;
+&lt;/ul&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;go文档&#34;&gt;Go文档&lt;/h1&gt;
 &lt;p&gt;通过注释编写文档，godoc会自动识别．对包，函数，类型，全局变量都可以.&lt;/p&gt;
@@ -1181,6 +1170,71 @@ type St struct {}
 package pkg # 使用和包一样的名字.
 &lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
+&lt;h1 id=&#34;go-runtime&#34;&gt;Go runtime&lt;/h1&gt;
+&lt;h2 id=&#34;调度器&#34;&gt;调度器&lt;/h2&gt;
+&lt;p&gt;GMP模型&lt;/p&gt;
+&lt;h2 id=&#34;内存管理&#34;&gt;内存管理&lt;/h2&gt;
+&lt;p&gt;mcache: 每个p的本地缓存
+mcentral：全局中心缓存
+mheap：操作系内存管理&lt;/p&gt;
+&lt;h2 id=&#34;垃圾回收&#34;&gt;垃圾回收&lt;/h2&gt;
+&lt;p&gt;GOGC
+GOMEMLIMIT&lt;/p&gt;
+&lt;p&gt;三色标记清除算法进行垃圾收集Tricolor Mark-and-Sweep&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;白色: 未访问，可能是垃圾&lt;/li&gt;
+&lt;li&gt;灰色：已被访问，但子对象没有扫描&lt;/li&gt;
+&lt;li&gt;黑色：已被访问，子对象处理完毕&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;GC四个阶段：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;STW（stop the world）起始阶段：暂停所有goroutine，做初始标记。&lt;/li&gt;
+&lt;li&gt;concurrent mark并发标记：并发追踪所有可达对象。&lt;/li&gt;
+&lt;li&gt;concurrent sweep并发清除：并发释放不可达对象的内存。&lt;/li&gt;
+&lt;li&gt;STW终止阶段：做最后同步和收尾工作。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;网络轮询器netpoller&#34;&gt;网络轮询器netpoller&lt;/h2&gt;
+&lt;h2 id=&#34;系统监控sysmon&#34;&gt;系统监控Sysmon&lt;/h2&gt;
+&lt;h2 id=&#34;栈管理&#34;&gt;栈管理&lt;/h2&gt;
+&lt;h2 id=&#34;异常处理&#34;&gt;异常处理&lt;/h2&gt;
+&lt;p&gt;go的标准库errors实现了用于错误处理的函数.&lt;/p&gt;
+&lt;p&gt;内置函数panic是断言函数，会触发一个异常，用于终止当前的线程(会在defer执行完之后终止线程)&lt;/p&gt;
+&lt;p&gt;内置接口定义了error接口类型, error类型都有一个Error方法.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type error interface {
+    Error() string
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;定义错误:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var errName error = errors.New(&amp;quot;error message.&amp;quot;)
+
+err := errors.New(&amp;quot;error message.&amp;quot;)
+
+err := fmt.Errorf(format string, a ...interface{})
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;panic:&lt;/p&gt;
+&lt;p&gt;相当于抛出一个异常，在运行完defer之后,返回到调用者继续运行defer，直到最外层的defer执行完毕，终止程序.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;panic(v interface{})
+panic(&amp;quot;ERROR: command not found&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;recover:&lt;/p&gt;
+&lt;p&gt;只能用于defer修饰的函数，用于接收panic调用中传递过来的错误值,没有panic返回nil.&lt;/p&gt;
+&lt;p&gt;当前函数的后面不会被执行，recover捕获异常之后会返回到调用者继续执行.&lt;/p&gt;
+&lt;p&gt;相当于catch一个异常.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;recover() interface{}
+defer func() {
+    if err := recover(); err != nil {
+        fmt.Println(e)
+        // &amp;quot;ERROR: command not found&amp;quot;
+    }
+}()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;总结：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;在包内部，总是应该从panic中recover．&lt;/li&gt;
+&lt;li&gt;总是向包的调用者返回错误值，而不是panic.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id=&#34;反射与接口&#34;&gt;反射与接口&lt;/h2&gt;
+&lt;hr&gt;
 </description>
         </item>
         <item>
@@ -1190,6 +1244,7 @@ package pkg # 使用和包一样的名字.
         
         <guid>https://canuxcheng.com/post/go_concurrency/</guid>
         <description>&lt;h1 id=&#34;并发concurrency&#34;&gt;并发/concurrency&lt;/h1&gt;
+&lt;p&gt;传统并发基于线程，golang基于CSP&lt;/p&gt;
 &lt;p&gt;CSP: communicating sequential processes, 通信顺序进程。&lt;/p&gt;
 &lt;p&gt;go的并发同步模型来自CSP泛型。CSP是一种消息传递模型，用于在goroutine之间同步和传递数据的类型是channel.&lt;/p&gt;
 &lt;p&gt;concurrency:并发,同时管理很多事情，可以执行到一半就暂停去做其他事情.有同时执行的能力，但不一定要同时执行.并发属于代码。&lt;/p&gt;
@@ -1200,15 +1255,15 @@ package pkg # 使用和包一样的名字.
 &lt;p&gt;co-routine: 协程，大量线程会消耗内存和cpu调度，将线程分为内核态线程和用户态线程，每个用户态线程绑定到内核态线程，但是cpu不知道用户态线程的存在，我们把用户态线程叫协程。&lt;/p&gt;
 &lt;p&gt;goroutine: go语言的协程，是并行的，通过channel来通信.&lt;/p&gt;
 &lt;p&gt;GMP: goroutine的实现模型。&lt;/p&gt;
-&lt;p&gt;G: goroutine。&lt;/p&gt;
-&lt;p&gt;M: thread，代表一个内核态线程，golang默认10000个，SetMaxThreads可以设置，P创建M，一个P可以创建多个M如果之前的阻塞了。&lt;/p&gt;
-&lt;p&gt;P: processor, 包含了可运行的协程队列，由GOMAXPROCS确定个数，然后创建对应个数的P。&lt;/p&gt;
+&lt;p&gt;G: goroutine, 初始栈2kb，够过go关键字创建，包含grunable, grunning, gwaiting三种状态。&lt;/p&gt;
+&lt;p&gt;M: machine，对应OS线程，与cpu绑定，golang默认10000个，SetMaxThreads可以设置，需要绑定P才能执行G，否则休眠。&lt;/p&gt;
+&lt;p&gt;P: processor, 逻辑处理器，管理G的本地队列和调度上下文。由GOMAXPROCS确定个数(默认cpu核个数)。用来 解决GM的锁竞争问题。&lt;/p&gt;
 &lt;p&gt;不要通过共享内存通信，通过通信来共享内存。&lt;/p&gt;
 &lt;h2 id=&#34;goroutines&#34;&gt;goroutines&lt;/h2&gt;
 &lt;p&gt;go关键字会启动一个新的goroutine并执行.&lt;/p&gt;
-&lt;p&gt;每个goroutine会绑定到一个逻辑处理器上运行，每个逻辑处理器会绑定到单个操作系统线程。&lt;/p&gt;
-&lt;p&gt;当goroutine阻塞，就会把goroutine和线程从逻辑处理器上分离，然后创建一个新的线程绑定到该逻辑处理器，并继续运行队列中的其它goroutine.&lt;/p&gt;
-&lt;p&gt;当阻塞的goroutine恢复，会再次进入队列，和该goroutine绑定的线程也会保存下来.&lt;/p&gt;
+&lt;p&gt;每个goroutine会绑定到一个逻辑处理器P上运行，每个逻辑处理器会绑定到单个操作系统线程。&lt;/p&gt;
+&lt;p&gt;当goroutine阻塞，就会把goroutine和machine从逻辑处理器P上分离，然后创建一个新的machine绑定到该逻辑处理器P，并继续运行队列中的其它goroutine.&lt;/p&gt;
+&lt;p&gt;当阻塞的goroutine恢复，会再次进入队列，和该goroutine绑定的machine也会保存下来.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;go FuncName(...)
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;主进程main结束了，goroutine也结束．&lt;/p&gt;
@@ -1217,7 +1272,7 @@ package pkg # 使用和包一样的名字.
 &lt;pre&gt;&lt;code&gt;# 检测竞争状态
 $ go build -race
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;所以要解决goroutine间的消息传递和同步的问题.&lt;/p&gt;
+&lt;p&gt;所以要解决goroutine间的通信和同步的问题.&lt;/p&gt;
 &lt;p&gt;通过通信共享内存，而不是通过共享内存而通信,说明解决并发问题优先使用chan，而不是sync包。&lt;/p&gt;
 &lt;p&gt;channel还是mutex,选择的依据是他们的能力/特性.&lt;/p&gt;
 &lt;p&gt;channel的能力是让数据流动起来，擅长的是数据流动的场景:&lt;/p&gt;
@@ -1233,13 +1288,11 @@ $ go build -race
 &lt;/ul&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;channel&#34;&gt;channel&lt;/h2&gt;
-&lt;p&gt;goroutine通过channel来传递消息.&lt;/p&gt;
+&lt;p&gt;goroutine通过channel来通信和同步。&lt;/p&gt;
 &lt;p&gt;channels是引用类型,chan是线程安全的，并且不会有数据冲突。&lt;/p&gt;
-&lt;p&gt;channel可以共享内置类型，命名类型，结构类型，引用类型的值或指针.&lt;/p&gt;
-&lt;p&gt;chan通过make来创建，通过close来关闭．&lt;/p&gt;
-&lt;p&gt;chan是先进先出的.&lt;/p&gt;
-&lt;p&gt;如果chan指定了容量(有缓存), 就是异步，非阻塞模式．&lt;/p&gt;
-&lt;p&gt;默认是无缓存的，同步的,　阻塞模式.&lt;/p&gt;
+&lt;p&gt;chan通过make来创建，通过close来关闭．chan是先进先出的FIFO.&lt;/p&gt;
+&lt;p&gt;chan 支持的类型Type： 基本类型（number, string, bool），复合类型（pointer, struct, array, slice, map, function, interface），自定义类型.&lt;/p&gt;
+&lt;p&gt;chan的Type不能是channel本身。&lt;/p&gt;
 &lt;p&gt;申明一个变量:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;var ChanName chan Type
 &lt;/code&gt;&lt;/pre&gt;
@@ -1249,18 +1302,16 @@ ch := make(chan Type, cap)
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;操作chan:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;ch &amp;lt;- v    # 发送值到ch
-
 &amp;lt;- ch    # 从ch接收值
 v := &amp;lt;- ch    # 从ch接收值并赋予Type类型变量v
-
 v, ok = &amp;lt;- ch # 从ch接收值，如果ch关闭或没有数据，ok就为false.
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;无缓冲的chan:&lt;/p&gt;
+&lt;p&gt;无缓冲的chan(同步):&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;ch := make(chan Type)
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;无缓冲的chan生产者会阻塞unbuffered，直到消费者接收数据, 也就是说是同步的synchronous.&lt;/p&gt;
 &lt;p&gt;只有消费者或者只有生产者的chan会导致死锁，产生panic.&lt;/p&gt;
-&lt;p&gt;带缓冲的chan:&lt;/p&gt;
+&lt;p&gt;带缓冲的chan（异步）:&lt;/p&gt;
 &lt;p&gt;带缓冲的chan，在缓冲区满之前，都不会阻塞buffered，是异步的asynchronous.&lt;/p&gt;
 &lt;p&gt;只有通道中没有要接收的值，接收动作才会阻塞.&lt;/p&gt;
 &lt;p&gt;只有在通道没有可用缓冲区容纳被发送的值，发送动作才会阻塞．&lt;/p&gt;
@@ -1285,9 +1336,6 @@ close(ch)
 // 如果chan关闭ok=false, v为零值.
 v, ok := &amp;lt;-ch
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;sync&#34;&gt;sync&lt;/h2&gt;
-&lt;p&gt;通过对资源上锁来保持同步.&lt;/p&gt;
-&lt;p&gt;golang的同步通过sync和sync/atomic两个包实现.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;select&#34;&gt;select&lt;/h2&gt;
 &lt;p&gt;监听chan的数据流，类似于switch-case, 可用于处理多个chan的情况&lt;/p&gt;

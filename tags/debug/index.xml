@@ -12,12 +12,14 @@
         <pubDate>Mon, 01 Jan 2018 10:49:21 +0000</pubDate>
         
         <guid>https://canuxcheng.com/post/go_debug/</guid>
-        <description>&lt;h1 id=&#34;gdb&#34;&gt;gdb&lt;/h1&gt;
+        <description>&lt;h1 id=&#34;go&#34;&gt;go&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;go vet
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;gdb&#34;&gt;gdb&lt;/h1&gt;
 &lt;h1 id=&#34;delve&#34;&gt;delve&lt;/h1&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/derekparker/delve&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/derekparker/delve&lt;/a&gt;&lt;/p&gt;
 &lt;hr&gt;
-&lt;h1 id=&#34;debug&#34;&gt;debug&lt;/h1&gt;
 </description>
         </item>
         <item>

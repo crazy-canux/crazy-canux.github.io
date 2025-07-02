@@ -399,6 +399,7 @@ Go注释 单行注释：
     <li><a href="#切片slice">切片/slice</a></li>
     <li><a href="#映射map">映射/map</a></li>
     <li><a href="#类型转换">类型转换</a></li>
+    <li><a href="#总结">总结</a></li>
   </ul>
 
   <ul>
@@ -415,6 +416,17 @@ Go注释 单行注释：
     <li><a href="#输入">输入</a></li>
     <li><a href="#输出">输出</a></li>
     <li><a href="#文件">文件</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#调度器">调度器</a></li>
+    <li><a href="#内存管理">内存管理</a></li>
+    <li><a href="#垃圾回收">垃圾回收</a></li>
+    <li><a href="#网络轮询器netpoller">网络轮询器netpoller</a></li>
+    <li><a href="#系统监控sysmon">系统监控Sysmon</a></li>
+    <li><a href="#栈管理">栈管理</a></li>
+    <li><a href="#异常处理">异常处理</a></li>
+    <li><a href="#反射与接口">反射与接口</a></li>
   </ul>
 </nav>
         </div>
@@ -907,6 +919,17 @@ for _, value := range m {...}
 
 floatA := float64(uint64Var)
 </code></pre>
+<h2 id="总结">总结</h2>
+<p>值传递pass by value：bool, number, string, struct, array, interface</p>
+<p>引用传递pass by reference： slice, map, function, channel</p>
+<p>zero value:</p>
+<ul>
+<li>struct, array 取决于元素类型</li>
+<li>pointer, slice, map, channel, function, interface: nil</li>
+</ul>
+<p>&amp;:  address of operator,  used to get memory address. 地址操作。
+*:  dereference or pointer type. 解引用 或 指针类型。</p>
+<p>explicit(显式) is better than implicit（隐式）。</p>
 <hr>
 <h1 id="go控制流">Go控制流</h1>
 <p>go控制流的左大括号不能另起一行．</p>
@@ -1172,44 +1195,6 @@ outputWriter.Write*(&quot;string&quot;)
 outputWriter.Flush()
 </code></pre>
 <hr>
-<h1 id="go错误和异常">Go错误和异常</h1>
-<p>go的标准库errors实现了用于错误处理的函数.</p>
-<p>内置函数panic是断言函数，会触发一个异常，用于终止当前的线程(会在defer执行完之后终止线程)</p>
-<p>内置接口定义了error接口类型, error类型都有一个Error方法.</p>
-<pre><code>type error interface {
-    Error() string
-}
-</code></pre>
-<p>定义错误:</p>
-<pre><code>var errName error = errors.New(&quot;error message.&quot;)
-
-err := errors.New(&quot;error message.&quot;)
-
-err := fmt.Errorf(format string, a ...interface{})
-</code></pre>
-<p>panic:</p>
-<p>相当于抛出一个异常，在运行完defer之后,返回到调用者继续运行defer，直到最外层的defer执行完毕，终止程序.</p>
-<pre><code>panic(v interface{})
-panic(&quot;ERROR: command not found&quot;)
-</code></pre>
-<p>recover:</p>
-<p>只能用于defer修饰的函数，用于接收panic调用中传递过来的错误值,没有panic返回nil.</p>
-<p>当前函数的后面不会被执行，recover捕获异常之后会返回到调用者继续执行.</p>
-<p>相当于catch一个异常.</p>
-<pre><code>recover() interface{}
-defer func() {
-    if err := recover(); err != nil {
-        fmt.Println(e)
-        // &quot;ERROR: command not found&quot;
-    }
-}()
-</code></pre>
-<p>总结：</p>
-<ol>
-<li>在包内部，总是应该从panic中recover．</li>
-<li>总是向包的调用者返回错误值，而不是panic.</li>
-</ol>
-<hr>
 <h1 id="go包">Go包</h1>
 <p>创建包：</p>
 <p>包名一般和所在路径的最后一层目录一致．一般是小写的单个单词.</p>
@@ -1248,6 +1233,20 @@ import (
 <pre><code>$GOROOT/src/... # 安装golang的路径里面的标准库
 $GOPATH
 </code></pre>
+<p>开发时候推荐的书写顺序:</p>
+<ul>
+<li>标准库</li>
+<li>第三方包</li>
+<li>本地包</li>
+</ul>
+<p>go包的编译器导入顺序：按照依赖关系拓扑排序topological sort.</p>
+<p>编译器导入规则：</p>
+<ul>
+<li>优先加载被依赖的包</li>
+<li>避免重复加载</li>
+<li>包之间有依赖关系的，根据依赖图顺序加载</li>
+<li>所有包在init()调用前完成初始化</li>
+</ul>
 <hr>
 <h1 id="go文档">Go文档</h1>
 <p>通过注释编写文档，godoc会自动识别．对包，函数，类型，全局变量都可以.</p>
@@ -1268,6 +1267,71 @@ type St struct {}
 */
 package pkg # 使用和包一样的名字.
 </code></pre>
+<hr>
+<h1 id="go-runtime">Go runtime</h1>
+<h2 id="调度器">调度器</h2>
+<p>GMP模型</p>
+<h2 id="内存管理">内存管理</h2>
+<p>mcache: 每个p的本地缓存
+mcentral：全局中心缓存
+mheap：操作系内存管理</p>
+<h2 id="垃圾回收">垃圾回收</h2>
+<p>GOGC
+GOMEMLIMIT</p>
+<p>三色标记清除算法进行垃圾收集Tricolor Mark-and-Sweep</p>
+<ul>
+<li>白色: 未访问，可能是垃圾</li>
+<li>灰色：已被访问，但子对象没有扫描</li>
+<li>黑色：已被访问，子对象处理完毕</li>
+</ul>
+<p>GC四个阶段：</p>
+<ol>
+<li>STW（stop the world）起始阶段：暂停所有goroutine，做初始标记。</li>
+<li>concurrent mark并发标记：并发追踪所有可达对象。</li>
+<li>concurrent sweep并发清除：并发释放不可达对象的内存。</li>
+<li>STW终止阶段：做最后同步和收尾工作。</li>
+</ol>
+<h2 id="网络轮询器netpoller">网络轮询器netpoller</h2>
+<h2 id="系统监控sysmon">系统监控Sysmon</h2>
+<h2 id="栈管理">栈管理</h2>
+<h2 id="异常处理">异常处理</h2>
+<p>go的标准库errors实现了用于错误处理的函数.</p>
+<p>内置函数panic是断言函数，会触发一个异常，用于终止当前的线程(会在defer执行完之后终止线程)</p>
+<p>内置接口定义了error接口类型, error类型都有一个Error方法.</p>
+<pre><code>type error interface {
+    Error() string
+}
+</code></pre>
+<p>定义错误:</p>
+<pre><code>var errName error = errors.New(&quot;error message.&quot;)
+
+err := errors.New(&quot;error message.&quot;)
+
+err := fmt.Errorf(format string, a ...interface{})
+</code></pre>
+<p>panic:</p>
+<p>相当于抛出一个异常，在运行完defer之后,返回到调用者继续运行defer，直到最外层的defer执行完毕，终止程序.</p>
+<pre><code>panic(v interface{})
+panic(&quot;ERROR: command not found&quot;)
+</code></pre>
+<p>recover:</p>
+<p>只能用于defer修饰的函数，用于接收panic调用中传递过来的错误值,没有panic返回nil.</p>
+<p>当前函数的后面不会被执行，recover捕获异常之后会返回到调用者继续执行.</p>
+<p>相当于catch一个异常.</p>
+<pre><code>recover() interface{}
+defer func() {
+    if err := recover(); err != nil {
+        fmt.Println(e)
+        // &quot;ERROR: command not found&quot;
+    }
+}()
+</code></pre>
+<p>总结：</p>
+<ol>
+<li>在包内部，总是应该从panic中recover．</li>
+<li>总是向包的调用者返回错误值，而不是panic.</li>
+</ol>
+<h2 id="反射与接口">反射与接口</h2>
 <hr>
 
 </section>
