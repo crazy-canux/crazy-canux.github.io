@@ -65,21 +65,28 @@ $ go build -race
 &lt;p&gt;申明一个变量:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;var ChanName chan Type
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;定义一个chan:&lt;/p&gt;
+&lt;p&gt;定义一个chan, 默认chan都是双向的:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;var ch = make(chan Type, cap)
 ch := make(chan Type, cap)
 &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;chan的方向：&lt;/p&gt;
+&lt;p&gt;将make创建的双向转换为单向,也可以直接在函数参数申明单向。&lt;/p&gt;
+&lt;p&gt;只接收的chan无法关闭&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var recvOnly chan&amp;lt;- Type = ch
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;只发送的chan&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var sendOnly &amp;lt;-chan Type = ch
+&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;操作chan:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;ch &amp;lt;- v    # 发送值到ch
-&amp;lt;- ch    # 从ch接收值
-v := &amp;lt;- ch    # 从ch接收值并赋予Type类型变量v
-v, ok = &amp;lt;- ch # 从ch接收值，如果ch关闭或没有数据，ok就为false.
+v := &amp;lt;-ch    # 从ch接收值, 并赋予Type类型变量v
+v, ok = &amp;lt;-ch # 从ch接收值带状态, 如果ch关闭或没有数据，ok就为false.
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;无缓冲的chan(同步):&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;ch := make(chan Type)
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;无缓冲的chan生产者会阻塞unbuffered，直到消费者接收数据, 也就是说是同步的synchronous.&lt;/p&gt;
-&lt;p&gt;只有消费者或者只有生产者的chan会导致死锁，产生panic.&lt;/p&gt;
+&lt;p&gt;无缓冲的chan发送者会阻塞unbuffered，直到接收者接收数据, 也就是说是同步的synchronous.&lt;/p&gt;
+&lt;p&gt;只有发送者或只有接受者的chan会导致死锁，产生panic.&lt;/p&gt;
 &lt;p&gt;带缓冲的chan（异步）:&lt;/p&gt;
 &lt;p&gt;带缓冲的chan，在缓冲区满之前，都不会阻塞buffered，是异步的asynchronous.&lt;/p&gt;
 &lt;p&gt;只有通道中没有要接收的值，接收动作才会阻塞.&lt;/p&gt;
@@ -87,15 +94,9 @@ v, ok = &amp;lt;- ch # 从ch接收值，如果ch关闭或没有数据，ok就为
 &lt;pre&gt;&lt;code&gt;ch := make(chan Type, cap)
 
 // 带缓冲的chan可以通过range遍历
-for i := range ch {...}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;chan的方向：&lt;/p&gt;
-&lt;p&gt;默认chan都是双向的，但是也可以指定方向&lt;/p&gt;
-&lt;p&gt;只接收的chan无法关闭&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;var recv_only chan&amp;lt;- Type
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;只发送的chan&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;var send_only &amp;lt;-chan Type
+for val := range ch {
+    fmt.Println(val)
+}
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;显示关闭chan:&lt;/p&gt;
 &lt;p&gt;通道关闭后，不能再向通道发送值，但是已经发送的值可以被接收.&lt;/p&gt;
@@ -121,11 +122,16 @@ v, ok := &amp;lt;-ch
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;case后面必须是读或写chan的操作，否则编译出错。&lt;/p&gt;
-&lt;p&gt;select {
-case condition1:
+&lt;p&gt;ctx, cancel := context.WithCancel(context.Background())
+select {
+case var := &amp;lt;-ch1:
 do something
-case condition2:
+case ch2 &amp;lt;-value:
 do something
+case &amp;lt;-time.After(2 * time.Second):
+fmt.Println(&amp;ldquo;timeout!&amp;rdquo;)
+case &amp;lt;-ctx.Done():
+fmt.Println(&amp;ldquo;cancelled:&amp;rdquo;, ctx.Err())
 &amp;hellip;
 default:    // default可以省略
 do default thing.
@@ -136,24 +142,23 @@ do default thing.
 &lt;h2 id=&#34;退出goroutine&#34;&gt;退出goroutine&lt;/h2&gt;
 &lt;h3 id=&#34;for-range&#34;&gt;for-range&lt;/h3&gt;
 &lt;p&gt;range能感知channel关闭，当channel被发送数据的goroutine关闭时，range就会结束，然后退出for循环。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;go func(in &amp;lt;-chan int) {
-    for x := range in {
+&lt;pre&gt;&lt;code&gt;go func(send &amp;lt;-chan int) {
+    for val := range send {
         ...
     }
-}(inCh)
+}(sendOnly)
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h3 id=&#34;for-select&#34;&gt;for-select&lt;/h3&gt;
 &lt;p&gt;select有多路复用能力，for-select 可以持续处理多路多个channel的能力。但select不能感知channel的关闭.&lt;/p&gt;
-&lt;p&gt;通道关闭退出goroutine：&lt;/p&gt;
+&lt;p&gt;context.Context退出goroutine:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;go func() {
     for {
         select {
-        case x, ok := &amp;lt;-in:
-            if !ok {
-                return
-            }
-        case &amp;lt;-t.C:
-            ...
+        case &amp;lt;-ctx.Done():
+            fmt.Println(&amp;quot;goroutine exiting:&amp;quot;, ctx.Err())
+            return
+        default:
+            fmt.Println(&amp;quot;working...&amp;quot;)
         }
     }
 }

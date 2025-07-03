@@ -1296,21 +1296,28 @@ $ go build -race
 &lt;p&gt;申明一个变量:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;var ChanName chan Type
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;定义一个chan:&lt;/p&gt;
+&lt;p&gt;定义一个chan, 默认chan都是双向的:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;var ch = make(chan Type, cap)
 ch := make(chan Type, cap)
 &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;chan的方向：&lt;/p&gt;
+&lt;p&gt;将make创建的双向转换为单向,也可以直接在函数参数申明单向。&lt;/p&gt;
+&lt;p&gt;只接收的chan无法关闭&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var recvOnly chan&amp;lt;- Type = ch
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;只发送的chan&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var sendOnly &amp;lt;-chan Type = ch
+&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;操作chan:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;ch &amp;lt;- v    # 发送值到ch
-&amp;lt;- ch    # 从ch接收值
-v := &amp;lt;- ch    # 从ch接收值并赋予Type类型变量v
-v, ok = &amp;lt;- ch # 从ch接收值，如果ch关闭或没有数据，ok就为false.
+v := &amp;lt;-ch    # 从ch接收值, 并赋予Type类型变量v
+v, ok = &amp;lt;-ch # 从ch接收值带状态, 如果ch关闭或没有数据，ok就为false.
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;无缓冲的chan(同步):&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;ch := make(chan Type)
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;无缓冲的chan生产者会阻塞unbuffered，直到消费者接收数据, 也就是说是同步的synchronous.&lt;/p&gt;
-&lt;p&gt;只有消费者或者只有生产者的chan会导致死锁，产生panic.&lt;/p&gt;
+&lt;p&gt;无缓冲的chan发送者会阻塞unbuffered，直到接收者接收数据, 也就是说是同步的synchronous.&lt;/p&gt;
+&lt;p&gt;只有发送者或只有接受者的chan会导致死锁，产生panic.&lt;/p&gt;
 &lt;p&gt;带缓冲的chan（异步）:&lt;/p&gt;
 &lt;p&gt;带缓冲的chan，在缓冲区满之前，都不会阻塞buffered，是异步的asynchronous.&lt;/p&gt;
 &lt;p&gt;只有通道中没有要接收的值，接收动作才会阻塞.&lt;/p&gt;
@@ -1318,15 +1325,9 @@ v, ok = &amp;lt;- ch # 从ch接收值，如果ch关闭或没有数据，ok就为
 &lt;pre&gt;&lt;code&gt;ch := make(chan Type, cap)
 
 // 带缓冲的chan可以通过range遍历
-for i := range ch {...}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;chan的方向：&lt;/p&gt;
-&lt;p&gt;默认chan都是双向的，但是也可以指定方向&lt;/p&gt;
-&lt;p&gt;只接收的chan无法关闭&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;var recv_only chan&amp;lt;- Type
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;只发送的chan&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;var send_only &amp;lt;-chan Type
+for val := range ch {
+    fmt.Println(val)
+}
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;显示关闭chan:&lt;/p&gt;
 &lt;p&gt;通道关闭后，不能再向通道发送值，但是已经发送的值可以被接收.&lt;/p&gt;
@@ -1352,11 +1353,16 @@ v, ok := &amp;lt;-ch
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;case后面必须是读或写chan的操作，否则编译出错。&lt;/p&gt;
-&lt;p&gt;select {
-case condition1:
+&lt;p&gt;ctx, cancel := context.WithCancel(context.Background())
+select {
+case var := &amp;lt;-ch1:
 do something
-case condition2:
+case ch2 &amp;lt;-value:
 do something
+case &amp;lt;-time.After(2 * time.Second):
+fmt.Println(&amp;ldquo;timeout!&amp;rdquo;)
+case &amp;lt;-ctx.Done():
+fmt.Println(&amp;ldquo;cancelled:&amp;rdquo;, ctx.Err())
 &amp;hellip;
 default:    // default可以省略
 do default thing.
@@ -1367,24 +1373,23 @@ do default thing.
 &lt;h2 id=&#34;退出goroutine&#34;&gt;退出goroutine&lt;/h2&gt;
 &lt;h3 id=&#34;for-range&#34;&gt;for-range&lt;/h3&gt;
 &lt;p&gt;range能感知channel关闭，当channel被发送数据的goroutine关闭时，range就会结束，然后退出for循环。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;go func(in &amp;lt;-chan int) {
-    for x := range in {
+&lt;pre&gt;&lt;code&gt;go func(send &amp;lt;-chan int) {
+    for val := range send {
         ...
     }
-}(inCh)
+}(sendOnly)
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h3 id=&#34;for-select&#34;&gt;for-select&lt;/h3&gt;
 &lt;p&gt;select有多路复用能力，for-select 可以持续处理多路多个channel的能力。但select不能感知channel的关闭.&lt;/p&gt;
-&lt;p&gt;通道关闭退出goroutine：&lt;/p&gt;
+&lt;p&gt;context.Context退出goroutine:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;go func() {
     for {
         select {
-        case x, ok := &amp;lt;-in:
-            if !ok {
-                return
-            }
-        case &amp;lt;-t.C:
-            ...
+        case &amp;lt;-ctx.Done():
+            fmt.Println(&amp;quot;goroutine exiting:&amp;quot;, ctx.Err())
+            return
+        default:
+            fmt.Println(&amp;quot;working...&amp;quot;)
         }
     }
 }
@@ -4236,9 +4241,9 @@ func (c *B) Skipped() bool
         
         <guid>https://canuxcheng.com/post/go_oop/</guid>
         <description>&lt;h1 id=&#34;go面向对象&#34;&gt;Go面向对象&lt;/h1&gt;
-&lt;p&gt;golang通过方法和接口实现面向对象.&lt;/p&gt;
+&lt;p&gt;golang不是传统的面向对象编程，而是通过struct, method, interface, embedding实现面向对象的核心功能.&lt;/p&gt;
 &lt;hr&gt;
-&lt;h1 id=&#34;方法method&#34;&gt;方法/method&lt;/h1&gt;
+&lt;h2 id=&#34;方法method&#34;&gt;方法/method&lt;/h2&gt;
 &lt;p&gt;go中没有类，但是可以为结构体定义方法．&lt;/p&gt;
 &lt;p&gt;方法就是一类带有特殊的　接收者参数　的函数．&lt;/p&gt;
 &lt;p&gt;只能为同一包内定义的类型的接收者申明方法，不能为其它包内定义的类型的接收者申明方法．&lt;/p&gt;
@@ -4276,10 +4281,9 @@ var v Vertex
 v.MethodName() // (&amp;amp;v).MethodName() , 操作的是实际的值
 &lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
-&lt;h1 id=&#34;接口interface&#34;&gt;接口/Interface&lt;/h1&gt;
-&lt;p&gt;接口是引用类型.&lt;/p&gt;
-&lt;p&gt;接口类型是由一组方法签名定义的集合．&lt;/p&gt;
-&lt;p&gt;接口类型的值可以保存任何实现了这些方法的值．&lt;/p&gt;
+&lt;h2 id=&#34;接口interface&#34;&gt;接口/Interface&lt;/h2&gt;
+&lt;p&gt;接口是引用类型. zero value is nil.&lt;/p&gt;
+&lt;p&gt;接口类型是由一组方法签名定义的集合, 任何实现了这些方法的类型，自动被认为实现了这个接口。．&lt;/p&gt;
 &lt;p&gt;某个类型实现了该接口的所有方法签名，就算实现了该接口,无需显示申明实现了哪个接口.&lt;/p&gt;
 &lt;p&gt;接口可以匿名嵌入其它接口，或嵌入到结构中．&lt;/p&gt;
 &lt;p&gt;一般只有一个方法的接口命名为MethodName + &amp;rsquo;er&#39;.&lt;/p&gt;
@@ -4289,12 +4293,15 @@ v.MethodName() // (&amp;amp;v).MethodName() , 操作的是实际的值
 &lt;li&gt;指向存储的值的指针.&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;定义接口：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;type IName interface {
-    MethodName()
-    ...
+&lt;pre&gt;&lt;code&gt;type Speaker interface {
+    Speak()
 }
 
-type SName struct {
+type Animal struct {
+    Name string
+}
+
+func (a Animal) Speak() {
     ...
 }
 &lt;/code&gt;&lt;/pre&gt;
@@ -4318,48 +4325,64 @@ var s SName
 i = s
 i.MethodName() // 调用失败
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;底层值为nil的接口值:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;var i IName
-var s SName
-i = s    # 接口值为nil
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;空接口：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;空接口：&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;所有类型都实现了空接口.&lt;/p&gt;
 &lt;p&gt;指定了零个方法的接口值被称为空接口,一般用来处理未知类型的值.&lt;/p&gt;
 &lt;p&gt;当接口储存的类型和对象都为nil，接口才为nil&lt;/p&gt;
 &lt;p&gt;以空接口为参数的函数可以接收任意类型的值作为参数.&lt;/p&gt;
 &lt;p&gt;如果一个函数返回空接口就可以返回任意类型的值.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;# 空接口可以保存任何类型的值
+&lt;pre&gt;&lt;code&gt;var x interface{}
+x = 43
+x = &amp;quot;hello&amp;quot;
+
+# 空接口可以保存任何类型的值
 var i interface{}
 # 空接口作为形参
 func FuncName(i interface{}) {}
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;指针的类型断言/comma-ok断言：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;指针的类型断言/comma-ok断言：&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;断言接口值i保存了具体类型Type, 并将底层类型为Type的值赋予变量t.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;只返回一个值，断言失败会触发panic.
 t := i.(Type)
 
 返回两个值，断言成功返回true, 失败返回false.
-t, ok := i.(Type)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;指针的类型选择/switch测试：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;// i.(type) 是固定写法
-switch TypeValue := i.(type) {
-case Type1:
-    ...
-case Type2:
-    ...
-...
+var x interface{} = &amp;quot;hello&amp;quot;
+str, ok := x.(string) // ok=true
+num, ok := x.(int) // ok=false 断言失败
+
+// i.(type) 是固定写法
+switch v := i.(type) {
+case string:
+    fmt.Println(&amp;quot;string&amp;quot;)
+case int:
+    fmt.Println(&amp;quot;int&amp;quot;)
 default:
-    ...
+    fmt.Println(&amp;quot;unknown type&amp;quot;)
 }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;嵌入接口:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;嵌入接口:&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;接口中可以嵌入其它接口，这样实现了该接口的对象就隐式包含嵌入接口的所有方法.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;type Interface interface {}
+&lt;pre&gt;&lt;code&gt;type Reader interface {
+    Read()
+}
+
+type Writer interface {
+    Write()
+}
+
+type ReadWriter interface {
+    Reader
+    Writer
+}
 &lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;封装&#34;&gt;封装&lt;/h2&gt;
+&lt;h2 id=&#34;封装encapsulation&#34;&gt;封装Encapsulation&lt;/h2&gt;
 &lt;p&gt;小写字母开头的标识符（类型/属性/方法&amp;hellip;)是未公开的，只能在当前包引用，不能在其它包引用。&lt;/p&gt;
 &lt;p&gt;可以通过创建工厂函数对外暴露未公开的标识符:&lt;/p&gt;
 &lt;ul&gt;
@@ -4411,13 +4434,43 @@ func main() {
     b.In = value // 内部类型的公开属性提升到外部类型。
 }
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;多态&#34;&gt;多态&lt;/h2&gt;
+&lt;h2 id=&#34;多态polymorphism&#34;&gt;多态Polymorphism&lt;/h2&gt;
+&lt;p&gt;golang多态通过interface实现。&lt;/p&gt;
 &lt;p&gt;形式参数是接口的函数，叫做多态函数.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;func FuncName(iVar IName) {}
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;所有实现了接口的方法的实体类型，就可以作为参数传给多态函数.&lt;/p&gt;
-&lt;h2 id=&#34;继承&#34;&gt;继承&lt;/h2&gt;
-&lt;p&gt;通过类型嵌套实现继承，外部类型可以访问内部类型的属性和方法&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type Speaker interface {
+    Speak()
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;实现1&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type Dog struct{}
+func (d Dog) Speak() {
+    fmt.Println(&amp;quot;dog&amp;quot;)
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;实现2&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type Cat struct{}
+func (c Cat) Speak() {
+    fmt.Println(&amp;quot;cat&amp;quot;)
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;多态函数&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;func makeSound(s Speaker) {
+    s.Speak()
+}
+
+func main() {
+    var d Dog
+    var c Cat
+    makeSound(d) // dog
+    makeSound(c) // cat
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;继承inheritance&#34;&gt;继承Inheritance&lt;/h2&gt;
+&lt;p&gt;golang没有继承，但是可以通过结构体嵌套实现继承行为。&lt;/p&gt;
 &lt;p&gt;如果外部类型实现同名的属性或方法，就会覆盖内部类型的属性或方法（不过内部类型的属性和方法还在，可以通过内部类型访问）&lt;/p&gt;
 &lt;p&gt;内部类型实现的接口，也会自动提升到外部类型。只要内部类型实现了某接口，外部类型相当于也实现了该接口。&lt;/p&gt;
 &lt;p&gt;如果匿名字段实现了一个方法，那么包含这个匿名字段的结构也可以调用该方法.&lt;/p&gt;
@@ -4442,9 +4495,16 @@ outer.InnerMethod() //如果外部类型没有实现同名方法，就是内部�
 outer.in // 同上
 &lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
-&lt;h1 id=&#34;反射reflact&#34;&gt;反射/reflact&lt;/h1&gt;
+&lt;h2 id=&#34;反射reflection&#34;&gt;反射Reflection&lt;/h2&gt;
 &lt;p&gt;反射就是检查程序在运行时的状态.&lt;/p&gt;
 &lt;p&gt;使用反射一般使用标准库reflect.&lt;/p&gt;
+&lt;p&gt;Go 的反射通过 reflect.TypeOf() 和 reflect.ValueOf() 在运行时检查或操作对象，是实现泛型、序列化、ORM、接口断言等动态功能的基础。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import &amp;quot;reflect&amp;quot;
+x := 123
+t := reflect.TypeOf(x)   // int
+v := reflect.ValueOf(x)  // 123
+k := t.Kind()            // reflect.Int
+&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         

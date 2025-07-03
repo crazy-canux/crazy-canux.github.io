@@ -551,21 +551,28 @@ $ go build -race
 <p>申明一个变量:</p>
 <pre><code>var ChanName chan Type
 </code></pre>
-<p>定义一个chan:</p>
+<p>定义一个chan, 默认chan都是双向的:</p>
 <pre><code>var ch = make(chan Type, cap)
 ch := make(chan Type, cap)
 </code></pre>
+<p>chan的方向：</p>
+<p>将make创建的双向转换为单向,也可以直接在函数参数申明单向。</p>
+<p>只接收的chan无法关闭</p>
+<pre><code>var recvOnly chan&lt;- Type = ch
+</code></pre>
+<p>只发送的chan</p>
+<pre><code>var sendOnly &lt;-chan Type = ch
+</code></pre>
 <p>操作chan:</p>
 <pre><code>ch &lt;- v    # 发送值到ch
-&lt;- ch    # 从ch接收值
-v := &lt;- ch    # 从ch接收值并赋予Type类型变量v
-v, ok = &lt;- ch # 从ch接收值，如果ch关闭或没有数据，ok就为false.
+v := &lt;-ch    # 从ch接收值, 并赋予Type类型变量v
+v, ok = &lt;-ch # 从ch接收值带状态, 如果ch关闭或没有数据，ok就为false.
 </code></pre>
 <p>无缓冲的chan(同步):</p>
 <pre><code>ch := make(chan Type)
 </code></pre>
-<p>无缓冲的chan生产者会阻塞unbuffered，直到消费者接收数据, 也就是说是同步的synchronous.</p>
-<p>只有消费者或者只有生产者的chan会导致死锁，产生panic.</p>
+<p>无缓冲的chan发送者会阻塞unbuffered，直到接收者接收数据, 也就是说是同步的synchronous.</p>
+<p>只有发送者或只有接受者的chan会导致死锁，产生panic.</p>
 <p>带缓冲的chan（异步）:</p>
 <p>带缓冲的chan，在缓冲区满之前，都不会阻塞buffered，是异步的asynchronous.</p>
 <p>只有通道中没有要接收的值，接收动作才会阻塞.</p>
@@ -573,15 +580,9 @@ v, ok = &lt;- ch # 从ch接收值，如果ch关闭或没有数据，ok就为fals
 <pre><code>ch := make(chan Type, cap)
 
 // 带缓冲的chan可以通过range遍历
-for i := range ch {...}
-</code></pre>
-<p>chan的方向：</p>
-<p>默认chan都是双向的，但是也可以指定方向</p>
-<p>只接收的chan无法关闭</p>
-<pre><code>var recv_only chan&lt;- Type
-</code></pre>
-<p>只发送的chan</p>
-<pre><code>var send_only &lt;-chan Type
+for val := range ch {
+    fmt.Println(val)
+}
 </code></pre>
 <p>显示关闭chan:</p>
 <p>通道关闭后，不能再向通道发送值，但是已经发送的值可以被接收.</p>
@@ -607,11 +608,16 @@ v, ok := &lt;-ch
 </li>
 <li>
 <p>case后面必须是读或写chan的操作，否则编译出错。</p>
-<p>select {
-case condition1:
+<p>ctx, cancel := context.WithCancel(context.Background())
+select {
+case var := &lt;-ch1:
 do something
-case condition2:
+case ch2 &lt;-value:
 do something
+case &lt;-time.After(2 * time.Second):
+fmt.Println(&ldquo;timeout!&rdquo;)
+case &lt;-ctx.Done():
+fmt.Println(&ldquo;cancelled:&rdquo;, ctx.Err())
 &hellip;
 default:    // default可以省略
 do default thing.
@@ -622,24 +628,23 @@ do default thing.
 <h2 id="退出goroutine">退出goroutine</h2>
 <h3 id="for-range">for-range</h3>
 <p>range能感知channel关闭，当channel被发送数据的goroutine关闭时，range就会结束，然后退出for循环。</p>
-<pre><code>go func(in &lt;-chan int) {
-    for x := range in {
+<pre><code>go func(send &lt;-chan int) {
+    for val := range send {
         ...
     }
-}(inCh)
+}(sendOnly)
 </code></pre>
 <h3 id="for-select">for-select</h3>
 <p>select有多路复用能力，for-select 可以持续处理多路多个channel的能力。但select不能感知channel的关闭.</p>
-<p>通道关闭退出goroutine：</p>
+<p>context.Context退出goroutine:</p>
 <pre><code>go func() {
     for {
         select {
-        case x, ok := &lt;-in:
-            if !ok {
-                return
-            }
-        case &lt;-t.C:
-            ...
+        case &lt;-ctx.Done():
+            fmt.Println(&quot;goroutine exiting:&quot;, ctx.Err())
+            return
+        default:
+            fmt.Println(&quot;working...&quot;)
         }
     }
 }
