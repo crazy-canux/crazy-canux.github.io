@@ -740,13 +740,12 @@ __del__(self) # 解构器
 <p>字符串表示：</p>
 <pre><code>__str__(self) # str(), print() 
 obj = ClassName()
-print(obj) # 默认的类的__str__会调用__repr__
-# 可以通过重写__str__或__repr__来改变打印的内容
+print(obj) # 没有定义__str__ 会调用__repr__
 
-__repr__(self) # repr()
+__repr__(self)  # repr()
 obj = ClassName()
 obj # 默认的打印对象的运行时的字符串，&lt;test.RoundFloat at 0x7fb715253e90&gt;
-# 可以通过重写__repr__()改变打印的内o
+# 可以通过重写__repr__()改变打印的内容
 
 __bool__(self) # 用于bool判断真假
 </code></pre>
@@ -975,7 +974,7 @@ class Foo(object):
         print('in bar')
 
 obj = TClass()
-TClass.__dict__['tmethod'] # function __main__.f
+TClass.__dict__['tmethod'] # __tion __main__.f
 TClass.tmethod # unbound method TClass.tmethod
 obj.tmethod # bound method TClass.tmethod of &lt;__main__.TClass object at 0x7f8a4f084c10&gt;
 
@@ -1074,6 +1073,7 @@ A.__dict__['method'].__get__(obj, B)
 </code></pre>
 <p><a class="link" href="https://rhettinger.wordpress.com/2011/05/26/super-considered-super/"  target="_blank" rel="noopener"
     >https://rhettinger.wordpress.com/2011/05/26/super-considered-super/</a></p>
+<p>参考面向对象编程．</p>
 <h1 id="classmethod">classmethod</h1>
 <p>classmethod 是一个内置装饰器，用于将方法转换为类方法。类方法的特点是：</p>
 <ul>

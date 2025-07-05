@@ -557,6 +557,12 @@ isgeneratorfunction() # 检查一个函数是否是生成器
 &lt;p&gt;python支持多继承．&lt;/p&gt;
 &lt;p&gt;python不支持++/&amp;ndash;自增和自减运算符．&lt;/p&gt;
 &lt;p&gt;python支持连续比较，a&amp;lt;b&amp;lt;c.&lt;/p&gt;
+&lt;p&gt;命名规则&lt;/p&gt;
+&lt;p&gt;variable: snake_case, case
+function:  get_user_info(), get()
+class: User, UserInfo
+module: snake_case.py
+package: myapp, utils&lt;/p&gt;
 &lt;h2 id=&#34;lexical-analysis&#34;&gt;lexical analysis&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.python.org/2/reference/lexical_analysis.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://docs.python.org/2/reference/lexical_analysis.html&lt;/a&gt;&lt;/p&gt;
@@ -600,6 +606,14 @@ pep8建议用四个空格表示一个缩进级别．
 $ chmod u+x mycode.py
 $ ./mycode.py
 &lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;f-string&#34;&gt;f-string&lt;/h3&gt;
+&lt;p&gt;格式字符串字面值则是可在运行时求值的表达式。&lt;/p&gt;
+&lt;p&gt;!s call str()&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;f&amp;quot;his name is {name!r}&amp;quot;
+f&amp;quot;his name is {repr(name)}&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;!r call repr()
+!a call ascii()&lt;/p&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;python注释&#34;&gt;&lt;strong&gt;python注释&lt;/strong&gt;&lt;/h1&gt;
 &lt;p&gt;单行注释：&lt;/p&gt;
@@ -976,6 +990,11 @@ map(lambda x: x**2, range(10))
 &lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;range&#34;&gt;&lt;em&gt;range&lt;/em&gt;&lt;/h2&gt;
+&lt;p&gt;用于生成整数序列的内建类型，返回对象&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;range(stop)
+range(start, stop)
+range(start, stop, step)
+&lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;bytes&#34;&gt;&lt;em&gt;bytes&lt;/em&gt;&lt;/h2&gt;
 &lt;h2 id=&#34;bytearray&#34;&gt;&lt;em&gt;bytearray&lt;/em&gt;&lt;/h2&gt;
 &lt;h2 id=&#34;memoryview&#34;&gt;&lt;em&gt;memoryview&lt;/em&gt;&lt;/h2&gt;
@@ -1054,6 +1073,15 @@ a = b if c else d
 # 等效于
 a = (b if c else d)
 &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;python没有switch，可以用if实现:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;if var == &amp;quot;a&amp;quot;:
+    return &amp;quot;A&amp;quot;
+elif var == &amp;quot;b&amp;quot;:
+    return &amp;quot;B&amp;quot;
+else:
+    return &amp;quot;unknown&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;3.10+引入match-case。&lt;/p&gt;
 &lt;h2 id=&#34;while循环语句&#34;&gt;&lt;em&gt;while循环语句&lt;/em&gt;&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;while condition:
     expression
@@ -1088,22 +1116,26 @@ for loop in open(&#39;file&#39;, &#39;r&#39;).readlines():
 for loop in open(&#39;file&#39;,&#39;r&#39;):
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;iterator迭代器-类型&#34;&gt;&lt;em&gt;iterator迭代器 类型&lt;/em&gt;&lt;/h2&gt;
-&lt;p&gt;Iterable: 能直接用于for循环的对象为可迭代对象Iterable.&lt;/p&gt;
-&lt;p&gt;Iterator: 能被next(g)内置函数调用并不断返回下一个值的对象为迭代器Iterator,迭代完成后抛出StopIteration异常．&lt;/p&gt;
-&lt;p&gt;file，enumerate和reversed内置类类型的工厂函数返回的都是迭代器类型．&lt;/p&gt;
+&lt;p&gt;Iterable可迭代对象: 能直接用于for循环的对象为可迭代对象Iterable. 只需要实现__iter__()方法即可。&lt;/p&gt;
+&lt;p&gt;Iterator迭代器: 能被next(g)内置函数调用并不断返回下一个值的对象为迭代器Iterator,迭代完成后抛出StopIteration异常, 也能用for循环，要同时实现__iter__()和__next__()&lt;/p&gt;
+&lt;p&gt;enumerate和reversed内置类类型的工厂函数返回的都是迭代器类型．&lt;/p&gt;
 &lt;p&gt;创建迭代器的3种方法：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;# 通过内建函数iter()
 iter()
 
 # 通过工厂函数
-file()
-enumerate()
-reversed()
+enumerate() # 迭代时同时获取元素值和索引
+
+reversed() # 反转序列对象
 
 # 自定义类，需要实现 __iter__() 和__next__() 两个方法(python3)
 class TestIterator(object):
+    def __init__(self, data):
+        self.data = data
+
     def __iter__(self):
-        return self
+        for item in self.data
+            yield item
 
     def __next__(self):
         if condition:
@@ -1138,8 +1170,7 @@ type(g)&lt;/p&gt;
 &lt;/ol&gt;
 &lt;p&gt;有yield的函数返回的就是一个生成器．&lt;/p&gt;
 &lt;p&gt;yield函数能记住上一次返回时在函数体中的位置，迭代生成器会跳转至该函数中间，而且上次调用的所有局部变量保持不变．&lt;/p&gt;
-&lt;p&gt;yield函数和普通函数执行顺序不一样，普通函数顺序执行，遇到return或最后一行语句返回．&lt;/p&gt;
-&lt;p&gt;yield函数遇到yield语句返回，下次执行从上次返回的yield语句开始继续执行．遇到return语句抛出StopIteration异常．&lt;/p&gt;
+&lt;p&gt;yield函数和普通函数执行顺序不一样，普通函数顺序执行，遇到return或最后一行语句返回．yield函数遇到yield语句返回，下次执行从上次返回的yield语句开始继续执行．遇到return语句抛出StopIteration异常．&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;def gena():
     yield &#39;first&#39;
     yield &#39;second&#39;
@@ -1297,7 +1328,7 @@ except AssertionError as e:
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;父类实现了上下文管理协议，子类可以直接使用with.&lt;/p&gt;
 &lt;hr&gt;
-&lt;h1 id=&#34;python函数&#34;&gt;&lt;strong&gt;python函数&lt;/strong&gt;&lt;/h1&gt;
+&lt;h1 id=&#34;函数function&#34;&gt;&lt;strong&gt;函数function&lt;/strong&gt;&lt;/h1&gt;
 &lt;p&gt;定义/申明一个函数:&lt;/p&gt;
 &lt;p&gt;python对函数的申明和定义是一起的．&lt;/p&gt;
 &lt;p&gt;函数必须先定义/申明才能引用/调用.&lt;/p&gt;
@@ -1414,6 +1445,20 @@ def func(*args, **kwargs):
 func() # local
 print(var) # local # 全局变量在局部被修改．
 &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;类型注释&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;def func1(arg1: int, arg2: str) -&amp;gt; bool:
+    ......
+
+// with default value
+def func2(arg1: str = &amp;quot;hello&amp;quot;) -&amp;gt; str
+    ......
+
+def func3(arg1: Optional[str]) -&amp;gt; int
+    ......
+
+def func4() -&amp;gt; Tuple[int, int]:
+    ......
+&lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;lambda匿名函数&#34;&gt;&lt;em&gt;lambda匿名函数&lt;/em&gt;&lt;/h2&gt;
 &lt;p&gt;lambda匿名函数就是一个只有一行表达式，不需要通过def来命名的函数.&lt;/p&gt;
 &lt;p&gt;lambda匿名函数返回一个可调用的函数对象．&lt;/p&gt;
@@ -1424,8 +1469,10 @@ lambda *args, **kwargs: expression
 lambda : expression
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;functional-programming函数式编程&#34;&gt;&lt;em&gt;Functional Programming函数式编程&lt;/em&gt;&lt;/h2&gt;
-&lt;p&gt;python涉及到函数式编程主要有几个内置函数和lambda匿名函数．&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;filter(function, iterable)
+&lt;p&gt;python涉及到函数式编程主要有几个内置类类型的工厂函数和lambda匿名函数．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;zip(*iterables, strict=False)
+
+filter(function, iterable, /)
 result = filter(lambda x: x%2==0, [1,2,3,4,5])
 &amp;gt; x=1, 1%2==0 False
 &amp;gt; x=2, 2%2==0, True
@@ -1433,7 +1480,7 @@ result = filter(lambda x: x%2==0, [1,2,3,4,5])
 print(list(result))
 &amp;gt; [2]
 
-map(function, iterable, ...)
+map(function, iterable, /, *iterables)
 result = map(lambda x: x**2, [1,2,3])
 &amp;gt; x=1, x**2 =1
 &amp;gt; x=2, 2**2=4
@@ -1567,7 +1614,12 @@ func = foo(bar(func))
 &lt;li&gt;全局名称空间&lt;/li&gt;
 &lt;li&gt;内建名称空间&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;python解释器最先加载内建名称空间，也就是__builtins__模块．&lt;/p&gt;
+&lt;p&gt;python解释器模块加载顺序：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;内存中已经加载的模块，也就是缓存(sys.modules)&lt;/li&gt;
+&lt;li&gt;最先加载内建名称空间，也就是内置模块．&lt;/li&gt;
+&lt;li&gt;sys.path路径中的模块&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;然后加载执行模块的全局名称空间，在模块执行时是活动名称空间．&lt;/p&gt;
 &lt;p&gt;最后加载局部名称空间，在执行期间是不断变化的．&lt;/p&gt;
 &lt;p&gt;名称空间和变量的作用域是有区别的．&lt;/p&gt;
@@ -1600,6 +1652,9 @@ module.method()
 &lt;p&gt;模块就是一个python程序的源文件．模块是用来组织python代码的方法．&lt;/p&gt;
 &lt;p&gt;把其他模块中属性附加到你的模块中的操作叫做导入(import).&lt;/p&gt;
 &lt;p&gt;那些自我包含并且有组织的代码片断就是模块( module ).&lt;/p&gt;
+&lt;p&gt;查看所有模块：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;help(&#39;modules&#39;)
+&lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;package&#34;&gt;&lt;em&gt;package&lt;/em&gt;&lt;/h2&gt;
 &lt;p&gt;包就是把多个模块放在一个目录中，然后必须加上__init__.py文件．包是用来组织模块的．&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;# 包支持模糊导入.
@@ -1629,7 +1684,7 @@ from robot import * # 仅仅导入__all__指定的属性
 &lt;h2 id=&#34;import导入模块和包&#34;&gt;&lt;em&gt;import导入模块和包&lt;/em&gt;&lt;/h2&gt;
 &lt;p&gt;如果模块第一次被导入，就会被加载并执行．也就是说模块被加载时顶层的代码会被执行，一般包括全局变量，类和函数的申明．&lt;/p&gt;
 &lt;p&gt;一个模块无论被导入(import)多少次，只在第一次导入时被加载一次．除非用reload()函数．&lt;/p&gt;
-&lt;p&gt;import导入顺序(中间空一格)：&lt;/p&gt;
+&lt;p&gt;写代码时候import导入顺序(中间空一格)：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;标准库模块&lt;/li&gt;
 &lt;li&gt;第三方库模块&lt;/li&gt;
@@ -1670,7 +1725,7 @@ global()
 if __name__ == &amp;quot;__main__&amp;quot;:
     main()
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;pep0328&#34;&gt;&lt;em&gt;PEP0328&lt;/em&gt;&lt;/h1&gt;
+&lt;h2 id=&#34;pep0328&#34;&gt;&lt;em&gt;PEP0328&lt;/em&gt;&lt;/h2&gt;
 &lt;p&gt;多行导入：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;# 通过续行符
 from module import a, b, c, \

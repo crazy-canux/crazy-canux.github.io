@@ -21,11 +21,11 @@ python没有switch语句．
 python支持多继承．
 python不支持&#43;&#43;/&ndash;自增和自减运算符．
 python支持连续比较，a&lt;b&lt;c.
+命名规则
+variable: snake_case, case function: get_user_info(), get() class: User, UserInfo module: snake_case.py package: myapp, utils
 lexical analysis https://docs.python.org/2/reference/lexical_analysis.html
 Logical lines and physical lines：
 # python通过行尾的令牌NEWLINE表示逻辑行 expression # 以操作系统的换行符表示物理行． \n encoding declarations:
-# python脚本中的第一行或第二行的 coding[=:]\s*([-\w.]&#43;) # 注释与正则表达式匹配将被作为编码申明处理． [Deprecated] explicit line joining:
-# 多个物理行通过反斜线backslash续行进行显示换行 # 推荐用隐式换行． if a == b \ and c ==d: # 只有续行的最后一行可以有注释．反斜线的行不能注释. print(&#39;more than one physical line.&#39;) implicit line joining：
 '>
 <title>Python</title>
 
@@ -52,11 +52,11 @@ python没有switch语句．
 python支持多继承．
 python不支持&#43;&#43;/&ndash;自增和自减运算符．
 python支持连续比较，a&lt;b&lt;c.
+命名规则
+variable: snake_case, case function: get_user_info(), get() class: User, UserInfo module: snake_case.py package: myapp, utils
 lexical analysis https://docs.python.org/2/reference/lexical_analysis.html
 Logical lines and physical lines：
 # python通过行尾的令牌NEWLINE表示逻辑行 expression # 以操作系统的换行符表示物理行． \n encoding declarations:
-# python脚本中的第一行或第二行的 coding[=:]\s*([-\w.]&#43;) # 注释与正则表达式匹配将被作为编码申明处理． [Deprecated] explicit line joining:
-# 多个物理行通过反斜线backslash续行进行显示换行 # 推荐用隐式换行． if a == b \ and c ==d: # 只有续行的最后一行可以有注释．反斜线的行不能注释. print(&#39;more than one physical line.&#39;) implicit line joining：
 '>
 <meta property='og:url' content='https://canuxcheng.com/post/python/'>
 <meta property='og:site_name' content='Morgoth'>
@@ -82,11 +82,11 @@ python没有switch语句．
 python支持多继承．
 python不支持&#43;&#43;/&ndash;自增和自减运算符．
 python支持连续比较，a&lt;b&lt;c.
+命名规则
+variable: snake_case, case function: get_user_info(), get() class: User, UserInfo module: snake_case.py package: myapp, utils
 lexical analysis https://docs.python.org/2/reference/lexical_analysis.html
 Logical lines and physical lines：
 # python通过行尾的令牌NEWLINE表示逻辑行 expression # 以操作系统的换行符表示物理行． \n encoding declarations:
-# python脚本中的第一行或第二行的 coding[=:]\s*([-\w.]&#43;) # 注释与正则表达式匹配将被作为编码申明处理． [Deprecated] explicit line joining:
-# 多个物理行通过反斜线backslash续行进行显示换行 # 推荐用隐式换行． if a == b \ and c ==d: # 只有续行的最后一行可以有注释．反斜线的行不能注释. print(&#39;more than one physical line.&#39;) implicit line joining：
 ">
     <link rel="shortcut icon" href="favicon.ico" />
 <style>
@@ -397,7 +397,11 @@ Logical lines and physical lines：
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ul>
-    <li><a href="#lexical-analysis">lexical analysis</a></li>
+    <li><a href="#lexical-analysis">lexical analysis</a>
+      <ul>
+        <li><a href="#f-string">f-string</a></li>
+      </ul>
+    </li>
   </ul>
 
   <ul>
@@ -458,6 +462,7 @@ Logical lines and physical lines：
     <li><a href="#module模块"><em>module模块</em></a></li>
     <li><a href="#package"><em>package</em></a></li>
     <li><a href="#import导入模块和包"><em>import导入模块和包</em></a></li>
+    <li><a href="#pep0328"><em>PEP0328</em></a></li>
   </ul>
 </nav>
         </div>
@@ -578,6 +583,12 @@ Logical lines and physical lines：
 <p>python支持多继承．</p>
 <p>python不支持++/&ndash;自增和自减运算符．</p>
 <p>python支持连续比较，a&lt;b&lt;c.</p>
+<p>命名规则</p>
+<p>variable: snake_case, case
+function:  get_user_info(), get()
+class: User, UserInfo
+module: snake_case.py
+package: myapp, utils</p>
 <h2 id="lexical-analysis">lexical analysis</h2>
 <p><a class="link" href="https://docs.python.org/2/reference/lexical_analysis.html"  target="_blank" rel="noopener"
     >https://docs.python.org/2/reference/lexical_analysis.html</a></p>
@@ -621,6 +632,14 @@ pep8建议用四个空格表示一个缩进级别．
 $ chmod u+x mycode.py
 $ ./mycode.py
 </code></pre>
+<h3 id="f-string">f-string</h3>
+<p>格式字符串字面值则是可在运行时求值的表达式。</p>
+<p>!s call str()</p>
+<pre><code>f&quot;his name is {name!r}&quot;
+f&quot;his name is {repr(name)}&quot;
+</code></pre>
+<p>!r call repr()
+!a call ascii()</p>
 <hr>
 <h1 id="python注释"><strong>python注释</strong></h1>
 <p>单行注释：</p>
@@ -997,6 +1016,11 @@ map(lambda x: x**2, range(10))
 </code></pre>
 <hr>
 <h2 id="range"><em>range</em></h2>
+<p>用于生成整数序列的内建类型，返回对象</p>
+<pre><code>range(stop)
+range(start, stop)
+range(start, stop, step)
+</code></pre>
 <h2 id="bytes"><em>bytes</em></h2>
 <h2 id="bytearray"><em>bytearray</em></h2>
 <h2 id="memoryview"><em>memoryview</em></h2>
@@ -1075,6 +1099,15 @@ a = b if c else d
 # 等效于
 a = (b if c else d)
 </code></pre>
+<p>python没有switch，可以用if实现:</p>
+<pre><code>if var == &quot;a&quot;:
+    return &quot;A&quot;
+elif var == &quot;b&quot;:
+    return &quot;B&quot;
+else:
+    return &quot;unknown&quot;
+</code></pre>
+<p>3.10+引入match-case。</p>
 <h2 id="while循环语句"><em>while循环语句</em></h2>
 <pre><code>while condition:
     expression
@@ -1109,22 +1142,26 @@ for loop in open('file', 'r').readlines():
 for loop in open('file','r'):
 </code></pre>
 <h2 id="iterator迭代器-类型"><em>iterator迭代器 类型</em></h2>
-<p>Iterable: 能直接用于for循环的对象为可迭代对象Iterable.</p>
-<p>Iterator: 能被next(g)内置函数调用并不断返回下一个值的对象为迭代器Iterator,迭代完成后抛出StopIteration异常．</p>
-<p>file，enumerate和reversed内置类类型的工厂函数返回的都是迭代器类型．</p>
+<p>Iterable可迭代对象: 能直接用于for循环的对象为可迭代对象Iterable. 只需要实现__iter__()方法即可。</p>
+<p>Iterator迭代器: 能被next(g)内置函数调用并不断返回下一个值的对象为迭代器Iterator,迭代完成后抛出StopIteration异常, 也能用for循环，要同时实现__iter__()和__next__()</p>
+<p>enumerate和reversed内置类类型的工厂函数返回的都是迭代器类型．</p>
 <p>创建迭代器的3种方法：</p>
 <pre><code># 通过内建函数iter()
 iter()
 
 # 通过工厂函数
-file()
-enumerate()
-reversed()
+enumerate() # 迭代时同时获取元素值和索引
+
+reversed() # 反转序列对象
 
 # 自定义类，需要实现 __iter__() 和__next__() 两个方法(python3)
 class TestIterator(object):
+    def __init__(self, data):
+        self.data = data
+
     def __iter__(self):
-        return self
+        for item in self.data
+            yield item
 
     def __next__(self):
         if condition:
@@ -1159,8 +1196,7 @@ type(g)</p>
 </ol>
 <p>有yield的函数返回的就是一个生成器．</p>
 <p>yield函数能记住上一次返回时在函数体中的位置，迭代生成器会跳转至该函数中间，而且上次调用的所有局部变量保持不变．</p>
-<p>yield函数和普通函数执行顺序不一样，普通函数顺序执行，遇到return或最后一行语句返回．</p>
-<p>yield函数遇到yield语句返回，下次执行从上次返回的yield语句开始继续执行．遇到return语句抛出StopIteration异常．</p>
+<p>yield函数和普通函数执行顺序不一样，普通函数顺序执行，遇到return或最后一行语句返回．yield函数遇到yield语句返回，下次执行从上次返回的yield语句开始继续执行．遇到return语句抛出StopIteration异常．</p>
 <pre><code>def gena():
     yield 'first'
     yield 'second'
@@ -1318,7 +1354,7 @@ except AssertionError as e:
 </code></pre>
 <p>父类实现了上下文管理协议，子类可以直接使用with.</p>
 <hr>
-<h1 id="python函数"><strong>python函数</strong></h1>
+<h1 id="函数function"><strong>函数function</strong></h1>
 <p>定义/申明一个函数:</p>
 <p>python对函数的申明和定义是一起的．</p>
 <p>函数必须先定义/申明才能引用/调用.</p>
@@ -1435,6 +1471,20 @@ def func(*args, **kwargs):
 func() # local
 print(var) # local # 全局变量在局部被修改．
 </code></pre>
+<p>类型注释</p>
+<pre><code>def func1(arg1: int, arg2: str) -&gt; bool:
+    ......
+
+// with default value
+def func2(arg1: str = &quot;hello&quot;) -&gt; str
+    ......
+
+def func3(arg1: Optional[str]) -&gt; int
+    ......
+
+def func4() -&gt; Tuple[int, int]:
+    ......
+</code></pre>
 <h2 id="lambda匿名函数"><em>lambda匿名函数</em></h2>
 <p>lambda匿名函数就是一个只有一行表达式，不需要通过def来命名的函数.</p>
 <p>lambda匿名函数返回一个可调用的函数对象．</p>
@@ -1445,8 +1495,10 @@ lambda *args, **kwargs: expression
 lambda : expression
 </code></pre>
 <h2 id="functional-programming函数式编程"><em>Functional Programming函数式编程</em></h2>
-<p>python涉及到函数式编程主要有几个内置函数和lambda匿名函数．</p>
-<pre><code>filter(function, iterable)
+<p>python涉及到函数式编程主要有几个内置类类型的工厂函数和lambda匿名函数．</p>
+<pre><code>zip(*iterables, strict=False)
+
+filter(function, iterable, /)
 result = filter(lambda x: x%2==0, [1,2,3,4,5])
 &gt; x=1, 1%2==0 False
 &gt; x=2, 2%2==0, True
@@ -1454,7 +1506,7 @@ result = filter(lambda x: x%2==0, [1,2,3,4,5])
 print(list(result))
 &gt; [2]
 
-map(function, iterable, ...)
+map(function, iterable, /, *iterables)
 result = map(lambda x: x**2, [1,2,3])
 &gt; x=1, x**2 =1
 &gt; x=2, 2**2=4
@@ -1588,7 +1640,12 @@ func = foo(bar(func))
 <li>全局名称空间</li>
 <li>内建名称空间</li>
 </ul>
-<p>python解释器最先加载内建名称空间，也就是__builtins__模块．</p>
+<p>python解释器模块加载顺序：</p>
+<ul>
+<li>内存中已经加载的模块，也就是缓存(sys.modules)</li>
+<li>最先加载内建名称空间，也就是内置模块．</li>
+<li>sys.path路径中的模块</li>
+</ul>
 <p>然后加载执行模块的全局名称空间，在模块执行时是活动名称空间．</p>
 <p>最后加载局部名称空间，在执行期间是不断变化的．</p>
 <p>名称空间和变量的作用域是有区别的．</p>
@@ -1621,6 +1678,9 @@ module.method()
 <p>模块就是一个python程序的源文件．模块是用来组织python代码的方法．</p>
 <p>把其他模块中属性附加到你的模块中的操作叫做导入(import).</p>
 <p>那些自我包含并且有组织的代码片断就是模块( module ).</p>
+<p>查看所有模块：</p>
+<pre><code>help('modules')
+</code></pre>
 <h2 id="package"><em>package</em></h2>
 <p>包就是把多个模块放在一个目录中，然后必须加上__init__.py文件．包是用来组织模块的．</p>
 <pre><code># 包支持模糊导入.
@@ -1650,7 +1710,7 @@ from robot import * # 仅仅导入__all__指定的属性
 <h2 id="import导入模块和包"><em>import导入模块和包</em></h2>
 <p>如果模块第一次被导入，就会被加载并执行．也就是说模块被加载时顶层的代码会被执行，一般包括全局变量，类和函数的申明．</p>
 <p>一个模块无论被导入(import)多少次，只在第一次导入时被加载一次．除非用reload()函数．</p>
-<p>import导入顺序(中间空一格)：</p>
+<p>写代码时候import导入顺序(中间空一格)：</p>
 <ul>
 <li>标准库模块</li>
 <li>第三方库模块</li>
@@ -1691,7 +1751,7 @@ global()
 if __name__ == &quot;__main__&quot;:
     main()
 </code></pre>
-<h1 id="pep0328"><em>PEP0328</em></h1>
+<h2 id="pep0328"><em>PEP0328</em></h2>
 <p>多行导入：</p>
 <pre><code># 通过续行符
 from module import a, b, c, \

@@ -837,13 +837,12 @@ __del__(self) # 解构器
 &lt;p&gt;字符串表示：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;__str__(self) # str(), print() 
 obj = ClassName()
-print(obj) # 默认的类的__str__会调用__repr__
-# 可以通过重写__str__或__repr__来改变打印的内容
+print(obj) # 没有定义__str__ 会调用__repr__
 
-__repr__(self) # repr()
+__repr__(self)  # repr()
 obj = ClassName()
 obj # 默认的打印对象的运行时的字符串，&amp;lt;test.RoundFloat at 0x7fb715253e90&amp;gt;
-# 可以通过重写__repr__()改变打印的内o
+# 可以通过重写__repr__()改变打印的内容
 
 __bool__(self) # 用于bool判断真假
 &lt;/code&gt;&lt;/pre&gt;
@@ -1072,7 +1071,7 @@ class Foo(object):
         print(&#39;in bar&#39;)
 
 obj = TClass()
-TClass.__dict__[&#39;tmethod&#39;] # function __main__.f
+TClass.__dict__[&#39;tmethod&#39;] # __tion __main__.f
 TClass.tmethod # unbound method TClass.tmethod
 obj.tmethod # bound method TClass.tmethod of &amp;lt;__main__.TClass object at 0x7f8a4f084c10&amp;gt;
 
@@ -1171,6 +1170,7 @@ A.__dict__[&#39;method&#39;].__get__(obj, B)
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://rhettinger.wordpress.com/2011/05/26/super-considered-super/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://rhettinger.wordpress.com/2011/05/26/super-considered-super/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;参考面向对象编程．&lt;/p&gt;
 &lt;h1 id=&#34;classmethod&#34;&gt;classmethod&lt;/h1&gt;
 &lt;p&gt;classmethod 是一个内置装饰器，用于将方法转换为类方法。类方法的特点是：&lt;/p&gt;
 &lt;ul&gt;

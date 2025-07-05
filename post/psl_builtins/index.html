@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='_builtins_ python的内置模块，所有python的内置功能都在这个模块中，不需要import导入就可以使用。
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='builtins python的内置模块，所有python的内置功能都在这个模块中，不需要import导入就可以使用。
 包括内置类类型以及所属的内置方法，和内置函数.
-builtin - 包括内置类类型以及所属的内置方法，和内置函数.解释器不会自动导入．
-builtins - 仅仅是__builtin__的一个引用．解释器自动导入的．
 内置常量
 内置函数(BIF)
 内置类型(BIT)
@@ -12,18 +10,16 @@ builtins - 仅仅是__builtin__的一个引用．解释器自动导入的．
 内置类型的内置方法(BIM)
 内置异常
 该模块是通过C/C&#43;&#43;实现的．
-内置函数 python2和python3共同的内置函数：
-__import__(name, globals={}, locals={}, fromlist=[], level=-1) # import关键字实际调用该函数 compile(source, filename, mode[, flags[, dont_inherit]]) # 编译source返回一个code对象(代码对象)． # mode: exec, 用于模块 python2可以用exec关键字执行,python3改成exec()函数; module = &quot;for i in xrange(10): print(i)&quot; code = compile(module, &#39;&#39;, &#39;exec&#39;) type(code) # code exec code # mode: single, 用于单行语句, 也是用exec执行; code = compile(&quot;print &#39;test&#39;&quot;, &#39;&#39;, single) type(code) # code exec code # mode: eval, 用于表达式 可以用eval()函数执行． eg: expression = &quot;3 * 4&quot; code = compile(expression, &#39;&#39;, &#39;eval&#39;) type(code) # code eval(code) eval(source[, globals[, locals]]) # 返回python表达式的结果，source可以是compile()返回的代码对象，也可以是一个表达式． format(value[, format_spec]) # 返回格式化后的字符串形式． ## 环境变量相关 globals() # 返回当前作用域的全局名称空间的字典． locals() # 返回当前作用域的局部名称空间的字典． ## 数字类型的数学运算 abs(number) # 返回int/long的绝对值 divmod(x, y) # 返回x/y 的　(商，余数) 组成的元组 pow(x, y[, z]) # 返回x**y或(x**y) % z round(number[, ndigits]) # 返回number四舍五入后的结果，ndigits表示小数点后的位数，默认是0. chr(i) # 返回整数ｉ对应的ASCII字符的字符串形式，0 &lt;= i &lt; 256. ord(c) # 返回字符ASCII字符c对应的整数. bin(number) # 返回int/long的二进制的字符串形式 oct(number) # 返回int/long的八进制的字符串形式． hex(number) # 返回int/long的十六进制的字符串形式. ## 对象相关的操作 id(object) # 返回一个对象的ID, 用内存地址作为ID来表示唯一性. 也就是对象的身份．等价is关键字. repr(object) # 返回object的标准字符串形式，可以通过eval()重新得到该对象．eval(repr(object)) == object. callable(object) # 如果object是可调用的返回True, 需要实现魔法方法__call__() hash(object) # 返回一个对象的散列/哈希(hash)值，有相同值的对象hash值相同.可用做字典的键. len(object) # 返回序列（str, tuple, list)或映射（dict)的长度 dir([object]) # 查看对象的信息 getattr(object, name[, default]) # 如果object.name存在,返回name的值，否则如果default存在，返回default,否则抛出异常AttributeError, 和super的查找顺序一样． hasattr(object, name) # 和getattr一样，但是捕获了异常，object.name存在返回True,否则返回False. setattr(object, name, value) # 给对象的属性赋值，相当于object.name = value delattr(object, name) # 删除对象object的属性name isinstance(object, class-or-type-or-tuple) # 如果object是class-or-type中指定的类或类型的实例或子类的实例，返回True,否则返回False. issubclass(C, B-or-(B,A)) # 如果C是B或(B,A,...)中的类的子类，返回True,否则返回False. 不严格子类也允许，例如一个类可以看作是自身的子类． vars([object]) # 没有参数等于locals()，有参数等于object.__dict__. ## related to iterable min(iterable[, key=func]) # 返回可迭代对象iterable中的最小元素 min(a, b, c, ...[, key=func]) # 返回a,b,c...中的最小元素 max(iterable[, key=func]) # 和min相反 max(a, b, c, ...[, key=func]) # 和min相反 all(iterable) # 如果可迭代的参数iterable中所有的元素都不是0,False,&#39;&#39;则返回True,iterable为空也返回True,否则返回False any(iterable) # 如果可迭代的参数iterable中所有的元素都是0,False,&#39;&#39;则返回False,　否则返回True sum(sequence[, start]) # 返回数字序列sequence的所有元素加上start的和，start默认是０． ## related to iterator iter(collection) # 将可迭代对象（str, tuple, list, dict的键,集合,文件的行等）转换成迭代器,返回迭代器对象. iter(callable, sentinel) # 第一个参数需要是callable的，每次迭代到sentinel停止． next(iterator[, default]) # 返回迭代器iterator中的下一个元素，如果没有元素了，default指定内容返回该内容，否则抛出StopIteration异常． ## related to input input([prompt]) # 等于eval(raw_input(prompt)) # 根据prompt提示输入内容，返回输入的内容,如果是表达式会先求值再返回. ## related to file open(name[, mode[, buffering]]) # 打开一个文件，返回一个file类类型的对象． [New]python3新增的内置函数：
+import builtins # can be ignored dir(builtins) 内置特殊常量 False # 内置类型bool的实例 True # 内置类型bool的实例 None # python的Null对象或types.NoneType,只有一个值None.布尔值始终为False. NotImplemented # types.NotImplementedType Ellipsis # types.EllipsisType, 省略对象，布尔值始终为True. __debug__ # True/False 内置函数 不需要import可以直接使用的函数
+__import__(name, globals={}, locals={}, fromlist=[], level=-1) # import关键字实际调用该函数 print(value, ..., sep=&#39; &#39;, end=&#39;\n&#39;, file=sys.stdout, flush=False) # python3新增 compile(source, filename, mode[, flags[, dont_inherit]]) # 编译source返回一个code对象(代码对象)． # mode: exec, 用于模块 python2可以用exec关键字执行,python3改成exec()函数; module = &quot;for i in xrange(10): print(i)&quot; code = compile(module, &#39;&#39;, &#39;exec&#39;) type(code) # code exec code # mode: single, 用于单行语句, 也是用exec执行; code = compile(&quot;print &#39;test&#39;&quot;, &#39;&#39;, single) type(code) # code exec code # mode: eval, 用于表达式 可以用eval()函数执行． eg: expression = &quot;3 * 4&quot; code = compile(expression, &#39;&#39;, &#39;eval&#39;) type(code) # code eval(code) eval(source[, globals[, locals]]) # 返回python表达式的结果，source可以是compile()返回的代码对象，也可以是一个表达式． exec(object[, globals[, locals]]) # python3 新增 # object可以是一个文件对象，也可以是一个语句或代码块． format(value[, format_spec]) # 返回格式化后的字符串形式． ## 环境变量相关 globals() # 返回当前作用域的全局名称空间的字典． locals() # 返回当前作用域的局部名称空间的字典． ## 数字类型的数学运算 abs(number) # 返回int/long的绝对值 divmod(x, y) # 返回x/y 的　(商，余数) 组成的元组 pow(x, y[, z]) # 返回x**y或(x**y) % z round(number[, ndigits]) # 返回number四舍五入后的结果，ndigits表示小数点后的位数，默认是0. chr(i) # 返回整数ｉ对应的ASCII字符的字符串形式，0 &lt;= i &lt; 256. ord(c) # 返回字符ASCII字符c对应的整数. bin(number) # 返回int/long的二进制的字符串形式 oct(number) # 返回int/long的八进制的字符串形式． hex(number) # 返回int/long的十六进制的字符串形式. ## 对象相关的操作 id(object) # 返回一个对象的ID, 用内存地址作为ID来表示唯一性. 也就是对象的身份．等价is关键字. repr(object) # 返回object的标准字符串形式，可以通过eval()重新得到该对象．eval(repr(object)) == object. ascii(object) # 和repr()函数等效． callable(object) # 如果object是可调用的返回True, 需要实现魔法方法__call__() hash(object) # 返回一个对象的散列/哈希(hash)值，有相同值的对象hash值相同.可用做字典的键. len(object) # 返回序列（str, tuple, list)或映射（dict)的长度 dir([object]) # 查看对象的信息 getattr(object, name[, default]) # 如果object.name存在,返回name的值，否则如果default存在，返回default,否则抛出异常AttributeError, 和super的查找顺序一样． hasattr(object, name) # 和getattr一样，但是捕获了异常，object.name存在返回True,否则返回False. setattr(object, name, value) # 给对象的属性赋值，相当于object.name = value delattr(object, name) # 删除对象object的属性name isinstance(object, class-or-type-or-tuple) # 如果object是class-or-type中指定的类或类型的实例或子类的实例，返回True,否则返回False. issubclass(C, B-or-(B,A)) # 如果C是B或(B,A,...)中的类的子类，返回True,否则返回False. 不严格子类也允许，例如一个类可以看作是自身的子类． vars([object]) # 没有参数等于locals()，有参数等于object.__dict__. ## related to iterable min(iterable[, key=func]) # 返回可迭代对象iterable中的最小元素 min(a, b, c, ...[, key=func]) # 返回a,b,c...中的最小元素 max(iterable[, key=func]) # 和min相反 max(a, b, c, ...[, key=func]) # 和min相反 all(iterable) # 如果可迭代的参数iterable中所有的元素都不是0,False,&#39;&#39;则返回True,iterable为空也返回True,否则返回False any(iterable) # 如果可迭代的参数iterable中所有的元素都是0,False,&#39;&#39;则返回False,　否则返回True sum(sequence[, start]) # 返回数字序列sequence的所有元素加上start的和，start默认是０． ## related to iterator iter(collection) # 将可迭代对象（str, tuple, list, dict的键,集合,文件的行等）转换成迭代器,返回迭代器对象. iter(callable, sentinel) # 第一个参数需要是callable的，每次迭代到sentinel停止． next(iterator[, default]) # 返回迭代器iterator中的下一个元素，如果没有元素了，default指定内容返回该内容，否则抛出StopIteration异常． ## related to input input([prompt]) # python3 # 根据prompt提示输入内容，返回输入的内容,如果是表达式会先求值再返回. ## related to file open(name[, mode[, buffering]]) # 打开一个文件，返回一个file类类型的对象． // python3 refactor sorted(iterable, key=None, reverse=False) // 多维数据排序 dict = {&#39;a&#39;: 3, &#39;b&#39;: 2, &#39;c&#39;: 1} sorted(dict.items(), key=lambda x:x[1], reverse=False) json = [{&quot;time&quot;: 1, &quot;data&quot;: &quot;message&quot;}, {&quot;time&quot;: 2, &quot;data&quot;: &quot;message&quot;}] sorted(json, key=lambda k:k[&quot;time&quot;]) 内置异常类 BaseException(object) # 所有异常的基类, 继承自object.
 '>
 <title>PSL_builtins</title>
 
 <link rel='canonical' href='https://canuxcheng.com/post/psl_builtins/'>
 
 <link rel="stylesheet" href="/scss/style.min.2d59822570c0be136f2ad87c952ef8788ac2a951067adda1c49b253bff7d0292.css"><meta property='og:title' content='PSL_builtins'>
-<meta property='og:description' content='_builtins_ python的内置模块，所有python的内置功能都在这个模块中，不需要import导入就可以使用。
+<meta property='og:description' content='builtins python的内置模块，所有python的内置功能都在这个模块中，不需要import导入就可以使用。
 包括内置类类型以及所属的内置方法，和内置函数.
-builtin - 包括内置类类型以及所属的内置方法，和内置函数.解释器不会自动导入．
-builtins - 仅仅是__builtin__的一个引用．解释器自动导入的．
 内置常量
 内置函数(BIF)
 内置类型(BIT)
@@ -31,17 +27,15 @@ builtins - 仅仅是__builtin__的一个引用．解释器自动导入的．
 内置类型的内置方法(BIM)
 内置异常
 该模块是通过C/C&#43;&#43;实现的．
-内置函数 python2和python3共同的内置函数：
-__import__(name, globals={}, locals={}, fromlist=[], level=-1) # import关键字实际调用该函数 compile(source, filename, mode[, flags[, dont_inherit]]) # 编译source返回一个code对象(代码对象)． # mode: exec, 用于模块 python2可以用exec关键字执行,python3改成exec()函数; module = &quot;for i in xrange(10): print(i)&quot; code = compile(module, &#39;&#39;, &#39;exec&#39;) type(code) # code exec code # mode: single, 用于单行语句, 也是用exec执行; code = compile(&quot;print &#39;test&#39;&quot;, &#39;&#39;, single) type(code) # code exec code # mode: eval, 用于表达式 可以用eval()函数执行． eg: expression = &quot;3 * 4&quot; code = compile(expression, &#39;&#39;, &#39;eval&#39;) type(code) # code eval(code) eval(source[, globals[, locals]]) # 返回python表达式的结果，source可以是compile()返回的代码对象，也可以是一个表达式． format(value[, format_spec]) # 返回格式化后的字符串形式． ## 环境变量相关 globals() # 返回当前作用域的全局名称空间的字典． locals() # 返回当前作用域的局部名称空间的字典． ## 数字类型的数学运算 abs(number) # 返回int/long的绝对值 divmod(x, y) # 返回x/y 的　(商，余数) 组成的元组 pow(x, y[, z]) # 返回x**y或(x**y) % z round(number[, ndigits]) # 返回number四舍五入后的结果，ndigits表示小数点后的位数，默认是0. chr(i) # 返回整数ｉ对应的ASCII字符的字符串形式，0 &lt;= i &lt; 256. ord(c) # 返回字符ASCII字符c对应的整数. bin(number) # 返回int/long的二进制的字符串形式 oct(number) # 返回int/long的八进制的字符串形式． hex(number) # 返回int/long的十六进制的字符串形式. ## 对象相关的操作 id(object) # 返回一个对象的ID, 用内存地址作为ID来表示唯一性. 也就是对象的身份．等价is关键字. repr(object) # 返回object的标准字符串形式，可以通过eval()重新得到该对象．eval(repr(object)) == object. callable(object) # 如果object是可调用的返回True, 需要实现魔法方法__call__() hash(object) # 返回一个对象的散列/哈希(hash)值，有相同值的对象hash值相同.可用做字典的键. len(object) # 返回序列（str, tuple, list)或映射（dict)的长度 dir([object]) # 查看对象的信息 getattr(object, name[, default]) # 如果object.name存在,返回name的值，否则如果default存在，返回default,否则抛出异常AttributeError, 和super的查找顺序一样． hasattr(object, name) # 和getattr一样，但是捕获了异常，object.name存在返回True,否则返回False. setattr(object, name, value) # 给对象的属性赋值，相当于object.name = value delattr(object, name) # 删除对象object的属性name isinstance(object, class-or-type-or-tuple) # 如果object是class-or-type中指定的类或类型的实例或子类的实例，返回True,否则返回False. issubclass(C, B-or-(B,A)) # 如果C是B或(B,A,...)中的类的子类，返回True,否则返回False. 不严格子类也允许，例如一个类可以看作是自身的子类． vars([object]) # 没有参数等于locals()，有参数等于object.__dict__. ## related to iterable min(iterable[, key=func]) # 返回可迭代对象iterable中的最小元素 min(a, b, c, ...[, key=func]) # 返回a,b,c...中的最小元素 max(iterable[, key=func]) # 和min相反 max(a, b, c, ...[, key=func]) # 和min相反 all(iterable) # 如果可迭代的参数iterable中所有的元素都不是0,False,&#39;&#39;则返回True,iterable为空也返回True,否则返回False any(iterable) # 如果可迭代的参数iterable中所有的元素都是0,False,&#39;&#39;则返回False,　否则返回True sum(sequence[, start]) # 返回数字序列sequence的所有元素加上start的和，start默认是０． ## related to iterator iter(collection) # 将可迭代对象（str, tuple, list, dict的键,集合,文件的行等）转换成迭代器,返回迭代器对象. iter(callable, sentinel) # 第一个参数需要是callable的，每次迭代到sentinel停止． next(iterator[, default]) # 返回迭代器iterator中的下一个元素，如果没有元素了，default指定内容返回该内容，否则抛出StopIteration异常． ## related to input input([prompt]) # 等于eval(raw_input(prompt)) # 根据prompt提示输入内容，返回输入的内容,如果是表达式会先求值再返回. ## related to file open(name[, mode[, buffering]]) # 打开一个文件，返回一个file类类型的对象． [New]python3新增的内置函数：
+import builtins # can be ignored dir(builtins) 内置特殊常量 False # 内置类型bool的实例 True # 内置类型bool的实例 None # python的Null对象或types.NoneType,只有一个值None.布尔值始终为False. NotImplemented # types.NotImplementedType Ellipsis # types.EllipsisType, 省略对象，布尔值始终为True. __debug__ # True/False 内置函数 不需要import可以直接使用的函数
+__import__(name, globals={}, locals={}, fromlist=[], level=-1) # import关键字实际调用该函数 print(value, ..., sep=&#39; &#39;, end=&#39;\n&#39;, file=sys.stdout, flush=False) # python3新增 compile(source, filename, mode[, flags[, dont_inherit]]) # 编译source返回一个code对象(代码对象)． # mode: exec, 用于模块 python2可以用exec关键字执行,python3改成exec()函数; module = &quot;for i in xrange(10): print(i)&quot; code = compile(module, &#39;&#39;, &#39;exec&#39;) type(code) # code exec code # mode: single, 用于单行语句, 也是用exec执行; code = compile(&quot;print &#39;test&#39;&quot;, &#39;&#39;, single) type(code) # code exec code # mode: eval, 用于表达式 可以用eval()函数执行． eg: expression = &quot;3 * 4&quot; code = compile(expression, &#39;&#39;, &#39;eval&#39;) type(code) # code eval(code) eval(source[, globals[, locals]]) # 返回python表达式的结果，source可以是compile()返回的代码对象，也可以是一个表达式． exec(object[, globals[, locals]]) # python3 新增 # object可以是一个文件对象，也可以是一个语句或代码块． format(value[, format_spec]) # 返回格式化后的字符串形式． ## 环境变量相关 globals() # 返回当前作用域的全局名称空间的字典． locals() # 返回当前作用域的局部名称空间的字典． ## 数字类型的数学运算 abs(number) # 返回int/long的绝对值 divmod(x, y) # 返回x/y 的　(商，余数) 组成的元组 pow(x, y[, z]) # 返回x**y或(x**y) % z round(number[, ndigits]) # 返回number四舍五入后的结果，ndigits表示小数点后的位数，默认是0. chr(i) # 返回整数ｉ对应的ASCII字符的字符串形式，0 &lt;= i &lt; 256. ord(c) # 返回字符ASCII字符c对应的整数. bin(number) # 返回int/long的二进制的字符串形式 oct(number) # 返回int/long的八进制的字符串形式． hex(number) # 返回int/long的十六进制的字符串形式. ## 对象相关的操作 id(object) # 返回一个对象的ID, 用内存地址作为ID来表示唯一性. 也就是对象的身份．等价is关键字. repr(object) # 返回object的标准字符串形式，可以通过eval()重新得到该对象．eval(repr(object)) == object. ascii(object) # 和repr()函数等效． callable(object) # 如果object是可调用的返回True, 需要实现魔法方法__call__() hash(object) # 返回一个对象的散列/哈希(hash)值，有相同值的对象hash值相同.可用做字典的键. len(object) # 返回序列（str, tuple, list)或映射（dict)的长度 dir([object]) # 查看对象的信息 getattr(object, name[, default]) # 如果object.name存在,返回name的值，否则如果default存在，返回default,否则抛出异常AttributeError, 和super的查找顺序一样． hasattr(object, name) # 和getattr一样，但是捕获了异常，object.name存在返回True,否则返回False. setattr(object, name, value) # 给对象的属性赋值，相当于object.name = value delattr(object, name) # 删除对象object的属性name isinstance(object, class-or-type-or-tuple) # 如果object是class-or-type中指定的类或类型的实例或子类的实例，返回True,否则返回False. issubclass(C, B-or-(B,A)) # 如果C是B或(B,A,...)中的类的子类，返回True,否则返回False. 不严格子类也允许，例如一个类可以看作是自身的子类． vars([object]) # 没有参数等于locals()，有参数等于object.__dict__. ## related to iterable min(iterable[, key=func]) # 返回可迭代对象iterable中的最小元素 min(a, b, c, ...[, key=func]) # 返回a,b,c...中的最小元素 max(iterable[, key=func]) # 和min相反 max(a, b, c, ...[, key=func]) # 和min相反 all(iterable) # 如果可迭代的参数iterable中所有的元素都不是0,False,&#39;&#39;则返回True,iterable为空也返回True,否则返回False any(iterable) # 如果可迭代的参数iterable中所有的元素都是0,False,&#39;&#39;则返回False,　否则返回True sum(sequence[, start]) # 返回数字序列sequence的所有元素加上start的和，start默认是０． ## related to iterator iter(collection) # 将可迭代对象（str, tuple, list, dict的键,集合,文件的行等）转换成迭代器,返回迭代器对象. iter(callable, sentinel) # 第一个参数需要是callable的，每次迭代到sentinel停止． next(iterator[, default]) # 返回迭代器iterator中的下一个元素，如果没有元素了，default指定内容返回该内容，否则抛出StopIteration异常． ## related to input input([prompt]) # python3 # 根据prompt提示输入内容，返回输入的内容,如果是表达式会先求值再返回. ## related to file open(name[, mode[, buffering]]) # 打开一个文件，返回一个file类类型的对象． // python3 refactor sorted(iterable, key=None, reverse=False) // 多维数据排序 dict = {&#39;a&#39;: 3, &#39;b&#39;: 2, &#39;c&#39;: 1} sorted(dict.items(), key=lambda x:x[1], reverse=False) json = [{&quot;time&quot;: 1, &quot;data&quot;: &quot;message&quot;}, {&quot;time&quot;: 2, &quot;data&quot;: &quot;message&quot;}] sorted(json, key=lambda k:k[&quot;time&quot;]) 内置异常类 BaseException(object) # 所有异常的基类, 继承自object.
 '>
 <meta property='og:url' content='https://canuxcheng.com/post/psl_builtins/'>
 <meta property='og:site_name' content='Morgoth'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='builtin' /><meta property='article:published_time' content='2016-08-15T11:16:29&#43;00:00'/><meta property='article:modified_time' content='2016-08-15T11:16:29&#43;00:00'/>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='builtins' /><meta property='article:published_time' content='2016-08-15T11:16:29&#43;00:00'/><meta property='article:modified_time' content='2016-08-15T11:16:29&#43;00:00'/>
 <meta name="twitter:title" content="PSL_builtins">
-<meta name="twitter:description" content="_builtins_ python的内置模块，所有python的内置功能都在这个模块中，不需要import导入就可以使用。
+<meta name="twitter:description" content="builtins python的内置模块，所有python的内置功能都在这个模块中，不需要import导入就可以使用。
 包括内置类类型以及所属的内置方法，和内置函数.
-builtin - 包括内置类类型以及所属的内置方法，和内置函数.解释器不会自动导入．
-builtins - 仅仅是__builtin__的一个引用．解释器自动导入的．
 内置常量
 内置函数(BIF)
 内置类型(BIT)
@@ -49,8 +43,8 @@ builtins - 仅仅是__builtin__的一个引用．解释器自动导入的．
 内置类型的内置方法(BIM)
 内置异常
 该模块是通过C/C&#43;&#43;实现的．
-内置函数 python2和python3共同的内置函数：
-__import__(name, globals={}, locals={}, fromlist=[], level=-1) # import关键字实际调用该函数 compile(source, filename, mode[, flags[, dont_inherit]]) # 编译source返回一个code对象(代码对象)． # mode: exec, 用于模块 python2可以用exec关键字执行,python3改成exec()函数; module = &quot;for i in xrange(10): print(i)&quot; code = compile(module, &#39;&#39;, &#39;exec&#39;) type(code) # code exec code # mode: single, 用于单行语句, 也是用exec执行; code = compile(&quot;print &#39;test&#39;&quot;, &#39;&#39;, single) type(code) # code exec code # mode: eval, 用于表达式 可以用eval()函数执行． eg: expression = &quot;3 * 4&quot; code = compile(expression, &#39;&#39;, &#39;eval&#39;) type(code) # code eval(code) eval(source[, globals[, locals]]) # 返回python表达式的结果，source可以是compile()返回的代码对象，也可以是一个表达式． format(value[, format_spec]) # 返回格式化后的字符串形式． ## 环境变量相关 globals() # 返回当前作用域的全局名称空间的字典． locals() # 返回当前作用域的局部名称空间的字典． ## 数字类型的数学运算 abs(number) # 返回int/long的绝对值 divmod(x, y) # 返回x/y 的　(商，余数) 组成的元组 pow(x, y[, z]) # 返回x**y或(x**y) % z round(number[, ndigits]) # 返回number四舍五入后的结果，ndigits表示小数点后的位数，默认是0. chr(i) # 返回整数ｉ对应的ASCII字符的字符串形式，0 &lt;= i &lt; 256. ord(c) # 返回字符ASCII字符c对应的整数. bin(number) # 返回int/long的二进制的字符串形式 oct(number) # 返回int/long的八进制的字符串形式． hex(number) # 返回int/long的十六进制的字符串形式. ## 对象相关的操作 id(object) # 返回一个对象的ID, 用内存地址作为ID来表示唯一性. 也就是对象的身份．等价is关键字. repr(object) # 返回object的标准字符串形式，可以通过eval()重新得到该对象．eval(repr(object)) == object. callable(object) # 如果object是可调用的返回True, 需要实现魔法方法__call__() hash(object) # 返回一个对象的散列/哈希(hash)值，有相同值的对象hash值相同.可用做字典的键. len(object) # 返回序列（str, tuple, list)或映射（dict)的长度 dir([object]) # 查看对象的信息 getattr(object, name[, default]) # 如果object.name存在,返回name的值，否则如果default存在，返回default,否则抛出异常AttributeError, 和super的查找顺序一样． hasattr(object, name) # 和getattr一样，但是捕获了异常，object.name存在返回True,否则返回False. setattr(object, name, value) # 给对象的属性赋值，相当于object.name = value delattr(object, name) # 删除对象object的属性name isinstance(object, class-or-type-or-tuple) # 如果object是class-or-type中指定的类或类型的实例或子类的实例，返回True,否则返回False. issubclass(C, B-or-(B,A)) # 如果C是B或(B,A,...)中的类的子类，返回True,否则返回False. 不严格子类也允许，例如一个类可以看作是自身的子类． vars([object]) # 没有参数等于locals()，有参数等于object.__dict__. ## related to iterable min(iterable[, key=func]) # 返回可迭代对象iterable中的最小元素 min(a, b, c, ...[, key=func]) # 返回a,b,c...中的最小元素 max(iterable[, key=func]) # 和min相反 max(a, b, c, ...[, key=func]) # 和min相反 all(iterable) # 如果可迭代的参数iterable中所有的元素都不是0,False,&#39;&#39;则返回True,iterable为空也返回True,否则返回False any(iterable) # 如果可迭代的参数iterable中所有的元素都是0,False,&#39;&#39;则返回False,　否则返回True sum(sequence[, start]) # 返回数字序列sequence的所有元素加上start的和，start默认是０． ## related to iterator iter(collection) # 将可迭代对象（str, tuple, list, dict的键,集合,文件的行等）转换成迭代器,返回迭代器对象. iter(callable, sentinel) # 第一个参数需要是callable的，每次迭代到sentinel停止． next(iterator[, default]) # 返回迭代器iterator中的下一个元素，如果没有元素了，default指定内容返回该内容，否则抛出StopIteration异常． ## related to input input([prompt]) # 等于eval(raw_input(prompt)) # 根据prompt提示输入内容，返回输入的内容,如果是表达式会先求值再返回. ## related to file open(name[, mode[, buffering]]) # 打开一个文件，返回一个file类类型的对象． [New]python3新增的内置函数：
+import builtins # can be ignored dir(builtins) 内置特殊常量 False # 内置类型bool的实例 True # 内置类型bool的实例 None # python的Null对象或types.NoneType,只有一个值None.布尔值始终为False. NotImplemented # types.NotImplementedType Ellipsis # types.EllipsisType, 省略对象，布尔值始终为True. __debug__ # True/False 内置函数 不需要import可以直接使用的函数
+__import__(name, globals={}, locals={}, fromlist=[], level=-1) # import关键字实际调用该函数 print(value, ..., sep=&#39; &#39;, end=&#39;\n&#39;, file=sys.stdout, flush=False) # python3新增 compile(source, filename, mode[, flags[, dont_inherit]]) # 编译source返回一个code对象(代码对象)． # mode: exec, 用于模块 python2可以用exec关键字执行,python3改成exec()函数; module = &quot;for i in xrange(10): print(i)&quot; code = compile(module, &#39;&#39;, &#39;exec&#39;) type(code) # code exec code # mode: single, 用于单行语句, 也是用exec执行; code = compile(&quot;print &#39;test&#39;&quot;, &#39;&#39;, single) type(code) # code exec code # mode: eval, 用于表达式 可以用eval()函数执行． eg: expression = &quot;3 * 4&quot; code = compile(expression, &#39;&#39;, &#39;eval&#39;) type(code) # code eval(code) eval(source[, globals[, locals]]) # 返回python表达式的结果，source可以是compile()返回的代码对象，也可以是一个表达式． exec(object[, globals[, locals]]) # python3 新增 # object可以是一个文件对象，也可以是一个语句或代码块． format(value[, format_spec]) # 返回格式化后的字符串形式． ## 环境变量相关 globals() # 返回当前作用域的全局名称空间的字典． locals() # 返回当前作用域的局部名称空间的字典． ## 数字类型的数学运算 abs(number) # 返回int/long的绝对值 divmod(x, y) # 返回x/y 的　(商，余数) 组成的元组 pow(x, y[, z]) # 返回x**y或(x**y) % z round(number[, ndigits]) # 返回number四舍五入后的结果，ndigits表示小数点后的位数，默认是0. chr(i) # 返回整数ｉ对应的ASCII字符的字符串形式，0 &lt;= i &lt; 256. ord(c) # 返回字符ASCII字符c对应的整数. bin(number) # 返回int/long的二进制的字符串形式 oct(number) # 返回int/long的八进制的字符串形式． hex(number) # 返回int/long的十六进制的字符串形式. ## 对象相关的操作 id(object) # 返回一个对象的ID, 用内存地址作为ID来表示唯一性. 也就是对象的身份．等价is关键字. repr(object) # 返回object的标准字符串形式，可以通过eval()重新得到该对象．eval(repr(object)) == object. ascii(object) # 和repr()函数等效． callable(object) # 如果object是可调用的返回True, 需要实现魔法方法__call__() hash(object) # 返回一个对象的散列/哈希(hash)值，有相同值的对象hash值相同.可用做字典的键. len(object) # 返回序列（str, tuple, list)或映射（dict)的长度 dir([object]) # 查看对象的信息 getattr(object, name[, default]) # 如果object.name存在,返回name的值，否则如果default存在，返回default,否则抛出异常AttributeError, 和super的查找顺序一样． hasattr(object, name) # 和getattr一样，但是捕获了异常，object.name存在返回True,否则返回False. setattr(object, name, value) # 给对象的属性赋值，相当于object.name = value delattr(object, name) # 删除对象object的属性name isinstance(object, class-or-type-or-tuple) # 如果object是class-or-type中指定的类或类型的实例或子类的实例，返回True,否则返回False. issubclass(C, B-or-(B,A)) # 如果C是B或(B,A,...)中的类的子类，返回True,否则返回False. 不严格子类也允许，例如一个类可以看作是自身的子类． vars([object]) # 没有参数等于locals()，有参数等于object.__dict__. ## related to iterable min(iterable[, key=func]) # 返回可迭代对象iterable中的最小元素 min(a, b, c, ...[, key=func]) # 返回a,b,c...中的最小元素 max(iterable[, key=func]) # 和min相反 max(a, b, c, ...[, key=func]) # 和min相反 all(iterable) # 如果可迭代的参数iterable中所有的元素都不是0,False,&#39;&#39;则返回True,iterable为空也返回True,否则返回False any(iterable) # 如果可迭代的参数iterable中所有的元素都是0,False,&#39;&#39;则返回False,　否则返回True sum(sequence[, start]) # 返回数字序列sequence的所有元素加上start的和，start默认是０． ## related to iterator iter(collection) # 将可迭代对象（str, tuple, list, dict的键,集合,文件的行等）转换成迭代器,返回迭代器对象. iter(callable, sentinel) # 第一个参数需要是callable的，每次迭代到sentinel停止． next(iterator[, default]) # 返回迭代器iterator中的下一个元素，如果没有元素了，default指定内容返回该内容，否则抛出StopIteration异常． ## related to input input([prompt]) # python3 # 根据prompt提示输入内容，返回输入的内容,如果是表达式会先求值再返回. ## related to file open(name[, mode[, buffering]]) # 打开一个文件，返回一个file类类型的对象． // python3 refactor sorted(iterable, key=None, reverse=False) // 多维数据排序 dict = {&#39;a&#39;: 3, &#39;b&#39;: 2, &#39;c&#39;: 1} sorted(dict.items(), key=lambda x:x[1], reverse=False) json = [{&quot;time&quot;: 1, &quot;data&quot;: &quot;message&quot;}, {&quot;time&quot;: 2, &quot;data&quot;: &quot;message&quot;}] sorted(json, key=lambda k:k[&quot;time&quot;]) 内置异常类 BaseException(object) # 所有异常的基类, 继承自object.
 ">
     <link rel="shortcut icon" href="favicon.ico" />
 <style>
@@ -339,7 +333,62 @@ __import__(name, globals={}, locals={}, fromlist=[], level=-1) # import关键字
     </ol>
 </aside>
 
-    
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#int">int</a></li>
+    <li><a href="#boolint">bool(int)</a></li>
+    <li><a href="#float">float</a></li>
+    <li><a href="#complex">complex</a></li>
+    <li><a href="#str">str</a></li>
+    <li><a href="#bytes">bytes</a></li>
+    <li><a href="#bytearray">bytearray</a></li>
+    <li><a href="#tuple">tuple</a></li>
+    <li><a href="#list">list</a></li>
+    <li><a href="#dict">dict</a></li>
+    <li><a href="#frozenset">frozenset</a></li>
+    <li><a href="#set">set</a></li>
+    <li><a href="#slice">slice</a></li>
+    <li><a href="#range">range</a></li>
+    <li><a href="#memoryview">memoryview</a></li>
+    <li><a href="#enumerate">enumerate</a></li>
+    <li><a href="#reversed">reversed</a></li>
+    <li><a href="#map">map</a></li>
+    <li><a href="#filter">filter</a></li>
+    <li><a href="#zip">zip</a></li>
+    <li><a href="#classmethod">classmethod</a></li>
+    <li><a href="#staticmethod">staticmethod</a></li>
+    <li><a href="#property">property</a></li>
+    <li><a href="#object">object</a></li>
+    <li><a href="#type">type</a></li>
+  </ul>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
 
             <main class="main full-width">
     <article class="main-article">
@@ -395,7 +444,7 @@ __import__(name, globals={}, locals={}, fromlist=[], level=-1) # import关键字
 
 
                 <time class="article-time--reading">
-                    7 minute read
+                    5 minute read
                 </time>
             </div>
         
@@ -410,15 +459,9 @@ __import__(name, globals={}, locals={}, fromlist=[], level=-1) # import关键字
     <section class="article-content">
     
     
-    <h1 id="_builtins_">_<em>builtins</em>_</h1>
+    <h1 id="builtins">builtins</h1>
 <p>python的内置模块，所有python的内置功能都在这个模块中，不需要import导入就可以使用。</p>
 <p>包括内置类类型以及所属的内置方法，和内置函数.</p>
-<blockquote>
-<blockquote>
-<p><strong>builtin</strong> - 包括内置类类型以及所属的内置方法，和内置函数.解释器不会自动导入．</p></blockquote></blockquote>
-<blockquote>
-<blockquote>
-<p><strong>builtins</strong> - 仅仅是__builtin__的一个引用．解释器自动导入的．</p></blockquote></blockquote>
 <p>内置常量</p>
 <p>内置函数(BIF)</p>
 <p>内置类型(BIT)</p>
@@ -426,10 +469,24 @@ __import__(name, globals={}, locals={}, fromlist=[], level=-1) # import关键字
 <p>内置类型的内置方法(BIM)</p>
 <p>内置异常</p>
 <p>该模块是通过C/C++实现的．</p>
+<pre><code>import builtins # can be ignored
+dir(builtins)
+</code></pre>
+<hr>
+<h1 id="内置特殊常量">内置特殊常量</h1>
+<pre><code>False # 内置类型bool的实例
+True # 内置类型bool的实例
+None # python的Null对象或types.NoneType,只有一个值None.布尔值始终为False.
+NotImplemented # types.NotImplementedType
+Ellipsis # types.EllipsisType, 省略对象，布尔值始终为True.
+__debug__ # True/False
+</code></pre>
 <hr>
 <h1 id="内置函数">内置函数</h1>
-<p>python2和python3共同的内置函数：</p>
+<p>不需要import可以直接使用的函数</p>
 <pre><code>__import__(name, globals={}, locals={}, fromlist=[], level=-1) # import关键字实际调用该函数
+
+print(value, ..., sep=' ', end='\n', file=sys.stdout, flush=False) # python3新增
 
 compile(source, filename, mode[, flags[, dont_inherit]])
 # 编译source返回一个code对象(代码对象)．
@@ -451,6 +508,9 @@ eval(code)
 eval(source[, globals[, locals]])
 # 返回python表达式的结果，source可以是compile()返回的代码对象，也可以是一个表达式．
 
+exec(object[, globals[, locals]]) # python3 新增
+# object可以是一个文件对象，也可以是一个语句或代码块．
+
 format(value[, format_spec]) # 返回格式化后的字符串形式．
 
 ## 环境变量相关
@@ -471,6 +531,7 @@ hex(number) # 返回int/long的十六进制的字符串形式.
 ## 对象相关的操作
 id(object) # 返回一个对象的ID, 用内存地址作为ID来表示唯一性. 也就是对象的身份．等价is关键字.
 repr(object) # 返回object的标准字符串形式，可以通过eval()重新得到该对象．eval(repr(object)) == object.
+ascii(object) # 和repr()函数等效．
 callable(object) # 如果object是可调用的返回True, 需要实现魔法方法__call__()
 hash(object) # 返回一个对象的散列/哈希(hash)值，有相同值的对象hash值相同.可用做字典的键.
 len(object) # 返回序列（str, tuple, list)或映射（dict)的长度
@@ -498,40 +559,13 @@ iter(callable, sentinel) # 第一个参数需要是callable的，每次迭代到
 next(iterator[, default]) # 返回迭代器iterator中的下一个元素，如果没有元素了，default指定内容返回该内容，否则抛出StopIteration异常．
 
 ## related to input
-input([prompt]) # 等于eval(raw_input(prompt))
+input([prompt]) # python3
 # 根据prompt提示输入内容，返回输入的内容,如果是表达式会先求值再返回.
 
 ## related to file
 open(name[, mode[, buffering]]) # 打开一个文件，返回一个file类类型的对象．
-</code></pre>
-<p>[New]python3新增的内置函数：</p>
-<pre><code>exec(object[, globals[, locals]]) # python2中是一个关键字，python3才是内置函数．
-# object可以是一个文件对象，也可以是一个语句或代码块．
 
-ascii(object) # 和repr()函数等效．
-print(value, ..., sep=' ', end='\n', file=sys.stdout, flush=False) # python2中是一个关键字，python3才是内置函数．
-</code></pre>
-<p>[Deprecated]python2.7中有，python3中被废弃的内置函数：</p>
-<pre><code>apply(object[, args[, kwargs]]) # 直接使用函数定义的可变长参数形式, function_name(*args, **kwargs)
-
-# python2中还可以使用的函数
-coerce(x, y)
-intern(string)
-execfile(filename[, globals[, locals]]) # 类似于exec
-unichr(i) # 返回chr(i)的unicode形式．
-
-# 建议使用替代方法的函数
-raw_input([prompt]) # python3中合并为input(). 不会对输入的表达式求值，以字符串的形式原样返回．
-`` # python3中合并为repr()
-cmp(x, y) # 参考python3的operator.cmp()
-reduce(function, sequence[, initial]) # 参考python3的functools.reduce()
-reload(module) # 参考python3的imp.reload()
-</code></pre>
-<p>[Changed]python3中发生变化的函数:</p>
-<pre><code>// python2
-sorted(iterable, cmp=None, key=None, reverse=False) # 返回可迭代对象iterable的元素排序后组成的列表．
-
-// python3
+// python3 refactor
 sorted(iterable, key=None, reverse=False)
 // 多维数据排序
 dict = {'a': 3, 'b': 2, 'c': 1}
@@ -540,33 +574,7 @@ json = [{&quot;time&quot;: 1, &quot;data&quot;: &quot;message&quot;}, {&quot;tim
 sorted(json, key=lambda k:k[&quot;time&quot;])
 </code></pre>
 <hr>
-<h1 id="内置常量">内置常量</h1>
-<pre><code>False # 内置类型bool的实例
-True # 内置类型bool的实例
-None # python的Null对象或types.NoneType,只有一个值None.布尔值始终为False.
-NotImplemented # types.NotImplementedType
-Ellipsis # types.EllipsisType, 省略对象，布尔值始终为True.
-__debug__ # True/False
-</code></pre>
-<hr>
-<h1 id="内置特殊属性">内置特殊属性</h1>
-<pre><code>object.__dict__ # 以字典的形式存储对象的属性
-class.__bases__ # 类的父类构成的元组
-instance.__class__ # 实例对应的类
-definition.__name__ # class/type/function/method/descriptor/generator的名字
-
-[New in python2.2] 新式类才有的三个属性：
-class.__mro__
-class.mro()
-class.__subclasses__()
-
-[New in python3] definition.__qualname__ # python3新增
-
-[Deprecated]object.__methods__ # 用内置函数dir()代替
-[Deprecated]object.__members__ # 用内置函数dir()代替
-</code></pre>
-<hr>
-<h1 id="python2内置异常">python2内置异常</h1>
+<h1 id="内置异常类">内置异常类</h1>
 <p>BaseException(object) # 所有异常的基类, 继承自object.</p>
 <pre><code># BaseException的四个子类
 SystemExit # python解释器请求退出
@@ -618,28 +626,10 @@ Exception # 常规错误的基类
        UnicodeWarning
        ByteWarning
 </code></pre>
-<h1 id="python3内置异常">python3内置异常</h1>
-<p>BaseException(object) # 所有异常的基类, 继承自object.</p>
-<pre><code>SystemExit
-KeyboardInterrupt
-GeneratorExit
-Exception
-    StopIteration
-    StopAsyncIteration
-    ArithmeticError
-    ...
-    Warning # 所有warning的基类
-        DeprecationWarning
-        ...
-</code></pre>
 <hr>
-<h1 id="object">object</h1>
-<p>object类是所有类的基类</p>
-<p>继承自object的内置类类型都有对应的工厂函数．</p>
-<hr>
-<p>python2数字类型(int, long, float, complex)是不可变类型,是标量，是直接存储的．</p>
-<p>python3数字类型int, float, complex</p>
-<h1 id="int">int</h1>
+<h1 id="built-in-typesclass">built-in Types/Class</h1>
+<p>下面是数据类型：</p>
+<h2 id="int">int</h2>
 <pre><code>int(x=0)
 int(x, base=10)
 </code></pre>
@@ -653,27 +643,11 @@ numerator
 imag
 real
 </code></pre>
-<h1 id="boolint">bool(int)</h1>
+<h2 id="boolint">bool(int)</h2>
 <pre><code>bool(x)
 </code></pre>
 <p>内置类类型int的内置方法和数据描述符都是继承自基类int.</p>
-<h1 id="long">(long)</h1>
-<p>python2中的重要的内置类型．</p>
-<p>python3中被废弃．</p>
-<pre><code>long(x=0)
-long(x, base=10)
-</code></pre>
-<p>内置方法:</p>
-<pre><code>bit_length() # 一个int类型的二进制形式的位数
-conjugate()
-</code></pre>
-<p>内置数据描述符:</p>
-<pre><code>denominator
-numerator
-imag
-real
-</code></pre>
-<h1 id="float">float</h1>
+<h2 id="float">float</h2>
 <pre><code>float(x)
 </code></pre>
 <p>内置方法:</p>
@@ -688,7 +662,7 @@ is_integer() # 如果浮点数是整数，返回true
 <pre><code>imag
 real
 </code></pre>
-<h1 id="complex">complex</h1>
+<h2 id="complex">complex</h2>
 <pre><code>complex(real[, imag])
 </code></pre>
 <p>内置方法:</p>
@@ -698,13 +672,7 @@ real
 <pre><code>imag 复数的虚部
 real 复数的实部
 </code></pre>
-<hr>
-<p>python2序列包括str, list, tuple, bytearray, unicode, buffer, xrange.都是可迭代的．</p>
-<p>python3序列包括str, list, tuple, bytearray, range, bytes, memoryview.都是可迭代的．</p>
-<h1 id="basestring">(basestring)</h1>
-<p>python2中basestring是str类和unicode类的基类, basestring继承自object.</p>
-<p>python3中str类直接继承自object，没有unicode和basestring.</p>
-<h1 id="str">str</h1>
+<h2 id="str">str</h2>
 <p>字符串是不可变类型, 是标量，是序列．</p>
 <pre><code>str(object='') # 把一个对象转换成字符串．或者返回一个对象的可读性好的字符串表示，无法用语eval()求值．
 </code></pre>
@@ -758,15 +726,32 @@ rfind(sub [,start [,end]]) # 在str[start:end]中查找sub,返回最后一个sub
 index(sub [,start [,end]]) # 和find一样，但是没找到抛出异常ValueError．
 rindex(sub [,start [,end]]) # 和rfind一样，但是没找到抛出ValueError异常．
 </code></pre>
-<h1 id="unicode">(unicode)</h1>
-<p>python2中的内置类型，和str是兄弟类型．</p>
-<p>python3中被废弃．</p>
-<p>python2中的unicode的工厂函数:</p>
-<pre><code>unicode(object='')
-unicode(string[, encoding[, errors]])
+<h2 id="bytes">bytes</h2>
+<pre><code>bytes(iterable_of_ints) -&gt; bytes
+bytes(string, encoding[, errors]) -&gt; bytes
+bytes(bytes_or_buffer) -&gt; immutable copy of bytes_or_buffer
+bytes(int) -&gt; bytes object of size given by the parameter initialized with null bytes
+bytes() -&gt; empty bytes object
+</code></pre>
+<p>内置方法：</p>
+<pre><code>capitalize()
+...
+</code></pre>
+<h2 id="bytearray">bytearray</h2>
+<p>bytearray表示可变字节数组类型, bytearray是可变类型，是序列（可迭代）</p>
+<pre><code>bytearray(iterable_of_ints) -&gt; bytearray
+bytearray(string, encoding[, errors]) -&gt; bytearray
+bytearray(bytes_or_buffer) -&gt; mutable copy of bytes_or_buffer
+bytearray(int) -&gt; bytes array of size given by the parameter initialized with null bytes
+bytearray() -&gt; empty bytes array
+</code></pre>
+<p>内置方法:</p>
+<pre><code>append(int)
+capitalize()
+...
 </code></pre>
 <hr>
-<h1 id="tuple">tuple</h1>
+<h2 id="tuple">tuple</h2>
 <p>元组是不可变类型, 是容器，是序列.</p>
 <pre><code>tuple()
 tuple(iterable) # 把可迭代对象转换成元组.
@@ -775,20 +760,7 @@ tuple(iterable) # 把可迭代对象转换成元组.
 <pre><code>count(value) # 返回值为value的元素在元组中出现的次数
 index(value, [start, [stop]]) # 返回值为value的元素在元组tuple[start:stop]中的第一次出现的索引，没有该元素返回ValueError.
 </code></pre>
-<hr>
-<h1 id="xrange">(xrange)</h1>
-<p>python2的重要的内置类型．</p>
-<p>python3中将range和xrange合并为range类．</p>
-<p>xrange和range功能一样，但是返回的是xrange类型的可迭代对象．</p>
-<p>xrange比range更轻量级，更快，内存使用更高效．</p>
-<pre><code>xrange(stop)
-xrange(start, stop[, step])
-</code></pre>
-<h1 id="buffer">(buffer)</h1>
-<p>python2中的内置类型．</p>
-<p>python3中被废弃．</p>
-<hr>
-<h1 id="list">list</h1>
+<h2 id="list">list</h2>
 <p>列表是可变类型,　是容器，是序列.</p>
 <pre><code>list()
 list(iterable) # 把可迭代的对象转换成列表．
@@ -796,6 +768,7 @@ list(iterable) # 把可迭代的对象转换成列表．
 <p>内置方法：</p>
 <pre><code>count(value) # 返回value在列表中出现的次数
 index(value, [start, [stop]]) # 从左往右在list[start:stop]中寻找value,返回第一个找到的元素的索引，否则返回ValueError异常．
+
 # 下列改变列表的值的方法都没有返回值，直接改变原列表的值．
 append(object) # 在列表结尾追加对象
 extend(iterable) # 将可迭代对象iterable的元素依次追加到列表,相当于序列的+运算．
@@ -805,20 +778,20 @@ remove(value) # 删除第一个出现的value．
 reverse() # 翻转列表
 sort(cmp=None, key=None, reverse=False) # 默认对列表中的元素从小到大排序，reverse=True,则从大到小．
 </code></pre>
-<hr>
-<h1 id="dict">dict</h1>
+<h2 id="dict">dict</h2>
 <p>字典是可变类型, 是容器，是映射类型（mapping), 字典可以迭代键．字典是无序的．</p>
 <pre><code>dict()
 dict(mapping) # dict(one=1, two=2)
 dict(iterable) # dict([(1, 'one'), (2, 'two')]), dict([[1,1], [2,2]]), dict(([1,1], [2, 2])), dict(((1,1), (2,2))),
 dict(**kwargs) # dict({1:&quot;one&quot;, 2:&quot;two&quot;})
+
+in, not in
 </code></pre>
 <p>内置方法：</p>
 <pre><code>copy() # 返回字典的一个浅拷贝
 clear() # 清空字典所有元素
 fromkeys(S[,v]) # 返回以S的元素为键，v为值的新字典，v默认为None.
 get(k[,d]) # 如果键k在字典里面，返回dict[k], 否则返回d, d默认为None.
-[Deprecated]has_key(k) # 如果键k在字典里面，返回True,否则返回False. 使用in和not in代替.
 pop(k[,d]) # 从字典中删除键k的键值对，返回dict[k], 如果不存在返回d,如果没有指定d,抛出KeyError异常．
 popitem() # 从字典中删除随机的键值对，返回该键值对组成的元组，如果字典为空，抛出KeyError异常．
 setdefault(k[,d]) # 如果键k在字典中存在，等效于get(k[,d]), 否则就插入D[k]=d键值对．
@@ -833,8 +806,7 @@ viewitems() # 返回键和值组成的可迭代对象
 viewkeys()　# 返回键组成的可迭代对象
 viewvalues() # 返回值组成的可迭代对象
 </code></pre>
-<hr>
-<h1 id="frozenset">frozenset</h1>
+<h2 id="frozenset">frozenset</h2>
 <p>不可变集合frozenset是不可变类型</p>
 <pre><code>frozenset()
 frozenset(iterable)
@@ -849,7 +821,7 @@ intersection([others, ...]) # 交集，　AND操作，　等效于&amp;运算符
 difference([others, ...]) # 差补或相对补充集，等效于-运算符
 symmetric_difference() # 对称差分或异或，等效于^运算符
 </code></pre>
-<h1 id="set">set</h1>
+<h2 id="set">set</h2>
 <p>可变集合set是可变类型</p>
 <pre><code>set()
 set(iterable)
@@ -859,234 +831,64 @@ set(iterable)
 pop() # 删除并返回任意一个集合元素，集合为空抛出KeyError.
 add(obj) # 往集合中添加一个不存在的元素
 remove(obj) # 删除集合中的存在的指定的数字元素, 非数字抛出KeyError.
-a.discard(obj) # 如果obj是集合s中的元素，从s中删除obj.
+s.discard(obj) # 如果obj是集合s中的元素，从s中删除obj.
+
 update() # 等效于|=运算符
 intersection_update() # 等效于&amp;=运算符
 difference_update() # 等效于-=运算法
 symmetric_difference_update() # 等效于^=运算符
 </code></pre>
-<hr>
-<h1 id="file">(file)</h1>
-<p>python2中的内置类型．使用open()内置函数．</p>
-<p>python3中被废弃．用open()内置函数代替．</p>
-<p>file是python2中的内置类类型，有next()方法，返回一个迭代器的file类型．</p>
-<pre><code>file(name[, mode[, buffering]])
-</code></pre>
-<p>内置方法:</p>
-<pre><code>close()
-next()
-fileno() # 返回打开的文件的描述符.
-flush() # 把内部缓冲区的数据立即写入文件．
-isatty() # 文件是tty设备返回True.
-
-# 文件输入操作
-read([size]) # 从文件读取size个字节到字符串并返回，默认读取到文件结尾．保留行结束符．
-readline([size]) # 读取一行的size个字符到字符串并返回，默认读取文件的一行，包括行结束符．
-readlines([size]) # 读取文件所有行，返回行组成的字符串列表，size表示返回的最大字节数.
-[depredated] xreadlines()
-[deprecated] readinto()
-
-# 文件输出操作
-write(str) # 往文件中写．如果str表示一行，需要手动加上行结束符．
-writelines(sequence_of_strings) # 往文件写入一个字符串列表，需要手动给列表元素加上行结束符．
-
-# 文件内移动
-seek(offset[, whence])
-tell()
-truncate([size])
-</code></pre>
-<p>内置数据描述符：</p>
-<pre><code>closed
-encoding
-mode
-name
-newlines
-softspace
-errors
-</code></pre>
-<hr>
-<h1 id="slice">slice</h1>
-<p>python2:</p>
+<h2 id="slice">slice</h2>
 <pre><code>slice(stop)
 slice(start, stop[, step])
 </code></pre>
-<p>内置方法:</p>
+<p>methods:</p>
 <pre><code>indices(len) -&gt; (start, stop, stride)
 </code></pre>
-<p>内置数据描述符：</p>
-<pre><code>start
-step
-stop
-</code></pre>
-<hr>
-<h1 id="enumerate">enumerate</h1>
-<p>python2:</p>
-<p>enumerate是一个内置的类类型，有next()内置方法，是迭代器．</p>
-<pre><code>enumerate(iterable[, start]) # 返回一个可迭代的enumerate类型的迭代器，生成一个元组序列，包含从start 开始的索引，默认是０，和从iterable取出的值．
-a = enumerate([1,2,3])
-for index, item in a:
-    print(index, item)
-type(a) # enumerate
-a.next()
-</code></pre>
-<h1 id="reversed">reversed</h1>
-<p>python2:</p>
-<p>reversed是一个内置类类型，有next()方法，是迭代器．</p>
-<pre><code>reversed(sequence) # 反转sequence序列的元素的值，返回反转后的reversed类型的迭代器．
-a = reversed((1,2,3))
-for i in a:
-    print(i)
-type(a) # reversed
-a.next()
-</code></pre>
-<hr>
-<p>python2中的函数在python3变为类类型．</p>
-<h1 id="range">range</h1>
-<p>python2中的内置函数：</p>
+<h2 id="range">range</h2>
 <pre><code>range(stop) # 返回[0, 1, stop-1]的列表
 range(start, stop[, step]) # 返回[start, start+n*step... ], n&gt;=1,start+n*step&lt;stop.
 </code></pre>
-<p>python3中的内置类类型：</p>
-<h1 id="zip">zip</h1>
-<p>python2中的内置函数：</p>
-<pre><code>zip(seq1 [, seq2 [...]]) # 返回一个列表，元素是序列中相同下标元素组成的元组，只取到所有序列的最小的下标．
-zip((1,2,3),(4,5,6),(7,8)) -&gt; [(1, 4, 7), (2, 5, 8)]
+<p>Methods:</p>
+<pre><code>count(self, object, /)
+index(self, object, /)
 </code></pre>
-<p>python3中的内置类类型：</p>
-<h1 id="filter">filter</h1>
-<p>python2中的函数式编程的内置函数．</p>
-<p>python2中的内置函数：</p>
-<pre><code>filter(function or None, sequence) # 对sequence序列中的所有元素调用function，返回所有function结果为True的结果组成的列表／元组／字符串．
-# filter(lambda x: x % 2, [1,2,3]) -&gt; [1,3]
-# filter(None, (1,2,3)) -&gt; (1,2,3)
-</code></pre>
-<p>python3中的内置类类型：</p>
-<h1 id="map">map</h1>
-<p>python2中的函数式编程的内置函数．</p>
-<p>python2中的内置函数：</p>
-<pre><code>map(function, sequence[, sequence, ...]) # 将序列中相同下标的元素作为参数传给function，返回所有的结果组成的列表．
-# map(lambda x: x*2, [1,2,3]) -&gt; [2,4,6]
-# map(lambda x,y,z: str(x)+str(y)+str(z), &quot;test&quot;, (1,2,3), [0,9,8,7,6]) -&gt; ['t10', 'e29', 's38', 'tNone7', 'NoneNone6']
-# map(None, &quot;test&quot;, (1,2,3)) -&gt; [('t', 1), ('e', 2), ('s', 3), ('t', None)]
-</code></pre>
-<p>python3中的内置类类型：</p>
-<hr>
-<p>bytes, bytearray, memoryview都是python3中的binary sequence序列类型</p>
-<h1 id="bytes">bytes</h1>
-<p>python2:</p>
-<p>python2中是str类型的别名．</p>
-<p>python3中是内置类类型:</p>
-<pre><code>bytes(iterable_of_ints)
-bytes(string, encoding[, errors]) -&gt; bytes
-bytes(bytes_or_buffer) -&gt; immutable copy of bytes_or_buffer
-bytes(int) -&gt; bytes object of size given by the parameter initialized with null bytes
-bytes() -&gt; empty bytes object
-</code></pre>
-<p>内置方法：</p>
-<pre><code>capitalize()
-...
-</code></pre>
-<h1 id="bytearray">bytearray</h1>
-<p>python2:</p>
-<p>bytearray表示可变字节数组类型．</p>
-<p>bytearray是可变类型，是序列（可迭代）</p>
-<pre><code>bytearray(int)
-bytearray(iterable_of_ints)
-bytearray(string, encoding[, errors])
-bytearray(bytes_or_bytearray)
-bytearray(memory_view)
-</code></pre>
-<p>内置方法:</p>
-<pre><code>append(int)
-capitalize()
-...
-</code></pre>
-<h1 id="memoryview">memoryview</h1>
-<p>python2:</p>
+<h2 id="memoryview">memoryview</h2>
 <pre><code>memoryview(object)
 </code></pre>
 <p>内置方法:</p>
-<pre><code>tobytes(...)
-tolist(...)
-...
+<pre><code>cast(self, /, format, shape=&lt;unrepresentable&gt;)
+hex(self, /, sep=&lt;unrepresentable&gt;, bytes_per_sep=1)
+release(self, /)
+tobytes(self, /, order='C')
 </code></pre>
 <p>内置数据描述符：</p>
 <pre><code>format
+itemsize
 ...
 </code></pre>
 <hr>
-<h1 id="type">type</h1>
-<p>python2:</p>
-<pre><code>type(object) # 返回object对象的类型, 也就是对象的类型．
-type(name, bases, dict) # a new type
-</code></pre>
-<p>内置方法:</p>
-<pre><code>mro() # 返回一个类型的method resolution order
-</code></pre>
-<p>内置数据描述符：</p>
-<pre><code>__abstractmethods__
-...
+<p>迭代器/生成器类</p>
+<h2 id="enumerate">enumerate</h2>
+<h2 id="reversed">reversed</h2>
+<h2 id="map">map</h2>
+<h2 id="filter">filter</h2>
+<h2 id="zip">zip</h2>
+<hr>
+<h2 id="classmethod">classmethod</h2>
+<h2 id="staticmethod">staticmethod</h2>
+<h2 id="property">property</h2>
+<hr>
+<h2 id="object">object</h2>
+<p>object类是所有类的基类</p>
+<h2 id="type">type</h2>
+<p>所有类的类型或元类</p>
+<p>type是用来创建类的类，可以动态创建类。</p>
+<pre><code>class type(object)
+    type(object) -&gt; the object's type
+    type(name, bases, dict, **kwds) -&gt; a new type
 </code></pre>
 <hr>
-<p>参考面向对象编程．</p>
-<h1 id="super">super</h1>
-<pre><code>super(type, obj)
-super(type, type2)
-super(type)
-</code></pre>
-<p>内置方法：</p>
-<pre><code>__get__(...)
-__getattribute__(...)
-__init__(...)
-__repr__(...)
-</code></pre>
-<p>内置数据描述符：</p>
-<pre><code>__self__
-__self_class__
-__thisclass__
-</code></pre>
-<hr>
-<p>python内置的三个装饰器</p>
-<h1 id="classmethod">classmethod</h1>
-<pre><code>classmethod(function)
-</code></pre>
-<p>内置方法：</p>
-<pre><code>__get__(...)
-__getattribute__(...)
-__init__(...)
-</code></pre>
-<p>内置数据描述符：</p>
-<pre><code>__func__
-</code></pre>
-<h1 id="staticmethod">staticmethod</h1>
-<pre><code>staticmethod(function)
-</code></pre>
-<p>内置方法：</p>
-<pre><code>__get__(...)
-__getattribute__(...)
-__init__(...)
-</code></pre>
-<p>内置数据描述符：</p>
-<pre><code>__func__
-</code></pre>
-<h1 id="property">property</h1>
-<pre><code>property(fget=None, fset=None, fdel=None, doc=None)
-</code></pre>
-<p>内置方法：</p>
-<pre><code>__delete__(...)
-__get__(...)
-__getattribute__(...)
-__init__(...)
-__set__(...)
-deleter(...)
-getter(...)
-setter(...)
-</code></pre>
-<p>内置数据描述符：</p>
-<pre><code>fdel
-fget
-fset
-</code></pre>
 
 </section>
 
@@ -1095,7 +897,7 @@ fset
     
     <section class="article-tags">
         
-            <a href="/tags/builtin/">Builtin</a>
+            <a href="/tags/builtins/">Builtins</a>
         
     </section>
 

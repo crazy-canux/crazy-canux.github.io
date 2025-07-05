@@ -9,6 +9,7 @@ IO密集型任务消耗IO,但是不消耗CPU,cpu切换消耗少,适合用多线�
 python的多进程可以并行,每个进程启动一个解释器进程.
 多进程开销大，消耗内存.
 计算密集型消耗cpu,任务个数不超过cpu个数．适合用多进程，把每个cpu跑满.
+io密集 =》 用异步asyncio或者多线程 计算密集 =》 用多进程
 multiprocessing 多进程就是同时执行多个任务.
 python可以通过多进程取代多线程，从而绕过多线程的GIL.
 python是静态语言，
@@ -29,6 +30,7 @@ IO密集型任务消耗IO,但是不消耗CPU,cpu切换消耗少,适合用多线�
 python的多进程可以并行,每个进程启动一个解释器进程.
 多进程开销大，消耗内存.
 计算密集型消耗cpu,任务个数不超过cpu个数．适合用多进程，把每个cpu跑满.
+io密集 =》 用异步asyncio或者多线程 计算密集 =》 用多进程
 multiprocessing 多进程就是同时执行多个任务.
 python可以通过多进程取代多线程，从而绕过多线程的GIL.
 python是静态语言，
@@ -48,6 +50,7 @@ IO密集型任务消耗IO,但是不消耗CPU,cpu切换消耗少,适合用多线�
 python的多进程可以并行,每个进程启动一个解释器进程.
 多进程开销大，消耗内存.
 计算密集型消耗cpu,任务个数不超过cpu个数．适合用多进程，把每个cpu跑满.
+io密集 =》 用异步asyncio或者多线程 计算密集 =》 用多进程
 multiprocessing 多进程就是同时执行多个任务.
 python可以通过多进程取代多线程，从而绕过多线程的GIL.
 python是静态语言，
@@ -470,6 +473,8 @@ import multiprocessing classes:
 <p>python的多进程可以并行,每个进程启动一个解释器进程.</p>
 <p>多进程开销大，消耗内存.</p>
 <p>计算密集型消耗cpu,任务个数不超过cpu个数．适合用多进程，把每个cpu跑满.</p>
+<p>io密集 =》 用异步asyncio或者多线程
+计算密集 =》 用多进程</p>
 <h2 id="multiprocessing">multiprocessing</h2>
 <p>多进程就是同时执行多个任务.</p>
 <p>python可以通过多进程取代多线程，从而绕过多线程的GIL.</p>

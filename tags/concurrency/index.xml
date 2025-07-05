@@ -325,6 +325,8 @@ func CompareAndSwapUint64(addr *uint64, old, new uint64) (swapped bool)
 &lt;p&gt;python的多进程可以并行,每个进程启动一个解释器进程.&lt;/p&gt;
 &lt;p&gt;多进程开销大，消耗内存.&lt;/p&gt;
 &lt;p&gt;计算密集型消耗cpu,任务个数不超过cpu个数．适合用多进程，把每个cpu跑满.&lt;/p&gt;
+&lt;p&gt;io密集 =》 用异步asyncio或者多线程
+计算密集 =》 用多进程&lt;/p&gt;
 &lt;h2 id=&#34;multiprocessing&#34;&gt;multiprocessing&lt;/h2&gt;
 &lt;p&gt;多进程就是同时执行多个任务.&lt;/p&gt;
 &lt;p&gt;python可以通过多进程取代多线程，从而绕过多线程的GIL.&lt;/p&gt;
