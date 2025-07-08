@@ -190,12 +190,38 @@ $ python3 manage.py dumpdata &amp;gt; test_data.json
         </item>
         <item>
         <title>PSL_Test</title>
-        <link>https://canuxcheng.com/post/psl_test/</link>
+        <link>https://canuxcheng.com/post/psl_devops/</link>
         <pubDate>Mon, 11 Apr 2016 22:58:13 +0000</pubDate>
         
-        <guid>https://canuxcheng.com/post/psl_test/</guid>
-        <description>&lt;h1 id=&#34;development-tools&#34;&gt;Development Tools&lt;/h1&gt;
+        <guid>https://canuxcheng.com/post/psl_devops/</guid>
+        <description>&lt;h1 id=&#34;devops&#34;&gt;DevOps&lt;/h1&gt;
+&lt;p&gt;development, debugging, profiling&lt;/p&gt;
 &lt;h2 id=&#34;typing&#34;&gt;typing&lt;/h2&gt;
+&lt;p&gt;用于类型提示，提供类型检查，代码可读性和编辑器自动补全支持。&lt;/p&gt;
+&lt;p&gt;基础类型：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Tuple[int, int], Tuple[int, ...]
+List[str]
+Dict[str, int]
+Set[str]
+Optional[int]
+Union[int, str, float]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;泛型&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;TypeVar
+Generic
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;函数签名&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Callable
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;类相关&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Type
+Protocol
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;高级类型&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Linteral
+Final
+Annotated
+&lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;2to3&#34;&gt;2to3&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;$2to3
 &lt;/code&gt;&lt;/pre&gt;

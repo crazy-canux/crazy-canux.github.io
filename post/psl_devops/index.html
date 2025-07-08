@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en-us" dir="ltr">
+    <head><meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='DevOps development, debugging, profiling
+typing 用于类型提示，提供类型检查，代码可读性和编辑器自动补全支持。
+基础类型：
+Tuple[int, int], Tuple[int, ...] List[str] Dict[str, int] Set[str] Optional[int] Union[int, str, float] 泛型
+TypeVar Generic 函数签名
+Callable 类相关
+Type Protocol 高级类型
+Linteral Final Annotated 2to3 $2to3 pydoc import pydoc test import test doctest python内置的文档测试库．
+import doctest unittest python内置的单元测试库．
+import unittest TPL 相关的第三方库
+unittest2 unittest2是unittest的升级版．
+python3集成了unittest2到unittest,像使用unittest一样使用即可．
+# python2.7 $pip install unittest2 import unittest2 # python3 import unittest unittest也叫pyunit，类似于Junit(java)都是基于Kent Beck和Erich Gamma的XUnit框架．
+'>
+<title>PSL_Test</title>
+
+<link rel='canonical' href='https://canuxcheng.com/post/psl_devops/'>
+
+<link rel="stylesheet" href="/scss/style.min.2d59822570c0be136f2ad87c952ef8788ac2a951067adda1c49b253bff7d0292.css"><meta property='og:title' content='PSL_Test'>
+<meta property='og:description' content='DevOps development, debugging, profiling
+typing 用于类型提示，提供类型检查，代码可读性和编辑器自动补全支持。
+基础类型：
+Tuple[int, int], Tuple[int, ...] List[str] Dict[str, int] Set[str] Optional[int] Union[int, str, float] 泛型
+TypeVar Generic 函数签名
+Callable 类相关
+Type Protocol 高级类型
+Linteral Final Annotated 2to3 $2to3 pydoc import pydoc test import test doctest python内置的文档测试库．
+import doctest unittest python内置的单元测试库．
+import unittest TPL 相关的第三方库
+unittest2 unittest2是unittest的升级版．
+python3集成了unittest2到unittest,像使用unittest一样使用即可．
+# python2.7 $pip install unittest2 import unittest2 # python3 import unittest unittest也叫pyunit，类似于Junit(java)都是基于Kent Beck和Erich Gamma的XUnit框架．
+'>
+<meta property='og:url' content='https://canuxcheng.com/post/psl_devops/'>
+<meta property='og:site_name' content='Morgoth'>
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='test' /><meta property='article:published_time' content='2016-04-11T22:58:13&#43;00:00'/><meta property='article:modified_time' content='2016-04-11T22:58:13&#43;00:00'/>
+<meta name="twitter:title" content="PSL_Test">
+<meta name="twitter:description" content="DevOps development, debugging, profiling
+typing 用于类型提示，提供类型检查，代码可读性和编辑器自动补全支持。
+基础类型：
+Tuple[int, int], Tuple[int, ...] List[str] Dict[str, int] Set[str] Optional[int] Union[int, str, float] 泛型
+TypeVar Generic 函数签名
+Callable 类相关
+Type Protocol 高级类型
+Linteral Final Annotated 2to3 $2to3 pydoc import pydoc test import test doctest python内置的文档测试库．
+import doctest unittest python内置的单元测试库．
+import unittest TPL 相关的第三方库
+unittest2 unittest2是unittest的升级版．
+python3集成了unittest2到unittest,像使用unittest一样使用即可．
+# python2.7 $pip install unittest2 import unittest2 # python3 import unittest unittest也叫pyunit，类似于Junit(java)都是基于Kent Beck和Erich Gamma的XUnit框架．
+">
+    <link rel="shortcut icon" href="favicon.ico" />
+<style>
+    :root {
+        --article-font-family: "Merriweather", var(--base-font-family);
+    }
+</style>
+
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap";
+    
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+    
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </head>
+    <body class="
+    article-page
+    ">
+    <script>
+        (function() {
+            const colorSchemeKey = 'StackColorScheme';
+            if(!localStorage.getItem(colorSchemeKey)){
+                localStorage.setItem(colorSchemeKey, "auto");
+            }
+        })();
+    </script><script>
+    (function() {
+        const colorSchemeKey = 'StackColorScheme';
+        const colorSchemeItem = localStorage.getItem(colorSchemeKey);
+        const supportDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches === true;
+
+        if (colorSchemeItem == 'dark' || colorSchemeItem === 'auto' && supportDarkMode) {
+            
+
+            document.documentElement.dataset.scheme = 'dark';
+        } else {
+            document.documentElement.dataset.scheme = 'light';
+        }
+    })();
+</script>
+<div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky ">
+    <button class="hamburger hamburger--spin" type="button" id="toggle-menu" aria-label="Toggle Menu">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
+
+    <header>
+        
+            
+            <figure class="site-avatar">
+                <a href="/">
+                
+                    
+                    
+                    
+                        
+                        <img src="/img/home_hu_ee27fe234e3b32c2.jpg" width="300"
+                            height="400" class="site-logo" loading="lazy" alt="Avatar">
+                    
+                
+                </a>
+                
+                    <span class="emoji">🍥</span>
+                
+            </figure>
+            
+        
+        
+        <div class="site-meta">
+            <h1 class="site-name"><a href="/">Morgoth</a></h1>
+            <h2 class="site-description">Hello World!</h2>
+        </div>
+    </header><ol class="social-menu">
+            
+                <li>
+                    <a 
+                        href='mailto:canuxcheng@163.com'
+                        target="_blank"
+                        title="E-mail"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-messages" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M21 14l-3 -3h-7a1 1 0 0 1 -1 -1v-6a1 1 0 0 1 1 -1h9a1 1 0 0 1 1 1v10" />
+  <path d="M14 15v2a1 1 0 0 1 -1 1h-7l-3 3v-10a1 1 0 0 1 1 -1h2" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+                <li>
+                    <a 
+                        href='https://github.com/crazy-canux'
+                        target="_blank"
+                        title="GitHub"
+                        rel="me"
+                    >
+                        
+                        
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M9 19c-4.3 1.4 -4.3 -2.5 -6 -3m12 5v-3.5c0 -1 .1 -1.4 -.5 -2c2.8 -.3 5.5 -1.4 5.5 -6a4.6 4.6 0 0 0 -1.3 -3.2a4.2 4.2 0 0 0 -.1 -3.2s-1.1 -.3 -3.5 1.3a12.3 12.3 0 0 0 -6.2 0c-2.4 -1.6 -3.5 -1.3 -3.5 -1.3a4.2 4.2 0 0 0 -.1 3.2a4.6 4.6 0 0 0 -1.3 3.2c0 4.6 2.7 5.7 5.5 6c-.6 .6 -.6 1.2 -.5 2v3.5" />
+</svg>
+
+
+
+                        
+                    </a>
+                </li>
+            
+        </ol><ol class="menu" id="main-menu">
+        
+        
+        
+        <li >
+            <a href='/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <polyline points="5 12 3 12 12 3 21 12 19 12" />
+  <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7" />
+  <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6" />
+</svg>
+
+
+
+                
+                <span>Home</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/about/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="7" r="4" />
+  <path d="M6 21v-2a4 4 0 0 1 4 -4h4a4 4 0 0 1 4 4v2" />
+</svg>
+
+
+
+                
+                <span>About</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/categories/' target="_blank">
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+                
+                <span>Categories</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/tags/' target="_blank">
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11 3L20 12a1.5 1.5 0 0 1 0 2L14 20a1.5 1.5 0 0 1 -2 0L3 11v-4a4 4 0 0 1 4 -4h4" />
+  <circle cx="9" cy="9" r="2" />
+</svg>
+
+
+
+                
+                <span>Tags</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/rtfm/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                
+                <span>RTFM</span>
+            </a>
+        </li>
+        
+        
+        <li >
+            <a href='/samuel/' >
+                
+                
+                
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-infinity" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M9.828 9.172a4 4 0 1 0 0 5.656 a10 10 0 0 0 2.172 -2.828a10 10 0 0 1 2.172 -2.828 a4 4 0 1 1 0 5.656a10 10 0 0 1 -2.172 -2.828a10 10 0 0 0 -2.172 -2.828" />
+</svg>
+
+
+
+                
+                <span>Samuel</span>
+            </a>
+        </li>
+        
+
+        <div class="menu-bottom-section">
+                <li id="i18n-switch">  
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 5h7" />
+  <path d="M9 3v2c0 4.418 -2.239 8 -5 8" />
+  <path d="M5 9c-.003 2.144 2.952 3.908 6.7 4" />
+  <path d="M12 20l4 -9l4 9" />
+  <path d="M19.1 18h-6.2" />
+</svg>
+
+
+
+                    <select name="language" onchange="window.location.href = this.selectedOptions[0].value">
+                        
+                            <option value="https://canuxcheng.com/" selected></option>
+                        
+                    </select>
+                </li>
+            
+            
+            
+                <li id="dark-mode-toggle">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="8" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="16" cy="12" r="2" />
+  <rect x="2" y="6" width="20" height="12" rx="6" />
+</svg>
+
+
+
+                    <span>Dark Mode</span>
+                </li>
+            
+        </div>
+    </ol>
+</aside>
+
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#typing">typing</a></li>
+    <li><a href="#2to3">2to3</a></li>
+    <li><a href="#pydoc">pydoc</a></li>
+    <li><a href="#test">test</a></li>
+    <li><a href="#doctest">doctest</a></li>
+    <li><a href="#unittest">unittest</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#unittest2">unittest2</a></li>
+    <li><a href="#mock">mock</a></li>
+    <li><a href="#nose2">nose2</a></li>
+    <li><a href="#pytest">pytest</a></li>
+    <li><a href="#coverage">coverage</a></li>
+    <li><a href="#tox">tox</a></li>
+  </ul>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
+
+            <main class="main full-width">
+    <article class="main-article">
+    <header class="article-header">
+
+    <div class="article-details">
+    
+    <header class="article-category">
+        
+            <a href="/categories/python/" >
+                Python
+            </a>
+        
+    </header>
+    
+
+    <div class="article-title-wrapper">
+        <h2 class="article-title">
+            <a href="/post/psl_devops/">PSL_Test</a>
+        </h2>
+    
+        
+    </div>
+
+    
+    
+    
+    
+    <footer class="article-time">
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <path d="M11.795 21h-6.795a2 2 0 0 1 -2 -2v-12a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v4" />
+  <circle cx="18" cy="18" r="4" />
+  <path d="M15 3v4" />
+  <path d="M7 3v4" />
+  <path d="M3 11h16" />
+  <path d="M18 16.496v1.504l1 1" />
+</svg>
+                <time class="article-time--published">Apr 11, 2016</time>
+            </div>
+        
+
+        
+            <div>
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <circle cx="12" cy="12" r="9" />
+  <polyline points="12 7 12 12 15 15" />
+</svg>
+
+
+
+                <time class="article-time--reading">
+                    2 minute read
+                </time>
+            </div>
+        
+    </footer>
+    
+
+    
+</div>
+
+</header>
+
+    <section class="article-content">
+    
+    
+    <h1 id="devops">DevOps</h1>
+<p>development, debugging, profiling</p>
+<h2 id="typing">typing</h2>
+<p>用于类型提示，提供类型检查，代码可读性和编辑器自动补全支持。</p>
+<p>基础类型：</p>
+<pre><code>Tuple[int, int], Tuple[int, ...]
+List[str]
+Dict[str, int]
+Set[str]
+Optional[int]
+Union[int, str, float]
+</code></pre>
+<p>泛型</p>
+<pre><code>TypeVar
+Generic
+</code></pre>
+<p>函数签名</p>
+<pre><code>Callable
+</code></pre>
+<p>类相关</p>
+<pre><code>Type
+Protocol
+</code></pre>
+<p>高级类型</p>
+<pre><code>Linteral
+Final
+Annotated
+</code></pre>
+<h2 id="2to3">2to3</h2>
+<pre><code>$2to3
+</code></pre>
+<h2 id="pydoc">pydoc</h2>
+<pre><code>import pydoc
+</code></pre>
+<h2 id="test">test</h2>
+<pre><code>import test
+</code></pre>
+<h2 id="doctest">doctest</h2>
+<p>python内置的文档测试库．</p>
+<pre><code>import doctest
+</code></pre>
+<h2 id="unittest">unittest</h2>
+<p>python内置的单元测试库．</p>
+<pre><code>import unittest
+</code></pre>
+<hr>
+<h1 id="tpl">TPL</h1>
+<p>相关的第三方库</p>
+<h2 id="unittest2">unittest2</h2>
+<p>unittest2是unittest的升级版．</p>
+<p>python3集成了unittest2到unittest,像使用unittest一样使用即可．</p>
+<pre><code># python2.7
+$pip install unittest2
+import unittest2
+
+# python3
+import unittest
+</code></pre>
+<p>unittest也叫pyunit，类似于Junit(java)都是基于Kent Beck和Erich Gamma的XUnit框架．</p>
+<p>测试结果：</p>
+<p>OK 表示测试通过</p>
+<p>FAIL 表示测试没有通过，并引发一个AssertionError异常．</p>
+<p>ERROR 表示测试过程引发一个不是AssertionError的异常．</p>
+<pre><code># Python2.7 此处用的是标准库的unittest.
+import unittest
+import MyClass
+</code></pre>
+<p>classes:</p>
+<pre><code>unittest.TestCase: 每个实例就是一个test case. 使用TestCase.assert* 系列方法进行测试．
+unittest.TestSuite: 每个实例就是一个test suite. 多个test case放在一起就是一个test suite.
+unittest.TestLoader/unittest.defaultTestLoader: 用来加载TestCase到TestSuite.
+unittest.TestResult: 用来保存测试的结果．
+
+unittest.TestProgram/unittest.main(): 搜索该模块下所有test开头的测试用例方法并执行．
+fixtures对一个测试用例的环境的搭建和销毁，通过重载TestCase的setUp()和teaeDown()方法．
+
+unittest.TextTestRunner: 用来执行测试用例．
+unittest.TextTestResult: 用来打印格式化的测试结果．
+
+# unittest.TestCase
+# methods:
+assertXXX　系列方法．
+failXXX 系列方法
+fail(self, msg=None) # test立即失败
+addCleanup(self, function, *args, **kwargs)
+addTypeEqualityFunc(self, typeobj, function)
+countTestCases(self)
+debug(self)
+defaultTestResult() # return unittest.TestResult()
+doCleanups(self)
+id(self)
+run(self, result=None) # 可以在子类覆盖该方法．
+shortDescription(self)
+skipTest(self, reason)
+setUp(self) # 重写之后，每个case运行之前都会调用一次．
+tearDown(self) # 同上
+
+# classmethods:
+setUpClass(cls) # 通过@classmethod重写，这样所有的case运行之前只调用一次，而不是每个case运行之前都调用．
+tearDownClass(cls) # 同上
+
+# data:
+failureException = AssertionError
+longMessage = False
+maxDiff = 640
+</code></pre>
+<p>functions:</p>
+<pre><code>findTestCases(module, prefix='test', sortUsing=&lt;built-in function cmp&gt;, suiteClass=&lt;class 'unittest.suite.TestSuite'&gt;)
+getTestCaseNames(testCaseClass, prefix, sortUsing=&lt;built-in function cmp&gt;)
+installHandler()
+makeSuite(testCaseClass, prefix='test', sortUsing=&lt;built-in function cmp&gt;, suiteClass=&lt;class 'unittest.suite.TestSuite'&gt;)
+registerResult(result)
+removeHandler(method=None)
+removeResult(result)
+
+# unittest.case实现了几个函数用来增强unittest.TestCase的方法, 一般当装饰器用．
+expectedFailure(func) # 如果这个case失败了，不计入失败的数目．
+# @unittest.expectedFailure
+skip(reason) # 无条件跳过一个test case.
+skipIf(condition, reason) # condition为true就跳过一个test case.
+skipUnless(condition, reason) # 和上面相反
+</code></pre>
+<p>examples:</p>
+<pre><code>class MyClassTestCase(unittest.TestCase):
+
+    @classmethod
+    def setUpClass(cls):
+        print 'Just execute before the first test case start.'
+
+    @classmethod
+    def tearDownClass(cls):
+        print 'Just execute after all test case end.'
+
+    def setUp(self):
+        &quot;&quot;&quot;重载setUp进行测试之前的初始化工作.运行每个test_func之前都会运行该方法&quot;&quot;&quot;
+        print &quot;start&quot;
+
+    def tearDown(self):
+        &quot;&quot;&quot;重载tearDown进行测试结束后的清理工作.结束运行每个test_func之后都会运行该方法&quot;&quot;&quot;
+        print &quot;end&quot;
+
+    def test_func(self):
+        &quot;&quot;&quot;具体的测试用例，需要用test开头,多个test_func会根据func名字中的数字或字母的顺序来执行，和位置无关.
+        不是用test开头的方法默认不会被执行&quot;&quot;&quot;
+        self.assertEqual(MyClass.method(args), value, &quot;message&quot;)
+
+if __name__ == &quot;__main__&quot;:
+    unittest.main()
+
+# 自动发现和批量执行testcase/testsuite:
+def discover_test_case():
+    test_cases = []
+    _module = ...
+    tests.append(unittest.defaultTestLoader.loadTestsFromModule(_module))
+    unittest.defaultTestLoader.discover()
+    return tests
+
+def get_test_suite():
+    &quot;&quot;&quot;打包一个testsuite.&quot;&quot;&quot;
+    return unittest.TestSuite(discover_test_case())
+
+unittest.TextTestRunner
+if __name__ == &quot;__main__&quot;:
+    runner = unittest.TextTestRunner()
+    result = runner.run(get_test_suite())
+</code></pre>
+<h2 id="mock">mock</h2>
+<p><a class="link" href="https://github.com/testing-cabal/mock"  target="_blank" rel="noopener"
+    >https://github.com/testing-cabal/mock</a></p>
+<p>python3集成了mock到unittest模块，导入unittest.mock即可．</p>
+<pre><code># Python2.7
+$pip install mock
+import mock
+
+# Python3
+import unittest.mock
+</code></pre>
+<p>mock就是在测试中对于不容易构造或获取的对象，用一个虚拟的对象来代替以便测试的方法．</p>
+<pre><code># Python2.7 此处用的是第三方库mock
+from mock import Mock, patch, PropertyMock, MagicMock
+</code></pre>
+<h2 id="nose2">nose2</h2>
+<p><a class="link" href="https://github.com/nose-devs/nose2"  target="_blank" rel="noopener"
+    >https://github.com/nose-devs/nose2</a></p>
+<p>nose是unittest/unittest2的升级版．</p>
+<p>nose2是nose的升级版．</p>
+<p>nose2用于单元测试．</p>
+<pre><code>$ pip install nose
+
+import nose
+</code></pre>
+<h2 id="pytest">pytest</h2>
+<p><a class="link" href="https://github.com/pytest-dev/pytest/"  target="_blank" rel="noopener"
+    >https://github.com/pytest-dev/pytest/</a></p>
+<p>pytest用于单元测试．推荐使用．</p>
+<pre><code>$ pip install -U pytest
+
+import pytest
+</code></pre>
+<hr>
+<h2 id="coverage">coverage</h2>
+<p>分析单元测试的代码覆盖率</p>
+<p><a class="link" href="https://github.com/nedbat/coveragepy"  target="_blank" rel="noopener"
+    >https://github.com/nedbat/coveragepy</a></p>
+<pre><code>$ pip install coverage
+
+# 通过命令进行测试，可以集成到其它工具．
+$ coverage run --source=&lt;package-name&gt; setup.py test
+</code></pre>
+<hr>
+<h2 id="tox">tox</h2>
+<p>virtualenv management and test command line tool.</p>
+<p><a class="link" href="https://github.com/tox-dev/tox"  target="_blank" rel="noopener"
+    >https://github.com/tox-dev/tox</a></p>
+<pre><code>$ pip install tox
+
+# 通过命令进行测试，可以集成unittest, nose2, pytest等工具．
+$ tox
+</code></pre>
+<hr>
+
+</section>
+
+
+    <footer class="article-footer">
+    
+    <section class="article-tags">
+        
+            <a href="/tags/test/">Test</a>
+        
+    </section>
+
+
+    </footer>
+
+
+    
+        <link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css"integrity="sha256-J&#43;iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s="crossorigin="anonymous"
+            ><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js"integrity="sha256-InsNdER1b2xUewP&#43;pKCUJpkhiqwHgqiPXDlIk7GzBu4="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js"integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI="crossorigin="anonymous"
+                defer
+                >
+            </script><script>
+    window.addEventListener("DOMContentLoaded", () => {
+        renderMathInElement(document.querySelector(`.article-content`), {
+            delimiters: [
+                { left: "$$", right: "$$", display: true },
+                { left: "$", right: "$", display: false },
+                { left: "\\(", right: "\\)", display: false },
+                { left: "\\[", right: "\\]", display: true }
+            ],
+            ignoredClasses: ["gist"]
+        });})
+</script>
+    
+</article>
+
+    
+
+    
+
+     
+    
+        
+    <div id="gitalk-container"></div>
+<link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css"
+/>
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/blueimp-md5@2.18.0/js/md5.min.js"></script>
+<script>
+    const gitalk = new Gitalk({
+        clientID: "3d41a2a237fabe050cc0",
+        clientSecret: "868aa81b294f1463ddb6edc007576ecfed7d2075",
+        repo: "crazy-canux.github.io",
+        owner: "crazy-canux",
+        admin: ["crazy-canux"],
+        distractionFreeMode: false, 
+        id: md5(location.pathname), 
+    });
+    (function () {
+        if (
+            ["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1
+        ) {
+            document.getElementById("gitalk-container").innerHTML =
+                "Gitalk comments not available by default when the website is previewed locally.";
+            return;
+        }
+        gitalk.render("gitalk-container");
+    })();
+</script>
+
+
+
+    
+
+    <footer class="site-footer">
+    <section class="copyright">
+        &copy; 
+        
+            2013 - 
+        
+        2025 Morgoth
+    </section>
+    
+    <section class="powerby">
+        
+            Designed by Canux <br/>
+        
+    </section>
+</footer>
+
+
+    
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    
+    <div class="pswp__bg"></div>
+
+    
+    <div class="pswp__scroll-wrap">
+
+        
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                
+                
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                        <div class="pswp__preloader__cut">
+                            <div class="pswp__preloader__donut"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div>
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js"integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo="crossorigin="anonymous"
+                defer
+                >
+            </script><script 
+                src="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js"integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU="crossorigin="anonymous"
+                defer
+                >
+            </script><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css"crossorigin="anonymous"
+            ><link 
+                rel="stylesheet" 
+                href="https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css"crossorigin="anonymous"
+            >
+
+            </main>
+        </div>
+        <script 
+                src="https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js"integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z&#43;KMkF24hUW8WePSA9HM="crossorigin="anonymous"
+                
+                >
+            </script><script type="text/javascript" src="/ts/main.js" defer></script>
+<script>
+    (function () {
+        const customFont = document.createElement('link');
+        customFont.href = "https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap";
+
+        customFont.type = "text/css";
+        customFont.rel = "stylesheet";
+
+        document.head.appendChild(customFont);
+    }());
+</script>
+
+    </body>
+</html>

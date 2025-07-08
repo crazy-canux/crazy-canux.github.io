@@ -322,13 +322,13 @@ list(iterable) # 把可迭代的对象转换成列表．
 &lt;pre&gt;&lt;code&gt;count(value) # 返回value在列表中出现的次数
 index(value, [start, [stop]]) # 从左往右在list[start:stop]中寻找value,返回第一个找到的元素的索引，否则返回ValueError异常．
 
-# 下列改变列表的值的方法都没有返回值，直接改变原列表的值．
+# 下列改变列表的值的方法都没有返回值，直接改变原列表的值, 返回None。
 append(object) # 在列表结尾追加对象
 extend(iterable) # 将可迭代对象iterable的元素依次追加到列表,相当于序列的+运算．
 insert(index, object) # 在list[index]前面插入object.
 pop([index]) # 删除list[index],默认是最后一个元素，如果列表为空或索引越界，抛出IndexError异常．
 remove(value) # 删除第一个出现的value．
-reverse() # 翻转列表
+reverse() # 翻转列表, 返回None
 sort(cmp=None, key=None, reverse=False) # 默认对列表中的元素从小到大排序，reverse=True,则从大到小．
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;dict&#34;&gt;dict&lt;/h2&gt;

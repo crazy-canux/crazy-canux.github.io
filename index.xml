@@ -19300,13 +19300,13 @@ list(iterable) # 把可迭代的对象转换成列表．
 &lt;pre&gt;&lt;code&gt;count(value) # 返回value在列表中出现的次数
 index(value, [start, [stop]]) # 从左往右在list[start:stop]中寻找value,返回第一个找到的元素的索引，否则返回ValueError异常．
 
-# 下列改变列表的值的方法都没有返回值，直接改变原列表的值．
+# 下列改变列表的值的方法都没有返回值，直接改变原列表的值, 返回None。
 append(object) # 在列表结尾追加对象
 extend(iterable) # 将可迭代对象iterable的元素依次追加到列表,相当于序列的+运算．
 insert(index, object) # 在list[index]前面插入object.
 pop([index]) # 删除list[index],默认是最后一个元素，如果列表为空或索引越界，抛出IndexError异常．
 remove(value) # 删除第一个出现的value．
-reverse() # 翻转列表
+reverse() # 翻转列表, 返回None
 sort(cmp=None, key=None, reverse=False) # 默认对列表中的元素从小到大排序，reverse=True,则从大到小．
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;dict&#34;&gt;dict&lt;/h2&gt;
@@ -28468,12 +28468,38 @@ curl -s https://vault.canux.com/v1/&amp;lt;ns&amp;gt;/&amp;lt;pki_root&amp;gt;/c
         </item>
         <item>
         <title>PSL_Test</title>
-        <link>https://canuxcheng.com/post/psl_test/</link>
+        <link>https://canuxcheng.com/post/psl_devops/</link>
         <pubDate>Mon, 11 Apr 2016 22:58:13 +0000</pubDate>
         
-        <guid>https://canuxcheng.com/post/psl_test/</guid>
-        <description>&lt;h1 id=&#34;development-tools&#34;&gt;Development Tools&lt;/h1&gt;
+        <guid>https://canuxcheng.com/post/psl_devops/</guid>
+        <description>&lt;h1 id=&#34;devops&#34;&gt;DevOps&lt;/h1&gt;
+&lt;p&gt;development, debugging, profiling&lt;/p&gt;
 &lt;h2 id=&#34;typing&#34;&gt;typing&lt;/h2&gt;
+&lt;p&gt;用于类型提示，提供类型检查，代码可读性和编辑器自动补全支持。&lt;/p&gt;
+&lt;p&gt;基础类型：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Tuple[int, int], Tuple[int, ...]
+List[str]
+Dict[str, int]
+Set[str]
+Optional[int]
+Union[int, str, float]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;泛型&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;TypeVar
+Generic
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;函数签名&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Callable
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;类相关&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Type
+Protocol
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;高级类型&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Linteral
+Final
+Annotated
+&lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;2to3&#34;&gt;2to3&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;$2to3
 &lt;/code&gt;&lt;/pre&gt;
