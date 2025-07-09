@@ -6,13 +6,13 @@ http://www.ansible.com.cn/index.html
 ansible通过SSH来远程管理Linux/Unix机器．
 ansible通过winrm&#43;powershell来远程管理Windows机器．
 安装:
-$ sudo pip install ansible $ sudo apt-get install ansible $ sudo yum install ansible 配置：
+$ sudo pip install ansible $ sudo apt-get install ansible $ sudo yum install ansible $ brew install ansible sshpass 配置：
 参考Network-SSH实现从controller到所有node的无密码登陆
 配置文件执行顺序:
 ANSIBLE_CONFIG ansible.cfg .ansible.cfg /etc/ansible/ansible.cfg 手动配置:
 $ sudo vim /etc/ansible/ansible.cfg [defaults] ask_pass = False host_key_checking = False ansible命令 ansible运行命令的两种方式：
 Ad-hoc相当于直接运行shell命令 playbooks相当于运行shell脚本 ansible:
-$ ansible -i inventory group1:group1:group3/all ... $ansible --help -m MODULE_NAME, --module-name=MODULE_NAME # 执行模块，默认是command -M MODULE_PATH, --module-path=MODULE_PATH # 指定模块的路径 -a MODULE_ARGS, --args=MODULE_ARGS # 模块的参数 -i INVENTORY, --inventory INVENTORY # 默认/etc/ansible/hosts, 需要指定hosts分组 -f FORKS, --forks=FORKS # 指定并发进程的数量 -C, --check -D, --diff -l SUBSET, --limit=SUBSET --syntax-check --list-hosts -v, --verbose # -v, -vvv, -vvvv # 提权选项 -b, --become --become-method=BECOME_METHOD # sudo(default)/su/pbrun/pfexec/runas/doas --become-user=BECOME_USER # root(default) -K, --ask-become-pass # 连接选项 -u REMOTE_USER --ssh-common-args --ssh-extra-args -T TIMEOUT # default 10s -K, --ask-pass inventory inventory包括主机和分组,以及主机变量和分组变量.
+$ ansible group1:group1:group3/all -i inventory ...... $ansible --help -m MODULE_NAME, --module-name=MODULE_NAME # 执行模块，默认是command -M MODULE_PATH, --module-path=MODULE_PATH # 指定模块的路径 -a MODULE_ARGS, --args=MODULE_ARGS # 模块的参数 -i INVENTORY, --inventory INVENTORY # 默认/etc/ansible/hosts, 需要指定hosts分组 -f FORKS, --forks=FORKS # 指定并发进程的数量 -C, --check -D, --diff -l SUBSET, --limit=SUBSET --syntax-check --list-hosts -v, --verbose # -v, -vvv, -vvvv # 提权选项 -b, --become --become-method=BECOME_METHOD # sudo(default)/su/pbrun/pfexec/runas/doas --become-user=BECOME_USER # root(default) -K, --ask-become-pass # 连接选项 -u REMOTE_USER --ssh-common-args --ssh-extra-args -T TIMEOUT # default 10s -K, --ask-pass inventory inventory包括主机和分组,以及主机变量和分组变量.
 '>
 <title>Ansible</title>
 
@@ -24,13 +24,13 @@ http://www.ansible.com.cn/index.html
 ansible通过SSH来远程管理Linux/Unix机器．
 ansible通过winrm&#43;powershell来远程管理Windows机器．
 安装:
-$ sudo pip install ansible $ sudo apt-get install ansible $ sudo yum install ansible 配置：
+$ sudo pip install ansible $ sudo apt-get install ansible $ sudo yum install ansible $ brew install ansible sshpass 配置：
 参考Network-SSH实现从controller到所有node的无密码登陆
 配置文件执行顺序:
 ANSIBLE_CONFIG ansible.cfg .ansible.cfg /etc/ansible/ansible.cfg 手动配置:
 $ sudo vim /etc/ansible/ansible.cfg [defaults] ask_pass = False host_key_checking = False ansible命令 ansible运行命令的两种方式：
 Ad-hoc相当于直接运行shell命令 playbooks相当于运行shell脚本 ansible:
-$ ansible -i inventory group1:group1:group3/all ... $ansible --help -m MODULE_NAME, --module-name=MODULE_NAME # 执行模块，默认是command -M MODULE_PATH, --module-path=MODULE_PATH # 指定模块的路径 -a MODULE_ARGS, --args=MODULE_ARGS # 模块的参数 -i INVENTORY, --inventory INVENTORY # 默认/etc/ansible/hosts, 需要指定hosts分组 -f FORKS, --forks=FORKS # 指定并发进程的数量 -C, --check -D, --diff -l SUBSET, --limit=SUBSET --syntax-check --list-hosts -v, --verbose # -v, -vvv, -vvvv # 提权选项 -b, --become --become-method=BECOME_METHOD # sudo(default)/su/pbrun/pfexec/runas/doas --become-user=BECOME_USER # root(default) -K, --ask-become-pass # 连接选项 -u REMOTE_USER --ssh-common-args --ssh-extra-args -T TIMEOUT # default 10s -K, --ask-pass inventory inventory包括主机和分组,以及主机变量和分组变量.
+$ ansible group1:group1:group3/all -i inventory ...... $ansible --help -m MODULE_NAME, --module-name=MODULE_NAME # 执行模块，默认是command -M MODULE_PATH, --module-path=MODULE_PATH # 指定模块的路径 -a MODULE_ARGS, --args=MODULE_ARGS # 模块的参数 -i INVENTORY, --inventory INVENTORY # 默认/etc/ansible/hosts, 需要指定hosts分组 -f FORKS, --forks=FORKS # 指定并发进程的数量 -C, --check -D, --diff -l SUBSET, --limit=SUBSET --syntax-check --list-hosts -v, --verbose # -v, -vvv, -vvvv # 提权选项 -b, --become --become-method=BECOME_METHOD # sudo(default)/su/pbrun/pfexec/runas/doas --become-user=BECOME_USER # root(default) -K, --ask-become-pass # 连接选项 -u REMOTE_USER --ssh-common-args --ssh-extra-args -T TIMEOUT # default 10s -K, --ask-pass inventory inventory包括主机和分组,以及主机变量和分组变量.
 '>
 <meta property='og:url' content='https://canuxcheng.com/post/devops_ansible/'>
 <meta property='og:site_name' content='Morgoth'>
@@ -41,13 +41,13 @@ http://www.ansible.com.cn/index.html
 ansible通过SSH来远程管理Linux/Unix机器．
 ansible通过winrm&#43;powershell来远程管理Windows机器．
 安装:
-$ sudo pip install ansible $ sudo apt-get install ansible $ sudo yum install ansible 配置：
+$ sudo pip install ansible $ sudo apt-get install ansible $ sudo yum install ansible $ brew install ansible sshpass 配置：
 参考Network-SSH实现从controller到所有node的无密码登陆
 配置文件执行顺序:
 ANSIBLE_CONFIG ansible.cfg .ansible.cfg /etc/ansible/ansible.cfg 手动配置:
 $ sudo vim /etc/ansible/ansible.cfg [defaults] ask_pass = False host_key_checking = False ansible命令 ansible运行命令的两种方式：
 Ad-hoc相当于直接运行shell命令 playbooks相当于运行shell脚本 ansible:
-$ ansible -i inventory group1:group1:group3/all ... $ansible --help -m MODULE_NAME, --module-name=MODULE_NAME # 执行模块，默认是command -M MODULE_PATH, --module-path=MODULE_PATH # 指定模块的路径 -a MODULE_ARGS, --args=MODULE_ARGS # 模块的参数 -i INVENTORY, --inventory INVENTORY # 默认/etc/ansible/hosts, 需要指定hosts分组 -f FORKS, --forks=FORKS # 指定并发进程的数量 -C, --check -D, --diff -l SUBSET, --limit=SUBSET --syntax-check --list-hosts -v, --verbose # -v, -vvv, -vvvv # 提权选项 -b, --become --become-method=BECOME_METHOD # sudo(default)/su/pbrun/pfexec/runas/doas --become-user=BECOME_USER # root(default) -K, --ask-become-pass # 连接选项 -u REMOTE_USER --ssh-common-args --ssh-extra-args -T TIMEOUT # default 10s -K, --ask-pass inventory inventory包括主机和分组,以及主机变量和分组变量.
+$ ansible group1:group1:group3/all -i inventory ...... $ansible --help -m MODULE_NAME, --module-name=MODULE_NAME # 执行模块，默认是command -M MODULE_PATH, --module-path=MODULE_PATH # 指定模块的路径 -a MODULE_ARGS, --args=MODULE_ARGS # 模块的参数 -i INVENTORY, --inventory INVENTORY # 默认/etc/ansible/hosts, 需要指定hosts分组 -f FORKS, --forks=FORKS # 指定并发进程的数量 -C, --check -D, --diff -l SUBSET, --limit=SUBSET --syntax-check --list-hosts -v, --verbose # -v, -vvv, -vvvv # 提权选项 -b, --become --become-method=BECOME_METHOD # sudo(default)/su/pbrun/pfexec/runas/doas --become-user=BECOME_USER # root(default) -K, --ask-become-pass # 连接选项 -u REMOTE_USER --ssh-common-args --ssh-extra-args -T TIMEOUT # default 10s -K, --ask-pass inventory inventory包括主机和分组,以及主机变量和分组变量.
 ">
     <link rel="shortcut icon" href="favicon.ico" />
 <style>
@@ -336,7 +336,52 @@ $ ansible -i inventory group1:group1:group3/all ... $ansible --help -m MODULE_NA
     </ol>
 </aside>
 
-    
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#ansible命令">ansible命令</a></li>
+    <li><a href="#inventory">inventory</a></li>
+    <li><a href="#module">module</a>
+      <ul>
+        <li><a href="#内置的模块">内置的模块</a></li>
+      </ul>
+    </li>
+    <li><a href="#adhoc">adhoc</a></li>
+    <li><a href="#playbooks">playbooks</a></li>
+    <li><a href="#ansible-vault">ansible-vault</a></li>
+    <li><a href="#ansible-inventory">ansible-inventory</a></li>
+    <li><a href="#ansible-config">ansible-config</a></li>
+    <li><a href="#ansible-pull">ansible-pull</a></li>
+    <li><a href="#ansible-console">ansible-console</a></li>
+    <li><a href="#ansible-galaxy">ansible-galaxy</a></li>
+  </ul>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
 
             <main class="main full-width">
     <article class="main-article">
@@ -392,7 +437,7 @@ $ ansible -i inventory group1:group1:group3/all ... $ansible --help -m MODULE_NA
 
 
                 <time class="article-time--reading">
-                    2 minute read
+                    3 minute read
                 </time>
             </div>
         
@@ -418,6 +463,8 @@ $ ansible -i inventory group1:group1:group3/all ... $ansible --help -m MODULE_NA
 <pre><code>$ sudo pip install ansible
 $ sudo apt-get install ansible
 $ sudo yum install ansible
+
+$ brew install ansible sshpass
 </code></pre>
 <p>配置：</p>
 <p>参考Network-SSH实现从controller到所有node的无密码登陆</p>
@@ -433,14 +480,14 @@ ansible.cfg
 ask_pass = False
 host_key_checking = False
 </code></pre>
-<h1 id="ansible命令">ansible命令</h1>
+<h2 id="ansible命令">ansible命令</h2>
 <p>ansible运行命令的两种方式：</p>
 <ol>
 <li>Ad-hoc相当于直接运行shell命令</li>
 <li>playbooks相当于运行shell脚本</li>
 </ol>
 <p>ansible:</p>
-<pre><code>$ ansible -i inventory group1:group1:group3/all ...
+<pre><code>$ ansible group1:group1:group3/all  -i inventory  ......
 
 $ansible --help
 -m MODULE_NAME, --module-name=MODULE_NAME # 执行模块，默认是command
@@ -469,7 +516,7 @@ $ansible --help
 -K, --ask-pass
 </code></pre>
 <hr>
-<h1 id="inventory">inventory</h1>
+<h2 id="inventory">inventory</h2>
 <p>inventory包括主机和分组,以及主机变量和分组变量.</p>
 <p>可以是ini格式，也可以是yaml格式.</p>
 <pre><code>$ sudo vim /etc/ansible/hosts
@@ -510,37 +557,49 @@ group2
 </code></pre>
 <p>yaml:</p>
 <pre><code>all:
-  hosts:    # 定义主机和主机变量
+  hosts:    # hosts, 定义主机和主机变量
     node1:
       ansible_host:
-      ip:
-      access_ip:
-  children:    # 定义分组和分组变量
-    group1:
+      ansible_port:
+      ansible_user:
+      ansible_ssh_pass: &quot;${{ ansible_ssh_pass }}&quot;    # use ansible-vault
+  children:    # children, 定义分组和分组变量
+    production:
       hosts:
         node1:
-      vars:
-        key: value
-    group2:
-      hosts:
         node2:
       vars:
-        key: value
-    big-group: # 定义分组的分组
-      children:
-        group1:
-          hosts:
-            node1:
-        group2:
-          hosts:
-            node2:
+        env: prod
+    staging:
+      hosts:
+        node3:
+        node4:
+      vars:
+        env: staging
 </code></pre>
 <hr>
-<h1 id="module">module</h1>
+<h2 id="module">module</h2>
 <p>module也就是所说的task plugins/library plugins.</p>
-<pre><code>$ ansible-doc -l/--list #　查看所有已经安装的模块
+<pre><code>$ ansible-doc -l/--list  #　查看所有已经安装的模块
 </code></pre>
-<p>commands modules：</p>
+<p>modules：</p>
+<pre><code>help 
+serial
+remote_user
+list
+exit
+forks
+collections
+become
+cd
+check
+</code></pre>
+<h3 id="内置的模块">内置的模块</h3>
+<pre><code>$ ansible-docs -l | grep &quot;ansible.builtin&quot;
+
+ping
+</code></pre>
+<p>执行命令</p>
 <pre><code>command # 默认模块，用于在远程机器上执行命令
 shell # 和command相同，只是该模块支持管道和特殊字符，一般用来执行脚本和复杂命令
 raw
@@ -559,13 +618,14 @@ apt_rpm pkg state=present/absent
 yum name state=present/absent/latest/installed/removed
 </code></pre>
 <hr>
-<h1 id="adhoc">adhoc</h1>
+<h2 id="adhoc">adhoc</h2>
 <pre><code>$ ansible group -m &lt;module&gt; -a &lt;args&gt; ...
+$ ansible all -i inventory.yml -m ping  -e &quot;@vault.yml&quot; --ask-vault-pass
 </code></pre>
 <p>copy:</p>
 <pre><code>$ ansible group -m copy -a &quot;src=/sr dest=/dest mode=0655&quot;
 </code></pre>
-<h1 id="playbooks">playbooks</h1>
+<h2 id="playbooks">playbooks</h2>
 <p>playbook的格式是YAML.</p>
 <pre><code>$ ansible-playbook -i inventory playbook.yaml -K -vvv &gt; output.txt
 -i INVENTORY, --inventory INVENTORY # 默认/etc/ansible/hosts, 在playbook中指定hosts分组，而不是命令行
@@ -590,10 +650,70 @@ become_flags:
 <pre><code>strategy: debug
 </code></pre>
 <hr>
-<h1 id="awx">awx</h1>
-<p>ansible的web管理界面.</p>
-<p><a class="link" href="https://github.com/ansible/awx"  target="_blank" rel="noopener"
-    >https://github.com/ansible/awx</a></p>
+<h2 id="ansible-vault">ansible-vault</h2>
+<p>ansible-vault用于加密敏感数据，比如密码等.</p>
+<pre><code>$ ansible-vault create vault.yml
+$ ansible-vault edit vault.yml
+$ ansible-vault view vault.yml
+$ ansible-vault encrypt vault.yml
+$ ansible-vault decrypt vault.yml
+</code></pre>
+<hr>
+<h2 id="ansible-inventory">ansible-inventory</h2>
+<p>ansible-inventory用于查看inventory的内容.</p>
+<pre><code>$ ansible-inventory --list -i inventory.yml
+$ ansible-inventory --graph -i inventory.yml
+
+$ ansible-inventory --host host1 -i inventory.yml # 查看主机的详细信息
+$ ansible-inventory --tree -i inventory.yml # 查看分组树状图
+
+$ ansible-inventory --export -i inventory.yml # 导出inventory到标准输出
+$ ansible-inventory --validate -i inventory.yml # 验证inventory文件的语法
+</code></pre>
+<hr>
+<h2 id="ansible-config">ansible-config</h2>
+<p>ansible-config用于查看和管理ansible的配置.</p>
+<pre><code>$ ansible-config view # 查看当前配置
+$ ansible-config dump --only-changed # 查看修改过的配置
+$ ansible-config list --type=defaults # 列出所有默认配置
+$ ansible-config list --type=privilege # 列出特权配置
+$ ansible-config list --type=all # 列出所有配置
+
+$ ansible-config init --disabled &gt; ansible.cfg # 初始化一个新的ansible.cfg文件
+</code></pre>
+<hr>
+<h2 id="ansible-pull">ansible-pull</h2>
+<p>ansible-pull用于从远程仓库拉取playbook并执行.</p>
+<pre><code>$ ansible-pull -U &lt;repo_url&gt; -i inventory.yml playbook.yml
+
+-U, --url &lt;repo_url&gt; # 指定远程仓库的URL
+-i, --inventory &lt;inventory&gt; # 指定inventory文件
+-d, --directory &lt;directory&gt; # 指定工作目录
+-C, --checkout &lt;branch&gt; # 指定分支
+-c, --clean # 清理工作目录
+</code></pre>
+<hr>
+<h2 id="ansible-console">ansible-console</h2>
+<p>ansible-console是一个交互式的命令行界面，可以执行ansible命令和playbook.</p>
+<pre><code>$ ansible-console -i inventory.yml
+
+-i, --inventory &lt;inventory&gt; # 指定inventory文件
+-c, --connection &lt;connection&gt; # 指定连接方式，默认是ssh
+-u, --user &lt;user&gt; # 指定远程用户
+-k, --ask-pass # 提示输入SSH密码
+</code></pre>
+<hr>
+<h2 id="ansible-galaxy">ansible-galaxy</h2>
+<p>ansible-galaxy用于管理Ansible的角色和集合.</p>
+<pre><code>$ ansible-galaxy install &lt;role_name&gt; # 安装角色
+$ ansible-galaxy remove &lt;role_name&gt; # 卸载角色
+$ ansible-galaxy list # 列出已安装的角色
+$ ansible-galaxy init &lt;role_name&gt; # 初始化一个新的角色
+
+$ ansible-galaxy collection install &lt;collection_name&gt; # 安装集合
+$ ansible-galaxy collection remove &lt;collection_name&gt; # 卸载集合
+$ ansible-galaxy collection list # 列出已安装的集合
+</code></pre>
 
 </section>
 

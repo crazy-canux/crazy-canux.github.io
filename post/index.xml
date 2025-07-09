@@ -6527,10 +6527,9 @@ docker-machine ls
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/abiosoft/colima&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/abiosoft/colima&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;docker for mac&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;brew install colima
+&lt;pre&gt;&lt;code&gt;brew install colima docker
 colima start
 brew services restart colima
-
 sudo ln -sf /Users/canche01/.colima/default/docker.sock /var/run/docker.sock
 docker ps -a
 &lt;/code&gt;&lt;/pre&gt;
@@ -27955,6 +27954,8 @@ $ sudo ./VBoxLinuxAdditions.run --nox11
 &lt;pre&gt;&lt;code&gt;$ sudo pip install ansible
 $ sudo apt-get install ansible
 $ sudo yum install ansible
+
+$ brew install ansible sshpass
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;配置：&lt;/p&gt;
 &lt;p&gt;参考Network-SSH实现从controller到所有node的无密码登陆&lt;/p&gt;
@@ -27970,14 +27971,14 @@ ansible.cfg
 ask_pass = False
 host_key_checking = False
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;ansible命令&#34;&gt;ansible命令&lt;/h1&gt;
+&lt;h2 id=&#34;ansible命令&#34;&gt;ansible命令&lt;/h2&gt;
 &lt;p&gt;ansible运行命令的两种方式：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Ad-hoc相当于直接运行shell命令&lt;/li&gt;
 &lt;li&gt;playbooks相当于运行shell脚本&lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;ansible:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ ansible -i inventory group1:group1:group3/all ...
+&lt;pre&gt;&lt;code&gt;$ ansible group1:group1:group3/all  -i inventory  ......
 
 $ansible --help
 -m MODULE_NAME, --module-name=MODULE_NAME # 执行模块，默认是command
@@ -28006,7 +28007,7 @@ $ansible --help
 -K, --ask-pass
 &lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
-&lt;h1 id=&#34;inventory&#34;&gt;inventory&lt;/h1&gt;
+&lt;h2 id=&#34;inventory&#34;&gt;inventory&lt;/h2&gt;
 &lt;p&gt;inventory包括主机和分组,以及主机变量和分组变量.&lt;/p&gt;
 &lt;p&gt;可以是ini格式，也可以是yaml格式.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;$ sudo vim /etc/ansible/hosts
@@ -28047,37 +28048,49 @@ group2
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;yaml:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;all:
-  hosts:    # 定义主机和主机变量
+  hosts:    # hosts, 定义主机和主机变量
     node1:
       ansible_host:
-      ip:
-      access_ip:
-  children:    # 定义分组和分组变量
-    group1:
+      ansible_port:
+      ansible_user:
+      ansible_ssh_pass: &amp;quot;${{ ansible_ssh_pass }}&amp;quot;    # use ansible-vault
+  children:    # children, 定义分组和分组变量
+    production:
       hosts:
         node1:
-      vars:
-        key: value
-    group2:
-      hosts:
         node2:
       vars:
-        key: value
-    big-group: # 定义分组的分组
-      children:
-        group1:
-          hosts:
-            node1:
-        group2:
-          hosts:
-            node2:
+        env: prod
+    staging:
+      hosts:
+        node3:
+        node4:
+      vars:
+        env: staging
 &lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
-&lt;h1 id=&#34;module&#34;&gt;module&lt;/h1&gt;
+&lt;h2 id=&#34;module&#34;&gt;module&lt;/h2&gt;
 &lt;p&gt;module也就是所说的task plugins/library plugins.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ ansible-doc -l/--list #　查看所有已经安装的模块
+&lt;pre&gt;&lt;code&gt;$ ansible-doc -l/--list  #　查看所有已经安装的模块
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;commands modules：&lt;/p&gt;
+&lt;p&gt;modules：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;help 
+serial
+remote_user
+list
+exit
+forks
+collections
+become
+cd
+check
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;内置的模块&#34;&gt;内置的模块&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;$ ansible-docs -l | grep &amp;quot;ansible.builtin&amp;quot;
+
+ping
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;执行命令&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;command # 默认模块，用于在远程机器上执行命令
 shell # 和command相同，只是该模块支持管道和特殊字符，一般用来执行脚本和复杂命令
 raw
@@ -28096,13 +28109,14 @@ apt_rpm pkg state=present/absent
 yum name state=present/absent/latest/installed/removed
 &lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
-&lt;h1 id=&#34;adhoc&#34;&gt;adhoc&lt;/h1&gt;
+&lt;h2 id=&#34;adhoc&#34;&gt;adhoc&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;$ ansible group -m &amp;lt;module&amp;gt; -a &amp;lt;args&amp;gt; ...
+$ ansible all -i inventory.yml -m ping  -e &amp;quot;@vault.yml&amp;quot; --ask-vault-pass
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;copy:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;$ ansible group -m copy -a &amp;quot;src=https://canuxcheng.com/sr dest=/dest mode=0655&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;playbooks&#34;&gt;playbooks&lt;/h1&gt;
+&lt;h2 id=&#34;playbooks&#34;&gt;playbooks&lt;/h2&gt;
 &lt;p&gt;playbook的格式是YAML.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;$ ansible-playbook -i inventory playbook.yaml -K -vvv &amp;gt; output.txt
 -i INVENTORY, --inventory INVENTORY # 默认/etc/ansible/hosts, 在playbook中指定hosts分组，而不是命令行
@@ -28127,10 +28141,70 @@ become_flags:
 &lt;pre&gt;&lt;code&gt;strategy: debug
 &lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
-&lt;h1 id=&#34;awx&#34;&gt;awx&lt;/h1&gt;
-&lt;p&gt;ansible的web管理界面.&lt;/p&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/ansible/awx&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://github.com/ansible/awx&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;ansible-vault&#34;&gt;ansible-vault&lt;/h2&gt;
+&lt;p&gt;ansible-vault用于加密敏感数据，比如密码等.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ ansible-vault create vault.yml
+$ ansible-vault edit vault.yml
+$ ansible-vault view vault.yml
+$ ansible-vault encrypt vault.yml
+$ ansible-vault decrypt vault.yml
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;ansible-inventory&#34;&gt;ansible-inventory&lt;/h2&gt;
+&lt;p&gt;ansible-inventory用于查看inventory的内容.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ ansible-inventory --list -i inventory.yml
+$ ansible-inventory --graph -i inventory.yml
+
+$ ansible-inventory --host host1 -i inventory.yml # 查看主机的详细信息
+$ ansible-inventory --tree -i inventory.yml # 查看分组树状图
+
+$ ansible-inventory --export -i inventory.yml # 导出inventory到标准输出
+$ ansible-inventory --validate -i inventory.yml # 验证inventory文件的语法
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;ansible-config&#34;&gt;ansible-config&lt;/h2&gt;
+&lt;p&gt;ansible-config用于查看和管理ansible的配置.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ ansible-config view # 查看当前配置
+$ ansible-config dump --only-changed # 查看修改过的配置
+$ ansible-config list --type=defaults # 列出所有默认配置
+$ ansible-config list --type=privilege # 列出特权配置
+$ ansible-config list --type=all # 列出所有配置
+
+$ ansible-config init --disabled &amp;gt; ansible.cfg # 初始化一个新的ansible.cfg文件
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;ansible-pull&#34;&gt;ansible-pull&lt;/h2&gt;
+&lt;p&gt;ansible-pull用于从远程仓库拉取playbook并执行.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ ansible-pull -U &amp;lt;repo_url&amp;gt; -i inventory.yml playbook.yml
+
+-U, --url &amp;lt;repo_url&amp;gt; # 指定远程仓库的URL
+-i, --inventory &amp;lt;inventory&amp;gt; # 指定inventory文件
+-d, --directory &amp;lt;directory&amp;gt; # 指定工作目录
+-C, --checkout &amp;lt;branch&amp;gt; # 指定分支
+-c, --clean # 清理工作目录
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;ansible-console&#34;&gt;ansible-console&lt;/h2&gt;
+&lt;p&gt;ansible-console是一个交互式的命令行界面，可以执行ansible命令和playbook.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ ansible-console -i inventory.yml
+
+-i, --inventory &amp;lt;inventory&amp;gt; # 指定inventory文件
+-c, --connection &amp;lt;connection&amp;gt; # 指定连接方式，默认是ssh
+-u, --user &amp;lt;user&amp;gt; # 指定远程用户
+-k, --ask-pass # 提示输入SSH密码
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;ansible-galaxy&#34;&gt;ansible-galaxy&lt;/h2&gt;
+&lt;p&gt;ansible-galaxy用于管理Ansible的角色和集合.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ ansible-galaxy install &amp;lt;role_name&amp;gt; # 安装角色
+$ ansible-galaxy remove &amp;lt;role_name&amp;gt; # 卸载角色
+$ ansible-galaxy list # 列出已安装的角色
+$ ansible-galaxy init &amp;lt;role_name&amp;gt; # 初始化一个新的角色
+
+$ ansible-galaxy collection install &amp;lt;collection_name&amp;gt; # 安装集合
+$ ansible-galaxy collection remove &amp;lt;collection_name&amp;gt; # 卸载集合
+$ ansible-galaxy collection list # 列出已安装的集合
+&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>

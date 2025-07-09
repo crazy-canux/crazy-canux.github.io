@@ -3897,10 +3897,9 @@ docker-machine ls
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/abiosoft/colima&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/abiosoft/colima&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;docker for mac&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;brew install colima
+&lt;pre&gt;&lt;code&gt;brew install colima docker
 colima start
 brew services restart colima
-
 sudo ln -sf /Users/canche01/.colima/default/docker.sock /var/run/docker.sock
 docker ps -a
 &lt;/code&gt;&lt;/pre&gt;
