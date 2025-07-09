@@ -28089,9 +28089,10 @@ $ansible --help
 &lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;inventory&#34;&gt;inventory&lt;/h2&gt;
-&lt;p&gt;inventory包括主机和分组,以及主机变量和分组变量.&lt;/p&gt;
+&lt;p&gt;inventory包括主机和分组,以及主机变量和分组变量. 默认是&lt;code&gt;/etc/ansible/hosts&lt;/code&gt;文件.&lt;/p&gt;
 &lt;p&gt;可以是ini格式，也可以是yaml格式.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ sudo vim /etc/ansible/hosts
+&lt;p&gt;可以是一个文件，可以是多个文件，也可以是一个目录.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ ansible all -i inventory/folder/ ......
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;ini格式:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;定义主机和主机变量
@@ -28153,18 +28154,7 @@ group2
 &lt;h2 id=&#34;module&#34;&gt;module&lt;/h2&gt;
 &lt;p&gt;module也就是所说的task plugins/library plugins.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;$ ansible-doc -l/--list  #　查看所有已经安装的模块
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;modules：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;help 
-serial
-remote_user
-list
-exit
-forks
-collections
-become
-cd
-check
+$ ansible-doc apt # 查看apt模块的文档
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h3 id=&#34;内置的模块&#34;&gt;内置的模块&lt;/h3&gt;
 &lt;pre&gt;&lt;code&gt;$ ansible-docs -l | grep &amp;quot;ansible.builtin&amp;quot;
@@ -28197,16 +28187,25 @@ $ ansible all -i inventory.yml -m ping  -e &amp;quot;@vault.yml&amp;quot; --ask-
 &lt;p&gt;copy:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;$ ansible group -m copy -a &amp;quot;src=https://canuxcheng.com/sr dest=/dest mode=0655&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;playbooks&#34;&gt;playbooks&lt;/h2&gt;
+&lt;h2 id=&#34;ansible-playbooks&#34;&gt;ansible-playbooks&lt;/h2&gt;
 &lt;p&gt;playbook的格式是YAML.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;$ ansible-playbook -i inventory playbook.yaml -K -vvv &amp;gt; output.txt
--i INVENTORY, --inventory INVENTORY # 默认/etc/ansible/hosts, 在playbook中指定hosts分组，而不是命令行
-
-- hosts: host-or-group
-  remote_user: user
-
-  task:
-  - name: task name.
+$ ansible-playbook -i inventory.yml playbook.yml -e &amp;quot;@vault.yml&amp;quot; --ask-vault-pass
+$ ansible-playbook -i inventory.yml playbook.yml -e &amp;quot;@vault.yml&amp;quot; --vault-password-file ~/.vault_pass.txt
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;playbook:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;- name: install
+  hosts: host-or-group
+  become: true
+  vars:
+    var1: value1
+    var2: value2
+  tasks:
+  - name: &amp;quot;{{ var1 }}&amp;quot;
+    module: args
+    debug:
+      msg: &amp;quot;This is a debug message&amp;quot;
+  - name: &amp;quot;{{ var2 }}&amp;quot;
     module: args
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;variables:&lt;/p&gt;

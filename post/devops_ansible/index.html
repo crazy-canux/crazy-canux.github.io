@@ -12,7 +12,7 @@ $ sudo pip install ansible $ sudo apt-get install ansible $ sudo yum install ans
 ANSIBLE_CONFIG ansible.cfg .ansible.cfg /etc/ansible/ansible.cfg 手动配置:
 $ sudo vim /etc/ansible/ansible.cfg [defaults] ask_pass = False host_key_checking = False ansible命令 ansible运行命令的两种方式：
 Ad-hoc相当于直接运行shell命令 playbooks相当于运行shell脚本 ansible:
-$ ansible group1:group1:group3/all -i inventory ...... $ansible --help -m MODULE_NAME, --module-name=MODULE_NAME # 执行模块，默认是command -M MODULE_PATH, --module-path=MODULE_PATH # 指定模块的路径 -a MODULE_ARGS, --args=MODULE_ARGS # 模块的参数 -i INVENTORY, --inventory INVENTORY # 默认/etc/ansible/hosts, 需要指定hosts分组 -f FORKS, --forks=FORKS # 指定并发进程的数量 -C, --check -D, --diff -l SUBSET, --limit=SUBSET --syntax-check --list-hosts -v, --verbose # -v, -vvv, -vvvv # 提权选项 -b, --become --become-method=BECOME_METHOD # sudo(default)/su/pbrun/pfexec/runas/doas --become-user=BECOME_USER # root(default) -K, --ask-become-pass # 连接选项 -u REMOTE_USER --ssh-common-args --ssh-extra-args -T TIMEOUT # default 10s -K, --ask-pass inventory inventory包括主机和分组,以及主机变量和分组变量.
+$ ansible group1:group1:group3/all -i inventory ...... $ansible --help -m MODULE_NAME, --module-name=MODULE_NAME # 执行模块，默认是command -M MODULE_PATH, --module-path=MODULE_PATH # 指定模块的路径 -a MODULE_ARGS, --args=MODULE_ARGS # 模块的参数 -i INVENTORY, --inventory INVENTORY # 默认/etc/ansible/hosts, 需要指定hosts分组 -f FORKS, --forks=FORKS # 指定并发进程的数量 -C, --check -D, --diff -l SUBSET, --limit=SUBSET --syntax-check --list-hosts -v, --verbose # -v, -vvv, -vvvv # 提权选项 -b, --become --become-method=BECOME_METHOD # sudo(default)/su/pbrun/pfexec/runas/doas --become-user=BECOME_USER # root(default) -K, --ask-become-pass # 连接选项 -u REMOTE_USER --ssh-common-args --ssh-extra-args -T TIMEOUT # default 10s -K, --ask-pass inventory inventory包括主机和分组,以及主机变量和分组变量. 默认是/etc/ansible/hosts文件.
 '>
 <title>Ansible</title>
 
@@ -30,7 +30,7 @@ $ sudo pip install ansible $ sudo apt-get install ansible $ sudo yum install ans
 ANSIBLE_CONFIG ansible.cfg .ansible.cfg /etc/ansible/ansible.cfg 手动配置:
 $ sudo vim /etc/ansible/ansible.cfg [defaults] ask_pass = False host_key_checking = False ansible命令 ansible运行命令的两种方式：
 Ad-hoc相当于直接运行shell命令 playbooks相当于运行shell脚本 ansible:
-$ ansible group1:group1:group3/all -i inventory ...... $ansible --help -m MODULE_NAME, --module-name=MODULE_NAME # 执行模块，默认是command -M MODULE_PATH, --module-path=MODULE_PATH # 指定模块的路径 -a MODULE_ARGS, --args=MODULE_ARGS # 模块的参数 -i INVENTORY, --inventory INVENTORY # 默认/etc/ansible/hosts, 需要指定hosts分组 -f FORKS, --forks=FORKS # 指定并发进程的数量 -C, --check -D, --diff -l SUBSET, --limit=SUBSET --syntax-check --list-hosts -v, --verbose # -v, -vvv, -vvvv # 提权选项 -b, --become --become-method=BECOME_METHOD # sudo(default)/su/pbrun/pfexec/runas/doas --become-user=BECOME_USER # root(default) -K, --ask-become-pass # 连接选项 -u REMOTE_USER --ssh-common-args --ssh-extra-args -T TIMEOUT # default 10s -K, --ask-pass inventory inventory包括主机和分组,以及主机变量和分组变量.
+$ ansible group1:group1:group3/all -i inventory ...... $ansible --help -m MODULE_NAME, --module-name=MODULE_NAME # 执行模块，默认是command -M MODULE_PATH, --module-path=MODULE_PATH # 指定模块的路径 -a MODULE_ARGS, --args=MODULE_ARGS # 模块的参数 -i INVENTORY, --inventory INVENTORY # 默认/etc/ansible/hosts, 需要指定hosts分组 -f FORKS, --forks=FORKS # 指定并发进程的数量 -C, --check -D, --diff -l SUBSET, --limit=SUBSET --syntax-check --list-hosts -v, --verbose # -v, -vvv, -vvvv # 提权选项 -b, --become --become-method=BECOME_METHOD # sudo(default)/su/pbrun/pfexec/runas/doas --become-user=BECOME_USER # root(default) -K, --ask-become-pass # 连接选项 -u REMOTE_USER --ssh-common-args --ssh-extra-args -T TIMEOUT # default 10s -K, --ask-pass inventory inventory包括主机和分组,以及主机变量和分组变量. 默认是/etc/ansible/hosts文件.
 '>
 <meta property='og:url' content='https://canuxcheng.com/post/devops_ansible/'>
 <meta property='og:site_name' content='Morgoth'>
@@ -47,7 +47,7 @@ $ sudo pip install ansible $ sudo apt-get install ansible $ sudo yum install ans
 ANSIBLE_CONFIG ansible.cfg .ansible.cfg /etc/ansible/ansible.cfg 手动配置:
 $ sudo vim /etc/ansible/ansible.cfg [defaults] ask_pass = False host_key_checking = False ansible命令 ansible运行命令的两种方式：
 Ad-hoc相当于直接运行shell命令 playbooks相当于运行shell脚本 ansible:
-$ ansible group1:group1:group3/all -i inventory ...... $ansible --help -m MODULE_NAME, --module-name=MODULE_NAME # 执行模块，默认是command -M MODULE_PATH, --module-path=MODULE_PATH # 指定模块的路径 -a MODULE_ARGS, --args=MODULE_ARGS # 模块的参数 -i INVENTORY, --inventory INVENTORY # 默认/etc/ansible/hosts, 需要指定hosts分组 -f FORKS, --forks=FORKS # 指定并发进程的数量 -C, --check -D, --diff -l SUBSET, --limit=SUBSET --syntax-check --list-hosts -v, --verbose # -v, -vvv, -vvvv # 提权选项 -b, --become --become-method=BECOME_METHOD # sudo(default)/su/pbrun/pfexec/runas/doas --become-user=BECOME_USER # root(default) -K, --ask-become-pass # 连接选项 -u REMOTE_USER --ssh-common-args --ssh-extra-args -T TIMEOUT # default 10s -K, --ask-pass inventory inventory包括主机和分组,以及主机变量和分组变量.
+$ ansible group1:group1:group3/all -i inventory ...... $ansible --help -m MODULE_NAME, --module-name=MODULE_NAME # 执行模块，默认是command -M MODULE_PATH, --module-path=MODULE_PATH # 指定模块的路径 -a MODULE_ARGS, --args=MODULE_ARGS # 模块的参数 -i INVENTORY, --inventory INVENTORY # 默认/etc/ansible/hosts, 需要指定hosts分组 -f FORKS, --forks=FORKS # 指定并发进程的数量 -C, --check -D, --diff -l SUBSET, --limit=SUBSET --syntax-check --list-hosts -v, --verbose # -v, -vvv, -vvvv # 提权选项 -b, --become --become-method=BECOME_METHOD # sudo(default)/su/pbrun/pfexec/runas/doas --become-user=BECOME_USER # root(default) -K, --ask-become-pass # 连接选项 -u REMOTE_USER --ssh-common-args --ssh-extra-args -T TIMEOUT # default 10s -K, --ask-pass inventory inventory包括主机和分组,以及主机变量和分组变量. 默认是/etc/ansible/hosts文件.
 ">
     <link rel="shortcut icon" href="favicon.ico" />
 <style>
@@ -366,7 +366,7 @@ $ ansible group1:group1:group3/all -i inventory ...... $ansible --help -m MODULE
       </ul>
     </li>
     <li><a href="#adhoc">adhoc</a></li>
-    <li><a href="#playbooks">playbooks</a></li>
+    <li><a href="#ansible-playbooks">ansible-playbooks</a></li>
     <li><a href="#ansible-vault">ansible-vault</a></li>
     <li><a href="#ansible-inventory">ansible-inventory</a></li>
     <li><a href="#ansible-config">ansible-config</a></li>
@@ -517,9 +517,10 @@ $ansible --help
 </code></pre>
 <hr>
 <h2 id="inventory">inventory</h2>
-<p>inventory包括主机和分组,以及主机变量和分组变量.</p>
+<p>inventory包括主机和分组,以及主机变量和分组变量. 默认是<code>/etc/ansible/hosts</code>文件.</p>
 <p>可以是ini格式，也可以是yaml格式.</p>
-<pre><code>$ sudo vim /etc/ansible/hosts
+<p>可以是一个文件，可以是多个文件，也可以是一个目录.</p>
+<pre><code>$ ansible all -i inventory/folder/ ......
 </code></pre>
 <p>ini格式:</p>
 <pre><code>定义主机和主机变量
@@ -581,18 +582,7 @@ group2
 <h2 id="module">module</h2>
 <p>module也就是所说的task plugins/library plugins.</p>
 <pre><code>$ ansible-doc -l/--list  #　查看所有已经安装的模块
-</code></pre>
-<p>modules：</p>
-<pre><code>help 
-serial
-remote_user
-list
-exit
-forks
-collections
-become
-cd
-check
+$ ansible-doc apt # 查看apt模块的文档
 </code></pre>
 <h3 id="内置的模块">内置的模块</h3>
 <pre><code>$ ansible-docs -l | grep &quot;ansible.builtin&quot;
@@ -625,16 +615,25 @@ $ ansible all -i inventory.yml -m ping  -e &quot;@vault.yml&quot; --ask-vault-pa
 <p>copy:</p>
 <pre><code>$ ansible group -m copy -a &quot;src=/sr dest=/dest mode=0655&quot;
 </code></pre>
-<h2 id="playbooks">playbooks</h2>
+<h2 id="ansible-playbooks">ansible-playbooks</h2>
 <p>playbook的格式是YAML.</p>
 <pre><code>$ ansible-playbook -i inventory playbook.yaml -K -vvv &gt; output.txt
--i INVENTORY, --inventory INVENTORY # 默认/etc/ansible/hosts, 在playbook中指定hosts分组，而不是命令行
-
-- hosts: host-or-group
-  remote_user: user
-
-  task:
-  - name: task name.
+$ ansible-playbook -i inventory.yml playbook.yml -e &quot;@vault.yml&quot; --ask-vault-pass
+$ ansible-playbook -i inventory.yml playbook.yml -e &quot;@vault.yml&quot; --vault-password-file ~/.vault_pass.txt
+</code></pre>
+<p>playbook:</p>
+<pre><code>- name: install
+  hosts: host-or-group
+  become: true
+  vars:
+    var1: value1
+    var2: value2
+  tasks:
+  - name: &quot;{{ var1 }}&quot;
+    module: args
+    debug:
+      msg: &quot;This is a debug message&quot;
+  - name: &quot;{{ var2 }}&quot;
     module: args
 </code></pre>
 <p>variables:</p>
