@@ -422,11 +422,16 @@ Logical lines and physical lines：
     <li><a href="#bytes"><em>bytes</em></a></li>
     <li><a href="#bytearray"><em>bytearray</em></a></li>
     <li><a href="#memoryview"><em>memoryview</em></a></li>
-    <li><a href="#dict"><em>dict</em></a></li>
+    <li><a href="#dict"><em>dict</em></a>
+      <ul>
+        <li><a href="#dict-comprehensions">dict comprehensions</a></li>
+      </ul>
+    </li>
     <li><a href="#sets集合"><em>Sets集合</em></a>
       <ul>
         <li><a href="#frozenset">frozenset</a></li>
         <li><a href="#set">set</a></li>
+        <li><a href="#set-comprehensions">set comprehensions</a></li>
       </ul>
     </li>
   </ul>
@@ -527,7 +532,7 @@ Logical lines and physical lines：
 
 
                 <time class="article-time--reading">
-                    11 minute read
+                    12 minute read
                 </time>
             </div>
         
@@ -1045,6 +1050,15 @@ dic['key']
 <pre><code>dic['key'] = 'value'
 del dic['key']
 </code></pre>
+<h3 id="dict-comprehensions">dict comprehensions</h3>
+<pre><code>{key: value for item in iterable if condition}
+
+modified = {
+    k: (expected[k], actual[k])
+    for k in expected
+    if k in actual and expected[k] != actual[k]
+}
+</code></pre>
 <h2 id="sets集合"><em>Sets集合</em></h2>
 <p>集合是一组无序排列的值，不能进行索引和切片操作，也不能进行键操作，只能通过for循环迭代集合元素．</p>
 <p>集合分为可变集合和不可变集合.</p>
@@ -1073,6 +1087,13 @@ del dic['key']
 <p>frozenset类型是不可变类型(immutable),是容器(container).</p>
 <h3 id="set">set</h3>
 <p>set类型是可变类型(mutable)，是容器(container).</p>
+<h3 id="set-comprehensions">set comprehensions</h3>
+<pre><code>{expression for item in iterable if condition}
+
+{x for x in range(10) if x % 2 == 0}
+等效于
+set(filter(lambda x: x % 2 == 0, range(10)))    
+</code></pre>
 <hr>
 <h1 id="python控制流"><strong>python控制流</strong></h1>
 <p>continue语句:表示立即终止本次循环，启动循环的下一次迭代．</p>

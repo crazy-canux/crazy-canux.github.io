@@ -222,9 +222,6 @@ Protocol
 Final
 Annotated
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;2to3&#34;&gt;2to3&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;$2to3
-&lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;pydoc&#34;&gt;pydoc&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;import pydoc
 &lt;/code&gt;&lt;/pre&gt;
@@ -239,6 +236,12 @@ Annotated
 &lt;p&gt;python内置的单元测试库．&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;import unittest
 &lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;debugging-and-profiling&#34;&gt;Debugging and Profiling&lt;/h1&gt;
+&lt;h2 id=&#34;bdb&#34;&gt;bdb&lt;/h2&gt;
+&lt;h2 id=&#34;pdb&#34;&gt;pdb&lt;/h2&gt;
+&lt;h2 id=&#34;timeit&#34;&gt;timeit&lt;/h2&gt;
+&lt;h2 id=&#34;trace&#34;&gt;trace&lt;/h2&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;tpl&#34;&gt;TPL&lt;/h1&gt;
 &lt;p&gt;相关的第三方库&lt;/p&gt;

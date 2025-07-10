@@ -299,7 +299,6 @@ from pathlib import PurePosixPath
 from pathlib import PureWindowsPath
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;stat&#34;&gt;stat&lt;/h2&gt;
-&lt;h2 id=&#34;fileinput&#34;&gt;fileinput&lt;/h2&gt;
 &lt;h2 id=&#34;filecmp&#34;&gt;filecmp&lt;/h2&gt;
 &lt;h2 id=&#34;fnmatch&#34;&gt;fnmatch&lt;/h2&gt;
 &lt;h2 id=&#34;linecache&#34;&gt;linecache&lt;/h2&gt;
@@ -322,8 +321,33 @@ move(src, dst)
 ...
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;tempfile&#34;&gt;tempfile&lt;/h2&gt;
-&lt;h2 id=&#34;macpath&#34;&gt;macpath&lt;/h2&gt;
-&lt;h2 id=&#34;configparser&#34;&gt;ConfigParser&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;file-formats&#34;&gt;File Formats&lt;/h1&gt;
+&lt;h2 id=&#34;csv&#34;&gt;csv&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;import csv
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;classes:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# csv.DictReader
+DictReader(self, f, fieldnames=None, restkey=None, restval=None, dialect=&#39;excel&#39;, *args, **kwds)
+# methods
+next()
+
+# csv.DictWriter
+DictWriter(self, f, fieldnames, restval=&#39;&#39;, extrasaction=&#39;raise&#39;, dialect=&#39;excel&#39;, *args, **kwargs)
+# mthods
+writeheader()
+writerow(rowdict)
+writerows(rowdicts)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;functions:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 返回DictReader对象
+reader(iterable, dialect=&#39;excel&#39;, **kwargs)
+
+// 返回DictWriter对象
+writer(fileobj, dialect=&#39;excel&#39;, **kwargs)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;data:&lt;/p&gt;
+&lt;h2 id=&#34;configparser&#34;&gt;configparser&lt;/h2&gt;
 &lt;p&gt;一般用来处理*.ini文件，格式为：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;[section]
 option-key = option-value
@@ -369,35 +393,8 @@ config = ConfigParser(interpolation=ExtendedInterpolation())
 [section2]
 2var1 = ${section1:1var1}/test
 &lt;/code&gt;&lt;/pre&gt;
-&lt;hr&gt;
-&lt;h1 id=&#34;file-formats&#34;&gt;File Formats&lt;/h1&gt;
-&lt;h2 id=&#34;csv&#34;&gt;csv&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;import csv
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;classes:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;# csv.DictReader
-DictReader(self, f, fieldnames=None, restkey=None, restval=None, dialect=&#39;excel&#39;, *args, **kwds)
-# methods
-next()
-
-# csv.DictWriter
-DictWriter(self, f, fieldnames, restval=&#39;&#39;, extrasaction=&#39;raise&#39;, dialect=&#39;excel&#39;, *args, **kwargs)
-# mthods
-writeheader()
-writerow(rowdict)
-writerows(rowdicts)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;functions:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;// 返回DictReader对象
-reader(iterable, dialect=&#39;excel&#39;, **kwargs)
-
-// 返回DictWriter对象
-writer(fileobj, dialect=&#39;excel&#39;, **kwargs)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;data:&lt;/p&gt;
-&lt;h2 id=&#34;robotparser&#34;&gt;robotparser&lt;/h2&gt;
+&lt;h2 id=&#34;tomllib&#34;&gt;tomllib&lt;/h2&gt;
 &lt;h2 id=&#34;netrc&#34;&gt;netrc&lt;/h2&gt;
-&lt;h2 id=&#34;xdrlib&#34;&gt;xdrlib&lt;/h2&gt;
 &lt;h2 id=&#34;plistlib&#34;&gt;plistlib&lt;/h2&gt;
 &lt;hr&gt;
 </description>

@@ -80,7 +80,7 @@ Random()
 seed([self,], a=None)
 randint(a, b) # 随机一个[a,b]中的整数．
 choice(self, seq) # 从seq中随机选择一个元素
-uniform(self, a, b)
+uniform(self, a, b) # 随机一个[a,b]中的浮点数．
 sample(self, population, k)
 randint(self, a, b)
 randrange(self, start, stop=None, step=1, _int=&amp;lt;type &#39;int&#39;&amp;gt;, _maxwidth=9007199254740992L)
@@ -92,11 +92,18 @@ SystemRandom(Random)
 WichmannHill(Random)
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;functions:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;getrandbits(k)
-random(self) # 随机一个小于１的数．
+&lt;pre&gt;&lt;code&gt;random(self) # 随机一个小于１的数．
 # 所有Random类的methods也可以直接使用．
+seed(self, a=None) # 设置随机数种子．
+uniform(self, a, b) # 随机一个[a,b]中的浮点数．
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;fractions&#34;&gt;fractions&lt;/h2&gt;
+&lt;h2 id=&#34;cmath&#34;&gt;cmath&lt;/h2&gt;
+&lt;h2 id=&#34;math&#34;&gt;math&lt;/h2&gt;
+&lt;h2 id=&#34;numbers&#34;&gt;numbers&lt;/h2&gt;
+&lt;h2 id=&#34;decimal&#34;&gt;decimal&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;functional-programming-modules&#34;&gt;Functional Programming Modules&lt;/h1&gt;
 &lt;h2 id=&#34;functools&#34;&gt;functools&lt;/h2&gt;
 &lt;p&gt;函数式编程相关的模块&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;import functools
@@ -138,13 +145,9 @@ print foo.__doc__
 &lt;p&gt;操作符相关的模块&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;import operator
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;decimal&#34;&gt;decimal&lt;/h2&gt;
 &lt;h2 id=&#34;itertools&#34;&gt;itertools&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;import itertools
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;cmath&#34;&gt;cmath&lt;/h2&gt;
-&lt;h2 id=&#34;math&#34;&gt;math&lt;/h2&gt;
-&lt;h2 id=&#34;numbers&#34;&gt;numbers&lt;/h2&gt;
 &lt;hr&gt;
 </description>
         </item>

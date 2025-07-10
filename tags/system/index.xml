@@ -975,8 +975,11 @@ INFO = 20
 DEBUG = 10
 NOTSET = 0
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;getopt&#34;&gt;getopt&lt;/h2&gt;
-&lt;p&gt;C风格的参数处理.&lt;/p&gt;
+&lt;h2 id=&#34;platform&#34;&gt;platform&lt;/h2&gt;
+&lt;h2 id=&#34;errno&#34;&gt;errno&lt;/h2&gt;
+&lt;h2 id=&#34;ctypes&#34;&gt;ctypes&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;command-line-interface&#34;&gt;Command Line Interface&lt;/h1&gt;
 &lt;h2 id=&#34;argparse&#34;&gt;argparse&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;import argparse
 &lt;/code&gt;&lt;/pre&gt;
@@ -1044,18 +1047,14 @@ add_parser(self, name, **kwargs) # -&amp;gt; argparse.ArgumentParser
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;functions:&lt;/p&gt;
 &lt;p&gt;data:&lt;/p&gt;
-&lt;h2 id=&#34;io&#34;&gt;io&lt;/h2&gt;
-&lt;h2 id=&#34;errno&#34;&gt;errno&lt;/h2&gt;
+&lt;h2 id=&#34;optparse&#34;&gt;optparse&lt;/h2&gt;
 &lt;h2 id=&#34;getpass&#34;&gt;getpass&lt;/h2&gt;
 &lt;h2 id=&#34;curses&#34;&gt;curses&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/crazy-canux/python/blob/master/python/psl/mycurses.py&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/crazy-canux/python/blob/master/python/psl/mycurses.py&lt;/a&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;import curses
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;platform&#34;&gt;platform&lt;/h2&gt;
-&lt;h2 id=&#34;ctypes&#34;&gt;ctypes&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;import ctypes
-&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;fileinput&#34;&gt;fileinput&lt;/h2&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;unixlinux-sytem&#34;&gt;Unix/Linux sytem&lt;/h1&gt;
 &lt;h2 id=&#34;pwd&#34;&gt;pwd&lt;/h2&gt;

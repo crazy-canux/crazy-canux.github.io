@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Python Runtime Services _builtin_ builtin/builtins - Built-in functions, exceptions, and other objects.
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Python Runtime Services builtins builtins - Built-in functions, exceptions, and other objects.
 python2叫__builtin__
 python3叫builtins
 _main_ main - Top-level script environment.
@@ -16,7 +16,7 @@ all_feature_names ... sys import sys Dynamic objects:
 <link rel='canonical' href='https://canuxcheng.com/post/psl_python/'>
 
 <link rel="stylesheet" href="/scss/style.min.2d59822570c0be136f2ad87c952ef8788ac2a951067adda1c49b253bff7d0292.css"><meta property='og:title' content='PSL_Python'>
-<meta property='og:description' content='Python Runtime Services _builtin_ builtin/builtins - Built-in functions, exceptions, and other objects.
+<meta property='og:description' content='Python Runtime Services builtins builtins - Built-in functions, exceptions, and other objects.
 python2叫__builtin__
 python3叫builtins
 _main_ main - Top-level script environment.
@@ -30,7 +30,7 @@ all_feature_names ... sys import sys Dynamic objects:
 <meta property='og:site_name' content='Morgoth'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='python' /><meta property='article:published_time' content='2016-08-15T11:04:12&#43;00:00'/><meta property='article:modified_time' content='2016-08-15T11:04:12&#43;00:00'/>
 <meta name="twitter:title" content="PSL_Python">
-<meta name="twitter:description" content="Python Runtime Services _builtin_ builtin/builtins - Built-in functions, exceptions, and other objects.
+<meta name="twitter:description" content="Python Runtime Services builtins builtins - Built-in functions, exceptions, and other objects.
 python2叫__builtin__
 python3叫builtins
 _main_ main - Top-level script environment.
@@ -349,12 +349,11 @@ all_feature_names ... sys import sys Dynamic objects:
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ul>
-    <li><a href="#_builtin_">_<em>builtin</em>_</a></li>
+    <li><a href="#builtins">builtins</a></li>
     <li><a href="#_main_">_<em>main</em>_</a></li>
     <li><a href="#_future_">_<em>future</em>_</a></li>
     <li><a href="#sys">sys</a></li>
     <li><a href="#sysconfig">sysconfig</a></li>
-    <li><a href="#future_builtins">future_builtins</a></li>
     <li><a href="#warnings">warnings</a></li>
     <li><a href="#contextlib">contextlib</a></li>
     <li><a href="#abc">abc</a></li>
@@ -363,8 +362,18 @@ all_feature_names ... sys import sys Dynamic objects:
     <li><a href="#gc">gc</a></li>
     <li><a href="#inspect">inspect</a></li>
     <li><a href="#site">site</a></li>
-    <li><a href="#user">user</a></li>
-    <li><a href="#fpectl">fpectl</a></li>
+    <li><a href="#dataclass">dataclass</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#code">code</a></li>
+    <li><a href="#codeop">codeop</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#ast">ast</a></li>
+    <li><a href="#dis">dis</a></li>
+    <li><a href="#keyword">keyword</a></li>
   </ul>
 </nav>
         </div>
@@ -445,9 +454,8 @@ all_feature_names ... sys import sys Dynamic objects:
     
     
     <h1 id="python-runtime-services">Python Runtime Services</h1>
-<h2 id="_builtin_">_<em>builtin</em>_</h2>
-<blockquote>
-<p><strong>builtin</strong>/builtins - Built-in functions, exceptions, and other objects.</p></blockquote>
+<h2 id="builtins">builtins</h2>
+<p>builtins - Built-in functions, exceptions, and other objects.</p>
 <p>python2叫__builtin__</p>
 <p>python3叫builtins</p>
 <h2 id="_main_">_<em>main</em>_</h2>
@@ -538,7 +546,6 @@ settrace() -- set the global debug tracing function
 <pre><code>flags # 命令行的状态，-d debug, -v verbose
 </code></pre>
 <h2 id="sysconfig">sysconfig</h2>
-<h2 id="future_builtins">future_builtins</h2>
 <h2 id="warnings">warnings</h2>
 <p>python的警告模块，只警告，不中断程序运行．</p>
 <pre><code>import warnings
@@ -595,9 +602,16 @@ isgeneratorfunction() # 检查一个函数是否是生成器
 </code></pre>
 <p>data:</p>
 <h2 id="site">site</h2>
-<h2 id="user">user</h2>
-<h2 id="fpectl">fpectl</h2>
+<h2 id="dataclass">dataclass</h2>
 <hr>
+<h1 id="custom-python-interpreter">Custom python interpreter</h1>
+<h2 id="code">code</h2>
+<h2 id="codeop">codeop</h2>
+<hr>
+<h1 id="python-language-services">Python language services</h1>
+<h2 id="ast">ast</h2>
+<h2 id="dis">dis</h2>
+<h2 id="keyword">keyword</h2>
 
 </section>
 

@@ -19567,11 +19567,16 @@ check_output(*popenargs, **kwargs) # 返回一个字符串
 &lt;pre&gt;&lt;code&gt;PIPE = -1
 STDOUT = -2
 &lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;concurrent&#34;&gt;concurrent&lt;/h2&gt;
+&lt;p&gt;concurrent模块提供了多线程和多进程的高级接口.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import concurrent.futures
+&lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;sched&#34;&gt;sched&lt;/h2&gt;
 &lt;h2 id=&#34;queue&#34;&gt;queue&lt;/h2&gt;
-&lt;h2 id=&#34;dummy_threading&#34;&gt;dummy_threading&lt;/h2&gt;
+&lt;h2 id=&#34;contextvars&#34;&gt;contextvars&lt;/h2&gt;
 &lt;hr&gt;
-&lt;h1 id=&#34;interprocess-communication-and-networking&#34;&gt;Interprocess Communication and Networking&lt;/h1&gt;
+&lt;h1 id=&#34;inter-process-communication-and-networking&#34;&gt;Inter Process Communication and Networking&lt;/h1&gt;
+&lt;p&gt;IPC&lt;/p&gt;
 &lt;h2 id=&#34;socket&#34;&gt;socket&lt;/h2&gt;
 &lt;p&gt;socket协议的标准库&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;import socket
@@ -19658,14 +19663,52 @@ ntohs(integer)
 setdefaulttimeout(timeout)
 socketpair([family[, type[, proto]]]) -&amp;gt; (socket object, socket object)
 &lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;asyncio&#34;&gt;asyncio&lt;/h2&gt;
+&lt;p&gt;核心异步事件循环库，提供协程、事件循环、任务、Future、队列等核心机制。&lt;/p&gt;
+&lt;p&gt;asyncio 往往是构建 IO 密集型和高层级 结构化 网络代码的最佳选择。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import asyncio
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;async/await:&lt;/p&gt;
+&lt;p&gt;async def 定义一个协程函数，await 用来等待协程的执行结果。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;async def say():
+    print(&amp;quot;Hello&amp;quot;)
+    await asyncio.sleep(1)
+    print(&amp;quot;World&amp;quot;)
+asyncio.run(say())
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;classes:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# asyncio.Runner
+runner = Runner()
+asyncio.run(runner.run(coro, *, debug=False)) # 运行一个协程，返回协程结果
+
+# asyncio.Task
+task = Task(coro, *, loop=None)
+create_task(coro, *, loop=None) # 创建一个任务，返回Task对象, 协程马上运行。
+
+# asyncio.TaskGroup
+task_group = TaskGroup(*, loop=None)
+
+# asyncio.Queue
+queue = Queue(maxsize=0, *, loop=None)
+# methods:
+put(item) # 放入一个元素到队列
+get() # 从队列中获取一个元素
+task_done() # 标记一个任务完成
+join() # 阻塞直到队列中的所有任务都完成
+empty() # 返回队列是否为空
+full() # 返回队列是否已满
+qsize() # 返回队列的大小
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;functions:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;gather(*coros, loop=None) 
+sleep(delay, result=None, *, loop=None) # 异步睡眠，返回一个Future对象
+&lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;ssl&#34;&gt;ssl&lt;/h2&gt;
 &lt;h2 id=&#34;select&#34;&gt;select&lt;/h2&gt;
 &lt;h2 id=&#34;selectors&#34;&gt;selectors&lt;/h2&gt;
-&lt;h2 id=&#34;asyncio&#34;&gt;asyncio&lt;/h2&gt;
-&lt;h2 id=&#34;asyncore&#34;&gt;asyncore&lt;/h2&gt;
-&lt;h2 id=&#34;asynchat&#34;&gt;asynchat&lt;/h2&gt;
 &lt;h2 id=&#34;signal&#34;&gt;signal&lt;/h2&gt;
 &lt;h2 id=&#34;mmap&#34;&gt;mmap&lt;/h2&gt;
+&lt;hr&gt;
 </description>
         </item>
         <item>
@@ -19675,9 +19718,8 @@ socketpair([family[, type[, proto]]]) -&amp;gt; (socket object, socket object)
         
         <guid>https://canuxcheng.com/post/psl_python/</guid>
         <description>&lt;h1 id=&#34;python-runtime-services&#34;&gt;Python Runtime Services&lt;/h1&gt;
-&lt;h2 id=&#34;_builtin_&#34;&gt;_&lt;em&gt;builtin&lt;/em&gt;_&lt;/h2&gt;
-&lt;blockquote&gt;
-&lt;p&gt;&lt;strong&gt;builtin&lt;/strong&gt;/builtins - Built-in functions, exceptions, and other objects.&lt;/p&gt;&lt;/blockquote&gt;
+&lt;h2 id=&#34;builtins&#34;&gt;builtins&lt;/h2&gt;
+&lt;p&gt;builtins - Built-in functions, exceptions, and other objects.&lt;/p&gt;
 &lt;p&gt;python2叫__builtin__&lt;/p&gt;
 &lt;p&gt;python3叫builtins&lt;/p&gt;
 &lt;h2 id=&#34;_main_&#34;&gt;_&lt;em&gt;main&lt;/em&gt;_&lt;/h2&gt;
@@ -19768,7 +19810,6 @@ settrace() -- set the global debug tracing function
 &lt;pre&gt;&lt;code&gt;flags # 命令行的状态，-d debug, -v verbose
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;sysconfig&#34;&gt;sysconfig&lt;/h2&gt;
-&lt;h2 id=&#34;future_builtins&#34;&gt;future_builtins&lt;/h2&gt;
 &lt;h2 id=&#34;warnings&#34;&gt;warnings&lt;/h2&gt;
 &lt;p&gt;python的警告模块，只警告，不中断程序运行．&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;import warnings
@@ -19825,9 +19866,16 @@ isgeneratorfunction() # 检查一个函数是否是生成器
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;data:&lt;/p&gt;
 &lt;h2 id=&#34;site&#34;&gt;site&lt;/h2&gt;
-&lt;h2 id=&#34;user&#34;&gt;user&lt;/h2&gt;
-&lt;h2 id=&#34;fpectl&#34;&gt;fpectl&lt;/h2&gt;
+&lt;h2 id=&#34;dataclass&#34;&gt;dataclass&lt;/h2&gt;
 &lt;hr&gt;
+&lt;h1 id=&#34;custom-python-interpreter&#34;&gt;Custom python interpreter&lt;/h1&gt;
+&lt;h2 id=&#34;code&#34;&gt;code&lt;/h2&gt;
+&lt;h2 id=&#34;codeop&#34;&gt;codeop&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;python-language-services&#34;&gt;Python language services&lt;/h1&gt;
+&lt;h2 id=&#34;ast&#34;&gt;ast&lt;/h2&gt;
+&lt;h2 id=&#34;dis&#34;&gt;dis&lt;/h2&gt;
+&lt;h2 id=&#34;keyword&#34;&gt;keyword&lt;/h2&gt;
 </description>
         </item>
         <item>
@@ -19966,8 +20014,11 @@ INFO = 20
 DEBUG = 10
 NOTSET = 0
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;getopt&#34;&gt;getopt&lt;/h2&gt;
-&lt;p&gt;C风格的参数处理.&lt;/p&gt;
+&lt;h2 id=&#34;platform&#34;&gt;platform&lt;/h2&gt;
+&lt;h2 id=&#34;errno&#34;&gt;errno&lt;/h2&gt;
+&lt;h2 id=&#34;ctypes&#34;&gt;ctypes&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;command-line-interface&#34;&gt;Command Line Interface&lt;/h1&gt;
 &lt;h2 id=&#34;argparse&#34;&gt;argparse&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;import argparse
 &lt;/code&gt;&lt;/pre&gt;
@@ -20035,18 +20086,14 @@ add_parser(self, name, **kwargs) # -&amp;gt; argparse.ArgumentParser
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;functions:&lt;/p&gt;
 &lt;p&gt;data:&lt;/p&gt;
-&lt;h2 id=&#34;io&#34;&gt;io&lt;/h2&gt;
-&lt;h2 id=&#34;errno&#34;&gt;errno&lt;/h2&gt;
+&lt;h2 id=&#34;optparse&#34;&gt;optparse&lt;/h2&gt;
 &lt;h2 id=&#34;getpass&#34;&gt;getpass&lt;/h2&gt;
 &lt;h2 id=&#34;curses&#34;&gt;curses&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/crazy-canux/python/blob/master/python/psl/mycurses.py&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/crazy-canux/python/blob/master/python/psl/mycurses.py&lt;/a&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;import curses
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;platform&#34;&gt;platform&lt;/h2&gt;
-&lt;h2 id=&#34;ctypes&#34;&gt;ctypes&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;import ctypes
-&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;fileinput&#34;&gt;fileinput&lt;/h2&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;unixlinux-sytem&#34;&gt;Unix/Linux sytem&lt;/h1&gt;
 &lt;h2 id=&#34;pwd&#34;&gt;pwd&lt;/h2&gt;
@@ -20206,6 +20253,7 @@ sha384()
 sha512()
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;hmac&#34;&gt;hmac&lt;/h2&gt;
+&lt;h2 id=&#34;secrets&#34;&gt;secrets&lt;/h2&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;tpl&#34;&gt;TPL&lt;/h1&gt;
 &lt;p&gt;相关的第三方库&lt;/p&gt;
@@ -20238,426 +20286,6 @@ $ pip install pygpgme
         <pubDate>Sun, 14 Aug 2016 20:57:36 +0000</pubDate>
         
         <guid>https://canuxcheng.com/post/psl_data/</guid>
-        <description>&lt;h1 id=&#34;data-types&#34;&gt;Data Types&lt;/h1&gt;
-&lt;h2 id=&#34;datetime&#34;&gt;datetime&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;import datetime
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;classes:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;# datetime.date
-date(year, month, day)
-# methods:
-ctime(...)
-...
-# data descriptors:
-day
-month
-year
-
-# datetime.datetime(datetime.date)
-datetime(year, month, day[, hour[, minute[, second[, microsecond[,tzinfo]]]]])
-# methods:
-datetime.datetime.strptime(string, format)
-format_datetime = datetime.datetime.strptime(&#39;20160824161431&#39;, &#39;%Y%m%d%H%M%S&#39;) # return: datetime.datetime(2016, 8, 24, 16, 14, 31)
-format_datetime = datetime.datetime.strptime(&#39;24 August 2016 16:14:31&#39;, &#39;%Y%m%d%H%M%S&#39;) # return: datetime.datetime(2016, 8, 24, 16, 14, 31)
-
-datetime.datetime.strftime(format[, tuple])
-string_datetime = format_datetime.strftime(&amp;quot;%d %B %Y %H:%M:%S&amp;quot;) # return: &#39;24 August 2016 16:14:31&#39;
-datetime.datetime.now().strftime(&#39;%Y-%m-%d %H:%M:%S&#39;) # return: &#39;2017-02-07 23:07:32&#39;
-
-str(datetime.datetime.now())
-datetime.datetime.now().strftime(&#39;%Y%m%d%H%M%S&#39;) # 当前时间戳
-
-# datetime.time
-
-# datetime.timedelta
-
-# datetime.tzinfo
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;data:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;MAXYEAR = 9999
-MINYEAR = 1
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;calendar&#34;&gt;calendar&lt;/h2&gt;
-&lt;h2 id=&#34;collections&#34;&gt;collections&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;import collections
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;classes:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;# collections.Callable
-
-# collections.Container
-
-# collections.Counter
-
-# collections.Hashable
-
-# collections.ItemsView
-
-# collections.Iterable
-
-# collections.Iterator
-
-# collections.deque
-# 返回一个deque类型的实例，也就是双端队列
-deque([iterable[, maxlen]])
-
-# collections.defaultdict
-# 返回一个defaultdict类型的实例，类似于dict.setdefault()
-defaultdict(default_factory[, ...])
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;functions:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;namedtuple(typename, field_names, verbose=False, rename=False)
-# 返回一个tuple的子类, 将只能通过index访问的tuple变为可以通过name来访问．
-NewTuple = namedtuple(&#39;NewTuple&#39;, [&#39;elm1&#39;, &#39;elm2&#39;, &#39;elm3&#39;])
-nt = NewTuple(1, 2, 3)
-nt.elm1 # 1
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;data:&lt;/p&gt;
-&lt;h2 id=&#34;heapq&#34;&gt;heapq&lt;/h2&gt;
-&lt;h2 id=&#34;bisect&#34;&gt;bisect&lt;/h2&gt;
-&lt;h2 id=&#34;array&#34;&gt;array&lt;/h2&gt;
-&lt;h2 id=&#34;sched&#34;&gt;sched&lt;/h2&gt;
-&lt;h2 id=&#34;queue&#34;&gt;Queue&lt;/h2&gt;
-&lt;p&gt;队列数据结构．&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;import Queue
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;classes:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;# Queue.Queue
-Queue(maxsize=0) # 创建一个大小为maxsize的queue对象
-# methods:
-empty(self) # 如果queue为空返回True
-full(self) # 如果queue达到maxsize返回True
-get(self, block=True, timeout=None) # 从队列中取出一个元素并返回,如果block=True,会一直阻塞,直到队列中有元素．
-get_nowait(self)
-join(self)
-put(self, item, block=True, timeout=None) # 把item放到队列中,如果block=true,会一直阻塞,直到队列有空间存放item.
-put_nowait(self, item)
-qsize(self) # 返回queue大小，近似值
-task_done(self)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;weakref&#34;&gt;weakref&lt;/h2&gt;
-&lt;h2 id=&#34;userdict&#34;&gt;UserDict&lt;/h2&gt;
-&lt;h2 id=&#34;userlist&#34;&gt;UserList&lt;/h2&gt;
-&lt;h2 id=&#34;userstring&#34;&gt;UserString&lt;/h2&gt;
-&lt;h2 id=&#34;types&#34;&gt;types&lt;/h2&gt;
-&lt;h2 id=&#34;copy&#34;&gt;copy&lt;/h2&gt;
-&lt;p&gt;copy和deepcopy都只拷贝对象的类型和数值，不拷贝对象的ID.也就是==运算为True, is(id())运算为False.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;import copy
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;functions:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;copy.copy(x) # 浅复制, 只拷贝父对象，不拷贝内部的子对象.
-copy.deepcopy(x, memo=None, _nil=[]) # 深复制, 拷贝父对象和内部的子对象
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;pprint&#34;&gt;pprint&lt;/h2&gt;
-&lt;h2 id=&#34;repr&#34;&gt;repr&lt;/h2&gt;
-&lt;hr&gt;
-&lt;h1 id=&#34;data-persistence&#34;&gt;Data Persistence&lt;/h1&gt;
-&lt;p&gt;pickle/cPickle/marshal提供对象的序列化操作．&lt;/p&gt;
-&lt;p&gt;gdb相关的模块anydbm/whichdb/dbm/gdbm/dumbdbm提供类似字典和文件的对象．&lt;/p&gt;
-&lt;p&gt;shelve集合了以上两者的功能．&lt;/p&gt;
-&lt;h2 id=&#34;pickle&#34;&gt;pickle&lt;/h2&gt;
-&lt;p&gt;pickle不支持unicode,只支持ascii.&lt;/p&gt;
-&lt;h2 id=&#34;cpickle&#34;&gt;cPickle&lt;/h2&gt;
-&lt;p&gt;python3将cPickle和pickle统一合并为pickle.&lt;/p&gt;
-&lt;p&gt;cPickle是c开发的，速度比pickle快，但是不支持被继承．&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;import cPickle
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;functions:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;Pickler(file, protocol=0)
-Unpickler(file)
-dump(obj, file, protocol=0) # 写入到一个文件
-dumps(obj, protocol=0) # 写入到一个字符串
-load(file) # 从文件读取
-loads(string) # 从字符串读取
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;data:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;HIGHEST_PROTOCOL = 2
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;marshal&#34;&gt;marshal&lt;/h2&gt;
-&lt;h2 id=&#34;shelve&#34;&gt;shelve&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;import shelve
-
-with shelve.open(f, flag=&#39;n&#39;, writeback=True) as f:
-r/w: 不存在报错
-c: read-write to new/existing，不存在创建
-n: read-write to new. 总是创建新的
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;anydbm&#34;&gt;anydbm&lt;/h2&gt;
-&lt;h2 id=&#34;whichdb&#34;&gt;whichdb&lt;/h2&gt;
-&lt;h2 id=&#34;dbm&#34;&gt;dbm&lt;/h2&gt;
-&lt;h2 id=&#34;gdbm&#34;&gt;gdbm&lt;/h2&gt;
-&lt;h2 id=&#34;dumbdbm&#34;&gt;dumbdbm&lt;/h2&gt;
-&lt;h2 id=&#34;cope_reg&#34;&gt;cope_reg&lt;/h2&gt;
-&lt;h2 id=&#34;pickletools&#34;&gt;pickletools&lt;/h2&gt;
-&lt;h2 id=&#34;sqlite&#34;&gt;sqlite&lt;/h2&gt;
-&lt;p&gt;python访问数据库两种方式：&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;ORM&lt;/li&gt;
-&lt;li&gt;DB-API&lt;/li&gt;
-&lt;/ol&gt;
-&lt;p&gt;ORM是对象-关系管理器，相关模块有SQLAlchemy, SQLObject.&lt;/p&gt;
-&lt;p&gt;DB-API参考PEP248/249定义了Database的API。&lt;/p&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.python.org/dev/peps/pep-0249/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://www.python.org/dev/peps/pep-0249/&lt;/a&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;import sqlite3
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;classes:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;# sqlite3.Connection
-# methods:
-close(...)
-commit(...)
-cursor(...)
-execute(...)
-...
-
-# sqlite3.Cursor
-# methods:
-close(...)
-...
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;functions:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;adapt(obj, protocol, alternate)
-connect(database[, timeout, isolation_level, detect_types, factory])
-...
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;data:&lt;/p&gt;
-&lt;hr&gt;
-&lt;h1 id=&#34;data-compression-and-archiving&#34;&gt;Data Compression and Archiving&lt;/h1&gt;
-&lt;h2 id=&#34;gzip&#34;&gt;gzip&lt;/h2&gt;
-&lt;h2 id=&#34;bz2&#34;&gt;bz2&lt;/h2&gt;
-&lt;h2 id=&#34;zlib&#34;&gt;zlib&lt;/h2&gt;
-&lt;h2 id=&#34;zipfile&#34;&gt;zipfile&lt;/h2&gt;
-&lt;h2 id=&#34;tarfile&#34;&gt;tarfile&lt;/h2&gt;
-&lt;hr&gt;
-</description>
-        </item>
-        <item>
-        <title>PSL_File</title>
-        <link>https://canuxcheng.com/post/psl_file/</link>
-        <pubDate>Sun, 14 Aug 2016 20:51:28 +0000</pubDate>
-        
-        <guid>https://canuxcheng.com/post/psl_file/</guid>
-        <description>&lt;h1 id=&#34;file-and-directory-access&#34;&gt;File and Directory Access&lt;/h1&gt;
-&lt;h2 id=&#34;ospath&#34;&gt;os.path&lt;/h2&gt;
-&lt;p&gt;windows的路径要写成：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;C:\\test\\sub\\
-
-import os
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;function:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;os.path.expanduser(path) # 把path中~或~user扩展成绝对路径 expanduser(&amp;quot;~/src&amp;quot;) -&amp;gt; /home/user/src
-os.path.expandvars(path) # 把path中的shell变量$var 或 ${var} 还原．
-os.path.dirname(filename) # 返回filename的路径 dirname(&amp;quot;/home/user/file.py&amp;quot;) -&amp;gt; /home/user
-os.path.join(a, *p) # 拼结一个完整的路径　
-os.path.join(a, os.pardir) # 返回上级目录的路径
-os.path.realpath(filename) # 返回filename的真实路径+文件名 realpath(&#39;__file__&#39;)
-os.path.abspath(path) # 返回绝对路径, os.path.abspath(&#39;__file__&#39;)
-os.path.splitext(p) # 分解路径和扩展名返回组成的元组，/home/user/test.py -&amp;gt; (&amp;quot;/home/user/test&amp;quot;, &amp;quot;.py&amp;quot;)
-os.path.basename(p) # 返回最后一个组件名，也就是文件名 /home/user/test.py -&amp;gt; test.py
-os.path.getsize(filename) # 返回文件大小
-os.path.exists(path) # 判断path(文件或目录)是否存在
-os.path.isfile(path) # 判断path是否是常规文件
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;pathlib&#34;&gt;pathlib&lt;/h2&gt;
-&lt;p&gt;new in python3.4&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;from pathlib import Path
-from pathlib import PurePosixPath
-from pathlib import PureWindowsPath
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;stat&#34;&gt;stat&lt;/h2&gt;
-&lt;h2 id=&#34;fileinput&#34;&gt;fileinput&lt;/h2&gt;
-&lt;h2 id=&#34;filecmp&#34;&gt;filecmp&lt;/h2&gt;
-&lt;h2 id=&#34;fnmatch&#34;&gt;fnmatch&lt;/h2&gt;
-&lt;h2 id=&#34;linecache&#34;&gt;linecache&lt;/h2&gt;
-&lt;h2 id=&#34;glob&#34;&gt;glob&lt;/h2&gt;
-&lt;p&gt;functions:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;glob(pathname) # 返回匹配pathname路径下正则表达式的所有文件组成的列表
-iglob(pathname) # 同上，返回generator.
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;shutil&#34;&gt;shutil&lt;/h2&gt;
-&lt;p&gt;Utility functions for copying and archiving files and directory trees.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;import shutil
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;functions:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;copy(src, dst)
-copy2(src, dst)
-...
-rmtree(path, ignore_errors=False, onerror=None) # 删除指定的目录,path不能是文件．
-unregister_archive_format(name)
-move(src, dst)
-...
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;tempfile&#34;&gt;tempfile&lt;/h2&gt;
-&lt;h2 id=&#34;macpath&#34;&gt;macpath&lt;/h2&gt;
-&lt;h2 id=&#34;configparser&#34;&gt;ConfigParser&lt;/h2&gt;
-&lt;p&gt;一般用来处理*.ini文件，格式为：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;[section]
-option-key = option-value
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;导入：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;import ConfigParser
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;classes:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;ConfigParser.ConfigParser(defaults=None)
-# methods:
-read(filenames) # 读取ini文件
-sections() # 获取所有section
-options(section) # 获取section的所有option
-get(section, option, raw=False, vars=None) # 返回字符串
-getint(section, options)
-getfloat(section, options)
-getboolean(section, options) # 大小写都可以:0/1, false/true, no/yes, off/on
-set(section, option, value)
-has_section(section)
-has_option(section, option)
-remove_section(section)
-remove_option(section, option)
-write(fp)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;issue:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;默认是全部小写写入.
-config = ConfigParser.ConfigParser(allow_no_value=True)
-config.optionxform =str # 原样写入
-
-from configparser import ConfigParser, ExtendedInterpolation
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;变量:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;// 默认interpolation只支持section之间变量
-[section1]
-1var1 = /opt
-1var2 = %(1var1)s/test
-
-// 扩展interpolation支持section变量引用
-config = ConfigParser(interpolation=ExtendedInterpolation())
-
-[section1]
-1var1 = /opt
-[section2]
-2var1 = ${section1:1var1}/test
-&lt;/code&gt;&lt;/pre&gt;
-&lt;hr&gt;
-&lt;h1 id=&#34;file-formats&#34;&gt;File Formats&lt;/h1&gt;
-&lt;h2 id=&#34;csv&#34;&gt;csv&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;import csv
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;classes:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;# csv.DictReader
-DictReader(self, f, fieldnames=None, restkey=None, restval=None, dialect=&#39;excel&#39;, *args, **kwds)
-# methods
-next()
-
-# csv.DictWriter
-DictWriter(self, f, fieldnames, restval=&#39;&#39;, extrasaction=&#39;raise&#39;, dialect=&#39;excel&#39;, *args, **kwargs)
-# mthods
-writeheader()
-writerow(rowdict)
-writerows(rowdicts)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;functions:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;// 返回DictReader对象
-reader(iterable, dialect=&#39;excel&#39;, **kwargs)
-
-// 返回DictWriter对象
-writer(fileobj, dialect=&#39;excel&#39;, **kwargs)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;data:&lt;/p&gt;
-&lt;h2 id=&#34;robotparser&#34;&gt;robotparser&lt;/h2&gt;
-&lt;h2 id=&#34;netrc&#34;&gt;netrc&lt;/h2&gt;
-&lt;h2 id=&#34;xdrlib&#34;&gt;xdrlib&lt;/h2&gt;
-&lt;h2 id=&#34;plistlib&#34;&gt;plistlib&lt;/h2&gt;
-&lt;hr&gt;
-</description>
-        </item>
-        <item>
-        <title>PSL_Math</title>
-        <link>https://canuxcheng.com/post/psl_math/</link>
-        <pubDate>Fri, 12 Aug 2016 16:56:45 +0000</pubDate>
-        
-        <guid>https://canuxcheng.com/post/psl_math/</guid>
-        <description>&lt;h1 id=&#34;numeric-and-mathematical-modules&#34;&gt;Numeric and Mathematical Modules&lt;/h1&gt;
-&lt;h2 id=&#34;random&#34;&gt;random&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;import random
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;classes:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;# random.Random
-Random()
-# methods:
-seed([self,], a=None)
-randint(a, b) # 随机一个[a,b]中的整数．
-choice(self, seq) # 从seq中随机选择一个元素
-uniform(self, a, b)
-sample(self, population, k)
-randint(self, a, b)
-randrange(self, start, stop=None, step=1, _int=&amp;lt;type &#39;int&#39;&amp;gt;, _maxwidth=9007199254740992L)
-
-# random.SystemRandom(Random)
-SystemRandom(Random)
-
-# random.WichmannHill(Random)
-WichmannHill(Random)
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;functions:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;getrandbits(k)
-random(self) # 随机一个小于１的数．
-# 所有Random类的methods也可以直接使用．
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;fractions&#34;&gt;fractions&lt;/h2&gt;
-&lt;h2 id=&#34;functools&#34;&gt;functools&lt;/h2&gt;
-&lt;p&gt;函数式编程相关的模块&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;import functools
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;classes:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;# functools.partial
-partial(func, *args, **keywords) # 返回functools.partial类型的对象, partial是functools内置的偏函数类类型.
-RED = partial(lambda content, color: color + str(content) + Fore.RESET, color=Fore.RED)
-RED(&amp;quot;show me red&amp;quot;) == lambda content, color: Fore.RED + str(&amp;quot;show me red&amp;quot;) + Fore.RESET
-# 相当于通过partial传一个参数给func，然后剩下的参数通过返回的偏函数传入．这样可以固化一部分参数．
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;functions:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;reduce(function, sequence[, initial]) # 如果initial存在，就把initial作为function的第一个参数，如果function有两个参数，就再从sequence取第一个元素作为function的第二个参数，然后调用function，返回的结果作为function的第一个参数，再继续从sequence获取元素作为参数，继续调用function, 直到sequence为空．
-reduce(lambda x,y: x+y, range(5))
-
-cmp_to_key(mycmp)
-total_ordering(cls)
-update_wrapper(wrapper, wrapped, assigned=(&#39;__module__&#39;, &#39;__name__&#39;, &#39;__doc__&#39;), updated=(&#39;__dict__&#39;,))
-
-wraps(wrapped, assigned=(&#39;__module__&#39;, &#39;__name__&#39;, &#39;__doc__&#39;), updated=(&#39;__dict__&#39;,))
-# example:
-def deco(func):
-    @wraps(func):
-    def wrapper(*args, **kwargs):
-        &amp;quot;&amp;quot;&amp;quot;Docs for wrapper.&amp;quot;&amp;quot;&amp;quot;
-        pass
-
-@deco
-def foo()
-    &amp;quot;&amp;quot;&amp;quot;Docs for new function.&amp;quot;&amp;quot;&amp;quot;
-    pass
-
-# 不用wraps被装饰的函数foo的属性其实是原来函数的属性，也就是wrapper的属性
-# 用了wraps被装饰的函数foo的属性就是foo自己的属性．
-print foo.__name__
-print foo.__doc__
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;operator&#34;&gt;operator&lt;/h2&gt;
-&lt;p&gt;操作符相关的模块&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;import operator
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;decimal&#34;&gt;decimal&lt;/h2&gt;
-&lt;h2 id=&#34;itertools&#34;&gt;itertools&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;import itertools
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;cmath&#34;&gt;cmath&lt;/h2&gt;
-&lt;h2 id=&#34;math&#34;&gt;math&lt;/h2&gt;
-&lt;h2 id=&#34;numbers&#34;&gt;numbers&lt;/h2&gt;
-&lt;hr&gt;
-</description>
-        </item>
-        <item>
-        <title>PSL_String</title>
-        <link>https://canuxcheng.com/post/psl_string/</link>
-        <pubDate>Fri, 12 Aug 2016 16:49:07 +0000</pubDate>
-        
-        <guid>https://canuxcheng.com/post/psl_string/</guid>
         <description>&lt;h1 id=&#34;text-processing-services&#34;&gt;Text Processing Services&lt;/h1&gt;
 &lt;h2 id=&#34;string&#34;&gt;string&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;import string
@@ -20709,8 +20337,16 @@ sre_parse.parse_template(source, pattern)
 sre_compile.compile(p, flags=0)
 sre_compile.isstring(obj)
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;cstringio&#34;&gt;cStringIO&lt;/h2&gt;
-&lt;h2 id=&#34;stringio&#34;&gt;StringIO&lt;/h2&gt;
+&lt;h2 id=&#34;stringprep&#34;&gt;stringprep&lt;/h2&gt;
+&lt;h2 id=&#34;difflib&#34;&gt;difflib&lt;/h2&gt;
+&lt;h2 id=&#34;textwrap&#34;&gt;textwrap&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;import textwrap
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;unicodedata&#34;&gt;unicodedata&lt;/h2&gt;
+&lt;h2 id=&#34;readline&#34;&gt;readline&lt;/h2&gt;
+&lt;h2 id=&#34;rlcompleter&#34;&gt;rlcompleter&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;binary-data-services&#34;&gt;Binary Data Services&lt;/h1&gt;
 &lt;h2 id=&#34;codecs&#34;&gt;codecs&lt;/h2&gt;
 &lt;p&gt;python的编码解码器coder/decoder。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;import codecs
@@ -20742,18 +20378,396 @@ codecs.decode(obj, &#39;utf-8&#39;) # 将utf-8编码的obj解码成unicode.
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;data:&lt;/p&gt;
 &lt;h2 id=&#34;struct&#34;&gt;struct&lt;/h2&gt;
-&lt;h2 id=&#34;difflib&#34;&gt;difflib&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;import difflib
+&lt;pre&gt;&lt;code&gt;import struct
+
+# struct模块提供了将C语言的struct转换成python的bytes对象的功能．
+# 也可以将bytes对象转换成C语言的struct.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;data-types&#34;&gt;Data Types&lt;/h1&gt;
+&lt;h2 id=&#34;datetime&#34;&gt;datetime&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;import datetime
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;classes:&lt;/p&gt;
-&lt;p&gt;functions:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;get_close_matches(word, possibilities, n=3, cutoff=0.6)
+&lt;pre&gt;&lt;code&gt;# datetime.date
+date(year, month, day)
+# methods:
+ctime(...)
+...
+# data descriptors:
+day
+month
+year
+
+# datetime.datetime(datetime.date)
+datetime(year, month, day[, hour[, minute[, second[, microsecond[,tzinfo]]]]])
+# methods:
+datetime.datetime.strptime(string, format)
+format_datetime = datetime.datetime.strptime(&#39;20160824161431&#39;, &#39;%Y%m%d%H%M%S&#39;) # return: datetime.datetime(2016, 8, 24, 16, 14, 31)
+format_datetime = datetime.datetime.strptime(&#39;24 August 2016 16:14:31&#39;, &#39;%Y%m%d%H%M%S&#39;) # return: datetime.datetime(2016, 8, 24, 16, 14, 31)
+
+datetime.datetime.strftime(format[, tuple])
+string_datetime = format_datetime.strftime(&amp;quot;%d %B %Y %H:%M:%S&amp;quot;) # return: &#39;24 August 2016 16:14:31&#39;
+datetime.datetime.now().strftime(&#39;%Y-%m-%d %H:%M:%S&#39;) # return: &#39;2017-02-07 23:07:32&#39;
+
+str(datetime.datetime.now())
+datetime.datetime.now().strftime(&#39;%Y%m%d%H%M%S&#39;) # 当前时间戳
+
+# datetime.time
+
+# datetime.timedelta
+
+# datetime.tzinfo
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;textwrap&#34;&gt;textwrap&lt;/h2&gt;
-&lt;h2 id=&#34;unicodedata&#34;&gt;unicodedata&lt;/h2&gt;
-&lt;h2 id=&#34;stringprep&#34;&gt;stringprep&lt;/h2&gt;
-&lt;h2 id=&#34;readline&#34;&gt;readline&lt;/h2&gt;
-&lt;h2 id=&#34;rlcompleter&#34;&gt;rlcompleter&lt;/h2&gt;
+&lt;p&gt;data:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;MAXYEAR = 9999
+MINYEAR = 1
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;calendar&#34;&gt;calendar&lt;/h2&gt;
+&lt;h2 id=&#34;zoneinfo&#34;&gt;zoneinfo&lt;/h2&gt;
+&lt;h2 id=&#34;collections&#34;&gt;collections&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;import collections
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;classes:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Callable 
+# 用于检查对象是否可调用
+
+Container 
+# 用于检查对象是否是容器类型
+
+Counter(iterable_or_mapping=None, **kwds)
+# 返回一个Counter类型的实例，类似于dict，统计元素出现的次数
+
+HashableDict(mapping=None, **kwargs)
+
+Iterable(iterable=None)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Iterator(iterable=None)&lt;/p&gt;
+&lt;p&gt;functions:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;namedtuple(typename[, field_names[, verbose[, rename]]]) # 返回一个namedtuple类型的实例，类似于C语言的struct
+OrderedDict([items]) # 返回一个OrderedDict类型的实例，类似于dict，但是有序
+ChainMap(*maps) # 返回一个ChainMap类型的实例，类似于dict，但是可以合并多个字典
+UserDict([mapping]) # 返回一个UserDict类型的实例，类似于dict，但是可以继承
+UserList([sequence]) # 返回一个UserList类型的实例，类似于list，但是可以继承
+UserString([string]) # 返回一个UserString类型的实例，类似于str，但是可以继承
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;heapq&#34;&gt;heapq&lt;/h2&gt;
+&lt;p&gt;heapq模块提供了堆队列算法，也称为优先队列算法．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import heapq
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;functions:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;heappush(heap, item) # 把item放到堆中
+heappop(heap) # 弹出堆顶元素, 也就是最小的元素
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;bisect&#34;&gt;bisect&lt;/h2&gt;
+&lt;h2 id=&#34;array&#34;&gt;array&lt;/h2&gt;
+&lt;h2 id=&#34;weakref&#34;&gt;weakref&lt;/h2&gt;
+&lt;h2 id=&#34;types&#34;&gt;types&lt;/h2&gt;
+&lt;h2 id=&#34;copy&#34;&gt;copy&lt;/h2&gt;
+&lt;p&gt;copy和deepcopy都只拷贝对象的类型和数值，不拷贝对象的ID.也就是==运算为True, is(id())运算为False.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import copy
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;functions:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;copy.copy(x) # 浅复制, 只拷贝父对象，不拷贝内部的子对象.
+copy.deepcopy(x, memo=None, _nil=[]) # 深复制, 拷贝父对象和内部的子对象
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;pprint&#34;&gt;pprint&lt;/h2&gt;
+&lt;h2 id=&#34;reprlib&#34;&gt;reprlib&lt;/h2&gt;
+&lt;h2 id=&#34;enum&#34;&gt;enum&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;import enum
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;graphlib&#34;&gt;graphlib&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;data-persistence&#34;&gt;Data Persistence&lt;/h1&gt;
+&lt;p&gt;pickle/cPickle/marshal提供对象的序列化操作．&lt;/p&gt;
+&lt;p&gt;gdb相关的模块anydbm/whichdb/dbm/gdbm/dumbdbm提供类似字典和文件的对象．&lt;/p&gt;
+&lt;p&gt;shelve集合了以上两者的功能．&lt;/p&gt;
+&lt;h2 id=&#34;pickle&#34;&gt;pickle&lt;/h2&gt;
+&lt;p&gt;pickle模块提供了对象的序列化和反序列化操作．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import pickle
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;functions:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;dump(obj, file[, protocol, *, fix_imports, buffer_callback] # 将对象obj序列化到文件file中
+dumps(obj[, protocol, *, fix_imports, buffer_callback] # 将对象obj序列化为字节串
+load(file[, *, encoding, errors, buffers]) # 从文件file中反序列化对象
+loads(data[, *, encoding, errors, buffers]) # 从字节串data中反序列化对象
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;data:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;HIGHEST_PROTOCOL = 2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;marshal&#34;&gt;marshal&lt;/h2&gt;
+&lt;h2 id=&#34;shelve&#34;&gt;shelve&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;import shelve
+
+with shelve.open(f, flag=&#39;n&#39;, writeback=True) as f:
+r/w: 不存在报错
+c: read-write to new/existing，不存在创建
+n: read-write to new. 总是创建新的
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;copyreg&#34;&gt;copyreg&lt;/h2&gt;
+&lt;h2 id=&#34;dbm&#34;&gt;dbm&lt;/h2&gt;
+&lt;h2 id=&#34;sqlite3&#34;&gt;sqlite3&lt;/h2&gt;
+&lt;p&gt;python访问数据库两种方式：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;ORM&lt;/li&gt;
+&lt;li&gt;DB-API&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;ORM是对象-关系管理器，相关模块有SQLAlchemy, SQLObject.&lt;/p&gt;
+&lt;p&gt;DB-API参考PEP248/249定义了Database的API。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.python.org/dev/peps/pep-0249/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.python.org/dev/peps/pep-0249/&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import sqlite3
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;classes:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# sqlite3.Connection
+# methods:
+close(...)
+commit(...)
+cursor(...)
+execute(...)
+...
+
+# sqlite3.Cursor
+# methods:
+close(...)
+...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;functions:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;adapt(obj, protocol, alternate)
+connect(database[, timeout, isolation_level, detect_types, factory])
+...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;data:&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;data-compression-and-archiving&#34;&gt;Data Compression and Archiving&lt;/h1&gt;
+&lt;h2 id=&#34;gzip&#34;&gt;gzip&lt;/h2&gt;
+&lt;h2 id=&#34;bz2&#34;&gt;bz2&lt;/h2&gt;
+&lt;h2 id=&#34;zlib&#34;&gt;zlib&lt;/h2&gt;
+&lt;h2 id=&#34;zipfile&#34;&gt;zipfile&lt;/h2&gt;
+&lt;h2 id=&#34;tarfile&#34;&gt;tarfile&lt;/h2&gt;
+&lt;h2 id=&#34;lzma&#34;&gt;lzma&lt;/h2&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        <item>
+        <title>PSL_File</title>
+        <link>https://canuxcheng.com/post/psl_file/</link>
+        <pubDate>Sun, 14 Aug 2016 20:51:28 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/psl_file/</guid>
+        <description>&lt;h1 id=&#34;file-and-directory-access&#34;&gt;File and Directory Access&lt;/h1&gt;
+&lt;h2 id=&#34;ospath&#34;&gt;os.path&lt;/h2&gt;
+&lt;p&gt;windows的路径要写成：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;C:\\test\\sub\\
+
+import os
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;function:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;os.path.expanduser(path) # 把path中~或~user扩展成绝对路径 expanduser(&amp;quot;~/src&amp;quot;) -&amp;gt; /home/user/src
+os.path.expandvars(path) # 把path中的shell变量$var 或 ${var} 还原．
+os.path.dirname(filename) # 返回filename的路径 dirname(&amp;quot;/home/user/file.py&amp;quot;) -&amp;gt; /home/user
+os.path.join(a, *p) # 拼结一个完整的路径　
+os.path.join(a, os.pardir) # 返回上级目录的路径
+os.path.realpath(filename) # 返回filename的真实路径+文件名 realpath(&#39;__file__&#39;)
+os.path.abspath(path) # 返回绝对路径, os.path.abspath(&#39;__file__&#39;)
+os.path.splitext(p) # 分解路径和扩展名返回组成的元组，/home/user/test.py -&amp;gt; (&amp;quot;/home/user/test&amp;quot;, &amp;quot;.py&amp;quot;)
+os.path.basename(p) # 返回最后一个组件名，也就是文件名 /home/user/test.py -&amp;gt; test.py
+os.path.getsize(filename) # 返回文件大小
+os.path.exists(path) # 判断path(文件或目录)是否存在
+os.path.isfile(path) # 判断path是否是常规文件
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;pathlib&#34;&gt;pathlib&lt;/h2&gt;
+&lt;p&gt;new in python3.4&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;from pathlib import Path
+from pathlib import PurePosixPath
+from pathlib import PureWindowsPath
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;stat&#34;&gt;stat&lt;/h2&gt;
+&lt;h2 id=&#34;filecmp&#34;&gt;filecmp&lt;/h2&gt;
+&lt;h2 id=&#34;fnmatch&#34;&gt;fnmatch&lt;/h2&gt;
+&lt;h2 id=&#34;linecache&#34;&gt;linecache&lt;/h2&gt;
+&lt;h2 id=&#34;glob&#34;&gt;glob&lt;/h2&gt;
+&lt;p&gt;functions:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;glob(pathname) # 返回匹配pathname路径下正则表达式的所有文件组成的列表
+iglob(pathname) # 同上，返回generator.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;shutil&#34;&gt;shutil&lt;/h2&gt;
+&lt;p&gt;Utility functions for copying and archiving files and directory trees.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import shutil
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;functions:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;copy(src, dst)
+copy2(src, dst)
+...
+rmtree(path, ignore_errors=False, onerror=None) # 删除指定的目录,path不能是文件．
+unregister_archive_format(name)
+move(src, dst)
+...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;tempfile&#34;&gt;tempfile&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;file-formats&#34;&gt;File Formats&lt;/h1&gt;
+&lt;h2 id=&#34;csv&#34;&gt;csv&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;import csv
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;classes:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# csv.DictReader
+DictReader(self, f, fieldnames=None, restkey=None, restval=None, dialect=&#39;excel&#39;, *args, **kwds)
+# methods
+next()
+
+# csv.DictWriter
+DictWriter(self, f, fieldnames, restval=&#39;&#39;, extrasaction=&#39;raise&#39;, dialect=&#39;excel&#39;, *args, **kwargs)
+# mthods
+writeheader()
+writerow(rowdict)
+writerows(rowdicts)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;functions:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 返回DictReader对象
+reader(iterable, dialect=&#39;excel&#39;, **kwargs)
+
+// 返回DictWriter对象
+writer(fileobj, dialect=&#39;excel&#39;, **kwargs)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;data:&lt;/p&gt;
+&lt;h2 id=&#34;configparser&#34;&gt;configparser&lt;/h2&gt;
+&lt;p&gt;一般用来处理*.ini文件，格式为：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;[section]
+option-key = option-value
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;导入：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import ConfigParser
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;classes:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ConfigParser.ConfigParser(defaults=None)
+# methods:
+read(filenames) # 读取ini文件
+sections() # 获取所有section
+options(section) # 获取section的所有option
+get(section, option, raw=False, vars=None) # 返回字符串
+getint(section, options)
+getfloat(section, options)
+getboolean(section, options) # 大小写都可以:0/1, false/true, no/yes, off/on
+set(section, option, value)
+has_section(section)
+has_option(section, option)
+remove_section(section)
+remove_option(section, option)
+write(fp)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;issue:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;默认是全部小写写入.
+config = ConfigParser.ConfigParser(allow_no_value=True)
+config.optionxform =str # 原样写入
+
+from configparser import ConfigParser, ExtendedInterpolation
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;变量:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 默认interpolation只支持section之间变量
+[section1]
+1var1 = /opt
+1var2 = %(1var1)s/test
+
+// 扩展interpolation支持section变量引用
+config = ConfigParser(interpolation=ExtendedInterpolation())
+
+[section1]
+1var1 = /opt
+[section2]
+2var1 = ${section1:1var1}/test
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;tomllib&#34;&gt;tomllib&lt;/h2&gt;
+&lt;h2 id=&#34;netrc&#34;&gt;netrc&lt;/h2&gt;
+&lt;h2 id=&#34;plistlib&#34;&gt;plistlib&lt;/h2&gt;
+&lt;hr&gt;
+</description>
+        </item>
+        <item>
+        <title>PSL_Math</title>
+        <link>https://canuxcheng.com/post/psl_math/</link>
+        <pubDate>Fri, 12 Aug 2016 16:56:45 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/psl_math/</guid>
+        <description>&lt;h1 id=&#34;numeric-and-mathematical-modules&#34;&gt;Numeric and Mathematical Modules&lt;/h1&gt;
+&lt;h2 id=&#34;random&#34;&gt;random&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;import random
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;classes:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# random.Random
+Random()
+# methods:
+seed([self,], a=None)
+randint(a, b) # 随机一个[a,b]中的整数．
+choice(self, seq) # 从seq中随机选择一个元素
+uniform(self, a, b) # 随机一个[a,b]中的浮点数．
+sample(self, population, k)
+randint(self, a, b)
+randrange(self, start, stop=None, step=1, _int=&amp;lt;type &#39;int&#39;&amp;gt;, _maxwidth=9007199254740992L)
+
+# random.SystemRandom(Random)
+SystemRandom(Random)
+
+# random.WichmannHill(Random)
+WichmannHill(Random)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;functions:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;random(self) # 随机一个小于１的数．
+# 所有Random类的methods也可以直接使用．
+seed(self, a=None) # 设置随机数种子．
+uniform(self, a, b) # 随机一个[a,b]中的浮点数．
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;fractions&#34;&gt;fractions&lt;/h2&gt;
+&lt;h2 id=&#34;cmath&#34;&gt;cmath&lt;/h2&gt;
+&lt;h2 id=&#34;math&#34;&gt;math&lt;/h2&gt;
+&lt;h2 id=&#34;numbers&#34;&gt;numbers&lt;/h2&gt;
+&lt;h2 id=&#34;decimal&#34;&gt;decimal&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;functional-programming-modules&#34;&gt;Functional Programming Modules&lt;/h1&gt;
+&lt;h2 id=&#34;functools&#34;&gt;functools&lt;/h2&gt;
+&lt;p&gt;函数式编程相关的模块&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import functools
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;classes:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# functools.partial
+partial(func, *args, **keywords) # 返回functools.partial类型的对象, partial是functools内置的偏函数类类型.
+RED = partial(lambda content, color: color + str(content) + Fore.RESET, color=Fore.RED)
+RED(&amp;quot;show me red&amp;quot;) == lambda content, color: Fore.RED + str(&amp;quot;show me red&amp;quot;) + Fore.RESET
+# 相当于通过partial传一个参数给func，然后剩下的参数通过返回的偏函数传入．这样可以固化一部分参数．
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;functions:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;reduce(function, sequence[, initial]) # 如果initial存在，就把initial作为function的第一个参数，如果function有两个参数，就再从sequence取第一个元素作为function的第二个参数，然后调用function，返回的结果作为function的第一个参数，再继续从sequence获取元素作为参数，继续调用function, 直到sequence为空．
+reduce(lambda x,y: x+y, range(5))
+
+cmp_to_key(mycmp)
+total_ordering(cls)
+update_wrapper(wrapper, wrapped, assigned=(&#39;__module__&#39;, &#39;__name__&#39;, &#39;__doc__&#39;), updated=(&#39;__dict__&#39;,))
+
+wraps(wrapped, assigned=(&#39;__module__&#39;, &#39;__name__&#39;, &#39;__doc__&#39;), updated=(&#39;__dict__&#39;,))
+# example:
+def deco(func):
+    @wraps(func):
+    def wrapper(*args, **kwargs):
+        &amp;quot;&amp;quot;&amp;quot;Docs for wrapper.&amp;quot;&amp;quot;&amp;quot;
+        pass
+
+@deco
+def foo()
+    &amp;quot;&amp;quot;&amp;quot;Docs for new function.&amp;quot;&amp;quot;&amp;quot;
+    pass
+
+# 不用wraps被装饰的函数foo的属性其实是原来函数的属性，也就是wrapper的属性
+# 用了wraps被装饰的函数foo的属性就是foo自己的属性．
+print foo.__name__
+print foo.__doc__
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;operator&#34;&gt;operator&lt;/h2&gt;
+&lt;p&gt;操作符相关的模块&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import operator
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;itertools&#34;&gt;itertools&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;import itertools
+&lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
 </description>
         </item>
@@ -23858,6 +23872,15 @@ dic[&#39;key&#39;]
 &lt;pre&gt;&lt;code&gt;dic[&#39;key&#39;] = &#39;value&#39;
 del dic[&#39;key&#39;]
 &lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;dict-comprehensions&#34;&gt;dict comprehensions&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;{key: value for item in iterable if condition}
+
+modified = {
+    k: (expected[k], actual[k])
+    for k in expected
+    if k in actual and expected[k] != actual[k]
+}
+&lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;sets集合&#34;&gt;&lt;em&gt;Sets集合&lt;/em&gt;&lt;/h2&gt;
 &lt;p&gt;集合是一组无序排列的值，不能进行索引和切片操作，也不能进行键操作，只能通过for循环迭代集合元素．&lt;/p&gt;
 &lt;p&gt;集合分为可变集合和不可变集合.&lt;/p&gt;
@@ -23886,6 +23909,13 @@ del dic[&#39;key&#39;]
 &lt;p&gt;frozenset类型是不可变类型(immutable),是容器(container).&lt;/p&gt;
 &lt;h3 id=&#34;set&#34;&gt;set&lt;/h3&gt;
 &lt;p&gt;set类型是可变类型(mutable)，是容器(container).&lt;/p&gt;
+&lt;h3 id=&#34;set-comprehensions&#34;&gt;set comprehensions&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;{expression for item in iterable if condition}
+
+{x for x in range(10) if x % 2 == 0}
+等效于
+set(filter(lambda x: x % 2 == 0, range(10)))    
+&lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;python控制流&#34;&gt;&lt;strong&gt;python控制流&lt;/strong&gt;&lt;/h1&gt;
 &lt;p&gt;continue语句:表示立即终止本次循环，启动循环的下一次迭代．&lt;/p&gt;
@@ -28492,9 +28522,6 @@ Protocol
 Final
 Annotated
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;2to3&#34;&gt;2to3&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;$2to3
-&lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;pydoc&#34;&gt;pydoc&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;import pydoc
 &lt;/code&gt;&lt;/pre&gt;
@@ -28509,6 +28536,12 @@ Annotated
 &lt;p&gt;python内置的单元测试库．&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;import unittest
 &lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;debugging-and-profiling&#34;&gt;Debugging and Profiling&lt;/h1&gt;
+&lt;h2 id=&#34;bdb&#34;&gt;bdb&lt;/h2&gt;
+&lt;h2 id=&#34;pdb&#34;&gt;pdb&lt;/h2&gt;
+&lt;h2 id=&#34;timeit&#34;&gt;timeit&lt;/h2&gt;
+&lt;h2 id=&#34;trace&#34;&gt;trace&lt;/h2&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;tpl&#34;&gt;TPL&lt;/h1&gt;
 &lt;p&gt;相关的第三方库&lt;/p&gt;

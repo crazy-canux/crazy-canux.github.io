@@ -1,23 +1,38 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Data Types datetime import datetime classes:
-# datetime.date date(year, month, day) # methods: ctime(...) ... # data descriptors: day month year # datetime.datetime(datetime.date) datetime(year, month, day[, hour[, minute[, second[, microsecond[,tzinfo]]]]]) # methods: datetime.datetime.strptime(string, format) format_datetime = datetime.datetime.strptime(&#39;20160824161431&#39;, &#39;%Y%m%d%H%M%S&#39;) # return: datetime.datetime(2016, 8, 24, 16, 14, 31) format_datetime = datetime.datetime.strptime(&#39;24 August 2016 16:14:31&#39;, &#39;%Y%m%d%H%M%S&#39;) # return: datetime.datetime(2016, 8, 24, 16, 14, 31) datetime.datetime.strftime(format[, tuple]) string_datetime = format_datetime.strftime(&quot;%d %B %Y %H:%M:%S&quot;) # return: &#39;24 August 2016 16:14:31&#39; datetime.datetime.now().strftime(&#39;%Y-%m-%d %H:%M:%S&#39;) # return: &#39;2017-02-07 23:07:32&#39; str(datetime.datetime.now()) datetime.datetime.now().strftime(&#39;%Y%m%d%H%M%S&#39;) # 当前时间戳 # datetime.time # datetime.timedelta # datetime.tzinfo data:
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Text Processing Services string import string classes:
+functions:
+data:
+ascii_letters ascii_lowercase ascii_uppercase digits ... re import re classes:
+functions:
+compile(pattern, flags=0) escape(pattern) findall(pattern, string, flags=0) finditer(pattern, string, flags=0) match(pattern, string, flags=0) # if not match, return None, else return object. search(pattern, string, flags=0) purge() split(pattern, string, maxsplit=0, flags=0) # 根据pattern分割string,返回分割后的列表． sub(pattern, repl, string, count=0, flags=0) subn(pattern, repl, string, count=0, flags=0) template(pattern, flags=0) data:
+# flags: IGNORECASE # 大小写不敏感 LOCALE MULTILINE DOTALL VERBOSE UNICODE modules:
 '>
 <title>PSL_Data</title>
 
 <link rel='canonical' href='https://canuxcheng.com/post/psl_data/'>
 
 <link rel="stylesheet" href="/scss/style.min.2d59822570c0be136f2ad87c952ef8788ac2a951067adda1c49b253bff7d0292.css"><meta property='og:title' content='PSL_Data'>
-<meta property='og:description' content='Data Types datetime import datetime classes:
-# datetime.date date(year, month, day) # methods: ctime(...) ... # data descriptors: day month year # datetime.datetime(datetime.date) datetime(year, month, day[, hour[, minute[, second[, microsecond[,tzinfo]]]]]) # methods: datetime.datetime.strptime(string, format) format_datetime = datetime.datetime.strptime(&#39;20160824161431&#39;, &#39;%Y%m%d%H%M%S&#39;) # return: datetime.datetime(2016, 8, 24, 16, 14, 31) format_datetime = datetime.datetime.strptime(&#39;24 August 2016 16:14:31&#39;, &#39;%Y%m%d%H%M%S&#39;) # return: datetime.datetime(2016, 8, 24, 16, 14, 31) datetime.datetime.strftime(format[, tuple]) string_datetime = format_datetime.strftime(&quot;%d %B %Y %H:%M:%S&quot;) # return: &#39;24 August 2016 16:14:31&#39; datetime.datetime.now().strftime(&#39;%Y-%m-%d %H:%M:%S&#39;) # return: &#39;2017-02-07 23:07:32&#39; str(datetime.datetime.now()) datetime.datetime.now().strftime(&#39;%Y%m%d%H%M%S&#39;) # 当前时间戳 # datetime.time # datetime.timedelta # datetime.tzinfo data:
+<meta property='og:description' content='Text Processing Services string import string classes:
+functions:
+data:
+ascii_letters ascii_lowercase ascii_uppercase digits ... re import re classes:
+functions:
+compile(pattern, flags=0) escape(pattern) findall(pattern, string, flags=0) finditer(pattern, string, flags=0) match(pattern, string, flags=0) # if not match, return None, else return object. search(pattern, string, flags=0) purge() split(pattern, string, maxsplit=0, flags=0) # 根据pattern分割string,返回分割后的列表． sub(pattern, repl, string, count=0, flags=0) subn(pattern, repl, string, count=0, flags=0) template(pattern, flags=0) data:
+# flags: IGNORECASE # 大小写不敏感 LOCALE MULTILINE DOTALL VERBOSE UNICODE modules:
 '>
 <meta property='og:url' content='https://canuxcheng.com/post/psl_data/'>
 <meta property='og:site_name' content='Morgoth'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='data' /><meta property='article:published_time' content='2016-08-14T20:57:36&#43;00:00'/><meta property='article:modified_time' content='2016-08-14T20:57:36&#43;00:00'/>
 <meta name="twitter:title" content="PSL_Data">
-<meta name="twitter:description" content="Data Types datetime import datetime classes:
-# datetime.date date(year, month, day) # methods: ctime(...) ... # data descriptors: day month year # datetime.datetime(datetime.date) datetime(year, month, day[, hour[, minute[, second[, microsecond[,tzinfo]]]]]) # methods: datetime.datetime.strptime(string, format) format_datetime = datetime.datetime.strptime(&#39;20160824161431&#39;, &#39;%Y%m%d%H%M%S&#39;) # return: datetime.datetime(2016, 8, 24, 16, 14, 31) format_datetime = datetime.datetime.strptime(&#39;24 August 2016 16:14:31&#39;, &#39;%Y%m%d%H%M%S&#39;) # return: datetime.datetime(2016, 8, 24, 16, 14, 31) datetime.datetime.strftime(format[, tuple]) string_datetime = format_datetime.strftime(&quot;%d %B %Y %H:%M:%S&quot;) # return: &#39;24 August 2016 16:14:31&#39; datetime.datetime.now().strftime(&#39;%Y-%m-%d %H:%M:%S&#39;) # return: &#39;2017-02-07 23:07:32&#39; str(datetime.datetime.now()) datetime.datetime.now().strftime(&#39;%Y%m%d%H%M%S&#39;) # 当前时间戳 # datetime.time # datetime.timedelta # datetime.tzinfo data:
+<meta name="twitter:description" content="Text Processing Services string import string classes:
+functions:
+data:
+ascii_letters ascii_lowercase ascii_uppercase digits ... re import re classes:
+functions:
+compile(pattern, flags=0) escape(pattern) findall(pattern, string, flags=0) finditer(pattern, string, flags=0) match(pattern, string, flags=0) # if not match, return None, else return object. search(pattern, string, flags=0) purge() split(pattern, string, maxsplit=0, flags=0) # 根据pattern分割string,返回分割后的列表． sub(pattern, repl, string, count=0, flags=0) subn(pattern, repl, string, count=0, flags=0) template(pattern, flags=0) data:
+# flags: IGNORECASE # 大小写不敏感 LOCALE MULTILINE DOTALL VERBOSE UNICODE modules:
 ">
     <link rel="shortcut icon" href="favicon.ico" />
 <style>
@@ -328,37 +343,45 @@
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ul>
+    <li><a href="#string">string</a></li>
+    <li><a href="#re">re</a></li>
+    <li><a href="#stringprep">stringprep</a></li>
+    <li><a href="#difflib">difflib</a></li>
+    <li><a href="#textwrap">textwrap</a></li>
+    <li><a href="#unicodedata">unicodedata</a></li>
+    <li><a href="#readline">readline</a></li>
+    <li><a href="#rlcompleter">rlcompleter</a></li>
+  </ul>
+
+  <ul>
+    <li><a href="#codecs">codecs</a></li>
+    <li><a href="#struct">struct</a></li>
+  </ul>
+
+  <ul>
     <li><a href="#datetime">datetime</a></li>
     <li><a href="#calendar">calendar</a></li>
+    <li><a href="#zoneinfo">zoneinfo</a></li>
     <li><a href="#collections">collections</a></li>
     <li><a href="#heapq">heapq</a></li>
     <li><a href="#bisect">bisect</a></li>
     <li><a href="#array">array</a></li>
-    <li><a href="#sched">sched</a></li>
-    <li><a href="#queue">Queue</a></li>
     <li><a href="#weakref">weakref</a></li>
-    <li><a href="#userdict">UserDict</a></li>
-    <li><a href="#userlist">UserList</a></li>
-    <li><a href="#userstring">UserString</a></li>
     <li><a href="#types">types</a></li>
     <li><a href="#copy">copy</a></li>
     <li><a href="#pprint">pprint</a></li>
-    <li><a href="#repr">repr</a></li>
+    <li><a href="#reprlib">reprlib</a></li>
+    <li><a href="#enum">enum</a></li>
+    <li><a href="#graphlib">graphlib</a></li>
   </ul>
 
   <ul>
     <li><a href="#pickle">pickle</a></li>
-    <li><a href="#cpickle">cPickle</a></li>
     <li><a href="#marshal">marshal</a></li>
     <li><a href="#shelve">shelve</a></li>
-    <li><a href="#anydbm">anydbm</a></li>
-    <li><a href="#whichdb">whichdb</a></li>
+    <li><a href="#copyreg">copyreg</a></li>
     <li><a href="#dbm">dbm</a></li>
-    <li><a href="#gdbm">gdbm</a></li>
-    <li><a href="#dumbdbm">dumbdbm</a></li>
-    <li><a href="#cope_reg">cope_reg</a></li>
-    <li><a href="#pickletools">pickletools</a></li>
-    <li><a href="#sqlite">sqlite</a></li>
+    <li><a href="#sqlite3">sqlite3</a></li>
   </ul>
 
   <ul>
@@ -367,6 +390,7 @@
     <li><a href="#zlib">zlib</a></li>
     <li><a href="#zipfile">zipfile</a></li>
     <li><a href="#tarfile">tarfile</a></li>
+    <li><a href="#lzma">lzma</a></li>
   </ul>
 </nav>
         </div>
@@ -431,7 +455,7 @@
 
 
                 <time class="article-time--reading">
-                    2 minute read
+                    3 minute read
                 </time>
             </div>
         
@@ -446,7 +470,105 @@
     <section class="article-content">
     
     
-    <h1 id="data-types">Data Types</h1>
+    <h1 id="text-processing-services">Text Processing Services</h1>
+<h2 id="string">string</h2>
+<pre><code>import string
+</code></pre>
+<p>classes:</p>
+<p>functions:</p>
+<p>data:</p>
+<pre><code>ascii_letters
+ascii_lowercase
+ascii_uppercase
+digits
+...
+</code></pre>
+<h2 id="re">re</h2>
+<pre><code>import re
+</code></pre>
+<p>classes:</p>
+<p>functions:</p>
+<pre><code>compile(pattern, flags=0)
+escape(pattern)
+findall(pattern, string, flags=0)
+finditer(pattern, string, flags=0)
+match(pattern, string, flags=0) # if not match, return None, else return object.
+search(pattern, string, flags=0)
+purge()
+split(pattern, string, maxsplit=0, flags=0) # 根据pattern分割string,返回分割后的列表．
+sub(pattern, repl, string, count=0, flags=0)
+subn(pattern, repl, string, count=0, flags=0)
+template(pattern, flags=0)
+</code></pre>
+<p>data:</p>
+<pre><code># flags:
+IGNORECASE # 大小写不敏感
+LOCALE
+MULTILINE
+DOTALL
+VERBOSE
+UNICODE
+</code></pre>
+<p>modules:</p>
+<pre><code># sre_parse module
+# functions:
+sre_parse.parse(str, flags=0, pattern=None)
+sre_parse.expand_template(template, match)
+sre_parse.parse_template(source, pattern)
+
+# sre_compile module
+# functions:
+sre_compile.compile(p, flags=0)
+sre_compile.isstring(obj)
+</code></pre>
+<h2 id="stringprep">stringprep</h2>
+<h2 id="difflib">difflib</h2>
+<h2 id="textwrap">textwrap</h2>
+<pre><code>import textwrap
+</code></pre>
+<h2 id="unicodedata">unicodedata</h2>
+<h2 id="readline">readline</h2>
+<h2 id="rlcompleter">rlcompleter</h2>
+<hr>
+<h1 id="binary-data-services">Binary Data Services</h1>
+<h2 id="codecs">codecs</h2>
+<p>python的编码解码器coder/decoder。</p>
+<pre><code>import codecs
+
+# 使用注册名为encoding的编码器编码obj，encoding默认为ascii。
+# encode将unicode编码的obj编码成encoding编码对应的字节序列．
+codecs.encode(obj, [encoding[,errors]])
+codecs.encode(u'hello world', 'utf-8') # 编码成utf-8字节序．
+
+# 使用注册名为encoding的解码器解码obj，encoding默认是ascii。
+# decode将原来按照encoding编码的obj解码成unicode字符串.
+codecs.decode(obj, [encoding[,errors]])
+codecs.decode(obj, 'utf-8') # 将utf-8编码的obj解码成unicode.
+
+# encoding取下面值:
+# ascii是默认值,gb2312, gbk, gb18030, utf-8, utf-16
+# ascii利用一个字节把字符转换成数字．
+# unicode利用多字节转换，支持多种编码方式，utf-8, uft-16.
+
+# errors取下面值：
+# strict, 默认值，抛出UnicodeError异常。
+# ignore
+# replace
+# xmlcharrefreplace
+# backslashreplace
+</code></pre>
+<p>functions:</p>
+<pre><code>open(filename, mode='rb', encoding=None, errors='strict', buffering=1)
+</code></pre>
+<p>data:</p>
+<h2 id="struct">struct</h2>
+<pre><code>import struct
+
+# struct模块提供了将C语言的struct转换成python的bytes对象的功能．
+# 也可以将bytes对象转换成C语言的struct.
+</code></pre>
+<hr>
+<h1 id="data-types">Data Types</h1>
 <h2 id="datetime">datetime</h2>
 <pre><code>import datetime
 </code></pre>
@@ -486,66 +608,44 @@ datetime.datetime.now().strftime('%Y%m%d%H%M%S') # 当前时间戳
 MINYEAR = 1
 </code></pre>
 <h2 id="calendar">calendar</h2>
+<h2 id="zoneinfo">zoneinfo</h2>
 <h2 id="collections">collections</h2>
 <pre><code>import collections
 </code></pre>
 <p>classes:</p>
-<pre><code># collections.Callable
+<pre><code>Callable 
+# 用于检查对象是否可调用
 
-# collections.Container
+Container 
+# 用于检查对象是否是容器类型
 
-# collections.Counter
+Counter(iterable_or_mapping=None, **kwds)
+# 返回一个Counter类型的实例，类似于dict，统计元素出现的次数
 
-# collections.Hashable
+HashableDict(mapping=None, **kwargs)
 
-# collections.ItemsView
-
-# collections.Iterable
-
-# collections.Iterator
-
-# collections.deque
-# 返回一个deque类型的实例，也就是双端队列
-deque([iterable[, maxlen]])
-
-# collections.defaultdict
-# 返回一个defaultdict类型的实例，类似于dict.setdefault()
-defaultdict(default_factory[, ...])
+Iterable(iterable=None)
+</code></pre>
+<p>Iterator(iterable=None)</p>
+<p>functions:</p>
+<pre><code>namedtuple(typename[, field_names[, verbose[, rename]]]) # 返回一个namedtuple类型的实例，类似于C语言的struct
+OrderedDict([items]) # 返回一个OrderedDict类型的实例，类似于dict，但是有序
+ChainMap(*maps) # 返回一个ChainMap类型的实例，类似于dict，但是可以合并多个字典
+UserDict([mapping]) # 返回一个UserDict类型的实例，类似于dict，但是可以继承
+UserList([sequence]) # 返回一个UserList类型的实例，类似于list，但是可以继承
+UserString([string]) # 返回一个UserString类型的实例，类似于str，但是可以继承
+</code></pre>
+<h2 id="heapq">heapq</h2>
+<p>heapq模块提供了堆队列算法，也称为优先队列算法．</p>
+<pre><code>import heapq
 </code></pre>
 <p>functions:</p>
-<pre><code>namedtuple(typename, field_names, verbose=False, rename=False)
-# 返回一个tuple的子类, 将只能通过index访问的tuple变为可以通过name来访问．
-NewTuple = namedtuple('NewTuple', ['elm1', 'elm2', 'elm3'])
-nt = NewTuple(1, 2, 3)
-nt.elm1 # 1
+<pre><code>heappush(heap, item) # 把item放到堆中
+heappop(heap) # 弹出堆顶元素, 也就是最小的元素
 </code></pre>
-<p>data:</p>
-<h2 id="heapq">heapq</h2>
 <h2 id="bisect">bisect</h2>
 <h2 id="array">array</h2>
-<h2 id="sched">sched</h2>
-<h2 id="queue">Queue</h2>
-<p>队列数据结构．</p>
-<pre><code>import Queue
-</code></pre>
-<p>classes:</p>
-<pre><code># Queue.Queue
-Queue(maxsize=0) # 创建一个大小为maxsize的queue对象
-# methods:
-empty(self) # 如果queue为空返回True
-full(self) # 如果queue达到maxsize返回True
-get(self, block=True, timeout=None) # 从队列中取出一个元素并返回,如果block=True,会一直阻塞,直到队列中有元素．
-get_nowait(self)
-join(self)
-put(self, item, block=True, timeout=None) # 把item放到队列中,如果block=true,会一直阻塞,直到队列有空间存放item.
-put_nowait(self, item)
-qsize(self) # 返回queue大小，近似值
-task_done(self)
-</code></pre>
 <h2 id="weakref">weakref</h2>
-<h2 id="userdict">UserDict</h2>
-<h2 id="userlist">UserList</h2>
-<h2 id="userstring">UserString</h2>
 <h2 id="types">types</h2>
 <h2 id="copy">copy</h2>
 <p>copy和deepcopy都只拷贝对象的类型和数值，不拷贝对象的ID.也就是==运算为True, is(id())运算为False.</p>
@@ -556,26 +656,25 @@ task_done(self)
 copy.deepcopy(x, memo=None, _nil=[]) # 深复制, 拷贝父对象和内部的子对象
 </code></pre>
 <h2 id="pprint">pprint</h2>
-<h2 id="repr">repr</h2>
+<h2 id="reprlib">reprlib</h2>
+<h2 id="enum">enum</h2>
+<pre><code>import enum
+</code></pre>
+<h2 id="graphlib">graphlib</h2>
 <hr>
 <h1 id="data-persistence">Data Persistence</h1>
 <p>pickle/cPickle/marshal提供对象的序列化操作．</p>
 <p>gdb相关的模块anydbm/whichdb/dbm/gdbm/dumbdbm提供类似字典和文件的对象．</p>
 <p>shelve集合了以上两者的功能．</p>
 <h2 id="pickle">pickle</h2>
-<p>pickle不支持unicode,只支持ascii.</p>
-<h2 id="cpickle">cPickle</h2>
-<p>python3将cPickle和pickle统一合并为pickle.</p>
-<p>cPickle是c开发的，速度比pickle快，但是不支持被继承．</p>
-<pre><code>import cPickle
+<p>pickle模块提供了对象的序列化和反序列化操作．</p>
+<pre><code>import pickle
 </code></pre>
 <p>functions:</p>
-<pre><code>Pickler(file, protocol=0)
-Unpickler(file)
-dump(obj, file, protocol=0) # 写入到一个文件
-dumps(obj, protocol=0) # 写入到一个字符串
-load(file) # 从文件读取
-loads(string) # 从字符串读取
+<pre><code>dump(obj, file[, protocol, *, fix_imports, buffer_callback] # 将对象obj序列化到文件file中
+dumps(obj[, protocol, *, fix_imports, buffer_callback] # 将对象obj序列化为字节串
+load(file[, *, encoding, errors, buffers]) # 从文件file中反序列化对象
+loads(data[, *, encoding, errors, buffers]) # 从字节串data中反序列化对象
 </code></pre>
 <p>data:</p>
 <pre><code>HIGHEST_PROTOCOL = 2
@@ -589,14 +688,9 @@ r/w: 不存在报错
 c: read-write to new/existing，不存在创建
 n: read-write to new. 总是创建新的
 </code></pre>
-<h2 id="anydbm">anydbm</h2>
-<h2 id="whichdb">whichdb</h2>
+<h2 id="copyreg">copyreg</h2>
 <h2 id="dbm">dbm</h2>
-<h2 id="gdbm">gdbm</h2>
-<h2 id="dumbdbm">dumbdbm</h2>
-<h2 id="cope_reg">cope_reg</h2>
-<h2 id="pickletools">pickletools</h2>
-<h2 id="sqlite">sqlite</h2>
+<h2 id="sqlite3">sqlite3</h2>
 <p>python访问数据库两种方式：</p>
 <ol>
 <li>ORM</li>
@@ -635,6 +729,7 @@ connect(database[, timeout, isolation_level, detect_types, factory])
 <h2 id="zlib">zlib</h2>
 <h2 id="zipfile">zipfile</h2>
 <h2 id="tarfile">tarfile</h2>
+<h2 id="lzma">lzma</h2>
 <hr>
 
 </section>

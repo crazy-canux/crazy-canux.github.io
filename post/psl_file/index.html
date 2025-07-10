@@ -334,22 +334,19 @@ os.path.expanduser(path) # 把path中~或~user扩展成绝对路径 expanduser(&
     <li><a href="#ospath">os.path</a></li>
     <li><a href="#pathlib">pathlib</a></li>
     <li><a href="#stat">stat</a></li>
-    <li><a href="#fileinput">fileinput</a></li>
     <li><a href="#filecmp">filecmp</a></li>
     <li><a href="#fnmatch">fnmatch</a></li>
     <li><a href="#linecache">linecache</a></li>
     <li><a href="#glob">glob</a></li>
     <li><a href="#shutil">shutil</a></li>
     <li><a href="#tempfile">tempfile</a></li>
-    <li><a href="#macpath">macpath</a></li>
-    <li><a href="#configparser">ConfigParser</a></li>
   </ul>
 
   <ul>
     <li><a href="#csv">csv</a></li>
-    <li><a href="#robotparser">robotparser</a></li>
+    <li><a href="#configparser">configparser</a></li>
+    <li><a href="#tomllib">tomllib</a></li>
     <li><a href="#netrc">netrc</a></li>
-    <li><a href="#xdrlib">xdrlib</a></li>
     <li><a href="#plistlib">plistlib</a></li>
   </ul>
 </nav>
@@ -458,7 +455,6 @@ from pathlib import PurePosixPath
 from pathlib import PureWindowsPath
 </code></pre>
 <h2 id="stat">stat</h2>
-<h2 id="fileinput">fileinput</h2>
 <h2 id="filecmp">filecmp</h2>
 <h2 id="fnmatch">fnmatch</h2>
 <h2 id="linecache">linecache</h2>
@@ -481,8 +477,33 @@ move(src, dst)
 ...
 </code></pre>
 <h2 id="tempfile">tempfile</h2>
-<h2 id="macpath">macpath</h2>
-<h2 id="configparser">ConfigParser</h2>
+<hr>
+<h1 id="file-formats">File Formats</h1>
+<h2 id="csv">csv</h2>
+<pre><code>import csv
+</code></pre>
+<p>classes:</p>
+<pre><code># csv.DictReader
+DictReader(self, f, fieldnames=None, restkey=None, restval=None, dialect='excel', *args, **kwds)
+# methods
+next()
+
+# csv.DictWriter
+DictWriter(self, f, fieldnames, restval='', extrasaction='raise', dialect='excel', *args, **kwargs)
+# mthods
+writeheader()
+writerow(rowdict)
+writerows(rowdicts)
+</code></pre>
+<p>functions:</p>
+<pre><code>// 返回DictReader对象
+reader(iterable, dialect='excel', **kwargs)
+
+// 返回DictWriter对象
+writer(fileobj, dialect='excel', **kwargs)
+</code></pre>
+<p>data:</p>
+<h2 id="configparser">configparser</h2>
 <p>一般用来处理*.ini文件，格式为：</p>
 <pre><code>[section]
 option-key = option-value
@@ -528,35 +549,8 @@ config = ConfigParser(interpolation=ExtendedInterpolation())
 [section2]
 2var1 = ${section1:1var1}/test
 </code></pre>
-<hr>
-<h1 id="file-formats">File Formats</h1>
-<h2 id="csv">csv</h2>
-<pre><code>import csv
-</code></pre>
-<p>classes:</p>
-<pre><code># csv.DictReader
-DictReader(self, f, fieldnames=None, restkey=None, restval=None, dialect='excel', *args, **kwds)
-# methods
-next()
-
-# csv.DictWriter
-DictWriter(self, f, fieldnames, restval='', extrasaction='raise', dialect='excel', *args, **kwargs)
-# mthods
-writeheader()
-writerow(rowdict)
-writerows(rowdicts)
-</code></pre>
-<p>functions:</p>
-<pre><code>// 返回DictReader对象
-reader(iterable, dialect='excel', **kwargs)
-
-// 返回DictWriter对象
-writer(fileobj, dialect='excel', **kwargs)
-</code></pre>
-<p>data:</p>
-<h2 id="robotparser">robotparser</h2>
+<h2 id="tomllib">tomllib</h2>
 <h2 id="netrc">netrc</h2>
-<h2 id="xdrlib">xdrlib</h2>
 <h2 id="plistlib">plistlib</h2>
 <hr>
 

@@ -370,19 +370,18 @@ import multiprocessing classes:
     <li><a href="#multiprocessing">multiprocessing</a></li>
     <li><a href="#threading">threading</a></li>
     <li><a href="#subprocess">subprocess</a></li>
+    <li><a href="#concurrent">concurrent</a></li>
     <li><a href="#sched">sched</a></li>
     <li><a href="#queue">queue</a></li>
-    <li><a href="#dummy_threading">dummy_threading</a></li>
+    <li><a href="#contextvars">contextvars</a></li>
   </ul>
 
   <ul>
     <li><a href="#socket">socket</a></li>
+    <li><a href="#asyncio">asyncio</a></li>
     <li><a href="#ssl">ssl</a></li>
     <li><a href="#select">select</a></li>
     <li><a href="#selectors">selectors</a></li>
-    <li><a href="#asyncio">asyncio</a></li>
-    <li><a href="#asyncore">asyncore</a></li>
-    <li><a href="#asynchat">asynchat</a></li>
     <li><a href="#signal">signal</a></li>
     <li><a href="#mmap">mmap</a></li>
   </ul>
@@ -685,11 +684,16 @@ check_output(*popenargs, **kwargs) # 返回一个字符串
 <pre><code>PIPE = -1
 STDOUT = -2
 </code></pre>
+<h2 id="concurrent">concurrent</h2>
+<p>concurrent模块提供了多线程和多进程的高级接口.</p>
+<pre><code>import concurrent.futures
+</code></pre>
 <h2 id="sched">sched</h2>
 <h2 id="queue">queue</h2>
-<h2 id="dummy_threading">dummy_threading</h2>
+<h2 id="contextvars">contextvars</h2>
 <hr>
-<h1 id="interprocess-communication-and-networking">Interprocess Communication and Networking</h1>
+<h1 id="inter-process-communication-and-networking">Inter Process Communication and Networking</h1>
+<p>IPC</p>
 <h2 id="socket">socket</h2>
 <p>socket协议的标准库</p>
 <pre><code>import socket
@@ -776,14 +780,52 @@ ntohs(integer)
 setdefaulttimeout(timeout)
 socketpair([family[, type[, proto]]]) -&gt; (socket object, socket object)
 </code></pre>
+<h2 id="asyncio">asyncio</h2>
+<p>核心异步事件循环库，提供协程、事件循环、任务、Future、队列等核心机制。</p>
+<p>asyncio 往往是构建 IO 密集型和高层级 结构化 网络代码的最佳选择。</p>
+<pre><code>import asyncio
+</code></pre>
+<p>async/await:</p>
+<p>async def 定义一个协程函数，await 用来等待协程的执行结果。</p>
+<pre><code>async def say():
+    print(&quot;Hello&quot;)
+    await asyncio.sleep(1)
+    print(&quot;World&quot;)
+asyncio.run(say())
+</code></pre>
+<p>classes:</p>
+<pre><code># asyncio.Runner
+runner = Runner()
+asyncio.run(runner.run(coro, *, debug=False)) # 运行一个协程，返回协程结果
+
+# asyncio.Task
+task = Task(coro, *, loop=None)
+create_task(coro, *, loop=None) # 创建一个任务，返回Task对象, 协程马上运行。
+
+# asyncio.TaskGroup
+task_group = TaskGroup(*, loop=None)
+
+# asyncio.Queue
+queue = Queue(maxsize=0, *, loop=None)
+# methods:
+put(item) # 放入一个元素到队列
+get() # 从队列中获取一个元素
+task_done() # 标记一个任务完成
+join() # 阻塞直到队列中的所有任务都完成
+empty() # 返回队列是否为空
+full() # 返回队列是否已满
+qsize() # 返回队列的大小
+</code></pre>
+<p>functions:</p>
+<pre><code>gather(*coros, loop=None) 
+sleep(delay, result=None, *, loop=None) # 异步睡眠，返回一个Future对象
+</code></pre>
 <h2 id="ssl">ssl</h2>
 <h2 id="select">select</h2>
 <h2 id="selectors">selectors</h2>
-<h2 id="asyncio">asyncio</h2>
-<h2 id="asyncore">asyncore</h2>
-<h2 id="asynchat">asynchat</h2>
 <h2 id="signal">signal</h2>
 <h2 id="mmap">mmap</h2>
+<hr>
 
 </section>
 
