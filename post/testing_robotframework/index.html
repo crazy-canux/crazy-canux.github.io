@@ -780,6 +780,20 @@ class LibraryListener(object):
     # version 3 for rf&gt;=3.0
     ROBOT_LISTENER_API_VERSION = 2
 </code></pre>
+<hr>
+<h1 id="allure">allure</h1>
+<p><a class="link" href="https://github.com/allure-framework/allure-python/tree/master/allure-robotframework"  target="_blank" rel="noopener"
+    >https://github.com/allure-framework/allure-python/tree/master/allure-robotframework</a></p>
+<pre><code>$ pip install allure-robotframework
+$ robot --listener allure_robotframework ./my_robot_test
+$ robot --listener allure_robotframework:/set/your/path/here ./my_robot_test
+
+allure generate output/allure
+allure serve output/allure
+</code></pre>
+<h1 id="reportportal">reportportal</h1>
+<p><a class="link" href="https://github.com/reportportal/plugin-import-robot"  target="_blank" rel="noopener"
+    >https://github.com/reportportal/plugin-import-robot</a></p>
 
 </section>
 

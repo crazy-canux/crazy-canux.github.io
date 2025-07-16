@@ -110,6 +110,32 @@ Access-Control-Allow-Headers&lt;/p&gt;
 </description>
         </item>
         <item>
+        <title>Security</title>
+        <link>https://canuxcheng.com/post/sec_security/</link>
+        <pubDate>Sat, 28 Jul 2018 16:08:54 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/sec_security/</guid>
+        <description>&lt;h1 id=&#34;security&#34;&gt;Security&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://nvd.nist.gov/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://nvd.nist.gov/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://cve.scap.org.cn/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://cve.scap.org.cn/&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;gfw&#34;&gt;GFW&lt;/h1&gt;
+&lt;h1 id=&#34;ngfw&#34;&gt;NGFW&lt;/h1&gt;
+&lt;h1 id=&#34;utm&#34;&gt;UTM&lt;/h1&gt;
+&lt;p&gt;Unified Threat Management, 安全网关&lt;/p&gt;
+&lt;p&gt;BUV: Block Until Verdict&lt;/p&gt;
+&lt;h1 id=&#34;waf&#34;&gt;WAF&lt;/h1&gt;
+&lt;p&gt;Web Application Firewall, web应用防火墙&lt;/p&gt;
+&lt;h1 id=&#34;ips&#34;&gt;IPS&lt;/h1&gt;
+&lt;p&gt;Intrusion Prevention System, 入侵防御系统&lt;/p&gt;
+&lt;h1 id=&#34;ids&#34;&gt;IDS&lt;/h1&gt;
+&lt;p&gt;Intrusion Detection System, 入侵检测系统&lt;/p&gt;
+&lt;h1 id=&#34;nsm&#34;&gt;NSM&lt;/h1&gt;
+&lt;p&gt;Network Security Monitoring, 网络安全监控&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>Cfssl</title>
         <link>https://canuxcheng.com/post/sec_cfssl/</link>
         <pubDate>Sat, 28 Jul 2018 16:08:54 +0800</pubDate>

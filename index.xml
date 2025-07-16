@@ -174,11 +174,16 @@
         </item>
         <item>
         <title>Security</title>
-        <link>https://canuxcheng.com/post/k8s_security/</link>
+        <link>https://canuxcheng.com/post/devops_security/</link>
         <pubDate>Thu, 19 Oct 2023 20:03:39 +0800</pubDate>
         
-        <guid>https://canuxcheng.com/post/k8s_security/</guid>
-        <description>&lt;h1 id=&#34;k8s-security&#34;&gt;K8S Security&lt;/h1&gt;
+        <guid>https://canuxcheng.com/post/devops_security/</guid>
+        <description>&lt;h1 id=&#34;devops-security&#34;&gt;DevOps Security&lt;/h1&gt;
+&lt;p&gt;**&lt;/p&gt;
+&lt;h2 id=&#34;trivy&#34;&gt;Trivy&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/aquasecurity/trivy&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/aquasecurity/trivy&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Find vulnerabilities, misconfigurations, secrets, SBOM in containers, Kubernetes, code repositories, clouds and more&lt;/p&gt;
 &lt;h2 id=&#34;tetragon&#34;&gt;Tetragon&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/cilium/tetragon&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/cilium/tetragon&lt;/a&gt;&lt;/p&gt;
@@ -2512,11 +2517,17 @@ $ kubectl krew install ns
         </item>
         <item>
         <title>CI/CD</title>
-        <link>https://canuxcheng.com/post/k8s_cicd/</link>
+        <link>https://canuxcheng.com/post/devops_cicd/</link>
         <pubDate>Fri, 10 Jan 2020 20:55:52 +0800</pubDate>
         
-        <guid>https://canuxcheng.com/post/k8s_cicd/</guid>
-        <description>&lt;h1 id=&#34;continuous-integration--delivery&#34;&gt;Continuous Integration &amp;amp; Delivery&lt;/h1&gt;
+        <guid>https://canuxcheng.com/post/devops_cicd/</guid>
+        <description>&lt;h1 id=&#34;ci&#34;&gt;CI&lt;/h1&gt;
+&lt;h2 id=&#34;jenkins&#34;&gt;jenkins&lt;/h2&gt;
+&lt;h2 id=&#34;gitlab&#34;&gt;gitlab&lt;/h2&gt;
+&lt;h2 id=&#34;github-actions&#34;&gt;github actions&lt;/h2&gt;
+&lt;h2 id=&#34;cloudbees&#34;&gt;cloudbees&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;cd&#34;&gt;CD&lt;/h1&gt;
 &lt;h2 id=&#34;argo-cd&#34;&gt;argo-cd&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/argoproj/argo-cd&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/argoproj/argo-cd&lt;/a&gt;&lt;/p&gt;
@@ -5058,16 +5069,20 @@ $ sudo vboxmanage extpack uninstall \
 &lt;p&gt;network related command&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;net-tools&#34;&gt;net-tools&lt;/h2&gt;
+&lt;p&gt;deprecated&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/ecki/net-tools&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/ecki/net-tools&lt;/a&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;$ sudo apt-get install net-tools
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h3 id=&#34;ifconfig&#34;&gt;ifconfig&lt;/h3&gt;
+&lt;p&gt;查看本地网络接口状态和流量&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;ifconfig # 查看up的interface
 ifconfig -a  # 查看所有的interface
+ifconfig &amp;lt;interface&amp;gt; # 查看指定的interface
 ifconfig &amp;lt;bridge&amp;gt;/&amp;lt;interface&amp;gt; up/down
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h3 id=&#34;netstat&#34;&gt;netstat&lt;/h3&gt;
+&lt;p&gt;用于查看网络连接、路由表、接口统计等信息.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;netstat
 -a, --all, --listening # 显示所有socket, 默认只显示connected
 -l, --listening  # 显示listening
@@ -5090,10 +5105,6 @@ sudo netstat -tulnp # 查看tcp&amp;amp;udp端口是否被监听
 &lt;h3 id=&#34;arp&#34;&gt;arp&lt;/h3&gt;
 &lt;pre&gt;&lt;code&gt;arp # 用于确定IP地址的网卡物理地址
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&#34;rarp&#34;&gt;rarp&lt;/h3&gt;
-&lt;h3 id=&#34;hostname&#34;&gt;hostname&lt;/h3&gt;
-&lt;h3 id=&#34;domainname&#34;&gt;domainname&lt;/h3&gt;
-&lt;h3 id=&#34;dnsdomainname&#34;&gt;dnsdomainname&lt;/h3&gt;
 &lt;h3 id=&#34;route&#34;&gt;route&lt;/h3&gt;
 &lt;p&gt;Flags:&lt;/p&gt;
 &lt;ul&gt;
@@ -5108,6 +5119,52 @@ sudo netstat -tulnp # 查看tcp&amp;amp;udp端口是否被监听
 &lt;p&gt;Use: 查找路由的次数&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;route -n
 &lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;rarp&#34;&gt;rarp&lt;/h3&gt;
+&lt;h3 id=&#34;hostname&#34;&gt;hostname&lt;/h3&gt;
+&lt;h3 id=&#34;domainname&#34;&gt;domainname&lt;/h3&gt;
+&lt;h3 id=&#34;dnsdomainname&#34;&gt;dnsdomainname&lt;/h3&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;iproute2&#34;&gt;iproute2&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/shemminger/iproute2&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/shemminger/iproute2&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo apt-get install iproute2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;ss&#34;&gt;ss&lt;/h3&gt;
+&lt;p&gt;取代netstat, 用于查看socket连接状态.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ss -s # 查看socket统计信息
+ss -tuln # 查看tcp和udp的监听端口
+ss -tulnp # 查看tcp和udp的监听端口和对应的程序
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;ip&#34;&gt;ip&lt;/h3&gt;
+&lt;p&gt;取代ifconfig, route, arp等命令的集合.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ip link show
+
+# 创建vlan
+ip link add link eth1 name eth1.10 type vlan id 10
+# 添加ip
+ip addr add 192.168.100.1/24 brd 192.168.100.255 dev eth1.10
+# 启动vlan
+ip link set dev eth1.10 up
+# 关闭vlan
+ip link set dev eth1.10 down
+# 删除vlan
+ip link delete eth1.10
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;addr/address&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ip addr show &amp;lt;interface&amp;gt; # 查看指定interface的ip地址
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;route&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ip route show # 查看路由表
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;rule&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ip rule showa # 查看规则
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;devlink&#34;&gt;devlink&lt;/h3&gt;
+&lt;h3 id=&#34;ifstat&#34;&gt;ifstat&lt;/h3&gt;
+&lt;h3 id=&#34;bridge&#34;&gt;bridge&lt;/h3&gt;
+&lt;p&gt;用于管理bridge, 取代brctl.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ bridge link show # 查看bridge的接口
+&lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;iputils&#34;&gt;iputils&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/iputils/iputils&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -5115,7 +5172,9 @@ sudo netstat -tulnp # 查看tcp&amp;amp;udp端口是否被监听
 &lt;pre&gt;&lt;code&gt;$ sudo apt-get install iputils-ping
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h3 id=&#34;ping&#34;&gt;ping&lt;/h3&gt;
+&lt;p&gt;round-trip time/RTT: 往返时间, 即从发送数据包到接收数据包的时间.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;ping # 用于确定网络的连通性
+ping -c 5 &amp;lt;host&amp;gt; # 发送5个包
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h3 id=&#34;arping&#34;&gt;arping&lt;/h3&gt;
 &lt;h3 id=&#34;tracepath&#34;&gt;tracepath&lt;/h3&gt;
@@ -5124,14 +5183,29 @@ sudo netstat -tulnp # 查看tcp&amp;amp;udp端口是否被监听
 &lt;h2 id=&#34;traceroute&#34;&gt;traceroute&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;sudo apt install traceroute
 &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;路由跟踪与跳数检查&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;traceroute &amp;lt;host&amp;gt; # 跟踪到host的路由
+
+# 通过指定端口号来跟踪
+traceroute -p &amp;lt;port&amp;gt; &amp;lt;host&amp;gt;
+
+# 使用tcp协议
+traceroute -T &amp;lt;host&amp;gt;
+
+# 使用udp协议
+traceroute -U &amp;lt;host&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;tcpdump&#34;&gt;tcpdump&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;sudo apt-get install tcpdump
 
 tcpdump
 
-tcpdump udp port &amp;lt;port&amp;gt; 抓udp 在port端口的包
-tcpdump -i &amp;lt;interface&amp;gt; host &amp;lt;ip&amp;gt;
+tcpdump tcp port &amp;lt;port&amp;gt;        # 抓tcp 在port端口的包
+tcpdump udp port &amp;lt;port&amp;gt;       #抓udp 在port端口的包
+tcpdump -i &amp;lt;interface&amp;gt; # 抓取指定interface的包
+tcpdump host &amp;lt;ip&amp;gt; and port &amp;lt;port&amp;gt; # 抓取指定ip和端口的包
+tcpdump net &amp;lt;network&amp;gt; # 抓取指定网络的包
 &lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;ncnetcat&#34;&gt;nc/netcat&lt;/h2&gt;
@@ -5153,48 +5227,6 @@ nc -l PORT
 echo -e &#39;{&amp;quot;method&amp;quot;:&amp;quot;test&amp;quot;,&amp;quot;params&amp;quot;:[&amp;quot;test&amp;quot;],&amp;quot;id&amp;quot;:1}&#39; | nc IP PORT
 &lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;brctl&#34;&gt;brctl&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;$ sudo apt-get install bridge-utils
-
-brctl show
-brctl addbr &amp;lt;bridge&amp;gt; # 添加bridge
-brctl delbr &amp;lt;bridge&amp;gt; # 删除bridge
-brctl addif &amp;lt;bridge&amp;gt; &amp;lt;interface&amp;gt; # 绑定interface到bridge
-brctl delif &amp;lt;bridge&amp;gt; &amp;lt;interface&amp;gt; # 删除bridge上的interface
-&lt;/code&gt;&lt;/pre&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;iproute2&#34;&gt;iproute2&lt;/h2&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/shemminger/iproute2&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://github.com/shemminger/iproute2&lt;/a&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ sudo apt-get install iproute2
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&#34;ip&#34;&gt;ip&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt;ip link show
-
-# 创建vlan
-ip link add link eth1 name eth1.10 type vlan id 10
-# 添加ip
-ip addr add 192.168.100.1/24 brd 192.168.100.255 dev eth1.10
-# 启动vlan
-ip link set dev eth1.10 up
-# 关闭vlan
-ip link set dev eth1.10 down
-# 删除vlan
-ip link delete eth1.10
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;addr/address&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;ip addr show
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;route&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;ip route show
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;rule&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;ip rule show
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&#34;devlink&#34;&gt;devlink&lt;/h3&gt;
-&lt;h3 id=&#34;ifstat&#34;&gt;ifstat&lt;/h3&gt;
-&lt;h3 id=&#34;bridge&#34;&gt;bridge&lt;/h3&gt;
-&lt;hr&gt;
 &lt;h2 id=&#34;dnsutils&#34;&gt;dnsutils&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;sudo apt-get install dnsutils
 &lt;/code&gt;&lt;/pre&gt;
@@ -5202,13 +5234,26 @@ ip link delete eth1.10
 &lt;pre&gt;&lt;code&gt;nslookup # 查询IP地址和对应的域名
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h3 id=&#34;dig&#34;&gt;dig&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;dig # 查询DNS记录
+
+dig @&amp;lt;dns-server&amp;gt; &amp;lt;domain&amp;gt; # 指定dns服务器查询域名
+dig &amp;lt;domain&amp;gt; A # 查询A记录
+dig &amp;lt;domain&amp;gt; MX # 查询MX记录
+dig &amp;lt;domain&amp;gt; NS # 查询NS记录
+dig &amp;lt;domain&amp;gt; TXT # 查询TXT记录
+dig &amp;lt;domain&amp;gt; ANY # 查询所有记录
+
+# 反向解析IP地址
+dig -x &amp;lt;ip-address&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
 &lt;h3 id=&#34;nsupdate&#34;&gt;nsupdate&lt;/h3&gt;
-&lt;h3 id=&#34;delv&#34;&gt;delv&lt;/h3&gt;
+&lt;h3 id=&#34;host&#34;&gt;host&lt;/h3&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;ethtool&#34;&gt;ethtool&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;sudo apt-get install ethtool
 
 ethtool # 查询网络设备信息
+ethtool &amp;lt;interface&amp;gt; # 查询指定网络设备信息
 &lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;iftop&#34;&gt;iftop&lt;/h2&gt;
@@ -5216,8 +5261,11 @@ ethtool # 查询网络设备信息
     &gt;http://www.ex-parrot.com/~pdw/iftop/&lt;/a&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;$ sudo apt-get install iftop
 
-sudo iftop
+sudo iftop # 查看网络流量
+sudo iftop -i &amp;lt;interface&amp;gt; # 查看指定网络接口的流量
 &lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;iperf3&#34;&gt;iperf3&lt;/h2&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;wget&#34;&gt;wget&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;wget [option] [URL]
@@ -5568,10 +5616,22 @@ nginx -t 检查配置文件
 &lt;p&gt;Tools: SonarQube, Trivy, Coverity.&lt;/p&gt;
 &lt;p&gt;gitlab SAST report.
 gitlab secret detection report.&lt;/p&gt;
+&lt;h3 id=&#34;trivy&#34;&gt;trivy&lt;/h3&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/aquasecurity/trivy&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/aquasecurity/trivy&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Trivy是一个开源的安全扫描工具，支持容器镜像、文件系统和Git仓库的漏洞扫描。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;trivy image &amp;lt;image&amp;gt;
+trivy fs &amp;lt;path&amp;gt;
+trivy repo &amp;lt;repo&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;coverity&#34;&gt;Coverity&lt;/h3&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://scan.coverity.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://scan.coverity.com/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Coverity是一个商业的静态代码分析工具，主要用于发现代码中的缺陷和安全漏洞。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;cov-init
+cov-build
+cov-analyze
+&lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;dast&#34;&gt;DAST&lt;/h2&gt;
 &lt;p&gt;DAST: Dynamic Application Security Testing，动态应用程序安全测试, 对应用程序进行黑盒分析.&lt;/p&gt;
@@ -5585,9 +5645,15 @@ gitlab secret detection report.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;sca&#34;&gt;SCA&lt;/h2&gt;
 &lt;p&gt;SCA: Software Composition Analysis.&lt;/p&gt;
-&lt;p&gt;SBOM (software Bill of Materials),开源组件安全扫描&lt;/p&gt;
+&lt;p&gt;SBOM (software Bill of Materials),开源组件安全扫描.&lt;/p&gt;
 &lt;p&gt;Tools： BlackDuck, Jfrog Xray.&lt;/p&gt;
 &lt;p&gt;gitlab dependency scanning report.&lt;/p&gt;
+&lt;h3 id=&#34;blackduck&#34;&gt;Blackduck&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.blackducksoftware.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.blackducksoftware.com/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Blackduck是一个商业的开源组件安全扫描工具，主要用于发现开源组件中的漏洞和许可证问题。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;detect.sh ......
+&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
@@ -5759,6 +5825,32 @@ certutil -delstore &amp;quot;ROOT&amp;quot; my-cert.crt
 &lt;p&gt;配置:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;$ sudo vim /etc/keepalived/keepalived.conf
 &lt;/code&gt;&lt;/pre&gt;
+</description>
+        </item>
+        <item>
+        <title>Security</title>
+        <link>https://canuxcheng.com/post/sec_security/</link>
+        <pubDate>Sat, 28 Jul 2018 16:08:54 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/sec_security/</guid>
+        <description>&lt;h1 id=&#34;security&#34;&gt;Security&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://nvd.nist.gov/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://nvd.nist.gov/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://cve.scap.org.cn/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://cve.scap.org.cn/&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;gfw&#34;&gt;GFW&lt;/h1&gt;
+&lt;h1 id=&#34;ngfw&#34;&gt;NGFW&lt;/h1&gt;
+&lt;h1 id=&#34;utm&#34;&gt;UTM&lt;/h1&gt;
+&lt;p&gt;Unified Threat Management, 安全网关&lt;/p&gt;
+&lt;p&gt;BUV: Block Until Verdict&lt;/p&gt;
+&lt;h1 id=&#34;waf&#34;&gt;WAF&lt;/h1&gt;
+&lt;p&gt;Web Application Firewall, web应用防火墙&lt;/p&gt;
+&lt;h1 id=&#34;ips&#34;&gt;IPS&lt;/h1&gt;
+&lt;p&gt;Intrusion Prevention System, 入侵防御系统&lt;/p&gt;
+&lt;h1 id=&#34;ids&#34;&gt;IDS&lt;/h1&gt;
+&lt;p&gt;Intrusion Detection System, 入侵检测系统&lt;/p&gt;
+&lt;h1 id=&#34;nsm&#34;&gt;NSM&lt;/h1&gt;
+&lt;p&gt;Network Security Monitoring, 网络安全监控&lt;/p&gt;
 </description>
         </item>
         <item>
@@ -15367,15 +15459,18 @@ export &amp;lt;function&amp;gt;
 &lt;p&gt;软件测试阶段：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;单元测试(Unit Testing)&lt;/li&gt;
-&lt;li&gt;集成测试(Integration Testing)&lt;/li&gt;
-&lt;li&gt;系统测试(System Testing)&lt;/li&gt;
-&lt;li&gt;验收测试(Acceptance Testing)&lt;/li&gt;
+&lt;li&gt;集成测试(Integration Testing)： 验证多个模块之间接口交互。&lt;/li&gt;
+&lt;li&gt;系统测试(System Testing)：整个系统的测试，验证系统是否满足需求（功能，性能，兼容性，稳定性）。&lt;/li&gt;
+&lt;li&gt;验收测试(Acceptance Testing)·&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;软件测试的手段：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;手动测试/自动化测试&lt;/li&gt;
-&lt;li&gt;静态测试/动态测试&lt;/li&gt;
-&lt;li&gt;黑盒测试/白盒测试&lt;/li&gt;
+&lt;li&gt;静态测试&lt;/li&gt;
+&lt;li&gt;动态测试&lt;/li&gt;
+&lt;li&gt;黑盒测试&lt;/li&gt;
+&lt;li&gt;白盒测试&lt;/li&gt;
+&lt;li&gt;灰度测试：部分了解内部结构，常用于测试接口，集成层，复杂业务逻辑等。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;软件测试的类型：&lt;/p&gt;
 &lt;ul&gt;
@@ -15440,6 +15535,15 @@ export &amp;lt;function&amp;gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/minimaxir/big-list-of-naughty-strings&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/minimaxir/big-list-of-naughty-strings&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;测试中谨慎使用的字符串．&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;allure&#34;&gt;Allure&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/allure-framework&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/allure-framework&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Allure是一个灵活的轻量级多语言测试报告框架．&lt;/p&gt;
+&lt;h1 id=&#34;reportportal&#34;&gt;reportportal&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/reportportal&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/reportportal&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;ReportPortal是一个开源的测试报告平台，支持多种测试框架和语言，提供实时的测试结果和分析。&lt;/p&gt;
 </description>
         </item>
         <item>
@@ -15790,6 +15894,20 @@ class LibraryListener(object):
     # version 3 for rf&amp;gt;=3.0
     ROBOT_LISTENER_API_VERSION = 2
 &lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;allure&#34;&gt;allure&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/allure-framework/allure-python/tree/master/allure-robotframework&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/allure-framework/allure-python/tree/master/allure-robotframework&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ pip install allure-robotframework
+$ robot --listener allure_robotframework ./my_robot_test
+$ robot --listener allure_robotframework:/set/your/path/here ./my_robot_test
+
+allure generate output/allure
+allure serve output/allure
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;reportportal&#34;&gt;reportportal&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/reportportal/plugin-import-robot&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/reportportal/plugin-import-robot&lt;/a&gt;&lt;/p&gt;
 </description>
         </item>
         <item>
@@ -23530,10 +23648,6 @@ test_list = [
 # 缩进级别用于生成INDENT和DEDENT两个令牌
 pep8建议用四个空格表示一个缩进级别．
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;python2.7源代码格式:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;#!/usr/bin/env python2.7
-# -*- coding: utf-8 -*-
-&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;执行python代码：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;$ python mycode.py
 # OR
@@ -23546,8 +23660,8 @@ $ ./mycode.py
 &lt;pre&gt;&lt;code&gt;f&amp;quot;his name is {name!r}&amp;quot;
 f&amp;quot;his name is {repr(name)}&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;!r call repr()
-!a call ascii()&lt;/p&gt;
+&lt;p&gt;!r call repr()&lt;/p&gt;
+&lt;p&gt;!a call ascii()&lt;/p&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;python注释&#34;&gt;&lt;strong&gt;python注释&lt;/strong&gt;&lt;/h1&gt;
 &lt;p&gt;单行注释：&lt;/p&gt;
@@ -23995,7 +24109,7 @@ modified = {
 
 {x for x in range(10) if x % 2 == 0}
 等效于
-set(filter(lambda x: x % 2 == 0, range(10)))    
+set(filter(lambda x: x % 2 == 0, range(10)))
 &lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;python控制流&#34;&gt;&lt;strong&gt;python控制流&lt;/strong&gt;&lt;/h1&gt;
@@ -27164,57 +27278,74 @@ Run the image on the target location.&lt;/p&gt;
         
         <guid>https://canuxcheng.com/post/shell_find/</guid>
         <description>&lt;h1 id=&#34;find&#34;&gt;find&lt;/h1&gt;
-&lt;p&gt;Find     查找，用于在目录中查找。
-find  path  options  tests  actions
+&lt;p&gt;Find     查找，用于在目录中查找。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;find  path  options  tests  actions
 path 路径
 options 选项
 tests 测试
-actions 动作&lt;/p&gt;
-&lt;p&gt;optioins选项:
--follow
+actions 动作
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;optioins选项:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;-follow
 -depth
 -maxdepth
 -mindepth
-find   dir  -mindepth  n     指定最小的目录深度，至少从dir往下n级目录开始往下搜索，dir和n级之间的忽略。
-find   dir   -maxdepth  n      指定最大目录深度，不搜索n级之后的目录。&lt;/p&gt;
-&lt;p&gt;test选项很多：
--newer   pattern   比pattern文件要新
+
+find dir -mindepth  n     指定最小的目录深度，至少从dir往下n级目录开始往下搜索，dir和n级之间的忽略。
+find dir -maxdepth  n      指定最大目录深度，不搜索n级之后的目录。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;test选项很多：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;-newer   pattern   比pattern文件要新
 -user    pattern      文件属主是pattern
 -name   pattern    查找和type匹配的
 -iname  pattern    查找和type匹配的，会忽略大小写
 -iwholename
 -path   pattern     按照文件路径匹配
+
 -type   c           c是文件类型，按照文件类型匹配文件
+c可以是：f  常规文件 d  目录  p  命名管道  l  符号链接  b  块设备 c  字符设备 s  套接字
+
 -size   +/-    nk/c/w/k/b/M/G    匹配大于或小于n  kb/..  的文件
+find dir -size +10M  # 查找大于10M的文件
+
 -perm   XXX       基于文件权限的匹配
+find dir -perm 644  # 查找权限是644的文件
+
 find dir  –atime/mtime/ctime    +/-n    根据时间累匹配，atime表示访问时间，mtime表示修改时间，ctime表示变化时间，+表示大于，-表示小于，单位是天。
+
 -a/-and   pattern
 -o/-or     pattern
 ！/-not    pattern
 find  dir  !  test   pattern   列出所有没有按照-options  pattern模式的项
-(&amp;hellip;)    使用括号需要用引号来引用。&lt;/p&gt;
-&lt;p&gt;action选项：
--prune     如果是一个指定的目录就忽略这个目录,要用-path指定目录.
+\(...\)    使用括号需要用引号来引用。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;action选项：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;-prune     如果是一个指定的目录就忽略这个目录,要用-path指定目录.
 -print          打印，换行符结尾,所有结果一行一个。
 -print0        打印，空字符结尾，所有结果打印到一行。
 -delete       删除
--exec   command     执行一个命令
-exec   command   {}   ;&lt;/p&gt;
-&lt;p&gt;operators: find可以用一些运算符来连接多个test条件。
+-exec   command     # 执行一个命令
+exec   command   {}   \;
+
+operators: find可以用一些运算符来连接多个test条件。
 ！expr   #取反
 expr1    -a    expr2    #与运算，可以省略-a
-expr1    -o    expr2    #或运算&lt;/p&gt;
-&lt;p&gt;查找当前目录下除了develop里面的文件以外的30天之内修改过的.txt文件
-find .   -path ./develop -prune  -o  -mtime -30  -type f  -name  &amp;ldquo;*.txt&amp;rdquo;   -print&lt;/p&gt;
-&lt;p&gt;将前面的命令的结果通过管道和xargs作为后面命令的输入，类似于find命令的-exec选项。
-格式 ：command1   |   xargs   -options   command2
-Xargs   -n    number    设置每行显示的参数数量为number。
-Xargs  -d     char   指定char为界定符，也就是将char换成空格。
-Xargs  -I   {}    将命令参数用STDIN的参数替换掉。
-Xargs   -0       以/0为定界符，而不是空格。&lt;/p&gt;
-&lt;p&gt;find . -name “&lt;em&gt;.c” | xargs wc -l
-find . -name “&lt;/em&gt;.c” -exec wc -l {}   ;
-wc -l  &lt;code&gt;find . -name “*.c”&lt;/code&gt;&lt;/p&gt;
+expr1    -o    expr2    #或运算
+
+查找当前目录下除了develop里面的文件以外的30天之内修改过的.txt文件
+find .   -path ./develop -prune  -o  -mtime -30  -type f  -name  &amp;quot;*.txt&amp;quot;   -print
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;将前面的命令的结果通过管道和xargs作为后面命令的输入，类似于find命令的-exec选项。&lt;/p&gt;
+&lt;p&gt;格式 ：command1   |   xargs   -options   command2&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;xargs   -n    number    设置每行显示的参数数量为number。
+xargs  -d     char   指定char为界定符，也就是将char换成空格。
+xargs  -I   {}    将命令参数用STDIN的参数替换掉。
+xargs   -0       以/0为定界符，而不是空格。
+
+find . -name “*.c” | xargs wc -l
+find . -name “*.c” -exec wc -l {}   \;
+wc -l  `find . -name “*.c”`
+&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
@@ -29786,7 +29917,8 @@ bytes_recv(in)
 packets_recv(in)
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;error_in/out:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;SELECT non_negative_derivative(mean(&amp;quot;err_in&amp;quot;), 1s) AS &amp;quot;recv&amp;quot;, non_negative_derivative(mean(&amp;quot;err_out&amp;quot;), 1s) AS &amp;quot;send&amp;quot;
+&lt;pre&gt;&lt;code&gt;SELECT non_negative_derivative(mean(&amp;quot;err_in&amp;quot;), 1s) AS &amp;quot;recv&amp;quot;, 
+non_negative_derivative(mean(&amp;quot;err_out&amp;quot;), 1s) AS &amp;quot;send&amp;quot;
 FROM &amp;quot;net&amp;quot;
 WHERE &amp;quot;interface&amp;quot; =~ /^(vlan|eth|ens|bond).*/ AND $timeFilter
 GROUP BY time($__interval), &amp;quot;host&amp;quot;, &amp;quot;interface&amp;quot; fill(none)
@@ -31754,12 +31886,14 @@ comment
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;shell关键字和特殊符号&#34;&gt;shell关键字和特殊符号&lt;/h2&gt;
 &lt;p&gt;三个特殊命令&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;echo
-printf
-test
+&lt;pre&gt;&lt;code&gt;echo # echo可以输出字符串到stdout
+
+printf # printf可以格式化输出
+
+test  # test命令可以用来测试条件，返回0表示真，非0表示假
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;关键字&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;function
+&lt;pre&gt;&lt;code&gt;function # 定义函数
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;shell运算符和优先级&#34;&gt;shell运算符和优先级&lt;/h2&gt;
 &lt;p&gt;原生shell不支持数学运算，可以通过expr来实现．&lt;/p&gt;
@@ -31995,19 +32129,19 @@ function Name() {
 }
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;函数返回码:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$?
+&lt;pre&gt;&lt;code&gt;$?  # 获取函数的返回码, 0表示成功, 非0表示失败.
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;函数参数：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;$1 - $9 可以在函数内部获取调用函数时候传递进来的９个参数
 ${10} - ${100} 获取第十个参数和后面的参数
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;特殊字符：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$# 表示传递到脚本的参数个数,不包括程序本身
-$* 传入所有参数
-$@ 传入所有参数
-$$
-$!
-$-
+&lt;pre&gt;&lt;code&gt;$#       表示传递到脚本的参数个数,不包括程序本身
+$*       传入所有参数
+$@     传入所有参数
+$$      当前脚本的进程ID
+$!        上一个后台运行的进程ID
+$-       当前shell的选项
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;输入输出和重定向&#34;&gt;输入输出和重定向&lt;/h2&gt;
 &lt;p&gt;stdout和stdin重定向到一个地方:&lt;/p&gt;
@@ -32018,7 +32152,15 @@ $-
 main &amp;gt; 2&amp;gt;&amp;amp;1 log1.log | tee log2.log # 同时重定向到两个文件
 main 2&amp;gt;&amp;amp;1 | tee ${LOG} # 同时将stdout和stderr输出到终端和日志文件.
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;文件包含&#34;&gt;文件包含&lt;/h2&gt;
+&lt;h2 id=&#34;debug&#34;&gt;debug&lt;/h2&gt;
+&lt;p&gt;用set&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;set -e 命令失败立即退出
+set -x 执行前打印每行命令
+set -u 未定义的变量会报错
+set -o pipefail 对于有管道的操作，返回最后一个非零返回值的命令的返回码.
+
+set +e 取消前面设置的-e
+&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
@@ -34643,41 +34785,6 @@ GITHUB_URL=https://github.com/crazy-canux/crazy-canux.github.io.git
 &lt;p&gt;商务邮箱(business)&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;mailto:canuxcheng@outlook.com&#34; &gt;canuxcheng@outlook.com&lt;/a&gt;&lt;/p&gt;
 &lt;hr&gt;
-</description>
-        </item>
-        <item>
-        <title></title>
-        <link>https://canuxcheng.com/post/sec_security/</link>
-        <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-        
-        <guid>https://canuxcheng.com/post/sec_security/</guid>
-        <description>&lt;h2 id=&#34;date-2016-07-28-160854&#34;&gt;Title: Security
-Date: 2016-07-28 16:08:54&lt;/h2&gt;
-&lt;h2 id=&#34;draft-false&#34;&gt;title: &amp;ldquo;Csrf&amp;rdquo;
-date: 2018-07-28T16:08:54
-categories: [&amp;ldquo;Security&amp;rdquo;]
-tags: [&amp;ldquo;capture&amp;rdquo;]
-keywords: []
-author: &amp;ldquo;Canux&amp;rdquo;
-draft: false&lt;/h2&gt;
-&lt;h1 id=&#34;security&#34;&gt;Security&lt;/h1&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://nvd.nist.gov/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://nvd.nist.gov/&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://cve.scap.org.cn/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;http://cve.scap.org.cn/&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id=&#34;gfw&#34;&gt;GFW&lt;/h1&gt;
-&lt;h1 id=&#34;ngfw&#34;&gt;NGFW&lt;/h1&gt;
-&lt;h1 id=&#34;utm&#34;&gt;UTM&lt;/h1&gt;
-&lt;p&gt;Unified Threat Management, 安全网关&lt;/p&gt;
-&lt;p&gt;BUV: Block Until Verdict&lt;/p&gt;
-&lt;h1 id=&#34;waf&#34;&gt;WAF&lt;/h1&gt;
-&lt;p&gt;Web Application Firewall, web应用防火墙&lt;/p&gt;
-&lt;h1 id=&#34;ips&#34;&gt;IPS&lt;/h1&gt;
-&lt;p&gt;Intrusion Prevention System, 入侵防御系统&lt;/p&gt;
-&lt;h1 id=&#34;ids&#34;&gt;IDS&lt;/h1&gt;
-&lt;p&gt;Intrusion Detection System, 入侵检测系统&lt;/p&gt;
-&lt;h1 id=&#34;nsm&#34;&gt;NSM&lt;/h1&gt;
-&lt;p&gt;Network Security Monitoring, 网络安全监控&lt;/p&gt;
 </description>
         </item>
         <item>

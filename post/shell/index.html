@@ -399,7 +399,7 @@ shell script 基本语法
     <li><a href="#shell控制流">shell控制流</a></li>
     <li><a href="#shell函数">shell函数</a></li>
     <li><a href="#输入输出和重定向">输入输出和重定向</a></li>
-    <li><a href="#文件包含">文件包含</a></li>
+    <li><a href="#debug">debug</a></li>
   </ul>
 </nav>
         </div>
@@ -553,12 +553,14 @@ comment
 </code></pre>
 <h2 id="shell关键字和特殊符号">shell关键字和特殊符号</h2>
 <p>三个特殊命令</p>
-<pre><code>echo
-printf
-test
+<pre><code>echo # echo可以输出字符串到stdout
+
+printf # printf可以格式化输出
+
+test  # test命令可以用来测试条件，返回0表示真，非0表示假
 </code></pre>
 <p>关键字</p>
-<pre><code>function
+<pre><code>function # 定义函数
 </code></pre>
 <h2 id="shell运算符和优先级">shell运算符和优先级</h2>
 <p>原生shell不支持数学运算，可以通过expr来实现．</p>
@@ -794,19 +796,19 @@ function Name() {
 }
 </code></pre>
 <p>函数返回码:</p>
-<pre><code>$?
+<pre><code>$?  # 获取函数的返回码, 0表示成功, 非0表示失败.
 </code></pre>
 <p>函数参数：</p>
 <pre><code>$1 - $9 可以在函数内部获取调用函数时候传递进来的９个参数
 ${10} - ${100} 获取第十个参数和后面的参数
 </code></pre>
 <p>特殊字符：</p>
-<pre><code>$# 表示传递到脚本的参数个数,不包括程序本身
-$* 传入所有参数
-$@ 传入所有参数
-$$
-$!
-$-
+<pre><code>$#       表示传递到脚本的参数个数,不包括程序本身
+$*       传入所有参数
+$@     传入所有参数
+$$      当前脚本的进程ID
+$!        上一个后台运行的进程ID
+$-       当前shell的选项
 </code></pre>
 <h2 id="输入输出和重定向">输入输出和重定向</h2>
 <p>stdout和stdin重定向到一个地方:</p>
@@ -817,7 +819,15 @@ $-
 main &gt; 2&gt;&amp;1 log1.log | tee log2.log # 同时重定向到两个文件
 main 2&gt;&amp;1 | tee ${LOG} # 同时将stdout和stderr输出到终端和日志文件.
 </code></pre>
-<h2 id="文件包含">文件包含</h2>
+<h2 id="debug">debug</h2>
+<p>用set</p>
+<pre><code>set -e 命令失败立即退出
+set -x 执行前打印每行命令
+set -u 未定义的变量会报错
+set -o pipefail 对于有管道的操作，返回最后一个非零返回值的命令的返回码.
+
+set +e 取消前面设置的-e
+</code></pre>
 
 </section>
 

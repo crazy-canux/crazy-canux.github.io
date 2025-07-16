@@ -8,11 +8,16 @@
         <language>en-us</language>
         <lastBuildDate>Thu, 19 Oct 2023 20:03:39 +0800</lastBuildDate><atom:link href="https://canuxcheng.com/tags/k8s/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Security</title>
-        <link>https://canuxcheng.com/post/k8s_security/</link>
+        <link>https://canuxcheng.com/post/devops_security/</link>
         <pubDate>Thu, 19 Oct 2023 20:03:39 +0800</pubDate>
         
-        <guid>https://canuxcheng.com/post/k8s_security/</guid>
-        <description>&lt;h1 id=&#34;k8s-security&#34;&gt;K8S Security&lt;/h1&gt;
+        <guid>https://canuxcheng.com/post/devops_security/</guid>
+        <description>&lt;h1 id=&#34;devops-security&#34;&gt;DevOps Security&lt;/h1&gt;
+&lt;p&gt;**&lt;/p&gt;
+&lt;h2 id=&#34;trivy&#34;&gt;Trivy&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/aquasecurity/trivy&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/aquasecurity/trivy&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Find vulnerabilities, misconfigurations, secrets, SBOM in containers, Kubernetes, code repositories, clouds and more&lt;/p&gt;
 &lt;h2 id=&#34;tetragon&#34;&gt;Tetragon&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/cilium/tetragon&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/cilium/tetragon&lt;/a&gt;&lt;/p&gt;
@@ -429,11 +434,17 @@ spec:
         </item>
         <item>
         <title>CI/CD</title>
-        <link>https://canuxcheng.com/post/k8s_cicd/</link>
+        <link>https://canuxcheng.com/post/devops_cicd/</link>
         <pubDate>Fri, 10 Jan 2020 20:55:52 +0800</pubDate>
         
-        <guid>https://canuxcheng.com/post/k8s_cicd/</guid>
-        <description>&lt;h1 id=&#34;continuous-integration--delivery&#34;&gt;Continuous Integration &amp;amp; Delivery&lt;/h1&gt;
+        <guid>https://canuxcheng.com/post/devops_cicd/</guid>
+        <description>&lt;h1 id=&#34;ci&#34;&gt;CI&lt;/h1&gt;
+&lt;h2 id=&#34;jenkins&#34;&gt;jenkins&lt;/h2&gt;
+&lt;h2 id=&#34;gitlab&#34;&gt;gitlab&lt;/h2&gt;
+&lt;h2 id=&#34;github-actions&#34;&gt;github actions&lt;/h2&gt;
+&lt;h2 id=&#34;cloudbees&#34;&gt;cloudbees&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;cd&#34;&gt;CD&lt;/h1&gt;
 &lt;h2 id=&#34;argo-cd&#34;&gt;argo-cd&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/argoproj/argo-cd&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/argoproj/argo-cd&lt;/a&gt;&lt;/p&gt;

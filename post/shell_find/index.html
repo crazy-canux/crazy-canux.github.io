@@ -1,26 +1,29 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='find Find 查找，用于在目录中查找。 find path options tests actions path 路径 options 选项 tests 测试 actions 动作
-optioins选项: -follow -depth -maxdepth -mindepth find dir -mindepth n 指定最小的目录深度，至少从dir往下n级目录开始往下搜索，dir和n级之间的忽略。 find dir -maxdepth n 指定最大目录深度，不搜索n级之后的目录。
-test选项很多： -newer pattern 比pattern文件要新 -user pattern 文件属主是pattern -name pattern 查找和type匹配的 -iname pattern 查找和type匹配的，会忽略大小写 -iwholename -path pattern 按照文件路径匹配 -type c c是文件类型，按照文件类型匹配文件 -size &#43;/- nk/c/w/k/b/M/G 匹配大于或小于n kb/.. 的文件 -perm XXX 基于文件权限的匹配 find dir –atime/mtime/ctime &#43;/-n 根据时间累匹配，atime表示访问时间，mtime表示修改时间，ctime表示变化时间，&#43;表示大于，-表示小于，单位是天。 -a/-and pattern -o/-or pattern ！/-not pattern find dir ! test pattern 列出所有没有按照-options pattern模式的项 (&hellip;) 使用括号需要用引号来引用。
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='find Find 查找，用于在目录中查找。
+find path options tests actions path 路径 options 选项 tests 测试 actions 动作 optioins选项:
+-follow -depth -maxdepth -mindepth find dir -mindepth n 指定最小的目录深度，至少从dir往下n级目录开始往下搜索，dir和n级之间的忽略。 find dir -maxdepth n 指定最大目录深度，不搜索n级之后的目录。 test选项很多：
+-newer pattern 比pattern文件要新 -user pattern 文件属主是pattern -name pattern 查找和type匹配的 -iname pattern 查找和type匹配的，会忽略大小写 -iwholename -path pattern 按照文件路径匹配 -type c c是文件类型，按照文件类型匹配文件 c可以是：f 常规文件 d 目录 p 命名管道 l 符号链接 b 块设备 c 字符设备 s 套接字 -size &#43;/- nk/c/w/k/b/M/G 匹配大于或小于n kb/.. 的文件 find dir -size &#43;10M # 查找大于10M的文件 -perm XXX 基于文件权限的匹配 find dir -perm 644 # 查找权限是644的文件 find dir –atime/mtime/ctime &#43;/-n 根据时间累匹配，atime表示访问时间，mtime表示修改时间，ctime表示变化时间，&#43;表示大于，-表示小于，单位是天。 -a/-and pattern -o/-or pattern ！/-not pattern find dir ! test pattern 列出所有没有按照-options pattern模式的项 \(...\) 使用括号需要用引号来引用。 action选项：
 '>
 <title>Find</title>
 
 <link rel='canonical' href='https://canuxcheng.com/post/shell_find/'>
 
 <link rel="stylesheet" href="/scss/style.min.2d59822570c0be136f2ad87c952ef8788ac2a951067adda1c49b253bff7d0292.css"><meta property='og:title' content='Find'>
-<meta property='og:description' content='find Find 查找，用于在目录中查找。 find path options tests actions path 路径 options 选项 tests 测试 actions 动作
-optioins选项: -follow -depth -maxdepth -mindepth find dir -mindepth n 指定最小的目录深度，至少从dir往下n级目录开始往下搜索，dir和n级之间的忽略。 find dir -maxdepth n 指定最大目录深度，不搜索n级之后的目录。
-test选项很多： -newer pattern 比pattern文件要新 -user pattern 文件属主是pattern -name pattern 查找和type匹配的 -iname pattern 查找和type匹配的，会忽略大小写 -iwholename -path pattern 按照文件路径匹配 -type c c是文件类型，按照文件类型匹配文件 -size &#43;/- nk/c/w/k/b/M/G 匹配大于或小于n kb/.. 的文件 -perm XXX 基于文件权限的匹配 find dir –atime/mtime/ctime &#43;/-n 根据时间累匹配，atime表示访问时间，mtime表示修改时间，ctime表示变化时间，&#43;表示大于，-表示小于，单位是天。 -a/-and pattern -o/-or pattern ！/-not pattern find dir ! test pattern 列出所有没有按照-options pattern模式的项 (&hellip;) 使用括号需要用引号来引用。
+<meta property='og:description' content='find Find 查找，用于在目录中查找。
+find path options tests actions path 路径 options 选项 tests 测试 actions 动作 optioins选项:
+-follow -depth -maxdepth -mindepth find dir -mindepth n 指定最小的目录深度，至少从dir往下n级目录开始往下搜索，dir和n级之间的忽略。 find dir -maxdepth n 指定最大目录深度，不搜索n级之后的目录。 test选项很多：
+-newer pattern 比pattern文件要新 -user pattern 文件属主是pattern -name pattern 查找和type匹配的 -iname pattern 查找和type匹配的，会忽略大小写 -iwholename -path pattern 按照文件路径匹配 -type c c是文件类型，按照文件类型匹配文件 c可以是：f 常规文件 d 目录 p 命名管道 l 符号链接 b 块设备 c 字符设备 s 套接字 -size &#43;/- nk/c/w/k/b/M/G 匹配大于或小于n kb/.. 的文件 find dir -size &#43;10M # 查找大于10M的文件 -perm XXX 基于文件权限的匹配 find dir -perm 644 # 查找权限是644的文件 find dir –atime/mtime/ctime &#43;/-n 根据时间累匹配，atime表示访问时间，mtime表示修改时间，ctime表示变化时间，&#43;表示大于，-表示小于，单位是天。 -a/-and pattern -o/-or pattern ！/-not pattern find dir ! test pattern 列出所有没有按照-options pattern模式的项 \(...\) 使用括号需要用引号来引用。 action选项：
 '>
 <meta property='og:url' content='https://canuxcheng.com/post/shell_find/'>
 <meta property='og:site_name' content='Morgoth'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='shell' /><meta property='article:published_time' content='2016-04-20T13:55:36&#43;08:00'/><meta property='article:modified_time' content='2016-04-20T13:55:36&#43;08:00'/>
 <meta name="twitter:title" content="Find">
-<meta name="twitter:description" content="find Find 查找，用于在目录中查找。 find path options tests actions path 路径 options 选项 tests 测试 actions 动作
-optioins选项: -follow -depth -maxdepth -mindepth find dir -mindepth n 指定最小的目录深度，至少从dir往下n级目录开始往下搜索，dir和n级之间的忽略。 find dir -maxdepth n 指定最大目录深度，不搜索n级之后的目录。
-test选项很多： -newer pattern 比pattern文件要新 -user pattern 文件属主是pattern -name pattern 查找和type匹配的 -iname pattern 查找和type匹配的，会忽略大小写 -iwholename -path pattern 按照文件路径匹配 -type c c是文件类型，按照文件类型匹配文件 -size &#43;/- nk/c/w/k/b/M/G 匹配大于或小于n kb/.. 的文件 -perm XXX 基于文件权限的匹配 find dir –atime/mtime/ctime &#43;/-n 根据时间累匹配，atime表示访问时间，mtime表示修改时间，ctime表示变化时间，&#43;表示大于，-表示小于，单位是天。 -a/-and pattern -o/-or pattern ！/-not pattern find dir ! test pattern 列出所有没有按照-options pattern模式的项 (&hellip;) 使用括号需要用引号来引用。
+<meta name="twitter:description" content="find Find 查找，用于在目录中查找。
+find path options tests actions path 路径 options 选项 tests 测试 actions 动作 optioins选项:
+-follow -depth -maxdepth -mindepth find dir -mindepth n 指定最小的目录深度，至少从dir往下n级目录开始往下搜索，dir和n级之间的忽略。 find dir -maxdepth n 指定最大目录深度，不搜索n级之后的目录。 test选项很多：
+-newer pattern 比pattern文件要新 -user pattern 文件属主是pattern -name pattern 查找和type匹配的 -iname pattern 查找和type匹配的，会忽略大小写 -iwholename -path pattern 按照文件路径匹配 -type c c是文件类型，按照文件类型匹配文件 c可以是：f 常规文件 d 目录 p 命名管道 l 符号链接 b 块设备 c 字符设备 s 套接字 -size &#43;/- nk/c/w/k/b/M/G 匹配大于或小于n kb/.. 的文件 find dir -size &#43;10M # 查找大于10M的文件 -perm XXX 基于文件权限的匹配 find dir -perm 644 # 查找权限是644的文件 find dir –atime/mtime/ctime &#43;/-n 根据时间累匹配，atime表示访问时间，mtime表示修改时间，ctime表示变化时间，&#43;表示大于，-表示小于，单位是天。 -a/-and pattern -o/-or pattern ！/-not pattern find dir ! test pattern 列出所有没有按照-options pattern模式的项 \(...\) 使用括号需要用引号来引用。 action选项：
 ">
     <link rel="shortcut icon" href="favicon.ico" />
 <style>
@@ -381,57 +384,74 @@ test选项很多： -newer pattern 比pattern文件要新 -user pattern 文件�
     
     
     <h1 id="find">find</h1>
-<p>Find     查找，用于在目录中查找。
-find  path  options  tests  actions
+<p>Find     查找，用于在目录中查找。</p>
+<pre><code>find  path  options  tests  actions
 path 路径
 options 选项
 tests 测试
-actions 动作</p>
-<p>optioins选项:
--follow
+actions 动作
+</code></pre>
+<p>optioins选项:</p>
+<pre><code>-follow
 -depth
 -maxdepth
 -mindepth
-find   dir  -mindepth  n     指定最小的目录深度，至少从dir往下n级目录开始往下搜索，dir和n级之间的忽略。
-find   dir   -maxdepth  n      指定最大目录深度，不搜索n级之后的目录。</p>
-<p>test选项很多：
--newer   pattern   比pattern文件要新
+
+find dir -mindepth  n     指定最小的目录深度，至少从dir往下n级目录开始往下搜索，dir和n级之间的忽略。
+find dir -maxdepth  n      指定最大目录深度，不搜索n级之后的目录。
+</code></pre>
+<p>test选项很多：</p>
+<pre><code>-newer   pattern   比pattern文件要新
 -user    pattern      文件属主是pattern
 -name   pattern    查找和type匹配的
 -iname  pattern    查找和type匹配的，会忽略大小写
 -iwholename
 -path   pattern     按照文件路径匹配
+
 -type   c           c是文件类型，按照文件类型匹配文件
+c可以是：f  常规文件 d  目录  p  命名管道  l  符号链接  b  块设备 c  字符设备 s  套接字
+
 -size   +/-    nk/c/w/k/b/M/G    匹配大于或小于n  kb/..  的文件
+find dir -size +10M  # 查找大于10M的文件
+
 -perm   XXX       基于文件权限的匹配
+find dir -perm 644  # 查找权限是644的文件
+
 find dir  –atime/mtime/ctime    +/-n    根据时间累匹配，atime表示访问时间，mtime表示修改时间，ctime表示变化时间，+表示大于，-表示小于，单位是天。
+
 -a/-and   pattern
 -o/-or     pattern
 ！/-not    pattern
 find  dir  !  test   pattern   列出所有没有按照-options  pattern模式的项
-(&hellip;)    使用括号需要用引号来引用。</p>
-<p>action选项：
--prune     如果是一个指定的目录就忽略这个目录,要用-path指定目录.
+\(...\)    使用括号需要用引号来引用。
+</code></pre>
+<p>action选项：</p>
+<pre><code>-prune     如果是一个指定的目录就忽略这个目录,要用-path指定目录.
 -print          打印，换行符结尾,所有结果一行一个。
 -print0        打印，空字符结尾，所有结果打印到一行。
 -delete       删除
--exec   command     执行一个命令
-exec   command   {}   ;</p>
-<p>operators: find可以用一些运算符来连接多个test条件。
+-exec   command     # 执行一个命令
+exec   command   {}   \;
+
+operators: find可以用一些运算符来连接多个test条件。
 ！expr   #取反
 expr1    -a    expr2    #与运算，可以省略-a
-expr1    -o    expr2    #或运算</p>
-<p>查找当前目录下除了develop里面的文件以外的30天之内修改过的.txt文件
-find .   -path ./develop -prune  -o  -mtime -30  -type f  -name  &ldquo;*.txt&rdquo;   -print</p>
-<p>将前面的命令的结果通过管道和xargs作为后面命令的输入，类似于find命令的-exec选项。
-格式 ：command1   |   xargs   -options   command2
-Xargs   -n    number    设置每行显示的参数数量为number。
-Xargs  -d     char   指定char为界定符，也就是将char换成空格。
-Xargs  -I   {}    将命令参数用STDIN的参数替换掉。
-Xargs   -0       以/0为定界符，而不是空格。</p>
-<p>find . -name “<em>.c” | xargs wc -l
-find . -name “</em>.c” -exec wc -l {}   ;
-wc -l  <code>find . -name “*.c”</code></p>
+expr1    -o    expr2    #或运算
+
+查找当前目录下除了develop里面的文件以外的30天之内修改过的.txt文件
+find .   -path ./develop -prune  -o  -mtime -30  -type f  -name  &quot;*.txt&quot;   -print
+</code></pre>
+<p>将前面的命令的结果通过管道和xargs作为后面命令的输入，类似于find命令的-exec选项。</p>
+<p>格式 ：command1   |   xargs   -options   command2</p>
+<pre><code>xargs   -n    number    设置每行显示的参数数量为number。
+xargs  -d     char   指定char为界定符，也就是将char换成空格。
+xargs  -I   {}    将命令参数用STDIN的参数替换掉。
+xargs   -0       以/0为定界符，而不是空格。
+
+find . -name “*.c” | xargs wc -l
+find . -name “*.c” -exec wc -l {}   \;
+wc -l  `find . -name “*.c”`
+</code></pre>
 
 </section>
 

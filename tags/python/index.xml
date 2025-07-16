@@ -601,10 +601,6 @@ test_list = [
 # 缩进级别用于生成INDENT和DEDENT两个令牌
 pep8建议用四个空格表示一个缩进级别．
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;python2.7源代码格式:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;#!/usr/bin/env python2.7
-# -*- coding: utf-8 -*-
-&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;执行python代码：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;$ python mycode.py
 # OR
@@ -617,8 +613,8 @@ $ ./mycode.py
 &lt;pre&gt;&lt;code&gt;f&amp;quot;his name is {name!r}&amp;quot;
 f&amp;quot;his name is {repr(name)}&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;!r call repr()
-!a call ascii()&lt;/p&gt;
+&lt;p&gt;!r call repr()&lt;/p&gt;
+&lt;p&gt;!a call ascii()&lt;/p&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;python注释&#34;&gt;&lt;strong&gt;python注释&lt;/strong&gt;&lt;/h1&gt;
 &lt;p&gt;单行注释：&lt;/p&gt;
@@ -1066,7 +1062,7 @@ modified = {
 
 {x for x in range(10) if x % 2 == 0}
 等效于
-set(filter(lambda x: x % 2 == 0, range(10)))    
+set(filter(lambda x: x % 2 == 0, range(10)))
 &lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;python控制流&#34;&gt;&lt;strong&gt;python控制流&lt;/strong&gt;&lt;/h1&gt;

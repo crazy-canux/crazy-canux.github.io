@@ -1428,7 +1428,8 @@ bytes_recv(in)
 packets_recv(in)
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;error_in/out:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;SELECT non_negative_derivative(mean(&amp;quot;err_in&amp;quot;), 1s) AS &amp;quot;recv&amp;quot;, non_negative_derivative(mean(&amp;quot;err_out&amp;quot;), 1s) AS &amp;quot;send&amp;quot;
+&lt;pre&gt;&lt;code&gt;SELECT non_negative_derivative(mean(&amp;quot;err_in&amp;quot;), 1s) AS &amp;quot;recv&amp;quot;, 
+non_negative_derivative(mean(&amp;quot;err_out&amp;quot;), 1s) AS &amp;quot;send&amp;quot;
 FROM &amp;quot;net&amp;quot;
 WHERE &amp;quot;interface&amp;quot; =~ /^(vlan|eth|ens|bond).*/ AND $timeFilter
 GROUP BY time($__interval), &amp;quot;host&amp;quot;, &amp;quot;interface&amp;quot; fill(none)

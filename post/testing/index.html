@@ -7,12 +7,11 @@ QA主要就是进行软件测试相关的工作.
 软件测试五个要素：
 质量 人员 技术 流程 资源 软件测试两个目标：
 测试覆盖率 测试效率 软件测试阶段：
-单元测试(Unit Testing) 集成测试(Integration Testing) 系统测试(System Testing) 验收测试(Acceptance Testing) 软件测试的手段：
-手动测试/自动化测试 静态测试/动态测试 黑盒测试/白盒测试 软件测试的类型：
+单元测试(Unit Testing) 集成测试(Integration Testing)： 验证多个模块之间接口交互。 系统测试(System Testing)：整个系统的测试，验证系统是否满足需求（功能，性能，兼容性，稳定性）。 验收测试(Acceptance Testing)· 软件测试的手段：
+手动测试/自动化测试 静态测试 动态测试 黑盒测试 白盒测试 灰度测试：部分了解内部结构，常用于测试接口，集成层，复杂业务逻辑等。 软件测试的类型：
 性能测试 稳定性测试 安全测试 可用性测试 兼容性测试 文档测试 本地化测试 冒烟测试 功能测试Functional Testing 回归测试Regression Testing 用户界面测试UI Testing 端到端测试End-To-End Testing 软件测试的模型：
 传统的瀑布模型 V模型 W模型 X模型 H模型 敏捷测试模型(金字塔模式) 软件测试的模式：
 金字塔模式Ideal Test Automation Pyramid 蛋筒冰激凌模式Ice Cream Cone 双金字塔模式Dual Test Pyramid 纸杯蛋糕模式Cupcake Test Automation Pyramid Mike Cohn的测试金字塔
-https://martinfowler.com/bliki/TestPyramid.html
 '>
 <title>Testing</title>
 
@@ -25,12 +24,11 @@ QA主要就是进行软件测试相关的工作.
 软件测试五个要素：
 质量 人员 技术 流程 资源 软件测试两个目标：
 测试覆盖率 测试效率 软件测试阶段：
-单元测试(Unit Testing) 集成测试(Integration Testing) 系统测试(System Testing) 验收测试(Acceptance Testing) 软件测试的手段：
-手动测试/自动化测试 静态测试/动态测试 黑盒测试/白盒测试 软件测试的类型：
+单元测试(Unit Testing) 集成测试(Integration Testing)： 验证多个模块之间接口交互。 系统测试(System Testing)：整个系统的测试，验证系统是否满足需求（功能，性能，兼容性，稳定性）。 验收测试(Acceptance Testing)· 软件测试的手段：
+手动测试/自动化测试 静态测试 动态测试 黑盒测试 白盒测试 灰度测试：部分了解内部结构，常用于测试接口，集成层，复杂业务逻辑等。 软件测试的类型：
 性能测试 稳定性测试 安全测试 可用性测试 兼容性测试 文档测试 本地化测试 冒烟测试 功能测试Functional Testing 回归测试Regression Testing 用户界面测试UI Testing 端到端测试End-To-End Testing 软件测试的模型：
 传统的瀑布模型 V模型 W模型 X模型 H模型 敏捷测试模型(金字塔模式) 软件测试的模式：
 金字塔模式Ideal Test Automation Pyramid 蛋筒冰激凌模式Ice Cream Cone 双金字塔模式Dual Test Pyramid 纸杯蛋糕模式Cupcake Test Automation Pyramid Mike Cohn的测试金字塔
-https://martinfowler.com/bliki/TestPyramid.html
 '>
 <meta property='og:url' content='https://canuxcheng.com/post/testing/'>
 <meta property='og:site_name' content='Morgoth'>
@@ -42,12 +40,11 @@ QA主要就是进行软件测试相关的工作.
 软件测试五个要素：
 质量 人员 技术 流程 资源 软件测试两个目标：
 测试覆盖率 测试效率 软件测试阶段：
-单元测试(Unit Testing) 集成测试(Integration Testing) 系统测试(System Testing) 验收测试(Acceptance Testing) 软件测试的手段：
-手动测试/自动化测试 静态测试/动态测试 黑盒测试/白盒测试 软件测试的类型：
+单元测试(Unit Testing) 集成测试(Integration Testing)： 验证多个模块之间接口交互。 系统测试(System Testing)：整个系统的测试，验证系统是否满足需求（功能，性能，兼容性，稳定性）。 验收测试(Acceptance Testing)· 软件测试的手段：
+手动测试/自动化测试 静态测试 动态测试 黑盒测试 白盒测试 灰度测试：部分了解内部结构，常用于测试接口，集成层，复杂业务逻辑等。 软件测试的类型：
 性能测试 稳定性测试 安全测试 可用性测试 兼容性测试 文档测试 本地化测试 冒烟测试 功能测试Functional Testing 回归测试Regression Testing 用户界面测试UI Testing 端到端测试End-To-End Testing 软件测试的模型：
 传统的瀑布模型 V模型 W模型 X模型 H模型 敏捷测试模型(金字塔模式) 软件测试的模式：
 金字塔模式Ideal Test Automation Pyramid 蛋筒冰激凌模式Ice Cream Cone 双金字塔模式Dual Test Pyramid 纸杯蛋糕模式Cupcake Test Automation Pyramid Mike Cohn的测试金字塔
-https://martinfowler.com/bliki/TestPyramid.html
 ">
     <link rel="shortcut icon" href="favicon.ico" />
 <style>
@@ -427,15 +424,18 @@ https://martinfowler.com/bliki/TestPyramid.html
 <p>软件测试阶段：</p>
 <ul>
 <li>单元测试(Unit Testing)</li>
-<li>集成测试(Integration Testing)</li>
-<li>系统测试(System Testing)</li>
-<li>验收测试(Acceptance Testing)</li>
+<li>集成测试(Integration Testing)： 验证多个模块之间接口交互。</li>
+<li>系统测试(System Testing)：整个系统的测试，验证系统是否满足需求（功能，性能，兼容性，稳定性）。</li>
+<li>验收测试(Acceptance Testing)·</li>
 </ul>
 <p>软件测试的手段：</p>
 <ul>
 <li>手动测试/自动化测试</li>
-<li>静态测试/动态测试</li>
-<li>黑盒测试/白盒测试</li>
+<li>静态测试</li>
+<li>动态测试</li>
+<li>黑盒测试</li>
+<li>白盒测试</li>
+<li>灰度测试：部分了解内部结构，常用于测试接口，集成层，复杂业务逻辑等。</li>
 </ul>
 <p>软件测试的类型：</p>
 <ul>
@@ -500,6 +500,15 @@ https://martinfowler.com/bliki/TestPyramid.html
 <p><a class="link" href="https://github.com/minimaxir/big-list-of-naughty-strings"  target="_blank" rel="noopener"
     >https://github.com/minimaxir/big-list-of-naughty-strings</a></p>
 <p>测试中谨慎使用的字符串．</p>
+<hr>
+<h1 id="allure">Allure</h1>
+<p><a class="link" href="https://github.com/allure-framework"  target="_blank" rel="noopener"
+    >https://github.com/allure-framework</a></p>
+<p>Allure是一个灵活的轻量级多语言测试报告框架．</p>
+<h1 id="reportportal">reportportal</h1>
+<p><a class="link" href="https://github.com/reportportal"  target="_blank" rel="noopener"
+    >https://github.com/reportportal</a></p>
+<p>ReportPortal是一个开源的测试报告平台，支持多种测试框架和语言，提供实时的测试结果和分析。</p>
 
 </section>
 

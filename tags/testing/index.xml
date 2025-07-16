@@ -32,15 +32,18 @@
 &lt;p&gt;软件测试阶段：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;单元测试(Unit Testing)&lt;/li&gt;
-&lt;li&gt;集成测试(Integration Testing)&lt;/li&gt;
-&lt;li&gt;系统测试(System Testing)&lt;/li&gt;
-&lt;li&gt;验收测试(Acceptance Testing)&lt;/li&gt;
+&lt;li&gt;集成测试(Integration Testing)： 验证多个模块之间接口交互。&lt;/li&gt;
+&lt;li&gt;系统测试(System Testing)：整个系统的测试，验证系统是否满足需求（功能，性能，兼容性，稳定性）。&lt;/li&gt;
+&lt;li&gt;验收测试(Acceptance Testing)·&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;软件测试的手段：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;手动测试/自动化测试&lt;/li&gt;
-&lt;li&gt;静态测试/动态测试&lt;/li&gt;
-&lt;li&gt;黑盒测试/白盒测试&lt;/li&gt;
+&lt;li&gt;静态测试&lt;/li&gt;
+&lt;li&gt;动态测试&lt;/li&gt;
+&lt;li&gt;黑盒测试&lt;/li&gt;
+&lt;li&gt;白盒测试&lt;/li&gt;
+&lt;li&gt;灰度测试：部分了解内部结构，常用于测试接口，集成层，复杂业务逻辑等。&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;软件测试的类型：&lt;/p&gt;
 &lt;ul&gt;
@@ -105,6 +108,15 @@
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/minimaxir/big-list-of-naughty-strings&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/minimaxir/big-list-of-naughty-strings&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;测试中谨慎使用的字符串．&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;allure&#34;&gt;Allure&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/allure-framework&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/allure-framework&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Allure是一个灵活的轻量级多语言测试报告框架．&lt;/p&gt;
+&lt;h1 id=&#34;reportportal&#34;&gt;reportportal&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/reportportal&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/reportportal&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;ReportPortal是一个开源的测试报告平台，支持多种测试框架和语言，提供实时的测试结果和分析。&lt;/p&gt;
 </description>
         </item>
         <item>
@@ -455,6 +467,20 @@ class LibraryListener(object):
     # version 3 for rf&amp;gt;=3.0
     ROBOT_LISTENER_API_VERSION = 2
 &lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id=&#34;allure&#34;&gt;allure&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/allure-framework/allure-python/tree/master/allure-robotframework&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/allure-framework/allure-python/tree/master/allure-robotframework&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ pip install allure-robotframework
+$ robot --listener allure_robotframework ./my_robot_test
+$ robot --listener allure_robotframework:/set/your/path/here ./my_robot_test
+
+allure generate output/allure
+allure serve output/allure
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id=&#34;reportportal&#34;&gt;reportportal&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/reportportal/plugin-import-robot&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/reportportal/plugin-import-robot&lt;/a&gt;&lt;/p&gt;
 </description>
         </item>
         <item>

@@ -16,16 +16,20 @@
 &lt;p&gt;network related command&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;net-tools&#34;&gt;net-tools&lt;/h2&gt;
+&lt;p&gt;deprecated&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/ecki/net-tools&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/ecki/net-tools&lt;/a&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;$ sudo apt-get install net-tools
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h3 id=&#34;ifconfig&#34;&gt;ifconfig&lt;/h3&gt;
+&lt;p&gt;查看本地网络接口状态和流量&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;ifconfig # 查看up的interface
 ifconfig -a  # 查看所有的interface
+ifconfig &amp;lt;interface&amp;gt; # 查看指定的interface
 ifconfig &amp;lt;bridge&amp;gt;/&amp;lt;interface&amp;gt; up/down
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h3 id=&#34;netstat&#34;&gt;netstat&lt;/h3&gt;
+&lt;p&gt;用于查看网络连接、路由表、接口统计等信息.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;netstat
 -a, --all, --listening # 显示所有socket, 默认只显示connected
 -l, --listening  # 显示listening
@@ -48,10 +52,6 @@ sudo netstat -tulnp # 查看tcp&amp;amp;udp端口是否被监听
 &lt;h3 id=&#34;arp&#34;&gt;arp&lt;/h3&gt;
 &lt;pre&gt;&lt;code&gt;arp # 用于确定IP地址的网卡物理地址
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&#34;rarp&#34;&gt;rarp&lt;/h3&gt;
-&lt;h3 id=&#34;hostname&#34;&gt;hostname&lt;/h3&gt;
-&lt;h3 id=&#34;domainname&#34;&gt;domainname&lt;/h3&gt;
-&lt;h3 id=&#34;dnsdomainname&#34;&gt;dnsdomainname&lt;/h3&gt;
 &lt;h3 id=&#34;route&#34;&gt;route&lt;/h3&gt;
 &lt;p&gt;Flags:&lt;/p&gt;
 &lt;ul&gt;
@@ -66,6 +66,52 @@ sudo netstat -tulnp # 查看tcp&amp;amp;udp端口是否被监听
 &lt;p&gt;Use: 查找路由的次数&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;route -n
 &lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;rarp&#34;&gt;rarp&lt;/h3&gt;
+&lt;h3 id=&#34;hostname&#34;&gt;hostname&lt;/h3&gt;
+&lt;h3 id=&#34;domainname&#34;&gt;domainname&lt;/h3&gt;
+&lt;h3 id=&#34;dnsdomainname&#34;&gt;dnsdomainname&lt;/h3&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;iproute2&#34;&gt;iproute2&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/shemminger/iproute2&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/shemminger/iproute2&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo apt-get install iproute2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;ss&#34;&gt;ss&lt;/h3&gt;
+&lt;p&gt;取代netstat, 用于查看socket连接状态.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ss -s # 查看socket统计信息
+ss -tuln # 查看tcp和udp的监听端口
+ss -tulnp # 查看tcp和udp的监听端口和对应的程序
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;ip&#34;&gt;ip&lt;/h3&gt;
+&lt;p&gt;取代ifconfig, route, arp等命令的集合.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ip link show
+
+# 创建vlan
+ip link add link eth1 name eth1.10 type vlan id 10
+# 添加ip
+ip addr add 192.168.100.1/24 brd 192.168.100.255 dev eth1.10
+# 启动vlan
+ip link set dev eth1.10 up
+# 关闭vlan
+ip link set dev eth1.10 down
+# 删除vlan
+ip link delete eth1.10
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;addr/address&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ip addr show &amp;lt;interface&amp;gt; # 查看指定interface的ip地址
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;route&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ip route show # 查看路由表
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;rule&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ip rule showa # 查看规则
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;devlink&#34;&gt;devlink&lt;/h3&gt;
+&lt;h3 id=&#34;ifstat&#34;&gt;ifstat&lt;/h3&gt;
+&lt;h3 id=&#34;bridge&#34;&gt;bridge&lt;/h3&gt;
+&lt;p&gt;用于管理bridge, 取代brctl.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ bridge link show # 查看bridge的接口
+&lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;iputils&#34;&gt;iputils&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/iputils/iputils&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -73,7 +119,9 @@ sudo netstat -tulnp # 查看tcp&amp;amp;udp端口是否被监听
 &lt;pre&gt;&lt;code&gt;$ sudo apt-get install iputils-ping
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h3 id=&#34;ping&#34;&gt;ping&lt;/h3&gt;
+&lt;p&gt;round-trip time/RTT: 往返时间, 即从发送数据包到接收数据包的时间.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;ping # 用于确定网络的连通性
+ping -c 5 &amp;lt;host&amp;gt; # 发送5个包
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h3 id=&#34;arping&#34;&gt;arping&lt;/h3&gt;
 &lt;h3 id=&#34;tracepath&#34;&gt;tracepath&lt;/h3&gt;
@@ -82,14 +130,29 @@ sudo netstat -tulnp # 查看tcp&amp;amp;udp端口是否被监听
 &lt;h2 id=&#34;traceroute&#34;&gt;traceroute&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;sudo apt install traceroute
 &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;路由跟踪与跳数检查&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;traceroute &amp;lt;host&amp;gt; # 跟踪到host的路由
+
+# 通过指定端口号来跟踪
+traceroute -p &amp;lt;port&amp;gt; &amp;lt;host&amp;gt;
+
+# 使用tcp协议
+traceroute -T &amp;lt;host&amp;gt;
+
+# 使用udp协议
+traceroute -U &amp;lt;host&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;tcpdump&#34;&gt;tcpdump&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;sudo apt-get install tcpdump
 
 tcpdump
 
-tcpdump udp port &amp;lt;port&amp;gt; 抓udp 在port端口的包
-tcpdump -i &amp;lt;interface&amp;gt; host &amp;lt;ip&amp;gt;
+tcpdump tcp port &amp;lt;port&amp;gt;        # 抓tcp 在port端口的包
+tcpdump udp port &amp;lt;port&amp;gt;       #抓udp 在port端口的包
+tcpdump -i &amp;lt;interface&amp;gt; # 抓取指定interface的包
+tcpdump host &amp;lt;ip&amp;gt; and port &amp;lt;port&amp;gt; # 抓取指定ip和端口的包
+tcpdump net &amp;lt;network&amp;gt; # 抓取指定网络的包
 &lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;ncnetcat&#34;&gt;nc/netcat&lt;/h2&gt;
@@ -111,48 +174,6 @@ nc -l PORT
 echo -e &#39;{&amp;quot;method&amp;quot;:&amp;quot;test&amp;quot;,&amp;quot;params&amp;quot;:[&amp;quot;test&amp;quot;],&amp;quot;id&amp;quot;:1}&#39; | nc IP PORT
 &lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;brctl&#34;&gt;brctl&lt;/h2&gt;
-&lt;pre&gt;&lt;code&gt;$ sudo apt-get install bridge-utils
-
-brctl show
-brctl addbr &amp;lt;bridge&amp;gt; # 添加bridge
-brctl delbr &amp;lt;bridge&amp;gt; # 删除bridge
-brctl addif &amp;lt;bridge&amp;gt; &amp;lt;interface&amp;gt; # 绑定interface到bridge
-brctl delif &amp;lt;bridge&amp;gt; &amp;lt;interface&amp;gt; # 删除bridge上的interface
-&lt;/code&gt;&lt;/pre&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;iproute2&#34;&gt;iproute2&lt;/h2&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/shemminger/iproute2&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://github.com/shemminger/iproute2&lt;/a&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ sudo apt-get install iproute2
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&#34;ip&#34;&gt;ip&lt;/h3&gt;
-&lt;pre&gt;&lt;code&gt;ip link show
-
-# 创建vlan
-ip link add link eth1 name eth1.10 type vlan id 10
-# 添加ip
-ip addr add 192.168.100.1/24 brd 192.168.100.255 dev eth1.10
-# 启动vlan
-ip link set dev eth1.10 up
-# 关闭vlan
-ip link set dev eth1.10 down
-# 删除vlan
-ip link delete eth1.10
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;addr/address&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;ip addr show
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;route&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;ip route show
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;rule&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;ip rule show
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&#34;devlink&#34;&gt;devlink&lt;/h3&gt;
-&lt;h3 id=&#34;ifstat&#34;&gt;ifstat&lt;/h3&gt;
-&lt;h3 id=&#34;bridge&#34;&gt;bridge&lt;/h3&gt;
-&lt;hr&gt;
 &lt;h2 id=&#34;dnsutils&#34;&gt;dnsutils&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;sudo apt-get install dnsutils
 &lt;/code&gt;&lt;/pre&gt;
@@ -160,13 +181,26 @@ ip link delete eth1.10
 &lt;pre&gt;&lt;code&gt;nslookup # 查询IP地址和对应的域名
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h3 id=&#34;dig&#34;&gt;dig&lt;/h3&gt;
+&lt;pre&gt;&lt;code&gt;dig # 查询DNS记录
+
+dig @&amp;lt;dns-server&amp;gt; &amp;lt;domain&amp;gt; # 指定dns服务器查询域名
+dig &amp;lt;domain&amp;gt; A # 查询A记录
+dig &amp;lt;domain&amp;gt; MX # 查询MX记录
+dig &amp;lt;domain&amp;gt; NS # 查询NS记录
+dig &amp;lt;domain&amp;gt; TXT # 查询TXT记录
+dig &amp;lt;domain&amp;gt; ANY # 查询所有记录
+
+# 反向解析IP地址
+dig -x &amp;lt;ip-address&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
 &lt;h3 id=&#34;nsupdate&#34;&gt;nsupdate&lt;/h3&gt;
-&lt;h3 id=&#34;delv&#34;&gt;delv&lt;/h3&gt;
+&lt;h3 id=&#34;host&#34;&gt;host&lt;/h3&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;ethtool&#34;&gt;ethtool&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;sudo apt-get install ethtool
 
 ethtool # 查询网络设备信息
+ethtool &amp;lt;interface&amp;gt; # 查询指定网络设备信息
 &lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;iftop&#34;&gt;iftop&lt;/h2&gt;
@@ -174,8 +208,11 @@ ethtool # 查询网络设备信息
     &gt;http://www.ex-parrot.com/~pdw/iftop/&lt;/a&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;$ sudo apt-get install iftop
 
-sudo iftop
+sudo iftop # 查看网络流量
+sudo iftop -i &amp;lt;interface&amp;gt; # 查看指定网络接口的流量
 &lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;iperf3&#34;&gt;iperf3&lt;/h2&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;wget&#34;&gt;wget&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;wget [option] [URL]

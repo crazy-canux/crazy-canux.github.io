@@ -21,11 +21,16 @@
         </item>
         <item>
         <title>Security</title>
-        <link>https://canuxcheng.com/post/k8s_security/</link>
+        <link>https://canuxcheng.com/post/devops_security/</link>
         <pubDate>Thu, 19 Oct 2023 20:03:39 +0800</pubDate>
         
-        <guid>https://canuxcheng.com/post/k8s_security/</guid>
-        <description>&lt;h1 id=&#34;k8s-security&#34;&gt;K8S Security&lt;/h1&gt;
+        <guid>https://canuxcheng.com/post/devops_security/</guid>
+        <description>&lt;h1 id=&#34;devops-security&#34;&gt;DevOps Security&lt;/h1&gt;
+&lt;p&gt;**&lt;/p&gt;
+&lt;h2 id=&#34;trivy&#34;&gt;Trivy&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/aquasecurity/trivy&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/aquasecurity/trivy&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Find vulnerabilities, misconfigurations, secrets, SBOM in containers, Kubernetes, code repositories, clouds and more&lt;/p&gt;
 &lt;h2 id=&#34;tetragon&#34;&gt;Tetragon&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/cilium/tetragon&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/cilium/tetragon&lt;/a&gt;&lt;/p&gt;
@@ -218,10 +223,22 @@ aws sso logout
 &lt;p&gt;Tools: SonarQube, Trivy, Coverity.&lt;/p&gt;
 &lt;p&gt;gitlab SAST report.
 gitlab secret detection report.&lt;/p&gt;
+&lt;h3 id=&#34;trivy&#34;&gt;trivy&lt;/h3&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/aquasecurity/trivy&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/aquasecurity/trivy&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Trivy是一个开源的安全扫描工具，支持容器镜像、文件系统和Git仓库的漏洞扫描。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;trivy image &amp;lt;image&amp;gt;
+trivy fs &amp;lt;path&amp;gt;
+trivy repo &amp;lt;repo&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;coverity&#34;&gt;Coverity&lt;/h3&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://scan.coverity.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://scan.coverity.com/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Coverity是一个商业的静态代码分析工具，主要用于发现代码中的缺陷和安全漏洞。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;cov-init
+cov-build
+cov-analyze
+&lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;dast&#34;&gt;DAST&lt;/h2&gt;
 &lt;p&gt;DAST: Dynamic Application Security Testing，动态应用程序安全测试, 对应用程序进行黑盒分析.&lt;/p&gt;
@@ -235,9 +252,15 @@ gitlab secret detection report.&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;sca&#34;&gt;SCA&lt;/h2&gt;
 &lt;p&gt;SCA: Software Composition Analysis.&lt;/p&gt;
-&lt;p&gt;SBOM (software Bill of Materials),开源组件安全扫描&lt;/p&gt;
+&lt;p&gt;SBOM (software Bill of Materials),开源组件安全扫描.&lt;/p&gt;
 &lt;p&gt;Tools： BlackDuck, Jfrog Xray.&lt;/p&gt;
 &lt;p&gt;gitlab dependency scanning report.&lt;/p&gt;
+&lt;h3 id=&#34;blackduck&#34;&gt;Blackduck&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.blackducksoftware.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://www.blackducksoftware.com/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Blackduck是一个商业的开源组件安全扫描工具，主要用于发现开源组件中的漏洞和许可证问题。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;detect.sh ......
+&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
@@ -348,6 +371,32 @@ certutil -delstore &amp;quot;ROOT&amp;quot; my-cert.crt
 &lt;li&gt;正确使用get,post和cookie&lt;/li&gt;
 &lt;li&gt;在非get请求中增加伪随机数&lt;/li&gt;
 &lt;/ul&gt;
+</description>
+        </item>
+        <item>
+        <title>Security</title>
+        <link>https://canuxcheng.com/post/sec_security/</link>
+        <pubDate>Sat, 28 Jul 2018 16:08:54 +0000</pubDate>
+        
+        <guid>https://canuxcheng.com/post/sec_security/</guid>
+        <description>&lt;h1 id=&#34;security&#34;&gt;Security&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://nvd.nist.gov/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://nvd.nist.gov/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://cve.scap.org.cn/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://cve.scap.org.cn/&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id=&#34;gfw&#34;&gt;GFW&lt;/h1&gt;
+&lt;h1 id=&#34;ngfw&#34;&gt;NGFW&lt;/h1&gt;
+&lt;h1 id=&#34;utm&#34;&gt;UTM&lt;/h1&gt;
+&lt;p&gt;Unified Threat Management, 安全网关&lt;/p&gt;
+&lt;p&gt;BUV: Block Until Verdict&lt;/p&gt;
+&lt;h1 id=&#34;waf&#34;&gt;WAF&lt;/h1&gt;
+&lt;p&gt;Web Application Firewall, web应用防火墙&lt;/p&gt;
+&lt;h1 id=&#34;ips&#34;&gt;IPS&lt;/h1&gt;
+&lt;p&gt;Intrusion Prevention System, 入侵防御系统&lt;/p&gt;
+&lt;h1 id=&#34;ids&#34;&gt;IDS&lt;/h1&gt;
+&lt;p&gt;Intrusion Detection System, 入侵检测系统&lt;/p&gt;
+&lt;h1 id=&#34;nsm&#34;&gt;NSM&lt;/h1&gt;
+&lt;p&gt;Network Security Monitoring, 网络安全监控&lt;/p&gt;
 </description>
         </item>
         <item>

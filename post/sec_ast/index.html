@@ -5,18 +5,16 @@
 SAST SAST: Static Application Security Testing
 Tools: SonarQube, Trivy, Coverity.
 gitlab SAST report. gitlab secret detection report.
-https://github.com/aquasecurity/trivy
-https://scan.coverity.com/
-DAST DAST: Dynamic Application Security Testing，动态应用程序安全测试, 对应用程序进行黑盒分析.
+trivy https://github.com/aquasecurity/trivy
+Trivy是一个开源的安全扫描工具，支持容器镜像、文件系统和Git仓库的漏洞扫描。
+trivy image &lt;image&gt; trivy fs &lt;path&gt; trivy repo &lt;repo&gt; Coverity https://scan.coverity.com/
+Coverity是一个商业的静态代码分析工具，主要用于发现代码中的缺陷和安全漏洞。
+cov-init cov-build cov-analyze DAST DAST: Dynamic Application Security Testing，动态应用程序安全测试, 对应用程序进行黑盒分析.
 Tools:
 ZAP Scan(OWASP ZAP)
 synopsys WhiteHat Sentinel.
 gitlab DAST report.
 IAST IAST: Interactive Application Security Testing，交互式应用程序安全测试, 结合了SAST和DAST的优点.
-SCA SCA: Software Composition Analysis.
-SBOM (software Bill of Materials),开源组件安全扫描
-Tools： BlackDuck, Jfrog Xray.
-gitlab dependency scanning report.
 '>
 <title>AST</title>
 
@@ -27,18 +25,16 @@ gitlab dependency scanning report.
 SAST SAST: Static Application Security Testing
 Tools: SonarQube, Trivy, Coverity.
 gitlab SAST report. gitlab secret detection report.
-https://github.com/aquasecurity/trivy
-https://scan.coverity.com/
-DAST DAST: Dynamic Application Security Testing，动态应用程序安全测试, 对应用程序进行黑盒分析.
+trivy https://github.com/aquasecurity/trivy
+Trivy是一个开源的安全扫描工具，支持容器镜像、文件系统和Git仓库的漏洞扫描。
+trivy image &lt;image&gt; trivy fs &lt;path&gt; trivy repo &lt;repo&gt; Coverity https://scan.coverity.com/
+Coverity是一个商业的静态代码分析工具，主要用于发现代码中的缺陷和安全漏洞。
+cov-init cov-build cov-analyze DAST DAST: Dynamic Application Security Testing，动态应用程序安全测试, 对应用程序进行黑盒分析.
 Tools:
 ZAP Scan(OWASP ZAP)
 synopsys WhiteHat Sentinel.
 gitlab DAST report.
 IAST IAST: Interactive Application Security Testing，交互式应用程序安全测试, 结合了SAST和DAST的优点.
-SCA SCA: Software Composition Analysis.
-SBOM (software Bill of Materials),开源组件安全扫描
-Tools： BlackDuck, Jfrog Xray.
-gitlab dependency scanning report.
 '>
 <meta property='og:url' content='https://canuxcheng.com/post/sec_ast/'>
 <meta property='og:site_name' content='Morgoth'>
@@ -48,18 +44,16 @@ gitlab dependency scanning report.
 SAST SAST: Static Application Security Testing
 Tools: SonarQube, Trivy, Coverity.
 gitlab SAST report. gitlab secret detection report.
-https://github.com/aquasecurity/trivy
-https://scan.coverity.com/
-DAST DAST: Dynamic Application Security Testing，动态应用程序安全测试, 对应用程序进行黑盒分析.
+trivy https://github.com/aquasecurity/trivy
+Trivy是一个开源的安全扫描工具，支持容器镜像、文件系统和Git仓库的漏洞扫描。
+trivy image &lt;image&gt; trivy fs &lt;path&gt; trivy repo &lt;repo&gt; Coverity https://scan.coverity.com/
+Coverity是一个商业的静态代码分析工具，主要用于发现代码中的缺陷和安全漏洞。
+cov-init cov-build cov-analyze DAST DAST: Dynamic Application Security Testing，动态应用程序安全测试, 对应用程序进行黑盒分析.
 Tools:
 ZAP Scan(OWASP ZAP)
 synopsys WhiteHat Sentinel.
 gitlab DAST report.
 IAST IAST: Interactive Application Security Testing，交互式应用程序安全测试, 结合了SAST和DAST的优点.
-SCA SCA: Software Composition Analysis.
-SBOM (software Bill of Materials),开源组件安全扫描
-Tools： BlackDuck, Jfrog Xray.
-gitlab dependency scanning report.
 ">
     <link rel="shortcut icon" href="favicon.ico" />
 <style>
@@ -370,10 +364,19 @@ gitlab dependency scanning report.
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ul>
-    <li><a href="#sast">SAST</a></li>
+    <li><a href="#sast">SAST</a>
+      <ul>
+        <li><a href="#trivy">trivy</a></li>
+        <li><a href="#coverity">Coverity</a></li>
+      </ul>
+    </li>
     <li><a href="#dast">DAST</a></li>
     <li><a href="#iast">IAST</a></li>
-    <li><a href="#sca">SCA</a></li>
+    <li><a href="#sca">SCA</a>
+      <ul>
+        <li><a href="#blackduck">Blackduck</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
         </div>
@@ -461,10 +464,22 @@ gitlab dependency scanning report.
 <p>Tools: SonarQube, Trivy, Coverity.</p>
 <p>gitlab SAST report.
 gitlab secret detection report.</p>
+<h3 id="trivy">trivy</h3>
 <p><a class="link" href="https://github.com/aquasecurity/trivy"  target="_blank" rel="noopener"
     >https://github.com/aquasecurity/trivy</a></p>
+<p>Trivy是一个开源的安全扫描工具，支持容器镜像、文件系统和Git仓库的漏洞扫描。</p>
+<pre><code>trivy image &lt;image&gt;
+trivy fs &lt;path&gt;
+trivy repo &lt;repo&gt;
+</code></pre>
+<h3 id="coverity">Coverity</h3>
 <p><a class="link" href="https://scan.coverity.com/"  target="_blank" rel="noopener"
     >https://scan.coverity.com/</a></p>
+<p>Coverity是一个商业的静态代码分析工具，主要用于发现代码中的缺陷和安全漏洞。</p>
+<pre><code>cov-init
+cov-build
+cov-analyze
+</code></pre>
 <hr>
 <h2 id="dast">DAST</h2>
 <p>DAST: Dynamic Application Security Testing，动态应用程序安全测试, 对应用程序进行黑盒分析.</p>
@@ -478,9 +493,15 @@ gitlab secret detection report.</p>
 <hr>
 <h2 id="sca">SCA</h2>
 <p>SCA: Software Composition Analysis.</p>
-<p>SBOM (software Bill of Materials),开源组件安全扫描</p>
+<p>SBOM (software Bill of Materials),开源组件安全扫描.</p>
 <p>Tools： BlackDuck, Jfrog Xray.</p>
 <p>gitlab dependency scanning report.</p>
+<h3 id="blackduck">Blackduck</h3>
+<p><a class="link" href="https://www.blackducksoftware.com/"  target="_blank" rel="noopener"
+    >https://www.blackducksoftware.com/</a></p>
+<p>Blackduck是一个商业的开源组件安全扫描工具，主要用于发现开源组件中的漏洞和许可证问题。</p>
+<pre><code>detect.sh ......
+</code></pre>
 
 </section>
 

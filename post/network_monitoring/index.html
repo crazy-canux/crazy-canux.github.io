@@ -393,7 +393,8 @@ bytes_recv(in)
 packets_recv(in)
 </code></pre>
 <p>error_in/out:</p>
-<pre><code>SELECT non_negative_derivative(mean(&quot;err_in&quot;), 1s) AS &quot;recv&quot;, non_negative_derivative(mean(&quot;err_out&quot;), 1s) AS &quot;send&quot;
+<pre><code>SELECT non_negative_derivative(mean(&quot;err_in&quot;), 1s) AS &quot;recv&quot;, 
+non_negative_derivative(mean(&quot;err_out&quot;), 1s) AS &quot;send&quot;
 FROM &quot;net&quot;
 WHERE &quot;interface&quot; =~ /^(vlan|eth|ens|bond).*/ AND $timeFilter
 GROUP BY time($__interval), &quot;host&quot;, &quot;interface&quot; fill(none)

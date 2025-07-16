@@ -6,22 +6,7 @@
         <description>Recent content in CNCF on Morgoth</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Thu, 19 Oct 2023 20:03:39 +0800</lastBuildDate><atom:link href="https://canuxcheng.com/categories/cncf/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>Security</title>
-        <link>https://canuxcheng.com/post/k8s_security/</link>
-        <pubDate>Thu, 19 Oct 2023 20:03:39 +0800</pubDate>
-        
-        <guid>https://canuxcheng.com/post/k8s_security/</guid>
-        <description>&lt;h1 id=&#34;k8s-security&#34;&gt;K8S Security&lt;/h1&gt;
-&lt;h2 id=&#34;tetragon&#34;&gt;Tetragon&lt;/h2&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/cilium/tetragon&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://github.com/cilium/tetragon&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;falco&#34;&gt;Falco&lt;/h2&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/falcosecurity/falco&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://github.com/falcosecurity/falco&lt;/a&gt;&lt;/p&gt;
-</description>
-        </item>
-        <item>
+        <lastBuildDate>Fri, 04 Aug 2023 20:03:39 +0800</lastBuildDate><atom:link href="https://canuxcheng.com/categories/cncf/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>API Gateway</title>
         <link>https://canuxcheng.com/post/k8s_apigateway/</link>
         <pubDate>Fri, 04 Aug 2023 20:03:39 +0800</pubDate>
@@ -881,21 +866,6 @@ $ kubectl krew install ns
 &lt;p&gt;用于本地调试集群上的服务.&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/telepresenceio/telepresence&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/telepresenceio/telepresence&lt;/a&gt;&lt;/p&gt;
-</description>
-        </item>
-        <item>
-        <title>CI/CD</title>
-        <link>https://canuxcheng.com/post/k8s_cicd/</link>
-        <pubDate>Fri, 10 Jan 2020 20:55:52 +0800</pubDate>
-        
-        <guid>https://canuxcheng.com/post/k8s_cicd/</guid>
-        <description>&lt;h1 id=&#34;continuous-integration--delivery&#34;&gt;Continuous Integration &amp;amp; Delivery&lt;/h1&gt;
-&lt;h2 id=&#34;argo-cd&#34;&gt;argo-cd&lt;/h2&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/argoproj/argo-cd&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://github.com/argoproj/argo-cd&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;flux-cd&#34;&gt;flux-cd&lt;/h2&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/fluxcd/flux&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://github.com/fluxcd/flux&lt;/a&gt;&lt;/p&gt;
 </description>
         </item>
         <item>
