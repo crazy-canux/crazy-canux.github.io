@@ -83,7 +83,9 @@ hex(number) # 返回int/long的十六进制的字符串形式.
 
 ## 对象相关的操作
 id(object) # 返回一个对象的ID, 用内存地址作为ID来表示唯一性. 也就是对象的身份．等价is关键字.
-repr(object) # 返回object的标准字符串形式，可以通过eval()重新得到该对象．eval(repr(object)) == object.
+
+repr(object) # 返回object的标准字符串形式，可以通过eval()重新得到该对象．eval(repr(object)) == object. 给程序员看的。
+
 ascii(object) # 和repr()函数等效．
 callable(object) # 如果object是可调用的返回True, 需要实现魔法方法__call__()
 hash(object) # 返回一个对象的散列/哈希(hash)值，有相同值的对象hash值相同.可用做字典的键.
@@ -227,7 +229,7 @@ real 复数的实部
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;str&#34;&gt;str&lt;/h2&gt;
 &lt;p&gt;字符串是不可变类型, 是标量，是序列．&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;str(object=&#39;&#39;) # 把一个对象转换成字符串．或者返回一个对象的可读性好的字符串表示，无法用语eval()求值．
+&lt;pre&gt;&lt;code&gt;str(object=&#39;&#39;) # 把一个对象转换成字符串．或者返回一个对象的可读性好的字符串表示，无法用语eval()求值．给用户看的。
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;内置方法：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;capitalize() # 字符串首字母大写, 返回新的字符串
@@ -423,10 +425,30 @@ itemsize
 &lt;hr&gt;
 &lt;p&gt;迭代器/生成器类&lt;/p&gt;
 &lt;h2 id=&#34;enumerate&#34;&gt;enumerate&lt;/h2&gt;
+&lt;p&gt;返回一个迭代器，迭代器的元素是iterable中的元素和索引组成的元组。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;enumerate(iterable, start=0)
+ennumerate([&amp;quot;a&amp;quot;, &amp;quot;b&amp;quot;, &amp;quot;c&amp;quot;]) # 返回迭代器，元素是(0, &amp;quot;a&amp;quot;), (1, &amp;quot;b&amp;quot;), (2, &amp;quot;c&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;reversed&#34;&gt;reversed&lt;/h2&gt;
+&lt;p&gt;返回一个迭代器，迭代器的元素是iterable中的元素从后往前的顺序。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;reversed(iterable)
+reversed(&amp;quot;abc&amp;quot;) # 返回迭代器，元素是&amp;quot;c&amp;quot;, &amp;quot;b&amp;quot;, &amp;quot;a&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;map&#34;&gt;map&lt;/h2&gt;
+&lt;p&gt;按顺序依次执行函数function(iterable)中的每个元素，返回一个迭代器。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;map(function, iterable, ...)
+map(lambda x: x**2, [1, 2, 3]) # 返回迭代器，元素是1, 4, 9
+&lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;filter&#34;&gt;filter&lt;/h2&gt;
+&lt;p&gt;返回一个迭代器，迭代器的元素是iterable中满足function(x)为True的元素。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;filter(function, iterable)
+filter(lambda x: x &amp;gt; 0, [-1, 0, 1, 2]) # 返回迭代器，元素是1, 2
+&lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;zip&#34;&gt;zip&lt;/h2&gt;
+&lt;p&gt;返回一个迭代器，迭代器的元素是iterable中每个元素的元组。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;zip(iterable1, iterable2, ...)
+zip([1, 2, 3], [&amp;quot;a&amp;quot;, &amp;quot;b&amp;quot;, &amp;quot;c&amp;quot;]) # 返回迭代器，元素是(1, &amp;quot;a&amp;quot;), (2, &amp;quot;b&amp;quot;), (3, &amp;quot;c&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;classmethod&#34;&gt;classmethod&lt;/h2&gt;
 &lt;h2 id=&#34;staticmethod&#34;&gt;staticmethod&lt;/h2&gt;

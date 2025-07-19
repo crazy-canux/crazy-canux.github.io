@@ -957,6 +957,12 @@ brew services restart colima
 sudo ln -sf /Users/canche01/.colima/default/docker.sock /var/run/docker.sock
 docker ps -a
 </code></pre>
+<p>有vpn下载image失败处理：</p>
+<pre><code># vi ~/.colima/default/colima.yaml
+env:
+  HTTP_PROXY: http://127.0.0.1:40009
+  HTTPS_PROXY: http://127.0.0.1:40009
+</code></pre>
 
 </section>
 

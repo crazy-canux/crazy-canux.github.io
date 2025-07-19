@@ -1826,6 +1826,8 @@ spec:
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/kubernetes/kubeadm&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/kubernetes/kubeadm&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;kubeadm是k8s自带的部署集群的工具.&lt;/p&gt;
+&lt;p&gt;本机部署可以用minikube或者kind。&lt;/p&gt;
+&lt;hr&gt;
 &lt;h1 id=&#34;install&#34;&gt;Install&lt;/h1&gt;
 &lt;h2 id=&#34;准备工作&#34;&gt;准备工作&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://kubernetes.io/zh/docs/setup/production-environment/tools/kubeadm/install-kubeadm/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -2065,21 +2067,6 @@ scheduler:
 &lt;pre&gt;&lt;code&gt;apiVersion: kubelet.config.k8s.io/v1beta1
 kind: KubeletConfiguration
 cgroupDriver: systemd
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-        </item>
-        <item>
-        <title>Minikube</title>
-        <link>https://canuxcheng.com/post/k8s_minikube/</link>
-        <pubDate>Mon, 30 Dec 2019 21:47:17 +0800</pubDate>
-        
-        <guid>https://canuxcheng.com/post/k8s_minikube/</guid>
-        <description>&lt;h1 id=&#34;minikube&#34;&gt;minikube&lt;/h1&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://kubernetes.io/zh/docs/setup/learning-environment/minikube/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://kubernetes.io/zh/docs/setup/learning-environment/minikube/&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;minikube 能快速创建k8s的开发集群，支持在虚拟机上创建，也支持裸机创建.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;// 在裸机上创建：
-sudo minikube start --vm-driver=none
 &lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>

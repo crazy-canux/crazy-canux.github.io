@@ -608,12 +608,20 @@ $ chmod u+x mycode.py
 $ ./mycode.py
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h3 id=&#34;f-string&#34;&gt;f-string&lt;/h3&gt;
+&lt;p&gt;formatted string literal. 用来在字符串中嵌入表达式。&lt;/p&gt;
 &lt;p&gt;格式字符串字面值则是可在运行时求值的表达式。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;print(f&amp;quot;Hello, {name}!&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;格式化:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;f&amp;quot;{price:.2f}&amp;quot;  # 保留两位小数
+&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;!s call str()&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;f&amp;quot;{x!s}&amp;quot;  # 调用str()函数，等价于f&amp;quot;{str(x)}&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;!r call repr()&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;f&amp;quot;his name is {name!r}&amp;quot;
 f&amp;quot;his name is {repr(name)}&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;!r call repr()&lt;/p&gt;
 &lt;p&gt;!a call ascii()&lt;/p&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;python注释&#34;&gt;&lt;strong&gt;python注释&lt;/strong&gt;&lt;/h1&gt;
@@ -636,6 +644,7 @@ global raise assert del yield with as
 and or not is in nonlocal
 False None True 
 &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;nonlocal: 在内层函数修改外层函数的局部变量&lt;/p&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;python运算符和优先级&#34;&gt;&lt;strong&gt;python运算符和优先级&lt;/strong&gt;&lt;/h1&gt;
 &lt;p&gt;优先级从高到底：&lt;/p&gt;
@@ -1324,6 +1333,7 @@ except AssertionError as e:
 &lt;h2 id=&#34;with上下文管理&#34;&gt;&lt;em&gt;with上下文管理&lt;/em&gt;&lt;/h2&gt;
 &lt;p&gt;CMP: context management protocol.&lt;/p&gt;
 &lt;p&gt;with上下文管理仅用于支持上下文管理协议(CMP)的对象．&lt;/p&gt;
+&lt;p&gt;通常用于打开文件、网络连接、数据库连接、锁等需要显式关闭或释放资源的场景。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;with context_expr [as var]:
     with_suite
 &lt;/code&gt;&lt;/pre&gt;
@@ -1333,9 +1343,6 @@ except AssertionError as e:
 &lt;p&gt;with语句块执行完毕后调用__exit__()方法，&lt;strong&gt;exit&lt;/strong&gt;()有三个参数，如果没有异常都是None,否则是sys.exc_info()的三个返回值．&lt;/p&gt;
 &lt;p&gt;自定义上下文管理器:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;class CMPTest(object):
-    def __init__(self):
-        pass
-
     def __enter__(self):
         ...
         return self
@@ -1516,10 +1523,19 @@ reduce(lambda x,y: x*y, [1,2,3,4]
 &lt;h2 id=&#34;内嵌函数&#34;&gt;&lt;em&gt;内嵌函数&lt;/em&gt;&lt;/h2&gt;
 &lt;p&gt;可以在函数内部定义函数，内部函数不能在外部函数以外的地方调用．&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;def outer(*args, **kwargs):
-    expression
+    var = &#39;value&#39; # 外部函数的变量
     def inner(arg): # 内嵌函数的参数不能是外部函数的参数．内部函数必须完全独立．
-        expression
+        print(var) # 内嵌函数可以引用外部函数的变量
+        # var += 1 # 内嵌函数不能修改外部函数的变量
     inner(args)
+
+def outer():
+    x = 1
+    def inner():
+        nonlocal x # nonlocal关键字可以引用外部函数的变量
+        x += 1
+    inner()
+    print(x) # 2
 
 def outer(*args, **kwargs):
     filter(lambda arg: expression, sequence)

@@ -532,7 +532,7 @@ Logical lines and physical lines：
 
 
                 <time class="article-time--reading">
-                    11 minute read
+                    12 minute read
                 </time>
             </div>
         
@@ -634,12 +634,20 @@ $ chmod u+x mycode.py
 $ ./mycode.py
 </code></pre>
 <h3 id="f-string">f-string</h3>
+<p>formatted string literal. 用来在字符串中嵌入表达式。</p>
 <p>格式字符串字面值则是可在运行时求值的表达式。</p>
+<pre><code>print(f&quot;Hello, {name}!&quot;)
+</code></pre>
+<p>格式化:</p>
+<pre><code>f&quot;{price:.2f}&quot;  # 保留两位小数
+</code></pre>
 <p>!s call str()</p>
+<pre><code>f&quot;{x!s}&quot;  # 调用str()函数，等价于f&quot;{str(x)}&quot;
+</code></pre>
+<p>!r call repr()</p>
 <pre><code>f&quot;his name is {name!r}&quot;
 f&quot;his name is {repr(name)}&quot;
 </code></pre>
-<p>!r call repr()</p>
 <p>!a call ascii()</p>
 <hr>
 <h1 id="python注释"><strong>python注释</strong></h1>
@@ -662,6 +670,7 @@ global raise assert del yield with as
 and or not is in nonlocal
 False None True 
 </code></pre>
+<p>nonlocal: 在内层函数修改外层函数的局部变量</p>
 <hr>
 <h1 id="python运算符和优先级"><strong>python运算符和优先级</strong></h1>
 <p>优先级从高到底：</p>
@@ -1350,6 +1359,7 @@ except AssertionError as e:
 <h2 id="with上下文管理"><em>with上下文管理</em></h2>
 <p>CMP: context management protocol.</p>
 <p>with上下文管理仅用于支持上下文管理协议(CMP)的对象．</p>
+<p>通常用于打开文件、网络连接、数据库连接、锁等需要显式关闭或释放资源的场景。</p>
 <pre><code>with context_expr [as var]:
     with_suite
 </code></pre>
@@ -1359,9 +1369,6 @@ except AssertionError as e:
 <p>with语句块执行完毕后调用__exit__()方法，<strong>exit</strong>()有三个参数，如果没有异常都是None,否则是sys.exc_info()的三个返回值．</p>
 <p>自定义上下文管理器:</p>
 <pre><code>class CMPTest(object):
-    def __init__(self):
-        pass
-
     def __enter__(self):
         ...
         return self
@@ -1542,10 +1549,19 @@ reduce(lambda x,y: x*y, [1,2,3,4]
 <h2 id="内嵌函数"><em>内嵌函数</em></h2>
 <p>可以在函数内部定义函数，内部函数不能在外部函数以外的地方调用．</p>
 <pre><code>def outer(*args, **kwargs):
-    expression
+    var = 'value' # 外部函数的变量
     def inner(arg): # 内嵌函数的参数不能是外部函数的参数．内部函数必须完全独立．
-        expression
+        print(var) # 内嵌函数可以引用外部函数的变量
+        # var += 1 # 内嵌函数不能修改外部函数的变量
     inner(args)
+
+def outer():
+    x = 1
+    def inner():
+        nonlocal x # nonlocal关键字可以引用外部函数的变量
+        x += 1
+    inner()
+    print(x) # 2
 
 def outer(*args, **kwargs):
     filter(lambda arg: expression, sequence)

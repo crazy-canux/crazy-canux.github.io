@@ -6,7 +6,16 @@
         <description>Recent content on Morgoth</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Fri, 10 Jan 2025 09:41:39 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sat, 19 Jul 2025 11:18:44 +0800</lastBuildDate><atom:link href="https://canuxcheng.com/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>AI_MCP</title>
+        <link>https://canuxcheng.com/post/ai_mcp/</link>
+        <pubDate>Sat, 19 Jul 2025 10:50:06 +0800</pubDate>
+        
+        <guid>https://canuxcheng.com/post/ai_mcp/</guid>
+        <description>&lt;h1 id=&#34;mcp&#34;&gt;MCP&lt;/h1&gt;
+</description>
+        </item>
+        <item>
         <title>DevOps Metrics</title>
         <link>https://canuxcheng.com/post/devops_metrics/</link>
         <pubDate>Fri, 10 Jan 2025 09:41:39 +0000</pubDate>
@@ -4333,6 +4342,8 @@ spec:
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/kubernetes/kubeadm&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/kubernetes/kubeadm&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;kubeadm是k8s自带的部署集群的工具.&lt;/p&gt;
+&lt;p&gt;本机部署可以用minikube或者kind。&lt;/p&gt;
+&lt;hr&gt;
 &lt;h1 id=&#34;install&#34;&gt;Install&lt;/h1&gt;
 &lt;h2 id=&#34;准备工作&#34;&gt;准备工作&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://kubernetes.io/zh/docs/setup/production-environment/tools/kubeadm/install-kubeadm/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -4572,21 +4583,6 @@ scheduler:
 &lt;pre&gt;&lt;code&gt;apiVersion: kubelet.config.k8s.io/v1beta1
 kind: KubeletConfiguration
 cgroupDriver: systemd
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-        </item>
-        <item>
-        <title>Minikube</title>
-        <link>https://canuxcheng.com/post/k8s_minikube/</link>
-        <pubDate>Mon, 30 Dec 2019 21:47:17 +0800</pubDate>
-        
-        <guid>https://canuxcheng.com/post/k8s_minikube/</guid>
-        <description>&lt;h1 id=&#34;minikube&#34;&gt;minikube&lt;/h1&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://kubernetes.io/zh/docs/setup/learning-environment/minikube/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://kubernetes.io/zh/docs/setup/learning-environment/minikube/&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;minikube 能快速创建k8s的开发集群，支持在虚拟机上创建，也支持裸机创建.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;// 在裸机上创建：
-sudo minikube start --vm-driver=none
 &lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
@@ -6705,6 +6701,12 @@ colima start
 brew services restart colima
 sudo ln -sf /Users/canche01/.colima/default/docker.sock /var/run/docker.sock
 docker ps -a
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;有vpn下载image失败处理：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# vi ~/.colima/default/colima.yaml
+env:
+  HTTP_PROXY: http://127.0.0.1:40009
+  HTTPS_PROXY: http://127.0.0.1:40009
 &lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
@@ -19178,7 +19180,9 @@ hex(number) # 返回int/long的十六进制的字符串形式.
 
 ## 对象相关的操作
 id(object) # 返回一个对象的ID, 用内存地址作为ID来表示唯一性. 也就是对象的身份．等价is关键字.
-repr(object) # 返回object的标准字符串形式，可以通过eval()重新得到该对象．eval(repr(object)) == object.
+
+repr(object) # 返回object的标准字符串形式，可以通过eval()重新得到该对象．eval(repr(object)) == object. 给程序员看的。
+
 ascii(object) # 和repr()函数等效．
 callable(object) # 如果object是可调用的返回True, 需要实现魔法方法__call__()
 hash(object) # 返回一个对象的散列/哈希(hash)值，有相同值的对象hash值相同.可用做字典的键.
@@ -19322,7 +19326,7 @@ real 复数的实部
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;str&#34;&gt;str&lt;/h2&gt;
 &lt;p&gt;字符串是不可变类型, 是标量，是序列．&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;str(object=&#39;&#39;) # 把一个对象转换成字符串．或者返回一个对象的可读性好的字符串表示，无法用语eval()求值．
+&lt;pre&gt;&lt;code&gt;str(object=&#39;&#39;) # 把一个对象转换成字符串．或者返回一个对象的可读性好的字符串表示，无法用语eval()求值．给用户看的。
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;内置方法：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;capitalize() # 字符串首字母大写, 返回新的字符串
@@ -19518,10 +19522,30 @@ itemsize
 &lt;hr&gt;
 &lt;p&gt;迭代器/生成器类&lt;/p&gt;
 &lt;h2 id=&#34;enumerate&#34;&gt;enumerate&lt;/h2&gt;
+&lt;p&gt;返回一个迭代器，迭代器的元素是iterable中的元素和索引组成的元组。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;enumerate(iterable, start=0)
+ennumerate([&amp;quot;a&amp;quot;, &amp;quot;b&amp;quot;, &amp;quot;c&amp;quot;]) # 返回迭代器，元素是(0, &amp;quot;a&amp;quot;), (1, &amp;quot;b&amp;quot;), (2, &amp;quot;c&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;reversed&#34;&gt;reversed&lt;/h2&gt;
+&lt;p&gt;返回一个迭代器，迭代器的元素是iterable中的元素从后往前的顺序。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;reversed(iterable)
+reversed(&amp;quot;abc&amp;quot;) # 返回迭代器，元素是&amp;quot;c&amp;quot;, &amp;quot;b&amp;quot;, &amp;quot;a&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;map&#34;&gt;map&lt;/h2&gt;
+&lt;p&gt;按顺序依次执行函数function(iterable)中的每个元素，返回一个迭代器。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;map(function, iterable, ...)
+map(lambda x: x**2, [1, 2, 3]) # 返回迭代器，元素是1, 4, 9
+&lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;filter&#34;&gt;filter&lt;/h2&gt;
+&lt;p&gt;返回一个迭代器，迭代器的元素是iterable中满足function(x)为True的元素。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;filter(function, iterable)
+filter(lambda x: x &amp;gt; 0, [-1, 0, 1, 2]) # 返回迭代器，元素是1, 2
+&lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;zip&#34;&gt;zip&lt;/h2&gt;
+&lt;p&gt;返回一个迭代器，迭代器的元素是iterable中每个元素的元组。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;zip(iterable1, iterable2, ...)
+zip([1, 2, 3], [&amp;quot;a&amp;quot;, &amp;quot;b&amp;quot;, &amp;quot;c&amp;quot;]) # 返回迭代器，元素是(1, &amp;quot;a&amp;quot;), (2, &amp;quot;b&amp;quot;), (3, &amp;quot;c&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;classmethod&#34;&gt;classmethod&lt;/h2&gt;
 &lt;h2 id=&#34;staticmethod&#34;&gt;staticmethod&lt;/h2&gt;
@@ -19550,12 +19574,18 @@ itemsize
 &lt;p&gt;线程：线程（有时被称为轻量级进程）跟进程有些相似，不同的是，所有的线程运行在同一个进程中，共享相同的运行环境，同一个进程的线程之间共享全局变量。&lt;/p&gt;
 &lt;p&gt;IPC: 进程/线程之间交换信息叫进程间通信．&lt;/p&gt;
 &lt;p&gt;python的多线程由于GIL只有并发没有并行，无论有多少cpu,一次只能有一个python解释器(线程)执行.一次只能执行一个线程.一次只能用到一个逻辑cpu.&lt;/p&gt;
-&lt;p&gt;IO密集型任务消耗IO,但是不消耗CPU,cpu切换消耗少,适合用多线程.&lt;/p&gt;
+&lt;p&gt;IO密集型任务消耗IO,但是不消耗CPU,cpu切换消耗少,适合用多线程.（线程等待IO会释放GIL）。&lt;/p&gt;
 &lt;p&gt;python的多进程可以并行,每个进程启动一个解释器进程.&lt;/p&gt;
 &lt;p&gt;多进程开销大，消耗内存.&lt;/p&gt;
-&lt;p&gt;计算密集型消耗cpu,任务个数不超过cpu个数．适合用多进程，把每个cpu跑满.&lt;/p&gt;
-&lt;p&gt;io密集 =》 用异步asyncio或者多线程
+&lt;p&gt;计算密集型消耗cpu,任务个数不超过cpu个数．适合用多进程，把每个cpu跑满. 如果用多线程是无效的，会串行执行，浪费多核性能。&lt;/p&gt;
+&lt;p&gt;io密集: 用异步asyncio或者多线程, 网络请求，文件读写，数据库查询。
 计算密集 =》 用多进程&lt;/p&gt;
+&lt;p&gt;绕过GIL的方式有：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;使用C/C++编写扩展模块(numpy, pandas等)&lt;/li&gt;
+&lt;li&gt;使用Cython编译器&lt;/li&gt;
+&lt;li&gt;使用多进程 (multiprocessing)&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h2 id=&#34;multiprocessing&#34;&gt;multiprocessing&lt;/h2&gt;
 &lt;p&gt;多进程就是同时执行多个任务.&lt;/p&gt;
 &lt;p&gt;python可以通过多进程取代多线程，从而绕过多线程的GIL.&lt;/p&gt;
@@ -19564,24 +19594,20 @@ itemsize
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;classes:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;# multiprocessing.Process
-proc = Process(group=None, target=None, name=None, args=(), kwargs={})
+Process(target=func, args=(arg1, arg2, ...), kwargs={&#39;key&#39;: value})
 # methods:
-run(self)
+run(self) # 子类重写用来定义进程的功能的函数, 通常通过这种方式来创建进程
 start(self) # 启动一个进程
 join(self, timeout=None) # 父进程等待子进程结束
-is_alive()
-terminate(self)
-# data descriptor:
-authkey
-daemon # proc.daemon = True 后台运行
-exitcode
-ident
-name
-pid
+is_alive() # 返回进程是否还在运行的boolean
+exit(self) # 退出进程
+terminate(self) # 终止进程
+exitcode() # 返回进程的退出码
+name() # 返回进程的名字
+pid() # 返回进程的pid
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;functions:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;# 普通函数
-active_children()
+&lt;pre&gt;&lt;code&gt;active_children()
 allow_connection_pickling()
 cpu_count() # 获取cpu个数
 current_process()
@@ -19589,16 +19615,17 @@ freeze_support()
 get_logger()
 log_to_stderr(level=None)
 
-Pool(processes=None, initializer=None, initargs=(), maxtasksperchild=None)
-pool = Pool()
+Pool(processes=None, initializer=None, initargs=(), maxtasksperchild=None) # 返回一个进程池对象, processes默认是cpu个数.
+with Pool(processes=4) as pool:
+    pool.map(func, iterable) # 阻塞，返回所有结果
 # func只能是顶层函数，不能是方法和内部函数.
 # 进程池，可以控制进程数量,processes 默认是cpu个数(cpu_count())
 # 非阻塞，维持进程总数，当一个进程结束会添加新的进程到pool,主进程不阻塞，同步运行，pool中的进程并发执行.
 apply_async(func, args=(), kwargs={}, callback=None) # 非阻塞,
 map_async(func, iterable, chunksize=None, callback=None) # 非阻塞
 # 阻塞，维持进程总数，当一个进程结束会添加新的进程到pool，主进程阻塞，pool中的进程一个一个执行.
-apply(func, args=(), kwargs={}) # 阻塞
-map(func, itreable, chunksize=None) # 阻塞
+apply(func, args=(), kwargs={}) # 阻塞，执行一次函数
+map(func, itreable, chunksize=None) # 阻塞, 返回所有结果
 terminate() # 终止所有任务
 close() # 关闭pool,不接受新任务
 join() # 等待pool中子进程结束，要在close/terminate之后调用.
@@ -19617,7 +19644,6 @@ q = Queue()
 
 # IPC: 共享内存
 Manager()
-list, dict, Namespace, Lock, RLock, Semaphore, BoundedSemaphore, Condition, Event, Queue, Value and Array
 
 Array(typecode_or_type, size_or_initializer, **kwds)
 
@@ -19638,15 +19664,13 @@ Semaphore(value=1)
 # 同步：有界信号量
 BoundedSemaphore(value=1)
 
-# 同步： 锁
-Lock()
+# 同步： 普通锁，一个线程只能acquire一次，否则死锁。
+Lock(*args, **kwargs) # 返回一个Lock对象, 用于线程间同步.
+with Lock() as lock:
+    ......
 
-# 同步: 锁
-RLock()
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;data:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;SUBDEBUG = 5
-SUBWARNING = 25
+# 同步: 重入锁，允许同一线程多次获取锁和释放锁。
+RLock(*args, **kwargs) # 返回一个RLock对象, 可重入锁, 允许同一线程多次获取锁.
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;threading&#34;&gt;threading&lt;/h2&gt;
 &lt;p&gt;多线程就是把单个任务分成不同部分运行.&lt;/p&gt;
@@ -19655,9 +19679,9 @@ SUBWARNING = 25
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;classes:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;# threading.Thread
-t = Thread(group=None, target=None, name=None, args=(), kwargs=None, verbose=None)
-threads.append(t)
+Thread(group=None, target=None, name=None, args=(), kwargs=None, verbose=None)
 # methods:
+append(self, *args, **kwargs) # 添加线程到线程组
 run(self) # 子类重写用来定义线程的功能的函数, 通常通过这种方式来创建线程
 start(self) # 开始执行线程
 join(self, timeout=None) # 主程序挂起，直到线程结束,再继续运行主程序
@@ -19724,13 +19748,11 @@ RLock(*args, **kwargs)
 &lt;pre&gt;&lt;code&gt;import subprocess
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;classes:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;Popen(args,
-bufsize=0, executable=None, stdin=None, stdout=None, stderr=None,
-preexec_fn=None, close_fds=False, shell=False,cwd=None,
-env=None, universal_newlines=False,startupinfo=None, creationflags=0)
-# p = Popen(shlex.split(command), stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-# 如果命令和参数是字符串形式，需要参数shell=True
-# p = Popen(command_string, shell=True, ...)
+&lt;pre&gt;&lt;code&gt;Popen(args, bufsize=0, executable=None, stdin=None, stdout=None, stderr=None, preexec_fn=None, close_fds=False, shell=False, cwd=None, env=None, universal_newlines=False, startupinfo=None, creationflags=0) 
+# 创建一个子进程，args可以是字符串或者列表形式.
+# args: 命令和参数列表, 可以是字符串或者列表形式.
+# 如果是字符串形式，shell=True, 否则是列表形式.
+# 如果是列表形式，shell=False, args[0]是可执行文件的路径，args[1:]是参数列表.
 
 # 非交互执行sudo命令, 或者使用sh/pexpect等第三方库
 Popen([&#39;sudo&#39;, &#39;-S&#39;] + shlex.split(command), stdin=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=True, ...)
@@ -23655,12 +23677,20 @@ $ chmod u+x mycode.py
 $ ./mycode.py
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h3 id=&#34;f-string&#34;&gt;f-string&lt;/h3&gt;
+&lt;p&gt;formatted string literal. 用来在字符串中嵌入表达式。&lt;/p&gt;
 &lt;p&gt;格式字符串字面值则是可在运行时求值的表达式。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;print(f&amp;quot;Hello, {name}!&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;格式化:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;f&amp;quot;{price:.2f}&amp;quot;  # 保留两位小数
+&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;!s call str()&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;f&amp;quot;{x!s}&amp;quot;  # 调用str()函数，等价于f&amp;quot;{str(x)}&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;!r call repr()&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;f&amp;quot;his name is {name!r}&amp;quot;
 f&amp;quot;his name is {repr(name)}&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;!r call repr()&lt;/p&gt;
 &lt;p&gt;!a call ascii()&lt;/p&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;python注释&#34;&gt;&lt;strong&gt;python注释&lt;/strong&gt;&lt;/h1&gt;
@@ -23683,6 +23713,7 @@ global raise assert del yield with as
 and or not is in nonlocal
 False None True 
 &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;nonlocal: 在内层函数修改外层函数的局部变量&lt;/p&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;python运算符和优先级&#34;&gt;&lt;strong&gt;python运算符和优先级&lt;/strong&gt;&lt;/h1&gt;
 &lt;p&gt;优先级从高到底：&lt;/p&gt;
@@ -24371,6 +24402,7 @@ except AssertionError as e:
 &lt;h2 id=&#34;with上下文管理&#34;&gt;&lt;em&gt;with上下文管理&lt;/em&gt;&lt;/h2&gt;
 &lt;p&gt;CMP: context management protocol.&lt;/p&gt;
 &lt;p&gt;with上下文管理仅用于支持上下文管理协议(CMP)的对象．&lt;/p&gt;
+&lt;p&gt;通常用于打开文件、网络连接、数据库连接、锁等需要显式关闭或释放资源的场景。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;with context_expr [as var]:
     with_suite
 &lt;/code&gt;&lt;/pre&gt;
@@ -24380,9 +24412,6 @@ except AssertionError as e:
 &lt;p&gt;with语句块执行完毕后调用__exit__()方法，&lt;strong&gt;exit&lt;/strong&gt;()有三个参数，如果没有异常都是None,否则是sys.exc_info()的三个返回值．&lt;/p&gt;
 &lt;p&gt;自定义上下文管理器:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;class CMPTest(object):
-    def __init__(self):
-        pass
-
     def __enter__(self):
         ...
         return self
@@ -24563,10 +24592,19 @@ reduce(lambda x,y: x*y, [1,2,3,4]
 &lt;h2 id=&#34;内嵌函数&#34;&gt;&lt;em&gt;内嵌函数&lt;/em&gt;&lt;/h2&gt;
 &lt;p&gt;可以在函数内部定义函数，内部函数不能在外部函数以外的地方调用．&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;def outer(*args, **kwargs):
-    expression
+    var = &#39;value&#39; # 外部函数的变量
     def inner(arg): # 内嵌函数的参数不能是外部函数的参数．内部函数必须完全独立．
-        expression
+        print(var) # 内嵌函数可以引用外部函数的变量
+        # var += 1 # 内嵌函数不能修改外部函数的变量
     inner(args)
+
+def outer():
+    x = 1
+    def inner():
+        nonlocal x # nonlocal关键字可以引用外部函数的变量
+        x += 1
+    inner()
+    print(x) # 2
 
 def outer(*args, **kwargs):
     filter(lambda arg: expression, sequence)
