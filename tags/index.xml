@@ -6,7 +6,15 @@
         <description>Recent content in Tags on Morgoth</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Fri, 10 Jan 2025 09:41:39 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sat, 19 Jul 2025 10:44:35 +0800</lastBuildDate><atom:link href="https://canuxcheng.com/tags/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>AI</title>
+        <link>https://canuxcheng.com/tags/ai/</link>
+        <pubDate>Sat, 19 Jul 2025 10:44:35 +0800</pubDate>
+        
+        <guid>https://canuxcheng.com/tags/ai/</guid>
+        <description></description>
+        </item>
+        <item>
         <title>Devops</title>
         <link>https://canuxcheng.com/tags/devops/</link>
         <pubDate>Fri, 10 Jan 2025 09:41:39 +0000</pubDate>

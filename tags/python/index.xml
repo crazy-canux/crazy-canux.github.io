@@ -1386,6 +1386,12 @@ return return_value
 &lt;pre&gt;&lt;code&gt;def function_test(position_args, keyword_args, *args, **kwargs):
     pass
 &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;位置参数强制分隔符：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;def function(pos1, pos2, /, pos3, *, kw1, kw2):
+    pass
+# /表示前面的pos1和pos2是位置参数，不能使用关键字参数传递．
+# *表示后面的kw1和kw2是关键字参数，不能使用位置参数传递．
+&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;函数的形参：&lt;/p&gt;
 &lt;p&gt;位置参数，在函数调用时根据定义的参数的顺序来传递．&lt;/p&gt;
 &lt;p&gt;默认参数，在函数调用时如果没有传值则使用定义的默认值．&lt;/p&gt;
@@ -1400,7 +1406,19 @@ func_test(arg2=2, arg1=1) # 关键字传参
 &lt;p&gt;可变长度参数:&lt;/p&gt;
 &lt;p&gt;当函数参数不确定时，可以使用可变长度参数．&lt;/p&gt;
 &lt;p&gt;一个星号表示一个非关键字参数组成的元组(可以是其它序列，会自动转换成元组)．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;*args # args是一个元组
+call_me(1,2,3)
+a = (1, 2, 3)
+call_me(*a) # 传递参数要用* 解包。
+a = [1, 2, 3]
+call_me(*a) 
+&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;两个星号表示一个关键字参数组成的字典．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;**kwargs # kwargs是一个字典
+call_me(key1=&#39;val1&#39;, key2=&#39;val2&#39;)
+a = {&#39;key1&#39;: &#39;val1&#39;, &#39;key2&#39;: &#39;val2&#39;}
+call_me(**a) # 传递参数要用** 解包。
+&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;函数定义时可变长度参数必须在位置参数和默认参数后面．而且关键字变长参数应该在最后.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;def func_test(position, default=&#39;value&#39;, *args, **kwargs):
     pass

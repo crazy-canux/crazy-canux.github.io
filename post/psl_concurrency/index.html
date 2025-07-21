@@ -694,20 +694,20 @@ STDOUT = -2
 <h2 id="asyncio">asyncio</h2>
 <p>asyncio是基于event loop（事件循环）的异步编程框架，并发运行协程、执行网络IO和IPC，控制子进程，通过队列实现分布式任务，同步并发代码。</p>
 <p>asyncio 往往是构建 IO 密集型和高层级 结构化 网络代码的最佳选择。</p>
-<p>coroutine（协程）是一个特殊的函数，可以暂停和恢复执行，允许在等待IO操作时不阻塞主线程。
-coroutine function: &ldquo;async def&rdquo; 定义协程函数，返回协程对象。
+<p>coroutine（协程）是一个特殊的函数，可以暂停和恢复执行，允许在等待IO操作时不阻塞主线程。在单线程内运行，通过事件循环调度，非抢占式，内存消耗小，切换快，不受GIL限制。</p>
+<p>coroutine function: &ldquo;async def&rdquo; 定义协程函数，返回协程对象。
 coroutine object: 表示一个没有执行的协程，需要变成一个task，并且进入event loop才能执行。</p>
 <pre><code>import asyncio
 </code></pre>
-<p>await后如果是一个coroutine object：</p>
+<p>await后如果是一个coroutine：</p>
 <ol>
-<li>将coroutine object变成一个task 并且放入event loop。</li>
-<li>当前task需要 等待 await后面的coroutine执行完成后才继续。</li>
-<li>将当前task yield出去，让event loop去调度其他task执行。</li>
+<li>隐士创建task（不会调用create_task），只运行当前协程。</li>
+<li>顺序执行</li>
 </ol>
-<p>await后如果是一个Task：</p>
+<p>await后如果是一个task：</p>
 <ol>
-<li>等待当前Task执行完成。</li>
+<li>直接注册到event loop。</li>
+<li>并发执行</li>
 </ol>
 <p>classes:</p>
 <pre><code># asyncio.Runner
@@ -715,12 +715,14 @@ runner = Runner(loop=None, debug=False) # 创建一个Runner对象，用于运�
 with asyncio.Runner() as runner:
     runner.run(coro) # 运行一个协程，返回协程的结果。
 
-# asyncio.Future, 也是一个coroutine object。
-future = Future(loop=None) # 创建一个Future对象, 用于表示异步操作
-
-# asyncio.Task，
-task = Task(coro, *, loop=None)
-create_task(coro, *, loop=None) # 创建一个任务，返回Task对象, 协程马上运行。
+# asyncio.Task
+Task(coro, *, loop=None) # 将coroutine变成一个task，并且注册到event loop，返回Task对象。
+# methods:
+cancel() # 取消任务，抛出CancelledError异常。
+done() # 返回任务是否完成的boolean。
+result() # 返回任务的结果，如果任务未完成则抛出异常。
+exception() # 返回任务的异常，如果任务未完成则抛出异常。
+add_done_callback(callback) # 添加一个回调函数，当任务完成时调用。  
 
 # asyncio.TaskGroup, 批量创建task。
 task_group = TaskGroup(*, loop=None)
@@ -729,13 +731,15 @@ async with TaskGroup() as tg:
     tg2 = tg.create_task(coro2)
 </code></pre>
 <p>functions:</p>
-<pre><code>run(coro, *, debug=False) #  是运行协程的唯一入口函数，会把coroutine object变成task放入event loop，然后执行task。
+<pre><code>run(coro, *, debug=False) #  是运行协程的唯一入口函数，调用顶层协程函数，返回协程的结果。
 asyncio.run(main())
 
 create_task(coro, *, loop=None) # 将coroutine变成一个task，并且注册到event loop，返回Task对象
 create_task_group(*, loop=None) # 创建一个任务组，返回TaskGroup对象
 
-gather(*aws, return_exceptions=False)  # 并发执行aws中的可等待对象。返回一个列表，顺序与aws中一致。gather会自动把coroutine变成task。
+gather(*aws, return_exceptions=False)  # 并发执行aws中的可等待对象。返回一个列表，顺序与aws中一致。gather会自动把coroutine变成task。无需手动调用create_task。
+# return_exceptions=False时，如果有异常发生，抛出异常。默认值。
+# return_exceptions=True时，如果有异常发生，返回异常对象而不是抛出异常。
 await asyncio.gather(coro1, coro2, coro3)
 
 sleep(delay, result=None, *, loop=None) # 异步睡眠，返回一个Future对象
@@ -746,7 +750,10 @@ async with asyncio.timeout(10):
     await my_task()
 
 wait(fs, *, loop=None, timeout=None, return_when=ALL_COMPLETED) # 等待一组Future对象完成，返回一个包含已完成和未完成Future对象的元组。
-wait_for(aws, timeout=None, *, loop=None) # 等待一个可等待对象完成，返回结果。
+done, pending = await asyncio.wait(fs, timeout=10, return_when=asyncio.ALL_COMPLETED)
+
+wait_for(aws, timeout=None, *, loop=None) # 等待一个可等待对象完成，返回结果。超时后抛出asyncio.TimeoutError异常。
+await asyncio.wait_for(coro(), timeout=10) # 等待coro在10秒内完成。
 
 shield(fut, *, loop=None) # 保护一个Future对象，使其不会被取消，返回一个Future对象。
 
@@ -757,6 +764,28 @@ async for fut in as_completed(fs):
 current_task(loop=None) # 返回当前正在运行的Task对象，如果没有正在运行的Task，则返回None。
 all_tasks(loop=None) # 返回当前事件循环中的所有Task对象。
 iscoroutine(obj) # 判断obj是否是一个协程对象
+
+get_event_loop() # 返回当前线程的事件循环对象，如果没有则创建一个新的事件循环对象。
+set_event_loop(loop) # 设置当前线程的事件循环对象。
+new_event_loop() # 创建一个新的事件循环对象。
+get_running_loop() # 返回当前正在运行的事件循环对象，如果没有则抛出RuntimeError异常。
+</code></pre>
+<p>协程间通信：</p>
+<pre><code># asyncio.Queue
+queue = asyncio.Queue(maxsize=0, *, loop=None) # 创建一个异步队列，maxsize=0表示无限制。
+await queue.put(item) # 向队列中添加一个item，阻塞直到队列有空间。
+item = await queue.get() # 从队列中获取一个item，阻塞直到队列有数据。
+item = queue.get_nowait() # 非阻塞获取队列中的一个item，如果队列为空则抛出asyncio.QueueEmpty异常。
+queue.task_done() # 标记一个任务已完成，通常在get之后调用。
+await queue.join() # 阻塞直到所有任务都完成。
+</code></pre>
+<p>同步原语相关：</p>
+<pre><code>Lock
+Event
+Condition
+Semaphore
+BoundedSemaphore
+Barrier
 </code></pre>
 <h2 id="socket">socket</h2>
 <p>socket协议的标准库</p>

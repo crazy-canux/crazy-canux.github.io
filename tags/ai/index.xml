@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+    <channel>
+        <title>AI on Morgoth</title>
+        <link>https://canuxcheng.com/tags/ai/</link>
+        <description>Recent content in AI on Morgoth</description>
+        <generator>Hugo -- gohugo.io</generator>
+        <language>en-us</language>
+        <lastBuildDate>Sat, 19 Jul 2025 10:44:35 +0800</lastBuildDate><atom:link href="https://canuxcheng.com/tags/ai/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>AI</title>
+        <link>https://canuxcheng.com/post/ai/</link>
+        <pubDate>Sat, 19 Jul 2025 10:44:35 +0800</pubDate>
+        
+        <guid>https://canuxcheng.com/post/ai/</guid>
+        <description>&lt;h1 id=&#34;ai&#34;&gt;AI&lt;/h1&gt;
+&lt;p&gt;All in AI.&lt;/p&gt;
+&lt;h2 id=&#34;resources&#34;&gt;resources&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://huggingface.co/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://huggingface.co/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://paperswithcode.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://paperswithcode.com/&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;self-hosted-ai&#34;&gt;Self-Hosted AI&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/mudler/LocalAI&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/mudler/LocalAI&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/ollama/ollama&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/ollama/ollama&lt;/a&gt;&lt;/p&gt;
+</description>
+        </item>
+        
+    </channel>
+</rss>
