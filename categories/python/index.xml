@@ -204,6 +204,8 @@ real
 &lt;p&gt;内置类类型int的内置方法和数据描述符都是继承自基类int.&lt;/p&gt;
 &lt;h2 id=&#34;float&#34;&gt;float&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;float(x)
+float(&#39;-inf&#39;) # 负无穷大
+float(&#39;inf&#39;) # 正无穷大
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;内置方法:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;as_integer_ratio() # 返回一个整数对，相除的结果是该浮点数
@@ -481,8 +483,8 @@ zip([1, 2, 3], [&amp;quot;a&amp;quot;, &amp;quot;b&amp;quot;, &amp;quot;c&amp;qu
 &lt;p&gt;python的多进程可以并行,每个进程启动一个解释器进程.&lt;/p&gt;
 &lt;p&gt;多进程开销大，消耗内存.&lt;/p&gt;
 &lt;p&gt;计算密集型消耗cpu,任务个数不超过cpu个数．适合用多进程，把每个cpu跑满. 如果用多线程是无效的，会串行执行，浪费多核性能。&lt;/p&gt;
-&lt;p&gt;io密集: 用异步asyncio或者多线程, 网络请求，文件读写，数据库查询。
-计算密集 =》 用多进程&lt;/p&gt;
+&lt;p&gt;io密集: 用异步asyncio(协程)或者多线程, 网络请求，文件读写，数据库查询。
+计算密集: 用多进程&lt;/p&gt;
 &lt;p&gt;绕过GIL的方式有：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;使用C/C++编写扩展模块(numpy, pandas等)&lt;/li&gt;
@@ -700,7 +702,73 @@ STDOUT = -2
 &lt;h2 id=&#34;contextvars&#34;&gt;contextvars&lt;/h2&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;inter-process-communication-and-networking&#34;&gt;Inter Process Communication and Networking&lt;/h1&gt;
-&lt;p&gt;IPC&lt;/p&gt;
+&lt;h2 id=&#34;asyncio&#34;&gt;asyncio&lt;/h2&gt;
+&lt;p&gt;asyncio是基于event loop（事件循环）的异步编程框架，并发运行协程、执行网络IO和IPC，控制子进程，通过队列实现分布式任务，同步并发代码。&lt;/p&gt;
+&lt;p&gt;asyncio 往往是构建 IO 密集型和高层级 结构化 网络代码的最佳选择。&lt;/p&gt;
+&lt;p&gt;coroutine（协程）是一个特殊的函数，可以暂停和恢复执行，允许在等待IO操作时不阻塞主线程。
+coroutine function: &amp;ldquo;async def&amp;rdquo; 定义协程函数，返回协程对象。
+coroutine object: 表示一个没有执行的协程，需要变成一个task，并且进入event loop才能执行。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import asyncio
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;await后如果是一个coroutine object：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;将coroutine object变成一个task 并且放入event loop。&lt;/li&gt;
+&lt;li&gt;当前task需要 等待 await后面的coroutine执行完成后才继续。&lt;/li&gt;
+&lt;li&gt;将当前task yield出去，让event loop去调度其他task执行。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;await后如果是一个Task：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;等待当前Task执行完成。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;classes:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# asyncio.Runner
+runner = Runner(loop=None, debug=False) # 创建一个Runner对象，用于运行协程。
+with asyncio.Runner() as runner:
+    runner.run(coro) # 运行一个协程，返回协程的结果。
+
+# asyncio.Future, 也是一个coroutine object。
+future = Future(loop=None) # 创建一个Future对象, 用于表示异步操作
+
+# asyncio.Task，
+task = Task(coro, *, loop=None)
+create_task(coro, *, loop=None) # 创建一个任务，返回Task对象, 协程马上运行。
+
+# asyncio.TaskGroup, 批量创建task。
+task_group = TaskGroup(*, loop=None)
+async with TaskGroup() as tg:
+    tg1 = tg.create_task(coro1)
+    tg2 = tg.create_task(coro2)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;functions:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;run(coro, *, debug=False) #  是运行协程的唯一入口函数，会把coroutine object变成task放入event loop，然后执行task。
+asyncio.run(main())
+
+create_task(coro, *, loop=None) # 将coroutine变成一个task，并且注册到event loop，返回Task对象
+create_task_group(*, loop=None) # 创建一个任务组，返回TaskGroup对象
+
+gather(*aws, return_exceptions=False)  # 并发执行aws中的可等待对象。返回一个列表，顺序与aws中一致。gather会自动把coroutine变成task。
+await asyncio.gather(coro1, coro2, coro3)
+
+sleep(delay, result=None, *, loop=None) # 异步睡眠，返回一个Future对象
+await asyncio.sleep(1) # 等待1秒钟
+
+timeout(delay, *, loop=None) # 返回一个Future对象，延迟指定时间后完成
+async with asyncio.timeout(10):
+    await my_task()
+
+wait(fs, *, loop=None, timeout=None, return_when=ALL_COMPLETED) # 等待一组Future对象完成，返回一个包含已完成和未完成Future对象的元组。
+wait_for(aws, timeout=None, *, loop=None) # 等待一个可等待对象完成，返回结果。
+
+shield(fut, *, loop=None) # 保护一个Future对象，使其不会被取消，返回一个Future对象。
+
+as_completed(fs, *, loop=None) # 返回一个迭代器，迭代器会按完成的顺序返回Future对象。
+async for fut in as_completed(fs):
+    result = await fut # 等待每个Future对象完成，按完成顺序返回结果。
+
+current_task(loop=None) # 返回当前正在运行的Task对象，如果没有正在运行的Task，则返回None。
+all_tasks(loop=None) # 返回当前事件循环中的所有Task对象。
+iscoroutine(obj) # 判断obj是否是一个协程对象
+&lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;socket&#34;&gt;socket&lt;/h2&gt;
 &lt;p&gt;socket协议的标准库&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;import socket
@@ -787,50 +855,16 @@ ntohs(integer)
 setdefaulttimeout(timeout)
 socketpair([family[, type[, proto]]]) -&amp;gt; (socket object, socket object)
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;asyncio&#34;&gt;asyncio&lt;/h2&gt;
-&lt;p&gt;核心异步事件循环库，提供协程、事件循环、任务、Future、队列等核心机制。&lt;/p&gt;
-&lt;p&gt;asyncio 往往是构建 IO 密集型和高层级 结构化 网络代码的最佳选择。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;import asyncio
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;async/await:&lt;/p&gt;
-&lt;p&gt;async def 定义一个协程函数，await 用来等待协程的执行结果。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;async def say():
-    print(&amp;quot;Hello&amp;quot;)
-    await asyncio.sleep(1)
-    print(&amp;quot;World&amp;quot;)
-asyncio.run(say())
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;classes:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;# asyncio.Runner
-runner = Runner()
-asyncio.run(runner.run(coro, *, debug=False)) # 运行一个协程，返回协程结果
-
-# asyncio.Task
-task = Task(coro, *, loop=None)
-create_task(coro, *, loop=None) # 创建一个任务，返回Task对象, 协程马上运行。
-
-# asyncio.TaskGroup
-task_group = TaskGroup(*, loop=None)
-
-# asyncio.Queue
-queue = Queue(maxsize=0, *, loop=None)
-# methods:
-put(item) # 放入一个元素到队列
-get() # 从队列中获取一个元素
-task_done() # 标记一个任务完成
-join() # 阻塞直到队列中的所有任务都完成
-empty() # 返回队列是否为空
-full() # 返回队列是否已满
-qsize() # 返回队列的大小
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;functions:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;gather(*coros, loop=None) 
-sleep(delay, result=None, *, loop=None) # 异步睡眠，返回一个Future对象
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;ssl&#34;&gt;ssl&lt;/h2&gt;
 &lt;h2 id=&#34;select&#34;&gt;select&lt;/h2&gt;
+&lt;p&gt;等待IO事件发生，返回就绪的文件描述符列表。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import select
+&lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;selectors&#34;&gt;selectors&lt;/h2&gt;
+&lt;p&gt;selectors模块提供了更高级的IO多路复用接口。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import selectors
+&lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;signal&#34;&gt;signal&lt;/h2&gt;
+&lt;h2 id=&#34;ssl&#34;&gt;ssl&lt;/h2&gt;
 &lt;h2 id=&#34;mmap&#34;&gt;mmap&lt;/h2&gt;
 &lt;hr&gt;
 </description>

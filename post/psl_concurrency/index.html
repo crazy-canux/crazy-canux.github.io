@@ -9,7 +9,7 @@ IO密集型任务消耗IO,但是不消耗CPU,cpu切换消耗少,适合用多线�
 python的多进程可以并行,每个进程启动一个解释器进程.
 多进程开销大，消耗内存.
 计算密集型消耗cpu,任务个数不超过cpu个数．适合用多进程，把每个cpu跑满. 如果用多线程是无效的，会串行执行，浪费多核性能。
-io密集: 用异步asyncio或者多线程, 网络请求，文件读写，数据库查询。 计算密集 =》 用多进程
+io密集: 用异步asyncio(协程)或者多线程, 网络请求，文件读写，数据库查询。 计算密集: 用多进程
 绕过GIL的方式有：
 使用C/C&#43;&#43;编写扩展模块(numpy, pandas等) 使用Cython编译器 使用多进程 (multiprocessing) multiprocessing 多进程就是同时执行多个任务.
 python可以通过多进程取代多线程，从而绕过多线程的GIL.
@@ -30,7 +30,7 @@ IO密集型任务消耗IO,但是不消耗CPU,cpu切换消耗少,适合用多线�
 python的多进程可以并行,每个进程启动一个解释器进程.
 多进程开销大，消耗内存.
 计算密集型消耗cpu,任务个数不超过cpu个数．适合用多进程，把每个cpu跑满. 如果用多线程是无效的，会串行执行，浪费多核性能。
-io密集: 用异步asyncio或者多线程, 网络请求，文件读写，数据库查询。 计算密集 =》 用多进程
+io密集: 用异步asyncio(协程)或者多线程, 网络请求，文件读写，数据库查询。 计算密集: 用多进程
 绕过GIL的方式有：
 使用C/C&#43;&#43;编写扩展模块(numpy, pandas等) 使用Cython编译器 使用多进程 (multiprocessing) multiprocessing 多进程就是同时执行多个任务.
 python可以通过多进程取代多线程，从而绕过多线程的GIL.
@@ -50,7 +50,7 @@ IO密集型任务消耗IO,但是不消耗CPU,cpu切换消耗少,适合用多线�
 python的多进程可以并行,每个进程启动一个解释器进程.
 多进程开销大，消耗内存.
 计算密集型消耗cpu,任务个数不超过cpu个数．适合用多进程，把每个cpu跑满. 如果用多线程是无效的，会串行执行，浪费多核性能。
-io密集: 用异步asyncio或者多线程, 网络请求，文件读写，数据库查询。 计算密集 =》 用多进程
+io密集: 用异步asyncio(协程)或者多线程, 网络请求，文件读写，数据库查询。 计算密集: 用多进程
 绕过GIL的方式有：
 使用C/C&#43;&#43;编写扩展模块(numpy, pandas等) 使用Cython编译器 使用多进程 (multiprocessing) multiprocessing 多进程就是同时执行多个任务.
 python可以通过多进程取代多线程，从而绕过多线程的GIL.
@@ -377,12 +377,12 @@ import multiprocessing classes:
   </ul>
 
   <ul>
-    <li><a href="#socket">socket</a></li>
     <li><a href="#asyncio">asyncio</a></li>
-    <li><a href="#ssl">ssl</a></li>
+    <li><a href="#socket">socket</a></li>
     <li><a href="#select">select</a></li>
     <li><a href="#selectors">selectors</a></li>
     <li><a href="#signal">signal</a></li>
+    <li><a href="#ssl">ssl</a></li>
     <li><a href="#mmap">mmap</a></li>
   </ul>
 </nav>
@@ -448,7 +448,7 @@ import multiprocessing classes:
 
 
                 <time class="article-time--reading">
-                    4 minute read
+                    5 minute read
                 </time>
             </div>
         
@@ -472,8 +472,8 @@ import multiprocessing classes:
 <p>python的多进程可以并行,每个进程启动一个解释器进程.</p>
 <p>多进程开销大，消耗内存.</p>
 <p>计算密集型消耗cpu,任务个数不超过cpu个数．适合用多进程，把每个cpu跑满. 如果用多线程是无效的，会串行执行，浪费多核性能。</p>
-<p>io密集: 用异步asyncio或者多线程, 网络请求，文件读写，数据库查询。
-计算密集 =》 用多进程</p>
+<p>io密集: 用异步asyncio(协程)或者多线程, 网络请求，文件读写，数据库查询。
+计算密集: 用多进程</p>
 <p>绕过GIL的方式有：</p>
 <ul>
 <li>使用C/C++编写扩展模块(numpy, pandas等)</li>
@@ -691,7 +691,73 @@ STDOUT = -2
 <h2 id="contextvars">contextvars</h2>
 <hr>
 <h1 id="inter-process-communication-and-networking">Inter Process Communication and Networking</h1>
-<p>IPC</p>
+<h2 id="asyncio">asyncio</h2>
+<p>asyncio是基于event loop（事件循环）的异步编程框架，并发运行协程、执行网络IO和IPC，控制子进程，通过队列实现分布式任务，同步并发代码。</p>
+<p>asyncio 往往是构建 IO 密集型和高层级 结构化 网络代码的最佳选择。</p>
+<p>coroutine（协程）是一个特殊的函数，可以暂停和恢复执行，允许在等待IO操作时不阻塞主线程。
+coroutine function: &ldquo;async def&rdquo; 定义协程函数，返回协程对象。
+coroutine object: 表示一个没有执行的协程，需要变成一个task，并且进入event loop才能执行。</p>
+<pre><code>import asyncio
+</code></pre>
+<p>await后如果是一个coroutine object：</p>
+<ol>
+<li>将coroutine object变成一个task 并且放入event loop。</li>
+<li>当前task需要 等待 await后面的coroutine执行完成后才继续。</li>
+<li>将当前task yield出去，让event loop去调度其他task执行。</li>
+</ol>
+<p>await后如果是一个Task：</p>
+<ol>
+<li>等待当前Task执行完成。</li>
+</ol>
+<p>classes:</p>
+<pre><code># asyncio.Runner
+runner = Runner(loop=None, debug=False) # 创建一个Runner对象，用于运行协程。
+with asyncio.Runner() as runner:
+    runner.run(coro) # 运行一个协程，返回协程的结果。
+
+# asyncio.Future, 也是一个coroutine object。
+future = Future(loop=None) # 创建一个Future对象, 用于表示异步操作
+
+# asyncio.Task，
+task = Task(coro, *, loop=None)
+create_task(coro, *, loop=None) # 创建一个任务，返回Task对象, 协程马上运行。
+
+# asyncio.TaskGroup, 批量创建task。
+task_group = TaskGroup(*, loop=None)
+async with TaskGroup() as tg:
+    tg1 = tg.create_task(coro1)
+    tg2 = tg.create_task(coro2)
+</code></pre>
+<p>functions:</p>
+<pre><code>run(coro, *, debug=False) #  是运行协程的唯一入口函数，会把coroutine object变成task放入event loop，然后执行task。
+asyncio.run(main())
+
+create_task(coro, *, loop=None) # 将coroutine变成一个task，并且注册到event loop，返回Task对象
+create_task_group(*, loop=None) # 创建一个任务组，返回TaskGroup对象
+
+gather(*aws, return_exceptions=False)  # 并发执行aws中的可等待对象。返回一个列表，顺序与aws中一致。gather会自动把coroutine变成task。
+await asyncio.gather(coro1, coro2, coro3)
+
+sleep(delay, result=None, *, loop=None) # 异步睡眠，返回一个Future对象
+await asyncio.sleep(1) # 等待1秒钟
+
+timeout(delay, *, loop=None) # 返回一个Future对象，延迟指定时间后完成
+async with asyncio.timeout(10):
+    await my_task()
+
+wait(fs, *, loop=None, timeout=None, return_when=ALL_COMPLETED) # 等待一组Future对象完成，返回一个包含已完成和未完成Future对象的元组。
+wait_for(aws, timeout=None, *, loop=None) # 等待一个可等待对象完成，返回结果。
+
+shield(fut, *, loop=None) # 保护一个Future对象，使其不会被取消，返回一个Future对象。
+
+as_completed(fs, *, loop=None) # 返回一个迭代器，迭代器会按完成的顺序返回Future对象。
+async for fut in as_completed(fs):
+    result = await fut # 等待每个Future对象完成，按完成顺序返回结果。
+
+current_task(loop=None) # 返回当前正在运行的Task对象，如果没有正在运行的Task，则返回None。
+all_tasks(loop=None) # 返回当前事件循环中的所有Task对象。
+iscoroutine(obj) # 判断obj是否是一个协程对象
+</code></pre>
 <h2 id="socket">socket</h2>
 <p>socket协议的标准库</p>
 <pre><code>import socket
@@ -778,50 +844,16 @@ ntohs(integer)
 setdefaulttimeout(timeout)
 socketpair([family[, type[, proto]]]) -&gt; (socket object, socket object)
 </code></pre>
-<h2 id="asyncio">asyncio</h2>
-<p>核心异步事件循环库，提供协程、事件循环、任务、Future、队列等核心机制。</p>
-<p>asyncio 往往是构建 IO 密集型和高层级 结构化 网络代码的最佳选择。</p>
-<pre><code>import asyncio
-</code></pre>
-<p>async/await:</p>
-<p>async def 定义一个协程函数，await 用来等待协程的执行结果。</p>
-<pre><code>async def say():
-    print(&quot;Hello&quot;)
-    await asyncio.sleep(1)
-    print(&quot;World&quot;)
-asyncio.run(say())
-</code></pre>
-<p>classes:</p>
-<pre><code># asyncio.Runner
-runner = Runner()
-asyncio.run(runner.run(coro, *, debug=False)) # 运行一个协程，返回协程结果
-
-# asyncio.Task
-task = Task(coro, *, loop=None)
-create_task(coro, *, loop=None) # 创建一个任务，返回Task对象, 协程马上运行。
-
-# asyncio.TaskGroup
-task_group = TaskGroup(*, loop=None)
-
-# asyncio.Queue
-queue = Queue(maxsize=0, *, loop=None)
-# methods:
-put(item) # 放入一个元素到队列
-get() # 从队列中获取一个元素
-task_done() # 标记一个任务完成
-join() # 阻塞直到队列中的所有任务都完成
-empty() # 返回队列是否为空
-full() # 返回队列是否已满
-qsize() # 返回队列的大小
-</code></pre>
-<p>functions:</p>
-<pre><code>gather(*coros, loop=None) 
-sleep(delay, result=None, *, loop=None) # 异步睡眠，返回一个Future对象
-</code></pre>
-<h2 id="ssl">ssl</h2>
 <h2 id="select">select</h2>
+<p>等待IO事件发生，返回就绪的文件描述符列表。</p>
+<pre><code>import select
+</code></pre>
 <h2 id="selectors">selectors</h2>
+<p>selectors模块提供了更高级的IO多路复用接口。</p>
+<pre><code>import selectors
+</code></pre>
 <h2 id="signal">signal</h2>
+<h2 id="ssl">ssl</h2>
 <h2 id="mmap">mmap</h2>
 <hr>
 

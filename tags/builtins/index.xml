@@ -204,6 +204,8 @@ real
 &lt;p&gt;内置类类型int的内置方法和数据描述符都是继承自基类int.&lt;/p&gt;
 &lt;h2 id=&#34;float&#34;&gt;float&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;float(x)
+float(&#39;-inf&#39;) # 负无穷大
+float(&#39;inf&#39;) # 正无穷大
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;内置方法:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;as_integer_ratio() # 返回一个整数对，相除的结果是该浮点数
