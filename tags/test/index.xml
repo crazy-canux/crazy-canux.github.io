@@ -195,7 +195,7 @@ $ python3 manage.py dumpdata &amp;gt; test_data.json
         
         <guid>https://canuxcheng.com/post/psl_devops/</guid>
         <description>&lt;h1 id=&#34;devops&#34;&gt;DevOps&lt;/h1&gt;
-&lt;p&gt;development, debugging, profiling&lt;/p&gt;
+&lt;p&gt;development, testing, documentation.&lt;/p&gt;
 &lt;h2 id=&#34;typing&#34;&gt;typing&lt;/h2&gt;
 &lt;p&gt;用于类型提示，提供类型检查，代码可读性和编辑器自动补全支持。&lt;/p&gt;
 &lt;p&gt;基础类型：&lt;/p&gt;
@@ -236,12 +236,6 @@ Annotated
 &lt;p&gt;python内置的单元测试库．&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;import unittest
 &lt;/code&gt;&lt;/pre&gt;
-&lt;hr&gt;
-&lt;h1 id=&#34;debugging-and-profiling&#34;&gt;Debugging and Profiling&lt;/h1&gt;
-&lt;h2 id=&#34;bdb&#34;&gt;bdb&lt;/h2&gt;
-&lt;h2 id=&#34;pdb&#34;&gt;pdb&lt;/h2&gt;
-&lt;h2 id=&#34;timeit&#34;&gt;timeit&lt;/h2&gt;
-&lt;h2 id=&#34;trace&#34;&gt;trace&lt;/h2&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;tpl&#34;&gt;TPL&lt;/h1&gt;
 &lt;p&gt;相关的第三方库&lt;/p&gt;
@@ -417,6 +411,72 @@ $ coverage run --source=&amp;lt;package-name&amp;gt; setup.py test
 $ tox
 &lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
+&lt;h2 id=&#34;sphinx&#34;&gt;Sphinx&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/sphinx-doc/sphinx&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/sphinx-doc/sphinx&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://zh-sphinx-doc.readthedocs.io/en/latest/contents.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://zh-sphinx-doc.readthedocs.io/en/latest/contents.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Sphinx就是python处理reStructuredText格式的工具。&lt;/p&gt;
+&lt;p&gt;安装：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$pip install -U Sphinx
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;使用sphinx：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$cd your-project/docs
+
+$sphinx-quickstart
+# 以下选项需要手动设定，其它都可以用默认值：
+&amp;gt; Project name: pydeveloper
+&amp;gt; Author name(s): Canux CHENG
+&amp;gt; Project version: 1.0.0.0
+&amp;gt; autodoc: automatically insert docstrings from modules (y/n) [n]: y
+&amp;gt; doctest: automatically test code snippets in doctest blocks (y/n) [n]: y
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;配置文件conf.py包含刚才的所有配置，可以在这里手动修改。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://www.sphinx-doc.org/en/1.4.8/config.html#confval-locale_dirs&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://www.sphinx-doc.org/en/1.4.8/config.html#confval-locale_dirs&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;添加包的版本：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sys.path.insert(0, os.path.abspath(&amp;quot;..&amp;quot;))
+from &amp;lt;project&amp;gt; import __version__
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;修改自己的配置：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;copyright = u&#39;2016, &amp;lt;a href=&amp;quot;http://canuxcheng.com&amp;quot;&amp;gt;Canux CHENG&amp;lt;/a&amp;gt;&#39;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;sphinx-docs&#34;&gt;sphinx-docs&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://zh-sphinx-doc.readthedocs.io/en/latest/markup/index.html#sphinxmarkup&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://zh-sphinx-doc.readthedocs.io/en/latest/markup/index.html#sphinxmarkup&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;sphinx的标记把reST格式的文档关联起来。&lt;/p&gt;
+&lt;p&gt;index.rst这是文档的首页。&lt;/p&gt;
+&lt;h3 id=&#34;sphinx-build&#34;&gt;sphinx-build&lt;/h3&gt;
+&lt;p&gt;生成web可读的文档。&lt;/p&gt;
+&lt;p&gt;简单方法生成文档：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 生成html格式的文档
+$make html
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;sphinx-apidoc&#34;&gt;sphinx-apidoc&lt;/h3&gt;
+&lt;p&gt;自动生成API文档。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$sphinx-apidoc
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;debug&#34;&gt;Debug&lt;/h3&gt;
+&lt;p&gt;浏览器打开docs/_build/html/index.html即可。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$firefox _build/html/index.html
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;readthedocs&#34;&gt;ReadTheDocs&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://readthedocs.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://readthedocs.org/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://readthedocs.readthedocs.io/zh_CN/latest/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://readthedocs.readthedocs.io/zh_CN/latest/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;将项目文档部署到readthedocs站点。&lt;/p&gt;
+&lt;p&gt;直接注册帐号，同步github项目，然后导入你的项目即可。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;pypandoc&#34;&gt;pypandoc&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/bebraw/pypandoc&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/bebraw/pypandoc&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;文档转换工具pandoc的python包。&lt;/p&gt;
+&lt;p&gt;安装：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo apt-get install pandoc
+$ pip install pypandoc
+&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         

@@ -6,34 +6,7 @@
         <description>Recent content in Summary on Morgoth</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Tue, 21 Jun 2016 21:18:20 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/summary/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>Summary</title>
-        <link>https://canuxcheng.com/post/python_summary/</link>
-        <pubDate>Tue, 21 Jun 2016 21:18:20 +0000</pubDate>
-        
-        <guid>https://canuxcheng.com/post/python_summary/</guid>
-        <description>&lt;h1 id=&#34;python难点总结&#34;&gt;python难点总结&lt;/h1&gt;
-&lt;h1 id=&#34;多线程&#34;&gt;多线程&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;GIL&lt;/p&gt;
-&lt;p&gt;GIL: Global Interpretror Lock. 全局解释器锁．&lt;/p&gt;
-&lt;p&gt;python不建议使用多线程，用多进程代替．&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-&lt;h1 id=&#34;协程&#34;&gt;协程&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;coroutine&lt;/p&gt;
-&lt;p&gt;协程就是同时开启两个任务，但一次只顺序执行一个．
-如果执行的任务阻塞，就切换到下一个继续执行．节省时间．&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-</description>
-        </item>
-        <item>
+        <lastBuildDate>Sat, 02 Apr 2016 16:06:14 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/summary/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Summary</title>
         <link>https://canuxcheng.com/post/c_summary/</link>
         <pubDate>Sat, 02 Apr 2016 16:06:14 +0000</pubDate>

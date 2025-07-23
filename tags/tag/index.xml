@@ -28,22 +28,20 @@
 &lt;pre&gt;&lt;code&gt;kubectl options # 查看所有命令可用选项
 
 --kubeconfig
-kubectl --kubeconfig=$HOME/.kube.config (default)
+kubectl --kubeconfig=$HOME/.kube/config (default)
 
 -n/--namespace
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;basic-command&#34;&gt;basic command&lt;/h2&gt;
 &lt;p&gt;create:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;# 通过yaml或json文件创建资源
+&lt;pre&gt;&lt;code&gt;# 通过yaml或json文件创建新的资源
 $ kubectl create -f FILENAME [options]
 
-options:
--f/--filename
-
-kubectl create secret tls kubernetes-dashboard-tls --key ca.key --cert ca.crt -n kubernetes-dashboard
+kubectl create namespace &amp;lt;NS&amp;gt;
+kubectl create -f resource.yaml
 
 // 输出一个资源的yaml格式.
-kubectl create deployment &amp;lt;name&amp;gt; --image=&amp;lt;img-name&amp;gt; --dry-run=client --output=yaml
+kubectl create deployment &amp;lt;name&amp;gt; --image=&amp;lt;img-name&amp;gt; --dry-run=client --output=yaml --namespace=&amp;lt;ns&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;delete:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;// 删除资源
@@ -54,34 +52,45 @@ options:
 --all  
 --all-namespaces
 --force
+--grace-period
+--cascade
 
-$ kubectl delete pods --all
-$ kubectl delete pod &amp;lt;name&amp;gt;
+$ kubectl delete -f resource.yaml
+
+$ kubectl delete pods --all  -n &amp;lt;NS&amp;gt; # delete all pods in the current namespace
 // 删除指定ns下所有资源.
 $ kubectl delete all --all -n {namespace}
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;删除带有finalizers字段的对象，对象实际被更新了，没有真的被删除。可以通过patch来删除。&lt;/p&gt;
+&lt;p&gt;删除带有finalizers字段的对象，对象实际被更新了，没有真的被删除。可以通过patch来删除。参考patch。&lt;/p&gt;
 &lt;p&gt;删除带有ownerReferences字段的对象，删除父对象默认会删除所有子对象，通过&amp;ndash;cascade=false只删除父对象。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;kubectl delete deployment &amp;lt;deployment-name&amp;gt; --cascade=false
+&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;expose:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;# 创建serivce:
+&lt;pre&gt;&lt;code&gt;# 将pod/deployment/replicaset暴露为service， 会创建对应的service。
 $ kubectl expose (-f FILENAME | TYPE NAME) [--port=port] [--protocol=TCP|UDP|SCTP] [--target-port=...] [--name=...] [--external-ip=...] [--type=type] [options]
 
-# 创建service，并且使用NodePort
+# 暴露deployment为service。
 # nodeport可以使用任意节点的IP访问.
-$ kubectl expose deployment hello-world --type=NodePort --name=example-service
+$ kubectl expose deployment/hello-world --type=NodePort --name=example-service
+
+kubectl expose deployment hello-world --type=LoadBalancer --port=80 --target-port=8080
 
 // 获取service的yaml
 kubectl expose deployment &amp;lt;deploy-name&amp;gt; --type=LoadBalancer --port=80 --dry-run=client --output=yaml
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;run:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;# 创建pod/container(docker run):
+&lt;pre&gt;&lt;code&gt;# 创建pod:
 $ kubectl run NAME --image=image [--env=&amp;quot;key=value&amp;quot;] [--port=port] [--replicas=replicas] [--dry-run=bool] [--overrides=inline-json] [--command] -- [COMMAND] [args...] [options]
+
+kubectl run my-pod --image=nginx --replica=3 --port=80 --restart=Never
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;set:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;$ kubectl set SUBCOMMAND [options]
 
-// 更新镜像
-$ kubectl set image deployment.v1.apps/&amp;lt;deploy-name&amp;gt; &amp;lt;container-name&amp;gt;=&amp;lt;image:tag&amp;gt;
+// 更新资源的字段或属性
+$ kubectl set image deployment/my-deployment my-container=nginx:1.21
+$ kubectl set env deployment/my-deployment LOG_LEVEL=debug
+$ kubectl set resources deployment/my-deployment --limits=cpu=500m,memory=1Gi
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;get:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;// 获取resource信息(docker ps)
@@ -101,7 +110,7 @@ kubectl get namespace/ns # 获取namespace信息
 kubectl get componentstatuses/cs
 
 kubectl get all --all-namespaces
-kubectl -n kube-system get all 
+kubectl get all -n kube-system
 
 kubectl get pod/pods/po 
 kubectl get po -w/--watch
@@ -117,42 +126,63 @@ kubectl get service/services/svc
 &lt;pre&gt;&lt;code&gt;// 查看资源解析
 $ kubectl explain RESOURCE [options]
 
-kubectl explain deploy.spec
+// 查看资源的特定字段
+$ kubectl explain pod.spec
+$ kubectl explain deploy.spec
+$ kubectl explain deploy.spec.template.spec
+
+// 查看特定api版本的资源
+$ kubectl explain deployment --api-version=apps/v1
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;edit:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;// 在线修改资源，直接生效.
-$ kubectl edit
+$ kubectl edit [RESOURCE_TYPE]/[RESOURCE_NAME] [options]
+
+kubectl edit node my-node
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;advanced-commands&#34;&gt;advanced commands&lt;/h2&gt;
-&lt;p&gt;apply:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ kubectl apply
+&lt;p&gt;apply: 创建或更新资源&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ kubectl apply -f FILENAME [options]
+$ kubectl apply -f resource1.yaml -f resource2.yaml
+$ kubectl apply -f ./manifests/
+$ kubectl apply -f resource.yaml --dry-run=client
+$ kubectl apply -f resource.yaml --force
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;diff:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ kubectl diff
+&lt;pre&gt;&lt;code&gt;$ kubectl diff -f &amp;lt;file|directory&amp;gt; [options]
+
+$ kubectl diff -f resource.yaml 
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;patch&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ kubectl patch
+&lt;pre&gt;&lt;code&gt;# 通过json或yaml对资源进行部分更新。
+$ kubectl patch [RESOURCE_TYPE] [RESOURCE_NAME] -p &amp;lt;patch-data&amp;gt; [options]
 
 // 删除terminating状态的resource
 $ kubectl patch  persistentvolumeclaim/storage -p &#39;{&amp;quot;metadata&amp;quot;:{&amp;quot;finalizers&amp;quot;:null}}&#39; -n &amp;lt;ns&amp;gt;
 
-$ kubectl replace
+# 替换已有的资源
+$ kubectl replace -f &amp;lt;file&amp;gt; [options]
+$ kubectl replace -f resource.yaml -n my-namespace
 
-$ kubectl wait
+$ kubectl wait [RESOURCE_TYPE] [RESOURCE_NAME] --for=condition=&amp;lt;CONDITION&amp;gt; [options]
 
 $ kubectl kustomize
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;deploy-command&#34;&gt;deploy command&lt;/h2&gt;
 &lt;p&gt;scale:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ kubectl scale
+&lt;pre&gt;&lt;code&gt;$ kubectl scale [RESOURCE_TYPE] [RESOURCE_NAME] --replicas=&amp;lt;number&amp;gt; [options]
+
 $ kubectl scale deployment &amp;lt;deploy-name&amp;gt; -n &amp;lt;ns&amp;gt; --replicas=0
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;autoscale:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ kubectl autoscale
+&lt;pre&gt;&lt;code&gt;# 给deploy，replicaset，statefulset等资源设置自动伸缩.HPA
+$ kubectl autoscale [RESOURCE_TYPE]/[RESOURCE_NAME] [flags]
+
+kubectl autoscale deployment my-deployment --min=2 --max=10 --cpu-percent=80
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;rollout:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;// 回滚
-$ kubectl rollout
+$ kubectl rollout [SUBCOMMAND] [RESOURCE_TYPE/RESOURCE_NAME] [options]
 
 // 暂停/恢复/重启 deployment.
 kubectl rollout pause/resume/restart  deploy/katib-mysql -n kubeflow
@@ -197,15 +227,18 @@ options:
 -t/--tty
 
 $ kubectl exec -it &amp;lt;pod&amp;gt; -n &amp;lt;ns&amp;gt; -- /bin/bash
+$ kubectl exec -it &amp;lt;pod&amp;gt; -n &amp;lt;ns&amp;gt; -c &amp;lt;container&amp;gt;   -- /bin/sh
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;port-forward:&lt;/p&gt;
 &lt;p&gt;由于已知的限制，目前的端口转发仅适用于 TCP 协议.&lt;/p&gt;
 &lt;p&gt;只能通过运行转发命令的IP/FQDN访问。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ kubectl port-forward
+&lt;pre&gt;&lt;code&gt;$ kubectl port-forward [RESOURCE_TYPE]/[RESOURCE_NAME] [LOCAL_PORT]:[REMOTE_PORT] [options]
 
 // 转发本地端口到deploy/rs/svc/pod
+$ kubectl port-forward pod/my-pod 8080:80 -n &amp;lt;ns&amp;gt;
 $ kubectl port-forward svc/redis-service 6379:6379 -n redis
 
+# 允许所有IP访问
 $ kubectl port-forward --address 0.0.0.0 -n kubernetes-dashboard service/kubernetes-dashboard 8080:443
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;proxy:&lt;/p&gt;
@@ -214,41 +247,64 @@ $ kubectl port-forward --address 0.0.0.0 -n kubernetes-dashboard service/kuberne
 // 通过proxy可以访问默认的clusterIP服务.
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;attach:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ kubectl attach
+&lt;pre&gt;&lt;code&gt;$ kubectl attach [POD_NAME] [-c CONTAINER] [options]
+
+$ kubectl attach my-pod -n &amp;lt;ns&amp;gt; -c &amp;lt;container&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;cp:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ kubectl cp
+&lt;pre&gt;&lt;code&gt;$ kubectl cp &amp;lt;source&amp;gt; &amp;lt;destination&amp;gt; [options]
+
+$ kubectl cp ./local-file.txt my-pod:/app/ -n my-namespace
+$ kubectl cp my-pod:/app/remote-file.txt ./ -n my-namespace
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;auth:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ kubectl auth
+&lt;pre&gt;&lt;code&gt;$ kubectl auth [SUBCOMMAND] [options]
+
+$ kubectl auth can-i get pods -n my-namespace
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;debug:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ kubectl debug
+&lt;pre&gt;&lt;code&gt;$ kubectl debug [RESOURCE] [options]
 
 // debug node -- 直接进入node的shell，log在/host/var/log
-kubectl debug node/&amp;lt;name&amp;gt;  -it   --image=ubuntu
+$ kubectl debug node/&amp;lt;name&amp;gt;  -it   --image=
+
+// debug pod -- 创建一个新的pod来调试现有的pod
+$kubectl debug pod/&amp;lt;pod-name&amp;gt; -n &amp;lt;namespace&amp;gt; --copy-to=&amp;lt;new-pod-name&amp;gt; --container=&amp;lt;container-name&amp;gt;
+$kubectl debug pod/&amp;lt;pod-name&amp;gt; -n &amp;lt;namespace&amp;gt; --container=&amp;lt;container-name&amp;gt; --image=busybox
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;cluster-management&#34;&gt;cluster management&lt;/h2&gt;
 &lt;p&gt;top:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ kubectl top
+&lt;pre&gt;&lt;code&gt;$ kubectl top [RESOURCE_TYPE] [RESOURCE_NAME] [options]
 
-$ kubectl cluster-info
-
-$ kubectl certificate
-
-// 节点变成unschedulable
-$ kubectl cordon
+$ kubectl top nodes
+$ kubectl top pods -n &amp;lt;ns&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;cluster-info:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ kubectl cluster-info
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;certificate:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ kubectl certificate [SUBCOMMAND] [options]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;cordon:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 节点变成unschedulable
+$ kubectl cordon &amp;lt;node&amp;gt;
 
 // 节点变成schedulable
-$ kubectl uncordon
+$ kubectl uncordon &amp;lt;node&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;drain:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 安全从节点驱逐pod
+$ kubectl drain &amp;lt;node-name&amp;gt; [options]
+$ kubectl drain &amp;lt;node&amp;gt; --delete-emptydir-data --ignore-daemonsets
 
-// 安全下线节点：Ready,SchedulingDisabled
-$ kubectl drain
-kubectl drain &amp;lt;node&amp;gt; --delete-emptydir-data --ignore-daemonsets
+// 强制驱逐节点上的pod
+$ kubectl drain my-node --force --ignore-daemonsets
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;tain:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;//管理污点
+$ kubectl taint nodes &amp;lt;node-name&amp;gt; &amp;lt;key&amp;gt;=&amp;lt;value&amp;gt;:&amp;lt;effect&amp;gt;
 
-//定义污点
-$ kubectl taint
-kubectl taint nodes &amp;lt;node&amp;gt; &amp;lt;key&amp;gt;=&amp;lt;value&amp;gt;:NoSchedule-
+$kubectl taint nodes &amp;lt;node&amp;gt; &amp;lt;key&amp;gt;=&amp;lt;value&amp;gt;:NoSchedule-
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;settings-commands&#34;&gt;Settings Commands&lt;/h2&gt;
 &lt;p&gt;label&lt;/p&gt;

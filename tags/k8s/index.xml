@@ -511,9 +511,9 @@ kubectl api-resources --namespaced=false
 &lt;p&gt;tolerations: 容忍度，使pod被吸引到特定节点。应用于pod。
 这个只能让pod能部署到加了污点的node，pod也能部署到其它没有加污点的node。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;tolerations:
-- key: &amp;quot;key1&amp;quot;
+- key: &amp;quot;kubernetes.io/arch&amp;quot;
   operator: &amp;quot;Equal&amp;quot;/&amp;quot;Exists&amp;quot;
-  value: &amp;quot;value1&amp;quot;
+  value: &amp;quot;arm64&amp;quot;
   effect: &amp;quot;NoSchedule&amp;quot;/&amp;quot;NoExecute&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;affinity: 亲和力，affinity可以通过label指定pod部署到node。
@@ -528,7 +528,7 @@ kubectl api-resources --namespaced=false
             values:
             - arm64
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;nodeSelector: 节点选择，&lt;/p&gt;
+&lt;p&gt;nodeSelector: 节点选择，pod只能调度到特定节点。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt; nodeSelector:
    kubernetes.io/arch: arm64
 &lt;/code&gt;&lt;/pre&gt;
@@ -756,7 +756,7 @@ spec:
 &lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;daemonset&#34;&gt;DaemonSet&lt;/h1&gt;
-&lt;p&gt;每个node上部署一个pod，用于部署agent。&lt;/p&gt;
+&lt;p&gt;每个node上部署一个stageless pod，用于部署agent。&lt;/p&gt;
 &lt;p&gt;DaemonSet&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;apiVersion: apps/v1
 kind: DaemonSet

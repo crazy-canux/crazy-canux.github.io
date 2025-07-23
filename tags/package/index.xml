@@ -16,26 +16,30 @@
         </item>
         <item>
         <title>Package</title>
-        <link>https://canuxcheng.com/post/python_package/</link>
+        <link>https://canuxcheng.com/post/psl_package/</link>
         <pubDate>Wed, 22 Jun 2016 05:17:19 +0000</pubDate>
         
-        <guid>https://canuxcheng.com/post/python_package/</guid>
-        <description>&lt;h1 id=&#34;package&#34;&gt;Package&lt;/h1&gt;
+        <guid>https://canuxcheng.com/post/psl_package/</guid>
+        <description>&lt;h1 id=&#34;packaging-and-distribution&#34;&gt;Packaging and Distribution&lt;/h1&gt;
 &lt;p&gt;PEP426是python最新的打包标准，定义了wheel为最新的python包。&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.python.org/dev/peps/pep-0426/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.python.org/dev/peps/pep-0426/&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;ensurepip&#34;&gt;ensurepip&lt;/h2&gt;
-&lt;p&gt;内置模块.提供使用pip从pypi安装模块。&lt;/p&gt;
-&lt;h2 id=&#34;distutils&#34;&gt;distutils&lt;/h2&gt;
-&lt;p&gt;内置的模块.处理简单的包安装,一般使用setuptools代替该模块。&lt;/p&gt;
+&lt;p&gt;python3.4开始内置了ensurepip模块，用于安装pip和setuptools。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ python3 -m ensurepip --default-pip
+&lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;venv&#34;&gt;venv&lt;/h2&gt;
-&lt;p&gt;python3新增了虚拟环境的包．python2中使用virtualenv.&lt;/p&gt;
+&lt;p&gt;python3.3开始内置了venv模块，用于创建虚拟环境。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ python3 -m venv .env
+&lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;zipapp&#34;&gt;zipapp&lt;/h2&gt;
-&lt;p&gt;python3新增管理可执行的python的zip包．&lt;/p&gt;
+&lt;p&gt;python3.5开始内置了zipapp模块，用于创建可执行的zip包。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ python3 -m zipapp myapp -o myapp.pyz
+&lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
-&lt;h1 id=&#34;tpl&#34;&gt;TPL&lt;/h1&gt;
+&lt;h2 id=&#34;tpl&#34;&gt;TPL&lt;/h2&gt;
 &lt;p&gt;相关的第三方库&lt;/p&gt;
-&lt;h2 id=&#34;virtualenv&#34;&gt;virtualenv&lt;/h2&gt;
+&lt;h3 id=&#34;virtualenv&#34;&gt;virtualenv&lt;/h3&gt;
 &lt;p&gt;python3.5开始并入了虚拟化标准库venv.&lt;/p&gt;
 &lt;p&gt;分离的虚拟的python环境,自动安装setuptools和pip和wheel&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/pypa/virtualenv&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -93,7 +97,7 @@ $ rmvirtualenv [project-name] # 删除环境
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/pypa/pipenv&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/pypa/pipenv&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;封装了virtualenv的工具，用于取代virtualenvwrapper.&lt;/p&gt;
-&lt;h2 id=&#34;setuptools&#34;&gt;setuptools&lt;/h2&gt;
+&lt;h3 id=&#34;setuptools&#34;&gt;setuptools&lt;/h3&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/pypa/setuptools&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/pypa/setuptools&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/pypa/wheel&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -267,7 +271,7 @@ $ twine upload dist/*
 &lt;pre&gt;&lt;code&gt;$python setup.py sdist upload -r pypi
 $python setup.py bdist_wheel upload -r pypi
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;cython&#34;&gt;cython&lt;/h2&gt;
+&lt;h3 id=&#34;cython&#34;&gt;cython&lt;/h3&gt;
 &lt;p&gt;编译成.so文件&lt;/p&gt;
 &lt;p&gt;安装:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;$ sudo pip install cython
@@ -312,10 +316,10 @@ $ python3 setup.py build_ext --inplace -j 8
 // 删除符号信息
 $ find sandbox/ -name &amp;quot;*.so&amp;quot; -exec strip {} \; 
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;pbr&#34;&gt;pbr&lt;/h2&gt;
+&lt;h3 id=&#34;pbr&#34;&gt;pbr&lt;/h3&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/openstack-dev/pbr&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/openstack-dev/pbr&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;扩展点entry-points&#34;&gt;扩展点（Entry Points）&lt;/h2&gt;
+&lt;h3 id=&#34;扩展点entry-points&#34;&gt;扩展点（Entry Points）&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;pkg_resources&lt;/p&gt;

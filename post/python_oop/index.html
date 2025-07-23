@@ -964,7 +964,6 @@ __getattr__ # 如果实现了的话，在描述符中优先级最低
     def __get__(self, obj, typ=None):
         return types.MethodType(self, obj, typ)
 
-
     def tmethod(self, args):
         return args
 
@@ -1102,7 +1101,7 @@ Class.function(*args) -&gt; function(Class, *args)
 <li>备选构造函数</li>
 <li>工厂方法模式</li>
 <li>访问和修改类属性</li>
-<li>配置和设置相关方o</li>
+<li>配置和设置相关方法</li>
 <li>继承中的类方法</li>
 </ul>
 <h1 id="staticmethod">staticmethod</h1>

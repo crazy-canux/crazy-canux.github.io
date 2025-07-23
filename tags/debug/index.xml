@@ -24,22 +24,21 @@
         </item>
         <item>
         <title>Debug</title>
-        <link>https://canuxcheng.com/post/python_debug/</link>
+        <link>https://canuxcheng.com/post/psl_debug/</link>
         <pubDate>Sat, 06 Aug 2016 16:54:08 +0000</pubDate>
         
-        <guid>https://canuxcheng.com/post/python_debug/</guid>
-        <description>&lt;h1 id=&#34;ide&#34;&gt;IDE&lt;/h1&gt;
-&lt;p&gt;pycharm可以通过breakpoint和step调试.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h1 id=&#34;debug&#34;&gt;debug&lt;/h1&gt;
+        <guid>https://canuxcheng.com/post/psl_debug/</guid>
+        <description>&lt;h1 id=&#34;debug-and-profiling&#34;&gt;Debug and Profiling&lt;/h1&gt;
 &lt;h2 id=&#34;bdb&#34;&gt;bdb&lt;/h2&gt;
 &lt;h2 id=&#34;pdb&#34;&gt;pdb&lt;/h2&gt;
-&lt;h2 id=&#34;hotshot&#34;&gt;hotshot&lt;/h2&gt;
 &lt;h2 id=&#34;timeit&#34;&gt;timeit&lt;/h2&gt;
 &lt;h2 id=&#34;trace&#34;&gt;trace&lt;/h2&gt;
-&lt;h2 id=&#34;cprofile&#34;&gt;cProfile&lt;/h2&gt;
-&lt;h2 id=&#34;profile&#34;&gt;profile&lt;/h2&gt;
+&lt;h2 id=&#34;trracemalloc&#34;&gt;trracemalloc&lt;/h2&gt;
 &lt;hr&gt;
+&lt;h2 id=&#34;tpl&#34;&gt;TPL&lt;/h2&gt;
+&lt;h3 id=&#34;viztracer&#34;&gt;viztracer&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/gaogaotiantian/viztracer&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/gaogaotiantian/viztracer&lt;/a&gt;&lt;/p&gt;
 </description>
         </item>
         

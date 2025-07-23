@@ -758,6 +758,7 @@ no-compile = no
 &lt;p&gt;pipreqs&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/bndr/pipreqs&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/bndr/pipreqs&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;uv安装： 用uv取代pip。&lt;/p&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;python代码检查&#34;&gt;python代码检查&lt;/h1&gt;
 &lt;h2 id=&#34;flake8&#34;&gt;flake8&lt;/h2&gt;

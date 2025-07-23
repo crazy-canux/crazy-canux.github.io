@@ -1539,18 +1539,19 @@ reduce(lambda x,y: x*y, [1,2,3,4]
 &lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;内嵌函数&#34;&gt;&lt;em&gt;内嵌函数&lt;/em&gt;&lt;/h2&gt;
-&lt;p&gt;可以在函数内部定义函数，内部函数不能在外部函数以外的地方调用．&lt;/p&gt;
+&lt;p&gt;可以在函数内部定义函数，内部函数不能在外部函数以外的地方调用．
+内嵌函数不一定返回，不会记住外部变量。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;def outer(*args, **kwargs):
     var = &#39;value&#39; # 外部函数的变量
     def inner(arg): # 内嵌函数的参数不能是外部函数的参数．内部函数必须完全独立．
         print(var) # 内嵌函数可以引用外部函数的变量
-        # var += 1 # 内嵌函数不能修改外部函数的变量
+        # var += 1 # 内嵌函数不能修改外部函数的不可变类型变量
     inner(args)
 
 def outer():
     x = 1
     def inner():
-        nonlocal x # nonlocal关键字可以引用外部函数的变量
+        nonlocal x # nonlocal关键字可以引用外部函数的不可变类型变量 进行修改。
         x += 1
     inner()
     print(x) # 2
@@ -1576,17 +1577,28 @@ def fib(n):
     return val
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;closure闭包&#34;&gt;&lt;em&gt;closure闭包&lt;/em&gt;&lt;/h2&gt;
+&lt;p&gt;闭包一定是内嵌函数，内嵌函数不一定是闭包。&lt;/p&gt;
 &lt;p&gt;在一个内部函数里对在外部作用域的变量进行引用，内部函数被认为是closure.&lt;/p&gt;
 &lt;p&gt;定义在外部函数内的但由内部函数引用的变量称为自由变量．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;def outer(arg):
+    free_var = arg # 外部函数的自由变量
+    def inner(*args, **kwargs):
+        print(free_var)
+    return inner
+&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;当自由变量是一个函数时，闭包就是一个装饰器，decorator是closure最常见的应用．&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;def outer(free):
-    def clos(*args, **kwargs):
-        print(free)
-        print(args, kwargs)
+&lt;pre&gt;&lt;code&gt;def outer():
+    data = []    
+    def clos(value):
+        data.append(value)    # 可变类型不需要nonlocal。
+        return data
     return clos
+call = outer() # 调用外部函数，返回一个内部函数的引用
+print(call(1)) # [1]
+print(call(2)) # [1, 2]
 
 # 调用外部函数，返回一个内部函数的引用,　传入外部函数的就是自由变量,返回的内部函数就是闭包.
-first_clos = outer(1)
+first_clos = outer(arg)
 
 # 调用closure
 first_clos(*args, **kwargs)
@@ -1638,7 +1650,7 @@ def foo(*args, **kwargs):
     pass
 
 # wrapper_name(*args, **kwargs)
-foo(*args, **kwargs)
+foo(*args, **kwargs) 
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;装饰器的属性：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;foo.__name__ #  wrapper_name, 并非foo

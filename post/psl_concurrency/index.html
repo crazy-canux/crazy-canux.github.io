@@ -15,7 +15,7 @@ io密集: 用异步asyncio(协程)或者多线程, 网络请求，文件读写�
 python可以通过多进程取代多线程，从而绕过多线程的GIL.
 python是静态语言，
 import multiprocessing classes:
-# multiprocessing.Process Process(target=func, args=(arg1, arg2, ...), kwargs={&#39;key&#39;: value}) # methods: run(self) # 子类重写用来定义进程的功能的函数, 通常通过这种方式来创建进程 start(self) # 启动一个进程 join(self, timeout=None) # 父进程等待子进程结束 is_alive() # 返回进程是否还在运行的boolean exit(self) # 退出进程 terminate(self) # 终止进程 exitcode() # 返回进程的退出码 name() # 返回进程的名字 pid() # 返回进程的pid functions:
+# multiprocessing.Process Process(group=None, target=None, name=None, args=(), kwargs=None, *, daemon=None) # methods: run(self) # 子类重写用来定义进程的功能的函数, 通常通过这种方式来创建进程 start(self) # 启动一个进程 join(self, timeout=None) # 父进程阻塞等待子进程结束，后面的代码不会执行，直到子进程结束。 is_alive() # 返回进程是否还在运行的boolean exit(self) # 退出进程 terminate(self) # 终止进程 exitcode() # 返回进程的退出码 name() # 返回进程的名字 pid() # 返回进程的pid functions:
 '>
 <title>PSL_Concurrency</title>
 
@@ -36,7 +36,7 @@ io密集: 用异步asyncio(协程)或者多线程, 网络请求，文件读写�
 python可以通过多进程取代多线程，从而绕过多线程的GIL.
 python是静态语言，
 import multiprocessing classes:
-# multiprocessing.Process Process(target=func, args=(arg1, arg2, ...), kwargs={&#39;key&#39;: value}) # methods: run(self) # 子类重写用来定义进程的功能的函数, 通常通过这种方式来创建进程 start(self) # 启动一个进程 join(self, timeout=None) # 父进程等待子进程结束 is_alive() # 返回进程是否还在运行的boolean exit(self) # 退出进程 terminate(self) # 终止进程 exitcode() # 返回进程的退出码 name() # 返回进程的名字 pid() # 返回进程的pid functions:
+# multiprocessing.Process Process(group=None, target=None, name=None, args=(), kwargs=None, *, daemon=None) # methods: run(self) # 子类重写用来定义进程的功能的函数, 通常通过这种方式来创建进程 start(self) # 启动一个进程 join(self, timeout=None) # 父进程阻塞等待子进程结束，后面的代码不会执行，直到子进程结束。 is_alive() # 返回进程是否还在运行的boolean exit(self) # 退出进程 terminate(self) # 终止进程 exitcode() # 返回进程的退出码 name() # 返回进程的名字 pid() # 返回进程的pid functions:
 '>
 <meta property='og:url' content='https://canuxcheng.com/post/psl_concurrency/'>
 <meta property='og:site_name' content='Morgoth'>
@@ -56,7 +56,7 @@ io密集: 用异步asyncio(协程)或者多线程, 网络请求，文件读写�
 python可以通过多进程取代多线程，从而绕过多线程的GIL.
 python是静态语言，
 import multiprocessing classes:
-# multiprocessing.Process Process(target=func, args=(arg1, arg2, ...), kwargs={&#39;key&#39;: value}) # methods: run(self) # 子类重写用来定义进程的功能的函数, 通常通过这种方式来创建进程 start(self) # 启动一个进程 join(self, timeout=None) # 父进程等待子进程结束 is_alive() # 返回进程是否还在运行的boolean exit(self) # 退出进程 terminate(self) # 终止进程 exitcode() # 返回进程的退出码 name() # 返回进程的名字 pid() # 返回进程的pid functions:
+# multiprocessing.Process Process(group=None, target=None, name=None, args=(), kwargs=None, *, daemon=None) # methods: run(self) # 子类重写用来定义进程的功能的函数, 通常通过这种方式来创建进程 start(self) # 启动一个进程 join(self, timeout=None) # 父进程阻塞等待子进程结束，后面的代码不会执行，直到子进程结束。 is_alive() # 返回进程是否还在运行的boolean exit(self) # 退出进程 terminate(self) # 终止进程 exitcode() # 返回进程的退出码 name() # 返回进程的名字 pid() # 返回进程的pid functions:
 ">
     <link rel="shortcut icon" href="favicon.ico" />
 <style>
@@ -369,10 +369,10 @@ import multiprocessing classes:
   <ul>
     <li><a href="#multiprocessing">multiprocessing</a></li>
     <li><a href="#threading">threading</a></li>
+    <li><a href="#queue">queue</a></li>
     <li><a href="#subprocess">subprocess</a></li>
     <li><a href="#concurrent">concurrent</a></li>
     <li><a href="#sched">sched</a></li>
-    <li><a href="#queue">queue</a></li>
     <li><a href="#contextvars">contextvars</a></li>
   </ul>
 
@@ -488,11 +488,11 @@ import multiprocessing classes:
 </code></pre>
 <p>classes:</p>
 <pre><code># multiprocessing.Process
-Process(target=func, args=(arg1, arg2, ...), kwargs={'key': value})
+Process(group=None, target=None, name=None, args=(), kwargs=None, *, daemon=None)
 # methods:
 run(self) # 子类重写用来定义进程的功能的函数, 通常通过这种方式来创建进程
 start(self) # 启动一个进程
-join(self, timeout=None) # 父进程等待子进程结束
+join(self, timeout=None) # 父进程阻塞等待子进程结束，后面的代码不会执行，直到子进程结束。
 is_alive() # 返回进程是否还在运行的boolean
 exit(self) # 退出进程
 terminate(self) # 终止进程
@@ -508,44 +508,49 @@ current_process()
 freeze_support()
 get_logger()
 log_to_stderr(level=None)
+</code></pre>
+<p>Pool:</p>
+<pre><code>Pool(processes=None, initializer=None, initargs=(), maxtasksperchild=None) # 返回一个进程池对象, processes默认是cpu个数.
 
-Pool(processes=None, initializer=None, initargs=(), maxtasksperchild=None) # 返回一个进程池对象, processes默认是cpu个数.
 with Pool(processes=4) as pool:
     pool.map(func, iterable) # 阻塞，返回所有结果
 # func只能是顶层函数，不能是方法和内部函数.
 # 进程池，可以控制进程数量,processes 默认是cpu个数(cpu_count())
 # 非阻塞，维持进程总数，当一个进程结束会添加新的进程到pool,主进程不阻塞，同步运行，pool中的进程并发执行.
+
 apply_async(func, args=(), kwargs={}, callback=None) # 非阻塞,
+
 map_async(func, iterable, chunksize=None, callback=None) # 非阻塞
+
 # 阻塞，维持进程总数，当一个进程结束会添加新的进程到pool，主进程阻塞，pool中的进程一个一个执行.
 apply(func, args=(), kwargs={}) # 阻塞，执行一次函数
 map(func, itreable, chunksize=None) # 阻塞, 返回所有结果
+
 terminate() # 终止所有任务
 close() # 关闭pool,不接受新任务
 join() # 等待pool中子进程结束，要在close/terminate之后调用.
-
-# IPC: 管道
-Pipe(duplex=True) # duplex=True表示默认是双向pipe.
+</code></pre>
+<p>IPC: 管道</p>
+<pre><code>Pipe(duplex=True) # duplex=True表示默认是双向pipe.
 receiver, sender = Pipe()
 sender.send(obj)
 receiver.recv()
 close()
-
-# IPC: 消息队列
-# 来自于Queue.Queue, 具体方法参考Queue.Queue
+</code></pre>
+<p>IPC: 消息队列</p>
+<pre><code># 用于进程间通信，线程和进程安全。
 Queue(maxsize=0) # return a queue object
 q = Queue()
-
-# IPC: 共享内存
-Manager()
-
-Array(typecode_or_type, size_or_initializer, **kwds)
-
-RawArray(typecode_or_type, size_or_initializer)
-
-Value(typecode_or_type, *args, **kwds)
-
-RawValue(typecode_or_type, *args)
+q.put(obj) # 阻塞，放入一个对象到队列中
+q.put_nowait(obj) # 非阻塞，放入一个对象到队列中
+q.get() # 阻塞，从队列中获取一个对象
+q.get_nowait() # 非阻塞，从队列中获取一个对象
+q.empty() # 返回队列是否为空的boolean
+q.full() # 返回队列是否已满的boolean
+q.qsize() # 返回队列的大小
+</code></pre>
+<p>IPC: 共享内存</p>
+<pre><code>Manager()
 
 Event()
 
@@ -566,6 +571,7 @@ with Lock() as lock:
 # 同步: 重入锁，允许同一线程多次获取锁和释放锁。
 RLock(*args, **kwargs) # 返回一个RLock对象, 可重入锁, 允许同一线程多次获取锁.
 </code></pre>
+<hr>
 <h2 id="threading">threading</h2>
 <p>多线程就是把单个任务分成不同部分运行.</p>
 <p>threading支持守护线程(通过join方法实现)．</p>
@@ -573,15 +579,16 @@ RLock(*args, **kwargs) # 返回一个RLock对象, 可重入锁, 允许同一线�
 </code></pre>
 <p>classes:</p>
 <pre><code># threading.Thread
-Thread(group=None, target=None, name=None, args=(), kwargs=None, verbose=None)
+Thread(group=None, target=None, name=None, args=(), kwargs=None, daemon=None)
 # methods:
 append(self, *args, **kwargs) # 添加线程到线程组
 run(self) # 子类重写用来定义线程的功能的函数, 通常通过这种方式来创建线程
 start(self) # 开始执行线程
-join(self, timeout=None) # 主程序挂起，直到线程结束,再继续运行主程序
-is_alive(self) # 表示线程是否还在运行的boolean
+join(self, timeout=None) # 主程序挂起，阻塞等待子线程结束,再继续运行主程序
+
 getName(self) # 返回线程名字
 setName(self, name) # 设置线程名字
+is_alive(self) # 表示线程是否还在运行的boolean
 isDaemon(self) # 返回线程的daemon标志
 setDaemon(self, daemonic) # daemonic=True 使线程在后台运行
 </code></pre>
@@ -592,38 +599,38 @@ enumerate() # 返回当前活动线程列表
 settrace(func) # 为所有的线程设置一个跟踪函数
 setprofile(func) # 为所有线程设置一个profile函数
 stack_size()
-
-Timer(*args, **kwargs)
+</code></pre>
+<p>计时器Timer：</p>
+<pre><code>Timer(*args, **kwargs)
 t = Timer(30.0, f, args=[], kwargs={})
 t.start() # 在一个子线程等待，timeout就执行f(*args, **kwaargs).
 t.cancel() # 如果还在等待就取消．
-
-Event(*args, **kwargs)
-
-# 同步：　条件变量
-Condition(*args, **kwargs)
-
-# 同步：　信号量
-Semaphore(value=1, *args, **kwargs)
+</code></pre>
+<p>同步：事件</p>
+<pre><code>Event(*args, **kwargs)
+</code></pre>
+<p>同步：　条件变量</p>
+<pre><code>Condition(*args, **kwargs)
+</code></pre>
+<p>同步：　信号量</p>
+<pre><code>Semaphore(value=1, *args, **kwargs)
 # 信号量，默认value=1, 内部计数器不能小于0,当计数器==0时，调用acquire会阻塞.
-
-# 同步：　有界信号量
-BoundedSemaphore(value=1, *args, **kwargs)
+</code></pre>
+<p>同步：　有界信号量</p>
+<pre><code>BoundedSemaphore(value=1, *args, **kwargs)
 # 有界信号量，默认value=1，内部计数器不能小于0，并且不能大于value。
 # 当计数器==0，调用acquire会阻塞，当&gt;value抛出VAlueError异常
 # 可用来控制并发运行的线程数量
 bs = BoundSemaphore(number) # bs是全局的.
-def thread_function(*args, **kwargs):
+def executor(*args, **kwargs):
     ...
     bs.release() # 使计数器+1
-for t in threads:
+def consumer(*args, **kwargs):
+    ...
     bs.acquire() # 使计数器-1
-    thread.start()
-for t in threads:
-    t.join()
-
-# 同步：　锁
-Lock()
+</code></pre>
+<p>同步：　锁</p>
+<pre><code>Lock()
 # 使同一变量在多个线程间同步
 lock = Lock()
 variable = value
@@ -633,9 +640,25 @@ def thread_function(*args, **kwargs):
     lock.acquire() # 加锁，使线程进入同步阻塞状态
     variable = new_value
     lock.release() # 释放锁
-
-# 同步：　锁
-RLock(*args, **kwargs)
+</code></pre>
+<p>同步：　锁</p>
+<pre><code>RLock(*args, **kwargs)
+</code></pre>
+<h2 id="queue">queue</h2>
+<p>queue用于线程间通信，是线程安全的。</p>
+<pre><code>import queue
+</code></pre>
+<p>classes:</p>
+<pre><code># queue.Queue
+Queue(maxsize=0) # 创建一个队列对象，maxsize=0表示无限制。
+# methods:
+put(item, block=True, timeout=None) # 向队列中添加一个item，阻塞直到队列有空间。
+get(block=True, timeout=None) # 从队列中获取一个item，阻塞直到队列有数据。
+qsize() # 返回队列的大小
+empty() # 返回队列是否为空的boolean
+full() # 返回队列是否满的boolean
+task_done() # 标记一个任务已完成，必须在get之后调用。
+join() # 阻塞直到队列中的所有任务都完成，必须在put之后调用。
 </code></pre>
 <h2 id="subprocess">subprocess</h2>
 <p>开启一个子进程来执行外部命令.</p>
@@ -687,7 +710,6 @@ STDOUT = -2
 <pre><code>import concurrent.futures
 </code></pre>
 <h2 id="sched">sched</h2>
-<h2 id="queue">queue</h2>
 <h2 id="contextvars">contextvars</h2>
 <hr>
 <h1 id="inter-process-communication-and-networking">Inter Process Communication and Networking</h1>
@@ -709,6 +731,7 @@ coroutine object: 表示一个没有执行的协程，需要变成一个task，�
 <li>直接注册到event loop。</li>
 <li>并发执行</li>
 </ol>
+<p>协程对象，或者awaitable对象必须调用await。</p>
 <p>classes:</p>
 <pre><code># asyncio.Runner
 runner = Runner(loop=None, debug=False) # 创建一个Runner对象，用于运行协程。
@@ -735,12 +758,15 @@ async with TaskGroup() as tg:
 asyncio.run(main())
 
 create_task(coro, *, loop=None) # 将coroutine变成一个task，并且注册到event loop，返回Task对象
-create_task_group(*, loop=None) # 创建一个任务组，返回TaskGroup对象
+tasks = [
+    asyncio.create_task(coro(...)),
+    for i in range(10)
+]
 
 gather(*aws, return_exceptions=False)  # 并发执行aws中的可等待对象。返回一个列表，顺序与aws中一致。gather会自动把coroutine变成task。无需手动调用create_task。
 # return_exceptions=False时，如果有异常发生，抛出异常。默认值。
 # return_exceptions=True时，如果有异常发生，返回异常对象而不是抛出异常。
-await asyncio.gather(coro1, coro2, coro3)
+await asyncio.gather(*tasks)
 
 sleep(delay, result=None, *, loop=None) # 异步睡眠，返回一个Future对象
 await asyncio.sleep(1) # 等待1秒钟
@@ -763,14 +789,13 @@ async for fut in as_completed(fs):
 
 current_task(loop=None) # 返回当前正在运行的Task对象，如果没有正在运行的Task，则返回None。
 all_tasks(loop=None) # 返回当前事件循环中的所有Task对象。
-iscoroutine(obj) # 判断obj是否是一个协程对象
 
-get_event_loop() # 返回当前线程的事件循环对象，如果没有则创建一个新的事件循环对象。
-set_event_loop(loop) # 设置当前线程的事件循环对象。
-new_event_loop() # 创建一个新的事件循环对象。
-get_running_loop() # 返回当前正在运行的事件循环对象，如果没有则抛出RuntimeError异常。
+iscoroutine(obj) # 判断obj是否是一个协程对象
+iscoroutinefunction(obj) # 判断obj是否是一个协程函数。
+isawaitable(obj) # 判断obj是否是一个可等待对象。
+isfuture(obj) # 判断obj是否是一个Future对象。
 </code></pre>
-<p>协程间通信：</p>
+<p>Queue用于协程间通信, 不是线程安全的：</p>
 <pre><code># asyncio.Queue
 queue = asyncio.Queue(maxsize=0, *, loop=None) # 创建一个异步队列，maxsize=0表示无限制。
 await queue.put(item) # 向队列中添加一个item，阻塞直到队列有空间。

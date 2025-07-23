@@ -986,7 +986,7 @@
     <loc>https://canuxcheng.com/post/restructuredtext/</loc>
     <lastmod>2016-08-08T13:39:38+00:00</lastmod>
   </url><url>
-    <loc>https://canuxcheng.com/post/python_debug/</loc>
+    <loc>https://canuxcheng.com/post/psl_debug/</loc>
     <lastmod>2016-08-06T16:54:08+00:00</lastmod>
   </url><url>
     <loc>https://canuxcheng.com/tags/pep/</loc>
@@ -994,9 +994,6 @@
   </url><url>
     <loc>https://canuxcheng.com/post/python_pep/</loc>
     <lastmod>2016-08-06T16:54:08+00:00</lastmod>
-  </url><url>
-    <loc>https://canuxcheng.com/post/python_document/</loc>
-    <lastmod>2016-08-03T21:57:26+00:00</lastmod>
   </url><url>
     <loc>https://canuxcheng.com/post/ftp/</loc>
     <lastmod>2016-07-28T16:08:54+00:00</lastmod>
@@ -1070,14 +1067,8 @@
     <loc>https://canuxcheng.com/post/html/</loc>
     <lastmod>2016-06-23T09:40:39+00:00</lastmod>
   </url><url>
-    <loc>https://canuxcheng.com/post/python_package/</loc>
+    <loc>https://canuxcheng.com/post/psl_package/</loc>
     <lastmod>2016-06-22T05:17:19+00:00</lastmod>
-  </url><url>
-    <loc>https://canuxcheng.com/post/python_summary/</loc>
-    <lastmod>2016-06-21T21:18:20+00:00</lastmod>
-  </url><url>
-    <loc>https://canuxcheng.com/tags/summary/</loc>
-    <lastmod>2016-06-21T21:18:20+00:00</lastmod>
   </url><url>
     <loc>https://canuxcheng.com/post/python_oop/</loc>
     <lastmod>2016-06-21T21:18:09+00:00</lastmod>
@@ -1332,6 +1323,9 @@
     <lastmod>2016-04-02T21:11:26+00:00</lastmod>
   </url><url>
     <loc>https://canuxcheng.com/post/c_summary/</loc>
+    <lastmod>2016-04-02T16:06:14+00:00</lastmod>
+  </url><url>
+    <loc>https://canuxcheng.com/tags/summary/</loc>
     <lastmod>2016-04-02T16:06:14+00:00</lastmod>
   </url><url>
     <loc>https://canuxcheng.com/post/c_posix/</loc>

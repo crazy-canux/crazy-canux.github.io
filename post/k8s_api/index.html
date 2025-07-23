@@ -502,9 +502,9 @@ kubectl api-resources --namespaced=false
 <p>tolerations: 容忍度，使pod被吸引到特定节点。应用于pod。
 这个只能让pod能部署到加了污点的node，pod也能部署到其它没有加污点的node。</p>
 <pre><code>tolerations:
-- key: &quot;key1&quot;
+- key: &quot;kubernetes.io/arch&quot;
   operator: &quot;Equal&quot;/&quot;Exists&quot;
-  value: &quot;value1&quot;
+  value: &quot;arm64&quot;
   effect: &quot;NoSchedule&quot;/&quot;NoExecute&quot;
 </code></pre>
 <p>affinity: 亲和力，affinity可以通过label指定pod部署到node。
@@ -519,7 +519,7 @@ kubectl api-resources --namespaced=false
             values:
             - arm64
 </code></pre>
-<p>nodeSelector: 节点选择，</p>
+<p>nodeSelector: 节点选择，pod只能调度到特定节点。</p>
 <pre><code> nodeSelector:
    kubernetes.io/arch: arm64
 </code></pre>
@@ -747,7 +747,7 @@ spec:
 </code></pre>
 <hr>
 <h1 id="daemonset">DaemonSet</h1>
-<p>每个node上部署一个pod，用于部署agent。</p>
+<p>每个node上部署一个stageless pod，用于部署agent。</p>
 <p>DaemonSet</p>
 <pre><code>apiVersion: apps/v1
 kind: DaemonSet

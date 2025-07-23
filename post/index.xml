@@ -2212,22 +2212,20 @@ spec:
 &lt;pre&gt;&lt;code&gt;kubectl options # 查看所有命令可用选项
 
 --kubeconfig
-kubectl --kubeconfig=$HOME/.kube.config (default)
+kubectl --kubeconfig=$HOME/.kube/config (default)
 
 -n/--namespace
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;basic-command&#34;&gt;basic command&lt;/h2&gt;
 &lt;p&gt;create:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;# 通过yaml或json文件创建资源
+&lt;pre&gt;&lt;code&gt;# 通过yaml或json文件创建新的资源
 $ kubectl create -f FILENAME [options]
 
-options:
--f/--filename
-
-kubectl create secret tls kubernetes-dashboard-tls --key ca.key --cert ca.crt -n kubernetes-dashboard
+kubectl create namespace &amp;lt;NS&amp;gt;
+kubectl create -f resource.yaml
 
 // 输出一个资源的yaml格式.
-kubectl create deployment &amp;lt;name&amp;gt; --image=&amp;lt;img-name&amp;gt; --dry-run=client --output=yaml
+kubectl create deployment &amp;lt;name&amp;gt; --image=&amp;lt;img-name&amp;gt; --dry-run=client --output=yaml --namespace=&amp;lt;ns&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;delete:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;// 删除资源
@@ -2238,34 +2236,45 @@ options:
 --all  
 --all-namespaces
 --force
+--grace-period
+--cascade
 
-$ kubectl delete pods --all
-$ kubectl delete pod &amp;lt;name&amp;gt;
+$ kubectl delete -f resource.yaml
+
+$ kubectl delete pods --all  -n &amp;lt;NS&amp;gt; # delete all pods in the current namespace
 // 删除指定ns下所有资源.
 $ kubectl delete all --all -n {namespace}
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;删除带有finalizers字段的对象，对象实际被更新了，没有真的被删除。可以通过patch来删除。&lt;/p&gt;
+&lt;p&gt;删除带有finalizers字段的对象，对象实际被更新了，没有真的被删除。可以通过patch来删除。参考patch。&lt;/p&gt;
 &lt;p&gt;删除带有ownerReferences字段的对象，删除父对象默认会删除所有子对象，通过&amp;ndash;cascade=false只删除父对象。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;kubectl delete deployment &amp;lt;deployment-name&amp;gt; --cascade=false
+&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;expose:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;# 创建serivce:
+&lt;pre&gt;&lt;code&gt;# 将pod/deployment/replicaset暴露为service， 会创建对应的service。
 $ kubectl expose (-f FILENAME | TYPE NAME) [--port=port] [--protocol=TCP|UDP|SCTP] [--target-port=...] [--name=...] [--external-ip=...] [--type=type] [options]
 
-# 创建service，并且使用NodePort
+# 暴露deployment为service。
 # nodeport可以使用任意节点的IP访问.
-$ kubectl expose deployment hello-world --type=NodePort --name=example-service
+$ kubectl expose deployment/hello-world --type=NodePort --name=example-service
+
+kubectl expose deployment hello-world --type=LoadBalancer --port=80 --target-port=8080
 
 // 获取service的yaml
 kubectl expose deployment &amp;lt;deploy-name&amp;gt; --type=LoadBalancer --port=80 --dry-run=client --output=yaml
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;run:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;# 创建pod/container(docker run):
+&lt;pre&gt;&lt;code&gt;# 创建pod:
 $ kubectl run NAME --image=image [--env=&amp;quot;key=value&amp;quot;] [--port=port] [--replicas=replicas] [--dry-run=bool] [--overrides=inline-json] [--command] -- [COMMAND] [args...] [options]
+
+kubectl run my-pod --image=nginx --replica=3 --port=80 --restart=Never
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;set:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;$ kubectl set SUBCOMMAND [options]
 
-// 更新镜像
-$ kubectl set image deployment.v1.apps/&amp;lt;deploy-name&amp;gt; &amp;lt;container-name&amp;gt;=&amp;lt;image:tag&amp;gt;
+// 更新资源的字段或属性
+$ kubectl set image deployment/my-deployment my-container=nginx:1.21
+$ kubectl set env deployment/my-deployment LOG_LEVEL=debug
+$ kubectl set resources deployment/my-deployment --limits=cpu=500m,memory=1Gi
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;get:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;// 获取resource信息(docker ps)
@@ -2285,7 +2294,7 @@ kubectl get namespace/ns # 获取namespace信息
 kubectl get componentstatuses/cs
 
 kubectl get all --all-namespaces
-kubectl -n kube-system get all 
+kubectl get all -n kube-system
 
 kubectl get pod/pods/po 
 kubectl get po -w/--watch
@@ -2301,42 +2310,63 @@ kubectl get service/services/svc
 &lt;pre&gt;&lt;code&gt;// 查看资源解析
 $ kubectl explain RESOURCE [options]
 
-kubectl explain deploy.spec
+// 查看资源的特定字段
+$ kubectl explain pod.spec
+$ kubectl explain deploy.spec
+$ kubectl explain deploy.spec.template.spec
+
+// 查看特定api版本的资源
+$ kubectl explain deployment --api-version=apps/v1
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;edit:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;// 在线修改资源，直接生效.
-$ kubectl edit
+$ kubectl edit [RESOURCE_TYPE]/[RESOURCE_NAME] [options]
+
+kubectl edit node my-node
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;advanced-commands&#34;&gt;advanced commands&lt;/h2&gt;
-&lt;p&gt;apply:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ kubectl apply
+&lt;p&gt;apply: 创建或更新资源&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ kubectl apply -f FILENAME [options]
+$ kubectl apply -f resource1.yaml -f resource2.yaml
+$ kubectl apply -f ./manifests/
+$ kubectl apply -f resource.yaml --dry-run=client
+$ kubectl apply -f resource.yaml --force
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;diff:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ kubectl diff
+&lt;pre&gt;&lt;code&gt;$ kubectl diff -f &amp;lt;file|directory&amp;gt; [options]
+
+$ kubectl diff -f resource.yaml 
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;patch&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ kubectl patch
+&lt;pre&gt;&lt;code&gt;# 通过json或yaml对资源进行部分更新。
+$ kubectl patch [RESOURCE_TYPE] [RESOURCE_NAME] -p &amp;lt;patch-data&amp;gt; [options]
 
 // 删除terminating状态的resource
 $ kubectl patch  persistentvolumeclaim/storage -p &#39;{&amp;quot;metadata&amp;quot;:{&amp;quot;finalizers&amp;quot;:null}}&#39; -n &amp;lt;ns&amp;gt;
 
-$ kubectl replace
+# 替换已有的资源
+$ kubectl replace -f &amp;lt;file&amp;gt; [options]
+$ kubectl replace -f resource.yaml -n my-namespace
 
-$ kubectl wait
+$ kubectl wait [RESOURCE_TYPE] [RESOURCE_NAME] --for=condition=&amp;lt;CONDITION&amp;gt; [options]
 
 $ kubectl kustomize
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;deploy-command&#34;&gt;deploy command&lt;/h2&gt;
 &lt;p&gt;scale:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ kubectl scale
+&lt;pre&gt;&lt;code&gt;$ kubectl scale [RESOURCE_TYPE] [RESOURCE_NAME] --replicas=&amp;lt;number&amp;gt; [options]
+
 $ kubectl scale deployment &amp;lt;deploy-name&amp;gt; -n &amp;lt;ns&amp;gt; --replicas=0
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;autoscale:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ kubectl autoscale
+&lt;pre&gt;&lt;code&gt;# 给deploy，replicaset，statefulset等资源设置自动伸缩.HPA
+$ kubectl autoscale [RESOURCE_TYPE]/[RESOURCE_NAME] [flags]
+
+kubectl autoscale deployment my-deployment --min=2 --max=10 --cpu-percent=80
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;rollout:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;// 回滚
-$ kubectl rollout
+$ kubectl rollout [SUBCOMMAND] [RESOURCE_TYPE/RESOURCE_NAME] [options]
 
 // 暂停/恢复/重启 deployment.
 kubectl rollout pause/resume/restart  deploy/katib-mysql -n kubeflow
@@ -2381,15 +2411,18 @@ options:
 -t/--tty
 
 $ kubectl exec -it &amp;lt;pod&amp;gt; -n &amp;lt;ns&amp;gt; -- /bin/bash
+$ kubectl exec -it &amp;lt;pod&amp;gt; -n &amp;lt;ns&amp;gt; -c &amp;lt;container&amp;gt;   -- /bin/sh
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;port-forward:&lt;/p&gt;
 &lt;p&gt;由于已知的限制，目前的端口转发仅适用于 TCP 协议.&lt;/p&gt;
 &lt;p&gt;只能通过运行转发命令的IP/FQDN访问。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ kubectl port-forward
+&lt;pre&gt;&lt;code&gt;$ kubectl port-forward [RESOURCE_TYPE]/[RESOURCE_NAME] [LOCAL_PORT]:[REMOTE_PORT] [options]
 
 // 转发本地端口到deploy/rs/svc/pod
+$ kubectl port-forward pod/my-pod 8080:80 -n &amp;lt;ns&amp;gt;
 $ kubectl port-forward svc/redis-service 6379:6379 -n redis
 
+# 允许所有IP访问
 $ kubectl port-forward --address 0.0.0.0 -n kubernetes-dashboard service/kubernetes-dashboard 8080:443
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;proxy:&lt;/p&gt;
@@ -2398,41 +2431,64 @@ $ kubectl port-forward --address 0.0.0.0 -n kubernetes-dashboard service/kuberne
 // 通过proxy可以访问默认的clusterIP服务.
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;attach:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ kubectl attach
+&lt;pre&gt;&lt;code&gt;$ kubectl attach [POD_NAME] [-c CONTAINER] [options]
+
+$ kubectl attach my-pod -n &amp;lt;ns&amp;gt; -c &amp;lt;container&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;cp:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ kubectl cp
+&lt;pre&gt;&lt;code&gt;$ kubectl cp &amp;lt;source&amp;gt; &amp;lt;destination&amp;gt; [options]
+
+$ kubectl cp ./local-file.txt my-pod:/app/ -n my-namespace
+$ kubectl cp my-pod:/app/remote-file.txt ./ -n my-namespace
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;auth:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ kubectl auth
+&lt;pre&gt;&lt;code&gt;$ kubectl auth [SUBCOMMAND] [options]
+
+$ kubectl auth can-i get pods -n my-namespace
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;debug:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ kubectl debug
+&lt;pre&gt;&lt;code&gt;$ kubectl debug [RESOURCE] [options]
 
 // debug node -- 直接进入node的shell，log在/host/var/log
-kubectl debug node/&amp;lt;name&amp;gt;  -it   --image=ubuntu
+$ kubectl debug node/&amp;lt;name&amp;gt;  -it   --image=
+
+// debug pod -- 创建一个新的pod来调试现有的pod
+$kubectl debug pod/&amp;lt;pod-name&amp;gt; -n &amp;lt;namespace&amp;gt; --copy-to=&amp;lt;new-pod-name&amp;gt; --container=&amp;lt;container-name&amp;gt;
+$kubectl debug pod/&amp;lt;pod-name&amp;gt; -n &amp;lt;namespace&amp;gt; --container=&amp;lt;container-name&amp;gt; --image=busybox
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;cluster-management&#34;&gt;cluster management&lt;/h2&gt;
 &lt;p&gt;top:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ kubectl top
+&lt;pre&gt;&lt;code&gt;$ kubectl top [RESOURCE_TYPE] [RESOURCE_NAME] [options]
 
-$ kubectl cluster-info
-
-$ kubectl certificate
-
-// 节点变成unschedulable
-$ kubectl cordon
+$ kubectl top nodes
+$ kubectl top pods -n &amp;lt;ns&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;cluster-info:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ kubectl cluster-info
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;certificate:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ kubectl certificate [SUBCOMMAND] [options]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;cordon:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 节点变成unschedulable
+$ kubectl cordon &amp;lt;node&amp;gt;
 
 // 节点变成schedulable
-$ kubectl uncordon
+$ kubectl uncordon &amp;lt;node&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;drain:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 安全从节点驱逐pod
+$ kubectl drain &amp;lt;node-name&amp;gt; [options]
+$ kubectl drain &amp;lt;node&amp;gt; --delete-emptydir-data --ignore-daemonsets
 
-// 安全下线节点：Ready,SchedulingDisabled
-$ kubectl drain
-kubectl drain &amp;lt;node&amp;gt; --delete-emptydir-data --ignore-daemonsets
+// 强制驱逐节点上的pod
+$ kubectl drain my-node --force --ignore-daemonsets
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;tain:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;//管理污点
+$ kubectl taint nodes &amp;lt;node-name&amp;gt; &amp;lt;key&amp;gt;=&amp;lt;value&amp;gt;:&amp;lt;effect&amp;gt;
 
-//定义污点
-$ kubectl taint
-kubectl taint nodes &amp;lt;node&amp;gt; &amp;lt;key&amp;gt;=&amp;lt;value&amp;gt;:NoSchedule-
+$kubectl taint nodes &amp;lt;node&amp;gt; &amp;lt;key&amp;gt;=&amp;lt;value&amp;gt;:NoSchedule-
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;settings-commands&#34;&gt;Settings Commands&lt;/h2&gt;
 &lt;p&gt;label&lt;/p&gt;
@@ -2727,9 +2783,9 @@ kubectl api-resources --namespaced=false
 &lt;p&gt;tolerations: 容忍度，使pod被吸引到特定节点。应用于pod。
 这个只能让pod能部署到加了污点的node，pod也能部署到其它没有加污点的node。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;tolerations:
-- key: &amp;quot;key1&amp;quot;
+- key: &amp;quot;kubernetes.io/arch&amp;quot;
   operator: &amp;quot;Equal&amp;quot;/&amp;quot;Exists&amp;quot;
-  value: &amp;quot;value1&amp;quot;
+  value: &amp;quot;arm64&amp;quot;
   effect: &amp;quot;NoSchedule&amp;quot;/&amp;quot;NoExecute&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;affinity: 亲和力，affinity可以通过label指定pod部署到node。
@@ -2744,7 +2800,7 @@ kubectl api-resources --namespaced=false
             values:
             - arm64
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;nodeSelector: 节点选择，&lt;/p&gt;
+&lt;p&gt;nodeSelector: 节点选择，pod只能调度到特定节点。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt; nodeSelector:
    kubernetes.io/arch: arm64
 &lt;/code&gt;&lt;/pre&gt;
@@ -2972,7 +3028,7 @@ spec:
 &lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;daemonset&#34;&gt;DaemonSet&lt;/h1&gt;
-&lt;p&gt;每个node上部署一个pod，用于部署agent。&lt;/p&gt;
+&lt;p&gt;每个node上部署一个stageless pod，用于部署agent。&lt;/p&gt;
 &lt;p&gt;DaemonSet&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;apiVersion: apps/v1
 kind: DaemonSet
@@ -19592,11 +19648,11 @@ zip([1, 2, 3], [&amp;quot;a&amp;quot;, &amp;quot;b&amp;quot;, &amp;quot;c&amp;qu
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;classes:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;# multiprocessing.Process
-Process(target=func, args=(arg1, arg2, ...), kwargs={&#39;key&#39;: value})
+Process(group=None, target=None, name=None, args=(), kwargs=None, *, daemon=None)
 # methods:
 run(self) # 子类重写用来定义进程的功能的函数, 通常通过这种方式来创建进程
 start(self) # 启动一个进程
-join(self, timeout=None) # 父进程等待子进程结束
+join(self, timeout=None) # 父进程阻塞等待子进程结束，后面的代码不会执行，直到子进程结束。
 is_alive() # 返回进程是否还在运行的boolean
 exit(self) # 退出进程
 terminate(self) # 终止进程
@@ -19612,44 +19668,49 @@ current_process()
 freeze_support()
 get_logger()
 log_to_stderr(level=None)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Pool:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Pool(processes=None, initializer=None, initargs=(), maxtasksperchild=None) # 返回一个进程池对象, processes默认是cpu个数.
 
-Pool(processes=None, initializer=None, initargs=(), maxtasksperchild=None) # 返回一个进程池对象, processes默认是cpu个数.
 with Pool(processes=4) as pool:
     pool.map(func, iterable) # 阻塞，返回所有结果
 # func只能是顶层函数，不能是方法和内部函数.
 # 进程池，可以控制进程数量,processes 默认是cpu个数(cpu_count())
 # 非阻塞，维持进程总数，当一个进程结束会添加新的进程到pool,主进程不阻塞，同步运行，pool中的进程并发执行.
+
 apply_async(func, args=(), kwargs={}, callback=None) # 非阻塞,
+
 map_async(func, iterable, chunksize=None, callback=None) # 非阻塞
+
 # 阻塞，维持进程总数，当一个进程结束会添加新的进程到pool，主进程阻塞，pool中的进程一个一个执行.
 apply(func, args=(), kwargs={}) # 阻塞，执行一次函数
 map(func, itreable, chunksize=None) # 阻塞, 返回所有结果
+
 terminate() # 终止所有任务
 close() # 关闭pool,不接受新任务
 join() # 等待pool中子进程结束，要在close/terminate之后调用.
-
-# IPC: 管道
-Pipe(duplex=True) # duplex=True表示默认是双向pipe.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;IPC: 管道&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Pipe(duplex=True) # duplex=True表示默认是双向pipe.
 receiver, sender = Pipe()
 sender.send(obj)
 receiver.recv()
 close()
-
-# IPC: 消息队列
-# 来自于Queue.Queue, 具体方法参考Queue.Queue
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;IPC: 消息队列&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 用于进程间通信，线程和进程安全。
 Queue(maxsize=0) # return a queue object
 q = Queue()
-
-# IPC: 共享内存
-Manager()
-
-Array(typecode_or_type, size_or_initializer, **kwds)
-
-RawArray(typecode_or_type, size_or_initializer)
-
-Value(typecode_or_type, *args, **kwds)
-
-RawValue(typecode_or_type, *args)
+q.put(obj) # 阻塞，放入一个对象到队列中
+q.put_nowait(obj) # 非阻塞，放入一个对象到队列中
+q.get() # 阻塞，从队列中获取一个对象
+q.get_nowait() # 非阻塞，从队列中获取一个对象
+q.empty() # 返回队列是否为空的boolean
+q.full() # 返回队列是否已满的boolean
+q.qsize() # 返回队列的大小
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;IPC: 共享内存&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Manager()
 
 Event()
 
@@ -19670,6 +19731,7 @@ with Lock() as lock:
 # 同步: 重入锁，允许同一线程多次获取锁和释放锁。
 RLock(*args, **kwargs) # 返回一个RLock对象, 可重入锁, 允许同一线程多次获取锁.
 &lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
 &lt;h2 id=&#34;threading&#34;&gt;threading&lt;/h2&gt;
 &lt;p&gt;多线程就是把单个任务分成不同部分运行.&lt;/p&gt;
 &lt;p&gt;threading支持守护线程(通过join方法实现)．&lt;/p&gt;
@@ -19677,15 +19739,16 @@ RLock(*args, **kwargs) # 返回一个RLock对象, 可重入锁, 允许同一线�
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;classes:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;# threading.Thread
-Thread(group=None, target=None, name=None, args=(), kwargs=None, verbose=None)
+Thread(group=None, target=None, name=None, args=(), kwargs=None, daemon=None)
 # methods:
 append(self, *args, **kwargs) # 添加线程到线程组
 run(self) # 子类重写用来定义线程的功能的函数, 通常通过这种方式来创建线程
 start(self) # 开始执行线程
-join(self, timeout=None) # 主程序挂起，直到线程结束,再继续运行主程序
-is_alive(self) # 表示线程是否还在运行的boolean
+join(self, timeout=None) # 主程序挂起，阻塞等待子线程结束,再继续运行主程序
+
 getName(self) # 返回线程名字
 setName(self, name) # 设置线程名字
+is_alive(self) # 表示线程是否还在运行的boolean
 isDaemon(self) # 返回线程的daemon标志
 setDaemon(self, daemonic) # daemonic=True 使线程在后台运行
 &lt;/code&gt;&lt;/pre&gt;
@@ -19696,38 +19759,38 @@ enumerate() # 返回当前活动线程列表
 settrace(func) # 为所有的线程设置一个跟踪函数
 setprofile(func) # 为所有线程设置一个profile函数
 stack_size()
-
-Timer(*args, **kwargs)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;计时器Timer：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Timer(*args, **kwargs)
 t = Timer(30.0, f, args=[], kwargs={})
 t.start() # 在一个子线程等待，timeout就执行f(*args, **kwaargs).
 t.cancel() # 如果还在等待就取消．
-
-Event(*args, **kwargs)
-
-# 同步：　条件变量
-Condition(*args, **kwargs)
-
-# 同步：　信号量
-Semaphore(value=1, *args, **kwargs)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;同步：事件&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Event(*args, **kwargs)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;同步：　条件变量&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Condition(*args, **kwargs)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;同步：　信号量&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Semaphore(value=1, *args, **kwargs)
 # 信号量，默认value=1, 内部计数器不能小于0,当计数器==0时，调用acquire会阻塞.
-
-# 同步：　有界信号量
-BoundedSemaphore(value=1, *args, **kwargs)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;同步：　有界信号量&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;BoundedSemaphore(value=1, *args, **kwargs)
 # 有界信号量，默认value=1，内部计数器不能小于0，并且不能大于value。
 # 当计数器==0，调用acquire会阻塞，当&amp;gt;value抛出VAlueError异常
 # 可用来控制并发运行的线程数量
 bs = BoundSemaphore(number) # bs是全局的.
-def thread_function(*args, **kwargs):
+def executor(*args, **kwargs):
     ...
     bs.release() # 使计数器+1
-for t in threads:
+def consumer(*args, **kwargs):
+    ...
     bs.acquire() # 使计数器-1
-    thread.start()
-for t in threads:
-    t.join()
-
-# 同步：　锁
-Lock()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;同步：　锁&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Lock()
 # 使同一变量在多个线程间同步
 lock = Lock()
 variable = value
@@ -19737,9 +19800,25 @@ def thread_function(*args, **kwargs):
     lock.acquire() # 加锁，使线程进入同步阻塞状态
     variable = new_value
     lock.release() # 释放锁
-
-# 同步：　锁
-RLock(*args, **kwargs)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;同步：　锁&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;RLock(*args, **kwargs)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;queue&#34;&gt;queue&lt;/h2&gt;
+&lt;p&gt;queue用于线程间通信，是线程安全的。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import queue
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;classes:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# queue.Queue
+Queue(maxsize=0) # 创建一个队列对象，maxsize=0表示无限制。
+# methods:
+put(item, block=True, timeout=None) # 向队列中添加一个item，阻塞直到队列有空间。
+get(block=True, timeout=None) # 从队列中获取一个item，阻塞直到队列有数据。
+qsize() # 返回队列的大小
+empty() # 返回队列是否为空的boolean
+full() # 返回队列是否满的boolean
+task_done() # 标记一个任务已完成，必须在get之后调用。
+join() # 阻塞直到队列中的所有任务都完成，必须在put之后调用。
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;subprocess&#34;&gt;subprocess&lt;/h2&gt;
 &lt;p&gt;开启一个子进程来执行外部命令.&lt;/p&gt;
@@ -19791,7 +19870,6 @@ STDOUT = -2
 &lt;pre&gt;&lt;code&gt;import concurrent.futures
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;sched&#34;&gt;sched&lt;/h2&gt;
-&lt;h2 id=&#34;queue&#34;&gt;queue&lt;/h2&gt;
 &lt;h2 id=&#34;contextvars&#34;&gt;contextvars&lt;/h2&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;inter-process-communication-and-networking&#34;&gt;Inter Process Communication and Networking&lt;/h1&gt;
@@ -19813,6 +19891,7 @@ coroutine object: 表示一个没有执行的协程，需要变成一个task，�
 &lt;li&gt;直接注册到event loop。&lt;/li&gt;
 &lt;li&gt;并发执行&lt;/li&gt;
 &lt;/ol&gt;
+&lt;p&gt;协程对象，或者awaitable对象必须调用await。&lt;/p&gt;
 &lt;p&gt;classes:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;# asyncio.Runner
 runner = Runner(loop=None, debug=False) # 创建一个Runner对象，用于运行协程。
@@ -19839,12 +19918,15 @@ async with TaskGroup() as tg:
 asyncio.run(main())
 
 create_task(coro, *, loop=None) # 将coroutine变成一个task，并且注册到event loop，返回Task对象
-create_task_group(*, loop=None) # 创建一个任务组，返回TaskGroup对象
+tasks = [
+    asyncio.create_task(coro(...)),
+    for i in range(10)
+]
 
 gather(*aws, return_exceptions=False)  # 并发执行aws中的可等待对象。返回一个列表，顺序与aws中一致。gather会自动把coroutine变成task。无需手动调用create_task。
 # return_exceptions=False时，如果有异常发生，抛出异常。默认值。
 # return_exceptions=True时，如果有异常发生，返回异常对象而不是抛出异常。
-await asyncio.gather(coro1, coro2, coro3)
+await asyncio.gather(*tasks)
 
 sleep(delay, result=None, *, loop=None) # 异步睡眠，返回一个Future对象
 await asyncio.sleep(1) # 等待1秒钟
@@ -19867,14 +19949,13 @@ async for fut in as_completed(fs):
 
 current_task(loop=None) # 返回当前正在运行的Task对象，如果没有正在运行的Task，则返回None。
 all_tasks(loop=None) # 返回当前事件循环中的所有Task对象。
-iscoroutine(obj) # 判断obj是否是一个协程对象
 
-get_event_loop() # 返回当前线程的事件循环对象，如果没有则创建一个新的事件循环对象。
-set_event_loop(loop) # 设置当前线程的事件循环对象。
-new_event_loop() # 创建一个新的事件循环对象。
-get_running_loop() # 返回当前正在运行的事件循环对象，如果没有则抛出RuntimeError异常。
+iscoroutine(obj) # 判断obj是否是一个协程对象
+iscoroutinefunction(obj) # 判断obj是否是一个协程函数。
+isawaitable(obj) # 判断obj是否是一个可等待对象。
+isfuture(obj) # 判断obj是否是一个Future对象。
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;协程间通信：&lt;/p&gt;
+&lt;p&gt;Queue用于协程间通信, 不是线程安全的：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;# asyncio.Queue
 queue = asyncio.Queue(maxsize=0, *, loop=None) # 创建一个异步队列，maxsize=0表示无限制。
 await queue.put(item) # 向队列中添加一个item，阻塞直到队列有空间。
@@ -21260,22 +21341,21 @@ how
         </item>
         <item>
         <title>Debug</title>
-        <link>https://canuxcheng.com/post/python_debug/</link>
+        <link>https://canuxcheng.com/post/psl_debug/</link>
         <pubDate>Sat, 06 Aug 2016 16:54:08 +0000</pubDate>
         
-        <guid>https://canuxcheng.com/post/python_debug/</guid>
-        <description>&lt;h1 id=&#34;ide&#34;&gt;IDE&lt;/h1&gt;
-&lt;p&gt;pycharm可以通过breakpoint和step调试.&lt;/p&gt;
-&lt;hr&gt;
-&lt;h1 id=&#34;debug&#34;&gt;debug&lt;/h1&gt;
+        <guid>https://canuxcheng.com/post/psl_debug/</guid>
+        <description>&lt;h1 id=&#34;debug-and-profiling&#34;&gt;Debug and Profiling&lt;/h1&gt;
 &lt;h2 id=&#34;bdb&#34;&gt;bdb&lt;/h2&gt;
 &lt;h2 id=&#34;pdb&#34;&gt;pdb&lt;/h2&gt;
-&lt;h2 id=&#34;hotshot&#34;&gt;hotshot&lt;/h2&gt;
 &lt;h2 id=&#34;timeit&#34;&gt;timeit&lt;/h2&gt;
 &lt;h2 id=&#34;trace&#34;&gt;trace&lt;/h2&gt;
-&lt;h2 id=&#34;cprofile&#34;&gt;cProfile&lt;/h2&gt;
-&lt;h2 id=&#34;profile&#34;&gt;profile&lt;/h2&gt;
+&lt;h2 id=&#34;trracemalloc&#34;&gt;trracemalloc&lt;/h2&gt;
 &lt;hr&gt;
+&lt;h2 id=&#34;tpl&#34;&gt;TPL&lt;/h2&gt;
+&lt;h3 id=&#34;viztracer&#34;&gt;viztracer&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/gaogaotiantian/viztracer&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/gaogaotiantian/viztracer&lt;/a&gt;&lt;/p&gt;
 </description>
         </item>
         <item>
@@ -21295,103 +21375,6 @@ how
     &gt;https://www.python.org/dev/peps/pep-0020/&lt;/a&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;# 查看pep20
 &amp;gt;import this
-&lt;/code&gt;&lt;/pre&gt;
-</description>
-        </item>
-        <item>
-        <title>Document</title>
-        <link>https://canuxcheng.com/post/python_document/</link>
-        <pubDate>Wed, 03 Aug 2016 21:57:26 +0000</pubDate>
-        
-        <guid>https://canuxcheng.com/post/python_document/</guid>
-        <description>&lt;h1 id=&#34;document&#34;&gt;Document&lt;/h1&gt;
-&lt;p&gt;python项目文档相关的工具．&lt;/p&gt;
-&lt;h1 id=&#34;pydoc&#34;&gt;pydoc&lt;/h1&gt;
-&lt;p&gt;python自带的文档命令行接口&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ pydoc --help
-$ pydoc -p &amp;lt;port&amp;gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;hr&gt;
-&lt;h1 id=&#34;tpl&#34;&gt;TPL&lt;/h1&gt;
-&lt;h2 id=&#34;sphinx&#34;&gt;Sphinx&lt;/h2&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/sphinx-doc/sphinx&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://github.com/sphinx-doc/sphinx&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://zh-sphinx-doc.readthedocs.io/en/latest/contents.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://zh-sphinx-doc.readthedocs.io/en/latest/contents.html&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;Sphinx就是python处理reStructuredText格式的工具。&lt;/p&gt;
-&lt;p&gt;安装：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$pip install -U Sphinx
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;使用sphinx：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$cd your-project/docs
-
-$sphinx-quickstart
-# 以下选项需要手动设定，其它都可以用默认值：
-&amp;gt; Project name: pydeveloper
-&amp;gt; Author name(s): Canux CHENG
-&amp;gt; Project version: 1.0.0.0
-&amp;gt; autodoc: automatically insert docstrings from modules (y/n) [n]: y
-&amp;gt; doctest: automatically test code snippets in doctest blocks (y/n) [n]: y
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;配置文件conf.py包含刚才的所有配置，可以在这里手动修改。&lt;/p&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://www.sphinx-doc.org/en/1.4.8/config.html#confval-locale_dirs&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;http://www.sphinx-doc.org/en/1.4.8/config.html#confval-locale_dirs&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;添加包的版本：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;sys.path.insert(0, os.path.abspath(&amp;quot;..&amp;quot;))
-from &amp;lt;project&amp;gt; import __version__
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;修改自己的配置：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;copyright = u&#39;2016, &amp;lt;a href=&amp;quot;http://canuxcheng.com&amp;quot;&amp;gt;Canux CHENG&amp;lt;/a&amp;gt;&#39;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&#34;sphinx-docs&#34;&gt;sphinx-docs&lt;/h3&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://zh-sphinx-doc.readthedocs.io/en/latest/markup/index.html#sphinxmarkup&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://zh-sphinx-doc.readthedocs.io/en/latest/markup/index.html#sphinxmarkup&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;sphinx的标记把reST格式的文档关联起来。&lt;/p&gt;
-&lt;p&gt;index.rst这是文档的首页。&lt;/p&gt;
-&lt;h3 id=&#34;sphinx-build&#34;&gt;sphinx-build&lt;/h3&gt;
-&lt;p&gt;生成web可读的文档。&lt;/p&gt;
-&lt;p&gt;简单方法生成文档：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;# 生成html格式的文档
-$make html
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&#34;sphinx-apidoc&#34;&gt;sphinx-apidoc&lt;/h3&gt;
-&lt;p&gt;自动生成API文档。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$sphinx-apidoc
-&lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&#34;debug&#34;&gt;Debug&lt;/h3&gt;
-&lt;p&gt;浏览器打开docs/_build/html/index.html即可。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$firefox _build/html/index.html
-&lt;/code&gt;&lt;/pre&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;readthedocs&#34;&gt;ReadTheDocs&lt;/h2&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://readthedocs.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://readthedocs.org/&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://readthedocs.readthedocs.io/zh_CN/latest/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;http://readthedocs.readthedocs.io/zh_CN/latest/&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;将项目文档部署到readthedocs站点。&lt;/p&gt;
-&lt;p&gt;直接注册帐号，同步github项目，然后导入你的项目即可。&lt;/p&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;alabaster&#34;&gt;alabaster&lt;/h2&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/bitprophet/alabaster/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://github.com/bitprophet/alabaster/&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;这个主题是sphinx的默认主题，基于requests和flask的文档的主题而来。&lt;/p&gt;
-&lt;p&gt;主题设置：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;html_theme_options = {
-    &#39;github_user&#39;: &#39;crazy-canux&#39;,
-    &#39;github_repo&#39;: &#39;&amp;lt;your-project&amp;gt;&#39;,
-    &#39;github_banner&#39;: True,
-    &#39;show_powered_by&#39;: False,
-    &#39;show_related&#39;: True,
-}
-&lt;/code&gt;&lt;/pre&gt;
-&lt;hr&gt;
-&lt;h2 id=&#34;pypandoc&#34;&gt;pypandoc&lt;/h2&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/bebraw/pypandoc&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://github.com/bebraw/pypandoc&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;文档转换工具pandoc的python包。&lt;/p&gt;
-&lt;p&gt;安装：&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ sudo apt-get install pandoc
-$ pip install pypandoc
 &lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
@@ -22642,26 +22625,30 @@ id,class,title,style
         </item>
         <item>
         <title>Package</title>
-        <link>https://canuxcheng.com/post/python_package/</link>
+        <link>https://canuxcheng.com/post/psl_package/</link>
         <pubDate>Wed, 22 Jun 2016 05:17:19 +0000</pubDate>
         
-        <guid>https://canuxcheng.com/post/python_package/</guid>
-        <description>&lt;h1 id=&#34;package&#34;&gt;Package&lt;/h1&gt;
+        <guid>https://canuxcheng.com/post/psl_package/</guid>
+        <description>&lt;h1 id=&#34;packaging-and-distribution&#34;&gt;Packaging and Distribution&lt;/h1&gt;
 &lt;p&gt;PEP426是python最新的打包标准，定义了wheel为最新的python包。&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.python.org/dev/peps/pep-0426/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.python.org/dev/peps/pep-0426/&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;ensurepip&#34;&gt;ensurepip&lt;/h2&gt;
-&lt;p&gt;内置模块.提供使用pip从pypi安装模块。&lt;/p&gt;
-&lt;h2 id=&#34;distutils&#34;&gt;distutils&lt;/h2&gt;
-&lt;p&gt;内置的模块.处理简单的包安装,一般使用setuptools代替该模块。&lt;/p&gt;
+&lt;p&gt;python3.4开始内置了ensurepip模块，用于安装pip和setuptools。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ python3 -m ensurepip --default-pip
+&lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;venv&#34;&gt;venv&lt;/h2&gt;
-&lt;p&gt;python3新增了虚拟环境的包．python2中使用virtualenv.&lt;/p&gt;
+&lt;p&gt;python3.3开始内置了venv模块，用于创建虚拟环境。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ python3 -m venv .env
+&lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;zipapp&#34;&gt;zipapp&lt;/h2&gt;
-&lt;p&gt;python3新增管理可执行的python的zip包．&lt;/p&gt;
+&lt;p&gt;python3.5开始内置了zipapp模块，用于创建可执行的zip包。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ python3 -m zipapp myapp -o myapp.pyz
+&lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
-&lt;h1 id=&#34;tpl&#34;&gt;TPL&lt;/h1&gt;
+&lt;h2 id=&#34;tpl&#34;&gt;TPL&lt;/h2&gt;
 &lt;p&gt;相关的第三方库&lt;/p&gt;
-&lt;h2 id=&#34;virtualenv&#34;&gt;virtualenv&lt;/h2&gt;
+&lt;h3 id=&#34;virtualenv&#34;&gt;virtualenv&lt;/h3&gt;
 &lt;p&gt;python3.5开始并入了虚拟化标准库venv.&lt;/p&gt;
 &lt;p&gt;分离的虚拟的python环境,自动安装setuptools和pip和wheel&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/pypa/virtualenv&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -22719,7 +22706,7 @@ $ rmvirtualenv [project-name] # 删除环境
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/pypa/pipenv&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/pypa/pipenv&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;封装了virtualenv的工具，用于取代virtualenvwrapper.&lt;/p&gt;
-&lt;h2 id=&#34;setuptools&#34;&gt;setuptools&lt;/h2&gt;
+&lt;h3 id=&#34;setuptools&#34;&gt;setuptools&lt;/h3&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/pypa/setuptools&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/pypa/setuptools&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/pypa/wheel&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -22893,7 +22880,7 @@ $ twine upload dist/*
 &lt;pre&gt;&lt;code&gt;$python setup.py sdist upload -r pypi
 $python setup.py bdist_wheel upload -r pypi
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;cython&#34;&gt;cython&lt;/h2&gt;
+&lt;h3 id=&#34;cython&#34;&gt;cython&lt;/h3&gt;
 &lt;p&gt;编译成.so文件&lt;/p&gt;
 &lt;p&gt;安装:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;$ sudo pip install cython
@@ -22938,10 +22925,10 @@ $ python3 setup.py build_ext --inplace -j 8
 // 删除符号信息
 $ find sandbox/ -name &amp;quot;*.so&amp;quot; -exec strip {} \; 
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;pbr&#34;&gt;pbr&lt;/h2&gt;
+&lt;h3 id=&#34;pbr&#34;&gt;pbr&lt;/h3&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/openstack-dev/pbr&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/openstack-dev/pbr&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;扩展点entry-points&#34;&gt;扩展点（Entry Points）&lt;/h2&gt;
+&lt;h3 id=&#34;扩展点entry-points&#34;&gt;扩展点（Entry Points）&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;pkg_resources&lt;/p&gt;
@@ -22957,33 +22944,6 @@ $ find sandbox/ -name &amp;quot;*.so&amp;quot; -exec strip {} \;
 &lt;/ul&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://docs.openstack.org/developer/stevedore/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;http://docs.openstack.org/developer/stevedore/&lt;/a&gt;&lt;/p&gt;
-</description>
-        </item>
-        <item>
-        <title>Summary</title>
-        <link>https://canuxcheng.com/post/python_summary/</link>
-        <pubDate>Tue, 21 Jun 2016 21:18:20 +0000</pubDate>
-        
-        <guid>https://canuxcheng.com/post/python_summary/</guid>
-        <description>&lt;h1 id=&#34;python难点总结&#34;&gt;python难点总结&lt;/h1&gt;
-&lt;h1 id=&#34;多线程&#34;&gt;多线程&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;GIL&lt;/p&gt;
-&lt;p&gt;GIL: Global Interpretror Lock. 全局解释器锁．&lt;/p&gt;
-&lt;p&gt;python不建议使用多线程，用多进程代替．&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
-&lt;h1 id=&#34;协程&#34;&gt;协程&lt;/h1&gt;
-&lt;ul&gt;
-&lt;li&gt;
-&lt;p&gt;coroutine&lt;/p&gt;
-&lt;p&gt;协程就是同时开启两个任务，但一次只顺序执行一个．
-如果执行的任务阻塞，就切换到下一个继续执行．节省时间．&lt;/p&gt;
-&lt;/li&gt;
-&lt;/ul&gt;
-&lt;hr&gt;
 </description>
         </item>
         <item>
@@ -23451,7 +23411,6 @@ __getattr__ # 如果实现了的话，在描述符中优先级最低
     def __get__(self, obj, typ=None):
         return types.MethodType(self, obj, typ)
 
-
     def tmethod(self, args):
         return args
 
@@ -23589,7 +23548,7 @@ Class.function(*args) -&amp;gt; function(Class, *args)
 &lt;li&gt;备选构造函数&lt;/li&gt;
 &lt;li&gt;工厂方法模式&lt;/li&gt;
 &lt;li&gt;访问和修改类属性&lt;/li&gt;
-&lt;li&gt;配置和设置相关方o&lt;/li&gt;
+&lt;li&gt;配置和设置相关方法&lt;/li&gt;
 &lt;li&gt;继承中的类方法&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h1 id=&#34;staticmethod&#34;&gt;staticmethod&lt;/h1&gt;
@@ -24667,18 +24626,19 @@ reduce(lambda x,y: x*y, [1,2,3,4]
 &lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;内嵌函数&#34;&gt;&lt;em&gt;内嵌函数&lt;/em&gt;&lt;/h2&gt;
-&lt;p&gt;可以在函数内部定义函数，内部函数不能在外部函数以外的地方调用．&lt;/p&gt;
+&lt;p&gt;可以在函数内部定义函数，内部函数不能在外部函数以外的地方调用．
+内嵌函数不一定返回，不会记住外部变量。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;def outer(*args, **kwargs):
     var = &#39;value&#39; # 外部函数的变量
     def inner(arg): # 内嵌函数的参数不能是外部函数的参数．内部函数必须完全独立．
         print(var) # 内嵌函数可以引用外部函数的变量
-        # var += 1 # 内嵌函数不能修改外部函数的变量
+        # var += 1 # 内嵌函数不能修改外部函数的不可变类型变量
     inner(args)
 
 def outer():
     x = 1
     def inner():
-        nonlocal x # nonlocal关键字可以引用外部函数的变量
+        nonlocal x # nonlocal关键字可以引用外部函数的不可变类型变量 进行修改。
         x += 1
     inner()
     print(x) # 2
@@ -24704,17 +24664,28 @@ def fib(n):
     return val
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h2 id=&#34;closure闭包&#34;&gt;&lt;em&gt;closure闭包&lt;/em&gt;&lt;/h2&gt;
+&lt;p&gt;闭包一定是内嵌函数，内嵌函数不一定是闭包。&lt;/p&gt;
 &lt;p&gt;在一个内部函数里对在外部作用域的变量进行引用，内部函数被认为是closure.&lt;/p&gt;
 &lt;p&gt;定义在外部函数内的但由内部函数引用的变量称为自由变量．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;def outer(arg):
+    free_var = arg # 外部函数的自由变量
+    def inner(*args, **kwargs):
+        print(free_var)
+    return inner
+&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;当自由变量是一个函数时，闭包就是一个装饰器，decorator是closure最常见的应用．&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;def outer(free):
-    def clos(*args, **kwargs):
-        print(free)
-        print(args, kwargs)
+&lt;pre&gt;&lt;code&gt;def outer():
+    data = []    
+    def clos(value):
+        data.append(value)    # 可变类型不需要nonlocal。
+        return data
     return clos
+call = outer() # 调用外部函数，返回一个内部函数的引用
+print(call(1)) # [1]
+print(call(2)) # [1, 2]
 
 # 调用外部函数，返回一个内部函数的引用,　传入外部函数的就是自由变量,返回的内部函数就是闭包.
-first_clos = outer(1)
+first_clos = outer(arg)
 
 # 调用closure
 first_clos(*args, **kwargs)
@@ -24766,7 +24737,7 @@ def foo(*args, **kwargs):
     pass
 
 # wrapper_name(*args, **kwargs)
-foo(*args, **kwargs)
+foo(*args, **kwargs) 
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;装饰器的属性：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;foo.__name__ #  wrapper_name, 并非foo
@@ -28822,7 +28793,7 @@ curl -s https://vault.canux.com/v1/&amp;lt;ns&amp;gt;/&amp;lt;pki_root&amp;gt;/c
         
         <guid>https://canuxcheng.com/post/psl_devops/</guid>
         <description>&lt;h1 id=&#34;devops&#34;&gt;DevOps&lt;/h1&gt;
-&lt;p&gt;development, debugging, profiling&lt;/p&gt;
+&lt;p&gt;development, testing, documentation.&lt;/p&gt;
 &lt;h2 id=&#34;typing&#34;&gt;typing&lt;/h2&gt;
 &lt;p&gt;用于类型提示，提供类型检查，代码可读性和编辑器自动补全支持。&lt;/p&gt;
 &lt;p&gt;基础类型：&lt;/p&gt;
@@ -28863,12 +28834,6 @@ Annotated
 &lt;p&gt;python内置的单元测试库．&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;import unittest
 &lt;/code&gt;&lt;/pre&gt;
-&lt;hr&gt;
-&lt;h1 id=&#34;debugging-and-profiling&#34;&gt;Debugging and Profiling&lt;/h1&gt;
-&lt;h2 id=&#34;bdb&#34;&gt;bdb&lt;/h2&gt;
-&lt;h2 id=&#34;pdb&#34;&gt;pdb&lt;/h2&gt;
-&lt;h2 id=&#34;timeit&#34;&gt;timeit&lt;/h2&gt;
-&lt;h2 id=&#34;trace&#34;&gt;trace&lt;/h2&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;tpl&#34;&gt;TPL&lt;/h1&gt;
 &lt;p&gt;相关的第三方库&lt;/p&gt;
@@ -29044,6 +29009,72 @@ $ coverage run --source=&amp;lt;package-name&amp;gt; setup.py test
 $ tox
 &lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
+&lt;h2 id=&#34;sphinx&#34;&gt;Sphinx&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/sphinx-doc/sphinx&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/sphinx-doc/sphinx&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://zh-sphinx-doc.readthedocs.io/en/latest/contents.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://zh-sphinx-doc.readthedocs.io/en/latest/contents.html&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Sphinx就是python处理reStructuredText格式的工具。&lt;/p&gt;
+&lt;p&gt;安装：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$pip install -U Sphinx
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;使用sphinx：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$cd your-project/docs
+
+$sphinx-quickstart
+# 以下选项需要手动设定，其它都可以用默认值：
+&amp;gt; Project name: pydeveloper
+&amp;gt; Author name(s): Canux CHENG
+&amp;gt; Project version: 1.0.0.0
+&amp;gt; autodoc: automatically insert docstrings from modules (y/n) [n]: y
+&amp;gt; doctest: automatically test code snippets in doctest blocks (y/n) [n]: y
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;配置文件conf.py包含刚才的所有配置，可以在这里手动修改。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://www.sphinx-doc.org/en/1.4.8/config.html#confval-locale_dirs&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://www.sphinx-doc.org/en/1.4.8/config.html#confval-locale_dirs&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;添加包的版本：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;sys.path.insert(0, os.path.abspath(&amp;quot;..&amp;quot;))
+from &amp;lt;project&amp;gt; import __version__
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;修改自己的配置：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;copyright = u&#39;2016, &amp;lt;a href=&amp;quot;http://canuxcheng.com&amp;quot;&amp;gt;Canux CHENG&amp;lt;/a&amp;gt;&#39;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;sphinx-docs&#34;&gt;sphinx-docs&lt;/h3&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://zh-sphinx-doc.readthedocs.io/en/latest/markup/index.html#sphinxmarkup&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://zh-sphinx-doc.readthedocs.io/en/latest/markup/index.html#sphinxmarkup&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;sphinx的标记把reST格式的文档关联起来。&lt;/p&gt;
+&lt;p&gt;index.rst这是文档的首页。&lt;/p&gt;
+&lt;h3 id=&#34;sphinx-build&#34;&gt;sphinx-build&lt;/h3&gt;
+&lt;p&gt;生成web可读的文档。&lt;/p&gt;
+&lt;p&gt;简单方法生成文档：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 生成html格式的文档
+$make html
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;sphinx-apidoc&#34;&gt;sphinx-apidoc&lt;/h3&gt;
+&lt;p&gt;自动生成API文档。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$sphinx-apidoc
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id=&#34;debug&#34;&gt;Debug&lt;/h3&gt;
+&lt;p&gt;浏览器打开docs/_build/html/index.html即可。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$firefox _build/html/index.html
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;readthedocs&#34;&gt;ReadTheDocs&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://readthedocs.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://readthedocs.org/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://readthedocs.readthedocs.io/zh_CN/latest/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;http://readthedocs.readthedocs.io/zh_CN/latest/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;将项目文档部署到readthedocs站点。&lt;/p&gt;
+&lt;p&gt;直接注册帐号，同步github项目，然后导入你的项目即可。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;pypandoc&#34;&gt;pypandoc&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/bebraw/pypandoc&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/bebraw/pypandoc&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;文档转换工具pandoc的python包。&lt;/p&gt;
+&lt;p&gt;安装：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ sudo apt-get install pandoc
+$ pip install pypandoc
+&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
@@ -30729,6 +30760,7 @@ no-compile = no
 &lt;p&gt;pipreqs&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/bndr/pipreqs&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/bndr/pipreqs&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;uv安装： 用uv取代pip。&lt;/p&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;python代码检查&#34;&gt;python代码检查&lt;/h1&gt;
 &lt;h2 id=&#34;flake8&#34;&gt;flake8&lt;/h2&gt;
