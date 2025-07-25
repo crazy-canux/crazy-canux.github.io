@@ -26,6 +26,30 @@
     &gt;https://github.com/ollama/ollama&lt;/a&gt;&lt;/p&gt;
 </description>
         </item>
+        <item>
+        <title>Kserve</title>
+        <link>https://canuxcheng.com/post/ai_kserve/</link>
+        <pubDate>Sat, 19 Jul 2025 10:44:35 +0800</pubDate>
+        
+        <guid>https://canuxcheng.com/post/ai_kserve/</guid>
+        <description>&lt;h1 id=&#34;kserve&#34;&gt;Kserve&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/kserve/kserve&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/kserve/kserve&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;KServe 是一个用于在 Kubernetes 上部署和管理机器学习模型的开源平台。它提供了一个统一的 API 来处理模型的部署、版本控制、监控和自动扩展等功能。&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Kubeflow</title>
+        <link>https://canuxcheng.com/post/ai_kubeflow/</link>
+        <pubDate>Sat, 19 Jul 2025 10:44:35 +0800</pubDate>
+        
+        <guid>https://canuxcheng.com/post/ai_kubeflow/</guid>
+        <description>&lt;h1 id=&#34;kubeflow&#34;&gt;Kubeflow&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/kubeflow/kubeflow&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/kubeflow/kubeflow&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Kubeflow 是一个用于在 Kubernetes 上部署和管理机器学习工作流的开源平台。它提供了一整套工具和组件，旨在简化机器学习模型的开发、训练、部署和管理过程。&lt;/p&gt;
+</description>
+        </item>
         
     </channel>
 </rss>

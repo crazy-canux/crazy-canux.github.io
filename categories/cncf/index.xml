@@ -6,7 +6,31 @@
         <description>Recent content in CNCF on Morgoth</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
-        <lastBuildDate>Fri, 04 Aug 2023 20:03:39 +0800</lastBuildDate><atom:link href="https://canuxcheng.com/categories/cncf/index.xml" rel="self" type="application/rss+xml" /><item>
+        <lastBuildDate>Sat, 19 Jul 2025 10:44:35 +0800</lastBuildDate><atom:link href="https://canuxcheng.com/categories/cncf/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Kserve</title>
+        <link>https://canuxcheng.com/post/ai_kserve/</link>
+        <pubDate>Sat, 19 Jul 2025 10:44:35 +0800</pubDate>
+        
+        <guid>https://canuxcheng.com/post/ai_kserve/</guid>
+        <description>&lt;h1 id=&#34;kserve&#34;&gt;Kserve&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/kserve/kserve&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/kserve/kserve&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;KServe 是一个用于在 Kubernetes 上部署和管理机器学习模型的开源平台。它提供了一个统一的 API 来处理模型的部署、版本控制、监控和自动扩展等功能。&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Kubeflow</title>
+        <link>https://canuxcheng.com/post/ai_kubeflow/</link>
+        <pubDate>Sat, 19 Jul 2025 10:44:35 +0800</pubDate>
+        
+        <guid>https://canuxcheng.com/post/ai_kubeflow/</guid>
+        <description>&lt;h1 id=&#34;kubeflow&#34;&gt;Kubeflow&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/kubeflow/kubeflow&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/kubeflow/kubeflow&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Kubeflow 是一个用于在 Kubernetes 上部署和管理机器学习工作流的开源平台。它提供了一整套工具和组件，旨在简化机器学习模型的开发、训练、部署和管理过程。&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>API Gateway</title>
         <link>https://canuxcheng.com/post/k8s_apigateway/</link>
         <pubDate>Fri, 04 Aug 2023 20:03:39 +0800</pubDate>
@@ -1101,13 +1125,13 @@ kubectl api-resources --namespaced=false
 &lt;p&gt;status:&lt;/p&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;调度抢占驱逐&#34;&gt;调度，抢占，驱逐&lt;/h1&gt;
-&lt;p&gt;taints: 污点，使节点排斥特定pod。应用于node。&lt;/p&gt;
+&lt;p&gt;taints: 污点，使节点排斥特定pod。应用于node。加了tolerations或者affinity的pod才能调度过来。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;taints:
 - effect: NoSchedule
   key: kubernetes.io/arch
   value: arm64
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;tolerations: 容忍度，使pod被吸引到特定节点。应用于pod。
+&lt;p&gt;tolerations: 容忍度，使pod能容忍加了traints的节点。应用于pod。
 这个只能让pod能部署到加了污点的node，pod也能部署到其它没有加污点的node。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;tolerations:
 - key: &amp;quot;kubernetes.io/arch&amp;quot;
@@ -1115,8 +1139,7 @@ kubectl api-resources --namespaced=false
   value: &amp;quot;arm64&amp;quot;
   effect: &amp;quot;NoSchedule&amp;quot;/&amp;quot;NoExecute&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;affinity: 亲和力，affinity可以通过label指定pod部署到node。
-但是不能保证其它pod不部署到这个node。&lt;/p&gt;
+&lt;p&gt;nodeAffinity: 节点亲和性，指定pod只能调度到特定node上。应用于pod。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;   affinity:
     nodeAffinity:
       requiredDuringSchedulingIgnoredDuringExecution:
@@ -1126,6 +1149,30 @@ kubectl api-resources --namespaced=false
             operator: In
             values:
             - arm64
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;podAffinity: pod亲和性，指定pod只能调度到特定node上。应用于pod。希望可以和其它pod调度到同一个node上。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    affinity:
+      podAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          labelSelector:
+            matchExpressions:
+            - key: app
+              operator: In
+              values:
+              - nginx
+          topologyKey: kubernetes.io/hostname
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;podAntiAffinity: pod反亲和性，指定pod不能调度到特定node上。应用于pod。不希望和其它pod调度到同一个node上。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    affinity:
+      podAntiAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          labelSelector:
+            matchExpressions:
+            - key: app
+              operator: In
+              values:
+              - nginx
+          topologyKey: kubernetes.io/hostname
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;nodeSelector: 节点选择，pod只能调度到特定节点。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt; nodeSelector:
@@ -1755,12 +1802,18 @@ roleRef:
 &lt;li&gt;作为deployment在集群内部运行.&lt;/li&gt;
 &lt;li&gt;通过OLM部署.&lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;Operator功能：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;监控K8S资源的变化&lt;/li&gt;
+&lt;li&gt;响应K8S资源的变化（部署，升级，回滚等）&lt;/li&gt;
+&lt;li&gt;执行K8S资源的变化 （备份，扩容，配置等）&lt;/li&gt;
+&lt;/ul&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;operator-sdk&#34;&gt;operator-sdk&lt;/h1&gt;
 &lt;p&gt;redhat的operator-sdk可以方便的开发opeartor.&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/operator-framework/operator-sdk&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://github.com/operator-framework/operator-sdk&lt;/a&gt;
-&lt;a class=&#34;link&#34; href=&#34;https://sdk.operatorframework.io/docs/installation/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/operator-framework/operator-sdk&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://sdk.operatorframework.io/docs/installation/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://sdk.operatorframework.io/docs/installation/&lt;/a&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;kubebuilder&#34;&gt;kubebuilder&lt;/h1&gt;
@@ -2448,7 +2501,7 @@ $ kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/la
         <pubDate>Sat, 04 Jan 2020 20:03:39 +0800</pubDate>
         
         <guid>https://canuxcheng.com/post/k8s_microservice/</guid>
-        <description>&lt;h1 id=&#34;microservivce&#34;&gt;Microservivce&lt;/h1&gt;
+        <description>&lt;h1 id=&#34;microservice&#34;&gt;Microservice&lt;/h1&gt;
 &lt;p&gt;微服务是一种架构。&lt;/p&gt;
 &lt;p&gt;常见的架构:&lt;/p&gt;
 &lt;ul&gt;

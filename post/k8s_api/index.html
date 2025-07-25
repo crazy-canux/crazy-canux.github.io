@@ -12,8 +12,8 @@ kubectl api-versions 查看Kind:
 kubectl api-resources # In a namespace kubectl api-resources --namespaced=true # Not in a namespace kubectl api-resources --namespaced=false metadata:
 metadata: name: namespace: labels/标签: 用户筛选资源，唯一的资源组合方法, 可以使用selector来查询. annotations/注解: 存储资源的非标识性信息，扩展资源的spec/status. ownerReference/关系: 方便反向查找创建资源的对象，方便进行级联删除。 spec:
 status:
-调度，抢占，驱逐 taints: 污点，使节点排斥特定pod。应用于node。
-taints: - effect: NoSchedule key: kubernetes.io/arch value: arm64 tolerations: 容忍度，使pod被吸引到特定节点。应用于pod。 这个只能让pod能部署到加了污点的node，pod也能部署到其它没有加污点的node。
+调度，抢占，驱逐 taints: 污点，使节点排斥特定pod。应用于node。加了tolerations或者affinity的pod才能调度过来。
+taints: - effect: NoSchedule key: kubernetes.io/arch value: arm64 tolerations: 容忍度，使pod能容忍加了traints的节点。应用于pod。 这个只能让pod能部署到加了污点的node，pod也能部署到其它没有加污点的node。
 '>
 <title>K8S API</title>
 
@@ -31,8 +31,8 @@ kubectl api-versions 查看Kind:
 kubectl api-resources # In a namespace kubectl api-resources --namespaced=true # Not in a namespace kubectl api-resources --namespaced=false metadata:
 metadata: name: namespace: labels/标签: 用户筛选资源，唯一的资源组合方法, 可以使用selector来查询. annotations/注解: 存储资源的非标识性信息，扩展资源的spec/status. ownerReference/关系: 方便反向查找创建资源的对象，方便进行级联删除。 spec:
 status:
-调度，抢占，驱逐 taints: 污点，使节点排斥特定pod。应用于node。
-taints: - effect: NoSchedule key: kubernetes.io/arch value: arm64 tolerations: 容忍度，使pod被吸引到特定节点。应用于pod。 这个只能让pod能部署到加了污点的node，pod也能部署到其它没有加污点的node。
+调度，抢占，驱逐 taints: 污点，使节点排斥特定pod。应用于node。加了tolerations或者affinity的pod才能调度过来。
+taints: - effect: NoSchedule key: kubernetes.io/arch value: arm64 tolerations: 容忍度，使pod能容忍加了traints的节点。应用于pod。 这个只能让pod能部署到加了污点的node，pod也能部署到其它没有加污点的node。
 '>
 <meta property='og:url' content='https://canuxcheng.com/post/k8s_api/'>
 <meta property='og:site_name' content='Morgoth'>
@@ -49,8 +49,8 @@ kubectl api-versions 查看Kind:
 kubectl api-resources # In a namespace kubectl api-resources --namespaced=true # Not in a namespace kubectl api-resources --namespaced=false metadata:
 metadata: name: namespace: labels/标签: 用户筛选资源，唯一的资源组合方法, 可以使用selector来查询. annotations/注解: 存储资源的非标识性信息，扩展资源的spec/status. ownerReference/关系: 方便反向查找创建资源的对象，方便进行级联删除。 spec:
 status:
-调度，抢占，驱逐 taints: 污点，使节点排斥特定pod。应用于node。
-taints: - effect: NoSchedule key: kubernetes.io/arch value: arm64 tolerations: 容忍度，使pod被吸引到特定节点。应用于pod。 这个只能让pod能部署到加了污点的node，pod也能部署到其它没有加污点的node。
+调度，抢占，驱逐 taints: 污点，使节点排斥特定pod。应用于node。加了tolerations或者affinity的pod才能调度过来。
+taints: - effect: NoSchedule key: kubernetes.io/arch value: arm64 tolerations: 容忍度，使pod能容忍加了traints的节点。应用于pod。 这个只能让pod能部署到加了污点的node，pod也能部署到其它没有加污点的node。
 ">
     <link rel="shortcut icon" href="favicon.ico" />
 <style>
@@ -493,13 +493,13 @@ kubectl api-resources --namespaced=false
 <p>status:</p>
 <hr>
 <h1 id="调度抢占驱逐">调度，抢占，驱逐</h1>
-<p>taints: 污点，使节点排斥特定pod。应用于node。</p>
+<p>taints: 污点，使节点排斥特定pod。应用于node。加了tolerations或者affinity的pod才能调度过来。</p>
 <pre><code>taints:
 - effect: NoSchedule
   key: kubernetes.io/arch
   value: arm64
 </code></pre>
-<p>tolerations: 容忍度，使pod被吸引到特定节点。应用于pod。
+<p>tolerations: 容忍度，使pod能容忍加了traints的节点。应用于pod。
 这个只能让pod能部署到加了污点的node，pod也能部署到其它没有加污点的node。</p>
 <pre><code>tolerations:
 - key: &quot;kubernetes.io/arch&quot;
@@ -507,8 +507,7 @@ kubectl api-resources --namespaced=false
   value: &quot;arm64&quot;
   effect: &quot;NoSchedule&quot;/&quot;NoExecute&quot;
 </code></pre>
-<p>affinity: 亲和力，affinity可以通过label指定pod部署到node。
-但是不能保证其它pod不部署到这个node。</p>
+<p>nodeAffinity: 节点亲和性，指定pod只能调度到特定node上。应用于pod。</p>
 <pre><code>   affinity:
     nodeAffinity:
       requiredDuringSchedulingIgnoredDuringExecution:
@@ -518,6 +517,30 @@ kubectl api-resources --namespaced=false
             operator: In
             values:
             - arm64
+</code></pre>
+<p>podAffinity: pod亲和性，指定pod只能调度到特定node上。应用于pod。希望可以和其它pod调度到同一个node上。</p>
+<pre><code>    affinity:
+      podAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          labelSelector:
+            matchExpressions:
+            - key: app
+              operator: In
+              values:
+              - nginx
+          topologyKey: kubernetes.io/hostname
+</code></pre>
+<p>podAntiAffinity: pod反亲和性，指定pod不能调度到特定node上。应用于pod。不希望和其它pod调度到同一个node上。</p>
+<pre><code>    affinity:
+      podAntiAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          labelSelector:
+            matchExpressions:
+            - key: app
+              operator: In
+              values:
+              - nginx
+          topologyKey: kubernetes.io/hostname
 </code></pre>
 <p>nodeSelector: 节点选择，pod只能调度到特定节点。</p>
 <pre><code> nodeSelector:

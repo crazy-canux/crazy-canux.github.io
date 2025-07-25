@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='models.py from django.db import models django模型是和数据库关联的，代码放在models.py，数据库信息在settings.py中统一配置即可。
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='models.py ORM(Object Relational Mapping)是对象关系映射。
+from django.db import models django模型是和数据库关联的，代码放在models.py，数据库信息在settings.py中统一配置即可。
 每个模型对应数据库唯一的一张表，是django.db.models.Model的子类。
 每个模型实例代表数据库中的一条特定记录.
 模型的每个属性都表示为数据库中的一个字段。
@@ -21,14 +22,14 @@ http://python.usyiyi.cn/documents/django_182/ref/models/fields.html#common-model
 每个字段都接受一个可选的位置参数(一般是第一个），叫字段的自述名,如果不指定就默认是字段名字（下划线换成空格）。
 自增字段:
 AutoField # 默认django会每个模型添加一个自增主键字段,如果你显示设置一个自增主键字段就不会默认再添加,每个模型只能有一个主键字段。 # id = models.AutoField(primary_key=True) 普通字段:
-BigIntegerField BinaryField BooleanField CharField CommaSeparatedIntegerField DateField DateTimeField DecimalField DurationField EmailField FileField FilePathField FloatField GenericIPAddressField IPAddressField ImageField IntegerField NullBooleanField PositiveIntegerField PositiveSmallIntegerField SlugField SmallIntegerField TextField TimeField URLField UUIDField 关系字段:
 '>
 <title>Model</title>
 
 <link rel='canonical' href='https://canuxcheng.com/post/django_model/'>
 
 <link rel="stylesheet" href="/scss/style.min.2d59822570c0be136f2ad87c952ef8788ac2a951067adda1c49b253bff7d0292.css"><meta property='og:title' content='Model'>
-<meta property='og:description' content='models.py from django.db import models django模型是和数据库关联的，代码放在models.py，数据库信息在settings.py中统一配置即可。
+<meta property='og:description' content='models.py ORM(Object Relational Mapping)是对象关系映射。
+from django.db import models django模型是和数据库关联的，代码放在models.py，数据库信息在settings.py中统一配置即可。
 每个模型对应数据库唯一的一张表，是django.db.models.Model的子类。
 每个模型实例代表数据库中的一条特定记录.
 模型的每个属性都表示为数据库中的一个字段。
@@ -48,13 +49,13 @@ http://python.usyiyi.cn/documents/django_182/ref/models/fields.html#common-model
 每个字段都接受一个可选的位置参数(一般是第一个），叫字段的自述名,如果不指定就默认是字段名字（下划线换成空格）。
 自增字段:
 AutoField # 默认django会每个模型添加一个自增主键字段,如果你显示设置一个自增主键字段就不会默认再添加,每个模型只能有一个主键字段。 # id = models.AutoField(primary_key=True) 普通字段:
-BigIntegerField BinaryField BooleanField CharField CommaSeparatedIntegerField DateField DateTimeField DecimalField DurationField EmailField FileField FilePathField FloatField GenericIPAddressField IPAddressField ImageField IntegerField NullBooleanField PositiveIntegerField PositiveSmallIntegerField SlugField SmallIntegerField TextField TimeField URLField UUIDField 关系字段:
 '>
 <meta property='og:url' content='https://canuxcheng.com/post/django_model/'>
 <meta property='og:site_name' content='Morgoth'>
 <meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='model' /><meta property='article:published_time' content='2016-10-04T04:20:31&#43;00:00'/><meta property='article:modified_time' content='2016-10-04T04:20:31&#43;00:00'/>
 <meta name="twitter:title" content="Model">
-<meta name="twitter:description" content="models.py from django.db import models django模型是和数据库关联的，代码放在models.py，数据库信息在settings.py中统一配置即可。
+<meta name="twitter:description" content="models.py ORM(Object Relational Mapping)是对象关系映射。
+from django.db import models django模型是和数据库关联的，代码放在models.py，数据库信息在settings.py中统一配置即可。
 每个模型对应数据库唯一的一张表，是django.db.models.Model的子类。
 每个模型实例代表数据库中的一条特定记录.
 模型的每个属性都表示为数据库中的一个字段。
@@ -74,7 +75,6 @@ http://python.usyiyi.cn/documents/django_182/ref/models/fields.html#common-model
 每个字段都接受一个可选的位置参数(一般是第一个），叫字段的自述名,如果不指定就默认是字段名字（下划线换成空格）。
 自增字段:
 AutoField # 默认django会每个模型添加一个自增主键字段,如果你显示设置一个自增主键字段就不会默认再添加,每个模型只能有一个主键字段。 # id = models.AutoField(primary_key=True) 普通字段:
-BigIntegerField BinaryField BooleanField CharField CommaSeparatedIntegerField DateField DateTimeField DecimalField DurationField EmailField FileField FilePathField FloatField GenericIPAddressField IPAddressField ImageField IntegerField NullBooleanField PositiveIntegerField PositiveSmallIntegerField SlugField SmallIntegerField TextField TimeField URLField UUIDField 关系字段:
 ">
     <link rel="shortcut icon" href="favicon.ico" />
 <style>
@@ -386,7 +386,6 @@ BigIntegerField BinaryField BooleanField CharField CommaSeparatedIntegerField Da
             <nav id="TableOfContents">
   <ul>
     <li><a href="#模型字段类型">模型字段类型</a></li>
-    <li><a href="#模型字段选项">模型字段选项</a></li>
   </ul>
 
   <ul>
@@ -456,7 +455,7 @@ BigIntegerField BinaryField BooleanField CharField CommaSeparatedIntegerField Da
 
 
                 <time class="article-time--reading">
-                    2 minute read
+                    1 minute read
                 </time>
             </div>
         
@@ -472,6 +471,7 @@ BigIntegerField BinaryField BooleanField CharField CommaSeparatedIntegerField Da
     
     
     <h1 id="modelspy">models.py</h1>
+<p>ORM(Object Relational Mapping)是对象关系映射。</p>
 <pre><code>from django.db import models
 </code></pre>
 <p>django模型是和数据库关联的，代码放在models.py，数据库信息在settings.py中统一配置即可。</p>
@@ -556,72 +556,6 @@ UUIDField
 OneToOneField 定义一对一关系
 ManyToManyField 定义多对多关系
 </code></pre>
-<h2 id="模型字段选项">模型字段选项</h2>
-<p>django定义的字段的通用的选项：</p>
-<p>每个字段都有特定的选项，也有通用的选项,特定参数参考文档。</p>
-<pre><code>Field.null    django将空值以NULL存储到数据库中,默认是false
-Field.blank    该字段允许为空白,默认false
-Field.primary_key    true表示该字段为模型的主键字段,默认是false
-Field.unique    true表示该字段在表中必须有唯一值,默认是false
-Field.unique_for_date
-Field.unique_for_month
-Field.unique_for_year
-Field.choices    可迭代结构,给字段提供选项
-Field.default    该字段默认值
-Field.help_text    额外的help文本
-Field.editable    false表示该字段不会出现在admin,默认是true
-Field.error_messages    重写默认抛出的错误信息
-Field.verbose_name    该字段可读性更高的名称
-Field.validators    该字段要运行的一个Validator的列表
-Field.db_column
-Field.db_index
-Field.db_tablespace
-</code></pre>
-<hr>
-<h1 id="模型元选项">模型元选项</h1>
-<p>使用内部类Meta定义模型的元数据。</p>
-<p>模型元数据是任何不是字段的数据，比如排序选项等。</p>
-<pre><code>from django.db import models
-class Ox(models.Model):
-    horn_length = models.IntegerField()
-    ...
-    class Meta:
-        ordering = [&quot;horn_length&quot;]
-        verbose_name_plural = &quot;oxen&quot;
-</code></pre>
-<p>模型的元选项：</p>
-<p><a class="link" href="http://python.usyiyi.cn/translate/django_182/ref/models/options.html"  target="_blank" rel="noopener"
-    >http://python.usyiyi.cn/translate/django_182/ref/models/options.html</a></p>
-<p>在元类Meta中使用的选项.</p>
-<pre><code>Options.abstract = True 表示模型是抽象基类, 数据库不会创建这个表
-Options.db_table 该模型所用的数据表的名称
-Options.db_tablespace
-Options.default_related_name
-Options.get_latest_by
-Options.managed
-Options.order_with_respect_to
-Options.ordering = ['字段名', '-字段名'] 对象的默认顺序, -表示倒序
-Options.permissions
-Options.default_permissions
-Options.proxy
-Options.select_on_save
-Options.unique_together
-Options.index_together
-Options.verbose_name 对象的一个易于理解的名字
-Options.verbose_name_plural 该对象复数形式的名字
-</code></pre>
-<hr>
-<h1 id="模型的属性">模型的属性</h1>
-<p>模型的属性是表级别的,是对表的操作.</p>
-<p><a class="link" href="http://python.usyiyi.cn/translate/django_182/ref/models/class.html"  target="_blank" rel="noopener"
-    >http://python.usyiyi.cn/translate/django_182/ref/models/class.html</a></p>
-<p>每个模型类都要添加一个Manager实例,如果不显示添加，django就会默认添加objects属性，包含Manager实例。</p>
-<p>Manager或object属性是模型进行数据库查询操作的接口,也叫管理器,用于从数据库获取实例。</p>
-<pre><code>from django.db import models
-class Foo(models.Model):
-    # 显示添加
-    bar = models.Manager()
-</code></pre>
 <hr>
 <h1 id="执行查询">执行查询</h1>
 <p>一旦建立数据模型,django会自动生成一套抽象的API,用于创建,检索,更新和删除对象.</p>
@@ -668,52 +602,23 @@ Question.objects.exclude(**kwargs)
 Question.objects.all().order_by('name')
 Question.objects.filter(**kwargs).filter(**kwargs)
 </code></pre>
+<p>select_related() QuerySet 方法会提前递归地预加载所有一对多关系的缓存。适合OneToOneField和ForeignKey。</p>
+<pre><code>Question.objects.select_related('related_model').all()
+</code></pre>
+<p>prefetch_related() QuerySet 方法会提前预加载所有多对多关系的缓存。适合ManyToManyField。</p>
+<pre><code>Question.objects.prefetch_related('related_model').all()
+</code></pre>
+<p>Q对象复杂查询</p>
+<pre><code>from django.db.models import Q
+
+# 逻辑或
+Question.objects.filter(Q(question_text='content') | Q(pub_date='date'))
+# 逻辑与
+Question.objects.filter(Q(question_text='content') &amp; Q(pub_date='date'))
+# 逻辑非
+Question.objects.exclude(Q(question_text='content'))
+</code></pre>
 <hr>
-<h1 id="模型的方法">模型的方法</h1>
-<p>模型的方法是对模型的实例的操作.</p>
-<p>模型中可以自定义方法，可以使用预定义的自动生成的方法，也可以覆盖预定义的方法。</p>
-<p>预定义方法参考：</p>
-<p><a class="link" href="http://python.usyiyi.cn/translate/django_182/ref/models/instances.html"  target="_blank" rel="noopener"
-    >http://python.usyiyi.cn/translate/django_182/ref/models/instances.html</a></p>
-<pre><code>Model.__unicode__()
-</code></pre>
-<p>python2需要使用__unicode__方法.</p>
-<pre><code>def __unicode__(self):
-    return u'%s' % self.title
-
-Model.__str__()
-</code></pre>
-<p>python3只需要__str__方法.</p>
-<pre><code>def __str__(self):
-    return '%s' % self.title
-</code></pre>
-<p>这段代码兼容python2和python3.</p>
-<p>python_2_unicode_compatible是一个用于类的装饰器，在类中定义__str__并返回文本.</p>
-<pre><code>from __future__ import unicode_literals
-from django.utils.encoding import python_2_unicode_compatible
-
-@python_2_unicode_compatible
-class Question(models.Model):
-    title = models.CharField('title', max_length=256)
-    ...
-
-    def __str__(self):
-        return self.title
-
-Model.__eq__()
-
-Model.__hash__()
-
-Model.get_absolute_url()
-
-Model.get_FOO_display()
-
-Model.get_next_by_FOO(**kwargs)
-
-Model.get_previous_by_FOO(**kwargs)
-
-Model.DoesNotExist
-</code></pre>
 
 </section>
 

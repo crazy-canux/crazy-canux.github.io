@@ -183,6 +183,8 @@ TCO&lt;/p&gt;
 &lt;h2 id=&#34;argo-cd&#34;&gt;argo-cd&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/argoproj/argo-cd&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/argoproj/argo-cd&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;argocd-image-updater.&lt;/p&gt;
+&lt;p&gt;argo-rollout.&lt;/p&gt;
 &lt;h2 id=&#34;flux-cd&#34;&gt;flux-cd&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/fluxcd/flux&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/fluxcd/flux&lt;/a&gt;&lt;/p&gt;
@@ -3386,14 +3388,48 @@ $ ansible-galaxy collection list # 列出已安装的集合
         </item>
         <item>
         <title>Terraform</title>
-        <link>https://canuxcheng.com/post/cloud_terraform/</link>
+        <link>https://canuxcheng.com/post/devops_terraform/</link>
         <pubDate>Fri, 15 Apr 2016 09:41:39 +0800</pubDate>
         
-        <guid>https://canuxcheng.com/post/cloud_terraform/</guid>
+        <guid>https://canuxcheng.com/post/devops_terraform/</guid>
         <description>&lt;h1 id=&#34;terraform&#34;&gt;Terraform&lt;/h1&gt;
 &lt;p&gt;install:&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://learn.hashicorp.com/tutorials/terraform/install-cli&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://learn.hashicorp.com/tutorials/terraform/install-cli&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;项目结构：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;./terraform
+phz
+cache
+rds
+vpc
+eks: (s3, cluster, karpenter, bank-vaults, argocd, argocd-apps)
+
+./terraform/eks/argocd-apps:
+projects
+main.tf
+provider.tf
+variables.tf
+external-dns-iam.tf
+cert-manager.tf
+argocd-image-updater.tf
+
+./manifests
+metrics-server
+ingress-nginx
+external-dns
+cert-manager
+argocd
+argocd-image-updater
+argo-rollouts
+
+./helm
+argocd (dev.yml, prod.yml)
+argocd-image-updater
+argo-rollouts
+cert-manager
+external-dns
+ingress-nginx
+&lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;cli&#34;&gt;CLI&lt;/h2&gt;
 &lt;p&gt;操作工作目录&lt;/p&gt;

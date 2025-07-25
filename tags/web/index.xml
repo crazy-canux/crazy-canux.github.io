@@ -84,9 +84,10 @@
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.djangoproject.com/zh-hans/3.1/contents/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://docs.djangoproject.com/zh-hans/3.1/contents/&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;django遵守MVC设计模式，采用MTV框架。&lt;/p&gt;
-&lt;p&gt;M: model,数据存取&lt;/p&gt;
-&lt;p&gt;T: template，如何展现数据&lt;/p&gt;
-&lt;p&gt;V: view，展现哪些数据&lt;/p&gt;
+&lt;p&gt;django的MTV和传统的MVC区别是：controller由框架自动管理。&lt;/p&gt;
+&lt;p&gt;M: model,数据逻辑，定义数据结构。&lt;/p&gt;
+&lt;p&gt;T: template，如何展现数据，渲染html。&lt;/p&gt;
+&lt;p&gt;V: view，业务逻辑，处理请求和响应。&lt;/p&gt;
 &lt;h1 id=&#34;安装&#34;&gt;安装&lt;/h1&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.djangoproject.com/zh-hans/3.1/faq/install/#faq-python-version-support&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://docs.djangoproject.com/zh-hans/3.1/faq/install/#faq-python-version-support&lt;/a&gt;&lt;/p&gt;

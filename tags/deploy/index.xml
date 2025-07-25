@@ -17,6 +17,8 @@
 &lt;p&gt;如果要发布django项目需要另外的操作。&lt;/p&gt;
 &lt;p&gt;也可以发布到其它的云平台。&lt;/p&gt;
 &lt;p&gt;一般通过wsgi或者asgi来部署.&lt;/p&gt;
+&lt;p&gt;WSGI: web server gateway interface. 同步&lt;/p&gt;
+&lt;p&gt;ASGI: asynchronous server gateway interface. 异步&lt;/p&gt;
 &lt;h2 id=&#34;deploy时django的设置&#34;&gt;deploy时django的设置&lt;/h2&gt;
 &lt;p&gt;settings.py中的设置：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;ALLOWED_HOSTS = [&#39;*&#39;]

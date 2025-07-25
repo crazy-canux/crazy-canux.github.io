@@ -93,6 +93,30 @@
 </description>
         </item>
         <item>
+        <title>Kserve</title>
+        <link>https://canuxcheng.com/post/ai_kserve/</link>
+        <pubDate>Sat, 19 Jul 2025 10:44:35 +0800</pubDate>
+        
+        <guid>https://canuxcheng.com/post/ai_kserve/</guid>
+        <description>&lt;h1 id=&#34;kserve&#34;&gt;Kserve&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/kserve/kserve&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/kserve/kserve&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;KServe 是一个用于在 Kubernetes 上部署和管理机器学习模型的开源平台。它提供了一个统一的 API 来处理模型的部署、版本控制、监控和自动扩展等功能。&lt;/p&gt;
+</description>
+        </item>
+        <item>
+        <title>Kubeflow</title>
+        <link>https://canuxcheng.com/post/ai_kubeflow/</link>
+        <pubDate>Sat, 19 Jul 2025 10:44:35 +0800</pubDate>
+        
+        <guid>https://canuxcheng.com/post/ai_kubeflow/</guid>
+        <description>&lt;h1 id=&#34;kubeflow&#34;&gt;Kubeflow&lt;/h1&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/kubeflow/kubeflow&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/kubeflow/kubeflow&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Kubeflow 是一个用于在 Kubernetes 上部署和管理机器学习工作流的开源平台。它提供了一整套工具和组件，旨在简化机器学习模型的开发、训练、部署和管理过程。&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>DevOps Metrics</title>
         <link>https://canuxcheng.com/post/devops_metrics/</link>
         <pubDate>Fri, 10 Jan 2025 09:41:39 +0000</pubDate>
@@ -2592,6 +2616,8 @@ $ kubectl krew install ns
 &lt;h2 id=&#34;argo-cd&#34;&gt;argo-cd&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/argoproj/argo-cd&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/argoproj/argo-cd&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;argocd-image-updater.&lt;/p&gt;
+&lt;p&gt;argo-rollout.&lt;/p&gt;
 &lt;h2 id=&#34;flux-cd&#34;&gt;flux-cd&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/fluxcd/flux&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/fluxcd/flux&lt;/a&gt;&lt;/p&gt;
@@ -2774,13 +2800,13 @@ kubectl api-resources --namespaced=false
 &lt;p&gt;status:&lt;/p&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;调度抢占驱逐&#34;&gt;调度，抢占，驱逐&lt;/h1&gt;
-&lt;p&gt;taints: 污点，使节点排斥特定pod。应用于node。&lt;/p&gt;
+&lt;p&gt;taints: 污点，使节点排斥特定pod。应用于node。加了tolerations或者affinity的pod才能调度过来。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;taints:
 - effect: NoSchedule
   key: kubernetes.io/arch
   value: arm64
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;tolerations: 容忍度，使pod被吸引到特定节点。应用于pod。
+&lt;p&gt;tolerations: 容忍度，使pod能容忍加了traints的节点。应用于pod。
 这个只能让pod能部署到加了污点的node，pod也能部署到其它没有加污点的node。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;tolerations:
 - key: &amp;quot;kubernetes.io/arch&amp;quot;
@@ -2788,8 +2814,7 @@ kubectl api-resources --namespaced=false
   value: &amp;quot;arm64&amp;quot;
   effect: &amp;quot;NoSchedule&amp;quot;/&amp;quot;NoExecute&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;affinity: 亲和力，affinity可以通过label指定pod部署到node。
-但是不能保证其它pod不部署到这个node。&lt;/p&gt;
+&lt;p&gt;nodeAffinity: 节点亲和性，指定pod只能调度到特定node上。应用于pod。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;   affinity:
     nodeAffinity:
       requiredDuringSchedulingIgnoredDuringExecution:
@@ -2799,6 +2824,30 @@ kubectl api-resources --namespaced=false
             operator: In
             values:
             - arm64
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;podAffinity: pod亲和性，指定pod只能调度到特定node上。应用于pod。希望可以和其它pod调度到同一个node上。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    affinity:
+      podAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          labelSelector:
+            matchExpressions:
+            - key: app
+              operator: In
+              values:
+              - nginx
+          topologyKey: kubernetes.io/hostname
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;podAntiAffinity: pod反亲和性，指定pod不能调度到特定node上。应用于pod。不希望和其它pod调度到同一个node上。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;    affinity:
+      podAntiAffinity:
+        requiredDuringSchedulingIgnoredDuringExecution:
+          labelSelector:
+            matchExpressions:
+            - key: app
+              operator: In
+              values:
+              - nginx
+          topologyKey: kubernetes.io/hostname
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;nodeSelector: 节点选择，pod只能调度到特定节点。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt; nodeSelector:
@@ -3428,12 +3477,18 @@ roleRef:
 &lt;li&gt;作为deployment在集群内部运行.&lt;/li&gt;
 &lt;li&gt;通过OLM部署.&lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;Operator功能：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;监控K8S资源的变化&lt;/li&gt;
+&lt;li&gt;响应K8S资源的变化（部署，升级，回滚等）&lt;/li&gt;
+&lt;li&gt;执行K8S资源的变化 （备份，扩容，配置等）&lt;/li&gt;
+&lt;/ul&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;operator-sdk&#34;&gt;operator-sdk&lt;/h1&gt;
 &lt;p&gt;redhat的operator-sdk可以方便的开发opeartor.&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/operator-framework/operator-sdk&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://github.com/operator-framework/operator-sdk&lt;/a&gt;
-&lt;a class=&#34;link&#34; href=&#34;https://sdk.operatorframework.io/docs/installation/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/operator-framework/operator-sdk&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://sdk.operatorframework.io/docs/installation/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://sdk.operatorframework.io/docs/installation/&lt;/a&gt;&lt;/p&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;kubebuilder&#34;&gt;kubebuilder&lt;/h1&gt;
@@ -4121,7 +4176,7 @@ $ kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/la
         <pubDate>Sat, 04 Jan 2020 20:03:39 +0800</pubDate>
         
         <guid>https://canuxcheng.com/post/k8s_microservice/</guid>
-        <description>&lt;h1 id=&#34;microservivce&#34;&gt;Microservivce&lt;/h1&gt;
+        <description>&lt;h1 id=&#34;microservice&#34;&gt;Microservice&lt;/h1&gt;
 &lt;p&gt;微服务是一种架构。&lt;/p&gt;
 &lt;p&gt;常见的架构:&lt;/p&gt;
 &lt;ul&gt;
@@ -17523,6 +17578,7 @@ def MyView(View):
         
         <guid>https://canuxcheng.com/post/django_model/</guid>
         <description>&lt;h1 id=&#34;modelspy&#34;&gt;models.py&lt;/h1&gt;
+&lt;p&gt;ORM(Object Relational Mapping)是对象关系映射。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;from django.db import models
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;django模型是和数据库关联的，代码放在models.py，数据库信息在settings.py中统一配置即可。&lt;/p&gt;
@@ -17607,72 +17663,6 @@ UUIDField
 OneToOneField 定义一对一关系
 ManyToManyField 定义多对多关系
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h2 id=&#34;模型字段选项&#34;&gt;模型字段选项&lt;/h2&gt;
-&lt;p&gt;django定义的字段的通用的选项：&lt;/p&gt;
-&lt;p&gt;每个字段都有特定的选项，也有通用的选项,特定参数参考文档。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;Field.null    django将空值以NULL存储到数据库中,默认是false
-Field.blank    该字段允许为空白,默认false
-Field.primary_key    true表示该字段为模型的主键字段,默认是false
-Field.unique    true表示该字段在表中必须有唯一值,默认是false
-Field.unique_for_date
-Field.unique_for_month
-Field.unique_for_year
-Field.choices    可迭代结构,给字段提供选项
-Field.default    该字段默认值
-Field.help_text    额外的help文本
-Field.editable    false表示该字段不会出现在admin,默认是true
-Field.error_messages    重写默认抛出的错误信息
-Field.verbose_name    该字段可读性更高的名称
-Field.validators    该字段要运行的一个Validator的列表
-Field.db_column
-Field.db_index
-Field.db_tablespace
-&lt;/code&gt;&lt;/pre&gt;
-&lt;hr&gt;
-&lt;h1 id=&#34;模型元选项&#34;&gt;模型元选项&lt;/h1&gt;
-&lt;p&gt;使用内部类Meta定义模型的元数据。&lt;/p&gt;
-&lt;p&gt;模型元数据是任何不是字段的数据，比如排序选项等。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;from django.db import models
-class Ox(models.Model):
-    horn_length = models.IntegerField()
-    ...
-    class Meta:
-        ordering = [&amp;quot;horn_length&amp;quot;]
-        verbose_name_plural = &amp;quot;oxen&amp;quot;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;模型的元选项：&lt;/p&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://python.usyiyi.cn/translate/django_182/ref/models/options.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;http://python.usyiyi.cn/translate/django_182/ref/models/options.html&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;在元类Meta中使用的选项.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;Options.abstract = True 表示模型是抽象基类, 数据库不会创建这个表
-Options.db_table 该模型所用的数据表的名称
-Options.db_tablespace
-Options.default_related_name
-Options.get_latest_by
-Options.managed
-Options.order_with_respect_to
-Options.ordering = [&#39;字段名&#39;, &#39;-字段名&#39;] 对象的默认顺序, -表示倒序
-Options.permissions
-Options.default_permissions
-Options.proxy
-Options.select_on_save
-Options.unique_together
-Options.index_together
-Options.verbose_name 对象的一个易于理解的名字
-Options.verbose_name_plural 该对象复数形式的名字
-&lt;/code&gt;&lt;/pre&gt;
-&lt;hr&gt;
-&lt;h1 id=&#34;模型的属性&#34;&gt;模型的属性&lt;/h1&gt;
-&lt;p&gt;模型的属性是表级别的,是对表的操作.&lt;/p&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://python.usyiyi.cn/translate/django_182/ref/models/class.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;http://python.usyiyi.cn/translate/django_182/ref/models/class.html&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;每个模型类都要添加一个Manager实例,如果不显示添加，django就会默认添加objects属性，包含Manager实例。&lt;/p&gt;
-&lt;p&gt;Manager或object属性是模型进行数据库查询操作的接口,也叫管理器,用于从数据库获取实例。&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;from django.db import models
-class Foo(models.Model):
-    # 显示添加
-    bar = models.Manager()
-&lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;执行查询&#34;&gt;执行查询&lt;/h1&gt;
 &lt;p&gt;一旦建立数据模型,django会自动生成一套抽象的API,用于创建,检索,更新和删除对象.&lt;/p&gt;
@@ -17719,52 +17709,23 @@ Question.objects.exclude(**kwargs)
 Question.objects.all().order_by(&#39;name&#39;)
 Question.objects.filter(**kwargs).filter(**kwargs)
 &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;select_related() QuerySet 方法会提前递归地预加载所有一对多关系的缓存。适合OneToOneField和ForeignKey。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Question.objects.select_related(&#39;related_model&#39;).all()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;prefetch_related() QuerySet 方法会提前预加载所有多对多关系的缓存。适合ManyToManyField。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Question.objects.prefetch_related(&#39;related_model&#39;).all()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Q对象复杂查询&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;from django.db.models import Q
+
+# 逻辑或
+Question.objects.filter(Q(question_text=&#39;content&#39;) | Q(pub_date=&#39;date&#39;))
+# 逻辑与
+Question.objects.filter(Q(question_text=&#39;content&#39;) &amp;amp; Q(pub_date=&#39;date&#39;))
+# 逻辑非
+Question.objects.exclude(Q(question_text=&#39;content&#39;))
+&lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
-&lt;h1 id=&#34;模型的方法&#34;&gt;模型的方法&lt;/h1&gt;
-&lt;p&gt;模型的方法是对模型的实例的操作.&lt;/p&gt;
-&lt;p&gt;模型中可以自定义方法，可以使用预定义的自动生成的方法，也可以覆盖预定义的方法。&lt;/p&gt;
-&lt;p&gt;预定义方法参考：&lt;/p&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;http://python.usyiyi.cn/translate/django_182/ref/models/instances.html&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;http://python.usyiyi.cn/translate/django_182/ref/models/instances.html&lt;/a&gt;&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;Model.__unicode__()
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;python2需要使用__unicode__方法.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;def __unicode__(self):
-    return u&#39;%s&#39; % self.title
-
-Model.__str__()
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;python3只需要__str__方法.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;def __str__(self):
-    return &#39;%s&#39; % self.title
-&lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;这段代码兼容python2和python3.&lt;/p&gt;
-&lt;p&gt;python_2_unicode_compatible是一个用于类的装饰器，在类中定义__str__并返回文本.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;from __future__ import unicode_literals
-from django.utils.encoding import python_2_unicode_compatible
-
-@python_2_unicode_compatible
-class Question(models.Model):
-    title = models.CharField(&#39;title&#39;, max_length=256)
-    ...
-
-    def __str__(self):
-        return self.title
-
-Model.__eq__()
-
-Model.__hash__()
-
-Model.get_absolute_url()
-
-Model.get_FOO_display()
-
-Model.get_next_by_FOO(**kwargs)
-
-Model.get_previous_by_FOO(**kwargs)
-
-Model.DoesNotExist
-&lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
         <item>
@@ -18112,6 +18073,8 @@ $ 转义成 &amp;amp;amp;
 &lt;p&gt;如果要发布django项目需要另外的操作。&lt;/p&gt;
 &lt;p&gt;也可以发布到其它的云平台。&lt;/p&gt;
 &lt;p&gt;一般通过wsgi或者asgi来部署.&lt;/p&gt;
+&lt;p&gt;WSGI: web server gateway interface. 同步&lt;/p&gt;
+&lt;p&gt;ASGI: asynchronous server gateway interface. 异步&lt;/p&gt;
 &lt;h2 id=&#34;deploy时django的设置&#34;&gt;deploy时django的设置&lt;/h2&gt;
 &lt;p&gt;settings.py中的设置：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;ALLOWED_HOSTS = [&#39;*&#39;]
@@ -18762,9 +18725,10 @@ ln -sf ../mods-available/ssl.load ssl.load
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.djangoproject.com/zh-hans/3.1/contents/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://docs.djangoproject.com/zh-hans/3.1/contents/&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;django遵守MVC设计模式，采用MTV框架。&lt;/p&gt;
-&lt;p&gt;M: model,数据存取&lt;/p&gt;
-&lt;p&gt;T: template，如何展现数据&lt;/p&gt;
-&lt;p&gt;V: view，展现哪些数据&lt;/p&gt;
+&lt;p&gt;django的MTV和传统的MVC区别是：controller由框架自动管理。&lt;/p&gt;
+&lt;p&gt;M: model,数据逻辑，定义数据结构。&lt;/p&gt;
+&lt;p&gt;T: template，如何展现数据，渲染html。&lt;/p&gt;
+&lt;p&gt;V: view，业务逻辑，处理请求和响应。&lt;/p&gt;
 &lt;h1 id=&#34;安装&#34;&gt;安装&lt;/h1&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://docs.djangoproject.com/zh-hans/3.1/faq/install/#faq-python-version-support&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://docs.djangoproject.com/zh-hans/3.1/faq/install/#faq-python-version-support&lt;/a&gt;&lt;/p&gt;
@@ -28536,14 +28500,48 @@ $ ansible-galaxy collection list # 列出已安装的集合
         </item>
         <item>
         <title>Terraform</title>
-        <link>https://canuxcheng.com/post/cloud_terraform/</link>
+        <link>https://canuxcheng.com/post/devops_terraform/</link>
         <pubDate>Fri, 15 Apr 2016 09:41:39 +0800</pubDate>
         
-        <guid>https://canuxcheng.com/post/cloud_terraform/</guid>
+        <guid>https://canuxcheng.com/post/devops_terraform/</guid>
         <description>&lt;h1 id=&#34;terraform&#34;&gt;Terraform&lt;/h1&gt;
 &lt;p&gt;install:&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://learn.hashicorp.com/tutorials/terraform/install-cli&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://learn.hashicorp.com/tutorials/terraform/install-cli&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;项目结构：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;./terraform
+phz
+cache
+rds
+vpc
+eks: (s3, cluster, karpenter, bank-vaults, argocd, argocd-apps)
+
+./terraform/eks/argocd-apps:
+projects
+main.tf
+provider.tf
+variables.tf
+external-dns-iam.tf
+cert-manager.tf
+argocd-image-updater.tf
+
+./manifests
+metrics-server
+ingress-nginx
+external-dns
+cert-manager
+argocd
+argocd-image-updater
+argo-rollouts
+
+./helm
+argocd (dev.yml, prod.yml)
+argocd-image-updater
+argo-rollouts
+cert-manager
+external-dns
+ingress-nginx
+&lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;cli&#34;&gt;CLI&lt;/h2&gt;
 &lt;p&gt;操作工作目录&lt;/p&gt;

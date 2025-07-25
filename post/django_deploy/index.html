@@ -5,14 +5,13 @@
 如果要发布django项目需要另外的操作。
 也可以发布到其它的云平台。
 一般通过wsgi或者asgi来部署.
+WSGI: web server gateway interface. 同步
+ASGI: asynchronous server gateway interface. 异步
 deploy时django的设置 settings.py中的设置：
 ALLOWED_HOSTS = [&#39;*&#39;] DEBUG = False WSGI 部署 apache2 &#43; mod_wsgi https://github.com/GrahamDumpleton/mod_wsgi
 mod_wsgi是C写的apache的模块，实现了兼容WSGI接口，用来部署python的web应用。
 作为apache2的模块安装
 # ubuntu/debian sudo aptitude install apache2 # 安装apache2 sudo aptitude install libapache2-mod-wsgi # for python2 sudo aptitude install libapache2-mod-wsgi-py3 # for python3 # redhat/centos/fedora sudo yum install httpd2 sudo yum install httpd-devel sudo yum install mod_wsgi Ubuntu创建网站的配置文件/etc/apache2/sites-available/mysite.conf:
-Fedora创建网站的配置文件/etc/httpd/conf.d/mysite.conf:
-一般部署到web服务器，/home/user/修改为/var/www//
-# Include the project dir, can not inside VirtualHost section. WSGIPythonPath /home/user/mysite # If use virtualenv and named .venv # WSGIPythonPath /home/user/mysite:/home/user/mysite/.venv/lib/python2.7/site-packages &lt;VirtualHost *:80&gt; ServerName localhost # ServerName yoursite.domain ServerAdmin canuxcheng@gmail.com Alias /robots.txt /home/user/mysite/static/robots.txt Alias /favicon.ico /home/user/mysite/static/favicon.ico Alias /media/ /home/user/mysite/media/ Alias /static/ /home/user/mysite/static/ &lt;Directory /home/user/mysite/media&gt; Required all granted &lt;/Directory&gt; &lt;Directory /home/user/mysite/static&gt; Required all granted &lt;/Directory&gt; # If use daemon mode to run WSGI process. WSGIDaemonProcess mysite python-path=/home/user/mysite # If use virtualenv and named .venv # WSGIDaemonProcess mysite python-path=/home/user/mysite:/home/user/mysite/.venv/lib/python2.7/site-packages # WSGIProcessGroup mysite WSGIScriptAlias / /home/user/mysite/mysite/wsgi.py &lt;Directory /home/user/mysite/mysite&gt; &lt;Files wsgi.py&gt; Required all granted &lt;/Files&gt; &lt;/Directory&gt; # check the log in /var/log/apache2/error_mysite.log or access_mysite.log ErrorLog ${APACHE_LOG_DIR}/error_mysite.log CustomLog ${APACHE_LOG_DIR}/access_mysite.log combined &lt;/VirtualHost&gt; 修改项目的wsgi.py:
 '>
 <title>Deploy</title>
 
@@ -23,14 +22,13 @@ Fedora创建网站的配置文件/etc/httpd/conf.d/mysite.conf:
 如果要发布django项目需要另外的操作。
 也可以发布到其它的云平台。
 一般通过wsgi或者asgi来部署.
+WSGI: web server gateway interface. 同步
+ASGI: asynchronous server gateway interface. 异步
 deploy时django的设置 settings.py中的设置：
 ALLOWED_HOSTS = [&#39;*&#39;] DEBUG = False WSGI 部署 apache2 &#43; mod_wsgi https://github.com/GrahamDumpleton/mod_wsgi
 mod_wsgi是C写的apache的模块，实现了兼容WSGI接口，用来部署python的web应用。
 作为apache2的模块安装
 # ubuntu/debian sudo aptitude install apache2 # 安装apache2 sudo aptitude install libapache2-mod-wsgi # for python2 sudo aptitude install libapache2-mod-wsgi-py3 # for python3 # redhat/centos/fedora sudo yum install httpd2 sudo yum install httpd-devel sudo yum install mod_wsgi Ubuntu创建网站的配置文件/etc/apache2/sites-available/mysite.conf:
-Fedora创建网站的配置文件/etc/httpd/conf.d/mysite.conf:
-一般部署到web服务器，/home/user/修改为/var/www//
-# Include the project dir, can not inside VirtualHost section. WSGIPythonPath /home/user/mysite # If use virtualenv and named .venv # WSGIPythonPath /home/user/mysite:/home/user/mysite/.venv/lib/python2.7/site-packages &lt;VirtualHost *:80&gt; ServerName localhost # ServerName yoursite.domain ServerAdmin canuxcheng@gmail.com Alias /robots.txt /home/user/mysite/static/robots.txt Alias /favicon.ico /home/user/mysite/static/favicon.ico Alias /media/ /home/user/mysite/media/ Alias /static/ /home/user/mysite/static/ &lt;Directory /home/user/mysite/media&gt; Required all granted &lt;/Directory&gt; &lt;Directory /home/user/mysite/static&gt; Required all granted &lt;/Directory&gt; # If use daemon mode to run WSGI process. WSGIDaemonProcess mysite python-path=/home/user/mysite # If use virtualenv and named .venv # WSGIDaemonProcess mysite python-path=/home/user/mysite:/home/user/mysite/.venv/lib/python2.7/site-packages # WSGIProcessGroup mysite WSGIScriptAlias / /home/user/mysite/mysite/wsgi.py &lt;Directory /home/user/mysite/mysite&gt; &lt;Files wsgi.py&gt; Required all granted &lt;/Files&gt; &lt;/Directory&gt; # check the log in /var/log/apache2/error_mysite.log or access_mysite.log ErrorLog ${APACHE_LOG_DIR}/error_mysite.log CustomLog ${APACHE_LOG_DIR}/access_mysite.log combined &lt;/VirtualHost&gt; 修改项目的wsgi.py:
 '>
 <meta property='og:url' content='https://canuxcheng.com/post/django_deploy/'>
 <meta property='og:site_name' content='Morgoth'>
@@ -40,14 +38,13 @@ Fedora创建网站的配置文件/etc/httpd/conf.d/mysite.conf:
 如果要发布django项目需要另外的操作。
 也可以发布到其它的云平台。
 一般通过wsgi或者asgi来部署.
+WSGI: web server gateway interface. 同步
+ASGI: asynchronous server gateway interface. 异步
 deploy时django的设置 settings.py中的设置：
 ALLOWED_HOSTS = [&#39;*&#39;] DEBUG = False WSGI 部署 apache2 &#43; mod_wsgi https://github.com/GrahamDumpleton/mod_wsgi
 mod_wsgi是C写的apache的模块，实现了兼容WSGI接口，用来部署python的web应用。
 作为apache2的模块安装
 # ubuntu/debian sudo aptitude install apache2 # 安装apache2 sudo aptitude install libapache2-mod-wsgi # for python2 sudo aptitude install libapache2-mod-wsgi-py3 # for python3 # redhat/centos/fedora sudo yum install httpd2 sudo yum install httpd-devel sudo yum install mod_wsgi Ubuntu创建网站的配置文件/etc/apache2/sites-available/mysite.conf:
-Fedora创建网站的配置文件/etc/httpd/conf.d/mysite.conf:
-一般部署到web服务器，/home/user/修改为/var/www//
-# Include the project dir, can not inside VirtualHost section. WSGIPythonPath /home/user/mysite # If use virtualenv and named .venv # WSGIPythonPath /home/user/mysite:/home/user/mysite/.venv/lib/python2.7/site-packages &lt;VirtualHost *:80&gt; ServerName localhost # ServerName yoursite.domain ServerAdmin canuxcheng@gmail.com Alias /robots.txt /home/user/mysite/static/robots.txt Alias /favicon.ico /home/user/mysite/static/favicon.ico Alias /media/ /home/user/mysite/media/ Alias /static/ /home/user/mysite/static/ &lt;Directory /home/user/mysite/media&gt; Required all granted &lt;/Directory&gt; &lt;Directory /home/user/mysite/static&gt; Required all granted &lt;/Directory&gt; # If use daemon mode to run WSGI process. WSGIDaemonProcess mysite python-path=/home/user/mysite # If use virtualenv and named .venv # WSGIDaemonProcess mysite python-path=/home/user/mysite:/home/user/mysite/.venv/lib/python2.7/site-packages # WSGIProcessGroup mysite WSGIScriptAlias / /home/user/mysite/mysite/wsgi.py &lt;Directory /home/user/mysite/mysite&gt; &lt;Files wsgi.py&gt; Required all granted &lt;/Files&gt; &lt;/Directory&gt; # check the log in /var/log/apache2/error_mysite.log or access_mysite.log ErrorLog ${APACHE_LOG_DIR}/error_mysite.log CustomLog ${APACHE_LOG_DIR}/access_mysite.log combined &lt;/VirtualHost&gt; 修改项目的wsgi.py:
 ">
     <link rel="shortcut icon" href="favicon.ico" />
 <style>
@@ -455,6 +452,8 @@ Fedora创建网站的配置文件/etc/httpd/conf.d/mysite.conf:
 <p>如果要发布django项目需要另外的操作。</p>
 <p>也可以发布到其它的云平台。</p>
 <p>一般通过wsgi或者asgi来部署.</p>
+<p>WSGI: web server gateway interface. 同步</p>
+<p>ASGI: asynchronous server gateway interface. 异步</p>
 <h2 id="deploy时django的设置">deploy时django的设置</h2>
 <p>settings.py中的设置：</p>
 <pre><code>ALLOWED_HOSTS = ['*']
