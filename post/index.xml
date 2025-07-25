@@ -7,6 +7,42 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <lastBuildDate>Mon, 21 Jul 2025 11:13:44 +0800</lastBuildDate><atom:link href="https://canuxcheng.com/post/index.xml" rel="self" type="application/rss+xml" /><item>
+        <title>Cloud_MultiCloud</title>
+        <link>https://canuxcheng.com/post/cloud_multicloud/</link>
+        <pubDate>Mon, 21 Jul 2025 11:13:44 +0800</pubDate>
+        
+        <guid>https://canuxcheng.com/post/cloud_multicloud/</guid>
+        <description>&lt;h1 id=&#34;multi-cloud&#34;&gt;Multi-Cloud&lt;/h1&gt;
+&lt;p&gt;以提升弹性、高可用性、避免供应商锁定、或优化成本。&lt;/p&gt;
+&lt;p&gt;架构：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;多活&lt;/li&gt;
+&lt;li&gt;主从&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id=&#34;数据一致性&#34;&gt;数据一致性&lt;/h2&gt;
+&lt;p&gt;方案一：
+aws rds作为主数据库，修改TGW + SG允许 gcp和azure 上的服务访问aws rds。
+aws &amp;lt;-&amp;gt; gcp cloud interconnect + aws TGW
+aws &amp;lt;-&amp;gt; Azure vpn gateway + aws TGW&lt;/p&gt;
+&lt;p&gt;方案二：
+将aws rds作为主数据库，在gcp，azure创建只读副本，通过postgresql 流复制(streaming replication)实现数据同步。配置的时候配置主从两个数据库。&lt;/p&gt;
+&lt;h2 id=&#34;对象存储&#34;&gt;对象存储&lt;/h2&gt;
+&lt;p&gt;方案一：
+对象在aws s3，其它平台远程方案。&lt;/p&gt;
+&lt;p&gt;方案二：
+部署minIO gateway，自动路由到aws s3，gcp gcs，azure blob storage。
+多云之间自动mirror。配置使用minIO gateway的URL即可。
+需要在aws，gcp，azure都部署minIO gateway。
+配置mc连接所有minIO网关，创建统一桶，使用minIO自带的mc mirror实现跨云同步。&lt;/p&gt;
+&lt;p&gt;方案三 多活：
+每个平台都可以存储对象，基于事件触发自动同步。&lt;/p&gt;
+&lt;h2 id=&#34;统一身份认证&#34;&gt;统一身份认证&lt;/h2&gt;
+&lt;p&gt;使用Azure AD 或者 使用keycloak实现跨云统一身份认证。&lt;/p&gt;
+&lt;h2 id=&#34;消息队列和缓存&#34;&gt;消息队列和缓存&lt;/h2&gt;
+&lt;p&gt;通常消息队列和缓存不需要跨云同步。&lt;/p&gt;
+</description>
+        </item>
+        <item>
         <title>LlamaIndex</title>
         <link>https://canuxcheng.com/post/ai_llamaindex/</link>
         <pubDate>Sat, 19 Jul 2025 11:18:44 +0800</pubDate>
