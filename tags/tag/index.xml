@@ -67,13 +67,16 @@ $ kubectl delete all --all -n {namespace}
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;expose:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;# 将pod/deployment/replicaset暴露为service， 会创建对应的service。
-$ kubectl expose (-f FILENAME | TYPE NAME) [--port=port] [--protocol=TCP|UDP|SCTP] [--target-port=...] [--name=...] [--external-ip=...] [--type=type] [options]
+$ kubectl expose (-f FILENAME | TYPE NAME) [--port=port] [--protocol=TCP|UDP|SCTP] [--target-port=...] [--name=...] [--external-ip=...] [--type=ClusterIP|NodePort|LoadBalancer] [options]
+
+# 默认是ClusterIP
+$ kubectl expose pod &amp;lt;pod-name&amp;gt; --port=80 --target-port=8080 --name=&amp;lt;svc-name&amp;gt; 
 
 # 暴露deployment为service。
 # nodeport可以使用任意节点的IP访问.
 $ kubectl expose deployment/hello-world --type=NodePort --name=example-service
 
-kubectl expose deployment hello-world --type=LoadBalancer --port=80 --target-port=8080
+$ kubectl expose deployment hello-world --type=LoadBalancer --port=80 --target-port=8080
 
 // 获取service的yaml
 kubectl expose deployment &amp;lt;deploy-name&amp;gt; --type=LoadBalancer --port=80 --dry-run=client --output=yaml
@@ -342,13 +345,23 @@ $ kubectl plugin list
 &lt;pre&gt;&lt;code&gt;version        Print the client and server version information.
 &lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
+&lt;h2 id=&#34;kustomize&#34;&gt;kustomize&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://kustomize.io/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://kustomize.io/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;kustomize是kubernetes的资源编排工具.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;kubectl kustomize DIR [flags] [options]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;同时build和apply：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;kubectl apply -k dir/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
 &lt;h2 id=&#34;shell-auotcompletion&#34;&gt;shell-auotcompletion&lt;/h2&gt;
 &lt;p&gt;bash/zsh 自动补全工具.&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://kubernetes.io/docs/tasks/tools/install-kubectl/#enabling-shell-autocompletion&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://kubernetes.io/docs/tasks/tools/install-kubectl/#enabling-shell-autocompletion&lt;/a&gt;&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;$ kubectl completion bash | sudo tee /etc/bash_completion.d/kubectl
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;krew&#34;&gt;krew&lt;/h1&gt;
+&lt;h2 id=&#34;krew&#34;&gt;krew&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/kubernetes-sigs/krew&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/kubernetes-sigs/krew&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;安装kubectl plugin的工具&lt;/p&gt;
@@ -376,20 +389,6 @@ $ kubectl krew uninstall &amp;lt;name&amp;gt;
 &lt;pre&gt;&lt;code&gt;$ kubectl krew install ctx
 $ kubectl krew install ns
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;circtl&#34;&gt;circtl&lt;/h1&gt;
-&lt;p&gt;用于对node调试.&lt;/p&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/kubernetes-sigs/cri-tools&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://github.com/kubernetes-sigs/cri-tools&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://kubernetes.io/docs/tasks/debug/debug-cluster/crictl/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://kubernetes.io/docs/tasks/debug/debug-cluster/crictl/&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;nerdctl&#34;&gt;nerdctl&lt;/h2&gt;
-&lt;p&gt;调试node。&lt;/p&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/containerd/nerdctl&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://github.com/containerd/nerdctl&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;telepresence&#34;&gt;telepresence&lt;/h2&gt;
-&lt;p&gt;用于本地调试集群上的服务.&lt;/p&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/telepresenceio/telepresence&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://github.com/telepresenceio/telepresence&lt;/a&gt;&lt;/p&gt;
 </description>
         </item>
         

@@ -7,26 +7,11 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <lastBuildDate>Fri, 08 Jun 2018 09:46:47 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/logging/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>ELK</title>
-        <link>https://canuxcheng.com/post/logging_elk/</link>
-        <pubDate>Fri, 08 Jun 2018 09:46:47 +0000</pubDate>
-        
-        <guid>https://canuxcheng.com/post/logging_elk/</guid>
-        <description>&lt;h1 id=&#34;elk&#34;&gt;ELK&lt;/h1&gt;
-&lt;p&gt;kibana: 数据可视化&lt;/p&gt;
-&lt;p&gt;elasticsearch: 搜索，分析，存储数据&lt;/p&gt;
-&lt;p&gt;x-pack: 具有监控和报警功能的工具包.&lt;/p&gt;
-&lt;p&gt;logstash: 动态数据收集管道，支持可扩展的插件．&lt;/p&gt;
-&lt;p&gt;beats(agent): 轻量型数据采集平台，从边缘机器向logstash/elasticsearch发送数据．&lt;/p&gt;
-&lt;hr&gt;
-</description>
-        </item>
-        <item>
         <title>Grok</title>
-        <link>https://canuxcheng.com/post/logging_grok/</link>
+        <link>https://canuxcheng.com/post/devops_grok/</link>
         <pubDate>Fri, 08 Jun 2018 09:46:47 +0000</pubDate>
         
-        <guid>https://canuxcheng.com/post/logging_grok/</guid>
+        <guid>https://canuxcheng.com/post/devops_grok/</guid>
         <description>&lt;h1 id=&#34;grok&#34;&gt;grok&lt;/h1&gt;
 &lt;p&gt;logstash和telegraf都是用grok来解析log&lt;/p&gt;
 &lt;p&gt;在线检测&lt;/p&gt;
@@ -117,29 +102,20 @@ grok_timezone = &amp;quot;Local&amp;quot;
         </item>
         <item>
         <title>Logging</title>
-        <link>https://canuxcheng.com/post/logging/</link>
+        <link>https://canuxcheng.com/post/devops_logging/</link>
         <pubDate>Fri, 08 Jun 2018 09:46:47 +0000</pubDate>
         
-        <guid>https://canuxcheng.com/post/logging/</guid>
+        <guid>https://canuxcheng.com/post/devops_logging/</guid>
         <description>&lt;h1 id=&#34;logging&#34;&gt;Logging&lt;/h1&gt;
-&lt;p&gt;日志采集，存储，可视化.&lt;/p&gt;
-&lt;p&gt;主要有Elastic stack, splunk, loki.&lt;/p&gt;
-&lt;hr&gt;
-</description>
-        </item>
-        <item>
-        <title>Loki</title>
-        <link>https://canuxcheng.com/post/logging_loki/</link>
-        <pubDate>Fri, 08 Jun 2018 09:46:47 +0000</pubDate>
-        
-        <guid>https://canuxcheng.com/post/logging_loki/</guid>
-        <description>&lt;h1 id=&#34;elk&#34;&gt;ELK&lt;/h1&gt;
-&lt;p&gt;kibana: 数据可视化&lt;/p&gt;
+&lt;p&gt;日志的监控和分析。&lt;/p&gt;
+&lt;h2 id=&#34;elk&#34;&gt;ELK&lt;/h2&gt;
 &lt;p&gt;elasticsearch: 搜索，分析，存储数据&lt;/p&gt;
-&lt;p&gt;x-pack: 具有监控和报警功能的工具包.&lt;/p&gt;
 &lt;p&gt;logstash: 动态数据收集管道，支持可扩展的插件．&lt;/p&gt;
+&lt;p&gt;kibana: 数据可视化&lt;/p&gt;
+&lt;p&gt;x-pack: 具有监控和报警功能的工具包.&lt;/p&gt;
 &lt;p&gt;beats(agent): 轻量型数据采集平台，从边缘机器向logstash/elasticsearch发送数据．&lt;/p&gt;
 &lt;hr&gt;
+&lt;h2 id=&#34;loki&#34;&gt;Loki&lt;/h2&gt;
 </description>
         </item>
         

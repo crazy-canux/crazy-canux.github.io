@@ -135,7 +135,7 @@ $ openssl x509 -in cert.pem -noout -text
 $ openssl x509 -in cert.der -inform der -noout -text
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;查看证书有效期:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ openssl x509 -in ca.domain.com.crt -noout -dates
+&lt;pre&gt;&lt;code&gt;$ openssl x509 -in ca.domain.com.crt -noout -text -dates
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h1 id=&#34;客户端&#34;&gt;客户端&lt;/h1&gt;
 &lt;p&gt;客户端需要信任证书.&lt;/p&gt;

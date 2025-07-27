@@ -666,6 +666,7 @@ networking:
   podSubnet: 10.244.0.0/16 // for flannel
 imageRepository: k8s.gcr.io
 kubernetesVersion: v1.18.6
+
 controllerManager:
   ...
   extraArgs:
@@ -673,12 +674,16 @@ controllerManager:
     allocate-node-cidrs: 'true'
     node-cidr-mask-size: '16' // flannel的SubNetLen
     cluster-cidr: '10.0.0.0/8' // flannel的Network
+    service-cluster-ip-range: 10.96.0.0/12
+
 apiServer:
   timeoutForControlPlane: 4m0s
   &lt;https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/&gt;
     extraArgs:
       advertise-address: 192.168.0.103
+      service-cluster-ip-range: 10.96.0.0/12
       ...
+      
 scheduler:
   ...
   &lt;https://kubernetes.io/docs/reference/command-line-tools-reference/kube-scheduler/&gt;

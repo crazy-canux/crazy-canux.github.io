@@ -3,18 +3,33 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://canuxcheng.com/categories/</loc>
-    <lastmod>2025-07-21T11:13:44+08:00</lastmod>
+    <lastmod>2025-07-26T20:55:52+08:00</lastmod>
+  </url><url>
+    <loc>https://canuxcheng.com/post/k8s_ca/</loc>
+    <lastmod>2025-07-26T20:55:52+08:00</lastmod>
+  </url><url>
+    <loc>https://canuxcheng.com/post/k8s_debug/</loc>
+    <lastmod>2025-07-26T20:55:52+08:00</lastmod>
+  </url><url>
+    <loc>https://canuxcheng.com/categories/cncf/</loc>
+    <lastmod>2025-07-26T20:55:52+08:00</lastmod>
+  </url><url>
+    <loc>https://canuxcheng.com/tags/k8s/</loc>
+    <lastmod>2025-07-26T20:55:52+08:00</lastmod>
+  </url><url>
+    <loc>https://canuxcheng.com/</loc>
+    <lastmod>2025-07-26T20:55:52+08:00</lastmod>
+  </url><url>
+    <loc>https://canuxcheng.com/post/</loc>
+    <lastmod>2025-07-26T20:55:52+08:00</lastmod>
+  </url><url>
+    <loc>https://canuxcheng.com/tags/</loc>
+    <lastmod>2025-07-26T20:55:52+08:00</lastmod>
   </url><url>
     <loc>https://canuxcheng.com/categories/cloud/</loc>
     <lastmod>2025-07-21T11:13:44+08:00</lastmod>
   </url><url>
     <loc>https://canuxcheng.com/post/cloud_multicloud/</loc>
-    <lastmod>2025-07-21T11:13:44+08:00</lastmod>
-  </url><url>
-    <loc>https://canuxcheng.com/</loc>
-    <lastmod>2025-07-21T11:13:44+08:00</lastmod>
-  </url><url>
-    <loc>https://canuxcheng.com/post/</loc>
     <lastmod>2025-07-21T11:13:44+08:00</lastmod>
   </url><url>
     <loc>https://canuxcheng.com/categories/ai/</loc>
@@ -44,25 +59,22 @@
     <loc>https://canuxcheng.com/tags/ai/</loc>
     <lastmod>2025-07-19T10:44:35+08:00</lastmod>
   </url><url>
-    <loc>https://canuxcheng.com/categories/cncf/</loc>
-    <lastmod>2025-07-19T10:44:35+08:00</lastmod>
-  </url><url>
     <loc>https://canuxcheng.com/post/ai_kserve/</loc>
     <lastmod>2025-07-19T10:44:35+08:00</lastmod>
   </url><url>
     <loc>https://canuxcheng.com/post/ai_kubeflow/</loc>
     <lastmod>2025-07-19T10:44:35+08:00</lastmod>
   </url><url>
-    <loc>https://canuxcheng.com/tags/</loc>
-    <lastmod>2025-07-19T10:44:35+08:00</lastmod>
+    <loc>https://canuxcheng.com/post/k8s_gatewayapi/</loc>
+    <lastmod>2025-07-04T20:03:39+08:00</lastmod>
+  </url><url>
+    <loc>https://canuxcheng.com/post/devops_devex/</loc>
+    <lastmod>2025-01-10T09:41:39+00:00</lastmod>
   </url><url>
     <loc>https://canuxcheng.com/tags/devops/</loc>
     <lastmod>2025-01-10T09:41:39+00:00</lastmod>
   </url><url>
     <loc>https://canuxcheng.com/categories/devops/</loc>
-    <lastmod>2025-01-10T09:41:39+00:00</lastmod>
-  </url><url>
-    <loc>https://canuxcheng.com/post/devops_metrics/</loc>
     <lastmod>2025-01-10T09:41:39+00:00</lastmod>
   </url><url>
     <loc>https://canuxcheng.com/tags/ca/</loc>
@@ -89,14 +101,8 @@
     <loc>https://canuxcheng.com/post/aws_development/</loc>
     <lastmod>2024-01-23T22:02:31+00:00</lastmod>
   </url><url>
-    <loc>https://canuxcheng.com/tags/k8s/</loc>
+    <loc>https://canuxcheng.com/post/cncf_security/</loc>
     <lastmod>2023-10-19T20:03:39+08:00</lastmod>
-  </url><url>
-    <loc>https://canuxcheng.com/post/devops_security/</loc>
-    <lastmod>2023-10-19T20:03:39+08:00</lastmod>
-  </url><url>
-    <loc>https://canuxcheng.com/post/k8s_apigateway/</loc>
-    <lastmod>2023-08-04T20:03:39+08:00</lastmod>
   </url><url>
     <loc>https://canuxcheng.com/post/first_aid/</loc>
     <lastmod>2023-07-17T14:46:57+08:00</lastmod>
@@ -287,16 +293,10 @@
     <loc>https://canuxcheng.com/tags/docker/</loc>
     <lastmod>2020-01-04T21:53:40+08:00</lastmod>
   </url><url>
-    <loc>https://canuxcheng.com/post/k8s_accesscontrol/</loc>
-    <lastmod>2020-01-04T20:03:39+08:00</lastmod>
-  </url><url>
     <loc>https://canuxcheng.com/post/cncf_platform/</loc>
     <lastmod>2020-01-04T20:03:39+08:00</lastmod>
   </url><url>
-    <loc>https://canuxcheng.com/post/k8s_dashboard/</loc>
-    <lastmod>2020-01-04T20:03:39+08:00</lastmod>
-  </url><url>
-    <loc>https://canuxcheng.com/post/k8s_km/</loc>
+    <loc>https://canuxcheng.com/post/k8s_key/</loc>
     <lastmod>2020-01-04T20:03:39+08:00</lastmod>
   </url><url>
     <loc>https://canuxcheng.com/post/k8s_microservice/</loc>
@@ -437,19 +437,13 @@
     <loc>https://canuxcheng.com/post/webservice/</loc>
     <lastmod>2018-07-07T16:43:15+00:00</lastmod>
   </url><url>
-    <loc>https://canuxcheng.com/post/logging_elk/</loc>
+    <loc>https://canuxcheng.com/post/devops_grok/</loc>
     <lastmod>2018-06-08T09:46:47+00:00</lastmod>
   </url><url>
-    <loc>https://canuxcheng.com/post/logging_grok/</loc>
-    <lastmod>2018-06-08T09:46:47+00:00</lastmod>
-  </url><url>
-    <loc>https://canuxcheng.com/post/logging/</loc>
+    <loc>https://canuxcheng.com/post/devops_logging/</loc>
     <lastmod>2018-06-08T09:46:47+00:00</lastmod>
   </url><url>
     <loc>https://canuxcheng.com/tags/logging/</loc>
-    <lastmod>2018-06-08T09:46:47+00:00</lastmod>
-  </url><url>
-    <loc>https://canuxcheng.com/post/logging_loki/</loc>
     <lastmod>2018-06-08T09:46:47+00:00</lastmod>
   </url><url>
     <loc>https://canuxcheng.com/post/dns/</loc>
@@ -809,7 +803,7 @@
     <loc>https://canuxcheng.com/tags/makefile/</loc>
     <lastmod>2017-01-12T21:18:33+00:00</lastmod>
   </url><url>
-    <loc>https://canuxcheng.com/post/metrics_grafana/</loc>
+    <loc>https://canuxcheng.com/post/devops_grafana/</loc>
     <lastmod>2017-01-12T21:05:48+00:00</lastmod>
   </url><url>
     <loc>https://canuxcheng.com/post/vagrant/</loc>
@@ -1091,19 +1085,10 @@
     <loc>https://canuxcheng.com/tags/tmux/</loc>
     <lastmod>2016-06-19T11:17:53+00:00</lastmod>
   </url><url>
-    <loc>https://canuxcheng.com/post/tracing_jaeger/</loc>
+    <loc>https://canuxcheng.com/post/devops_monitoring/</loc>
     <lastmod>2016-06-08T09:46:47+00:00</lastmod>
   </url><url>
-    <loc>https://canuxcheng.com/post/metrics/</loc>
-    <lastmod>2016-06-08T09:46:47+00:00</lastmod>
-  </url><url>
-    <loc>https://canuxcheng.com/post/monitoring/</loc>
-    <lastmod>2016-06-08T09:46:47+00:00</lastmod>
-  </url><url>
-    <loc>https://canuxcheng.com/post/tracing_sentry/</loc>
-    <lastmod>2016-06-08T09:46:47+00:00</lastmod>
-  </url><url>
-    <loc>https://canuxcheng.com/post/tracing/</loc>
+    <loc>https://canuxcheng.com/post/devops_tracing/</loc>
     <lastmod>2016-06-08T09:46:47+00:00</lastmod>
   </url><url>
     <loc>https://canuxcheng.com/tags/tracing/</loc>

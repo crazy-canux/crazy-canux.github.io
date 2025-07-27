@@ -360,16 +360,10 @@ Options kubectl options # 查看所有命令可用选项 --kubeconfig kubectl --
     <li><a href="#cluster-management">cluster management</a></li>
     <li><a href="#settings-commands">Settings Commands</a></li>
     <li><a href="#others">others</a></li>
+    <li><a href="#kustomize">kustomize</a></li>
     <li><a href="#shell-auotcompletion">shell-auotcompletion</a></li>
-  </ul>
-
-  <ul>
+    <li><a href="#krew">krew</a></li>
     <li><a href="#kubectx">kubectx</a></li>
-  </ul>
-
-  <ul>
-    <li><a href="#nerdctl">nerdctl</a></li>
-    <li><a href="#telepresence">telepresence</a></li>
   </ul>
 </nav>
         </div>
@@ -504,13 +498,16 @@ $ kubectl delete all --all -n {namespace}
 </code></pre>
 <p>expose:</p>
 <pre><code># 将pod/deployment/replicaset暴露为service， 会创建对应的service。
-$ kubectl expose (-f FILENAME | TYPE NAME) [--port=port] [--protocol=TCP|UDP|SCTP] [--target-port=...] [--name=...] [--external-ip=...] [--type=type] [options]
+$ kubectl expose (-f FILENAME | TYPE NAME) [--port=port] [--protocol=TCP|UDP|SCTP] [--target-port=...] [--name=...] [--external-ip=...] [--type=ClusterIP|NodePort|LoadBalancer] [options]
+
+# 默认是ClusterIP
+$ kubectl expose pod &lt;pod-name&gt; --port=80 --target-port=8080 --name=&lt;svc-name&gt; 
 
 # 暴露deployment为service。
 # nodeport可以使用任意节点的IP访问.
 $ kubectl expose deployment/hello-world --type=NodePort --name=example-service
 
-kubectl expose deployment hello-world --type=LoadBalancer --port=80 --target-port=8080
+$ kubectl expose deployment hello-world --type=LoadBalancer --port=80 --target-port=8080
 
 // 获取service的yaml
 kubectl expose deployment &lt;deploy-name&gt; --type=LoadBalancer --port=80 --dry-run=client --output=yaml
@@ -779,13 +776,23 @@ $ kubectl plugin list
 <pre><code>version        Print the client and server version information.
 </code></pre>
 <hr>
+<h2 id="kustomize">kustomize</h2>
+<p><a class="link" href="https://kustomize.io/"  target="_blank" rel="noopener"
+    >https://kustomize.io/</a></p>
+<p>kustomize是kubernetes的资源编排工具.</p>
+<pre><code>kubectl kustomize DIR [flags] [options]
+</code></pre>
+<p>同时build和apply：</p>
+<pre><code>kubectl apply -k dir/
+</code></pre>
+<hr>
 <h2 id="shell-auotcompletion">shell-auotcompletion</h2>
 <p>bash/zsh 自动补全工具.</p>
 <p><a class="link" href="https://kubernetes.io/docs/tasks/tools/install-kubectl/#enabling-shell-autocompletion"  target="_blank" rel="noopener"
     >https://kubernetes.io/docs/tasks/tools/install-kubectl/#enabling-shell-autocompletion</a></p>
 <pre><code>$ kubectl completion bash | sudo tee /etc/bash_completion.d/kubectl
 </code></pre>
-<h1 id="krew">krew</h1>
+<h2 id="krew">krew</h2>
 <p><a class="link" href="https://github.com/kubernetes-sigs/krew"  target="_blank" rel="noopener"
     >https://github.com/kubernetes-sigs/krew</a></p>
 <p>安装kubectl plugin的工具</p>
@@ -813,20 +820,6 @@ $ kubectl krew uninstall &lt;name&gt;
 <pre><code>$ kubectl krew install ctx
 $ kubectl krew install ns
 </code></pre>
-<h1 id="circtl">circtl</h1>
-<p>用于对node调试.</p>
-<p><a class="link" href="https://github.com/kubernetes-sigs/cri-tools"  target="_blank" rel="noopener"
-    >https://github.com/kubernetes-sigs/cri-tools</a></p>
-<p><a class="link" href="https://kubernetes.io/docs/tasks/debug/debug-cluster/crictl/"  target="_blank" rel="noopener"
-    >https://kubernetes.io/docs/tasks/debug/debug-cluster/crictl/</a></p>
-<h2 id="nerdctl">nerdctl</h2>
-<p>调试node。</p>
-<p><a class="link" href="https://github.com/containerd/nerdctl"  target="_blank" rel="noopener"
-    >https://github.com/containerd/nerdctl</a></p>
-<h2 id="telepresence">telepresence</h2>
-<p>用于本地调试集群上的服务.</p>
-<p><a class="link" href="https://github.com/telepresenceio/telepresence"  target="_blank" rel="noopener"
-    >https://github.com/telepresenceio/telepresence</a></p>
 
 </section>
 

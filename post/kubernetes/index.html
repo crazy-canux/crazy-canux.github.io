@@ -555,7 +555,6 @@ k8s业务类型:
 <p>kubernetes对外暴露服务的三种方式:</p>
 <ul>
 <li>NodePort: dev/qa. (30000-32767)</li>
-<li>Ingress: production.</li>
 <li>LoadBalance: cloud provider.</li>
 </ul>
 <p>clusterIP 是k8s内部默认服务，外部无法访问，可以通过proxy来访问。</p>
@@ -569,7 +568,7 @@ k8s业务类型:
 <p>通过pod volumes, 使pod中的container共享存储。</p>
 <p>应用:</p>
 <ul>
-<li>一个pod中的某个容器异常退出，被kubelet拉起来之前保证之前的数据部丢失.</li>
+<li>一个pod中的某个容器异常退出，被kubelet拉起来之前保证之前的数据不丢失.</li>
 <li>同一个pod的多个容器共享数据.</li>
 </ul>
 <p>pod volume类型:</p>
@@ -579,8 +578,8 @@ k8s业务类型:
 </li>
 <li>
 <p>网络存储:</p>
-<p>in-tree(ks8内置支持): awsElasticBlockStore/gcePresistentDisk/nfs&hellip;</p>
-<p>out-of-tree(插件): flexvolume/csi&hellip;</p>
+<p>in-tree(ks8内置支持): awsElasticBlockStore/gcePresistentDisk/nfs&hellip;
+out-of-tree(插件): flexvolume/csi&hellip;</p>
 </li>
 <li>
 <p>projected volume: secret/configmap/downwardAPI/serviceAccountToken</p>

@@ -7,11 +7,11 @@
         <generator>Hugo -- gohugo.io</generator>
         <language>en-us</language>
         <lastBuildDate>Fri, 10 Jan 2025 09:41:39 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/devops/index.xml" rel="self" type="application/rss+xml" /><item>
-        <title>DevOps Metrics</title>
-        <link>https://canuxcheng.com/post/devops_metrics/</link>
+        <title>DevEx</title>
+        <link>https://canuxcheng.com/post/devops_devex/</link>
         <pubDate>Fri, 10 Jan 2025 09:41:39 +0000</pubDate>
         
-        <guid>https://canuxcheng.com/post/devops_metrics/</guid>
+        <guid>https://canuxcheng.com/post/devops_devex/</guid>
         <description>&lt;h1 id=&#34;devops-metrics&#34;&gt;DevOps Metrics&lt;/h1&gt;
 &lt;p&gt;从业务角度来看，公司希望更准确地度量其开发人员的生产力，原因如下:&lt;/p&gt;
 &lt;ul&gt;

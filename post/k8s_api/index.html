@@ -371,6 +371,14 @@ taints: - effect: NoSchedule key: kubernetes.io/arch value: arm64 tolerations: �
     <li><a href="#rolebinding">RoleBinding</a></li>
     <li><a href="#clusterrole">ClusterRole</a></li>
     <li><a href="#clusterrolebinding">ClusterRoleBinding</a></li>
+    <li><a href="#admission-controllers">Admission Controllers</a>
+      <ul>
+        <li><a href="#mutatingadmissionwebhook">MutatingAdmissionWebhook</a></li>
+        <li><a href="#validatingadmissionwebhook">ValidatingAdmissionWebhook</a></li>
+        <li><a href="#validatingwebhookconfiguration">ValidatingWebhookConfiguration</a></li>
+        <li><a href="#mutatingwebhookconfiguration">MutatingWebhookConfiguration</a></li>
+      </ul>
+    </li>
   </ul>
 </nav>
         </div>
@@ -435,7 +443,7 @@ taints: - effect: NoSchedule key: kubernetes.io/arch value: arm64 tolerations: �
 
 
                 <time class="article-time--reading">
-                    6 minute read
+                    8 minute read
                 </time>
             </div>
         
@@ -1134,6 +1142,213 @@ roleRef:
   kind: ClusterRole
   name: secret-reader
   apiGroup: rbac.authorization.k8s.io
+</code></pre>
+<hr>
+<h2 id="admission-controllers">Admission Controllers</h2>
+<p>api access control是通过Admission Controllers来实现的。</p>
+<h3 id="mutatingadmissionwebhook">MutatingAdmissionWebhook</h3>
+<h3 id="validatingadmissionwebhook">ValidatingAdmissionWebhook</h3>
+<h3 id="validatingwebhookconfiguration">ValidatingWebhookConfiguration</h3>
+<pre><code>apiVersion: admissionregistration.k8s.io/v1
+kind: ValidatingWebhookConfiguration
+metadata:
+  annotations:
+    meta.helm.sh/release-name: ingress-nginx-internal
+    meta.helm.sh/release-namespace: ingress-nginx
+  labels:
+    app.kubernetes.io/component: admission-webhook
+    app.kubernetes.io/instance: ingress-nginx-internal
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: ingress-nginx
+    app.kubernetes.io/part-of: ingress-nginx
+    app.kubernetes.io/version: 1.9.1
+    helm.sh/chart: ingress-nginx-4.8.1
+  name: ingress-nginx-internal-admission
+webhooks:
+- admissionReviewVersions:
+  - v1
+  clientConfig:
+    caBundle: 
+    service:
+      name: ingress-nginx-internal-controller-admission
+      namespace: ingress-nginx
+      path: /networking/v1/ingresses
+      port: 443
+  failurePolicy: Fail
+  matchPolicy: Equivalent
+  name: validate.nginx.ingress.kubernetes.io
+  namespaceSelector: {}
+  objectSelector: {}
+  rules:
+  - apiGroups:
+    - networking.k8s.io
+    apiVersions:
+    - v1
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - ingresses
+    scope: '*'
+  sideEffects: None
+  timeoutSeconds: 10
+</code></pre>
+<h3 id="mutatingwebhookconfiguration">MutatingWebhookConfiguration</h3>
+<pre><code>apiVersion: admissionregistration.k8s.io/v1
+kind: MutatingWebhookConfiguration
+metadata:
+  annotations:
+    meta.helm.sh/release-name: vault-secrets-webhook
+    meta.helm.sh/release-namespace: vault-secrets-webhook
+  labels:
+    app.kubernetes.io/managed-by: Helm
+  name: vault-secrets-webhook
+webhooks:
+- admissionReviewVersions:
+  - v1beta1
+  clientConfig:
+    caBundle:
+    service:
+      name: vault-secrets-webhook
+      namespace: vault-secrets-webhook
+      path: /pods
+      port: 443
+  failurePolicy: Ignore
+  matchPolicy: Equivalent
+  name: pods.vault-secrets-webhook.admission.banzaicloud.com
+  namespaceSelector:
+    matchExpressions:
+    - key: name
+      operator: NotIn
+      values:
+      - kube-system
+    - key: kubernetes.io/metadata.name
+      operator: NotIn
+      values:
+      - kube-system
+    - key: kubernetes.io/metadata.name
+      operator: NotIn
+      values:
+      - vault-secrets-webhook
+  objectSelector:
+    matchExpressions:
+    - key: security.banzaicloud.io/mutate
+      operator: NotIn
+      values:
+      - skip
+  reinvocationPolicy: Never
+  rules:
+  - apiGroups:
+    - '*'
+    apiVersions:
+    - '*'
+    operations:
+    - CREATE
+    resources:
+    - pods
+    scope: '*'
+  sideEffects: NoneOnDryRun
+  timeoutSeconds: 10
+- admissionReviewVersions:
+  - v1beta1
+  clientConfig:
+    caBundle:
+    service:
+      name: vault-secrets-webhook
+      namespace: vault-secrets-webhook
+      path: /secrets
+      port: 443
+  failurePolicy: Ignore
+  matchPolicy: Equivalent
+  name: secrets.vault-secrets-webhook.admission.banzaicloud.com
+  namespaceSelector:
+    matchExpressions:
+    - key: name
+      operator: NotIn
+      values:
+      - kube-system
+    - key: kubernetes.io/metadata.name
+      operator: NotIn
+      values:
+      - kube-system
+    - key: kubernetes.io/metadata.name
+      operator: NotIn
+      values:
+      - vault-secrets-webhook
+  objectSelector:
+    matchExpressions:
+    - key: owner
+      operator: NotIn
+      values:
+      - helm
+    - key: security.banzaicloud.io/mutate
+      operator: NotIn
+      values:
+      - skip
+  reinvocationPolicy: Never
+  rules:
+  - apiGroups:
+    - '*'
+    apiVersions:
+    - '*'
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - secrets
+    scope: '*'
+  sideEffects: NoneOnDryRun
+  timeoutSeconds: 10
+- admissionReviewVersions:
+  - v1beta1
+  clientConfig:
+    caBundle:
+    service:
+      name: vault-secrets-webhook
+      namespace: vault-secrets-webhook
+      path: /configmaps
+      port: 443
+  failurePolicy: Ignore
+  matchPolicy: Equivalent
+  name: configmaps.vault-secrets-webhook.admission.banzaicloud.com
+  namespaceSelector:
+    matchExpressions:
+    - key: name
+      operator: NotIn
+      values:
+      - kube-system
+    - key: kubernetes.io/metadata.name
+      operator: NotIn
+      values:
+      - kube-system
+    - key: kubernetes.io/metadata.name
+      operator: NotIn
+      values:
+      - vault-secrets-webhook
+  objectSelector:
+    matchExpressions:
+    - key: owner
+      operator: NotIn
+      values:
+      - helm
+    - key: security.banzaicloud.io/mutate
+      operator: NotIn
+      values:
+      - skip
+  reinvocationPolicy: Never
+  rules:
+  - apiGroups:
+    - '*'
+    apiVersions:
+    - '*'
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - configmaps
+    scope: '*'
+  sideEffects: NoneOnDryRun
+  timeoutSeconds: 10
 </code></pre>
 
 </section>

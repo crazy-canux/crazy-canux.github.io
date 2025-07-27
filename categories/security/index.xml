@@ -21,12 +21,16 @@
         </item>
         <item>
         <title>Security</title>
-        <link>https://canuxcheng.com/post/devops_security/</link>
+        <link>https://canuxcheng.com/post/cncf_security/</link>
         <pubDate>Thu, 19 Oct 2023 20:03:39 +0800</pubDate>
         
-        <guid>https://canuxcheng.com/post/devops_security/</guid>
+        <guid>https://canuxcheng.com/post/cncf_security/</guid>
         <description>&lt;h1 id=&#34;devops-security&#34;&gt;DevOps Security&lt;/h1&gt;
 &lt;p&gt;**&lt;/p&gt;
+&lt;h2 id=&#34;keycloak&#34;&gt;keycloak&lt;/h2&gt;
+&lt;p&gt;登录管理。&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/keycloak&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/keycloak&lt;/a&gt;&lt;/p&gt;
 &lt;h2 id=&#34;trivy&#34;&gt;Trivy&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/aquasecurity/trivy&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/aquasecurity/trivy&lt;/a&gt;&lt;/p&gt;
@@ -34,9 +38,11 @@
 &lt;h2 id=&#34;tetragon&#34;&gt;Tetragon&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/cilium/tetragon&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/cilium/tetragon&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Tetragon is a security observability tool that provides runtime visibility into system calls, network activity, and file access in Kubernetes environments. It helps detect and respond to security threats in real-time.&lt;/p&gt;
 &lt;h2 id=&#34;falco&#34;&gt;Falco&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/falcosecurity/falco&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/falcosecurity/falco&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Falco is a cloud-native runtime security tool that monitors system calls and detects suspicious activity in real-time. It helps identify potential security threats and policy violations in containerized environments.&lt;/p&gt;
 </description>
         </item>
         <item>
@@ -304,7 +310,7 @@ $ openssl x509 -in cert.pem -noout -text
 $ openssl x509 -in cert.der -inform der -noout -text
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;查看证书有效期:&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;$ openssl x509 -in ca.domain.com.crt -noout -dates
+&lt;pre&gt;&lt;code&gt;$ openssl x509 -in ca.domain.com.crt -noout -text -dates
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h1 id=&#34;客户端&#34;&gt;客户端&lt;/h1&gt;
 &lt;p&gt;客户端需要信任证书.&lt;/p&gt;
