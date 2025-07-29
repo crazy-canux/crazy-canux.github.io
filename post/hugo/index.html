@@ -330,7 +330,43 @@ cd blog git clone --depth 1 --recursive https://github.com/gohugoio/hugoThemes.g
     </ol>
 </aside>
 
-    
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#搭建博客">搭建博客</a></li>
+    <li><a href="#theme">Theme</a></li>
+    <li><a href="#创建页面">创建页面</a></li>
+    <li><a href="#创建文章">创建文章</a></li>
+    <li><a href="#本地测试">本地测试</a></li>
+    <li><a href="#部署到github">部署到github</a></li>
+  </ul>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
 
             <main class="main full-width">
     <article class="main-article">
@@ -407,7 +443,7 @@ cd blog git clone --depth 1 --recursive https://github.com/gohugoio/hugoThemes.g
     >https://github.com/gohugoio/hugo</a></p>
 <p><a class="link" href="https://gohugo.io/"  target="_blank" rel="noopener"
     >https://gohugo.io/</a></p>
-<h1 id="搭建博客">搭建博客</h1>
+<h2 id="搭建博客">搭建博客</h2>
 <p>创建环境:</p>
 <pre><code># linux, ubuntu18.04默认是非extended, 19.04 默认extended。
 $ sudo apt-get install hugo
@@ -437,7 +473,7 @@ themes
 bytes
 </code></pre>
 <hr>
-<h1 id="theme">Theme</h1>
+<h2 id="theme">Theme</h2>
 <p><a class="link" href="https://github.com/gohugoio/hugoThemes"  target="_blank" rel="noopener"
     >https://github.com/gohugoio/hugoThemes</a></p>
 <p>下载所有主题:</p>
@@ -448,9 +484,8 @@ git clone --depth 1 --recursive https://github.com/gohugoio/hugoThemes.git theme
 <pre><code>cd themes
 git clone url
 </code></pre>
-<p>在config.toml添加主题：</p>
+<p>在hugo.toml添加主题：</p>
 <pre><code>theme = 'name'
-themesDir = &quot;/path/to/themes&quot;
 </code></pre>
 <p>创建主题:</p>
 <pre><code>$ hugo new theme [name]
@@ -463,21 +498,21 @@ themesDir = &quot;/path/to/themes&quot;
 $ git submodule update
 </code></pre>
 <hr>
-<h1 id="创建页面">创建页面</h1>
+<h2 id="创建页面">创建页面</h2>
 <pre><code>## content/about.md
 $ hugo new about.md
 </code></pre>
-<h1 id="创建文章">创建文章</h1>
+<h2 id="创建文章">创建文章</h2>
 <pre><code>## content/post/page.md
 $ hugo new post/Shell.md
 </code></pre>
 <hr>
-<h1 id="本地测试">本地测试</h1>
+<h2 id="本地测试">本地测试</h2>
 <pre><code> $ hugo server --theme=hyde --buildDrafts
  $ firefox http://localhost:1313
 </code></pre>
 <hr>
-<h1 id="部署到github">部署到github</h1>
+<h2 id="部署到github">部署到github</h2>
 <p>先在github创建repo.</p>
 <pre><code>$ hugo --theme=&lt;theme&gt; --baseUrl=&quot;https://&lt;user&gt;.github.io/&quot;
 </code></pre>
@@ -488,6 +523,11 @@ $ git remote add origin https://github.com/&lt;user&gt;/&lt;user&gt;.github.io.g
 $ git add -A
 $ git commit -m &quot;first push.&quot;
 $ git push -u origin master
+</code></pre>
+<p>开发环境迁移：</p>
+<pre><code>$ git clone ...
+$ rm -rf ./public ./theme/&lt;theme&gt;
+$ git submodule update --init --recursive
 </code></pre>
 
 </section>

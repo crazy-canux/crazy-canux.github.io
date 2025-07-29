@@ -8,20 +8,39 @@
         <language>en-us</language>
         <lastBuildDate>Sat, 26 Jul 2025 20:55:52 +0800</lastBuildDate><atom:link href="https://canuxcheng.com/tags/k8s/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Certification</title>
-        <link>https://canuxcheng.com/post/k8s_ca/</link>
+        <link>https://canuxcheng.com/post/k8s_certification/</link>
         <pubDate>Sat, 26 Jul 2025 20:55:52 +0800</pubDate>
         
-        <guid>https://canuxcheng.com/post/k8s_ca/</guid>
+        <guid>https://canuxcheng.com/post/k8s_certification/</guid>
         <description>&lt;h1 id=&#34;certification&#34;&gt;Certification&lt;/h1&gt;
 &lt;p&gt;CKA
 CKAD
 CKS&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/learnk8s/learnk8s.io&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/learnk8s/learnk8s.io&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;实操平台：
 &lt;a class=&#34;link&#34; href=&#34;https://kodekloud.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://kodekloud.com/&lt;/a&gt;
 &lt;a class=&#34;link&#34; href=&#34;https://killer.sh/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://killer.sh/&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;cluster&#34;&gt;Cluster&lt;/h2&gt;
+&lt;p&gt;本地通过multipass部署vm。 也可以用virtualbox。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ brew install --cask multipass
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;启动两个vm&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ multipass launch --name k8s-master --cpus 2 --mem 4G --disk 10G
+$ multipass launch --name k8s-worker1 --cpus 2 --mem 4G --disk 10G
+$ multipass launch --name k8s-worker2 --cpus 2 --mem 4G --disk 10G
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;其它步骤参考kubeadm。&lt;/p&gt;
+&lt;hr&gt;
 &lt;h2 id=&#34;cka&#34;&gt;CKA&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/walidshaari/Kubernetes-Certified-Administrator&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/walidshaari/Kubernetes-Certified-Administrator&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;ckad&#34;&gt;CKAD&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/dgkanatsios/CKAD-exercises&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/dgkanatsios/CKAD-exercises&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;cks&#34;&gt;CKS&lt;/h2&gt;
 </description>
         </item>
         <item>
@@ -268,6 +287,8 @@ template:
         <description>&lt;h1 id=&#34;network-add-ons&#34;&gt;Network add-ons&lt;/h1&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/containernetworking&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/containernetworking&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/ahmetb/kubernetes-network-policy-recipes&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/ahmetb/kubernetes-network-policy-recipes&lt;/a&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;flannel&lt;/li&gt;
 &lt;li&gt;cilium&lt;/li&gt;

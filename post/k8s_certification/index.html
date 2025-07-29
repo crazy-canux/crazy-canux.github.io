@@ -1,72 +1,42 @@
 <!DOCTYPE html>
 <html lang="en-us" dir="ltr">
     <head><meta charset='utf-8'>
-<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='网络基础 小端： 低字节在起始地址，高字节在高地址
-大端： 高字节在起始地址，低字节在高地址
-linux一般是小端，unix一般是大端
-https://www.rfc-editor.org/
-OSI网络模型 Open Systems Interconnection (OSI) 模型是一个标准化的网络通信模型，分为七层，每一层都有特定的功能。
-应用层
-表示层：数据压缩，数据加密，数据描述。
-会话层：建立、管理和终止会话。
-传输层
-网络层
-链路层
-物理层
-TCP/IP四层模型 TCP/IP模型是一个简化的网络通信模型，分为四层，每一层对应OSI模型的一些功能。
-应用层 传输层 网络层 网络接口层(也可以拆分成物理层和数据链路层的5层模型) 应用层 0-1024是系统保留端口, 1024-65535是可用自定义端口
-https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml
-8443: tcp/udp - https port 9443: tcp/udp tungsten-https 4443: tcp/udp pharos
-基于TCP的应用层
-FTP: 21, SSH: 22, Telnet: 23, SMTP: 25, HTTP: 80, HTTPS: 443, POP3: 110, POP3 SSL: 995 IMAP: 143, IMAP SSL: 993, NNTP: 119, NNTP SSL: 563, 基于UDP的应用层
-'>
-<title>Network</title>
+<meta name='viewport' content='width=device-width, initial-scale=1'><meta name='description' content='Certification CKA CKAD CKS
+https://github.com/learnk8s/learnk8s.io
+实操平台： https://kodekloud.com/ https://killer.sh/
+Cluster 本地通过multipass部署vm。 也可以用virtualbox。
+$ brew install --cask multipass 启动两个vm
+$ multipass launch --name k8s-master --cpus 2 --mem 4G --disk 10G $ multipass launch --name k8s-worker1 --cpus 2 --mem 4G --disk 10G $ multipass launch --name k8s-worker2 --cpus 2 --mem 4G --disk 10G 其它步骤参考kubeadm。
+CKA https://github.com/walidshaari/Kubernetes-Certified-Administrator
+CKAD https://github.com/dgkanatsios/CKAD-exercises
+CKS'>
+<title>Certification</title>
 
-<link rel='canonical' href='https://canuxcheng.com/post/network/'>
+<link rel='canonical' href='https://canuxcheng.com/post/k8s_certification/'>
 
-<link rel="stylesheet" href="/scss/style.min.2d59822570c0be136f2ad87c952ef8788ac2a951067adda1c49b253bff7d0292.css"><meta property='og:title' content='Network'>
-<meta property='og:description' content='网络基础 小端： 低字节在起始地址，高字节在高地址
-大端： 高字节在起始地址，低字节在高地址
-linux一般是小端，unix一般是大端
-https://www.rfc-editor.org/
-OSI网络模型 Open Systems Interconnection (OSI) 模型是一个标准化的网络通信模型，分为七层，每一层都有特定的功能。
-应用层
-表示层：数据压缩，数据加密，数据描述。
-会话层：建立、管理和终止会话。
-传输层
-网络层
-链路层
-物理层
-TCP/IP四层模型 TCP/IP模型是一个简化的网络通信模型，分为四层，每一层对应OSI模型的一些功能。
-应用层 传输层 网络层 网络接口层(也可以拆分成物理层和数据链路层的5层模型) 应用层 0-1024是系统保留端口, 1024-65535是可用自定义端口
-https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml
-8443: tcp/udp - https port 9443: tcp/udp tungsten-https 4443: tcp/udp pharos
-基于TCP的应用层
-FTP: 21, SSH: 22, Telnet: 23, SMTP: 25, HTTP: 80, HTTPS: 443, POP3: 110, POP3 SSL: 995 IMAP: 143, IMAP SSL: 993, NNTP: 119, NNTP SSL: 563, 基于UDP的应用层
-'>
-<meta property='og:url' content='https://canuxcheng.com/post/network/'>
+<link rel="stylesheet" href="/scss/style.min.2d59822570c0be136f2ad87c952ef8788ac2a951067adda1c49b253bff7d0292.css"><meta property='og:title' content='Certification'>
+<meta property='og:description' content='Certification CKA CKAD CKS
+https://github.com/learnk8s/learnk8s.io
+实操平台： https://kodekloud.com/ https://killer.sh/
+Cluster 本地通过multipass部署vm。 也可以用virtualbox。
+$ brew install --cask multipass 启动两个vm
+$ multipass launch --name k8s-master --cpus 2 --mem 4G --disk 10G $ multipass launch --name k8s-worker1 --cpus 2 --mem 4G --disk 10G $ multipass launch --name k8s-worker2 --cpus 2 --mem 4G --disk 10G 其它步骤参考kubeadm。
+CKA https://github.com/walidshaari/Kubernetes-Certified-Administrator
+CKAD https://github.com/dgkanatsios/CKAD-exercises
+CKS'>
+<meta property='og:url' content='https://canuxcheng.com/post/k8s_certification/'>
 <meta property='og:site_name' content='Morgoth'>
-<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='network' /><meta property='article:published_time' content='2016-04-03T14:46:19&#43;00:00'/><meta property='article:modified_time' content='2016-04-03T14:46:19&#43;00:00'/>
-<meta name="twitter:title" content="Network">
-<meta name="twitter:description" content="网络基础 小端： 低字节在起始地址，高字节在高地址
-大端： 高字节在起始地址，低字节在高地址
-linux一般是小端，unix一般是大端
-https://www.rfc-editor.org/
-OSI网络模型 Open Systems Interconnection (OSI) 模型是一个标准化的网络通信模型，分为七层，每一层都有特定的功能。
-应用层
-表示层：数据压缩，数据加密，数据描述。
-会话层：建立、管理和终止会话。
-传输层
-网络层
-链路层
-物理层
-TCP/IP四层模型 TCP/IP模型是一个简化的网络通信模型，分为四层，每一层对应OSI模型的一些功能。
-应用层 传输层 网络层 网络接口层(也可以拆分成物理层和数据链路层的5层模型) 应用层 0-1024是系统保留端口, 1024-65535是可用自定义端口
-https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml
-8443: tcp/udp - https port 9443: tcp/udp tungsten-https 4443: tcp/udp pharos
-基于TCP的应用层
-FTP: 21, SSH: 22, Telnet: 23, SMTP: 25, HTTP: 80, HTTPS: 443, POP3: 110, POP3 SSL: 995 IMAP: 143, IMAP SSL: 993, NNTP: 119, NNTP SSL: 563, 基于UDP的应用层
-">
+<meta property='og:type' content='article'><meta property='article:section' content='Post' /><meta property='article:tag' content='k8s' /><meta property='article:published_time' content='2025-07-26T20:55:52&#43;08:00'/><meta property='article:modified_time' content='2025-07-26T20:55:52&#43;08:00'/>
+<meta name="twitter:title" content="Certification">
+<meta name="twitter:description" content="Certification CKA CKAD CKS
+https://github.com/learnk8s/learnk8s.io
+实操平台： https://kodekloud.com/ https://killer.sh/
+Cluster 本地通过multipass部署vm。 也可以用virtualbox。
+$ brew install --cask multipass 启动两个vm
+$ multipass launch --name k8s-master --cpus 2 --mem 4G --disk 10G $ multipass launch --name k8s-worker1 --cpus 2 --mem 4G --disk 10G $ multipass launch --name k8s-worker2 --cpus 2 --mem 4G --disk 10G 其它步骤参考kubeadm。
+CKA https://github.com/walidshaari/Kubernetes-Certified-Administrator
+CKAD https://github.com/dgkanatsios/CKAD-exercises
+CKS">
     <link rel="shortcut icon" href="favicon.ico" />
 <style>
     :root {
@@ -376,16 +346,10 @@ FTP: 21, SSH: 22, Telnet: 23, SMTP: 25, HTTP: 80, HTTPS: 443, POP3: 110, POP3 SS
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ul>
-    <li><a href="#osi网络模型">OSI网络模型</a></li>
-    <li><a href="#tcpip四层模型">TCP/IP四层模型</a></li>
-    <li><a href="#应用层">应用层</a></li>
-    <li><a href="#传输层">传输层</a></li>
-    <li><a href="#网络层">网络层</a></li>
-    <li><a href="#网络接口层">网络接口层</a></li>
-    <li><a href="#ip-address">IP address</a></li>
-    <li><a href="#file">File</a></li>
-    <li><a href="#远程桌面协议">远程桌面协议</a></li>
-    <li><a href="#url">URL</a></li>
+    <li><a href="#cluster">Cluster</a></li>
+    <li><a href="#cka">CKA</a></li>
+    <li><a href="#ckad">CKAD</a></li>
+    <li><a href="#cks">CKS</a></li>
   </ul>
 </nav>
         </div>
@@ -404,8 +368,8 @@ FTP: 21, SSH: 22, Telnet: 23, SMTP: 25, HTTP: 80, HTTPS: 443, POP3: 110, POP3 SS
     
     <header class="article-category">
         
-            <a href="/categories/network/" >
-                Network
+            <a href="/categories/cncf/" >
+                CNCF
             </a>
         
     </header>
@@ -413,7 +377,7 @@ FTP: 21, SSH: 22, Telnet: 23, SMTP: 25, HTTP: 80, HTTPS: 443, POP3: 110, POP3 SS
 
     <div class="article-title-wrapper">
         <h2 class="article-title">
-            <a href="/post/network/">Network</a>
+            <a href="/post/k8s_certification/">Certification</a>
         </h2>
     
         
@@ -435,7 +399,7 @@ FTP: 21, SSH: 22, Telnet: 23, SMTP: 25, HTTP: 80, HTTPS: 443, POP3: 110, POP3 SS
   <path d="M3 11h16" />
   <path d="M18 16.496v1.504l1 1" />
 </svg>
-                <time class="article-time--published">Apr 03, 2016</time>
+                <time class="article-time--published">Jul 26, 2025</time>
             </div>
         
 
@@ -450,7 +414,7 @@ FTP: 21, SSH: 22, Telnet: 23, SMTP: 25, HTTP: 80, HTTPS: 443, POP3: 110, POP3 SS
 
 
                 <time class="article-time--reading">
-                    2 minute read
+                    1 minute read
                 </time>
             </div>
         
@@ -465,143 +429,35 @@ FTP: 21, SSH: 22, Telnet: 23, SMTP: 25, HTTP: 80, HTTPS: 443, POP3: 110, POP3 SS
     <section class="article-content">
     
     
-    <h1 id="网络基础">网络基础</h1>
-<p>小端： 低字节在起始地址，高字节在高地址</p>
-<p>大端： 高字节在起始地址，低字节在高地址</p>
-<p>linux一般是小端，unix一般是大端</p>
-<p><a class="link" href="https://www.rfc-editor.org/"  target="_blank" rel="noopener"
-    >https://www.rfc-editor.org/</a></p>
+    <h1 id="certification">Certification</h1>
+<p>CKA
+CKAD
+CKS</p>
+<p><a class="link" href="https://github.com/learnk8s/learnk8s.io"  target="_blank" rel="noopener"
+    >https://github.com/learnk8s/learnk8s.io</a></p>
+<p>实操平台：
+<a class="link" href="https://kodekloud.com/"  target="_blank" rel="noopener"
+    >https://kodekloud.com/</a>
+<a class="link" href="https://killer.sh/"  target="_blank" rel="noopener"
+    >https://killer.sh/</a></p>
+<h2 id="cluster">Cluster</h2>
+<p>本地通过multipass部署vm。 也可以用virtualbox。</p>
+<pre><code>$ brew install --cask multipass
+</code></pre>
+<p>启动两个vm</p>
+<pre><code>$ multipass launch --name k8s-master --cpus 2 --mem 4G --disk 10G
+$ multipass launch --name k8s-worker1 --cpus 2 --mem 4G --disk 10G
+$ multipass launch --name k8s-worker2 --cpus 2 --mem 4G --disk 10G
+</code></pre>
+<p>其它步骤参考kubeadm。</p>
 <hr>
-<h2 id="osi网络模型">OSI网络模型</h2>
-<p>Open Systems Interconnection (OSI) 模型是一个标准化的网络通信模型，分为七层，每一层都有特定的功能。</p>
-<ul>
-<li>
-<p>应用层</p>
-</li>
-<li>
-<p>表示层：数据压缩，数据加密，数据描述。</p>
-</li>
-<li>
-<p>会话层：建立、管理和终止会话。</p>
-</li>
-<li>
-<p>传输层</p>
-</li>
-<li>
-<p>网络层</p>
-</li>
-<li>
-<p>链路层</p>
-</li>
-<li>
-<p>物理层</p>
-</li>
-</ul>
-<h2 id="tcpip四层模型">TCP/IP四层模型</h2>
-<p>TCP/IP模型是一个简化的网络通信模型，分为四层，每一层对应OSI模型的一些功能。</p>
-<ul>
-<li>应用层</li>
-<li>传输层</li>
-<li>网络层</li>
-<li>网络接口层(也可以拆分成物理层和数据链路层的5层模型)</li>
-</ul>
-<h2 id="应用层">应用层</h2>
-<p>0-1024是系统保留端口, 1024-65535是可用自定义端口</p>
-<p><a class="link" href="https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml"  target="_blank" rel="noopener"
-    >https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml</a></p>
-<p>8443:  tcp/udp - https port
-9443: tcp/udp tungsten-https
-4443: tcp/udp pharos</p>
-<p>基于TCP的应用层</p>
-<pre><code>FTP: 21,
-SSH: 22,
-Telnet: 23,
-SMTP: 25,
-HTTP: 80,
-HTTPS: 443,
-POP3: 110,
-POP3 SSL: 995
-IMAP: 143,
-IMAP SSL: 993,
-NNTP: 119,
-NNTP SSL: 563,
-</code></pre>
-<p>基于UDP的应用层</p>
-<pre><code>DNS: 53,
-DHCP: 67,
-TFTP：69,简单文件传输协议。
-NTP/SNTP: 123,
-SNMP：161,简单网络管理协议。
-SNMPtrap: 162,
-</code></pre>
-<p>基于SCTP的应用层</p>
-<pre><code>M3UA: 2905
-</code></pre>
-<p>查看端口</p>
-<pre><code>cat /etc/services
-</code></pre>
-<p>应用程序架构：
-C/S架构：客户端和服务器之间通过网络进行通信(细分为client/server和browser/server)。
-Peer-to-Peer架构：每个节点都可以充当客户端和服务器。</p>
-<h2 id="传输层">传输层</h2>
-<p>TCP：传输控制协议，提供可靠的、面向连接的字节流服务,建立连接需要三次握手．</p>
-<p>UDP：数据报协议，提供不可靠的、无连接的面向数据报的服务。</p>
-<p>SCTP：流控制传输协议。</p>
-<h2 id="网络层">网络层</h2>
-<p>也叫互联网层.</p>
-<p>IP：网际协议，提供不可靠、无连接的数据报传送服务。</p>
-<p>ICMP：Internet控制报文协议，传递差错报文和需要注意的信息，封装在IP数据报内部。</p>
-<pre><code># 基于ICMP的应用层：
-Ping:
-Traceroute:
-</code></pre>
-<p>IGMP：Internet组管理协议，用于支持主机和路由器进行多播，让一个物联网络上的所有系统知道主机当前所在的多播组，封装在IP数据报内部。</p>
-<h2 id="网络接口层">网络接口层</h2>
-<p>也叫数据链路层或.</p>
-<p>以太网帧结构：以太网首部+IP首部+TCP首部/UDP数据报+应用数据+以太网尾部。</p>
-<p>ARP：地址解析协议，为IP地址到硬件地址之间提供动态映射。</p>
-<p>RARP：没有磁盘驱动器的系统使用。</p>
-<p>动态选路协议:</p>
-<ul>
-<li>RIP：选路信息协议</li>
-<li>OSPF：开放最短路优先</li>
-<li>IGP-EGP-BGP：边界网关协议</li>
-<li>CIDR：无类型域间选路</li>
-</ul>
-<hr>
-<h2 id="ip-address">IP address</h2>
-<p>A: 0 + 7 * network number + 24 * host number, 0.0.0.0 - 127.255.255.255
-B: 10 + 14 * network number + 16 * host number; 128.0.0.0 - 191.255.255.255
-C: 110 + 21 * network number + 8 * host number; 192.0.0.0 - 223.255.255.255
-D: 1110 + 28 * multicast number; 224.0.0.0 - 239.255.255.255
-E: 11110 + 27 * reserved; 240.0.0.0 - 247.255.255.255</p>
-<hr>
-<h2 id="file">File</h2>
-<p>File协议是本地文件协议</p>
-<pre><code>file:///C:/
-</code></pre>
-<hr>
-<h2 id="远程桌面协议">远程桌面协议</h2>
-<p>RDP: remote desktop protocol， windows系统之间的远程桌面协议。</p>
-<p>RFB(VNC): remote frame buffer, 跨平台的远程桌面协议，cs架构。</p>
-<p>VNC: 跨平台的RFB（VNC）工具有realvnc, tightvnc, tigervnc.</p>
-<p>remmina：基于gtk，支持RFB(VNC), RDP, SSH/SFTP协议。</p>
-<p>krdc：基于kde，支持RFB(VNC), RDP协议。</p>
-<p>mRemoteNG: RDP, VNC, SSH, Telnet, Http, Rlogin, RAW, ICA</p>
-<p><a class="link" href="https://github.com/mRemoteNG/mRemoteNG"  target="_blank" rel="noopener"
-    >https://github.com/mRemoteNG/mRemoteNG</a></p>
-<p>FreeDRP: DRP</p>
-<p><a class="link" href="https://github.com/FreeRDP/FreeRDP"  target="_blank" rel="noopener"
-    >https://github.com/FreeRDP/FreeRDP</a></p>
-<hr>
-<h2 id="url">URL</h2>
-<p>url中的保留自字符需要编码。</p>
-<p>The percent-encoded values for the special characters are as follows:</p>
-<pre><code># → %23
-? → %3F
-&amp; → %26
-</code></pre>
-<p>These encodings are used in URLs to ensure that these characters are treated as literal values rather than special symbols.</p>
+<h2 id="cka">CKA</h2>
+<p><a class="link" href="https://github.com/walidshaari/Kubernetes-Certified-Administrator"  target="_blank" rel="noopener"
+    >https://github.com/walidshaari/Kubernetes-Certified-Administrator</a></p>
+<h2 id="ckad">CKAD</h2>
+<p><a class="link" href="https://github.com/dgkanatsios/CKAD-exercises"  target="_blank" rel="noopener"
+    >https://github.com/dgkanatsios/CKAD-exercises</a></p>
+<h2 id="cks">CKS</h2>
 
 </section>
 
@@ -610,7 +466,7 @@ E: 11110 + 27 * reserved; 240.0.0.0 - 247.255.255.255</p>
     
     <section class="article-tags">
         
-            <a href="/tags/network/">Network</a>
+            <a href="/tags/k8s/">K8s</a>
         
     </section>
 

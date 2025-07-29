@@ -18,7 +18,7 @@
     &gt;https://github.com/gohugoio/hugo&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://gohugo.io/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://gohugo.io/&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id=&#34;搭建博客&#34;&gt;搭建博客&lt;/h1&gt;
+&lt;h2 id=&#34;搭建博客&#34;&gt;搭建博客&lt;/h2&gt;
 &lt;p&gt;创建环境:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;# linux, ubuntu18.04默认是非extended, 19.04 默认extended。
 $ sudo apt-get install hugo
@@ -48,7 +48,7 @@ themes
 bytes
 &lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
-&lt;h1 id=&#34;theme&#34;&gt;Theme&lt;/h1&gt;
+&lt;h2 id=&#34;theme&#34;&gt;Theme&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/gohugoio/hugoThemes&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/gohugoio/hugoThemes&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;下载所有主题:&lt;/p&gt;
@@ -59,9 +59,8 @@ git clone --depth 1 --recursive https://github.com/gohugoio/hugoThemes.git theme
 &lt;pre&gt;&lt;code&gt;cd themes
 git clone url
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;在config.toml添加主题：&lt;/p&gt;
+&lt;p&gt;在hugo.toml添加主题：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;theme = &#39;name&#39;
-themesDir = &amp;quot;/path/to/themes&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;创建主题:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;$ hugo new theme [name]
@@ -74,21 +73,21 @@ themesDir = &amp;quot;/path/to/themes&amp;quot;
 $ git submodule update
 &lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
-&lt;h1 id=&#34;创建页面&#34;&gt;创建页面&lt;/h1&gt;
+&lt;h2 id=&#34;创建页面&#34;&gt;创建页面&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;## content/about.md
 $ hugo new about.md
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;创建文章&#34;&gt;创建文章&lt;/h1&gt;
+&lt;h2 id=&#34;创建文章&#34;&gt;创建文章&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;## content/post/page.md
 $ hugo new post/Shell.md
 &lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
-&lt;h1 id=&#34;本地测试&#34;&gt;本地测试&lt;/h1&gt;
+&lt;h2 id=&#34;本地测试&#34;&gt;本地测试&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt; $ hugo server --theme=hyde --buildDrafts
  $ firefox http://localhost:1313
 &lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
-&lt;h1 id=&#34;部署到github&#34;&gt;部署到github&lt;/h1&gt;
+&lt;h2 id=&#34;部署到github&#34;&gt;部署到github&lt;/h2&gt;
 &lt;p&gt;先在github创建repo.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;$ hugo --theme=&amp;lt;theme&amp;gt; --baseUrl=&amp;quot;https://&amp;lt;user&amp;gt;.github.io/&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;
@@ -99,6 +98,11 @@ $ git remote add origin https://github.com/&amp;lt;user&amp;gt;/&amp;lt;user&amp
 $ git add -A
 $ git commit -m &amp;quot;first push.&amp;quot;
 $ git push -u origin master
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;开发环境迁移：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ git clone ...
+$ rm -rf ./public ./theme/&amp;lt;theme&amp;gt;
+$ git submodule update --init --recursive
 &lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>

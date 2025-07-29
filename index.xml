@@ -8,20 +8,39 @@
         <language>en-us</language>
         <lastBuildDate>Sat, 26 Jul 2025 20:55:52 +0800</lastBuildDate><atom:link href="https://canuxcheng.com/index.xml" rel="self" type="application/rss+xml" /><item>
         <title>Certification</title>
-        <link>https://canuxcheng.com/post/k8s_ca/</link>
+        <link>https://canuxcheng.com/post/k8s_certification/</link>
         <pubDate>Sat, 26 Jul 2025 20:55:52 +0800</pubDate>
         
-        <guid>https://canuxcheng.com/post/k8s_ca/</guid>
+        <guid>https://canuxcheng.com/post/k8s_certification/</guid>
         <description>&lt;h1 id=&#34;certification&#34;&gt;Certification&lt;/h1&gt;
 &lt;p&gt;CKA
 CKAD
 CKS&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/learnk8s/learnk8s.io&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/learnk8s/learnk8s.io&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;实操平台：
 &lt;a class=&#34;link&#34; href=&#34;https://kodekloud.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://kodekloud.com/&lt;/a&gt;
 &lt;a class=&#34;link&#34; href=&#34;https://killer.sh/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://killer.sh/&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;cluster&#34;&gt;Cluster&lt;/h2&gt;
+&lt;p&gt;本地通过multipass部署vm。 也可以用virtualbox。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ brew install --cask multipass
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;启动两个vm&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ multipass launch --name k8s-master --cpus 2 --mem 4G --disk 10G
+$ multipass launch --name k8s-worker1 --cpus 2 --mem 4G --disk 10G
+$ multipass launch --name k8s-worker2 --cpus 2 --mem 4G --disk 10G
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;其它步骤参考kubeadm。&lt;/p&gt;
+&lt;hr&gt;
 &lt;h2 id=&#34;cka&#34;&gt;CKA&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/walidshaari/Kubernetes-Certified-Administrator&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/walidshaari/Kubernetes-Certified-Administrator&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;ckad&#34;&gt;CKAD&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/dgkanatsios/CKAD-exercises&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/dgkanatsios/CKAD-exercises&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id=&#34;cks&#34;&gt;CKS&lt;/h2&gt;
 </description>
         </item>
         <item>
@@ -2167,6 +2186,8 @@ echo &amp;quot;ipmi_devintf&amp;quot; &amp;gt;&amp;gt; /etc/modules
         <description>&lt;h1 id=&#34;network-add-ons&#34;&gt;Network add-ons&lt;/h1&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/containernetworking&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/containernetworking&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/ahmetb/kubernetes-network-policy-recipes&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/ahmetb/kubernetes-network-policy-recipes&lt;/a&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;flannel&lt;/li&gt;
 &lt;li&gt;cilium&lt;/li&gt;
@@ -30231,17 +30252,17 @@ GROUP BY time($__interval), &amp;quot;host&amp;quot;, &amp;quot;interface&amp;qu
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.rfc-editor.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.rfc-editor.org/&lt;/a&gt;&lt;/p&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;网络模型&#34;&gt;网络模型&lt;/h2&gt;
-&lt;p&gt;OSI七层模型:&lt;/p&gt;
+&lt;h2 id=&#34;osi网络模型&#34;&gt;OSI网络模型&lt;/h2&gt;
+&lt;p&gt;Open Systems Interconnection (OSI) 模型是一个标准化的网络通信模型，分为七层，每一层都有特定的功能。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;应用层&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;表示层&lt;/p&gt;
+&lt;p&gt;表示层：数据压缩，数据加密，数据描述。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;会话层&lt;/p&gt;
+&lt;p&gt;会话层：建立、管理和终止会话。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;传输层&lt;/p&gt;
@@ -30256,14 +30277,15 @@ GROUP BY time($__interval), &amp;quot;host&amp;quot;, &amp;quot;interface&amp;qu
 &lt;p&gt;物理层&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;TCP/IP四层模型：&lt;/p&gt;
+&lt;h2 id=&#34;tcpip四层模型&#34;&gt;TCP/IP四层模型&lt;/h2&gt;
+&lt;p&gt;TCP/IP模型是一个简化的网络通信模型，分为四层，每一层对应OSI模型的一些功能。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;应用层&lt;/li&gt;
 &lt;li&gt;传输层&lt;/li&gt;
 &lt;li&gt;网络层&lt;/li&gt;
-&lt;li&gt;链路层&lt;/li&gt;
+&lt;li&gt;网络接口层(也可以拆分成物理层和数据链路层的5层模型)&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;应用层&#34;&gt;应用层&lt;/h3&gt;
+&lt;h2 id=&#34;应用层&#34;&gt;应用层&lt;/h2&gt;
 &lt;p&gt;0-1024是系统保留端口, 1024-65535是可用自定义端口&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml&lt;/a&gt;&lt;/p&gt;
@@ -30275,7 +30297,6 @@ GROUP BY time($__interval), &amp;quot;host&amp;quot;, &amp;quot;interface&amp;qu
 SSH: 22,
 Telnet: 23,
 SMTP: 25,
-DNS: 53,
 HTTP: 80,
 HTTPS: 443,
 POP3: 110,
@@ -30286,22 +30307,27 @@ NNTP: 119,
 NNTP SSL: 563,
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;基于UDP的应用层&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;SMTP: 25,
-DNS: 53,
+&lt;pre&gt;&lt;code&gt;DNS: 53,
 DHCP: 67,
 TFTP：69,简单文件传输协议。
 NTP/SNTP: 123,
 SNMP：161,简单网络管理协议。
 SNMPtrap: 162,
 &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;基于SCTP的应用层&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;M3UA: 2905
+&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;查看端口&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;cat /etc/services
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&#34;传输层&#34;&gt;传输层&lt;/h3&gt;
+&lt;p&gt;应用程序架构：
+C/S架构：客户端和服务器之间通过网络进行通信(细分为client/server和browser/server)。
+Peer-to-Peer架构：每个节点都可以充当客户端和服务器。&lt;/p&gt;
+&lt;h2 id=&#34;传输层&#34;&gt;传输层&lt;/h2&gt;
 &lt;p&gt;TCP：传输控制协议，提供可靠的、面向连接的字节流服务,建立连接需要三次握手．&lt;/p&gt;
 &lt;p&gt;UDP：数据报协议，提供不可靠的、无连接的面向数据报的服务。&lt;/p&gt;
 &lt;p&gt;SCTP：流控制传输协议。&lt;/p&gt;
-&lt;h3 id=&#34;网络层&#34;&gt;网络层&lt;/h3&gt;
+&lt;h2 id=&#34;网络层&#34;&gt;网络层&lt;/h2&gt;
 &lt;p&gt;也叫互联网层.&lt;/p&gt;
 &lt;p&gt;IP：网际协议，提供不可靠、无连接的数据报传送服务。&lt;/p&gt;
 &lt;p&gt;ICMP：Internet控制报文协议，传递差错报文和需要注意的信息，封装在IP数据报内部。&lt;/p&gt;
@@ -30310,8 +30336,8 @@ Ping:
 Traceroute:
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;IGMP：Internet组管理协议，用于支持主机和路由器进行多播，让一个物联网络上的所有系统知道主机当前所在的多播组，封装在IP数据报内部。&lt;/p&gt;
-&lt;h3 id=&#34;链路层&#34;&gt;链路层&lt;/h3&gt;
-&lt;p&gt;也叫数据链路层或网络接口层.&lt;/p&gt;
+&lt;h2 id=&#34;网络接口层&#34;&gt;网络接口层&lt;/h2&gt;
+&lt;p&gt;也叫数据链路层或.&lt;/p&gt;
 &lt;p&gt;以太网帧结构：以太网首部+IP首部+TCP首部/UDP数据报+应用数据+以太网尾部。&lt;/p&gt;
 &lt;p&gt;ARP：地址解析协议，为IP地址到硬件地址之间提供动态映射。&lt;/p&gt;
 &lt;p&gt;RARP：没有磁盘驱动器的系统使用。&lt;/p&gt;
@@ -34857,7 +34883,7 @@ $hexo d
     &gt;https://github.com/gohugoio/hugo&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://gohugo.io/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://gohugo.io/&lt;/a&gt;&lt;/p&gt;
-&lt;h1 id=&#34;搭建博客&#34;&gt;搭建博客&lt;/h1&gt;
+&lt;h2 id=&#34;搭建博客&#34;&gt;搭建博客&lt;/h2&gt;
 &lt;p&gt;创建环境:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;# linux, ubuntu18.04默认是非extended, 19.04 默认extended。
 $ sudo apt-get install hugo
@@ -34887,7 +34913,7 @@ themes
 bytes
 &lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
-&lt;h1 id=&#34;theme&#34;&gt;Theme&lt;/h1&gt;
+&lt;h2 id=&#34;theme&#34;&gt;Theme&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/gohugoio/hugoThemes&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/gohugoio/hugoThemes&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;下载所有主题:&lt;/p&gt;
@@ -34898,9 +34924,8 @@ git clone --depth 1 --recursive https://github.com/gohugoio/hugoThemes.git theme
 &lt;pre&gt;&lt;code&gt;cd themes
 git clone url
 &lt;/code&gt;&lt;/pre&gt;
-&lt;p&gt;在config.toml添加主题：&lt;/p&gt;
+&lt;p&gt;在hugo.toml添加主题：&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;theme = &#39;name&#39;
-themesDir = &amp;quot;/path/to/themes&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;创建主题:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;$ hugo new theme [name]
@@ -34913,21 +34938,21 @@ themesDir = &amp;quot;/path/to/themes&amp;quot;
 $ git submodule update
 &lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
-&lt;h1 id=&#34;创建页面&#34;&gt;创建页面&lt;/h1&gt;
+&lt;h2 id=&#34;创建页面&#34;&gt;创建页面&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;## content/about.md
 $ hugo new about.md
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h1 id=&#34;创建文章&#34;&gt;创建文章&lt;/h1&gt;
+&lt;h2 id=&#34;创建文章&#34;&gt;创建文章&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt;## content/post/page.md
 $ hugo new post/Shell.md
 &lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
-&lt;h1 id=&#34;本地测试&#34;&gt;本地测试&lt;/h1&gt;
+&lt;h2 id=&#34;本地测试&#34;&gt;本地测试&lt;/h2&gt;
 &lt;pre&gt;&lt;code&gt; $ hugo server --theme=hyde --buildDrafts
  $ firefox http://localhost:1313
 &lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
-&lt;h1 id=&#34;部署到github&#34;&gt;部署到github&lt;/h1&gt;
+&lt;h2 id=&#34;部署到github&#34;&gt;部署到github&lt;/h2&gt;
 &lt;p&gt;先在github创建repo.&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;$ hugo --theme=&amp;lt;theme&amp;gt; --baseUrl=&amp;quot;https://&amp;lt;user&amp;gt;.github.io/&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;
@@ -34938,6 +34963,11 @@ $ git remote add origin https://github.com/&amp;lt;user&amp;gt;/&amp;lt;user&amp
 $ git add -A
 $ git commit -m &amp;quot;first push.&amp;quot;
 $ git push -u origin master
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;开发环境迁移：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ git clone ...
+$ rm -rf ./public ./theme/&amp;lt;theme&amp;gt;
+$ git submodule update --init --recursive
 &lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>

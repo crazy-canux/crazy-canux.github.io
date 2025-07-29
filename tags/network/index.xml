@@ -556,17 +556,17 @@ response_dict = json.loads(response.content) # 使用requests获取的json数据
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.rfc-editor.org/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.rfc-editor.org/&lt;/a&gt;&lt;/p&gt;
 &lt;hr&gt;
-&lt;h2 id=&#34;网络模型&#34;&gt;网络模型&lt;/h2&gt;
-&lt;p&gt;OSI七层模型:&lt;/p&gt;
+&lt;h2 id=&#34;osi网络模型&#34;&gt;OSI网络模型&lt;/h2&gt;
+&lt;p&gt;Open Systems Interconnection (OSI) 模型是一个标准化的网络通信模型，分为七层，每一层都有特定的功能。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;
 &lt;p&gt;应用层&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;表示层&lt;/p&gt;
+&lt;p&gt;表示层：数据压缩，数据加密，数据描述。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
-&lt;p&gt;会话层&lt;/p&gt;
+&lt;p&gt;会话层：建立、管理和终止会话。&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;传输层&lt;/p&gt;
@@ -581,14 +581,15 @@ response_dict = json.loads(response.content) # 使用requests获取的json数据
 &lt;p&gt;物理层&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;TCP/IP四层模型：&lt;/p&gt;
+&lt;h2 id=&#34;tcpip四层模型&#34;&gt;TCP/IP四层模型&lt;/h2&gt;
+&lt;p&gt;TCP/IP模型是一个简化的网络通信模型，分为四层，每一层对应OSI模型的一些功能。&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;应用层&lt;/li&gt;
 &lt;li&gt;传输层&lt;/li&gt;
 &lt;li&gt;网络层&lt;/li&gt;
-&lt;li&gt;链路层&lt;/li&gt;
+&lt;li&gt;网络接口层(也可以拆分成物理层和数据链路层的5层模型)&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&#34;应用层&#34;&gt;应用层&lt;/h3&gt;
+&lt;h2 id=&#34;应用层&#34;&gt;应用层&lt;/h2&gt;
 &lt;p&gt;0-1024是系统保留端口, 1024-65535是可用自定义端口&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://www.iana.org/assignments/service-names-port-numbers/service-names-port-numbers.xhtml&lt;/a&gt;&lt;/p&gt;
@@ -600,7 +601,6 @@ response_dict = json.loads(response.content) # 使用requests获取的json数据
 SSH: 22,
 Telnet: 23,
 SMTP: 25,
-DNS: 53,
 HTTP: 80,
 HTTPS: 443,
 POP3: 110,
@@ -611,22 +611,27 @@ NNTP: 119,
 NNTP SSL: 563,
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;基于UDP的应用层&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;SMTP: 25,
-DNS: 53,
+&lt;pre&gt;&lt;code&gt;DNS: 53,
 DHCP: 67,
 TFTP：69,简单文件传输协议。
 NTP/SNTP: 123,
 SNMP：161,简单网络管理协议。
 SNMPtrap: 162,
 &lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;基于SCTP的应用层&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;M3UA: 2905
+&lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;查看端口&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;cat /etc/services
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&#34;传输层&#34;&gt;传输层&lt;/h3&gt;
+&lt;p&gt;应用程序架构：
+C/S架构：客户端和服务器之间通过网络进行通信(细分为client/server和browser/server)。
+Peer-to-Peer架构：每个节点都可以充当客户端和服务器。&lt;/p&gt;
+&lt;h2 id=&#34;传输层&#34;&gt;传输层&lt;/h2&gt;
 &lt;p&gt;TCP：传输控制协议，提供可靠的、面向连接的字节流服务,建立连接需要三次握手．&lt;/p&gt;
 &lt;p&gt;UDP：数据报协议，提供不可靠的、无连接的面向数据报的服务。&lt;/p&gt;
 &lt;p&gt;SCTP：流控制传输协议。&lt;/p&gt;
-&lt;h3 id=&#34;网络层&#34;&gt;网络层&lt;/h3&gt;
+&lt;h2 id=&#34;网络层&#34;&gt;网络层&lt;/h2&gt;
 &lt;p&gt;也叫互联网层.&lt;/p&gt;
 &lt;p&gt;IP：网际协议，提供不可靠、无连接的数据报传送服务。&lt;/p&gt;
 &lt;p&gt;ICMP：Internet控制报文协议，传递差错报文和需要注意的信息，封装在IP数据报内部。&lt;/p&gt;
@@ -635,8 +640,8 @@ Ping:
 Traceroute:
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;IGMP：Internet组管理协议，用于支持主机和路由器进行多播，让一个物联网络上的所有系统知道主机当前所在的多播组，封装在IP数据报内部。&lt;/p&gt;
-&lt;h3 id=&#34;链路层&#34;&gt;链路层&lt;/h3&gt;
-&lt;p&gt;也叫数据链路层或网络接口层.&lt;/p&gt;
+&lt;h2 id=&#34;网络接口层&#34;&gt;网络接口层&lt;/h2&gt;
+&lt;p&gt;也叫数据链路层或.&lt;/p&gt;
 &lt;p&gt;以太网帧结构：以太网首部+IP首部+TCP首部/UDP数据报+应用数据+以太网尾部。&lt;/p&gt;
 &lt;p&gt;ARP：地址解析协议，为IP地址到硬件地址之间提供动态映射。&lt;/p&gt;
 &lt;p&gt;RARP：没有磁盘驱动器的系统使用。&lt;/p&gt;
