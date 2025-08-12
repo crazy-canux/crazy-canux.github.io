@@ -3613,6 +3613,7 @@ dic[&#39;key&#39;]
 del dic[&#39;key&#39;]
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h3 id=&#34;dict-comprehensions&#34;&gt;dict comprehensions&lt;/h3&gt;
+&lt;p&gt;字典解析。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;{key: value for item in iterable if condition}
 
 modified = {
@@ -3650,6 +3651,7 @@ modified = {
 &lt;h3 id=&#34;set&#34;&gt;set&lt;/h3&gt;
 &lt;p&gt;set类型是可变类型(mutable)，是容器(container).&lt;/p&gt;
 &lt;h3 id=&#34;set-comprehensions&#34;&gt;set comprehensions&lt;/h3&gt;
+&lt;p&gt;集合解析&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;{expression for item in iterable if condition}
 
 {x for x in range(10) if x % 2 == 0}
@@ -4115,7 +4117,7 @@ print(list(result))
 
 from functools import reduce
 reduce(func, iterable[, initializer]) 
-reduce(lambda x,y: x*y, [1,2,3,4]
+reduce(lambda x,y: x*y, [1,2,3,4])
 &amp;gt; x=1,y=2, x*y=2
 &amp;gt; x=2, y=3, x*y=6
 &amp;gt; x=6, y=4, x*y=24
@@ -4162,16 +4164,17 @@ def fib(n):
 &lt;h2 id=&#34;closure闭包&#34;&gt;&lt;em&gt;closure闭包&lt;/em&gt;&lt;/h2&gt;
 &lt;p&gt;闭包一定是内嵌函数，内嵌函数不一定是闭包。&lt;/p&gt;
 &lt;p&gt;在一个内部函数里对在外部作用域的变量进行引用，内部函数被认为是closure.&lt;/p&gt;
-&lt;p&gt;定义在外部函数内的但由内部函数引用的变量称为自由变量．&lt;/p&gt;
+&lt;p&gt;定义在外部函数内的但由内部函数引用的变量称为自由变量．自由变量的值能被记住。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;def outer(arg):
     free_var = arg # 外部函数的自由变量
     def inner(*args, **kwargs):
         print(free_var)
+        return free_var
     return inner
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;当自由变量是一个函数时，闭包就是一个装饰器，decorator是closure最常见的应用．&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;def outer():
-    data = []    
+    data = []
     def clos(value):
         data.append(value)    # 可变类型不需要nonlocal。
         return data

@@ -13,17 +13,19 @@
         
         <guid>https://canuxcheng.com/post/k8s_certification/</guid>
         <description>&lt;h1 id=&#34;certification&#34;&gt;Certification&lt;/h1&gt;
-&lt;p&gt;CKA
-CKAD
-CKS&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;CKA&lt;/li&gt;
+&lt;li&gt;CKAD&lt;/li&gt;
+&lt;li&gt;CKS&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/learnk8s/learnk8s.io&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/learnk8s/learnk8s.io&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;实操平台：
-&lt;a class=&#34;link&#34; href=&#34;https://kodekloud.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://kodekloud.com/&lt;/a&gt;
-&lt;a class=&#34;link&#34; href=&#34;https://killer.sh/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+&lt;p&gt;实操平台：&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://kodekloud.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://kodekloud.com/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://killer.sh/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://killer.sh/&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;cluster&#34;&gt;Cluster&lt;/h2&gt;
+&lt;h2 id=&#34;kubeadm&#34;&gt;kubeadm&lt;/h2&gt;
 &lt;p&gt;本地通过multipass部署vm。 也可以用virtualbox。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;$ brew install --cask multipass
 &lt;/code&gt;&lt;/pre&gt;
@@ -33,6 +35,8 @@ $ multipass launch --name k8s-worker1 --cpus 2 --mem 4G --disk 10G
 $ multipass launch --name k8s-worker2 --cpus 2 --mem 4G --disk 10G
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;其它步骤参考kubeadm。&lt;/p&gt;
+&lt;h2 id=&#34;kind&#34;&gt;Kind&lt;/h2&gt;
+&lt;p&gt;通过kind部署k8s集群。&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;cka&#34;&gt;CKA&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/walidshaari/Kubernetes-Certified-Administrator&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -44,7 +48,7 @@ $ multipass launch --name k8s-worker2 --cpus 2 --mem 4G --disk 10G
 </description>
         </item>
         <item>
-        <title>Certification</title>
+        <title>K8S Debug</title>
         <link>https://canuxcheng.com/post/k8s_debug/</link>
         <pubDate>Sat, 26 Jul 2025 20:55:52 +0800</pubDate>
         
@@ -625,7 +629,7 @@ spec:
 &lt;p&gt;payload可以是json，也可以是yaml.&lt;/p&gt;
 &lt;p&gt;yaml文件中#表示行注释。&lt;/p&gt;
 &lt;hr&gt;
-&lt;h1 id=&#34;yaml&#34;&gt;yaml&lt;/h1&gt;
+&lt;h2 id=&#34;yaml&#34;&gt;yaml&lt;/h2&gt;
 &lt;p&gt;部署k8s可以通过yaml文件来配置资源.&lt;/p&gt;
 &lt;p&gt;资源对象组成部分:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;apiVersion: 
@@ -661,7 +665,7 @@ kubectl api-resources --namespaced=false
 &lt;p&gt;spec:&lt;/p&gt;
 &lt;p&gt;status:&lt;/p&gt;
 &lt;hr&gt;
-&lt;h1 id=&#34;调度抢占驱逐&#34;&gt;调度，抢占，驱逐&lt;/h1&gt;
+&lt;h2 id=&#34;调度抢占驱逐&#34;&gt;调度，抢占，驱逐&lt;/h2&gt;
 &lt;p&gt;taints: 污点，使节点排斥特定pod。应用于node。加了tolerations或者affinity的pod才能调度过来。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;taints:
 - effect: NoSchedule
@@ -715,10 +719,24 @@ kubectl api-resources --namespaced=false
 &lt;pre&gt;&lt;code&gt; nodeSelector:
    kubernetes.io/arch: arm64
 &lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;安全&#34;&gt;安全&lt;/h2&gt;
+&lt;p&gt;securityContext用来配置 Pod 或 容器 运行时的安全性设置的字段，它能限制容器的权限、用户身份、文件系统访问等，从而降低容器被攻击后造成的破坏范围。容器级别优先级高于 Pod 级别。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;securityContext:
+  runAsUser: 1000
+  runAsGroup: 3000
+  fsGroup: 2000
+  allowPrivilegeEscalation: false
+  capabilities:
+    drop:
+    - ALL
+    add:
+    - NET_ADMIN
+&lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;pod&#34;&gt;Pod&lt;/h1&gt;
 &lt;p&gt;pod模板， 通常使用deployment, job和statefulset, daemonset来管理pod.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;apiVersion: v1
+&lt;pre&gt;&lt;code&gt;// kubectl explain pod.spec
+apiVersion: v1
 kind: Pod
 metadata:
   name: test
@@ -1198,8 +1216,8 @@ subsets:
       - port: 3306
 &lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
-&lt;h1 id=&#34;hpc&#34;&gt;HPC&lt;/h1&gt;
-&lt;p&gt;Horizontal Pod Autoscaler&lt;/p&gt;
+&lt;h1 id=&#34;hpa&#34;&gt;HPA&lt;/h1&gt;
+&lt;p&gt;Horizontal Pod Autoscaler, 横向伸缩。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;apiVersion: autoscaling/v2beta2
 kind: HorizontalPodAutoscaler
 metadata:
@@ -1534,18 +1552,6 @@ webhooks:
 &lt;p&gt;开发示例:&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/kubernetes/sample-controller&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/kubernetes/sample-controller&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;operator的build三种模式:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;go&lt;/li&gt;
-&lt;li&gt;ansible&lt;/li&gt;
-&lt;li&gt;helm&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;operator的run三种模式:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;在集群外部本地运行（开发测试).&lt;/li&gt;
-&lt;li&gt;作为deployment在集群内部运行.&lt;/li&gt;
-&lt;li&gt;通过OLM部署.&lt;/li&gt;
-&lt;/ul&gt;
 &lt;p&gt;Operator功能：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;监控K8S资源的变化&lt;/li&gt;
@@ -1553,17 +1559,63 @@ webhooks:
 &lt;li&gt;执行K8S资源的变化 （备份，扩容，配置等）&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
-&lt;h1 id=&#34;operator-sdk&#34;&gt;operator-sdk&lt;/h1&gt;
-&lt;p&gt;redhat的operator-sdk可以方便的开发opeartor.&lt;/p&gt;
+&lt;h2 id=&#34;kubebuilder&#34;&gt;kubebuilder&lt;/h2&gt;
+&lt;p&gt;sig维护的kubebuilder能方便的开发operator.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/kubernetes-sigs/kubebuilder&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/kubernetes-sigs/kubebuilder&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Install:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;curl -L -o kubebuilder &amp;quot;https://go.kubebuilder.io/dl/latest/$(go env GOOS)/$(go env GOARCH)&amp;quot;
+chmod +x kubebuilder &amp;amp;&amp;amp; sudo mv kubebuilder /usr/local/bin/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;create project:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;mkdir k8s-nim-operator
+cd k8s-nim-operator
+
+kubebuilder init --domain nvidia.com --repo github.com/NVIDIA/k8s-nim-operator --project-name k8s-nim-operator
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Create API&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;kubebuilder create api --group apps --version v1alpha1 --kind NIMService --controller --resource --namespaced
+kubebuilder create api --group apps --version v1alpha1 --kind NIMCache --controller --resource --namespaced
+kubebuilder create api --group apps --version v1alpha1 --kind NIMBuild --controller --resource --namespaced
+kubebuilder create api --group apps --version v1alpha1 --kind NIMPipeline --controller --resource --namespaced
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;create webhook:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;kubebuilder create webhook --group apps --version v1alpha1 --kind NIMService --defaulting --programmatic-validation
+kubebuilder create webhook --group apps --version v1alpha1 --kind NIMCache --defaulting --programmatic-validation
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Test：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;make install // deploy CRDs on k8s.
+make uninstall
+make run // run controller locally.
+kubectl apply -k config/samples/ // install CR instances
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Deploy：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;//Build the operator:
+make build
+
+//Build and push container image:
+make docker-build docker-push IMG=&amp;lt;your-registry&amp;gt;/k8s-nim-operator:tag
+
+//Deploy controller to cluster:
+make deploy IMG=&amp;lt;your-registry&amp;gt;/k8s-nim-operator:tag
+make undeploy
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;可以创建helm chart发布operator。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;operator-sdk&#34;&gt;operator-sdk&lt;/h2&gt;
+&lt;p&gt;redhat的operator-sdk(基于kubebuilder)能快速的开发operator.&lt;/p&gt;
+&lt;p&gt;支持go, ansible和helm三种方式.&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/operator-framework/operator-sdk&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/operator-framework/operator-sdk&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://sdk.operatorframework.io/docs/installation/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://sdk.operatorframework.io/docs/installation/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;operator的run三种模式:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在集群外部本地运行（开发测试).&lt;/li&gt;
+&lt;li&gt;作为deployment在集群内部运行.&lt;/li&gt;
+&lt;li&gt;通过OLM部署.&lt;/li&gt;
+&lt;/ul&gt;
 &lt;hr&gt;
-&lt;h1 id=&#34;kubebuilder&#34;&gt;kubebuilder&lt;/h1&gt;
-&lt;p&gt;sig维护的kubebuilder也能方便的开发operator.&lt;/p&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/kubernetes-sigs/kubebuilder&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://github.com/kubernetes-sigs/kubebuilder&lt;/a&gt;&lt;/p&gt;
 </description>
         </item>
         <item>

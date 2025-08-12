@@ -162,9 +162,8 @@ bin    编译后生成的可执行文件
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;gopath有多个值时用冒号分开即可.&lt;/p&gt;
 &lt;h1 id=&#34;gobin&#34;&gt;GOBIN&lt;/h1&gt;
-&lt;p&gt;默认值&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;GOBIN=$HOME/go/bin
-export PATH=$PATH:$HOME/go/bin
+&lt;p&gt;推荐设置：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;GOBIN=$GOPATH/bin
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;go get 和 go install 安装的二进制到GOBIN。&lt;/p&gt;
 &lt;hr&gt;
@@ -260,6 +259,7 @@ go env -w GOROOT=&amp;quot;/usr/local/go&amp;quot;
 go env -w GOPATH=&amp;quot;$HOME/go&amp;quot;
 go env -w GOBIN=&amp;quot;$HOME/go/bin&amp;quot;
 go env -w GO111MODULE=on
+go env -w GOPROXY=https://goproxy.cn,direct
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;clean&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;go clean -cache

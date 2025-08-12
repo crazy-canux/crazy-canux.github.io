@@ -12,8 +12,8 @@ $ gvm install go1.9.2 $ gvm use go1.9.2 GOPATH gopath用来存放go源码，go�
 GOPATH 从go1.1到1.7都需要设置，而且不能是go的安装目录, go1.8开始有默认值:
 GOPATH=$USERPROFILE%go GOPATH=$HOME/go gopath结构：
 src 存放源码 pkg 编译后的库文件 bin 编译后生成的可执行文件 gopath有多个值时用冒号分开即可.
-GOBIN 默认值
-GOBIN=$HOME/go/bin export PATH=$PATH:$HOME/go/bin go get 和 go install 安装的二进制到GOBIN。
+GOBIN 推荐设置：
+GOBIN=$GOPATH/bin go get 和 go install 安装的二进制到GOBIN。
 go命令 $ go help [command] get
 '>
 <title>Devops</title>
@@ -32,8 +32,8 @@ $ gvm install go1.9.2 $ gvm use go1.9.2 GOPATH gopath用来存放go源码，go�
 GOPATH 从go1.1到1.7都需要设置，而且不能是go的安装目录, go1.8开始有默认值:
 GOPATH=$USERPROFILE%go GOPATH=$HOME/go gopath结构：
 src 存放源码 pkg 编译后的库文件 bin 编译后生成的可执行文件 gopath有多个值时用冒号分开即可.
-GOBIN 默认值
-GOBIN=$HOME/go/bin export PATH=$PATH:$HOME/go/bin go get 和 go install 安装的二进制到GOBIN。
+GOBIN 推荐设置：
+GOBIN=$GOPATH/bin go get 和 go install 安装的二进制到GOBIN。
 go命令 $ go help [command] get
 '>
 <meta property='og:url' content='https://canuxcheng.com/post/go_devops/'>
@@ -51,8 +51,8 @@ $ gvm install go1.9.2 $ gvm use go1.9.2 GOPATH gopath用来存放go源码，go�
 GOPATH 从go1.1到1.7都需要设置，而且不能是go的安装目录, go1.8开始有默认值:
 GOPATH=$USERPROFILE%go GOPATH=$HOME/go gopath结构：
 src 存放源码 pkg 编译后的库文件 bin 编译后生成的可执行文件 gopath有多个值时用冒号分开即可.
-GOBIN 默认值
-GOBIN=$HOME/go/bin export PATH=$PATH:$HOME/go/bin go get 和 go install 安装的二进制到GOBIN。
+GOBIN 推荐设置：
+GOBIN=$GOPATH/bin go get 和 go install 安装的二进制到GOBIN。
 go命令 $ go help [command] get
 ">
     <link rel="shortcut icon" href="favicon.ico" />
@@ -487,9 +487,8 @@ bin    编译后生成的可执行文件
 </code></pre>
 <p>gopath有多个值时用冒号分开即可.</p>
 <h1 id="gobin">GOBIN</h1>
-<p>默认值</p>
-<pre><code>GOBIN=$HOME/go/bin
-export PATH=$PATH:$HOME/go/bin
+<p>推荐设置：</p>
+<pre><code>GOBIN=$GOPATH/bin
 </code></pre>
 <p>go get 和 go install 安装的二进制到GOBIN。</p>
 <hr>
@@ -585,6 +584,7 @@ go env -w GOROOT=&quot;/usr/local/go&quot;
 go env -w GOPATH=&quot;$HOME/go&quot;
 go env -w GOBIN=&quot;$HOME/go/bin&quot;
 go env -w GO111MODULE=on
+go env -w GOPROXY=https://goproxy.cn,direct
 </code></pre>
 <p>clean</p>
 <pre><code>go clean -cache

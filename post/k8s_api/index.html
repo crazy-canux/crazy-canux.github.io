@@ -361,6 +361,12 @@ taints: - effect: NoSchedule key: kubernetes.io/arch value: arm64 tolerations: �
         <div class="widget--toc">
             <nav id="TableOfContents">
   <ul>
+    <li><a href="#yaml">yaml</a></li>
+    <li><a href="#调度抢占驱逐">调度，抢占，驱逐</a></li>
+    <li><a href="#安全">安全</a></li>
+  </ul>
+
+  <ul>
     <li><a href="#externalname-service">ExternalName Service</a></li>
     <li><a href="#endpoint">Endpoint</a></li>
   </ul>
@@ -464,7 +470,7 @@ taints: - effect: NoSchedule key: kubernetes.io/arch value: arm64 tolerations: �
 <p>payload可以是json，也可以是yaml.</p>
 <p>yaml文件中#表示行注释。</p>
 <hr>
-<h1 id="yaml">yaml</h1>
+<h2 id="yaml">yaml</h2>
 <p>部署k8s可以通过yaml文件来配置资源.</p>
 <p>资源对象组成部分:</p>
 <pre><code>apiVersion: 
@@ -500,7 +506,7 @@ kubectl api-resources --namespaced=false
 <p>spec:</p>
 <p>status:</p>
 <hr>
-<h1 id="调度抢占驱逐">调度，抢占，驱逐</h1>
+<h2 id="调度抢占驱逐">调度，抢占，驱逐</h2>
 <p>taints: 污点，使节点排斥特定pod。应用于node。加了tolerations或者affinity的pod才能调度过来。</p>
 <pre><code>taints:
 - effect: NoSchedule
@@ -554,10 +560,24 @@ kubectl api-resources --namespaced=false
 <pre><code> nodeSelector:
    kubernetes.io/arch: arm64
 </code></pre>
+<h2 id="安全">安全</h2>
+<p>securityContext用来配置 Pod 或 容器 运行时的安全性设置的字段，它能限制容器的权限、用户身份、文件系统访问等，从而降低容器被攻击后造成的破坏范围。容器级别优先级高于 Pod 级别。</p>
+<pre><code>securityContext:
+  runAsUser: 1000
+  runAsGroup: 3000
+  fsGroup: 2000
+  allowPrivilegeEscalation: false
+  capabilities:
+    drop:
+    - ALL
+    add:
+    - NET_ADMIN
+</code></pre>
 <hr>
 <h1 id="pod">Pod</h1>
 <p>pod模板， 通常使用deployment, job和statefulset, daemonset来管理pod.</p>
-<pre><code>apiVersion: v1
+<pre><code>// kubectl explain pod.spec
+apiVersion: v1
 kind: Pod
 metadata:
   name: test
@@ -1037,8 +1057,8 @@ subsets:
       - port: 3306
 </code></pre>
 <hr>
-<h1 id="hpc">HPC</h1>
-<p>Horizontal Pod Autoscaler</p>
+<h1 id="hpa">HPA</h1>
+<p>Horizontal Pod Autoscaler, 横向伸缩。</p>
 <pre><code>apiVersion: autoscaling/v2beta2
 kind: HorizontalPodAutoscaler
 metadata:

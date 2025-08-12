@@ -1056,6 +1056,7 @@ dic['key']
 del dic['key']
 </code></pre>
 <h3 id="dict-comprehensions">dict comprehensions</h3>
+<p>字典解析。</p>
 <pre><code>{key: value for item in iterable if condition}
 
 modified = {
@@ -1093,6 +1094,7 @@ modified = {
 <h3 id="set">set</h3>
 <p>set类型是可变类型(mutable)，是容器(container).</p>
 <h3 id="set-comprehensions">set comprehensions</h3>
+<p>集合解析</p>
 <pre><code>{expression for item in iterable if condition}
 
 {x for x in range(10) if x % 2 == 0}
@@ -1558,7 +1560,7 @@ print(list(result))
 
 from functools import reduce
 reduce(func, iterable[, initializer]) 
-reduce(lambda x,y: x*y, [1,2,3,4]
+reduce(lambda x,y: x*y, [1,2,3,4])
 &gt; x=1,y=2, x*y=2
 &gt; x=2, y=3, x*y=6
 &gt; x=6, y=4, x*y=24
@@ -1605,16 +1607,17 @@ def fib(n):
 <h2 id="closure闭包"><em>closure闭包</em></h2>
 <p>闭包一定是内嵌函数，内嵌函数不一定是闭包。</p>
 <p>在一个内部函数里对在外部作用域的变量进行引用，内部函数被认为是closure.</p>
-<p>定义在外部函数内的但由内部函数引用的变量称为自由变量．</p>
+<p>定义在外部函数内的但由内部函数引用的变量称为自由变量．自由变量的值能被记住。</p>
 <pre><code>def outer(arg):
     free_var = arg # 外部函数的自由变量
     def inner(*args, **kwargs):
         print(free_var)
+        return free_var
     return inner
 </code></pre>
 <p>当自由变量是一个函数时，闭包就是一个装饰器，decorator是closure最常见的应用．</p>
 <pre><code>def outer():
-    data = []    
+    data = []
     def clos(value):
         data.append(value)    # 可变类型不需要nonlocal。
         return data

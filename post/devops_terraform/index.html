@@ -569,7 +569,7 @@ terraform logout
 <h3 id="表达式">表达式</h3>
 <h3 id="函数">函数</h3>
 <h3 id="workspace">workspace</h3>
-<p>多环境构建（development, UAT, production).</p>
+<p>Workspace 是 Terraform 用来隔离状态文件（state）的一种机制，允许你在同一个配置文件中管理多个环境（如 dev、staging、prod）而不会相互干扰。</p>
 <pre><code>terraform workspace new dev
 terraform workspace list
 terraform select &lt;name&gt;

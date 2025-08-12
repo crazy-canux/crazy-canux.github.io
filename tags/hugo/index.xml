@@ -103,6 +103,7 @@ $ git push -u origin master
 &lt;pre&gt;&lt;code&gt;$ git clone ...
 $ rm -rf ./public ./theme/&amp;lt;theme&amp;gt;
 $ git submodule update --init --recursive
+$ cd ./public; git checkout master
 &lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>

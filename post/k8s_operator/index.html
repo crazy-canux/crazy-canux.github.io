@@ -11,14 +11,12 @@ https://access.redhat.com/documentation/zh-cn/openshift_container_platform/4.2/h
 https://operatorhub.io/
 开发示例:
 https://github.com/kubernetes/sample-controller
-operator的build三种模式:
-go ansible helm operator的run三种模式:
-在集群外部本地运行（开发测试). 作为deployment在集群内部运行. 通过OLM部署. Operator功能：
-监控K8S资源的变化 响应K8S资源的变化（部署，升级，回滚等） 执行K8S资源的变化 （备份，扩容，配置等） operator-sdk redhat的operator-sdk可以方便的开发opeartor.
-https://github.com/operator-framework/operator-sdk
-https://sdk.operatorframework.io/docs/installation/
-kubebuilder sig维护的kubebuilder也能方便的开发operator.
+Operator功能：
+监控K8S资源的变化 响应K8S资源的变化（部署，升级，回滚等） 执行K8S资源的变化 （备份，扩容，配置等） kubebuilder sig维护的kubebuilder能方便的开发operator.
 https://github.com/kubernetes-sigs/kubebuilder
+Install:
+curl -L -o kubebuilder &quot;https://go.kubebuilder.io/dl/latest/$(go env GOOS)/$(go env GOARCH)&quot; chmod &#43;x kubebuilder &amp;&amp; sudo mv kubebuilder /usr/local/bin/ create project:
+mkdir k8s-nim-operator cd k8s-nim-operator kubebuilder init --domain nvidia.com --repo github.com/NVIDIA/k8s-nim-operator --project-name k8s-nim-operator Create API
 '>
 <title>Operator</title>
 
@@ -35,14 +33,12 @@ https://access.redhat.com/documentation/zh-cn/openshift_container_platform/4.2/h
 https://operatorhub.io/
 开发示例:
 https://github.com/kubernetes/sample-controller
-operator的build三种模式:
-go ansible helm operator的run三种模式:
-在集群外部本地运行（开发测试). 作为deployment在集群内部运行. 通过OLM部署. Operator功能：
-监控K8S资源的变化 响应K8S资源的变化（部署，升级，回滚等） 执行K8S资源的变化 （备份，扩容，配置等） operator-sdk redhat的operator-sdk可以方便的开发opeartor.
-https://github.com/operator-framework/operator-sdk
-https://sdk.operatorframework.io/docs/installation/
-kubebuilder sig维护的kubebuilder也能方便的开发operator.
+Operator功能：
+监控K8S资源的变化 响应K8S资源的变化（部署，升级，回滚等） 执行K8S资源的变化 （备份，扩容，配置等） kubebuilder sig维护的kubebuilder能方便的开发operator.
 https://github.com/kubernetes-sigs/kubebuilder
+Install:
+curl -L -o kubebuilder &quot;https://go.kubebuilder.io/dl/latest/$(go env GOOS)/$(go env GOARCH)&quot; chmod &#43;x kubebuilder &amp;&amp; sudo mv kubebuilder /usr/local/bin/ create project:
+mkdir k8s-nim-operator cd k8s-nim-operator kubebuilder init --domain nvidia.com --repo github.com/NVIDIA/k8s-nim-operator --project-name k8s-nim-operator Create API
 '>
 <meta property='og:url' content='https://canuxcheng.com/post/k8s_operator/'>
 <meta property='og:site_name' content='Morgoth'>
@@ -58,14 +54,12 @@ https://access.redhat.com/documentation/zh-cn/openshift_container_platform/4.2/h
 https://operatorhub.io/
 开发示例:
 https://github.com/kubernetes/sample-controller
-operator的build三种模式:
-go ansible helm operator的run三种模式:
-在集群外部本地运行（开发测试). 作为deployment在集群内部运行. 通过OLM部署. Operator功能：
-监控K8S资源的变化 响应K8S资源的变化（部署，升级，回滚等） 执行K8S资源的变化 （备份，扩容，配置等） operator-sdk redhat的operator-sdk可以方便的开发opeartor.
-https://github.com/operator-framework/operator-sdk
-https://sdk.operatorframework.io/docs/installation/
-kubebuilder sig维护的kubebuilder也能方便的开发operator.
+Operator功能：
+监控K8S资源的变化 响应K8S资源的变化（部署，升级，回滚等） 执行K8S资源的变化 （备份，扩容，配置等） kubebuilder sig维护的kubebuilder能方便的开发operator.
 https://github.com/kubernetes-sigs/kubebuilder
+Install:
+curl -L -o kubebuilder &quot;https://go.kubebuilder.io/dl/latest/$(go env GOOS)/$(go env GOARCH)&quot; chmod &#43;x kubebuilder &amp;&amp; sudo mv kubebuilder /usr/local/bin/ create project:
+mkdir k8s-nim-operator cd k8s-nim-operator kubebuilder init --domain nvidia.com --repo github.com/NVIDIA/k8s-nim-operator --project-name k8s-nim-operator Create API
 ">
     <link rel="shortcut icon" href="favicon.ico" />
 <style>
@@ -354,7 +348,39 @@ https://github.com/kubernetes-sigs/kubebuilder
     </ol>
 </aside>
 
-    
+    <aside class="sidebar right-sidebar sticky">
+        
+            
+                
+    <section class="widget archives">
+        <div class="widget-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z"/>
+  <line x1="5" y1="9" x2="19" y2="9" />
+  <line x1="5" y1="15" x2="19" y2="15" />
+  <line x1="11" y1="4" x2="7" y2="20" />
+  <line x1="17" y1="4" x2="13" y2="20" />
+</svg>
+
+
+
+        </div>
+        <h2 class="widget-title section-title">Table of contents</h2>
+        
+        <div class="widget--toc">
+            <nav id="TableOfContents">
+  <ul>
+    <li><a href="#kubebuilder">kubebuilder</a></li>
+    <li><a href="#operator-sdk">operator-sdk</a></li>
+  </ul>
+</nav>
+        </div>
+    </section>
+
+            
+        
+    </aside>
+
 
             <main class="main full-width">
     <article class="main-article">
@@ -440,18 +466,6 @@ https://github.com/kubernetes-sigs/kubebuilder
 <p>开发示例:</p>
 <p><a class="link" href="https://github.com/kubernetes/sample-controller"  target="_blank" rel="noopener"
     >https://github.com/kubernetes/sample-controller</a></p>
-<p>operator的build三种模式:</p>
-<ul>
-<li>go</li>
-<li>ansible</li>
-<li>helm</li>
-</ul>
-<p>operator的run三种模式:</p>
-<ul>
-<li>在集群外部本地运行（开发测试).</li>
-<li>作为deployment在集群内部运行.</li>
-<li>通过OLM部署.</li>
-</ul>
 <p>Operator功能：</p>
 <ul>
 <li>监控K8S资源的变化</li>
@@ -459,17 +473,63 @@ https://github.com/kubernetes-sigs/kubebuilder
 <li>执行K8S资源的变化 （备份，扩容，配置等）</li>
 </ul>
 <hr>
-<h1 id="operator-sdk">operator-sdk</h1>
-<p>redhat的operator-sdk可以方便的开发opeartor.</p>
+<h2 id="kubebuilder">kubebuilder</h2>
+<p>sig维护的kubebuilder能方便的开发operator.</p>
+<p><a class="link" href="https://github.com/kubernetes-sigs/kubebuilder"  target="_blank" rel="noopener"
+    >https://github.com/kubernetes-sigs/kubebuilder</a></p>
+<p>Install:</p>
+<pre><code>curl -L -o kubebuilder &quot;https://go.kubebuilder.io/dl/latest/$(go env GOOS)/$(go env GOARCH)&quot;
+chmod +x kubebuilder &amp;&amp; sudo mv kubebuilder /usr/local/bin/
+</code></pre>
+<p>create project:</p>
+<pre><code>mkdir k8s-nim-operator
+cd k8s-nim-operator
+
+kubebuilder init --domain nvidia.com --repo github.com/NVIDIA/k8s-nim-operator --project-name k8s-nim-operator
+</code></pre>
+<p>Create API</p>
+<pre><code>kubebuilder create api --group apps --version v1alpha1 --kind NIMService --controller --resource --namespaced
+kubebuilder create api --group apps --version v1alpha1 --kind NIMCache --controller --resource --namespaced
+kubebuilder create api --group apps --version v1alpha1 --kind NIMBuild --controller --resource --namespaced
+kubebuilder create api --group apps --version v1alpha1 --kind NIMPipeline --controller --resource --namespaced
+</code></pre>
+<p>create webhook:</p>
+<pre><code>kubebuilder create webhook --group apps --version v1alpha1 --kind NIMService --defaulting --programmatic-validation
+kubebuilder create webhook --group apps --version v1alpha1 --kind NIMCache --defaulting --programmatic-validation
+</code></pre>
+<p>Test：</p>
+<pre><code>make install // deploy CRDs on k8s.
+make uninstall
+make run // run controller locally.
+kubectl apply -k config/samples/ // install CR instances
+</code></pre>
+<p>Deploy：</p>
+<pre><code>//Build the operator:
+make build
+
+//Build and push container image:
+make docker-build docker-push IMG=&lt;your-registry&gt;/k8s-nim-operator:tag
+
+//Deploy controller to cluster:
+make deploy IMG=&lt;your-registry&gt;/k8s-nim-operator:tag
+make undeploy
+</code></pre>
+<p>可以创建helm chart发布operator。</p>
+<hr>
+<h2 id="operator-sdk">operator-sdk</h2>
+<p>redhat的operator-sdk(基于kubebuilder)能快速的开发operator.</p>
+<p>支持go, ansible和helm三种方式.</p>
 <p><a class="link" href="https://github.com/operator-framework/operator-sdk"  target="_blank" rel="noopener"
     >https://github.com/operator-framework/operator-sdk</a></p>
 <p><a class="link" href="https://sdk.operatorframework.io/docs/installation/"  target="_blank" rel="noopener"
     >https://sdk.operatorframework.io/docs/installation/</a></p>
+<p>operator的run三种模式:</p>
+<ul>
+<li>在集群外部本地运行（开发测试).</li>
+<li>作为deployment在集群内部运行.</li>
+<li>通过OLM部署.</li>
+</ul>
 <hr>
-<h1 id="kubebuilder">kubebuilder</h1>
-<p>sig维护的kubebuilder也能方便的开发operator.</p>
-<p><a class="link" href="https://github.com/kubernetes-sigs/kubebuilder"  target="_blank" rel="noopener"
-    >https://github.com/kubernetes-sigs/kubebuilder</a></p>
 
 </section>
 

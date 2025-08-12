@@ -13,17 +13,19 @@
         
         <guid>https://canuxcheng.com/post/k8s_certification/</guid>
         <description>&lt;h1 id=&#34;certification&#34;&gt;Certification&lt;/h1&gt;
-&lt;p&gt;CKA
-CKAD
-CKS&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;CKA&lt;/li&gt;
+&lt;li&gt;CKAD&lt;/li&gt;
+&lt;li&gt;CKS&lt;/li&gt;
+&lt;/ul&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/learnk8s/learnk8s.io&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/learnk8s/learnk8s.io&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;实操平台：
-&lt;a class=&#34;link&#34; href=&#34;https://kodekloud.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://kodekloud.com/&lt;/a&gt;
-&lt;a class=&#34;link&#34; href=&#34;https://killer.sh/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+&lt;p&gt;实操平台：&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://kodekloud.com/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://kodekloud.com/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://killer.sh/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://killer.sh/&lt;/a&gt;&lt;/p&gt;
-&lt;h2 id=&#34;cluster&#34;&gt;Cluster&lt;/h2&gt;
+&lt;h2 id=&#34;kubeadm&#34;&gt;kubeadm&lt;/h2&gt;
 &lt;p&gt;本地通过multipass部署vm。 也可以用virtualbox。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;$ brew install --cask multipass
 &lt;/code&gt;&lt;/pre&gt;
@@ -33,6 +35,8 @@ $ multipass launch --name k8s-worker1 --cpus 2 --mem 4G --disk 10G
 $ multipass launch --name k8s-worker2 --cpus 2 --mem 4G --disk 10G
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;其它步骤参考kubeadm。&lt;/p&gt;
+&lt;h2 id=&#34;kind&#34;&gt;Kind&lt;/h2&gt;
+&lt;p&gt;通过kind部署k8s集群。&lt;/p&gt;
 &lt;hr&gt;
 &lt;h2 id=&#34;cka&#34;&gt;CKA&lt;/h2&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/walidshaari/Kubernetes-Certified-Administrator&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
@@ -44,7 +48,7 @@ $ multipass launch --name k8s-worker2 --cpus 2 --mem 4G --disk 10G
 </description>
         </item>
         <item>
-        <title>Certification</title>
+        <title>K8S Debug</title>
         <link>https://canuxcheng.com/post/k8s_debug/</link>
         <pubDate>Sat, 26 Jul 2025 20:55:52 +0800</pubDate>
         
@@ -288,7 +292,7 @@ aws &amp;lt;-&amp;gt; Azure vpn gateway + aws TGW&lt;/p&gt;
         <description>&lt;h1 id=&#34;kserve&#34;&gt;Kserve&lt;/h1&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/kserve/kserve&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/kserve/kserve&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;KServe 是一个用于在 Kubernetes 上部署和管理机器学习模型的开源平台。它提供了一个统一的 API 来处理模型的部署、版本控制、监控和自动扩展等功能。&lt;/p&gt;
+&lt;p&gt;KServe 主要用于模型推理，支持多种模型格式和框架，如 TensorFlow、PyTorch、ONNX 等。它提供了一个统一的 API 来管理和部署机器学习模型，并支持自动扩缩容、版本控制等功能。&lt;/p&gt;
 </description>
         </item>
         <item>
@@ -1031,11 +1035,29 @@ TCO&lt;/p&gt;
 &lt;p&gt;提供基于模板(yaml/json)的基础设施服务(IaaS).&lt;/p&gt;
 &lt;h2 id=&#34;compute-optimizer&#34;&gt;Compute Optimizer&lt;/h2&gt;
 &lt;h2 id=&#34;control-tower&#34;&gt;Control Tower&lt;/h2&gt;
+&lt;p&gt;是organization的高级封装，提供跨账户的管理。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;快速部署多账户架构（Landing Zone）&lt;/li&gt;
+&lt;li&gt;自动化创建 OU 和账户&lt;/li&gt;
+&lt;li&gt;管理合规性与审计（强制 Guardrails）&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h2 id=&#34;health-dashboard&#34;&gt;Health Dashboard&lt;/h2&gt;
 &lt;h2 id=&#34;aws-systems-manager&#34;&gt;AWS Systems Manager&lt;/h2&gt;
 &lt;p&gt;提供运维数据，并且在跨基础设施中进行自动化操作。&lt;/p&gt;
 &lt;h2 id=&#34;aws-organizations&#34;&gt;AWS Organizations&lt;/h2&gt;
-&lt;p&gt;账号集中管理。&lt;/p&gt;
+&lt;p&gt;主要功能：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;创建、管理多个 AWS 账户&lt;/li&gt;
+&lt;li&gt;实施统一的权限策略、安全策略和预算管理&lt;/li&gt;
+&lt;li&gt;集中控制和监控企业资源&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;OU: organizational unit.&lt;/p&gt;
+&lt;p&gt;企业级架构设计：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;一个 OU 放“生产账户”&lt;/li&gt;
+&lt;li&gt;一个 OU 放“开发与测试账户”&lt;/li&gt;
+&lt;li&gt;一个 OU 专门做“安全和监控”&lt;/li&gt;
+&lt;/ul&gt;
 &lt;h2 id=&#34;aws-license-manager&#34;&gt;AWS License Manager&lt;/h2&gt;
 &lt;h2 id=&#34;proton&#34;&gt;Proton&lt;/h2&gt;
 &lt;h2 id=&#34;aws-well-architected-tool&#34;&gt;AWS Well-Architected Tool&lt;/h2&gt;
@@ -3037,7 +3059,7 @@ git push ...
 &lt;p&gt;payload可以是json，也可以是yaml.&lt;/p&gt;
 &lt;p&gt;yaml文件中#表示行注释。&lt;/p&gt;
 &lt;hr&gt;
-&lt;h1 id=&#34;yaml&#34;&gt;yaml&lt;/h1&gt;
+&lt;h2 id=&#34;yaml&#34;&gt;yaml&lt;/h2&gt;
 &lt;p&gt;部署k8s可以通过yaml文件来配置资源.&lt;/p&gt;
 &lt;p&gt;资源对象组成部分:&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;apiVersion: 
@@ -3073,7 +3095,7 @@ kubectl api-resources --namespaced=false
 &lt;p&gt;spec:&lt;/p&gt;
 &lt;p&gt;status:&lt;/p&gt;
 &lt;hr&gt;
-&lt;h1 id=&#34;调度抢占驱逐&#34;&gt;调度，抢占，驱逐&lt;/h1&gt;
+&lt;h2 id=&#34;调度抢占驱逐&#34;&gt;调度，抢占，驱逐&lt;/h2&gt;
 &lt;p&gt;taints: 污点，使节点排斥特定pod。应用于node。加了tolerations或者affinity的pod才能调度过来。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;taints:
 - effect: NoSchedule
@@ -3127,10 +3149,24 @@ kubectl api-resources --namespaced=false
 &lt;pre&gt;&lt;code&gt; nodeSelector:
    kubernetes.io/arch: arm64
 &lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id=&#34;安全&#34;&gt;安全&lt;/h2&gt;
+&lt;p&gt;securityContext用来配置 Pod 或 容器 运行时的安全性设置的字段，它能限制容器的权限、用户身份、文件系统访问等，从而降低容器被攻击后造成的破坏范围。容器级别优先级高于 Pod 级别。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;securityContext:
+  runAsUser: 1000
+  runAsGroup: 3000
+  fsGroup: 2000
+  allowPrivilegeEscalation: false
+  capabilities:
+    drop:
+    - ALL
+    add:
+    - NET_ADMIN
+&lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
 &lt;h1 id=&#34;pod&#34;&gt;Pod&lt;/h1&gt;
 &lt;p&gt;pod模板， 通常使用deployment, job和statefulset, daemonset来管理pod.&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;apiVersion: v1
+&lt;pre&gt;&lt;code&gt;// kubectl explain pod.spec
+apiVersion: v1
 kind: Pod
 metadata:
   name: test
@@ -3610,8 +3646,8 @@ subsets:
       - port: 3306
 &lt;/code&gt;&lt;/pre&gt;
 &lt;hr&gt;
-&lt;h1 id=&#34;hpc&#34;&gt;HPC&lt;/h1&gt;
-&lt;p&gt;Horizontal Pod Autoscaler&lt;/p&gt;
+&lt;h1 id=&#34;hpa&#34;&gt;HPA&lt;/h1&gt;
+&lt;p&gt;Horizontal Pod Autoscaler, 横向伸缩。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;apiVersion: autoscaling/v2beta2
 kind: HorizontalPodAutoscaler
 metadata:
@@ -3946,18 +3982,6 @@ webhooks:
 &lt;p&gt;开发示例:&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/kubernetes/sample-controller&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/kubernetes/sample-controller&lt;/a&gt;&lt;/p&gt;
-&lt;p&gt;operator的build三种模式:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;go&lt;/li&gt;
-&lt;li&gt;ansible&lt;/li&gt;
-&lt;li&gt;helm&lt;/li&gt;
-&lt;/ul&gt;
-&lt;p&gt;operator的run三种模式:&lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;在集群外部本地运行（开发测试).&lt;/li&gt;
-&lt;li&gt;作为deployment在集群内部运行.&lt;/li&gt;
-&lt;li&gt;通过OLM部署.&lt;/li&gt;
-&lt;/ul&gt;
 &lt;p&gt;Operator功能：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;监控K8S资源的变化&lt;/li&gt;
@@ -3965,17 +3989,63 @@ webhooks:
 &lt;li&gt;执行K8S资源的变化 （备份，扩容，配置等）&lt;/li&gt;
 &lt;/ul&gt;
 &lt;hr&gt;
-&lt;h1 id=&#34;operator-sdk&#34;&gt;operator-sdk&lt;/h1&gt;
-&lt;p&gt;redhat的operator-sdk可以方便的开发opeartor.&lt;/p&gt;
+&lt;h2 id=&#34;kubebuilder&#34;&gt;kubebuilder&lt;/h2&gt;
+&lt;p&gt;sig维护的kubebuilder能方便的开发operator.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/kubernetes-sigs/kubebuilder&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
+    &gt;https://github.com/kubernetes-sigs/kubebuilder&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Install:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;curl -L -o kubebuilder &amp;quot;https://go.kubebuilder.io/dl/latest/$(go env GOOS)/$(go env GOARCH)&amp;quot;
+chmod +x kubebuilder &amp;amp;&amp;amp; sudo mv kubebuilder /usr/local/bin/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;create project:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;mkdir k8s-nim-operator
+cd k8s-nim-operator
+
+kubebuilder init --domain nvidia.com --repo github.com/NVIDIA/k8s-nim-operator --project-name k8s-nim-operator
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Create API&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;kubebuilder create api --group apps --version v1alpha1 --kind NIMService --controller --resource --namespaced
+kubebuilder create api --group apps --version v1alpha1 --kind NIMCache --controller --resource --namespaced
+kubebuilder create api --group apps --version v1alpha1 --kind NIMBuild --controller --resource --namespaced
+kubebuilder create api --group apps --version v1alpha1 --kind NIMPipeline --controller --resource --namespaced
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;create webhook:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;kubebuilder create webhook --group apps --version v1alpha1 --kind NIMService --defaulting --programmatic-validation
+kubebuilder create webhook --group apps --version v1alpha1 --kind NIMCache --defaulting --programmatic-validation
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Test：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;make install // deploy CRDs on k8s.
+make uninstall
+make run // run controller locally.
+kubectl apply -k config/samples/ // install CR instances
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Deploy：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;//Build the operator:
+make build
+
+//Build and push container image:
+make docker-build docker-push IMG=&amp;lt;your-registry&amp;gt;/k8s-nim-operator:tag
+
+//Deploy controller to cluster:
+make deploy IMG=&amp;lt;your-registry&amp;gt;/k8s-nim-operator:tag
+make undeploy
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;可以创建helm chart发布operator。&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id=&#34;operator-sdk&#34;&gt;operator-sdk&lt;/h2&gt;
+&lt;p&gt;redhat的operator-sdk(基于kubebuilder)能快速的开发operator.&lt;/p&gt;
+&lt;p&gt;支持go, ansible和helm三种方式.&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/operator-framework/operator-sdk&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://github.com/operator-framework/operator-sdk&lt;/a&gt;&lt;/p&gt;
 &lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://sdk.operatorframework.io/docs/installation/&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
     &gt;https://sdk.operatorframework.io/docs/installation/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;operator的run三种模式:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;在集群外部本地运行（开发测试).&lt;/li&gt;
+&lt;li&gt;作为deployment在集群内部运行.&lt;/li&gt;
+&lt;li&gt;通过OLM部署.&lt;/li&gt;
+&lt;/ul&gt;
 &lt;hr&gt;
-&lt;h1 id=&#34;kubebuilder&#34;&gt;kubebuilder&lt;/h1&gt;
-&lt;p&gt;sig维护的kubebuilder也能方便的开发operator.&lt;/p&gt;
-&lt;p&gt;&lt;a class=&#34;link&#34; href=&#34;https://github.com/kubernetes-sigs/kubebuilder&#34;  target=&#34;_blank&#34; rel=&#34;noopener&#34;
-    &gt;https://github.com/kubernetes-sigs/kubebuilder&lt;/a&gt;&lt;/p&gt;
 </description>
         </item>
         <item>
@@ -8940,9 +9010,8 @@ bin    编译后生成的可执行文件
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;gopath有多个值时用冒号分开即可.&lt;/p&gt;
 &lt;h1 id=&#34;gobin&#34;&gt;GOBIN&lt;/h1&gt;
-&lt;p&gt;默认值&lt;/p&gt;
-&lt;pre&gt;&lt;code&gt;GOBIN=$HOME/go/bin
-export PATH=$PATH:$HOME/go/bin
+&lt;p&gt;推荐设置：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;GOBIN=$GOPATH/bin
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;go get 和 go install 安装的二进制到GOBIN。&lt;/p&gt;
 &lt;hr&gt;
@@ -9038,6 +9107,7 @@ go env -w GOROOT=&amp;quot;/usr/local/go&amp;quot;
 go env -w GOPATH=&amp;quot;$HOME/go&amp;quot;
 go env -w GOBIN=&amp;quot;$HOME/go/bin&amp;quot;
 go env -w GO111MODULE=on
+go env -w GOPROXY=https://goproxy.cn,direct
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;clean&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;go clean -cache
@@ -24289,6 +24359,7 @@ dic[&#39;key&#39;]
 del dic[&#39;key&#39;]
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h3 id=&#34;dict-comprehensions&#34;&gt;dict comprehensions&lt;/h3&gt;
+&lt;p&gt;字典解析。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;{key: value for item in iterable if condition}
 
 modified = {
@@ -24326,6 +24397,7 @@ modified = {
 &lt;h3 id=&#34;set&#34;&gt;set&lt;/h3&gt;
 &lt;p&gt;set类型是可变类型(mutable)，是容器(container).&lt;/p&gt;
 &lt;h3 id=&#34;set-comprehensions&#34;&gt;set comprehensions&lt;/h3&gt;
+&lt;p&gt;集合解析&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;{expression for item in iterable if condition}
 
 {x for x in range(10) if x % 2 == 0}
@@ -24791,7 +24863,7 @@ print(list(result))
 
 from functools import reduce
 reduce(func, iterable[, initializer]) 
-reduce(lambda x,y: x*y, [1,2,3,4]
+reduce(lambda x,y: x*y, [1,2,3,4])
 &amp;gt; x=1,y=2, x*y=2
 &amp;gt; x=2, y=3, x*y=6
 &amp;gt; x=6, y=4, x*y=24
@@ -24838,16 +24910,17 @@ def fib(n):
 &lt;h2 id=&#34;closure闭包&#34;&gt;&lt;em&gt;closure闭包&lt;/em&gt;&lt;/h2&gt;
 &lt;p&gt;闭包一定是内嵌函数，内嵌函数不一定是闭包。&lt;/p&gt;
 &lt;p&gt;在一个内部函数里对在外部作用域的变量进行引用，内部函数被认为是closure.&lt;/p&gt;
-&lt;p&gt;定义在外部函数内的但由内部函数引用的变量称为自由变量．&lt;/p&gt;
+&lt;p&gt;定义在外部函数内的但由内部函数引用的变量称为自由变量．自由变量的值能被记住。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;def outer(arg):
     free_var = arg # 外部函数的自由变量
     def inner(*args, **kwargs):
         print(free_var)
+        return free_var
     return inner
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;当自由变量是一个函数时，闭包就是一个装饰器，decorator是closure最常见的应用．&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;def outer():
-    data = []    
+    data = []
     def clos(value):
         data.append(value)    # 可变类型不需要nonlocal。
         return data
@@ -28797,7 +28870,7 @@ terraform logout
 &lt;h3 id=&#34;表达式&#34;&gt;表达式&lt;/h3&gt;
 &lt;h3 id=&#34;函数&#34;&gt;函数&lt;/h3&gt;
 &lt;h3 id=&#34;workspace&#34;&gt;workspace&lt;/h3&gt;
-&lt;p&gt;多环境构建（development, UAT, production).&lt;/p&gt;
+&lt;p&gt;Workspace 是 Terraform 用来隔离状态文件（state）的一种机制，允许你在同一个配置文件中管理多个环境（如 dev、staging、prod）而不会相互干扰。&lt;/p&gt;
 &lt;pre&gt;&lt;code&gt;terraform workspace new dev
 terraform workspace list
 terraform select &amp;lt;name&amp;gt;
@@ -34968,6 +35041,7 @@ $ git push -u origin master
 &lt;pre&gt;&lt;code&gt;$ git clone ...
 $ rm -rf ./public ./theme/&amp;lt;theme&amp;gt;
 $ git submodule update --init --recursive
+$ cd ./public; git checkout master
 &lt;/code&gt;&lt;/pre&gt;
 </description>
         </item>
