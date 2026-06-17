@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Impala on Morgoth</title><link>https://canuxcheng.com/tags/impala/</link><description>Recent content in Impala on Morgoth</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 24 Apr 2017 22:57:37 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/impala/index.xml" rel="self" type="application/rss+xml"/><item><title>Impala</title><link>https://canuxcheng.com/post/impala/</link><pubDate>Mon, 24 Apr 2017 22:57:37 +0000</pubDate><guid>https://canuxcheng.com/post/impala/</guid><description>&lt;h1 id="impala"&gt;Impala&lt;/h1&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/apache/incubator-impala" target="_blank" rel="noopener"
+&gt;https://github.com/apache/incubator-impala&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://impala.apache.org/" target="_blank" rel="noopener"
+&gt;https://impala.apache.org/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;impala的client: impala-shell&lt;/p&gt;
+&lt;p&gt;Cloudera公司的CDH集成了Impala.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id="impala-shellbeeline"&gt;impala-shell/beeline&lt;/h1&gt;
+&lt;p&gt;impala-shell&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ impala-shell
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;beeline&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ beeline --silent=true
+beeline&amp;gt; !connect jdbc:hive2://[ip]:21050[/database];auth=noSasl [username] [password]
+$ beeline -u &amp;quot;jdbc:hive2://[ip]:21050[/database];auth=noSasl&amp;quot; -n [username] -p [password] -e &amp;quot;USE [database]; ...&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id="sql"&gt;sql&lt;/h1&gt;
+&lt;p&gt;normal table:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;gt; create table {table_name} (var type, var1 type1);
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;parquet table:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;gt; crate table {table_name} (var type, var1 type1) STORED AS PARQUET;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;partition table:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;gt; create table {table_name} (var type, var1 type1) PARTITIONED BY (var2 type2);
+&amp;gt; insert into {table_name} PARTITION (var2 = val2) values (val, val1)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;parquet partition table:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;&amp;gt; create table {table_name} (var type, var1 type1) PARTITION BY (var2 type2) STORED AS PARQUET;
+&amp;gt; insert into {table_name} PARTITION (var2 = val2) values (val, val1)
+&lt;/code&gt;&lt;/pre&gt;</description></item></channel></rss>

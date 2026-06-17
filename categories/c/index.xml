@@ -1,0 +1,262 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>C on Morgoth</title><link>https://canuxcheng.com/categories/c/</link><description>Recent content in C on Morgoth</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 11 Apr 2016 22:57:37 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/categories/c/index.xml" rel="self" type="application/rss+xml"/><item><title>DevOps</title><link>https://canuxcheng.com/post/c_devops/</link><pubDate>Mon, 11 Apr 2016 22:57:37 +0000</pubDate><guid>https://canuxcheng.com/post/c_devops/</guid><description>&lt;h1 id="ide"&gt;IDE&lt;/h1&gt;
+&lt;ul&gt;
+&lt;li&gt;Visual Studio&lt;/li&gt;
+&lt;li&gt;VSCode&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="compilers"&gt;Compilers&lt;/h2&gt;
+&lt;p&gt;编译器组成：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;frontend&lt;/li&gt;
+&lt;li&gt;optimizer&lt;/li&gt;
+&lt;li&gt;backend&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;a class="link" href="https://zh.cppreference.com/w/cpp/compiler_support" target="_blank" rel="noopener"
+&gt;https://zh.cppreference.com/w/cpp/compiler_support&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;windows:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;llvm clang&lt;/li&gt;
+&lt;li&gt;Mingw&lt;/li&gt;
+&lt;li&gt;Msvc&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;linux:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;llvm clang&lt;/li&gt;
+&lt;li&gt;gcc&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;mac:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;llvm clang&lt;/li&gt;
+&lt;li&gt;gcc&lt;/li&gt;
+&lt;li&gt;apple clang&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="gcc"&gt;gcc&lt;/h3&gt;
+&lt;p&gt;gnu gcc,g++&lt;/p&gt;
+&lt;h3 id="llvm-clang"&gt;llvm clang&lt;/h3&gt;
+&lt;p&gt;llvm: low level virtual machine. (backend)&lt;/p&gt;
+&lt;p&gt;clang: c language.(frontend)&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="tools"&gt;tools&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;CMake&lt;/li&gt;
+&lt;li&gt;MSBuild&lt;/li&gt;
+&lt;li&gt;Makefile&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id="gcc-1"&gt;GCC&lt;/h2&gt;
+&lt;p&gt;&amp;ldquo;-ansi&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;for c: == -std=c90
+for cpp: ==-std=c++98&lt;/p&gt;
+&lt;p&gt;&amp;ldquo;-std&amp;rdquo;&lt;/p&gt;
+&lt;p&gt;c++17, gnu++17, gnu17,c17
+gnu2x: 下个ISO C标准。
+c2x:下个ISO C标准。
+c++2a: 下个ISO C++标准
+gnu+2a:下个ISO C++标准&lt;/p&gt;
+&lt;p&gt;gcc8 开始支持c++20.
+gcc11开始支持c++23.&lt;/p&gt;
+&lt;h2 id="vscode"&gt;vscode&lt;/h2&gt;
+&lt;p&gt;for macOS:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;xcode-select --install
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;extentions:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;c/c++&lt;/li&gt;
+&lt;li&gt;&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>Document</title><link>https://canuxcheng.com/post/c_document/</link><pubDate>Mon, 11 Apr 2016 22:57:37 +0000</pubDate><guid>https://canuxcheng.com/post/c_document/</guid><description>&lt;h1 id="document"&gt;Document&lt;/h1&gt;
+&lt;hr&gt;
+&lt;h1 id="doxygen"&gt;Doxygen&lt;/h1&gt;</description></item><item><title>Package</title><link>https://canuxcheng.com/post/c_package/</link><pubDate>Mon, 11 Apr 2016 22:57:37 +0000</pubDate><guid>https://canuxcheng.com/post/c_package/</guid><description>&lt;h1 id="package"&gt;Package&lt;/h1&gt;</description></item><item><title>Summary</title><link>https://canuxcheng.com/post/c_summary/</link><pubDate>Sat, 02 Apr 2016 16:06:14 +0000</pubDate><guid>https://canuxcheng.com/post/c_summary/</guid><description>&lt;h1 id="c标准"&gt;C标准&lt;/h1&gt;
+&lt;p&gt;ISO C89(ANSI C89) -&amp;gt; ISO C99 -&amp;gt; ISO C11&lt;/p&gt;
+&lt;p&gt;ANSI C 和 ISO C是对通用C语言的接口的定义。&lt;/p&gt;
+&lt;p&gt;符合这种标准的实现为C语言标准库,也叫libc。&lt;/p&gt;
+&lt;p&gt;Unix/Linux的POSIX包含libc。&lt;/p&gt;
+&lt;p&gt;Linux的glibc包含libc及其扩展.&lt;/p&gt;
+&lt;p&gt;Windows的msvcrt包含libc及其扩展.&lt;/p&gt;
+&lt;p&gt;其它和C相关的标准：&lt;/p&gt;
+&lt;p&gt;BSD&lt;/p&gt;
+&lt;p&gt;System V&lt;/p&gt;
+&lt;p&gt;XPG&lt;/p&gt;
+&lt;p&gt;SUS&lt;/p&gt;
+&lt;h1 id="glibc"&gt;glibc&lt;/h1&gt;
+&lt;p&gt;Linux的标准C库glibc&lt;/p&gt;
+&lt;p&gt;遵循ISO C11 和 POSIX.1-2008, 还包括一些其它标准。&lt;/p&gt;
+&lt;p&gt;关于ISO C 和 POSIX参考另外两篇博文。&lt;/p&gt;
+&lt;h1 id="msvcrt"&gt;msvcrt&lt;/h1&gt;
+&lt;p&gt;windows的标准c库msvcrt.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id="c注释"&gt;C注释&lt;/h1&gt;
+&lt;p&gt;单行注释：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// comment
+/* comment */
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;多行注释：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/*
+* comment1
+* commenet2
+*/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id="文档"&gt;文档&lt;/h1&gt;
+&lt;p&gt;C程序可以用doxygen从程序中提取文档。&lt;/p&gt;
+&lt;p&gt;文档注释：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/**
+* @file
+* @brief
+* @author
+* @date
+* @version
+* @copyright
+*/
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id="编译和链接"&gt;编译和链接&lt;/h1&gt;
+&lt;p&gt;编译只检查语法错误和函数以及变量是否申明．将*.c源文件编译成*.o目标文件．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;gcc -g -Wall -I/head/file/path -c -o helloworld.o helloworld.c
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;链接检查函数和变量的定义．将*.o目标文件链接之后生成可执行文件，或者打包成库文件*.a或*.so.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# normal
+gcc -g -Wall -o helloworld helloworld.o
+# static library *.a
+gcc -g -Wall -o libstatic.a helloworld.o -L/static/lib/path -lstatic
+# dynamic library *.o
+gcc -g -Wall -o libdynamic.so helloworld.o -L/dynamic/lib/path -ldynamic -Wl, -rpath=/dynamic/lib/path
+&lt;/code&gt;&lt;/pre&gt;</description></item><item><title>Posix</title><link>https://canuxcheng.com/post/c_posix/</link><pubDate>Sat, 02 Apr 2016 11:18:05 +0000</pubDate><guid>https://canuxcheng.com/post/c_posix/</guid><description>&lt;h1 id="posix标准"&gt;POSIX标准&lt;/h1&gt;
+&lt;p&gt;Portable Operating System Interface&lt;/p&gt;
+&lt;p&gt;可移植性操作系统接口, POSIX兼容ISO C。&lt;/p&gt;
+&lt;p&gt;所有Unix都遵循，几乎所有Linux都遵循，Windows部分支持。&lt;/p&gt;
+&lt;p&gt;POSIX.1/IEEE 1003.1-1990&lt;/p&gt;
+&lt;p&gt;POSIX.2/IEEE Std 1003.2-1992/ISO IEC 9945-2:1993)&lt;/p&gt;
+&lt;p&gt;POSIX.1.b/IEEE Std 1003.1b-1993/ISO IEC 9945-1:1996)&lt;/p&gt;
+&lt;p&gt;POSIX.1.c/IEEE Std 1003.1c-1995&lt;/p&gt;
+&lt;p&gt;POSIX.1.d/IEEE Std 1003.1c-1999&lt;/p&gt;
+&lt;p&gt;POSIX.1.g/IEEE Std 1003.1g-2000&lt;/p&gt;
+&lt;p&gt;POSIX.1.j/IEEE Std 1003.1j-2000&lt;/p&gt;
+&lt;p&gt;POSIX.1-2001/SUSv3(包括了所有C99的API)&lt;/p&gt;
+&lt;p&gt;POSIX.1-2008/SUSv4&lt;/p&gt;
+&lt;p&gt;官方网站：&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="http://www.opengroup.org/austin/" target="_blank" rel="noopener"
+&gt;http://www.opengroup.org/austin/&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id="cygwin"&gt;Cygwin&lt;/h1&gt;
+&lt;p&gt;提供POSIX的API用于windows上开发Linux/Unix程序。&lt;/p&gt;
+&lt;p&gt;源代码不能在windows运行。&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://cygwin.com/index.html" target="_blank" rel="noopener"
+&gt;https://cygwin.com/index.html&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id="posix标准定义的必须头文件"&gt;POSIX标准定义的必须头文件&lt;/h1&gt;
+&lt;h2 id="direnth"&gt;&amp;lt;dirent.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="fcntlh"&gt;&amp;lt;fcntl.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="globh"&gt;&amp;lt;glob.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="netdbh"&gt;&amp;lt;netdb.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="pwdh"&gt;&amp;lt;pwd.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="regexh"&gt;&amp;lt;regex.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="tarh"&gt;&amp;lt;tar.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="termiosh"&gt;&amp;lt;termios.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="unistdh"&gt;&amp;lt;unistd.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="utimeh"&gt;&amp;lt;utime.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="utimeh-1"&gt;&amp;lt;utime.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="wordexph"&gt;&amp;lt;wordexp.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="arpaineth"&gt;&amp;lt;arpa/inet.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="netifh"&gt;&amp;lt;net/if.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="netinetinh"&gt;&amp;lt;netinet/in.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="netinettcph"&gt;&amp;lt;netinet/tcp.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="sysmmanh"&gt;&amp;lt;sys/mman.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="sysselecth"&gt;&amp;lt;sys/select.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="syssocketh"&gt;&amp;lt;sys/socket.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="sysstath"&gt;&amp;lt;sys/stat.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="systimesh"&gt;&amp;lt;sys/times.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="systypesh"&gt;&amp;lt;sys/types.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="sysunh"&gt;&amp;lt;sys/un.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="sysutsnameh"&gt;&amp;lt;sys/utsname.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="waith"&gt;&amp;lt;wait.h&amp;gt;&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h1 id="posix标准定义的可选头文件"&gt;POSIX标准定义的可选头文件&lt;/h1&gt;
+&lt;h2 id="aioh"&gt;&amp;lt;aio.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="pthreadh"&gt;&amp;lt;pthread.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="semaphoreh"&gt;&amp;lt;semaphore.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="mqueueh"&gt;&amp;lt;mqueue.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="schedh"&gt;&amp;lt;sched.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="spawnh"&gt;&amp;lt;spawn.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="stropsh"&gt;&amp;lt;strops.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="traceh"&gt;&amp;lt;trace.h&amp;gt;&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h1 id="posix标准定义的xsi扩展头文件"&gt;POSIX标准定义的XSI扩展头文件&lt;/h1&gt;
+&lt;h2 id="sysipch"&gt;&amp;lt;sys/ipc.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="sysmsgh"&gt;&amp;lt;sys/msg.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="syssemh"&gt;&amp;lt;sys/sem.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="sysshmh"&gt;&amp;lt;sys/shm.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="cpioh"&gt;&amp;lt;cpio.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="dlfcnh"&gt;&amp;lt;dlfcn.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="fmtmsgh"&gt;&amp;lt;fmtmsg.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="ftwh"&gt;&amp;lt;ftw.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="iconvh"&gt;&amp;lt;iconv.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="langinfoh"&gt;&amp;lt;langinfo.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="libgenh"&gt;&amp;lt;libgen.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="monetaryh"&gt;&amp;lt;monetary.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="ndbmh"&gt;&amp;lt;ndbm.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="nl_typesh"&gt;&amp;lt;nl_types.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="pollh"&gt;&amp;lt;poll.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="searchh"&gt;&amp;lt;search.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="stringsh"&gt;&amp;lt;strings.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="syslogh"&gt;&amp;lt;syslog.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="ucontexth"&gt;&amp;lt;ucontext.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="ulimith"&gt;&amp;lt;ulimit.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="utmpxh"&gt;&amp;lt;utmpx.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="sysresourceh"&gt;&amp;lt;sys/resource.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="sysstatvfsh"&gt;&amp;lt;sys/statvfs.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="systimeh"&gt;&amp;lt;sys/time.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="systimebh"&gt;&amp;lt;sys/timeb.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="sysuioh"&gt;&amp;lt;sys/uio.h&amp;gt;&lt;/h2&gt;</description></item><item><title>ISO</title><link>https://canuxcheng.com/post/c_iso/</link><pubDate>Fri, 01 Apr 2016 21:54:16 +0000</pubDate><guid>https://canuxcheng.com/post/c_iso/</guid><description>&lt;h1 id="c标准库"&gt;C标准库&lt;/h1&gt;
+&lt;p&gt;ISO C89(ANSI C89) -&amp;gt; ISO C95 -&amp;gt; ISO C99 -&amp;gt;&lt;/p&gt;
+&lt;p&gt;-&amp;gt; ISO C11 -&amp;gt; ISO C17 -&amp;gt; ISO C23&lt;/p&gt;
+&lt;p&gt;ANSI C 和 ISO C是对通用C语言的接口的定义。&lt;/p&gt;
+&lt;p&gt;符合这种标准的实现为C语言标准库,也叫libc。&lt;/p&gt;
+&lt;p&gt;官方网站：&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="http://www.open-std.org/jtc1/sc22/wg14/www/standards" target="_blank" rel="noopener"
+&gt;http://www.open-std.org/jtc1/sc22/wg14/www/standards&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id="c89和c99支持的头文件和函数"&gt;C89和C99支持的头文件和函数&lt;/h1&gt;
+&lt;h2 id="asserth"&gt;&amp;lt;assert.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="ctypeh"&gt;&amp;lt;ctype.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="complexh"&gt;&amp;lt;complex.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="errnoh"&gt;&amp;lt;errno.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="floath"&gt;&amp;lt;float.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="fenvh"&gt;&amp;lt;fenv.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="inttypeh"&gt;&amp;lt;inttype.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="iso646h"&gt;&amp;lt;iso646.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="limitsh"&gt;&amp;lt;limits.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="localeh"&gt;&amp;lt;locale.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="mathh"&gt;&amp;lt;math.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="setjmph"&gt;&amp;lt;setjmp.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="signalh"&gt;&amp;lt;signal.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="stdargh"&gt;&amp;lt;stdarg.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="stddefh"&gt;&amp;lt;stddef.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="stdioh"&gt;&amp;lt;stdio.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="stdlibh"&gt;&amp;lt;stdlib.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="stringh"&gt;&amp;lt;string.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="stdboolh"&gt;&amp;lt;stdbool.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="stdinth"&gt;&amp;lt;stdint.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="timeh"&gt;&amp;lt;time.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="tgmathh"&gt;&amp;lt;tgmath.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="wcharh"&gt;&amp;lt;wchar.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="wctypeh"&gt;&amp;lt;wctype.h&amp;gt;&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h1 id="c11支持的头文件和函数"&gt;C11支持的头文件和函数&lt;/h1&gt;
+&lt;h2 id="stdalignh"&gt;&amp;lt;stdalign.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="stdatomich"&gt;&amp;lt;stdatomic.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="threadsh"&gt;&amp;lt;threads.h&amp;gt;&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h1 id="c标准"&gt;C++标准&lt;/h1&gt;
+&lt;p&gt;C++98, C++11, C++14, C++17, C++20, C++23&lt;/p&gt;
+&lt;p&gt;c++ 头文件不带.h用来和C区分。&lt;/p&gt;
+&lt;h2 id="核心功能"&gt;核心功能&lt;/h2&gt;
+&lt;p&gt;&lt;a class="link" href="https://zh.cppreference.com/w/cpp/language" target="_blank" rel="noopener"
+&gt;https://zh.cppreference.com/w/cpp/language&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="标准库"&gt;标准库&lt;/h2&gt;
+&lt;p&gt;&lt;a class="link" href="https://zh.cppreference.com/w/cpp/standard_library" target="_blank" rel="noopener"
+&gt;https://zh.cppreference.com/w/cpp/standard_library&lt;/a&gt;&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;&lt;a class="link" href="https://cplusplus.com/reference/iostream/" target="_blank" rel="noopener"
+&gt;https://cplusplus.com/reference/iostream/&lt;/a&gt;&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;&lt;a class="link" href="https://cplusplus.com/reference/string/" target="_blank" rel="noopener"
+&gt;https://cplusplus.com/reference/string/&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="stl"&gt;STL&lt;/h2&gt;
+&lt;h3 id="containers"&gt;containers&lt;/h3&gt;
+&lt;h3&gt;&lt;/h3&gt;</description></item></channel></rss>

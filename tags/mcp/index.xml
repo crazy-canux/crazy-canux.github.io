@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>MCP on Morgoth</title><link>https://canuxcheng.com/tags/mcp/</link><description>Recent content in MCP on Morgoth</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 19 Jul 2025 10:50:06 +0800</lastBuildDate><atom:link href="https://canuxcheng.com/tags/mcp/index.xml" rel="self" type="application/rss+xml"/><item><title>MCP</title><link>https://canuxcheng.com/post/ai_mcp/</link><pubDate>Sat, 19 Jul 2025 10:50:06 +0800</pubDate><guid>https://canuxcheng.com/post/ai_mcp/</guid><description>&lt;h1 id="mcp"&gt;MCP&lt;/h1&gt;
+&lt;h2 id="what-is-mcp"&gt;What is MCP&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;MCP (Model Context Protocol)&lt;/strong&gt; is an open standard, introduced by Anthropic in
+late 2024, for connecting AI agents to external tools and data. Think of it as
+&amp;ldquo;USB-C for AI&amp;rdquo;: instead of every agent writing a bespoke integration for every
+service, a tool exposes itself once as an &lt;strong&gt;MCP server&lt;/strong&gt;, and any &lt;strong&gt;MCP client&lt;/strong&gt;
+(Claude Code, Cursor, Copilot, …) can use it.&lt;/p&gt;
+&lt;p&gt;It&amp;rsquo;s a client–server protocol (JSON-RPC over stdio or HTTP). A server can expose
+three kinds of capability:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Tools&lt;/strong&gt; — actions the model can invoke (query a DB, create an issue).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Resources&lt;/strong&gt; — data the model can read (files, records, docs).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Prompts&lt;/strong&gt; — reusable prompt templates the user can trigger.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The win is &lt;strong&gt;decoupling&lt;/strong&gt;: build an integration once, use it from any agent.&lt;/p&gt;
+&lt;h2 id="popular-open-source-mcp-servers"&gt;Popular open-source MCP servers&lt;/h2&gt;
+&lt;p&gt;A few widely used, open-source servers to get started with:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Filesystem&lt;/strong&gt; — read/write local files within allowed paths.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Git / GitHub / GitLab&lt;/strong&gt; — inspect repos, manage issues and PRs.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Postgres / SQLite&lt;/strong&gt; — run queries against a database.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Fetch&lt;/strong&gt; — retrieve and convert web pages to text.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Puppeteer / Playwright&lt;/strong&gt; — drive a real browser for testing and scraping.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Slack&lt;/strong&gt; — read and post messages.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Memory&lt;/strong&gt; — a persistent knowledge graph across sessions.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The reference servers live in the official repo, and the community has built
+hundreds more (cloud providers, search, monitoring, etc.).&lt;/p&gt;
+&lt;h2 id="developing-an-mcp-server"&gt;Developing an MCP server&lt;/h2&gt;
+&lt;p&gt;The fastest path is an official SDK — Python (&lt;code&gt;FastMCP&lt;/code&gt;) or TypeScript. A
+minimal Python server:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;from&lt;/span&gt; mcp.server.fastmcp &lt;span style="color:#f92672"&gt;import&lt;/span&gt; FastMCP
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;mcp &lt;span style="color:#f92672"&gt;=&lt;/span&gt; FastMCP(&lt;span style="color:#e6db74"&gt;&amp;#34;demo&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;@mcp.tool&lt;/span&gt;()
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;add&lt;/span&gt;(a: int, b: int) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; int:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;&amp;#34;&amp;#34;Add two numbers.&amp;#34;&amp;#34;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; a &lt;span style="color:#f92672"&gt;+&lt;/span&gt; b
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; __name__ &lt;span style="color:#f92672"&gt;==&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;__main__&amp;#34;&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; mcp&lt;span style="color:#f92672"&gt;.&lt;/span&gt;run() &lt;span style="color:#75715e"&gt;# speaks MCP over stdio&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The steps are:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Create the server and declare &lt;strong&gt;tools&lt;/strong&gt; (functions), &lt;strong&gt;resources&lt;/strong&gt;, and
+&lt;strong&gt;prompts&lt;/strong&gt; — docstrings and type hints become the schema the model sees.&lt;/li&gt;
+&lt;li&gt;Pick a &lt;strong&gt;transport&lt;/strong&gt;: &lt;code&gt;stdio&lt;/code&gt; for local tools, HTTP for remote/shared servers.&lt;/li&gt;
+&lt;li&gt;Register it with your client (e.g. an &lt;code&gt;.mcp.json&lt;/code&gt; entry or &lt;code&gt;claude mcp add&lt;/code&gt;).&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Clear tool names, tight descriptions, and small focused tools matter more than
+quantity — that&amp;rsquo;s what lets the model pick the right action reliably.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="resources"&gt;Resources&lt;/h2&gt;
+&lt;p&gt;&lt;a class="link" href="https://modelcontextprotocol.io/" target="_blank" rel="noopener"
+&gt;https://modelcontextprotocol.io/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/modelcontextprotocol/servers" target="_blank" rel="noopener"
+&gt;https://github.com/modelcontextprotocol/servers&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/modelcontextprotocol/python-sdk" target="_blank" rel="noopener"
+&gt;https://github.com/modelcontextprotocol/python-sdk&lt;/a&gt;&lt;/p&gt;</description></item></channel></rss>

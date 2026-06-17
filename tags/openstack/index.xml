@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Openstack on Morgoth</title><link>https://canuxcheng.com/tags/openstack/</link><description>Recent content in Openstack on Morgoth</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 23 Feb 2017 22:02:31 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/openstack/index.xml" rel="self" type="application/rss+xml"/><item><title>OpenStack</title><link>https://canuxcheng.com/post/cloud_openstack/</link><pubDate>Thu, 23 Feb 2017 22:02:31 +0000</pubDate><guid>https://canuxcheng.com/post/cloud_openstack/</guid><description>&lt;h1 id="openstack"&gt;OpenStack&lt;/h1&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/openstack" target="_blank" rel="noopener"
+&gt;https://github.com/openstack&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/openstack-dev" target="_blank" rel="noopener"
+&gt;https://github.com/openstack-dev&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;openstack是一个云操作系统，通过数据中心可控制大型的计算，存储，网络等资源池．&lt;/p&gt;
+&lt;p&gt;所有的管理通过前端的界面管理员就可以完成，同样也可以通过web接口让最终的用户部署资源．&lt;/p&gt;
+&lt;p&gt;openstack的设计原则：&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://wiki.openstack.org/wiki/BasicDesignTenets" target="_blank" rel="noopener"
+&gt;https://wiki.openstack.org/wiki/BasicDesignTenets&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id="horizon---openstack-dashboard"&gt;horizon - OpenStack Dashboard&lt;/h1&gt;
+&lt;p&gt;控制面板&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/openstack/horizon" target="_blank" rel="noopener"
+&gt;https://github.com/openstack/horizon&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id="keystone---openstack-identity"&gt;keystone - OpenStack Identity&lt;/h1&gt;
+&lt;p&gt;认证服务&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/openstack/keystone" target="_blank" rel="noopener"
+&gt;https://github.com/openstack/keystone&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id="nova---openstack-compute"&gt;nova - OpenStack Compute&lt;/h1&gt;
+&lt;p&gt;计算服务&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/openstack/nova" target="_blank" rel="noopener"
+&gt;https://github.com/openstack/nova&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id="swift---openstack-storage"&gt;swift - OpenStack Storage&lt;/h1&gt;
+&lt;p&gt;存储服务&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/openstack/swift" target="_blank" rel="noopener"
+&gt;https://github.com/openstack/swift&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id="neutron---openstack-networking"&gt;neutron - OpenStack Networking&lt;/h1&gt;
+&lt;p&gt;网络服务(原名quantum)&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/openstack/neutron" target="_blank" rel="noopener"
+&gt;https://github.com/openstack/neutron&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id="glance---openstack-image-management"&gt;glance - OpenStack Image Management&lt;/h1&gt;
+&lt;p&gt;镜像管理&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/openstack/glance" target="_blank" rel="noopener"
+&gt;https://github.com/openstack/glance&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id="cinder---openstack-block-storage"&gt;cinder - OpenStack Block Storage&lt;/h1&gt;
+&lt;p&gt;块存储服务&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/openstack/cinder" target="_blank" rel="noopener"
+&gt;https://github.com/openstack/cinder&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;</description></item></channel></rss>

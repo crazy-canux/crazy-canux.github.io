@@ -1,0 +1,186 @@
+<!doctype html><html lang=zh-CN dir=ltr><head><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'><meta name=description content='并发/concurrency 传统并发基于线程，golang基于CSP
+CSP: communicating sequential processes, 通信顺序进程。
+go的并发同步模型来自CSP泛型。CSP是一种消息传递模型，用于在goroutine之间同步和传递数据的类型是channel.
+concurrency:并发,同时管理很多事情，可以执行到一半就暂停去做其他事情.有同时执行的能力，但不一定要同时执行.并发属于代码。
+所以如果是单个cpu，每次只能运行一个goroutine,如果是多cpu,就是并行,每个cpu都可以跑goroutine.
+parallelism: 并行,让不同的代码在不同的物理处理器上同时执行. 并行属于运行中的程序。并行是时间或者上下文的概念。
+process: 进程, 是系统资源和调度的基本单位，包括内存，句柄，线程等。
+thread: 线程,是cpu调度和分配的基本单位,每个进程至少包含一个线程，初始线程就是主线程，每个线程绑定到一个逻辑cpu上运行。
+co-routine: 协程，大量线程会消耗内存和cpu调度，将线程分为内核态线程和用户态线程，每个用户态线程绑定到内核态线程，但是cpu不知道用户态线程的存在，我们把用户态线程叫协程。
+goroutine: go语言的协程，是并行的，通过channel来通信.
+GMP: goroutine的实现模型。
+G: goroutine, 初始栈2kb，够过go关键字创建，包含grunable, grunning, gwaiting三种状态。
+M: machine，对应OS线程，与cpu绑定，golang默认10000个，SetMaxThreads可以设置，需要绑定P才能执行G，否则休眠。
+P: processor, 逻辑处理器，管理G的本地队列和调度上下文。由GOMAXPROCS确定个数(默认cpu核个数)。用来 解决GM的锁竞争问题。
+不要通过共享内存通信，通过通信来共享内存。
+goroutines go关键字会启动一个新的goroutine并执行.
+每个goroutine会绑定到一个逻辑处理器P上运行，每个逻辑处理器会绑定到单个操作系统线程。
+当goroutine阻塞，就会把goroutine和machine从逻辑处理器P上分离，然后创建一个新的machine绑定到该逻辑处理器P，并继续运行队列中的其它goroutine.
+当阻塞的goroutine恢复，会再次进入队列，和该goroutine绑定的machine也会保存下来.
+go FuncName(...) 主进程main结束了，goroutine也结束．
+竟态 race condition: 竞争状态，多个goroutine同时操作同一资源.
+# 检测竞争状态 $ go build -race 所以要解决goroutine间的通信和同步的问题.
+通过通信共享内存，而不是通过共享内存而通信,说明解决并发问题优先使用chan，而不是sync包。
+channel还是mutex,选择的依据是他们的能力/特性.
+channel的能力是让数据流动起来，擅长的是数据流动的场景:
+传递数据的所有权，即把某个数据发送给其他协程 分发任务，每个任务都是一个数据 交流异步结果，结果是一个数据 sync的能力是数据不动，某段时间只给一个协程访问数据的权限擅长数据位置固定的场景:
+缓存 状态 channel goroutine通过channel来通信和同步。
+channels是引用类型,chan是线程安全的，并且不会有数据冲突。
+chan通过make来创建，通过close来关闭．chan是先进先出的FIFO.
+'><title>Go_Concurrency</title><link rel=canonical href=https://canuxcheng.com/post/go_concurrency/><link rel=stylesheet href=/scss/style.min.22ad1c74b5bb435181c77741d99f034b2c36f7272eff9d0d1aa16d32e7e84673.css><meta property='og:title' content='Go_Concurrency'><meta property='og:description' content='并发/concurrency 传统并发基于线程，golang基于CSP
+CSP: communicating sequential processes, 通信顺序进程。
+go的并发同步模型来自CSP泛型。CSP是一种消息传递模型，用于在goroutine之间同步和传递数据的类型是channel.
+concurrency:并发,同时管理很多事情，可以执行到一半就暂停去做其他事情.有同时执行的能力，但不一定要同时执行.并发属于代码。
+所以如果是单个cpu，每次只能运行一个goroutine,如果是多cpu,就是并行,每个cpu都可以跑goroutine.
+parallelism: 并行,让不同的代码在不同的物理处理器上同时执行. 并行属于运行中的程序。并行是时间或者上下文的概念。
+process: 进程, 是系统资源和调度的基本单位，包括内存，句柄，线程等。
+thread: 线程,是cpu调度和分配的基本单位,每个进程至少包含一个线程，初始线程就是主线程，每个线程绑定到一个逻辑cpu上运行。
+co-routine: 协程，大量线程会消耗内存和cpu调度，将线程分为内核态线程和用户态线程，每个用户态线程绑定到内核态线程，但是cpu不知道用户态线程的存在，我们把用户态线程叫协程。
+goroutine: go语言的协程，是并行的，通过channel来通信.
+GMP: goroutine的实现模型。
+G: goroutine, 初始栈2kb，够过go关键字创建，包含grunable, grunning, gwaiting三种状态。
+M: machine，对应OS线程，与cpu绑定，golang默认10000个，SetMaxThreads可以设置，需要绑定P才能执行G，否则休眠。
+P: processor, 逻辑处理器，管理G的本地队列和调度上下文。由GOMAXPROCS确定个数(默认cpu核个数)。用来 解决GM的锁竞争问题。
+不要通过共享内存通信，通过通信来共享内存。
+goroutines go关键字会启动一个新的goroutine并执行.
+每个goroutine会绑定到一个逻辑处理器P上运行，每个逻辑处理器会绑定到单个操作系统线程。
+当goroutine阻塞，就会把goroutine和machine从逻辑处理器P上分离，然后创建一个新的machine绑定到该逻辑处理器P，并继续运行队列中的其它goroutine.
+当阻塞的goroutine恢复，会再次进入队列，和该goroutine绑定的machine也会保存下来.
+go FuncName(...) 主进程main结束了，goroutine也结束．
+竟态 race condition: 竞争状态，多个goroutine同时操作同一资源.
+# 检测竞争状态 $ go build -race 所以要解决goroutine间的通信和同步的问题.
+通过通信共享内存，而不是通过共享内存而通信,说明解决并发问题优先使用chan，而不是sync包。
+channel还是mutex,选择的依据是他们的能力/特性.
+channel的能力是让数据流动起来，擅长的是数据流动的场景:
+传递数据的所有权，即把某个数据发送给其他协程 分发任务，每个任务都是一个数据 交流异步结果，结果是一个数据 sync的能力是数据不动，某段时间只给一个协程访问数据的权限擅长数据位置固定的场景:
+缓存 状态 channel goroutine通过channel来通信和同步。
+channels是引用类型,chan是线程安全的，并且不会有数据冲突。
+chan通过make来创建，通过close来关闭．chan是先进先出的FIFO.
+'><meta property='og:url' content='https://canuxcheng.com/post/go_concurrency/'><meta property='og:site_name' content='Morgoth'><meta property='og:type' content='article'><meta property='article:section' content='Post'><meta property='article:tag' content='concurrency'><meta property='article:published_time' content='2018-01-01T10:49:21+00:00'><meta property='article:modified_time' content='2018-01-01T10:49:21+00:00'><meta name=twitter:title content="Go_Concurrency"><meta name=twitter:description content="并发/concurrency 传统并发基于线程，golang基于CSP
+CSP: communicating sequential processes, 通信顺序进程。
+go的并发同步模型来自CSP泛型。CSP是一种消息传递模型，用于在goroutine之间同步和传递数据的类型是channel.
+concurrency:并发,同时管理很多事情，可以执行到一半就暂停去做其他事情.有同时执行的能力，但不一定要同时执行.并发属于代码。
+所以如果是单个cpu，每次只能运行一个goroutine,如果是多cpu,就是并行,每个cpu都可以跑goroutine.
+parallelism: 并行,让不同的代码在不同的物理处理器上同时执行. 并行属于运行中的程序。并行是时间或者上下文的概念。
+process: 进程, 是系统资源和调度的基本单位，包括内存，句柄，线程等。
+thread: 线程,是cpu调度和分配的基本单位,每个进程至少包含一个线程，初始线程就是主线程，每个线程绑定到一个逻辑cpu上运行。
+co-routine: 协程，大量线程会消耗内存和cpu调度，将线程分为内核态线程和用户态线程，每个用户态线程绑定到内核态线程，但是cpu不知道用户态线程的存在，我们把用户态线程叫协程。
+goroutine: go语言的协程，是并行的，通过channel来通信.
+GMP: goroutine的实现模型。
+G: goroutine, 初始栈2kb，够过go关键字创建，包含grunable, grunning, gwaiting三种状态。
+M: machine，对应OS线程，与cpu绑定，golang默认10000个，SetMaxThreads可以设置，需要绑定P才能执行G，否则休眠。
+P: processor, 逻辑处理器，管理G的本地队列和调度上下文。由GOMAXPROCS确定个数(默认cpu核个数)。用来 解决GM的锁竞争问题。
+不要通过共享内存通信，通过通信来共享内存。
+goroutines go关键字会启动一个新的goroutine并执行.
+每个goroutine会绑定到一个逻辑处理器P上运行，每个逻辑处理器会绑定到单个操作系统线程。
+当goroutine阻塞，就会把goroutine和machine从逻辑处理器P上分离，然后创建一个新的machine绑定到该逻辑处理器P，并继续运行队列中的其它goroutine.
+当阻塞的goroutine恢复，会再次进入队列，和该goroutine绑定的machine也会保存下来.
+go FuncName(...) 主进程main结束了，goroutine也结束．
+竟态 race condition: 竞争状态，多个goroutine同时操作同一资源.
+# 检测竞争状态 $ go build -race 所以要解决goroutine间的通信和同步的问题.
+通过通信共享内存，而不是通过共享内存而通信,说明解决并发问题优先使用chan，而不是sync包。
+channel还是mutex,选择的依据是他们的能力/特性.
+channel的能力是让数据流动起来，擅长的是数据流动的场景:
+传递数据的所有权，即把某个数据发送给其他协程 分发任务，每个任务都是一个数据 交流异步结果，结果是一个数据 sync的能力是数据不动，某段时间只给一个协程访问数据的权限擅长数据位置固定的场景:
+缓存 状态 channel goroutine通过channel来通信和同步。
+channels是引用类型,chan是线程安全的，并且不会有数据冲突。
+chan通过make来创建，通过close来关闭．chan是先进先出的FIFO.
+"><link rel="shortcut icon" href=favicon.ico><style>:root{--article-font-family:"Merriweather", var(--base-font-family)}</style><script>(function(){const e=document.createElement("link");e.href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap",e.type="text/css",e.rel="stylesheet",document.head.appendChild(e)})()</script></head><body class=article-page><script>(function(){const e="StackColorScheme";localStorage.getItem(e)||localStorage.setItem(e,"auto")})()</script><script>(function(){const t="StackColorScheme",e=localStorage.getItem(t),n=window.matchMedia("(prefers-color-scheme: dark)").matches===!0;e=="dark"||e==="auto"&&n?document.documentElement.dataset.scheme="dark":document.documentElement.dataset.scheme="light"})()</script><div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky"><button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label=切换菜单>
+<span class=hamburger-box><span class=hamburger-inner></span></span></button><header><figure class=site-avatar><a href=/><img src=/img/home_hu_7d22d46ad88d2427.jpg width=300 height=400 class=site-logo loading=lazy alt=Avatar>
+</a><span class=emoji>🍥</span></figure><div class=site-meta><h1 class=site-name><a href=/>Morgoth</a></h1><h2 class=site-description>Hello World!</h2></div></header><ol class=social-menu><li><a href=mailto:canuxcheng@163.com target=_blank title=E-mail rel=me><svg class="icon icon-tabler icon-tabler-messages" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M21 14l-3-3h-7a1 1 0 01-1-1V4a1 1 0 011-1h9a1 1 0 011 1v10"/><path d="M14 15v2a1 1 0 01-1 1H6l-3 3V11a1 1 0 011-1h2"/></svg></a></li><li><a href=https://github.com/crazy-canux target=_blank title=GitHub rel=me><svg class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6.0 00-1.3-3.2 4.2 4.2.0 00-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3.0 00-6.2.0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2.0 00-.1 3.2A4.6 4.6.0 004 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg></a></li></ol><ol class=menu id=main-menu><li><a href=/><svg class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="5 12 3 12 12 3 21 12 19 12"/><path d="M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/><path d="M9 21v-6a2 2 0 012-2h2a2 2 0 012 2v6"/></svg>
+<span>首页</span></a></li><li><a href=/about/><svg class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/></svg>
+<span>关于</span></a></li><li><a href=/categories/ target=_blank><svg class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg>
+<span>分类</span></a></li><li><a href=/tags/ target=_blank><svg class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11 3l9 9a1.5 1.5.0 010 2l-6 6a1.5 1.5.0 01-2 0L3 11V7a4 4 0 014-4h4"/><circle cx="9" cy="9" r="2"/></svg>
+<span>标签</span></a></li><li><a href=/rtfm/><svg class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+<span>RTFM</span></a></li><div class=menu-bottom-section><li id=i18n-switch><svg class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 5h7"/><path d="M9 3v2c0 4.418-2.239 8-5 8"/><path d="M5 9c-.003 2.144 2.952 3.908 6.7 4"/><path d="M12 20l4-9 4 9"/><path d="M19.1 18h-6.2"/></svg>
+<select name=language onchange="window.location.href=this.selectedOptions[0].value"><option value=https://canuxcheng.com/ selected>简体中文</option><option value=https://canuxcheng.com/en/>English</option></select></li><li id=dark-mode-toggle><svg class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="8" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<svg class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="16" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<span>暗色模式</span></li></div></ol></aside><aside class="sidebar right-sidebar sticky"><section class="widget archives"><div class=widget-icon><svg class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg></div><h2 class="widget-title section-title">目录</h2><div class=widget--toc><nav id=TableOfContents><ul><li><a href=#goroutines>goroutines</a></li><li><a href=#竟态>竟态</a></li><li><a href=#channel>channel</a></li><li><a href=#select>select</a></li><li><a href=#退出goroutine>退出goroutine</a><ul><li><a href=#for-range>for-range</a></li><li><a href=#for-select>for-select</a></li></ul></li></ul></nav></div></section></aside><main class="main full-width"><article class=main-article><header class=article-header><div class=article-details><header class=article-category><a href=/categories/golang/>Golang</a></header><div class=article-title-wrapper><h2 class=article-title><a href=/post/go_concurrency/>Go_Concurrency</a></h2></div><footer class=article-time><div><svg class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg>
+<time class=article-time--published>Jan 01, 2018</time></div><div><svg class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+<time class=article-time--reading>阅读时长: 2 分钟</time></div></footer></div></header><section class=article-content><h1 id=并发concurrency>并发/concurrency</h1><p>传统并发基于线程，golang基于CSP</p><p>CSP: communicating sequential processes, 通信顺序进程。</p><p>go的并发同步模型来自CSP泛型。CSP是一种消息传递模型，用于在goroutine之间同步和传递数据的类型是channel.</p><p>concurrency:并发,同时管理很多事情，可以执行到一半就暂停去做其他事情.有同时执行的能力，但不一定要同时执行.并发属于代码。</p><p>所以如果是单个cpu，每次只能运行一个goroutine,如果是多cpu,就是并行,每个cpu都可以跑goroutine.</p><p>parallelism: 并行,让不同的代码在不同的物理处理器上同时执行. 并行属于运行中的程序。并行是时间或者上下文的概念。</p><p>process: 进程, 是系统资源和调度的基本单位，包括内存，句柄，线程等。</p><p>thread: 线程,是cpu调度和分配的基本单位,每个进程至少包含一个线程，初始线程就是主线程，每个线程绑定到一个逻辑cpu上运行。</p><p>co-routine: 协程，大量线程会消耗内存和cpu调度，将线程分为内核态线程和用户态线程，每个用户态线程绑定到内核态线程，但是cpu不知道用户态线程的存在，我们把用户态线程叫协程。</p><p>goroutine: go语言的协程，是并行的，通过channel来通信.</p><p>GMP: goroutine的实现模型。</p><p>G: goroutine, 初始栈2kb，够过go关键字创建，包含grunable, grunning, gwaiting三种状态。</p><p>M: machine，对应OS线程，与cpu绑定，golang默认10000个，SetMaxThreads可以设置，需要绑定P才能执行G，否则休眠。</p><p>P: processor, 逻辑处理器，管理G的本地队列和调度上下文。由GOMAXPROCS确定个数(默认cpu核个数)。用来 解决GM的锁竞争问题。</p><p>不要通过共享内存通信，通过通信来共享内存。</p><h2 id=goroutines>goroutines</h2><p>go关键字会启动一个新的goroutine并执行.</p><p>每个goroutine会绑定到一个逻辑处理器P上运行，每个逻辑处理器会绑定到单个操作系统线程。</p><p>当goroutine阻塞，就会把goroutine和machine从逻辑处理器P上分离，然后创建一个新的machine绑定到该逻辑处理器P，并继续运行队列中的其它goroutine.</p><p>当阻塞的goroutine恢复，会再次进入队列，和该goroutine绑定的machine也会保存下来.</p><pre><code>go FuncName(...)
+</code></pre><p>主进程main结束了，goroutine也结束．</p><h2 id=竟态>竟态</h2><p>race condition: 竞争状态，多个goroutine同时操作同一资源.</p><pre><code># 检测竞争状态
+$ go build -race
+</code></pre><p>所以要解决goroutine间的通信和同步的问题.</p><p>通过通信共享内存，而不是通过共享内存而通信,说明解决并发问题优先使用chan，而不是sync包。</p><p>channel还是mutex,选择的依据是他们的能力/特性.</p><p>channel的能力是让数据流动起来，擅长的是数据流动的场景:</p><ul><li>传递数据的所有权，即把某个数据发送给其他协程</li><li>分发任务，每个任务都是一个数据</li><li>交流异步结果，结果是一个数据</li></ul><p>sync的能力是数据不动，某段时间只给一个协程访问数据的权限擅长数据位置固定的场景:</p><ul><li>缓存</li><li>状态</li></ul><hr><h2 id=channel>channel</h2><p>goroutine通过channel来通信和同步。</p><p>channels是引用类型,chan是线程安全的，并且不会有数据冲突。</p><p>chan通过make来创建，通过close来关闭．chan是先进先出的FIFO.</p><p>chan 支持的类型Type： 基本类型（number, string, bool），复合类型（pointer, struct, array, slice, map, function, interface），自定义类型.</p><p>chan的Type不能是channel本身。</p><p>申明一个变量:</p><pre><code>var ChanName chan Type
+</code></pre><p>定义一个chan, 默认chan都是双向的:</p><pre><code>var ch = make(chan Type, cap)
+ch := make(chan Type, cap)
+</code></pre><p>chan的方向：</p><p>将make创建的双向转换为单向,也可以直接在函数参数申明单向。</p><p>只接收的chan无法关闭</p><pre><code>var recvOnly chan&lt;- Type = ch
+</code></pre><p>只发送的chan</p><pre><code>var sendOnly &lt;-chan Type = ch
+</code></pre><p>操作chan:</p><pre><code>ch &lt;- v    # 发送值到ch
+v := &lt;-ch    # 从ch接收值, 并赋予Type类型变量v
+v, ok = &lt;-ch # 从ch接收值带状态, 如果ch关闭或没有数据，ok就为false.
+</code></pre><p>无缓冲的chan(同步):</p><pre><code>ch := make(chan Type)
+</code></pre><p>无缓冲的chan发送者会阻塞unbuffered，直到接收者接收数据, 也就是说是同步的synchronous.</p><p>只有发送者或只有接受者的chan会导致死锁，产生panic.</p><p>带缓冲的chan（异步）:</p><p>带缓冲的chan，在缓冲区满之前，都不会阻塞buffered，是异步的asynchronous.</p><p>只有通道中没有要接收的值，接收动作才会阻塞.</p><p>只有在通道没有可用缓冲区容纳被发送的值，发送动作才会阻塞．</p><pre><code>ch := make(chan Type, cap)
+
+// 带缓冲的chan可以通过range遍历
+for val := range ch {
+    fmt.Println(val)
+}
+</code></pre><p>显示关闭chan:</p><p>通道关闭后，不能再向通道发送值，但是已经发送的值可以被接收.</p><pre><code>// 一般在生产者(发送动作)关闭chan
+close(ch)
+
+// 如果chan关闭ok=false, v为零值.
+v, ok := &lt;-ch
+</code></pre><hr><h2 id=select>select</h2><p>监听chan的数据流，类似于switch-case, 可用于处理多个chan的情况</p><p>运行规则：</p><ol><li><p>每次执行select都只会执行一个case或者执行default；当有case可以执行，default不会执行；没有case执行时才执行default。</p></li><li><p>当没有case或default可以执行，select阻塞等待。</p></li><li><p>当有多个case可以执行，select随机选择一个执行。</p></li><li><p>case后面必须是读或写chan的操作，否则编译出错。</p><p>ctx, cancel := context.WithCancel(context.Background())
+select {
+case var := &lt;-ch1:
+do something
+case ch2 &lt;-value:
+do something
+case &lt;-time.After(2 * time.Second):
+fmt.Println(&ldquo;timeout!&rdquo;)
+case &lt;-ctx.Done():
+fmt.Println(&ldquo;cancelled:&rdquo;, ctx.Err())
+&mldr;
+default: // default可以省略
+do default thing.
+}</p></li></ol><hr><h2 id=退出goroutine>退出goroutine</h2><h3 id=for-range>for-range</h3><p>range能感知channel关闭，当channel被发送数据的goroutine关闭时，range就会结束，然后退出for循环。</p><pre><code>go func(send &lt;-chan int) {
+    for val := range send {
+        ...
+    }
+}(sendOnly)
+</code></pre><h3 id=for-select>for-select</h3><p>select有多路复用能力，for-select 可以持续处理多路多个channel的能力。但select不能感知channel的关闭.</p><p>context.Context退出goroutine:</p><pre><code>go func() {
+    for {
+        select {
+        case &lt;-ctx.Done():
+            fmt.Println(&quot;goroutine exiting:&quot;, ctx.Err())
+            return
+        default:
+            fmt.Println(&quot;working...&quot;)
+        }
+    }
+}
+</code></pre><p>某个通道关闭，不再处理该通道，但是继续处理其它channel,select不会在nil的通道上进行等待:</p><pre><code>go func() {
+    for {
+        select {
+        case x, ok := in1:
+            if !ok {
+                in1 = nil   把只读channel设置为nil,select不会在这里阻塞。
+            }
+        case y, ok :=&lt;-in2:
+            if !ok {
+                in2 = nil
+            }
+        if in1 == nil &amp;&amp; in2 == nil {
+            return
+        }
+    }
+}()
+</code></pre><p>使用专门channel发送退出信号,只需要在main中关闭channel，所有goroutine都会接收到信号退出:</p><pre><code>go func() {
+    for {
+        select {
+        case &lt;- stopCh:
+            ...
+            return
+        case &lt;- t.C:
+            ...
+        }
+    }
+}()
+</code></pre></section><footer class=article-footer><section class=article-tags><a href=/tags/concurrency/>Concurrency</a></section></footer><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css integrity="sha256-J+iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s=" crossorigin=anonymous><script src=https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js integrity="sha256-InsNdER1b2xUewP+pKCUJpkhiqwHgqiPXDlIk7GzBu4=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI=" crossorigin=anonymous defer></script><script>window.addEventListener("DOMContentLoaded",()=>{renderMathInElement(document.querySelector(`.article-content`),{delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1},{left:"\\(",right:"\\)",display:!1},{left:"\\[",right:"\\]",display:!0}],ignoredClasses:["gist"]})})</script></article><div id=gitalk-container></div><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css><script src=https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js></script><script src=https://cdn.jsdelivr.net/npm/blueimp-md5@2.18.0/js/md5.min.js></script><script>const gitalk=new Gitalk({clientID:"3d41a2a237fabe050cc0",clientSecret:"f084dfe45a1c05955270776836298adf02732a02",repo:"crazy-canux.github.io",owner:"crazy-canux",admin:["crazy-canux"],distractionFreeMode:!1,id:md5(location.pathname)});(function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById("gitalk-container").innerHTML="Gitalk comments not available by default when the website is previewed locally.";return}gitalk.render("gitalk-container")})()</script><footer class=site-footer><section class=copyright>&copy;
+2013 -
+2026 Morgoth</section><section class=powerby>Designed by Canux<br></section></footer><div class=pswp tabindex=-1 role=dialog aria-hidden=true><div class=pswp__bg></div><div class=pswp__scroll-wrap><div class=pswp__container><div class=pswp__item></div><div class=pswp__item></div><div class=pswp__item></div></div><div class="pswp__ui pswp__ui--hidden"><div class=pswp__top-bar><div class=pswp__counter></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+<button class="pswp__button pswp__button--share" title=Share></button>
+<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button><div class=pswp__preloader><div class=pswp__preloader__icn><div class=pswp__preloader__cut><div class=pswp__preloader__donut></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class=pswp__share-tooltip></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+</button>
+<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button><div class=pswp__caption><div class=pswp__caption__center></div></div></div></div></div><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU=" crossorigin=anonymous defer></script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css crossorigin=anonymous><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css crossorigin=anonymous></main></div><script src=https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z+KMkF24hUW8WePSA9HM=" crossorigin=anonymous></script><script type=text/javascript src=/ts/main.js defer></script><script>(function(){const e=document.createElement("link");e.href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap",e.type="text/css",e.rel="stylesheet",document.head.appendChild(e)})()</script></body></html>

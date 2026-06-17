@@ -1,0 +1,140 @@
+<!doctype html><html lang=zh-CN dir=ltr><head><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'><meta name=description content='DPKG debian的包管理机制。
+dpkg dpkg的本地前端工具。
+deb - Debian binary package format dpkg - package manager for Debian dpkg dpkg -X ./xxx.deb xxx # 将deb包解压到xxx目录 dpkg -e ./xxx.deb xxx/DEBIAN # 将control信息解压 dpkg -l | grep pkg # 查看安装的包 dpkg-reconfigure - reconfigure an already installed package dpkg-reconfigure dpkg-deb - Debian package archive (.deb) manipulation tool 目录结构, DEBIAN/control是必需的
+|- debian_root |- DEBIAN |- control |- preinst/preinstallation # 解压deb包之前执行 |- prerm/preremove |- postinst/postinstallation # 解压完成之后执行，通常用来配置 |- postrm/postremove |- copyright |- changelog |- conffiles |- etc |- init.d/systemd |- <service> |- logrotate.d |- <service> |- user/local/... |- opt/... control:
+'><title>Package</title><link rel=canonical href=https://canuxcheng.com/post/linux_package/><link rel=stylesheet href=/scss/style.min.22ad1c74b5bb435181c77741d99f034b2c36f7272eff9d0d1aa16d32e7e84673.css><meta property='og:title' content='Package'><meta property='og:description' content='DPKG debian的包管理机制。
+dpkg dpkg的本地前端工具。
+deb - Debian binary package format dpkg - package manager for Debian dpkg dpkg -X ./xxx.deb xxx # 将deb包解压到xxx目录 dpkg -e ./xxx.deb xxx/DEBIAN # 将control信息解压 dpkg -l | grep pkg # 查看安装的包 dpkg-reconfigure - reconfigure an already installed package dpkg-reconfigure dpkg-deb - Debian package archive (.deb) manipulation tool 目录结构, DEBIAN/control是必需的
+|- debian_root |- DEBIAN |- control |- preinst/preinstallation # 解压deb包之前执行 |- prerm/preremove |- postinst/postinstallation # 解压完成之后执行，通常用来配置 |- postrm/postremove |- copyright |- changelog |- conffiles |- etc |- init.d/systemd |- <service> |- logrotate.d |- <service> |- user/local/... |- opt/... control:
+'><meta property='og:url' content='https://canuxcheng.com/post/linux_package/'><meta property='og:site_name' content='Morgoth'><meta property='og:type' content='article'><meta property='article:section' content='Post'><meta property='article:tag' content='package'><meta property='article:published_time' content='2016-06-07T16:57:45+00:00'><meta property='article:modified_time' content='2016-06-07T16:57:45+00:00'><meta name=twitter:title content="Package"><meta name=twitter:description content="DPKG debian的包管理机制。
+dpkg dpkg的本地前端工具。
+deb - Debian binary package format dpkg - package manager for Debian dpkg dpkg -X ./xxx.deb xxx # 将deb包解压到xxx目录 dpkg -e ./xxx.deb xxx/DEBIAN # 将control信息解压 dpkg -l | grep pkg # 查看安装的包 dpkg-reconfigure - reconfigure an already installed package dpkg-reconfigure dpkg-deb - Debian package archive (.deb) manipulation tool 目录结构, DEBIAN/control是必需的
+|- debian_root |- DEBIAN |- control |- preinst/preinstallation # 解压deb包之前执行 |- prerm/preremove |- postinst/postinstallation # 解压完成之后执行，通常用来配置 |- postrm/postremove |- copyright |- changelog |- conffiles |- etc |- init.d/systemd |- <service> |- logrotate.d |- <service> |- user/local/... |- opt/... control:
+"><link rel="shortcut icon" href=favicon.ico><style>:root{--article-font-family:"Merriweather", var(--base-font-family)}</style><script>(function(){const e=document.createElement("link");e.href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap",e.type="text/css",e.rel="stylesheet",document.head.appendChild(e)})()</script></head><body class=article-page><script>(function(){const e="StackColorScheme";localStorage.getItem(e)||localStorage.setItem(e,"auto")})()</script><script>(function(){const t="StackColorScheme",e=localStorage.getItem(t),n=window.matchMedia("(prefers-color-scheme: dark)").matches===!0;e=="dark"||e==="auto"&&n?document.documentElement.dataset.scheme="dark":document.documentElement.dataset.scheme="light"})()</script><div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky"><button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label=切换菜单>
+<span class=hamburger-box><span class=hamburger-inner></span></span></button><header><figure class=site-avatar><a href=/><img src=/img/home_hu_7d22d46ad88d2427.jpg width=300 height=400 class=site-logo loading=lazy alt=Avatar>
+</a><span class=emoji>🍥</span></figure><div class=site-meta><h1 class=site-name><a href=/>Morgoth</a></h1><h2 class=site-description>Hello World!</h2></div></header><ol class=social-menu><li><a href=mailto:canuxcheng@163.com target=_blank title=E-mail rel=me><svg class="icon icon-tabler icon-tabler-messages" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M21 14l-3-3h-7a1 1 0 01-1-1V4a1 1 0 011-1h9a1 1 0 011 1v10"/><path d="M14 15v2a1 1 0 01-1 1H6l-3 3V11a1 1 0 011-1h2"/></svg></a></li><li><a href=https://github.com/crazy-canux target=_blank title=GitHub rel=me><svg class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6.0 00-1.3-3.2 4.2 4.2.0 00-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3.0 00-6.2.0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2.0 00-.1 3.2A4.6 4.6.0 004 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg></a></li></ol><ol class=menu id=main-menu><li><a href=/><svg class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="5 12 3 12 12 3 21 12 19 12"/><path d="M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/><path d="M9 21v-6a2 2 0 012-2h2a2 2 0 012 2v6"/></svg>
+<span>首页</span></a></li><li><a href=/about/><svg class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/></svg>
+<span>关于</span></a></li><li><a href=/categories/ target=_blank><svg class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg>
+<span>分类</span></a></li><li><a href=/tags/ target=_blank><svg class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11 3l9 9a1.5 1.5.0 010 2l-6 6a1.5 1.5.0 01-2 0L3 11V7a4 4 0 014-4h4"/><circle cx="9" cy="9" r="2"/></svg>
+<span>标签</span></a></li><li><a href=/rtfm/><svg class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+<span>RTFM</span></a></li><div class=menu-bottom-section><li id=i18n-switch><svg class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 5h7"/><path d="M9 3v2c0 4.418-2.239 8-5 8"/><path d="M5 9c-.003 2.144 2.952 3.908 6.7 4"/><path d="M12 20l4-9 4 9"/><path d="M19.1 18h-6.2"/></svg>
+<select name=language onchange="window.location.href=this.selectedOptions[0].value"><option value=https://canuxcheng.com/ selected>简体中文</option><option value=https://canuxcheng.com/en/>English</option></select></li><li id=dark-mode-toggle><svg class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="8" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<svg class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="16" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<span>暗色模式</span></li></div></ol></aside><aside class="sidebar right-sidebar sticky"><section class="widget archives"><div class=widget-icon><svg class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg></div><h2 class="widget-title section-title">目录</h2><div class=widget--toc><nav id=TableOfContents><ul><li><a href=#dpkg-1>dpkg</a><ul><li><a href=#deb---debian-binary-package-format>deb - Debian binary package format</a></li><li><a href=#dpkg---package-manager-for-debian>dpkg - package manager for Debian</a></li><li><a href=#dpkg-reconfigure---reconfigure-an-already-installed-package>dpkg-reconfigure - reconfigure an already installed package</a></li><li><a href=#dpkg-deb---debian-package-archive-deb-manipulation-tool>dpkg-deb - Debian package archive (.deb) manipulation tool</a></li><li><a href=#dpkg-query---a-tool-to-query-the-dpkg-database>dpkg-query - a tool to query the dpkg database</a></li></ul></li><li><a href=#gdebi---simple-tool-to-install-deb-files>gdebi - Simple tool to install deb files</a></li><li><a href=#apt---command-line-interface>apt - command-line interface</a></li></ul><ul><li><a href=#rpm-1>rpm</a></li><li><a href=#yum>yum</a></li></ul></nav></div></section></aside><main class="main full-width"><article class=main-article><header class=article-header><div class=article-details><header class=article-category><a href=/categories/linux/>Linux</a></header><div class=article-title-wrapper><h2 class=article-title><a href=/post/linux_package/>Package</a></h2></div><footer class=article-time><div><svg class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg>
+<time class=article-time--published>Jun 07, 2016</time></div><div><svg class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+<time class=article-time--reading>阅读时长: 2 分钟</time></div></footer></div></header><section class=article-content><h1 id=dpkg>DPKG</h1><p>debian的包管理机制。</p><hr><h2 id=dpkg-1>dpkg</h2><p>dpkg的本地前端工具。</p><h3 id=deb---debian-binary-package-format>deb - Debian binary package format</h3><h3 id=dpkg---package-manager-for-debian>dpkg - package manager for Debian</h3><pre><code>dpkg
+dpkg -X  ./xxx.deb  xxx  # 将deb包解压到xxx目录
+dpkg -e  ./xxx.deb  xxx/DEBIAN # 将control信息解压
+dpkg -l | grep pkg # 查看安装的包
+</code></pre><h3 id=dpkg-reconfigure---reconfigure-an-already-installed-package>dpkg-reconfigure - reconfigure an already installed package</h3><pre><code>dpkg-reconfigure
+</code></pre><h3 id=dpkg-deb---debian-package-archive-deb-manipulation-tool>dpkg-deb - Debian package archive (.deb) manipulation tool</h3><p>目录结构, DEBIAN/control是必需的</p><pre><code>|- debian_root
+   |- DEBIAN
+      |- control
+      |- preinst/preinstallation # 解压deb包之前执行
+      |- prerm/preremove
+      |- postinst/postinstallation # 解压完成之后执行，通常用来配置
+      |- postrm/postremove
+      |- copyright
+      |- changelog
+      |- conffiles
+   |- etc
+      |- init.d/systemd
+         |- &lt;service&gt;
+      |- logrotate.d
+         |- &lt;service&gt;
+   |- user/local/...
+   |- opt/...
+</code></pre><p>control:</p><pre><code>Package
+Version
+Description
+Maintain:
+Section: utils/net/mail/text/x11/...
+Priority: required/standard/optional/extra/...
+Essential: yes/no
+Architecture: i386/amd64/...
+Source:
+Depends:    # 运行该process需要的依萊, 只能安装之前安装好，或者用gdebi安装
+Pre-Depends:
+Recommends:
+Suggests:
+...
+</code></pre><p>postrm:</p><pre><code>case &quot;$1&quot; in
+    remove)
+        remove
+        echo &quot;Remove complete&quot;
+    ;;
+
+    purge)
+        purge
+        echo &quot;Purge complete&quot;
+    ;;
+
+    upgrade|failed-upgrade|disappear)
+        echo &quot;Do nothing&quot;
+    ;;
+
+    abort-install|abort-upgrade)
+        echo &quot;Do nothing&quot;
+    ;;
+
+    *)
+        echo &quot;$0 called with unknown argument \`$1'&quot; 1&gt;&amp;2
+        exit 1
+    ;;
+esac
+</code></pre><p>创建debian包</p><pre><code>$ dpkg-deb -b|--build &lt;directory&gt; [&lt;deb&gt;]
+</code></pre><p>查看包信息</p><pre><code>$ dpkg-deb -I XXX.deb
+</code></pre><h3 id=dpkg-query---a-tool-to-query-the-dpkg-database>dpkg-query - a tool to query the dpkg database</h3><pre><code>dpkg-query
+</code></pre><hr><h2 id=gdebi---simple-tool-to-install-deb-files>gdebi - Simple tool to install deb files</h2><p>dpkg的本地前端工具。</p><p>使用gdebi安装deb包会自动解决依赖问题:</p><p>安装gdebi:</p><pre><code>$ sudo apt-get install gdebi-core
+$ sudo apt-get install gdebi-gtk
+$ sudo aptitude install gdebi-core # install gdebi itself
+$ sudo aptitude install gdebi-gtk # install gdebi GUI
+</code></pre><p>使用gdebi:</p><pre><code>sudo gdebi XXX.deb # install package
+</code></pre><hr><h2 id=apt---command-line-interface>apt - command-line interface</h2><p>dpkg的远程前端工具。</p><p>apt - command-line interface</p><pre><code>$ apt install package
+</code></pre><p>apt-get - APT package handling utility &ndash; command-line interface</p><pre><code>$ sudo apt-get option command package
+
+# command:
+install
+remove
+purge
+download
+source
+update
+
+# install
+# 可以通过apt-cache madison查看version
+apt-get install &lt;package&gt;=&lt;version&gt;
+
+# option:
+-d, --download-only
+--print-uris
+-y,--yes,--assume-yes    # 交互时确认
+-f,--force-yes
+--reinstall
+--allow-unauthenticated
+--allow-downgrades (&gt;= ubuntu1604)
+
+# 打印在当前环境安装该包需要的所有以来的下载连接信息
+apt-get --print-uris install package
+</code></pre><p>aptitude - high-level interface to the package manager</p><pre><code>$ sudo aptitude install package
+</code></pre><p>apt-cache - query the APT cache</p><pre><code>$ apt-cache showpkg &lt;pkg&gt;
+$ apt-cache showsrc &lt;pkg&gt;
+$ apt-cache search &lt;pkg&gt;
+$ apt-cache madison &lt;pkg&gt; # 查看当前源可以安装的版本
+$ apt-cache policy &lt;pkg&gt;
+
+# 查看哪些包依赖该包
+$ apt-cache rdepends &lt;pkg&gt;
+# 查看该包依赖哪些包
+$ apt-cache depends &lt;pkg&gt;
+# 查看依赖，　以及依赖的依赖
+$ apt-cache --recurse depends &lt;pkg&gt;
+</code></pre><hr><h1 id=rpm>RPM</h1><p>redhat的包管理机制。</p><h2 id=rpm-1>rpm</h2><p>rpm的本地前端工具。</p><p>rpm - RPM Package Manager</p><h2 id=yum>yum</h2><p>rpm的远程前端工具。</p><p>yum - redirecting to DNF Command Reference</p><hr><h1 id=zypper>zypper</h1><p>suse的包管理机制。</p><hr><h1 id=alien>Alien</h1><blockquote><p>alien is a program that converts between Red Hat rpm, Debian deb, Stampede slp, Slackware tgz, and Solaris pkg file formats.</p></blockquote><h1 id=gbp>gbp</h1><p>通过git来管理deb或rpm包．</p><p><a class=link href=https://github.com/agx/git-buildpackage target=_blank rel=noopener>https://github.com/agx/git-buildpackage</a></p><pre><code>$sudo -E pip install gbp
+</code></pre><h1 id=fpm>fpm</h1><p>通过fpm来创建deb/rpm包</p><p><a class=link href=https://github.com/jordansissel/fpm target=_blank rel=noopener>https://github.com/jordansissel/fpm</a></p><hr><h1 id=patch>patch</h1></section><footer class=article-footer><section class=article-tags><a href=/tags/package/>Package</a></section></footer><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css integrity="sha256-J+iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s=" crossorigin=anonymous><script src=https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js integrity="sha256-InsNdER1b2xUewP+pKCUJpkhiqwHgqiPXDlIk7GzBu4=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI=" crossorigin=anonymous defer></script><script>window.addEventListener("DOMContentLoaded",()=>{renderMathInElement(document.querySelector(`.article-content`),{delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1},{left:"\\(",right:"\\)",display:!1},{left:"\\[",right:"\\]",display:!0}],ignoredClasses:["gist"]})})</script></article><div id=gitalk-container></div><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css><script src=https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js></script><script src=https://cdn.jsdelivr.net/npm/blueimp-md5@2.18.0/js/md5.min.js></script><script>const gitalk=new Gitalk({clientID:"3d41a2a237fabe050cc0",clientSecret:"f084dfe45a1c05955270776836298adf02732a02",repo:"crazy-canux.github.io",owner:"crazy-canux",admin:["crazy-canux"],distractionFreeMode:!1,id:md5(location.pathname)});(function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById("gitalk-container").innerHTML="Gitalk comments not available by default when the website is previewed locally.";return}gitalk.render("gitalk-container")})()</script><footer class=site-footer><section class=copyright>&copy;
+2013 -
+2026 Morgoth</section><section class=powerby>Designed by Canux<br></section></footer><div class=pswp tabindex=-1 role=dialog aria-hidden=true><div class=pswp__bg></div><div class=pswp__scroll-wrap><div class=pswp__container><div class=pswp__item></div><div class=pswp__item></div><div class=pswp__item></div></div><div class="pswp__ui pswp__ui--hidden"><div class=pswp__top-bar><div class=pswp__counter></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+<button class="pswp__button pswp__button--share" title=Share></button>
+<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button><div class=pswp__preloader><div class=pswp__preloader__icn><div class=pswp__preloader__cut><div class=pswp__preloader__donut></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class=pswp__share-tooltip></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+</button>
+<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button><div class=pswp__caption><div class=pswp__caption__center></div></div></div></div></div><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU=" crossorigin=anonymous defer></script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css crossorigin=anonymous><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css crossorigin=anonymous></main></div><script src=https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z+KMkF24hUW8WePSA9HM=" crossorigin=anonymous></script><script type=text/javascript src=/ts/main.js defer></script><script>(function(){const e=document.createElement("link");e.href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap",e.type="text/css",e.rel="stylesheet",document.head.appendChild(e)})()</script></body></html>

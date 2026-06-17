@@ -1,0 +1,216 @@
+<!doctype html><html lang=zh-CN dir=ltr><head><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'><meta name=description content='kubeadm https://github.com/kubernetes/kubeadm
+kubeadm是k8s自带的部署集群的工具.
+本机部署可以用minikube或者kind。
+Install 准备工作 https://kubernetes.io/zh/docs/setup/production-environment/tools/kubeadm/install-kubeadm/
+安装runtime https://kubernetes.io/zh/docs/setup/production-environment/container-runtimes/
+默认的cgroup驱动时cgroupfs,如果系统是systemd，就会有两个cgroup driver，会出问题.
+如果修改cgroup driver需要同时修改CRI和kubelet.
+修改containerd的cgroup driver:
+$ sudo vim /etc/containerd/config.toml #disabled_plugins = ["cri"] [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc.options] SystemdCgroup = true $ sudo systemctl restart containerd 修改kubelet的cgroup driver(kubeadm-config.yaml):
+# kubeadm-config.yaml kind: ClusterConfiguration apiVersion: kubeadm.k8s.io/v1beta3 kubernetesVersion: v1.21.0 // kubelet --version --- apiVersion: kubelet.config.k8s.io/v1beta1 kind: KubeletConfiguration cgroupDriver: systemd 安装kubeadm, kubelet, kubectl 在每台机器上安装 kubeadm, kubelet, kubectl:
+$ sudo apt-get update $ sudo apt-get install -y apt-transport-https ca-certificates curl $ sudo curl -fsSL https://mirrors.aliyun.com/kubernetes/apt/doc/apt-key.gpg | sudo apt-key add - $ echo "deb https://mirrors.aliyun.com/kubernetes/apt/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list $ sudo apt-get update $ sudo apt-get --yes --allow-unauthenticated install kubeadm kubelet kubectl $ sudo apt-mark hold kubelet kubeadm kubectl $ sudo systemctl enable kubelet Kubeadm CLI init:
+'><title>Kubeadm</title><link rel=canonical href=https://canuxcheng.com/post/k8s_kubeadm/><link rel=stylesheet href=/scss/style.min.22ad1c74b5bb435181c77741d99f034b2c36f7272eff9d0d1aa16d32e7e84673.css><meta property='og:title' content='Kubeadm'><meta property='og:description' content='kubeadm https://github.com/kubernetes/kubeadm
+kubeadm是k8s自带的部署集群的工具.
+本机部署可以用minikube或者kind。
+Install 准备工作 https://kubernetes.io/zh/docs/setup/production-environment/tools/kubeadm/install-kubeadm/
+安装runtime https://kubernetes.io/zh/docs/setup/production-environment/container-runtimes/
+默认的cgroup驱动时cgroupfs,如果系统是systemd，就会有两个cgroup driver，会出问题.
+如果修改cgroup driver需要同时修改CRI和kubelet.
+修改containerd的cgroup driver:
+$ sudo vim /etc/containerd/config.toml #disabled_plugins = ["cri"] [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc.options] SystemdCgroup = true $ sudo systemctl restart containerd 修改kubelet的cgroup driver(kubeadm-config.yaml):
+# kubeadm-config.yaml kind: ClusterConfiguration apiVersion: kubeadm.k8s.io/v1beta3 kubernetesVersion: v1.21.0 // kubelet --version --- apiVersion: kubelet.config.k8s.io/v1beta1 kind: KubeletConfiguration cgroupDriver: systemd 安装kubeadm, kubelet, kubectl 在每台机器上安装 kubeadm, kubelet, kubectl:
+$ sudo apt-get update $ sudo apt-get install -y apt-transport-https ca-certificates curl $ sudo curl -fsSL https://mirrors.aliyun.com/kubernetes/apt/doc/apt-key.gpg | sudo apt-key add - $ echo "deb https://mirrors.aliyun.com/kubernetes/apt/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list $ sudo apt-get update $ sudo apt-get --yes --allow-unauthenticated install kubeadm kubelet kubectl $ sudo apt-mark hold kubelet kubeadm kubectl $ sudo systemctl enable kubelet Kubeadm CLI init:
+'><meta property='og:url' content='https://canuxcheng.com/post/k8s_kubeadm/'><meta property='og:site_name' content='Morgoth'><meta property='og:type' content='article'><meta property='article:section' content='Post'><meta property='article:tag' content='k8s'><meta property='article:published_time' content='2019-12-30T21:47:17+08:00'><meta property='article:modified_time' content='2019-12-30T21:47:17+08:00'><meta name=twitter:title content="Kubeadm"><meta name=twitter:description content='kubeadm https://github.com/kubernetes/kubeadm
+kubeadm是k8s自带的部署集群的工具.
+本机部署可以用minikube或者kind。
+Install 准备工作 https://kubernetes.io/zh/docs/setup/production-environment/tools/kubeadm/install-kubeadm/
+安装runtime https://kubernetes.io/zh/docs/setup/production-environment/container-runtimes/
+默认的cgroup驱动时cgroupfs,如果系统是systemd，就会有两个cgroup driver，会出问题.
+如果修改cgroup driver需要同时修改CRI和kubelet.
+修改containerd的cgroup driver:
+$ sudo vim /etc/containerd/config.toml #disabled_plugins = ["cri"] [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc.options] SystemdCgroup = true $ sudo systemctl restart containerd 修改kubelet的cgroup driver(kubeadm-config.yaml):
+# kubeadm-config.yaml kind: ClusterConfiguration apiVersion: kubeadm.k8s.io/v1beta3 kubernetesVersion: v1.21.0 // kubelet --version --- apiVersion: kubelet.config.k8s.io/v1beta1 kind: KubeletConfiguration cgroupDriver: systemd 安装kubeadm, kubelet, kubectl 在每台机器上安装 kubeadm, kubelet, kubectl:
+$ sudo apt-get update $ sudo apt-get install -y apt-transport-https ca-certificates curl $ sudo curl -fsSL https://mirrors.aliyun.com/kubernetes/apt/doc/apt-key.gpg | sudo apt-key add - $ echo "deb https://mirrors.aliyun.com/kubernetes/apt/ kubernetes-xenial main" | sudo tee /etc/apt/sources.list.d/kubernetes.list $ sudo apt-get update $ sudo apt-get --yes --allow-unauthenticated install kubeadm kubelet kubectl $ sudo apt-mark hold kubelet kubeadm kubectl $ sudo systemctl enable kubelet Kubeadm CLI init:
+'><link rel="shortcut icon" href=favicon.ico><style>:root{--article-font-family:"Merriweather", var(--base-font-family)}</style><script>(function(){const e=document.createElement("link");e.href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap",e.type="text/css",e.rel="stylesheet",document.head.appendChild(e)})()</script></head><body class=article-page><script>(function(){const e="StackColorScheme";localStorage.getItem(e)||localStorage.setItem(e,"auto")})()</script><script>(function(){const t="StackColorScheme",e=localStorage.getItem(t),n=window.matchMedia("(prefers-color-scheme: dark)").matches===!0;e=="dark"||e==="auto"&&n?document.documentElement.dataset.scheme="dark":document.documentElement.dataset.scheme="light"})()</script><div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky"><button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label=切换菜单>
+<span class=hamburger-box><span class=hamburger-inner></span></span></button><header><figure class=site-avatar><a href=/><img src=/img/home_hu_7d22d46ad88d2427.jpg width=300 height=400 class=site-logo loading=lazy alt=Avatar>
+</a><span class=emoji>🍥</span></figure><div class=site-meta><h1 class=site-name><a href=/>Morgoth</a></h1><h2 class=site-description>Hello World!</h2></div></header><ol class=social-menu><li><a href=mailto:canuxcheng@163.com target=_blank title=E-mail rel=me><svg class="icon icon-tabler icon-tabler-messages" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M21 14l-3-3h-7a1 1 0 01-1-1V4a1 1 0 011-1h9a1 1 0 011 1v10"/><path d="M14 15v2a1 1 0 01-1 1H6l-3 3V11a1 1 0 011-1h2"/></svg></a></li><li><a href=https://github.com/crazy-canux target=_blank title=GitHub rel=me><svg class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6.0 00-1.3-3.2 4.2 4.2.0 00-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3.0 00-6.2.0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2.0 00-.1 3.2A4.6 4.6.0 004 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg></a></li></ol><ol class=menu id=main-menu><li><a href=/><svg class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="5 12 3 12 12 3 21 12 19 12"/><path d="M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/><path d="M9 21v-6a2 2 0 012-2h2a2 2 0 012 2v6"/></svg>
+<span>首页</span></a></li><li><a href=/about/><svg class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/></svg>
+<span>关于</span></a></li><li><a href=/categories/ target=_blank><svg class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg>
+<span>分类</span></a></li><li><a href=/tags/ target=_blank><svg class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11 3l9 9a1.5 1.5.0 010 2l-6 6a1.5 1.5.0 01-2 0L3 11V7a4 4 0 014-4h4"/><circle cx="9" cy="9" r="2"/></svg>
+<span>标签</span></a></li><li><a href=/rtfm/><svg class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+<span>RTFM</span></a></li><div class=menu-bottom-section><li id=i18n-switch><svg class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 5h7"/><path d="M9 3v2c0 4.418-2.239 8-5 8"/><path d="M5 9c-.003 2.144 2.952 3.908 6.7 4"/><path d="M12 20l4-9 4 9"/><path d="M19.1 18h-6.2"/></svg>
+<select name=language onchange="window.location.href=this.selectedOptions[0].value"><option value=https://canuxcheng.com/ selected>简体中文</option><option value=https://canuxcheng.com/en/>English</option></select></li><li id=dark-mode-toggle><svg class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="8" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<svg class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="16" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<span>暗色模式</span></li></div></ol></aside><aside class="sidebar right-sidebar sticky"><section class="widget archives"><div class=widget-icon><svg class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg></div><h2 class="widget-title section-title">目录</h2><div class=widget--toc><nav id=TableOfContents><ul><li><a href=#准备工作>准备工作</a></li><li><a href=#安装runtime>安装runtime</a></li><li><a href=#安装kubeadm-kubelet-kubectl>安装kubeadm, kubelet, kubectl</a></li></ul><ul><li><a href=#部署master>部署master</a></li><li><a href=#部署node>部署node</a></li><li><a href=#验证>验证</a></li><li><a href=#删除cluster>删除cluster</a></li></ul></nav></div></section></aside><main class="main full-width"><article class=main-article><header class=article-header><div class=article-details><header class=article-category><a href=/categories/cncf/>CNCF</a></header><div class=article-title-wrapper><h2 class=article-title><a href=/post/k8s_kubeadm/>Kubeadm</a></h2></div><footer class=article-time><div><svg class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg>
+<time class=article-time--published>Dec 30, 2019</time></div><div><svg class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+<time class=article-time--reading>阅读时长: 3 分钟</time></div></footer></div></header><section class=article-content><h1 id=kubeadm>kubeadm</h1><p><a class=link href=https://github.com/kubernetes/kubeadm target=_blank rel=noopener>https://github.com/kubernetes/kubeadm</a></p><p>kubeadm是k8s自带的部署集群的工具.</p><p>本机部署可以用minikube或者kind。</p><hr><h1 id=install>Install</h1><h2 id=准备工作>准备工作</h2><p><a class=link href=https://kubernetes.io/zh/docs/setup/production-environment/tools/kubeadm/install-kubeadm/ target=_blank rel=noopener>https://kubernetes.io/zh/docs/setup/production-environment/tools/kubeadm/install-kubeadm/</a></p><h2 id=安装runtime>安装runtime</h2><p><a class=link href=https://kubernetes.io/zh/docs/setup/production-environment/container-runtimes/ target=_blank rel=noopener>https://kubernetes.io/zh/docs/setup/production-environment/container-runtimes/</a></p><p>默认的cgroup驱动时cgroupfs,如果系统是systemd，就会有两个cgroup driver，会出问题.</p><p>如果修改cgroup driver需要同时修改CRI和kubelet.</p><p>修改containerd的cgroup driver:</p><pre><code>$ sudo vim /etc/containerd/config.toml
+#disabled_plugins = [&quot;cri&quot;]
+[plugins.&quot;io.containerd.grpc.v1.cri&quot;.containerd.runtimes.runc.options]
+  SystemdCgroup = true
+
+$ sudo systemctl restart containerd
+</code></pre><p>修改kubelet的cgroup driver(kubeadm-config.yaml):</p><pre><code># kubeadm-config.yaml
+kind: ClusterConfiguration
+apiVersion: kubeadm.k8s.io/v1beta3
+kubernetesVersion: v1.21.0    // kubelet --version
+---
+apiVersion: kubelet.config.k8s.io/v1beta1
+kind: KubeletConfiguration
+cgroupDriver: systemd
+</code></pre><h2 id=安装kubeadm-kubelet-kubectl>安装kubeadm, kubelet, kubectl</h2><p>在每台机器上安装 kubeadm, kubelet, kubectl:</p><pre><code>$ sudo apt-get update
+$ sudo apt-get install -y apt-transport-https ca-certificates curl
+$ sudo curl -fsSL https://mirrors.aliyun.com/kubernetes/apt/doc/apt-key.gpg | sudo apt-key add - 
+$ echo &quot;deb https://mirrors.aliyun.com/kubernetes/apt/ kubernetes-xenial main&quot; | sudo tee /etc/apt/sources.list.d/kubernetes.list
+$ sudo apt-get update
+$ sudo apt-get --yes --allow-unauthenticated install kubeadm kubelet kubectl
+$ sudo apt-mark hold kubelet kubeadm kubectl
+$ sudo systemctl enable kubelet
+</code></pre><hr><h1 id=kubeadm-cli>Kubeadm CLI</h1><p>init:</p><pre><code>$ kubeadm init 
+--config kubeadm-config.yaml
+--kubernetes-version &lt;version&gt; // kubelet --version
+--apiserver-advertise-address &lt;master&gt; // 多网卡指定网卡IP
+--image-repository &lt;registry&gt; // default: k8s.gcr.io
+--pod-network-cidr &lt;cidr&gt; // 指定pod的cidr
+--service-cidr &lt;cidr&gt; // default: 10.96.0.0/12
+--service-dns-domain // default: cluster.local
+--cri-socket // 如果安装了多个cri需要指定.
+--ignore-preflight-errors
+--upload-certs
+</code></pre><p>join:</p><pre><code>$ kubeadm join [apiserver-advertise-address] --token &lt;token&gt; --discovery-token-ca-cert-hash &lt;hash&gt;
+</code></pre><p>reset:</p><pre><code>$ kubeadm reset -f/--force
+</code></pre><p>token:</p><pre><code>$ kubeadm token create/delete/generate/list
+</code></pre><hr><h1 id=部署cluster>部署Cluster</h1><h2 id=部署master>部署master</h2><p>关闭swap</p><pre><code>$ sudo swapoff -a
+</code></pre><p>初始化</p><pre><code>$ sudo kubeadm init \
+--pod-network-cidr=10.244.0.0/16 \
+--apiserver-advertise-address=&lt;IP&gt; \
+--kubernetes-version=v1.17.0 \
+--image-repository=registry.aliyuncs.com/google_containers \
+--cri-socket=/run/containerd/containerd.sock \
+-v=6
+// --config 一般使用默认即可.
+// --pod-network-cidr=10.244.0.0/16 是固定用法，表示选择flannel为网络插件。
+// --image-repository 指定registry, 默认是gcr
+</code></pre><p>配置当前帐号</p><pre><code>mkdir -p $HOME/.kube
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
+</code></pre><p>部署网络插件</p><pre><code>// 在所有node上部署cni-plugin:
+// &lt;https://github.com/containernetworking/plugins/releases&gt;
+$ sudo mkdir -p /opt/cni/bin
+// 下载并解压所有插件命令到该目录. 默认CNI_PATH=/opt/cni/bin
+
+// &lt;https://docs.cilium.io/en/stable/installation/k8s-install-kubeadm/&gt;
+// cilium会自动下载plugins到/opt/cni/bin.
+
+// &lt;https://github.com/flannel-io/flannel&gt;
+$ kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+</code></pre><p>配置master是否部署pod</p><pre><code># enable master deploy pod (默认不部署pod到master)
+kubectl taint nodes --all node-role.kubernetes.io/control-plane-
+
+# disable master deploy pod
+kubectl taint nodes &lt;node&gt; node-role.kubernetes.io/master=true:NoSchedule
+</code></pre><h2 id=部署node>部署node</h2><pre><code>$ sudo swapoff -a
+
+// 如果有vpn，kubeadm会自动下载安装
+// 在所有node上部署cni-plugin:
+// &lt;https://github.com/containernetworking/plugins/releases&gt;
+$ sudo mkdir -p /opt/cni/bin
+// 下载并解压所有插件命令到该目录.
+
+$ sudo kubeadm join 192.168.1.1:6443 \
+--token 8po0v5.m1qlbc7w0btq15of \
+--discovery-token-ca-cert-hash sha256:21d8365e336d5218637ddf26e2ec5d91c7dd2de518dbe47973e089837b13265b
+</code></pre><h2 id=验证>验证</h2><pre><code>$ kubectl get pods -n kube-system
+$ kubectl get nodes
+</code></pre><h2 id=删除cluster>删除cluster</h2><p>所有node运行:</p><pre><code>$ sudo kubeadm reset -f
+// 自动停止kubelet并且删除下列文件和目录
+[/etc/kubernetes/manifests /etc/kubernetes/pki]
+[/etc/kubernetes/admin.conf /etc/kubernetes/kubelet.conf /etc/kubernetes/bootstrap-kubelet.conf /etc/kubernetes/controller-manager.conf /etc/kubernetes/scheduler.conf]
+[/var/lib/etcd /var/lib/kubelet /var/lib/dockershim /var/run/kubernetes /var/lib/cni]
+</code></pre><p>需要手动删除:</p><pre><code>$ sudo rm -rf /etc/cni/net.d
+</code></pre><p>所有node上删除flannel的网络配置</p><pre><code>$ sudo ifconfig cni0 down
+$ sudo ip link delete cni0
+$ sudo ifconfig flannel.1 down
+$ sudo ip link delete flannel.1
+$ sudo rm -rf /run/flannel
+</code></pre><p>所有node清空iptables</p><pre><code>$ sudo iptables -F
+$ sudo iptables -X
+$ sudo iptables -t nat -F
+$ sudo iptables -t nat -X
+</code></pre><p>如果使用了IPVS:</p><pre><code>$ ipvsadm --clear
+</code></pre><p>删除配置</p><pre><code>$ rm -rf $HOME/.kube
+</code></pre><h1 id=部署ha-cluster>部署HA Cluster</h1><p>ha需要在所有master节点安装haproxy和keepalived.</p><p><a class=link href=https://kubernetes.io/zh/docs/setup/production-environment/tools/kubeadm/high-availability/ target=_blank rel=noopener>https://kubernetes.io/zh/docs/setup/production-environment/tools/kubeadm/high-availability/</a></p><p><a class=link href=https://github.com/kubernetes/kubeadm/blob/master/docs/ha-considerations.md#options-for-software-load-balancing target=_blank rel=noopener>https://github.com/kubernetes/kubeadm/blob/master/docs/ha-considerations.md#options-for-software-load-balancing</a></p><p>在master1上初始化：</p><pre><code>$ sudo kubeadm init --config ./kubeadm.yaml -v=6 --upload-certs
+</code></pre><p>加入其它master:</p><pre><code>$ sudo kubeadm join 192.168.1.200:8443 --token &lt;token&gt; --discovery-token-ca-cert-hash &lt;hash&gt; --control-plane --certificate-key &lt;key&gt;
+</code></pre><p>加入node:</p><pre><code>$ sudo kubeadm join 192.168.1.200:8443 --token &lt;token&gt; --discovery-token-ca-cert-hash &lt;hash&gt;
+</code></pre><hr><h1 id=配置>配置</h1><p><a class=link href=https://kubernetes.io/zh/docs/setup/production-environment/tools/kubeadm/control-plane-flags/ target=_blank rel=noopener>https://kubernetes.io/zh/docs/setup/production-environment/tools/kubeadm/control-plane-flags/</a></p><p>使用自定义配置:</p><pre><code>$ sudo kubeadm init --config ./config.yaml -v=6
+</code></pre><p>查看默认配置:</p><pre><code>$ kubeadm config print init-defaults
+</code></pre><p>配置kubeadm：</p><pre><code>apiVersion: kubeadm.k8s.io/v1beta2
+kind: InitConfiguration
+bootstrapTokens:
+- groups:
+  - system:bootstrappers:kubeadm:default-node-token
+  token: abcdef.0123456789abcdef
+  ttl: 24h0m0s
+  usages:
+  - signing
+  - authentication
+localAPIEndpoint:
+  advertiseAddress: 10.103.1.1 // master IP
+  bindPort: 6443
+nodeRegistration:
+  criSocket: /run/containerd/containerd.sock
+  name: debug // master hostname
+  taints:
+  - effect: NoSchedule
+    key: node-role.kubernetes.io/master
+</code></pre><p>配置kubernetes:</p><pre><code>// 定制control plane
+&lt;https://kubernetes.io/zh/docs/setup/production-environment/tools/kubeadm/control-plane-flags/&gt;
+apiVersion: kubeadm.k8s.io/v1beta2
+kind: ClusterConfiguration
+certificatesDir: /etc/kubernetes/pki
+clusterName: kubernetes
+controlPlaneEndpoint: 10.58.203.200:8443 // HA中haproxy的VIP和port
+dns:
+  type: CoreDNS
+etcd:
+  local:
+    dataDir: /var/lib/etcd
+networking:
+  dnsDomain: cluster.local
+  serviceSubnet: 10.96.0.0/12
+  podSubnet: 10.244.0.0/16 // for flannel
+imageRepository: k8s.gcr.io
+kubernetesVersion: v1.18.6
+
+controllerManager:
+  ...
+  extraArgs:
+    &lt;https://kubernetes.io/docs/reference/command-line-tools-reference/kube-controller-manager/&gt;
+    allocate-node-cidrs: 'true'
+    node-cidr-mask-size: '16' // flannel的SubNetLen
+    cluster-cidr: '10.0.0.0/8' // flannel的Network
+    service-cluster-ip-range: 10.96.0.0/12
+
+apiServer:
+  timeoutForControlPlane: 4m0s
+  &lt;https://kubernetes.io/docs/reference/command-line-tools-reference/kube-apiserver/&gt;
+    extraArgs:
+      advertise-address: 192.168.0.103
+      service-cluster-ip-range: 10.96.0.0/12
+      ...
+      
+scheduler:
+  ...
+  &lt;https://kubernetes.io/docs/reference/command-line-tools-reference/kube-scheduler/&gt;
+  extraArgs:
+    ...
+</code></pre><p>修改kubelet的cgroup driver:</p><pre><code>apiVersion: kubelet.config.k8s.io/v1beta1
+kind: KubeletConfiguration
+cgroupDriver: systemd
+</code></pre></section><footer class=article-footer><section class=article-tags><a href=/tags/k8s/>K8s</a></section></footer><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css integrity="sha256-J+iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s=" crossorigin=anonymous><script src=https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js integrity="sha256-InsNdER1b2xUewP+pKCUJpkhiqwHgqiPXDlIk7GzBu4=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI=" crossorigin=anonymous defer></script><script>window.addEventListener("DOMContentLoaded",()=>{renderMathInElement(document.querySelector(`.article-content`),{delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1},{left:"\\(",right:"\\)",display:!1},{left:"\\[",right:"\\]",display:!0}],ignoredClasses:["gist"]})})</script></article><div id=gitalk-container></div><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css><script src=https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js></script><script src=https://cdn.jsdelivr.net/npm/blueimp-md5@2.18.0/js/md5.min.js></script><script>const gitalk=new Gitalk({clientID:"3d41a2a237fabe050cc0",clientSecret:"f084dfe45a1c05955270776836298adf02732a02",repo:"crazy-canux.github.io",owner:"crazy-canux",admin:["crazy-canux"],distractionFreeMode:!1,id:md5(location.pathname)});(function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById("gitalk-container").innerHTML="Gitalk comments not available by default when the website is previewed locally.";return}gitalk.render("gitalk-container")})()</script><footer class=site-footer><section class=copyright>&copy;
+2013 -
+2026 Morgoth</section><section class=powerby>Designed by Canux<br></section></footer><div class=pswp tabindex=-1 role=dialog aria-hidden=true><div class=pswp__bg></div><div class=pswp__scroll-wrap><div class=pswp__container><div class=pswp__item></div><div class=pswp__item></div><div class=pswp__item></div></div><div class="pswp__ui pswp__ui--hidden"><div class=pswp__top-bar><div class=pswp__counter></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+<button class="pswp__button pswp__button--share" title=Share></button>
+<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button><div class=pswp__preloader><div class=pswp__preloader__icn><div class=pswp__preloader__cut><div class=pswp__preloader__donut></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class=pswp__share-tooltip></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+</button>
+<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button><div class=pswp__caption><div class=pswp__caption__center></div></div></div></div></div><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU=" crossorigin=anonymous defer></script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css crossorigin=anonymous><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css crossorigin=anonymous></main></div><script src=https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z+KMkF24hUW8WePSA9HM=" crossorigin=anonymous></script><script type=text/javascript src=/ts/main.js defer></script><script>(function(){const e=document.createElement("link");e.href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap",e.type="text/css",e.rel="stylesheet",document.head.appendChild(e)})()</script></body></html>

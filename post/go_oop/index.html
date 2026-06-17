@@ -1,0 +1,224 @@
+<!doctype html><html lang=zh-CN dir=ltr><head><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'><meta name=description content='Go面向对象 golang不是传统的面向对象编程，而是通过struct, method, interface, embedding实现面向对象的核心功能.
+方法/method go中没有类，但是可以为结构体定义方法．
+方法就是一类带有特殊的　接收者参数　的函数．
+只能为同一包内定义的类型的接收者申明方法，不能为其它包内定义的类型的接收者申明方法．
+除了结构体还可以为非结构体申明方法，但是不能为内建类型申明方法．
+方法有两种接收者,值接收者和指针接收者.
+type Vertex struct { ... } 值接收者:
+值接收者操作的是值的副本.
+func (v Vertex) MethodName() rType { ... } var v Vertex v.MethodName() // 操作值的副本 # 使用指针接收者来调用值接收者的方法，编译器会自动做类型转换 vp := new(Vertex) vp.MethodName() // 指针被解引用为值,(*vp).MethodName(),操作的是指针指向的值的副本. 指针接收者：
+指针接收者，调用方法的时候操作的是该指针指向的值.
+# 指针接收者的方法可以修改接收者指向的值 func (v *Vertex) MethodName() rType { ... } vp := new(Vertex) vp.MethodName() // 操作实际的值 # 使用值接收者来调用指针接收者的方法，编译器会自动做类型转换. var v Vertex v.MethodName() // (&amp;v).MethodName() , 操作的是实际的值 接口/Interface 接口是引用类型. zero value is nil.
+'><title>OOP</title><link rel=canonical href=https://canuxcheng.com/post/go_oop/><link rel=stylesheet href=/scss/style.min.22ad1c74b5bb435181c77741d99f034b2c36f7272eff9d0d1aa16d32e7e84673.css><meta property='og:title' content='OOP'><meta property='og:description' content='Go面向对象 golang不是传统的面向对象编程，而是通过struct, method, interface, embedding实现面向对象的核心功能.
+方法/method go中没有类，但是可以为结构体定义方法．
+方法就是一类带有特殊的　接收者参数　的函数．
+只能为同一包内定义的类型的接收者申明方法，不能为其它包内定义的类型的接收者申明方法．
+除了结构体还可以为非结构体申明方法，但是不能为内建类型申明方法．
+方法有两种接收者,值接收者和指针接收者.
+type Vertex struct { ... } 值接收者:
+值接收者操作的是值的副本.
+func (v Vertex) MethodName() rType { ... } var v Vertex v.MethodName() // 操作值的副本 # 使用指针接收者来调用值接收者的方法，编译器会自动做类型转换 vp := new(Vertex) vp.MethodName() // 指针被解引用为值,(*vp).MethodName(),操作的是指针指向的值的副本. 指针接收者：
+指针接收者，调用方法的时候操作的是该指针指向的值.
+# 指针接收者的方法可以修改接收者指向的值 func (v *Vertex) MethodName() rType { ... } vp := new(Vertex) vp.MethodName() // 操作实际的值 # 使用值接收者来调用指针接收者的方法，编译器会自动做类型转换. var v Vertex v.MethodName() // (&amp;v).MethodName() , 操作的是实际的值 接口/Interface 接口是引用类型. zero value is nil.
+'><meta property='og:url' content='https://canuxcheng.com/post/go_oop/'><meta property='og:site_name' content='Morgoth'><meta property='og:type' content='article'><meta property='article:section' content='Post'><meta property='article:tag' content='oop'><meta property='article:published_time' content='2018-01-01T10:49:21+00:00'><meta property='article:modified_time' content='2018-01-01T10:49:21+00:00'><meta name=twitter:title content="OOP"><meta name=twitter:description content="Go面向对象 golang不是传统的面向对象编程，而是通过struct, method, interface, embedding实现面向对象的核心功能.
+方法/method go中没有类，但是可以为结构体定义方法．
+方法就是一类带有特殊的　接收者参数　的函数．
+只能为同一包内定义的类型的接收者申明方法，不能为其它包内定义的类型的接收者申明方法．
+除了结构体还可以为非结构体申明方法，但是不能为内建类型申明方法．
+方法有两种接收者,值接收者和指针接收者.
+type Vertex struct { ... } 值接收者:
+值接收者操作的是值的副本.
+func (v Vertex) MethodName() rType { ... } var v Vertex v.MethodName() // 操作值的副本 # 使用指针接收者来调用值接收者的方法，编译器会自动做类型转换 vp := new(Vertex) vp.MethodName() // 指针被解引用为值,(*vp).MethodName(),操作的是指针指向的值的副本. 指针接收者：
+指针接收者，调用方法的时候操作的是该指针指向的值.
+# 指针接收者的方法可以修改接收者指向的值 func (v *Vertex) MethodName() rType { ... } vp := new(Vertex) vp.MethodName() // 操作实际的值 # 使用值接收者来调用指针接收者的方法，编译器会自动做类型转换. var v Vertex v.MethodName() // (&amp;v).MethodName() , 操作的是实际的值 接口/Interface 接口是引用类型. zero value is nil.
+"><link rel="shortcut icon" href=favicon.ico><style>:root{--article-font-family:"Merriweather", var(--base-font-family)}</style><script>(function(){const e=document.createElement("link");e.href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap",e.type="text/css",e.rel="stylesheet",document.head.appendChild(e)})()</script></head><body class=article-page><script>(function(){const e="StackColorScheme";localStorage.getItem(e)||localStorage.setItem(e,"auto")})()</script><script>(function(){const t="StackColorScheme",e=localStorage.getItem(t),n=window.matchMedia("(prefers-color-scheme: dark)").matches===!0;e=="dark"||e==="auto"&&n?document.documentElement.dataset.scheme="dark":document.documentElement.dataset.scheme="light"})()</script><div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky"><button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label=切换菜单>
+<span class=hamburger-box><span class=hamburger-inner></span></span></button><header><figure class=site-avatar><a href=/><img src=/img/home_hu_7d22d46ad88d2427.jpg width=300 height=400 class=site-logo loading=lazy alt=Avatar>
+</a><span class=emoji>🍥</span></figure><div class=site-meta><h1 class=site-name><a href=/>Morgoth</a></h1><h2 class=site-description>Hello World!</h2></div></header><ol class=social-menu><li><a href=mailto:canuxcheng@163.com target=_blank title=E-mail rel=me><svg class="icon icon-tabler icon-tabler-messages" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M21 14l-3-3h-7a1 1 0 01-1-1V4a1 1 0 011-1h9a1 1 0 011 1v10"/><path d="M14 15v2a1 1 0 01-1 1H6l-3 3V11a1 1 0 011-1h2"/></svg></a></li><li><a href=https://github.com/crazy-canux target=_blank title=GitHub rel=me><svg class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6.0 00-1.3-3.2 4.2 4.2.0 00-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3.0 00-6.2.0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2.0 00-.1 3.2A4.6 4.6.0 004 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg></a></li></ol><ol class=menu id=main-menu><li><a href=/><svg class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="5 12 3 12 12 3 21 12 19 12"/><path d="M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/><path d="M9 21v-6a2 2 0 012-2h2a2 2 0 012 2v6"/></svg>
+<span>首页</span></a></li><li><a href=/about/><svg class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/></svg>
+<span>关于</span></a></li><li><a href=/categories/ target=_blank><svg class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg>
+<span>分类</span></a></li><li><a href=/tags/ target=_blank><svg class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11 3l9 9a1.5 1.5.0 010 2l-6 6a1.5 1.5.0 01-2 0L3 11V7a4 4 0 014-4h4"/><circle cx="9" cy="9" r="2"/></svg>
+<span>标签</span></a></li><li><a href=/rtfm/><svg class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+<span>RTFM</span></a></li><div class=menu-bottom-section><li id=i18n-switch><svg class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 5h7"/><path d="M9 3v2c0 4.418-2.239 8-5 8"/><path d="M5 9c-.003 2.144 2.952 3.908 6.7 4"/><path d="M12 20l4-9 4 9"/><path d="M19.1 18h-6.2"/></svg>
+<select name=language onchange="window.location.href=this.selectedOptions[0].value"><option value=https://canuxcheng.com/ selected>简体中文</option><option value=https://canuxcheng.com/en/>English</option></select></li><li id=dark-mode-toggle><svg class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="8" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<svg class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="16" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<span>暗色模式</span></li></div></ol></aside><aside class="sidebar right-sidebar sticky"><section class="widget archives"><div class=widget-icon><svg class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg></div><h2 class="widget-title section-title">目录</h2><div class=widget--toc><nav id=TableOfContents><ul><li><a href=#方法method>方法/method</a></li><li><a href=#接口interface>接口/Interface</a></li><li><a href=#封装encapsulation>封装Encapsulation</a></li><li><a href=#多态polymorphism>多态Polymorphism</a></li><li><a href=#继承inheritance>继承Inheritance</a></li><li><a href=#反射reflection>反射Reflection</a></li></ul></nav></div></section></aside><main class="main full-width"><article class=main-article><header class=article-header><div class=article-details><header class=article-category><a href=/categories/golang/>Golang</a></header><div class=article-title-wrapper><h2 class=article-title><a href=/post/go_oop/>OOP</a></h2></div><footer class=article-time><div><svg class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg>
+<time class=article-time--published>Jan 01, 2018</time></div><div><svg class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+<time class=article-time--reading>阅读时长: 3 分钟</time></div></footer></div></header><section class=article-content><h1 id=go面向对象>Go面向对象</h1><p>golang不是传统的面向对象编程，而是通过struct, method, interface, embedding实现面向对象的核心功能.</p><hr><h2 id=方法method>方法/method</h2><p>go中没有类，但是可以为结构体定义方法．</p><p>方法就是一类带有特殊的　接收者参数　的函数．</p><p>只能为同一包内定义的类型的接收者申明方法，不能为其它包内定义的类型的接收者申明方法．</p><p>除了结构体还可以为非结构体申明方法，但是不能为内建类型申明方法．</p><p>方法有两种接收者,值接收者和指针接收者.</p><pre><code>type Vertex struct {
+    ...
+}
+</code></pre><p>值接收者:</p><p>值接收者操作的是值的副本.</p><pre><code>func (v Vertex) MethodName() rType {
+    ...
+}
+
+var v Vertex
+v.MethodName() // 操作值的副本
+
+# 使用指针接收者来调用值接收者的方法，编译器会自动做类型转换
+vp := new(Vertex)
+vp.MethodName() // 指针被解引用为值,(*vp).MethodName(),操作的是指针指向的值的副本.
+</code></pre><p>指针接收者：</p><p>指针接收者，调用方法的时候操作的是该指针指向的值.</p><pre><code># 指针接收者的方法可以修改接收者指向的值
+func (v *Vertex) MethodName() rType {
+    ...
+}
+
+vp := new(Vertex)
+vp.MethodName() // 操作实际的值
+
+# 使用值接收者来调用指针接收者的方法，编译器会自动做类型转换.
+var v Vertex
+v.MethodName() // (&amp;v).MethodName() , 操作的是实际的值
+</code></pre><hr><h2 id=接口interface>接口/Interface</h2><p>接口是引用类型. zero value is nil.</p><p>接口类型是由一组方法签名定义的集合, 任何实现了这些方法的类型，自动被认为实现了这个接口。．</p><p>某个类型实现了该接口的所有方法签名，就算实现了该接口,无需显示申明实现了哪个接口.</p><p>接口可以匿名嵌入其它接口，或嵌入到结构中．</p><p>一般只有一个方法的接口命名为MethodName + &rsquo;er'.</p><p>接口存储两个数据接口：</p><ul><li>iTable, 包含存储值的类型信息以及和该值关联的方法.</li><li>指向存储的值的指针.</li></ul><p>定义接口：</p><pre><code>type Speaker interface {
+    Speak()
+}
+
+type Animal struct {
+    Name string
+}
+
+func (a Animal) Speak() {
+    ...
+}
+</code></pre><p>值接收者方法:</p><p>接口类型的值为值或指针都可以调用该方法.</p><pre><code>func (s SName) MethodName() {}
+</code></pre><p>指针接收者方法:</p><p>接口类型的值必须为指针才能调用该方法.</p><pre><code>func (s *SName) MethodName() {
+    ...
+}
+
+s := &amp;SName{...}
+// i = &amp;SName{...} //接口变量能保存实现了该接口的任意类型的对象
+i = s
+i.MethodName()
+
+# 接口类型为值时，调用失败
+var s SName
+i = s
+i.MethodName() // 调用失败
+</code></pre><ul><li>空接口：</li></ul><p>所有类型都实现了空接口.</p><p>指定了零个方法的接口值被称为空接口,一般用来处理未知类型的值.</p><p>当接口储存的类型和对象都为nil，接口才为nil</p><p>以空接口为参数的函数可以接收任意类型的值作为参数.</p><p>如果一个函数返回空接口就可以返回任意类型的值.</p><pre><code>var x interface{}
+x = 43
+x = &quot;hello&quot;
+
+# 空接口可以保存任何类型的值
+var i interface{}
+# 空接口作为形参
+func FuncName(i interface{}) {}
+</code></pre><ul><li>指针的类型断言/comma-ok断言：</li></ul><p>断言接口值i保存了具体类型Type, 并将底层类型为Type的值赋予变量t.</p><pre><code>只返回一个值，断言失败会触发panic.
+t := i.(Type)
+
+返回两个值，断言成功返回true, 失败返回false.
+var x interface{} = &quot;hello&quot;
+str, ok := x.(string) // ok=true
+num, ok := x.(int) // ok=false 断言失败
+
+// i.(type) 是固定写法
+switch v := i.(type) {
+case string:
+    fmt.Println(&quot;string&quot;)
+case int:
+    fmt.Println(&quot;int&quot;)
+default:
+    fmt.Println(&quot;unknown type&quot;)
+}
+</code></pre><ul><li>嵌入接口:</li></ul><p>接口中可以嵌入其它接口，这样实现了该接口的对象就隐式包含嵌入接口的所有方法.</p><pre><code>type Reader interface {
+    Read()
+}
+
+type Writer interface {
+    Write()
+}
+
+type ReadWriter interface {
+    Reader
+    Writer
+}
+</code></pre><hr><h2 id=封装encapsulation>封装Encapsulation</h2><p>小写字母开头的标识符（类型/属性/方法&mldr;)是未公开的，只能在当前包引用，不能在其它包引用。</p><p>可以通过创建工厂函数对外暴露未公开的标识符:</p><ul><li>标识符才有公开或未公开属性，值没有</li><li>短变量声明操作符，有能力捕获引用的类型，并创建一个未公开的类型的变量；显示声明的变量不能引用未公开类型。</li></ul><p>通过工厂函数返回未公开类型的值:</p><pre><code># packageA
+type privateType  Type
+func New(args) privateType {
+    return privateType(args)
+}
+# packageB
+import packageA
+func main() {
+    b := packageA.New(args) // 返回一个值，而不是标识符
+}
+</code></pre><p>公开类型的未公开属性:</p><pre><code># packageA
+type Public struct {
+    private Type
+}
+
+# packageB
+import packageA
+func main() {
+    b := packageA.Public{
+        private: value, // panic, 公开类型的未公开属性不能通过字面量直接赋值
+    }
+}
+</code></pre><p>类型嵌套中的未公开类型的公开属性会提升到外部类型:</p><pre><code># packageA
+type inner struct { // inner private
+    In Type  // In public
+}
+type Outer struct {
+    inner
+    Out Type
+}
+
+# packageB
+import packageA
+func main() {
+    b := packageA.Outer{
+        Out: value, // 外部类型中的未公开内部类型不能通过字面量直接赋值
+    }
+    b.In = value // 内部类型的公开属性提升到外部类型。
+}
+</code></pre><h2 id=多态polymorphism>多态Polymorphism</h2><p>golang多态通过interface实现。</p><p>形式参数是接口的函数，叫做多态函数.</p><pre><code>func FuncName(iVar IName) {}
+</code></pre><p>所有实现了接口的方法的实体类型，就可以作为参数传给多态函数.</p><pre><code>type Speaker interface {
+    Speak()
+}
+</code></pre><p>实现1</p><pre><code>type Dog struct{}
+func (d Dog) Speak() {
+    fmt.Println(&quot;dog&quot;)
+}
+</code></pre><p>实现2</p><pre><code>type Cat struct{}
+func (c Cat) Speak() {
+    fmt.Println(&quot;cat&quot;)
+}
+</code></pre><p>多态函数</p><pre><code>func makeSound(s Speaker) {
+    s.Speak()
+}
+
+func main() {
+    var d Dog
+    var c Cat
+    makeSound(d) // dog
+    makeSound(c) // cat
+}
+</code></pre><hr><h2 id=继承inheritance>继承Inheritance</h2><p>golang没有继承，但是可以通过结构体嵌套实现继承行为。</p><p>如果外部类型实现同名的属性或方法，就会覆盖内部类型的属性或方法（不过内部类型的属性和方法还在，可以通过内部类型访问）</p><p>内部类型实现的接口，也会自动提升到外部类型。只要内部类型实现了某接口，外部类型相当于也实现了该接口。</p><p>如果匿名字段实现了一个方法，那么包含这个匿名字段的结构也可以调用该方法.</p><pre><code>type Inner struct {
+    in Type
+}
+
+func (i *Inner) InnerMethod() {}
+
+type Outer struct {
+    Inner    // 只需要类型名称，不需要声明变量
+    out Type
+    ...
+}
+
+outer := Outer{}
+
+outer.Inner.InnerMethod() //始终可以访问内部类型的方法，即使外部类型实现同名方法
+outer.Inner.in // 同上
+
+outer.InnerMethod() //如果外部类型没有实现同名方法，就是内部类型方法，否则是外部类型方法
+outer.in // 同上
+</code></pre><hr><h2 id=反射reflection>反射Reflection</h2><p>反射就是检查程序在运行时的状态.</p><p>使用反射一般使用标准库reflect.</p><p>Go 的反射通过 reflect.TypeOf() 和 reflect.ValueOf() 在运行时检查或操作对象，是实现泛型、序列化、ORM、接口断言等动态功能的基础。</p><pre><code>import &quot;reflect&quot;
+x := 123
+t := reflect.TypeOf(x)   // int
+v := reflect.ValueOf(x)  // 123
+k := t.Kind()            // reflect.Int
+</code></pre></section><footer class=article-footer><section class=article-tags><a href=/tags/oop/>Oop</a></section></footer><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css integrity="sha256-J+iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s=" crossorigin=anonymous><script src=https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js integrity="sha256-InsNdER1b2xUewP+pKCUJpkhiqwHgqiPXDlIk7GzBu4=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI=" crossorigin=anonymous defer></script><script>window.addEventListener("DOMContentLoaded",()=>{renderMathInElement(document.querySelector(`.article-content`),{delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1},{left:"\\(",right:"\\)",display:!1},{left:"\\[",right:"\\]",display:!0}],ignoredClasses:["gist"]})})</script></article><div id=gitalk-container></div><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css><script src=https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js></script><script src=https://cdn.jsdelivr.net/npm/blueimp-md5@2.18.0/js/md5.min.js></script><script>const gitalk=new Gitalk({clientID:"3d41a2a237fabe050cc0",clientSecret:"f084dfe45a1c05955270776836298adf02732a02",repo:"crazy-canux.github.io",owner:"crazy-canux",admin:["crazy-canux"],distractionFreeMode:!1,id:md5(location.pathname)});(function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById("gitalk-container").innerHTML="Gitalk comments not available by default when the website is previewed locally.";return}gitalk.render("gitalk-container")})()</script><footer class=site-footer><section class=copyright>&copy;
+2013 -
+2026 Morgoth</section><section class=powerby>Designed by Canux<br></section></footer><div class=pswp tabindex=-1 role=dialog aria-hidden=true><div class=pswp__bg></div><div class=pswp__scroll-wrap><div class=pswp__container><div class=pswp__item></div><div class=pswp__item></div><div class=pswp__item></div></div><div class="pswp__ui pswp__ui--hidden"><div class=pswp__top-bar><div class=pswp__counter></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+<button class="pswp__button pswp__button--share" title=Share></button>
+<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button><div class=pswp__preloader><div class=pswp__preloader__icn><div class=pswp__preloader__cut><div class=pswp__preloader__donut></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class=pswp__share-tooltip></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+</button>
+<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button><div class=pswp__caption><div class=pswp__caption__center></div></div></div></div></div><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU=" crossorigin=anonymous defer></script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css crossorigin=anonymous><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css crossorigin=anonymous></main></div><script src=https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z+KMkF24hUW8WePSA9HM=" crossorigin=anonymous></script><script type=text/javascript src=/ts/main.js defer></script><script>(function(){const e=document.createElement("link");e.href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap",e.type="text/css",e.rel="stylesheet",document.head.appendChild(e)})()</script></body></html>

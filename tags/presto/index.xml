@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Presto on Morgoth</title><link>https://canuxcheng.com/tags/presto/</link><description>Recent content in Presto on Morgoth</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 24 Apr 2017 22:57:37 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/presto/index.xml" rel="self" type="application/rss+xml"/><item><title>Presto</title><link>https://canuxcheng.com/post/presto/</link><pubDate>Mon, 24 Apr 2017 22:57:37 +0000</pubDate><guid>https://canuxcheng.com/post/presto/</guid><description>&lt;h1 id="presto"&gt;Presto&lt;/h1&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/prestodb" target="_blank" rel="noopener"
+&gt;https://github.com/prestodb&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://prestodb.io/" target="_blank" rel="noopener"
+&gt;https://prestodb.io/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;presto的client: presto-cli(rename to presto)&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id="presto-cli"&gt;presto-cli&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;$ presto --server localhost:8080 --catalog hive --schema default
+# jdbc for presto
+$ jdbc:presto://host:port/catalog/schema
+&lt;/code&gt;&lt;/pre&gt;</description></item></channel></rss>

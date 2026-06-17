@@ -1,0 +1,378 @@
+<!doctype html><html lang=zh-CN dir=ltr><head><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'><meta name=description content="builtins python的内置模块，所有python的内置功能都在这个模块中，不需要import导入就可以使用。
+包括内置类类型以及所属的内置方法，和内置函数.
+内置常量
+内置函数(BIF)
+内置类型(BIT)
+工厂函数：python内置的类型都有对应的类的实现，同名的类的方法就是工厂函数．
+内置类型的内置方法(BIM)
+内置异常
+该模块是通过C/C++实现的．
+import builtins # can be ignored dir(builtins) 内置特殊常量 False # 内置类型bool的实例 True # 内置类型bool的实例 None # python的Null对象或types.NoneType,只有一个值None.布尔值始终为False. NotImplemented # types.NotImplementedType Ellipsis # types.EllipsisType, 省略对象，布尔值始终为True. __debug__ # True/False 内置函数 不需要import可以直接使用的函数
+__import__(name, globals={}, locals={}, fromlist=[], level=-1) # import关键字实际调用该函数 print(value, ..., sep=' ', end='\n', file=sys.stdout, flush=False) # python3新增 compile(source, filename, mode[, flags[, dont_inherit]]) # 编译source返回一个code对象(代码对象)． # mode: exec, 用于模块 python2可以用exec关键字执行,python3改成exec()函数; module = &#34;for i in xrange(10): print(i)&#34; code = compile(module, '', 'exec') type(code) # code exec code # mode: single, 用于单行语句, 也是用exec执行; code = compile(&#34;print 'test'&#34;, '', single) type(code) # code exec code # mode: eval, 用于表达式 可以用eval()函数执行． eg: expression = &#34;3 * 4&#34; code = compile(expression, '', 'eval') type(code) # code eval(code) eval(source[, globals[, locals]]) # 返回python表达式的结果，source可以是compile()返回的代码对象，也可以是一个表达式． exec(object[, globals[, locals]]) # python3 新增 # object可以是一个文件对象，也可以是一个语句或代码块． format(value[, format_spec]) # 返回格式化后的字符串形式． ## 环境变量相关 globals() # 返回当前作用域的全局名称空间的字典． locals() # 返回当前作用域的局部名称空间的字典． ## 数字类型的数学运算 abs(number) # 返回int/long的绝对值 divmod(x, y) # 返回x/y 的　(商，余数) 组成的元组 pow(x, y[, z]) # 返回x**y或(x**y) % z round(number[, ndigits]) # 返回number四舍五入后的结果，ndigits表示小数点后的位数，默认是0. chr(i) # 返回整数ｉ对应的ASCII字符的字符串形式，0 <= i < 256. ord(c) # 返回字符ASCII字符c对应的整数. bin(number) # 返回int/long的二进制的字符串形式 oct(number) # 返回int/long的八进制的字符串形式． hex(number) # 返回int/long的十六进制的字符串形式. ## 对象相关的操作 id(object) # 返回一个对象的ID, 用内存地址作为ID来表示唯一性. 也就是对象的身份．等价is关键字. repr(object) # 返回object的标准字符串形式，可以通过eval()重新得到该对象．eval(repr(object)) == object. 给程序员看的。 ascii(object) # 和repr()函数等效． callable(object) # 如果object是可调用的返回True, 需要实现魔法方法__call__() hash(object) # 返回一个对象的散列/哈希(hash)值，有相同值的对象hash值相同.可用做字典的键. len(object) # 返回序列（str, tuple, list)或映射（dict)的长度 dir([object]) # 查看对象的信息 getattr(object, name[, default]) # 如果object.name存在,返回name的值，否则如果default存在，返回default,否则抛出异常AttributeError, 和super的查找顺序一样． hasattr(object, name) # 和getattr一样，但是捕获了异常，object.name存在返回True,否则返回False. setattr(object, name, value) # 给对象的属性赋值，相当于object.name = value delattr(object, name) # 删除对象object的属性name isinstance(object, class-or-type-or-tuple) # 如果object是class-or-type中指定的类或类型的实例或子类的实例，返回True,否则返回False. issubclass(C, B-or-(B,A)) # 如果C是B或(B,A,...)中的类的子类，返回True,否则返回False. 不严格子类也允许，例如一个类可以看作是自身的子类． vars([object]) # 没有参数等于locals()，有参数等于object.__dict__. ## related to iterable min(iterable[, key=func]) # 返回可迭代对象iterable中的最小元素 min(a, b, c, ...[, key=func]) # 返回a,b,c...中的最小元素 max(iterable[, key=func]) # 和min相反 max(a, b, c, ...[, key=func]) # 和min相反 all(iterable) # 如果可迭代的参数iterable中所有的元素都不是0,False,''则返回True,iterable为空也返回True,否则返回False any(iterable) # 如果可迭代的参数iterable中所有的元素都是0,False,''则返回False,　否则返回True sum(sequence[, start]) # 返回数字序列sequence的所有元素加上start的和，start默认是０． ## related to iterator iter(collection) # 将可迭代对象（str, tuple, list, dict的键,集合,文件的行等）转换成迭代器,返回迭代器对象. iter(callable, sentinel) # 第一个参数需要是callable的，每次迭代到sentinel停止． next(iterator[, default]) # 返回迭代器iterator中的下一个元素，如果没有元素了，default指定内容返回该内容，否则抛出StopIteration异常． ## related to input input([prompt]) # python3 # 根据prompt提示输入内容，返回输入的内容,如果是表达式会先求值再返回. ## related to file open(name[, mode[, buffering]]) # 打开一个文件，返回一个file类类型的对象． // python3 refactor sorted(iterable, key=None, reverse=False) // 多维数据排序 dict = {'a': 3, 'b': 2, 'c': 1} sorted(dict.items(), key=lambda x:x[1], reverse=False) json = [{&#34;time&#34;: 1, &#34;data&#34;: &#34;message&#34;}, {&#34;time&#34;: 2, &#34;data&#34;: &#34;message&#34;}] sorted(json, key=lambda k:k[&#34;time&#34;]) 内置异常类 BaseException(object) # 所有异常的基类, 继承自object.
+"><title>PSL_builtins</title><link rel=canonical href=https://canuxcheng.com/post/psl_builtins/><link rel=stylesheet href=/scss/style.min.22ad1c74b5bb435181c77741d99f034b2c36f7272eff9d0d1aa16d32e7e84673.css><meta property='og:title' content='PSL_builtins'><meta property='og:description' content="builtins python的内置模块，所有python的内置功能都在这个模块中，不需要import导入就可以使用。
+包括内置类类型以及所属的内置方法，和内置函数.
+内置常量
+内置函数(BIF)
+内置类型(BIT)
+工厂函数：python内置的类型都有对应的类的实现，同名的类的方法就是工厂函数．
+内置类型的内置方法(BIM)
+内置异常
+该模块是通过C/C++实现的．
+import builtins # can be ignored dir(builtins) 内置特殊常量 False # 内置类型bool的实例 True # 内置类型bool的实例 None # python的Null对象或types.NoneType,只有一个值None.布尔值始终为False. NotImplemented # types.NotImplementedType Ellipsis # types.EllipsisType, 省略对象，布尔值始终为True. __debug__ # True/False 内置函数 不需要import可以直接使用的函数
+__import__(name, globals={}, locals={}, fromlist=[], level=-1) # import关键字实际调用该函数 print(value, ..., sep=' ', end='\n', file=sys.stdout, flush=False) # python3新增 compile(source, filename, mode[, flags[, dont_inherit]]) # 编译source返回一个code对象(代码对象)． # mode: exec, 用于模块 python2可以用exec关键字执行,python3改成exec()函数; module = &#34;for i in xrange(10): print(i)&#34; code = compile(module, '', 'exec') type(code) # code exec code # mode: single, 用于单行语句, 也是用exec执行; code = compile(&#34;print 'test'&#34;, '', single) type(code) # code exec code # mode: eval, 用于表达式 可以用eval()函数执行． eg: expression = &#34;3 * 4&#34; code = compile(expression, '', 'eval') type(code) # code eval(code) eval(source[, globals[, locals]]) # 返回python表达式的结果，source可以是compile()返回的代码对象，也可以是一个表达式． exec(object[, globals[, locals]]) # python3 新增 # object可以是一个文件对象，也可以是一个语句或代码块． format(value[, format_spec]) # 返回格式化后的字符串形式． ## 环境变量相关 globals() # 返回当前作用域的全局名称空间的字典． locals() # 返回当前作用域的局部名称空间的字典． ## 数字类型的数学运算 abs(number) # 返回int/long的绝对值 divmod(x, y) # 返回x/y 的　(商，余数) 组成的元组 pow(x, y[, z]) # 返回x**y或(x**y) % z round(number[, ndigits]) # 返回number四舍五入后的结果，ndigits表示小数点后的位数，默认是0. chr(i) # 返回整数ｉ对应的ASCII字符的字符串形式，0 <= i < 256. ord(c) # 返回字符ASCII字符c对应的整数. bin(number) # 返回int/long的二进制的字符串形式 oct(number) # 返回int/long的八进制的字符串形式． hex(number) # 返回int/long的十六进制的字符串形式. ## 对象相关的操作 id(object) # 返回一个对象的ID, 用内存地址作为ID来表示唯一性. 也就是对象的身份．等价is关键字. repr(object) # 返回object的标准字符串形式，可以通过eval()重新得到该对象．eval(repr(object)) == object. 给程序员看的。 ascii(object) # 和repr()函数等效． callable(object) # 如果object是可调用的返回True, 需要实现魔法方法__call__() hash(object) # 返回一个对象的散列/哈希(hash)值，有相同值的对象hash值相同.可用做字典的键. len(object) # 返回序列（str, tuple, list)或映射（dict)的长度 dir([object]) # 查看对象的信息 getattr(object, name[, default]) # 如果object.name存在,返回name的值，否则如果default存在，返回default,否则抛出异常AttributeError, 和super的查找顺序一样． hasattr(object, name) # 和getattr一样，但是捕获了异常，object.name存在返回True,否则返回False. setattr(object, name, value) # 给对象的属性赋值，相当于object.name = value delattr(object, name) # 删除对象object的属性name isinstance(object, class-or-type-or-tuple) # 如果object是class-or-type中指定的类或类型的实例或子类的实例，返回True,否则返回False. issubclass(C, B-or-(B,A)) # 如果C是B或(B,A,...)中的类的子类，返回True,否则返回False. 不严格子类也允许，例如一个类可以看作是自身的子类． vars([object]) # 没有参数等于locals()，有参数等于object.__dict__. ## related to iterable min(iterable[, key=func]) # 返回可迭代对象iterable中的最小元素 min(a, b, c, ...[, key=func]) # 返回a,b,c...中的最小元素 max(iterable[, key=func]) # 和min相反 max(a, b, c, ...[, key=func]) # 和min相反 all(iterable) # 如果可迭代的参数iterable中所有的元素都不是0,False,''则返回True,iterable为空也返回True,否则返回False any(iterable) # 如果可迭代的参数iterable中所有的元素都是0,False,''则返回False,　否则返回True sum(sequence[, start]) # 返回数字序列sequence的所有元素加上start的和，start默认是０． ## related to iterator iter(collection) # 将可迭代对象（str, tuple, list, dict的键,集合,文件的行等）转换成迭代器,返回迭代器对象. iter(callable, sentinel) # 第一个参数需要是callable的，每次迭代到sentinel停止． next(iterator[, default]) # 返回迭代器iterator中的下一个元素，如果没有元素了，default指定内容返回该内容，否则抛出StopIteration异常． ## related to input input([prompt]) # python3 # 根据prompt提示输入内容，返回输入的内容,如果是表达式会先求值再返回. ## related to file open(name[, mode[, buffering]]) # 打开一个文件，返回一个file类类型的对象． // python3 refactor sorted(iterable, key=None, reverse=False) // 多维数据排序 dict = {'a': 3, 'b': 2, 'c': 1} sorted(dict.items(), key=lambda x:x[1], reverse=False) json = [{&#34;time&#34;: 1, &#34;data&#34;: &#34;message&#34;}, {&#34;time&#34;: 2, &#34;data&#34;: &#34;message&#34;}] sorted(json, key=lambda k:k[&#34;time&#34;]) 内置异常类 BaseException(object) # 所有异常的基类, 继承自object.
+"><meta property='og:url' content='https://canuxcheng.com/post/psl_builtins/'><meta property='og:site_name' content='Morgoth'><meta property='og:type' content='article'><meta property='article:section' content='Post'><meta property='article:tag' content='builtins'><meta property='article:published_time' content='2016-08-15T11:16:29+00:00'><meta property='article:modified_time' content='2016-08-15T11:16:29+00:00'><meta name=twitter:title content="PSL_builtins"><meta name=twitter:description content="builtins python的内置模块，所有python的内置功能都在这个模块中，不需要import导入就可以使用。
+包括内置类类型以及所属的内置方法，和内置函数.
+内置常量
+内置函数(BIF)
+内置类型(BIT)
+工厂函数：python内置的类型都有对应的类的实现，同名的类的方法就是工厂函数．
+内置类型的内置方法(BIM)
+内置异常
+该模块是通过C/C++实现的．
+import builtins # can be ignored dir(builtins) 内置特殊常量 False # 内置类型bool的实例 True # 内置类型bool的实例 None # python的Null对象或types.NoneType,只有一个值None.布尔值始终为False. NotImplemented # types.NotImplementedType Ellipsis # types.EllipsisType, 省略对象，布尔值始终为True. __debug__ # True/False 内置函数 不需要import可以直接使用的函数
+__import__(name, globals={}, locals={}, fromlist=[], level=-1) # import关键字实际调用该函数 print(value, ..., sep=' ', end='\n', file=sys.stdout, flush=False) # python3新增 compile(source, filename, mode[, flags[, dont_inherit]]) # 编译source返回一个code对象(代码对象)． # mode: exec, 用于模块 python2可以用exec关键字执行,python3改成exec()函数; module = &#34;for i in xrange(10): print(i)&#34; code = compile(module, '', 'exec') type(code) # code exec code # mode: single, 用于单行语句, 也是用exec执行; code = compile(&#34;print 'test'&#34;, '', single) type(code) # code exec code # mode: eval, 用于表达式 可以用eval()函数执行． eg: expression = &#34;3 * 4&#34; code = compile(expression, '', 'eval') type(code) # code eval(code) eval(source[, globals[, locals]]) # 返回python表达式的结果，source可以是compile()返回的代码对象，也可以是一个表达式． exec(object[, globals[, locals]]) # python3 新增 # object可以是一个文件对象，也可以是一个语句或代码块． format(value[, format_spec]) # 返回格式化后的字符串形式． ## 环境变量相关 globals() # 返回当前作用域的全局名称空间的字典． locals() # 返回当前作用域的局部名称空间的字典． ## 数字类型的数学运算 abs(number) # 返回int/long的绝对值 divmod(x, y) # 返回x/y 的　(商，余数) 组成的元组 pow(x, y[, z]) # 返回x**y或(x**y) % z round(number[, ndigits]) # 返回number四舍五入后的结果，ndigits表示小数点后的位数，默认是0. chr(i) # 返回整数ｉ对应的ASCII字符的字符串形式，0 <= i < 256. ord(c) # 返回字符ASCII字符c对应的整数. bin(number) # 返回int/long的二进制的字符串形式 oct(number) # 返回int/long的八进制的字符串形式． hex(number) # 返回int/long的十六进制的字符串形式. ## 对象相关的操作 id(object) # 返回一个对象的ID, 用内存地址作为ID来表示唯一性. 也就是对象的身份．等价is关键字. repr(object) # 返回object的标准字符串形式，可以通过eval()重新得到该对象．eval(repr(object)) == object. 给程序员看的。 ascii(object) # 和repr()函数等效． callable(object) # 如果object是可调用的返回True, 需要实现魔法方法__call__() hash(object) # 返回一个对象的散列/哈希(hash)值，有相同值的对象hash值相同.可用做字典的键. len(object) # 返回序列（str, tuple, list)或映射（dict)的长度 dir([object]) # 查看对象的信息 getattr(object, name[, default]) # 如果object.name存在,返回name的值，否则如果default存在，返回default,否则抛出异常AttributeError, 和super的查找顺序一样． hasattr(object, name) # 和getattr一样，但是捕获了异常，object.name存在返回True,否则返回False. setattr(object, name, value) # 给对象的属性赋值，相当于object.name = value delattr(object, name) # 删除对象object的属性name isinstance(object, class-or-type-or-tuple) # 如果object是class-or-type中指定的类或类型的实例或子类的实例，返回True,否则返回False. issubclass(C, B-or-(B,A)) # 如果C是B或(B,A,...)中的类的子类，返回True,否则返回False. 不严格子类也允许，例如一个类可以看作是自身的子类． vars([object]) # 没有参数等于locals()，有参数等于object.__dict__. ## related to iterable min(iterable[, key=func]) # 返回可迭代对象iterable中的最小元素 min(a, b, c, ...[, key=func]) # 返回a,b,c...中的最小元素 max(iterable[, key=func]) # 和min相反 max(a, b, c, ...[, key=func]) # 和min相反 all(iterable) # 如果可迭代的参数iterable中所有的元素都不是0,False,''则返回True,iterable为空也返回True,否则返回False any(iterable) # 如果可迭代的参数iterable中所有的元素都是0,False,''则返回False,　否则返回True sum(sequence[, start]) # 返回数字序列sequence的所有元素加上start的和，start默认是０． ## related to iterator iter(collection) # 将可迭代对象（str, tuple, list, dict的键,集合,文件的行等）转换成迭代器,返回迭代器对象. iter(callable, sentinel) # 第一个参数需要是callable的，每次迭代到sentinel停止． next(iterator[, default]) # 返回迭代器iterator中的下一个元素，如果没有元素了，default指定内容返回该内容，否则抛出StopIteration异常． ## related to input input([prompt]) # python3 # 根据prompt提示输入内容，返回输入的内容,如果是表达式会先求值再返回. ## related to file open(name[, mode[, buffering]]) # 打开一个文件，返回一个file类类型的对象． // python3 refactor sorted(iterable, key=None, reverse=False) // 多维数据排序 dict = {'a': 3, 'b': 2, 'c': 1} sorted(dict.items(), key=lambda x:x[1], reverse=False) json = [{&#34;time&#34;: 1, &#34;data&#34;: &#34;message&#34;}, {&#34;time&#34;: 2, &#34;data&#34;: &#34;message&#34;}] sorted(json, key=lambda k:k[&#34;time&#34;]) 内置异常类 BaseException(object) # 所有异常的基类, 继承自object.
+"><link rel="shortcut icon" href=favicon.ico><style>:root{--article-font-family:"Merriweather", var(--base-font-family)}</style><script>(function(){const e=document.createElement("link");e.href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap",e.type="text/css",e.rel="stylesheet",document.head.appendChild(e)})()</script></head><body class=article-page><script>(function(){const e="StackColorScheme";localStorage.getItem(e)||localStorage.setItem(e,"auto")})()</script><script>(function(){const t="StackColorScheme",e=localStorage.getItem(t),n=window.matchMedia("(prefers-color-scheme: dark)").matches===!0;e=="dark"||e==="auto"&&n?document.documentElement.dataset.scheme="dark":document.documentElement.dataset.scheme="light"})()</script><div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky"><button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label=切换菜单>
+<span class=hamburger-box><span class=hamburger-inner></span></span></button><header><figure class=site-avatar><a href=/><img src=/img/home_hu_7d22d46ad88d2427.jpg width=300 height=400 class=site-logo loading=lazy alt=Avatar>
+</a><span class=emoji>🍥</span></figure><div class=site-meta><h1 class=site-name><a href=/>Morgoth</a></h1><h2 class=site-description>Hello World!</h2></div></header><ol class=social-menu><li><a href=mailto:canuxcheng@163.com target=_blank title=E-mail rel=me><svg class="icon icon-tabler icon-tabler-messages" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M21 14l-3-3h-7a1 1 0 01-1-1V4a1 1 0 011-1h9a1 1 0 011 1v10"/><path d="M14 15v2a1 1 0 01-1 1H6l-3 3V11a1 1 0 011-1h2"/></svg></a></li><li><a href=https://github.com/crazy-canux target=_blank title=GitHub rel=me><svg class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6.0 00-1.3-3.2 4.2 4.2.0 00-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3.0 00-6.2.0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2.0 00-.1 3.2A4.6 4.6.0 004 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg></a></li></ol><ol class=menu id=main-menu><li><a href=/><svg class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="5 12 3 12 12 3 21 12 19 12"/><path d="M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/><path d="M9 21v-6a2 2 0 012-2h2a2 2 0 012 2v6"/></svg>
+<span>首页</span></a></li><li><a href=/about/><svg class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/></svg>
+<span>关于</span></a></li><li><a href=/categories/ target=_blank><svg class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg>
+<span>分类</span></a></li><li><a href=/tags/ target=_blank><svg class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11 3l9 9a1.5 1.5.0 010 2l-6 6a1.5 1.5.0 01-2 0L3 11V7a4 4 0 014-4h4"/><circle cx="9" cy="9" r="2"/></svg>
+<span>标签</span></a></li><li><a href=/rtfm/><svg class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+<span>RTFM</span></a></li><div class=menu-bottom-section><li id=i18n-switch><svg class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 5h7"/><path d="M9 3v2c0 4.418-2.239 8-5 8"/><path d="M5 9c-.003 2.144 2.952 3.908 6.7 4"/><path d="M12 20l4-9 4 9"/><path d="M19.1 18h-6.2"/></svg>
+<select name=language onchange="window.location.href=this.selectedOptions[0].value"><option value=https://canuxcheng.com/ selected>简体中文</option><option value=https://canuxcheng.com/en/>English</option></select></li><li id=dark-mode-toggle><svg class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="8" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<svg class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="16" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<span>暗色模式</span></li></div></ol></aside><aside class="sidebar right-sidebar sticky"><section class="widget archives"><div class=widget-icon><svg class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg></div><h2 class="widget-title section-title">目录</h2><div class=widget--toc><nav id=TableOfContents><ul><li><a href=#int>int</a></li><li><a href=#boolint>bool(int)</a></li><li><a href=#float>float</a></li><li><a href=#complex>complex</a></li><li><a href=#str>str</a></li><li><a href=#bytes>bytes</a></li><li><a href=#bytearray>bytearray</a></li><li><a href=#tuple>tuple</a></li><li><a href=#list>list</a></li><li><a href=#dict>dict</a></li><li><a href=#frozenset>frozenset</a></li><li><a href=#set>set</a></li><li><a href=#slice>slice</a></li><li><a href=#range>range</a></li><li><a href=#memoryview>memoryview</a></li><li><a href=#enumerate>enumerate</a></li><li><a href=#reversed>reversed</a></li><li><a href=#map>map</a></li><li><a href=#filter>filter</a></li><li><a href=#zip>zip</a></li><li><a href=#classmethod>classmethod</a></li><li><a href=#staticmethod>staticmethod</a></li><li><a href=#property>property</a></li><li><a href=#object>object</a></li><li><a href=#type>type</a></li></ul></nav></div></section></aside><main class="main full-width"><article class=main-article><header class=article-header><div class=article-details><header class=article-category><a href=/categories/python/>Python</a></header><div class=article-title-wrapper><h2 class=article-title><a href=/post/psl_builtins/>PSL_builtins</a></h2></div><footer class=article-time><div><svg class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg>
+<time class=article-time--published>Aug 15, 2016</time></div><div><svg class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+<time class=article-time--reading>阅读时长: 6 分钟</time></div></footer></div></header><section class=article-content><h1 id=builtins>builtins</h1><p>python的内置模块，所有python的内置功能都在这个模块中，不需要import导入就可以使用。</p><p>包括内置类类型以及所属的内置方法，和内置函数.</p><p>内置常量</p><p>内置函数(BIF)</p><p>内置类型(BIT)</p><p>工厂函数：python内置的类型都有对应的类的实现，同名的类的方法就是工厂函数．</p><p>内置类型的内置方法(BIM)</p><p>内置异常</p><p>该模块是通过C/C++实现的．</p><pre><code>import builtins # can be ignored
+dir(builtins)
+</code></pre><hr><h1 id=内置特殊常量>内置特殊常量</h1><pre><code>False # 内置类型bool的实例
+True # 内置类型bool的实例
+None # python的Null对象或types.NoneType,只有一个值None.布尔值始终为False.
+NotImplemented # types.NotImplementedType
+Ellipsis # types.EllipsisType, 省略对象，布尔值始终为True.
+__debug__ # True/False
+</code></pre><hr><h1 id=内置函数>内置函数</h1><p>不需要import可以直接使用的函数</p><pre><code>__import__(name, globals={}, locals={}, fromlist=[], level=-1) # import关键字实际调用该函数
+
+print(value, ..., sep=' ', end='\n', file=sys.stdout, flush=False) # python3新增
+
+compile(source, filename, mode[, flags[, dont_inherit]])
+# 编译source返回一个code对象(代码对象)．
+# mode: exec, 用于模块 python2可以用exec关键字执行,python3改成exec()函数;
+module = &quot;for i in xrange(10): print(i)&quot;
+code = compile(module, '', 'exec')
+type(code) # code
+exec code
+# mode: single, 用于单行语句, 也是用exec执行;
+code = compile(&quot;print 'test'&quot;, '', single)
+type(code) # code
+exec code
+# mode: eval, 用于表达式 可以用eval()函数执行． eg:
+expression = &quot;3 * 4&quot;
+code = compile(expression, '', 'eval')
+type(code) # code
+eval(code)
+
+eval(source[, globals[, locals]])
+# 返回python表达式的结果，source可以是compile()返回的代码对象，也可以是一个表达式．
+
+exec(object[, globals[, locals]]) # python3 新增
+# object可以是一个文件对象，也可以是一个语句或代码块．
+
+format(value[, format_spec]) # 返回格式化后的字符串形式．
+
+## 环境变量相关
+globals() # 返回当前作用域的全局名称空间的字典．
+locals() # 返回当前作用域的局部名称空间的字典．
+
+## 数字类型的数学运算
+abs(number) # 返回int/long的绝对值
+divmod(x, y) # 返回x/y 的　(商，余数) 组成的元组
+pow(x, y[, z]) # 返回x**y或(x**y) % z
+round(number[, ndigits]) # 返回number四舍五入后的结果，ndigits表示小数点后的位数，默认是0.
+chr(i) # 返回整数ｉ对应的ASCII字符的字符串形式，0 &lt;= i &lt; 256.
+ord(c) # 返回字符ASCII字符c对应的整数.
+bin(number) # 返回int/long的二进制的字符串形式
+oct(number) # 返回int/long的八进制的字符串形式．
+hex(number) # 返回int/long的十六进制的字符串形式.
+
+## 对象相关的操作
+id(object) # 返回一个对象的ID, 用内存地址作为ID来表示唯一性. 也就是对象的身份．等价is关键字.
+
+repr(object) # 返回object的标准字符串形式，可以通过eval()重新得到该对象．eval(repr(object)) == object. 给程序员看的。
+
+ascii(object) # 和repr()函数等效．
+callable(object) # 如果object是可调用的返回True, 需要实现魔法方法__call__()
+hash(object) # 返回一个对象的散列/哈希(hash)值，有相同值的对象hash值相同.可用做字典的键.
+len(object) # 返回序列（str, tuple, list)或映射（dict)的长度
+dir([object]) # 查看对象的信息
+getattr(object, name[, default]) # 如果object.name存在,返回name的值，否则如果default存在，返回default,否则抛出异常AttributeError, 和super的查找顺序一样．
+hasattr(object, name) # 和getattr一样，但是捕获了异常，object.name存在返回True,否则返回False.
+setattr(object, name, value) # 给对象的属性赋值，相当于object.name = value
+delattr(object, name) # 删除对象object的属性name
+isinstance(object, class-or-type-or-tuple) # 如果object是class-or-type中指定的类或类型的实例或子类的实例，返回True,否则返回False.
+issubclass(C, B-or-(B,A)) # 如果C是B或(B,A,...)中的类的子类，返回True,否则返回False. 不严格子类也允许，例如一个类可以看作是自身的子类．
+vars([object]) # 没有参数等于locals()，有参数等于object.__dict__.
+
+## related to iterable
+min(iterable[, key=func]) # 返回可迭代对象iterable中的最小元素
+min(a, b, c, ...[, key=func])  # 返回a,b,c...中的最小元素
+max(iterable[, key=func]) # 和min相反
+max(a, b, c, ...[, key=func]) # 和min相反
+all(iterable) # 如果可迭代的参数iterable中所有的元素都不是0,False,''则返回True,iterable为空也返回True,否则返回False
+any(iterable) # 如果可迭代的参数iterable中所有的元素都是0,False,''则返回False,　否则返回True
+sum(sequence[, start]) # 返回数字序列sequence的所有元素加上start的和，start默认是０．
+
+## related to iterator
+iter(collection) # 将可迭代对象（str, tuple, list, dict的键,集合,文件的行等）转换成迭代器,返回迭代器对象.
+iter(callable, sentinel) # 第一个参数需要是callable的，每次迭代到sentinel停止．
+next(iterator[, default]) # 返回迭代器iterator中的下一个元素，如果没有元素了，default指定内容返回该内容，否则抛出StopIteration异常．
+
+## related to input
+input([prompt]) # python3
+# 根据prompt提示输入内容，返回输入的内容,如果是表达式会先求值再返回.
+
+## related to file
+open(name[, mode[, buffering]]) # 打开一个文件，返回一个file类类型的对象．
+
+// python3 refactor
+sorted(iterable, key=None, reverse=False)
+// 多维数据排序
+dict = {'a': 3, 'b': 2, 'c': 1}
+sorted(dict.items(), key=lambda x:x[1], reverse=False)
+json = [{&quot;time&quot;: 1, &quot;data&quot;: &quot;message&quot;}, {&quot;time&quot;: 2, &quot;data&quot;: &quot;message&quot;}]
+sorted(json, key=lambda k:k[&quot;time&quot;])
+</code></pre><hr><h1 id=内置异常类>内置异常类</h1><p>BaseException(object) # 所有异常的基类, 继承自object.</p><pre><code># BaseException的四个子类
+SystemExit # python解释器请求退出
+KeyboardInterrupt # 用户输入ctrl-c中断执行
+GeneratorExit # 生成器发出异常来通知退出
+Exception # 常规错误的基类
+    StopIteration # 迭代器结束抛出的异常
+    StandardError # 所有内置标准error的基类
+        BufferError
+        ArithmeticError # 数值计算错误的基类
+            FloatingPointError
+            OverflowError
+            ZeroDivisionError # 除法分母为０错误
+        AsseertionError # 断言语句失败
+        AttributeError # 访问未知的对象属性
+        EnvironmentError
+            IOError # 打开不存在的磁盘文件导致的输入/输出错误
+            OSError
+                WindowError
+                VMSError
+        EOFError
+        ImportError
+        LookupError
+            IndexError # 序列的索引错误
+            KeyError # 字典的键错误
+        MemoryError
+        NameError # 未申明或初始化的对象
+            UnboundLocalError
+        ReferenceError
+        RuntimeError # 一般的运行错误
+            NotImplementedError # 尚未实现的方法
+        SyntaxError # 语法错误， 唯一不在运行时发生的异常
+            IndentationError # 缩进错误
+                TabError # 跳格和空格混用
+        SystemError # 一般的解释器系统错误
+        TypeError # 对类型无效的操作
+        ValueError # 传入无效的参数
+            UnicodeError
+                UnicodeDecodeError
+                UnicodeEncodeError
+                UnicodeTranslateError
+    Warning # 所有warning的基类
+       DeprecationWarning # 被弃用特征的警告
+       RuntimeWarning # 可疑的运行时行为警告
+       SyntaxWarning # 可疑的语法行为警告
+       UserWarning # 用户代码生成的警告
+       FutureWarning # 使用新的语法特征的警告
+       ImportWarning # 导入包警告
+       UnicodeWarning
+       ByteWarning
+</code></pre><hr><h1 id=built-in-typesclass>built-in Types/Class</h1><p>下面是数据类型：</p><h2 id=int>int</h2><pre><code>int(x=0)
+int(x, base=10)
+</code></pre><p>内置方法:</p><pre><code>bit_length() # 一个int类型的二进制形式的位数．
+conjugate()
+</code></pre><p>内置数据描述符：</p><pre><code>denominator
+numerator
+imag
+real
+</code></pre><h2 id=boolint>bool(int)</h2><pre><code>bool(x)
+</code></pre><p>内置类类型int的内置方法和数据描述符都是继承自基类int.</p><h2 id=float>float</h2><pre><code>float(x)
+float('-inf') # 负无穷大
+float('inf') # 正无穷大
+</code></pre><p>内置方法:</p><pre><code>as_integer_ratio() # 返回一个整数对，相除的结果是该浮点数
+conjugate()
+fromhex(string) # 将十六进制的字符转换成浮点型
+# float.fromhex('-0x1p-1074')
+hex() # 将浮点数转换成十六进制形式
+is_integer() # 如果浮点数是整数，返回true
+</code></pre><p>内置数据描述符：</p><pre><code>imag
+real
+</code></pre><h2 id=complex>complex</h2><pre><code>complex(real[, imag])
+</code></pre><p>内置方法:</p><pre><code>conjugate() # 返回一个复数的工軛复数
+</code></pre><p>内置数据描述符：</p><pre><code>imag 复数的虚部
+real 复数的实部
+</code></pre><h2 id=str>str</h2><p>字符串是不可变类型, 是标量，是序列．</p><pre><code>str(object='') # 把一个对象转换成字符串．或者返回一个对象的可读性好的字符串表示，无法用语eval()求值．给用户看的。
+</code></pre><p>内置方法：</p><pre><code>capitalize() # 字符串首字母大写, 返回新的字符串
+title() # 所有单词首字母大写，返回新的字符串
+lower() # 所有字符小写，返回新的字符串
+upper() # 所有字符大写，返回新的字符串
+swapcase() # 大写字符转换成小写，小写转化成大写
+translate(table [,deletechars]) #
+join(iterable) # 用字符串分割iterable,返回新的字符串
+replace(old, new[, count]) # 用new替换字符串中的前count个old, 返回替换后的字符串
+expandtabs([tabsize]) # 把字符串中的tab键替换为tabsize指定的宽度的新tab，默认是8,然后返回新的字符串
+format(*args, **kwargs) # 返回格式化后的字符串
+
+lstrip([chars]) # 如果字符串以chars开头,就删除开头chars，然后返回新的字符串, chars默认是空格．
+strip([chars]) # 删除开头和结尾的chars,如果有的话，然后返回新的字符串，chars默认是空格．
+rstrip([chars]) # 如果字符串以chars结尾，就删除结尾的chars,然后返回新的字符串，chars默认是空格．
+
+center(width[, fillchar]) # 以字符串为中心填充字符串，默认用空格填充,返回填充后的字符串
+zfill(width) # 用0填充字符串的左边，直到width长度，返回新的字符串
+ljust(width[, fillchar]) # 字符串左对齐，右边填充fillchar,默认空格，直到长度为width,返回新的字符串
+rjust(width[, fillchar]) # 字符串右对齐，左边填充fillchar，默认空格，直到长度为width,返回新的字符串
+
+count(sub[, start[, end]]) # 返回sub字符串在str[start:end]中出现的次数
+
+# 参考codecs模块的decode/encode.
+decode([encoding[,errors]]) # 解码
+encode([encoding[,errors]]) # 编码
+
+startswith(prefix[, start[, end]]) # 如果str[start:end]以prefix开头，返回true.
+endswith(suffix[, start[, end]]) # 如果str[start:end]以suffix结尾，返回true.
+isalnum() # 如果非空字符串，且元素都是字符或数字，返回True,否则返回False
+isalpha() # 如果非空字符串，且元素都是字符，返回True,否则返回False
+isdigit() # 如果非空字符串，且元素都是数字，返回True,否则返回False
+isspace() # 如果非空字符串，且所有元素都是空格，返回True,否则返回False
+istitle() # 如果非空字符串，且所有单词的首字母大写，返回True,否则返回False
+islower() # 如果非空字符串，且所有元素都是小写，返回True,否则返回False
+isupper() # 如果非空字符串，且所有单词都是大写，返回True,否则返回False
+
+splitlines(keepends=False) # 根据\n,\r,\r\n来拆分字符串，返回拆分后的列表，True表示保留换行符，默认是False．
+split([sep [,maxsplit]]) # 将字符串以从左到右的maxsplit个seq分割，返回分割后的列表，默认seq是空格，maxsplit是所有seq．
+rsplit([sep [,maxsplit]]) # 和split相反,从右到左的maxsplit个seq分割．
+
+partition(sep) # 字符串根据从左往右根据第一个找到的seq分割，返回一个(head, seq, tail), 如果没有找到seq, 返回(str, '', '').
+rpartition(sep) # 字符串根据最后一个找到的seq分割，返回(head, seq, tail),如果没有找到seq,返回('', '', str)
+
+find(sub [,start [,end]]) # 在str[start:end]中从左往右查找sub,返回找到的第一个字符所在的下标,没找到返回-1
+rfind(sub [,start [,end]]) # 在str[start:end]中查找sub,返回最后一个sub的第一个元素的索引,没有找到返回-1
+
+index(sub [,start [,end]]) # 和find一样，但是没找到抛出异常ValueError．
+rindex(sub [,start [,end]]) # 和rfind一样，但是没找到抛出ValueError异常．
+</code></pre><h2 id=bytes>bytes</h2><pre><code>bytes(iterable_of_ints) -&gt; bytes
+bytes(string, encoding[, errors]) -&gt; bytes
+bytes(bytes_or_buffer) -&gt; immutable copy of bytes_or_buffer
+bytes(int) -&gt; bytes object of size given by the parameter initialized with null bytes
+bytes() -&gt; empty bytes object
+</code></pre><p>内置方法：</p><pre><code>capitalize()
+...
+</code></pre><h2 id=bytearray>bytearray</h2><p>bytearray表示可变字节数组类型, bytearray是可变类型，是序列（可迭代）</p><pre><code>bytearray(iterable_of_ints) -&gt; bytearray
+bytearray(string, encoding[, errors]) -&gt; bytearray
+bytearray(bytes_or_buffer) -&gt; mutable copy of bytes_or_buffer
+bytearray(int) -&gt; bytes array of size given by the parameter initialized with null bytes
+bytearray() -&gt; empty bytes array
+</code></pre><p>内置方法:</p><pre><code>append(int)
+capitalize()
+...
+</code></pre><hr><h2 id=tuple>tuple</h2><p>元组是不可变类型, 是容器，是序列.</p><pre><code>tuple()
+tuple(iterable) # 把可迭代对象转换成元组.
+</code></pre><p>内置方法：</p><pre><code>count(value) # 返回值为value的元素在元组中出现的次数
+index(value, [start, [stop]]) # 返回值为value的元素在元组tuple[start:stop]中的第一次出现的索引，没有该元素返回ValueError.
+</code></pre><h2 id=list>list</h2><p>列表是可变类型,　是容器，是序列.</p><pre><code>list()
+list(iterable) # 把可迭代的对象转换成列表．
+</code></pre><p>内置方法：</p><pre><code>count(value) # 返回value在列表中出现的次数
+index(value, [start, [stop]]) # 从左往右在list[start:stop]中寻找value,返回第一个找到的元素的索引，否则返回ValueError异常．
+
+# 下列改变列表的值的方法都没有返回值，直接改变原列表的值, 返回None。
+append(object) # 在列表结尾追加对象
+extend(iterable) # 将可迭代对象iterable的元素依次追加到列表,相当于序列的+运算．
+insert(index, object) # 在list[index]前面插入object.
+pop([index]) # 删除list[index],默认是最后一个元素，如果列表为空或索引越界，抛出IndexError异常．
+remove(value) # 删除第一个出现的value．
+reverse() # 翻转列表, 返回None
+sort(cmp=None, key=None, reverse=False) # 默认对列表中的元素从小到大排序，reverse=True,则从大到小．
+</code></pre><h2 id=dict>dict</h2><p>字典是可变类型, 是容器，是映射类型（mapping), 字典可以迭代键．字典是无序的．</p><pre><code>dict()
+dict(mapping) # dict(one=1, two=2)
+dict(iterable) # dict([(1, 'one'), (2, 'two')]), dict([[1,1], [2,2]]), dict(([1,1], [2, 2])), dict(((1,1), (2,2))),
+dict(**kwargs) # dict({1:&quot;one&quot;, 2:&quot;two&quot;})
+
+in, not in
+</code></pre><p>内置方法：</p><pre><code>copy() # 返回字典的一个浅拷贝
+clear() # 清空字典所有元素
+fromkeys(S[,v]) # 返回以S的元素为键，v为值的新字典，v默认为None.
+get(k[,d]) # 如果键k在字典里面，返回dict[k], 否则返回d, d默认为None.
+pop(k[,d]) # 从字典中删除键k的键值对，返回dict[k], 如果不存在返回d,如果没有指定d,抛出KeyError异常．
+popitem() # 从字典中删除随机的键值对，返回该键值对组成的元组，如果字典为空，抛出KeyError异常．
+setdefault(k[,d]) # 如果键k在字典中存在，等效于get(k[,d]), 否则就插入D[k]=d键值对．
+update([E, ]**F) # 向字典插入指定的项目(字典或可迭代对象).
+keys() # 返回字典的键组成的列表．
+values() # 返回字典的值组成的列表．
+items() # 返回一个列表，每个元素是字典的键和值组成的元组．
+iteritems() # 返回字典的键值对组成的迭代器，next()每次返回一个一对键值组成的元组．
+iterkeys() # 返回字典的键组成的迭代器．
+itervalues() # 返回字典的值组成的迭代器．
+viewitems() # 返回键和值组成的可迭代对象
+viewkeys()　# 返回键组成的可迭代对象
+viewvalues() # 返回值组成的可迭代对象
+</code></pre><h2 id=frozenset>frozenset</h2><p>不可变集合frozenset是不可变类型</p><pre><code>frozenset()
+frozenset(iterable)
+</code></pre><p>不可变集合和可变集合共同的内置方法：</p><pre><code>copy() # 返回集合的一个浅拷贝
+isdisjoint() # 两个集合交集为空，返回为True.
+a.issubset(b) # a是b的非严格子集，　a &lt;= b, 返回True
+a.issuperset(b) # a是b的非严格超集, a &gt;= b, 返回True
+union() # 联合/并集，OR操作，等效于|运算符
+intersection([others, ...]) # 交集，　AND操作，　等效于&amp;运算符
+difference([others, ...]) # 差补或相对补充集，等效于-运算符
+symmetric_difference() # 对称差分或异或，等效于^运算符
+</code></pre><h2 id=set>set</h2><p>可变集合set是可变类型</p><pre><code>set()
+set(iterable)
+</code></pre><p>set除了有frozenset的所有方法还有自己特有的内置方法：</p><pre><code>clear() # 清空集合所有元素
+pop() # 删除并返回任意一个集合元素，集合为空抛出KeyError.
+add(obj) # 往集合中添加一个不存在的元素
+remove(obj) # 删除集合中的存在的指定的数字元素, 非数字抛出KeyError.
+s.discard(obj) # 如果obj是集合s中的元素，从s中删除obj.
+
+update() # 等效于|=运算符
+intersection_update() # 等效于&amp;=运算符
+difference_update() # 等效于-=运算法
+symmetric_difference_update() # 等效于^=运算符
+</code></pre><h2 id=slice>slice</h2><pre><code>slice(stop)
+slice(start, stop[, step])
+</code></pre><p>methods:</p><pre><code>indices(len) -&gt; (start, stop, stride)
+</code></pre><h2 id=range>range</h2><pre><code>range(stop) # 返回[0, 1, stop-1]的列表
+range(start, stop[, step]) # 返回[start, start+n*step... ], n&gt;=1,start+n*step&lt;stop.
+</code></pre><p>Methods:</p><pre><code>count(self, object, /)
+index(self, object, /)
+</code></pre><h2 id=memoryview>memoryview</h2><pre><code>memoryview(object)
+</code></pre><p>内置方法:</p><pre><code>cast(self, /, format, shape=&lt;unrepresentable&gt;)
+hex(self, /, sep=&lt;unrepresentable&gt;, bytes_per_sep=1)
+release(self, /)
+tobytes(self, /, order='C')
+</code></pre><p>内置数据描述符：</p><pre><code>format
+itemsize
+...
+</code></pre><hr><p>迭代器/生成器类</p><h2 id=enumerate>enumerate</h2><p>返回一个迭代器，迭代器的元素是iterable中的元素和索引组成的元组。</p><pre><code>enumerate(iterable, start=0)
+ennumerate([&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]) # 返回迭代器，元素是(0, &quot;a&quot;), (1, &quot;b&quot;), (2, &quot;c&quot;)
+</code></pre><h2 id=reversed>reversed</h2><p>返回一个迭代器，迭代器的元素是iterable中的元素从后往前的顺序。</p><pre><code>reversed(iterable)
+reversed(&quot;abc&quot;) # 返回迭代器，元素是&quot;c&quot;, &quot;b&quot;, &quot;a&quot;
+</code></pre><h2 id=map>map</h2><p>按顺序依次执行函数function(iterable)中的每个元素，返回一个迭代器。</p><pre><code>map(function, iterable, ...)
+map(lambda x: x**2, [1, 2, 3]) # 返回迭代器，元素是1, 4, 9
+</code></pre><h2 id=filter>filter</h2><p>返回一个迭代器，迭代器的元素是iterable中满足function(x)为True的元素。</p><pre><code>filter(function, iterable)
+filter(lambda x: x &gt; 0, [-1, 0, 1, 2]) # 返回迭代器，元素是1, 2
+</code></pre><h2 id=zip>zip</h2><p>返回一个迭代器，迭代器的元素是iterable中每个元素的元组。</p><pre><code>zip(iterable1, iterable2, ...)
+zip([1, 2, 3], [&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]) # 返回迭代器，元素是(1, &quot;a&quot;), (2, &quot;b&quot;), (3, &quot;c&quot;)
+</code></pre><hr><h2 id=classmethod>classmethod</h2><h2 id=staticmethod>staticmethod</h2><h2 id=property>property</h2><hr><h2 id=object>object</h2><p>object类是所有类的基类</p><h2 id=type>type</h2><p>所有类的类型或元类</p><p>type是用来创建类的类，可以动态创建类。</p><pre><code>class type(object)
+    type(object) -&gt; the object's type
+    type(name, bases, dict, **kwds) -&gt; a new type
+</code></pre><hr></section><footer class=article-footer><section class=article-tags><a href=/tags/builtins/>Builtins</a></section></footer><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css integrity="sha256-J+iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s=" crossorigin=anonymous><script src=https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js integrity="sha256-InsNdER1b2xUewP+pKCUJpkhiqwHgqiPXDlIk7GzBu4=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI=" crossorigin=anonymous defer></script><script>window.addEventListener("DOMContentLoaded",()=>{renderMathInElement(document.querySelector(`.article-content`),{delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1},{left:"\\(",right:"\\)",display:!1},{left:"\\[",right:"\\]",display:!0}],ignoredClasses:["gist"]})})</script></article><div id=gitalk-container></div><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css><script src=https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js></script><script src=https://cdn.jsdelivr.net/npm/blueimp-md5@2.18.0/js/md5.min.js></script><script>const gitalk=new Gitalk({clientID:"3d41a2a237fabe050cc0",clientSecret:"f084dfe45a1c05955270776836298adf02732a02",repo:"crazy-canux.github.io",owner:"crazy-canux",admin:["crazy-canux"],distractionFreeMode:!1,id:md5(location.pathname)});(function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById("gitalk-container").innerHTML="Gitalk comments not available by default when the website is previewed locally.";return}gitalk.render("gitalk-container")})()</script><footer class=site-footer><section class=copyright>&copy;
+2013 -
+2026 Morgoth</section><section class=powerby>Designed by Canux<br></section></footer><div class=pswp tabindex=-1 role=dialog aria-hidden=true><div class=pswp__bg></div><div class=pswp__scroll-wrap><div class=pswp__container><div class=pswp__item></div><div class=pswp__item></div><div class=pswp__item></div></div><div class="pswp__ui pswp__ui--hidden"><div class=pswp__top-bar><div class=pswp__counter></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+<button class="pswp__button pswp__button--share" title=Share></button>
+<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button><div class=pswp__preloader><div class=pswp__preloader__icn><div class=pswp__preloader__cut><div class=pswp__preloader__donut></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class=pswp__share-tooltip></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+</button>
+<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button><div class=pswp__caption><div class=pswp__caption__center></div></div></div></div></div><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU=" crossorigin=anonymous defer></script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css crossorigin=anonymous><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css crossorigin=anonymous></main></div><script src=https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z+KMkF24hUW8WePSA9HM=" crossorigin=anonymous></script><script type=text/javascript src=/ts/main.js defer></script><script>(function(){const e=document.createElement("link");e.href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap",e.type="text/css",e.rel="stylesheet",document.head.appendChild(e)})()</script></body></html>

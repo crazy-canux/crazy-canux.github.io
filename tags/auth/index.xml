@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Auth on Morgoth</title><link>https://canuxcheng.com/tags/auth/</link><description>Recent content in Auth on Morgoth</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 14 Jan 2022 04:29:37 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/auth/index.xml" rel="self" type="application/rss+xml"/><item><title>Auth</title><link>https://canuxcheng.com/post/django_auth/</link><pubDate>Fri, 14 Jan 2022 04:29:37 +0000</pubDate><guid>https://canuxcheng.com/post/django_auth/</guid><description>&lt;h1 id="authpy"&gt;auth.py&lt;/h1&gt;
+&lt;p&gt;自定义authentication backend.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;from django.contrib.auth.backends import BaseBackend
+class MyBackend(BaseBackend):
+def authenticate(self, request):
+...
+def get_user(self, user_id):
+...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;配置使用自定义backend&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;AUTHENTICATION_BACKENDS = (&amp;quot;apps.ldap_auth.auth.MyBackend&amp;quot;,)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/etianen/django-python3-ldap" target="_blank" rel="noopener"
+&gt;https://github.com/etianen/django-python3-ldap&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id="auth"&gt;auth&lt;/h1&gt;
+&lt;p&gt;配置&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;INSTALLED_APPS = (
+'django.contrib.auth'，
+'django.contrib.contenttypes'
+)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;&amp;lsquo;django.contrib.auth&amp;rsquo; 包含了验证框架的内核和它的默认模型。&lt;/p&gt;
+&lt;p&gt;&amp;lsquo;django.contrib.contenttypes&amp;rsquo; 是 Django content type system ，允许你创建的模型和权限相关联。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;MIDDLEWARE_CLASSES = (
+'django.contrib.sessions.middleware.SessionMiddleware',
+'django.contrib.auth.middleware.AuthenticationMiddleware',
+)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;用户登录:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;from django.contrib.auth import authenticate, login
+user = authenticate(username='name', password='pw')
+login(request, user)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;登陆时的默认验证后端:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;AUTHENTICATION_BACKENDS = ['django.contrib.auth.backends.ModelBackend']
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;用户登出:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;from django.contrib.auth import logout
+logout(request)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;</description></item></channel></rss>

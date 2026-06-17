@@ -1,0 +1,665 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Builtins on Morgoth</title><link>https://canuxcheng.com/tags/builtins/</link><description>Recent content in Builtins on Morgoth</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 15 Aug 2016 11:16:29 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/builtins/index.xml" rel="self" type="application/rss+xml"/><item><title>PSL_builtins</title><link>https://canuxcheng.com/post/psl_builtins/</link><pubDate>Mon, 15 Aug 2016 11:16:29 +0000</pubDate><guid>https://canuxcheng.com/post/psl_builtins/</guid><description>&lt;h1 id="builtins"&gt;builtins&lt;/h1&gt;
+&lt;p&gt;python的内置模块，所有python的内置功能都在这个模块中，不需要import导入就可以使用。&lt;/p&gt;
+&lt;p&gt;包括内置类类型以及所属的内置方法，和内置函数.&lt;/p&gt;
+&lt;p&gt;内置常量&lt;/p&gt;
+&lt;p&gt;内置函数(BIF)&lt;/p&gt;
+&lt;p&gt;内置类型(BIT)&lt;/p&gt;
+&lt;p&gt;工厂函数：python内置的类型都有对应的类的实现，同名的类的方法就是工厂函数．&lt;/p&gt;
+&lt;p&gt;内置类型的内置方法(BIM)&lt;/p&gt;
+&lt;p&gt;内置异常&lt;/p&gt;
+&lt;p&gt;该模块是通过C/C++实现的．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import builtins # can be ignored
+dir(builtins)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id="内置特殊常量"&gt;内置特殊常量&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;False # 内置类型bool的实例
+True # 内置类型bool的实例
+None # python的Null对象或types.NoneType,只有一个值None.布尔值始终为False.
+NotImplemented # types.NotImplementedType
+Ellipsis # types.EllipsisType, 省略对象，布尔值始终为True.
+__debug__ # True/False
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id="内置函数"&gt;内置函数&lt;/h1&gt;
+&lt;p&gt;不需要import可以直接使用的函数&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;__import__(name, globals={}, locals={}, fromlist=[], level=-1) # import关键字实际调用该函数
+print(value, ..., sep=' ', end='\n', file=sys.stdout, flush=False) # python3新增
+compile(source, filename, mode[, flags[, dont_inherit]])
+# 编译source返回一个code对象(代码对象)．
+# mode: exec, 用于模块 python2可以用exec关键字执行,python3改成exec()函数;
+module = &amp;quot;for i in xrange(10): print(i)&amp;quot;
+code = compile(module, '', 'exec')
+type(code) # code
+exec code
+# mode: single, 用于单行语句, 也是用exec执行;
+code = compile(&amp;quot;print 'test'&amp;quot;, '', single)
+type(code) # code
+exec code
+# mode: eval, 用于表达式 可以用eval()函数执行． eg:
+expression = &amp;quot;3 * 4&amp;quot;
+code = compile(expression, '', 'eval')
+type(code) # code
+eval(code)
+eval(source[, globals[, locals]])
+# 返回python表达式的结果，source可以是compile()返回的代码对象，也可以是一个表达式．
+exec(object[, globals[, locals]]) # python3 新增
+# object可以是一个文件对象，也可以是一个语句或代码块．
+format(value[, format_spec]) # 返回格式化后的字符串形式．
+## 环境变量相关
+globals() # 返回当前作用域的全局名称空间的字典．
+locals() # 返回当前作用域的局部名称空间的字典．
+## 数字类型的数学运算
+abs(number) # 返回int/long的绝对值
+divmod(x, y) # 返回x/y 的　(商，余数) 组成的元组
+pow(x, y[, z]) # 返回x**y或(x**y) % z
+round(number[, ndigits]) # 返回number四舍五入后的结果，ndigits表示小数点后的位数，默认是0.
+chr(i) # 返回整数ｉ对应的ASCII字符的字符串形式，0 &amp;lt;= i &amp;lt; 256.
+ord(c) # 返回字符ASCII字符c对应的整数.
+bin(number) # 返回int/long的二进制的字符串形式
+oct(number) # 返回int/long的八进制的字符串形式．
+hex(number) # 返回int/long的十六进制的字符串形式.
+## 对象相关的操作
+id(object) # 返回一个对象的ID, 用内存地址作为ID来表示唯一性. 也就是对象的身份．等价is关键字.
+repr(object) # 返回object的标准字符串形式，可以通过eval()重新得到该对象．eval(repr(object)) == object. 给程序员看的。
+ascii(object) # 和repr()函数等效．
+callable(object) # 如果object是可调用的返回True, 需要实现魔法方法__call__()
+hash(object) # 返回一个对象的散列/哈希(hash)值，有相同值的对象hash值相同.可用做字典的键.
+len(object) # 返回序列（str, tuple, list)或映射（dict)的长度
+dir([object]) # 查看对象的信息
+getattr(object, name[, default]) # 如果object.name存在,返回name的值，否则如果default存在，返回default,否则抛出异常AttributeError, 和super的查找顺序一样．
+hasattr(object, name) # 和getattr一样，但是捕获了异常，object.name存在返回True,否则返回False.
+setattr(object, name, value) # 给对象的属性赋值，相当于object.name = value
+delattr(object, name) # 删除对象object的属性name
+isinstance(object, class-or-type-or-tuple) # 如果object是class-or-type中指定的类或类型的实例或子类的实例，返回True,否则返回False.
+issubclass(C, B-or-(B,A)) # 如果C是B或(B,A,...)中的类的子类，返回True,否则返回False. 不严格子类也允许，例如一个类可以看作是自身的子类．
+vars([object]) # 没有参数等于locals()，有参数等于object.__dict__.
+## related to iterable
+min(iterable[, key=func]) # 返回可迭代对象iterable中的最小元素
+min(a, b, c, ...[, key=func]) # 返回a,b,c...中的最小元素
+max(iterable[, key=func]) # 和min相反
+max(a, b, c, ...[, key=func]) # 和min相反
+all(iterable) # 如果可迭代的参数iterable中所有的元素都不是0,False,''则返回True,iterable为空也返回True,否则返回False
+any(iterable) # 如果可迭代的参数iterable中所有的元素都是0,False,''则返回False,　否则返回True
+sum(sequence[, start]) # 返回数字序列sequence的所有元素加上start的和，start默认是０．
+## related to iterator
+iter(collection) # 将可迭代对象（str, tuple, list, dict的键,集合,文件的行等）转换成迭代器,返回迭代器对象.
+iter(callable, sentinel) # 第一个参数需要是callable的，每次迭代到sentinel停止．
+next(iterator[, default]) # 返回迭代器iterator中的下一个元素，如果没有元素了，default指定内容返回该内容，否则抛出StopIteration异常．
+## related to input
+input([prompt]) # python3
+# 根据prompt提示输入内容，返回输入的内容,如果是表达式会先求值再返回.
+## related to file
+open(name[, mode[, buffering]]) # 打开一个文件，返回一个file类类型的对象．
+// python3 refactor
+sorted(iterable, key=None, reverse=False)
+// 多维数据排序
+dict = {'a': 3, 'b': 2, 'c': 1}
+sorted(dict.items(), key=lambda x:x[1], reverse=False)
+json = [{&amp;quot;time&amp;quot;: 1, &amp;quot;data&amp;quot;: &amp;quot;message&amp;quot;}, {&amp;quot;time&amp;quot;: 2, &amp;quot;data&amp;quot;: &amp;quot;message&amp;quot;}]
+sorted(json, key=lambda k:k[&amp;quot;time&amp;quot;])
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id="内置异常类"&gt;内置异常类&lt;/h1&gt;
+&lt;p&gt;BaseException(object) # 所有异常的基类, 继承自object.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# BaseException的四个子类
+SystemExit # python解释器请求退出
+KeyboardInterrupt # 用户输入ctrl-c中断执行
+GeneratorExit # 生成器发出异常来通知退出
+Exception # 常规错误的基类
+StopIteration # 迭代器结束抛出的异常
+StandardError # 所有内置标准error的基类
+BufferError
+ArithmeticError # 数值计算错误的基类
+FloatingPointError
+OverflowError
+ZeroDivisionError # 除法分母为０错误
+AsseertionError # 断言语句失败
+AttributeError # 访问未知的对象属性
+EnvironmentError
+IOError # 打开不存在的磁盘文件导致的输入/输出错误
+OSError
+WindowError
+VMSError
+EOFError
+ImportError
+LookupError
+IndexError # 序列的索引错误
+KeyError # 字典的键错误
+MemoryError
+NameError # 未申明或初始化的对象
+UnboundLocalError
+ReferenceError
+RuntimeError # 一般的运行错误
+NotImplementedError # 尚未实现的方法
+SyntaxError # 语法错误， 唯一不在运行时发生的异常
+IndentationError # 缩进错误
+TabError # 跳格和空格混用
+SystemError # 一般的解释器系统错误
+TypeError # 对类型无效的操作
+ValueError # 传入无效的参数
+UnicodeError
+UnicodeDecodeError
+UnicodeEncodeError
+UnicodeTranslateError
+Warning # 所有warning的基类
+DeprecationWarning # 被弃用特征的警告
+RuntimeWarning # 可疑的运行时行为警告
+SyntaxWarning # 可疑的语法行为警告
+UserWarning # 用户代码生成的警告
+FutureWarning # 使用新的语法特征的警告
+ImportWarning # 导入包警告
+UnicodeWarning
+ByteWarning
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id="built-in-typesclass"&gt;built-in Types/Class&lt;/h1&gt;
+&lt;p&gt;下面是数据类型：&lt;/p&gt;
+&lt;h2 id="int"&gt;int&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;int(x=0)
+int(x, base=10)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;内置方法:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;bit_length() # 一个int类型的二进制形式的位数．
+conjugate()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;内置数据描述符：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;denominator
+numerator
+imag
+real
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="boolint"&gt;bool(int)&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;bool(x)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;内置类类型int的内置方法和数据描述符都是继承自基类int.&lt;/p&gt;
+&lt;h2 id="float"&gt;float&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;float(x)
+float('-inf') # 负无穷大
+float('inf') # 正无穷大
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;内置方法:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;as_integer_ratio() # 返回一个整数对，相除的结果是该浮点数
+conjugate()
+fromhex(string) # 将十六进制的字符转换成浮点型
+# float.fromhex('-0x1p-1074')
+hex() # 将浮点数转换成十六进制形式
+is_integer() # 如果浮点数是整数，返回true
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;内置数据描述符：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;imag
+real
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="complex"&gt;complex&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;complex(real[, imag])
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;内置方法:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;conjugate() # 返回一个复数的工軛复数
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;内置数据描述符：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;imag 复数的虚部
+real 复数的实部
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="str"&gt;str&lt;/h2&gt;
+&lt;p&gt;字符串是不可变类型, 是标量，是序列．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;str(object='') # 把一个对象转换成字符串．或者返回一个对象的可读性好的字符串表示，无法用语eval()求值．给用户看的。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;内置方法：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;capitalize() # 字符串首字母大写, 返回新的字符串
+title() # 所有单词首字母大写，返回新的字符串
+lower() # 所有字符小写，返回新的字符串
+upper() # 所有字符大写，返回新的字符串
+swapcase() # 大写字符转换成小写，小写转化成大写
+translate(table [,deletechars]) #
+join(iterable) # 用字符串分割iterable,返回新的字符串
+replace(old, new[, count]) # 用new替换字符串中的前count个old, 返回替换后的字符串
+expandtabs([tabsize]) # 把字符串中的tab键替换为tabsize指定的宽度的新tab，默认是8,然后返回新的字符串
+format(*args, **kwargs) # 返回格式化后的字符串
+lstrip([chars]) # 如果字符串以chars开头,就删除开头chars，然后返回新的字符串, chars默认是空格．
+strip([chars]) # 删除开头和结尾的chars,如果有的话，然后返回新的字符串，chars默认是空格．
+rstrip([chars]) # 如果字符串以chars结尾，就删除结尾的chars,然后返回新的字符串，chars默认是空格．
+center(width[, fillchar]) # 以字符串为中心填充字符串，默认用空格填充,返回填充后的字符串
+zfill(width) # 用0填充字符串的左边，直到width长度，返回新的字符串
+ljust(width[, fillchar]) # 字符串左对齐，右边填充fillchar,默认空格，直到长度为width,返回新的字符串
+rjust(width[, fillchar]) # 字符串右对齐，左边填充fillchar，默认空格，直到长度为width,返回新的字符串
+count(sub[, start[, end]]) # 返回sub字符串在str[start:end]中出现的次数
+# 参考codecs模块的decode/encode.
+decode([encoding[,errors]]) # 解码
+encode([encoding[,errors]]) # 编码
+startswith(prefix[, start[, end]]) # 如果str[start:end]以prefix开头，返回true.
+endswith(suffix[, start[, end]]) # 如果str[start:end]以suffix结尾，返回true.
+isalnum() # 如果非空字符串，且元素都是字符或数字，返回True,否则返回False
+isalpha() # 如果非空字符串，且元素都是字符，返回True,否则返回False
+isdigit() # 如果非空字符串，且元素都是数字，返回True,否则返回False
+isspace() # 如果非空字符串，且所有元素都是空格，返回True,否则返回False
+istitle() # 如果非空字符串，且所有单词的首字母大写，返回True,否则返回False
+islower() # 如果非空字符串，且所有元素都是小写，返回True,否则返回False
+isupper() # 如果非空字符串，且所有单词都是大写，返回True,否则返回False
+splitlines(keepends=False) # 根据\n,\r,\r\n来拆分字符串，返回拆分后的列表，True表示保留换行符，默认是False．
+split([sep [,maxsplit]]) # 将字符串以从左到右的maxsplit个seq分割，返回分割后的列表，默认seq是空格，maxsplit是所有seq．
+rsplit([sep [,maxsplit]]) # 和split相反,从右到左的maxsplit个seq分割．
+partition(sep) # 字符串根据从左往右根据第一个找到的seq分割，返回一个(head, seq, tail), 如果没有找到seq, 返回(str, '', '').
+rpartition(sep) # 字符串根据最后一个找到的seq分割，返回(head, seq, tail),如果没有找到seq,返回('', '', str)
+find(sub [,start [,end]]) # 在str[start:end]中从左往右查找sub,返回找到的第一个字符所在的下标,没找到返回-1
+rfind(sub [,start [,end]]) # 在str[start:end]中查找sub,返回最后一个sub的第一个元素的索引,没有找到返回-1
+index(sub [,start [,end]]) # 和find一样，但是没找到抛出异常ValueError．
+rindex(sub [,start [,end]]) # 和rfind一样，但是没找到抛出ValueError异常．
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="bytes"&gt;bytes&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;bytes(iterable_of_ints) -&amp;gt; bytes
+bytes(string, encoding[, errors]) -&amp;gt; bytes
+bytes(bytes_or_buffer) -&amp;gt; immutable copy of bytes_or_buffer
+bytes(int) -&amp;gt; bytes object of size given by the parameter initialized with null bytes
+bytes() -&amp;gt; empty bytes object
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;内置方法：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;capitalize()
+...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="bytearray"&gt;bytearray&lt;/h2&gt;
+&lt;p&gt;bytearray表示可变字节数组类型, bytearray是可变类型，是序列（可迭代）&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;bytearray(iterable_of_ints) -&amp;gt; bytearray
+bytearray(string, encoding[, errors]) -&amp;gt; bytearray
+bytearray(bytes_or_buffer) -&amp;gt; mutable copy of bytes_or_buffer
+bytearray(int) -&amp;gt; bytes array of size given by the parameter initialized with null bytes
+bytearray() -&amp;gt; empty bytes array
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;内置方法:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;append(int)
+capitalize()
+...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id="tuple"&gt;tuple&lt;/h2&gt;
+&lt;p&gt;元组是不可变类型, 是容器，是序列.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;tuple()
+tuple(iterable) # 把可迭代对象转换成元组.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;内置方法：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;count(value) # 返回值为value的元素在元组中出现的次数
+index(value, [start, [stop]]) # 返回值为value的元素在元组tuple[start:stop]中的第一次出现的索引，没有该元素返回ValueError.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="list"&gt;list&lt;/h2&gt;
+&lt;p&gt;列表是可变类型,　是容器，是序列.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;list()
+list(iterable) # 把可迭代的对象转换成列表．
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;内置方法：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;count(value) # 返回value在列表中出现的次数
+index(value, [start, [stop]]) # 从左往右在list[start:stop]中寻找value,返回第一个找到的元素的索引，否则返回ValueError异常．
+# 下列改变列表的值的方法都没有返回值，直接改变原列表的值, 返回None。
+append(object) # 在列表结尾追加对象
+extend(iterable) # 将可迭代对象iterable的元素依次追加到列表,相当于序列的+运算．
+insert(index, object) # 在list[index]前面插入object.
+pop([index]) # 删除list[index],默认是最后一个元素，如果列表为空或索引越界，抛出IndexError异常．
+remove(value) # 删除第一个出现的value．
+reverse() # 翻转列表, 返回None
+sort(cmp=None, key=None, reverse=False) # 默认对列表中的元素从小到大排序，reverse=True,则从大到小．
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="dict"&gt;dict&lt;/h2&gt;
+&lt;p&gt;字典是可变类型, 是容器，是映射类型（mapping), 字典可以迭代键．字典是无序的．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;dict()
+dict(mapping) # dict(one=1, two=2)
+dict(iterable) # dict([(1, 'one'), (2, 'two')]), dict([[1,1], [2,2]]), dict(([1,1], [2, 2])), dict(((1,1), (2,2))),
+dict(**kwargs) # dict({1:&amp;quot;one&amp;quot;, 2:&amp;quot;two&amp;quot;})
+in, not in
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;内置方法：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;copy() # 返回字典的一个浅拷贝
+clear() # 清空字典所有元素
+fromkeys(S[,v]) # 返回以S的元素为键，v为值的新字典，v默认为None.
+get(k[,d]) # 如果键k在字典里面，返回dict[k], 否则返回d, d默认为None.
+pop(k[,d]) # 从字典中删除键k的键值对，返回dict[k], 如果不存在返回d,如果没有指定d,抛出KeyError异常．
+popitem() # 从字典中删除随机的键值对，返回该键值对组成的元组，如果字典为空，抛出KeyError异常．
+setdefault(k[,d]) # 如果键k在字典中存在，等效于get(k[,d]), 否则就插入D[k]=d键值对．
+update([E, ]**F) # 向字典插入指定的项目(字典或可迭代对象).
+keys() # 返回字典的键组成的列表．
+values() # 返回字典的值组成的列表．
+items() # 返回一个列表，每个元素是字典的键和值组成的元组．
+iteritems() # 返回字典的键值对组成的迭代器，next()每次返回一个一对键值组成的元组．
+iterkeys() # 返回字典的键组成的迭代器．
+itervalues() # 返回字典的值组成的迭代器．
+viewitems() # 返回键和值组成的可迭代对象
+viewkeys()　# 返回键组成的可迭代对象
+viewvalues() # 返回值组成的可迭代对象
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="frozenset"&gt;frozenset&lt;/h2&gt;
+&lt;p&gt;不可变集合frozenset是不可变类型&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;frozenset()
+frozenset(iterable)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;不可变集合和可变集合共同的内置方法：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;copy() # 返回集合的一个浅拷贝
+isdisjoint() # 两个集合交集为空，返回为True.
+a.issubset(b) # a是b的非严格子集，　a &amp;lt;= b, 返回True
+a.issuperset(b) # a是b的非严格超集, a &amp;gt;= b, 返回True
+union() # 联合/并集，OR操作，等效于|运算符
+intersection([others, ...]) # 交集，　AND操作，　等效于&amp;amp;运算符
+difference([others, ...]) # 差补或相对补充集，等效于-运算符
+symmetric_difference() # 对称差分或异或，等效于^运算符
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="set"&gt;set&lt;/h2&gt;
+&lt;p&gt;可变集合set是可变类型&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;set()
+set(iterable)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;set除了有frozenset的所有方法还有自己特有的内置方法：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;clear() # 清空集合所有元素
+pop() # 删除并返回任意一个集合元素，集合为空抛出KeyError.
+add(obj) # 往集合中添加一个不存在的元素
+remove(obj) # 删除集合中的存在的指定的数字元素, 非数字抛出KeyError.
+s.discard(obj) # 如果obj是集合s中的元素，从s中删除obj.
+update() # 等效于|=运算符
+intersection_update() # 等效于&amp;amp;=运算符
+difference_update() # 等效于-=运算法
+symmetric_difference_update() # 等效于^=运算符
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="slice"&gt;slice&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;slice(stop)
+slice(start, stop[, step])
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;methods:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;indices(len) -&amp;gt; (start, stop, stride)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="range"&gt;range&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;range(stop) # 返回[0, 1, stop-1]的列表
+range(start, stop[, step]) # 返回[start, start+n*step... ], n&amp;gt;=1,start+n*step&amp;lt;stop.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Methods:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;count(self, object, /)
+index(self, object, /)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="memoryview"&gt;memoryview&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;memoryview(object)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;内置方法:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;cast(self, /, format, shape=&amp;lt;unrepresentable&amp;gt;)
+hex(self, /, sep=&amp;lt;unrepresentable&amp;gt;, bytes_per_sep=1)
+release(self, /)
+tobytes(self, /, order='C')
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;内置数据描述符：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;format
+itemsize
+...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;p&gt;迭代器/生成器类&lt;/p&gt;
+&lt;h2 id="enumerate"&gt;enumerate&lt;/h2&gt;
+&lt;p&gt;返回一个迭代器，迭代器的元素是iterable中的元素和索引组成的元组。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;enumerate(iterable, start=0)
+ennumerate([&amp;quot;a&amp;quot;, &amp;quot;b&amp;quot;, &amp;quot;c&amp;quot;]) # 返回迭代器，元素是(0, &amp;quot;a&amp;quot;), (1, &amp;quot;b&amp;quot;), (2, &amp;quot;c&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="reversed"&gt;reversed&lt;/h2&gt;
+&lt;p&gt;返回一个迭代器，迭代器的元素是iterable中的元素从后往前的顺序。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;reversed(iterable)
+reversed(&amp;quot;abc&amp;quot;) # 返回迭代器，元素是&amp;quot;c&amp;quot;, &amp;quot;b&amp;quot;, &amp;quot;a&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="map"&gt;map&lt;/h2&gt;
+&lt;p&gt;按顺序依次执行函数function(iterable)中的每个元素，返回一个迭代器。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;map(function, iterable, ...)
+map(lambda x: x**2, [1, 2, 3]) # 返回迭代器，元素是1, 4, 9
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="filter"&gt;filter&lt;/h2&gt;
+&lt;p&gt;返回一个迭代器，迭代器的元素是iterable中满足function(x)为True的元素。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;filter(function, iterable)
+filter(lambda x: x &amp;gt; 0, [-1, 0, 1, 2]) # 返回迭代器，元素是1, 2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="zip"&gt;zip&lt;/h2&gt;
+&lt;p&gt;返回一个迭代器，迭代器的元素是iterable中每个元素的元组。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;zip(iterable1, iterable2, ...)
+zip([1, 2, 3], [&amp;quot;a&amp;quot;, &amp;quot;b&amp;quot;, &amp;quot;c&amp;quot;]) # 返回迭代器，元素是(1, &amp;quot;a&amp;quot;), (2, &amp;quot;b&amp;quot;), (3, &amp;quot;c&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id="classmethod"&gt;classmethod&lt;/h2&gt;
+&lt;h2 id="staticmethod"&gt;staticmethod&lt;/h2&gt;
+&lt;h2 id="property"&gt;property&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h2 id="object"&gt;object&lt;/h2&gt;
+&lt;p&gt;object类是所有类的基类&lt;/p&gt;
+&lt;h2 id="type"&gt;type&lt;/h2&gt;
+&lt;p&gt;所有类的类型或元类&lt;/p&gt;
+&lt;p&gt;type是用来创建类的类，可以动态创建类。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;class type(object)
+type(object) -&amp;gt; the object's type
+type(name, bases, dict, **kwds) -&amp;gt; a new type
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;</description></item><item><title>Builtins</title><link>https://canuxcheng.com/post/ps_builtins/</link><pubDate>Tue, 24 May 2016 10:44:44 +0000</pubDate><guid>https://canuxcheng.com/post/ps_builtins/</guid><description>&lt;h1 id="get-help和help"&gt;Get-Help和Help:&lt;/h1&gt;
+&lt;p&gt;get-help查看帮助信息,help分页查看帮助信息，man是help的别名&lt;/p&gt;
+&lt;p&gt;命令说明：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Get-Help
+Help
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看所有命令和概念：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Get-Help *
+Help *
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;模糊查找命令和概念：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Get-Help *&amp;lt;name&amp;gt;*
+Help *&amp;lt;name&amp;gt;*
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看具体命令帮助：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Get-Help {&amp;lt;CmdletName&amp;gt; | &amp;lt;TopicName&amp;gt;}
+Help {&amp;lt;CmdletName&amp;gt; | &amp;lt;TopicName&amp;gt;}
+&amp;lt;CmdletName&amp;gt; -?
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;get-help/help的选项:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;get-help get-help
+-examples # 查看示例
+-full # 查看所有帮助
+-parameter # 查看选项的帮助
+-detailed # 查看详细信息
+-online # 打开文档中的link
+-showwindow # 用窗口打开
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id="helpfile"&gt;Helpfile&lt;/h1&gt;
+&lt;p&gt;3.0/4.0 需要先下载帮助手册：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;update-help
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;所有helpfile：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Get-Help/Help about_*
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看具体helpfile：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Get-Help/Help about_&amp;lt;name&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id="cmdlets"&gt;Cmdlets&lt;/h1&gt;
+&lt;p&gt;cmdlets是powershell的内置命令,类型是System.Management.Automation.CmdletInfo&lt;/p&gt;
+&lt;p&gt;cmdlets的方法：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Equals
+GetHashCode
+GetType
+ToString
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;cmdlets的属性：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;CommandType
+DefaultParameterSet
+Definition
+HelpFile
+ImplementingType
+Module
+ModuleName
+Name
+Noun
+OutputType
+Parameters
+ParameterSets
+PSSnapln
+Verb
+Visibility
+DLL
+HelpUri
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;常用cmdlets命令：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Get-Command -CommandType cmdlet # 查看所有cmdlet
+Get-Command
+Invoke-Command
+Measure-Command
+Show-Command
+Trace-Command
+Get-Service
+New-Service
+Restart-Service
+Resume-Service
+Set-Service
+Stop-Service
+Suspend-Service
+Get-Process
+Debug-Process
+Start-Process
+Stop-Process
+Wait-Process
+Get-Member # 查看属性
+Add-Member
+Get-Host
+Read-Host
+Write-Host
+Out-Host
+Out-Default
+Out-File # 重定向，也可以用&amp;gt;, &amp;gt;&amp;gt;
+Out-GridView
+Out-Null
+Out-Printer
+Out-String
+Write-Debug
+Write-Error
+Write-EventLog
+Write-Output
+Write-Progress
+Write-Verbose
+Write-Warning
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id="function"&gt;Function&lt;/h1&gt;
+&lt;p&gt;powershell内置函数&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Get-Command -CommandType function # 查看所有function
+ls function:
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;所有function：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;prompt
+TabExpansion2
+Clear-Host
+more
+help
+mkdir
+Get-Verb
+oss
+cd..
+cd\
+ImportSystemModules
+Pause
+A:
+...
+Z:
+Get-FileHash
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id="alias"&gt;Alias&lt;/h1&gt;
+&lt;p&gt;powershell内置别名&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Get-Command -CommandType alias # 查看所有alias
+dir alias: # 查看所有alias
+ls alias: | where {$_.Definition.Startswith(&amp;quot;Start&amp;quot;)}
+Get-Alias # 查看所有alias
+Set-Alias
+New-Alias
+Import-Alias
+Export-Alias
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;常用alias：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ForEach-Object %/foreach
+Where-Object ?/where
+Select-Object select
+Compare-Object compare/diff
+Tee-Object tee
+Sort-Object sort
+Set-Location cd/chdir/sl
+Get-Location pwd/gl
+Clear-Content clc
+Get-Content cat/type/gc
+Clear-History clhy
+Get-History h/history/ghy
+Invoke-History ihy/r
+Clear-Variable clv
+Set-Variable set/sv
+Clear-Item cli
+Clear-ItemProperty clp
+Copy-Item copy/cp/cpi
+Remove-Item del/erase/rd/ri/rm/rmdir
+Move-Item mv/move/mi
+Get-ChildItem dir/ls/gci
+Get-Process ps/gps
+Stop-Process kill/spps
+Start-Process start/saps
+Clear-Host clear/cls
+Write-Output echo/write
+New-PSDrive mount
+Invoke-WebRequest curl/wget
+Start-Sleep sleep
+help man
+mkdir md
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id="provider"&gt;Provider&lt;/h1&gt;
+&lt;p&gt;provider相关cmdlet：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Get-PSProvider # 查看provider
+Get-PSDrive # 查看驱动器
+New-PSDrive # 新建驱动器
+Remove-PSDrive # 删除驱动器
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;所有provider：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 这三个驱动器可以用ls或dir直接查看内容
+ls alias:
+dir function:
+Alias # 别名驱动器
+Function # 函数驱动器
+Variable # 变量驱动器
+# 这三个驱动器需要具体的驱动器,然后cd进去查看
+FileSystem # 文件系统驱动器
+Environment
+Registry
+help/get-help &amp;lt;provider_name&amp;gt; # 查看provider帮助
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id="object"&gt;object&lt;/h1&gt;
+&lt;p&gt;object主要通过管道|使用。&lt;/p&gt;
+&lt;p&gt;object相关的cmdlet：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Compare-Object
+ForEach-Object
+Group-Object
+Measure-Object
+New-Object
+Select-Object
+Sort-Object
+Tee-Object
+Where-Object
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;object转化：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;get-command -verb *convert*
+...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;导出object：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;get-command -verb *export*
+...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;导入object：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;get-command -verb *import*
+...
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id="module"&gt;module&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;Get-Module
+get-module -listavailable # 查找安装的模块
+Import-Module
+import-module sqlps # 导入第三方mssql模块
+get-command -module sqlps # 查看模块中所有命令
+New-Module
+Remove-Module
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id="format"&gt;format&lt;/h1&gt;
+&lt;p&gt;安装路径有一些xml文件已经做了一些默认的格式化。&lt;/p&gt;
+&lt;p&gt;格式化的数据只能传给Out-File/out-host/out-printer/out-null/out-string/out-default.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Export-FormatData
+Get-FormatData
+Update-FormatData
+Format-Custom
+Format-List
+Format-Table
+Format-Wide
+&lt;/code&gt;&lt;/pre&gt;</description></item></channel></rss>

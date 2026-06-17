@@ -1,0 +1,209 @@
+<!doctype html><html lang=zh-CN dir=ltr><head><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'><meta name=description content="awk awk 是一门编程语言
+awk/nawk/gawk/mawk：比sed更高级的流编辑工具，是sed和grep的升级版，主要用于数据流处理。
+nawk： new awk。
+mawk： awk的解释器
+gawk是gnu的awk，功能更全面。
+awk命令格式：
+awk [-v var=value [-F *] [–] '/pattern/ {action}' file awk [-v var=value [-F *] [-f scriptfile ...] [–] file awk [-v var=value [-F *] [-] 'BEGIN {} /pattern/ {action} END {}' file BEGIN { } 在读取输入之前就操作 END { } 在读物输入之后操作 awk的指令需要用单引号包围； 模式需要用/pattern/包围； 过程需要用{command1；command2}包围，多个过程需要用；隔开。
+脚本中传递参数格式：
+awk [-f scriptfile]OR['/pattern/{action}'] val1=value1 val2=value2 … file1 vala=valuea valb=valueb... file2 ... 如果通过shell传参数，把value改成$n即可。 可以通过命令返回值作为参数value。 也可以使用环境变量作为value，也可以给awk的环境变量赋值。 可以在任何位置定义变量（‘ ‘ 之后；-v之后；BEGIN中；{}中；END中）。 只有在-v和在BEGIN中定义的变量能在BEGIN中使用。 在END中定义的变量只能在END中使用，其它位置定义的变量都可以在{}中使用。 在任何位置定义的变量在END中都可以使用。
+"><title>Awk</title><link rel=canonical href=https://canuxcheng.com/post/shell_awk/><link rel=stylesheet href=/scss/style.min.22ad1c74b5bb435181c77741d99f034b2c36f7272eff9d0d1aa16d32e7e84673.css><meta property='og:title' content='Awk'><meta property='og:description' content="awk awk 是一门编程语言
+awk/nawk/gawk/mawk：比sed更高级的流编辑工具，是sed和grep的升级版，主要用于数据流处理。
+nawk： new awk。
+mawk： awk的解释器
+gawk是gnu的awk，功能更全面。
+awk命令格式：
+awk [-v var=value [-F *] [–] '/pattern/ {action}' file awk [-v var=value [-F *] [-f scriptfile ...] [–] file awk [-v var=value [-F *] [-] 'BEGIN {} /pattern/ {action} END {}' file BEGIN { } 在读取输入之前就操作 END { } 在读物输入之后操作 awk的指令需要用单引号包围； 模式需要用/pattern/包围； 过程需要用{command1；command2}包围，多个过程需要用；隔开。
+脚本中传递参数格式：
+awk [-f scriptfile]OR['/pattern/{action}'] val1=value1 val2=value2 … file1 vala=valuea valb=valueb... file2 ... 如果通过shell传参数，把value改成$n即可。 可以通过命令返回值作为参数value。 也可以使用环境变量作为value，也可以给awk的环境变量赋值。 可以在任何位置定义变量（‘ ‘ 之后；-v之后；BEGIN中；{}中；END中）。 只有在-v和在BEGIN中定义的变量能在BEGIN中使用。 在END中定义的变量只能在END中使用，其它位置定义的变量都可以在{}中使用。 在任何位置定义的变量在END中都可以使用。
+"><meta property='og:url' content='https://canuxcheng.com/post/shell_awk/'><meta property='og:site_name' content='Morgoth'><meta property='og:type' content='article'><meta property='article:section' content='Post'><meta property='article:tag' content='shell'><meta property='article:published_time' content='2016-12-14T00:55:37+08:00'><meta property='article:modified_time' content='2016-12-14T00:55:37+08:00'><meta name=twitter:title content="Awk"><meta name=twitter:description content="awk awk 是一门编程语言
+awk/nawk/gawk/mawk：比sed更高级的流编辑工具，是sed和grep的升级版，主要用于数据流处理。
+nawk： new awk。
+mawk： awk的解释器
+gawk是gnu的awk，功能更全面。
+awk命令格式：
+awk [-v var=value [-F *] [–] '/pattern/ {action}' file awk [-v var=value [-F *] [-f scriptfile ...] [–] file awk [-v var=value [-F *] [-] 'BEGIN {} /pattern/ {action} END {}' file BEGIN { } 在读取输入之前就操作 END { } 在读物输入之后操作 awk的指令需要用单引号包围； 模式需要用/pattern/包围； 过程需要用{command1；command2}包围，多个过程需要用；隔开。
+脚本中传递参数格式：
+awk [-f scriptfile]OR['/pattern/{action}'] val1=value1 val2=value2 … file1 vala=valuea valb=valueb... file2 ... 如果通过shell传参数，把value改成$n即可。 可以通过命令返回值作为参数value。 也可以使用环境变量作为value，也可以给awk的环境变量赋值。 可以在任何位置定义变量（‘ ‘ 之后；-v之后；BEGIN中；{}中；END中）。 只有在-v和在BEGIN中定义的变量能在BEGIN中使用。 在END中定义的变量只能在END中使用，其它位置定义的变量都可以在{}中使用。 在任何位置定义的变量在END中都可以使用。
+"><link rel="shortcut icon" href=favicon.ico><style>:root{--article-font-family:"Merriweather", var(--base-font-family)}</style><script>(function(){const e=document.createElement("link");e.href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap",e.type="text/css",e.rel="stylesheet",document.head.appendChild(e)})()</script></head><body class=article-page><script>(function(){const e="StackColorScheme";localStorage.getItem(e)||localStorage.setItem(e,"auto")})()</script><script>(function(){const t="StackColorScheme",e=localStorage.getItem(t),n=window.matchMedia("(prefers-color-scheme: dark)").matches===!0;e=="dark"||e==="auto"&&n?document.documentElement.dataset.scheme="dark":document.documentElement.dataset.scheme="light"})()</script><div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky"><button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label=切换菜单>
+<span class=hamburger-box><span class=hamburger-inner></span></span></button><header><figure class=site-avatar><a href=/><img src=/img/home_hu_7d22d46ad88d2427.jpg width=300 height=400 class=site-logo loading=lazy alt=Avatar>
+</a><span class=emoji>🍥</span></figure><div class=site-meta><h1 class=site-name><a href=/>Morgoth</a></h1><h2 class=site-description>Hello World!</h2></div></header><ol class=social-menu><li><a href=mailto:canuxcheng@163.com target=_blank title=E-mail rel=me><svg class="icon icon-tabler icon-tabler-messages" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M21 14l-3-3h-7a1 1 0 01-1-1V4a1 1 0 011-1h9a1 1 0 011 1v10"/><path d="M14 15v2a1 1 0 01-1 1H6l-3 3V11a1 1 0 011-1h2"/></svg></a></li><li><a href=https://github.com/crazy-canux target=_blank title=GitHub rel=me><svg class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6.0 00-1.3-3.2 4.2 4.2.0 00-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3.0 00-6.2.0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2.0 00-.1 3.2A4.6 4.6.0 004 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg></a></li></ol><ol class=menu id=main-menu><li><a href=/><svg class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="5 12 3 12 12 3 21 12 19 12"/><path d="M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/><path d="M9 21v-6a2 2 0 012-2h2a2 2 0 012 2v6"/></svg>
+<span>首页</span></a></li><li><a href=/about/><svg class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/></svg>
+<span>关于</span></a></li><li><a href=/categories/ target=_blank><svg class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg>
+<span>分类</span></a></li><li><a href=/tags/ target=_blank><svg class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11 3l9 9a1.5 1.5.0 010 2l-6 6a1.5 1.5.0 01-2 0L3 11V7a4 4 0 014-4h4"/><circle cx="9" cy="9" r="2"/></svg>
+<span>标签</span></a></li><li><a href=/rtfm/><svg class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+<span>RTFM</span></a></li><div class=menu-bottom-section><li id=i18n-switch><svg class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 5h7"/><path d="M9 3v2c0 4.418-2.239 8-5 8"/><path d="M5 9c-.003 2.144 2.952 3.908 6.7 4"/><path d="M12 20l4-9 4 9"/><path d="M19.1 18h-6.2"/></svg>
+<select name=language onchange="window.location.href=this.selectedOptions[0].value"><option value=https://canuxcheng.com/ selected>简体中文</option><option value=https://canuxcheng.com/en/>English</option></select></li><li id=dark-mode-toggle><svg class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="8" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<svg class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="16" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<span>暗色模式</span></li></div></ol></aside><main class="main full-width"><article class=main-article><header class=article-header><div class=article-details><header class=article-category><a href=/categories/linux/>Linux</a></header><div class=article-title-wrapper><h2 class=article-title><a href=/post/shell_awk/>Awk</a></h2></div><footer class=article-time><div><svg class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg>
+<time class=article-time--published>Dec 14, 2016</time></div><div><svg class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+<time class=article-time--reading>阅读时长: 2 分钟</time></div></footer></div></header><section class=article-content><h1 id=awk>awk</h1><p>awk 是一门编程语言</p><p>awk/nawk/gawk/mawk：比sed更高级的流编辑工具，是sed和grep的升级版，主要用于数据流处理。</p><p>nawk： new awk。</p><p>mawk： awk的解释器</p><p>gawk是gnu的awk，功能更全面。</p><p>awk命令格式：</p><pre><code>awk [-v var=value [-F *] [–] '/pattern/ {action}'  file
+awk [-v var=value [-F *] [-f scriptfile ...] [–] file
+awk [-v var=value [-F *] [-] 'BEGIN {} /pattern/ {action} END {}'  file
+BEGIN { }  在读取输入之前就操作
+END { }    在读物输入之后操作
+</code></pre><p>awk的指令需要用单引号包围；
+模式需要用/pattern/包围；
+过程需要用{command1；command2}包围，多个过程需要用；隔开。</p><p>脚本中传递参数格式：</p><pre><code>awk [-f scriptfile]OR['/pattern/{action}'] val1=value1 val2=value2 … file1   vala=valuea valb=valueb... file2 ...
+</code></pre><p>如果通过shell传参数，把value改成$n即可。
+可以通过命令返回值作为参数value。
+也可以使用环境变量作为value，也可以给awk的环境变量赋值。
+可以在任何位置定义变量（‘ ‘ 之后；-v之后；BEGIN中；{}中；END中）。
+只有在-v和在BEGIN中定义的变量能在BEGIN中使用。
+在END中定义的变量只能在END中使用，其它位置定义的变量都可以在{}中使用。
+在任何位置定义的变量在END中都可以使用。</p><p>Options:</p><pre><code>-f: 指定运行脚本文件中的命令,可以指定多个脚本。
+-F: 指定输入字段分隔符，默认是空格键和制表符。
+-v  $val=value  定义变量
+</code></pre><p>awk中的由空格或制表符分隔的单元作为一个字段</p><pre><code>$0	当前行的文本内容
+$1	第一个字段的文本内容
+$n	第n个字段的文本内容
+</code></pre><p>awk中的常量和变量：</p><pre><code>常量：字符串型和数字型，字符串常量必须用“”引号引用。
+变量：变量名大小写敏感，字母或下划线开头，可以包含数字。
+awk会自动将变量根据环境初始化为空串或0.
+</code></pre><p>awk中的命令：</p><pre><code>print命令：
+print a,b   参数用，隔开，打印出来的就是用空格隔开的,eg：a b.
+print a“string”b  参数中用双引号打印出来就是原样输出,eg:astringb.
+Print     打印匹配到的行
+print “”  打印一个空行
+</code></pre><p>printf命令：</p><p>格式化输出，和c语言中的printf类似。</p><pre><code>printf(format[,arguments])
+format是用“”引起来的格式
+arguments是一个可选的参数列表
+%s:字符串
+%d：十进制整数
+%f：浮点格式，默认精度小数点后6位。
+%%：打印%
+|%mX|:对于格式X按照默认的右对齐，精确到m位，左边补空格
+|%-mX|：对于格式X按照左对齐，精确到m位，右边补空格
+“%*.*g”， m， n， $val ： 动态指定精度，总共m位，小数点后n位。
+\t：跳格
+\n：换行
+</code></pre><p>next命令：</p><p>取得下一条记录</p><p>delete命令：</p><p>删除</p><p>exit命令：</p><p>退出输入记录的处理，进入END。
+exit n 设置awk的退出状态。</p><p>awk中的内置的变量：</p><pre><code>FS  定义输入记录字段分隔符，默认是空格
+OFS 输出记录字段分隔符，默认是空格
+NF	当前输入记录的字段个数（列号）
+RS  输入记录分隔符，默认是换行符
+ORS 输出记录分隔符，默认是换行符
+NR	读入的输入记录的个数(行号）
+FILENAME 当前输入文件的名字
+CONVFMT 控制类型转换，默认为%.6g
+</code></pre><p>在BEGIN{}中可以给变量赋值；在{}中用$来引用这些变量；在END{}中可以打印这些变量。</p><p>运算符：</p><pre><code>算数操作符：
++ - * / % ^
+
+赋值操作符：
+++ –-
++= -= *= /= %= ^=
+
+关系操作符：
+&lt; &gt; &lt;= &gt;=
+==(注意和赋值=的区别） !=
+~（匹配） !~（不匹配）
+
+布尔操作符：
+&amp;&amp; 逻辑与，优先级高于||
+|| 逻辑或
+！ 逻辑非
+</code></pre><p>awk内置的语句：</p><p>和c语言相似</p><p>条件语句：</p><pre><code>if (expression)
+    action1
+[else if (expression2) {
+    action2
+    action3
+    ...
+}]  多个动作需要用{}包围
+[else if () {action1;action2;...}]  多个动作写在一行需要用；隔开。
+[else if () action ; else action]  在同一行用；结束一个语句
+</code></pre><p>也可以用条件运算符代替条件语句：</p><pre><code>expression ? Action1 : action2
+</code></pre><p>循环语句：</p><pre><code>while (condition)
+    action
+
+while (condition) {
+    action1
+    action2
+    …
+}
+
+while (condition) { action1 ; action2 ; … }
+
+do
+    action
+while (condition)
+
+do {
+    action1
+    action2
+    …
+} while (condition)
+
+do { action1;action2;...} while (condition)
+
+for (set_counter; test_counter; increment_counter)
+    action
+</code></pre><p>break:</p><p>退出循环</p><p>continue：</p><p>终止本次循环，进入下一次循环</p><p>数组：</p><pre><code>array[subscript] = value
+awk中的数组直接给数组元素赋值，不用指定数组大小。通过下标访问。
+</code></pre><p>关联数组：</p><p>awk中的数组是关联数组，也就是可以用数值和字符作为下标来访问。</p><p>in操作符用来测试variable是否是数组array的下标，如果是条件为真。</p><pre><code>for (variable in array)
+    print variable: array[variable]
+if (variable in array)
+    print variable: array[variable]
+</code></pre><p>删除数组元素：</p><pre><code>delete array[subscript]
+</code></pre><p>系统变量的数组：</p><pre><code>ARGV：
+命令行参数数组，下标从0开始，不包括awk脚本本身和任何调用awk脚本指定的选项。
+akw -f awk.sh …    #不包括-f和awk.sh
+</code></pre><p>ENVIRON：</p><p>环境变量数组，下标是环境变量的名字，元素是环境变量的值。</p><p>awk内置的函数：</p><p>函数分为算数函数和字符串函数。</p><p>算数函数有9个：</p><pre><code>sin(x)：返回x的正弦
+cos(x)：返回x的余弦
+atan2(y,x)：返回y/x的反正切
+exp(x)：返回e的x次幂
+log(x)：返回以e为底的x的自然对数
+sqrt(x)：返回x的平方根
+int(x)：返回x的整数部分
+rand()：返回伪随机数r，0=&lt; r &lt;1
+srand(x)：建立rand（）的新的种子数
+</code></pre><p>字符串函数：</p><pre><code>gsub(r,s,t) 在字符串t中用s替换和正则表达式r匹配的所有字符串，返回替换的个数。
+gsub(r,s) 相当于t=$0
+sub(r,s,t)用s替换正则表达式在t中的首次匹配。成功返回1，失败返回0.
+sub(r,s)相当于t=$0
+
+substr(s,p)返回s中从位置p开始的子串
+substr(s,p,n)返回s中从位置p开始最大长度为n的子串。
+
+index(s,t)返回子串t在s中的位置，如果没有指定s或没有匹配项返回0.也就是返回t中的首字母在s中是第几个字符，如果首字母重复出现返回第一个的位置。
+
+length(s)   返回字符串s长度，没有指定s返回$0的长度，\n \t \r 空格都算一个字节。
+
+match(s,r)如果正则表达式r在s中出现，返回出现的起始位置，没有匹配返回0.
+
+split(string, array, separator)
+将字符串string分解到数组array中，数组下标从1到n，string根据指定的分隔符来分解，如果没有指定分隔符，默认为FS。返回数组中元素个数。
+
+sprintf(“format”, expr)和printf一样。
+
+tolower(s)将s中的所有大写字母转换成小写并返回新的字符串
+toupper(s)将s中的左右小写字母转换成大写并返回新的字符串
+</code></pre><p>其它函数：</p><pre><code>getline命令（其实是个函数）：
+获取下一条记录给$0,成功返回1，到达EOF返回0，失败返回-1.
+getline可以从文件中读取：getline &lt; “filename”,每次读一行。
+getline从标准输入读取：getline &lt; “-”,每次从stdin读取一行。
+将输入赋给一个变量：getline var_name.
+从管道读取：”command”|getline；“command”|getline var_name;把一个命令结果输出给getline.
+
+close()：关闭打开的文件和管道
+
+“command” | ...
+close(“command”)关闭输入管道
+
+...| “command“ &gt; filename
+close(“command &gt; filename”)关闭输出管道
+
+system()：执行一个命令。
+system(“command options”),返回命令的退出状态。
+</code></pre><p>可以定义自己的函数：</p><pre><code>function yourfunctionname(parameter-list) {
+    statements
+}
+</code></pre><p>可以使用系统定义的变量、语句、函数来定义自己的函数。
+使用自己定义的函数可以将函数写成一个单独脚本，使用-f选项来指定多个脚本进行调用。</p><hr><h1 id=常用命令>常用命令</h1><p>删除字符串前后空格:</p><pre><code>echo &quot;string&quot; |　awk &quot;$1=$1&quot;
+</code></pre></section><footer class=article-footer><section class=article-tags><a href=/tags/shell/>Shell</a></section></footer><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css integrity="sha256-J+iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s=" crossorigin=anonymous><script src=https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js integrity="sha256-InsNdER1b2xUewP+pKCUJpkhiqwHgqiPXDlIk7GzBu4=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI=" crossorigin=anonymous defer></script><script>window.addEventListener("DOMContentLoaded",()=>{renderMathInElement(document.querySelector(`.article-content`),{delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1},{left:"\\(",right:"\\)",display:!1},{left:"\\[",right:"\\]",display:!0}],ignoredClasses:["gist"]})})</script></article><div id=gitalk-container></div><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css><script src=https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js></script><script src=https://cdn.jsdelivr.net/npm/blueimp-md5@2.18.0/js/md5.min.js></script><script>const gitalk=new Gitalk({clientID:"3d41a2a237fabe050cc0",clientSecret:"f084dfe45a1c05955270776836298adf02732a02",repo:"crazy-canux.github.io",owner:"crazy-canux",admin:["crazy-canux"],distractionFreeMode:!1,id:md5(location.pathname)});(function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById("gitalk-container").innerHTML="Gitalk comments not available by default when the website is previewed locally.";return}gitalk.render("gitalk-container")})()</script><footer class=site-footer><section class=copyright>&copy;
+2013 -
+2026 Morgoth</section><section class=powerby>Designed by Canux<br></section></footer><div class=pswp tabindex=-1 role=dialog aria-hidden=true><div class=pswp__bg></div><div class=pswp__scroll-wrap><div class=pswp__container><div class=pswp__item></div><div class=pswp__item></div><div class=pswp__item></div></div><div class="pswp__ui pswp__ui--hidden"><div class=pswp__top-bar><div class=pswp__counter></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+<button class="pswp__button pswp__button--share" title=Share></button>
+<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button><div class=pswp__preloader><div class=pswp__preloader__icn><div class=pswp__preloader__cut><div class=pswp__preloader__donut></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class=pswp__share-tooltip></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+</button>
+<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button><div class=pswp__caption><div class=pswp__caption__center></div></div></div></div></div><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU=" crossorigin=anonymous defer></script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css crossorigin=anonymous><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css crossorigin=anonymous></main></div><script src=https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z+KMkF24hUW8WePSA9HM=" crossorigin=anonymous></script><script type=text/javascript src=/ts/main.js defer></script><script>(function(){const e=document.createElement("link");e.href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap",e.type="text/css",e.rel="stylesheet",document.head.appendChild(e)})()</script></body></html>

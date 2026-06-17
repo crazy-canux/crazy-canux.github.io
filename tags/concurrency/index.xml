@@ -1,0 +1,681 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Concurrency on Morgoth</title><link>https://canuxcheng.com/tags/concurrency/</link><description>Recent content in Concurrency on Morgoth</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 01 Jan 2018 10:49:21 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/concurrency/index.xml" rel="self" type="application/rss+xml"/><item><title>Go_Concurrency</title><link>https://canuxcheng.com/post/go_concurrency/</link><pubDate>Mon, 01 Jan 2018 10:49:21 +0000</pubDate><guid>https://canuxcheng.com/post/go_concurrency/</guid><description>&lt;h1 id="并发concurrency"&gt;并发/concurrency&lt;/h1&gt;
+&lt;p&gt;传统并发基于线程，golang基于CSP&lt;/p&gt;
+&lt;p&gt;CSP: communicating sequential processes, 通信顺序进程。&lt;/p&gt;
+&lt;p&gt;go的并发同步模型来自CSP泛型。CSP是一种消息传递模型，用于在goroutine之间同步和传递数据的类型是channel.&lt;/p&gt;
+&lt;p&gt;concurrency:并发,同时管理很多事情，可以执行到一半就暂停去做其他事情.有同时执行的能力，但不一定要同时执行.并发属于代码。&lt;/p&gt;
+&lt;p&gt;所以如果是单个cpu，每次只能运行一个goroutine,如果是多cpu,就是并行,每个cpu都可以跑goroutine.&lt;/p&gt;
+&lt;p&gt;parallelism: 并行,让不同的代码在不同的物理处理器上同时执行. 并行属于运行中的程序。并行是时间或者上下文的概念。&lt;/p&gt;
+&lt;p&gt;process: 进程, 是系统资源和调度的基本单位，包括内存，句柄，线程等。&lt;/p&gt;
+&lt;p&gt;thread: 线程,是cpu调度和分配的基本单位,每个进程至少包含一个线程，初始线程就是主线程，每个线程绑定到一个逻辑cpu上运行。&lt;/p&gt;
+&lt;p&gt;co-routine: 协程，大量线程会消耗内存和cpu调度，将线程分为内核态线程和用户态线程，每个用户态线程绑定到内核态线程，但是cpu不知道用户态线程的存在，我们把用户态线程叫协程。&lt;/p&gt;
+&lt;p&gt;goroutine: go语言的协程，是并行的，通过channel来通信.&lt;/p&gt;
+&lt;p&gt;GMP: goroutine的实现模型。&lt;/p&gt;
+&lt;p&gt;G: goroutine, 初始栈2kb，够过go关键字创建，包含grunable, grunning, gwaiting三种状态。&lt;/p&gt;
+&lt;p&gt;M: machine，对应OS线程，与cpu绑定，golang默认10000个，SetMaxThreads可以设置，需要绑定P才能执行G，否则休眠。&lt;/p&gt;
+&lt;p&gt;P: processor, 逻辑处理器，管理G的本地队列和调度上下文。由GOMAXPROCS确定个数(默认cpu核个数)。用来 解决GM的锁竞争问题。&lt;/p&gt;
+&lt;p&gt;不要通过共享内存通信，通过通信来共享内存。&lt;/p&gt;
+&lt;h2 id="goroutines"&gt;goroutines&lt;/h2&gt;
+&lt;p&gt;go关键字会启动一个新的goroutine并执行.&lt;/p&gt;
+&lt;p&gt;每个goroutine会绑定到一个逻辑处理器P上运行，每个逻辑处理器会绑定到单个操作系统线程。&lt;/p&gt;
+&lt;p&gt;当goroutine阻塞，就会把goroutine和machine从逻辑处理器P上分离，然后创建一个新的machine绑定到该逻辑处理器P，并继续运行队列中的其它goroutine.&lt;/p&gt;
+&lt;p&gt;当阻塞的goroutine恢复，会再次进入队列，和该goroutine绑定的machine也会保存下来.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;go FuncName(...)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;主进程main结束了，goroutine也结束．&lt;/p&gt;
+&lt;h2 id="竟态"&gt;竟态&lt;/h2&gt;
+&lt;p&gt;race condition: 竞争状态，多个goroutine同时操作同一资源.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 检测竞争状态
+$ go build -race
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;所以要解决goroutine间的通信和同步的问题.&lt;/p&gt;
+&lt;p&gt;通过通信共享内存，而不是通过共享内存而通信,说明解决并发问题优先使用chan，而不是sync包。&lt;/p&gt;
+&lt;p&gt;channel还是mutex,选择的依据是他们的能力/特性.&lt;/p&gt;
+&lt;p&gt;channel的能力是让数据流动起来，擅长的是数据流动的场景:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;传递数据的所有权，即把某个数据发送给其他协程&lt;/li&gt;
+&lt;li&gt;分发任务，每个任务都是一个数据&lt;/li&gt;
+&lt;li&gt;交流异步结果，结果是一个数据&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;sync的能力是数据不动，某段时间只给一个协程访问数据的权限擅长数据位置固定的场景:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;缓存&lt;/li&gt;
+&lt;li&gt;状态&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id="channel"&gt;channel&lt;/h2&gt;
+&lt;p&gt;goroutine通过channel来通信和同步。&lt;/p&gt;
+&lt;p&gt;channels是引用类型,chan是线程安全的，并且不会有数据冲突。&lt;/p&gt;
+&lt;p&gt;chan通过make来创建，通过close来关闭．chan是先进先出的FIFO.&lt;/p&gt;
+&lt;p&gt;chan 支持的类型Type： 基本类型（number, string, bool），复合类型（pointer, struct, array, slice, map, function, interface），自定义类型.&lt;/p&gt;
+&lt;p&gt;chan的Type不能是channel本身。&lt;/p&gt;
+&lt;p&gt;申明一个变量:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var ChanName chan Type
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;定义一个chan, 默认chan都是双向的:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var ch = make(chan Type, cap)
+ch := make(chan Type, cap)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;chan的方向：&lt;/p&gt;
+&lt;p&gt;将make创建的双向转换为单向,也可以直接在函数参数申明单向。&lt;/p&gt;
+&lt;p&gt;只接收的chan无法关闭&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var recvOnly chan&amp;lt;- Type = ch
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;只发送的chan&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;var sendOnly &amp;lt;-chan Type = ch
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;操作chan:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ch &amp;lt;- v # 发送值到ch
+v := &amp;lt;-ch # 从ch接收值, 并赋予Type类型变量v
+v, ok = &amp;lt;-ch # 从ch接收值带状态, 如果ch关闭或没有数据，ok就为false.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;无缓冲的chan(同步):&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ch := make(chan Type)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;无缓冲的chan发送者会阻塞unbuffered，直到接收者接收数据, 也就是说是同步的synchronous.&lt;/p&gt;
+&lt;p&gt;只有发送者或只有接受者的chan会导致死锁，产生panic.&lt;/p&gt;
+&lt;p&gt;带缓冲的chan（异步）:&lt;/p&gt;
+&lt;p&gt;带缓冲的chan，在缓冲区满之前，都不会阻塞buffered，是异步的asynchronous.&lt;/p&gt;
+&lt;p&gt;只有通道中没有要接收的值，接收动作才会阻塞.&lt;/p&gt;
+&lt;p&gt;只有在通道没有可用缓冲区容纳被发送的值，发送动作才会阻塞．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ch := make(chan Type, cap)
+// 带缓冲的chan可以通过range遍历
+for val := range ch {
+fmt.Println(val)
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;显示关闭chan:&lt;/p&gt;
+&lt;p&gt;通道关闭后，不能再向通道发送值，但是已经发送的值可以被接收.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 一般在生产者(发送动作)关闭chan
+close(ch)
+// 如果chan关闭ok=false, v为零值.
+v, ok := &amp;lt;-ch
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id="select"&gt;select&lt;/h2&gt;
+&lt;p&gt;监听chan的数据流，类似于switch-case, 可用于处理多个chan的情况&lt;/p&gt;
+&lt;p&gt;运行规则：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;每次执行select都只会执行一个case或者执行default；当有case可以执行，default不会执行；没有case执行时才执行default。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;当没有case或default可以执行，select阻塞等待。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;当有多个case可以执行，select随机选择一个执行。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;case后面必须是读或写chan的操作，否则编译出错。&lt;/p&gt;
+&lt;p&gt;ctx, cancel := context.WithCancel(context.Background())
+select {
+case var := &amp;lt;-ch1:
+do something
+case ch2 &amp;lt;-value:
+do something
+case &amp;lt;-time.After(2 * time.Second):
+fmt.Println(&amp;ldquo;timeout!&amp;rdquo;)
+case &amp;lt;-ctx.Done():
+fmt.Println(&amp;ldquo;cancelled:&amp;rdquo;, ctx.Err())
+&amp;hellip;
+default: // default可以省略
+do default thing.
+}&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h2 id="退出goroutine"&gt;退出goroutine&lt;/h2&gt;
+&lt;h3 id="for-range"&gt;for-range&lt;/h3&gt;
+&lt;p&gt;range能感知channel关闭，当channel被发送数据的goroutine关闭时，range就会结束，然后退出for循环。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;go func(send &amp;lt;-chan int) {
+for val := range send {
+...
+}
+}(sendOnly)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id="for-select"&gt;for-select&lt;/h3&gt;
+&lt;p&gt;select有多路复用能力，for-select 可以持续处理多路多个channel的能力。但select不能感知channel的关闭.&lt;/p&gt;
+&lt;p&gt;context.Context退出goroutine:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;go func() {
+for {
+select {
+case &amp;lt;-ctx.Done():
+fmt.Println(&amp;quot;goroutine exiting:&amp;quot;, ctx.Err())
+return
+default:
+fmt.Println(&amp;quot;working...&amp;quot;)
+}
+}
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;某个通道关闭，不再处理该通道，但是继续处理其它channel,select不会在nil的通道上进行等待:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;go func() {
+for {
+select {
+case x, ok := in1:
+if !ok {
+in1 = nil 把只读channel设置为nil,select不会在这里阻塞。
+}
+case y, ok :=&amp;lt;-in2:
+if !ok {
+in2 = nil
+}
+if in1 == nil &amp;amp;&amp;amp; in2 == nil {
+return
+}
+}
+}()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;使用专门channel发送退出信号,只需要在main中关闭channel，所有goroutine都会接收到信号退出:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;go func() {
+for {
+select {
+case &amp;lt;- stopCh:
+...
+return
+case &amp;lt;- t.C:
+...
+}
+}
+}()
+&lt;/code&gt;&lt;/pre&gt;</description></item><item><title>GSL_concurrency</title><link>https://canuxcheng.com/post/gsl_concurrency/</link><pubDate>Mon, 01 Jan 2018 10:49:21 +0000</pubDate><guid>https://canuxcheng.com/post/gsl_concurrency/</guid><description>&lt;h1 id="sync"&gt;sync&lt;/h1&gt;
+&lt;p&gt;sync用于goroutine同步.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import &amp;quot;sync&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="constants"&gt;constants&lt;/h2&gt;
+&lt;h2 id="variables"&gt;variables&lt;/h2&gt;
+&lt;h2 id="functions"&gt;functions&lt;/h2&gt;
+&lt;h2 id="locker"&gt;Locker&lt;/h2&gt;
+&lt;p&gt;一个可以加锁和解锁的接口&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type Locker interface {
+Lock()
+Unlock()
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="pool"&gt;Pool&lt;/h2&gt;
+&lt;p&gt;Pool是一个可以分别存取的临时对象的集合。&lt;/p&gt;
+&lt;h2 id="once"&gt;Once&lt;/h2&gt;
+&lt;p&gt;只执行一次动作的对象(单例模式)&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type Once struct {}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;method:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 只有第一次调用才执行
+func (o *Once) Do(f func())
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="mutex"&gt;Mutex&lt;/h2&gt;
+&lt;p&gt;互斥锁,锁和线程无关，可以由不同的线程加锁和解锁.&lt;/p&gt;
+&lt;p&gt;Mutex的初始值为未锁的状态，并且Mutex通常作为结构体的匿名成员存在。&lt;/p&gt;
+&lt;p&gt;同一时刻只能有一个线程进入临界区.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type Mutex struct {}
+Mutex
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;method:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 加锁，如果已经加锁，阻塞至m解锁．
+func (m *Mutex) Lock()
+// 解锁，如果没有加锁，导致panic
+func (m *Mutex) Unlock()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="rwmutex"&gt;RWMutex&lt;/h2&gt;
+&lt;p&gt;读写互斥锁,可以由不同的线程加锁和解锁.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type RWMutex struct {}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;method:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 锁定为写入状态，禁止其它线程读写，一次只能有一个线程持有。
+func (rw *RWMutex) Lock()
+// 解除写入锁定，如果没有加锁，导致panic
+func (rw *RWMutex) Unlock()
+// 锁定为读取状态，禁止其他线程写入，多个线程可以同时持有读锁。
+func (rw *RWMutex) RLock()
+// 解除读取锁，如果没有加锁，导致panic.
+func (rw *RWMutex) RUnlock()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="cond"&gt;Cond&lt;/h2&gt;
+&lt;p&gt;条件变量.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type Cond struct {
+L Locker
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;function:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;func NewCond(l Locker) *Cond
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;method:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;func (c *Cond) Broadcase()
+func (c *Cond) Signal()
+func (c *Cond) Wait()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="waitgroup"&gt;WaitGroup&lt;/h2&gt;
+&lt;p&gt;用于等待一组线程结束，父线程用Add方法来设定应等待的线程数量;
+每个被等待的线程在结束时应调用Done方法;
+同时，主线程应调用Wait方法阻塞至所有线程结束．&lt;/p&gt;
+&lt;p&gt;struct:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type WaitGroup sttruct {}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;functions:&lt;/p&gt;
+&lt;p&gt;methods:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 增加计数
+func (*WaitGroup) Add(delta int)
+# 减少计数
+func (*WaitGroup) Done()
+# 阻塞直到计数器为0
+func (*WaitGroup) Wait()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id="syncatomic"&gt;sync/atomic&lt;/h1&gt;
+&lt;p&gt;提供底层的原子级内存操作，主要用于goroutine同步.&lt;/p&gt;
+&lt;p&gt;int32, int64, uint32, uint64, uintptr, pointer.&lt;/p&gt;
+&lt;h2 id="function"&gt;function&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;func AddInt64(addr *int64, delta int64) (new int64)
+func AddUint64(addr *uint64, delta uint64) (new uint64)
+func LoadInt64(addr *int64) (val int64)
+func LoadUint64(addr *uint64) (val uint64)
+func StoreInt64(addr *int64, val int64)
+func StoreUint64(addr *uint64, val uint64)
+func SwapInt64(addr *int64, new int64) (old int64)
+func SwapUint64(addr *uint64, new uint64) (old uint64)
+func CompareAndSwapInt64(addr *int64, old, new int64) (swapped bool)
+func CompareAndSwapUint64(addr *uint64, old, new uint64) (swapped bool)
+&lt;/code&gt;&lt;/pre&gt;</description></item><item><title>PSL_Concurrency</title><link>https://canuxcheng.com/post/psl_concurrency/</link><pubDate>Mon, 15 Aug 2016 11:04:12 +0000</pubDate><guid>https://canuxcheng.com/post/psl_concurrency/</guid><description>&lt;h1 id="concurrent-execution"&gt;Concurrent Execution&lt;/h1&gt;
+&lt;p&gt;进程：每个进程都有自己的地址空间，内存，数据栈以及其它记录其运行轨迹的辅助数据，进程间不共享全局变量。&lt;/p&gt;
+&lt;p&gt;线程：线程（有时被称为轻量级进程）跟进程有些相似，不同的是，所有的线程运行在同一个进程中，共享相同的运行环境，同一个进程的线程之间共享全局变量。&lt;/p&gt;
+&lt;p&gt;IPC: 进程/线程之间交换信息叫进程间通信．&lt;/p&gt;
+&lt;p&gt;python的多线程由于GIL只有并发没有并行，无论有多少cpu,一次只能有一个python解释器(线程)执行.一次只能执行一个线程.一次只能用到一个逻辑cpu.&lt;/p&gt;
+&lt;p&gt;IO密集型任务消耗IO,但是不消耗CPU,cpu切换消耗少,适合用多线程.（线程等待IO会释放GIL）。&lt;/p&gt;
+&lt;p&gt;python的多进程可以并行,每个进程启动一个解释器进程.&lt;/p&gt;
+&lt;p&gt;多进程开销大，消耗内存.&lt;/p&gt;
+&lt;p&gt;计算密集型消耗cpu,任务个数不超过cpu个数．适合用多进程，把每个cpu跑满. 如果用多线程是无效的，会串行执行，浪费多核性能。&lt;/p&gt;
+&lt;p&gt;io密集: 用异步asyncio(协程)或者多线程, 网络请求，文件读写，数据库查询。
+计算密集: 用多进程&lt;/p&gt;
+&lt;p&gt;绕过GIL的方式有：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;使用C/C++编写扩展模块(numpy, pandas等)&lt;/li&gt;
+&lt;li&gt;使用Cython编译器&lt;/li&gt;
+&lt;li&gt;使用多进程 (multiprocessing)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="multiprocessing"&gt;multiprocessing&lt;/h2&gt;
+&lt;p&gt;多进程就是同时执行多个任务.&lt;/p&gt;
+&lt;p&gt;python可以通过多进程取代多线程，从而绕过多线程的GIL.&lt;/p&gt;
+&lt;p&gt;python是静态语言，&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import multiprocessing
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;classes:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# multiprocessing.Process
+Process(group=None, target=None, name=None, args=(), kwargs=None, *, daemon=None)
+# methods:
+run(self) # 子类重写用来定义进程的功能的函数, 通常通过这种方式来创建进程
+start(self) # 启动一个进程
+join(self, timeout=None) # 父进程阻塞等待子进程结束，后面的代码不会执行，直到子进程结束。
+is_alive() # 返回进程是否还在运行的boolean
+exit(self) # 退出进程
+terminate(self) # 终止进程
+exitcode() # 返回进程的退出码
+name() # 返回进程的名字
+pid() # 返回进程的pid
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;functions:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;active_children()
+allow_connection_pickling()
+cpu_count() # 获取cpu个数
+current_process()
+freeze_support()
+get_logger()
+log_to_stderr(level=None)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Pool:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Pool(processes=None, initializer=None, initargs=(), maxtasksperchild=None) # 返回一个进程池对象, processes默认是cpu个数.
+with Pool(processes=4) as pool:
+pool.map(func, iterable) # 阻塞，返回所有结果
+# func只能是顶层函数，不能是方法和内部函数.
+# 进程池，可以控制进程数量,processes 默认是cpu个数(cpu_count())
+# 非阻塞，维持进程总数，当一个进程结束会添加新的进程到pool,主进程不阻塞，同步运行，pool中的进程并发执行.
+apply_async(func, args=(), kwargs={}, callback=None) # 非阻塞,
+map_async(func, iterable, chunksize=None, callback=None) # 非阻塞
+# 阻塞，维持进程总数，当一个进程结束会添加新的进程到pool，主进程阻塞，pool中的进程一个一个执行.
+apply(func, args=(), kwargs={}) # 阻塞，执行一次函数
+map(func, itreable, chunksize=None) # 阻塞, 返回所有结果
+terminate() # 终止所有任务
+close() # 关闭pool,不接受新任务
+join() # 等待pool中子进程结束，要在close/terminate之后调用.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;IPC: 管道&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Pipe(duplex=True) # duplex=True表示默认是双向pipe.
+receiver, sender = Pipe()
+sender.send(obj)
+receiver.recv()
+close()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;IPC: 消息队列&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 用于进程间通信，线程和进程安全。
+Queue(maxsize=0) # return a queue object
+q = Queue()
+q.put(obj) # 阻塞，放入一个对象到队列中
+q.put_nowait(obj) # 非阻塞，放入一个对象到队列中
+q.get() # 阻塞，从队列中获取一个对象
+q.get_nowait() # 非阻塞，从队列中获取一个对象
+q.empty() # 返回队列是否为空的boolean
+q.full() # 返回队列是否已满的boolean
+q.qsize() # 返回队列的大小
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;IPC: 共享内存&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Manager()
+Event()
+# 同步：　条件变量
+Condition(lock=None)
+# 同步：信号量
+Semaphore(value=1)
+# 同步：有界信号量
+BoundedSemaphore(value=1)
+# 同步： 普通锁，一个线程只能acquire一次，否则死锁。
+Lock(*args, **kwargs) # 返回一个Lock对象, 用于线程间同步.
+with Lock() as lock:
+......
+# 同步: 重入锁，允许同一线程多次获取锁和释放锁。
+RLock(*args, **kwargs) # 返回一个RLock对象, 可重入锁, 允许同一线程多次获取锁.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id="threading"&gt;threading&lt;/h2&gt;
+&lt;p&gt;多线程就是把单个任务分成不同部分运行.&lt;/p&gt;
+&lt;p&gt;threading支持守护线程(通过join方法实现)．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import threading
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;classes:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# threading.Thread
+Thread(group=None, target=None, name=None, args=(), kwargs=None, daemon=None)
+# methods:
+append(self, *args, **kwargs) # 添加线程到线程组
+run(self) # 子类重写用来定义线程的功能的函数, 通常通过这种方式来创建线程
+start(self) # 开始执行线程
+join(self, timeout=None) # 主程序挂起，阻塞等待子线程结束,再继续运行主程序
+getName(self) # 返回线程名字
+setName(self, name) # 设置线程名字
+is_alive(self) # 表示线程是否还在运行的boolean
+isDaemon(self) # 返回线程的daemon标志
+setDaemon(self, daemonic) # daemonic=True 使线程在后台运行
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;functions:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;active_count() # 当前活动的线程对象的数量
+current_thread() # 返回当前线程对象
+enumerate() # 返回当前活动线程列表
+settrace(func) # 为所有的线程设置一个跟踪函数
+setprofile(func) # 为所有线程设置一个profile函数
+stack_size()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;计时器Timer：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Timer(*args, **kwargs)
+t = Timer(30.0, f, args=[], kwargs={})
+t.start() # 在一个子线程等待，timeout就执行f(*args, **kwaargs).
+t.cancel() # 如果还在等待就取消．
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;事件event:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Event(*args, **kwargs)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;栅栏barrier:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Barrier(parties, *, timeout=None, action=None, reset_on_timeout=True)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;同步：　条件变量&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Condition(*args, **kwargs)
+with Condition() as cond:
+# do something
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;同步：　信号量&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Semaphore(value=1, *args, **kwargs)
+# 信号量，默认value=1, 内部计数器不能小于0,当计数器==0时，调用acquire会阻塞.
+with Semaphore() as sem:
+# do something
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;同步：　有界信号量&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;BoundedSemaphore(value=1, *args, **kwargs)
+# 有界信号量，默认value=1，内部计数器不能小于0，并且不能大于value。
+# 当计数器==0，调用acquire会阻塞，当&amp;gt;value抛出VAlueError异常
+# 可用来控制并发运行的线程数量
+with BoundedSemaphore() as bs:
+# do something
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;同步：　锁&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Lock()
+# 使同一变量在多个线程间同步
+with Lock() as lock:
+# do something
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;同步：　锁&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;RLock(*args, **kwargs)
+with RLock() as rlock:
+# do something
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="queue"&gt;queue&lt;/h2&gt;
+&lt;p&gt;queue用于线程间通信，是线程安全的。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import queue
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;classes:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# queue.Queue
+Queue(maxsize=0) # 创建一个队列对象，maxsize=0表示无限制。
+# methods:
+put(item, block=True, timeout=None) # 向队列中添加一个item，阻塞直到队列有空间。
+get(block=True, timeout=None) # 从队列中获取一个item，阻塞直到队列有数据。
+qsize() # 返回队列的大小
+empty() # 返回队列是否为空的boolean
+full() # 返回队列是否满的boolean
+task_done() # 标记一个任务已完成，必须在get之后调用。
+join() # 阻塞直到队列中的所有任务都完成，必须在put之后调用。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="subprocess"&gt;subprocess&lt;/h2&gt;
+&lt;p&gt;开启一个子进程来执行外部命令.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import subprocess
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;classes:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Popen(args, bufsize=0, executable=None, stdin=None, stdout=None, stderr=None, preexec_fn=None, close_fds=False, shell=False, cwd=None, env=None, universal_newlines=False, startupinfo=None, creationflags=0)
+# 创建一个子进程，args可以是字符串或者列表形式.
+# args: 命令和参数列表, 可以是字符串或者列表形式.
+# 如果是字符串形式，shell=True, 否则是列表形式.
+# 如果是列表形式，shell=False, args[0]是可执行文件的路径，args[1:]是参数列表.
+# 非交互执行sudo命令, 或者使用sh/pexpect等第三方库
+Popen(['sudo', '-S'] + shlex.split(command), stdin=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=True, ...)
+stdout, stderr = child.communicate(password+'\n')
+# methods:
+poll() # 检查子进程是否结束，返回returncode.
+wait() # 等待子进程结束，返回returncode.
+communicate(input=None) # 返回(stdout, stderr).
+kill() # 发送SIGKILL信号
+pipe_cloexec()
+send_signal(sig)
+terminate()
+# Data:
+stdin
+stdout
+stderr
+pid
+returncode
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;functions:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;call(*popenargs, **kwargs)
+# retcode = call([&amp;quot;ls&amp;quot;, &amp;quot;-l&amp;quot;])
+check_call(*popenargs, **kwargs)
+# check_call([&amp;quot;ls&amp;quot;, &amp;quot;-l&amp;quot;]) -&amp;gt; 如果返回码为０就返回，否则抛出CalledProcessError.
+check_output(*popenargs, **kwargs) # 返回一个字符串
+# output = check_output([&amp;quot;ls&amp;quot;, &amp;quot;-l&amp;quot;, &amp;quot;/dev/null&amp;quot;]) -&amp;gt; 如果返回码为０返回命令结果，否则抛出CalledProcessError.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;data:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;PIPE = -1
+STDOUT = -2
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="concurrent"&gt;concurrent&lt;/h2&gt;
+&lt;p&gt;concurrent模块提供了多线程和多进程的高级接口.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import concurrent.futures
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="sched"&gt;sched&lt;/h2&gt;
+&lt;h2 id="contextvars"&gt;contextvars&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h1 id="inter-process-communication-and-networking"&gt;Inter Process Communication and Networking&lt;/h1&gt;
+&lt;h2 id="asyncio"&gt;asyncio&lt;/h2&gt;
+&lt;p&gt;asyncio是基于event loop（事件循环）的异步编程框架，并发运行协程、执行网络IO和IPC，控制子进程，通过队列实现分布式任务，同步并发代码。&lt;/p&gt;
+&lt;p&gt;asyncio 往往是构建 IO 密集型和高层级 结构化 网络代码的最佳选择。&lt;/p&gt;
+&lt;p&gt;coroutine（协程）是一个特殊的函数，可以暂停和恢复执行，允许在等待IO操作时不阻塞主线程。在单线程内运行，通过事件循环调度，非抢占式，内存消耗小，切换快，不受GIL限制。&lt;/p&gt;
+&lt;p&gt;coroutine function: &amp;ldquo;async def&amp;rdquo; 定义协程函数，返回协程对象。
+coroutine object: 表示一个没有执行的协程，需要变成一个task，并且进入event loop才能执行。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import asyncio
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;await后如果是一个coroutine：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;隐士创建task（不会调用create_task），只运行当前协程。&lt;/li&gt;
+&lt;li&gt;顺序执行&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;await后如果是一个task：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;直接注册到event loop。&lt;/li&gt;
+&lt;li&gt;并发执行&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;协程对象，或者awaitable对象必须调用await。&lt;/p&gt;
+&lt;p&gt;classes:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# asyncio.Runner
+runner = Runner(loop=None, debug=False) # 创建一个Runner对象，用于运行协程。
+with asyncio.Runner() as runner:
+runner.run(coro) # 运行一个协程，返回协程的结果。
+# asyncio.Task
+Task(coro, *, loop=None) # 将coroutine变成一个task，并且注册到event loop，返回Task对象。
+# methods:
+cancel() # 取消任务，抛出CancelledError异常。
+done() # 返回任务是否完成的boolean。
+result() # 返回任务的结果，如果任务未完成则抛出异常。
+exception() # 返回任务的异常，如果任务未完成则抛出异常。
+add_done_callback(callback) # 添加一个回调函数，当任务完成时调用。
+# asyncio.TaskGroup, 批量创建task。
+task_group = TaskGroup(*, loop=None)
+async with TaskGroup() as tg:
+tg1 = tg.create_task(coro1)
+tg2 = tg.create_task(coro2)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;functions:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;run(coro, *, debug=False) # 是运行协程的唯一入口函数，调用顶层协程函数，返回协程的结果。
+asyncio.run(main())
+create_task(coro, *, loop=None) # 将coroutine变成一个task，并且注册到event loop，返回Task对象
+tasks = [
+asyncio.create_task(coro(...)),
+for i in range(10)
+]
+gather(*aws, return_exceptions=False) # 并发执行aws中的可等待对象。返回一个列表，顺序与aws中一致。gather会自动把coroutine变成task。无需手动调用create_task。
+# return_exceptions=False时，如果有异常发生，抛出异常。默认值。
+# return_exceptions=True时，如果有异常发生，返回异常对象而不是抛出异常。
+await asyncio.gather(*tasks)
+sleep(delay, result=None, *, loop=None) # 异步睡眠，返回一个Future对象
+await asyncio.sleep(1) # 等待1秒钟
+timeout(delay, *, loop=None) # 返回一个Future对象，延迟指定时间后完成
+async with asyncio.timeout(10):
+await my_task()
+wait(fs, *, loop=None, timeout=None, return_when=ALL_COMPLETED) # 等待一组Future对象完成，返回一个包含已完成和未完成Future对象的元组。
+done, pending = await asyncio.wait(fs, timeout=10, return_when=asyncio.ALL_COMPLETED)
+wait_for(aws, timeout=None, *, loop=None) # 等待一个可等待对象完成，返回结果。超时后抛出asyncio.TimeoutError异常。
+await asyncio.wait_for(coro(), timeout=10) # 等待coro在10秒内完成。
+shield(fut, *, loop=None) # 保护一个Future对象，使其不会被取消，返回一个Future对象。
+as_completed(fs, *, loop=None) # 返回一个迭代器，迭代器会按完成的顺序返回Future对象。
+async for fut in as_completed(fs):
+result = await fut # 等待每个Future对象完成，按完成顺序返回结果。
+current_task(loop=None) # 返回当前正在运行的Task对象，如果没有正在运行的Task，则返回None。
+all_tasks(loop=None) # 返回当前事件循环中的所有Task对象。
+iscoroutine(obj) # 判断obj是否是一个协程对象
+iscoroutinefunction(obj) # 判断obj是否是一个协程函数。
+isawaitable(obj) # 判断obj是否是一个可等待对象。
+isfuture(obj) # 判断obj是否是一个Future对象。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Queue用于协程间通信, 不是线程安全的：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# asyncio.Queue
+queue = asyncio.Queue(maxsize=0, *, loop=None) # 创建一个异步队列，maxsize=0表示无限制。
+await queue.put(item) # 向队列中添加一个item，阻塞直到队列有空间。
+item = await queue.get() # 从队列中获取一个item，阻塞直到队列有数据。
+item = queue.get_nowait() # 非阻塞获取队列中的一个item，如果队列为空则抛出asyncio.QueueEmpty异常。
+queue.task_done() # 标记一个任务已完成，通常在get之后调用。
+await queue.join() # 阻塞直到所有任务都完成。
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;同步原语相关：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Lock
+Event
+Condition
+Semaphore
+BoundedSemaphore
+Barrier
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="socket"&gt;socket&lt;/h2&gt;
+&lt;p&gt;socket协议的标准库&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import socket
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;classes:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# socket = class _socketobject(__builtin__.object)
+# socket.socket([family[, type[, proto]]])
+close() # 关闭socket
+shutdown(flag) # 0 关闭读，１关闭写，２全部关闭
+# eg: socket.socket(AF_INET, SOCK_STREAM, 0) ipv4+tcp
+# eg: socket.socket(AF_INET, SOCK_DGRAM, 0) ipv4+udp
+# methods:
+bind(address) # 服务器绑定(host, port)到socket
+listen(backlog) # 服务器开始监听tcp
+accept() # 服务器阻塞等待客户的tcp连接, 返回(socket object, address info)
+connect(address) # 客户端主动初始化tcp连接,连接失败抛出异常
+connect_ex(address) # 同上，连接失败返回errno
+send(data[, flags]) # 发送tcp数据
+sendall(data[, flags]) # 发送完整tcp数据
+recv(buflen[, flags]) # 接收tcp数据
+recv_into(buffer[, nbytes[, flags]])
+sendto(data[, flags], addr) # 发送udp数据
+recvfrom(buflen[, flags]) # 接收udp数据
+recvfrom_into(buffer[, nbytes, [, flags])])
+getpeername() # 获取当前socket的远端地址
+getsockname() # 获取当前socket的地址
+getsockopt(level, option[, buffersize]) # 获取socket参数
+setsockopt(level, option, value) # 设置socket参数
+setblocking(flag)
+gettimeout()
+settimeout(timeout)
+makefile([mode[, bufsize]])
+fileno()
+dup()
+# data descriptor:
+family/type/proto　参考man 2 socket
+recv
+recv_into
+recvfrom
+recvfrom_into
+send
+sendto
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;class SocketIO:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;class SocketIO(io.RawIOBase)
+sio = SocketIO(sock, mode)
+methods:
+close()
+readinto(b)
+write(b)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;functions:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;create_connection(address, timeout=&amp;lt;object object&amp;gt;, source_address=None)
+fromfd(fd, family, type[, proto]) # 用一个已经打开的文件描述符创建一个socket对象
+getaddrinfo(host, port [, family, socktype, proto, flags])
+getdefaulttimeout()
+getfqdn(name='') # FQDN, 获取完整域的信息
+gethostbyaddr(host) -&amp;gt; (name, aliaslist, addresslist)
+gethostbyname(host)
+gethostbyname_ex(host) -&amp;gt; (name, aliaslist, addresslist)
+gethostname()
+getnameinfo(sockaddr, flags) --&amp;gt; (host, port)
+getprotobyname(name)
+getservbyname(servicename[, protocolname])
+getservbyport(port[, protocolname])
+htonl(integer)
+htons(integer)
+inet_aton(string)
+inet_ntoa(packed_ip)
+inet_ntop(af, packed_ip)
+inet_pton(af, ip)
+ntohl(integer)
+ntohs(integer)
+setdefaulttimeout(timeout)
+socketpair([family[, type[, proto]]]) -&amp;gt; (socket object, socket object)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="select"&gt;select&lt;/h2&gt;
+&lt;p&gt;等待IO事件发生，返回就绪的文件描述符列表。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import select
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="selectors"&gt;selectors&lt;/h2&gt;
+&lt;p&gt;selectors模块提供了更高级的IO多路复用接口。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;import selectors
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="signal"&gt;signal&lt;/h2&gt;
+&lt;h2 id="ssl"&gt;ssl&lt;/h2&gt;
+&lt;h2 id="mmap"&gt;mmap&lt;/h2&gt;
+&lt;hr&gt;</description></item></channel></rss>

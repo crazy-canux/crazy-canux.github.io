@@ -1,0 +1,257 @@
+<!doctype html><html lang=zh-CN dir=ltr><head><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'><meta name=description content='Packaging and Distribution PEP426是python最新的打包标准，定义了wheel为最新的python包。
+https://www.python.org/dev/peps/pep-0426/
+ensurepip python3.4开始内置了ensurepip模块，用于安装pip和setuptools。
+$ python3 -m ensurepip --default-pip venv python3.3开始内置了venv模块，用于创建虚拟环境。
+$ python3 -m venv .env zipapp python3.5开始内置了zipapp模块，用于创建可执行的zip包。
+$ python3 -m zipapp myapp -o myapp.pyz TPL 相关的第三方库
+virtualenv(deprecated) python3.5开始并入了虚拟化标准库venv.
+分离的虚拟的python环境,自动安装setuptools和pip.
+https://github.com/pypa/virtualenv
+virtualenvwrapper
+https://bitbucket.org/virtualenvwrapper/virtualenvwrapper
+封装了virtualenv的工具:
+$ pip install virtualenvwrapper pipenv
+https://github.com/pypa/pipenv
+封装了virtualenv的工具，用于取代virtualenvwrapper.
+setuptools https://github.com/pypa/setuptools
+https://github.com/pypa/wheel
+python2.7.9和python3.4以及virtualenv自带setuptools．
+支持sdist打包成tar.gz包,和wheel打包成whl包．
+$pip install -U pip $pip install -U setuotools $pip install -U wheel 创建setup.py文件：
+'><title>PSL_Package</title><link rel=canonical href=https://canuxcheng.com/post/psl_package/><link rel=stylesheet href=/scss/style.min.22ad1c74b5bb435181c77741d99f034b2c36f7272eff9d0d1aa16d32e7e84673.css><meta property='og:title' content='PSL_Package'><meta property='og:description' content='Packaging and Distribution PEP426是python最新的打包标准，定义了wheel为最新的python包。
+https://www.python.org/dev/peps/pep-0426/
+ensurepip python3.4开始内置了ensurepip模块，用于安装pip和setuptools。
+$ python3 -m ensurepip --default-pip venv python3.3开始内置了venv模块，用于创建虚拟环境。
+$ python3 -m venv .env zipapp python3.5开始内置了zipapp模块，用于创建可执行的zip包。
+$ python3 -m zipapp myapp -o myapp.pyz TPL 相关的第三方库
+virtualenv(deprecated) python3.5开始并入了虚拟化标准库venv.
+分离的虚拟的python环境,自动安装setuptools和pip.
+https://github.com/pypa/virtualenv
+virtualenvwrapper
+https://bitbucket.org/virtualenvwrapper/virtualenvwrapper
+封装了virtualenv的工具:
+$ pip install virtualenvwrapper pipenv
+https://github.com/pypa/pipenv
+封装了virtualenv的工具，用于取代virtualenvwrapper.
+setuptools https://github.com/pypa/setuptools
+https://github.com/pypa/wheel
+python2.7.9和python3.4以及virtualenv自带setuptools．
+支持sdist打包成tar.gz包,和wheel打包成whl包．
+$pip install -U pip $pip install -U setuotools $pip install -U wheel 创建setup.py文件：
+'><meta property='og:url' content='https://canuxcheng.com/post/psl_package/'><meta property='og:site_name' content='Morgoth'><meta property='og:type' content='article'><meta property='article:section' content='Post'><meta property='article:tag' content='package'><meta property='article:published_time' content='2016-06-22T05:17:19+00:00'><meta property='article:modified_time' content='2016-06-22T05:17:19+00:00'><meta name=twitter:title content="PSL_Package"><meta name=twitter:description content="Packaging and Distribution PEP426是python最新的打包标准，定义了wheel为最新的python包。
+https://www.python.org/dev/peps/pep-0426/
+ensurepip python3.4开始内置了ensurepip模块，用于安装pip和setuptools。
+$ python3 -m ensurepip --default-pip venv python3.3开始内置了venv模块，用于创建虚拟环境。
+$ python3 -m venv .env zipapp python3.5开始内置了zipapp模块，用于创建可执行的zip包。
+$ python3 -m zipapp myapp -o myapp.pyz TPL 相关的第三方库
+virtualenv(deprecated) python3.5开始并入了虚拟化标准库venv.
+分离的虚拟的python环境,自动安装setuptools和pip.
+https://github.com/pypa/virtualenv
+virtualenvwrapper
+https://bitbucket.org/virtualenvwrapper/virtualenvwrapper
+封装了virtualenv的工具:
+$ pip install virtualenvwrapper pipenv
+https://github.com/pypa/pipenv
+封装了virtualenv的工具，用于取代virtualenvwrapper.
+setuptools https://github.com/pypa/setuptools
+https://github.com/pypa/wheel
+python2.7.9和python3.4以及virtualenv自带setuptools．
+支持sdist打包成tar.gz包,和wheel打包成whl包．
+$pip install -U pip $pip install -U setuotools $pip install -U wheel 创建setup.py文件：
+"><link rel="shortcut icon" href=favicon.ico><style>:root{--article-font-family:"Merriweather", var(--base-font-family)}</style><script>(function(){const e=document.createElement("link");e.href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap",e.type="text/css",e.rel="stylesheet",document.head.appendChild(e)})()</script></head><body class=article-page><script>(function(){const e="StackColorScheme";localStorage.getItem(e)||localStorage.setItem(e,"auto")})()</script><script>(function(){const t="StackColorScheme",e=localStorage.getItem(t),n=window.matchMedia("(prefers-color-scheme: dark)").matches===!0;e=="dark"||e==="auto"&&n?document.documentElement.dataset.scheme="dark":document.documentElement.dataset.scheme="light"})()</script><div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky"><button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label=切换菜单>
+<span class=hamburger-box><span class=hamburger-inner></span></span></button><header><figure class=site-avatar><a href=/><img src=/img/home_hu_7d22d46ad88d2427.jpg width=300 height=400 class=site-logo loading=lazy alt=Avatar>
+</a><span class=emoji>🍥</span></figure><div class=site-meta><h1 class=site-name><a href=/>Morgoth</a></h1><h2 class=site-description>Hello World!</h2></div></header><ol class=social-menu><li><a href=mailto:canuxcheng@163.com target=_blank title=E-mail rel=me><svg class="icon icon-tabler icon-tabler-messages" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M21 14l-3-3h-7a1 1 0 01-1-1V4a1 1 0 011-1h9a1 1 0 011 1v10"/><path d="M14 15v2a1 1 0 01-1 1H6l-3 3V11a1 1 0 011-1h2"/></svg></a></li><li><a href=https://github.com/crazy-canux target=_blank title=GitHub rel=me><svg class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6.0 00-1.3-3.2 4.2 4.2.0 00-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3.0 00-6.2.0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2.0 00-.1 3.2A4.6 4.6.0 004 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg></a></li></ol><ol class=menu id=main-menu><li><a href=/><svg class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="5 12 3 12 12 3 21 12 19 12"/><path d="M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/><path d="M9 21v-6a2 2 0 012-2h2a2 2 0 012 2v6"/></svg>
+<span>首页</span></a></li><li><a href=/about/><svg class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/></svg>
+<span>关于</span></a></li><li><a href=/categories/ target=_blank><svg class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg>
+<span>分类</span></a></li><li><a href=/tags/ target=_blank><svg class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11 3l9 9a1.5 1.5.0 010 2l-6 6a1.5 1.5.0 01-2 0L3 11V7a4 4 0 014-4h4"/><circle cx="9" cy="9" r="2"/></svg>
+<span>标签</span></a></li><li><a href=/rtfm/><svg class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+<span>RTFM</span></a></li><div class=menu-bottom-section><li id=i18n-switch><svg class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 5h7"/><path d="M9 3v2c0 4.418-2.239 8-5 8"/><path d="M5 9c-.003 2.144 2.952 3.908 6.7 4"/><path d="M12 20l4-9 4 9"/><path d="M19.1 18h-6.2"/></svg>
+<select name=language onchange="window.location.href=this.selectedOptions[0].value"><option value=https://canuxcheng.com/ selected>简体中文</option><option value=https://canuxcheng.com/en/>English</option></select></li><li id=dark-mode-toggle><svg class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="8" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<svg class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="16" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<span>暗色模式</span></li></div></ol></aside><aside class="sidebar right-sidebar sticky"><section class="widget archives"><div class=widget-icon><svg class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg></div><h2 class="widget-title section-title">目录</h2><div class=widget--toc><nav id=TableOfContents><ul><li><a href=#ensurepip>ensurepip</a></li><li><a href=#venv>venv</a></li><li><a href=#zipapp>zipapp</a></li><li><a href=#tpl>TPL</a><ul><li><a href=#virtualenvdeprecated>virtualenv(deprecated)</a></li><li><a href=#setuptools>setuptools</a></li><li><a href=#cython>cython</a></li><li><a href=#pbr>pbr</a></li><li><a href=#扩展点entry-points>扩展点（Entry Points）</a></li></ul></li></ul></nav></div></section></aside><main class="main full-width"><article class=main-article><header class=article-header><div class=article-details><header class=article-category><a href=/categories/python/>Python</a></header><div class=article-title-wrapper><h2 class=article-title><a href=/post/psl_package/>PSL_Package</a></h2></div><footer class=article-time><div><svg class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg>
+<time class=article-time--published>Jun 22, 2016</time></div><div><svg class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+<time class=article-time--reading>阅读时长: 3 分钟</time></div></footer></div></header><section class=article-content><h1 id=packaging-and-distribution>Packaging and Distribution</h1><p>PEP426是python最新的打包标准，定义了wheel为最新的python包。</p><p><a class=link href=https://www.python.org/dev/peps/pep-0426/ target=_blank rel=noopener>https://www.python.org/dev/peps/pep-0426/</a></p><h2 id=ensurepip>ensurepip</h2><p>python3.4开始内置了ensurepip模块，用于安装pip和setuptools。</p><pre><code>$ python3 -m ensurepip --default-pip
+</code></pre><h2 id=venv>venv</h2><p>python3.3开始内置了venv模块，用于创建虚拟环境。</p><pre><code>$ python3 -m venv .env
+</code></pre><h2 id=zipapp>zipapp</h2><p>python3.5开始内置了zipapp模块，用于创建可执行的zip包。</p><pre><code>$ python3 -m zipapp myapp -o myapp.pyz
+</code></pre><hr><h2 id=tpl>TPL</h2><p>相关的第三方库</p><h3 id=virtualenvdeprecated>virtualenv(deprecated)</h3><p>python3.5开始并入了虚拟化标准库venv.</p><p>分离的虚拟的python环境,自动安装setuptools和pip.</p><p><a class=link href=https://github.com/pypa/virtualenv target=_blank rel=noopener>https://github.com/pypa/virtualenv</a></p><p>virtualenvwrapper</p><p><a class=link href=https://bitbucket.org/virtualenvwrapper/virtualenvwrapper target=_blank rel=noopener>https://bitbucket.org/virtualenvwrapper/virtualenvwrapper</a></p><p>封装了virtualenv的工具:</p><pre><code>$ pip install virtualenvwrapper
+</code></pre><p>pipenv</p><p><a class=link href=https://github.com/pypa/pipenv target=_blank rel=noopener>https://github.com/pypa/pipenv</a></p><p>封装了virtualenv的工具，用于取代virtualenvwrapper.</p><h3 id=setuptools>setuptools</h3><p><a class=link href=https://github.com/pypa/setuptools target=_blank rel=noopener>https://github.com/pypa/setuptools</a></p><p><a class=link href=https://github.com/pypa/wheel target=_blank rel=noopener>https://github.com/pypa/wheel</a></p><p>python2.7.9和python3.4以及virtualenv自带setuptools．</p><p>支持sdist打包成tar.gz包,和wheel打包成whl包．</p><pre><code>$pip install -U pip
+$pip install -U setuotools
+$pip install -U wheel
+</code></pre><p>创建setup.py文件：</p><p><a class=link href="https://pypi.python.org/pypi?%3Aaction=list_classifiers" target=_blank rel=noopener>https://pypi.python.org/pypi?%3Aaction=list_classifiers</a></p><pre><code>import os
+
+from setuptools import setup, find_packages
+
+import project
+
+def read(readme):
+    extend = os.path.splitext(readme)[1]
+    # pypi只识别reST格式
+    if (extend == &quot;.rst&quot;):
+        import codecs
+        return codecs.open(readme, 'r', 'utf-8').read()
+    # pypandoc可以将markdown格式转换成reST格式
+    elif (extend == &quot;.md&quot;):
+        import pypandoc
+        return pypandoc.convert(readme, 'rst')
+
+setup(
+    # metadata:
+    name=project,
+    version=project.__version__,
+    url='',
+    download_url='',
+    author='',
+    author_email='',
+    maintainer='',
+    maintainer_email='',
+    description=''
+    long_description=read('README.XXX'),
+    license='',
+    platforms='any',
+    keywords='',
+    classifiers=[
+        'Development Status :: 5 - Production/Stable',
+        ...
+    ],
+
+    # options
+
+    # 指定源码的位置
+    packages=find_packages(),
+    package_dir={},
+
+    # 需要和源码一起安装的非代码文件,写入MANIFEST.in
+    # 比如文档和测试文件
+    package_data={}, # 将指定的文件放入安装路径
+    include_package_data=None, # True表示
+    exclude_package_data=None,
+
+    # 不需要和源码一起安装的非代码文件.
+    # 比如配置文件
+    data_files=[(dest, source),()],
+
+    # 通过pip安装requirement
+    install_requires=['a==1.0.0', 'b&gt;=1.0.0'],
+    # python版本的要求
+    python_requires='&gt;=3',
+    setup_requires=[],
+    extras_require=None,
+    test_require=[]
+
+    zip_safe=True,
+
+    # 安装一个命令
+    scripts=[],    # 会被添加到环境变量用于命令.
+
+    entry_points={}
+
+    # preinst/postinst
+    cmdclass={
+        &quot;develop&quot;: PostInstDevelop,
+        &quot;install&quot;: PostInstInstall
+    }
+)
+</code></pre><p>怎样实现postinst功能：</p><pre><code>from setuptools.command.develop import develop
+from setuptools.command.install import install
+
+class InstDevelop(develop):
+    def run(self):
+        # your preinst code here for develop.
+        develop.run(self)
+        # your postinst code here for develop.
+
+class InstInstall(install):
+    def run(self):
+        # your preinst code here for install.
+        install.run(self)
+        # your postinst code here for install.
+</code></pre><p>创建setup.cfg文件：</p><pre><code>[wheel]
+universal = 1
+</code></pre><p>创建README.rst文件：</p><p>可以是rst格式也可是是md格式。</p><p>如果是md格式不要使用类似于***的分割线。</p><pre><code>参考rst和md的文档
+</code></pre><p>创建MAINFEST.in文件：</p><p>默认只有python模块和包会被打包，如果需要其它文件需要添加到这个文件中。</p><pre><code>include LICENSE README.rst AUTHORS.rst CONTRIBUTING.rst
+recursive-include docs *
+graft examples
+graft tests
+global-exclude *.py[co]
+prune docs/_build
+prune docs/_themes
+</code></pre><p>创建__init__.py文件：</p><p>位于project/project/__init__.py，安装后用import导入，help(project)看到的信息。</p><pre><code>NAME: 自动获取的项目名字 - 该文件注释的总结部分
+FILE: /install_path/project/project/__init__.py
+DESCRIPTION: 该文件的注释，除总结部分
+PACKAGE CONTENTS: 在project/project/自动获取的py文件名
+DATA: __开头和结尾的变量
+VERSION: __version__变量的值
+AUTHOR: __author__变量的值
+
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+&quot;&quot;&quot;
+SUMMARY
+
+Descriptions
+&quot;&quot;&quot;
+
+__version__ = ''
+__author__ = ''
+
+...
+</code></pre><p>发布到pypi主服务器pypi：</p><p>去pypi注册帐号</p><p><a class=link href=https://pypi.python.org/pypi target=_blank rel=noopener>https://pypi.python.org/pypi</a></p><p>创建~/.pypirc文件</p><pre><code>[distutils]
+index-servers = pypi
+
+[pypi]
+username = &lt;username&gt;
+password = &lt;password&gt;
+</code></pre><p>在索引中注册项目(不再支持，直接upload)：</p><pre><code>[Deprecated] $ python setup.py register -r pypi
+</code></pre><p>先打包, 在dist目录生成包:</p><pre><code>$ python setup.py sdist # 生成tarball
+$ python setup.py bdist_wheel # 安装wheel后，可以用setuptools生成wheel包
+</code></pre><p>再上传到pypi(推荐):</p><pre><code>$ pip install twine
+$ twine upload dist/*
+</code></pre><p>打包并上传到pypi：</p><pre><code>$python setup.py sdist upload -r pypi
+$python setup.py bdist_wheel upload -r pypi
+</code></pre><h3 id=cython>cython</h3><p>编译成.so文件</p><p>安装:</p><pre><code>$ sudo pip install cython
+</code></pre><p>在setup.py中引用:</p><pre><code>from Cython.Build import cythonize
+from Cython.Distutils import build_ext
+
+def add_extensions(modules):
+    extensions = []
+    for module in modules:
+        level = module
+        for depth in range(10):
+            source_dir = level + &quot;.py&quot;
+            if glob.glob(source_dir):
+                extensions.append(Extension(module, [source_dir], include_dirs=[&quot;.&quot;], extra_compile_args=['-O3']),)
+            level = os.path.join(level, &quot;*&quot;)
+    print(extensions)
+    return extensions
+
+INCLUDE_PACKAGES = []
+EXCLUDE_PACKAGES = []    
+
+setup(
+    ext_modules=cythonize(
+        add_extensions(INCLUDE_PACKAGES),
+        build_dir=&quot;build&quot;,
+        # 指定 .py =&gt; .c 使用8个线程编译.
+        nthreads=8,
+        compiler_directives=dict(
+            always_allow_keywords=True,
+            language_level=3),
+        exclude=EXCLUDE_PACKAGES),
+    cmdclass={
+        &quot;install&quot;: InstInstall,
+        &quot;build_ext&quot;: build_ext
+    },
+)
+
+// -j 8 指定.c =&gt; .so 使用8个线程编译.
+$ python3 setup.py build_ext --inplace -j 8 
+// 删除符号信息
+$ find sandbox/ -name &quot;*.so&quot; -exec strip {} \; 
+</code></pre><h3 id=pbr>pbr</h3><p><a class=link href=https://github.com/openstack-dev/pbr target=_blank rel=noopener>https://github.com/openstack-dev/pbr</a></p><h3 id=扩展点entry-points>扩展点（Entry Points）</h3><ul><li><p>pkg_resources</p></li><li><p>entry_point_inspector</p></li></ul><p><a class=link href=https://github.com/dhellmann/entry_point_inspector target=_blank rel=noopener>https://github.com/dhellmann/entry_point_inspector</a></p><ul><li>stevedore</li></ul><p><a class=link href=http://docs.openstack.org/developer/stevedore/ target=_blank rel=noopener>http://docs.openstack.org/developer/stevedore/</a></p></section><footer class=article-footer><section class=article-tags><a href=/tags/package/>Package</a></section></footer><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css integrity="sha256-J+iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s=" crossorigin=anonymous><script src=https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js integrity="sha256-InsNdER1b2xUewP+pKCUJpkhiqwHgqiPXDlIk7GzBu4=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI=" crossorigin=anonymous defer></script><script>window.addEventListener("DOMContentLoaded",()=>{renderMathInElement(document.querySelector(`.article-content`),{delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1},{left:"\\(",right:"\\)",display:!1},{left:"\\[",right:"\\]",display:!0}],ignoredClasses:["gist"]})})</script></article><div id=gitalk-container></div><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css><script src=https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js></script><script src=https://cdn.jsdelivr.net/npm/blueimp-md5@2.18.0/js/md5.min.js></script><script>const gitalk=new Gitalk({clientID:"3d41a2a237fabe050cc0",clientSecret:"f084dfe45a1c05955270776836298adf02732a02",repo:"crazy-canux.github.io",owner:"crazy-canux",admin:["crazy-canux"],distractionFreeMode:!1,id:md5(location.pathname)});(function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById("gitalk-container").innerHTML="Gitalk comments not available by default when the website is previewed locally.";return}gitalk.render("gitalk-container")})()</script><footer class=site-footer><section class=copyright>&copy;
+2013 -
+2026 Morgoth</section><section class=powerby>Designed by Canux<br></section></footer><div class=pswp tabindex=-1 role=dialog aria-hidden=true><div class=pswp__bg></div><div class=pswp__scroll-wrap><div class=pswp__container><div class=pswp__item></div><div class=pswp__item></div><div class=pswp__item></div></div><div class="pswp__ui pswp__ui--hidden"><div class=pswp__top-bar><div class=pswp__counter></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+<button class="pswp__button pswp__button--share" title=Share></button>
+<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button><div class=pswp__preloader><div class=pswp__preloader__icn><div class=pswp__preloader__cut><div class=pswp__preloader__donut></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class=pswp__share-tooltip></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+</button>
+<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button><div class=pswp__caption><div class=pswp__caption__center></div></div></div></div></div><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU=" crossorigin=anonymous defer></script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css crossorigin=anonymous><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css crossorigin=anonymous></main></div><script src=https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z+KMkF24hUW8WePSA9HM=" crossorigin=anonymous></script><script type=text/javascript src=/ts/main.js defer></script><script>(function(){const e=document.createElement("link");e.href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap",e.type="text/css",e.rel="stylesheet",document.head.appendChild(e)})()</script></body></html>

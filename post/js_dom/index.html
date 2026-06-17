@@ -1,0 +1,197 @@
+<!doctype html><html lang=zh-CN dir=ltr><head><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'><meta name=description content='DOM DOM: document object model.
+当网页被加载时，浏览器会创建页面的文档对象模型(DOM).
+DOM操作需要在html加载完成后进程.
+js可以通过DOM访问html文档的所有元素.
+JavaScript 能够改变页面中的所有 HTML 元素 JavaScript 能够改变页面中的所有 HTML 属性 JavaScript 能够改变页面中的所有 CSS 样式 JavaScript 能够对页面中的所有事件做出反应 查找html元素 找到返回该元素的对象，没找到返回null.
+通过id:
+document.getElementById("id"); 通过标签名:
+document.getElementsByTagName("tag"); 通过类名:
+document.getElementsByName("name") 操作html元素或文本 操作标签或标签内的文本.
+直接改变html内容:
+# 绝不要使用在文档加载之后使用 document.write()。这会覆盖该文档 document.write(...); 改变元素的内容:
+document.getElementById(id).innerHTML = "new text"; 操作html属性 改变元素属性:
+document.getElementById(id).attribute = "new value"; 操作css document.getElementById(id).style.property = "new style" 增删html元素 增加元素:
+var para = document.createElement("p"); var node = document.createTextNode("new para"); para.appendChild(node); 删除元素:
+'><title>JS DOM</title><link rel=canonical href=https://canuxcheng.com/post/js_dom/><link rel=stylesheet href=/scss/style.min.22ad1c74b5bb435181c77741d99f034b2c36f7272eff9d0d1aa16d32e7e84673.css><meta property='og:title' content='JS DOM'><meta property='og:description' content='DOM DOM: document object model.
+当网页被加载时，浏览器会创建页面的文档对象模型(DOM).
+DOM操作需要在html加载完成后进程.
+js可以通过DOM访问html文档的所有元素.
+JavaScript 能够改变页面中的所有 HTML 元素 JavaScript 能够改变页面中的所有 HTML 属性 JavaScript 能够改变页面中的所有 CSS 样式 JavaScript 能够对页面中的所有事件做出反应 查找html元素 找到返回该元素的对象，没找到返回null.
+通过id:
+document.getElementById("id"); 通过标签名:
+document.getElementsByTagName("tag"); 通过类名:
+document.getElementsByName("name") 操作html元素或文本 操作标签或标签内的文本.
+直接改变html内容:
+# 绝不要使用在文档加载之后使用 document.write()。这会覆盖该文档 document.write(...); 改变元素的内容:
+document.getElementById(id).innerHTML = "new text"; 操作html属性 改变元素属性:
+document.getElementById(id).attribute = "new value"; 操作css document.getElementById(id).style.property = "new style" 增删html元素 增加元素:
+var para = document.createElement("p"); var node = document.createTextNode("new para"); para.appendChild(node); 删除元素:
+'><meta property='og:url' content='https://canuxcheng.com/post/js_dom/'><meta property='og:site_name' content='Morgoth'><meta property='og:type' content='article'><meta property='article:section' content='Post'><meta property='article:tag' content='dom'><meta property='article:published_time' content='2017-03-15T09:36:32+00:00'><meta property='article:modified_time' content='2017-03-15T09:36:32+00:00'><meta name=twitter:title content="JS DOM"><meta name=twitter:description content='DOM DOM: document object model.
+当网页被加载时，浏览器会创建页面的文档对象模型(DOM).
+DOM操作需要在html加载完成后进程.
+js可以通过DOM访问html文档的所有元素.
+JavaScript 能够改变页面中的所有 HTML 元素 JavaScript 能够改变页面中的所有 HTML 属性 JavaScript 能够改变页面中的所有 CSS 样式 JavaScript 能够对页面中的所有事件做出反应 查找html元素 找到返回该元素的对象，没找到返回null.
+通过id:
+document.getElementById("id"); 通过标签名:
+document.getElementsByTagName("tag"); 通过类名:
+document.getElementsByName("name") 操作html元素或文本 操作标签或标签内的文本.
+直接改变html内容:
+# 绝不要使用在文档加载之后使用 document.write()。这会覆盖该文档 document.write(...); 改变元素的内容:
+document.getElementById(id).innerHTML = "new text"; 操作html属性 改变元素属性:
+document.getElementById(id).attribute = "new value"; 操作css document.getElementById(id).style.property = "new style" 增删html元素 增加元素:
+var para = document.createElement("p"); var node = document.createTextNode("new para"); para.appendChild(node); 删除元素:
+'><link rel="shortcut icon" href=favicon.ico><style>:root{--article-font-family:"Merriweather", var(--base-font-family)}</style><script>(function(){const e=document.createElement("link");e.href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap",e.type="text/css",e.rel="stylesheet",document.head.appendChild(e)})()</script></head><body class=article-page><script>(function(){const e="StackColorScheme";localStorage.getItem(e)||localStorage.setItem(e,"auto")})()</script><script>(function(){const t="StackColorScheme",e=localStorage.getItem(t),n=window.matchMedia("(prefers-color-scheme: dark)").matches===!0;e=="dark"||e==="auto"&&n?document.documentElement.dataset.scheme="dark":document.documentElement.dataset.scheme="light"})()</script><div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky"><button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label=切换菜单>
+<span class=hamburger-box><span class=hamburger-inner></span></span></button><header><figure class=site-avatar><a href=/><img src=/img/home_hu_7d22d46ad88d2427.jpg width=300 height=400 class=site-logo loading=lazy alt=Avatar>
+</a><span class=emoji>🍥</span></figure><div class=site-meta><h1 class=site-name><a href=/>Morgoth</a></h1><h2 class=site-description>Hello World!</h2></div></header><ol class=social-menu><li><a href=mailto:canuxcheng@163.com target=_blank title=E-mail rel=me><svg class="icon icon-tabler icon-tabler-messages" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M21 14l-3-3h-7a1 1 0 01-1-1V4a1 1 0 011-1h9a1 1 0 011 1v10"/><path d="M14 15v2a1 1 0 01-1 1H6l-3 3V11a1 1 0 011-1h2"/></svg></a></li><li><a href=https://github.com/crazy-canux target=_blank title=GitHub rel=me><svg class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6.0 00-1.3-3.2 4.2 4.2.0 00-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3.0 00-6.2.0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2.0 00-.1 3.2A4.6 4.6.0 004 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg></a></li></ol><ol class=menu id=main-menu><li><a href=/><svg class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="5 12 3 12 12 3 21 12 19 12"/><path d="M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/><path d="M9 21v-6a2 2 0 012-2h2a2 2 0 012 2v6"/></svg>
+<span>首页</span></a></li><li><a href=/about/><svg class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/></svg>
+<span>关于</span></a></li><li><a href=/categories/ target=_blank><svg class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg>
+<span>分类</span></a></li><li><a href=/tags/ target=_blank><svg class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11 3l9 9a1.5 1.5.0 010 2l-6 6a1.5 1.5.0 01-2 0L3 11V7a4 4 0 014-4h4"/><circle cx="9" cy="9" r="2"/></svg>
+<span>标签</span></a></li><li><a href=/rtfm/><svg class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+<span>RTFM</span></a></li><div class=menu-bottom-section><li id=i18n-switch><svg class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 5h7"/><path d="M9 3v2c0 4.418-2.239 8-5 8"/><path d="M5 9c-.003 2.144 2.952 3.908 6.7 4"/><path d="M12 20l4-9 4 9"/><path d="M19.1 18h-6.2"/></svg>
+<select name=language onchange="window.location.href=this.selectedOptions[0].value"><option value=https://canuxcheng.com/ selected>简体中文</option><option value=https://canuxcheng.com/en/>English</option></select></li><li id=dark-mode-toggle><svg class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="8" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<svg class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="16" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<span>暗色模式</span></li></div></ol></aside><aside class="sidebar right-sidebar sticky"><section class="widget archives"><div class=widget-icon><svg class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg></div><h2 class="widget-title section-title">目录</h2><div class=widget--toc><nav id=TableOfContents><ul><li><a href=#查找html元素>查找html元素</a></li><li><a href=#操作html元素或文本>操作html元素或文本</a></li><li><a href=#操作html属性>操作html属性</a></li><li><a href=#操作css>操作css</a></li><li><a href=#增删html元素>增删html元素</a></li><li><a href=#对事件做出反应>对事件做出反应</a></li></ul></nav></div></section></aside><main class="main full-width"><article class=main-article><header class=article-header><div class=article-details><header class=article-category><a href=/categories/web/>Web</a></header><div class=article-title-wrapper><h2 class=article-title><a href=/post/js_dom/>JS DOM</a></h2></div><footer class=article-time><div><svg class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg>
+<time class=article-time--published>Mar 15, 2017</time></div><div><svg class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+<time class=article-time--reading>阅读时长: 2 分钟</time></div></footer></div></header><section class=article-content><h1 id=dom>DOM</h1><p>DOM: document object model.</p><p>当网页被加载时，浏览器会创建页面的文档对象模型(DOM).</p><p>DOM操作需要在html加载完成后进程.</p><p>js可以通过DOM访问html文档的所有元素.</p><ul><li>JavaScript 能够改变页面中的所有 HTML 元素</li><li>JavaScript 能够改变页面中的所有 HTML 属性</li><li>JavaScript 能够改变页面中的所有 CSS 样式</li><li>JavaScript 能够对页面中的所有事件做出反应</li></ul><h2 id=查找html元素>查找html元素</h2><p>找到返回该元素的对象，没找到返回null.</p><p>通过id:</p><pre><code>document.getElementById(&quot;id&quot;);
+</code></pre><p>通过标签名:</p><pre><code>document.getElementsByTagName(&quot;tag&quot;);
+</code></pre><p>通过类名:</p><pre><code>document.getElementsByName(&quot;name&quot;)
+</code></pre><h2 id=操作html元素或文本>操作html元素或文本</h2><p>操作标签或标签内的文本.</p><p>直接改变html内容:</p><pre><code># 绝不要使用在文档加载之后使用 document.write()。这会覆盖该文档
+document.write(...);
+</code></pre><p>改变元素的内容:</p><pre><code>document.getElementById(id).innerHTML = &quot;new text&quot;;
+</code></pre><h2 id=操作html属性>操作html属性</h2><p>改变元素属性:</p><pre><code>document.getElementById(id).attribute = &quot;new value&quot;;
+</code></pre><h2 id=操作css>操作css</h2><pre><code>document.getElementById(id).style.property = &quot;new style&quot;
+</code></pre><h2 id=增删html元素>增删html元素</h2><p>增加元素:</p><pre><code>var para = document.createElement(&quot;p&quot;);
+var node = document.createTextNode(&quot;new para&quot;);
+para.appendChild(node);
+</code></pre><p>删除元素:</p><pre><code>var parent = document.getElementById(&quot;id&quot;);
+var child = document.getElementById(&quot;cid&quot;);
+parent.removeChild(child);
+</code></pre><h2 id=对事件做出反应>对事件做出反应</h2><pre><code>function changetext(id) {
+    id.innerHTML = &quot;new text&quot;
+}
+&lt;h1 onclick=&quot;changetext(this)&quot;&gt;&lt;/h1&gt;
+
+document.getElementById(id).onclick=function(){...};
+</code></pre><hr><h1 id=document>Document</h1><p>集合:</p><pre><code>all[]
+anchors[]
+applets
+forms[]
+images[]
+links[]
+</code></pre><p>attribution:</p><pre><code>body
+cookie
+domain
+lastModified
+referrer
+title
+URL
+readyState // loading/interfactive/complete
+</code></pre><p>method:</p><pre><code>open()
+close()
+getElementById() # 返回id对应的第一个对象
+getElementsByName() # 返回对应的所有对象的集合
+getElementsByTagName() # 同上
+write()
+writeln()
+createElement()
+createTextNode()
+</code></pre><hr><h1 id=element>Element</h1><p>element表示html元素,拥有元素，文本和注释的子节点.</p><p>attribution:</p><pre><code>tagName // tag名字
+innerHTML // 元素里面的文本内容
+id
+title
+style
+className
+length
+nodeName // 和tagName相同
+nodeType // 节点类型: 1= 元素节点，2= 属性节点, 3= 文本节点, 8= 注释
+nodeValue // 文本节点的值
+parentNode // 父节点
+childNodes // 子节点
+firstChild
+lastChild
+nextSibling
+previousSibling
+ownerDocument // 返回当前根节点文档对象
+accesKey
+attributes
+contentEditable
+dir
+lang
+namespaceURI
+tabIndex
+textContent
+clientHeight
+clientWidth
+offsetHeight
+offsetWidth
+offsetLeft
+offsetParent
+offsetTop
+scrollHeight
+scrollLeft
+scrollTop
+scrollWidth
+</code></pre><p>method:</p><pre><code>appendChild(node) // 在元素后追加node
+InsertBefore() // 在元素前插入node
+removeChild()
+replaceChild()
+cloneNode()
+
+compareDocumentPosition()
+getAttribute()
+getAttributeNode()
+getElementsByTagName()
+getFeature()
+getUserData()
+hasAttribute()
+hasAttributes()
+hasChildNodes()
+isDefaultNamespace()
+isEqualNode()
+isSameNode()
+isSupported()
+normalize()
+removeAttribute()
+removeAttributeNode()
+setArrbitute()
+setArrtibuteNode()
+setIdAttribute()
+setIdArrtibuteNode()
+setUserData()
+toString()
+item() #
+</code></pre><hr><h1 id=attribute>Attribute</h1><p>Attribute表示html属性</p><p>attribution:</p><pre><code>isId
+name
+value
+specified
+length
+</code></pre><p>methods:</p><pre><code>gtNamedItem()
+item()
+removeNameItem()
+setNamedItem()
+</code></pre><hr><h1 id=event>Event</h1><p>window事件:</p><pre><code># 等待html加载完成
+onload
+window.onload = function(){};
+
+onunload
+</code></pre><p>鼠标事件:</p><pre><code>onclick
+ondblclick
+onmousedown
+onmousemove
+onmouseout
+onmouseover
+onmouseup
+</code></pre><p>键盘事件:</p><pre><code>onkeypress
+onkeydown
+onkeyup
+</code></pre><p>表单事件:</p><pre><code>onsubmit
+</code></pre><p>媒体事件:</p><pre><code>onabort
+onerror
+</code></pre><hr></section><footer class=article-footer><section class=article-tags><a href=/tags/dom/>Dom</a></section></footer><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css integrity="sha256-J+iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s=" crossorigin=anonymous><script src=https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js integrity="sha256-InsNdER1b2xUewP+pKCUJpkhiqwHgqiPXDlIk7GzBu4=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI=" crossorigin=anonymous defer></script><script>window.addEventListener("DOMContentLoaded",()=>{renderMathInElement(document.querySelector(`.article-content`),{delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1},{left:"\\(",right:"\\)",display:!1},{left:"\\[",right:"\\]",display:!0}],ignoredClasses:["gist"]})})</script></article><div id=gitalk-container></div><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css><script src=https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js></script><script src=https://cdn.jsdelivr.net/npm/blueimp-md5@2.18.0/js/md5.min.js></script><script>const gitalk=new Gitalk({clientID:"3d41a2a237fabe050cc0",clientSecret:"f084dfe45a1c05955270776836298adf02732a02",repo:"crazy-canux.github.io",owner:"crazy-canux",admin:["crazy-canux"],distractionFreeMode:!1,id:md5(location.pathname)});(function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById("gitalk-container").innerHTML="Gitalk comments not available by default when the website is previewed locally.";return}gitalk.render("gitalk-container")})()</script><footer class=site-footer><section class=copyright>&copy;
+2013 -
+2026 Morgoth</section><section class=powerby>Designed by Canux<br></section></footer><div class=pswp tabindex=-1 role=dialog aria-hidden=true><div class=pswp__bg></div><div class=pswp__scroll-wrap><div class=pswp__container><div class=pswp__item></div><div class=pswp__item></div><div class=pswp__item></div></div><div class="pswp__ui pswp__ui--hidden"><div class=pswp__top-bar><div class=pswp__counter></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+<button class="pswp__button pswp__button--share" title=Share></button>
+<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button><div class=pswp__preloader><div class=pswp__preloader__icn><div class=pswp__preloader__cut><div class=pswp__preloader__donut></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class=pswp__share-tooltip></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+</button>
+<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button><div class=pswp__caption><div class=pswp__caption__center></div></div></div></div></div><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU=" crossorigin=anonymous defer></script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css crossorigin=anonymous><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css crossorigin=anonymous></main></div><script src=https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z+KMkF24hUW8WePSA9HM=" crossorigin=anonymous></script><script type=text/javascript src=/ts/main.js defer></script><script>(function(){const e=document.createElement("link");e.href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap",e.type="text/css",e.rel="stylesheet",document.head.appendChild(e)})()</script></body></html>

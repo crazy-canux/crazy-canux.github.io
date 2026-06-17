@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>AI on Morgoth</title><link>https://canuxcheng.com/categories/ai/</link><description>Recent content in AI on Morgoth</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 17 Jun 2026 10:00:00 +0800</lastBuildDate><atom:link href="https://canuxcheng.com/categories/ai/index.xml" rel="self" type="application/rss+xml"/><item><title>Spec-Driven Development</title><link>https://canuxcheng.com/post/ai_sdd/</link><pubDate>Wed, 17 Jun 2026 10:00:00 +0800</pubDate><guid>https://canuxcheng.com/post/ai_sdd/</guid><description>&lt;h1 id="spec-driven-development"&gt;Spec-Driven Development&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;Spec-Driven Development (SDD)&lt;/strong&gt; is a methodology for building software with AI
+coding agents where the &lt;em&gt;specification&lt;/em&gt;, not the code, is the primary artifact.
+Instead of prompting an agent ad-hoc and hoping the output is correct, you first
+write down &lt;em&gt;what&lt;/em&gt; you want — requirements, scenarios, constraints — and let the
+spec drive the plan, the tasks, and finally the implementation.&lt;/p&gt;
+&lt;p&gt;The core idea: AI agents are powerful but unpredictable. A natural-language
+prompt is lossy and easy to misread, and the larger the change, the more drift
+accumulates. A spec turns intent into a reviewable, version-controlled,
+executable contract. Humans and agents align &lt;em&gt;before&lt;/em&gt; code is written, and the
+spec stays as living documentation afterwards.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="why-sdd"&gt;Why SDD&lt;/h2&gt;
+&lt;p&gt;The classic &amp;ldquo;vibe coding&amp;rdquo; loop (prompt → diff → fix → prompt again) breaks down
+as soon as the task is non-trivial:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Ambiguity.&lt;/strong&gt; The agent fills gaps with assumptions you never see.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Drift.&lt;/strong&gt; Multi-step changes lose the original intent halfway through.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;No source of truth.&lt;/strong&gt; Once the chat is gone, &lt;em&gt;why&lt;/em&gt; the code looks this way
+is gone too.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Hard to review.&lt;/strong&gt; Reviewing a 600-line diff is much harder than reviewing a
+one-page spec that produced it.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;SDD addresses these by inserting an explicit, cheap-to-review specification step
+in front of code generation. The phases are roughly:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Specify&lt;/strong&gt; — what to build and why (requirements, user stories, scenarios).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Plan / Design&lt;/strong&gt; — the technical approach, architecture, trade-offs.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Tasks&lt;/strong&gt; — a checklist of small, independently verifiable units of work.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Implement&lt;/strong&gt; — the agent executes tasks against the spec.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The tools below differ mainly in &lt;em&gt;how heavy&lt;/em&gt; this process is and &lt;em&gt;whether&lt;/em&gt; the
+spec is a living document or a throwaway scaffold.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="github-spec-kit"&gt;GitHub Spec Kit&lt;/h2&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/github/spec-kit" target="_blank" rel="noopener"
+&gt;https://github.com/github/spec-kit&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;GitHub&amp;rsquo;s official, opinionated take on SDD. It ships a CLI (&lt;code&gt;specify&lt;/code&gt;,
+installed via &lt;code&gt;uv&lt;/code&gt;) that bootstraps a project and wires a full set of slash
+commands into your agent of choice.&lt;/p&gt;
+&lt;p&gt;The workflow is a sequence of gated phases:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;/speckit.constitution&lt;/code&gt; — establish project principles and governance.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/speckit.specify&lt;/code&gt; — define requirements and user stories.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/speckit.plan&lt;/code&gt; — create the technical implementation strategy.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/speckit.tasks&lt;/code&gt; — generate an actionable task breakdown.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/speckit.implement&lt;/code&gt; — execute the tasks systematically.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Plus optional helpers: &lt;code&gt;/speckit.clarify&lt;/code&gt; (resolve ambiguities before
+planning), &lt;code&gt;/speckit.analyze&lt;/code&gt; (cross-artifact consistency checks), and
+&lt;code&gt;/speckit.checklist&lt;/code&gt; (custom quality gates).&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;uv tool install specify-cli
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;specify init my-project
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;specify integration list &lt;span style="color:#75715e"&gt;# 30+ supported agents&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Pros&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Backed by GitHub; mature, well-documented, actively developed.&lt;/li&gt;
+&lt;li&gt;Genuinely thorough — the constitution + clarify + analyze steps catch
+ambiguity and inconsistency early.&lt;/li&gt;
+&lt;li&gt;Technology-agnostic; supports 30+ agents (Copilot, Claude Code, Gemini CLI,
+Cursor, Codex CLI, …).&lt;/li&gt;
+&lt;li&gt;TDD-compatible task generation and parallel-task markers.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Cons&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Heavyweight. The full phase sequence is overkill for small changes.&lt;/li&gt;
+&lt;li&gt;Requires Python 3.11+, &lt;code&gt;uv&lt;/code&gt;, and Git just to bootstrap.&lt;/li&gt;
+&lt;li&gt;Strongly greenfield-flavored; the constitution/specify flow assumes you are
+starting something new rather than evolving an existing codebase.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Best for:&lt;/strong&gt; new projects, larger features, and teams that want a rigorous,
+repeatable process with explicit governance and review gates.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="openspec"&gt;OpenSpec&lt;/h2&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/Fission-AI/OpenSpec" target="_blank" rel="noopener"
+&gt;https://github.com/Fission-AI/OpenSpec&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;A lightweight, change-oriented alternative. Rather than treating the spec as a
+one-shot scaffold, OpenSpec maintains &lt;em&gt;living&lt;/em&gt; specs and models work as a series
+of &lt;strong&gt;change proposals&lt;/strong&gt; layered on top of them.&lt;/p&gt;
+&lt;p&gt;The repository keeps two key areas:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;specs/&lt;/code&gt; — the current, agreed-upon truth (what the system &lt;em&gt;does&lt;/em&gt; today).&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;changes/&lt;/code&gt; — proposed deltas (a proposal, spec changes, design notes, and a
+task checklist) for work in flight.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The loop is intentionally small:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;/opsx:propose&lt;/code&gt; — open a new change proposal.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/opsx:apply&lt;/code&gt; — implement the proposed tasks.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/opsx:archive&lt;/code&gt; — fold a completed change back into the specs and archive it.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;npx openspec init &lt;span style="color:#75715e"&gt;# also: openspec update to refresh agent instructions&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Pros&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Lightweight and fluid — iterates without rigid phase gates.&lt;/li&gt;
+&lt;li&gt;Equally at home in &lt;strong&gt;brownfield&lt;/strong&gt; codebases; the spec/change split is built
+exactly for evolving existing systems.&lt;/li&gt;
+&lt;li&gt;Specs are durable living documentation, not throwaway scaffolding.&lt;/li&gt;
+&lt;li&gt;Node-based, minimal setup; integrates with 25+ tools.&lt;/li&gt;
+&lt;li&gt;MIT licensed.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Cons&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Younger and smaller community than Spec Kit.&lt;/li&gt;
+&lt;li&gt;Fewer built-in quality gates — the discipline of clarify/analyze is on you.&lt;/li&gt;
+&lt;li&gt;The change/archive model takes a little practice to internalize.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Best for:&lt;/strong&gt; ongoing work on existing codebases, incremental features, and
+developers who want alignment-before-code without ceremony.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="other-notable-tools"&gt;Other notable tools&lt;/h2&gt;
+&lt;p&gt;Two more worth knowing about, since they take meaningfully different shapes:&lt;/p&gt;
+&lt;h3 id="amazon-kiro"&gt;Amazon Kiro&lt;/h3&gt;
+&lt;p&gt;&lt;a class="link" href="https://kiro.dev/" target="_blank" rel="noopener"
+&gt;https://kiro.dev/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;An agentic IDE (rather than a CLI add-on) with SDD as a first-class feature.
+From a prompt it generates three artifacts — &lt;code&gt;requirements.md&lt;/code&gt; (EARS-style
+acceptance criteria), &lt;code&gt;design.md&lt;/code&gt;, and &lt;code&gt;tasks.md&lt;/code&gt; — and keeps them in sync as
+you build. &lt;strong&gt;Pros:&lt;/strong&gt; integrated end-to-end experience, structured requirements,
+strong onboarding. &lt;strong&gt;Cons:&lt;/strong&gt; it&amp;rsquo;s a whole IDE to adopt and is more of a walled
+garden than the editor-agnostic CLIs above. &lt;strong&gt;Best for:&lt;/strong&gt; developers willing to
+switch IDEs for a tightly integrated spec-to-code workflow.&lt;/p&gt;
+&lt;h3 id="bmad-method"&gt;BMAD-METHOD&lt;/h3&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/bmad-code-org/BMAD-METHOD" target="_blank" rel="noopener"
+&gt;https://github.com/bmad-code-org/BMAD-METHOD&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&amp;ldquo;Breakthrough Method of Agile AI-Driven Development.&amp;rdquo; Less a spec format and
+more an &lt;em&gt;agentic team&lt;/em&gt;: specialized agents (Analyst, PM, Architect, Scrum
+Master, Dev) collaborate to produce a PRD and architecture, then shard them into
+hyper-detailed story files that carry full context into implementation.
+&lt;strong&gt;Pros:&lt;/strong&gt; rich, role-based planning; great for complex, multi-feature products.
+&lt;strong&gt;Cons:&lt;/strong&gt; the most ceremony of the bunch; a real learning curve. &lt;strong&gt;Best for:&lt;/strong&gt;
+ambitious greenfield products where up-front planning genuinely pays off.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="how-to-choose"&gt;How to choose&lt;/h2&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Tool&lt;/th&gt;
+&lt;th&gt;Weight&lt;/th&gt;
+&lt;th&gt;Greenfield&lt;/th&gt;
+&lt;th&gt;Brownfield&lt;/th&gt;
+&lt;th&gt;Setup&lt;/th&gt;
+&lt;th&gt;Living specs&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Spec Kit&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Heavy&lt;/td&gt;
+&lt;td&gt;Excellent&lt;/td&gt;
+&lt;td&gt;OK&lt;/td&gt;
+&lt;td&gt;Python + uv&lt;/td&gt;
+&lt;td&gt;Per-feature&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;OpenSpec&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Light&lt;/td&gt;
+&lt;td&gt;Good&lt;/td&gt;
+&lt;td&gt;Excellent&lt;/td&gt;
+&lt;td&gt;Node&lt;/td&gt;
+&lt;td&gt;Yes (specs/)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Kiro&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Medium&lt;/td&gt;
+&lt;td&gt;Excellent&lt;/td&gt;
+&lt;td&gt;Good&lt;/td&gt;
+&lt;td&gt;Dedicated IDE&lt;/td&gt;
+&lt;td&gt;Yes&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;BMAD-METHOD&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Heavy&lt;/td&gt;
+&lt;td&gt;Excellent&lt;/td&gt;
+&lt;td&gt;OK&lt;/td&gt;
+&lt;td&gt;Node/agents&lt;/td&gt;
+&lt;td&gt;PRD + stories&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;A practical rule of thumb:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Starting a &lt;strong&gt;new project&lt;/strong&gt; and want rigor → &lt;strong&gt;Spec Kit&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Evolving an &lt;strong&gt;existing codebase&lt;/strong&gt; and want speed → &lt;strong&gt;OpenSpec&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Want an &lt;strong&gt;all-in-one IDE&lt;/strong&gt; experience → &lt;strong&gt;Kiro&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Building an &lt;strong&gt;ambitious product&lt;/strong&gt; with heavy planning needs → &lt;strong&gt;BMAD-METHOD&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;All four are MIT/open and agent-agnostic enough to try in an afternoon. The
+common thread — and the real takeaway — is this: write the spec first, review
+the spec (not the diff), and let intent, not vibes, drive the agent.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="resources"&gt;Resources&lt;/h2&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/github/spec-kit" target="_blank" rel="noopener"
+&gt;https://github.com/github/spec-kit&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/Fission-AI/OpenSpec" target="_blank" rel="noopener"
+&gt;https://github.com/Fission-AI/OpenSpec&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://kiro.dev/" target="_blank" rel="noopener"
+&gt;https://kiro.dev/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/bmad-code-org/BMAD-METHOD" target="_blank" rel="noopener"
+&gt;https://github.com/bmad-code-org/BMAD-METHOD&lt;/a&gt;&lt;/p&gt;</description></item><item><title>Heystack</title><link>https://canuxcheng.com/post/ai_haystack/</link><pubDate>Sat, 19 Jul 2025 11:18:44 +0800</pubDate><guid>https://canuxcheng.com/post/ai_haystack/</guid><description>&lt;h1 id="heystack"&gt;Heystack&lt;/h1&gt;</description></item><item><title>LlamaIndex</title><link>https://canuxcheng.com/post/ai_llamaindex/</link><pubDate>Sat, 19 Jul 2025 11:18:44 +0800</pubDate><guid>https://canuxcheng.com/post/ai_llamaindex/</guid><description>&lt;h1 id="llamaindex"&gt;LlamaIndex&lt;/h1&gt;
+&lt;p&gt;RAG框架。&lt;/p&gt;</description></item><item><title>LangChain</title><link>https://canuxcheng.com/post/ai_langchain/</link><pubDate>Sat, 19 Jul 2025 11:17:34 +0800</pubDate><guid>https://canuxcheng.com/post/ai_langchain/</guid><description>&lt;h1 id="langchain"&gt;LangChain&lt;/h1&gt;
+&lt;h2 id="langgraph"&gt;LangGraph&lt;/h2&gt;</description></item><item><title>Vector DB</title><link>https://canuxcheng.com/post/ai_vector/</link><pubDate>Sat, 19 Jul 2025 11:01:29 +0800</pubDate><guid>https://canuxcheng.com/post/ai_vector/</guid><description>&lt;h1 id="vector-db"&gt;Vector DB&lt;/h1&gt;
+&lt;p&gt;向量数据库（Vector Database）是一种专门用于存储和检索高维向量数据的数据库。它们通常用于处理机器学习、自然语言处理和计算机视觉等领域中的向量数据。&lt;/p&gt;
+&lt;h2 id="milvus"&gt;Milvus&lt;/h2&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/milvus-io/milvus" target="_blank" rel="noopener"
+&gt;https://github.com/milvus-io/milvus&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="qdrant"&gt;qdrant&lt;/h2&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/qdrant/qdrant" target="_blank" rel="noopener"
+&gt;https://github.com/qdrant/qdrant&lt;/a&gt;&lt;/p&gt;</description></item><item><title>Agent</title><link>https://canuxcheng.com/post/ai_agent/</link><pubDate>Sat, 19 Jul 2025 10:50:10 +0800</pubDate><guid>https://canuxcheng.com/post/ai_agent/</guid><description>&lt;h1 id="agent"&gt;Agent&lt;/h1&gt;
+&lt;h2 id="what-is-an-agent"&gt;What is an agent&lt;/h2&gt;
+&lt;p&gt;An &lt;strong&gt;AI agent&lt;/strong&gt; is an LLM wrapped in a loop that can &lt;em&gt;act&lt;/em&gt;, not just answer. The
+model decides which tool to call, observes the result, and repeats until the
+goal is met. The essential ingredients are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;A model&lt;/strong&gt; — the reasoning engine.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Tools&lt;/strong&gt; — functions it can call (run a command, read a file, search the web).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;A loop&lt;/strong&gt; — plan → act → observe → re-plan, until done.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Context / memory&lt;/strong&gt; — the task, prior steps, and relevant project knowledge.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;A plain chatbot returns text. An agent edits files, runs tests, fixes the
+failures, and reports back — it closes the loop on real work.&lt;/p&gt;
+&lt;h2 id="what-is-an-agent-plugin"&gt;What is an agent plugin&lt;/h2&gt;
+&lt;p&gt;A &lt;strong&gt;plugin&lt;/strong&gt; packages reusable capability so you don&amp;rsquo;t re-teach the agent every
+time. Across today&amp;rsquo;s tools a plugin typically bundles some of:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Slash commands&lt;/strong&gt; — custom prompts/workflows you invoke by name.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Subagents&lt;/strong&gt; — specialized helpers the main agent can delegate to.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Skills&lt;/strong&gt; — domain knowledge loaded on demand.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Hooks&lt;/strong&gt; — scripts that fire on events (e.g. before a commit).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;MCP servers&lt;/strong&gt; — connections to external systems (see &lt;a class="link" href="../ai_mcp/" &gt;MCP&lt;/a&gt;).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Plugins make an agent extensible and shareable: install one and the agent gains
+new commands and integrations instantly.&lt;/p&gt;
+&lt;h2 id="three-mainstream-agents"&gt;Three mainstream agents&lt;/h2&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Agent&lt;/th&gt;
+&lt;th&gt;Form&lt;/th&gt;
+&lt;th&gt;Strength&lt;/th&gt;
+&lt;th&gt;Trade-off&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Claude Code&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;CLI / IDE&lt;/td&gt;
+&lt;td&gt;Deep autonomy, rich plugin + MCP + skills ecosystem&lt;/td&gt;
+&lt;td&gt;Terminal-first; needs a Claude subscription/API&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Cursor&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Full IDE (VS Code fork)&lt;/td&gt;
+&lt;td&gt;Best inline editing UX, multi-model, great for exploration&lt;/td&gt;
+&lt;td&gt;You switch editors; agent autonomy is shallower&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;GitHub Copilot&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;IDE extension + coding agent&lt;/td&gt;
+&lt;td&gt;Native GitHub/PR integration, huge install base&lt;/td&gt;
+&lt;td&gt;Less open/customizable, ecosystem-locked&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;The differences in short:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Claude Code&lt;/strong&gt; is the most &lt;em&gt;agentic&lt;/em&gt; and the most &lt;em&gt;open&lt;/em&gt; to extend — plugins,
+skills, hooks and MCP make it programmable. Best when you want the agent to
+drive multi-step work autonomously.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Cursor&lt;/strong&gt; wins on &lt;em&gt;editing experience&lt;/em&gt;. It&amp;rsquo;s an IDE, so completions,
+diffs and context-picking feel native. Best for hands-on, in-editor coding.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Copilot&lt;/strong&gt; wins on &lt;em&gt;integration and ubiquity&lt;/em&gt;. It lives where your code
+already is (GitHub, VS Code, JetBrains) and its coding agent can take an issue
+to a PR. Best for teams already standardized on GitHub.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;There is no single winner — pick by how much autonomy vs. inline control you
+want, and how much you care about extensibility vs. zero-setup integration.&lt;/p&gt;
+&lt;h2 id="developing-a-plugin"&gt;Developing a plugin&lt;/h2&gt;
+&lt;p&gt;Using Claude Code&amp;rsquo;s plugin system as the concrete example, a plugin is just a
+directory with a manifest plus the components it adds:&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;my-plugin/
+├── .claude-plugin/plugin.json # name, version, description
+├── commands/ # slash commands (markdown prompts)
+├── agents/ # subagent definitions
+├── skills/ # on-demand knowledge
+├── hooks/ # event scripts
+└── .mcp.json # MCP servers to wire in
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The workflow is roughly:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Scaffold the directory and &lt;code&gt;plugin.json&lt;/code&gt; manifest.&lt;/li&gt;
+&lt;li&gt;Add a command — a markdown file whose body is the prompt the agent runs.&lt;/li&gt;
+&lt;li&gt;Optionally add subagents, skills, hooks, or MCP servers.&lt;/li&gt;
+&lt;li&gt;Install it locally to test, then publish via a marketplace/repo so others can
+install it.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;You&amp;rsquo;re not writing model code — you&amp;rsquo;re writing &lt;em&gt;prompts, configuration, and
+small scripts&lt;/em&gt; that compose into reusable behavior.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="resources"&gt;Resources&lt;/h2&gt;
+&lt;p&gt;&lt;a class="link" href="https://docs.claude.com/en/docs/claude-code" target="_blank" rel="noopener"
+&gt;https://docs.claude.com/en/docs/claude-code&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://cursor.com/" target="_blank" rel="noopener"
+&gt;https://cursor.com/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/features/copilot" target="_blank" rel="noopener"
+&gt;https://github.com/features/copilot&lt;/a&gt;&lt;/p&gt;</description></item><item><title>MCP</title><link>https://canuxcheng.com/post/ai_mcp/</link><pubDate>Sat, 19 Jul 2025 10:50:06 +0800</pubDate><guid>https://canuxcheng.com/post/ai_mcp/</guid><description>&lt;h1 id="mcp"&gt;MCP&lt;/h1&gt;
+&lt;h2 id="what-is-mcp"&gt;What is MCP&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;MCP (Model Context Protocol)&lt;/strong&gt; is an open standard, introduced by Anthropic in
+late 2024, for connecting AI agents to external tools and data. Think of it as
+&amp;ldquo;USB-C for AI&amp;rdquo;: instead of every agent writing a bespoke integration for every
+service, a tool exposes itself once as an &lt;strong&gt;MCP server&lt;/strong&gt;, and any &lt;strong&gt;MCP client&lt;/strong&gt;
+(Claude Code, Cursor, Copilot, …) can use it.&lt;/p&gt;
+&lt;p&gt;It&amp;rsquo;s a client–server protocol (JSON-RPC over stdio or HTTP). A server can expose
+three kinds of capability:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Tools&lt;/strong&gt; — actions the model can invoke (query a DB, create an issue).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Resources&lt;/strong&gt; — data the model can read (files, records, docs).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Prompts&lt;/strong&gt; — reusable prompt templates the user can trigger.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The win is &lt;strong&gt;decoupling&lt;/strong&gt;: build an integration once, use it from any agent.&lt;/p&gt;
+&lt;h2 id="popular-open-source-mcp-servers"&gt;Popular open-source MCP servers&lt;/h2&gt;
+&lt;p&gt;A few widely used, open-source servers to get started with:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Filesystem&lt;/strong&gt; — read/write local files within allowed paths.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Git / GitHub / GitLab&lt;/strong&gt; — inspect repos, manage issues and PRs.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Postgres / SQLite&lt;/strong&gt; — run queries against a database.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Fetch&lt;/strong&gt; — retrieve and convert web pages to text.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Puppeteer / Playwright&lt;/strong&gt; — drive a real browser for testing and scraping.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Slack&lt;/strong&gt; — read and post messages.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Memory&lt;/strong&gt; — a persistent knowledge graph across sessions.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The reference servers live in the official repo, and the community has built
+hundreds more (cloud providers, search, monitoring, etc.).&lt;/p&gt;
+&lt;h2 id="developing-an-mcp-server"&gt;Developing an MCP server&lt;/h2&gt;
+&lt;p&gt;The fastest path is an official SDK — Python (&lt;code&gt;FastMCP&lt;/code&gt;) or TypeScript. A
+minimal Python server:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;from&lt;/span&gt; mcp.server.fastmcp &lt;span style="color:#f92672"&gt;import&lt;/span&gt; FastMCP
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;mcp &lt;span style="color:#f92672"&gt;=&lt;/span&gt; FastMCP(&lt;span style="color:#e6db74"&gt;&amp;#34;demo&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;@mcp.tool&lt;/span&gt;()
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;add&lt;/span&gt;(a: int, b: int) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; int:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;&amp;#34;&amp;#34;Add two numbers.&amp;#34;&amp;#34;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; a &lt;span style="color:#f92672"&gt;+&lt;/span&gt; b
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; __name__ &lt;span style="color:#f92672"&gt;==&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;__main__&amp;#34;&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; mcp&lt;span style="color:#f92672"&gt;.&lt;/span&gt;run() &lt;span style="color:#75715e"&gt;# speaks MCP over stdio&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The steps are:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Create the server and declare &lt;strong&gt;tools&lt;/strong&gt; (functions), &lt;strong&gt;resources&lt;/strong&gt;, and
+&lt;strong&gt;prompts&lt;/strong&gt; — docstrings and type hints become the schema the model sees.&lt;/li&gt;
+&lt;li&gt;Pick a &lt;strong&gt;transport&lt;/strong&gt;: &lt;code&gt;stdio&lt;/code&gt; for local tools, HTTP for remote/shared servers.&lt;/li&gt;
+&lt;li&gt;Register it with your client (e.g. an &lt;code&gt;.mcp.json&lt;/code&gt; entry or &lt;code&gt;claude mcp add&lt;/code&gt;).&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Clear tool names, tight descriptions, and small focused tools matter more than
+quantity — that&amp;rsquo;s what lets the model pick the right action reliably.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="resources"&gt;Resources&lt;/h2&gt;
+&lt;p&gt;&lt;a class="link" href="https://modelcontextprotocol.io/" target="_blank" rel="noopener"
+&gt;https://modelcontextprotocol.io/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/modelcontextprotocol/servers" target="_blank" rel="noopener"
+&gt;https://github.com/modelcontextprotocol/servers&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/modelcontextprotocol/python-sdk" target="_blank" rel="noopener"
+&gt;https://github.com/modelcontextprotocol/python-sdk&lt;/a&gt;&lt;/p&gt;</description></item><item><title>RAG</title><link>https://canuxcheng.com/post/ai_rag/</link><pubDate>Sat, 19 Jul 2025 10:50:02 +0800</pubDate><guid>https://canuxcheng.com/post/ai_rag/</guid><description>&lt;h1 id="rag"&gt;RAG&lt;/h1&gt;
+&lt;p&gt;RAG (Retrieval-Augmented Generation) is a technique that combines retrieval and generation to improve the performance of language models. It allows models to access external knowledge bases or documents to enhance their responses.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2&gt;&lt;/h2&gt;</description></item><item><title>AI</title><link>https://canuxcheng.com/post/ai/</link><pubDate>Sat, 19 Jul 2025 10:44:35 +0800</pubDate><guid>https://canuxcheng.com/post/ai/</guid><description>&lt;h1 id="ai"&gt;AI&lt;/h1&gt;
+&lt;p&gt;All in AI.&lt;/p&gt;
+&lt;h2 id="resources"&gt;resources&lt;/h2&gt;
+&lt;p&gt;&lt;a class="link" href="https://huggingface.co/" target="_blank" rel="noopener"
+&gt;https://huggingface.co/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://paperswithcode.com/" target="_blank" rel="noopener"
+&gt;https://paperswithcode.com/&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="self-hosted-ai"&gt;Self-Hosted AI&lt;/h2&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/mudler/LocalAI" target="_blank" rel="noopener"
+&gt;https://github.com/mudler/LocalAI&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/ollama/ollama" target="_blank" rel="noopener"
+&gt;https://github.com/ollama/ollama&lt;/a&gt;&lt;/p&gt;</description></item><item><title>Kserve</title><link>https://canuxcheng.com/post/ai_kserve/</link><pubDate>Sat, 19 Jul 2025 10:44:35 +0800</pubDate><guid>https://canuxcheng.com/post/ai_kserve/</guid><description>&lt;h1 id="kserve"&gt;Kserve&lt;/h1&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/kserve/kserve" target="_blank" rel="noopener"
+&gt;https://github.com/kserve/kserve&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;KServe 主要用于模型推理，支持多种模型格式和框架，如 TensorFlow、PyTorch、ONNX 等。它提供了一个统一的 API 来管理和部署机器学习模型，并支持自动扩缩容、版本控制等功能。&lt;/p&gt;</description></item><item><title>Kubeflow</title><link>https://canuxcheng.com/post/ai_kubeflow/</link><pubDate>Sat, 19 Jul 2025 10:44:35 +0800</pubDate><guid>https://canuxcheng.com/post/ai_kubeflow/</guid><description>&lt;h1 id="kubeflow"&gt;Kubeflow&lt;/h1&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/kubeflow/kubeflow" target="_blank" rel="noopener"
+&gt;https://github.com/kubeflow/kubeflow&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Kubeflow 是一个用于在 Kubernetes 上部署和管理机器学习工作流的开源平台。它提供了一整套工具和组件，旨在简化机器学习模型的开发、训练、部署和管理过程。&lt;/p&gt;</description></item></channel></rss>

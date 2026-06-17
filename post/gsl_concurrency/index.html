@@ -1,0 +1,114 @@
+<!doctype html><html lang=zh-CN dir=ltr><head><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'><meta name=description content='sync sync用于goroutine同步.
+import "sync" constants variables functions Locker 一个可以加锁和解锁的接口
+type Locker interface { Lock() Unlock() } Pool Pool是一个可以分别存取的临时对象的集合。
+Once 只执行一次动作的对象(单例模式)
+type Once struct {} method:
+// 只有第一次调用才执行 func (o *Once) Do(f func()) Mutex 互斥锁,锁和线程无关，可以由不同的线程加锁和解锁.
+Mutex的初始值为未锁的状态，并且Mutex通常作为结构体的匿名成员存在。
+同一时刻只能有一个线程进入临界区.
+type Mutex struct {} Mutex method:
+// 加锁，如果已经加锁，阻塞至m解锁． func (m *Mutex) Lock() // 解锁，如果没有加锁，导致panic func (m *Mutex) Unlock() RWMutex 读写互斥锁,可以由不同的线程加锁和解锁.
+type RWMutex struct {} method:
+// 锁定为写入状态，禁止其它线程读写，一次只能有一个线程持有。 func (rw *RWMutex) Lock() // 解除写入锁定，如果没有加锁，导致panic func (rw *RWMutex) Unlock() // 锁定为读取状态，禁止其他线程写入，多个线程可以同时持有读锁。 func (rw *RWMutex) RLock() // 解除读取锁，如果没有加锁，导致panic. func (rw *RWMutex) RUnlock() Cond 条件变量.
+'><title>GSL_concurrency</title><link rel=canonical href=https://canuxcheng.com/post/gsl_concurrency/><link rel=stylesheet href=/scss/style.min.22ad1c74b5bb435181c77741d99f034b2c36f7272eff9d0d1aa16d32e7e84673.css><meta property='og:title' content='GSL_concurrency'><meta property='og:description' content='sync sync用于goroutine同步.
+import "sync" constants variables functions Locker 一个可以加锁和解锁的接口
+type Locker interface { Lock() Unlock() } Pool Pool是一个可以分别存取的临时对象的集合。
+Once 只执行一次动作的对象(单例模式)
+type Once struct {} method:
+// 只有第一次调用才执行 func (o *Once) Do(f func()) Mutex 互斥锁,锁和线程无关，可以由不同的线程加锁和解锁.
+Mutex的初始值为未锁的状态，并且Mutex通常作为结构体的匿名成员存在。
+同一时刻只能有一个线程进入临界区.
+type Mutex struct {} Mutex method:
+// 加锁，如果已经加锁，阻塞至m解锁． func (m *Mutex) Lock() // 解锁，如果没有加锁，导致panic func (m *Mutex) Unlock() RWMutex 读写互斥锁,可以由不同的线程加锁和解锁.
+type RWMutex struct {} method:
+// 锁定为写入状态，禁止其它线程读写，一次只能有一个线程持有。 func (rw *RWMutex) Lock() // 解除写入锁定，如果没有加锁，导致panic func (rw *RWMutex) Unlock() // 锁定为读取状态，禁止其他线程写入，多个线程可以同时持有读锁。 func (rw *RWMutex) RLock() // 解除读取锁，如果没有加锁，导致panic. func (rw *RWMutex) RUnlock() Cond 条件变量.
+'><meta property='og:url' content='https://canuxcheng.com/post/gsl_concurrency/'><meta property='og:site_name' content='Morgoth'><meta property='og:type' content='article'><meta property='article:section' content='Post'><meta property='article:tag' content='concurrency'><meta property='article:published_time' content='2018-01-01T10:49:21+00:00'><meta property='article:modified_time' content='2018-01-01T10:49:21+00:00'><meta name=twitter:title content="GSL_concurrency"><meta name=twitter:description content='sync sync用于goroutine同步.
+import "sync" constants variables functions Locker 一个可以加锁和解锁的接口
+type Locker interface { Lock() Unlock() } Pool Pool是一个可以分别存取的临时对象的集合。
+Once 只执行一次动作的对象(单例模式)
+type Once struct {} method:
+// 只有第一次调用才执行 func (o *Once) Do(f func()) Mutex 互斥锁,锁和线程无关，可以由不同的线程加锁和解锁.
+Mutex的初始值为未锁的状态，并且Mutex通常作为结构体的匿名成员存在。
+同一时刻只能有一个线程进入临界区.
+type Mutex struct {} Mutex method:
+// 加锁，如果已经加锁，阻塞至m解锁． func (m *Mutex) Lock() // 解锁，如果没有加锁，导致panic func (m *Mutex) Unlock() RWMutex 读写互斥锁,可以由不同的线程加锁和解锁.
+type RWMutex struct {} method:
+// 锁定为写入状态，禁止其它线程读写，一次只能有一个线程持有。 func (rw *RWMutex) Lock() // 解除写入锁定，如果没有加锁，导致panic func (rw *RWMutex) Unlock() // 锁定为读取状态，禁止其他线程写入，多个线程可以同时持有读锁。 func (rw *RWMutex) RLock() // 解除读取锁，如果没有加锁，导致panic. func (rw *RWMutex) RUnlock() Cond 条件变量.
+'><link rel="shortcut icon" href=favicon.ico><style>:root{--article-font-family:"Merriweather", var(--base-font-family)}</style><script>(function(){const e=document.createElement("link");e.href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap",e.type="text/css",e.rel="stylesheet",document.head.appendChild(e)})()</script></head><body class=article-page><script>(function(){const e="StackColorScheme";localStorage.getItem(e)||localStorage.setItem(e,"auto")})()</script><script>(function(){const t="StackColorScheme",e=localStorage.getItem(t),n=window.matchMedia("(prefers-color-scheme: dark)").matches===!0;e=="dark"||e==="auto"&&n?document.documentElement.dataset.scheme="dark":document.documentElement.dataset.scheme="light"})()</script><div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky"><button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label=切换菜单>
+<span class=hamburger-box><span class=hamburger-inner></span></span></button><header><figure class=site-avatar><a href=/><img src=/img/home_hu_7d22d46ad88d2427.jpg width=300 height=400 class=site-logo loading=lazy alt=Avatar>
+</a><span class=emoji>🍥</span></figure><div class=site-meta><h1 class=site-name><a href=/>Morgoth</a></h1><h2 class=site-description>Hello World!</h2></div></header><ol class=social-menu><li><a href=mailto:canuxcheng@163.com target=_blank title=E-mail rel=me><svg class="icon icon-tabler icon-tabler-messages" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M21 14l-3-3h-7a1 1 0 01-1-1V4a1 1 0 011-1h9a1 1 0 011 1v10"/><path d="M14 15v2a1 1 0 01-1 1H6l-3 3V11a1 1 0 011-1h2"/></svg></a></li><li><a href=https://github.com/crazy-canux target=_blank title=GitHub rel=me><svg class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6.0 00-1.3-3.2 4.2 4.2.0 00-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3.0 00-6.2.0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2.0 00-.1 3.2A4.6 4.6.0 004 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg></a></li></ol><ol class=menu id=main-menu><li><a href=/><svg class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="5 12 3 12 12 3 21 12 19 12"/><path d="M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/><path d="M9 21v-6a2 2 0 012-2h2a2 2 0 012 2v6"/></svg>
+<span>首页</span></a></li><li><a href=/about/><svg class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/></svg>
+<span>关于</span></a></li><li><a href=/categories/ target=_blank><svg class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg>
+<span>分类</span></a></li><li><a href=/tags/ target=_blank><svg class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11 3l9 9a1.5 1.5.0 010 2l-6 6a1.5 1.5.0 01-2 0L3 11V7a4 4 0 014-4h4"/><circle cx="9" cy="9" r="2"/></svg>
+<span>标签</span></a></li><li><a href=/rtfm/><svg class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+<span>RTFM</span></a></li><div class=menu-bottom-section><li id=i18n-switch><svg class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 5h7"/><path d="M9 3v2c0 4.418-2.239 8-5 8"/><path d="M5 9c-.003 2.144 2.952 3.908 6.7 4"/><path d="M12 20l4-9 4 9"/><path d="M19.1 18h-6.2"/></svg>
+<select name=language onchange="window.location.href=this.selectedOptions[0].value"><option value=https://canuxcheng.com/ selected>简体中文</option><option value=https://canuxcheng.com/en/>English</option></select></li><li id=dark-mode-toggle><svg class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="8" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<svg class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="16" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<span>暗色模式</span></li></div></ol></aside><aside class="sidebar right-sidebar sticky"><section class="widget archives"><div class=widget-icon><svg class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg></div><h2 class="widget-title section-title">目录</h2><div class=widget--toc><nav id=TableOfContents><ul><li><a href=#constants>constants</a></li><li><a href=#variables>variables</a></li><li><a href=#functions>functions</a></li><li><a href=#locker>Locker</a></li><li><a href=#pool>Pool</a></li><li><a href=#once>Once</a></li><li><a href=#mutex>Mutex</a></li><li><a href=#rwmutex>RWMutex</a></li><li><a href=#cond>Cond</a></li><li><a href=#waitgroup>WaitGroup</a></li></ul><ul><li><a href=#function>function</a></li></ul></nav></div></section></aside><main class="main full-width"><article class=main-article><header class=article-header><div class=article-details><header class=article-category><a href=/categories/golang/>Golang</a></header><div class=article-title-wrapper><h2 class=article-title><a href=/post/gsl_concurrency/>GSL_concurrency</a></h2></div><footer class=article-time><div><svg class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg>
+<time class=article-time--published>Jan 01, 2018</time></div><div><svg class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+<time class=article-time--reading>阅读时长: 1 分钟</time></div></footer></div></header><section class=article-content><h1 id=sync>sync</h1><p>sync用于goroutine同步.</p><pre><code>import &quot;sync&quot;
+</code></pre><h2 id=constants>constants</h2><h2 id=variables>variables</h2><h2 id=functions>functions</h2><h2 id=locker>Locker</h2><p>一个可以加锁和解锁的接口</p><pre><code>type Locker interface {
+    Lock()
+    Unlock()
+}
+</code></pre><h2 id=pool>Pool</h2><p>Pool是一个可以分别存取的临时对象的集合。</p><h2 id=once>Once</h2><p>只执行一次动作的对象(单例模式)</p><pre><code>type Once struct {}
+</code></pre><p>method:</p><pre><code>// 只有第一次调用才执行
+func (o *Once) Do(f func())
+</code></pre><h2 id=mutex>Mutex</h2><p>互斥锁,锁和线程无关，可以由不同的线程加锁和解锁.</p><p>Mutex的初始值为未锁的状态，并且Mutex通常作为结构体的匿名成员存在。</p><p>同一时刻只能有一个线程进入临界区.</p><pre><code>type Mutex struct {}
+
+Mutex
+</code></pre><p>method:</p><pre><code>// 加锁，如果已经加锁，阻塞至m解锁．
+func (m *Mutex) Lock()
+
+// 解锁，如果没有加锁，导致panic
+func (m *Mutex) Unlock()
+</code></pre><h2 id=rwmutex>RWMutex</h2><p>读写互斥锁,可以由不同的线程加锁和解锁.</p><pre><code>type RWMutex struct {}
+</code></pre><p>method:</p><pre><code>// 锁定为写入状态，禁止其它线程读写，一次只能有一个线程持有。
+func (rw *RWMutex) Lock()
+
+// 解除写入锁定，如果没有加锁，导致panic
+func (rw *RWMutex) Unlock()
+
+// 锁定为读取状态，禁止其他线程写入，多个线程可以同时持有读锁。
+func (rw *RWMutex) RLock()
+
+// 解除读取锁，如果没有加锁，导致panic.
+func (rw *RWMutex) RUnlock()
+</code></pre><h2 id=cond>Cond</h2><p>条件变量.</p><pre><code>type Cond struct {
+    L Locker
+}
+</code></pre><p>function:</p><pre><code>func NewCond(l Locker) *Cond
+</code></pre><p>method:</p><pre><code>func (c *Cond) Broadcase()
+
+func (c *Cond) Signal()
+
+func (c *Cond) Wait()
+</code></pre><h2 id=waitgroup>WaitGroup</h2><p>用于等待一组线程结束，父线程用Add方法来设定应等待的线程数量;
+每个被等待的线程在结束时应调用Done方法;
+同时，主线程应调用Wait方法阻塞至所有线程结束．</p><p>struct:</p><pre><code>type WaitGroup sttruct {}
+</code></pre><p>functions:</p><p>methods:</p><pre><code># 增加计数
+func (*WaitGroup) Add(delta int)
+
+# 减少计数
+func (*WaitGroup) Done()
+
+# 阻塞直到计数器为0
+func (*WaitGroup) Wait()
+</code></pre><hr><h1 id=syncatomic>sync/atomic</h1><p>提供底层的原子级内存操作，主要用于goroutine同步.</p><p>int32, int64, uint32, uint64, uintptr, pointer.</p><h2 id=function>function</h2><pre><code>func AddInt64(addr *int64, delta int64) (new int64)
+func AddUint64(addr *uint64, delta uint64) (new uint64)
+func LoadInt64(addr *int64) (val int64)
+func LoadUint64(addr *uint64) (val uint64)
+func StoreInt64(addr *int64, val int64)
+func StoreUint64(addr *uint64, val uint64)
+func SwapInt64(addr *int64, new int64) (old int64)
+func SwapUint64(addr *uint64, new uint64) (old uint64)
+func CompareAndSwapInt64(addr *int64, old, new int64) (swapped bool)
+func CompareAndSwapUint64(addr *uint64, old, new uint64) (swapped bool)
+</code></pre></section><footer class=article-footer><section class=article-tags><a href=/tags/concurrency/>Concurrency</a></section></footer><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css integrity="sha256-J+iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s=" crossorigin=anonymous><script src=https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js integrity="sha256-InsNdER1b2xUewP+pKCUJpkhiqwHgqiPXDlIk7GzBu4=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI=" crossorigin=anonymous defer></script><script>window.addEventListener("DOMContentLoaded",()=>{renderMathInElement(document.querySelector(`.article-content`),{delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1},{left:"\\(",right:"\\)",display:!1},{left:"\\[",right:"\\]",display:!0}],ignoredClasses:["gist"]})})</script></article><div id=gitalk-container></div><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css><script src=https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js></script><script src=https://cdn.jsdelivr.net/npm/blueimp-md5@2.18.0/js/md5.min.js></script><script>const gitalk=new Gitalk({clientID:"3d41a2a237fabe050cc0",clientSecret:"f084dfe45a1c05955270776836298adf02732a02",repo:"crazy-canux.github.io",owner:"crazy-canux",admin:["crazy-canux"],distractionFreeMode:!1,id:md5(location.pathname)});(function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById("gitalk-container").innerHTML="Gitalk comments not available by default when the website is previewed locally.";return}gitalk.render("gitalk-container")})()</script><footer class=site-footer><section class=copyright>&copy;
+2013 -
+2026 Morgoth</section><section class=powerby>Designed by Canux<br></section></footer><div class=pswp tabindex=-1 role=dialog aria-hidden=true><div class=pswp__bg></div><div class=pswp__scroll-wrap><div class=pswp__container><div class=pswp__item></div><div class=pswp__item></div><div class=pswp__item></div></div><div class="pswp__ui pswp__ui--hidden"><div class=pswp__top-bar><div class=pswp__counter></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+<button class="pswp__button pswp__button--share" title=Share></button>
+<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button><div class=pswp__preloader><div class=pswp__preloader__icn><div class=pswp__preloader__cut><div class=pswp__preloader__donut></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class=pswp__share-tooltip></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+</button>
+<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button><div class=pswp__caption><div class=pswp__caption__center></div></div></div></div></div><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU=" crossorigin=anonymous defer></script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css crossorigin=anonymous><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css crossorigin=anonymous></main></div><script src=https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z+KMkF24hUW8WePSA9HM=" crossorigin=anonymous></script><script type=text/javascript src=/ts/main.js defer></script><script>(function(){const e=document.createElement("link");e.href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap",e.type="text/css",e.rel="stylesheet",document.head.appendChild(e)})()</script></body></html>

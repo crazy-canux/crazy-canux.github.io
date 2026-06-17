@@ -1,0 +1,232 @@
+<!doctype html><html lang=zh-CN dir=ltr><head><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'><meta name=description content='Ansible https://github.com/ansible/ansible
+http://www.ansible.com.cn/index.html
+ansible通过SSH来远程管理Linux/Unix机器．
+ansible通过winrm+powershell来远程管理Windows机器．
+安装:
+$ sudo pip install ansible $ sudo apt-get install ansible $ sudo yum install ansible $ brew install ansible sshpass 配置：
+参考Network-SSH实现从controller到所有node的无密码登陆
+配置文件执行顺序:
+ANSIBLE_CONFIG ansible.cfg .ansible.cfg /etc/ansible/ansible.cfg 手动配置:
+$ sudo vim /etc/ansible/ansible.cfg [defaults] ask_pass = False host_key_checking = False ansible命令 ansible运行命令的两种方式：
+Ad-hoc相当于直接运行shell命令 playbooks相当于运行shell脚本 ansible:
+$ ansible group1:group1:group3/all -i inventory ...... $ansible --help -m MODULE_NAME, --module-name=MODULE_NAME # 执行模块，默认是command -M MODULE_PATH, --module-path=MODULE_PATH # 指定模块的路径 -a MODULE_ARGS, --args=MODULE_ARGS # 模块的参数 -i INVENTORY, --inventory INVENTORY # 默认/etc/ansible/hosts, 需要指定hosts分组 -f FORKS, --forks=FORKS # 指定并发进程的数量 -C, --check -D, --diff -l SUBSET, --limit=SUBSET --syntax-check --list-hosts -v, --verbose # -v, -vvv, -vvvv # 提权选项 -b, --become --become-method=BECOME_METHOD # sudo(default)/su/pbrun/pfexec/runas/doas --become-user=BECOME_USER # root(default) -K, --ask-become-pass # 连接选项 -u REMOTE_USER --ssh-common-args --ssh-extra-args -T TIMEOUT # default 10s -K, --ask-pass inventory inventory包括主机和分组,以及主机变量和分组变量. 默认是/etc/ansible/hosts文件.
+'><title>Ansible</title><link rel=canonical href=https://canuxcheng.com/post/devops_ansible/><link rel=stylesheet href=/scss/style.min.22ad1c74b5bb435181c77741d99f034b2c36f7272eff9d0d1aa16d32e7e84673.css><meta property='og:title' content='Ansible'><meta property='og:description' content='Ansible https://github.com/ansible/ansible
+http://www.ansible.com.cn/index.html
+ansible通过SSH来远程管理Linux/Unix机器．
+ansible通过winrm+powershell来远程管理Windows机器．
+安装:
+$ sudo pip install ansible $ sudo apt-get install ansible $ sudo yum install ansible $ brew install ansible sshpass 配置：
+参考Network-SSH实现从controller到所有node的无密码登陆
+配置文件执行顺序:
+ANSIBLE_CONFIG ansible.cfg .ansible.cfg /etc/ansible/ansible.cfg 手动配置:
+$ sudo vim /etc/ansible/ansible.cfg [defaults] ask_pass = False host_key_checking = False ansible命令 ansible运行命令的两种方式：
+Ad-hoc相当于直接运行shell命令 playbooks相当于运行shell脚本 ansible:
+$ ansible group1:group1:group3/all -i inventory ...... $ansible --help -m MODULE_NAME, --module-name=MODULE_NAME # 执行模块，默认是command -M MODULE_PATH, --module-path=MODULE_PATH # 指定模块的路径 -a MODULE_ARGS, --args=MODULE_ARGS # 模块的参数 -i INVENTORY, --inventory INVENTORY # 默认/etc/ansible/hosts, 需要指定hosts分组 -f FORKS, --forks=FORKS # 指定并发进程的数量 -C, --check -D, --diff -l SUBSET, --limit=SUBSET --syntax-check --list-hosts -v, --verbose # -v, -vvv, -vvvv # 提权选项 -b, --become --become-method=BECOME_METHOD # sudo(default)/su/pbrun/pfexec/runas/doas --become-user=BECOME_USER # root(default) -K, --ask-become-pass # 连接选项 -u REMOTE_USER --ssh-common-args --ssh-extra-args -T TIMEOUT # default 10s -K, --ask-pass inventory inventory包括主机和分组,以及主机变量和分组变量. 默认是/etc/ansible/hosts文件.
+'><meta property='og:url' content='https://canuxcheng.com/post/devops_ansible/'><meta property='og:site_name' content='Morgoth'><meta property='og:type' content='article'><meta property='article:section' content='Post'><meta property='article:tag' content='ansible'><meta property='article:published_time' content='2016-04-15T09:41:39+08:00'><meta property='article:modified_time' content='2016-04-15T09:41:39+08:00'><meta name=twitter:title content="Ansible"><meta name=twitter:description content="Ansible https://github.com/ansible/ansible
+http://www.ansible.com.cn/index.html
+ansible通过SSH来远程管理Linux/Unix机器．
+ansible通过winrm+powershell来远程管理Windows机器．
+安装:
+$ sudo pip install ansible $ sudo apt-get install ansible $ sudo yum install ansible $ brew install ansible sshpass 配置：
+参考Network-SSH实现从controller到所有node的无密码登陆
+配置文件执行顺序:
+ANSIBLE_CONFIG ansible.cfg .ansible.cfg /etc/ansible/ansible.cfg 手动配置:
+$ sudo vim /etc/ansible/ansible.cfg [defaults] ask_pass = False host_key_checking = False ansible命令 ansible运行命令的两种方式：
+Ad-hoc相当于直接运行shell命令 playbooks相当于运行shell脚本 ansible:
+$ ansible group1:group1:group3/all -i inventory ...... $ansible --help -m MODULE_NAME, --module-name=MODULE_NAME # 执行模块，默认是command -M MODULE_PATH, --module-path=MODULE_PATH # 指定模块的路径 -a MODULE_ARGS, --args=MODULE_ARGS # 模块的参数 -i INVENTORY, --inventory INVENTORY # 默认/etc/ansible/hosts, 需要指定hosts分组 -f FORKS, --forks=FORKS # 指定并发进程的数量 -C, --check -D, --diff -l SUBSET, --limit=SUBSET --syntax-check --list-hosts -v, --verbose # -v, -vvv, -vvvv # 提权选项 -b, --become --become-method=BECOME_METHOD # sudo(default)/su/pbrun/pfexec/runas/doas --become-user=BECOME_USER # root(default) -K, --ask-become-pass # 连接选项 -u REMOTE_USER --ssh-common-args --ssh-extra-args -T TIMEOUT # default 10s -K, --ask-pass inventory inventory包括主机和分组,以及主机变量和分组变量. 默认是/etc/ansible/hosts文件.
+"><link rel="shortcut icon" href=favicon.ico><style>:root{--article-font-family:"Merriweather", var(--base-font-family)}</style><script>(function(){const e=document.createElement("link");e.href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap",e.type="text/css",e.rel="stylesheet",document.head.appendChild(e)})()</script></head><body class=article-page><script>(function(){const e="StackColorScheme";localStorage.getItem(e)||localStorage.setItem(e,"auto")})()</script><script>(function(){const t="StackColorScheme",e=localStorage.getItem(t),n=window.matchMedia("(prefers-color-scheme: dark)").matches===!0;e=="dark"||e==="auto"&&n?document.documentElement.dataset.scheme="dark":document.documentElement.dataset.scheme="light"})()</script><div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky"><button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label=切换菜单>
+<span class=hamburger-box><span class=hamburger-inner></span></span></button><header><figure class=site-avatar><a href=/><img src=/img/home_hu_7d22d46ad88d2427.jpg width=300 height=400 class=site-logo loading=lazy alt=Avatar>
+</a><span class=emoji>🍥</span></figure><div class=site-meta><h1 class=site-name><a href=/>Morgoth</a></h1><h2 class=site-description>Hello World!</h2></div></header><ol class=social-menu><li><a href=mailto:canuxcheng@163.com target=_blank title=E-mail rel=me><svg class="icon icon-tabler icon-tabler-messages" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M21 14l-3-3h-7a1 1 0 01-1-1V4a1 1 0 011-1h9a1 1 0 011 1v10"/><path d="M14 15v2a1 1 0 01-1 1H6l-3 3V11a1 1 0 011-1h2"/></svg></a></li><li><a href=https://github.com/crazy-canux target=_blank title=GitHub rel=me><svg class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6.0 00-1.3-3.2 4.2 4.2.0 00-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3.0 00-6.2.0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2.0 00-.1 3.2A4.6 4.6.0 004 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg></a></li></ol><ol class=menu id=main-menu><li><a href=/><svg class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="5 12 3 12 12 3 21 12 19 12"/><path d="M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/><path d="M9 21v-6a2 2 0 012-2h2a2 2 0 012 2v6"/></svg>
+<span>首页</span></a></li><li><a href=/about/><svg class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/></svg>
+<span>关于</span></a></li><li><a href=/categories/ target=_blank><svg class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg>
+<span>分类</span></a></li><li><a href=/tags/ target=_blank><svg class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11 3l9 9a1.5 1.5.0 010 2l-6 6a1.5 1.5.0 01-2 0L3 11V7a4 4 0 014-4h4"/><circle cx="9" cy="9" r="2"/></svg>
+<span>标签</span></a></li><li><a href=/rtfm/><svg class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+<span>RTFM</span></a></li><div class=menu-bottom-section><li id=i18n-switch><svg class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 5h7"/><path d="M9 3v2c0 4.418-2.239 8-5 8"/><path d="M5 9c-.003 2.144 2.952 3.908 6.7 4"/><path d="M12 20l4-9 4 9"/><path d="M19.1 18h-6.2"/></svg>
+<select name=language onchange="window.location.href=this.selectedOptions[0].value"><option value=https://canuxcheng.com/ selected>简体中文</option><option value=https://canuxcheng.com/en/>English</option></select></li><li id=dark-mode-toggle><svg class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="8" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<svg class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="16" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<span>暗色模式</span></li></div></ol></aside><aside class="sidebar right-sidebar sticky"><section class="widget archives"><div class=widget-icon><svg class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg></div><h2 class="widget-title section-title">目录</h2><div class=widget--toc><nav id=TableOfContents><ul><li><a href=#ansible命令>ansible命令</a></li><li><a href=#inventory>inventory</a></li><li><a href=#module>module</a><ul><li><a href=#内置的模块>内置的模块</a></li></ul></li><li><a href=#adhoc>adhoc</a></li><li><a href=#ansible-playbooks>ansible-playbooks</a></li><li><a href=#ansible-vault>ansible-vault</a></li><li><a href=#ansible-inventory>ansible-inventory</a></li><li><a href=#ansible-config>ansible-config</a></li><li><a href=#ansible-pull>ansible-pull</a></li><li><a href=#ansible-console>ansible-console</a></li><li><a href=#ansible-galaxy>ansible-galaxy</a></li></ul></nav></div></section></aside><main class="main full-width"><article class=main-article><header class=article-header><div class=article-details><header class=article-category><a href=/categories/devops/>DevOps</a></header><div class=article-title-wrapper><h2 class=article-title><a href=/post/devops_ansible/>Ansible</a></h2></div><footer class=article-time><div><svg class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg>
+<time class=article-time--published>Apr 15, 2016</time></div><div><svg class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+<time class=article-time--reading>阅读时长: 3 分钟</time></div></footer></div></header><section class=article-content><h1 id=ansible>Ansible</h1><p><a class=link href=https://github.com/ansible/ansible target=_blank rel=noopener>https://github.com/ansible/ansible</a></p><p><a class=link href=http://www.ansible.com.cn/index.html target=_blank rel=noopener>http://www.ansible.com.cn/index.html</a></p><p>ansible通过SSH来远程管理Linux/Unix机器．</p><p>ansible通过winrm+powershell来远程管理Windows机器．</p><p>安装:</p><pre><code>$ sudo pip install ansible
+$ sudo apt-get install ansible
+$ sudo yum install ansible
+
+$ brew install ansible sshpass
+</code></pre><p>配置：</p><p>参考Network-SSH实现从controller到所有node的无密码登陆</p><p>配置文件执行顺序:</p><pre><code>ANSIBLE_CONFIG
+ansible.cfg
+.ansible.cfg
+/etc/ansible/ansible.cfg
+</code></pre><p>手动配置:</p><pre><code>$ sudo vim /etc/ansible/ansible.cfg
+[defaults]
+ask_pass = False
+host_key_checking = False
+</code></pre><h2 id=ansible命令>ansible命令</h2><p>ansible运行命令的两种方式：</p><ol><li>Ad-hoc相当于直接运行shell命令</li><li>playbooks相当于运行shell脚本</li></ol><p>ansible:</p><pre><code>$ ansible group1:group1:group3/all  -i inventory  ......
+
+$ansible --help
+-m MODULE_NAME, --module-name=MODULE_NAME # 执行模块，默认是command
+-M MODULE_PATH, --module-path=MODULE_PATH # 指定模块的路径
+-a MODULE_ARGS, --args=MODULE_ARGS # 模块的参数
+-i INVENTORY, --inventory INVENTORY # 默认/etc/ansible/hosts, 需要指定hosts分组
+-f FORKS, --forks=FORKS # 指定并发进程的数量
+-C, --check
+-D, --diff
+-l SUBSET, --limit=SUBSET
+--syntax-check
+--list-hosts
+-v, --verbose # -v, -vvv, -vvvv
+
+# 提权选项
+-b, --become
+--become-method=BECOME_METHOD # sudo(default)/su/pbrun/pfexec/runas/doas
+--become-user=BECOME_USER # root(default)
+-K, --ask-become-pass
+
+# 连接选项
+-u REMOTE_USER
+--ssh-common-args
+--ssh-extra-args
+-T TIMEOUT # default 10s
+-K, --ask-pass
+</code></pre><hr><h2 id=inventory>inventory</h2><p>inventory包括主机和分组,以及主机变量和分组变量. 默认是<code>/etc/ansible/hosts</code>文件.</p><p>可以是ini格式，也可以是yaml格式.</p><p>可以是一个文件，可以是多个文件，也可以是一个目录.</p><pre><code>$ ansible all -i inventory/folder/ ......
+</code></pre><p>ini格式:</p><pre><code>定义主机和主机变量
+[host1]
+node1 
+ansible_connection=ssh 
+ansible_host=host 
+ansible_port=port 
+ansible_user=user 
+ansible_ssh_pass=password
+
+定义分组和分组变量
+[group1]
+node1
+node2
+[group1:vars]
+ansible_connection=local/smart/ssh/paramiko
+ansible_host=
+ansible_port=
+ansible_user=
+ansible_ssh_pass=
+ansible_ssh_common_args=
+ansible_ssh_extra_args=
+ansible_become=
+ansible_become_method=
+ansible_become_user=
+ansible_become_pass=
+ansible_become_exe=
+ansible_become_flags=
+
+定义分组的分组, children是固定写法
+[big-group:children]
+group1
+group2
+</code></pre><p>yaml:</p><pre><code>all:
+  hosts:    # hosts, 定义主机和主机变量
+    node1:
+      ansible_host:
+      ansible_port:
+      ansible_user:
+      ansible_ssh_pass: &quot;${{ ansible_ssh_pass }}&quot;    # use ansible-vault
+  children:    # children, 定义分组和分组变量
+    production:
+      hosts:
+        node1:
+        node2:
+      vars:
+        env: prod
+    staging:
+      hosts:
+        node3:
+        node4:
+      vars:
+        env: staging
+</code></pre><hr><h2 id=module>module</h2><p>module也就是所说的task plugins/library plugins.</p><pre><code>$ ansible-doc -l/--list  #　查看所有已经安装的模块
+$ ansible-doc apt # 查看apt模块的文档
+</code></pre><h3 id=内置的模块>内置的模块</h3><pre><code>$ ansible-docs -l | grep &quot;ansible.builtin&quot;
+
+ping
+</code></pre><p>执行命令</p><pre><code>command # 默认模块，用于在远程机器上执行命令
+shell # 和command相同，只是该模块支持管道和特殊字符，一般用来执行脚本和复杂命令
+raw
+expect
+script
+telnet
+</code></pre><p>files modules:</p><pre><code>copy src dest mode ...
+synchronize src dest ...
+</code></pre><p>package modules:</p><pre><code>apt name/deb state=present/absent/latest/build-dep update_cache autoclean autoremove
+apt_repository repo state=present/absent
+apt_rpm pkg state=present/absent
+yum name state=present/absent/latest/installed/removed
+</code></pre><hr><h2 id=adhoc>adhoc</h2><pre><code>$ ansible group -m &lt;module&gt; -a &lt;args&gt; ...
+$ ansible all -i inventory.yml -m ping  -e &quot;@vault.yml&quot; --ask-vault-pass
+</code></pre><p>copy:</p><pre><code>$ ansible group -m copy -a &quot;src=/sr dest=/dest mode=0655&quot;
+</code></pre><h2 id=ansible-playbooks>ansible-playbooks</h2><p>playbook的格式是YAML.</p><pre><code>$ ansible-playbook -i inventory playbook.yaml -K -vvv &gt; output.txt
+$ ansible-playbook -i inventory.yml playbook.yml -e &quot;@vault.yml&quot; --ask-vault-pass
+$ ansible-playbook -i inventory.yml playbook.yml -e &quot;@vault.yml&quot; --vault-password-file ~/.vault_pass.txt
+</code></pre><p>playbook:</p><pre><code>- name: install
+  hosts: host-or-group
+  become: true
+  vars:
+    var1: value1
+    var2: value2
+  tasks:
+  - name: &quot;{{ var1 }}&quot;
+    module: args
+    debug:
+      msg: &quot;This is a debug message&quot;
+  - name: &quot;{{ var2 }}&quot;
+    module: args
+</code></pre><p>variables:</p><pre><code>register: var   # 用var来存储task的结果,查看不同模块的返回值．
+</code></pre><p>become:</p><pre><code>become: true
+become_user: root
+become_method: sudo
+become_flags:
+</code></pre><p>debug:</p><pre><code>strategy: debug
+</code></pre><hr><h2 id=ansible-vault>ansible-vault</h2><p>ansible-vault用于加密敏感数据，比如密码等.</p><pre><code>$ ansible-vault create vault.yml
+$ ansible-vault edit vault.yml
+$ ansible-vault view vault.yml
+$ ansible-vault encrypt vault.yml
+$ ansible-vault decrypt vault.yml
+</code></pre><hr><h2 id=ansible-inventory>ansible-inventory</h2><p>ansible-inventory用于查看inventory的内容.</p><pre><code>$ ansible-inventory --list -i inventory.yml
+$ ansible-inventory --graph -i inventory.yml
+
+$ ansible-inventory --host host1 -i inventory.yml # 查看主机的详细信息
+$ ansible-inventory --tree -i inventory.yml # 查看分组树状图
+
+$ ansible-inventory --export -i inventory.yml # 导出inventory到标准输出
+$ ansible-inventory --validate -i inventory.yml # 验证inventory文件的语法
+</code></pre><hr><h2 id=ansible-config>ansible-config</h2><p>ansible-config用于查看和管理ansible的配置.</p><pre><code>$ ansible-config view # 查看当前配置
+$ ansible-config dump --only-changed # 查看修改过的配置
+$ ansible-config list --type=defaults # 列出所有默认配置
+$ ansible-config list --type=privilege # 列出特权配置
+$ ansible-config list --type=all # 列出所有配置
+
+$ ansible-config init --disabled &gt; ansible.cfg # 初始化一个新的ansible.cfg文件
+</code></pre><hr><h2 id=ansible-pull>ansible-pull</h2><p>ansible-pull用于从远程仓库拉取playbook并执行.</p><pre><code>$ ansible-pull -U &lt;repo_url&gt; -i inventory.yml playbook.yml
+
+-U, --url &lt;repo_url&gt; # 指定远程仓库的URL
+-i, --inventory &lt;inventory&gt; # 指定inventory文件
+-d, --directory &lt;directory&gt; # 指定工作目录
+-C, --checkout &lt;branch&gt; # 指定分支
+-c, --clean # 清理工作目录
+</code></pre><hr><h2 id=ansible-console>ansible-console</h2><p>ansible-console是一个交互式的命令行界面，可以执行ansible命令和playbook.</p><pre><code>$ ansible-console -i inventory.yml
+
+-i, --inventory &lt;inventory&gt; # 指定inventory文件
+-c, --connection &lt;connection&gt; # 指定连接方式，默认是ssh
+-u, --user &lt;user&gt; # 指定远程用户
+-k, --ask-pass # 提示输入SSH密码
+</code></pre><hr><h2 id=ansible-galaxy>ansible-galaxy</h2><p>ansible-galaxy用于管理Ansible的角色和集合.</p><pre><code>$ ansible-galaxy install &lt;role_name&gt; # 安装角色
+$ ansible-galaxy remove &lt;role_name&gt; # 卸载角色
+$ ansible-galaxy list # 列出已安装的角色
+$ ansible-galaxy init &lt;role_name&gt; # 初始化一个新的角色
+
+$ ansible-galaxy collection install &lt;collection_name&gt; # 安装集合
+$ ansible-galaxy collection remove &lt;collection_name&gt; # 卸载集合
+$ ansible-galaxy collection list # 列出已安装的集合
+</code></pre></section><footer class=article-footer><section class=article-tags><a href=/tags/ansible/>Ansible</a></section></footer><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css integrity="sha256-J+iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s=" crossorigin=anonymous><script src=https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js integrity="sha256-InsNdER1b2xUewP+pKCUJpkhiqwHgqiPXDlIk7GzBu4=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI=" crossorigin=anonymous defer></script><script>window.addEventListener("DOMContentLoaded",()=>{renderMathInElement(document.querySelector(`.article-content`),{delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1},{left:"\\(",right:"\\)",display:!1},{left:"\\[",right:"\\]",display:!0}],ignoredClasses:["gist"]})})</script></article><div id=gitalk-container></div><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css><script src=https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js></script><script src=https://cdn.jsdelivr.net/npm/blueimp-md5@2.18.0/js/md5.min.js></script><script>const gitalk=new Gitalk({clientID:"3d41a2a237fabe050cc0",clientSecret:"f084dfe45a1c05955270776836298adf02732a02",repo:"crazy-canux.github.io",owner:"crazy-canux",admin:["crazy-canux"],distractionFreeMode:!1,id:md5(location.pathname)});(function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById("gitalk-container").innerHTML="Gitalk comments not available by default when the website is previewed locally.";return}gitalk.render("gitalk-container")})()</script><footer class=site-footer><section class=copyright>&copy;
+2013 -
+2026 Morgoth</section><section class=powerby>Designed by Canux<br></section></footer><div class=pswp tabindex=-1 role=dialog aria-hidden=true><div class=pswp__bg></div><div class=pswp__scroll-wrap><div class=pswp__container><div class=pswp__item></div><div class=pswp__item></div><div class=pswp__item></div></div><div class="pswp__ui pswp__ui--hidden"><div class=pswp__top-bar><div class=pswp__counter></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+<button class="pswp__button pswp__button--share" title=Share></button>
+<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button><div class=pswp__preloader><div class=pswp__preloader__icn><div class=pswp__preloader__cut><div class=pswp__preloader__donut></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class=pswp__share-tooltip></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+</button>
+<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button><div class=pswp__caption><div class=pswp__caption__center></div></div></div></div></div><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU=" crossorigin=anonymous defer></script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css crossorigin=anonymous><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css crossorigin=anonymous></main></div><script src=https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z+KMkF24hUW8WePSA9HM=" crossorigin=anonymous></script><script type=text/javascript src=/ts/main.js defer></script><script>(function(){const e=document.createElement("link");e.href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap",e.type="text/css",e.rel="stylesheet",document.head.appendChild(e)})()</script></body></html>
