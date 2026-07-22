@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Coreutils on Morgoth</title><link>https://canuxcheng.com/tags/coreutils/</link><description>Recent content in Coreutils on Morgoth</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 12 Jul 2016 17:24:25 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/coreutils/index.xml" rel="self" type="application/rss+xml"/><item><title>Coreutils</title><link>https://canuxcheng.com/post/ps_coreutils/</link><pubDate>Tue, 12 Jul 2016 17:24:25 +0000</pubDate><guid>https://canuxcheng.com/post/ps_coreutils/</guid><description>&lt;h1 id="外部命令"&gt;外部命令&lt;/h1&gt;
+&lt;p&gt;powershell可以执行外部命令.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;C:\Windows\System32\*.exe
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id="cmd"&gt;cmd&lt;/h1&gt;
+&lt;h1 id="ping"&gt;ping&lt;/h1&gt;
+&lt;h1 id="netstat"&gt;netstat&lt;/h1&gt;
+&lt;h1 id="ipconfig"&gt;ipconfig&lt;/h1&gt;
+&lt;h1 id="route"&gt;route&lt;/h1&gt;
+&lt;h1 id="arp"&gt;arp&lt;/h1&gt;
+&lt;h1 id="nslookup"&gt;nslookup&lt;/h1&gt;
+&lt;h1 id="ftp"&gt;ftp&lt;/h1&gt;
+&lt;h1 id="mstsc"&gt;mstsc&lt;/h1&gt;
+&lt;p&gt;RDP client.&lt;/p&gt;
+&lt;h1 id="taskmgr"&gt;taskmgr&lt;/h1&gt;
+&lt;p&gt;任务管理器．&lt;/p&gt;
+&lt;h1 id="tskill"&gt;tskill&lt;/h1&gt;
+&lt;h1 id="tree"&gt;tree&lt;/h1&gt;
+&lt;h1 id="whoami"&gt;whoami&lt;/h1&gt;
+&lt;hr&gt;
+&lt;p&gt;需要下载，然后放入环境变量的第三方命令.&lt;/p&gt;
+&lt;h1 id="windump"&gt;WinDump&lt;/h1&gt;
+&lt;p&gt;Windows版本的tcpdump, 依赖WinPcap包．&lt;/p&gt;
+&lt;p&gt;通过windump导出的*.pcap文件可以通过wireshark打开．&lt;/p&gt;</description></item></channel></rss>

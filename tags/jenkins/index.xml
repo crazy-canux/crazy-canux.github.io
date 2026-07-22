@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Jenkins on Morgoth</title><link>https://canuxcheng.com/tags/jenkins/</link><description>Recent content in Jenkins on Morgoth</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 15 Apr 2016 09:41:39 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/jenkins/index.xml" rel="self" type="application/rss+xml"/><item><title>Jenkins</title><link>https://canuxcheng.com/post/devops_jenkins/</link><pubDate>Fri, 15 Apr 2016 09:41:39 +0000</pubDate><guid>https://canuxcheng.com/post/devops_jenkins/</guid><description>&lt;h1 id="jenkins"&gt;Jenkins&lt;/h1&gt;
+&lt;p&gt;Jenkins is a self-contained, open source automation server which can be used to automate all sorts of tasks such as building, testing, and deploying software.&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/jenkinsci/jenkins" target="_blank" rel="noopener"
+&gt;https://github.com/jenkinsci/jenkins&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;安装好Jenkins后安装需要的插件．&lt;/p&gt;
+&lt;p&gt;安装jenkins:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# download jenkins.war and install java8.
+$ java -jar jenkins.war --httpPort=8080
+$ firefox http://localhost:8080
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;设置开机自动启动，不用每次从终端启动:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ vim /etc/systemd/system/jenkins.service
+$ systemctl daemon-reload
+$ systemctl enable jenkins.service
+$ systemctl start jenkins
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;jinkens主目录:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 默认主目录在/home/canux/.jenkins
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id="nodes"&gt;nodes&lt;/h1&gt;
+&lt;p&gt;添加节点需要安装和master版本一样的java.&lt;/p&gt;
+&lt;p&gt;on jenkins agent:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;install java.&lt;/li&gt;
+&lt;li&gt;create folder and grant permission. (/home/jenkins)&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;on jenkins:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;create credential and node.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;hr&gt;
+&lt;h1 id="plugins"&gt;plugins&lt;/h1&gt;
+&lt;h2 id="thinbackup"&gt;thinbackup&lt;/h2&gt;
+&lt;p&gt;备份插件，主要备份jenkins主目录.&lt;/p&gt;
+&lt;h2 id="pipeline"&gt;pipeline&lt;/h2&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/jenkinsci/pipeline-plugin" target="_blank" rel="noopener"
+&gt;https://github.com/jenkinsci/pipeline-plugin&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;使用pipeline需要先安装pipeline插件.&lt;/p&gt;
+&lt;p&gt;pipeline是groovy语法的jenkins的DSL.&lt;/p&gt;
+&lt;h2 id="blueocean"&gt;blueocean&lt;/h2&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/jenkinsci/blueocean-plugin" target="_blank" rel="noopener"
+&gt;https://github.com/jenkinsci/blueocean-plugin&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id="git-plugin"&gt;git plugin&lt;/h1&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/jenkinsci/git-plugin" target="_blank" rel="noopener"
+&gt;https://github.com/jenkinsci/git-plugin&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id="docker-plugin"&gt;docker plugin&lt;/h1&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/jenkinsci/docker-workflow-plugin" target="_blank" rel="noopener"
+&gt;https://github.com/jenkinsci/docker-workflow-plugin&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://docs.cloudbees.com/docs/admin-resources/latest/plugins/docker-workflow" target="_blank" rel="noopener"
+&gt;https://docs.cloudbees.com/docs/admin-resources/latest/plugins/docker-workflow&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id="k8s"&gt;k8s&lt;/h1&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/jenkinsci/kubernetes-plugin" target="_blank" rel="noopener"
+&gt;https://github.com/jenkinsci/kubernetes-plugin&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id="docker"&gt;docker&lt;/h1&gt;
+&lt;p&gt;在docker上执行流水线&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;agent {
+docker {
+image 'maven:3-alpine'
+label 'my-defined-label'
+args '-v /tmp:/tmp'
+}
+}
+agent {
+// Equivalent to &amp;quot;docker build -f Dockerfile.build --build-arg version=1.0.2 ./build/
+dockerfile {
+filename 'Dockerfile.build'
+dir 'build'
+label 'my-defined-label'
+additionalBuildArgs '--build-arg version=1.0.2'
+}
+}
+&lt;/code&gt;&lt;/pre&gt;</description></item></channel></rss>

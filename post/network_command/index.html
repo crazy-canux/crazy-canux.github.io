@@ -1,0 +1,188 @@
+<!doctype html><html lang=zh-CN dir=ltr><head><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'><meta name=description content='network command network related command
+net-tools deprecated
+https://github.com/ecki/net-tools
+$ sudo apt-get install net-tools ifconfig 查看本地网络接口状态和流量
+ifconfig # 查看up的interface ifconfig -a # 查看所有的interface ifconfig <interface> # 查看指定的interface ifconfig <bridge>/<interface> up/down netstat 用于查看网络连接、路由表、接口统计等信息.
+netstat -a, --all, --listening # 显示所有socket, 默认只显示connected -l, --listening # 显示listening -n, --numeric -p, --programs # 显示pid或程序名称 # socket选项: -t, --tcp -u, --udp -w, --raw -x, --unix --ax25 --ipx --netrom # 常用 netstat -anp # 查看哪些端口是打开的． sudo netstat -anp | grep port # 查看端口是否被使用 sudo netstat -tulnp # 查看tcp&amp;udp端口是否被监听 arp arp # 用于确定IP地址的网卡物理地址 route Flags:
+'><title>Command</title><link rel=canonical href=https://canuxcheng.com/post/network_command/><link rel=stylesheet href=/scss/style.min.22ad1c74b5bb435181c77741d99f034b2c36f7272eff9d0d1aa16d32e7e84673.css><meta property='og:title' content='Command'><meta property='og:description' content='network command network related command
+net-tools deprecated
+https://github.com/ecki/net-tools
+$ sudo apt-get install net-tools ifconfig 查看本地网络接口状态和流量
+ifconfig # 查看up的interface ifconfig -a # 查看所有的interface ifconfig <interface> # 查看指定的interface ifconfig <bridge>/<interface> up/down netstat 用于查看网络连接、路由表、接口统计等信息.
+netstat -a, --all, --listening # 显示所有socket, 默认只显示connected -l, --listening # 显示listening -n, --numeric -p, --programs # 显示pid或程序名称 # socket选项: -t, --tcp -u, --udp -w, --raw -x, --unix --ax25 --ipx --netrom # 常用 netstat -anp # 查看哪些端口是打开的． sudo netstat -anp | grep port # 查看端口是否被使用 sudo netstat -tulnp # 查看tcp&amp;udp端口是否被监听 arp arp # 用于确定IP地址的网卡物理地址 route Flags:
+'><meta property='og:url' content='https://canuxcheng.com/post/network_command/'><meta property='og:site_name' content='Morgoth'><meta property='og:type' content='article'><meta property='article:section' content='Post'><meta property='article:tag' content='command'><meta property='article:published_time' content='2019-03-31T21:51:25+00:00'><meta property='article:modified_time' content='2019-03-31T21:51:25+00:00'><meta name=twitter:title content="Command"><meta name=twitter:description content="network command network related command
+net-tools deprecated
+https://github.com/ecki/net-tools
+$ sudo apt-get install net-tools ifconfig 查看本地网络接口状态和流量
+ifconfig # 查看up的interface ifconfig -a # 查看所有的interface ifconfig <interface> # 查看指定的interface ifconfig <bridge>/<interface> up/down netstat 用于查看网络连接、路由表、接口统计等信息.
+netstat -a, --all, --listening # 显示所有socket, 默认只显示connected -l, --listening # 显示listening -n, --numeric -p, --programs # 显示pid或程序名称 # socket选项: -t, --tcp -u, --udp -w, --raw -x, --unix --ax25 --ipx --netrom # 常用 netstat -anp # 查看哪些端口是打开的． sudo netstat -anp | grep port # 查看端口是否被使用 sudo netstat -tulnp # 查看tcp&amp;udp端口是否被监听 arp arp # 用于确定IP地址的网卡物理地址 route Flags:
+"><link rel="shortcut icon" href=favicon.ico><style>:root{--article-font-family:"Merriweather", var(--base-font-family)}</style><script>(function(){const e=document.createElement("link");e.href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap",e.type="text/css",e.rel="stylesheet",document.head.appendChild(e)})()</script></head><body class=article-page><script>(function(){const e="StackColorScheme";localStorage.getItem(e)||localStorage.setItem(e,"auto")})()</script><script>(function(){const t="StackColorScheme",e=localStorage.getItem(t),n=window.matchMedia("(prefers-color-scheme: dark)").matches===!0;e=="dark"||e==="auto"&&n?document.documentElement.dataset.scheme="dark":document.documentElement.dataset.scheme="light"})()</script><div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky"><button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label=切换菜单>
+<span class=hamburger-box><span class=hamburger-inner></span></span></button><header><figure class=site-avatar><a href=/><img src=/img/home_hu_7d22d46ad88d2427.jpg width=300 height=400 class=site-logo loading=lazy alt=Avatar>
+</a><span class=emoji>🍥</span></figure><div class=site-meta><h1 class=site-name><a href=/>Morgoth</a></h1><h2 class=site-description>Hello World!</h2></div></header><ol class=social-menu><li><a href=mailto:canuxcheng@163.com target=_blank title=E-mail rel=me><svg class="icon icon-tabler icon-tabler-messages" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M21 14l-3-3h-7a1 1 0 01-1-1V4a1 1 0 011-1h9a1 1 0 011 1v10"/><path d="M14 15v2a1 1 0 01-1 1H6l-3 3V11a1 1 0 011-1h2"/></svg></a></li><li><a href=https://github.com/crazy-canux target=_blank title=GitHub rel=me><svg class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6.0 00-1.3-3.2 4.2 4.2.0 00-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3.0 00-6.2.0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2.0 00-.1 3.2A4.6 4.6.0 004 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg></a></li></ol><ol class=menu id=main-menu><li><a href=/><svg class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="5 12 3 12 12 3 21 12 19 12"/><path d="M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/><path d="M9 21v-6a2 2 0 012-2h2a2 2 0 012 2v6"/></svg>
+<span>首页</span></a></li><li><a href=/about/><svg class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/></svg>
+<span>关于</span></a></li><li><a href=/categories/ target=_blank><svg class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg>
+<span>分类</span></a></li><li><a href=/tags/ target=_blank><svg class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11 3l9 9a1.5 1.5.0 010 2l-6 6a1.5 1.5.0 01-2 0L3 11V7a4 4 0 014-4h4"/><circle cx="9" cy="9" r="2"/></svg>
+<span>标签</span></a></li><li><a href=/rtfm/><svg class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+<span>RTFM</span></a></li><div class=menu-bottom-section><li id=i18n-switch><svg class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 5h7"/><path d="M9 3v2c0 4.418-2.239 8-5 8"/><path d="M5 9c-.003 2.144 2.952 3.908 6.7 4"/><path d="M12 20l4-9 4 9"/><path d="M19.1 18h-6.2"/></svg>
+<select name=language onchange="window.location.href=this.selectedOptions[0].value"><option value=https://canuxcheng.com/ selected>简体中文</option><option value=https://canuxcheng.com/en/>English</option></select></li><li id=dark-mode-toggle><svg class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="8" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<svg class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="16" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<span>暗色模式</span></li></div></ol></aside><aside class="sidebar right-sidebar sticky"><section class="widget archives"><div class=widget-icon><svg class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg></div><h2 class="widget-title section-title">目录</h2><div class=widget--toc><nav id=TableOfContents><ul><li><a href=#net-tools>net-tools</a><ul><li><a href=#ifconfig>ifconfig</a></li><li><a href=#netstat>netstat</a></li><li><a href=#arp>arp</a></li><li><a href=#route>route</a></li><li><a href=#rarp>rarp</a></li><li><a href=#hostname>hostname</a></li><li><a href=#domainname>domainname</a></li><li><a href=#dnsdomainname>dnsdomainname</a></li></ul></li><li><a href=#iproute2>iproute2</a><ul><li><a href=#ss>ss</a></li><li><a href=#ip>ip</a></li><li><a href=#devlink>devlink</a></li><li><a href=#ifstat>ifstat</a></li><li><a href=#bridge>bridge</a></li></ul></li><li><a href=#iputils>iputils</a><ul><li><a href=#ping>ping</a></li><li><a href=#arping>arping</a></li><li><a href=#tracepath>tracepath</a></li><li><a href=#clockdiff>clockdiff</a></li></ul></li><li><a href=#traceroute>traceroute</a></li><li><a href=#tcpdump>tcpdump</a></li><li><a href=#ncnetcat>nc/netcat</a></li><li><a href=#dnsutils>dnsutils</a><ul><li><a href=#nslookup>nslookup</a></li><li><a href=#dig>dig</a></li><li><a href=#nsupdate>nsupdate</a></li><li><a href=#host>host</a></li></ul></li><li><a href=#ethtool>ethtool</a></li><li><a href=#iftop>iftop</a></li><li><a href=#iperf3>iperf3</a></li><li><a href=#wget>wget</a></li><li><a href=#curl>curl</a></li></ul></nav></div></section></aside><main class="main full-width"><article class=main-article><header class=article-header><div class=article-details><header class=article-category><a href=/categories/network/>Network</a></header><div class=article-title-wrapper><h2 class=article-title><a href=/post/network_command/>Command</a></h2></div><footer class=article-time><div><svg class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg>
+<time class=article-time--published>Mar 31, 2019</time></div><div><svg class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+<time class=article-time--reading>阅读时长: 3 分钟</time></div></footer></div></header><section class=article-content><h1 id=network-command>network command</h1><p>network related command</p><hr><h2 id=net-tools>net-tools</h2><p>deprecated</p><p><a class=link href=https://github.com/ecki/net-tools target=_blank rel=noopener>https://github.com/ecki/net-tools</a></p><pre><code>$ sudo apt-get install net-tools
+</code></pre><h3 id=ifconfig>ifconfig</h3><p>查看本地网络接口状态和流量</p><pre><code>ifconfig # 查看up的interface
+ifconfig -a  # 查看所有的interface
+ifconfig &lt;interface&gt; # 查看指定的interface
+ifconfig &lt;bridge&gt;/&lt;interface&gt; up/down
+</code></pre><h3 id=netstat>netstat</h3><p>用于查看网络连接、路由表、接口统计等信息.</p><pre><code>netstat
+-a, --all, --listening # 显示所有socket, 默认只显示connected
+-l, --listening  # 显示listening
+-n, --numeric
+-p, --programs # 显示pid或程序名称
+# socket选项:
+-t, --tcp
+-u, --udp
+-w, --raw
+-x, --unix
+--ax25
+--ipx
+--netrom
+
+# 常用
+netstat -anp    # 查看哪些端口是打开的．
+sudo netstat -anp | grep port # 查看端口是否被使用
+sudo netstat -tulnp # 查看tcp&amp;udp端口是否被监听
+</code></pre><h3 id=arp>arp</h3><pre><code>arp # 用于确定IP地址的网卡物理地址
+</code></pre><h3 id=route>route</h3><p>Flags:</p><ul><li>U: route is up</li><li>H: target is a host</li><li>G: use gateway</li><li>!: reject route</li></ul><p>Genmask: netmask for destination net.</p><p>Metric: 到target距离, hops.</p><p>Ref: 该路由引用次数</p><p>Use: 查找路由的次数</p><pre><code>route -n
+</code></pre><h3 id=rarp>rarp</h3><h3 id=hostname>hostname</h3><h3 id=domainname>domainname</h3><h3 id=dnsdomainname>dnsdomainname</h3><hr><h2 id=iproute2>iproute2</h2><p><a class=link href=https://github.com/shemminger/iproute2 target=_blank rel=noopener>https://github.com/shemminger/iproute2</a></p><pre><code>$ sudo apt-get install iproute2
+</code></pre><h3 id=ss>ss</h3><p>取代netstat, 用于查看socket连接状态.</p><pre><code>ss -s # 查看socket统计信息
+ss -tuln # 查看tcp和udp的监听端口
+ss -tulnp # 查看tcp和udp的监听端口和对应的程序
+</code></pre><h3 id=ip>ip</h3><p>取代ifconfig, route, arp等命令的集合.</p><pre><code>ip link show
+
+# 创建vlan
+ip link add link eth1 name eth1.10 type vlan id 10
+# 添加ip
+ip addr add 192.168.100.1/24 brd 192.168.100.255 dev eth1.10
+# 启动vlan
+ip link set dev eth1.10 up
+# 关闭vlan
+ip link set dev eth1.10 down
+# 删除vlan
+ip link delete eth1.10
+</code></pre><p>addr/address</p><pre><code>ip addr show &lt;interface&gt; # 查看指定interface的ip地址
+</code></pre><p>route</p><pre><code>ip route show # 查看路由表
+</code></pre><p>rule</p><pre><code>ip rule showa # 查看规则
+</code></pre><h3 id=devlink>devlink</h3><h3 id=ifstat>ifstat</h3><h3 id=bridge>bridge</h3><p>用于管理bridge, 取代brctl.</p><pre><code>$ bridge link show # 查看bridge的接口
+</code></pre><hr><h2 id=iputils>iputils</h2><p><a class=link href=https://github.com/iputils/iputils target=_blank rel=noopener>https://github.com/iputils/iputils</a></p><pre><code>$ sudo apt-get install iputils-ping
+</code></pre><h3 id=ping>ping</h3><p>round-trip time/RTT: 往返时间, 即从发送数据包到接收数据包的时间.</p><pre><code>ping # 用于确定网络的连通性
+ping -c 5 &lt;host&gt; # 发送5个包
+</code></pre><h3 id=arping>arping</h3><h3 id=tracepath>tracepath</h3><h3 id=clockdiff>clockdiff</h3><hr><h2 id=traceroute>traceroute</h2><pre><code>sudo apt install traceroute
+</code></pre><p>路由跟踪与跳数检查</p><pre><code>traceroute &lt;host&gt; # 跟踪到host的路由
+
+# 通过指定端口号来跟踪
+traceroute -p &lt;port&gt; &lt;host&gt;
+
+# 使用tcp协议
+traceroute -T &lt;host&gt;
+
+# 使用udp协议
+traceroute -U &lt;host&gt;
+</code></pre><hr><h2 id=tcpdump>tcpdump</h2><pre><code>sudo apt-get install tcpdump
+
+tcpdump
+
+tcpdump tcp port &lt;port&gt;        # 抓tcp 在port端口的包
+tcpdump udp port &lt;port&gt;       #抓udp 在port端口的包
+tcpdump -i &lt;interface&gt; # 抓取指定interface的包
+tcpdump host &lt;ip&gt; and port &lt;port&gt; # 抓取指定ip和端口的包
+tcpdump net &lt;network&gt; # 抓取指定网络的包
+</code></pre><hr><h2 id=ncnetcat>nc/netcat</h2><pre><code>// 有的系统默认安装netcat-traditional
+$ sudo apt-get install netcat-traditional 
+// 安装netcat-openbsd
+$ sudo apt-get install netcat-openbsd
+// 设置默认值
+$ sudo update-alternatives --config nc
+$ sudo update-alternatives --set nc /bin/nc.openbsd
+
+nc -z IP PORT # 查看指定tcp://ip:port是否监听
+nc -zu IP PORT # 查看udp://ip:port是否监听
+
+// 通过nc监听端口
+nc -l PORT
+
+// 通过nc发送请求.
+echo -e '{&quot;method&quot;:&quot;test&quot;,&quot;params&quot;:[&quot;test&quot;],&quot;id&quot;:1}' | nc IP PORT
+</code></pre><hr><h2 id=dnsutils>dnsutils</h2><pre><code>sudo apt-get install dnsutils
+</code></pre><h3 id=nslookup>nslookup</h3><pre><code>nslookup # 查询IP地址和对应的域名
+</code></pre><h3 id=dig>dig</h3><pre><code>dig # 查询DNS记录
+
+dig @&lt;dns-server&gt; &lt;domain&gt; # 指定dns服务器查询域名
+dig &lt;domain&gt; A # 查询A记录
+dig &lt;domain&gt; MX # 查询MX记录
+dig &lt;domain&gt; NS # 查询NS记录
+dig &lt;domain&gt; TXT # 查询TXT记录
+dig &lt;domain&gt; ANY # 查询所有记录
+
+# 反向解析IP地址
+dig -x &lt;ip-address&gt;
+</code></pre><h3 id=nsupdate>nsupdate</h3><h3 id=host>host</h3><hr><h2 id=ethtool>ethtool</h2><pre><code>sudo apt-get install ethtool
+
+ethtool # 查询网络设备信息
+ethtool &lt;interface&gt; # 查询指定网络设备信息
+</code></pre><hr><h2 id=iftop>iftop</h2><p><a class=link href=http://www.ex-parrot.com/~pdw/iftop/ target=_blank rel=noopener>http://www.ex-parrot.com/~pdw/iftop/</a></p><pre><code>$ sudo apt-get install iftop
+
+sudo iftop # 查看网络流量
+sudo iftop -i &lt;interface&gt; # 查看指定网络接口的流量
+</code></pre><hr><h2 id=iperf3>iperf3</h2><hr><h2 id=wget>wget</h2><pre><code>wget [option] [URL]
+
+-a, --append-output=FILE 输出重定向到日志
+-o, --output-file=FILE
+-q, --quiet    不输出
+-b, --background
+-nv, --no-verbose
+--header &quot;authorization:c2FuZGJveDpTMG5pY3dhbGwK&quot;
+
+-t, --tries=NUMBER    超时重连次数, 0表示不限制, 默认20
+-nc, --no-clobber    不覆盖原有文件
+-N, --timestamping   只下载比本地新的文件
+-c, --continue    断点续传,会覆盖-N
+-T, --timeout=SECONDS    超时时间, 默认900s
+-w, --wait=SECONDS    重连之间的等待时间
+-O, --output-document=FILE, 重命名下载文件
+
+-nH, --no-host-directories 不创建站点的根目录
+-x, --force-directories    创建和服务器一样的结构下载
+-P, --directory-prefix=PREFIX  指定下载的目录
+
+-R,  --reject=LIST 排除下载的文件
+-r, --recursive  迭代下载
+-np, --no-parent 不下载父目录的内容
+
+# 同步目录
+wget -Nc -r -np -nH --cut-dirs=3 -R &quot;index.*, *.js, *.css, *.html, *.jpg, *.png, *.gif&quot; -P /path/to/source/ http://host/path/to/dest/
+
+# ssl + basic auth
+wget --no-check-certificate --user &lt;user&gt; --password &lt;pw&gt; -nv -N -P &lt;dest-folder&gt; &lt;src-url&gt;
+
+$ wget -q -N -P /folder url
+$ wget -q -c -O /path/to/file.ext url
+</code></pre><h2 id=curl>curl</h2><pre><code>curl
+-X/--request post/patch/delte/get/...
+-H/--header 'content-type: application/json'
+-d/--data '{&quot;key&quot;: &quot;value&quot;}'
+--data-raw DATA  HTTP POST data, '@' allowed (H)
+--data-ascii DATA  HTTP POST ASCII data (H)
+--data-binary DATA  HTTP POST binary data (H)
+--data-urlencode DATA  HTTP POST data url encoded (H)
+-G, --get           Send the -d data with a HTTP GET (H)
+-k/--insecure    ignore ssl check.
+-u/--user &lt;user:password&gt;
+-s/--silent        Silent mode
+</code></pre></section><footer class=article-footer><section class=article-tags><a href=/tags/command/>Command</a></section></footer><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css integrity="sha256-J+iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s=" crossorigin=anonymous><script src=https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js integrity="sha256-InsNdER1b2xUewP+pKCUJpkhiqwHgqiPXDlIk7GzBu4=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI=" crossorigin=anonymous defer></script><script>window.addEventListener("DOMContentLoaded",()=>{renderMathInElement(document.querySelector(`.article-content`),{delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1},{left:"\\(",right:"\\)",display:!1},{left:"\\[",right:"\\]",display:!0}],ignoredClasses:["gist"]})})</script></article><div id=gitalk-container></div><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css><script src=https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js></script><script src=https://cdn.jsdelivr.net/npm/blueimp-md5@2.18.0/js/md5.min.js></script><script>const gitalk=new Gitalk({clientID:"3d41a2a237fabe050cc0",clientSecret:"f084dfe45a1c05955270776836298adf02732a02",repo:"crazy-canux.github.io",owner:"crazy-canux",admin:["crazy-canux"],distractionFreeMode:!1,id:md5(location.pathname)});(function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById("gitalk-container").innerHTML="Gitalk comments not available by default when the website is previewed locally.";return}gitalk.render("gitalk-container")})()</script><footer class=site-footer><section class=copyright>&copy;
+2013 -
+2026 Morgoth</section><section class=powerby>Designed by Canux<br></section></footer><div class=pswp tabindex=-1 role=dialog aria-hidden=true><div class=pswp__bg></div><div class=pswp__scroll-wrap><div class=pswp__container><div class=pswp__item></div><div class=pswp__item></div><div class=pswp__item></div></div><div class="pswp__ui pswp__ui--hidden"><div class=pswp__top-bar><div class=pswp__counter></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+<button class="pswp__button pswp__button--share" title=Share></button>
+<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button><div class=pswp__preloader><div class=pswp__preloader__icn><div class=pswp__preloader__cut><div class=pswp__preloader__donut></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class=pswp__share-tooltip></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+</button>
+<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button><div class=pswp__caption><div class=pswp__caption__center></div></div></div></div></div><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU=" crossorigin=anonymous defer></script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css crossorigin=anonymous><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css crossorigin=anonymous></main></div><script src=https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z+KMkF24hUW8WePSA9HM=" crossorigin=anonymous></script><script type=text/javascript src=/ts/main.js defer></script><script>(function(){const e=document.createElement("link");e.href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap",e.type="text/css",e.rel="stylesheet",document.head.appendChild(e)})()</script></body></html>

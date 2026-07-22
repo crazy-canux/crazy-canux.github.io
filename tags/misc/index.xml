@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Misc on Morgoth</title><link>https://canuxcheng.com/tags/misc/</link><description>Recent content in Misc on Morgoth</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 17 Jul 2023 14:46:57 +0800</lastBuildDate><atom:link href="https://canuxcheng.com/tags/misc/index.xml" rel="self" type="application/rss+xml"/><item><title>First_Aid</title><link>https://canuxcheng.com/post/first_aid/</link><pubDate>Mon, 17 Jul 2023 14:46:57 +0800</pubDate><guid>https://canuxcheng.com/post/first_aid/</guid><description>&lt;h1 id="first-aid"&gt;First Aid&lt;/h1&gt;
+&lt;p&gt;&lt;img src="https://canuxcheng.com/images/fa1.jpg"
+loading="lazy"
+alt="pic0"
+&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src="https://canuxcheng.com/images/fa2.jpg"
+loading="lazy"
+alt="pic1"
+&gt;&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;确认现场环境安全&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;判断呼吸和意识&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;先跪下判断意识和呼吸情况，两手拍肩膀呼叫，判断意识，看胸口起伏判断呼吸，数数1001，1002，&amp;hellip; 1008 八秒；如果没有意识和呼吸才需要心肺复苏。否则可能是气道梗阻。&lt;/p&gt;
+&lt;h2 id="气道梗阻"&gt;气道梗阻&lt;/h2&gt;
+&lt;p&gt;不完全气道梗阻：&lt;/p&gt;
+&lt;p&gt;有意识，能沟通，优先咳嗽排出。
+其次采用背部叩击。
+最后才使用腹部冲击（海姆利克法）。&lt;/p&gt;
+&lt;p&gt;完全气道梗阻：&lt;/p&gt;
+&lt;p&gt;没有意识，没有呼吸，需要心肺复苏。&lt;/p&gt;
+&lt;h2 id="心肺复苏"&gt;心肺复苏&lt;/h2&gt;
+&lt;p&gt;来人啊，救命啊，有人晕倒了，我是急救员，请你拨打120，有AED一并带来，会急救的和我一起。&lt;/p&gt;
+&lt;p&gt;胸部按压30次01，02&amp;hellip; 30，深度5cm左右，确保完全回弹。&lt;/p&gt;
+&lt;p&gt;然后清理口腔异物，吹气两次。&lt;/p&gt;
+&lt;p&gt;胸部按压和吹气连续做5组。&lt;/p&gt;
+&lt;p&gt;每做完5组检查脉搏和呼吸。一只手放头部，另一只手两个指头放劲动脉。计数1001，1002，&amp;hellip; 1008；若有呼吸抢救成功，否则重复上述步骤。&lt;/p&gt;
+&lt;p&gt;如果有AED，随到随用，先打开电源，一个贴片用于病人右侧胸部上方，一个用于左侧胸部侧方，提醒旁人离开，开始分析是否需要除颤，若需要提示旁人离开，按下按钮。提示完成后继续心肺复苏。&lt;/p&gt;</description></item><item><title>Django Misc</title><link>https://canuxcheng.com/post/django_misc/</link><pubDate>Wed, 04 Jan 2017 01:13:36 +0000</pubDate><guid>https://canuxcheng.com/post/django_misc/</guid><description>&lt;h1 id="django的国际化和本地化"&gt;Django的国际化和本地化&lt;/h1&gt;
+&lt;p&gt;settings.py里面和国际化和本地化相关的设置:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;USE_I18N = True
+USE_L10N = True
+TIME_ZONE = 'UTC'
+USE_TZ = True
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="国际化i18n"&gt;国际化(i18N)&lt;/h2&gt;
+&lt;p&gt;由开发者完成,本地化的准备工作.&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="http://www.i18nguy.com/unicode/language-identifiers.html" target="_blank" rel="noopener"
+&gt;http://www.i18nguy.com/unicode/language-identifiers.html&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;LANGUAGE_CODE = 'en-us' # default
+LANGUAGES = [
+('en-US', _('English')),
+('zh-CN', _('Chinese')),
+]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="本地化l10n"&gt;本地化(l10N)&lt;/h2&gt;
+&lt;p&gt;由翻译者完成.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id="django的安全"&gt;Django的安全&lt;/h1&gt;
+&lt;hr&gt;
+&lt;h1 id="django的性能优化"&gt;Django的性能优化&lt;/h1&gt;
+&lt;p&gt;&lt;a class="link" href="https://docs.djangoproject.com/zh-hans/3.2/topics/performance/" target="_blank" rel="noopener"
+&gt;https://docs.djangoproject.com/zh-hans/3.2/topics/performance/&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id="django的地理框架"&gt;Django的地理框架&lt;/h1&gt;</description></item><item><title>PSL_Misc</title><link>https://canuxcheng.com/post/psl_misc/</link><pubDate>Mon, 15 Aug 2016 10:28:46 +0000</pubDate><guid>https://canuxcheng.com/post/psl_misc/</guid><description>&lt;h1 id="psl"&gt;PSL&lt;/h1&gt;
+&lt;p&gt;Python Standard Library: Python标准库&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id="internationalization"&gt;Internationalization&lt;/h1&gt;
+&lt;h2 id="gettext"&gt;gettext&lt;/h2&gt;
+&lt;h2 id="locale"&gt;locale&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h1 id="program-frameworks"&gt;Program Frameworks&lt;/h1&gt;
+&lt;h2 id="cmd"&gt;cmd&lt;/h2&gt;
+&lt;h2 id="shlex"&gt;shlex&lt;/h2&gt;
+&lt;p&gt;类shell的词法分析．&lt;/p&gt;
+&lt;p&gt;classes:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;shlex
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;functions:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;split(s, comments=False, posix=True)
+# split(&amp;quot;command **kwargs&amp;quot;) -&amp;gt; ['command', 'arg1', ...]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;data:&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id="custom-python-interpreters"&gt;Custom Python Interpreters&lt;/h1&gt;
+&lt;h2 id="code"&gt;code&lt;/h2&gt;
+&lt;h2 id="codeop"&gt;codeop&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h1 id="python-language-services"&gt;Python Language Services&lt;/h1&gt;
+&lt;h2 id="keyword"&gt;keyword&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;import keyword
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;functions:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;keyword.iskeyword(keyword) # x.__contains__(y) &amp;lt;==&amp;gt; y in x
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;data:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;keyword.kwlist # 返回所有关键字的列表
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="parser"&gt;parser&lt;/h2&gt;
+&lt;h2 id="ast"&gt;ast&lt;/h2&gt;
+&lt;h2 id="symtable"&gt;symtable&lt;/h2&gt;
+&lt;h2 id="symbol"&gt;symbol&lt;/h2&gt;
+&lt;h2 id="token"&gt;token&lt;/h2&gt;
+&lt;h2 id="tokenize"&gt;tokenize&lt;/h2&gt;
+&lt;h2 id="tabnanny"&gt;tabnanny&lt;/h2&gt;
+&lt;h2 id="pyclbr"&gt;pyclbr&lt;/h2&gt;
+&lt;h2 id="py_compile"&gt;py_compile&lt;/h2&gt;
+&lt;h2 id="compileall"&gt;compileall&lt;/h2&gt;
+&lt;h2 id="dis"&gt;dis&lt;/h2&gt;
+&lt;h2 id="pickletools"&gt;pickletools&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h1 id="importing-modules"&gt;Importing Modules&lt;/h1&gt;
+&lt;h2 id="imp"&gt;imp&lt;/h2&gt;
+&lt;h2 id="importlib"&gt;importlib&lt;/h2&gt;
+&lt;h2 id="zipimport"&gt;zipimport&lt;/h2&gt;
+&lt;h2 id="pkgutil"&gt;pkgutil&lt;/h2&gt;
+&lt;h2 id="modulefinder"&gt;modulefinder&lt;/h2&gt;
+&lt;h2 id="runpy"&gt;runpy&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h1 id="miscellaneous-services"&gt;Miscellaneous Services&lt;/h1&gt;
+&lt;h2 id="formatter"&gt;formatter&lt;/h2&gt;
+&lt;h2 id="ihooks"&gt;ihooks&lt;/h2&gt;</description></item></channel></rss>

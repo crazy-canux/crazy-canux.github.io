@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Model on Morgoth</title><link>https://canuxcheng.com/tags/model/</link><description>Recent content in Model on Morgoth</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 04 Oct 2016 04:20:31 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/model/index.xml" rel="self" type="application/rss+xml"/><item><title>Model</title><link>https://canuxcheng.com/post/django_model/</link><pubDate>Tue, 04 Oct 2016 04:20:31 +0000</pubDate><guid>https://canuxcheng.com/post/django_model/</guid><description>&lt;h1 id="modelspy"&gt;models.py&lt;/h1&gt;
+&lt;p&gt;ORM(Object Relational Mapping)是对象关系映射。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;from django.db import models
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;django模型是和数据库关联的，代码放在models.py，数据库信息在settings.py中统一配置即可。&lt;/p&gt;
+&lt;p&gt;每个模型对应数据库唯一的一张表，是django.db.models.Model的子类。&lt;/p&gt;
+&lt;p&gt;每个模型实例代表数据库中的一条特定记录.&lt;/p&gt;
+&lt;p&gt;模型的每个属性都表示为数据库中的一个字段。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;在项目的settings.py中激活应用，并设置数据库相关参数。&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;让django包含你的应用：&lt;/p&gt;
+&lt;p&gt;告诉django你对模型做了更改，并且将这些更改存储为迁移文件polls/migrations/0001_initial.py:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; $python manage.py makemigrations polls
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;可以查看迁移文件执行了哪些sql语句,并不真的在数据库执行：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; $python manage.py sqlmigrate polls 0001
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;可以检查项目中的模型是否存在问题：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; $python manage.py check
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;在数据库中创建模型,查找还没有被应用的迁移文件然后和数据库同步：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; $python manage.py migrate
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h1 id="模型的字段类型和字段选项"&gt;模型的字段类型和字段选项&lt;/h1&gt;
+&lt;p&gt;模型的每个属性都表示为数据库的一个字段,是Field子类的某个实例。&lt;/p&gt;
+&lt;p&gt;模型的字段还有一些选项。&lt;/p&gt;
+&lt;p&gt;字段命名规则：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;不能是python的保留关键字。&lt;/li&gt;
+&lt;li&gt;字段名中连续的下划线不能超过一个。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;访问其它应用的模型,导入即可：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;from &amp;lt;other-aplication&amp;gt;.models import &amp;lt;module-name&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;模型字段类型和选项参考：&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="http://python.usyiyi.cn/documents/django_182/ref/models/fields.html#common-model-field-options" target="_blank" rel="noopener"
+&gt;http://python.usyiyi.cn/documents/django_182/ref/models/fields.html#common-model-field-options&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="模型字段类型"&gt;模型字段类型&lt;/h2&gt;
+&lt;p&gt;字段的类型都是Field类的子类：&lt;/p&gt;
+&lt;p&gt;每个字段都接受一个可选的位置参数(一般是第一个），叫字段的自述名,如果不指定就默认是字段名字（下划线换成空格）。&lt;/p&gt;
+&lt;p&gt;自增字段:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;AutoField
+# 默认django会每个模型添加一个自增主键字段,如果你显示设置一个自增主键字段就不会默认再添加,每个模型只能有一个主键字段。
+# id = models.AutoField(primary_key=True)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;普通字段:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;BigIntegerField
+BinaryField
+BooleanField
+CharField
+CommaSeparatedIntegerField
+DateField
+DateTimeField
+DecimalField
+DurationField
+EmailField
+FileField
+FilePathField
+FloatField
+GenericIPAddressField
+IPAddressField
+ImageField
+IntegerField
+NullBooleanField
+PositiveIntegerField
+PositiveSmallIntegerField
+SlugField
+SmallIntegerField
+TextField
+TimeField
+URLField
+UUIDField
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;关系字段:&lt;/p&gt;
+&lt;p&gt;django定义了一系列字段类型描述数据库之间的关联:&lt;/p&gt;
+&lt;p&gt;这三个字段要求第一个参数是模型类，用verbose_name选项才能指定自述名。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;ForeignKey 定义多对一关系
+OneToOneField 定义一对一关系
+ManyToManyField 定义多对多关系
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id="执行查询"&gt;执行查询&lt;/h1&gt;
+&lt;p&gt;一旦建立数据模型,django会自动生成一套抽象的API,用于创建,检索,更新和删除对象.&lt;/p&gt;
+&lt;h2 id="创建对象"&gt;创建对象&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;q = Question(question_text='content', pub_date='date')
+q.save()
+q = Question(question_text='content')
+q.pub_date='date'
+q.save()
+Question.objects.create(question_text=&amp;quot;content&amp;quot;, pub_date='date')
+# 防止重复,不存在就创建，返回(object, True),存在返回(object, False)
+Question.objects.get_or_create(question_text='content', pub_date='date')
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="获取对象"&gt;获取对象&lt;/h2&gt;
+&lt;p&gt;通过模型中的管理器构造一个查询集来从数据库获取对象.&lt;/p&gt;
+&lt;p&gt;查询集求值：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;迭代&lt;/li&gt;
+&lt;li&gt;切片&lt;/li&gt;
+&lt;li&gt;序列化&lt;/li&gt;
+&lt;li&gt;repr()&lt;/li&gt;
+&lt;li&gt;len()&lt;/li&gt;
+&lt;li&gt;list()&lt;/li&gt;
+&lt;li&gt;bool()&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;查询集参考QuerySet类的方法：&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="http://python.usyiyi.cn/translate/django_182/ref/models/querysets.html#queryset-api" target="_blank" rel="noopener"
+&gt;http://python.usyiyi.cn/translate/django_182/ref/models/querysets.html#queryset-api&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# 获取表中所有对象
+Question.objects.all()
+# 切片获取部分
+Question.objects.all()[:10]
+# 获取单个
+Question.objects.get(question_text='content')
+# 过滤
+Question.objects.filter(**kwargs)
+Question.objects.exclude(**kwargs)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查询集的链式过滤：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Question.objects.all().exists()
+Question.objects.all().order_by('name')
+Question.objects.filter(**kwargs).filter(**kwargs)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;select_related() QuerySet 方法会提前递归地预加载所有一对多关系的缓存。适合OneToOneField和ForeignKey。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Question.objects.select_related('related_model').all()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;prefetch_related() QuerySet 方法会提前预加载所有多对多关系的缓存。适合ManyToManyField。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;Question.objects.prefetch_related('related_model').all()
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;Q对象复杂查询&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;from django.db.models import Q
+# 逻辑或
+Question.objects.filter(Q(question_text='content') | Q(pub_date='date'))
+# 逻辑与
+Question.objects.filter(Q(question_text='content') &amp;amp; Q(pub_date='date'))
+# 逻辑非
+Question.objects.exclude(Q(question_text='content'))
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;</description></item></channel></rss>

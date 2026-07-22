@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>String on Morgoth</title><link>https://canuxcheng.com/tags/string/</link><description>Recent content in String on Morgoth</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 01 Jan 2018 10:49:21 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/string/index.xml" rel="self" type="application/rss+xml"/><item><title>GSL_string</title><link>https://canuxcheng.com/post/gsl_string/</link><pubDate>Mon, 01 Jan 2018 10:49:21 +0000</pubDate><guid>https://canuxcheng.com/post/gsl_string/</guid><description>&lt;h1 id="strings"&gt;strings&lt;/h1&gt;
+&lt;p&gt;实现了用于操作字符的函数.&lt;/p&gt;
+&lt;h2 id="functions"&gt;functions&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;func EqualFold(s, t string) bool
+func HasPrefix(s, prefix string) bool
+func HasSuffix(s, suffix string) bool
+func Count(s, sep string) int
+func Contains(s, substr string) bool
+...
+func Index(s, sep string) int
+...
+func LastIndex(s, sep string) int
+...
+func title(s string) string
+func ToLower(s string) string
+...
+// 返回count个string
+func Repeat(s string, count int) string
+func Replace(s, old, new string, n int) string
+func Map(mapping func(rune) rune, s string) string
+func Trim(s string, cutset string) string
+...
+// 返回将字符串按照空白分割的多个字符串
+func Fields(s string) []string
+// 按照f作为分隔符来分割字符串，返回切片
+func FieldsFunc(s string, f func(rune) bool) []string
+func Split(s, sep string) []string
+...
+// 将一系列字符串连接为一个字符串，之间用sep来分割.
+func Join(a []string, sep string) string
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="reader"&gt;Reader&lt;/h2&gt;
+&lt;h2 id="replacer"&gt;Replacer&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h1 id="bytes"&gt;bytes&lt;/h1&gt;
+&lt;p&gt;实现了操作[]bytes的常用函数.&lt;/p&gt;
+&lt;h2 id="constants"&gt;constants&lt;/h2&gt;
+&lt;h2 id="variables"&gt;variables&lt;/h2&gt;
+&lt;h2 id="functions-1"&gt;functions&lt;/h2&gt;
+&lt;h2 id="reader-1"&gt;Reader&lt;/h2&gt;
+&lt;h2 id="buffer"&gt;Buffer&lt;/h2&gt;
+&lt;p&gt;Buffer是一个实现了读写方法的可变大小的字节缓冲.&lt;/p&gt;
+&lt;p&gt;零值是一个空的可用于读写的缓冲.&lt;/p&gt;
+&lt;p&gt;struct:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type Buffer struct {}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;functions:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;func NewBuffer(buf []byte) *Buffer
+func NewBufferString(s string) *Buffer
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;methods:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;func (b *Buffer) String() string
+func (b *Buffer) Read(p []byte) (n int, err error)
+func (b *Buffer) Write(p []byte) (n int, err error)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id="strconv"&gt;strconv&lt;/h1&gt;
+&lt;p&gt;实现了基本数据类型和字符串的相互转换.&lt;/p&gt;
+&lt;h2 id="constants-1"&gt;constants&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;const InitSize = intSize
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="variables-1"&gt;Variables&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;var ErrRange = errors.New(&amp;quot;value out of range&amp;quot;)
+var ErrSyntax = errors.New(&amp;quot;invalid syntax&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="functions-2"&gt;functions&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;// 返回一个字符是否是可打印的
+func IsPrint(r rune) bool
+// 返回字符串s是否可以不被修改的表示为一个反引号字符串
+func CanBackquote(s string) bool
+func Quote(s string) string
+...
+func Unquote(s string) (t string, err error)
+...
+func AppendInt(dst []byte, i int64, base int) []byte
+...
+// 字符串转换成其他类型
+func ParseInt(s string, base int, bitSize int) (i int64, err error)
+...
+// 其他类型转换为字符串
+func FormatInt(i int64, base int) string
+...
+// ParseInt(s, 10, 0)的简写, string -&amp;gt; int
+func Atoi(s string) (i int, err error)
+// FormatInt(i, 10)的简写, int -&amp;gt; string
+func Itoa(i int) string
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="numerror"&gt;NumError&lt;/h2&gt;
+&lt;p&gt;表示一次失败的转换&lt;/p&gt;
+&lt;p&gt;struct:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type NumError struct {
+Func string
+Num string
+Err error
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;methods:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;func (e *NumError) Error() string
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id="unicode"&gt;unicode&lt;/h1&gt;
+&lt;hr&gt;
+&lt;h1 id="regexp"&gt;regexp&lt;/h1&gt;
+&lt;p&gt;实现了正则表达式搜索&lt;/p&gt;
+&lt;h2 id="functions-3"&gt;functions&lt;/h2&gt;
+&lt;h2 id="regexp-1"&gt;Regexp&lt;/h2&gt;
+&lt;p&gt;Regexp代表一个编译好的正则表达式．&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;type Regexp struct {}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;functions:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;func Compile(expr string) (*Regexp, error)
+func CompilePOSIX(expr string) (*Regexp, error)
+func MustCompile(str string) *Regexp
+func MustCompilePOSIX(str string) *Regexp
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;methods:&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id="regexpsyntax"&gt;regexp/syntax&lt;/h1&gt;
+&lt;hr&gt;
+&lt;h1 id="indexsuffixarray"&gt;index/suffixarray&lt;/h1&gt;</description></item></channel></rss>

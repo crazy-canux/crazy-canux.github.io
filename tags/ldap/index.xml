@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Ldap on Morgoth</title><link>https://canuxcheng.com/tags/ldap/</link><description>Recent content in Ldap on Morgoth</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Thu, 28 Jul 2016 16:08:54 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/ldap/index.xml" rel="self" type="application/rss+xml"/><item><title>Ldap</title><link>https://canuxcheng.com/post/ldap/</link><pubDate>Thu, 28 Jul 2016 16:08:54 +0000</pubDate><guid>https://canuxcheng.com/post/ldap/</guid><description>&lt;h1 id="ldap"&gt;LDAP&lt;/h1&gt;
+&lt;p&gt;LDAP占用tcp和udp的389端口。&lt;/p&gt;
+&lt;p&gt;使用SSL的LDAP占用tcp和udp的636端口。&lt;/p&gt;
+&lt;p&gt;Lightweight Directory Access Protocol.&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="http://www.openldap.org/" target="_blank" rel="noopener"
+&gt;http://www.openldap.org/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;LDAP的windows工具：LDAPSoft LDAP Browser&lt;/p&gt;
+&lt;hr&gt;</description></item></channel></rss>

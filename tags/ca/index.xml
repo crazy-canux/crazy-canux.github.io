@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>CA on Morgoth</title><link>https://canuxcheng.com/tags/ca/</link><description>Recent content in CA on Morgoth</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sun, 28 Jul 2024 16:08:54 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/ca/index.xml" rel="self" type="application/rss+xml"/><item><title>Secret</title><link>https://canuxcheng.com/post/sec_secret/</link><pubDate>Sun, 28 Jul 2024 16:08:54 +0000</pubDate><guid>https://canuxcheng.com/post/sec_secret/</guid><description>&lt;h1 id="secret"&gt;Secret&lt;/h1&gt;
+&lt;p&gt;secret scan tools&lt;/p&gt;
+&lt;h2 id="trufflehog"&gt;trufflehog&lt;/h2&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/trufflesecurity/trufflehog" target="_blank" rel="noopener"
+&gt;https://github.com/trufflesecurity/trufflehog&lt;/a&gt;&lt;/p&gt;</description></item><item><title>Let's Encrypt</title><link>https://canuxcheng.com/post/sec_letsencrypt/</link><pubDate>Wed, 28 Jul 2021 16:08:54 +0000</pubDate><guid>https://canuxcheng.com/post/sec_letsencrypt/</guid><description>&lt;h1 id="lets-encrypt"&gt;Let&amp;rsquo;s Encrypt&lt;/h1&gt;
+&lt;p&gt;&lt;a class="link" href="https://letsencrypt.org/" target="_blank" rel="noopener"
+&gt;https://letsencrypt.org/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/letsencrypt" target="_blank" rel="noopener"
+&gt;https://github.com/letsencrypt&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;是非盈利组织ISRG提供的免费的证书颁发机构。&lt;/p&gt;
+&lt;p&gt;let&amp;rsquo;s encrypt生成证书的工具很多certbot, acme.sh等.&lt;/p&gt;
+&lt;h1 id="certbot"&gt;certbot&lt;/h1&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/certbot/certbot" target="_blank" rel="noopener"
+&gt;https://github.com/certbot/certbot&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id="acmesh"&gt;acme.sh&lt;/h1&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/acmesh-official/acme.sh" target="_blank" rel="noopener"
+&gt;https://github.com/acmesh-official/acme.sh&lt;/a&gt;&lt;/p&gt;</description></item><item><title>AST</title><link>https://canuxcheng.com/post/sec_ast/</link><pubDate>Sat, 28 Jul 2018 16:08:54 +0000</pubDate><guid>https://canuxcheng.com/post/sec_ast/</guid><description>&lt;h1 id="ast"&gt;AST&lt;/h1&gt;
+&lt;p&gt;AST: Application Security Testing, 静态应用程序安全测试, 对应用程序源代码执行直接的白盒分析.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="sast"&gt;SAST&lt;/h2&gt;
+&lt;p&gt;SAST: Static Application Security Testing&lt;/p&gt;
+&lt;p&gt;Tools: SonarQube, Trivy, Coverity.&lt;/p&gt;
+&lt;p&gt;gitlab SAST report.
+gitlab secret detection report.&lt;/p&gt;
+&lt;h3 id="trivy"&gt;trivy&lt;/h3&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/aquasecurity/trivy" target="_blank" rel="noopener"
+&gt;https://github.com/aquasecurity/trivy&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Trivy是一个开源的安全扫描工具，支持容器镜像、文件系统和Git仓库的漏洞扫描。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;trivy image &amp;lt;image&amp;gt;
+trivy fs &amp;lt;path&amp;gt;
+trivy repo &amp;lt;repo&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id="coverity"&gt;Coverity&lt;/h3&gt;
+&lt;p&gt;&lt;a class="link" href="https://scan.coverity.com/" target="_blank" rel="noopener"
+&gt;https://scan.coverity.com/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Coverity是一个商业的静态代码分析工具，主要用于发现代码中的缺陷和安全漏洞。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;cov-init
+cov-build
+cov-analyze
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id="dast"&gt;DAST&lt;/h2&gt;
+&lt;p&gt;DAST: Dynamic Application Security Testing，动态应用程序安全测试, 对应用程序进行黑盒分析.&lt;/p&gt;
+&lt;p&gt;Tools:&lt;/p&gt;
+&lt;p&gt;ZAP Scan(OWASP ZAP)&lt;/p&gt;
+&lt;p&gt;synopsys WhiteHat Sentinel.&lt;/p&gt;
+&lt;p&gt;gitlab DAST report.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="iast"&gt;IAST&lt;/h2&gt;
+&lt;p&gt;IAST: Interactive Application Security Testing，交互式应用程序安全测试, 结合了SAST和DAST的优点.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="sca"&gt;SCA&lt;/h2&gt;
+&lt;p&gt;SCA: Software Composition Analysis.&lt;/p&gt;
+&lt;p&gt;SBOM (software Bill of Materials),开源组件安全扫描.&lt;/p&gt;
+&lt;p&gt;Tools： BlackDuck, Jfrog Xray.&lt;/p&gt;
+&lt;p&gt;gitlab dependency scanning report.&lt;/p&gt;
+&lt;h3 id="blackduck"&gt;Blackduck&lt;/h3&gt;
+&lt;p&gt;&lt;a class="link" href="https://www.blackducksoftware.com/" target="_blank" rel="noopener"
+&gt;https://www.blackducksoftware.com/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Blackduck是一个商业的开源组件安全扫描工具，主要用于发现开源组件中的漏洞和许可证问题。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;detect.sh ......
+&lt;/code&gt;&lt;/pre&gt;</description></item><item><title>CA</title><link>https://canuxcheng.com/post/sec_ca/</link><pubDate>Sat, 28 Jul 2018 16:08:54 +0000</pubDate><guid>https://canuxcheng.com/post/sec_ca/</guid><description>&lt;h1 id="ca"&gt;CA&lt;/h1&gt;
+&lt;p&gt;SSL: secure sockets layer&lt;/p&gt;
+&lt;p&gt;TLS: transport layer security&lt;/p&gt;
+&lt;p&gt;CA: Certificate Authority.&lt;/p&gt;
+&lt;p&gt;SNI: server name indication&lt;/p&gt;
+&lt;p&gt;证书类型&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;x509: 只有公钥没有私钥匙&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;编码方式&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;pem: base64编码&lt;/li&gt;
+&lt;li&gt;der: 二进制&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;证书文件:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;crt: 证书文件（可以是pem或der编码）&lt;/li&gt;
+&lt;li&gt;cer: 证书文件（可以是pem或der编码）&lt;/li&gt;
+&lt;li&gt;csr: 申请签名的文件&lt;/li&gt;
+&lt;li&gt;key: 私钥文件&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h1 id="创建自签名证书"&gt;创建自签名证书&lt;/h1&gt;
+&lt;p&gt;创建x509证书:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ openssl genrsa -out server.key 2048 // 创建key
+$ openssl req -new -key server.key -sha256 -out server.csr // 创建csr
+$ openssl x509 -req -days 365 -in server.csr -signkey server.key -sha256 -out server.crt // 创建证书
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看证书信息:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// pem编码
+$ openssl x509 -in cert.pem -noout -text
+// der编码
+$ openssl x509 -in cert.der -inform der -noout -text
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;查看证书有效期:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ openssl x509 -in ca.domain.com.crt -noout -text -dates
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id="客户端"&gt;客户端&lt;/h1&gt;
+&lt;p&gt;客户端需要信任证书.&lt;/p&gt;
+&lt;p&gt;Linux:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 添加
+$ cp my-cert.crt /usr/local/share/ca-certificates/my-cert.crt
+$ sudo update-ca-certificates
+// 删除
+$ rm /usr/local/share/ca-certificates/my-cert.crt
+$ sudo update-ca-certificates --fresh
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;windows:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 添加
+certutil -addstore -f &amp;quot;ROOT&amp;quot; my-cert.crt
+// 删除
+certutil -delstore &amp;quot;ROOT&amp;quot; my-cert.crt
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id="证书验证"&gt;证书验证&lt;/h1&gt;
+&lt;p&gt;系统默认的根证书在&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/etc/ssl/certs.
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;python的requests包默认使用根证书在&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/usr/local/lib/python3.6/site-packages/requests/cacert.pem
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;requests也通过certifi来管理根证书&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;/usr/local/lib/python3.6/site-packages/certifi/cacert.pem
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;可以通过设置REQUESTS_CA_BUNDLE环境变量来让requests使用系统的根证书。&lt;/p&gt;</description></item></channel></rss>

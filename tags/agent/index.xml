@@ -1,0 +1,852 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Agent on Morgoth</title><link>https://canuxcheng.com/tags/agent/</link><description>Recent content in Agent on Morgoth</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 22 Jul 2026 10:00:00 +0800</lastBuildDate><atom:link href="https://canuxcheng.com/tags/agent/index.xml" rel="self" type="application/rss+xml"/><item><title>LangGraph</title><link>https://canuxcheng.com/post/ai_langgraph/</link><pubDate>Wed, 22 Jul 2026 10:00:00 +0800</pubDate><guid>https://canuxcheng.com/post/ai_langgraph/</guid><description>&lt;p&gt;LangGraph 是一个用于构建有状态 Agent 的底层编排框架。它把 Agent 的执行过程描述成一张图：状态在节点之间流动，边决定下一步执行哪个节点，直到任务完成。&lt;/p&gt;
+&lt;p&gt;普通的聊天程序通常只有一次模型调用，而 Agent 会不断重复“思考、调用工具、读取结果、继续思考”的循环。随着流程变长，我们还会遇到分支、重试、持久化、人工审批和故障恢复等问题。LangGraph 的价值就是让这些控制逻辑变得显式、可追踪和可恢复。&lt;/p&gt;
+&lt;h2 id="langgraph-与-langchain"&gt;LangGraph 与 LangChain&lt;/h2&gt;
+&lt;p&gt;LangChain 和 LangGraph 解决的问题并不完全相同：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;LangChain 提供模型、Prompt、Tool、Retriever 和预构建 Agent 等高层抽象；&lt;/li&gt;
+&lt;li&gt;LangGraph 提供状态图、持久化、流式执行和 Human-in-the-loop 等编排能力；&lt;/li&gt;
+&lt;li&gt;LangSmith 用于追踪、评估和观察 Agent 的执行过程。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;如果只是开发标准的 ReAct Agent，LangChain 的 &lt;code&gt;create_agent&lt;/code&gt; 通常更简单。如果需要自定义执行路径、审批节点、并行任务或长时间运行的工作流，再直接使用 LangGraph。&lt;/p&gt;
+&lt;h2 id="核心概念"&gt;核心概念&lt;/h2&gt;
+&lt;p&gt;一张 LangGraph 主要由三个部分组成。&lt;/p&gt;
+&lt;h3 id="state"&gt;State&lt;/h3&gt;
+&lt;p&gt;State 是整个工作流共享的数据。它可以保存消息、用户信息、中间结果、重试次数或审批状态。&lt;/p&gt;
+&lt;p&gt;节点不应该随意修改 State，而是返回需要更新的部分。LangGraph 会根据 State Schema 和 Reducer 合并更新。&lt;/p&gt;
+&lt;h3 id="node"&gt;Node&lt;/h3&gt;
+&lt;p&gt;Node 是执行实际工作的函数，例如：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;调用 LLM；&lt;/li&gt;
+&lt;li&gt;执行 Tool；&lt;/li&gt;
+&lt;li&gt;查询数据库；&lt;/li&gt;
+&lt;li&gt;检查权限；&lt;/li&gt;
+&lt;li&gt;等待人工审批。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;节点读取当前 State，并返回一个局部 State 更新。&lt;/p&gt;
+&lt;h3 id="edge"&gt;Edge&lt;/h3&gt;
+&lt;p&gt;Edge 决定节点之间的执行顺序：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;普通 Edge 固定跳转到下一个节点；&lt;/li&gt;
+&lt;li&gt;Conditional Edge 根据 State 动态选择路径；&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;START&lt;/code&gt; 和 &lt;code&gt;END&lt;/code&gt; 分别表示图的入口和结束。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;一个 Tool-calling Agent 的图通常如下：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-text" data-lang="text"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;START
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; │
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ▼
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Agent Node ─── 无工具调用 ───▶ END
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; │
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; │ 有工具调用
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ▼
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Tool Node
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; │
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; └──────────────────────────▶ Agent Node
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;模型可以连续调用多个工具。只有当模型返回最终答案、不再产生 Tool Call 时，图才会进入 &lt;code&gt;END&lt;/code&gt;。&lt;/p&gt;
+&lt;h2 id="开发一个-agent"&gt;开发一个 Agent&lt;/h2&gt;
+&lt;p&gt;下面开发一个简单的天气 Agent。模型负责理解用户意图，Tool 负责返回天气信息，LangGraph 负责控制模型和 Tool 之间的循环。&lt;/p&gt;
+&lt;h3 id="安装依赖"&gt;安装依赖&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;python -m venv .venv
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;source .venv/bin/activate
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;pip install -U langgraph langchain langchain-openai
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;通过环境变量提供模型凭据：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;export OPENAI_API_KEY&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;...&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;不要把 API Key 写入代码或提交到版本控制。&lt;/p&gt;
+&lt;h3 id="定义-tool"&gt;定义 Tool&lt;/h3&gt;
+&lt;p&gt;Tool 是 Agent 与外部世界交互的接口。真实项目中的 Tool 可以调用 API、数据库或内部服务；这里使用静态数据，使示例可以专注于 Agent 的执行逻辑。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;from&lt;/span&gt; langchain.tools &lt;span style="color:#f92672"&gt;import&lt;/span&gt; tool
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;@tool&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;get_weather&lt;/span&gt;(city: str) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; str:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;&amp;#34;&amp;#34;查询城市当前的天气。&amp;#34;&amp;#34;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; weather &lt;span style="color:#f92672"&gt;=&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;北京&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;晴，26°C&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;上海&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;多云，29°C&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;深圳&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;阵雨，31°C&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; weather&lt;span style="color:#f92672"&gt;.&lt;/span&gt;get(city, &lt;span style="color:#e6db74"&gt;f&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;暂时没有 &lt;/span&gt;&lt;span style="color:#e6db74"&gt;{&lt;/span&gt;city&lt;span style="color:#e6db74"&gt;}&lt;/span&gt;&lt;span style="color:#e6db74"&gt; 的天气数据&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;函数的类型标注和 Docstring 会成为 Tool Schema 的一部分。描述应该清晰说明工具能做什么，但不要让模型看到内部凭据或不需要的参数。&lt;/p&gt;
+&lt;h3 id="定义模型节点"&gt;定义模型节点&lt;/h3&gt;
+&lt;p&gt;将 Tool 绑定到模型后，模型可以选择返回普通消息，也可以返回结构化 Tool Call。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;from&lt;/span&gt; langchain.chat_models &lt;span style="color:#f92672"&gt;import&lt;/span&gt; init_chat_model
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;from&lt;/span&gt; langgraph.graph &lt;span style="color:#f92672"&gt;import&lt;/span&gt; MessagesState
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;tools &lt;span style="color:#f92672"&gt;=&lt;/span&gt; [get_weather]
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;model &lt;span style="color:#f92672"&gt;=&lt;/span&gt; init_chat_model(&lt;span style="color:#e6db74"&gt;&amp;#34;openai:gpt-4.1-mini&amp;#34;&lt;/span&gt;)&lt;span style="color:#f92672"&gt;.&lt;/span&gt;bind_tools(tools)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;call_model&lt;/span&gt;(state: MessagesState):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; system_message &lt;span style="color:#f92672"&gt;=&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;role&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;system&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;content&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;你是一个天气助手。需要实时数据时调用工具，不要编造天气。&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; response &lt;span style="color:#f92672"&gt;=&lt;/span&gt; model&lt;span style="color:#f92672"&gt;.&lt;/span&gt;invoke([system_message, &lt;span style="color:#f92672"&gt;*&lt;/span&gt;state[&lt;span style="color:#e6db74"&gt;&amp;#34;messages&amp;#34;&lt;/span&gt;]])
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; {&lt;span style="color:#e6db74"&gt;&amp;#34;messages&amp;#34;&lt;/span&gt;: [response]}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;MessagesState&lt;/code&gt; 已经定义了消息列表及对应的 Reducer。节点只返回新消息，Reducer 会把它追加到历史记录，而不是覆盖整个列表。&lt;/p&gt;
+&lt;h3 id="构建执行图"&gt;构建执行图&lt;/h3&gt;
+&lt;p&gt;&lt;code&gt;ToolNode&lt;/code&gt; 负责执行模型产生的 Tool Call，&lt;code&gt;tools_condition&lt;/code&gt; 则根据模型输出决定进入 Tool Node 还是结束工作流。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;from&lt;/span&gt; langgraph.checkpoint.memory &lt;span style="color:#f92672"&gt;import&lt;/span&gt; InMemorySaver
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;from&lt;/span&gt; langgraph.graph &lt;span style="color:#f92672"&gt;import&lt;/span&gt; START, StateGraph
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;from&lt;/span&gt; langgraph.prebuilt &lt;span style="color:#f92672"&gt;import&lt;/span&gt; ToolNode, tools_condition
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;builder &lt;span style="color:#f92672"&gt;=&lt;/span&gt; StateGraph(MessagesState)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;builder&lt;span style="color:#f92672"&gt;.&lt;/span&gt;add_node(&lt;span style="color:#e6db74"&gt;&amp;#34;agent&amp;#34;&lt;/span&gt;, call_model)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;builder&lt;span style="color:#f92672"&gt;.&lt;/span&gt;add_node(&lt;span style="color:#e6db74"&gt;&amp;#34;tools&amp;#34;&lt;/span&gt;, ToolNode(tools))
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;builder&lt;span style="color:#f92672"&gt;.&lt;/span&gt;add_edge(START, &lt;span style="color:#e6db74"&gt;&amp;#34;agent&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;builder&lt;span style="color:#f92672"&gt;.&lt;/span&gt;add_conditional_edges(&lt;span style="color:#e6db74"&gt;&amp;#34;agent&amp;#34;&lt;/span&gt;, tools_condition)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;builder&lt;span style="color:#f92672"&gt;.&lt;/span&gt;add_edge(&lt;span style="color:#e6db74"&gt;&amp;#34;tools&amp;#34;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#34;agent&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;checkpointer &lt;span style="color:#f92672"&gt;=&lt;/span&gt; InMemorySaver()
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;graph &lt;span style="color:#f92672"&gt;=&lt;/span&gt; builder&lt;span style="color:#f92672"&gt;.&lt;/span&gt;compile(checkpointer&lt;span style="color:#f92672"&gt;=&lt;/span&gt;checkpointer)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;StateGraph&lt;/code&gt; 只是构建器，调用 &lt;code&gt;compile()&lt;/code&gt; 后才会得到可以执行的 Graph。这里加入了内存 Checkpointer，用于在同一个 Thread 中保存每一步的 State。&lt;/p&gt;
+&lt;h3 id="运行-agent"&gt;运行 Agent&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;config &lt;span style="color:#f92672"&gt;=&lt;/span&gt; {&lt;span style="color:#e6db74"&gt;&amp;#34;configurable&amp;#34;&lt;/span&gt;: {&lt;span style="color:#e6db74"&gt;&amp;#34;thread_id&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;demo-thread&amp;#34;&lt;/span&gt;}}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;inputs &lt;span style="color:#f92672"&gt;=&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;messages&amp;#34;&lt;/span&gt;: [
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; {&lt;span style="color:#e6db74"&gt;&amp;#34;role&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;user&amp;#34;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#34;content&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;上海和深圳哪个城市更热？&amp;#34;&lt;/span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ]
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;for&lt;/span&gt; state &lt;span style="color:#f92672"&gt;in&lt;/span&gt; graph&lt;span style="color:#f92672"&gt;.&lt;/span&gt;stream(inputs, config, stream_mode&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;values&amp;#34;&lt;/span&gt;):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; state[&lt;span style="color:#e6db74"&gt;&amp;#34;messages&amp;#34;&lt;/span&gt;][&lt;span style="color:#f92672"&gt;-&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;]&lt;span style="color:#f92672"&gt;.&lt;/span&gt;pretty_print()
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;执行过程如下：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;用户消息进入 &lt;code&gt;agent&lt;/code&gt; 节点；&lt;/li&gt;
+&lt;li&gt;模型生成两个天气 Tool Call；&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;tools_condition&lt;/code&gt; 把执行路径路由到 &lt;code&gt;tools&lt;/code&gt;；&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;ToolNode&lt;/code&gt; 执行工具并把结果写入消息列表；&lt;/li&gt;
+&lt;li&gt;图重新进入 &lt;code&gt;agent&lt;/code&gt;；&lt;/li&gt;
+&lt;li&gt;模型比较工具结果并生成最终回答；&lt;/li&gt;
+&lt;li&gt;没有新的 Tool Call，图进入 &lt;code&gt;END&lt;/code&gt;。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2 id="多轮对话与持久化"&gt;多轮对话与持久化&lt;/h2&gt;
+&lt;p&gt;Checkpointer 会按照 &lt;code&gt;thread_id&lt;/code&gt; 保存 Graph State。下一次调用使用相同的 Thread ID，Agent 就能继续之前的对话：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;follow_up &lt;span style="color:#f92672"&gt;=&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;messages&amp;#34;&lt;/span&gt;: [
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; {&lt;span style="color:#e6db74"&gt;&amp;#34;role&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;user&amp;#34;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#34;content&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;那北京呢？&amp;#34;&lt;/span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ]
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;result &lt;span style="color:#f92672"&gt;=&lt;/span&gt; graph&lt;span style="color:#f92672"&gt;.&lt;/span&gt;invoke(follow_up, config)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;print(result[&lt;span style="color:#e6db74"&gt;&amp;#34;messages&amp;#34;&lt;/span&gt;][&lt;span style="color:#f92672"&gt;-&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;]&lt;span style="color:#f92672"&gt;.&lt;/span&gt;content)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;code&gt;InMemorySaver&lt;/code&gt; 适合本地开发和测试，进程退出后数据就会消失。生产环境应该使用持久化 Checkpointer，例如 PostgreSQL，或者使用自动管理持久化的 Agent Server。&lt;/p&gt;
+&lt;p&gt;Checkpoint 不只是聊天记忆，它还支持：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;从失败前的成功步骤继续执行；&lt;/li&gt;
+&lt;li&gt;查看每个节点执行后的 State；&lt;/li&gt;
+&lt;li&gt;回到历史 Checkpoint 进行调试；&lt;/li&gt;
+&lt;li&gt;暂停工作流并等待人工输入。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="human-in-the-loop"&gt;Human-in-the-loop&lt;/h2&gt;
+&lt;p&gt;当 Agent 准备执行发送消息、修改数据或产生费用等高风险操作时，可以使用 &lt;code&gt;interrupt()&lt;/code&gt; 暂停 Graph：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;from&lt;/span&gt; langgraph.types &lt;span style="color:#f92672"&gt;import&lt;/span&gt; Command, interrupt
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;review_action&lt;/span&gt;(state):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; decision &lt;span style="color:#f92672"&gt;=&lt;/span&gt; interrupt(
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;question&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;是否允许执行该操作？&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;action&amp;#34;&lt;/span&gt;: state[&lt;span style="color:#e6db74"&gt;&amp;#34;pending_action&amp;#34;&lt;/span&gt;],
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; )
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; {&lt;span style="color:#e6db74"&gt;&amp;#34;decision&amp;#34;&lt;/span&gt;: decision}
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Graph 会保存当前 State，并把审批请求返回给调用方。审批完成后，使用相同的 &lt;code&gt;thread_id&lt;/code&gt; 恢复执行：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;graph&lt;span style="color:#f92672"&gt;.&lt;/span&gt;invoke(Command(resume&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;approve&amp;#34;&lt;/span&gt;), config)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;恢复时，包含 &lt;code&gt;interrupt()&lt;/code&gt; 的节点会从头重新执行。因此，应把不可重复的副作用放在审批之后，并保证可能重试的节点具有幂等性。&lt;/p&gt;
+&lt;h2 id="生产实践"&gt;生产实践&lt;/h2&gt;
+&lt;h3 id="state-保持精简"&gt;State 保持精简&lt;/h3&gt;
+&lt;p&gt;State 应保存控制流程需要的数据，而不是无限增长的原始内容。长对话需要裁剪、摘要或外部存储，否则模型上下文和 Checkpoint 都会不断膨胀。&lt;/p&gt;
+&lt;h3 id="tool-保持单一职责"&gt;Tool 保持单一职责&lt;/h3&gt;
+&lt;p&gt;每个 Tool 应完成一个清晰动作，并使用严格的参数类型。读操作和写操作最好分开，写操作可以单独接入审批节点。&lt;/p&gt;
+&lt;h3 id="处理错误与重试"&gt;处理错误与重试&lt;/h3&gt;
+&lt;p&gt;外部 API 可能超时或限流。根据异常类型配置重试策略，不要让模型在未知错误上无限循环。工具错误应该返回足够的信息供模型调整，但不能泄露凭据和内部实现。&lt;/p&gt;
+&lt;h3 id="控制循环"&gt;控制循环&lt;/h3&gt;
+&lt;p&gt;Agent 可能因为错误的 Tool Call 不断循环。生产环境需要限制执行步数、调用次数和总超时时间，并为无法完成的任务提供明确的退出路径。&lt;/p&gt;
+&lt;h3 id="持久化前考虑幂等性"&gt;持久化前考虑幂等性&lt;/h3&gt;
+&lt;p&gt;恢复和重试可能再次执行节点。支付、发送消息或写数据库等操作应使用幂等键，避免产生重复副作用。&lt;/p&gt;
+&lt;h3 id="增加可观测性"&gt;增加可观测性&lt;/h3&gt;
+&lt;p&gt;Agent 的问题通常不是单个函数报错，而是选择了错误路径或错误工具。应记录节点输入输出、Tool Call、延迟、Token 使用量和最终执行路径，并使用 LangSmith 等工具进行追踪和评估。&lt;/p&gt;
+&lt;h2 id="什么时候使用-langgraph"&gt;什么时候使用 LangGraph&lt;/h2&gt;
+&lt;p&gt;适合直接使用 LangGraph 的场景包括：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Agent 有明确的多步骤流程和条件分支；&lt;/li&gt;
+&lt;li&gt;需要暂停、恢复或长时间运行；&lt;/li&gt;
+&lt;li&gt;需要保存状态或跨会话记忆；&lt;/li&gt;
+&lt;li&gt;高风险 Tool 必须经过人工审批；&lt;/li&gt;
+&lt;li&gt;需要多个 Agent 或子图协作；&lt;/li&gt;
+&lt;li&gt;需要精确控制失败重试和执行路径。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;如果需求只是“模型调用几个工具并回答问题”，优先从高层 Agent API 开始。只有当默认循环无法表达业务流程时，再下沉到 LangGraph。这样既能保留开发效率，也不会过早引入复杂度。&lt;/p&gt;
+&lt;h2 id="参考资料"&gt;参考资料&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class="link" href="https://docs.langchain.com/oss/python/langgraph/overview" target="_blank" rel="noopener"
+&gt;LangGraph overview&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="link" href="https://docs.langchain.com/oss/python/langgraph/graph-api" target="_blank" rel="noopener"
+&gt;Graph API overview&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="link" href="https://docs.langchain.com/oss/python/langchain/tools" target="_blank" rel="noopener"
+&gt;Tools&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="link" href="https://docs.langchain.com/oss/python/langgraph/persistence" target="_blank" rel="noopener"
+&gt;Persistence&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="link" href="https://docs.langchain.com/oss/python/langchain/human-in-the-loop" target="_blank" rel="noopener"
+&gt;Human-in-the-loop&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>Spec-Driven Development</title><link>https://canuxcheng.com/post/ai_sdd/</link><pubDate>Wed, 17 Jun 2026 10:00:00 +0800</pubDate><guid>https://canuxcheng.com/post/ai_sdd/</guid><description>&lt;h1 id="spec-driven-development"&gt;Spec-Driven Development&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;Spec-Driven Development (SDD)&lt;/strong&gt; is a methodology for building software with AI
+coding agents where the &lt;em&gt;specification&lt;/em&gt;, not the code, is the primary artifact.
+Instead of prompting an agent ad-hoc and hoping the output is correct, you first
+write down &lt;em&gt;what&lt;/em&gt; you want — requirements, scenarios, constraints — and let the
+spec drive the plan, the tasks, and finally the implementation.&lt;/p&gt;
+&lt;p&gt;The core idea: AI agents are powerful but unpredictable. A natural-language
+prompt is lossy and easy to misread, and the larger the change, the more drift
+accumulates. A spec turns intent into a reviewable, version-controlled,
+executable contract. Humans and agents align &lt;em&gt;before&lt;/em&gt; code is written, and the
+spec stays as living documentation afterwards.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="why-sdd"&gt;Why SDD&lt;/h2&gt;
+&lt;p&gt;The classic &amp;ldquo;vibe coding&amp;rdquo; loop (prompt → diff → fix → prompt again) breaks down
+as soon as the task is non-trivial:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Ambiguity.&lt;/strong&gt; The agent fills gaps with assumptions you never see.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Drift.&lt;/strong&gt; Multi-step changes lose the original intent halfway through.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;No source of truth.&lt;/strong&gt; Once the chat is gone, &lt;em&gt;why&lt;/em&gt; the code looks this way
+is gone too.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Hard to review.&lt;/strong&gt; Reviewing a 600-line diff is much harder than reviewing a
+one-page spec that produced it.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;SDD addresses these by inserting an explicit, cheap-to-review specification step
+in front of code generation. The phases are roughly:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Specify&lt;/strong&gt; — what to build and why (requirements, user stories, scenarios).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Plan / Design&lt;/strong&gt; — the technical approach, architecture, trade-offs.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Tasks&lt;/strong&gt; — a checklist of small, independently verifiable units of work.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Implement&lt;/strong&gt; — the agent executes tasks against the spec.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The tools below differ mainly in &lt;em&gt;how heavy&lt;/em&gt; this process is and &lt;em&gt;whether&lt;/em&gt; the
+spec is a living document or a throwaway scaffold.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="github-spec-kit"&gt;GitHub Spec Kit&lt;/h2&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/github/spec-kit" target="_blank" rel="noopener"
+&gt;https://github.com/github/spec-kit&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;GitHub&amp;rsquo;s official, opinionated take on SDD. It ships a CLI (&lt;code&gt;specify&lt;/code&gt;,
+installed via &lt;code&gt;uv&lt;/code&gt;) that bootstraps a project and wires a full set of slash
+commands into your agent of choice.&lt;/p&gt;
+&lt;p&gt;The workflow is a sequence of gated phases:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;/speckit.constitution&lt;/code&gt; — establish project principles and governance.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/speckit.specify&lt;/code&gt; — define requirements and user stories.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/speckit.plan&lt;/code&gt; — create the technical implementation strategy.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/speckit.tasks&lt;/code&gt; — generate an actionable task breakdown.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/speckit.implement&lt;/code&gt; — execute the tasks systematically.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Plus optional helpers: &lt;code&gt;/speckit.clarify&lt;/code&gt; (resolve ambiguities before
+planning), &lt;code&gt;/speckit.analyze&lt;/code&gt; (cross-artifact consistency checks), and
+&lt;code&gt;/speckit.checklist&lt;/code&gt; (custom quality gates).&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;uv tool install specify-cli
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;specify init my-project
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;specify integration list &lt;span style="color:#75715e"&gt;# 30+ supported agents&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Pros&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Backed by GitHub; mature, well-documented, actively developed.&lt;/li&gt;
+&lt;li&gt;Genuinely thorough — the constitution + clarify + analyze steps catch
+ambiguity and inconsistency early.&lt;/li&gt;
+&lt;li&gt;Technology-agnostic; supports 30+ agents (Copilot, Claude Code, Gemini CLI,
+Cursor, Codex CLI, …).&lt;/li&gt;
+&lt;li&gt;TDD-compatible task generation and parallel-task markers.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Cons&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Heavyweight. The full phase sequence is overkill for small changes.&lt;/li&gt;
+&lt;li&gt;Requires Python 3.11+, &lt;code&gt;uv&lt;/code&gt;, and Git just to bootstrap.&lt;/li&gt;
+&lt;li&gt;Strongly greenfield-flavored; the constitution/specify flow assumes you are
+starting something new rather than evolving an existing codebase.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Best for:&lt;/strong&gt; new projects, larger features, and teams that want a rigorous,
+repeatable process with explicit governance and review gates.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="openspec"&gt;OpenSpec&lt;/h2&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/Fission-AI/OpenSpec" target="_blank" rel="noopener"
+&gt;https://github.com/Fission-AI/OpenSpec&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;A lightweight, change-oriented alternative. Rather than treating the spec as a
+one-shot scaffold, OpenSpec maintains &lt;em&gt;living&lt;/em&gt; specs and models work as a series
+of &lt;strong&gt;change proposals&lt;/strong&gt; layered on top of them.&lt;/p&gt;
+&lt;p&gt;The repository keeps two key areas:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;specs/&lt;/code&gt; — the current, agreed-upon truth (what the system &lt;em&gt;does&lt;/em&gt; today).&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;changes/&lt;/code&gt; — proposed deltas (a proposal, spec changes, design notes, and a
+task checklist) for work in flight.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The loop is intentionally small:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;/opsx:propose&lt;/code&gt; — open a new change proposal.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/opsx:apply&lt;/code&gt; — implement the proposed tasks.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/opsx:archive&lt;/code&gt; — fold a completed change back into the specs and archive it.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;npx openspec init &lt;span style="color:#75715e"&gt;# also: openspec update to refresh agent instructions&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Pros&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Lightweight and fluid — iterates without rigid phase gates.&lt;/li&gt;
+&lt;li&gt;Equally at home in &lt;strong&gt;brownfield&lt;/strong&gt; codebases; the spec/change split is built
+exactly for evolving existing systems.&lt;/li&gt;
+&lt;li&gt;Specs are durable living documentation, not throwaway scaffolding.&lt;/li&gt;
+&lt;li&gt;Node-based, minimal setup; integrates with 25+ tools.&lt;/li&gt;
+&lt;li&gt;MIT licensed.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Cons&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Younger and smaller community than Spec Kit.&lt;/li&gt;
+&lt;li&gt;Fewer built-in quality gates — the discipline of clarify/analyze is on you.&lt;/li&gt;
+&lt;li&gt;The change/archive model takes a little practice to internalize.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Best for:&lt;/strong&gt; ongoing work on existing codebases, incremental features, and
+developers who want alignment-before-code without ceremony.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="other-notable-tools"&gt;Other notable tools&lt;/h2&gt;
+&lt;p&gt;Two more worth knowing about, since they take meaningfully different shapes:&lt;/p&gt;
+&lt;h3 id="amazon-kiro"&gt;Amazon Kiro&lt;/h3&gt;
+&lt;p&gt;&lt;a class="link" href="https://kiro.dev/" target="_blank" rel="noopener"
+&gt;https://kiro.dev/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;An agentic IDE (rather than a CLI add-on) with SDD as a first-class feature.
+From a prompt it generates three artifacts — &lt;code&gt;requirements.md&lt;/code&gt; (EARS-style
+acceptance criteria), &lt;code&gt;design.md&lt;/code&gt;, and &lt;code&gt;tasks.md&lt;/code&gt; — and keeps them in sync as
+you build. &lt;strong&gt;Pros:&lt;/strong&gt; integrated end-to-end experience, structured requirements,
+strong onboarding. &lt;strong&gt;Cons:&lt;/strong&gt; it&amp;rsquo;s a whole IDE to adopt and is more of a walled
+garden than the editor-agnostic CLIs above. &lt;strong&gt;Best for:&lt;/strong&gt; developers willing to
+switch IDEs for a tightly integrated spec-to-code workflow.&lt;/p&gt;
+&lt;h3 id="bmad-method"&gt;BMAD-METHOD&lt;/h3&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/bmad-code-org/BMAD-METHOD" target="_blank" rel="noopener"
+&gt;https://github.com/bmad-code-org/BMAD-METHOD&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&amp;ldquo;Breakthrough Method of Agile AI-Driven Development.&amp;rdquo; Less a spec format and
+more an &lt;em&gt;agentic team&lt;/em&gt;: specialized agents (Analyst, PM, Architect, Scrum
+Master, Dev) collaborate to produce a PRD and architecture, then shard them into
+hyper-detailed story files that carry full context into implementation.
+&lt;strong&gt;Pros:&lt;/strong&gt; rich, role-based planning; great for complex, multi-feature products.
+&lt;strong&gt;Cons:&lt;/strong&gt; the most ceremony of the bunch; a real learning curve. &lt;strong&gt;Best for:&lt;/strong&gt;
+ambitious greenfield products where up-front planning genuinely pays off.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="how-to-choose"&gt;How to choose&lt;/h2&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Tool&lt;/th&gt;
+&lt;th&gt;Weight&lt;/th&gt;
+&lt;th&gt;Greenfield&lt;/th&gt;
+&lt;th&gt;Brownfield&lt;/th&gt;
+&lt;th&gt;Setup&lt;/th&gt;
+&lt;th&gt;Living specs&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Spec Kit&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Heavy&lt;/td&gt;
+&lt;td&gt;Excellent&lt;/td&gt;
+&lt;td&gt;OK&lt;/td&gt;
+&lt;td&gt;Python + uv&lt;/td&gt;
+&lt;td&gt;Per-feature&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;OpenSpec&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Light&lt;/td&gt;
+&lt;td&gt;Good&lt;/td&gt;
+&lt;td&gt;Excellent&lt;/td&gt;
+&lt;td&gt;Node&lt;/td&gt;
+&lt;td&gt;Yes (specs/)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Kiro&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Medium&lt;/td&gt;
+&lt;td&gt;Excellent&lt;/td&gt;
+&lt;td&gt;Good&lt;/td&gt;
+&lt;td&gt;Dedicated IDE&lt;/td&gt;
+&lt;td&gt;Yes&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;BMAD-METHOD&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Heavy&lt;/td&gt;
+&lt;td&gt;Excellent&lt;/td&gt;
+&lt;td&gt;OK&lt;/td&gt;
+&lt;td&gt;Node/agents&lt;/td&gt;
+&lt;td&gt;PRD + stories&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;A practical rule of thumb:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Starting a &lt;strong&gt;new project&lt;/strong&gt; and want rigor → &lt;strong&gt;Spec Kit&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Evolving an &lt;strong&gt;existing codebase&lt;/strong&gt; and want speed → &lt;strong&gt;OpenSpec&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Want an &lt;strong&gt;all-in-one IDE&lt;/strong&gt; experience → &lt;strong&gt;Kiro&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Building an &lt;strong&gt;ambitious product&lt;/strong&gt; with heavy planning needs → &lt;strong&gt;BMAD-METHOD&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;All four are MIT/open and agent-agnostic enough to try in an afternoon. The
+common thread — and the real takeaway — is this: write the spec first, review
+the spec (not the diff), and let intent, not vibes, drive the agent.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="resources"&gt;Resources&lt;/h2&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/github/spec-kit" target="_blank" rel="noopener"
+&gt;https://github.com/github/spec-kit&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/Fission-AI/OpenSpec" target="_blank" rel="noopener"
+&gt;https://github.com/Fission-AI/OpenSpec&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://kiro.dev/" target="_blank" rel="noopener"
+&gt;https://kiro.dev/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/bmad-code-org/BMAD-METHOD" target="_blank" rel="noopener"
+&gt;https://github.com/bmad-code-org/BMAD-METHOD&lt;/a&gt;&lt;/p&gt;</description></item><item><title>LangChain</title><link>https://canuxcheng.com/post/ai_langchain/</link><pubDate>Sat, 19 Jul 2025 11:17:34 +0800</pubDate><guid>https://canuxcheng.com/post/ai_langchain/</guid><description>&lt;p&gt;LangChain 是一个用于开发 LLM 应用和 AI Agent 的开源框架。它统一了不同模型提供商的调用方式，并提供 Messages、Tools、Agents、Middleware、Retrieval 和 Structured Output 等组件。&lt;/p&gt;
+&lt;p&gt;LangChain 的重点不是封装一次模型请求，而是把模型与外部数据、工具和应用控制逻辑组合起来。开发者可以先使用高层 API 快速构建 Agent，再在需要精确控制执行路径时下沉到 LangGraph。&lt;/p&gt;
+&lt;h2 id="langchain-生态"&gt;LangChain 生态&lt;/h2&gt;
+&lt;p&gt;LangChain 生态中的几个项目各有职责：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;项目&lt;/th&gt;
+&lt;th&gt;主要职责&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;LangChain&lt;/td&gt;
+&lt;td&gt;模型、Tool、Agent、Middleware 和 Retrieval 等开发框架&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LangGraph&lt;/td&gt;
+&lt;td&gt;有状态、可恢复的底层 Agent 编排运行时&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LangSmith&lt;/td&gt;
+&lt;td&gt;Trace、评估、测试和生产可观测性&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Deep Agents&lt;/td&gt;
+&lt;td&gt;在 LangGraph 之上提供规划、子 Agent、文件系统和上下文管理能力&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;code&gt;create_agent&lt;/code&gt; 创建的 Agent 底层运行在 LangGraph 上，因此也支持 State、Checkpoint、Streaming 和 Human-in-the-loop。大多数项目可以从 LangChain 开始，不需要一开始就手写 Graph。&lt;/p&gt;
+&lt;h2 id="核心组件"&gt;核心组件&lt;/h2&gt;
+&lt;h3 id="models"&gt;Models&lt;/h3&gt;
+&lt;p&gt;LangChain 使用统一接口连接不同模型提供商。应用可以使用 &lt;code&gt;invoke()&lt;/code&gt;、&lt;code&gt;stream()&lt;/code&gt;、&lt;code&gt;batch()&lt;/code&gt; 和对应的异步方法调用模型，而不需要让业务逻辑依赖某一个 SDK。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;from&lt;/span&gt; langchain.chat_models &lt;span style="color:#f92672"&gt;import&lt;/span&gt; init_chat_model
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;model &lt;span style="color:#f92672"&gt;=&lt;/span&gt; init_chat_model(&lt;span style="color:#e6db74"&gt;&amp;#34;openai:gpt-5.4&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;response &lt;span style="color:#f92672"&gt;=&lt;/span&gt; model&lt;span style="color:#f92672"&gt;.&lt;/span&gt;invoke(
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; [
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; {&lt;span style="color:#e6db74"&gt;&amp;#34;role&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;system&amp;#34;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#34;content&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;你是一名简洁的技术助手。&amp;#34;&lt;/span&gt;},
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; {&lt;span style="color:#e6db74"&gt;&amp;#34;role&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;user&amp;#34;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#34;content&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;用一句话解释 Tool Calling。&amp;#34;&lt;/span&gt;},
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ]
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;print(response&lt;span style="color:#f92672"&gt;.&lt;/span&gt;content)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;模型集成通常放在独立的 Provider Package 中。更换模型时除了修改模型名称，还需要安装相应集成包并配置该提供商的凭据。&lt;/p&gt;
+&lt;h3 id="messages"&gt;Messages&lt;/h3&gt;
+&lt;p&gt;Messages 是模型交互的标准数据结构。常见角色包括：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;System Message：定义模型角色和约束；&lt;/li&gt;
+&lt;li&gt;Human Message：用户输入；&lt;/li&gt;
+&lt;li&gt;AI Message：模型输出，可能包含 Tool Call；&lt;/li&gt;
+&lt;li&gt;Tool Message：工具执行结果。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;使用 Messages 而不是拼接字符串，可以保留角色、Tool Call、Token Usage 和其他元数据。&lt;/p&gt;
+&lt;h3 id="tools"&gt;Tools&lt;/h3&gt;
+&lt;p&gt;Tool 让模型可以读取实时数据或执行外部操作。普通 Python 函数可以通过 &lt;code&gt;@tool&lt;/code&gt; 转换为 Tool：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;from&lt;/span&gt; langchain.tools &lt;span style="color:#f92672"&gt;import&lt;/span&gt; tool
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;@tool&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;get_weather&lt;/span&gt;(city: str) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; str:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;&amp;#34;&amp;#34;查询指定城市当前的天气。&amp;#34;&amp;#34;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; weather &lt;span style="color:#f92672"&gt;=&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;北京&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;晴，26°C&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;上海&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;多云，29°C&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;深圳&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;阵雨，31°C&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; weather&lt;span style="color:#f92672"&gt;.&lt;/span&gt;get(city, &lt;span style="color:#e6db74"&gt;f&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;暂时没有 &lt;/span&gt;&lt;span style="color:#e6db74"&gt;{&lt;/span&gt;city&lt;span style="color:#e6db74"&gt;}&lt;/span&gt;&lt;span style="color:#e6db74"&gt; 的天气数据&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;函数名、类型标注和 Docstring 会共同构成 Tool Schema。描述越准确，模型越容易在正确的时机选择正确的工具。&lt;/p&gt;
+&lt;p&gt;Tool 应保持单一职责。查询和修改操作最好拆开，敏感参数应由运行时注入，不要暴露给模型。&lt;/p&gt;
+&lt;h2 id="开发一个-agent"&gt;开发一个 Agent&lt;/h2&gt;
+&lt;h3 id="安装依赖"&gt;安装依赖&lt;/h3&gt;
+&lt;p&gt;下面以 OpenAI Provider 为例：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;python -m venv .venv
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;source .venv/bin/activate
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;pip install -U &lt;span style="color:#e6db74"&gt;&amp;#34;langchain[openai]&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;通过环境变量配置凭据，不要把 API Key 写进源代码：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;export OPENAI_API_KEY&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;...&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="创建-tool-calling-agent"&gt;创建 Tool-calling Agent&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;from&lt;/span&gt; langchain.agents &lt;span style="color:#f92672"&gt;import&lt;/span&gt; create_agent
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;from&lt;/span&gt; langchain.tools &lt;span style="color:#f92672"&gt;import&lt;/span&gt; tool
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;@tool&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;get_weather&lt;/span&gt;(city: str) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; str:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;&amp;#34;&amp;#34;查询指定城市当前的天气。&amp;#34;&amp;#34;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; weather &lt;span style="color:#f92672"&gt;=&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;北京&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;晴，26°C&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;上海&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;多云，29°C&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;深圳&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;阵雨，31°C&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; weather&lt;span style="color:#f92672"&gt;.&lt;/span&gt;get(city, &lt;span style="color:#e6db74"&gt;f&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;暂时没有 &lt;/span&gt;&lt;span style="color:#e6db74"&gt;{&lt;/span&gt;city&lt;span style="color:#e6db74"&gt;}&lt;/span&gt;&lt;span style="color:#e6db74"&gt; 的天气数据&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;agent &lt;span style="color:#f92672"&gt;=&lt;/span&gt; create_agent(
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; model&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;openai:gpt-5.4&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; tools&lt;span style="color:#f92672"&gt;=&lt;/span&gt;[get_weather],
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; system_prompt&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;你是天气助手。需要天气数据时调用工具，不要编造结果。&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;result &lt;span style="color:#f92672"&gt;=&lt;/span&gt; agent&lt;span style="color:#f92672"&gt;.&lt;/span&gt;invoke(
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;messages&amp;#34;&lt;/span&gt;: [
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; {&lt;span style="color:#e6db74"&gt;&amp;#34;role&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;user&amp;#34;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#34;content&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;上海和深圳哪个城市更热？&amp;#34;&lt;/span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ]
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;result[&lt;span style="color:#e6db74"&gt;&amp;#34;messages&amp;#34;&lt;/span&gt;][&lt;span style="color:#f92672"&gt;-&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;]&lt;span style="color:#f92672"&gt;.&lt;/span&gt;pretty_print()
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Agent 的执行循环是：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-text" data-lang="text"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;用户输入 → 模型判断 → 调用 Tool → 读取结果 → 模型继续判断 → 最终回答
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;如果模型一次生成多个 Tool Call，Agent 可以执行这些工具后再把结果交回模型。当模型不再请求工具时，循环结束。&lt;/p&gt;
+&lt;h2 id="structured-output"&gt;Structured Output&lt;/h2&gt;
+&lt;p&gt;如果下游代码需要稳定的数据结构，不应该依赖自然语言解析。可以通过 Pydantic Schema 要求 Agent 返回结构化结果：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;from&lt;/span&gt; pydantic &lt;span style="color:#f92672"&gt;import&lt;/span&gt; BaseModel, Field
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;from&lt;/span&gt; langchain.agents &lt;span style="color:#f92672"&gt;import&lt;/span&gt; create_agent
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;class&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;WeatherResult&lt;/span&gt;(BaseModel):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; city: str &lt;span style="color:#f92672"&gt;=&lt;/span&gt; Field(description&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;城市名称&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; condition: str &lt;span style="color:#f92672"&gt;=&lt;/span&gt; Field(description&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;天气情况&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; temperature_celsius: float &lt;span style="color:#f92672"&gt;=&lt;/span&gt; Field(description&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;摄氏温度&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;structured_agent &lt;span style="color:#f92672"&gt;=&lt;/span&gt; create_agent(
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; model&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;openai:gpt-5.4&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; tools&lt;span style="color:#f92672"&gt;=&lt;/span&gt;[get_weather],
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; response_format&lt;span style="color:#f92672"&gt;=&lt;/span&gt;WeatherResult,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;result &lt;span style="color:#f92672"&gt;=&lt;/span&gt; structured_agent&lt;span style="color:#f92672"&gt;.&lt;/span&gt;invoke(
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; {&lt;span style="color:#e6db74"&gt;&amp;#34;messages&amp;#34;&lt;/span&gt;: [{&lt;span style="color:#e6db74"&gt;&amp;#34;role&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;user&amp;#34;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#34;content&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;上海天气如何？&amp;#34;&lt;/span&gt;}]}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;weather &lt;span style="color:#f92672"&gt;=&lt;/span&gt; result[&lt;span style="color:#e6db74"&gt;&amp;#34;structured_response&amp;#34;&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;print(weather&lt;span style="color:#f92672"&gt;.&lt;/span&gt;temperature_celsius)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;对于支持原生 Structured Output 的模型，LangChain 会优先使用 Provider 能力；否则可以使用 Tool Calling 生成符合 Schema 的结果。&lt;/p&gt;
+&lt;h2 id="memory"&gt;Memory&lt;/h2&gt;
+&lt;p&gt;Agent 的短期记忆保存在 State 中。加入 Checkpointer 后，可以使用 &lt;code&gt;thread_id&lt;/code&gt; 隔离和恢复不同会话：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;from&lt;/span&gt; langchain.agents &lt;span style="color:#f92672"&gt;import&lt;/span&gt; create_agent
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;from&lt;/span&gt; langgraph.checkpoint.memory &lt;span style="color:#f92672"&gt;import&lt;/span&gt; InMemorySaver
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;checkpointer &lt;span style="color:#f92672"&gt;=&lt;/span&gt; InMemorySaver()
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;agent &lt;span style="color:#f92672"&gt;=&lt;/span&gt; create_agent(
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; model&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;openai:gpt-5.4&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; tools&lt;span style="color:#f92672"&gt;=&lt;/span&gt;[get_weather],
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; checkpointer&lt;span style="color:#f92672"&gt;=&lt;/span&gt;checkpointer,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;config &lt;span style="color:#f92672"&gt;=&lt;/span&gt; {&lt;span style="color:#e6db74"&gt;&amp;#34;configurable&amp;#34;&lt;/span&gt;: {&lt;span style="color:#e6db74"&gt;&amp;#34;thread_id&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;demo-thread&amp;#34;&lt;/span&gt;}}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;agent&lt;span style="color:#f92672"&gt;.&lt;/span&gt;invoke(
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; {&lt;span style="color:#e6db74"&gt;&amp;#34;messages&amp;#34;&lt;/span&gt;: [{&lt;span style="color:#e6db74"&gt;&amp;#34;role&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;user&amp;#34;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#34;content&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;我准备去上海。&amp;#34;&lt;/span&gt;}]},
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; config,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;result &lt;span style="color:#f92672"&gt;=&lt;/span&gt; agent&lt;span style="color:#f92672"&gt;.&lt;/span&gt;invoke(
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; {&lt;span style="color:#e6db74"&gt;&amp;#34;messages&amp;#34;&lt;/span&gt;: [{&lt;span style="color:#e6db74"&gt;&amp;#34;role&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;user&amp;#34;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#34;content&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;那里的天气如何？&amp;#34;&lt;/span&gt;}]},
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; config,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;同一个 &lt;code&gt;thread_id&lt;/code&gt; 会继续之前的消息历史，不同 Thread 之间相互隔离。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;InMemorySaver&lt;/code&gt; 只适合开发和测试。生产环境应使用持久化 Checkpointer，并对长对话进行裁剪或摘要，避免上下文无限增长。&lt;/p&gt;
+&lt;h2 id="middleware"&gt;Middleware&lt;/h2&gt;
+&lt;p&gt;Middleware 可以在 Agent 循环的关键位置插入控制逻辑，而不需要修改 Agent 本身。常见用途包括：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;自动摘要过长的对话；&lt;/li&gt;
+&lt;li&gt;限制模型或 Tool 调用次数；&lt;/li&gt;
+&lt;li&gt;重试和模型降级；&lt;/li&gt;
+&lt;li&gt;PII 检测与脱敏；&lt;/li&gt;
+&lt;li&gt;动态选择模型和 Tool；&lt;/li&gt;
+&lt;li&gt;记录日志、延迟和 Token 使用量；&lt;/li&gt;
+&lt;li&gt;在敏感操作前请求人工审批。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="human-in-the-loop"&gt;Human-in-the-loop&lt;/h3&gt;
+&lt;p&gt;下面的 Agent 会在执行订单操作前暂停，等待人工批准、修改或拒绝：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;from&lt;/span&gt; langchain.agents &lt;span style="color:#f92672"&gt;import&lt;/span&gt; create_agent
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;from&lt;/span&gt; langchain.agents.middleware &lt;span style="color:#f92672"&gt;import&lt;/span&gt; HumanInTheLoopMiddleware
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;from&lt;/span&gt; langchain.tools &lt;span style="color:#f92672"&gt;import&lt;/span&gt; tool
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;from&lt;/span&gt; langgraph.checkpoint.memory &lt;span style="color:#f92672"&gt;import&lt;/span&gt; InMemorySaver
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;from&lt;/span&gt; langgraph.types &lt;span style="color:#f92672"&gt;import&lt;/span&gt; Command
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;@tool&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;submit_order&lt;/span&gt;(item: str, quantity: int) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; str:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;&amp;#34;&amp;#34;提交商品订单。&amp;#34;&amp;#34;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; &lt;span style="color:#e6db74"&gt;f&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;已提交 &lt;/span&gt;&lt;span style="color:#e6db74"&gt;{&lt;/span&gt;quantity&lt;span style="color:#e6db74"&gt;}&lt;/span&gt;&lt;span style="color:#e6db74"&gt; 件 &lt;/span&gt;&lt;span style="color:#e6db74"&gt;{&lt;/span&gt;item&lt;span style="color:#e6db74"&gt;}&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;agent &lt;span style="color:#f92672"&gt;=&lt;/span&gt; create_agent(
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; model&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;openai:gpt-5.4&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; tools&lt;span style="color:#f92672"&gt;=&lt;/span&gt;[submit_order],
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; middleware&lt;span style="color:#f92672"&gt;=&lt;/span&gt;[
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; HumanInTheLoopMiddleware(
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; interrupt_on&lt;span style="color:#f92672"&gt;=&lt;/span&gt;{&lt;span style="color:#e6db74"&gt;&amp;#34;submit_order&amp;#34;&lt;/span&gt;: &lt;span style="color:#66d9ef"&gt;True&lt;/span&gt;},
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; )
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ],
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; checkpointer&lt;span style="color:#f92672"&gt;=&lt;/span&gt;InMemorySaver(),
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;config &lt;span style="color:#f92672"&gt;=&lt;/span&gt; {&lt;span style="color:#e6db74"&gt;&amp;#34;configurable&amp;#34;&lt;/span&gt;: {&lt;span style="color:#e6db74"&gt;&amp;#34;thread_id&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;approval-thread&amp;#34;&lt;/span&gt;}}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;agent&lt;span style="color:#f92672"&gt;.&lt;/span&gt;invoke(
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; {&lt;span style="color:#e6db74"&gt;&amp;#34;messages&amp;#34;&lt;/span&gt;: [{&lt;span style="color:#e6db74"&gt;&amp;#34;role&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;user&amp;#34;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#34;content&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;订购两件显示器&amp;#34;&lt;/span&gt;}]},
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; config,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;agent&lt;span style="color:#f92672"&gt;.&lt;/span&gt;invoke(
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Command(resume&lt;span style="color:#f92672"&gt;=&lt;/span&gt;{&lt;span style="color:#e6db74"&gt;&amp;#34;decisions&amp;#34;&lt;/span&gt;: [{&lt;span style="color:#e6db74"&gt;&amp;#34;type&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;approve&amp;#34;&lt;/span&gt;}]}),
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; config,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;生产环境中的写操作必须具备幂等性，并使用持久化 Checkpointer，确保审批等待期间进程重启也不会丢失 State。&lt;/p&gt;
+&lt;h2 id="retrieval-与-rag"&gt;Retrieval 与 RAG&lt;/h2&gt;
+&lt;p&gt;LLM 的上下文长度有限，训练数据也不是实时知识。Retrieval 会在请求时获取相关外部内容，再让模型基于这些内容回答，这就是 RAG 的基础。&lt;/p&gt;
+&lt;p&gt;LangChain 将 Retrieval 拆成可替换的组件：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-text" data-lang="text"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Document Loader
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ↓
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Text Splitter
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ↓
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Embedding Model
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ↓
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Vector Store
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ↓
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Retriever
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ↓
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Prompt + Model
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;不同场景可以选择不同的 RAG 架构：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;架构&lt;/th&gt;
+&lt;th&gt;特点&lt;/th&gt;
+&lt;th&gt;适用场景&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;2-step RAG&lt;/td&gt;
+&lt;td&gt;每次先检索再生成，流程固定、延迟可预测&lt;/td&gt;
+&lt;td&gt;FAQ、文档问答&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Agentic RAG&lt;/td&gt;
+&lt;td&gt;Agent 自己决定何时检索以及使用哪个数据源&lt;/td&gt;
+&lt;td&gt;研究助手、多数据源查询&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Hybrid RAG&lt;/td&gt;
+&lt;td&gt;加入查询改写、检索验证和答案检查&lt;/td&gt;
+&lt;td&gt;对质量和可控性要求较高的系统&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;如果已经有搜索服务、SQL 数据库或知识库，不需要为了使用 LangChain 重新建立向量数据库。可以把现有系统包装成 Retriever 或 Tool。&lt;/p&gt;
+&lt;h2 id="langchain-与-langgraph-的选择"&gt;LangChain 与 LangGraph 的选择&lt;/h2&gt;
+&lt;p&gt;优先使用 LangChain 的场景：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;调用不同 Provider 的模型；&lt;/li&gt;
+&lt;li&gt;开发标准 Tool-calling Agent；&lt;/li&gt;
+&lt;li&gt;使用 Middleware、Structured Output 或 RAG；&lt;/li&gt;
+&lt;li&gt;希望快速组合现有集成。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;直接使用 LangGraph 的场景：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;工作流包含复杂条件分支或并行节点；&lt;/li&gt;
+&lt;li&gt;需要精确控制 State 和执行路径；&lt;/li&gt;
+&lt;li&gt;需要暂停、恢复、长时间运行或故障恢复；&lt;/li&gt;
+&lt;li&gt;需要多个 Agent 或子图协作。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;两者不是互斥关系。可以先用 &lt;code&gt;create_agent&lt;/code&gt; 构建一个 Agent，再把它作为 Node 或 Subgraph 放入更大的 LangGraph 工作流中。&lt;/p&gt;
+&lt;h2 id="生产实践"&gt;生产实践&lt;/h2&gt;
+&lt;h3 id="明确-tool-边界"&gt;明确 Tool 边界&lt;/h3&gt;
+&lt;p&gt;Tool 的输入必须严格校验。读操作和写操作分离，高风险 Tool 需要权限检查和人工审批。不要让模型直接拼接 SQL、Shell 或其他可执行内容后无条件运行。&lt;/p&gt;
+&lt;h3 id="使用-structured-output"&gt;使用 Structured Output&lt;/h3&gt;
+&lt;p&gt;模型输出需要进入数据库、API 或后续工作流时，应使用 Schema 校验，而不是依赖正则表达式解析自然语言。&lt;/p&gt;
+&lt;h3 id="限制-agent-循环"&gt;限制 Agent 循环&lt;/h3&gt;
+&lt;p&gt;限制模型调用次数、Tool 调用次数、总超时和 Token 预算。Agent 无法完成任务时应该明确退出，而不是无限重试。&lt;/p&gt;
+&lt;h3 id="管理上下文"&gt;管理上下文&lt;/h3&gt;
+&lt;p&gt;只向模型提供当前任务需要的信息。长对话应裁剪或摘要，大型文档应通过 Retrieval 按需加载。&lt;/p&gt;
+&lt;h3 id="增加-trace-与评估"&gt;增加 Trace 与评估&lt;/h3&gt;
+&lt;p&gt;记录 Prompt、模型输出、Tool Call、延迟、错误和执行路径。除了单元测试，还应建立包含正常请求、边界条件和恶意输入的数据集，对 Agent 进行回归评估。&lt;/p&gt;
+&lt;h3 id="保持-provider-可替换"&gt;保持 Provider 可替换&lt;/h3&gt;
+&lt;p&gt;把模型初始化、参数和凭据放在配置层。切换 Provider 时仍需要重新评估 Tool Calling、Structured Output、上下文长度、延迟和成本，不能只修改模型名称就认为行为完全一致。&lt;/p&gt;
+&lt;h2 id="参考资料"&gt;参考资料&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class="link" href="https://docs.langchain.com/oss/python/langchain/overview" target="_blank" rel="noopener"
+&gt;LangChain overview&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="link" href="https://docs.langchain.com/oss/python/langchain/quickstart" target="_blank" rel="noopener"
+&gt;LangChain quickstart&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="link" href="https://docs.langchain.com/oss/python/langchain/agents" target="_blank" rel="noopener"
+&gt;Agents&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="link" href="https://docs.langchain.com/oss/python/langchain/models" target="_blank" rel="noopener"
+&gt;Models&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="link" href="https://docs.langchain.com/oss/python/langchain/middleware/overview" target="_blank" rel="noopener"
+&gt;Middleware&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="link" href="https://docs.langchain.com/oss/python/langchain/retrieval" target="_blank" rel="noopener"
+&gt;Retrieval&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="link" href="https://docs.langchain.com/oss/python/langchain/human-in-the-loop" target="_blank" rel="noopener"
+&gt;Human-in-the-loop&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description></item><item><title>Agent</title><link>https://canuxcheng.com/post/ai_agent/</link><pubDate>Sat, 19 Jul 2025 10:50:10 +0800</pubDate><guid>https://canuxcheng.com/post/ai_agent/</guid><description>&lt;h1 id="agent"&gt;Agent&lt;/h1&gt;
+&lt;h2 id="what-is-an-agent"&gt;What is an agent&lt;/h2&gt;
+&lt;p&gt;An &lt;strong&gt;AI agent&lt;/strong&gt; is an LLM wrapped in a loop that can &lt;em&gt;act&lt;/em&gt;, not just answer. The
+model decides which tool to call, observes the result, and repeats until the
+goal is met. The essential ingredients are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;A model&lt;/strong&gt; — the reasoning engine.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Tools&lt;/strong&gt; — functions it can call (run a command, read a file, search the web).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;A loop&lt;/strong&gt; — plan → act → observe → re-plan, until done.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Context / memory&lt;/strong&gt; — the task, prior steps, and relevant project knowledge.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;A plain chatbot returns text. An agent edits files, runs tests, fixes the
+failures, and reports back — it closes the loop on real work.&lt;/p&gt;
+&lt;h2 id="what-is-an-agent-plugin"&gt;What is an agent plugin&lt;/h2&gt;
+&lt;p&gt;A &lt;strong&gt;plugin&lt;/strong&gt; packages reusable capability so you don&amp;rsquo;t re-teach the agent every
+time. Across today&amp;rsquo;s tools a plugin typically bundles some of:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Slash commands&lt;/strong&gt; — custom prompts/workflows you invoke by name.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Subagents&lt;/strong&gt; — specialized helpers the main agent can delegate to.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Skills&lt;/strong&gt; — domain knowledge loaded on demand.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Hooks&lt;/strong&gt; — scripts that fire on events (e.g. before a commit).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;MCP servers&lt;/strong&gt; — connections to external systems (see &lt;a class="link" href="../ai_mcp/" &gt;MCP&lt;/a&gt;).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Plugins make an agent extensible and shareable: install one and the agent gains
+new commands and integrations instantly.&lt;/p&gt;
+&lt;h2 id="three-mainstream-agents"&gt;Three mainstream agents&lt;/h2&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Agent&lt;/th&gt;
+&lt;th&gt;Form&lt;/th&gt;
+&lt;th&gt;Strength&lt;/th&gt;
+&lt;th&gt;Trade-off&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Claude Code&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;CLI / IDE&lt;/td&gt;
+&lt;td&gt;Deep autonomy, rich plugin + MCP + skills ecosystem&lt;/td&gt;
+&lt;td&gt;Terminal-first; needs a Claude subscription/API&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Cursor&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Full IDE (VS Code fork)&lt;/td&gt;
+&lt;td&gt;Best inline editing UX, multi-model, great for exploration&lt;/td&gt;
+&lt;td&gt;You switch editors; agent autonomy is shallower&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;GitHub Copilot&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;IDE extension + coding agent&lt;/td&gt;
+&lt;td&gt;Native GitHub/PR integration, huge install base&lt;/td&gt;
+&lt;td&gt;Less open/customizable, ecosystem-locked&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;The differences in short:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Claude Code&lt;/strong&gt; is the most &lt;em&gt;agentic&lt;/em&gt; and the most &lt;em&gt;open&lt;/em&gt; to extend — plugins,
+skills, hooks and MCP make it programmable. Best when you want the agent to
+drive multi-step work autonomously.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Cursor&lt;/strong&gt; wins on &lt;em&gt;editing experience&lt;/em&gt;. It&amp;rsquo;s an IDE, so completions,
+diffs and context-picking feel native. Best for hands-on, in-editor coding.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Copilot&lt;/strong&gt; wins on &lt;em&gt;integration and ubiquity&lt;/em&gt;. It lives where your code
+already is (GitHub, VS Code, JetBrains) and its coding agent can take an issue
+to a PR. Best for teams already standardized on GitHub.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;There is no single winner — pick by how much autonomy vs. inline control you
+want, and how much you care about extensibility vs. zero-setup integration.&lt;/p&gt;
+&lt;h2 id="developing-a-plugin"&gt;Developing a plugin&lt;/h2&gt;
+&lt;p&gt;Using Claude Code&amp;rsquo;s plugin system as the concrete example, a plugin is just a
+directory with a manifest plus the components it adds:&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;my-plugin/
+├── .claude-plugin/plugin.json # name, version, description
+├── commands/ # slash commands (markdown prompts)
+├── agents/ # subagent definitions
+├── skills/ # on-demand knowledge
+├── hooks/ # event scripts
+└── .mcp.json # MCP servers to wire in
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The workflow is roughly:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Scaffold the directory and &lt;code&gt;plugin.json&lt;/code&gt; manifest.&lt;/li&gt;
+&lt;li&gt;Add a command — a markdown file whose body is the prompt the agent runs.&lt;/li&gt;
+&lt;li&gt;Optionally add subagents, skills, hooks, or MCP servers.&lt;/li&gt;
+&lt;li&gt;Install it locally to test, then publish via a marketplace/repo so others can
+install it.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;You&amp;rsquo;re not writing model code — you&amp;rsquo;re writing &lt;em&gt;prompts, configuration, and
+small scripts&lt;/em&gt; that compose into reusable behavior.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="resources"&gt;Resources&lt;/h2&gt;
+&lt;p&gt;&lt;a class="link" href="https://docs.claude.com/en/docs/claude-code" target="_blank" rel="noopener"
+&gt;https://docs.claude.com/en/docs/claude-code&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://cursor.com/" target="_blank" rel="noopener"
+&gt;https://cursor.com/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/features/copilot" target="_blank" rel="noopener"
+&gt;https://github.com/features/copilot&lt;/a&gt;&lt;/p&gt;</description></item><item><title>MCP</title><link>https://canuxcheng.com/post/ai_mcp/</link><pubDate>Sat, 19 Jul 2025 10:50:06 +0800</pubDate><guid>https://canuxcheng.com/post/ai_mcp/</guid><description>&lt;h1 id="mcp"&gt;MCP&lt;/h1&gt;
+&lt;h2 id="what-is-mcp"&gt;What is MCP&lt;/h2&gt;
+&lt;p&gt;&lt;strong&gt;MCP (Model Context Protocol)&lt;/strong&gt; is an open standard, introduced by Anthropic in
+late 2024, for connecting AI agents to external tools and data. Think of it as
+&amp;ldquo;USB-C for AI&amp;rdquo;: instead of every agent writing a bespoke integration for every
+service, a tool exposes itself once as an &lt;strong&gt;MCP server&lt;/strong&gt;, and any &lt;strong&gt;MCP client&lt;/strong&gt;
+(Claude Code, Cursor, Copilot, …) can use it.&lt;/p&gt;
+&lt;p&gt;It&amp;rsquo;s a client–server protocol (JSON-RPC over stdio or HTTP). A server can expose
+three kinds of capability:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Tools&lt;/strong&gt; — actions the model can invoke (query a DB, create an issue).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Resources&lt;/strong&gt; — data the model can read (files, records, docs).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Prompts&lt;/strong&gt; — reusable prompt templates the user can trigger.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The win is &lt;strong&gt;decoupling&lt;/strong&gt;: build an integration once, use it from any agent.&lt;/p&gt;
+&lt;h2 id="popular-open-source-mcp-servers"&gt;Popular open-source MCP servers&lt;/h2&gt;
+&lt;p&gt;A few widely used, open-source servers to get started with:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Filesystem&lt;/strong&gt; — read/write local files within allowed paths.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Git / GitHub / GitLab&lt;/strong&gt; — inspect repos, manage issues and PRs.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Postgres / SQLite&lt;/strong&gt; — run queries against a database.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Fetch&lt;/strong&gt; — retrieve and convert web pages to text.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Puppeteer / Playwright&lt;/strong&gt; — drive a real browser for testing and scraping.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Slack&lt;/strong&gt; — read and post messages.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Memory&lt;/strong&gt; — a persistent knowledge graph across sessions.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The reference servers live in the official repo, and the community has built
+hundreds more (cloud providers, search, monitoring, etc.).&lt;/p&gt;
+&lt;h2 id="developing-an-mcp-server"&gt;Developing an MCP server&lt;/h2&gt;
+&lt;p&gt;The fastest path is an official SDK — Python (&lt;code&gt;FastMCP&lt;/code&gt;) or TypeScript. A
+minimal Python server:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;from&lt;/span&gt; mcp.server.fastmcp &lt;span style="color:#f92672"&gt;import&lt;/span&gt; FastMCP
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;mcp &lt;span style="color:#f92672"&gt;=&lt;/span&gt; FastMCP(&lt;span style="color:#e6db74"&gt;&amp;#34;demo&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;@mcp.tool&lt;/span&gt;()
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;add&lt;/span&gt;(a: int, b: int) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; int:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;&amp;#34;&amp;#34;Add two numbers.&amp;#34;&amp;#34;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; a &lt;span style="color:#f92672"&gt;+&lt;/span&gt; b
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;if&lt;/span&gt; __name__ &lt;span style="color:#f92672"&gt;==&lt;/span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;__main__&amp;#34;&lt;/span&gt;:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; mcp&lt;span style="color:#f92672"&gt;.&lt;/span&gt;run() &lt;span style="color:#75715e"&gt;# speaks MCP over stdio&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;The steps are:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Create the server and declare &lt;strong&gt;tools&lt;/strong&gt; (functions), &lt;strong&gt;resources&lt;/strong&gt;, and
+&lt;strong&gt;prompts&lt;/strong&gt; — docstrings and type hints become the schema the model sees.&lt;/li&gt;
+&lt;li&gt;Pick a &lt;strong&gt;transport&lt;/strong&gt;: &lt;code&gt;stdio&lt;/code&gt; for local tools, HTTP for remote/shared servers.&lt;/li&gt;
+&lt;li&gt;Register it with your client (e.g. an &lt;code&gt;.mcp.json&lt;/code&gt; entry or &lt;code&gt;claude mcp add&lt;/code&gt;).&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Clear tool names, tight descriptions, and small focused tools matter more than
+quantity — that&amp;rsquo;s what lets the model pick the right action reliably.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="resources"&gt;Resources&lt;/h2&gt;
+&lt;p&gt;&lt;a class="link" href="https://modelcontextprotocol.io/" target="_blank" rel="noopener"
+&gt;https://modelcontextprotocol.io/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/modelcontextprotocol/servers" target="_blank" rel="noopener"
+&gt;https://github.com/modelcontextprotocol/servers&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/modelcontextprotocol/python-sdk" target="_blank" rel="noopener"
+&gt;https://github.com/modelcontextprotocol/python-sdk&lt;/a&gt;&lt;/p&gt;</description></item></channel></rss>

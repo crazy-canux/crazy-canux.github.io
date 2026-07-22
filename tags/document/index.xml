@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Document on Morgoth</title><link>https://canuxcheng.com/tags/document/</link><description>Recent content in Document on Morgoth</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 01 Jan 2018 10:49:21 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/document/index.xml" rel="self" type="application/rss+xml"/><item><title>Document</title><link>https://canuxcheng.com/post/go_document/</link><pubDate>Mon, 01 Jan 2018 10:49:21 +0000</pubDate><guid>https://canuxcheng.com/post/go_document/</guid><description>&lt;h1 id="document"&gt;Document&lt;/h1&gt;
+&lt;p&gt;go文档相关&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://godoc.org/" target="_blank" rel="noopener"
+&gt;https://godoc.org/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;go文档的两种方式:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;go doc&lt;/li&gt;
+&lt;li&gt;godoc&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1 id="go-doc"&gt;go doc&lt;/h1&gt;
+&lt;p&gt;直接在命令行查看文档&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ go doc [package/symbol]
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id="godoc"&gt;godoc&lt;/h1&gt;
+&lt;p&gt;go自带的文档命令行接口,在浏览器查看文档&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;godoc package [name ...]
+godoc -http=:6060
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;通过github的项目文档在:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;https://godoc.org
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id="godev"&gt;go.dev&lt;/h1&gt;
+&lt;p&gt;&lt;a class="link" href="https://pkg.go.dev" target="_blank" rel="noopener"
+&gt;https://pkg.go.dev&lt;/a&gt;&lt;/p&gt;</description></item><item><title>Document</title><link>https://canuxcheng.com/post/c_document/</link><pubDate>Mon, 11 Apr 2016 22:57:37 +0000</pubDate><guid>https://canuxcheng.com/post/c_document/</guid><description>&lt;h1 id="document"&gt;Document&lt;/h1&gt;
+&lt;hr&gt;
+&lt;h1 id="doxygen"&gt;Doxygen&lt;/h1&gt;</description></item></channel></rss>

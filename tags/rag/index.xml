@@ -1,0 +1,304 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>RAG on Morgoth</title><link>https://canuxcheng.com/tags/rag/</link><description>Recent content in RAG on Morgoth</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 19 Jul 2025 11:17:34 +0800</lastBuildDate><atom:link href="https://canuxcheng.com/tags/rag/index.xml" rel="self" type="application/rss+xml"/><item><title>LangChain</title><link>https://canuxcheng.com/post/ai_langchain/</link><pubDate>Sat, 19 Jul 2025 11:17:34 +0800</pubDate><guid>https://canuxcheng.com/post/ai_langchain/</guid><description>&lt;p&gt;LangChain 是一个用于开发 LLM 应用和 AI Agent 的开源框架。它统一了不同模型提供商的调用方式，并提供 Messages、Tools、Agents、Middleware、Retrieval 和 Structured Output 等组件。&lt;/p&gt;
+&lt;p&gt;LangChain 的重点不是封装一次模型请求，而是把模型与外部数据、工具和应用控制逻辑组合起来。开发者可以先使用高层 API 快速构建 Agent，再在需要精确控制执行路径时下沉到 LangGraph。&lt;/p&gt;
+&lt;h2 id="langchain-生态"&gt;LangChain 生态&lt;/h2&gt;
+&lt;p&gt;LangChain 生态中的几个项目各有职责：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;项目&lt;/th&gt;
+&lt;th&gt;主要职责&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;LangChain&lt;/td&gt;
+&lt;td&gt;模型、Tool、Agent、Middleware 和 Retrieval 等开发框架&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LangGraph&lt;/td&gt;
+&lt;td&gt;有状态、可恢复的底层 Agent 编排运行时&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;LangSmith&lt;/td&gt;
+&lt;td&gt;Trace、评估、测试和生产可观测性&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Deep Agents&lt;/td&gt;
+&lt;td&gt;在 LangGraph 之上提供规划、子 Agent、文件系统和上下文管理能力&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;code&gt;create_agent&lt;/code&gt; 创建的 Agent 底层运行在 LangGraph 上，因此也支持 State、Checkpoint、Streaming 和 Human-in-the-loop。大多数项目可以从 LangChain 开始，不需要一开始就手写 Graph。&lt;/p&gt;
+&lt;h2 id="核心组件"&gt;核心组件&lt;/h2&gt;
+&lt;h3 id="models"&gt;Models&lt;/h3&gt;
+&lt;p&gt;LangChain 使用统一接口连接不同模型提供商。应用可以使用 &lt;code&gt;invoke()&lt;/code&gt;、&lt;code&gt;stream()&lt;/code&gt;、&lt;code&gt;batch()&lt;/code&gt; 和对应的异步方法调用模型，而不需要让业务逻辑依赖某一个 SDK。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;from&lt;/span&gt; langchain.chat_models &lt;span style="color:#f92672"&gt;import&lt;/span&gt; init_chat_model
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;model &lt;span style="color:#f92672"&gt;=&lt;/span&gt; init_chat_model(&lt;span style="color:#e6db74"&gt;&amp;#34;openai:gpt-5.4&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;response &lt;span style="color:#f92672"&gt;=&lt;/span&gt; model&lt;span style="color:#f92672"&gt;.&lt;/span&gt;invoke(
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; [
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; {&lt;span style="color:#e6db74"&gt;&amp;#34;role&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;system&amp;#34;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#34;content&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;你是一名简洁的技术助手。&amp;#34;&lt;/span&gt;},
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; {&lt;span style="color:#e6db74"&gt;&amp;#34;role&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;user&amp;#34;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#34;content&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;用一句话解释 Tool Calling。&amp;#34;&lt;/span&gt;},
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ]
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;print(response&lt;span style="color:#f92672"&gt;.&lt;/span&gt;content)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;模型集成通常放在独立的 Provider Package 中。更换模型时除了修改模型名称，还需要安装相应集成包并配置该提供商的凭据。&lt;/p&gt;
+&lt;h3 id="messages"&gt;Messages&lt;/h3&gt;
+&lt;p&gt;Messages 是模型交互的标准数据结构。常见角色包括：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;System Message：定义模型角色和约束；&lt;/li&gt;
+&lt;li&gt;Human Message：用户输入；&lt;/li&gt;
+&lt;li&gt;AI Message：模型输出，可能包含 Tool Call；&lt;/li&gt;
+&lt;li&gt;Tool Message：工具执行结果。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;使用 Messages 而不是拼接字符串，可以保留角色、Tool Call、Token Usage 和其他元数据。&lt;/p&gt;
+&lt;h3 id="tools"&gt;Tools&lt;/h3&gt;
+&lt;p&gt;Tool 让模型可以读取实时数据或执行外部操作。普通 Python 函数可以通过 &lt;code&gt;@tool&lt;/code&gt; 转换为 Tool：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;from&lt;/span&gt; langchain.tools &lt;span style="color:#f92672"&gt;import&lt;/span&gt; tool
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;@tool&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;get_weather&lt;/span&gt;(city: str) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; str:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;&amp;#34;&amp;#34;查询指定城市当前的天气。&amp;#34;&amp;#34;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; weather &lt;span style="color:#f92672"&gt;=&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;北京&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;晴，26°C&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;上海&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;多云，29°C&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;深圳&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;阵雨，31°C&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; weather&lt;span style="color:#f92672"&gt;.&lt;/span&gt;get(city, &lt;span style="color:#e6db74"&gt;f&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;暂时没有 &lt;/span&gt;&lt;span style="color:#e6db74"&gt;{&lt;/span&gt;city&lt;span style="color:#e6db74"&gt;}&lt;/span&gt;&lt;span style="color:#e6db74"&gt; 的天气数据&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;函数名、类型标注和 Docstring 会共同构成 Tool Schema。描述越准确，模型越容易在正确的时机选择正确的工具。&lt;/p&gt;
+&lt;p&gt;Tool 应保持单一职责。查询和修改操作最好拆开，敏感参数应由运行时注入，不要暴露给模型。&lt;/p&gt;
+&lt;h2 id="开发一个-agent"&gt;开发一个 Agent&lt;/h2&gt;
+&lt;h3 id="安装依赖"&gt;安装依赖&lt;/h3&gt;
+&lt;p&gt;下面以 OpenAI Provider 为例：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;python -m venv .venv
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;source .venv/bin/activate
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;pip install -U &lt;span style="color:#e6db74"&gt;&amp;#34;langchain[openai]&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;通过环境变量配置凭据，不要把 API Key 写进源代码：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;export OPENAI_API_KEY&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;...&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id="创建-tool-calling-agent"&gt;创建 Tool-calling Agent&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;from&lt;/span&gt; langchain.agents &lt;span style="color:#f92672"&gt;import&lt;/span&gt; create_agent
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;from&lt;/span&gt; langchain.tools &lt;span style="color:#f92672"&gt;import&lt;/span&gt; tool
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;@tool&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;get_weather&lt;/span&gt;(city: str) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; str:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;&amp;#34;&amp;#34;查询指定城市当前的天气。&amp;#34;&amp;#34;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; weather &lt;span style="color:#f92672"&gt;=&lt;/span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;北京&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;晴，26°C&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;上海&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;多云，29°C&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;深圳&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;阵雨，31°C&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; weather&lt;span style="color:#f92672"&gt;.&lt;/span&gt;get(city, &lt;span style="color:#e6db74"&gt;f&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;暂时没有 &lt;/span&gt;&lt;span style="color:#e6db74"&gt;{&lt;/span&gt;city&lt;span style="color:#e6db74"&gt;}&lt;/span&gt;&lt;span style="color:#e6db74"&gt; 的天气数据&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;agent &lt;span style="color:#f92672"&gt;=&lt;/span&gt; create_agent(
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; model&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;openai:gpt-5.4&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; tools&lt;span style="color:#f92672"&gt;=&lt;/span&gt;[get_weather],
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; system_prompt&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;你是天气助手。需要天气数据时调用工具，不要编造结果。&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;result &lt;span style="color:#f92672"&gt;=&lt;/span&gt; agent&lt;span style="color:#f92672"&gt;.&lt;/span&gt;invoke(
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; {
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;messages&amp;#34;&lt;/span&gt;: [
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; {&lt;span style="color:#e6db74"&gt;&amp;#34;role&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;user&amp;#34;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#34;content&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;上海和深圳哪个城市更热？&amp;#34;&lt;/span&gt;}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ]
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; }
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;result[&lt;span style="color:#e6db74"&gt;&amp;#34;messages&amp;#34;&lt;/span&gt;][&lt;span style="color:#f92672"&gt;-&lt;/span&gt;&lt;span style="color:#ae81ff"&gt;1&lt;/span&gt;]&lt;span style="color:#f92672"&gt;.&lt;/span&gt;pretty_print()
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;Agent 的执行循环是：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-text" data-lang="text"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;用户输入 → 模型判断 → 调用 Tool → 读取结果 → 模型继续判断 → 最终回答
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;如果模型一次生成多个 Tool Call，Agent 可以执行这些工具后再把结果交回模型。当模型不再请求工具时，循环结束。&lt;/p&gt;
+&lt;h2 id="structured-output"&gt;Structured Output&lt;/h2&gt;
+&lt;p&gt;如果下游代码需要稳定的数据结构，不应该依赖自然语言解析。可以通过 Pydantic Schema 要求 Agent 返回结构化结果：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;from&lt;/span&gt; pydantic &lt;span style="color:#f92672"&gt;import&lt;/span&gt; BaseModel, Field
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;from&lt;/span&gt; langchain.agents &lt;span style="color:#f92672"&gt;import&lt;/span&gt; create_agent
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;class&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;WeatherResult&lt;/span&gt;(BaseModel):
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; city: str &lt;span style="color:#f92672"&gt;=&lt;/span&gt; Field(description&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;城市名称&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; condition: str &lt;span style="color:#f92672"&gt;=&lt;/span&gt; Field(description&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;天气情况&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; temperature_celsius: float &lt;span style="color:#f92672"&gt;=&lt;/span&gt; Field(description&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;摄氏温度&amp;#34;&lt;/span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;structured_agent &lt;span style="color:#f92672"&gt;=&lt;/span&gt; create_agent(
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; model&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;openai:gpt-5.4&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; tools&lt;span style="color:#f92672"&gt;=&lt;/span&gt;[get_weather],
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; response_format&lt;span style="color:#f92672"&gt;=&lt;/span&gt;WeatherResult,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;result &lt;span style="color:#f92672"&gt;=&lt;/span&gt; structured_agent&lt;span style="color:#f92672"&gt;.&lt;/span&gt;invoke(
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; {&lt;span style="color:#e6db74"&gt;&amp;#34;messages&amp;#34;&lt;/span&gt;: [{&lt;span style="color:#e6db74"&gt;&amp;#34;role&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;user&amp;#34;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#34;content&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;上海天气如何？&amp;#34;&lt;/span&gt;}]}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;weather &lt;span style="color:#f92672"&gt;=&lt;/span&gt; result[&lt;span style="color:#e6db74"&gt;&amp;#34;structured_response&amp;#34;&lt;/span&gt;]
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;print(weather&lt;span style="color:#f92672"&gt;.&lt;/span&gt;temperature_celsius)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;对于支持原生 Structured Output 的模型，LangChain 会优先使用 Provider 能力；否则可以使用 Tool Calling 生成符合 Schema 的结果。&lt;/p&gt;
+&lt;h2 id="memory"&gt;Memory&lt;/h2&gt;
+&lt;p&gt;Agent 的短期记忆保存在 State 中。加入 Checkpointer 后，可以使用 &lt;code&gt;thread_id&lt;/code&gt; 隔离和恢复不同会话：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;from&lt;/span&gt; langchain.agents &lt;span style="color:#f92672"&gt;import&lt;/span&gt; create_agent
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;from&lt;/span&gt; langgraph.checkpoint.memory &lt;span style="color:#f92672"&gt;import&lt;/span&gt; InMemorySaver
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;checkpointer &lt;span style="color:#f92672"&gt;=&lt;/span&gt; InMemorySaver()
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;agent &lt;span style="color:#f92672"&gt;=&lt;/span&gt; create_agent(
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; model&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;openai:gpt-5.4&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; tools&lt;span style="color:#f92672"&gt;=&lt;/span&gt;[get_weather],
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; checkpointer&lt;span style="color:#f92672"&gt;=&lt;/span&gt;checkpointer,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;config &lt;span style="color:#f92672"&gt;=&lt;/span&gt; {&lt;span style="color:#e6db74"&gt;&amp;#34;configurable&amp;#34;&lt;/span&gt;: {&lt;span style="color:#e6db74"&gt;&amp;#34;thread_id&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;demo-thread&amp;#34;&lt;/span&gt;}}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;agent&lt;span style="color:#f92672"&gt;.&lt;/span&gt;invoke(
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; {&lt;span style="color:#e6db74"&gt;&amp;#34;messages&amp;#34;&lt;/span&gt;: [{&lt;span style="color:#e6db74"&gt;&amp;#34;role&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;user&amp;#34;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#34;content&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;我准备去上海。&amp;#34;&lt;/span&gt;}]},
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; config,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;result &lt;span style="color:#f92672"&gt;=&lt;/span&gt; agent&lt;span style="color:#f92672"&gt;.&lt;/span&gt;invoke(
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; {&lt;span style="color:#e6db74"&gt;&amp;#34;messages&amp;#34;&lt;/span&gt;: [{&lt;span style="color:#e6db74"&gt;&amp;#34;role&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;user&amp;#34;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#34;content&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;那里的天气如何？&amp;#34;&lt;/span&gt;}]},
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; config,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;同一个 &lt;code&gt;thread_id&lt;/code&gt; 会继续之前的消息历史，不同 Thread 之间相互隔离。&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;InMemorySaver&lt;/code&gt; 只适合开发和测试。生产环境应使用持久化 Checkpointer，并对长对话进行裁剪或摘要，避免上下文无限增长。&lt;/p&gt;
+&lt;h2 id="middleware"&gt;Middleware&lt;/h2&gt;
+&lt;p&gt;Middleware 可以在 Agent 循环的关键位置插入控制逻辑，而不需要修改 Agent 本身。常见用途包括：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;自动摘要过长的对话；&lt;/li&gt;
+&lt;li&gt;限制模型或 Tool 调用次数；&lt;/li&gt;
+&lt;li&gt;重试和模型降级；&lt;/li&gt;
+&lt;li&gt;PII 检测与脱敏；&lt;/li&gt;
+&lt;li&gt;动态选择模型和 Tool；&lt;/li&gt;
+&lt;li&gt;记录日志、延迟和 Token 使用量；&lt;/li&gt;
+&lt;li&gt;在敏感操作前请求人工审批。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id="human-in-the-loop"&gt;Human-in-the-loop&lt;/h3&gt;
+&lt;p&gt;下面的 Agent 会在执行订单操作前暂停，等待人工批准、修改或拒绝：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-python" data-lang="python"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;from&lt;/span&gt; langchain.agents &lt;span style="color:#f92672"&gt;import&lt;/span&gt; create_agent
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;from&lt;/span&gt; langchain.agents.middleware &lt;span style="color:#f92672"&gt;import&lt;/span&gt; HumanInTheLoopMiddleware
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;from&lt;/span&gt; langchain.tools &lt;span style="color:#f92672"&gt;import&lt;/span&gt; tool
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;from&lt;/span&gt; langgraph.checkpoint.memory &lt;span style="color:#f92672"&gt;import&lt;/span&gt; InMemorySaver
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#f92672"&gt;from&lt;/span&gt; langgraph.types &lt;span style="color:#f92672"&gt;import&lt;/span&gt; Command
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#a6e22e"&gt;@tool&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;&lt;span style="color:#66d9ef"&gt;def&lt;/span&gt; &lt;span style="color:#a6e22e"&gt;submit_order&lt;/span&gt;(item: str, quantity: int) &lt;span style="color:#f92672"&gt;-&amp;gt;&lt;/span&gt; str:
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#e6db74"&gt;&amp;#34;&amp;#34;&amp;#34;提交商品订单。&amp;#34;&amp;#34;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; &lt;span style="color:#66d9ef"&gt;return&lt;/span&gt; &lt;span style="color:#e6db74"&gt;f&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;已提交 &lt;/span&gt;&lt;span style="color:#e6db74"&gt;{&lt;/span&gt;quantity&lt;span style="color:#e6db74"&gt;}&lt;/span&gt;&lt;span style="color:#e6db74"&gt; 件 &lt;/span&gt;&lt;span style="color:#e6db74"&gt;{&lt;/span&gt;item&lt;span style="color:#e6db74"&gt;}&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;agent &lt;span style="color:#f92672"&gt;=&lt;/span&gt; create_agent(
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; model&lt;span style="color:#f92672"&gt;=&lt;/span&gt;&lt;span style="color:#e6db74"&gt;&amp;#34;openai:gpt-5.4&amp;#34;&lt;/span&gt;,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; tools&lt;span style="color:#f92672"&gt;=&lt;/span&gt;[submit_order],
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; middleware&lt;span style="color:#f92672"&gt;=&lt;/span&gt;[
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; HumanInTheLoopMiddleware(
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; interrupt_on&lt;span style="color:#f92672"&gt;=&lt;/span&gt;{&lt;span style="color:#e6db74"&gt;&amp;#34;submit_order&amp;#34;&lt;/span&gt;: &lt;span style="color:#66d9ef"&gt;True&lt;/span&gt;},
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; )
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ],
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; checkpointer&lt;span style="color:#f92672"&gt;=&lt;/span&gt;InMemorySaver(),
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;config &lt;span style="color:#f92672"&gt;=&lt;/span&gt; {&lt;span style="color:#e6db74"&gt;&amp;#34;configurable&amp;#34;&lt;/span&gt;: {&lt;span style="color:#e6db74"&gt;&amp;#34;thread_id&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;approval-thread&amp;#34;&lt;/span&gt;}}
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;agent&lt;span style="color:#f92672"&gt;.&lt;/span&gt;invoke(
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; {&lt;span style="color:#e6db74"&gt;&amp;#34;messages&amp;#34;&lt;/span&gt;: [{&lt;span style="color:#e6db74"&gt;&amp;#34;role&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;user&amp;#34;&lt;/span&gt;, &lt;span style="color:#e6db74"&gt;&amp;#34;content&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;订购两件显示器&amp;#34;&lt;/span&gt;}]},
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; config,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;agent&lt;span style="color:#f92672"&gt;.&lt;/span&gt;invoke(
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Command(resume&lt;span style="color:#f92672"&gt;=&lt;/span&gt;{&lt;span style="color:#e6db74"&gt;&amp;#34;decisions&amp;#34;&lt;/span&gt;: [{&lt;span style="color:#e6db74"&gt;&amp;#34;type&amp;#34;&lt;/span&gt;: &lt;span style="color:#e6db74"&gt;&amp;#34;approve&amp;#34;&lt;/span&gt;}]}),
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; config,
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;)
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;生产环境中的写操作必须具备幂等性，并使用持久化 Checkpointer，确保审批等待期间进程重启也不会丢失 State。&lt;/p&gt;
+&lt;h2 id="retrieval-与-rag"&gt;Retrieval 与 RAG&lt;/h2&gt;
+&lt;p&gt;LLM 的上下文长度有限，训练数据也不是实时知识。Retrieval 会在请求时获取相关外部内容，再让模型基于这些内容回答，这就是 RAG 的基础。&lt;/p&gt;
+&lt;p&gt;LangChain 将 Retrieval 拆成可替换的组件：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-text" data-lang="text"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Document Loader
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ↓
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Text Splitter
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ↓
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Embedding Model
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ↓
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Vector Store
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ↓
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Retriever
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ↓
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Prompt + Model
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;不同场景可以选择不同的 RAG 架构：&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;架构&lt;/th&gt;
+&lt;th&gt;特点&lt;/th&gt;
+&lt;th&gt;适用场景&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;2-step RAG&lt;/td&gt;
+&lt;td&gt;每次先检索再生成，流程固定、延迟可预测&lt;/td&gt;
+&lt;td&gt;FAQ、文档问答&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Agentic RAG&lt;/td&gt;
+&lt;td&gt;Agent 自己决定何时检索以及使用哪个数据源&lt;/td&gt;
+&lt;td&gt;研究助手、多数据源查询&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Hybrid RAG&lt;/td&gt;
+&lt;td&gt;加入查询改写、检索验证和答案检查&lt;/td&gt;
+&lt;td&gt;对质量和可控性要求较高的系统&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;如果已经有搜索服务、SQL 数据库或知识库，不需要为了使用 LangChain 重新建立向量数据库。可以把现有系统包装成 Retriever 或 Tool。&lt;/p&gt;
+&lt;h2 id="langchain-与-langgraph-的选择"&gt;LangChain 与 LangGraph 的选择&lt;/h2&gt;
+&lt;p&gt;优先使用 LangChain 的场景：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;调用不同 Provider 的模型；&lt;/li&gt;
+&lt;li&gt;开发标准 Tool-calling Agent；&lt;/li&gt;
+&lt;li&gt;使用 Middleware、Structured Output 或 RAG；&lt;/li&gt;
+&lt;li&gt;希望快速组合现有集成。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;直接使用 LangGraph 的场景：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;工作流包含复杂条件分支或并行节点；&lt;/li&gt;
+&lt;li&gt;需要精确控制 State 和执行路径；&lt;/li&gt;
+&lt;li&gt;需要暂停、恢复、长时间运行或故障恢复；&lt;/li&gt;
+&lt;li&gt;需要多个 Agent 或子图协作。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;两者不是互斥关系。可以先用 &lt;code&gt;create_agent&lt;/code&gt; 构建一个 Agent，再把它作为 Node 或 Subgraph 放入更大的 LangGraph 工作流中。&lt;/p&gt;
+&lt;h2 id="生产实践"&gt;生产实践&lt;/h2&gt;
+&lt;h3 id="明确-tool-边界"&gt;明确 Tool 边界&lt;/h3&gt;
+&lt;p&gt;Tool 的输入必须严格校验。读操作和写操作分离，高风险 Tool 需要权限检查和人工审批。不要让模型直接拼接 SQL、Shell 或其他可执行内容后无条件运行。&lt;/p&gt;
+&lt;h3 id="使用-structured-output"&gt;使用 Structured Output&lt;/h3&gt;
+&lt;p&gt;模型输出需要进入数据库、API 或后续工作流时，应使用 Schema 校验，而不是依赖正则表达式解析自然语言。&lt;/p&gt;
+&lt;h3 id="限制-agent-循环"&gt;限制 Agent 循环&lt;/h3&gt;
+&lt;p&gt;限制模型调用次数、Tool 调用次数、总超时和 Token 预算。Agent 无法完成任务时应该明确退出，而不是无限重试。&lt;/p&gt;
+&lt;h3 id="管理上下文"&gt;管理上下文&lt;/h3&gt;
+&lt;p&gt;只向模型提供当前任务需要的信息。长对话应裁剪或摘要，大型文档应通过 Retrieval 按需加载。&lt;/p&gt;
+&lt;h3 id="增加-trace-与评估"&gt;增加 Trace 与评估&lt;/h3&gt;
+&lt;p&gt;记录 Prompt、模型输出、Tool Call、延迟、错误和执行路径。除了单元测试，还应建立包含正常请求、边界条件和恶意输入的数据集，对 Agent 进行回归评估。&lt;/p&gt;
+&lt;h3 id="保持-provider-可替换"&gt;保持 Provider 可替换&lt;/h3&gt;
+&lt;p&gt;把模型初始化、参数和凭据放在配置层。切换 Provider 时仍需要重新评估 Tool Calling、Structured Output、上下文长度、延迟和成本，不能只修改模型名称就认为行为完全一致。&lt;/p&gt;
+&lt;h2 id="参考资料"&gt;参考资料&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class="link" href="https://docs.langchain.com/oss/python/langchain/overview" target="_blank" rel="noopener"
+&gt;LangChain overview&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="link" href="https://docs.langchain.com/oss/python/langchain/quickstart" target="_blank" rel="noopener"
+&gt;LangChain quickstart&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="link" href="https://docs.langchain.com/oss/python/langchain/agents" target="_blank" rel="noopener"
+&gt;Agents&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="link" href="https://docs.langchain.com/oss/python/langchain/models" target="_blank" rel="noopener"
+&gt;Models&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="link" href="https://docs.langchain.com/oss/python/langchain/middleware/overview" target="_blank" rel="noopener"
+&gt;Middleware&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="link" href="https://docs.langchain.com/oss/python/langchain/retrieval" target="_blank" rel="noopener"
+&gt;Retrieval&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="link" href="https://docs.langchain.com/oss/python/langchain/human-in-the-loop" target="_blank" rel="noopener"
+&gt;Human-in-the-loop&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description></item></channel></rss>

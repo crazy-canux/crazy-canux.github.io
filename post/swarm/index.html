@@ -1,0 +1,240 @@
+<!doctype html><html lang=zh-CN dir=ltr><head><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'><meta name=description content='Swarm docker swarm 是 docker内置的容器编排工具。
+从docker1.12开始swarm内置于docker engine.
+swarm mode具有内置kv存储，服务发现，负载均衡，路由网格，动态伸缩，滚动更新，安全传输等功能。
+swarm: 老版本的swarm, 需要kv store, 可以作为独立的container运行, 已废弃, 已经被docker swarm mode 代替.
+https://github.com/docker/swarm
+swarmkit:
+https://github.com/docker/swarmkit
+swarm命令 创建集群
+docker swarm init --advertise-addr <ip> 多网卡情况下指定manager的ip docker swarm join --token <token> <host:port> # 查看token docker swarm join-token manager 获取添加manager命令 docker swarm join-token worker 获取添加worker命令 docker swarm join-token -q worker docker swarm leave -f/--force docker swarm update 管理节点
+docker node ls docker node ls --format "{{.Hostname}}" ​ docker node rm ​ docker node inspect ​ # 查看node上运行的tasks/container docker node ps -f/--filter NODE ​ # 添加label, node.labels.role=api docker node update --label-add role=api node1 # 删除label docker node update --label-rm role node1 ​ # 活跃节点 docker node update --availability active node1 # 指定该节点满载,不再分派任务,关闭已有任务并重新分派. docker node update --availability drain node1 # 已有任务继续运行,不分配新任务. docker node update --availability pause node1 # 查看所有node和label docker node ls -q | xargs docker node inspect -f &#39;{{ .ID }} [{{ .Description.Hostname }}]: {{ .Spec.Labels }}&#39; service
+'><title>Swarm</title><link rel=canonical href=https://canuxcheng.com/post/swarm/><link rel=stylesheet href=/scss/style.min.22ad1c74b5bb435181c77741d99f034b2c36f7272eff9d0d1aa16d32e7e84673.css><meta property='og:title' content='Swarm'><meta property='og:description' content='Swarm docker swarm 是 docker内置的容器编排工具。
+从docker1.12开始swarm内置于docker engine.
+swarm mode具有内置kv存储，服务发现，负载均衡，路由网格，动态伸缩，滚动更新，安全传输等功能。
+swarm: 老版本的swarm, 需要kv store, 可以作为独立的container运行, 已废弃, 已经被docker swarm mode 代替.
+https://github.com/docker/swarm
+swarmkit:
+https://github.com/docker/swarmkit
+swarm命令 创建集群
+docker swarm init --advertise-addr <ip> 多网卡情况下指定manager的ip docker swarm join --token <token> <host:port> # 查看token docker swarm join-token manager 获取添加manager命令 docker swarm join-token worker 获取添加worker命令 docker swarm join-token -q worker docker swarm leave -f/--force docker swarm update 管理节点
+docker node ls docker node ls --format "{{.Hostname}}" ​ docker node rm ​ docker node inspect ​ # 查看node上运行的tasks/container docker node ps -f/--filter NODE ​ # 添加label, node.labels.role=api docker node update --label-add role=api node1 # 删除label docker node update --label-rm role node1 ​ # 活跃节点 docker node update --availability active node1 # 指定该节点满载,不再分派任务,关闭已有任务并重新分派. docker node update --availability drain node1 # 已有任务继续运行,不分配新任务. docker node update --availability pause node1 # 查看所有node和label docker node ls -q | xargs docker node inspect -f &#39;{{ .ID }} [{{ .Description.Hostname }}]: {{ .Spec.Labels }}&#39; service
+'><meta property='og:url' content='https://canuxcheng.com/post/swarm/'><meta property='og:site_name' content='Morgoth'><meta property='og:type' content='article'><meta property='article:section' content='Post'><meta property='article:tag' content='swarm'><meta property='article:published_time' content='2018-04-05T22:02:31+00:00'><meta property='article:modified_time' content='2018-04-05T22:02:31+00:00'><meta name=twitter:title content="Swarm"><meta name=twitter:description content="Swarm docker swarm 是 docker内置的容器编排工具。
+从docker1.12开始swarm内置于docker engine.
+swarm mode具有内置kv存储，服务发现，负载均衡，路由网格，动态伸缩，滚动更新，安全传输等功能。
+swarm: 老版本的swarm, 需要kv store, 可以作为独立的container运行, 已废弃, 已经被docker swarm mode 代替.
+https://github.com/docker/swarm
+swarmkit:
+https://github.com/docker/swarmkit
+swarm命令 创建集群
+docker swarm init --advertise-addr <ip> 多网卡情况下指定manager的ip docker swarm join --token <token> <host:port> # 查看token docker swarm join-token manager 获取添加manager命令 docker swarm join-token worker 获取添加worker命令 docker swarm join-token -q worker docker swarm leave -f/--force docker swarm update 管理节点
+docker node ls docker node ls --format &#34;{{.Hostname}}&#34; ​ docker node rm ​ docker node inspect ​ # 查看node上运行的tasks/container docker node ps -f/--filter NODE ​ # 添加label, node.labels.role=api docker node update --label-add role=api node1 # 删除label docker node update --label-rm role node1 ​ # 活跃节点 docker node update --availability active node1 # 指定该节点满载,不再分派任务,关闭已有任务并重新分派. docker node update --availability drain node1 # 已有任务继续运行,不分配新任务. docker node update --availability pause node1 # 查看所有node和label docker node ls -q | xargs docker node inspect -f '{{ .ID }} [{{ .Description.Hostname }}]: {{ .Spec.Labels }}' service
+"><link rel="shortcut icon" href=favicon.ico><style>:root{--article-font-family:"Merriweather", var(--base-font-family)}</style><script>(function(){const e=document.createElement("link");e.href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap",e.type="text/css",e.rel="stylesheet",document.head.appendChild(e)})()</script></head><body class=article-page><script>(function(){const e="StackColorScheme";localStorage.getItem(e)||localStorage.setItem(e,"auto")})()</script><script>(function(){const t="StackColorScheme",e=localStorage.getItem(t),n=window.matchMedia("(prefers-color-scheme: dark)").matches===!0;e=="dark"||e==="auto"&&n?document.documentElement.dataset.scheme="dark":document.documentElement.dataset.scheme="light"})()</script><div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky"><button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label=切换菜单>
+<span class=hamburger-box><span class=hamburger-inner></span></span></button><header><figure class=site-avatar><a href=/><img src=/img/home_hu_7d22d46ad88d2427.jpg width=300 height=400 class=site-logo loading=lazy alt=Avatar>
+</a><span class=emoji>🍥</span></figure><div class=site-meta><h1 class=site-name><a href=/>Morgoth</a></h1><h2 class=site-description>Hello World!</h2></div></header><ol class=social-menu><li><a href=mailto:canuxcheng@163.com target=_blank title=E-mail rel=me><svg class="icon icon-tabler icon-tabler-messages" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M21 14l-3-3h-7a1 1 0 01-1-1V4a1 1 0 011-1h9a1 1 0 011 1v10"/><path d="M14 15v2a1 1 0 01-1 1H6l-3 3V11a1 1 0 011-1h2"/></svg></a></li><li><a href=https://github.com/crazy-canux target=_blank title=GitHub rel=me><svg class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6.0 00-1.3-3.2 4.2 4.2.0 00-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3.0 00-6.2.0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2.0 00-.1 3.2A4.6 4.6.0 004 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg></a></li></ol><ol class=menu id=main-menu><li><a href=/><svg class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="5 12 3 12 12 3 21 12 19 12"/><path d="M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/><path d="M9 21v-6a2 2 0 012-2h2a2 2 0 012 2v6"/></svg>
+<span>首页</span></a></li><li><a href=/about/><svg class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/></svg>
+<span>关于</span></a></li><li><a href=/categories/ target=_blank><svg class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg>
+<span>分类</span></a></li><li><a href=/tags/ target=_blank><svg class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11 3l9 9a1.5 1.5.0 010 2l-6 6a1.5 1.5.0 01-2 0L3 11V7a4 4 0 014-4h4"/><circle cx="9" cy="9" r="2"/></svg>
+<span>标签</span></a></li><li><a href=/rtfm/><svg class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+<span>RTFM</span></a></li><div class=menu-bottom-section><li id=i18n-switch><svg class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 5h7"/><path d="M9 3v2c0 4.418-2.239 8-5 8"/><path d="M5 9c-.003 2.144 2.952 3.908 6.7 4"/><path d="M12 20l4-9 4 9"/><path d="M19.1 18h-6.2"/></svg>
+<select name=language onchange="window.location.href=this.selectedOptions[0].value"><option value=https://canuxcheng.com/ selected>简体中文</option><option value=https://canuxcheng.com/en/>English</option></select></li><li id=dark-mode-toggle><svg class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="8" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<svg class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="16" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<span>暗色模式</span></li></div></ol></aside><main class="main full-width"><article class=main-article><header class=article-header><div class=article-details><header class=article-category><a href=/categories/cncf/>CNCF</a></header><div class=article-title-wrapper><h2 class=article-title><a href=/post/swarm/>Swarm</a></h2></div><footer class=article-time><div><svg class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg>
+<time class=article-time--published>Apr 05, 2018</time></div><div><svg class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+<time class=article-time--reading>阅读时长: 3 分钟</time></div></footer></div></header><section class=article-content><h1 id=swarm>Swarm</h1><p>docker swarm 是 docker内置的容器编排工具。</p><p>从docker1.12开始swarm内置于docker engine.</p><p>swarm mode具有内置kv存储，服务发现，负载均衡，路由网格，动态伸缩，滚动更新，安全传输等功能。</p><p>swarm: 老版本的swarm, 需要kv store, 可以作为独立的container运行, 已废弃, 已经被docker swarm mode 代替.</p><p><a class=link href=https://github.com/docker/swarm target=_blank rel=noopener>https://github.com/docker/swarm</a></p><p>swarmkit:</p><p><a class=link href=https://github.com/docker/swarmkit target=_blank rel=noopener>https://github.com/docker/swarmkit</a></p><h1 id=swarm命令>swarm命令</h1><p>创建集群</p><pre><code>docker swarm init
+--advertise-addr &lt;ip&gt; 多网卡情况下指定manager的ip
+
+docker swarm join --token &lt;token&gt; &lt;host:port&gt;
+
+# 查看token
+docker swarm join-token manager   获取添加manager命令
+docker swarm join-token worker   获取添加worker命令
+docker swarm join-token -q worker
+
+docker swarm leave -f/--force
+
+docker swarm update
+</code></pre><p>管理节点</p><pre><code>docker node ls
+docker node ls --format &quot;{{.Hostname}}&quot;
+​
+docker node rm
+​
+docker node inspect
+​
+# 查看node上运行的tasks/container
+docker node ps -f/--filter NODE
+​
+# 添加label, node.labels.role=api
+docker node update --label-add role=api node1
+# 删除label
+docker node update --label-rm role node1
+​
+# 活跃节点
+docker node update --availability active node1
+# 指定该节点满载,不再分派任务,关闭已有任务并重新分派.
+docker node update --availability drain node1
+# 已有任务继续运行,不分配新任务.
+docker node update --availability pause node1
+
+# 查看所有node和label
+docker node ls -q | xargs docker node inspect -f '{{ .ID }} [{{ .Description.Hostname }}]: {{ .Spec.Labels }}'
+</code></pre><p>service</p><pre><code># 相当于docker-compose.yml里面的service.
+docker service ls # 列出所有service
+​
+docker service rm SERVICE
+​
+docker service inspect SERVICE
+​
+# 查看service的log
+docker service logs -f SERVICE
+​
+# 查看service的状态,在哪些node上运行,运行状态等
+docker service ps SERVICE
+​
+docker service update
+docker service update --image &lt;url:tag&gt; # 根据镜像更新服务
+​
+docker service scale
+​
+docker service rollback
+​
+docker service create
+--constraint node.id/node.hostname/node.role/node.labels/engine.labels
+--env/-e
+--label
+--limit-cpu
+--limit-memory
+--replicas
+--restart-condition
+--user/--group
+--mode global/replicated
+--endpoint-mode vip/dnsrr
+</code></pre><p>stack</p><pre><code># stack = n*service
+# service = n*task(container)
+docker stack ls # 列出所有stack
+
+# 查看stack的service
+docker stack services &lt;stack&gt;
+
+# 查看stack的task/container
+docker stack ps &lt;stack&gt;
+
+docker stack rm STACK
+
+# 根据docker-compose.yml部署应用
+docker stack deploy -c/--compose-file &lt;docker-compose.yml&gt; STACK
+docker stack deploy --bundle-file &lt;DAB&gt; STACK
+
+# 默认所有node从docker hub pull, 如果是私有镜像，需要加参数
+# 需要在manager上docker login private-registry
+docker stack deploy --with-registry-auth -c test.yml test
+
+docker stack deploy --resolve-image (always|changed|never) ...
+
+docker stack deploy --orchestrator (swarm|kubernetes|all) ...
+</code></pre><hr><h1 id=swarm-compose>swarm compose</h1><p>其它字段参考Compose， 这里只分析deploy下的字段.</p><p>通过compose文件部署服务.</p><pre><code>deploy:
+  endpoint_mode:
+
+  // 给service打标签(不作用于container) 
+  labels:
+    com.examples.key: value
+
+  // 默认mode=replicated, replicas=1.
+  mode: replicated
+  max_replicas_per_node:
+  replicas: 1
+
+  // 部署到匹配的全部node.
+  mode: global 
+​
+  # global和replicated都可以用placement.
+  placement:
+    preferences: // 只支持spreed.
+      - spreed: node.labels.datacenter
+    constraints:
+      # 多个约束是and关系
+      - node.id==...
+      - node.hostname==...
+      - node.role==...
+      - node.role==manager/worker
+      - node.platform.os!=windows
+      - node.platform.arch==x86
+      - engine.labels.&lt;key&gt;==&lt;value&gt;
+      # 用户自定义标签
+      - node.labels.&lt;key&gt;==&lt;value&gt;
+​
+  resources:
+    limits:
+      cpus: '0.5'
+      memory: 1G
+    reservations:
+      cpus: '0.25'
+      memory: 20M
+​
+  restart_policy:
+    condition: any(default)/on-failure/none
+    delay: 0(default)/5s
+    max_attempts: never give up(default)/3
+    window: decide immediately(default)/10s
+​
+  update_config/rollback_config:
+    parallelism: 0 (default 0 means all)
+    delay: 10s (容器升级间隔时间)
+    failure_action: pause(default)/continue/rollback
+    monitor: 0s (更新完成后确认成功的时间)
+    max_failure_ratio: 更新期间允许的失败率
+    order: stop-first(default)/start-first
+
+// 默认endpoint_mode=vip, 支持route mesh, 自动负载均衡和服务发现.
+deploy:
+  endpoint_mode: vip
+ports:
+- target: 80
+  published: 8080
+  // 默认mode=ingress, 也可以改为host.
+  mode: ingress
+  protocol: tcp/udp
+- 8080:80/tcp
+
+// dnsrr 模式
+deploy:
+  endpoint_mode: dnsrr
+  update_config:
+    // 如果expose端口，不能start-first, 否则报错no suitable node (host-mode port already in use on 1 node
+    order: stop-first 
+// 设置iptables规则，外部访问8080通过prerouting做dnat指定目的ip，通过forward转发给container的80.
+// iptables-&gt;nat-&gt;prerouting: 
+// DNAT tcp -- !docker_gwbridge * 0.0.0.0/0 0.0.0.0/0 tcp dpt:8080 to:172.18.0.16:80
+// iptables-&gt;filter-&gt;forward:
+// ACCEPT tcp -- enp5s0 * 0.0.0.0/0 0.0.0.0/0 multiport dports 80
+ports:
+- target: 80
+  published: 8080
+  // dnsrr只能用port-&gt;mode=host.
+  mode: host
+  protocol: tcp/udp
+</code></pre><hr><h1 id=swarm-network>swarm network</h1><p>global模式container:</p><pre><code>eth0: overlay(user define overlay)
+eth1: ingress(swarm define ingress)
+eth2: docker_gwbridge(swarm define bridge)
+</code></pre><p>replicate模式container:</p><pre><code>eth0: overlay(user define overlay)
+eth1: docker_gwbridge(swarm define bridge)
+</code></pre><p>overlay: 通过4789/udp跨主机访问其他container, host不能访问overlay的ip，只有container之间通过container-servicename或者container-overlay的ip相互访问.</p><p>overlay 问题: 通过overlay连接，默认15分钟timeout, 所以数据库建议用dnsrr模式; 如果用vip模式，需要修改内核网络参数:</p><pre><code>$ sudo sysctl -w net.ipv4.tcp_keepalive_time=600 net.ipv4.tcp_keepalive_intvl=60 net.ipv4.tcp_keepalive_probes=3
+</code></pre><p>vip模式就是访问的虚拟ip,replicated的service如果有多个container,通过servicename访问的就是同一个vip,通过vip解析到背后container的真实overlay-ip(自动负载均衡).</p><p>dnsrr模式就是直接解析container的overlay-ip来访问,如果是replicated的service有多个container,每次访问的就是从dns列表中根据负载均衡算法拿到其中一个overlay-ip.</p><p>ingress network: 是一个特殊的 overlay 网络，用于服务节点间的负载均衡。当任何 Swarm 节点在发布的端口上接收到请求时，它将该请求交给一个名为 IPVS 的模块。IPVS 跟踪参与该服务的所有IP地址，选择其中的一个，并通过 ingress 网络将请求路由到它。</p><p>docker_gwbridge: host和container之间通过ip访问, container能访问host的物理网卡的ip和docker_gwbridge的ip, host也能访问container的docker_gwbridge的ip, 但是container之间不能访问bridge的ip.</p><p>修改默认的docker_gwbridge:</p><pre><code>// 对于已存在的，要先删除
+$ service docker stop
+$ sudo ip link set docker_gwbridge down
+$ sudo ip link del dev docker_gwbridge
+// 创建swarm之前创建好网络
+$ docker network create --subnet &quot;172.18.0.0/16&quot;  --ip-range “172.18.1.0/16” \
+--opt com.docker.network.bridge.name=docker_gwbridge \
+--opt com.docker.network.bridge.enable_icc=false \
+--opt com.docker.network.bridge.enable_ip_masquerade=true \
+docker_gwbridge
+// 创建swarm
+$ docker swarm init
+</code></pre><p>endpoint_mode:</p><ul><li>vip: 通过vip这个虚拟ip对外访问，提供负载均衡，不暴露具体的container的ip.</li><li>dnssr: DNS round-robin, 为每个服务设置dns,连接到其中一个具体的contaier的ip.</li></ul><hr><h1 id=swarm-scheduler>swarm scheduler</h1><p>filter过滤器可以实现特定的容器运行在特定的node上, swarm支持３种策略和6个过滤器.</p><p>swarm strategy:</p><ul><li>spread： 默认策略,配置相同的情况下选择容器数量最少的node</li><li>binpack： 尽可能将容器放到一台node上运行。</li><li>random： 直接随机分配</li></ul><p>swarm node filters:</p><ul><li>constraint</li><li>health</li><li>containerslots</li></ul><p>swarm container-configuration filters:</p><ul><li>affinity</li><li>dependency</li><li>port</li></ul></section><footer class=article-footer><section class=article-tags><a href=/tags/swarm/>Swarm</a></section></footer><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css integrity="sha256-J+iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s=" crossorigin=anonymous><script src=https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js integrity="sha256-InsNdER1b2xUewP+pKCUJpkhiqwHgqiPXDlIk7GzBu4=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI=" crossorigin=anonymous defer></script><script>window.addEventListener("DOMContentLoaded",()=>{renderMathInElement(document.querySelector(`.article-content`),{delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1},{left:"\\(",right:"\\)",display:!1},{left:"\\[",right:"\\]",display:!0}],ignoredClasses:["gist"]})})</script></article><div id=gitalk-container></div><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css><script src=https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js></script><script src=https://cdn.jsdelivr.net/npm/blueimp-md5@2.18.0/js/md5.min.js></script><script>const gitalk=new Gitalk({clientID:"3d41a2a237fabe050cc0",clientSecret:"f084dfe45a1c05955270776836298adf02732a02",repo:"crazy-canux.github.io",owner:"crazy-canux",admin:["crazy-canux"],distractionFreeMode:!1,id:md5(location.pathname)});(function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById("gitalk-container").innerHTML="Gitalk comments not available by default when the website is previewed locally.";return}gitalk.render("gitalk-container")})()</script><footer class=site-footer><section class=copyright>&copy;
+2013 -
+2026 Morgoth</section><section class=powerby>Designed by Canux<br></section></footer><div class=pswp tabindex=-1 role=dialog aria-hidden=true><div class=pswp__bg></div><div class=pswp__scroll-wrap><div class=pswp__container><div class=pswp__item></div><div class=pswp__item></div><div class=pswp__item></div></div><div class="pswp__ui pswp__ui--hidden"><div class=pswp__top-bar><div class=pswp__counter></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+<button class="pswp__button pswp__button--share" title=Share></button>
+<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button><div class=pswp__preloader><div class=pswp__preloader__icn><div class=pswp__preloader__cut><div class=pswp__preloader__donut></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class=pswp__share-tooltip></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+</button>
+<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button><div class=pswp__caption><div class=pswp__caption__center></div></div></div></div></div><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU=" crossorigin=anonymous defer></script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css crossorigin=anonymous><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css crossorigin=anonymous></main></div><script src=https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z+KMkF24hUW8WePSA9HM=" crossorigin=anonymous></script><script type=text/javascript src=/ts/main.js defer></script><script>(function(){const e=document.createElement("link");e.href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap",e.type="text/css",e.rel="stylesheet",document.head.appendChild(e)})()</script></body></html>

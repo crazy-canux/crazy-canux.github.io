@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Terraform on Morgoth</title><link>https://canuxcheng.com/tags/terraform/</link><description>Recent content in Terraform on Morgoth</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 15 Apr 2016 09:41:39 +0800</lastBuildDate><atom:link href="https://canuxcheng.com/tags/terraform/index.xml" rel="self" type="application/rss+xml"/><item><title>Terraform</title><link>https://canuxcheng.com/post/devops_terraform/</link><pubDate>Fri, 15 Apr 2016 09:41:39 +0800</pubDate><guid>https://canuxcheng.com/post/devops_terraform/</guid><description>&lt;h1 id="terraform"&gt;Terraform&lt;/h1&gt;
+&lt;p&gt;install:&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://learn.hashicorp.com/tutorials/terraform/install-cli" target="_blank" rel="noopener"
+&gt;https://learn.hashicorp.com/tutorials/terraform/install-cli&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;项目结构：&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;./terraform
+phz
+cache
+rds
+vpc
+eks: (s3, cluster, karpenter, bank-vaults, argocd, argocd-apps)
+./terraform/eks/argocd-apps:
+projects
+main.tf
+provider.tf
+variables.tf
+external-dns-iam.tf
+cert-manager.tf
+argocd-image-updater.tf
+./manifests
+metrics-server
+ingress-nginx
+external-dns
+cert-manager
+argocd
+argocd-image-updater
+argo-rollouts
+./helm
+argocd (dev.yml, prod.yml)
+argocd-image-updater
+argo-rollouts
+cert-manager
+external-dns
+ingress-nginx
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id="cli"&gt;CLI&lt;/h2&gt;
+&lt;p&gt;操作工作目录&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 初始化目录，会根据配置下载和安装provider.
+terraform init
+terraform get
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;操作tf文件&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 格式化文件
+terraform fmt -recursive
+// 验证文件
+terraform validate
+// 可以通过终端验证函数.
+terraform console
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;操作基础设施:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;terraform plan
+terraform plan -out test.tfplan
+terraform apply -auto-approve
+terraform apply test.tfplan
+terraform destroy
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;检查基础设施:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;terraform show
+terraform graph
+terraform output
+terraform state list/show
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;认证:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;terraform login
+terraform logout
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h2 id="tf"&gt;TF&lt;/h2&gt;
+&lt;p&gt;&lt;a class="link" href="https://www.terraform.io/language" target="_blank" rel="noopener"
+&gt;https://www.terraform.io/language&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;注释:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;# comment
+// comment
+/* comment */
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h3 id="backend-and-state"&gt;backend and state&lt;/h3&gt;
+&lt;p&gt;&lt;a class="link" href="https://www.terraform.io/language/settings/backends" target="_blank" rel="noopener"
+&gt;https://www.terraform.io/language/settings/backends&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://www.terraform.io/language/state" target="_blank" rel="noopener"
+&gt;https://www.terraform.io/language/state&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id="provider"&gt;provider&lt;/h3&gt;
+&lt;hr&gt;
+&lt;h3 id="data-sources"&gt;data sources&lt;/h3&gt;
+&lt;p&gt;data source: 获取服务的参数&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id="module"&gt;module&lt;/h3&gt;
+&lt;p&gt;管理provider上的模块/服务.定义了input, resource/data source, output的就可以认为是module.&lt;/p&gt;
+&lt;h4 id="meta-arguments"&gt;meta-arguments&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;providers&lt;/li&gt;
+&lt;li&gt;depends_on&lt;/li&gt;
+&lt;li&gt;count&lt;/li&gt;
+&lt;li&gt;for_each&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id="resources"&gt;resources&lt;/h3&gt;
+&lt;p&gt;resources: 创建服务的参数&lt;/p&gt;
+&lt;h4 id="meta-arguments-1"&gt;meta-arguments&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;depends_on&lt;/li&gt;
+&lt;li&gt;count&lt;/li&gt;
+&lt;li&gt;for_each&lt;/li&gt;
+&lt;li&gt;provider&lt;/li&gt;
+&lt;li&gt;lifecycle&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4 id="lifecycle"&gt;lifecycle&lt;/h4&gt;
+&lt;p&gt;用来控制资源的创建、更新和删除行为。&lt;/p&gt;
+&lt;h4 id="connection"&gt;connection&lt;/h4&gt;
+&lt;p&gt;用来定义如何连接到远程资源，通常用于provisioner.&lt;/p&gt;
+&lt;h4 id="provisioner"&gt;provisioner&lt;/h4&gt;
+&lt;p&gt;特殊的resource，可以在本地或远程机器做一些准备工作。也就是在资源创建后执行一些操作.&lt;/p&gt;
+&lt;p&gt;支持：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;file&lt;/li&gt;
+&lt;li&gt;local-exec&lt;/li&gt;
+&lt;li&gt;remote-exec&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h3 id="variable"&gt;Variable&lt;/h3&gt;
+&lt;p&gt;&lt;a class="link" href="https://www.terraform.io/language/values/variables" target="_blank" rel="noopener"
+&gt;https://www.terraform.io/language/values/variables&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;input variable: 输入变量&lt;/p&gt;
+&lt;p&gt;local variable: 本地变量&lt;/p&gt;
+&lt;p&gt;output variable: 输出参数&lt;/p&gt;
+&lt;p&gt;子模块无法引用父模块的local变量， resource属性，input变量。但是可以通过output参数引用。&lt;/p&gt;
+&lt;p&gt;父模块无法引用子模块的local变量，resource属性。但是可以通过output参数引用，而且父模块可以通过input变量传值给子模块。&lt;/p&gt;
+&lt;h3 id="表达式"&gt;表达式&lt;/h3&gt;
+&lt;h3 id="函数"&gt;函数&lt;/h3&gt;
+&lt;h3 id="workspace"&gt;workspace&lt;/h3&gt;
+&lt;p&gt;Workspace 是 Terraform 用来隔离状态文件（state）的一种机制，允许你在同一个配置文件中管理多个环境（如 dev、staging、prod）而不会相互干扰。&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;terraform workspace new dev
+terraform workspace list
+terraform select &amp;lt;name&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;使用terraform.workspace作为参数.&lt;/p&gt;
+&lt;hr&gt;</description></item></channel></rss>

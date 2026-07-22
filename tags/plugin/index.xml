@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Plugin on Morgoth</title><link>https://canuxcheng.com/tags/plugin/</link><description>Recent content in Plugin on Morgoth</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Sat, 19 Jul 2025 10:50:10 +0800</lastBuildDate><atom:link href="https://canuxcheng.com/tags/plugin/index.xml" rel="self" type="application/rss+xml"/><item><title>Agent</title><link>https://canuxcheng.com/post/ai_agent/</link><pubDate>Sat, 19 Jul 2025 10:50:10 +0800</pubDate><guid>https://canuxcheng.com/post/ai_agent/</guid><description>&lt;h1 id="agent"&gt;Agent&lt;/h1&gt;
+&lt;h2 id="what-is-an-agent"&gt;What is an agent&lt;/h2&gt;
+&lt;p&gt;An &lt;strong&gt;AI agent&lt;/strong&gt; is an LLM wrapped in a loop that can &lt;em&gt;act&lt;/em&gt;, not just answer. The
+model decides which tool to call, observes the result, and repeats until the
+goal is met. The essential ingredients are:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;A model&lt;/strong&gt; — the reasoning engine.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Tools&lt;/strong&gt; — functions it can call (run a command, read a file, search the web).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;A loop&lt;/strong&gt; — plan → act → observe → re-plan, until done.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Context / memory&lt;/strong&gt; — the task, prior steps, and relevant project knowledge.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;A plain chatbot returns text. An agent edits files, runs tests, fixes the
+failures, and reports back — it closes the loop on real work.&lt;/p&gt;
+&lt;h2 id="what-is-an-agent-plugin"&gt;What is an agent plugin&lt;/h2&gt;
+&lt;p&gt;A &lt;strong&gt;plugin&lt;/strong&gt; packages reusable capability so you don&amp;rsquo;t re-teach the agent every
+time. Across today&amp;rsquo;s tools a plugin typically bundles some of:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Slash commands&lt;/strong&gt; — custom prompts/workflows you invoke by name.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Subagents&lt;/strong&gt; — specialized helpers the main agent can delegate to.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Skills&lt;/strong&gt; — domain knowledge loaded on demand.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Hooks&lt;/strong&gt; — scripts that fire on events (e.g. before a commit).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;MCP servers&lt;/strong&gt; — connections to external systems (see &lt;a class="link" href="../ai_mcp/" &gt;MCP&lt;/a&gt;).&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Plugins make an agent extensible and shareable: install one and the agent gains
+new commands and integrations instantly.&lt;/p&gt;
+&lt;h2 id="three-mainstream-agents"&gt;Three mainstream agents&lt;/h2&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Agent&lt;/th&gt;
+&lt;th&gt;Form&lt;/th&gt;
+&lt;th&gt;Strength&lt;/th&gt;
+&lt;th&gt;Trade-off&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Claude Code&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;CLI / IDE&lt;/td&gt;
+&lt;td&gt;Deep autonomy, rich plugin + MCP + skills ecosystem&lt;/td&gt;
+&lt;td&gt;Terminal-first; needs a Claude subscription/API&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Cursor&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Full IDE (VS Code fork)&lt;/td&gt;
+&lt;td&gt;Best inline editing UX, multi-model, great for exploration&lt;/td&gt;
+&lt;td&gt;You switch editors; agent autonomy is shallower&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;GitHub Copilot&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;IDE extension + coding agent&lt;/td&gt;
+&lt;td&gt;Native GitHub/PR integration, huge install base&lt;/td&gt;
+&lt;td&gt;Less open/customizable, ecosystem-locked&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;&lt;strong&gt;The differences in short:&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Claude Code&lt;/strong&gt; is the most &lt;em&gt;agentic&lt;/em&gt; and the most &lt;em&gt;open&lt;/em&gt; to extend — plugins,
+skills, hooks and MCP make it programmable. Best when you want the agent to
+drive multi-step work autonomously.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Cursor&lt;/strong&gt; wins on &lt;em&gt;editing experience&lt;/em&gt;. It&amp;rsquo;s an IDE, so completions,
+diffs and context-picking feel native. Best for hands-on, in-editor coding.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Copilot&lt;/strong&gt; wins on &lt;em&gt;integration and ubiquity&lt;/em&gt;. It lives where your code
+already is (GitHub, VS Code, JetBrains) and its coding agent can take an issue
+to a PR. Best for teams already standardized on GitHub.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;There is no single winner — pick by how much autonomy vs. inline control you
+want, and how much you care about extensibility vs. zero-setup integration.&lt;/p&gt;
+&lt;h2 id="developing-a-plugin"&gt;Developing a plugin&lt;/h2&gt;
+&lt;p&gt;Using Claude Code&amp;rsquo;s plugin system as the concrete example, a plugin is just a
+directory with a manifest plus the components it adds:&lt;/p&gt;
+&lt;pre tabindex="0"&gt;&lt;code&gt;my-plugin/
+├── .claude-plugin/plugin.json # name, version, description
+├── commands/ # slash commands (markdown prompts)
+├── agents/ # subagent definitions
+├── skills/ # on-demand knowledge
+├── hooks/ # event scripts
+└── .mcp.json # MCP servers to wire in
+&lt;/code&gt;&lt;/pre&gt;&lt;p&gt;The workflow is roughly:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Scaffold the directory and &lt;code&gt;plugin.json&lt;/code&gt; manifest.&lt;/li&gt;
+&lt;li&gt;Add a command — a markdown file whose body is the prompt the agent runs.&lt;/li&gt;
+&lt;li&gt;Optionally add subagents, skills, hooks, or MCP servers.&lt;/li&gt;
+&lt;li&gt;Install it locally to test, then publish via a marketplace/repo so others can
+install it.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;You&amp;rsquo;re not writing model code — you&amp;rsquo;re writing &lt;em&gt;prompts, configuration, and
+small scripts&lt;/em&gt; that compose into reusable behavior.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="resources"&gt;Resources&lt;/h2&gt;
+&lt;p&gt;&lt;a class="link" href="https://docs.claude.com/en/docs/claude-code" target="_blank" rel="noopener"
+&gt;https://docs.claude.com/en/docs/claude-code&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://cursor.com/" target="_blank" rel="noopener"
+&gt;https://cursor.com/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/features/copilot" target="_blank" rel="noopener"
+&gt;https://github.com/features/copilot&lt;/a&gt;&lt;/p&gt;</description></item></channel></rss>

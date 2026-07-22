@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Cache on Morgoth</title><link>https://canuxcheng.com/tags/cache/</link><description>Recent content in Cache on Morgoth</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 04 May 2021 04:51:30 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/cache/index.xml" rel="self" type="application/rss+xml"/><item><title>Cache</title><link>https://canuxcheng.com/post/django_cache/</link><pubDate>Tue, 04 May 2021 04:51:30 +0000</pubDate><guid>https://canuxcheng.com/post/django_cache/</guid><description>&lt;h1 id="cache"&gt;cache&lt;/h1&gt;
+&lt;p&gt;缓存的backend可以是django内置的，也可以是第三方的。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;缓存整个站点&lt;/p&gt;
+&lt;p&gt;MIDDLEWARE = [
+&amp;lsquo;django.middleware.cache.UpdateCacheMiddleware&amp;rsquo;,
+&amp;lsquo;django.middleware.common.CommonMiddleware&amp;rsquo;,
+&amp;lsquo;django.middleware.cache.FetchFromCacheMiddleware&amp;rsquo;,
+]&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;视图缓存&lt;/p&gt;
+&lt;p&gt;from django.views.decorators.cache import cache_page&lt;/p&gt;
+&lt;p&gt;@cache_page(60 * 2)
+def my_view(request):
+&amp;hellip;&lt;/p&gt;
+&lt;p&gt;或者在URLconf中指定
+urlpatterns = [
+path(&amp;lsquo;foo/&lt;a class="link" href="int:code" &gt;int:code&lt;/a&gt;/&amp;rsquo;, cache_page(60 * 2)(my_view)),
+]&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;模板片段缓存&lt;/p&gt;
+&lt;p&gt;{% load cache %}
+{% cache &amp;hellip; %}
+&amp;hellip;
+{% endcache %}&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;hr&gt;
+&lt;h2 id="redis"&gt;redis&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;CACHES = {
+&amp;quot;default&amp;quot;: {
+&amp;quot;BACKEND&amp;quot;: &amp;quot;django_redis.cache.RedisCache&amp;quot;,
+&amp;quot;LOCATION&amp;quot;: os.environ.get(&amp;quot;REDIS_URL&amp;quot;, ''),
+&amp;quot;OPTIONS&amp;quot;: {
+&amp;quot;CLIENT_CLASS&amp;quot;: &amp;quot;django_redis.client.DefaultClient&amp;quot;,
+},
+&amp;quot;TIMEOUT&amp;quot;: 60,
+}
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="memcached"&gt;memcached&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;CACHES = {
+'default': {
+'BACKEND': 'django.core.cache.backends.memcached.MemcachedCache',
+'LOCATION': '127.0.0.1:11211',
+}
+}
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="database"&gt;database&lt;/h2&gt;
+&lt;pre&gt;&lt;code&gt;CACHES = {
+'default': {
+'BACKEND': 'django.core.cache.backends.db.DatabaseCache',
+'LOCATION': 'my_cache_table',
+}
+}
+&lt;/code&gt;&lt;/pre&gt;</description></item></channel></rss>

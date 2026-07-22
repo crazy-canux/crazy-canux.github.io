@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Vault on Morgoth</title><link>https://canuxcheng.com/tags/vault/</link><description>Recent content in Vault on Morgoth</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 15 Apr 2016 09:41:39 +0800</lastBuildDate><atom:link href="https://canuxcheng.com/tags/vault/index.xml" rel="self" type="application/rss+xml"/><item><title>Vault</title><link>https://canuxcheng.com/post/devops_vault/</link><pubDate>Fri, 15 Apr 2016 09:41:39 +0800</pubDate><guid>https://canuxcheng.com/post/devops_vault/</guid><description>&lt;h1 id="vault"&gt;Vault&lt;/h1&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/hashicorp/vault" target="_blank" rel="noopener"
+&gt;https://github.com/hashicorp/vault&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Install:&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://learn.hashicorp.com/tutorials/vault/getting-started-install" target="_blank" rel="noopener"
+&gt;https://learn.hashicorp.com/tutorials/vault/getting-started-install&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id="cli"&gt;CLI&lt;/h1&gt;
+&lt;p&gt;可以通过环境变量或者命令行参数指定server:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;-address VAULT_ADDR
+-namespace VAULT_NAMESPACE
+vault [subcommand] -address=&amp;quot;https://server:8200&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;server:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 启动vault
+$ vault server -config=/etc/vault/config.hcl
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;agent:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ vault agent
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;login:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 跟据token登陆.
+$ vault login
+$vault login -token-only -method=oidc
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;operator:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// init生成keys和token.
+$ vault operator init
+// 通过keys unseal
+$ vault operator unseal
+// 通过token seal
+$ vault operator seal
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;auth:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 查看auth
+$ vault auth list
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;secrets&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 查看secrets engine
+$ vault secrets list
+// enable kv
+$ vault secrets enable -path=&amp;lt;ns&amp;gt;/&amp;lt;name&amp;gt; kv
+$ vault secrets enable kv
+// disable kv
+$ vault secrets disable kv
+// 创建一个database engine
+vault secrets enable -path &amp;lt;ns&amp;gt;/mysql database
+// 创建rabbitmq engine
+vault secrets enable -path &amp;lt;ns&amp;gt;/rabbitmq rabbitmq
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;policy&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;// 查看policy
+$ vault policy list
+// 创建policy
+$ vault policy write &amp;lt;my-policy&amp;gt; ./my-policy.hcl
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;plugin:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ vault plugin list database
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;read/write/delete/list:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ vault read
+$ vault write
+$ vault write my-secret/my-app my-field=value
+$ vault delete
+$ vault list
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id="api"&gt;API&lt;/h1&gt;
+&lt;p&gt;&lt;a class="link" href="https://www.vaultproject.io/api-docs" target="_blank" rel="noopener"
+&gt;https://www.vaultproject.io/api-docs&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ curl --header &amp;quot;X-Vault-Token: TOKEN&amp;quot; https://FQDN/v1/&amp;lt;engine-path&amp;gt;/data/&amp;lt;secret-path&amp;gt;
+$ curl --header &amp;quot;X-Vault-Token: TOKEN&amp;quot; https://FQDN/v1/&amp;lt;engine-path&amp;gt;/data/&amp;lt;secret-path&amp;gt;?version=&amp;lt;version&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id="auth-methods"&gt;auth methods&lt;/h1&gt;
+&lt;p&gt;&lt;a class="link" href="https://www.vaultproject.io/docs/auth" target="_blank" rel="noopener"
+&gt;https://www.vaultproject.io/docs/auth&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id="secrets-engine"&gt;secrets engine&lt;/h1&gt;
+&lt;p&gt;&lt;a class="link" href="https://www.vaultproject.io/docs/secrets" target="_blank" rel="noopener"
+&gt;https://www.vaultproject.io/docs/secrets&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id="vault-pki"&gt;vault PKI&lt;/h1&gt;
+&lt;p&gt;通过pki engine来生成和管理证书。&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://learn.hashicorp.com/tutorials/vault/pki-engine" target="_blank" rel="noopener"
+&gt;https://learn.hashicorp.com/tutorials/vault/pki-engine&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;generate:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;vault write -format=json -namespace=&amp;lt;ns&amp;gt; &amp;lt;pki_root&amp;gt;/issue/&amp;lt;role&amp;gt; \
+common_name=&amp;quot;canuxcheng.com&amp;quot; \
+alt_names=&amp;quot;canuxcheng.com,*.canuxcheng.com&amp;quot; \
+ttl=8760h \
+format=pem/der/pem_bundle \
+| tee \
+&amp;gt;(jq -r '.data.certificate' &amp;gt; canuxcheng.crt) \
+&amp;gt;(jq -r '.data.private_key' &amp;gt; private.key)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;list:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;vault list -namespace=&amp;lt;ns&amp;gt; &amp;lt;pki_root&amp;gt;/certs
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;verify:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;vault read -namespace=iac-phoenix/test it/pki/cert/&amp;lt;sn&amp;gt;
+curl -s https://vault.canux.com/v1/&amp;lt;ns&amp;gt;/&amp;lt;pki_root&amp;gt;/cert/&amp;lt;serial-num&amp;gt; | jq -r '.data.certificate' | openssl x509 -in - -noout -text
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;revoke:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;vault write &amp;lt;ns&amp;gt;/&amp;lt;pki_root&amp;gt;/revoke serial_number=&amp;quot;******&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;p&gt;remove expired ca:&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;vault write &amp;lt;pki_root&amp;gt;/tidy tidy_cert_store=true tidy_revoked_certs=true
+&lt;/code&gt;&lt;/pre&gt;
+&lt;hr&gt;
+&lt;h1 id="vault--k8s"&gt;vault + k8s&lt;/h1&gt;
+&lt;p&gt;vault提供两种方式在k8s中使用secret.&lt;/p&gt;
+&lt;h2 id="vault-sidecar-agent-injector"&gt;Vault Sidecar Agent Injector&lt;/h2&gt;
+&lt;p&gt;&lt;a class="link" href="https://www.vaultproject.io/docs/platform/k8s/injector" target="_blank" rel="noopener"
+&gt;https://www.vaultproject.io/docs/platform/k8s/injector&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/hashicorp/vault-k8s" target="_blank" rel="noopener"
+&gt;https://github.com/hashicorp/vault-k8s&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="mutating-webhook-of-bank-vaults"&gt;mutating webhook of Bank-Vaults&lt;/h2&gt;
+&lt;p&gt;&lt;a class="link" href="https://banzaicloud.com/docs/bank-vaults/mutating-webhook/" target="_blank" rel="noopener"
+&gt;https://banzaicloud.com/docs/bank-vaults/mutating-webhook/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/banzaicloud/bank-vaults" target="_blank" rel="noopener"
+&gt;https://github.com/banzaicloud/bank-vaults&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://banzaicloud.com/blog/inject-secrets-into-pods-vault-revisited/" target="_blank" rel="noopener"
+&gt;https://banzaicloud.com/blog/inject-secrets-into-pods-vault-revisited/&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="vault-csi-provider"&gt;Vault CSI Provider&lt;/h2&gt;
+&lt;p&gt;&lt;a class="link" href="https://www.vaultproject.io/docs/platform/k8s/csi" target="_blank" rel="noopener"
+&gt;https://www.vaultproject.io/docs/platform/k8s/csi&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/kubernetes-sigs/secrets-store-csi-driver" target="_blank" rel="noopener"
+&gt;https://github.com/kubernetes-sigs/secrets-store-csi-driver&lt;/a&gt;&lt;/p&gt;</description></item></channel></rss>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Iso on Morgoth</title><link>https://canuxcheng.com/tags/iso/</link><description>Recent content in Iso on Morgoth</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 01 Apr 2016 21:54:16 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/iso/index.xml" rel="self" type="application/rss+xml"/><item><title>ISO</title><link>https://canuxcheng.com/post/c_iso/</link><pubDate>Fri, 01 Apr 2016 21:54:16 +0000</pubDate><guid>https://canuxcheng.com/post/c_iso/</guid><description>&lt;h1 id="c标准库"&gt;C标准库&lt;/h1&gt;
+&lt;p&gt;ISO C89(ANSI C89) -&amp;gt; ISO C95 -&amp;gt; ISO C99 -&amp;gt;&lt;/p&gt;
+&lt;p&gt;-&amp;gt; ISO C11 -&amp;gt; ISO C17 -&amp;gt; ISO C23&lt;/p&gt;
+&lt;p&gt;ANSI C 和 ISO C是对通用C语言的接口的定义。&lt;/p&gt;
+&lt;p&gt;符合这种标准的实现为C语言标准库,也叫libc。&lt;/p&gt;
+&lt;p&gt;官方网站：&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="http://www.open-std.org/jtc1/sc22/wg14/www/standards" target="_blank" rel="noopener"
+&gt;http://www.open-std.org/jtc1/sc22/wg14/www/standards&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id="c89和c99支持的头文件和函数"&gt;C89和C99支持的头文件和函数&lt;/h1&gt;
+&lt;h2 id="asserth"&gt;&amp;lt;assert.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="ctypeh"&gt;&amp;lt;ctype.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="complexh"&gt;&amp;lt;complex.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="errnoh"&gt;&amp;lt;errno.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="floath"&gt;&amp;lt;float.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="fenvh"&gt;&amp;lt;fenv.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="inttypeh"&gt;&amp;lt;inttype.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="iso646h"&gt;&amp;lt;iso646.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="limitsh"&gt;&amp;lt;limits.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="localeh"&gt;&amp;lt;locale.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="mathh"&gt;&amp;lt;math.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="setjmph"&gt;&amp;lt;setjmp.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="signalh"&gt;&amp;lt;signal.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="stdargh"&gt;&amp;lt;stdarg.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="stddefh"&gt;&amp;lt;stddef.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="stdioh"&gt;&amp;lt;stdio.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="stdlibh"&gt;&amp;lt;stdlib.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="stringh"&gt;&amp;lt;string.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="stdboolh"&gt;&amp;lt;stdbool.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="stdinth"&gt;&amp;lt;stdint.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="timeh"&gt;&amp;lt;time.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="tgmathh"&gt;&amp;lt;tgmath.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="wcharh"&gt;&amp;lt;wchar.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="wctypeh"&gt;&amp;lt;wctype.h&amp;gt;&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h1 id="c11支持的头文件和函数"&gt;C11支持的头文件和函数&lt;/h1&gt;
+&lt;h2 id="stdalignh"&gt;&amp;lt;stdalign.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="stdatomich"&gt;&amp;lt;stdatomic.h&amp;gt;&lt;/h2&gt;
+&lt;h2 id="threadsh"&gt;&amp;lt;threads.h&amp;gt;&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h1 id="c标准"&gt;C++标准&lt;/h1&gt;
+&lt;p&gt;C++98, C++11, C++14, C++17, C++20, C++23&lt;/p&gt;
+&lt;p&gt;c++ 头文件不带.h用来和C区分。&lt;/p&gt;
+&lt;h2 id="核心功能"&gt;核心功能&lt;/h2&gt;
+&lt;p&gt;&lt;a class="link" href="https://zh.cppreference.com/w/cpp/language" target="_blank" rel="noopener"
+&gt;https://zh.cppreference.com/w/cpp/language&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="标准库"&gt;标准库&lt;/h2&gt;
+&lt;p&gt;&lt;a class="link" href="https://zh.cppreference.com/w/cpp/standard_library" target="_blank" rel="noopener"
+&gt;https://zh.cppreference.com/w/cpp/standard_library&lt;/a&gt;&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;&lt;a class="link" href="https://cplusplus.com/reference/iostream/" target="_blank" rel="noopener"
+&gt;https://cplusplus.com/reference/iostream/&lt;/a&gt;&lt;/p&gt;
+&lt;!-- raw HTML omitted --&gt;
+&lt;p&gt;&lt;a class="link" href="https://cplusplus.com/reference/string/" target="_blank" rel="noopener"
+&gt;https://cplusplus.com/reference/string/&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="stl"&gt;STL&lt;/h2&gt;
+&lt;h3 id="containers"&gt;containers&lt;/h3&gt;
+&lt;h3&gt;&lt;/h3&gt;</description></item></channel></rss>

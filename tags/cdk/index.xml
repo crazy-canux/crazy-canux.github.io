@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Cdk on Morgoth</title><link>https://canuxcheng.com/tags/cdk/</link><description>Recent content in Cdk on Morgoth</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Fri, 23 Apr 2021 22:02:31 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/cdk/index.xml" rel="self" type="application/rss+xml"/><item><title>CDK</title><link>https://canuxcheng.com/post/cloud_cdk/</link><pubDate>Fri, 23 Apr 2021 22:02:31 +0000</pubDate><guid>https://canuxcheng.com/post/cloud_cdk/</guid><description>&lt;h1 id="cdk"&gt;CDK&lt;/h1&gt;
+&lt;p&gt;Cloud Development Kit&lt;/p&gt;
+&lt;p&gt;SDK一般是和service交互的。
+CDK用来和基础设施交互的。&lt;/p&gt;
+&lt;h2 id="aws-cdk"&gt;AWS CDK&lt;/h2&gt;
+&lt;p&gt;The AWS Cloud Development Kit (AWS CDK) is an open-source software development framework to define cloud infrastructure in code and provision it through AWS CloudFormation.&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/aws/aws-cdk" target="_blank" rel="noopener"
+&gt;https://github.com/aws/aws-cdk&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="cdk8s"&gt;CDK8S&lt;/h2&gt;
+&lt;p&gt;cdk8s is an open-source software development framework for defining Kubernetes applications and reusable abstractions using familiar programming languages and rich object-oriented APIs. cdk8s apps synthesize into standard Kubernetes manifests which can be applied to any Kubernetes cluster.&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/cdk8s-team/cdk8s" target="_blank" rel="noopener"
+&gt;https://github.com/cdk8s-team/cdk8s&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id="ckdtf"&gt;CKDTF&lt;/h1&gt;
+&lt;p&gt;Cloud Development Kit for Terraform (CDKTF) allows you to use familiar programming languages to define cloud infrastructure and provision it through HashiCorp Terraform. This gives you access to the entire Terraform ecosystem without learning HashiCorp Configuration Language (HCL) and lets you leverage the power of your existing toolchain for testing, dependency management, etc.&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://www.terraform.io/cdktf" target="_blank" rel="noopener"
+&gt;https://www.terraform.io/cdktf&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;$ npm install --global cdktf-cli@latest
+$ cd cdktf-demo
+$ cdktf init --template=&amp;quot;go&amp;quot; --local
+$ cdktf get
+$ go mod tidy
+$ cdktf synth
+$ cdktf deploy
+$ cdktf destroy
+&lt;/code&gt;&lt;/pre&gt;</description></item></channel></rss>

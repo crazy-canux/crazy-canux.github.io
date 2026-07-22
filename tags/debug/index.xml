@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Debug on Morgoth</title><link>https://canuxcheng.com/tags/debug/</link><description>Recent content in Debug on Morgoth</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Mon, 01 Jan 2018 10:49:21 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/debug/index.xml" rel="self" type="application/rss+xml"/><item><title>Debug</title><link>https://canuxcheng.com/post/go_debug/</link><pubDate>Mon, 01 Jan 2018 10:49:21 +0000</pubDate><guid>https://canuxcheng.com/post/go_debug/</guid><description>&lt;h1 id="go"&gt;go&lt;/h1&gt;
+&lt;pre&gt;&lt;code&gt;go vet
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id="gdb"&gt;gdb&lt;/h1&gt;
+&lt;h1 id="delve"&gt;delve&lt;/h1&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/derekparker/delve" target="_blank" rel="noopener"
+&gt;https://github.com/derekparker/delve&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;</description></item><item><title>Debug</title><link>https://canuxcheng.com/post/psl_debug/</link><pubDate>Sat, 06 Aug 2016 16:54:08 +0000</pubDate><guid>https://canuxcheng.com/post/psl_debug/</guid><description>&lt;h1 id="debug-and-profiling"&gt;Debug and Profiling&lt;/h1&gt;
+&lt;h2 id="bdb"&gt;bdb&lt;/h2&gt;
+&lt;h2 id="pdb"&gt;pdb&lt;/h2&gt;
+&lt;h2 id="timeit"&gt;timeit&lt;/h2&gt;
+&lt;h2 id="trace"&gt;trace&lt;/h2&gt;
+&lt;h2 id="trracemalloc"&gt;trracemalloc&lt;/h2&gt;
+&lt;hr&gt;
+&lt;h2 id="tpl"&gt;TPL&lt;/h2&gt;
+&lt;h3 id="viztracer"&gt;viztracer&lt;/h3&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/gaogaotiantian/viztracer" target="_blank" rel="noopener"
+&gt;https://github.com/gaogaotiantian/viztracer&lt;/a&gt;&lt;/p&gt;</description></item></channel></rss>

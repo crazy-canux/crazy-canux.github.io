@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Utils on Morgoth</title><link>https://canuxcheng.com/tags/utils/</link><description>Recent content in Utils on Morgoth</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 26 Apr 2016 09:52:02 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/utils/index.xml" rel="self" type="application/rss+xml"/><item><title>Utils</title><link>https://canuxcheng.com/post/ps_utils/</link><pubDate>Tue, 26 Apr 2016 09:52:02 +0000</pubDate><guid>https://canuxcheng.com/post/ps_utils/</guid><description>&lt;h1 id="windows相关项目"&gt;windows相关项目：&lt;/h1&gt;
+&lt;h2 id="choco"&gt;choco&lt;/h2&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/chocolatey" target="_blank" rel="noopener"
+&gt;https://github.com/chocolatey&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;windows的apt/yum。&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/chocolatey/choco" target="_blank" rel="noopener"
+&gt;choco&lt;/a&gt; is replacement of &lt;a class="link" href="https://github.com/chocolatey/chocolatey" target="_blank" rel="noopener"
+&gt;chocolatey&lt;/a&gt;&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;choco install openssh
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h2 id="cmder"&gt;cmder&lt;/h2&gt;
+&lt;p&gt;cmd的升级版。&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/cmderdev/cmder" target="_blank" rel="noopener"
+&gt;https://github.com/cmderdev/cmder&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="babun"&gt;babun&lt;/h2&gt;
+&lt;p&gt;a linux-shell like on windows.&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/babun/babun" target="_blank" rel="noopener"
+&gt;https://github.com/babun/babun&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="flinux"&gt;flinux&lt;/h2&gt;
+&lt;p&gt;run unmodified linux applications inside windows&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/wishstudio/flinux" target="_blank" rel="noopener"
+&gt;https://github.com/wishstudio/flinux&lt;/a&gt;&lt;/p&gt;</description></item></channel></rss>

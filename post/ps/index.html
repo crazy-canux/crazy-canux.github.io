@@ -1,0 +1,239 @@
+<!doctype html><html lang=zh-CN dir=ltr><head><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'><meta name=description content='PowerShell Console: command line interface
+ISE: script editor and console combination
+Version:
+2.0,3.0,4.0,5.0
+C:\Windows\System32\powershell 存放64位powershell
+C:\Windows\SysWOW64\powershell 存放32位powershell
+>$PSVersionTable >$HOST Install/Update:
+https://www.microsoft.com/zh-CN/download/details.aspx?id=40855
+安装Windows Management Framework4.0即可。
+>$PSHOME 多版本时切换版本:
+>powershell -version 2 powershell相关项目 https://github.com/Microsoft
+https://github.com/PowerShell
+https://github.com/PowerShellOrg
+win32-openssh windows的SSH。
+https://github.com/PowerShell/Win32-OpenSSH
+powershell命令 >powershell -? >powershell /? >powershell -help powershell script powershell是默认大小写不敏感的。
+同一行多个命令需要用分号;隔开。
+powershell的安全策略：
+restricted(default) allsigned remotesigned unrestricted bypass 注释 单行注释：
+# comment 多行注释(文档注释)：
+<# comment1 comment2 ... #> 帮助文档:
+'><title>PowerShell</title><link rel=canonical href=https://canuxcheng.com/post/ps/><link rel=stylesheet href=/scss/style.min.22ad1c74b5bb435181c77741d99f034b2c36f7272eff9d0d1aa16d32e7e84673.css><meta property='og:title' content='PowerShell'><meta property='og:description' content='PowerShell Console: command line interface
+ISE: script editor and console combination
+Version:
+2.0,3.0,4.0,5.0
+C:\Windows\System32\powershell 存放64位powershell
+C:\Windows\SysWOW64\powershell 存放32位powershell
+>$PSVersionTable >$HOST Install/Update:
+https://www.microsoft.com/zh-CN/download/details.aspx?id=40855
+安装Windows Management Framework4.0即可。
+>$PSHOME 多版本时切换版本:
+>powershell -version 2 powershell相关项目 https://github.com/Microsoft
+https://github.com/PowerShell
+https://github.com/PowerShellOrg
+win32-openssh windows的SSH。
+https://github.com/PowerShell/Win32-OpenSSH
+powershell命令 >powershell -? >powershell /? >powershell -help powershell script powershell是默认大小写不敏感的。
+同一行多个命令需要用分号;隔开。
+powershell的安全策略：
+restricted(default) allsigned remotesigned unrestricted bypass 注释 单行注释：
+# comment 多行注释(文档注释)：
+<# comment1 comment2 ... #> 帮助文档:
+'><meta property='og:url' content='https://canuxcheng.com/post/ps/'><meta property='og:site_name' content='Morgoth'><meta property='og:type' content='article'><meta property='article:section' content='Post'><meta property='article:tag' content='powershell'><meta property='article:published_time' content='2016-04-26T09:52:02+00:00'><meta property='article:modified_time' content='2016-04-26T09:52:02+00:00'><meta name=twitter:title content="PowerShell"><meta name=twitter:description content="PowerShell Console: command line interface
+ISE: script editor and console combination
+Version:
+2.0,3.0,4.0,5.0
+C:\Windows\System32\powershell 存放64位powershell
+C:\Windows\SysWOW64\powershell 存放32位powershell
+>$PSVersionTable >$HOST Install/Update:
+https://www.microsoft.com/zh-CN/download/details.aspx?id=40855
+安装Windows Management Framework4.0即可。
+>$PSHOME 多版本时切换版本:
+>powershell -version 2 powershell相关项目 https://github.com/Microsoft
+https://github.com/PowerShell
+https://github.com/PowerShellOrg
+win32-openssh windows的SSH。
+https://github.com/PowerShell/Win32-OpenSSH
+powershell命令 >powershell -? >powershell /? >powershell -help powershell script powershell是默认大小写不敏感的。
+同一行多个命令需要用分号;隔开。
+powershell的安全策略：
+restricted(default) allsigned remotesigned unrestricted bypass 注释 单行注释：
+# comment 多行注释(文档注释)：
+<# comment1 comment2 ... #> 帮助文档:
+"><link rel="shortcut icon" href=favicon.ico><style>:root{--article-font-family:"Merriweather", var(--base-font-family)}</style><script>(function(){const e=document.createElement("link");e.href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap",e.type="text/css",e.rel="stylesheet",document.head.appendChild(e)})()</script></head><body class=article-page><script>(function(){const e="StackColorScheme";localStorage.getItem(e)||localStorage.setItem(e,"auto")})()</script><script>(function(){const t="StackColorScheme",e=localStorage.getItem(t),n=window.matchMedia("(prefers-color-scheme: dark)").matches===!0;e=="dark"||e==="auto"&&n?document.documentElement.dataset.scheme="dark":document.documentElement.dataset.scheme="light"})()</script><div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky"><button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label=切换菜单>
+<span class=hamburger-box><span class=hamburger-inner></span></span></button><header><figure class=site-avatar><a href=/><img src=/img/home_hu_7d22d46ad88d2427.jpg width=300 height=400 class=site-logo loading=lazy alt=Avatar>
+</a><span class=emoji>🍥</span></figure><div class=site-meta><h1 class=site-name><a href=/>Morgoth</a></h1><h2 class=site-description>Hello World!</h2></div></header><ol class=social-menu><li><a href=mailto:canuxcheng@163.com target=_blank title=E-mail rel=me><svg class="icon icon-tabler icon-tabler-messages" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M21 14l-3-3h-7a1 1 0 01-1-1V4a1 1 0 011-1h9a1 1 0 011 1v10"/><path d="M14 15v2a1 1 0 01-1 1H6l-3 3V11a1 1 0 011-1h2"/></svg></a></li><li><a href=https://github.com/crazy-canux target=_blank title=GitHub rel=me><svg class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6.0 00-1.3-3.2 4.2 4.2.0 00-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3.0 00-6.2.0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2.0 00-.1 3.2A4.6 4.6.0 004 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg></a></li></ol><ol class=menu id=main-menu><li><a href=/><svg class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="5 12 3 12 12 3 21 12 19 12"/><path d="M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/><path d="M9 21v-6a2 2 0 012-2h2a2 2 0 012 2v6"/></svg>
+<span>首页</span></a></li><li><a href=/about/><svg class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/></svg>
+<span>关于</span></a></li><li><a href=/categories/ target=_blank><svg class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg>
+<span>分类</span></a></li><li><a href=/tags/ target=_blank><svg class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11 3l9 9a1.5 1.5.0 010 2l-6 6a1.5 1.5.0 01-2 0L3 11V7a4 4 0 014-4h4"/><circle cx="9" cy="9" r="2"/></svg>
+<span>标签</span></a></li><li><a href=/rtfm/><svg class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+<span>RTFM</span></a></li><div class=menu-bottom-section><li id=i18n-switch><svg class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 5h7"/><path d="M9 3v2c0 4.418-2.239 8-5 8"/><path d="M5 9c-.003 2.144 2.952 3.908 6.7 4"/><path d="M12 20l4-9 4 9"/><path d="M19.1 18h-6.2"/></svg>
+<select name=language onchange="window.location.href=this.selectedOptions[0].value"><option value=https://canuxcheng.com/ selected>简体中文</option><option value=https://canuxcheng.com/en/>English</option></select></li><li id=dark-mode-toggle><svg class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="8" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<svg class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="16" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<span>暗色模式</span></li></div></ol></aside><aside class="sidebar right-sidebar sticky"><section class="widget archives"><div class=widget-icon><svg class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg></div><h2 class="widget-title section-title">目录</h2><div class=widget--toc><nav id=TableOfContents><ul><li><a href=#win32-openssh>win32-openssh</a></li></ul><ul><li><a href=#变量>变量</a></li><li><a href=#数组>数组</a></li><li><a href=#字典>字典：</a></li></ul></nav></div></section></aside><main class="main full-width"><article class=main-article><header class=article-header><div class=article-details><header class=article-category><a href=/categories/windows/>Windows</a></header><div class=article-title-wrapper><h2 class=article-title><a href=/post/ps/>PowerShell</a></h2></div><footer class=article-time><div><svg class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg>
+<time class=article-time--published>Apr 26, 2016</time></div><div><svg class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+<time class=article-time--reading>阅读时长: 2 分钟</time></div></footer></div></header><section class=article-content><h1 id=powershell>PowerShell</h1><p>Console: command line interface</p><p>ISE: script editor and console combination</p><p>Version:</p><p>2.0,3.0,4.0,5.0</p><p>C:\Windows\System32\powershell 存放64位powershell</p><p>C:\Windows\SysWOW64\powershell 存放32位powershell</p><pre><code>&gt;$PSVersionTable
+&gt;$HOST
+</code></pre><p>Install/Update:</p><p><a class=link href="https://www.microsoft.com/zh-CN/download/details.aspx?id=40855" target=_blank rel=noopener>https://www.microsoft.com/zh-CN/download/details.aspx?id=40855</a></p><p>安装Windows Management Framework4.0即可。</p><pre><code>&gt;$PSHOME
+</code></pre><p>多版本时切换版本:</p><pre><code>&gt;powershell -version 2
+</code></pre><hr><h1 id=powershell相关项目>powershell相关项目</h1><p><a class=link href=https://github.com/Microsoft target=_blank rel=noopener>https://github.com/Microsoft</a></p><p><a class=link href=https://github.com/PowerShell target=_blank rel=noopener>https://github.com/PowerShell</a></p><p><a class=link href=https://github.com/PowerShellOrg target=_blank rel=noopener>https://github.com/PowerShellOrg</a></p><h2 id=win32-openssh>win32-openssh</h2><p>windows的SSH。</p><p><a class=link href=https://github.com/PowerShell/Win32-OpenSSH target=_blank rel=noopener>https://github.com/PowerShell/Win32-OpenSSH</a></p><hr><h1 id=powershell命令>powershell命令</h1><pre><code>&gt;powershell -?
+&gt;powershell /?
+&gt;powershell -help
+</code></pre><hr><h1 id=powershell-script>powershell script</h1><p>powershell是默认大小写不敏感的。</p><p>同一行多个命令需要用分号;隔开。</p><p>powershell的安全策略：</p><ol><li>restricted(default)</li><li>allsigned</li><li>remotesigned</li><li>unrestricted</li><li>bypass</li></ol><h1 id=注释>注释</h1><p>单行注释：</p><pre><code># comment
+</code></pre><p>多行注释(文档注释)：</p><pre><code>&lt;#
+comment1
+comment2
+...
+#&gt;
+</code></pre><p>帮助文档:</p><p>在脚本开头的注释中用下面关键字插入文档。</p><pre><code>&lt;#
+.SYNOPSIS
+Write your synopsis here.
+
+.DESCRIPTION
+Write your description here.
+
+.PARAMETER param1
+Write your param1 information here.
+
+.EXAMPLE
+Write your example1 here.
+
+.NOTES
+Write your notes here.
+
+.LINK
+http://test.com
+#&gt;
+</code></pre><h1 id=数据类型>数据类型</h1><h2 id=变量>变量</h2><p>所有的变量都存储在Variable驱动器中,可以用Variable驱动器对变量操作。</p><pre><code>ls Variable: # 查看所有变量
+</code></pre><p>系统变量：</p><pre><code>$_    # 表示管道中的当前对象
+?    # True表示上一个命令成功执行,False失败
+</code></pre><p>自定义变量：</p><p>变量以$开头定义,但是$不是变量名的一部分。</p><p>变量包含数字，字母和小划线。</p><pre><code>$var1=&quot;test&quot;
+$var1
+
+# 交换两个变量的值
+$var1,$var2=$var2,$var1
+</code></pre><p>变量类型：</p><p>可以不用指定变量类型。</p><pre><code>[string]$str=&quot;123&quot;
+[int]$num=123
+[boolean]bool=&quot;True&quot;
+</code></pre><p>判断变量类型：</p><pre><code>$str -is [string]
+$num -as [int]
+</code></pre><h2 id=数组>数组</h2><p>包含多个变量就是一个数组。</p><pre><code>$var2=1,2,3
+$var2[index]
+$var2[0] # 数组第一个元素
+$var2[-1] # 数组最后一个元素
+</code></pre><h2 id=字典>字典：</h2><p>hash类型。</p><pre><code>@{L=&lt;key&gt;;
+E={$_.&lt;value&gt;};
+formatstring=&lt;format&gt;}
+
+@{N=&lt;key&gt;;E={$_.&lt;value&gt;}}
+@{Label=&lt;key&gt;;E={$_.&lt;value&gt;}}
+@{Name=&lt;key&gt;;E={$_.&lt;value&gt;}}
+</code></pre><h1 id=运算符>运算符</h1><p>基本运算符：</p><pre><code>= # 赋值运算符，可以把任何数据类型包括对象赋值给变量
++ # 加法和字符串拼接
+- # 减法
+* # 乘法
+/ # 除法
+() # 优先运算符
+</code></pre><p>特殊运算符：</p><pre><code>$($procs[0].name) # 子变量
+'$var' # 单引号中的变量原样输出
+&quot;$var&quot; # 双引号中的变量被替换
+&quot;`$var&quot; # `重音符可以用在双引号中转义
+`t    # 制表符
+`n    # 换行符
+kb/mb/gt/tb/pb # 单位可以运算
+</code></pre><p>比较运算符：</p><pre><code>-eq
+-ne
+-gt
+-ge
+-lt
+-le
+-contains 包含
+-notcontains
+</code></pre><p>布尔运算符：</p><pre><code>-not 求反
+-and
+-or
+-xor
+</code></pre><hr><h1 id=控制流>控制流</h1><p>powershell支持foreach循环。</p><p>if条件语句：</p><pre><code>if ($this -eq $that) {
+    expression
+} elseif ($those -gt $these) {
+    expression2
+} else {
+    expression3
+}
+</code></pre><p>switch条件语句：</p><pre><code>switch ($condition) {
+    val1 {
+        expression
+        break
+    }
+    val2 {
+        expression2; break
+    }
+    default {
+        default_expression
+    }
+}
+</code></pre><p>foreach循环语句：</p><pre><code>foreach ($name in $names) {
+    expression
+}
+</code></pre><p>for循环语句：</p><pre><code>for ($loop=1; condition; $loop++)
+{
+    expression
+}
+</code></pre><p>while循环语句:</p><pre><code>while (condition)
+{
+    expression
+}
+</code></pre><p>do-while循环语句：</p><pre><code>do {
+    expression
+} while (condition)
+</code></pre><p>break语句：</p><p>break用于循环和switch语句。</p><p>continue语句：</p><p>continue用于循环语句。</p><hr><h1 id=函数>函数</h1><p>函数：</p><pre><code>function name {
+    ...
+}
+</code></pre><p>调用函数:</p><pre><code>.\file.ps1
+name
+</code></pre><p>选项：</p><pre><code>[CmdletBinding()]
+Param(
+    [Parameter(Mandatory=$True)]
+    [String]$ComputerName, # ComputerName强制为通过命令行输入参数
+
+    [int]$EventID=1234, # EventID有默认参数
+
+    [Parameter(Mandatory=$True)][ValidateRange(0,23)]
+    [int]$Number # 给出参数的范围
+)
+
+[CmdletBinding(SupportsShouldProcess$True)] # 支持-whatif和-confirm
+[ValidateSet(1,3,8)] # 给出参数的可选值
+[alias(&quot;id&quot;, &quot;nunber&quot;)] # 给参数指定别名
+</code></pre><hr><h1 id=模块>模块</h1><p>系统模块路径：</p><pre><code>c:\Windows\System32\WindowsPowershell\v1.0\Modules\
+</code></pre><p>函数可以打包成模块放在系统模块路径或用户自己的模块路径。</p><p>模块放到同名的目录mytools下，取名mytools.psm1</p><p>导入用户自己路径下的模块：</p><pre><code>Import-Module -name C:\Modules\mytools
+</code></pre><hr><h1 id=异常和错误处理>异常和错误处理</h1><p>调试语句：</p><pre><code>Write-Verbose &quot;print verbose information.&quot; # 打印调试信息
+
+Write-Debug &quot;print debug information.&quot; # 使用-Debug进入debug模式，exit退出。
+</code></pre><p>调试相关系统变量：</p><pre><code>$ErrorActionPreference='Continue' # 调试的系统变量，默认报错继续执行
+
+$DebugPreference='SilentlyContinue'
+
+$ErrorView='NormalView'
+
+$Error 存储整个shell的错误。
+</code></pre><p>异常捕获：</p><pre><code>Try {
+    expressions
+}
+Catch {
+    &quot;execute when catch the error.&quot;
+}
+Finally {
+    &quot;execute anyway.&quot;
+}
+</code></pre><p>断点调试：</p><pre><code>$Condition = {if ($a -is [int] -and $a -gt 100) {Write-Host &quot;`$a was modified&quot;}}
+$Breakpoint = Set-PSBreakpoint -Variable a -Mode Write -Script $psise.CurrentFile.FullPath -Action $Condition
+</code></pre></section><footer class=article-footer><section class=article-tags><a href=/tags/powershell/>Powershell</a></section></footer><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css integrity="sha256-J+iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s=" crossorigin=anonymous><script src=https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js integrity="sha256-InsNdER1b2xUewP+pKCUJpkhiqwHgqiPXDlIk7GzBu4=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI=" crossorigin=anonymous defer></script><script>window.addEventListener("DOMContentLoaded",()=>{renderMathInElement(document.querySelector(`.article-content`),{delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1},{left:"\\(",right:"\\)",display:!1},{left:"\\[",right:"\\]",display:!0}],ignoredClasses:["gist"]})})</script></article><div id=gitalk-container></div><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css><script src=https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js></script><script src=https://cdn.jsdelivr.net/npm/blueimp-md5@2.18.0/js/md5.min.js></script><script>const gitalk=new Gitalk({clientID:"3d41a2a237fabe050cc0",clientSecret:"f084dfe45a1c05955270776836298adf02732a02",repo:"crazy-canux.github.io",owner:"crazy-canux",admin:["crazy-canux"],distractionFreeMode:!1,id:md5(location.pathname)});(function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById("gitalk-container").innerHTML="Gitalk comments not available by default when the website is previewed locally.";return}gitalk.render("gitalk-container")})()</script><footer class=site-footer><section class=copyright>&copy;
+2013 -
+2026 Morgoth</section><section class=powerby>Designed by Canux<br></section></footer><div class=pswp tabindex=-1 role=dialog aria-hidden=true><div class=pswp__bg></div><div class=pswp__scroll-wrap><div class=pswp__container><div class=pswp__item></div><div class=pswp__item></div><div class=pswp__item></div></div><div class="pswp__ui pswp__ui--hidden"><div class=pswp__top-bar><div class=pswp__counter></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+<button class="pswp__button pswp__button--share" title=Share></button>
+<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button><div class=pswp__preloader><div class=pswp__preloader__icn><div class=pswp__preloader__cut><div class=pswp__preloader__donut></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class=pswp__share-tooltip></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+</button>
+<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button><div class=pswp__caption><div class=pswp__caption__center></div></div></div></div></div><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU=" crossorigin=anonymous defer></script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css crossorigin=anonymous><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css crossorigin=anonymous></main></div><script src=https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z+KMkF24hUW8WePSA9HM=" crossorigin=anonymous></script><script type=text/javascript src=/ts/main.js defer></script><script>(function(){const e=document.createElement("link");e.href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap",e.type="text/css",e.rel="stylesheet",document.head.appendChild(e)})()</script></body></html>

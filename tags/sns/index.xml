@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Sns on Morgoth</title><link>https://canuxcheng.com/tags/sns/</link><description>Recent content in Sns on Morgoth</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 21 Jul 2026 14:00:00 +0800</lastBuildDate><atom:link href="https://canuxcheng.com/tags/sns/index.xml" rel="self" type="application/rss+xml"/><item><title>Amazon Q+SNS+Slack</title><link>https://canuxcheng.com/post/aws_amazon_q_sns_slack/</link><pubDate>Tue, 21 Jul 2026 14:00:00 +0800</pubDate><guid>https://canuxcheng.com/post/aws_amazon_q_sns_slack/</guid><description>&lt;p&gt;AWS Chatbot 已经更名为 &lt;strong&gt;Amazon Q Developer in chat applications&lt;/strong&gt;。除了在聊天窗口中回答 AWS 相关问题，它还可以把 AWS 告警自动发送到 Slack，让团队直接在日常沟通频道中发现和处理故障。&lt;/p&gt;
+&lt;p&gt;本文关注的不是某一种基础设施代码，而是如何用 Amazon Q、Amazon SNS 和 Slack 建立一条自动化告警链路。&lt;/p&gt;
+&lt;h2 id="整体架构"&gt;整体架构&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-text" data-lang="text"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;AWS 服务或应用
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; │
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ▼
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;CloudWatch Alarm
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; │
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ▼
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Amazon SNS
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; │
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ▼
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;Amazon Q Developer
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; │
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; ▼
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt; Slack Channel
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;各组件的职责很清晰：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;CloudWatch Alarm 判断指标是否进入告警或恢复状态。&lt;/li&gt;
+&lt;li&gt;SNS 作为统一的消息入口，接收并分发告警。&lt;/li&gt;
+&lt;li&gt;Amazon Q Developer 订阅 SNS Topic，把 AWS 消息转换为适合聊天窗口阅读的通知。&lt;/li&gt;
+&lt;li&gt;Slack 承载告警通知、团队讨论和后续处置。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;监控系统只需要知道应该向哪个 SNS Topic 发送消息，不需要知道 Slack Workspace、频道或聊天应用的配置。通知渠道发生变化时，告警本身不需要跟着修改。&lt;/p&gt;
+&lt;h2 id="为什么使用-amazon-q而不是直接调用-slack-webhook"&gt;为什么使用 Amazon Q，而不是直接调用 Slack Webhook&lt;/h2&gt;
+&lt;p&gt;直接调用 Slack Webhook 当然也能发送消息，但需要自己处理凭证、消息格式、重试和 AWS 事件内容。&lt;/p&gt;
+&lt;p&gt;Amazon Q Developer 提供了 AWS 原生的连接方式：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;直接接收 SNS 中的 AWS 服务通知；&lt;/li&gt;
+&lt;li&gt;识别并格式化 CloudWatch Alarm 等受支持的事件；&lt;/li&gt;
+&lt;li&gt;在 Slack 中展示告警状态、Region、时间和相关指标；&lt;/li&gt;
+&lt;li&gt;支持告警恢复通知；&lt;/li&gt;
+&lt;li&gt;可以在同一频道中询问 Amazon Q，辅助分析 AWS 资源；&lt;/li&gt;
+&lt;li&gt;在显式授权后，可以从聊天频道执行受限的 AWS 操作。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;如果目标只是自动发送告警，可以只启用通知能力，不需要开放从 Slack 执行 AWS 命令的权限。&lt;/p&gt;
+&lt;h2 id="配置-slack-与-amazon-q"&gt;配置 Slack 与 Amazon Q&lt;/h2&gt;
+&lt;p&gt;第一次接入需要 Slack Workspace 管理员参与授权：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;在 Slack 中安装 &lt;strong&gt;Amazon Q Developer in chat applications&lt;/strong&gt;。&lt;/li&gt;
+&lt;li&gt;打开 &lt;a class="link" href="https://console.aws.amazon.com/chatbot/" target="_blank" rel="noopener"
+&gt;Amazon Q Developer in chat applications 控制台&lt;/a&gt;。&lt;/li&gt;
+&lt;li&gt;选择 Slack，并完成目标 Workspace 的授权。&lt;/li&gt;
+&lt;li&gt;在用于接收告警的 Slack 频道中邀请 Amazon Q。&lt;/li&gt;
+&lt;li&gt;回到 AWS 控制台，为该 Slack 频道创建 Channel Configuration。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;建议先建立专用告警频道，例如按环境或严重级别区分频道，避免所有消息都进入同一个频道。&lt;/p&gt;
+&lt;h2 id="创建-sns-通知入口"&gt;创建 SNS 通知入口&lt;/h2&gt;
+&lt;p&gt;在 Amazon SNS 中创建用于告警通知的 Topic。Topic 是告警系统和 Slack 之间的边界，因此命名应该表达用途，而不是绑定某个具体应用。&lt;/p&gt;
+&lt;p&gt;常见的拆分方式包括：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-text" data-lang="text"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;critical-alerts → 需要立即处理的告警
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;warning-alerts → 性能、容量和趋势类告警
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;也可以按环境拆分 Topic，避免测试环境的告警进入生产频道。&lt;/p&gt;
+&lt;p&gt;创建 Topic 后，在 Amazon Q 的 Slack Channel Configuration 中把它添加为通知来源。一个频道可以关联多个 SNS Topic，同一个 Topic 也可以作为多个告警的发送目标。&lt;/p&gt;
+&lt;h2 id="将-cloudwatch-alarm-接入-sns"&gt;将 CloudWatch Alarm 接入 SNS&lt;/h2&gt;
+&lt;p&gt;创建或修改 CloudWatch Alarm 时，将前面创建的 SNS Topic 设置为通知目标。&lt;/p&gt;
+&lt;p&gt;建议同时配置两个状态动作：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;ALARM&lt;/strong&gt;：指标超过阈值时发送告警；&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;OK&lt;/strong&gt;：指标恢复正常时发送恢复通知。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;这样 Slack 中不仅会出现“发生了什么”，也能看到“问题是否已经恢复”。&lt;/p&gt;
+&lt;p&gt;这套链路不局限于某一种指标。常见场景包括：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ECS 服务没有运行中的 Task；&lt;/li&gt;
+&lt;li&gt;CPU 或内存持续超过阈值；&lt;/li&gt;
+&lt;li&gt;应用日志中出现严重错误；&lt;/li&gt;
+&lt;li&gt;队列积压或请求失败率升高；&lt;/li&gt;
+&lt;li&gt;AWS Budgets、Security Hub 或其他受支持服务产生通知。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;对于应用自定义事件，可以先将事件转换成 Amazon Q 支持的通知格式，再发布到 SNS。&lt;/p&gt;
+&lt;h2 id="一条告警如何到达-slack"&gt;一条告警如何到达 Slack&lt;/h2&gt;
+&lt;p&gt;当 CloudWatch Alarm 从 &lt;strong&gt;OK&lt;/strong&gt; 变为 &lt;strong&gt;ALARM&lt;/strong&gt; 时：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;CloudWatch 将状态变化发布到 SNS Topic。&lt;/li&gt;
+&lt;li&gt;Amazon Q Developer 接收 SNS 消息。&lt;/li&gt;
+&lt;li&gt;Amazon Q 识别告警内容并生成结构化 Slack 消息。&lt;/li&gt;
+&lt;li&gt;Slack 频道收到告警，值班人员可以立即讨论和处理。&lt;/li&gt;
+&lt;li&gt;指标恢复后，CloudWatch 再次通过 SNS 发送 &lt;strong&gt;OK&lt;/strong&gt; 状态。&lt;/li&gt;
+&lt;li&gt;Slack 收到恢复通知，形成完整的事件闭环。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;整个过程不需要应用直接访问 Slack，也不需要在应用中保存 Slack Token 或 Webhook。&lt;/p&gt;
+&lt;h2 id="验证通知链路"&gt;验证通知链路&lt;/h2&gt;
+&lt;p&gt;配置完成后，先在 Amazon Q Developer 控制台选择对应频道并发送测试消息。确认 Slack 能收到测试消息后，再验证真实告警。&lt;/p&gt;
+&lt;p&gt;推荐按以下顺序检查：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Amazon Q 是否已经加入目标 Slack 频道；&lt;/li&gt;
+&lt;li&gt;Slack Workspace 是否已在 AWS 中完成授权；&lt;/li&gt;
+&lt;li&gt;Amazon Q 的频道配置是否关联了正确的 SNS Topic；&lt;/li&gt;
+&lt;li&gt;CloudWatch Alarm 的通知动作是否指向该 Topic；&lt;/li&gt;
+&lt;li&gt;Alarm 和 SNS Topic 是否位于预期的 AWS Region；&lt;/li&gt;
+&lt;li&gt;Amazon Q 的 CloudWatch Logs 中是否存在权限、格式或投递错误。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;如果测试消息可以到达 Slack，但真实告警不能，问题通常位于 CloudWatch 到 SNS 这一段；如果 SNS 已经收到消息但 Slack 没有通知，则重点检查 Amazon Q 的 Topic 关联、事件格式和日志。&lt;/p&gt;
+&lt;h2 id="权限与安全"&gt;权限与安全&lt;/h2&gt;
+&lt;p&gt;通知能力和聊天操作能力应该分开考虑。&lt;/p&gt;
+&lt;p&gt;只发送告警时，应使用最小权限的 Channel Role 和 Guardrail。不要因为 Amazon Q 支持在 Slack 中运行 AWS 命令，就默认授予频道管理员权限。&lt;/p&gt;
+&lt;p&gt;还应遵循以下原则：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;不在文档或代码中记录真实的 AWS Account ID、Slack 标识和内部资源名称；&lt;/li&gt;
+&lt;li&gt;不让应用直接持有 Slack Token 或 Webhook；&lt;/li&gt;
+&lt;li&gt;按环境和严重级别隔离 SNS Topic；&lt;/li&gt;
+&lt;li&gt;限制可以加入运维频道的成员；&lt;/li&gt;
+&lt;li&gt;为 Amazon Q 启用错误日志，便于审计和排障；&lt;/li&gt;
+&lt;li&gt;只有在确有需要时，才开放从 Slack 执行 AWS 操作的权限。&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2 id="总结"&gt;总结&lt;/h2&gt;
+&lt;p&gt;Amazon Q、SNS 和 Slack 组合起来，可以建立一条简单而清晰的 AWS 自动化告警链路：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-text" data-lang="text"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;告警产生 → SNS 分发 → Amazon Q 转换 → Slack 通知 → 团队响应
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;SNS 负责解耦告警和通知渠道，Amazon Q 负责理解 AWS 事件并连接 Slack，CloudWatch 等告警源只负责判断何时需要通知。&lt;/p&gt;
+&lt;p&gt;无论通过 AWS 控制台还是自动化工具完成配置，核心都是让告警统一发布到 SNS，再由 Amazon Q 将消息可靠地送到 Slack。&lt;/p&gt;
+&lt;h2 id="参考资料"&gt;参考资料&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a class="link" href="https://docs.aws.amazon.com/chatbot/latest/adminguide/what-is.html" target="_blank" rel="noopener"
+&gt;What is Amazon Q Developer in chat applications?&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="link" href="https://docs.aws.amazon.com/chatbot/latest/adminguide/slack-setup.html" target="_blank" rel="noopener"
+&gt;Tutorial: Get started with Slack&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="link" href="https://docs.aws.amazon.com/chatbot/latest/adminguide/related-services.html" target="_blank" rel="noopener"
+&gt;Monitoring AWS services using Amazon Q Developer in chat applications&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a class="link" href="https://docs.aws.amazon.com/chatbot/latest/adminguide/test-notifications-cw.html" target="_blank" rel="noopener"
+&gt;Test notifications using CloudWatch&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description></item></channel></rss>

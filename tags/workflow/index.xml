@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Workflow on Morgoth</title><link>https://canuxcheng.com/tags/workflow/</link><description>Recent content in Workflow on Morgoth</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Wed, 17 Jun 2026 10:00:00 +0800</lastBuildDate><atom:link href="https://canuxcheng.com/tags/workflow/index.xml" rel="self" type="application/rss+xml"/><item><title>Spec-Driven Development</title><link>https://canuxcheng.com/post/ai_sdd/</link><pubDate>Wed, 17 Jun 2026 10:00:00 +0800</pubDate><guid>https://canuxcheng.com/post/ai_sdd/</guid><description>&lt;h1 id="spec-driven-development"&gt;Spec-Driven Development&lt;/h1&gt;
+&lt;p&gt;&lt;strong&gt;Spec-Driven Development (SDD)&lt;/strong&gt; is a methodology for building software with AI
+coding agents where the &lt;em&gt;specification&lt;/em&gt;, not the code, is the primary artifact.
+Instead of prompting an agent ad-hoc and hoping the output is correct, you first
+write down &lt;em&gt;what&lt;/em&gt; you want — requirements, scenarios, constraints — and let the
+spec drive the plan, the tasks, and finally the implementation.&lt;/p&gt;
+&lt;p&gt;The core idea: AI agents are powerful but unpredictable. A natural-language
+prompt is lossy and easy to misread, and the larger the change, the more drift
+accumulates. A spec turns intent into a reviewable, version-controlled,
+executable contract. Humans and agents align &lt;em&gt;before&lt;/em&gt; code is written, and the
+spec stays as living documentation afterwards.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="why-sdd"&gt;Why SDD&lt;/h2&gt;
+&lt;p&gt;The classic &amp;ldquo;vibe coding&amp;rdquo; loop (prompt → diff → fix → prompt again) breaks down
+as soon as the task is non-trivial:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Ambiguity.&lt;/strong&gt; The agent fills gaps with assumptions you never see.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Drift.&lt;/strong&gt; Multi-step changes lose the original intent halfway through.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;No source of truth.&lt;/strong&gt; Once the chat is gone, &lt;em&gt;why&lt;/em&gt; the code looks this way
+is gone too.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Hard to review.&lt;/strong&gt; Reviewing a 600-line diff is much harder than reviewing a
+one-page spec that produced it.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;SDD addresses these by inserting an explicit, cheap-to-review specification step
+in front of code generation. The phases are roughly:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Specify&lt;/strong&gt; — what to build and why (requirements, user stories, scenarios).&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Plan / Design&lt;/strong&gt; — the technical approach, architecture, trade-offs.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Tasks&lt;/strong&gt; — a checklist of small, independently verifiable units of work.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Implement&lt;/strong&gt; — the agent executes tasks against the spec.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;The tools below differ mainly in &lt;em&gt;how heavy&lt;/em&gt; this process is and &lt;em&gt;whether&lt;/em&gt; the
+spec is a living document or a throwaway scaffold.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="github-spec-kit"&gt;GitHub Spec Kit&lt;/h2&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/github/spec-kit" target="_blank" rel="noopener"
+&gt;https://github.com/github/spec-kit&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;GitHub&amp;rsquo;s official, opinionated take on SDD. It ships a CLI (&lt;code&gt;specify&lt;/code&gt;,
+installed via &lt;code&gt;uv&lt;/code&gt;) that bootstraps a project and wires a full set of slash
+commands into your agent of choice.&lt;/p&gt;
+&lt;p&gt;The workflow is a sequence of gated phases:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;/speckit.constitution&lt;/code&gt; — establish project principles and governance.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/speckit.specify&lt;/code&gt; — define requirements and user stories.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/speckit.plan&lt;/code&gt; — create the technical implementation strategy.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/speckit.tasks&lt;/code&gt; — generate an actionable task breakdown.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/speckit.implement&lt;/code&gt; — execute the tasks systematically.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Plus optional helpers: &lt;code&gt;/speckit.clarify&lt;/code&gt; (resolve ambiguities before
+planning), &lt;code&gt;/speckit.analyze&lt;/code&gt; (cross-artifact consistency checks), and
+&lt;code&gt;/speckit.checklist&lt;/code&gt; (custom quality gates).&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;uv tool install specify-cli
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;specify init my-project
+&lt;/span&gt;&lt;/span&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;specify integration list &lt;span style="color:#75715e"&gt;# 30+ supported agents&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Pros&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Backed by GitHub; mature, well-documented, actively developed.&lt;/li&gt;
+&lt;li&gt;Genuinely thorough — the constitution + clarify + analyze steps catch
+ambiguity and inconsistency early.&lt;/li&gt;
+&lt;li&gt;Technology-agnostic; supports 30+ agents (Copilot, Claude Code, Gemini CLI,
+Cursor, Codex CLI, …).&lt;/li&gt;
+&lt;li&gt;TDD-compatible task generation and parallel-task markers.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Cons&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Heavyweight. The full phase sequence is overkill for small changes.&lt;/li&gt;
+&lt;li&gt;Requires Python 3.11+, &lt;code&gt;uv&lt;/code&gt;, and Git just to bootstrap.&lt;/li&gt;
+&lt;li&gt;Strongly greenfield-flavored; the constitution/specify flow assumes you are
+starting something new rather than evolving an existing codebase.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Best for:&lt;/strong&gt; new projects, larger features, and teams that want a rigorous,
+repeatable process with explicit governance and review gates.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="openspec"&gt;OpenSpec&lt;/h2&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/Fission-AI/OpenSpec" target="_blank" rel="noopener"
+&gt;https://github.com/Fission-AI/OpenSpec&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;A lightweight, change-oriented alternative. Rather than treating the spec as a
+one-shot scaffold, OpenSpec maintains &lt;em&gt;living&lt;/em&gt; specs and models work as a series
+of &lt;strong&gt;change proposals&lt;/strong&gt; layered on top of them.&lt;/p&gt;
+&lt;p&gt;The repository keeps two key areas:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;specs/&lt;/code&gt; — the current, agreed-upon truth (what the system &lt;em&gt;does&lt;/em&gt; today).&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;changes/&lt;/code&gt; — proposed deltas (a proposal, spec changes, design notes, and a
+task checklist) for work in flight.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The loop is intentionally small:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;/opsx:propose&lt;/code&gt; — open a new change proposal.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/opsx:apply&lt;/code&gt; — implement the proposed tasks.&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;/opsx:archive&lt;/code&gt; — fold a completed change back into the specs and archive it.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="highlight"&gt;&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;-webkit-text-size-adjust:none;"&gt;&lt;code class="language-bash" data-lang="bash"&gt;&lt;span style="display:flex;"&gt;&lt;span&gt;npx openspec init &lt;span style="color:#75715e"&gt;# also: openspec update to refresh agent instructions&lt;/span&gt;
+&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Pros&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Lightweight and fluid — iterates without rigid phase gates.&lt;/li&gt;
+&lt;li&gt;Equally at home in &lt;strong&gt;brownfield&lt;/strong&gt; codebases; the spec/change split is built
+exactly for evolving existing systems.&lt;/li&gt;
+&lt;li&gt;Specs are durable living documentation, not throwaway scaffolding.&lt;/li&gt;
+&lt;li&gt;Node-based, minimal setup; integrates with 25+ tools.&lt;/li&gt;
+&lt;li&gt;MIT licensed.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Cons&lt;/strong&gt;&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Younger and smaller community than Spec Kit.&lt;/li&gt;
+&lt;li&gt;Fewer built-in quality gates — the discipline of clarify/analyze is on you.&lt;/li&gt;
+&lt;li&gt;The change/archive model takes a little practice to internalize.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;strong&gt;Best for:&lt;/strong&gt; ongoing work on existing codebases, incremental features, and
+developers who want alignment-before-code without ceremony.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="other-notable-tools"&gt;Other notable tools&lt;/h2&gt;
+&lt;p&gt;Two more worth knowing about, since they take meaningfully different shapes:&lt;/p&gt;
+&lt;h3 id="amazon-kiro"&gt;Amazon Kiro&lt;/h3&gt;
+&lt;p&gt;&lt;a class="link" href="https://kiro.dev/" target="_blank" rel="noopener"
+&gt;https://kiro.dev/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;An agentic IDE (rather than a CLI add-on) with SDD as a first-class feature.
+From a prompt it generates three artifacts — &lt;code&gt;requirements.md&lt;/code&gt; (EARS-style
+acceptance criteria), &lt;code&gt;design.md&lt;/code&gt;, and &lt;code&gt;tasks.md&lt;/code&gt; — and keeps them in sync as
+you build. &lt;strong&gt;Pros:&lt;/strong&gt; integrated end-to-end experience, structured requirements,
+strong onboarding. &lt;strong&gt;Cons:&lt;/strong&gt; it&amp;rsquo;s a whole IDE to adopt and is more of a walled
+garden than the editor-agnostic CLIs above. &lt;strong&gt;Best for:&lt;/strong&gt; developers willing to
+switch IDEs for a tightly integrated spec-to-code workflow.&lt;/p&gt;
+&lt;h3 id="bmad-method"&gt;BMAD-METHOD&lt;/h3&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/bmad-code-org/BMAD-METHOD" target="_blank" rel="noopener"
+&gt;https://github.com/bmad-code-org/BMAD-METHOD&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&amp;ldquo;Breakthrough Method of Agile AI-Driven Development.&amp;rdquo; Less a spec format and
+more an &lt;em&gt;agentic team&lt;/em&gt;: specialized agents (Analyst, PM, Architect, Scrum
+Master, Dev) collaborate to produce a PRD and architecture, then shard them into
+hyper-detailed story files that carry full context into implementation.
+&lt;strong&gt;Pros:&lt;/strong&gt; rich, role-based planning; great for complex, multi-feature products.
+&lt;strong&gt;Cons:&lt;/strong&gt; the most ceremony of the bunch; a real learning curve. &lt;strong&gt;Best for:&lt;/strong&gt;
+ambitious greenfield products where up-front planning genuinely pays off.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="how-to-choose"&gt;How to choose&lt;/h2&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Tool&lt;/th&gt;
+&lt;th&gt;Weight&lt;/th&gt;
+&lt;th&gt;Greenfield&lt;/th&gt;
+&lt;th&gt;Brownfield&lt;/th&gt;
+&lt;th&gt;Setup&lt;/th&gt;
+&lt;th&gt;Living specs&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Spec Kit&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Heavy&lt;/td&gt;
+&lt;td&gt;Excellent&lt;/td&gt;
+&lt;td&gt;OK&lt;/td&gt;
+&lt;td&gt;Python + uv&lt;/td&gt;
+&lt;td&gt;Per-feature&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;OpenSpec&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Light&lt;/td&gt;
+&lt;td&gt;Good&lt;/td&gt;
+&lt;td&gt;Excellent&lt;/td&gt;
+&lt;td&gt;Node&lt;/td&gt;
+&lt;td&gt;Yes (specs/)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;Kiro&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Medium&lt;/td&gt;
+&lt;td&gt;Excellent&lt;/td&gt;
+&lt;td&gt;Good&lt;/td&gt;
+&lt;td&gt;Dedicated IDE&lt;/td&gt;
+&lt;td&gt;Yes&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;strong&gt;BMAD-METHOD&lt;/strong&gt;&lt;/td&gt;
+&lt;td&gt;Heavy&lt;/td&gt;
+&lt;td&gt;Excellent&lt;/td&gt;
+&lt;td&gt;OK&lt;/td&gt;
+&lt;td&gt;Node/agents&lt;/td&gt;
+&lt;td&gt;PRD + stories&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;A practical rule of thumb:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Starting a &lt;strong&gt;new project&lt;/strong&gt; and want rigor → &lt;strong&gt;Spec Kit&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Evolving an &lt;strong&gt;existing codebase&lt;/strong&gt; and want speed → &lt;strong&gt;OpenSpec&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Want an &lt;strong&gt;all-in-one IDE&lt;/strong&gt; experience → &lt;strong&gt;Kiro&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;Building an &lt;strong&gt;ambitious product&lt;/strong&gt; with heavy planning needs → &lt;strong&gt;BMAD-METHOD&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;All four are MIT/open and agent-agnostic enough to try in an afternoon. The
+common thread — and the real takeaway — is this: write the spec first, review
+the spec (not the diff), and let intent, not vibes, drive the agent.&lt;/p&gt;
+&lt;hr&gt;
+&lt;h2 id="resources"&gt;Resources&lt;/h2&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/github/spec-kit" target="_blank" rel="noopener"
+&gt;https://github.com/github/spec-kit&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/Fission-AI/OpenSpec" target="_blank" rel="noopener"
+&gt;https://github.com/Fission-AI/OpenSpec&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://kiro.dev/" target="_blank" rel="noopener"
+&gt;https://kiro.dev/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/bmad-code-org/BMAD-METHOD" target="_blank" rel="noopener"
+&gt;https://github.com/bmad-code-org/BMAD-METHOD&lt;/a&gt;&lt;/p&gt;</description></item></channel></rss>

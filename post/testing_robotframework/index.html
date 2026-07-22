@@ -1,0 +1,198 @@
+<!doctype html><html lang=zh-CN dir=ltr><head><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'><meta name=description content='Robot Framework https://github.com/robotframework/robotframework
+https://github.com/robotframework/QuickStartGuide
+支持python和java的API.
+Robot Framework is a generic test automation framework for acceptance testing and acceptance test-driven development (ATDD).
+Install:
+$ pip install robotframework Modular:
+Test Data Robot Framework(test data syntax) Test Libraries(test library API) + Test Tools System under Test(system interface) Use:
+$ robot --version $ robot [options] data_sources 会生成三个文件：
+output.xml log.html report.html setting table *** Settings *** # 前三个是加载外部文件 Library Selenium2Library # 需要在sys.path路径里面 Resource ${RESOURCES}/common.tsv Variables ${RESOURCES}/common.py Documentation Docs Metadata Version 2.0 Suite Setup Suite Teardown Force Tags Default Tags Test Setup Test Teardown Test Template Test Timeout Test Case table https://github.com/robotframework/HowToWriteGoodTestCases
+'><title>RobotFramework</title><link rel=canonical href=https://canuxcheng.com/post/testing_robotframework/><link rel=stylesheet href=/scss/style.min.22ad1c74b5bb435181c77741d99f034b2c36f7272eff9d0d1aa16d32e7e84673.css><meta property='og:title' content='RobotFramework'><meta property='og:description' content='Robot Framework https://github.com/robotframework/robotframework
+https://github.com/robotframework/QuickStartGuide
+支持python和java的API.
+Robot Framework is a generic test automation framework for acceptance testing and acceptance test-driven development (ATDD).
+Install:
+$ pip install robotframework Modular:
+Test Data Robot Framework(test data syntax) Test Libraries(test library API) + Test Tools System under Test(system interface) Use:
+$ robot --version $ robot [options] data_sources 会生成三个文件：
+output.xml log.html report.html setting table *** Settings *** # 前三个是加载外部文件 Library Selenium2Library # 需要在sys.path路径里面 Resource ${RESOURCES}/common.tsv Variables ${RESOURCES}/common.py Documentation Docs Metadata Version 2.0 Suite Setup Suite Teardown Force Tags Default Tags Test Setup Test Teardown Test Template Test Timeout Test Case table https://github.com/robotframework/HowToWriteGoodTestCases
+'><meta property='og:url' content='https://canuxcheng.com/post/testing_robotframework/'><meta property='og:site_name' content='Morgoth'><meta property='og:type' content='article'><meta property='article:section' content='Post'><meta property='article:tag' content='testing'><meta property='article:published_time' content='2017-02-25T09:41:39+00:00'><meta property='article:modified_time' content='2017-02-25T09:41:39+00:00'><meta name=twitter:title content="RobotFramework"><meta name=twitter:description content="Robot Framework https://github.com/robotframework/robotframework
+https://github.com/robotframework/QuickStartGuide
+支持python和java的API.
+Robot Framework is a generic test automation framework for acceptance testing and acceptance test-driven development (ATDD).
+Install:
+$ pip install robotframework Modular:
+Test Data Robot Framework(test data syntax) Test Libraries(test library API) + Test Tools System under Test(system interface) Use:
+$ robot --version $ robot [options] data_sources 会生成三个文件：
+output.xml log.html report.html setting table *** Settings *** # 前三个是加载外部文件 Library Selenium2Library # 需要在sys.path路径里面 Resource ${RESOURCES}/common.tsv Variables ${RESOURCES}/common.py Documentation Docs Metadata Version 2.0 Suite Setup Suite Teardown Force Tags Default Tags Test Setup Test Teardown Test Template Test Timeout Test Case table https://github.com/robotframework/HowToWriteGoodTestCases
+"><link rel="shortcut icon" href=favicon.ico><style>:root{--article-font-family:"Merriweather", var(--base-font-family)}</style><script>(function(){const e=document.createElement("link");e.href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap",e.type="text/css",e.rel="stylesheet",document.head.appendChild(e)})()</script></head><body class=article-page><script>(function(){const e="StackColorScheme";localStorage.getItem(e)||localStorage.setItem(e,"auto")})()</script><script>(function(){const t="StackColorScheme",e=localStorage.getItem(t),n=window.matchMedia("(prefers-color-scheme: dark)").matches===!0;e=="dark"||e==="auto"&&n?document.documentElement.dataset.scheme="dark":document.documentElement.dataset.scheme="light"})()</script><div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky"><button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label=切换菜单>
+<span class=hamburger-box><span class=hamburger-inner></span></span></button><header><figure class=site-avatar><a href=/><img src=/img/home_hu_7d22d46ad88d2427.jpg width=300 height=400 class=site-logo loading=lazy alt=Avatar>
+</a><span class=emoji>🍥</span></figure><div class=site-meta><h1 class=site-name><a href=/>Morgoth</a></h1><h2 class=site-description>Hello World!</h2></div></header><ol class=social-menu><li><a href=mailto:canuxcheng@163.com target=_blank title=E-mail rel=me><svg class="icon icon-tabler icon-tabler-messages" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M21 14l-3-3h-7a1 1 0 01-1-1V4a1 1 0 011-1h9a1 1 0 011 1v10"/><path d="M14 15v2a1 1 0 01-1 1H6l-3 3V11a1 1 0 011-1h2"/></svg></a></li><li><a href=https://github.com/crazy-canux target=_blank title=GitHub rel=me><svg class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6.0 00-1.3-3.2 4.2 4.2.0 00-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3.0 00-6.2.0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2.0 00-.1 3.2A4.6 4.6.0 004 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg></a></li></ol><ol class=menu id=main-menu><li><a href=/><svg class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="5 12 3 12 12 3 21 12 19 12"/><path d="M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/><path d="M9 21v-6a2 2 0 012-2h2a2 2 0 012 2v6"/></svg>
+<span>首页</span></a></li><li><a href=/about/><svg class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/></svg>
+<span>关于</span></a></li><li><a href=/categories/ target=_blank><svg class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg>
+<span>分类</span></a></li><li><a href=/tags/ target=_blank><svg class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11 3l9 9a1.5 1.5.0 010 2l-6 6a1.5 1.5.0 01-2 0L3 11V7a4 4 0 014-4h4"/><circle cx="9" cy="9" r="2"/></svg>
+<span>标签</span></a></li><li><a href=/rtfm/><svg class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+<span>RTFM</span></a></li><div class=menu-bottom-section><li id=i18n-switch><svg class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 5h7"/><path d="M9 3v2c0 4.418-2.239 8-5 8"/><path d="M5 9c-.003 2.144 2.952 3.908 6.7 4"/><path d="M12 20l4-9 4 9"/><path d="M19.1 18h-6.2"/></svg>
+<select name=language onchange="window.location.href=this.selectedOptions[0].value"><option value=https://canuxcheng.com/ selected>简体中文</option><option value=https://canuxcheng.com/en/>English</option></select></li><li id=dark-mode-toggle><svg class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="8" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<svg class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="16" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<span>暗色模式</span></li></div></ol></aside><aside class="sidebar right-sidebar sticky"><section class="widget archives"><div class=widget-icon><svg class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg></div><h2 class="widget-title section-title">目录</h2><div class=widget--toc><nav id=TableOfContents><ul><li><a href=#standardbuild-in-libraries>standard(build-in libraries)</a></li><li><a href=#external>External</a></li><li><a href=#other>other</a></li></ul><ul><li><a href=#build-in-tools>build-in tools</a></li><li><a href=#editors>editors</a></li><li><a href=#build>build</a></li><li><a href=#other-1>other</a></li></ul></nav></div></section></aside><main class="main full-width"><article class=main-article><header class=article-header><div class=article-details><header class=article-category><a href=/categories/devops/>DevOps</a></header><div class=article-title-wrapper><h2 class=article-title><a href=/post/testing_robotframework/>RobotFramework</a></h2></div><footer class=article-time><div><svg class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg>
+<time class=article-time--published>Feb 25, 2017</time></div><div><svg class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+<time class=article-time--reading>阅读时长: 3 分钟</time></div></footer></div></header><section class=article-content><h1 id=robot-framework>Robot Framework</h1><p><a class=link href=https://github.com/robotframework/robotframework target=_blank rel=noopener>https://github.com/robotframework/robotframework</a></p><p><a class=link href=https://github.com/robotframework/QuickStartGuide target=_blank rel=noopener>https://github.com/robotframework/QuickStartGuide</a></p><p>支持python和java的API.</p><p>Robot Framework is a generic test automation framework for acceptance testing and acceptance test-driven development (ATDD).</p><p>Install:</p><pre><code>$ pip install robotframework
+</code></pre><p>Modular:</p><ul><li>Test Data</li><li>Robot Framework(test data syntax)</li><li>Test Libraries(test library API) + Test Tools</li><li>System under Test(system interface)</li></ul><p>Use:</p><pre><code>$ robot --version
+$ robot [options] data_sources
+</code></pre><p>会生成三个文件：</p><ul><li>output.xml</li><li>log.html</li><li>report.html</li></ul><hr><h1 id=setting-table>setting table</h1><pre><code>*** Settings ***
+# 前三个是加载外部文件
+Library    Selenium2Library # 需要在sys.path路径里面
+Resource    ${RESOURCES}/common.tsv
+Variables    ${RESOURCES}/common.py
+Documentation    Docs
+Metadata    Version    2.0
+Suite Setup
+Suite Teardown
+Force Tags
+Default Tags
+Test Setup
+Test Teardown
+Test Template
+Test Timeout
+</code></pre><h1 id=test-case-table>Test Case table</h1><p><a class=link href=https://github.com/robotframework/HowToWriteGoodTestCases target=_blank rel=noopener>https://github.com/robotframework/HowToWriteGoodTestCases</a></p><p>test case:data_sources就是test cases files.robotframework测试用例可以使用带参数的简单表格语法，也可以是不带参数的关键字表格,也可以是数据驱动测试用例.</p><p>Test Cases由keywords和可能的arguments组成．</p><pre><code>*** Test Cases ***
+Test Case Name
+    [Documentation]    Docs
+    [Tags]
+    [Setup]
+    [Teardown]
+    [Template]
+    [Timeout]
+    ...
+</code></pre><p>Test Case分类：</p><ul><li>Workflow tests</li><li>higher-level tests</li><li>Data-driven tests</li></ul><h1 id=keywords-table>Keywords table</h1><p>key word:测试用例使用关键词创建,关键词的2个来源是库关键字和用户关键字．</p><pre><code>*** Keywords ***
+Keyword name
+    [Documentation]    docs
+    [Tags]
+    [Arguments]
+    [Return]
+    [Teardown]
+    [Timeout]
+</code></pre><p>Keywords分类：</p><ul><li>Library keywords</li><li>User keywords</li></ul><h1 id=variables>Variables</h1><p>variables:测试用例中可能变化的数据定义成变量．</p><pre><code>*** Variables ***
+${ScalarVar}    first one    second one
+@{ListVar}     one    two
+&amp;{DictVar}     key=value    key1=value1
+</code></pre><p>变量类型：</p><ul><li>scalar variables标量</li><li>list variables列表</li><li>dictionary variables字典</li></ul><h1 id=organizing-test-cases>Organizing test cases</h1><p>test suites:测试用例的集合叫测试套件．每个包含测试用例的输入文件组成一个测试套件．</p><p>test setup/suit setup: 在测试之前执行某些关键词．</p><p>test teardown/suit teardown: 在测试之后执行某些关键词．</p><pre><code>*** Settings ***
+Suite Setup    Action/Keyword
+Test Setup
+Suite Teardown    Action/Keyword
+Test Teardown
+</code></pre><p>tags:给测试用例设置标签，以便给他们自由的元数据．</p><p>给测试套件加标签：</p><pre><code>*** Settings ***
+Force Tags    quickstart # 这个是case的强制的tag.
+Default Tags    example smoke # 这个是case的默认的tag.
+</code></pre><p>自定义标签注意多个标签之间用四个空格区分．</p><p>给单个case加标签：</p><pre><code># 自定义的tag名字多个单词最好用-连接，不要用空格．
+[Tags]    Your-tags1    tag2 # 这个是自定义的tag.
+</code></pre><hr><h1 id=libraries>Libraries</h1><p>内置标准库和第三方库，自定义库都可以作为keywords.</p><p>robotframework的强大之处在于可以根据自己的需要开发自己的库．</p><h2 id=standardbuild-in-libraries>standard(build-in libraries)</h2><ul><li><p>BuiltIn</p><p>内置标准库，默认唯一自动加载的库．其它的库都需要手动加载．</p><pre><code>  # Comment关键字用来注释．
+  Comment    this is comment
+  # Evaluate关键字用来调用python程序．
+  ${var}    Evaluate    random.randint(1000, 999)    random
+  # Import Library关键字用来导入python模块．
+  Import Library    mytest.py
+</code></pre></li><li><p>Collections</p></li><li><p>DateTime</p></li><li><p>Dialogs</p></li><li><p>Easter</p></li><li><p>OperatingSystem</p></li><li><p>Process</p></li><li><p>Remote</p></li><li><p>Screenshot</p><p>用于测试过程中的截屏．</p><pre><code>  # Take Screenshot关键字用来截屏
+  Take Screenshot
+</code></pre></li><li><p>String</p></li><li><p>Telnet</p></li><li><p>XML</p></li></ul><h2 id=external>External</h2><ul><li><p>selenium2library</p><p>用于web自动化测试．提供了丰富的定位器，包括id,name, xpath, css.</p><p><a class=link href=https://github.com/robotframework/Selenium2Library target=_blank rel=noopener>https://github.com/robotframework/Selenium2Library</a></p><p>Install:</p><pre><code>  $ pip install robotframework-selenium2library
+</code></pre></li></ul><h2 id=other>other</h2><hr><h1 id=tools>Tools</h1><p>robot framework相关的工具．</p><h2 id=build-in-tools>build-in tools</h2><ul><li><p>Rebot</p></li><li><p>Testdoc</p></li><li><p>Libdoc</p></li><li><p>Tidy</p></li></ul><h2 id=editors>editors</h2><ul><li><p>RIDE</p><p>robot framework的IDE.</p><p><a class=link href=https://github.com/robotframework/RIDE target=_blank rel=noopener>https://github.com/robotframework/RIDE</a></p><p>Install:</p><pre><code>  # Only wxPython 2.8.12.1 with Unicode support is officially supported
+  $ pip install robotframework-ride
+</code></pre><p>Usage:</p><pre><code>  # 添加windows的桌面：
+  # C:\Python27\python.exe -c &quot;from robotide import main; main()&quot;
+  # C:\Python27\Lib\site-packages\robotide\widgets\robot.ico
+  &gt; ride.py
+  $ ride.py
+  # F5搜索关键字
+</code></pre></li></ul><h2 id=build>build</h2><h2 id=other-1>other</h2><hr><h1 id=robot-command>robot command</h1><pre><code>$ robot tests.robot
+$ robot -t/--test [test cases] tests.robot
+$ robot -t My*test*case* tests.robot # 例如case叫My test case just for test.
+$ robot -s/--suite [test suites] tests.robot
+$ robot -i/--include [tags] tests.robot
+$ robot -i My-test-tag tests.robot # 例如tag叫My-test-tag.
+$ robot -e/--exclude [tags] tests.robot
+-d --outputdir dir # 存放output, log, report文件的路径.
+-o --output file
+-l --log file
+-r --report file
+-W --consolewidth chars
+-C --consolecolors auto|on|ansi|off
+-K --consolemarkers auto|on|off
+-L --loglevel level    # 格式LOGLEVEL:DEFAULT, 可选TRACE, DEBUG, INFO (default), WARN, NONE
+# DEFAULT是log file中默认显示的日志级别
+-b --debugfile # 存放debug log的文件．
+-T --timestampoutputs # 表示所有在outputdir里面的文件都自动加时间戳．
+-P --pythonpath path * # 指定PYTHONPATH, 可以指定正在开发的库用来测试，而不需要安装到site-packages.
+</code></pre><hr><h1 id=library>Library</h1><p>robotframework的灵活就在于可以自己开发第三方库，实现和自己业务相关的关键字．</p><p>在robot中导入的这个库必须在sys.path路径里面．</p><p>库API的三种类型： 静态库, 动态库, 混合库.</p><p>以Selenium2Library为例：</p><pre><code>Selenium2Library
+|-- docs
+|-- tests
+|-- Selenium2Library
+    |-- __init__.py
+    |-- keywords/*.py
+    |-- ...
+|-- setup.py
+|-- ...
+
+$ pip install robotframework-selenium2library
+# C:\Python27\Lib\site-packages\Selenium2Library
+# /usr/local/lib/python2.7/dist-packages/Selenium2Library
+# 通过ride导入该库后，可以用F5查看关键字的帮助.
+
+# __init__.py
+# 一个类继承所有关键字所在的类．rf通过导入这个类导入所有关键字．
+from .keywords import *
+from .utils import LibraryListener
+...
+
+__version__ =  1.0.0
+
+class Selenium2Library(keywords):
+    &quot;&quot;&quot;docs.&quot;&quot;&quot;
+
+    ROBOT_LIBRARY_SCOPE = 'GLOBAL'
+    ROBOT_LIBRARY_VERSION = __version__
+
+    def __init__(self, ...):
+       &quot;&quot;&quot;docs&quot;&quot;&quot;
+       self.ROBOT_LIBRARY_LISTENER = LibraryListener()
+       ...
+</code></pre><h1 id=static-librarty-api>Static librarty API</h1><p>使用一个模块或一个类，方法直接映射到关键字名称．静态API是最基本最常用的．</p><p>robotframework在类和模块中寻找关键字对应的方法，会忽略单下划线或双下划线开头的方法．</p><p>robotframework在类中寻找关键字对应的方法，不区分大小写，会自动忽略空格和下划线．</p><p>robotframework测试库实现为类时，基类中的方法也被识别为关键字．</p><p>robotframework测试库实现为模块时，导入的模块的命名空间的可能函数也被识别为关键字．此时要防止导入的库中的方法成为关键字．</p><p>关键字跑出异常，该关键字状态就是failed,否则就是pass.</p><h1 id=dylamic-library-api>dylamic library API</h1><p>可以在运行时动态确定要实现的关键字的名称以及执行方法．</p><h1 id=hybird-library-api>hybird library API</h1><p>静态和动态都有的方式．</p><h1 id=测试库范围>测试库范围</h1><p>要确保一个测试用例对状态的更改不会影响其它用例．</p><p>测试库可以控制何时使用类属性创建新库．</p><pre><code>ROBOT_LIBRARY_SCOPE
+# Global: 只有一个instance创建，并且所有test cases共享．
+# TEST CASE: 为每个test case创建一个instance.
+# TEST SUITE: 为每个test suite创建一个instance.
+</code></pre><h1 id=测试库版本>测试库版本</h1><pre><code>ROBOT_LIBRARY_VERSION
+</code></pre><h1 id=指定文档格式>指定文档格式</h1><pre><code>ROBOT_LIBRARY_DOC_FORMAT
+# reST: 需要安装docutils模块
+# ROBOT: 默认的html格式
+# TEXT:　纯文本格式
+</code></pre><hr><h1 id=listener>Listener</h1><p>Listener监听器接口允许外部监听器获取关于测试执行的通知．</p><p>同名的默认方法会先调用，然后调用自定义的方法．</p><p>可以实现的方法有：</p><pre><code>start_suite(name, attribute)/end_suite(name, attribute) # test suite开始/结束的时候调用
+start_test(name, attribute)/end_test(name, attribute) # test case开始/结束的时候调用
+start_keyword(name, attributes)/end_keyword(name, attribute) # keyword开始/结束的时候调用
+close() # 相当于teardown.
+log_message(message) # 当执行的keyword写log的时候调用
+message(message) # 当framework写system log的时候调用
+...
+</code></pre><p><a class=link href=http://robotframework.org/robotframework/latest/RobotFrameworkUserGuide.html#listener-interface-methods target=_blank rel=noopener>http://robotframework.org/robotframework/latest/RobotFrameworkUserGuide.html#listener-interface-methods</a></p><pre><code># librarylistener.py
+# rf的外部监听程序
+
+from robot.api import logger
+...
+
+class LibraryListener(object):
+    &quot;&quot;&quot;docs&quot;&quot;&quot;
+    # version 2 for rf&gt;=2.1
+    # version 3 for rf&gt;=3.0
+    ROBOT_LISTENER_API_VERSION = 2
+</code></pre><hr><h1 id=allure>allure</h1><p><a class=link href=https://github.com/allure-framework/allure-python/tree/master/allure-robotframework target=_blank rel=noopener>https://github.com/allure-framework/allure-python/tree/master/allure-robotframework</a></p><pre><code>$ pip install allure-robotframework
+$ robot --listener allure_robotframework ./my_robot_test
+$ robot --listener allure_robotframework:/set/your/path/here ./my_robot_test
+
+allure generate output/allure
+allure serve output/allure
+</code></pre><h1 id=reportportal>reportportal</h1><p><a class=link href=https://github.com/reportportal/plugin-import-robot target=_blank rel=noopener>https://github.com/reportportal/plugin-import-robot</a></p></section><footer class=article-footer><section class=article-tags><a href=/tags/testing/>Testing</a></section></footer><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css integrity="sha256-J+iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s=" crossorigin=anonymous><script src=https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js integrity="sha256-InsNdER1b2xUewP+pKCUJpkhiqwHgqiPXDlIk7GzBu4=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI=" crossorigin=anonymous defer></script><script>window.addEventListener("DOMContentLoaded",()=>{renderMathInElement(document.querySelector(`.article-content`),{delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1},{left:"\\(",right:"\\)",display:!1},{left:"\\[",right:"\\]",display:!0}],ignoredClasses:["gist"]})})</script></article><div id=gitalk-container></div><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css><script src=https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js></script><script src=https://cdn.jsdelivr.net/npm/blueimp-md5@2.18.0/js/md5.min.js></script><script>const gitalk=new Gitalk({clientID:"3d41a2a237fabe050cc0",clientSecret:"f084dfe45a1c05955270776836298adf02732a02",repo:"crazy-canux.github.io",owner:"crazy-canux",admin:["crazy-canux"],distractionFreeMode:!1,id:md5(location.pathname)});(function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById("gitalk-container").innerHTML="Gitalk comments not available by default when the website is previewed locally.";return}gitalk.render("gitalk-container")})()</script><footer class=site-footer><section class=copyright>&copy;
+2013 -
+2026 Morgoth</section><section class=powerby>Designed by Canux<br></section></footer><div class=pswp tabindex=-1 role=dialog aria-hidden=true><div class=pswp__bg></div><div class=pswp__scroll-wrap><div class=pswp__container><div class=pswp__item></div><div class=pswp__item></div><div class=pswp__item></div></div><div class="pswp__ui pswp__ui--hidden"><div class=pswp__top-bar><div class=pswp__counter></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+<button class="pswp__button pswp__button--share" title=Share></button>
+<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button><div class=pswp__preloader><div class=pswp__preloader__icn><div class=pswp__preloader__cut><div class=pswp__preloader__donut></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class=pswp__share-tooltip></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+</button>
+<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button><div class=pswp__caption><div class=pswp__caption__center></div></div></div></div></div><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU=" crossorigin=anonymous defer></script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css crossorigin=anonymous><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css crossorigin=anonymous></main></div><script src=https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z+KMkF24hUW8WePSA9HM=" crossorigin=anonymous></script><script type=text/javascript src=/ts/main.js defer></script><script>(function(){const e=document.createElement("link");e.href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap",e.type="text/css",e.rel="stylesheet",document.head.appendChild(e)})()</script></body></html>

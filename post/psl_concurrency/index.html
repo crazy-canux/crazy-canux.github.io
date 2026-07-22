@@ -1,0 +1,392 @@
+<!doctype html><html lang=zh-CN dir=ltr><head><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'><meta name=description content='Concurrent Execution 进程：每个进程都有自己的地址空间，内存，数据栈以及其它记录其运行轨迹的辅助数据，进程间不共享全局变量。
+线程：线程（有时被称为轻量级进程）跟进程有些相似，不同的是，所有的线程运行在同一个进程中，共享相同的运行环境，同一个进程的线程之间共享全局变量。
+IPC: 进程/线程之间交换信息叫进程间通信．
+python的多线程由于GIL只有并发没有并行，无论有多少cpu,一次只能有一个python解释器(线程)执行.一次只能执行一个线程.一次只能用到一个逻辑cpu.
+IO密集型任务消耗IO,但是不消耗CPU,cpu切换消耗少,适合用多线程.（线程等待IO会释放GIL）。
+python的多进程可以并行,每个进程启动一个解释器进程.
+多进程开销大，消耗内存.
+计算密集型消耗cpu,任务个数不超过cpu个数．适合用多进程，把每个cpu跑满. 如果用多线程是无效的，会串行执行，浪费多核性能。
+io密集: 用异步asyncio(协程)或者多线程, 网络请求，文件读写，数据库查询。 计算密集: 用多进程
+绕过GIL的方式有：
+使用C/C++编写扩展模块(numpy, pandas等) 使用Cython编译器 使用多进程 (multiprocessing) multiprocessing 多进程就是同时执行多个任务.
+python可以通过多进程取代多线程，从而绕过多线程的GIL.
+python是静态语言，
+import multiprocessing classes:
+# multiprocessing.Process Process(group=None, target=None, name=None, args=(), kwargs=None, *, daemon=None) # methods: run(self) # 子类重写用来定义进程的功能的函数, 通常通过这种方式来创建进程 start(self) # 启动一个进程 join(self, timeout=None) # 父进程阻塞等待子进程结束，后面的代码不会执行，直到子进程结束。 is_alive() # 返回进程是否还在运行的boolean exit(self) # 退出进程 terminate(self) # 终止进程 exitcode() # 返回进程的退出码 name() # 返回进程的名字 pid() # 返回进程的pid functions:
+'><title>PSL_Concurrency</title><link rel=canonical href=https://canuxcheng.com/post/psl_concurrency/><link rel=stylesheet href=/scss/style.min.22ad1c74b5bb435181c77741d99f034b2c36f7272eff9d0d1aa16d32e7e84673.css><meta property='og:title' content='PSL_Concurrency'><meta property='og:description' content='Concurrent Execution 进程：每个进程都有自己的地址空间，内存，数据栈以及其它记录其运行轨迹的辅助数据，进程间不共享全局变量。
+线程：线程（有时被称为轻量级进程）跟进程有些相似，不同的是，所有的线程运行在同一个进程中，共享相同的运行环境，同一个进程的线程之间共享全局变量。
+IPC: 进程/线程之间交换信息叫进程间通信．
+python的多线程由于GIL只有并发没有并行，无论有多少cpu,一次只能有一个python解释器(线程)执行.一次只能执行一个线程.一次只能用到一个逻辑cpu.
+IO密集型任务消耗IO,但是不消耗CPU,cpu切换消耗少,适合用多线程.（线程等待IO会释放GIL）。
+python的多进程可以并行,每个进程启动一个解释器进程.
+多进程开销大，消耗内存.
+计算密集型消耗cpu,任务个数不超过cpu个数．适合用多进程，把每个cpu跑满. 如果用多线程是无效的，会串行执行，浪费多核性能。
+io密集: 用异步asyncio(协程)或者多线程, 网络请求，文件读写，数据库查询。 计算密集: 用多进程
+绕过GIL的方式有：
+使用C/C++编写扩展模块(numpy, pandas等) 使用Cython编译器 使用多进程 (multiprocessing) multiprocessing 多进程就是同时执行多个任务.
+python可以通过多进程取代多线程，从而绕过多线程的GIL.
+python是静态语言，
+import multiprocessing classes:
+# multiprocessing.Process Process(group=None, target=None, name=None, args=(), kwargs=None, *, daemon=None) # methods: run(self) # 子类重写用来定义进程的功能的函数, 通常通过这种方式来创建进程 start(self) # 启动一个进程 join(self, timeout=None) # 父进程阻塞等待子进程结束，后面的代码不会执行，直到子进程结束。 is_alive() # 返回进程是否还在运行的boolean exit(self) # 退出进程 terminate(self) # 终止进程 exitcode() # 返回进程的退出码 name() # 返回进程的名字 pid() # 返回进程的pid functions:
+'><meta property='og:url' content='https://canuxcheng.com/post/psl_concurrency/'><meta property='og:site_name' content='Morgoth'><meta property='og:type' content='article'><meta property='article:section' content='Post'><meta property='article:tag' content='concurrency'><meta property='article:published_time' content='2016-08-15T11:04:12+00:00'><meta property='article:modified_time' content='2016-08-15T11:04:12+00:00'><meta name=twitter:title content="PSL_Concurrency"><meta name=twitter:description content="Concurrent Execution 进程：每个进程都有自己的地址空间，内存，数据栈以及其它记录其运行轨迹的辅助数据，进程间不共享全局变量。
+线程：线程（有时被称为轻量级进程）跟进程有些相似，不同的是，所有的线程运行在同一个进程中，共享相同的运行环境，同一个进程的线程之间共享全局变量。
+IPC: 进程/线程之间交换信息叫进程间通信．
+python的多线程由于GIL只有并发没有并行，无论有多少cpu,一次只能有一个python解释器(线程)执行.一次只能执行一个线程.一次只能用到一个逻辑cpu.
+IO密集型任务消耗IO,但是不消耗CPU,cpu切换消耗少,适合用多线程.（线程等待IO会释放GIL）。
+python的多进程可以并行,每个进程启动一个解释器进程.
+多进程开销大，消耗内存.
+计算密集型消耗cpu,任务个数不超过cpu个数．适合用多进程，把每个cpu跑满. 如果用多线程是无效的，会串行执行，浪费多核性能。
+io密集: 用异步asyncio(协程)或者多线程, 网络请求，文件读写，数据库查询。 计算密集: 用多进程
+绕过GIL的方式有：
+使用C/C++编写扩展模块(numpy, pandas等) 使用Cython编译器 使用多进程 (multiprocessing) multiprocessing 多进程就是同时执行多个任务.
+python可以通过多进程取代多线程，从而绕过多线程的GIL.
+python是静态语言，
+import multiprocessing classes:
+# multiprocessing.Process Process(group=None, target=None, name=None, args=(), kwargs=None, *, daemon=None) # methods: run(self) # 子类重写用来定义进程的功能的函数, 通常通过这种方式来创建进程 start(self) # 启动一个进程 join(self, timeout=None) # 父进程阻塞等待子进程结束，后面的代码不会执行，直到子进程结束。 is_alive() # 返回进程是否还在运行的boolean exit(self) # 退出进程 terminate(self) # 终止进程 exitcode() # 返回进程的退出码 name() # 返回进程的名字 pid() # 返回进程的pid functions:
+"><link rel="shortcut icon" href=favicon.ico><style>:root{--article-font-family:"Merriweather", var(--base-font-family)}</style><script>(function(){const e=document.createElement("link");e.href="https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&display=swap",e.type="text/css",e.rel="stylesheet",document.head.appendChild(e)})()</script></head><body class=article-page><script>(function(){const e="StackColorScheme";localStorage.getItem(e)||localStorage.setItem(e,"auto")})()</script><script>(function(){const t="StackColorScheme",e=localStorage.getItem(t),n=window.matchMedia("(prefers-color-scheme: dark)").matches===!0;e=="dark"||e==="auto"&&n?document.documentElement.dataset.scheme="dark":document.documentElement.dataset.scheme="light"})()</script><div class="container main-container flex on-phone--column extended"><aside class="sidebar left-sidebar sticky"><button class="hamburger hamburger--spin" type=button id=toggle-menu aria-label=切换菜单>
+<span class=hamburger-box><span class=hamburger-inner></span></span></button><header><figure class=site-avatar><a href=/><img src=/img/home_hu_7d22d46ad88d2427.jpg width=300 height=400 class=site-logo loading=lazy alt=Avatar>
+</a><span class=emoji>🍥</span></figure><div class=site-meta><h1 class=site-name><a href=/>Morgoth</a></h1><h2 class=site-description>Hello World!</h2></div></header><ol class=social-menu><li><a href=mailto:canuxcheng@163.com target=_blank title=E-mail rel=me><svg class="icon icon-tabler icon-tabler-messages" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M21 14l-3-3h-7a1 1 0 01-1-1V4a1 1 0 011-1h9a1 1 0 011 1v10"/><path d="M14 15v2a1 1 0 01-1 1H6l-3 3V11a1 1 0 011-1h2"/></svg></a></li><li><a href=https://github.com/crazy-canux target=_blank title=GitHub rel=me><svg class="icon icon-tabler icon-tabler-brand-github" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6.0 00-1.3-3.2 4.2 4.2.0 00-.1-3.2s-1.1-.3-3.5 1.3a12.3 12.3.0 00-6.2.0C6.5 2.8 5.4 3.1 5.4 3.1a4.2 4.2.0 00-.1 3.2A4.6 4.6.0 004 9.5c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg></a></li></ol><ol class=menu id=main-menu><li><a href=/><svg class="icon icon-tabler icon-tabler-home" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><polyline points="5 12 3 12 12 3 21 12 19 12"/><path d="M5 12v7a2 2 0 002 2h10a2 2 0 002-2v-7"/><path d="M9 21v-6a2 2 0 012-2h2a2 2 0 012 2v6"/></svg>
+<span>首页</span></a></li><li><a href=/about/><svg class="icon icon-tabler icon-tabler-user" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="7" r="4"/><path d="M6 21v-2a4 4 0 014-4h4a4 4 0 014 4v2"/></svg>
+<span>关于</span></a></li><li><a href=/categories/ target=_blank><svg class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg>
+<span>分类</span></a></li><li><a href=/tags/ target=_blank><svg class="icon icon-tabler icon-tabler-tag" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11 3l9 9a1.5 1.5.0 010 2l-6 6a1.5 1.5.0 01-2 0L3 11V7a4 4 0 014-4h4"/><circle cx="9" cy="9" r="2"/></svg>
+<span>标签</span></a></li><li><a href=/rtfm/><svg class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+<span>RTFM</span></a></li><div class=menu-bottom-section><li id=i18n-switch><svg class="icon icon-tabler icon-tabler-language" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 5h7"/><path d="M9 3v2c0 4.418-2.239 8-5 8"/><path d="M5 9c-.003 2.144 2.952 3.908 6.7 4"/><path d="M12 20l4-9 4 9"/><path d="M19.1 18h-6.2"/></svg>
+<select name=language onchange="window.location.href=this.selectedOptions[0].value"><option value=https://canuxcheng.com/ selected>简体中文</option><option value=https://canuxcheng.com/en/>English</option></select></li><li id=dark-mode-toggle><svg class="icon icon-tabler icon-tabler-toggle-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="8" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<svg class="icon icon-tabler icon-tabler-toggle-right" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="16" cy="12" r="2"/><rect x="2" y="6" width="20" height="12" rx="6"/></svg>
+<span>暗色模式</span></li></div></ol></aside><aside class="sidebar right-sidebar sticky"><section class="widget archives"><div class=widget-icon><svg class="icon icon-tabler icon-tabler-hash" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><line x1="5" y1="9" x2="19" y2="9"/><line x1="5" y1="15" x2="19" y2="15"/><line x1="11" y1="4" x2="7" y2="20"/><line x1="17" y1="4" x2="13" y2="20"/></svg></div><h2 class="widget-title section-title">目录</h2><div class=widget--toc><nav id=TableOfContents><ul><li><a href=#multiprocessing>multiprocessing</a></li><li><a href=#threading>threading</a></li><li><a href=#queue>queue</a></li><li><a href=#subprocess>subprocess</a></li><li><a href=#concurrent>concurrent</a></li><li><a href=#sched>sched</a></li><li><a href=#contextvars>contextvars</a></li></ul><ul><li><a href=#asyncio>asyncio</a></li><li><a href=#socket>socket</a></li><li><a href=#select>select</a></li><li><a href=#selectors>selectors</a></li><li><a href=#signal>signal</a></li><li><a href=#ssl>ssl</a></li><li><a href=#mmap>mmap</a></li></ul></nav></div></section></aside><main class="main full-width"><article class=main-article><header class=article-header><div class=article-details><header class=article-category><a href=/categories/python/>Python</a></header><div class=article-title-wrapper><h2 class=article-title><a href=/post/psl_concurrency/>PSL_Concurrency</a></h2></div><footer class=article-time><div><svg class="icon icon-tabler icon-tabler-calendar-time" width="56" height="56" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><path d="M11.795 21H5a2 2 0 01-2-2V7a2 2 0 012-2h12a2 2 0 012 2v4"/><circle cx="18" cy="18" r="4"/><path d="M15 3v4"/><path d="M7 3v4"/><path d="M3 11h16"/><path d="M18 16.496V18l1 1"/></svg>
+<time class=article-time--published>Aug 15, 2016</time></div><div><svg class="icon icon-tabler icon-tabler-clock" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z"/><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 15 15"/></svg>
+<time class=article-time--reading>阅读时长: 5 分钟</time></div></footer></div></header><section class=article-content><h1 id=concurrent-execution>Concurrent Execution</h1><p>进程：每个进程都有自己的地址空间，内存，数据栈以及其它记录其运行轨迹的辅助数据，进程间不共享全局变量。</p><p>线程：线程（有时被称为轻量级进程）跟进程有些相似，不同的是，所有的线程运行在同一个进程中，共享相同的运行环境，同一个进程的线程之间共享全局变量。</p><p>IPC: 进程/线程之间交换信息叫进程间通信．</p><p>python的多线程由于GIL只有并发没有并行，无论有多少cpu,一次只能有一个python解释器(线程)执行.一次只能执行一个线程.一次只能用到一个逻辑cpu.</p><p>IO密集型任务消耗IO,但是不消耗CPU,cpu切换消耗少,适合用多线程.（线程等待IO会释放GIL）。</p><p>python的多进程可以并行,每个进程启动一个解释器进程.</p><p>多进程开销大，消耗内存.</p><p>计算密集型消耗cpu,任务个数不超过cpu个数．适合用多进程，把每个cpu跑满. 如果用多线程是无效的，会串行执行，浪费多核性能。</p><p>io密集: 用异步asyncio(协程)或者多线程, 网络请求，文件读写，数据库查询。
+计算密集: 用多进程</p><p>绕过GIL的方式有：</p><ul><li>使用C/C++编写扩展模块(numpy, pandas等)</li><li>使用Cython编译器</li><li>使用多进程 (multiprocessing)</li></ul><h2 id=multiprocessing>multiprocessing</h2><p>多进程就是同时执行多个任务.</p><p>python可以通过多进程取代多线程，从而绕过多线程的GIL.</p><p>python是静态语言，</p><pre><code>import multiprocessing
+</code></pre><p>classes:</p><pre><code># multiprocessing.Process
+Process(group=None, target=None, name=None, args=(), kwargs=None, *, daemon=None)
+# methods:
+run(self) # 子类重写用来定义进程的功能的函数, 通常通过这种方式来创建进程
+start(self) # 启动一个进程
+join(self, timeout=None) # 父进程阻塞等待子进程结束，后面的代码不会执行，直到子进程结束。
+is_alive() # 返回进程是否还在运行的boolean
+exit(self) # 退出进程
+terminate(self) # 终止进程
+exitcode() # 返回进程的退出码
+name() # 返回进程的名字
+pid() # 返回进程的pid
+</code></pre><p>functions:</p><pre><code>active_children()
+allow_connection_pickling()
+cpu_count() # 获取cpu个数
+current_process()
+freeze_support()
+get_logger()
+log_to_stderr(level=None)
+</code></pre><p>Pool:</p><pre><code>Pool(processes=None, initializer=None, initargs=(), maxtasksperchild=None) # 返回一个进程池对象, processes默认是cpu个数.
+
+with Pool(processes=4) as pool:
+    pool.map(func, iterable) # 阻塞，返回所有结果
+# func只能是顶层函数，不能是方法和内部函数.
+# 进程池，可以控制进程数量,processes 默认是cpu个数(cpu_count())
+# 非阻塞，维持进程总数，当一个进程结束会添加新的进程到pool,主进程不阻塞，同步运行，pool中的进程并发执行.
+
+apply_async(func, args=(), kwargs={}, callback=None) # 非阻塞,
+
+map_async(func, iterable, chunksize=None, callback=None) # 非阻塞
+
+# 阻塞，维持进程总数，当一个进程结束会添加新的进程到pool，主进程阻塞，pool中的进程一个一个执行.
+apply(func, args=(), kwargs={}) # 阻塞，执行一次函数
+map(func, itreable, chunksize=None) # 阻塞, 返回所有结果
+
+terminate() # 终止所有任务
+close() # 关闭pool,不接受新任务
+join() # 等待pool中子进程结束，要在close/terminate之后调用.
+</code></pre><p>IPC: 管道</p><pre><code>Pipe(duplex=True) # duplex=True表示默认是双向pipe.
+receiver, sender = Pipe()
+sender.send(obj)
+receiver.recv()
+close()
+</code></pre><p>IPC: 消息队列</p><pre><code># 用于进程间通信，线程和进程安全。
+Queue(maxsize=0) # return a queue object
+q = Queue()
+q.put(obj) # 阻塞，放入一个对象到队列中
+q.put_nowait(obj) # 非阻塞，放入一个对象到队列中
+q.get() # 阻塞，从队列中获取一个对象
+q.get_nowait() # 非阻塞，从队列中获取一个对象
+q.empty() # 返回队列是否为空的boolean
+q.full() # 返回队列是否已满的boolean
+q.qsize() # 返回队列的大小
+</code></pre><p>IPC: 共享内存</p><pre><code>Manager()
+
+Event()
+
+# 同步：　条件变量
+Condition(lock=None)
+
+# 同步：信号量
+Semaphore(value=1)
+
+# 同步：有界信号量
+BoundedSemaphore(value=1)
+
+# 同步： 普通锁，一个线程只能acquire一次，否则死锁。
+Lock(*args, **kwargs) # 返回一个Lock对象, 用于线程间同步.
+with Lock() as lock:
+    ......
+
+# 同步: 重入锁，允许同一线程多次获取锁和释放锁。
+RLock(*args, **kwargs) # 返回一个RLock对象, 可重入锁, 允许同一线程多次获取锁.
+</code></pre><hr><h2 id=threading>threading</h2><p>多线程就是把单个任务分成不同部分运行.</p><p>threading支持守护线程(通过join方法实现)．</p><pre><code>import threading
+</code></pre><p>classes:</p><pre><code># threading.Thread
+Thread(group=None, target=None, name=None, args=(), kwargs=None, daemon=None)
+# methods:
+append(self, *args, **kwargs) # 添加线程到线程组
+run(self) # 子类重写用来定义线程的功能的函数, 通常通过这种方式来创建线程
+start(self) # 开始执行线程
+join(self, timeout=None) # 主程序挂起，阻塞等待子线程结束,再继续运行主程序
+
+getName(self) # 返回线程名字
+setName(self, name) # 设置线程名字
+is_alive(self) # 表示线程是否还在运行的boolean
+isDaemon(self) # 返回线程的daemon标志
+setDaemon(self, daemonic) # daemonic=True 使线程在后台运行
+</code></pre><p>functions:</p><pre><code>active_count() # 当前活动的线程对象的数量
+current_thread() # 返回当前线程对象
+enumerate() # 返回当前活动线程列表
+settrace(func) # 为所有的线程设置一个跟踪函数
+setprofile(func) # 为所有线程设置一个profile函数
+stack_size()
+</code></pre><p>计时器Timer：</p><pre><code>Timer(*args, **kwargs)
+t = Timer(30.0, f, args=[], kwargs={})
+t.start() # 在一个子线程等待，timeout就执行f(*args, **kwaargs).
+t.cancel() # 如果还在等待就取消．
+</code></pre><p>事件event:</p><pre><code>Event(*args, **kwargs)
+</code></pre><p>栅栏barrier:</p><pre><code>Barrier(parties, *, timeout=None, action=None, reset_on_timeout=True)
+</code></pre><p>同步：　条件变量</p><pre><code>Condition(*args, **kwargs)
+
+with Condition() as cond:
+    # do something
+</code></pre><p>同步：　信号量</p><pre><code>Semaphore(value=1, *args, **kwargs)
+# 信号量，默认value=1, 内部计数器不能小于0,当计数器==0时，调用acquire会阻塞.
+
+with Semaphore() as sem:
+    # do something
+</code></pre><p>同步：　有界信号量</p><pre><code>BoundedSemaphore(value=1, *args, **kwargs)
+# 有界信号量，默认value=1，内部计数器不能小于0，并且不能大于value。
+# 当计数器==0，调用acquire会阻塞，当&gt;value抛出VAlueError异常
+
+# 可用来控制并发运行的线程数量
+with BoundedSemaphore() as bs:
+    # do something
+</code></pre><p>同步：　锁</p><pre><code>Lock()
+# 使同一变量在多个线程间同步
+
+with Lock() as lock:
+    # do something
+</code></pre><p>同步：　锁</p><pre><code>RLock(*args, **kwargs)
+
+with RLock() as rlock:
+    # do something
+</code></pre><h2 id=queue>queue</h2><p>queue用于线程间通信，是线程安全的。</p><pre><code>import queue
+</code></pre><p>classes:</p><pre><code># queue.Queue
+Queue(maxsize=0) # 创建一个队列对象，maxsize=0表示无限制。
+# methods:
+put(item, block=True, timeout=None) # 向队列中添加一个item，阻塞直到队列有空间。
+get(block=True, timeout=None) # 从队列中获取一个item，阻塞直到队列有数据。
+qsize() # 返回队列的大小
+empty() # 返回队列是否为空的boolean
+full() # 返回队列是否满的boolean
+task_done() # 标记一个任务已完成，必须在get之后调用。
+join() # 阻塞直到队列中的所有任务都完成，必须在put之后调用。
+</code></pre><h2 id=subprocess>subprocess</h2><p>开启一个子进程来执行外部命令.</p><pre><code>import subprocess
+</code></pre><p>classes:</p><pre><code>Popen(args, bufsize=0, executable=None, stdin=None, stdout=None, stderr=None, preexec_fn=None, close_fds=False, shell=False, cwd=None, env=None, universal_newlines=False, startupinfo=None, creationflags=0) 
+# 创建一个子进程，args可以是字符串或者列表形式.
+# args: 命令和参数列表, 可以是字符串或者列表形式.
+# 如果是字符串形式，shell=True, 否则是列表形式.
+# 如果是列表形式，shell=False, args[0]是可执行文件的路径，args[1:]是参数列表.
+
+# 非交互执行sudo命令, 或者使用sh/pexpect等第三方库
+Popen(['sudo', '-S'] + shlex.split(command), stdin=subprocess.PIPE, stderr=subprocess.PIPE, universal_newlines=True, ...)
+stdout, stderr = child.communicate(password+'\n')
+
+# methods:
+poll() # 检查子进程是否结束，返回returncode.
+wait() # 等待子进程结束，返回returncode.
+communicate(input=None) # 返回(stdout, stderr).
+kill() # 发送SIGKILL信号
+pipe_cloexec()
+send_signal(sig)
+terminate()
+
+# Data:
+stdin
+stdout
+stderr
+pid
+returncode
+</code></pre><p>functions:</p><pre><code>call(*popenargs, **kwargs)
+# retcode = call([&quot;ls&quot;, &quot;-l&quot;])
+
+check_call(*popenargs, **kwargs)
+# check_call([&quot;ls&quot;, &quot;-l&quot;]) -&gt; 如果返回码为０就返回，否则抛出CalledProcessError.
+
+check_output(*popenargs, **kwargs) # 返回一个字符串
+# output = check_output([&quot;ls&quot;, &quot;-l&quot;, &quot;/dev/null&quot;]) -&gt; 如果返回码为０返回命令结果，否则抛出CalledProcessError.
+</code></pre><p>data:</p><pre><code>PIPE = -1
+STDOUT = -2
+</code></pre><h2 id=concurrent>concurrent</h2><p>concurrent模块提供了多线程和多进程的高级接口.</p><pre><code>import concurrent.futures
+</code></pre><h2 id=sched>sched</h2><h2 id=contextvars>contextvars</h2><hr><h1 id=inter-process-communication-and-networking>Inter Process Communication and Networking</h1><h2 id=asyncio>asyncio</h2><p>asyncio是基于event loop（事件循环）的异步编程框架，并发运行协程、执行网络IO和IPC，控制子进程，通过队列实现分布式任务，同步并发代码。</p><p>asyncio 往往是构建 IO 密集型和高层级 结构化 网络代码的最佳选择。</p><p>coroutine（协程）是一个特殊的函数，可以暂停和恢复执行，允许在等待IO操作时不阻塞主线程。在单线程内运行，通过事件循环调度，非抢占式，内存消耗小，切换快，不受GIL限制。</p><p>coroutine function: &ldquo;async def&rdquo; 定义协程函数，返回协程对象。
+coroutine object: 表示一个没有执行的协程，需要变成一个task，并且进入event loop才能执行。</p><pre><code>import asyncio
+</code></pre><p>await后如果是一个coroutine：</p><ol><li>隐士创建task（不会调用create_task），只运行当前协程。</li><li>顺序执行</li></ol><p>await后如果是一个task：</p><ol><li>直接注册到event loop。</li><li>并发执行</li></ol><p>协程对象，或者awaitable对象必须调用await。</p><p>classes:</p><pre><code># asyncio.Runner
+runner = Runner(loop=None, debug=False) # 创建一个Runner对象，用于运行协程。
+with asyncio.Runner() as runner:
+    runner.run(coro) # 运行一个协程，返回协程的结果。
+
+# asyncio.Task
+Task(coro, *, loop=None) # 将coroutine变成一个task，并且注册到event loop，返回Task对象。
+# methods:
+cancel() # 取消任务，抛出CancelledError异常。
+done() # 返回任务是否完成的boolean。
+result() # 返回任务的结果，如果任务未完成则抛出异常。
+exception() # 返回任务的异常，如果任务未完成则抛出异常。
+add_done_callback(callback) # 添加一个回调函数，当任务完成时调用。  
+
+# asyncio.TaskGroup, 批量创建task。
+task_group = TaskGroup(*, loop=None)
+async with TaskGroup() as tg:
+    tg1 = tg.create_task(coro1)
+    tg2 = tg.create_task(coro2)
+</code></pre><p>functions:</p><pre><code>run(coro, *, debug=False) #  是运行协程的唯一入口函数，调用顶层协程函数，返回协程的结果。
+asyncio.run(main())
+
+create_task(coro, *, loop=None) # 将coroutine变成一个task，并且注册到event loop，返回Task对象
+tasks = [
+    asyncio.create_task(coro(...)),
+    for i in range(10)
+]
+
+gather(*aws, return_exceptions=False)  # 并发执行aws中的可等待对象。返回一个列表，顺序与aws中一致。gather会自动把coroutine变成task。无需手动调用create_task。
+# return_exceptions=False时，如果有异常发生，抛出异常。默认值。
+# return_exceptions=True时，如果有异常发生，返回异常对象而不是抛出异常。
+await asyncio.gather(*tasks)
+
+sleep(delay, result=None, *, loop=None) # 异步睡眠，返回一个Future对象
+await asyncio.sleep(1) # 等待1秒钟
+
+timeout(delay, *, loop=None) # 返回一个Future对象，延迟指定时间后完成
+async with asyncio.timeout(10):
+    await my_task()
+
+wait(fs, *, loop=None, timeout=None, return_when=ALL_COMPLETED) # 等待一组Future对象完成，返回一个包含已完成和未完成Future对象的元组。
+done, pending = await asyncio.wait(fs, timeout=10, return_when=asyncio.ALL_COMPLETED)
+
+wait_for(aws, timeout=None, *, loop=None) # 等待一个可等待对象完成，返回结果。超时后抛出asyncio.TimeoutError异常。
+await asyncio.wait_for(coro(), timeout=10) # 等待coro在10秒内完成。
+
+shield(fut, *, loop=None) # 保护一个Future对象，使其不会被取消，返回一个Future对象。
+
+as_completed(fs, *, loop=None) # 返回一个迭代器，迭代器会按完成的顺序返回Future对象。
+async for fut in as_completed(fs):
+    result = await fut # 等待每个Future对象完成，按完成顺序返回结果。
+
+current_task(loop=None) # 返回当前正在运行的Task对象，如果没有正在运行的Task，则返回None。
+all_tasks(loop=None) # 返回当前事件循环中的所有Task对象。
+
+iscoroutine(obj) # 判断obj是否是一个协程对象
+iscoroutinefunction(obj) # 判断obj是否是一个协程函数。
+isawaitable(obj) # 判断obj是否是一个可等待对象。
+isfuture(obj) # 判断obj是否是一个Future对象。
+</code></pre><p>Queue用于协程间通信, 不是线程安全的：</p><pre><code># asyncio.Queue
+queue = asyncio.Queue(maxsize=0, *, loop=None) # 创建一个异步队列，maxsize=0表示无限制。
+await queue.put(item) # 向队列中添加一个item，阻塞直到队列有空间。
+item = await queue.get() # 从队列中获取一个item，阻塞直到队列有数据。
+item = queue.get_nowait() # 非阻塞获取队列中的一个item，如果队列为空则抛出asyncio.QueueEmpty异常。
+queue.task_done() # 标记一个任务已完成，通常在get之后调用。
+await queue.join() # 阻塞直到所有任务都完成。
+</code></pre><p>同步原语相关：</p><pre><code>Lock
+Event
+Condition
+Semaphore
+BoundedSemaphore
+Barrier
+</code></pre><h2 id=socket>socket</h2><p>socket协议的标准库</p><pre><code>import socket
+</code></pre><p>classes:</p><pre><code># socket = class _socketobject(__builtin__.object)
+# socket.socket([family[, type[, proto]]])
+close() # 关闭socket
+shutdown(flag) # 0 关闭读，１关闭写，２全部关闭
+# eg: socket.socket(AF_INET, SOCK_STREAM, 0) ipv4+tcp
+# eg: socket.socket(AF_INET, SOCK_DGRAM, 0) ipv4+udp
+
+# methods:
+bind(address) # 服务器绑定(host, port)到socket
+listen(backlog) # 服务器开始监听tcp
+accept() # 服务器阻塞等待客户的tcp连接, 返回(socket object, address info)
+
+connect(address) # 客户端主动初始化tcp连接,连接失败抛出异常
+connect_ex(address) # 同上，连接失败返回errno
+
+send(data[, flags]) # 发送tcp数据
+sendall(data[, flags]) # 发送完整tcp数据
+recv(buflen[, flags]) # 接收tcp数据
+recv_into(buffer[, nbytes[, flags]])
+
+sendto(data[, flags], addr) # 发送udp数据
+recvfrom(buflen[, flags]) # 接收udp数据
+recvfrom_into(buffer[, nbytes, [, flags])])
+
+getpeername() # 获取当前socket的远端地址
+getsockname() # 获取当前socket的地址
+getsockopt(level, option[, buffersize]) # 获取socket参数
+setsockopt(level, option, value) # 设置socket参数
+
+setblocking(flag)
+gettimeout()
+settimeout(timeout)
+
+makefile([mode[, bufsize]])
+fileno()
+
+dup()
+
+# data descriptor:
+family/type/proto　参考man 2 socket
+recv
+recv_into
+recvfrom
+recvfrom_into
+send
+sendto
+</code></pre><p>class SocketIO:</p><pre><code>class SocketIO(io.RawIOBase)
+sio = SocketIO(sock, mode)
+
+methods:
+close()
+readinto(b)
+write(b)
+</code></pre><p>functions:</p><pre><code>create_connection(address, timeout=&lt;object object&gt;, source_address=None)
+fromfd(fd, family, type[, proto]) # 用一个已经打开的文件描述符创建一个socket对象
+getaddrinfo(host, port [, family, socktype, proto, flags])
+getdefaulttimeout()
+getfqdn(name='') # FQDN, 获取完整域的信息
+gethostbyaddr(host) -&gt; (name, aliaslist, addresslist)
+gethostbyname(host)
+gethostbyname_ex(host) -&gt; (name, aliaslist, addresslist)
+gethostname()
+getnameinfo(sockaddr, flags) --&gt; (host, port)
+getprotobyname(name)
+getservbyname(servicename[, protocolname])
+getservbyport(port[, protocolname])
+htonl(integer)
+htons(integer)
+inet_aton(string)
+inet_ntoa(packed_ip)
+inet_ntop(af, packed_ip)
+inet_pton(af, ip)
+ntohl(integer)
+ntohs(integer)
+setdefaulttimeout(timeout)
+socketpair([family[, type[, proto]]]) -&gt; (socket object, socket object)
+</code></pre><h2 id=select>select</h2><p>等待IO事件发生，返回就绪的文件描述符列表。</p><pre><code>import select
+</code></pre><h2 id=selectors>selectors</h2><p>selectors模块提供了更高级的IO多路复用接口。</p><pre><code>import selectors
+</code></pre><h2 id=signal>signal</h2><h2 id=ssl>ssl</h2><h2 id=mmap>mmap</h2><hr></section><footer class=article-footer><section class=article-tags><a href=/tags/concurrency/>Concurrency</a></section></footer><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.css integrity="sha256-J+iAE0sgH8QSz9hpcDxXIftnj65JEZgNhGcgReTTK9s=" crossorigin=anonymous><script src=https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/katex.min.js integrity="sha256-InsNdER1b2xUewP+pKCUJpkhiqwHgqiPXDlIk7GzBu4=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/katex@0.15.6/dist/contrib/auto-render.min.js integrity="sha256-y39Mpg7V3D4lhBX4x6O0bUqTV4pSrfgwEfGKfxkOdgI=" crossorigin=anonymous defer></script><script>window.addEventListener("DOMContentLoaded",()=>{renderMathInElement(document.querySelector(`.article-content`),{delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1},{left:"\\(",right:"\\)",display:!1},{left:"\\[",right:"\\]",display:!0}],ignoredClasses:["gist"]})})</script></article><div id=gitalk-container></div><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.css><script src=https://cdn.jsdelivr.net/npm/gitalk@1.7.2/dist/gitalk.min.js></script><script src=https://cdn.jsdelivr.net/npm/blueimp-md5@2.18.0/js/md5.min.js></script><script>const gitalk=new Gitalk({clientID:"3d41a2a237fabe050cc0",clientSecret:"f084dfe45a1c05955270776836298adf02732a02",repo:"crazy-canux.github.io",owner:"crazy-canux",admin:["crazy-canux"],distractionFreeMode:!1,id:md5(location.pathname)});(function(){if(["localhost","127.0.0.1"].indexOf(window.location.hostname)!=-1){document.getElementById("gitalk-container").innerHTML="Gitalk comments not available by default when the website is previewed locally.";return}gitalk.render("gitalk-container")})()</script><footer class=site-footer><section class=copyright>&copy;
+2013 -
+2026 Morgoth</section><section class=powerby>Designed by Canux<br></section></footer><div class=pswp tabindex=-1 role=dialog aria-hidden=true><div class=pswp__bg></div><div class=pswp__scroll-wrap><div class=pswp__container><div class=pswp__item></div><div class=pswp__item></div><div class=pswp__item></div></div><div class="pswp__ui pswp__ui--hidden"><div class=pswp__top-bar><div class=pswp__counter></div><button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+<button class="pswp__button pswp__button--share" title=Share></button>
+<button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+<button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button><div class=pswp__preloader><div class=pswp__preloader__icn><div class=pswp__preloader__cut><div class=pswp__preloader__donut></div></div></div></div></div><div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap"><div class=pswp__share-tooltip></div></div><button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+</button>
+<button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button><div class=pswp__caption><div class=pswp__caption__center></div></div></div></div></div><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.js integrity="sha256-ePwmChbbvXbsO02lbM3HoHbSHTHFAeChekF1xKJdleo=" crossorigin=anonymous defer></script><script src=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe-ui-default.min.js integrity="sha256-UKkzOn/w1mBxRmLLGrSeyB4e1xbrp4xylgAWb3M42pU=" crossorigin=anonymous defer></script><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/default-skin/default-skin.min.css crossorigin=anonymous><link rel=stylesheet href=https://cdn.jsdelivr.net/npm/photoswipe@4.1.3/dist/photoswipe.min.css crossorigin=anonymous></main></div><script src=https://cdn.jsdelivr.net/npm/node-vibrant@3.1.6/dist/vibrant.min.js integrity="sha256-awcR2jno4kI5X0zL8ex0vi2z+KMkF24hUW8WePSA9HM=" crossorigin=anonymous></script><script type=text/javascript src=/ts/main.js defer></script><script>(function(){const e=document.createElement("link");e.href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap",e.type="text/css",e.rel="stylesheet",document.head.appendChild(e)})()</script></body></html>

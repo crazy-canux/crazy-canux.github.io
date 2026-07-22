@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Tpl on Morgoth</title><link>https://canuxcheng.com/tags/tpl/</link><description>Recent content in Tpl on Morgoth</description><generator>Hugo -- gohugo.io</generator><language>zh-CN</language><lastBuildDate>Tue, 27 Sep 2016 01:33:42 +0000</lastBuildDate><atom:link href="https://canuxcheng.com/tags/tpl/index.xml" rel="self" type="application/rss+xml"/><item><title>TPL</title><link>https://canuxcheng.com/post/django_tpl/</link><pubDate>Tue, 27 Sep 2016 01:33:42 +0000</pubDate><guid>https://canuxcheng.com/post/django_tpl/</guid><description>&lt;h1 id="django-third-party-library"&gt;Django Third Party Library.&lt;/h1&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/rosarior/awesome-django" target="_blank" rel="noopener"
+&gt;https://github.com/rosarior/awesome-django&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Add this application to your django project in settings.py.&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt;INSTALLED_APPS = (
+'south',
+'debug_toolbar',
+'crispy_forms',
+...
+)
+&lt;/code&gt;&lt;/pre&gt;
+&lt;h1 id="django-rest-framework"&gt;django-rest-framework&lt;/h1&gt;
+&lt;p&gt;django的RESTful API的application。&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/tomchristie/django-rest-framework/tree/master" target="_blank" rel="noopener"
+&gt;https://github.com/tomchristie/django-rest-framework/tree/master&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/django-json-api/django-rest-framework-json-api" target="_blank" rel="noopener"
+&gt;https://github.com/django-json-api/django-rest-framework-json-api&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/SimpleJWT/django-rest-framework-simplejwt" target="_blank" rel="noopener"
+&gt;https://github.com/SimpleJWT/django-rest-framework-simplejwt&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id="admin-interface"&gt;admin interface&lt;/h1&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/geex-arts/django-jet" target="_blank" rel="noopener"
+&gt;https://github.com/geex-arts/django-jet&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/sehmaschine/django-grappelli" target="_blank" rel="noopener"
+&gt;https://github.com/sehmaschine/django-grappelli&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/darklow/django-suit" target="_blank" rel="noopener"
+&gt;https://github.com/darklow/django-suit&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/sshwsfc/xadmin" target="_blank" rel="noopener"
+&gt;https://github.com/sshwsfc/xadmin&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id="authentication"&gt;authentication&lt;/h1&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/etianen/django-python3-ldap" target="_blank" rel="noopener"
+&gt;https://github.com/etianen/django-python3-ldap&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/pennersr/django-allauth/" target="_blank" rel="noopener"
+&gt;https://github.com/pennersr/django-allauth/&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/django-guardian/django-guardian" target="_blank" rel="noopener"
+&gt;https://github.com/django-guardian/django-guardian&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id="database"&gt;database&lt;/h1&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/django-dbbackup/django-dbbackup" target="_blank" rel="noopener"
+&gt;https://github.com/django-dbbackup/django-dbbackup&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id="debug"&gt;debug&lt;/h1&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/jazzband/django-debug-toolbar" target="_blank" rel="noopener"
+&gt;https://github.com/jazzband/django-debug-toolbar&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/django-extensions/django-extensions/" target="_blank" rel="noopener"
+&gt;https://github.com/django-extensions/django-extensions/&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id="form"&gt;form&lt;/h1&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/django-crispy-forms/django-crispy-forms" target="_blank" rel="noopener"
+&gt;https://github.com/django-crispy-forms/django-crispy-forms&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id="search"&gt;search&lt;/h1&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/carltongibson/django-filter" target="_blank" rel="noopener"
+&gt;https://github.com/carltongibson/django-filter&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/django-haystack/django-haystack" target="_blank" rel="noopener"
+&gt;https://github.com/django-haystack/django-haystack&lt;/a&gt;&lt;/p&gt;
+&lt;h1 id="security"&gt;security&lt;/h1&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/adamchainz/django-cors-headers" target="_blank" rel="noopener"
+&gt;https://github.com/adamchainz/django-cors-headers&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id="cms-project"&gt;CMS Project&lt;/h1&gt;
+&lt;h2 id="django-cms"&gt;django-cms&lt;/h2&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/divio/django-cms/" target="_blank" rel="noopener"
+&gt;https://github.com/divio/django-cms/&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="wagtail"&gt;wagtail&lt;/h2&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/wagtail/wagtail" target="_blank" rel="noopener"
+&gt;https://github.com/wagtail/wagtail&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="mezzanine"&gt;mezzanine&lt;/h2&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/stephenmcd/mezzanine/" target="_blank" rel="noopener"
+&gt;https://github.com/stephenmcd/mezzanine/&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id="e-commerce-project"&gt;e-Commerce Project&lt;/h1&gt;
+&lt;h2 id="django-oscar"&gt;django-oscar&lt;/h2&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/django-oscar/django-oscar" target="_blank" rel="noopener"
+&gt;https://github.com/django-oscar/django-oscar&lt;/a&gt;&lt;/p&gt;
+&lt;h2 id="django-shop"&gt;django-shop&lt;/h2&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/awesto/django-shop" target="_blank" rel="noopener"
+&gt;https://github.com/awesto/django-shop&lt;/a&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h1 id="pm-project"&gt;PM Project&lt;/h1&gt;
+&lt;h2 id="taiga"&gt;taiga&lt;/h2&gt;
+&lt;p&gt;&lt;a class="link" href="https://github.com/taigaio" target="_blank" rel="noopener"
+&gt;https://github.com/taigaio&lt;/a&gt;&lt;/p&gt;</description></item></channel></rss>
